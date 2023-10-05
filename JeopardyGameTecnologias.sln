@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeopardyGame.Data", "Jeopar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeopardyGame.Service", "JeopardyGame.Service\JeopardyGame.Service.csproj", "{8539607C-763C-4884-8D2F-045A0B61638C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeopardyGame.Host", "JeopardyGame.Host\JeopardyGame.Host.csproj", "{2A5FC483-EEA4-4C3E-BE66-10036A24D3C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8539607C-763C-4884-8D2F-045A0B61638C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8539607C-763C-4884-8D2F-045A0B61638C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8539607C-763C-4884-8D2F-045A0B61638C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5FC483-EEA4-4C3E-BE66-10036A24D3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5FC483-EEA4-4C3E-BE66-10036A24D3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5FC483-EEA4-4C3E-BE66-10036A24D3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5FC483-EEA4-4C3E-BE66-10036A24D3C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
