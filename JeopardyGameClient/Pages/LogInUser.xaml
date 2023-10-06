@@ -12,7 +12,7 @@
         <Grid Height="751">
             <Viewbox Width="auto" Height="auto" Margin="310,299,-32,334">
                 <StackPanel Height="auto" Width="1230" >
-                    <Label x:Name="lblUserName" Content="Nombre de usuario" Style="{StaticResource labelStyleSimple}" 
+                    <Label x:Name="lblUserNameLogIn" Content="Nombre de usuario" Style="{StaticResource labelStyleSimple}" 
                          Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="823" HorizontalAlignment="Left">
                         <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" TextChanged="txbUserNameCreateAcc_TextChanged" Width="822"/>
@@ -29,10 +29,10 @@
                 </StackPanel>
             </Viewbox>
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="426,610,683,92">
-                <Button Content="Ingresar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonSaveUser" />
+                <Button Content="Ingresar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonEnterAccount" />
             </Border>
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="684,610,426,92">
-                <Button Content="Registrarse" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonSaveUser" />
+                <Button Content="Registrarse" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonRegister" />
             </Border>
 
 

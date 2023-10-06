@@ -13,7 +13,7 @@
                 <Button Content="New Game" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonNewGame" HorizontalAlignment="Left" Width="217" />
             </Border>
             <Border Background="Transparent" BorderBrush="#592C75" BorderThickness="4" CornerRadius="5" Margin="59,375,441,271">
-                <Button Content="Ingresar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Width="217" />
+                <Button Content="Enter Game" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuPurpleStyle}" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Width="217" />
             </Border>
             <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="59,529,441,117">
                 <Button Content="Friends" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Width="217" />
