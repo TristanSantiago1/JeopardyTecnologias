@@ -5,10 +5,38 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:JeopardyGame.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="770" d:DesignWidth="1300"
       Title="LogInUser">
 
-    <Grid>
-        
-    </Grid>
+    <Viewbox Stretch="Fill">
+        <Grid Height="751">
+            <Viewbox Width="auto" Height="auto" Margin="310,299,-32,334">
+                <StackPanel Height="auto" Width="1230" >
+                    <Label x:Name="lblUserName" Content="Nombre de usuario" Style="{StaticResource labelStyleSimple}" 
+                         Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="823" HorizontalAlignment="Left">
+                        <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" TextChanged="txbUserNameCreateAcc_TextChanged" Width="822"/>
+                    </Border>
+                </StackPanel>
+            </Viewbox>
+            <Viewbox Width="auto" Height="auto" Margin="322,422,-45,208">
+                <StackPanel Height="auto" Width="1230" >
+                    <Label x:Name="lblPasswordLogIn" Content="Password" Style="{StaticResource labelStyleSimple}" 
+                        Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="798" HorizontalAlignment="Left">
+                        <TextBox x:Name="txbPasswordLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="796"/>
+                    </Border>
+                </StackPanel>
+            </Viewbox>
+            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="426,610,683,92">
+                <Button Content="Ingresar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonSaveUser" />
+            </Border>
+            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="684,610,426,92">
+                <Button Content="Registrarse" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonSaveUser" />
+            </Border>
+
+
+
+        </Grid>
+    </Viewbox>
 </Page>

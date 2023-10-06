@@ -5,10 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:JeopardyGame.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="770" d:DesignWidth="1300"
       Title="MainMenu">
+    <Viewbox Stretch="Fill">
+        <Grid Height="751">
+            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="59,220,441,426">
+                <Button Content="New Game" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonNewGame" HorizontalAlignment="Left" Width="217" />
+            </Border>
+            <Border Background="Transparent" BorderBrush="#592C75" BorderThickness="4" CornerRadius="5" Margin="59,375,441,271">
+                <Button Content="Ingresar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Width="217" />
+            </Border>
+            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="59,529,441,117">
+                <Button Content="Friends" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Width="217" />
+            </Border>
 
-    <Grid>
-        
-    </Grid>
+        </Grid>
+
+    </Viewbox>
+    
 </Page>

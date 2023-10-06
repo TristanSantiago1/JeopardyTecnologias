@@ -24,5 +24,15 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
         }
+
+        private void txbUserNameCreateAcc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
