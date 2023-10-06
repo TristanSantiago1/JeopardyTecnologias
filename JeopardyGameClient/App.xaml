@@ -16,7 +16,7 @@
         </Style>
         <!--Blue Border style -->
         <Style x:Key="BlueBorderStyle" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="DeepSkyBlue" />
+            <Setter Property="BorderBrush" Value="#26B1FF" />
             <Setter Property="BorderThickness" Value ="5"/>
             <Setter Property="CornerRadius" Value="13"/>
             <Setter Property="Effect">
@@ -72,11 +72,21 @@
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="FontWeight" Value="Light" />
-            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <!-- Invalid Fields Content Warning style -->
+        <Style x:Key="InvalidContentWarningStyle" TargetType="{x:Type Label}">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="FontWeight" Value="Light" />
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="Foreground" Value="red"/>
+        </Style>
 
-        
+
+
 
 
     </Application.Resources>

@@ -7,15 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Host
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Host()
+        {
+            this.Games = new HashSet<Game>();
+        }
+    
         public int IdHost { get; set; }
         public string HostName { get; set; }
         public byte[] ImageHost { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Game> Games { get; set; }
     }
 }

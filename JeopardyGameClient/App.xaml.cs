@@ -13,5 +13,20 @@ namespace JeopardyGame
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Crea la ventana que quieres establecer como principal
+            Views.UserManagerWindow mainWindow = new Views.UserManagerWindow();
+
+            // Establece la ventana como la ventana principal
+            this.MainWindow = mainWindow;
+
+            // Muestra la ventana
+            mainWindow.Show();
+        }
+
     }
 }

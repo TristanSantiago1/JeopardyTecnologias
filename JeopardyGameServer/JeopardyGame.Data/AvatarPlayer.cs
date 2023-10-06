@@ -7,14 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
     public partial class AvatarPlayer
     {
-        public int idAvatarPlayer { get; set; }
+        public int IdAvatarPlayer { get; set; }
+        public int Avatar_IdAvatar { get; set; }
+        public int Player_IdPlayer { get; set; }
     
         public virtual Avatar Avatar { get; set; }
         public virtual Player Player { get; set; }

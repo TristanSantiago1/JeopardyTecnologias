@@ -1,4 +1,4 @@
-﻿using JeopardyGame.Data.DataBase;
+﻿using JeopardyGame.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +18,12 @@ namespace JeopardyGame.Data.DataAccess
                 return newUser;
             }
         }
-        public Player SavePlayerInDataBase(User userSaved, Player newPlayer)
+        public Player SavePlayerInDataBase(User userSaved, State defaultState, Player newPlayer)
         {
             using (var context = new JeopardyDBContainer())
             {
                 context.Users.Attach(userSaved);
+                context.States.Attach(defaultState);
                 var newPlayera = context.Players.Add(newPlayer);
                 context.SaveChanges();
                 return newPlayer;
@@ -36,6 +37,15 @@ namespace JeopardyGame.Data.DataAccess
                 return userConsulted;
             }
         }
+        public State GetStateById(int idSatate)
+        {
+            using (var context = new JeopardyDBContainer())
+            {
+                var stateConsulted = context.States.Find(idSatate);
+                return stateConsulted;
+            }
+        }
+
     }
 
 }

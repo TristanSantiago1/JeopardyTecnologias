@@ -25,6 +25,7 @@ namespace JeopardyGame.Service.InterfacesSevices
             private String userName;
             private String emailAddress;
             private String password;
+            
             [DataMember]
             public int IdUser { get { return idUser; } set { idUser = value; } }
             [DataMember]
@@ -43,14 +44,18 @@ namespace JeopardyGame.Service.InterfacesSevices
             private int generalPoints;
             private int noReports;
             private int idUser;
+            private int idState;
+            
             [DataMember]
-            public int IdPlayer { get { return idUser; } set { idUser = value; } }
+            public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
             [DataMember]
             public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
             [DataMember]
             public int NoReports { get { return noReports; } set { noReports = value; } }
             [DataMember]
-            public int IdUser { get { return idUser; } set { idUser = value; } }
-        }
+            public int IdUser { get { return idUser; } set { idUser = value; } }       
+            [DataMember]
+            public int IdState { get { return idState; } set { idState = value; } }
+    }
     
 }

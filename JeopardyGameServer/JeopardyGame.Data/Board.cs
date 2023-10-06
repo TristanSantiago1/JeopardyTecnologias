@@ -7,14 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class State
+    public partial class Board
     {
-        public int idState { get; set; }
-        public string StateDescription { get; set; }
+        public int idBoard { get; set; }
+        public string Game_RoomCode { get; set; }
+        public int Category_IdCategory { get; set; }
+    
+        public virtual Category Category { get; set; }
+        public virtual Game Game { get; set; }
     }
 }

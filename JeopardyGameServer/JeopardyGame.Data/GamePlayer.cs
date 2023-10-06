@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Friends
+    public partial class GamePlayer
     {
-        public int IdFrineds { get; set; }
+        public int IdGamePlayer { get; set; }
+        public long PointsInGame { get; set; }
+        public short PlaceInGame { get; set; }
+        public string Game_RoomCode { get; set; }
+        public int Player_IdPlayer { get; set; }
     
+        public virtual Game Game { get; set; }
         public virtual Player Player { get; set; }
-        public virtual Player PlayerFriend { get; set; }
     }
 }
