@@ -9,18 +9,25 @@
       Title="MainMenu">
     <Viewbox Stretch="Fill">
         <Grid Height="751">
-            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="59,220,441,426">
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\BackGround.jpg">
+                </ImageBrush>
+            </Grid.Background>
+            <Image HorizontalAlignment="Left" Height="138" 
+       Width="201" Margin="10,10,0,0" VerticalAlignment="Top" 
+       Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
+            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="90,220,410,426">
                 <Button Content="New Game" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonNewGame" HorizontalAlignment="Left" Width="217" />
             </Border>
-            <Border Background="Transparent" BorderBrush="#592C75" BorderThickness="4" CornerRadius="5" Margin="59,375,441,271">
+            <Border Background="Transparent" BorderBrush="#592C75" BorderThickness="4" CornerRadius="5" Margin="90,376,410,270">
                 <Button Content="Enter Game" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuPurpleStyle}" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Width="217" />
             </Border>
-            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="59,529,441,117">
+            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="4" CornerRadius="5" Margin="90,527,410,119">
                 <Button Content="Friends" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Width="217" />
             </Border>
 
         </Grid>
 
     </Viewbox>
-    
+
 </Page>

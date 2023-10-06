@@ -15,6 +15,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         int SaveUser(UserPOJO userPojoNew);
         [OperationContract]
         int SavePlayer(int IdUserSaved, PlayerPOJO playerPojoNew);
+        //agregar los correspondientes a validacion correo y de contraseña
     }
 
         [DataContract]

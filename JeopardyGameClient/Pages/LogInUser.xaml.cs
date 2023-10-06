@@ -32,7 +32,18 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonEnterAccount(object sender, RoutedEventArgs e)
         {
+            string userName = txbUserNameLogIn.Text;
+            string password = PssPasswordLogIn.Password;
+           /* bool isValid = UserManagerService.ValidateCredentials(userName, password);
 
+            if (isValid)
+            {
+                MessageBox.Show("¡Bienvenido a Jeopardy!");
+            }
+            else
+            {
+                MessageBox.Show("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
+            }*/
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
