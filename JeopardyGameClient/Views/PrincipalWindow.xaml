@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="PrincipalWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="135" 
+               Width="261" Margin="296,10,0,0" VerticalAlignment="Top" 
+               Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
+
     </Grid>
 </Window>
