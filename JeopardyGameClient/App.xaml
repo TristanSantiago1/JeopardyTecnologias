@@ -17,6 +17,14 @@
             <Setter Property="Margin" Value="0,0,0,5" />
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <!--Label missing usernName and Password -->
+        <Style x:Key="labelWarning" TargetType="{x:Type Label}">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value=" 15"/>
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
         <!--Blue Border style -->
         <Style x:Key="BlueBorderStyle" TargetType="{x:Type Border}">
             <Setter Property="BorderBrush" Value="#26B1FF" />

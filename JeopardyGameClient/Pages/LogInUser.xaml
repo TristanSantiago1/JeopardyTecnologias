@@ -37,8 +37,8 @@
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="684,610,426,92">
                 <Button Content="Registrarse" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonRegister" />
             </Border>
-            <Label x:Name ="LblWrongUserName" HorizontalAlignment="Left" Margin="335,365,0,0" VerticalAlignment="Top" Width="657"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="335,544,0,0" VerticalAlignment="Top" Width="657"/>
+            <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" HorizontalAlignment="Left" Margin="335,365,0,0" VerticalAlignment="Top" Width="657"/>
+            <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}"  HorizontalAlignment="Left" Margin="335,544,0,0" VerticalAlignment="Top" Width="657"/>
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
             </Grid.Background>

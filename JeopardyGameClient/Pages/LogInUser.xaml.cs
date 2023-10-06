@@ -35,6 +35,17 @@ namespace JeopardyGame.Pages
         {
             string userName = txbUserNameLogIn.Text;
             string password = PssPasswordLogIn.Password;
+
+            if(!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Welcome to Jeopardy");
+            }
+            else
+            {
+                LblWrongUserName.Content = string.IsNullOrWhiteSpace(userName) ? "Please enter your username" : "";
+                lblPasswordWrong.Content = string.IsNullOrWhiteSpace(password) ? "Please enter your password" : "";
+
+            }
            /* bool isValid = UserManagerService.ValidateCredentials(userName, password);
 
             if (isValid)
