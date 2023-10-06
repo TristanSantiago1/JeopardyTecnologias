@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class GamePlayer
+    public partial class Baneo
     {
-        public int IdGamePlayer { get; set; }
-        public long PointsInGame { get; set; }
-        public short PlaceInGame { get; set; }
+        public int IdBaneo { get; set; }
+        public Nullable<System.DateTime> BanTimeBegin { get; set; }
+        public Nullable<System.DateTime> BanTimeFinish { get; set; }
+        public int Player_IdPlayer { get; set; }
     
-        public virtual Game Game { get; set; }
         public virtual Player Player { get; set; }
     }
 }

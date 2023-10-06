@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Player
+    public partial class State
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Player()
+        public State()
         {
-            this.GeneralPoints = 0;
+            this.Players = new HashSet<Player>();
         }
     
-        public int IdPlayer { get; set; }
-        public Nullable<long> GeneralPoints { get; set; }
-        public long NoReports { get; set; }
-        public int State_idState { get; set; }
-        public Nullable<int> IdAvatarActual { get; set; }
+        public int IdState { get; set; }
+        public string StateDescription { get; set; }
     
-        public virtual State State { get; set; }
-        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Player> Players { get; set; }
     }
 }

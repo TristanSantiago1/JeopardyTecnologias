@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Awnser
+    public partial class Friend
     {
-        public int idAwnser { get; set; }
-        public string SpanishAwnserDescription { get; set; }
-        public string EnglichAwnserDescription { get; set; }
+        public int IdFrineds { get; set; }
+        public int Player_IdPlayer { get; set; }
+        public int PlayerFriend_IdPlayer { get; set; }
     
-        public virtual Question Question { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Player Player { get; set; }
+        public virtual Player Player1 { get; set; }
     }
 }

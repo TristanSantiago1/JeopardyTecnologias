@@ -7,15 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Avatar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Avatar()
+        {
+            this.AvatarPlayers = new HashSet<AvatarPlayer>();
+        }
+    
         public int IdAvatar { get; set; }
         public string AvatarName { get; set; }
         public byte[] imageAvatar { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AvatarPlayer> AvatarPlayers { get; set; }
     }
 }

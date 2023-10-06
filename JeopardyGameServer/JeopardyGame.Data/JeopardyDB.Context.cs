@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.DataBase
+namespace JeopardyGame.Data
 {
     using System;
     using System.Data.Entity;
@@ -25,19 +25,20 @@ namespace JeopardyGame.Data.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Player> Players { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<Friends> Friends { get; set; }
-        public virtual DbSet<Avatar> Avatars { get; set; }
         public virtual DbSet<AvatarPlayer> AvatarPlayers { get; set; }
-        public virtual DbSet<Baneo> Baneos { get; set; }
-        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<Avatar> Avatars { get; set; }
         public virtual DbSet<Awnser> Awnsers { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Baneo> Baneos { get; set; }
         public virtual DbSet<Board> Boards { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Friend> Friends { get; set; }
+        public virtual DbSet<GamePlayer> GamePlayers { get; set; }
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Host> Hosts { get; set; }
-        public virtual DbSet<GamePlayer> GamePlayers { get; set; }
+        public virtual DbSet<Player> Players { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

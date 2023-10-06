@@ -22,6 +22,7 @@ namespace JeopardyGame.Views
         public UserManagerWindow()
         {
             InitializeComponent();
+            CurrentPage.Navigate(new JeopardyGame.Pages.UserRegister());
         }
     }
 }

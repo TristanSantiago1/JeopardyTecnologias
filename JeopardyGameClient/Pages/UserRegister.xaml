@@ -9,26 +9,24 @@
       Title="UserRegister">
 
     <Viewbox Stretch="Fill">
-        <Grid Height="751" >            
-            
+        <Grid Height="751" >
+
 
             <Viewbox Width="auto" Height="auto" Margin="141,119,130,511">
-                <StackPanel Height="auto" Width="1200" >
+                <StackPanel Height="auto" Width="1234" >
                     <Label x:Name="lblNameDescripCreateAcc" Content="Name :" Style="{StaticResource labelStyleSimple}" 
                       Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="1200">
-                        <TextBlock x:Name="txbNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" 
-                               VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="1230">
+                        <TextBox x:Name="txbNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="1218"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
             <Viewbox Width="auto" Height="auto" Margin="144,245,133,388">
-                <StackPanel Height="auto" Width="1230" >
+                <StackPanel Height="auto" Width="1259" >
                     <Label x:Name="lblUserNameDescripCreateAcc" Content="Nombre de usuario :" Style="{StaticResource labelStyleSimple}" 
                       Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="1229" HorizontalAlignment="Left">
-                        <TextBlock x:Name="txbUserNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" 
-                               VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="1255" HorizontalAlignment="Left">
+                        <TextBox x:Name="txbUserNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1243"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
@@ -37,9 +35,8 @@
                 <StackPanel Height="auto" Width="1230" >
                     <Label x:Name="lblEmailDescripCreateAcc" Content="Correo :" Style="{StaticResource labelStyleSimple}" 
               Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="1229" HorizontalAlignment="Left">
-                        <TextBlock x:Name="txbEmailCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" 
-                               VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="1229" HorizontalAlignment="Left">
+                        <TextBox x:Name="txbEmailCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1227"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
@@ -48,14 +45,13 @@
                     <Label x:Name="lblPasswordDescripCreateAcc" Content="Password :" Style="{StaticResource labelStyleSimple}" 
                         Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Border Background="Transparent" BorderBrush="#28B1FF" BorderThickness="2" CornerRadius="10" Width="1229" HorizontalAlignment="Left">
-                        <TextBlock x:Name="txbPasswordCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" 
-                               VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="txbPasswordCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1217"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
             <Image HorizontalAlignment="Left" Height="146" Margin="929,15,0,0" VerticalAlignment="Top" Width="201" Source="/Images/EditiImagaAvatar.png"/>
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="760,669,348,33">
-                <Button Content="Guardar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonSaveUser" />
+                <Button x:Name="bttSaveUser" IsEnabled="False" Content="Guardar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonSaveUser" />
             </Border>
             <Border Background="Transparent" BorderBrush="Purple" BorderThickness="4" CornerRadius="5" Margin="970,669,138,33">
                 <Button Content="Cancelar" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonCancellationStyle}" Click="CLicButtonCancelSaving" />
@@ -70,7 +66,16 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <ListBox x:Name="lsbPasswordRules" Margin="145,619,543,16" Visibility="Visible" Background="Gray" />
+            <Border x:Name="brdPasswordRules" Margin="145,619,0,16"  Visibility="Hidden" Background="Transparent" BorderBrush="#26B1FF" BorderThickness="6" CornerRadius="5" HorizontalAlignment="Left" Width="599">
+                <StackPanel  Background="Black" >
+                    <Image x:Name="imgClosePasswordRules" Width="20" Height="20" HorizontalAlignment="Right" Source="/Images/CrossImageWhite.png" MouseDown="ClosePaswordRules"/>
+                    <ListBox x:Name="lsbPasswordRules" Background="Black" Width="573" Height="73" BorderBrush="Transparent" d:ItemsSource="{d:SampleData ItemCount=5}" />
+                </StackPanel>
+            </Border>
+            <Label x:Name="lblNameWarning" HorizontalAlignment="Left" Margin="649,245,0,0" VerticalAlignment="Top" Width="500" Style="{StaticResource InvalidContentWarningStyle}" />
+            <Label x:Name="lblUserNameWarning" HorizontalAlignment="Left" Margin="649,0,0,0" VerticalAlignment="Center" Width="500" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}"/>
+            <Label x:Name="lblEmailWarning" HorizontalAlignment="Left" Margin="652,493,0,0" VerticalAlignment="Top" Width="500" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}"/>
+            <Label x:Name="lblPasswordWarning" HorizontalAlignment="Left" Margin="653,619,0,0" VerticalAlignment="Top" Width="500" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}"/>
 
         </Grid>
     </Viewbox>
