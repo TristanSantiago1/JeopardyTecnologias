@@ -7,10 +7,13 @@
         mc:Ignorable="d"
         Title="UserManagerWindow" Height="770" Width="1300">
     <Grid>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
         <Image HorizontalAlignment="Left" Height="135" Width="274" Margin="64,10,0,0" VerticalAlignment="Top" Source="/Images/JeopardyFosfoSign.jpg"/>
         <Frame x:Name="CurrentPage" NavigationUIVisibility="Hidden" />
         <Grid.Background>
             <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
-        </Grid.Background>        
+        </Grid.Background>  
+        
     </Grid>
+    
 </Window>

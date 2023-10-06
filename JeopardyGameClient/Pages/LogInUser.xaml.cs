@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,10 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
-
+            UserManagerWindow userManagerWindow = new UserManagerWindow();
+            userManagerWindow.Show();
+            Window principalWindow = Application.Current.MainWindow;
+            principalWindow.Close();
         }
     }
 }
