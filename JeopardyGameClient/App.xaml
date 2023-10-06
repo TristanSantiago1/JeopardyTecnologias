@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:JeopardyGame"
-            >
+             >
+    <!--StartupUri = "Views.PrincipalWindow.xaml"-->
+   
     <!--StartupUri="Views.UserManagerWindow.xaml"-->
+    
     <Application.Resources>
         <!--Simple White Label style -->
         <Style x:Key="labelStyleSimple" TargetType="{x:Type Label}">
@@ -45,17 +48,65 @@
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
+        <!-- Password  style -->
+        <Style x:Key="PasswordBox" TargetType="{x:Type PasswordBox}">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="Purple"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
         <!-- Button Confirmation  style -->
         <Style x:Key="ButtonConfirmationStyle" TargetType="{x:Type Button}">
             <Setter Property="UseLayoutRounding" Value="True"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontStyle" Value="Italic"/>
-            <Setter Property="Background" Value="Purple"/>
+            <Setter Property="Background" Value="#592C75"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="center"/>
             <Setter Property="VerticalContentAlignment" Value="center"/>            
         </Style>
+        <!-- Button Registrer  style -->
+        <Style x:Key="ButtonRegistrerStyle" TargetType="{x:Type Button}">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Background" Value="#63084F"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="center"/>
+            <Setter Property="VerticalContentAlignment" Value="center"/>
+        </Style>
+        <!-- Button Main menu  style -->
+        <Style x:Key="ButtonMainMenuStyle" TargetType="{x:Type Button}">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value=" 36"/>
+            <Setter Property="Background" Value="#26B1FF"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="center"/>
+            <Setter Property="VerticalContentAlignment" Value="center"/>
+        </Style>
+        <!-- Button Main menu second color style -->
+        <Style x:Key="ButtonMainMenuPurpleStyle" TargetType="{x:Type Button}">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value=" 36"/>
+            <Setter Property="Background" Value="#592C75"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="center"/>
+            <Setter Property="VerticalContentAlignment" Value="center"/>
+        </Style>
+
         <!-- Button CanCell style -->
         <Style x:Key="ButtonCancellationStyle" TargetType="{x:Type Button}">
             <Setter Property="UseLayoutRounding" Value="True"/>

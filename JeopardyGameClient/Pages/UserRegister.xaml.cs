@@ -198,7 +198,7 @@ namespace JeopardyGame.Pages
         {
             brdPasswordRules.Visibility = Visibility.Visible;
             imgViewPasswordRules.Visibility = Visibility.Hidden;
-
+            
         }
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)

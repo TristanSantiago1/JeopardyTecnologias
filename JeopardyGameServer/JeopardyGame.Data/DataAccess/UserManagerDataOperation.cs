@@ -37,6 +37,15 @@ namespace JeopardyGame.Data.DataAccess
                 return userConsulted;
             }
         }
+        public User GetUserByUserName(String userName)
+        {
+            using (var context = new JeopardyDBContainer())
+            {
+                var userFindedByUserName = context.Users.Find(userName);
+                return userFindedByUserName;
+            }
+        }
+
         public State GetStateById(int idSatate)
         {
             using (var context = new JeopardyDBContainer())
@@ -45,7 +54,22 @@ namespace JeopardyGame.Data.DataAccess
                 return stateConsulted;
             }
         }
+        public bool ValidateCredentials(string userName, string password)
+        {
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            User user = ConexionAccesoDatos.GetUserByUserName(userName);
 
+            if (user != null)
+            {
+                if (user.Password == password)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
-
 }
+
+
