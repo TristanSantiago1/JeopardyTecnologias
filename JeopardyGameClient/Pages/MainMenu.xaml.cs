@@ -24,5 +24,17 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
         }
+        private void CLicButtonNewGame(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CLicButtonEnterGame(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CLicButtonFriendsList(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

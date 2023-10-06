@@ -2,8 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:JeopardyGame"
-            >
+             >
+    <!--StartupUri = "Views.PrincipalWindow.xaml"-->
+   
     <!--StartupUri="Views.UserManagerWindow.xaml"-->
+    
     <Application.Resources>
         <!--Simple White Label style -->
         <Style x:Key="labelStyleSimple" TargetType="{x:Type Label}">
@@ -45,6 +48,18 @@
             <Setter Property="FontSize" Value="40"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
+        <!-- Password  style -->
+        <Style x:Key="PasswordBox" TargetType="{x:Type PasswordBox}">
+            <Setter Property="UseLayoutRounding" Value="True"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Foreground" Value="Purple"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
         <!-- Button Confirmation  style -->
         <Style x:Key="ButtonConfirmationStyle" TargetType="{x:Type Button}">
             <Setter Property="UseLayoutRounding" Value="True"/>

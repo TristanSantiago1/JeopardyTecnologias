@@ -22,6 +22,13 @@ namespace JeopardyGame.Views
         public PrincipalWindow()
         {
             InitializeComponent();
+            Loaded += PrincipalWindowLoaded;
         }
+
+        private void PrincipalWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            contentFrame.Navigate(new Pages.LogInUser());
+        }
+        
     }
 }

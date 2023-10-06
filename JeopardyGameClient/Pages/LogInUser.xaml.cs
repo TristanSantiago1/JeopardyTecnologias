@@ -30,7 +30,11 @@ namespace JeopardyGame.Pages
 
         }
 
-        private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
+        private void CLicButtonEnterAccount(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
 
         }
