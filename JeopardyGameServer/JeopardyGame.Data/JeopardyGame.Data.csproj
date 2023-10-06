@@ -111,9 +111,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="DataBase\JeopardyDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
