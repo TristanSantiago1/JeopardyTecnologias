@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="JeopardyGame.DialogWindows.ErrorMessageDW"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JeopardyGame.DialogWindows"
+             mc:Ignorable="d" Height="174" Width="323" >
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF937F7F" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <TextBlock Text="Ocurrió un error" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+
+        <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="1" Margin="134,140,125,10" >
+            <Button Content="Aceptar" FontStretch="Expanded" Click="AcceptButton_Click"
+                    Style="{StaticResource ButtonConfirmationStyle}" />
+        </Border>
+        <Image HorizontalAlignment="Left" Height="42" Margin="10,10,0,0" VerticalAlignment="Top" Width="49" Source="/Images/ErrorImage.png"/>
+        <Image HorizontalAlignment="Left"  Margin="267,10,0,0" VerticalAlignment="Top" Source="/Images/ErrorImage.png" Height="42" Width="46"/>
+    </Grid>
+</UserControl>

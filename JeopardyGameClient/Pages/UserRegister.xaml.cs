@@ -1,4 +1,5 @@
-﻿using JeopardyGame.ServidorServiciosJeopardy;
+﻿using JeopardyGame.ReGexs;
+using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,16 +28,28 @@ namespace JeopardyGame.Pages
         public UserRegister()
         {
             InitializeComponent();
-            txbNameCreateAcc.TextChanged += CommonTextChanged;
-            txbUserNameCreateAcc.TextChanged += CommonTextChanged;
-            txbEmailCreateAcc.TextChanged += CommonTextChanged; 
-            txbPasswordCreateAcc.TextChanged += CommonTextChanged;
+            InitializeListeners();
             CreateRuleLabels();
             foreach (var rule in ListBoxRules)
             {
                 lsbPasswordRules.Items.Add(rule);
             }
         }
+
+        private void InitializeListeners()
+        {
+            txbNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
+            txbUserNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
+            //txbEmailCreateAcc.PreviewTextInput += TextBoxRegexConfig;
+            txbPasswordCreateAcc.TextChanged += CommonTextChanged;
+            txbNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+            txbUserNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+            txbEmailCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+            txbPasswordCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+        } 
+
+
+
 
         private int CheckEmptyFields()
         {
@@ -170,12 +183,30 @@ namespace JeopardyGame.Pages
             ListBoxRules.Add(PasswordPuntuationRule); ListBoxRules.Add(PasswordSameEmailRule);     
         }
 
+        private int CheckEmailAddress()
+        {
+            ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
+            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            int awnser = 1;
+            if(!regexExpression.IsMatch( txbEmailCreateAcc.Text.Trim()))
+            {
+                lblEmailWarning.Content = "falta";
+                lblEmailWarning.Visibility = Visibility.Visible;
+                awnser = 0;
+            }
+            else
+            {
+                lblEmailWarning.Content = "";
+                lblEmailWarning.Visibility = Visibility.Collapsed;
+            }
+            return awnser;
+        }
+
         private void CommonTextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            int changeButtonState = CheckEmptyFields();
             int changeButtonSatateForPassword = CheckPassword();
-            if (changeButtonState == 1 && changeButtonSatateForPassword== 1)
+            if (changeButtonSatateForPassword== 1)
             {
                 bttSaveUser.IsEnabled = true;
             }
@@ -183,6 +214,30 @@ namespace JeopardyGame.Pages
             {
                 bttSaveUser.IsEnabled = false;
             }
+        }
+
+        private void TextBoxRegexConfig(object sender, TextCompositionEventArgs e)
+        {
+            TextBox currentTextBox = sender as TextBox;
+            RegularExpresionsLibrary regularExpresionsLibrary = new RegularExpresionsLibrary(); ;
+            if (regularExpresionsLibrary.validationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex))
+            {
+                if (!regex.IsMatch(e.Text))
+                {
+                    e.Handled = true;
+                }
+                
+            }
+        }
+        private void TextBlocPasteBlock(object sender, KeyEventArgs e)
+        {
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                if (e.Key == Key.C || e.Key == Key.X || e.Key == Key.V)
+                {
+                    e.Handled = true; 
+                }
+            }            
         }
 
         private void ResaltBrokenRule(Label missingRule)
@@ -194,6 +249,15 @@ namespace JeopardyGame.Pages
             missingRule.Foreground = Brushes.White;
         }
 
+        private void ClearFields()
+        {
+            txbNameCreateAcc.Clear();
+            txbUserNameCreateAcc.Clear();
+            txbEmailCreateAcc.Clear();
+            txbPasswordCreateAcc.Clear();
+            bttSaveUser.IsEnabled = false;
+        }
+
         private void ClicViewPasswordRules(object sender, MouseButtonEventArgs e)
         {
             brdPasswordRules.Visibility = Visibility.Visible;
@@ -202,28 +266,38 @@ namespace JeopardyGame.Pages
         }
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
-        {           
-            UserPOJO userToSave = new UserPOJO();
-            userToSave.Name = txbNameCreateAcc.Text.Trim();
-            userToSave.UserName = txbUserNameCreateAcc.Text.Trim();
-            userToSave.EmailAddress = txbEmailCreateAcc.Text.Trim();
-            userToSave.Password = txbEmailCreateAcc.Text.Trim();
-
-            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-
-            int idUsuario = proxyServer.SaveUser(userToSave);
-            if (idUsuario != 0)
+        {   
+            if( CheckEmptyFields() == 1 && CheckEmailAddress() == 1)
             {
-                ServidorServiciosJeopardy.PlayerPOJO playerTosSave = new ServidorServiciosJeopardy.PlayerPOJO();
-                playerTosSave.GeneralPoints = 0;
-                playerTosSave.NoReports = 0;
-                int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
-                Console.WriteLine(idPlayer);
-                Console.ReadLine();
+                UserPOJO userToSave = new UserPOJO();
+                userToSave.Name = txbNameCreateAcc.Text.Trim();
+                userToSave.UserName = txbUserNameCreateAcc.Text.Trim();
+                userToSave.EmailAddress = txbEmailCreateAcc.Text.Trim();
+                userToSave.Password = txbEmailCreateAcc.Text.Trim();
+
+                ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+
+                int idUsuario = proxyServer.SaveUser(userToSave);
+                if (idUsuario != 0)
+                {
+                    ServidorServiciosJeopardy.PlayerPOJO playerTosSave = new ServidorServiciosJeopardy.PlayerPOJO();
+                    playerTosSave.GeneralPoints = 0;
+                    playerTosSave.NoReports = 0;
+                    int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
+                    ClearFields();
+
+                    Console.WriteLine(idPlayer);
+                    Console.ReadLine();
+                }
+                else 
+                { 
+                   DialogWindows.ErrorMessageDW ErrorWindow = new DialogWindows.ErrorMessageDW();
+                    ErrorWindow.Visibility = Visibility.Visible;
+                    
+                  Console.WriteLine("Fallo al registrar usuario"); 
+                
+                }
             }
-            else { Console.WriteLine("Fallo al registrar usuario"); }
-
-
         }
 
         private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
