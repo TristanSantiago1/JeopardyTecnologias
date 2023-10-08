@@ -118,55 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="bttAccept" xml:space="preserve">
-    <value>Acept</value>
+    <value>Accept</value>
   </data>
   <data name="bttCancellAction" xml:space="preserve">
-    <value>Cancell</value>
+    <value>Cancel</value>
   </data>
   <data name="bttSaveUser" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
-    <value>Email</value>
+    <value>Email : </value>
   </data>
   <data name="lblEmptyField" xml:space="preserve">
-    <value>Empty field</value>
+    <value>Requiered Field</value>
   </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
-    <value>fail to register</value>
+    <value>Error: it was not possible to register the user</value>
   </data>
   <data name="lblInvalidEmail" xml:space="preserve">
-    <value>invalid email</value>
+    <value>The Email Address isn't valid.</value>
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
-    <value>Name</value>
+    <value>Name :</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
-    <value>capital rules</value>
+    <value>*Password must have at least 2 not-consecutive Capital Letters.</value>
   </data>
   <data name="lblPassEqualsEmailRuleDesc" xml:space="preserve">
-    <value>not equal to email</value>
+    <value>*Password must not be the same as the email.</value>
   </data>
   <data name="lblPassLengthRuleDesc" xml:space="preserve">
-    <value>a</value>
+    <value>*Password must be 10-30 characters length.</value>
   </data>
   <data name="lblPassNumberRuleDesc" xml:space="preserve">
-    <value>beetwen 10-30</value>
+    <value>*Password must have at least 2 not-consecutive numbers.</value>
   </data>
   <data name="lblPassPuntSigRuleDesc" xml:space="preserve">
-    <value>put a puntuation mark</value>
+    <value>*Password must have at leats 1 puntuation character: (. , ; ;)</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>special chaacter</value>
+    <value>*Password must have at least 1 special character.</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
-    <value>password</value>
+    <value>Password :</value>
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
-    <value>email</value>
+    <value>This Email Address has already been registered.</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
-    <value>username</value>
+    <value>User Name :</value>
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
     <value>A problem has ocurred while saving the user, try again.</value>

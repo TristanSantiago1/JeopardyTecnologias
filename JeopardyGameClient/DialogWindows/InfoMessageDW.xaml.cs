@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,11 +15,11 @@ using System.Windows.Shapes;
 namespace JeopardyGame.DialogWindows
 {
     /// <summary>
-    /// Lógica de interacción para ErrorMessageDW.xaml
+    /// Lógica de interacción para InfoMessageDW.xaml
     /// </summary>
-    public partial class ErrorMessageDW : Window
+    public partial class InfoMessageDW : Window
     {
-        public ErrorMessageDW(String windowTitle, String message)
+        public InfoMessageDW(String windowTitle, String message)
         {
             InitializeComponent();
             txbErrorTitle.Text = windowTitle;
@@ -29,7 +28,7 @@ namespace JeopardyGame.DialogWindows
 
         private void AcceptButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();   
+            this.Close();
         }
     }
 }
