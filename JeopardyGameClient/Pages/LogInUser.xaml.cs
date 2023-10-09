@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JeopardyGame.ServidorServiciosJeopardy;
+using JeopardyGame.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,20 +36,46 @@ namespace JeopardyGame.Pages
         {
             string userName = txbUserNameLogIn.Text;
             string password = PssPasswordLogIn.Password;
-           /* bool isValid = UserManagerService.ValidateCredentials(userName, password);
 
-            if (isValid)
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("¡Bienvenido a Jeopardy!");
+                LblWrongUserName.Content = string.IsNullOrEmpty(userName) ? "Please enter a username" : "";
+                lblPasswordWrong.Content = string.IsNullOrEmpty(password) ? "Please enter a password" : "";
+                return;
             }
-            else
+
+            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+
+            ServidorServiciosJeopardy.UserValidate userValidate = new ServidorServiciosJeopardy.UserValidate
             {
-                MessageBox.Show("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
-            }*/
+                UserName = userName,
+                Password = password
+            };
+
+            int result = proxyServer.validateCredentials(userValidate);
+
+            proxyServer.Close();
+
+            if (result == 1)
+            {
+                Lobby lobbyJeopardy = new Lobby();
+                lobbyJeopardy.Show();
+                Window principalWindow = Application.Current.MainWindow;
+                principalWindow.Close();
+                
+            }
+            else if (result == 0)
+            {
+                MessageBox.Show("Invalid credentials, please try again");
+            }
+            
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
-
+            UserManagerWindow userManagerWindow = new UserManagerWindow();
+            userManagerWindow.Show();
+            Window principalWindow = Application.Current.MainWindow;
+            principalWindow.Close();
         }
     }
 }

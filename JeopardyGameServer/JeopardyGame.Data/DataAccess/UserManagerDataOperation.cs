@@ -41,7 +41,7 @@ namespace JeopardyGame.Data.DataAccess
         {
             using (var context = new JeopardyDBContainer())
             {
-                var userFindedByUserName = context.Users.Find(userName);
+                var userFindedByUserName = context.Users.FirstOrDefault(u => u.UserName == userName);
                 return userFindedByUserName;
             }
         }

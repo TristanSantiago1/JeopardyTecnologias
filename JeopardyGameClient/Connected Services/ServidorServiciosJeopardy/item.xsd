@@ -14,9 +14,17 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="GeneralPoints" type="xs:int" />
       <xs:element minOccurs="0" name="IdPlayer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdState" type="xs:int" />
       <xs:element minOccurs="0" name="IdUser" type="xs:int" />
       <xs:element minOccurs="0" name="NoReports" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PlayerPOJO" nillable="true" type="tns:PlayerPOJO" />
+  <xs:complexType name="UserValidate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserValidate" nillable="true" type="tns:UserValidate" />
 </xs:schema>

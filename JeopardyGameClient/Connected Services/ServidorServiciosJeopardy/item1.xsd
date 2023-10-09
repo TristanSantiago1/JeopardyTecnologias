@@ -30,4 +30,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="validateCredentials">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="newUserValidate" nillable="true" type="q3:UserValidate" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="validateCredentialsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validateCredentialsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

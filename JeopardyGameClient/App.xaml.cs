@@ -16,8 +16,7 @@ namespace JeopardyGame
             base.OnStartup(e);
 
             // Crea la ventana que quieres establecer como principal
-            Views.UserManagerWindow mainWindow = new Views.UserManagerWindow();
-
+            Views.PrincipalWindow mainWindow = new Views.PrincipalWindow();
             // Establece la ventana como la ventana principal
             this.MainWindow = mainWindow;
 
