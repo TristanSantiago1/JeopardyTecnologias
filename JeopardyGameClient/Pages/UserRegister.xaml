@@ -18,8 +18,8 @@
                     <Label x:Name="lblNameDescripCreateAcc" Content = "{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                       Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="1230">
-                        <TextBox x:Name="txbNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="1218" 
-                                 PreviewTextInput="TextBoxRegexConfig" PreviewKeyDown="TextBlocPasteBlock"/>
+                        <TextBox x:Name="txbNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="1210" 
+                                 PreviewTextInput="TextBoxRegexConfig" PreviewKeyDown="TextBlocPasteBlock" BorderThickness="0" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
@@ -28,8 +28,8 @@
                     <Label x:Name="lblUserNameDescripCreateAcc" Content="{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                       Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="1255" HorizontalAlignment="Left">
-                        <TextBox x:Name="txbUserNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1243" 
-                                 PreviewTextInput="TextBoxRegexConfig" PreviewKeyDown="TextBlocPasteBlock"/>
+                        <TextBox x:Name="txbUserNameCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1235" 
+                                 PreviewTextInput="TextBoxRegexConfig" PreviewKeyDown="TextBlocPasteBlock" BorderThickness="0" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
@@ -39,18 +39,18 @@
                     <Label x:Name="lblEmailDescripCreateAcc" Content="{x:Static p:Resources.lblEmailDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                              Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="1229" HorizontalAlignment="Left">
-                        <TextBox x:Name="txbEmailCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1227" 
-                                 PreviewTextInput = "TextBoxRegexConfig"  PreviewKeyDown="TextBlocPasteBlock"/>
+                        <TextBox x:Name="txbEmailCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1209"  BorderThickness="0"
+                                 PreviewTextInput = "TextBoxRegexConfig" PreviewKeyDown="TextBlocPasteBlock" HorizontalAlignment="Center"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
             <Viewbox Width="auto" Height="auto" Margin="144,491,133,139">
-                <StackPanel Height="auto" Width="1230" >
+                <StackPanel Height="144" Width="1213" >
                     <Label x:Name="lblPasswordDescripCreateAcc" Content="{x:Static p:Resources.lblPasswordDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                         Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="#28B1FF" BorderThickness="2" CornerRadius="10" Width="1229" HorizontalAlignment="Left">
-                        <TextBox x:Name="txbPasswordCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="1217" 
-                                 PreviewKeyDown="TextBlocPasteBlock"/>
+                    <Border Background="Transparent" BorderBrush="#28B1FF" BorderThickness="2" CornerRadius="10" Width="1208" Height="75">
+                        <PasswordBox x:Name="psbPasswordCreateAcc" FontSize="40" PreviewKeyDown="TextBlocPasteBlock" BorderThickness="0" VerticalAlignment="Center"
+                                     Background="Black" Margin="8,0,87,0" PasswordChar="■" PasswordChanged="PasswordChanged" Foreground="Purple"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
@@ -81,7 +81,10 @@
             <Label x:Name="lblUserNameWarning" HorizontalAlignment="Left" Margin="649,0,0,0" VerticalAlignment="Center" Width="500" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}" Content="{x:Static p:Resources.lblEmptyField}"/>
             <Label x:Name="lblEmailWarning" HorizontalAlignment="Left" Margin="652,493,0,0" VerticalAlignment="Top" Width="500" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}" Content="{x:Static p:Resources.lblEmptyField}"/>
             <Label x:Name="lblPasswordWarning" HorizontalAlignment="Left" Margin="653,619,0,0" VerticalAlignment="Top" Width="500" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}" Content="{x:Static p:Resources.lblEmptyField}"/>
-                    
+            <Image HorizontalAlignment="Left" Height="24" Margin="1101,569,0,0" VerticalAlignment="Top" Width="46" Source="/Images/eyeImage.png" MouseDown="ClicSeePassword" MouseLeave="HiddePsasword"/>
+            <Label x:Name="lblViewPassword" HorizontalAlignment="Left" Margin="150,548,0,0" VerticalAlignment="Top" Width="927" Height="60" FontSize="40" 
+                   BorderBrush="Transparent" Background="Transparent" Foreground="Purple" Visibility="Collapsed"/>
+
 
         </Grid>
     </Viewbox>

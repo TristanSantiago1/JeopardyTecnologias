@@ -38,14 +38,16 @@ namespace JeopardyGame.Pages
 
         private void InitializeListeners()
         {
+            psbPasswordCreateAcc.PasswordChanged += PasswordChanged;
+            psbPasswordCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+
             txbNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
             txbUserNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
-            txbPasswordCreateAcc.TextChanged += CommonTextChanged;
+            
             txbNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
             txbUserNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
             txbEmailCreateAcc.PreviewTextInput += TextBoxRegexConfig;
             txbEmailCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
-            txbPasswordCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
         }
 
         private void CreateRuleLabels()
@@ -66,11 +68,11 @@ namespace JeopardyGame.Pages
             ListBoxRules.Add(PasswordCapitalsRule); ListBoxRules.Add(PasswordSpeCharRule);
             ListBoxRules.Add(PasswordPuntuationRule); ListBoxRules.Add(PasswordSameEmailRule);
         }
-        private void CommonTextChanged(object sender, TextChangedEventArgs e)
+        private void PasswordChanged(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            int changeButtonSatateForPassword = CheckPassword();
-            if (changeButtonSatateForPassword == 1)
+            PasswordBox passwordBox = sender as PasswordBox;
+            int changeButtonStateForPassword = CheckPassword();
+            if (changeButtonStateForPassword == 1)
             {
                 bttSaveUser.IsEnabled = true;
             }
@@ -79,7 +81,8 @@ namespace JeopardyGame.Pages
                 bttSaveUser.IsEnabled = false;
             }
         }
-       
+
+
         private void TextBoxRegexConfig(object sender, TextCompositionEventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
@@ -98,14 +101,14 @@ namespace JeopardyGame.Pages
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
-                if (e.Key == Key.C || e.Key == Key.X || e.Key == Key.V)
+                if (e.Key == Key.V)
                 {
                     e.Handled = true;
                 }
             }
         }
 
-        private int CheckEmptyFields()
+        public int CheckEmptyFields() /// Publica para las pruebas
         {
             int Awnser = 1;            
             if (txbNameCreateAcc.Text.Trim().Length == 0)
@@ -137,7 +140,7 @@ namespace JeopardyGame.Pages
                 lblEmailWarning.Content = "";
                 lblEmailWarning.Visibility = Visibility.Collapsed;
             }
-            if (txbPasswordCreateAcc.Text.Trim().Length == 0)
+            if (psbPasswordCreateAcc.Password.Trim().Length == 0)
             { 
                 lblPasswordWarning.Visibility = Visibility.Visible;
                 Awnser = 0;
@@ -148,12 +151,12 @@ namespace JeopardyGame.Pages
             }
             return Awnser;
         }
-        private int CheckPassword()
+        public int CheckPassword()
         {
             int awnser = 1;
             ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
             Regex regesExpresion = new Regex("");
-            String passwordChecked = txbPasswordCreateAcc.Text.Trim();
+            String passwordChecked = psbPasswordCreateAcc.Password.ToString().Trim();
             if (passwordChecked.Length < 10 || passwordChecked.Length > 30)
             {
                 ResaltBrokenRule(ListBoxRules[0]);
@@ -221,7 +224,7 @@ namespace JeopardyGame.Pages
 
             return awnser;
         }
-        private int CheckEmailAddress()
+        public int CheckEmailAddress()
         {
             ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
             Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
@@ -254,7 +257,7 @@ namespace JeopardyGame.Pages
             txbNameCreateAcc.Clear();
             txbUserNameCreateAcc.Clear();
             txbEmailCreateAcc.Clear();
-            txbPasswordCreateAcc.Clear();
+            psbPasswordCreateAcc.Clear();
             bttSaveUser.IsEnabled = false;
         }
 
@@ -269,6 +272,20 @@ namespace JeopardyGame.Pages
             brdPasswordRules.Visibility = Visibility.Hidden;
             imgViewPasswordRules.Visibility = Visibility.Visible;
         }
+
+        private void ClicSeePassword(object sender, MouseButtonEventArgs e)
+        {
+            lblViewPassword.Content = psbPasswordCreateAcc.Password.ToString();
+            psbPasswordCreateAcc.PasswordChar = '\0';
+            lblViewPassword.Visibility = Visibility.Visible;    
+        }
+
+        private void HiddePsasword(object sender, MouseEventArgs e)
+        {
+            psbPasswordCreateAcc.PasswordChar = '■' ;
+            lblViewPassword.Visibility = Visibility.Collapsed;
+        }
+
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
             if (CheckEmptyFields() == 1 && CheckEmailAddress() == 1)
@@ -277,7 +294,7 @@ namespace JeopardyGame.Pages
                 userToSave.Name = txbNameCreateAcc.Text.Trim();
                 userToSave.UserName = txbUserNameCreateAcc.Text.Trim();
                 userToSave.EmailAddress = txbEmailCreateAcc.Text.Trim();
-                userToSave.Password = txbPasswordCreateAcc.Text.Trim();
+                userToSave.Password = psbPasswordCreateAcc.Password.ToString().Trim();
 
                 ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
 
@@ -330,6 +347,7 @@ namespace JeopardyGame.Pages
             ErrorWindow.VerticalAlignment = VerticalAlignment.Center;
             ErrorWindow.ShowDialog();
         }
-    
+
+        
     }
 }
