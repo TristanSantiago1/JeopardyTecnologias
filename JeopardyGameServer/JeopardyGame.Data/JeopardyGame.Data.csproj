@@ -123,6 +123,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JeopardyDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JeopardyDB.edmx</DependentUpon>
+      <LastGenOutput>JeopardyDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="JeopardyDB.edmx.sql" />
+    <Content Include="JeopardyDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JeopardyDB.edmx</DependentUpon>
+      <LastGenOutput>JeopardyDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.Config" />
     <EntityDeploy Include="JeopardyDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -140,21 +153,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataBase\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="JeopardyDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JeopardyDB.edmx</DependentUpon>
-      <LastGenOutput>JeopardyDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="JeopardyDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JeopardyDB.edmx</DependentUpon>
-      <LastGenOutput>JeopardyDB.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

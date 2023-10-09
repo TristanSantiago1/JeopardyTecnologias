@@ -8,9 +8,6 @@ using System.Windows;
 
 namespace JeopardyGame
 {
-    /// <summary>
-    /// Lógica de interacción para App.xaml
-    /// </summary>
     public partial class App : Application
     {
 
@@ -25,6 +22,12 @@ namespace JeopardyGame
 
             // Muestra la ventana
             mainWindow.Show();
+        }
+
+        App()
+        {
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-MX");
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EU");
         }
 
     }

@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="bttAccept" xml:space="preserve">
-    <value>Acept</value>
+    <value>Aceptar</value>
   </data>
   <data name="bttCancellAction" xml:space="preserve">
-    <value>Cancell</value>
+    <value>Cancelar</value>
   </data>
   <data name="bttSaveUser" xml:space="preserve">
-    <value>Save</value>
+    <value>Guardar</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
-    <value>Email</value>
+    <value>Correo :</value>
   </data>
   <data name="lblEmptyField" xml:space="preserve">
-    <value>Empty field</value>
+    <value>Campo Requrido</value>
   </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
-    <value>fail to register</value>
+    <value>Error : No fue posible rgistrar al ususario </value>
   </data>
   <data name="lblInvalidEmail" xml:space="preserve">
-    <value>invalid email</value>
+    <value>El correo electronico no es valido.</value>
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
-    <value>Name</value>
+    <value>Nombre :</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
-    <value>capital rules</value>
+    <value>*La contraseña debe tener al menos 2 letrass mayusculas no consecutivas</value>
   </data>
   <data name="lblPassEqualsEmailRuleDesc" xml:space="preserve">
-    <value>not equal to email</value>
+    <value>*La contraseña no puede ser igual al correo.</value>
   </data>
   <data name="lblPassLengthRuleDesc" xml:space="preserve">
-    <value>a</value>
+    <value>*La contraseña debe tener una longitud entre 10-30 caracteres</value>
   </data>
   <data name="lblPassNumberRuleDesc" xml:space="preserve">
-    <value>beetwen 10-30</value>
+    <value>La contraseña debe tener al menos 2 numeros no consecutivos.</value>
   </data>
   <data name="lblPassPuntSigRuleDesc" xml:space="preserve">
-    <value>put a puntuation mark</value>
+    <value>*La contraseña debe tener al menos 1 signo de puntuación: (. , ; :)</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>special chaacter</value>
+    <value>*La contraseña debe tener al menos un caracter especial.</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
-    <value>password</value>
+    <value>Contraseña :</value>
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
-    <value>email</value>
+    <value>Este correo electronico ya hasido registrado.</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
-    <value>username</value>
+    <value>Nombre de Usuario:</value>
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
-    <value>A problem has ocurred while saving the user, try again.</value>
+    <value>Hubo un problema al guardar al usuario, intentalo de nuevo.</value>
   </data>
   <data name="txbErrorTitle" xml:space="preserve">
     <value>ERROR</value>
   </data>
   <data name="txbInfoMessgSuccRegUser" xml:space="preserve">
-    <value>The user has been saved succesfully</value>
+    <value>Se ha registrado correctamente el usuario :</value>
   </data>
   <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
-    <value>INFORMATION</value>
+    <value>INFORMACIÓN</value>
   </data>
 </root>

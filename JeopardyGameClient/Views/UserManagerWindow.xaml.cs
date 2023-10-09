@@ -23,6 +23,16 @@ namespace JeopardyGame.Views
         {
             InitializeComponent();
             CurrentPage.Navigate(new JeopardyGame.Pages.UserRegister());
+           
+
+            // Establecer las coordenadas para la posición de la ventana en el primer monitor
+            this.HorizontalAlignment = HorizontalAlignment.Center;  // Posición horizontal en píxeles
+            this.VerticalAlignment = VerticalAlignment.Top;
+        }
+
+        private void ClicExitWindow(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
