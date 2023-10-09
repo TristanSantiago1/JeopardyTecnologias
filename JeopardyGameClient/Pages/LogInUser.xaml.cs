@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Views;
+﻿using JeopardyGame.ServidorServiciosJeopardy;
+using JeopardyGame.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,26 +37,38 @@ namespace JeopardyGame.Pages
             string userName = txbUserNameLogIn.Text;
             string password = PssPasswordLogIn.Password;
 
-            if(!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Welcome to Jeopardy");
+                LblWrongUserName.Content = string.IsNullOrEmpty(userName) ? "Please enter a username" : "";
+                lblPasswordWrong.Content = string.IsNullOrEmpty(password) ? "Please enter a password" : "";
+                return;
             }
-            else
-            {
-                LblWrongUserName.Content = string.IsNullOrWhiteSpace(userName) ? "Please enter your username" : "";
-                lblPasswordWrong.Content = string.IsNullOrWhiteSpace(password) ? "Please enter your password" : "";
 
-            }
-           /* bool isValid = UserManagerService.ValidateCredentials(userName, password);
+            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
 
-            if (isValid)
+            ServidorServiciosJeopardy.UserValidate userValidate = new ServidorServiciosJeopardy.UserValidate
             {
-                MessageBox.Show("¡Bienvenido a Jeopardy!");
+                UserName = userName,
+                Password = password
+            };
+
+            int result = proxyServer.validateCredentials(userValidate);
+
+            proxyServer.Close();
+
+            if (result == 1)
+            {
+                Lobby lobbyJeopardy = new Lobby();
+                lobbyJeopardy.Show();
+                Window principalWindow = Application.Current.MainWindow;
+                principalWindow.Close();
+                
             }
-            else
+            else if (result == 0)
             {
-                MessageBox.Show("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
-            }*/
+                MessageBox.Show("Invalid credentials, please try again");
+            }
+            
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {

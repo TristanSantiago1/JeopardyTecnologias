@@ -15,7 +15,9 @@ namespace JeopardyGame.Service.InterfacesSevices
         int SaveUser(UserPOJO userPojoNew);
         [OperationContract]
         int SavePlayer(int IdUserSaved, PlayerPOJO playerPojoNew);
-        //agregar los correspondientes a validacion correo y de contraseña
+
+        [OperationContract]
+        int validateCredentials(UserValidate newUserValidate);
     }
 
         [DataContract]
@@ -58,5 +60,17 @@ namespace JeopardyGame.Service.InterfacesSevices
             [DataMember]
             public int IdState { get { return idState; } set { idState = value; } }
     }
+        [DataContract]
+        public class UserValidate
+        {
+            private String userName;
+            private String password;
+
+            [DataMember]
+            public String UserName { get { return userName; } set { userName = value; } }
+            [DataMember]
+            public String Password { get { return password; } set { password = value; } }
+
+        }
     
 }

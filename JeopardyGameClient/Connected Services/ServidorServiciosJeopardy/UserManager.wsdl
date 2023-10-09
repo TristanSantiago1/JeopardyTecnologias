@@ -48,6 +48,12 @@
   <wsdl:message name="IUserManager_SavePlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:SavePlayerResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_validateCredentials_InputMessage">
+    <wsdl:part name="parameters" element="tns:validateCredentials" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_validateCredentials_OutputMessage">
+    <wsdl:part name="parameters" element="tns:validateCredentialsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -56,6 +62,10 @@
     <wsdl:operation name="SavePlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SavePlayer" message="tns:IUserManager_SavePlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SavePlayerResponse" message="tns:IUserManager_SavePlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="validateCredentials">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/validateCredentials" message="tns:IUserManager_validateCredentials_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/validateCredentialsResponse" message="tns:IUserManager_validateCredentials_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -79,6 +89,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="validateCredentials">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/validateCredentials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserManager">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
@@ -86,7 +105,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-8LPI6DS5\tristan</Upn>
+          <Upn>DESKTOP-VPJGL1I\dnava</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

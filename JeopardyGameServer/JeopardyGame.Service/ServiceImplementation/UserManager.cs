@@ -33,9 +33,24 @@ namespace JeopardyGame.Service.ServiceImplementation
             newPlayerAccount.GeneralPoints = playerPojoNew.GeneralPoints;
             newPlayerAccount.NoReports = playerPojoNew.NoReports;
             newPlayerAccount.User = userSaved;
-            newPlayerAccount.State= defaultState;
-            Player playerSaved = ConexionAccesoDatos.SavePlayerInDataBase(userSaved,defaultState, newPlayerAccount);
+            newPlayerAccount.State = defaultState;
+            Player playerSaved = ConexionAccesoDatos.SavePlayerInDataBase(userSaved, defaultState, newPlayerAccount);
             return playerSaved.IdPlayer;
+        }
+
+        public int validateCredentials(UserValidate newUserValidate)
+        {
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            bool isValid = ConexionAccesoDatos.ValidateCredentials(newUserValidate.UserName, newUserValidate.Password);
+
+            if (isValid)
+            {
+                return 1;
+            }
+            else
+            { 
+                return 0;
+            }
         }
     }
 }
