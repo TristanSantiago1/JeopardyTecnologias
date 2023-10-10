@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JeopardyGame.Data\JeopardyGame.Data.csproj">
+      <Project>{91DB8AA4-D049-4BB5-A296-236DB8ED2D04}</Project>
+      <Name>JeopardyGame.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JeopardyGame.Service\JeopardyGame.Service.csproj">
       <Project>{8539607c-763c-4884-8d2f-045a0b61638c}</Project>
       <Name>JeopardyGame.Service</Name>

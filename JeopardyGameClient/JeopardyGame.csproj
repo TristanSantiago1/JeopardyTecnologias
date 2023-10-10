@@ -64,6 +64,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="DialogWindows\ConfirmationDW.xaml.cs">
+      <DependentUpon>ConfirmationDW.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\EncryptationClass.cs" />
     <Compile Include="Pages\LogInUser.xaml.cs">
       <DependentUpon>LogInUser.xaml</DependentUpon>
     </Compile>
@@ -105,6 +109,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="DialogWindows\ConfirmationDW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LogInUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,7 +120,7 @@
     <Page Include="Pages\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-      </Page>
+    </Page>
     <Page Include="DialogWindows\ErrorMessageDW.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -193,7 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackGround.jpg" />
@@ -233,6 +240,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\eyeImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\QuestionImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

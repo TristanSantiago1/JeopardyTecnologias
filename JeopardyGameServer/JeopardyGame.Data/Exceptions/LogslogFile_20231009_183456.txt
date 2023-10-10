@@ -1,0 +1,5 @@
+[10/9/2023 6:34:56 PM] Exception: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+StackTrace:    en System.Data.Entity.Internal.InternalContext.SaveChanges()
+   en System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   en System.Data.Entity.DbContext.SaveChanges()
+   en JeopardyGame.Data.DataAccess.UserManagerDataOperation.SaveUserInDataBase(User user) en C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\UserManagerDataOperation.cs:línea 28

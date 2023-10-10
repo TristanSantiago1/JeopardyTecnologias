@@ -1,21 +1,13 @@
 ﻿using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
+using JeopardyGame.Views;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace JeopardyGame.Pages
 {
@@ -43,7 +35,7 @@ namespace JeopardyGame.Pages
 
             txbNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
             txbUserNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
-            
+
             txbNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
             txbUserNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
             txbEmailCreateAcc.PreviewTextInput += TextBoxRegexConfig;
@@ -110,7 +102,7 @@ namespace JeopardyGame.Pages
 
         public int CheckEmptyFields() /// Publica para las pruebas
         {
-            int Awnser = 1;            
+            int Awnser = 1;
             if (txbNameCreateAcc.Text.Trim().Length == 0)
             {
                 lblNameWarning.Visibility = Visibility.Visible;
@@ -120,7 +112,7 @@ namespace JeopardyGame.Pages
             {
                 lblNameWarning.Visibility = Visibility.Collapsed;
             }
-            if (txbUserNameCreateAcc.Text.Trim().Length == 0 )
+            if (txbUserNameCreateAcc.Text.Trim().Length == 0)
             {
                 lblUserNameWarning.Visibility = Visibility.Visible;
                 Awnser = 0;
@@ -129,10 +121,10 @@ namespace JeopardyGame.Pages
             {
                 lblUserNameWarning.Visibility = Visibility.Collapsed;
             }
-            if (txbEmailCreateAcc.Text.Trim().Length == 0 )
+            if (txbEmailCreateAcc.Text.Trim().Length == 0)
             {
                 lblEmailWarning.Content = JeopardyGame.Properties.Resources.lblEmptyField;
-                lblEmailWarning.Visibility = Visibility.Visible;    
+                lblEmailWarning.Visibility = Visibility.Visible;
                 Awnser = 0;
             }
             else
@@ -141,7 +133,7 @@ namespace JeopardyGame.Pages
                 lblEmailWarning.Visibility = Visibility.Collapsed;
             }
             if (psbPasswordCreateAcc.Password.Trim().Length == 0)
-            { 
+            {
                 lblPasswordWarning.Visibility = Visibility.Visible;
                 Awnser = 0;
             }
@@ -212,7 +204,7 @@ namespace JeopardyGame.Pages
             }
 
             int indiceArroba = (txbEmailCreateAcc.Text.IndexOf('@') != -1) ? txbEmailCreateAcc.Text.IndexOf('@') : 0;
-            if (txbEmailCreateAcc.Text.Trim().Substring(0,indiceArroba).Equals(passwordChecked))
+            if (txbEmailCreateAcc.Text.Trim().Substring(0, indiceArroba).Equals(passwordChecked))
             {
                 ResaltBrokenRule(ListBoxRules[5]);
                 awnser = 0;
@@ -229,7 +221,7 @@ namespace JeopardyGame.Pages
             ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
             Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
             int awnser = 1;
-            if(!regexExpression.IsMatch( txbEmailCreateAcc.Text.Trim()))
+            if (!regexExpression.IsMatch(txbEmailCreateAcc.Text.Trim()))
             {
                 lblEmailWarning.Content = JeopardyGame.Properties.Resources.lblInvalidEmail;
                 lblEmailWarning.Visibility = Visibility.Visible;
@@ -242,7 +234,7 @@ namespace JeopardyGame.Pages
                 awnser = CheckPassword();
             }
             return awnser;
-        }            
+        }
 
         private void ResaltBrokenRule(Label missingRule)
         {
@@ -265,7 +257,7 @@ namespace JeopardyGame.Pages
         {
             brdPasswordRules.Visibility = Visibility.Visible;
             imgViewPasswordRules.Visibility = Visibility.Hidden;
-            
+
         }
         private void ClosePaswordRules(object sender, MouseButtonEventArgs e)
         {
@@ -277,12 +269,12 @@ namespace JeopardyGame.Pages
         {
             lblViewPassword.Content = psbPasswordCreateAcc.Password.ToString();
             psbPasswordCreateAcc.PasswordChar = '\0';
-            lblViewPassword.Visibility = Visibility.Visible;    
+            lblViewPassword.Visibility = Visibility.Visible;
         }
 
         private void HiddePsasword(object sender, MouseEventArgs e)
         {
-            psbPasswordCreateAcc.PasswordChar = '■' ;
+            psbPasswordCreateAcc.PasswordChar = '■';
             lblViewPassword.Visibility = Visibility.Collapsed;
         }
 
@@ -290,14 +282,14 @@ namespace JeopardyGame.Pages
         {
             if (CheckEmptyFields() == 1 && CheckEmailAddress() == 1)
             {
+                Helpers.EncryptationClass encryptation = new Helpers.EncryptationClass();
+                String EncryptedPassword = encryptation.EncryptPassword(psbPasswordCreateAcc.Password.ToString().Trim());
                 UserPOJO userToSave = new UserPOJO();
                 userToSave.Name = txbNameCreateAcc.Text.Trim();
                 userToSave.UserName = txbUserNameCreateAcc.Text.Trim();
                 userToSave.EmailAddress = txbEmailCreateAcc.Text.Trim();
-                userToSave.Password = psbPasswordCreateAcc.Password.ToString().Trim();
-
+                userToSave.Password = EncryptedPassword;
                 ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-
                 int idUsuario = proxyServer.SaveUser(userToSave);
                 if (idUsuario != 0)
                 {
@@ -316,11 +308,6 @@ namespace JeopardyGame.Pages
                     Console.WriteLine("Fallo al registrar usuario");
                 }
             }
-        }
-        private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
-        {
-            
-            ///Salir de la pantalla al inicio de sesion
         }
 
         private void ShowInfoMessage()
@@ -348,6 +335,30 @@ namespace JeopardyGame.Pages
             ErrorWindow.ShowDialog();
         }
 
-        
+        private void ClicCancellRegistration(object sender, MouseButtonEventArgs e)
+        {           
+            CloseCuerrentWindow();
+        }
+
+        private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
+        {
+            CloseCuerrentWindow();
+        }
+
+        private void CloseCuerrentWindow()
+        {            
+            PrincipalWindow login = new PrincipalWindow();
+            login.Show();
+            Window currentW = Application.Current.MainWindow;
+            currentW.Close();
+
+
+            //DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(currentPage, login);
+            //double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
+            //double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
+            //confirmationWindow.Left = left;
+            //confirmationWindow.Top = top;
+        }
+       
     }
 }

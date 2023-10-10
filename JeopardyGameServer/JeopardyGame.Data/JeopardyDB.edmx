@@ -4,381 +4,381 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JeopardyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="JeopardyModelStoreContainer">
-    <EntitySet Name="AvatarPlayers" EntityType="JeopardyModel.Store.AvatarPlayers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Avatars" EntityType="JeopardyModel.Store.Avatars" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Awnsers" EntityType="JeopardyModel.Store.Awnsers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Baneos" EntityType="JeopardyModel.Store.Baneos" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Boards" EntityType="JeopardyModel.Store.Boards" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Categories" EntityType="JeopardyModel.Store.Categories" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Friends" EntityType="JeopardyModel.Store.Friends" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="GamePlayers" EntityType="JeopardyModel.Store.GamePlayers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Games" EntityType="JeopardyModel.Store.Games" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Hosts" EntityType="JeopardyModel.Store.Hosts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Players" EntityType="JeopardyModel.Store.Players" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Questions" EntityType="JeopardyModel.Store.Questions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="States" EntityType="JeopardyModel.Store.States" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="sysdiagrams" EntityType="JeopardyModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users" EntityType="JeopardyModel.Store.Users" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_AvatarAvatarPlayer" Association="JeopardyModel.Store.FK_AvatarAvatarPlayer">
-      <End Role="Avatars" EntitySet="Avatars" />
-      <End Role="AvatarPlayers" EntitySet="AvatarPlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerAvatarPlayer" Association="JeopardyModel.Store.FK_PlayerAvatarPlayer">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="AvatarPlayers" EntitySet="AvatarPlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CategoryAwnser" Association="JeopardyModel.Store.FK_CategoryAwnser">
-      <End Role="Categories" EntitySet="Categories" />
-      <End Role="Awnsers" EntitySet="Awnsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_QuestionAwnser" Association="JeopardyModel.Store.FK_QuestionAwnser">
-      <End Role="Questions" EntitySet="Questions" />
-      <End Role="Awnsers" EntitySet="Awnsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerBaneo" Association="JeopardyModel.Store.FK_PlayerBaneo">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="Baneos" EntitySet="Baneos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CategoryBoard" Association="JeopardyModel.Store.FK_CategoryBoard">
-      <End Role="Categories" EntitySet="Categories" />
-      <End Role="Boards" EntitySet="Boards" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GameBoard" Association="JeopardyModel.Store.FK_GameBoard">
-      <End Role="Games" EntitySet="Games" />
-      <End Role="Boards" EntitySet="Boards" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerFriends" Association="JeopardyModel.Store.FK_PlayerFriends">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="Friends" EntitySet="Friends" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerFriends1" Association="JeopardyModel.Store.FK_PlayerFriends1">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="Friends" EntitySet="Friends" />
-    </AssociationSet>
-    <AssociationSet Name="FK_GameGamePlayer" Association="JeopardyModel.Store.FK_GameGamePlayer">
-      <End Role="Games" EntitySet="Games" />
-      <End Role="GamePlayers" EntitySet="GamePlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlayerGamePlayer" Association="JeopardyModel.Store.FK_PlayerGamePlayer">
-      <End Role="Players" EntitySet="Players" />
-      <End Role="GamePlayers" EntitySet="GamePlayers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HostGame" Association="JeopardyModel.Store.FK_HostGame">
-      <End Role="Hosts" EntitySet="Hosts" />
-      <End Role="Games" EntitySet="Games" />
-    </AssociationSet>
-    <AssociationSet Name="FK_StatePlayer" Association="JeopardyModel.Store.FK_StatePlayer">
-      <End Role="States" EntitySet="States" />
-      <End Role="Players" EntitySet="Players" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserPlayer" Association="JeopardyModel.Store.FK_UserPlayer">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Players" EntitySet="Players" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="AvatarPlayers">
-    <Key>
-      <PropertyRef Name="IdAvatarPlayer" />
-    </Key>
-    <Property Name="IdAvatarPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Avatar_IdAvatar" Type="int" Nullable="false" />
-    <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Avatars">
-    <Key>
-      <PropertyRef Name="IdAvatar" />
-    </Key>
-    <Property Name="IdAvatar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AvatarName" Type="nvarchar" Nullable="false" MaxLength="15" />
-    <Property Name="imageAvatar" Type="varbinary(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Awnsers">
-    <Key>
-      <PropertyRef Name="IdAwnser" />
-    </Key>
-    <Property Name="IdAwnser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SpanishAwnserDescription" Type="nvarchar" Nullable="false" MaxLength="40" />
-    <Property Name="EnglichAwnserDescription" Type="nvarchar" Nullable="false" MaxLength="40" />
-    <Property Name="Question_IdQuestion" Type="int" Nullable="false" />
-    <Property Name="Category_IdCategory" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Baneos">
-    <Key>
-      <PropertyRef Name="IdBaneo" />
-    </Key>
-    <Property Name="IdBaneo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BanTimeBegin" Type="datetime" Nullable="true" />
-    <Property Name="BanTimeFinish" Type="datetime" Nullable="true" />
-    <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Boards">
-    <Key>
-      <PropertyRef Name="idBoard" />
-    </Key>
-    <Property Name="idBoard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Game_RoomCode" Type="nchar" Nullable="false" MaxLength="6" />
-    <Property Name="Category_IdCategory" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Categories">
-    <Key>
-      <PropertyRef Name="IdCategory" />
-    </Key>
-    <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SpanishCategoryDescription" Type="nvarchar" Nullable="false" MaxLength="40" />
-    <Property Name="EnglishCategoryDescription" Type="nvarchar" Nullable="false" MaxLength="40" />
-  </EntityType>
-  <EntityType Name="Friends">
-    <Key>
-      <PropertyRef Name="IdFrineds" />
-    </Key>
-    <Property Name="IdFrineds" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
-    <Property Name="PlayerFriend_IdPlayer" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="GamePlayers">
-    <Key>
-      <PropertyRef Name="IdGamePlayer" />
-    </Key>
-    <Property Name="IdGamePlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PointsInGame" Type="bigint" Nullable="false" />
-    <Property Name="PlaceInGame" Type="smallint" Nullable="false" />
-    <Property Name="Game_RoomCode" Type="nchar" Nullable="false" MaxLength="6" />
-    <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Games">
-    <Key>
-      <PropertyRef Name="RoomCode" />
-    </Key>
-    <Property Name="RoomCode" Type="nchar" Nullable="false" MaxLength="6" />
-    <Property Name="Host_IdHost" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Hosts">
-    <Key>
-      <PropertyRef Name="IdHost" />
-    </Key>
-    <Property Name="IdHost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HostName" Type="nvarchar" Nullable="true" MaxLength="15" />
-    <Property Name="ImageHost" Type="varbinary(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Players">
-    <Key>
-      <PropertyRef Name="IdPlayer" />
-    </Key>
-    <Property Name="IdPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="GeneralPoints" Type="bigint" Nullable="true" />
-    <Property Name="NoReports" Type="bigint" Nullable="false" />
-    <Property Name="State_idState" Type="int" Nullable="true" />
-    <Property Name="IdAvatarActual" Type="int" Nullable="true" />
-    <Property Name="User_IdUser" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Questions">
-    <Key>
-      <PropertyRef Name="IdQuestion" />
-    </Key>
-    <Property Name="IdQuestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SpanishQuestionDescription" Type="nvarchar" Nullable="false" MaxLength="70" />
-    <Property Name="EnglishQuestionDescription" Type="nvarchar" Nullable="false" MaxLength="70" />
-    <Property Name="RigthAwnser" Type="nvarchar" Nullable="false" MaxLength="30" />
-    <Property Name="ValueWorth" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="States">
-    <Key>
-      <PropertyRef Name="IdState" />
-    </Key>
-    <Property Name="IdState" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StateDescription" Type="nvarchar" Nullable="false" MaxLength="30" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" Nullable="true" />
-    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="IdUser" />
-    </Key>
-    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="15" />
-    <Property Name="EmailAddress" Type="nvarchar" Nullable="false" MaxLength="90" />
-    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="30" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
-  </EntityType>
-  <Association Name="FK_AvatarAvatarPlayer">
-    <End Role="Avatars" Type="JeopardyModel.Store.Avatars" Multiplicity="1" />
-    <End Role="AvatarPlayers" Type="JeopardyModel.Store.AvatarPlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Avatars">
-        <PropertyRef Name="IdAvatar" />
-      </Principal>
-      <Dependent Role="AvatarPlayers">
-        <PropertyRef Name="Avatar_IdAvatar" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerAvatarPlayer">
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="1" />
-    <End Role="AvatarPlayers" Type="JeopardyModel.Store.AvatarPlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="IdPlayer" />
-      </Principal>
-      <Dependent Role="AvatarPlayers">
-        <PropertyRef Name="Player_IdPlayer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CategoryAwnser">
-    <End Role="Categories" Type="JeopardyModel.Store.Categories" Multiplicity="1" />
-    <End Role="Awnsers" Type="JeopardyModel.Store.Awnsers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categories">
-        <PropertyRef Name="IdCategory" />
-      </Principal>
-      <Dependent Role="Awnsers">
-        <PropertyRef Name="Category_IdCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_QuestionAwnser">
-    <End Role="Questions" Type="JeopardyModel.Store.Questions" Multiplicity="1" />
-    <End Role="Awnsers" Type="JeopardyModel.Store.Awnsers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Questions">
-        <PropertyRef Name="IdQuestion" />
-      </Principal>
-      <Dependent Role="Awnsers">
-        <PropertyRef Name="Question_IdQuestion" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerBaneo">
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="1" />
-    <End Role="Baneos" Type="JeopardyModel.Store.Baneos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="IdPlayer" />
-      </Principal>
-      <Dependent Role="Baneos">
-        <PropertyRef Name="Player_IdPlayer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CategoryBoard">
-    <End Role="Categories" Type="JeopardyModel.Store.Categories" Multiplicity="1" />
-    <End Role="Boards" Type="JeopardyModel.Store.Boards" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categories">
-        <PropertyRef Name="IdCategory" />
-      </Principal>
-      <Dependent Role="Boards">
-        <PropertyRef Name="Category_IdCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GameBoard">
-    <End Role="Games" Type="JeopardyModel.Store.Games" Multiplicity="1" />
-    <End Role="Boards" Type="JeopardyModel.Store.Boards" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Games">
-        <PropertyRef Name="RoomCode" />
-      </Principal>
-      <Dependent Role="Boards">
-        <PropertyRef Name="Game_RoomCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerFriends">
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="1" />
-    <End Role="Friends" Type="JeopardyModel.Store.Friends" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="IdPlayer" />
-      </Principal>
-      <Dependent Role="Friends">
-        <PropertyRef Name="Player_IdPlayer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerFriends1">
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="1" />
-    <End Role="Friends" Type="JeopardyModel.Store.Friends" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="IdPlayer" />
-      </Principal>
-      <Dependent Role="Friends">
-        <PropertyRef Name="PlayerFriend_IdPlayer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_GameGamePlayer">
-    <End Role="Games" Type="JeopardyModel.Store.Games" Multiplicity="1" />
-    <End Role="GamePlayers" Type="JeopardyModel.Store.GamePlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Games">
-        <PropertyRef Name="RoomCode" />
-      </Principal>
-      <Dependent Role="GamePlayers">
-        <PropertyRef Name="Game_RoomCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlayerGamePlayer">
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="1" />
-    <End Role="GamePlayers" Type="JeopardyModel.Store.GamePlayers" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Players">
-        <PropertyRef Name="IdPlayer" />
-      </Principal>
-      <Dependent Role="GamePlayers">
-        <PropertyRef Name="Player_IdPlayer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HostGame">
-    <End Role="Hosts" Type="JeopardyModel.Store.Hosts" Multiplicity="1" />
-    <End Role="Games" Type="JeopardyModel.Store.Games" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Hosts">
-        <PropertyRef Name="IdHost" />
-      </Principal>
-      <Dependent Role="Games">
-        <PropertyRef Name="Host_IdHost" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_StatePlayer">
-    <End Role="States" Type="JeopardyModel.Store.States" Multiplicity="0..1" />
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="States">
-        <PropertyRef Name="IdState" />
-      </Principal>
-      <Dependent Role="Players">
-        <PropertyRef Name="State_idState" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserPlayer">
-    <End Role="Users" Type="JeopardyModel.Store.Users" Multiplicity="1" />
-    <End Role="Players" Type="JeopardyModel.Store.Players" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="IdUser" />
-      </Principal>
-      <Dependent Role="Players">
-        <PropertyRef Name="User_IdUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="JeopardyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AvatarPlayers">
+          <Key>
+            <PropertyRef Name="IdAvatarPlayer" />
+          </Key>
+          <Property Name="IdAvatarPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Avatar_IdAvatar" Type="int" Nullable="false" />
+          <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Avatars">
+          <Key>
+            <PropertyRef Name="IdAvatar" />
+          </Key>
+          <Property Name="IdAvatar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AvatarName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="imageAvatar" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Awnsers">
+          <Key>
+            <PropertyRef Name="IdAwnser" />
+          </Key>
+          <Property Name="IdAwnser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpanishAwnserDescription" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="EnglichAwnserDescription" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Question_IdQuestion" Type="int" Nullable="false" />
+          <Property Name="Category_IdCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Baneos">
+          <Key>
+            <PropertyRef Name="IdBaneo" />
+          </Key>
+          <Property Name="IdBaneo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BanTimeBegin" Type="datetime" />
+          <Property Name="BanTimeFinish" Type="datetime" />
+          <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Boards">
+          <Key>
+            <PropertyRef Name="idBoard" />
+          </Key>
+          <Property Name="idBoard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Game_RoomCode" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Category_IdCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpanishCategoryDescription" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="EnglishCategoryDescription" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Friends">
+          <Key>
+            <PropertyRef Name="IdFrineds" />
+          </Key>
+          <Property Name="IdFrineds" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
+          <Property Name="PlayerFriend_IdPlayer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GamePlayers">
+          <Key>
+            <PropertyRef Name="IdGamePlayer" />
+          </Key>
+          <Property Name="IdGamePlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PointsInGame" Type="bigint" Nullable="false" />
+          <Property Name="PlaceInGame" Type="smallint" Nullable="false" />
+          <Property Name="Game_RoomCode" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="RoomCode" />
+          </Key>
+          <Property Name="RoomCode" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Host_IdHost" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hosts">
+          <Key>
+            <PropertyRef Name="IdHost" />
+          </Key>
+          <Property Name="IdHost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="15" />
+          <Property Name="ImageHost" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="IdPlayer" />
+          </Key>
+          <Property Name="IdPlayer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeneralPoints" Type="bigint" />
+          <Property Name="NoReports" Type="bigint" Nullable="false" />
+          <Property Name="State_idState" Type="int" />
+          <Property Name="IdAvatarActual" Type="int" />
+          <Property Name="User_IdUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="IdQuestion" />
+          </Key>
+          <Property Name="IdQuestion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpanishQuestionDescription" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="EnglishQuestionDescription" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="RigthAwnser" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ValueWorth" Type="int" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="IdState" />
+          </Key>
+          <Property Name="IdState" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateDescription" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="90" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AvatarAvatarPlayer">
+          <End Role="Avatars" Type="Self.Avatars" Multiplicity="1" />
+          <End Role="AvatarPlayers" Type="Self.AvatarPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avatars">
+              <PropertyRef Name="IdAvatar" />
+            </Principal>
+            <Dependent Role="AvatarPlayers">
+              <PropertyRef Name="Avatar_IdAvatar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAwnser">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Awnsers" Type="Self.Awnsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Awnsers">
+              <PropertyRef Name="Category_IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryBoard">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Boards" Type="Self.Boards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Boards">
+              <PropertyRef Name="Category_IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameBoard">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="Boards" Type="Self.Boards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="RoomCode" />
+            </Principal>
+            <Dependent Role="Boards">
+              <PropertyRef Name="Game_RoomCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameGamePlayer">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="GamePlayers" Type="Self.GamePlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="RoomCode" />
+            </Principal>
+            <Dependent Role="GamePlayers">
+              <PropertyRef Name="Game_RoomCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HostGame">
+          <End Role="Hosts" Type="Self.Hosts" Multiplicity="1" />
+          <End Role="Games" Type="Self.Games" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hosts">
+              <PropertyRef Name="IdHost" />
+            </Principal>
+            <Dependent Role="Games">
+              <PropertyRef Name="Host_IdHost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerAvatarPlayer">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="AvatarPlayers" Type="Self.AvatarPlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="AvatarPlayers">
+              <PropertyRef Name="Player_IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerBaneo">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Baneos" Type="Self.Baneos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="Baneos">
+              <PropertyRef Name="Player_IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerFriends">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="Friends">
+              <PropertyRef Name="Player_IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerFriends1">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="Friends">
+              <PropertyRef Name="PlayerFriend_IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlayerGamePlayer">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="GamePlayers" Type="Self.GamePlayers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="IdPlayer" />
+            </Principal>
+            <Dependent Role="GamePlayers">
+              <PropertyRef Name="Player_IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QuestionAwnser">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Awnsers" Type="Self.Awnsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="IdQuestion" />
+            </Principal>
+            <Dependent Role="Awnsers">
+              <PropertyRef Name="Question_IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatePlayer">
+          <End Role="States" Type="Self.States" Multiplicity="0..1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="IdState" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="State_idState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlayer">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="User_IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JeopardyModelStoreContainer">
+          <EntitySet Name="AvatarPlayers" EntityType="Self.AvatarPlayers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Avatars" EntityType="Self.Avatars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Awnsers" EntityType="Self.Awnsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Baneos" EntityType="Self.Baneos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Boards" EntityType="Self.Boards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GamePlayers" EntityType="Self.GamePlayers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hosts" EntityType="Self.Hosts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AvatarAvatarPlayer" Association="Self.FK_AvatarAvatarPlayer">
+            <End Role="Avatars" EntitySet="Avatars" />
+            <End Role="AvatarPlayers" EntitySet="AvatarPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAwnser" Association="Self.FK_CategoryAwnser">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Awnsers" EntitySet="Awnsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryBoard" Association="Self.FK_CategoryBoard">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Boards" EntitySet="Boards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameBoard" Association="Self.FK_GameBoard">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="Boards" EntitySet="Boards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameGamePlayer" Association="Self.FK_GameGamePlayer">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="GamePlayers" EntitySet="GamePlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HostGame" Association="Self.FK_HostGame">
+            <End Role="Hosts" EntitySet="Hosts" />
+            <End Role="Games" EntitySet="Games" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerAvatarPlayer" Association="Self.FK_PlayerAvatarPlayer">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="AvatarPlayers" EntitySet="AvatarPlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerBaneo" Association="Self.FK_PlayerBaneo">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Baneos" EntitySet="Baneos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerFriends" Association="Self.FK_PlayerFriends">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Friends" EntitySet="Friends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerFriends1" Association="Self.FK_PlayerFriends1">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Friends" EntitySet="Friends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlayerGamePlayer" Association="Self.FK_PlayerGamePlayer">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="GamePlayers" EntitySet="GamePlayers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QuestionAwnser" Association="Self.FK_QuestionAwnser">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Awnsers" EntitySet="Awnsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatePlayer" Association="Self.FK_StatePlayer">
+            <End Role="States" EntitySet="States" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlayer" Association="Self.FK_UserPlayer">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JeopardyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -538,7 +538,7 @@
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="90" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Players" Relationship="Self.FK_UserPlayer" FromRole="Users" ToRole="Players" />
         </EntityType>

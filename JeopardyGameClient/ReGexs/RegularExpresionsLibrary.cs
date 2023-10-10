@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace JeopardyGame.ReGexs
 {
@@ -17,11 +14,11 @@ namespace JeopardyGame.ReGexs
         private static string USERNAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ]{1,15}$";
         private static string EMAIL_RULES_CHAR = "^(?=.{1,90}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         private static string EMAIL_ALLOW_CHAR = "^[a-zA-Z0-9@,._=]{1,90}$";
-       
 
-public Dictionary<string, Regex> validationTextBoxRegexes = new Dictionary<string, Regex>
+
+        public Dictionary<string, Regex> validationTextBoxRegexes = new Dictionary<string, Regex>
         {
-            { "txbNameCreateAcc", new Regex(NAME_RULES_CHAR) },  
+            { "txbNameCreateAcc", new Regex(NAME_RULES_CHAR) },
             { "txbUserNameCreateAcc", new Regex(USERNAME_RULES_CHAR) },
             {"txbEmailCreateAcc", new Regex(EMAIL_ALLOW_CHAR) }
         };
@@ -61,6 +58,6 @@ public Dictionary<string, Regex> validationTextBoxRegexes = new Dictionary<strin
             return EMAIL_RULES_CHAR;
         }
 
-    }  
+    }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Data.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -17,6 +18,9 @@ namespace JeopardyGame.Host.Connetion
                 Console.WriteLine("Server is running");
                 Console.ReadLine();
             }
+
+            SeriLogConfig logConfig = new SeriLogConfig();
+           
         }
     }
 }

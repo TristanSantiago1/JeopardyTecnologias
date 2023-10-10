@@ -2,6 +2,7 @@
 using JeopardyGame.Service.InterfacesSevices;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         public int SaveUser(UserPOJO userPojoNew)
         {
+            if (userPojoNew == null) return 0;
             JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
             User usuarioNuevo = new User();
             usuarioNuevo.IdUser = 0;
@@ -20,10 +22,19 @@ namespace JeopardyGame.Service.ServiceImplementation
             usuarioNuevo.EmailAddress = userPojoNew.EmailAddress.ToString();
             usuarioNuevo.Password = userPojoNew.Password.ToString();
             User UserSaved = ConexionAccesoDatos.SaveUserInDataBase(usuarioNuevo);
-            return UserSaved.IdUser;
+            if (UserSaved == null) 
+            {
+                return 0;
+            }
+            else
+            {
+                return UserSaved.IdUser;
+            }            
         }
+
         public int SavePlayer(int IdUserSaved, PlayerPOJO playerPojoNew)
         {
+            if (playerPojoNew == null) return 0;
             JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
             User userSaved = ConexionAccesoDatos.GetUserById(IdUserSaved);
             State defaultState = ConexionAccesoDatos.GetStateById(1);
@@ -35,7 +46,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             newPlayerAccount.User = userSaved;
             newPlayerAccount.State = defaultState;
             Player playerSaved = ConexionAccesoDatos.SavePlayerInDataBase(userSaved, defaultState, newPlayerAccount);
-            return playerSaved.IdPlayer;
+            if (playerSaved == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return playerSaved.IdPlayer;
+            }
         }
 
         public int validateCredentials(UserValidate newUserValidate)

@@ -139,9 +139,4 @@
         <Setter Property="Foreground" Value="Red"/>
     </Style>
 
-
-
- 
-  
-
 </ResourceDictionary>

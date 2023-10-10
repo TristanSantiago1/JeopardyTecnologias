@@ -1,0 +1,31 @@
+﻿<Window x:Class="JeopardyGame.DialogWindows.ConfirmationDW"     
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JeopardyGame.DialogWindows"   
+        xmlns:p="clr-namespace:JeopardyGame.Properties"
+        mc:Ignorable="d"
+        Title="ConfirmationDW" Height="150" Width="330" ResizeMode="NoResize">
+    <Viewbox>
+        <Grid Margin="0,0,0,-6" Background="#FFE9E790" >
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
+                <Border BorderBrush="#FFE9E790" BorderThickness="2" Padding="20" CornerRadius="10" Margin="35,0,34,0" >
+                    <StackPanel Margin="56,-2,-12,13" >
+                        <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="11" Margin="0,0,80,0" />
+                        <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="240" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="1" Margin="239,109,98,8" >
+                    <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttAccept}" FontStretch="Expanded" 
+                      Style="{StaticResource ButtonConfirmationStyle}" Background="#FF529297" Click="ClicAccept" />
+                </Border>
+                <Border Background="Transparent" BorderBrush="Red" BorderThickness="2" CornerRadius="1" Margin="321,109,18,8" >
+                    <Button x:Name="bttErrrWindow" Content="{x:Static p:Resources.bttCancellAction}" FontStretch="Expanded" 
+                       Style="{StaticResource ButtonCancellationStyle}" Background="red" Margin="1,0,-1,0" Click="ClicCancell" />
+                </Border>
+            </Grid>
+            <Image HorizontalAlignment="Left" Height="60" Margin="10,31,0,0" VerticalAlignment="Top" Width="67" Source="/Images/QuestionImage.png"/>
+        </Grid>
+    </Viewbox>
+</Window>
