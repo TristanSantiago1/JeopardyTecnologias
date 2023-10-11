@@ -13,7 +13,7 @@
         <Grid Height="751" >
 
 
-            <Viewbox Width="auto" Height="auto" Margin="141,119,130,511">
+            <Viewbox Width="auto" Height="auto" Margin="144,119,130,511">
                 <StackPanel Height="auto" Width="1234" >
                     <Label x:Name="lblNameDescripCreateAcc" Content = "{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                    Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>

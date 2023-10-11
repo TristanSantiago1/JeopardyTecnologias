@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnEnter" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="btnRegistrer" xml:space="preserve">
+    <value>Sing in</value>
+  </data>
   <data name="bttAccept" xml:space="preserve">
     <value>Acept</value>
   </data>
   <data name="bttCancellAction" xml:space="preserve">
     <value>Cancell</value>
+  </data>
+  <data name="bttEnterGame" xml:space="preserve">
+    <value>Enter game</value>
+  </data>
+  <data name="bttFriends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="bttNewGame" xml:space="preserve">
+    <value>New game</value>
   </data>
   <data name="bttSaveUser" xml:space="preserve">
     <value>Save</value>
@@ -162,6 +177,12 @@
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
     <value>password</value>
   </data>
+  <data name="lblPasswordLogIn" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lblPasswordWrong" xml:space="preserve">
+    <value />
+  </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
     <value>email</value>
   </data>
@@ -170,6 +191,12 @@
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>username</value>
+  </data>
+  <data name="lblUserNameLogIn" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="LblWrongUserName" xml:space="preserve">
+    <value />
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
     <value>A problem has ocurred while saving the user, try again.</value>

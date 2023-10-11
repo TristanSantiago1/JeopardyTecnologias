@@ -61,6 +61,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Log in.
+        /// </summary>
+        public static string btnEnter {
+            get {
+                return ResourceManager.GetString("btnEnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sing in.
+        /// </summary>
+        public static string btnRegistrer {
+            get {
+                return ResourceManager.GetString("btnRegistrer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Acept.
         /// </summary>
         public static string bttAccept {
@@ -75,6 +93,33 @@ namespace JeopardyGame.Properties {
         public static string bttCancellAction {
             get {
                 return ResourceManager.GetString("bttCancellAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter game.
+        /// </summary>
+        public static string bttEnterGame {
+            get {
+                return ResourceManager.GetString("bttEnterGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Friends.
+        /// </summary>
+        public static string bttFriends {
+            get {
+                return ResourceManager.GetString("bttFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a New game.
+        /// </summary>
+        public static string bttNewGame {
+            get {
+                return ResourceManager.GetString("bttNewGame", resourceCulture);
             }
         }
         
@@ -196,6 +241,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Password.
+        /// </summary>
+        public static string lblPasswordLogIn {
+            get {
+                return ResourceManager.GetString("lblPasswordLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        public static string lblPasswordWrong {
+            get {
+                return ResourceManager.GetString("lblPasswordWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a email.
         /// </summary>
         public static string lblRepeatedEmail {
@@ -219,6 +282,24 @@ namespace JeopardyGame.Properties {
         public static string lblUserNameDescripCreateAcc {
             get {
                 return ResourceManager.GetString("lblUserNameDescripCreateAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User name.
+        /// </summary>
+        public static string lblUserNameLogIn {
+            get {
+                return ResourceManager.GetString("lblUserNameLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        public static string LblWrongUserName {
+            get {
+                return ResourceManager.GetString("LblWrongUserName", resourceCulture);
             }
         }
         
