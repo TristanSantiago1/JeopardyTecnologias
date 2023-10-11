@@ -45,11 +45,10 @@ namespace JeopardyGame.Pages
 
             if (result == 1)
             {
-                Lobby lobbyJeopardy = new Lobby();
-                lobbyJeopardy.Show();
-                Window principalWindow = Application.Current.MainWindow;
-                principalWindow.Close();
-
+                MainMenu mainMenuPage = new MainMenu();
+                this.NavigationService.Navigate(mainMenuPage);
+                NavigationService.RemoveBackEntry();
+              
             }
             else if (result == 0)
             {
