@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JeopardyGame.Views"
         mc:Ignorable="d"
-        Title="PrincipalWindow" Height="450" Width="800">
+        Title="PrincipalWindow" Height="770" Width="1300">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>

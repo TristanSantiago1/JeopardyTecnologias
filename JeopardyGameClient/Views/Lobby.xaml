@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JeopardyGame.Views"
         mc:Ignorable="d"
-        Title="Lobby" Height="450" Width="800">
+        Title="Lobby" Height="770" Width="1300">
     <Grid>
         <Label Content="WE KEEP WORKING ON THIS" HorizontalAlignment="Left" Margin="107,0,0,0" VerticalAlignment="Center" FontSize="50"/>
 

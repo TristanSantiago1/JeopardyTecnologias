@@ -178,7 +178,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a capital rules.
+        ///   Busca una cadena traducida similar a Capital rules.
         /// </summary>
         public static string lblPassCapitalRuleDesc {
             get {
@@ -187,7 +187,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a not equal to email.
+        ///   Busca una cadena traducida similar a Not equal to email.
         /// </summary>
         public static string lblPassEqualsEmailRuleDesc {
             get {
@@ -205,7 +205,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a beetwen 10-30.
+        ///   Busca una cadena traducida similar a Beetwen 10-30.
         /// </summary>
         public static string lblPassNumberRuleDesc {
             get {
@@ -214,7 +214,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a put a puntuation mark.
+        ///   Busca una cadena traducida similar a Put a puntuation mark.
         /// </summary>
         public static string lblPassPuntSigRuleDesc {
             get {
@@ -223,7 +223,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a special chaacter.
+        ///   Busca una cadena traducida similar a Special chaacter.
         /// </summary>
         public static string lblPassSpeCharRuleDesc {
             get {
@@ -232,7 +232,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a password.
+        ///   Busca una cadena traducida similar a Password.
         /// </summary>
         public static string lblPasswordDescripCreateAcc {
             get {
@@ -259,7 +259,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a email.
+        ///   Busca una cadena traducida similar a Email.
         /// </summary>
         public static string lblRepeatedEmail {
             get {
@@ -277,7 +277,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a username.
+        ///   Busca una cadena traducida similar a Username.
         /// </summary>
         public static string lblUserNameDescripCreateAcc {
             get {
