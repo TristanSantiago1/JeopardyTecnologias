@@ -59,16 +59,18 @@ namespace JeopardyGame.Service.ServiceImplementation
         public int validateCredentials(UserValidate newUserValidate)
         {
             JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            bool isValid = ConexionAccesoDatos.ValidateCredentials(newUserValidate.UserName, newUserValidate.Password);
-
-            if (isValid)
+            User user = ConexionAccesoDatos.GetUserByUserName(newUserValidate.UserName);
+            if (user != null)
             {
-                return 1;
+                bool isPasswordValid = ConexionAccesoDatos.VerifyPassword(newUserValidate.Password, user.Password);
+
+                if (isPasswordValid)
+                {
+                    return 1;
+                }
             }
-            else
-            { 
-                return 0;
-            }
+
+            return 0;
         }
 
         public int EmailAlreadyExist(String email)
