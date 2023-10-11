@@ -351,6 +351,10 @@ namespace JeopardyGame.Pages
                     ClearFields();
                     Console.WriteLine(idPlayer);
                     Console.ReadLine();
+                    LogInUser logInPage = new LogInUser();
+                    this.NavigationService.Navigate(logInPage);
+                    NavigationService.RemoveBackEntry();
+                    
                 }
                 else
                 {
@@ -386,13 +390,18 @@ namespace JeopardyGame.Pages
         }
 
         private void ClicCancellRegistration(object sender, MouseButtonEventArgs e)
-        {           
-            CloseCuerrentWindow();
+        {
+            LogInUser logInPage = new LogInUser();
+            this.NavigationService.Navigate(logInPage);
+            NavigationService.RemoveBackEntry();
         }
 
         private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
         {
-            CloseCuerrentWindow();
+            LogInUser logInPage = new LogInUser();
+            this.NavigationService.Navigate(logInPage);
+            NavigationService.RemoveBackEntry();
+
         }
 
         private void CloseCuerrentWindow()

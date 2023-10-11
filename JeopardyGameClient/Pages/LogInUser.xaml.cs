@@ -59,10 +59,10 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
-            UserManagerWindow userManagerWindow = new UserManagerWindow();
-            userManagerWindow.Show();
-            Window principalWindow = Application.Current.MainWindow;
-            principalWindow.Close();
+            UserRegister userRegistrerPage = new UserRegister();
+            this.NavigationService.Navigate(userRegistrerPage);
+            NavigationService.RemoveBackEntry();
+        
         }
     }
 }
