@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.InterfacesSevices
 {
-    [ServiceContract]
-    internal interface IUserManager
-    {    
+       [ServiceContract]   
+        internal interface IUserManager
+        {
         [OperationContract]
         int SaveUser(UserPOJO userPojoNew);
         [OperationContract]
@@ -18,7 +18,14 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract]
         int validateCredentials(UserValidate newUserValidate);
-    }
+
+        [OperationContract]
+        int EmailAlreadyExist(String email);
+
+        [OperationContract]
+        int UserNameAlreadyExist(String userName);
+        }
+
 
         [DataContract]
         public class UserPOJO

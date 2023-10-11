@@ -313,6 +313,18 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/validateCredentials", ReplyAction="http://tempuri.org/IUserManager/validateCredentialsResponse")]
         System.Threading.Tasks.Task<int> validateCredentialsAsync(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/EmailAlreadyExist", ReplyAction="http://tempuri.org/IUserManager/EmailAlreadyExistResponse")]
+        int EmailAlreadyExist(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/EmailAlreadyExist", ReplyAction="http://tempuri.org/IUserManager/EmailAlreadyExistResponse")]
+        System.Threading.Tasks.Task<int> EmailAlreadyExistAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UserNameAlreadyExist", ReplyAction="http://tempuri.org/IUserManager/UserNameAlreadyExistResponse")]
+        int UserNameAlreadyExist(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UserNameAlreadyExist", ReplyAction="http://tempuri.org/IUserManager/UserNameAlreadyExistResponse")]
+        System.Threading.Tasks.Task<int> UserNameAlreadyExistAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -364,6 +376,22 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<int> validateCredentialsAsync(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate) {
             return base.Channel.validateCredentialsAsync(newUserValidate);
+        }
+        
+        public int EmailAlreadyExist(string email) {
+            return base.Channel.EmailAlreadyExist(email);
+        }
+        
+        public System.Threading.Tasks.Task<int> EmailAlreadyExistAsync(string email) {
+            return base.Channel.EmailAlreadyExistAsync(email);
+        }
+        
+        public int UserNameAlreadyExist(string userName) {
+            return base.Channel.UserNameAlreadyExist(userName);
+        }
+        
+        public System.Threading.Tasks.Task<int> UserNameAlreadyExistAsync(string userName) {
+            return base.Channel.UserNameAlreadyExistAsync(userName);
         }
     }
 }

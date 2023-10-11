@@ -216,12 +216,13 @@ namespace JeopardyGame.Pages
 
             return awnser;
         }
-        public int CheckEmailAddress()
+        public int CheckEmailAddressFormat()
         {
             ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
             Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
             int awnser = 1;
-            if (!regexExpression.IsMatch(txbEmailCreateAcc.Text.Trim()))
+            String email = txbEmailCreateAcc.Text.Trim();
+            if (!regexExpression.IsMatch(email))
             {
                 lblEmailWarning.Content = JeopardyGame.Properties.Resources.lblInvalidEmail;
                 lblEmailWarning.Visibility = Visibility.Visible;
@@ -234,6 +235,50 @@ namespace JeopardyGame.Pages
                 awnser = CheckPassword();
             }
             return awnser;
+        }
+
+        public int CheckEmailAddressExistance(String email)
+        {
+            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+            int emailIsNew = proxyServer.EmailAlreadyExist(email);
+            if (emailIsNew == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                if (emailIsNew == 0)
+                {
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblRepeatedEmail);
+                }
+                else
+                {
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                }
+                return 0;
+            }
+        }
+
+        public int CheckUserNameExistance(String userName)
+        {
+            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+            int userIsNew = proxyServer.UserNameAlreadyExist(userName);
+            if (userIsNew == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                if (userIsNew == 0)
+                {
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblRepeatedUserName);
+                }
+                else
+                {
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                }
+                return 0;
+            }
         }
 
         private void ResaltBrokenRule(Label missingRule)
@@ -252,6 +297,7 @@ namespace JeopardyGame.Pages
             psbPasswordCreateAcc.Clear();
             bttSaveUser.IsEnabled = false;
         }
+
 
         private void ClicViewPasswordRules(object sender, MouseButtonEventArgs e)
         {
@@ -278,9 +324,13 @@ namespace JeopardyGame.Pages
             lblViewPassword.Visibility = Visibility.Collapsed;
         }
 
+
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
-            if (CheckEmptyFields() == 1 && CheckEmailAddress() == 1)
+            if (CheckEmptyFields() == 1 && CheckEmailAddressFormat() == 1 &&
+                CheckUserNameExistance(txbUserNameCreateAcc.Text.Trim()) == 1 &&
+                CheckEmailAddressExistance(txbEmailCreateAcc.Text.Trim()) == 1  
+                )
             {
                 Helpers.EncryptationClass encryptation = new Helpers.EncryptationClass();
                 String EncryptedPassword = encryptation.EncryptPassword(psbPasswordCreateAcc.Password.ToString().Trim());
@@ -297,22 +347,22 @@ namespace JeopardyGame.Pages
                     playerTosSave.GeneralPoints = 0;
                     playerTosSave.NoReports = 0;
                     int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
-                    ShowInfoMessage();
+                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
                     ClearFields();
                     Console.WriteLine(idPlayer);
                     Console.ReadLine();
                 }
                 else
                 {
-                    ShowErrorMessage();
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
                     Console.WriteLine("Fallo al registrar usuario");
                 }
             }
         }
 
-        private void ShowInfoMessage()
+        private void ShowInfoMessage(String title, String message)
         {
-            DialogWindows.InfoMessageDW ConfirmationWindow = new DialogWindows.InfoMessageDW(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
+            DialogWindows.InfoMessageDW ConfirmationWindow = new DialogWindows.InfoMessageDW(title, message);
             Window currentPage = Application.Current.MainWindow;
             double left = currentPage.Left + (currentPage.Width - ConfirmationWindow.Width) / 2;
             double top = currentPage.Top + (currentPage.Height - ConfirmationWindow.Height) / 2;
@@ -322,9 +372,9 @@ namespace JeopardyGame.Pages
             ConfirmationWindow.ShowDialog();
         }
 
-        private void ShowErrorMessage()
+        private void ShowErrorMessage(String title, String message)
         {
-            DialogWindows.ErrorMessageDW ErrorWindow = new DialogWindows.ErrorMessageDW(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
+            DialogWindows.ErrorMessageDW ErrorWindow = new DialogWindows.ErrorMessageDW(title, message);
             Window currentPage = Application.Current.MainWindow;
             double left = currentPage.Left + (currentPage.Width - ErrorWindow.Width) / 2;
             double top = currentPage.Top + (currentPage.Height - ErrorWindow.Height) / 2;
@@ -346,11 +396,19 @@ namespace JeopardyGame.Pages
         }
 
         private void CloseCuerrentWindow()
-        {            
-            PrincipalWindow login = new PrincipalWindow();
-            login.Show();
+        {
+
             Window currentW = Application.Current.MainWindow;
-            currentW.Close();
+           
+            PrincipalWindow login = new PrincipalWindow();
+            
+            
+            
+            ProfileDataConsult dataConsult = new ProfileDataConsult();
+            this.NavigationService.Navigate(dataConsult);
+            Application.Current.MainWindow.Close();
+
+            login.Show();
 
 
             //DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(currentPage, login);

@@ -163,7 +163,10 @@
     <value>Contraseña :</value>
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
-    <value>Este correo electronico ya hasido registrado.</value>
+    <value>Este correo electronico ya ha sido registrado.</value>
+  </data>
+  <data name="lblRepeatedUserName" xml:space="preserve">
+    <value>El nombre de usuario ya ha sido registrado.</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>

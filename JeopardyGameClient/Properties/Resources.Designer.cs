@@ -205,6 +205,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a RepeatedUsername.
+        /// </summary>
+        public static string lblRepeatedUserName {
+            get {
+                return ResourceManager.GetString("lblRepeatedUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a username.
         /// </summary>
         public static string lblUserNameDescripCreateAcc {

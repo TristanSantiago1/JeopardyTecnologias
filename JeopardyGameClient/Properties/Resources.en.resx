@@ -165,6 +165,9 @@
   <data name="lblRepeatedEmail" xml:space="preserve">
     <value>This Email Address has already been registered.</value>
   </data>
+  <data name="lblRepeatedUserName" xml:space="preserve">
+    <value>The User Name has already been registered</value>
+  </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>User Name :</value>
   </data>

@@ -70,5 +70,19 @@ namespace JeopardyGame.Service.ServiceImplementation
                 return 0;
             }
         }
+
+        public int EmailAlreadyExist(String email)
+        {
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            int emailIsNew = ConexionAccesoDatos.ValidateIfEmailExist(email);
+            return emailIsNew;
+        }
+
+        public int UserNameAlreadyExist(String userName)
+        {
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            int userNameIsNew = ConexionAccesoDatos.ValidateIfUserNameExist(userName);
+            return userNameIsNew;
+        }
     }
 }

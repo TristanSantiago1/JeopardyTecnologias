@@ -54,6 +54,18 @@
   <wsdl:message name="IUserManager_validateCredentials_OutputMessage">
     <wsdl:part name="parameters" element="tns:validateCredentialsResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_EmailAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmailAlreadyExist" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_EmailAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmailAlreadyExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UserNameAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserNameAlreadyExist" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UserNameAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserNameAlreadyExistResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -66,6 +78,14 @@
     <wsdl:operation name="validateCredentials">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/validateCredentials" message="tns:IUserManager_validateCredentials_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/validateCredentialsResponse" message="tns:IUserManager_validateCredentials_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmailAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/EmailAlreadyExist" message="tns:IUserManager_EmailAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/EmailAlreadyExistResponse" message="tns:IUserManager_EmailAlreadyExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserNameAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UserNameAlreadyExist" message="tns:IUserManager_UserNameAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UserNameAlreadyExistResponse" message="tns:IUserManager_UserNameAlreadyExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -98,6 +118,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EmailAlreadyExist">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/EmailAlreadyExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UserNameAlreadyExist">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UserNameAlreadyExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserManager">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
@@ -105,7 +143,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>DESKTOP-VPJGL1I\dnava</Upn>
+          <Upn>LAPTOP-8LPI6DS5\tristan</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

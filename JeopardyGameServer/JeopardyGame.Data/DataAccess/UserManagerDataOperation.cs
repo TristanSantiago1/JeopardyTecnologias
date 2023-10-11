@@ -2,6 +2,7 @@
 using JeopardyGame.Data.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Core;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.SqlClient;
@@ -126,7 +127,7 @@ namespace JeopardyGame.Data.DataAccess
         }
         public bool ValidateCredentials(string userName, string password)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();// PA QUE ABRES ESTA?
             User user = ConexionAccesoDatos.GetUserByUserName(userName);
 
             if (user != null)
@@ -139,6 +140,80 @@ namespace JeopardyGame.Data.DataAccess
 
             return false;
         }
+
+        public int ValidateIfEmailExist(String email)
+        {
+            int EXIST = 0;
+            int NOT_EXIST = 1;
+            int ERROR = -1;
+            if (email.Length == 0) return ERROR;
+            try
+            {
+                using (var context = new JeopardyDBContainer())
+                {
+                    bool exist = context.Users.Any(u => u.EmailAddress == email);
+                    if (!exist)
+                    {
+                        return NOT_EXIST;                        
+                    }
+                    return EXIST;
+                }
+            }
+            catch (SqlException sqlE)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException entityEx)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            }
+            return ERROR;
+        }
+
+        public int ValidateIfUserNameExist(String userName)
+        {
+            int EXIST = 0;
+            int NOT_EXIST = 1;
+            int ERROR = -1;
+            if (userName.Length == 0) return ERROR;
+            try
+            {
+                using (var context = new JeopardyDBContainer())
+                {
+                    bool exist = context.Users.Any(u => u.UserName == userName);
+                    if (!exist)
+                    {
+                        return NOT_EXIST;
+                    }
+                    return EXIST;
+                }
+            }
+            catch (SqlException sqlE)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException entityEx)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            }
+            return ERROR;
+        }
+
+
     }
 }
 
