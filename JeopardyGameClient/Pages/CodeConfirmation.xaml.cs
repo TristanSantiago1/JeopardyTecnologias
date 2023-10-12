@@ -95,9 +95,10 @@ namespace JeopardyGame.Pages
                     playerTosSave.NoReports = 0;
                     int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
                     ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
-                    LogInUser logInPage = new LogInUser();
-                    this.NavigationService.Navigate(logInPage);
+                    MainMenu lobby = new MainMenu();
+                    this.NavigationService.Navigate(lobby);
                     NavigationService.RemoveBackEntry();
+                    
                 }
                 else
                 {
