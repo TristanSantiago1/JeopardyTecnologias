@@ -1,5 +1,6 @@
 ﻿using JeopardyGame.Views;
 using Microsoft.Win32;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -64,33 +65,39 @@ namespace JeopardyGame.Pages
 
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                return; 
+                return;
             }
-
-            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-
-            ServidorServiciosJeopardy.UserValidate userValidate = new ServidorServiciosJeopardy.UserValidate
+            try
             {
-                UserName = userName,
-                Password = password
-            };
+                ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
 
-            int result = proxyServer.validateCredentials(userValidate);
+                ServidorServiciosJeopardy.UserValidate userValidate = new ServidorServiciosJeopardy.UserValidate
+                {
+                    UserName = userName,
+                    Password = password
+                };
 
-            proxyServer.Close();
+                int result = proxyServer.validateCredentials(userValidate);
 
-            if (result == 1)
-            {
-                MainMenu mainMenuPage = new MainMenu();
-                this.NavigationService.Navigate(mainMenuPage);
-                NavigationService.RemoveBackEntry();
-              
+                proxyServer.Close();
+
+                if (result == 1)
+                {
+                    MainMenu mainMenuPage = new MainMenu();
+                    this.NavigationService.Navigate(mainMenuPage);
+                    NavigationService.RemoveBackEntry();
+
+                }
+                else if (result == 0)
+                {
+                    MessageBox.Show("Invalid credentials, please try again");
+                }
             }
-            else if (result == 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid credentials, please try again");
-            }
+                MessageBox.Show("Error connecting to the server, please try again");
 
+            }
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
