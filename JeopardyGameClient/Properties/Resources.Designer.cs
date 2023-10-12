@@ -250,7 +250,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a .
+        ///   Busca una cadena traducida similar a Please enter a password.
         /// </summary>
         public static string lblPasswordWrong {
             get {
@@ -295,7 +295,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a .
+        ///   Busca una cadena traducida similar a Please enter a username.
         /// </summary>
         public static string LblWrongUserName {
             get {

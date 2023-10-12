@@ -181,7 +181,7 @@
     <value>Password</value>
   </data>
   <data name="lblPasswordWrong" xml:space="preserve">
-    <value />
+    <value>Please enter a password</value>
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
     <value>Email</value>
@@ -196,7 +196,7 @@
     <value>User name</value>
   </data>
   <data name="LblWrongUserName" xml:space="preserve">
-    <value />
+    <value>Please enter a username</value>
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
     <value>A problem has ocurred while saving the user, try again.</value>

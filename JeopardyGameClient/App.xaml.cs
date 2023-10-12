@@ -8,13 +8,8 @@ namespace JeopardyGame
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
-            // Crea la ventana que quieres establecer como principal
             Views.PrincipalWindow mainWindow = new Views.PrincipalWindow();
-            // Establece la ventana como la ventana principal
             this.MainWindow = mainWindow;
-
-            // Muestra la ventana
             mainWindow.Show();
         }
 
@@ -22,6 +17,12 @@ namespace JeopardyGame
         {
             //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es-MX");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EU");
+
+        }
+
+        public static void ChangeLanguaje (string languaje)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(languaje);
         }
 
     }

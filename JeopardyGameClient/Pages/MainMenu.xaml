@@ -21,9 +21,13 @@
        Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
             <Image HorizontalAlignment="Left" Height="42" Margin="10,56,0,0" VerticalAlignment="Top" Width="27" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
 
-            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="0001" CornerRadius="5" Margin="78,270,422,376">
+            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="0001" CornerRadius="5" Margin="78,270,931,376">
                 <Button x:Name="bttNewGame" Content = "{x:Static p:Resources.bttNewGame}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonNewGame" HorizontalAlignment="Left" Width="247" Margin="-1,-1,0,1" />
             </Border>
+            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
+                <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
+                <ComboBoxItem Content="Español" Tag="es-MX"/>
+            </ComboBox>
             <Button x:Name="bttEnterGame" Content = "{x:Static p:Resources.bttEnterGame}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuPurpleStyle}" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Width="249" Margin="78,423,0,233" />
             <Button x:Name="bttFriends" Content = "{x:Static p:Resources.bttFriends}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Width="249" Margin="78,569,0,88" />
 

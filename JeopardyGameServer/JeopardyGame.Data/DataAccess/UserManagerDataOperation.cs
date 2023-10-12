@@ -126,21 +126,7 @@ namespace JeopardyGame.Data.DataAccess
                 return stateConsulted;
             }
         }
-        public bool ValidateCredentials(string userName, string password)
-        {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();// PA QUE ABRES ESTA?
-            User user = ConexionAccesoDatos.GetUserByUserName(userName);
-
-            if (user != null)
-            {
-                if (user.Password == password)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+       
         public bool VerifyPassword(string password, string hashedPassword)
         {
             byte[] hashBytes = Convert.FromBase64String(hashedPassword);

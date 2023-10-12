@@ -10,10 +10,12 @@
       Title="LogInUser">
 
     <Viewbox Stretch="Fill">
+        
         <Grid Height="751">
             <Image HorizontalAlignment="Left" Height="237" 
                 Width="432" Margin="462,10,0,0" VerticalAlignment="Top" 
                 Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
+
             <Viewbox Width="auto" Height="auto" Margin="323,247,-44,386">
                 <StackPanel Height="auto" Width="1230" >
                     <Label x:Name="lblUserNameLogIn" Content = "{x:Static p:Resources.lblUserNameLogIn}"  Style="{StaticResource labelStyleSimple}" 
@@ -40,6 +42,10 @@
             </Border>
             <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" HorizontalAlignment="Left" Margin="335,365,0,0" VerticalAlignment="Top" Width="657"/>
             <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}"  HorizontalAlignment="Left" Margin="335,544,0,0" VerticalAlignment="Top" Width="657"/>
+            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
+                <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
+                <ComboBoxItem Content="Español" Tag="es-MX"/>
+            </ComboBox>
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
             </Grid.Background>

@@ -11,6 +11,10 @@ namespace JeopardyGame.DialogWindows
         private Window windowOpened;
         private Window windowClosed;
 
+        public ConfirmationDW()
+        {
+        }
+
         public ConfirmationDW(Window newNueva, Window oldWindow)
         {
             InitializeComponent();
