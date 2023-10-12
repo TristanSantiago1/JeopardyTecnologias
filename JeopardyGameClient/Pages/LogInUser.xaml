@@ -14,7 +14,7 @@
         <Grid Height="751">
             <Image HorizontalAlignment="Left" Height="237" 
                 Width="432" Margin="462,10,0,0" VerticalAlignment="Top" 
-                Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
+                Source="/Images/logoJeopardy.png"/>
 
             <Viewbox Width="auto" Height="auto" Margin="323,247,-44,386">
                 <StackPanel Height="auto" Width="1230" >

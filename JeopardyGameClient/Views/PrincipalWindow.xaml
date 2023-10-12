@@ -12,7 +12,7 @@
         </Grid.Background>
         <Image HorizontalAlignment="Left" Height="135" 
                Width="261" Margin="296,10,0,0" VerticalAlignment="Top" 
-               Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
+               Source="/Images/logoJeopardy.png"/>
         <Frame Name="contentFrame" NavigationUIVisibility="Hidden" />
         
     </Grid>

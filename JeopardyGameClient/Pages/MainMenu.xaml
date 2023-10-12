@@ -12,13 +12,13 @@
         <Grid Height="751">
             
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\BackGround.jpg">
+                <ImageBrush ImageSource="/Images/BackGround.jpg">
                 </ImageBrush>
 
             </Grid.Background>
             <Image HorizontalAlignment="Left" Height="293" 
        Width="389" Margin="10,10,0,0" VerticalAlignment="Top" 
-       Source="C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameClient\Images\logoJeopardy.png"/>
+       Source="/Images/logoJeopardy.png"/>
             <Image HorizontalAlignment="Left" Height="42" Margin="10,56,0,0" VerticalAlignment="Top" Width="27" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
 
             <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="0001" CornerRadius="5" Margin="78,270,931,376">
