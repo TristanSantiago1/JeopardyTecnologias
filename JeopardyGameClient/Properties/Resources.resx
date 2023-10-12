@@ -169,25 +169,25 @@
     <value>Name</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
-    <value>capital rules</value>
+    <value>Capital rules</value>
   </data>
   <data name="lblPassEqualsEmailRuleDesc" xml:space="preserve">
-    <value>not equal to email</value>
+    <value>Not equal to email</value>
   </data>
   <data name="lblPassLengthRuleDesc" xml:space="preserve">
     <value>a</value>
   </data>
   <data name="lblPassNumberRuleDesc" xml:space="preserve">
-    <value>beetwen 10-30</value>
+    <value>Beetwen 10-30</value>
   </data>
   <data name="lblPassPuntSigRuleDesc" xml:space="preserve">
-    <value>put a puntuation mark</value>
+    <value>Put a puntuation mark</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>special chaacter</value>
+    <value>Special chaacter</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
-    <value>password</value>
+    <value>Password</value>
   </data>
   <data name="lblPasswordLogIn" xml:space="preserve">
     <value>Password</value>
@@ -196,7 +196,7 @@
     <value />
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
-    <value>email</value>
+    <value>Email</value>
   </data>
   <data name="lblRepeatedUserName" xml:space="preserve">
     <value>RepeatedUsername</value>
@@ -205,7 +205,7 @@
     <value>Resent Code</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
-    <value>username</value>
+    <value>Username</value>
   </data>
   <data name="lblUserNameLogIn" xml:space="preserve">
     <value>User name</value>
