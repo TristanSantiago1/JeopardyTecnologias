@@ -10,11 +10,8 @@
       Title="LogInUser">
 
     <Viewbox Stretch="Fill">
-        
+
         <Grid Height="751">
-            <Image HorizontalAlignment="Left" Height="237" 
-                Width="432" Margin="462,10,0,0" VerticalAlignment="Top" 
-                Source="/Images/logoJeopardy.png"/>
 
             <Viewbox Width="auto" Height="auto" Margin="323,247,-44,386">
                 <StackPanel Height="auto" Width="1230" >
@@ -46,10 +43,13 @@
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
                 <ComboBoxItem Content="Español" Tag="es-MX"/>
             </ComboBox>
+            <Image HorizontalAlignment="Left" Height="237" 
+                Width="432" Margin="462,10,0,0" VerticalAlignment="Top" 
+                Source="/Images/logoJeopardy.png"/>
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
             </Grid.Background>
-            
+
 
 
 
