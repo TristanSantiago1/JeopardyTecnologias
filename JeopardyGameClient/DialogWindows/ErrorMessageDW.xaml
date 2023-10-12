@@ -14,7 +14,7 @@
             <!-- Contenido de la pantalla de error -->
             <Border BorderBrush="Red" BorderThickness="2" Padding="20" CornerRadius="10" >
                 <StackPanel Margin="78,-5,17,16" >
-                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Margin="0,0,80,0"/>
+                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="137" Margin="0,0,80,0"/>
                     <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="255" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Border>

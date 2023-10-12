@@ -129,6 +129,9 @@
   <data name="bttCancellAction" xml:space="preserve">
     <value>Cancell</value>
   </data>
+  <data name="bttContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
   <data name="bttEnterGame" xml:space="preserve">
     <value>Enter game</value>
   </data>
@@ -140,6 +143,15 @@
   </data>
   <data name="bttSaveUser" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="EmailCodeDescrip" xml:space="preserve">
+    <value>is the code for your verifification in Jeopardy, enter it in the code field to start the fun.</value>
+  </data>
+  <data name="EmailSubjectCode" xml:space="preserve">
+    <value>Verification code</value>
+  </data>
+  <data name="lblCodeDescrip" xml:space="preserve">
+    <value>Code</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Email</value>
@@ -189,6 +201,9 @@
   <data name="lblRepeatedUserName" xml:space="preserve">
     <value>RepeatedUsername</value>
   </data>
+  <data name="lblResentCode" xml:space="preserve">
+    <value>Resent Code</value>
+  </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Username</value>
   </data>
@@ -197,6 +212,12 @@
   </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Please enter a username</value>
+  </data>
+  <data name="SentEmailIssue" xml:space="preserve">
+    <value>A problem has ocurred</value>
+  </data>
+  <data name="txbCodeInstructions" xml:space="preserve">
+    <value>A code was sent ...</value>
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
     <value>A problem has ocurred while saving the user, try again.</value>
@@ -209,5 +230,14 @@
   </data>
   <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
     <value>INFORMATION</value>
+  </data>
+  <data name="txbWarningMessCloseWin" xml:space="preserve">
+    <value>Are your sure, do want to cancell the process?</value>
+  </data>
+  <data name="txbWarningTitle" xml:space="preserve">
+    <value>WARNING</value>
+  </data>
+  <data name="WrongCode" xml:space="preserve">
+    <value>The code is wrong</value>
   </data>
 </root>
