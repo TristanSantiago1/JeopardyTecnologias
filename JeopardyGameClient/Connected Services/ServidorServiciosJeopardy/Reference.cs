@@ -325,6 +325,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UserNameAlreadyExist", ReplyAction="http://tempuri.org/IUserManager/UserNameAlreadyExistResponse")]
         System.Threading.Tasks.Task<int> UserNameAlreadyExistAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SentEmailCodeConfirmation", ReplyAction="http://tempuri.org/IUserManager/SentEmailCodeConfirmationResponse")]
+        int SentEmailCodeConfirmation(string email, string subject, string body);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SentEmailCodeConfirmation", ReplyAction="http://tempuri.org/IUserManager/SentEmailCodeConfirmationResponse")]
+        System.Threading.Tasks.Task<int> SentEmailCodeConfirmationAsync(string email, string subject, string body);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -392,6 +398,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<int> UserNameAlreadyExistAsync(string userName) {
             return base.Channel.UserNameAlreadyExistAsync(userName);
+        }
+        
+        public int SentEmailCodeConfirmation(string email, string subject, string body) {
+            return base.Channel.SentEmailCodeConfirmation(email, subject, body);
+        }
+        
+        public System.Threading.Tasks.Task<int> SentEmailCodeConfirmationAsync(string email, string subject, string body) {
+            return base.Channel.SentEmailCodeConfirmationAsync(email, subject, body);
         }
     }
 }

@@ -20,8 +20,23 @@ namespace JeopardyGame.Pages
         public UserRegister()
         {
             InitializeComponent();
+            PrepareWindow();
+        }
+
+        public void ChargeField(UserPOJO user)
+        {
+            ListBoxRules.Clear();
+            PrepareWindow();            
+            txbNameCreateAcc.Text = user.Name;
+            txbUserNameCreateAcc.Text = user.UserName;
+            txbEmailCreateAcc.Text = user.EmailAddress;
+            psbPasswordCreateAcc.Password = user.Password;
+        }
+
+        private void PrepareWindow()
+        {
             InitializeListeners();
-            CreateRuleLabels();
+            CreateRuleLabels();            
             foreach (var rule in ListBoxRules)
             {
                 lsbPasswordRules.Items.Add(rule);
@@ -329,38 +344,34 @@ namespace JeopardyGame.Pages
         {
             if (CheckEmptyFields() == 1 && CheckEmailAddressFormat() == 1 &&
                 CheckUserNameExistance(txbUserNameCreateAcc.Text.Trim()) == 1 &&
-                CheckEmailAddressExistance(txbEmailCreateAcc.Text.Trim()) == 1  
-                )
-            {
-                Helpers.EncryptationClass encryptation = new Helpers.EncryptationClass();
-                String EncryptedPassword = encryptation.EncryptPassword(psbPasswordCreateAcc.Password.ToString().Trim());
+                CheckEmailAddressExistance(txbEmailCreateAcc.Text.Trim()) == 1)
+            {               
                 UserPOJO userToSave = new UserPOJO();
                 userToSave.Name = txbNameCreateAcc.Text.Trim();
                 userToSave.UserName = txbUserNameCreateAcc.Text.Trim();
                 userToSave.EmailAddress = txbEmailCreateAcc.Text.Trim();
-                userToSave.Password = EncryptedPassword;
-                ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-                int idUsuario = proxyServer.SaveUser(userToSave);
-                if (idUsuario != 0)
-                {
-                    ServidorServiciosJeopardy.PlayerPOJO playerTosSave = new ServidorServiciosJeopardy.PlayerPOJO();
-                    playerTosSave.GeneralPoints = 0;
-                    playerTosSave.NoReports = 0;
-                    int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
-                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
-                    ClearFields();
-                    Console.WriteLine(idPlayer);
-                    Console.ReadLine();
-                    LogInUser logInPage = new LogInUser();
-                    this.NavigationService.Navigate(logInPage);
-                    NavigationService.RemoveBackEntry();
-                    
-                }
-                else
-                {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
-                    Console.WriteLine("Fallo al registrar usuario");
-                }
+                userToSave.Password = psbPasswordCreateAcc.Password.Trim();
+
+                CodeConfirmation codeW = new CodeConfirmation(txbEmailCreateAcc.Text.Trim(), userToSave);             
+                this.NavigationService.Navigate(codeW);
+                NavigationService.RemoveBackEntry();
+                //ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+                //int idUsuario = proxyServer.SaveUser(userToSave);
+                //if (idUsuario != 0)
+                //{
+                //    ServidorServiciosJeopardy.PlayerPOJO playerTosSave = new ServidorServiciosJeopardy.PlayerPOJO();
+                //    playerTosSave.GeneralPoints = 0;
+                //    playerTosSave.NoReports = 0;
+                //    int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
+                //    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
+                //    ClearFields();
+                //    GoToLogInWindow();
+
+                //}
+                //else
+                //{
+                //    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
+                //}
             }
         }
 
@@ -388,43 +399,37 @@ namespace JeopardyGame.Pages
             ErrorWindow.VerticalAlignment = VerticalAlignment.Center;
             ErrorWindow.ShowDialog();
         }
+        private void ShowWarningMessage(String title, String message)
+        {
+            Window currentPage = App.Current.MainWindow;
+            DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(title,message);
+            double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
+            double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
+            confirmationWindow.Left = left;
+            confirmationWindow.Top = top;
+            confirmationWindow.ShowDialog();
+            if (confirmationWindow.closeWindow)
+            {
+                GoToLogInWindow(); 
+            }
+        }
 
         private void ClicCancellRegistration(object sender, MouseButtonEventArgs e)
         {
-            LogInUser logInPage = new LogInUser();
-            this.NavigationService.Navigate(logInPage);
-            NavigationService.RemoveBackEntry();
+            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
         }
 
         private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
         {
-            LogInUser logInPage = new LogInUser();
-            this.NavigationService.Navigate(logInPage);
-            NavigationService.RemoveBackEntry();
+            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
 
         }
 
-        private void CloseCuerrentWindow()
+        private void GoToLogInWindow()
         {
-
-            Window currentW = Application.Current.MainWindow;
-           
-            PrincipalWindow login = new PrincipalWindow();
-            
-            
-            
-            ProfileDataConsult dataConsult = new ProfileDataConsult();
-            this.NavigationService.Navigate(dataConsult);
-            Application.Current.MainWindow.Close();
-
-            login.Show();
-
-
-            //DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(currentPage, login);
-            //double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
-            //double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
-            //confirmationWindow.Left = left;
-            //confirmationWindow.Top = top;
+            LogInUser logInPage = new LogInUser();
+            this.NavigationService.Navigate(logInPage);
+            NavigationService.RemoveBackEntry();
         }
        
     }

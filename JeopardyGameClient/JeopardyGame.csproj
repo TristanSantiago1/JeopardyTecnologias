@@ -68,6 +68,9 @@
       <DependentUpon>ConfirmationDW.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EncryptationClass.cs" />
+    <Compile Include="Pages\CodeConfirmation.xaml.cs">
+      <DependentUpon>CodeConfirmation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LogInUser.xaml.cs">
       <DependentUpon>LogInUser.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="DialogWindows\ConfirmationDW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CodeConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

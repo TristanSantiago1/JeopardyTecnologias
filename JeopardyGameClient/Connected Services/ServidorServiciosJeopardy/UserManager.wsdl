@@ -66,6 +66,12 @@
   <wsdl:message name="IUserManager_UserNameAlreadyExist_OutputMessage">
     <wsdl:part name="parameters" element="tns:UserNameAlreadyExistResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_SentEmailCodeConfirmation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SentEmailCodeConfirmation" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_SentEmailCodeConfirmation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SentEmailCodeConfirmationResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -86,6 +92,10 @@
     <wsdl:operation name="UserNameAlreadyExist">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UserNameAlreadyExist" message="tns:IUserManager_UserNameAlreadyExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UserNameAlreadyExistResponse" message="tns:IUserManager_UserNameAlreadyExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SentEmailCodeConfirmation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SentEmailCodeConfirmation" message="tns:IUserManager_SentEmailCodeConfirmation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SentEmailCodeConfirmationResponse" message="tns:IUserManager_SentEmailCodeConfirmation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -129,6 +139,15 @@
     </wsdl:operation>
     <wsdl:operation name="UserNameAlreadyExist">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/UserNameAlreadyExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SentEmailCodeConfirmation">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/SentEmailCodeConfirmation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

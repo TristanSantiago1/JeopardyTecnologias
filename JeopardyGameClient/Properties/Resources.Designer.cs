@@ -97,6 +97,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Continue.
+        /// </summary>
+        public static string bttContinue {
+            get {
+                return ResourceManager.GetString("bttContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Enter game.
         /// </summary>
         public static string bttEnterGame {
@@ -129,6 +138,33 @@ namespace JeopardyGame.Properties {
         public static string bttSaveUser {
             get {
                 return ResourceManager.GetString("bttSaveUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a is the code for your verifification in Jeopardy, enter it in the code field to start the fun..
+        /// </summary>
+        public static string EmailCodeDescrip {
+            get {
+                return ResourceManager.GetString("EmailCodeDescrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verification code.
+        /// </summary>
+        public static string EmailSubjectCode {
+            get {
+                return ResourceManager.GetString("EmailSubjectCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Code.
+        /// </summary>
+        public static string lblCodeDescrip {
+            get {
+                return ResourceManager.GetString("lblCodeDescrip", resourceCulture);
             }
         }
         
@@ -277,6 +313,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Resent Code.
+        /// </summary>
+        public static string lblResentCode {
+            get {
+                return ResourceManager.GetString("lblResentCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a username.
         /// </summary>
         public static string lblUserNameDescripCreateAcc {
@@ -300,6 +345,24 @@ namespace JeopardyGame.Properties {
         public static string LblWrongUserName {
             get {
                 return ResourceManager.GetString("LblWrongUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a A problem has ocurred.
+        /// </summary>
+        public static string SentEmailIssue {
+            get {
+                return ResourceManager.GetString("SentEmailIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a A code was sent ....
+        /// </summary>
+        public static string txbCodeInstructions {
+            get {
+                return ResourceManager.GetString("txbCodeInstructions", resourceCulture);
             }
         }
         
@@ -336,6 +399,33 @@ namespace JeopardyGame.Properties {
         public static string txbUserRegisteredSuccTittle {
             get {
                 return ResourceManager.GetString("txbUserRegisteredSuccTittle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are your sure, do want to cancell the process?.
+        /// </summary>
+        public static string txbWarningMessCloseWin {
+            get {
+                return ResourceManager.GetString("txbWarningMessCloseWin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a WARNING.
+        /// </summary>
+        public static string txbWarningTitle {
+            get {
+                return ResourceManager.GetString("txbWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The code is wrong.
+        /// </summary>
+        public static string WrongCode {
+            get {
+                return ResourceManager.GetString("WrongCode", resourceCulture);
             }
         }
     }

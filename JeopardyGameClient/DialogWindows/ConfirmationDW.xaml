@@ -12,7 +12,7 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
                 <Border BorderBrush="#FFE9E790" BorderThickness="2" Padding="20" CornerRadius="10" Margin="35,0,34,0" >
                     <StackPanel Margin="56,-2,-12,13" >
-                        <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="11" Margin="0,0,80,0" />
+                        <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="137" Margin="0,0,80,0" />
                         <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="240" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Border>

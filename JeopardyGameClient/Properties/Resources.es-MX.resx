@@ -129,6 +129,9 @@
   <data name="bttCancellAction" xml:space="preserve">
     <value>Cancelar</value>
   </data>
+  <data name="bttContinue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
   <data name="bttEnterGame" xml:space="preserve">
     <value>Unirse partida</value>
   </data>
@@ -140,6 +143,15 @@
   </data>
   <data name="bttSaveUser" xml:space="preserve">
     <value>Guardar</value>
+  </data>
+  <data name="EmailCodeDescrip" xml:space="preserve">
+    <value>es el codigo para que te verifiques en Jeopardy, rapido, ingresalo en el apartado de codigo y empieza a divertirte.</value>
+  </data>
+  <data name="EmailSubjectCode" xml:space="preserve">
+    <value>Codigó de Verificación</value>
+  </data>
+  <data name="lblCodeDescrip" xml:space="preserve">
+    <value>Codigo :</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Correo :</value>
@@ -189,6 +201,9 @@
   <data name="lblRepeatedUserName" xml:space="preserve">
     <value>El nombre de usuario ya ha sido registrado.</value>
   </data>
+  <data name="lblResentCode" xml:space="preserve">
+    <value>Reenviar Codigo en : </value>
+  </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>
   </data>
@@ -197,6 +212,12 @@
   </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value />
+  </data>
+  <data name="SentEmailIssue" xml:space="preserve">
+    <value>Ocurrio un problema al enviar el codigó de verificación, intentelo de nuevo o verifique su correo.</value>
+  </data>
+  <data name="txbCodeInstructions" xml:space="preserve">
+    <value>Se ha enviado un codigo a tu correo electronico, por favor, revisalo e ingresa el codigo.</value>
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
     <value>Hubo un problema al guardar al usuario, intentalo de nuevo.</value>
@@ -209,5 +230,14 @@
   </data>
   <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
     <value>INFORMACIÓN</value>
+  </data>
+  <data name="txbWarningMessCloseWin" xml:space="preserve">
+    <value>¿Estas seguro que deseas cancelar el proceso?</value>
+  </data>
+  <data name="txbWarningTitle" xml:space="preserve">
+    <value>Cuidado</value>
+  </data>
+  <data name="WrongCode" xml:space="preserve">
+    <value>El codigo ingresado no es correcto, verificalo o intentalo de nuevo.</value>
   </data>
 </root>

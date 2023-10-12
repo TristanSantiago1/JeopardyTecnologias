@@ -24,6 +24,9 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract]
         int UserNameAlreadyExist(String userName);
+
+        [OperationContract]
+        int SentEmailCodeConfirmation(String email, String subject, String body);
         }
 
 

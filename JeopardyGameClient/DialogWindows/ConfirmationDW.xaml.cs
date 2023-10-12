@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace JeopardyGame.DialogWindows
 {
@@ -8,21 +10,20 @@ namespace JeopardyGame.DialogWindows
     /// </summary>
     public partial class ConfirmationDW : Window
     {
-        private Window windowOpened;
-        private Window windowClosed;
-
-        public ConfirmationDW(Window newNueva, Window oldWindow)
+        public bool closeWindow ;
+        public ConfirmationDW(String title, String message)
         {
             InitializeComponent();
-            windowOpened = newNueva;
-            windowClosed = oldWindow;
+            txbErrorTitle.Text = title;
+            txbErrorMessage.Text = message; 
+            closeWindow = false;
+
             
         }
 
         private void ClicAccept(object sender, RoutedEventArgs e)
-        {            
-            windowOpened.Show();
-            windowClosed.Close();
+        {
+            closeWindow = true;
             this.Close();
         }
 
