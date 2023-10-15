@@ -78,6 +78,7 @@
     <Compile Include="Category.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\FriendsManagerDataOperation.cs" />
     <Compile Include="DataAccess\UserManagerDataOperation.cs" />
     <Compile Include="Exceptions\ExceptionDiccionary.cs" />
     <Compile Include="Exceptions\ExceptionHandler.cs" />

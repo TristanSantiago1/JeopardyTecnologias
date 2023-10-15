@@ -14,18 +14,17 @@ using JeopardyGame.Data.Exceptions;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    public class UserManager : InterfacesSevices.IUserManager
+    /// <summary>
+    /// Class for User registration 
+    /// </summary>
+    public partial class UserManager : IUserManager
     {
         public int SaveUser(UserPOJO userPojoNew)
         {
             if (userPojoNew == null) return 0;
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            User usuarioNuevo = new User();
-            usuarioNuevo.IdUser = 0;
-            usuarioNuevo.Name = userPojoNew.Name.ToString();
-            usuarioNuevo.UserName = userPojoNew.UserName.ToString();
-            usuarioNuevo.EmailAddress = userPojoNew.EmailAddress.ToString();
-            usuarioNuevo.Password = userPojoNew.Password.ToString();
+            Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new Data.DataAccess.UserManagerDataOperation();
+            userPojoNew.IdUser = 0;
+            User usuarioNuevo = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
             User UserSaved = ConexionAccesoDatos.SaveUserInDataBase(usuarioNuevo);
             if (UserSaved == null) 
             {
@@ -33,23 +32,32 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             else
             {
-                return UserSaved.IdUser;
+                PlayerPOJO playerToSave = new PlayerPOJO();
+                playerToSave.IdPlayer = 0;
+                playerToSave.GeneralPoints = 0;
+                playerToSave.NoReports = 0;
+                playerToSave.IdActualAvatar = 0;
+                playerToSave.IdUser = UserSaved.IdUser;
+                playerToSave.IdState = 1;
+                int idPlayer = SavePlayer(playerToSave);
+                if (idPlayer != 0)
+                {
+                    return UserSaved.IdUser;
+                }
+                else
+                {
+                    return 0;
+                }
             }            
         }
 
-        public int SavePlayer(int IdUserSaved, PlayerPOJO playerPojoNew)
+        private int SavePlayer(PlayerPOJO playerPojoNew)
         {
             if (playerPojoNew == null) return 0;
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            User userSaved = ConexionAccesoDatos.GetUserById(IdUserSaved);
-            State defaultState = ConexionAccesoDatos.GetStateById(1);
-            Player newPlayerAccount = new Player();
-            newPlayerAccount.IdPlayer = 0;
-            newPlayerAccount.IdAvatarActual = 0;
-            newPlayerAccount.GeneralPoints = playerPojoNew.GeneralPoints;
-            newPlayerAccount.NoReports = playerPojoNew.NoReports;
-            newPlayerAccount.User = userSaved;
-            newPlayerAccount.State = defaultState;
+            Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new Data.DataAccess.UserManagerDataOperation();     
+            Player newPlayerAccount = InterpretersEntityPojo.UserInterpreter.FromPlayerPojoToPlyerEntity(playerPojoNew);
+            User userSaved = ConexionAccesoDatos.GetUserById(playerPojoNew.IdUser);
+            State defaultState = ConexionAccesoDatos.GetStateById(playerPojoNew.IdState);
             Player playerSaved = ConexionAccesoDatos.SavePlayerInDataBase(userSaved, defaultState, newPlayerAccount);
             if (playerSaved == null)
             {
@@ -121,8 +129,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                 exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
                 return 0;
             }
-        }
-
+        }  
 
     }
 }
+

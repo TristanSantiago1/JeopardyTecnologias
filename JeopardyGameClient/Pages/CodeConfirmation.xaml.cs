@@ -86,14 +86,11 @@ namespace JeopardyGame.Pages
                 Helpers.EncryptationClass encryptation = new Helpers.EncryptationClass();
                 String encryptedPassword = encryptation.EncryptPassword(userToSave.Password.ToString().Trim());
                 userToSave.Password = encryptedPassword;
-                ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+                userToSave.IdUser = 0;
+                UserManagerClient proxyServer = new UserManagerClient();
                 int idUsuario = proxyServer.SaveUser(userToSave);
                 if (idUsuario != 0)
-                {
-                    ServidorServiciosJeopardy.PlayerPOJO playerTosSave = new ServidorServiciosJeopardy.PlayerPOJO();
-                    playerTosSave.GeneralPoints = 0;
-                    playerTosSave.NoReports = 0;
-                    int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
+                {                    
                     ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
                     MainMenu lobby = new MainMenu();
                     this.NavigationService.Navigate(lobby);

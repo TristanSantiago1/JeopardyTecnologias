@@ -10,10 +10,10 @@ namespace JeopardyGame.Host.Connetion
 {
     class OpenConnetion
     {
-        static void Main(string[] args)
-        {
-            using (ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.UserManager)))
-            {
+        static void Main(string[] args)        {
+           
+            using(ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.ServicesReferenceAuthor)))
+            {               
                 host.Open();
                 Console.WriteLine("Server is running");
                 Console.ReadLine();

@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 namespace JeopardyGame.Service.InterfacesSevices
 {
        [ServiceContract]   
-        internal interface IUserManager
+        internal  interface IUserManager
         {
         [OperationContract]
-        int SaveUser(UserPOJO userPojoNew);
-        [OperationContract]
-        int SavePlayer(int IdUserSaved, PlayerPOJO playerPojoNew);
+        int SaveUser(UserPOJO userPojoNew); 
 
         [OperationContract]
         int validateCredentials(UserValidate newUserValidate);
@@ -50,25 +48,28 @@ namespace JeopardyGame.Service.InterfacesSevices
             [DataMember]
             public String Password { get { return password; } set { password = value; } }
         }
-        [DataContract]
-        public class PlayerPOJO
-        {
-            private int idPlayer;
-            private int generalPoints;
-            private int noReports;
-            private int idUser;
-            private int idState;
-            
-            [DataMember]
-            public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
-            [DataMember]
-            public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
-            [DataMember]
-            public int NoReports { get { return noReports; } set { noReports = value; } }
-            [DataMember]
-            public int IdUser { get { return idUser; } set { idUser = value; } }       
-            [DataMember]
-            public int IdState { get { return idState; } set { idState = value; } }
+    [DataContract]
+    public class PlayerPOJO
+    {
+        private int idPlayer;
+        private int generalPoints;
+        private int noReports;
+        private int idUser;
+        private int idState;
+        private int idActualAvatar;
+
+        [DataMember]
+        public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
+        [DataMember]
+        public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
+        [DataMember]
+        public int NoReports { get { return noReports; } set { noReports = value; } }
+        [DataMember]
+        public int IdUser { get { return idUser; } set { idUser = value; } }
+        [DataMember]
+        public int IdState { get { return idState; } set { idState = value; } }
+        [DataMember]
+        public int IdActualAvatar { get { return  idActualAvatar; } set {  idActualAvatar = value; } }
     }
         [DataContract]
         public class UserValidate

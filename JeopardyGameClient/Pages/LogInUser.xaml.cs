@@ -101,8 +101,9 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
+            ActiveFriends ac = new ActiveFriends();
             UserRegister userRegistrerPage = new UserRegister();
-            this.NavigationService.Navigate(userRegistrerPage);
+            this.NavigationService.Navigate(ac);
             NavigationService.RemoveBackEntry();
         
         }

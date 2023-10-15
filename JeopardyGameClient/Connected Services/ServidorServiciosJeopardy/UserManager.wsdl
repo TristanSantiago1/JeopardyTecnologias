@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="UserManager" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicesReferenceAuthor" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="NetTcpBinding_IUserManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256 />
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict />
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IConsultInformation_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
         <wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
@@ -41,12 +36,6 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_SaveUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_SavePlayer_InputMessage">
-    <wsdl:part name="parameters" element="tns:SavePlayer" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_SavePlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SavePlayerResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManager_validateCredentials_InputMessage">
     <wsdl:part name="parameters" element="tns:validateCredentials" />
@@ -72,14 +61,40 @@
   <wsdl:message name="IUserManager_SentEmailCodeConfirmation_OutputMessage">
     <wsdl:part name="parameters" element="tns:SentEmailCodeConfirmationResponse" />
   </wsdl:message>
+  <wsdl:message name="IFriendsManager_GetUserFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_GetUserFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultUserById" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultUserByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultUserByIdPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultUserByIdPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultUserByIdPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultUserByIdPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultPlayerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultPlayerById" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultPlayerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultPlayerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultPlayerByIdUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultPlayerByIdUser" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultPlayerByIdUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultPlayerByIdUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SaveUserResponse" message="tns:IUserManager_SaveUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SavePlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SavePlayer" message="tns:IUserManager_SavePlayer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SavePlayerResponse" message="tns:IUserManager_SavePlayer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="validateCredentials">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/validateCredentials" message="tns:IUserManager_validateCredentials_InputMessage" />
@@ -98,20 +113,35 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/SentEmailCodeConfirmationResponse" message="tns:IUserManager_SentEmailCodeConfirmation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IFriendsManager">
+    <wsdl:operation name="GetUserFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/GetUserFriends" message="tns:IFriendsManager_GetUserFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/GetUserFriendsResponse" message="tns:IFriendsManager_GetUserFriends_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IConsultInformation">
+    <wsdl:operation name="ConsultUserById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultUserById" message="tns:IConsultInformation_ConsultUserById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultUserByIdResponse" message="tns:IConsultInformation_ConsultUserById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultUserByIdPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultUserByIdPlayer" message="tns:IConsultInformation_ConsultUserByIdPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultUserByIdPlayerResponse" message="tns:IConsultInformation_ConsultUserByIdPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultPlayerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerById" message="tns:IConsultInformation_ConsultPlayerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdResponse" message="tns:IConsultInformation_ConsultPlayerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultPlayerByIdUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUser" message="tns:IConsultInformation_ConsultPlayerByIdUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUserResponse" message="tns:IConsultInformation_ConsultPlayerByIdUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IUserManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="SaveUser">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/SaveUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SavePlayer">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/SavePlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -156,14 +186,76 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="UserManager">
+  <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetUserFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/GetUserFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IConsultInformation" type="tns:IConsultInformation">
+    <wsp:PolicyReference URI="#NetTcpBinding_IConsultInformation_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="ConsultUserById">
+      <soap12:operation soapAction="http://tempuri.org/IConsultInformation/ConsultUserById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultUserByIdPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IConsultInformation/ConsultUserByIdPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultPlayerById">
+      <soap12:operation soapAction="http://tempuri.org/IConsultInformation/ConsultPlayerById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultPlayerByIdUser">
+      <soap12:operation soapAction="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicesReferenceAuthor">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-8LPI6DS5\tristan</Upn>
-        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IFriendsManager" binding="tns:NetTcpBinding_IFriendsManager">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IConsultInformation" binding="tns:NetTcpBinding_IConsultInformation">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

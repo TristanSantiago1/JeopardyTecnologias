@@ -15,25 +15,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SavePlayer">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="IdUserSaved" type="xs:int" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="playerPojoNew" nillable="true" type="q2:PlayerPOJO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SavePlayerResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="SavePlayerResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="validateCredentials">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="newUserValidate" nillable="true" type="q3:UserValidate" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="newUserValidate" nillable="true" type="q2:UserValidate" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -85,6 +70,76 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SentEmailCodeConfirmationResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserFriends">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="user" nillable="true" type="q3:UserPOJO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserFriendsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="GetUserFriendsResult" nillable="true" type="q4:ArrayOfFriendInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultUserById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultUserByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="ConsultUserByIdResult" nillable="true" type="q5:UserPOJO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultUserByIdPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultUserByIdPlayerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="ConsultUserByIdPlayerResult" nillable="true" type="q6:UserPOJO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultPlayerById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultPlayerByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="ConsultPlayerByIdResult" nillable="true" type="q7:PlayerPOJO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultPlayerByIdUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultPlayerByIdUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="ConsultPlayerByIdUserResult" nillable="true" type="q8:PlayerPOJO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -354,24 +354,7 @@ namespace JeopardyGame.Pages
 
                 CodeConfirmation codeW = new CodeConfirmation(txbEmailCreateAcc.Text.Trim(), userToSave);             
                 this.NavigationService.Navigate(codeW);
-                NavigationService.RemoveBackEntry();
-                //ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-                //int idUsuario = proxyServer.SaveUser(userToSave);
-                //if (idUsuario != 0)
-                //{
-                //    ServidorServiciosJeopardy.PlayerPOJO playerTosSave = new ServidorServiciosJeopardy.PlayerPOJO();
-                //    playerTosSave.GeneralPoints = 0;
-                //    playerTosSave.NoReports = 0;
-                //    int idPlayer = proxyServer.SavePlayer(idUsuario, playerTosSave);
-                //    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
-                //    ClearFields();
-                //    GoToLogInWindow();
-
-                //}
-                //else
-                //{
-                //    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
-                //}
+                NavigationService.RemoveBackEntry();             
             }
         }
 

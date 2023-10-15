@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="UserPOJO">
     <xs:sequence>
       <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
@@ -10,16 +11,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserPOJO" nillable="true" type="tns:UserPOJO" />
-  <xs:complexType name="PlayerPOJO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="GeneralPoints" type="xs:int" />
-      <xs:element minOccurs="0" name="IdPlayer" type="xs:int" />
-      <xs:element minOccurs="0" name="IdState" type="xs:int" />
-      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
-      <xs:element minOccurs="0" name="NoReports" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PlayerPOJO" nillable="true" type="tns:PlayerPOJO" />
   <xs:complexType name="UserValidate">
     <xs:sequence>
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
@@ -27,4 +18,34 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserValidate" nillable="true" type="tns:UserValidate" />
+  <xs:complexType name="ArrayOfFriendInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendInfo" type="tns:FriendInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFriendInfo" nillable="true" type="tns:ArrayOfFriendInfo" />
+  <xs:complexType name="FriendInfo">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FriendInfo" nillable="true" type="tns:FriendInfo" />
+  <xs:complexType name="PlayerPOJO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GeneralPoints" type="xs:int" />
+      <xs:element minOccurs="0" name="IdActualAvatar" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPlayer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdState" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="NoReports" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerPOJO" nillable="true" type="tns:PlayerPOJO" />
 </xs:schema>

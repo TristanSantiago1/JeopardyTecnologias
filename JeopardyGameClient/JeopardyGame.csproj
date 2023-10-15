@@ -68,6 +68,10 @@
       <DependentUpon>ConfirmationDW.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EncryptationClass.cs" />
+    <Compile Include="Helpers\FriendCard.cs" />
+    <Compile Include="Pages\ActiveFriends.xaml.cs">
+      <DependentUpon>ActiveFriends.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CodeConfirmation.xaml.cs">
       <DependentUpon>CodeConfirmation.xaml</DependentUpon>
     </Compile>
@@ -99,9 +103,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReGexs\RegularExpresionsLibrary.cs" />
-    <Compile Include="Views\Lobby.xaml.cs">
-      <DependentUpon>Lobby.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="UserSingleton.cs" />
     <Compile Include="Views\PrincipalWindow.xaml.cs">
       <DependentUpon>PrincipalWindow.xaml</DependentUpon>
     </Compile>
@@ -113,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="DialogWindows\ConfirmationDW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ActiveFriends.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,10 +147,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UserRegister.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Lobby.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +198,15 @@
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\item2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.FriendInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.UserPOJO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\UserManager.wsdl" />
     <None Include="Properties\Settings.settings">
@@ -253,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logoJeopardy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FriendsIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

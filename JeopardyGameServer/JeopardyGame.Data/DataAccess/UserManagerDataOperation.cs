@@ -3,6 +3,7 @@ using JeopardyGame.Data.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.SqlClient;
@@ -47,7 +48,6 @@ namespace JeopardyGame.Data.DataAccess
             }
             return null; ;
         }
-
         public Player SavePlayerInDataBase(User userSaved, State defaultState, Player newPlayer)
         {
             if (userSaved == null || defaultState == null || newPlayer == null) return null;
@@ -80,6 +80,7 @@ namespace JeopardyGame.Data.DataAccess
             return null;
         }
 
+
         public User GetUserById(int idUser)
         {
             if (idUser == 0) return null;
@@ -108,7 +109,6 @@ namespace JeopardyGame.Data.DataAccess
             }
             return null;
         }
-
         public User GetUserByUserName(String userName)
         {
             using (var context = new JeopardyDBContainer())
@@ -118,6 +118,27 @@ namespace JeopardyGame.Data.DataAccess
             }
         }
 
+
+        public Player GetPlayerByIdUser(int idUser)
+        {
+            using (var context = new JeopardyDBContainer())
+            {
+                var playerConsulted = context.Players.FirstOrDefault(player => player.User_IdUser == idUser);
+                return playerConsulted;
+            }
+
+        }
+        public Player GetPlayerByIdPlayer(int idPlayer)
+        {
+            using (var context = new JeopardyDBContainer())
+            {
+                var playerConsulted = context.Players.FirstOrDefault(player => player.IdPlayer == idPlayer);
+                return playerConsulted;
+            }
+
+        }
+
+
         public State GetStateById(int idSatate)
         {
             using (var context = new JeopardyDBContainer())
@@ -126,7 +147,8 @@ namespace JeopardyGame.Data.DataAccess
                 return stateConsulted;
             }
         }
-       
+
+
         public bool VerifyPassword(string password, string hashedPassword)
         {
             byte[] hashBytes = Convert.FromBase64String(hashedPassword);
@@ -178,7 +200,6 @@ namespace JeopardyGame.Data.DataAccess
             }
             return ERROR;
         }
-
         public int ValidateIfUserNameExist(String userName)
         {
             int EXIST = 0;
