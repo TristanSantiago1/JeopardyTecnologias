@@ -139,4 +139,39 @@
         <Setter Property="Foreground" Value="Red"/>
     </Style>
 
+    <!--checkbox for modality of game -->
+    <Style x:Key="lcheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Margin" Value="0,0,0,5" />
+        <Setter Property="Foreground" Value="#26B1FF"/>
+    </Style>
+    
+    <!-- Button Start game  style -->
+    <Style x:Key="ButtonStartGame" TargetType="{x:Type Button}">
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Background" Value="#26B1FF"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="center"/>
+        <Setter Property="VerticalContentAlignment" Value="center"/>
+    </Style>
+
+    <!-- Button Cancel game  style -->
+    <Style x:Key="ButtonCancelGame" TargetType="{x:Type Button}">
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Background" Value="Red"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="center"/>
+        <Setter Property="VerticalContentAlignment" Value="center"/>
+    </Style>
+
 </ResourceDictionary>

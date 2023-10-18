@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using JeopardyGame.Views;
+using System;
 
 namespace JeopardyGame.Pages
 {
@@ -33,6 +34,9 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonNewGame(object sender, RoutedEventArgs e)
         {
+            LobbyPage lobbyGamePage = new LobbyPage();  
+            this.NavigationService.Navigate(lobbyGamePage);
+            NavigationService.RemoveBackEntry();
 
         }
         private void CLicButtonEnterGame(object sender, RoutedEventArgs e)
@@ -45,9 +49,7 @@ namespace JeopardyGame.Pages
         }
         private void ClicSingOut(object sender, MouseButtonEventArgs e)
         {
-            LogInUser logInPage = new LogInUser();
-            this.NavigationService.Navigate(logInPage);
-            NavigationService.RemoveBackEntry();
+            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
         }
         
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,6 +74,23 @@ namespace JeopardyGame.Pages
 
             }
 
+        }
+
+        private void ShowWarningMessage(String title, String message)
+        {
+            Window currentPage = App.Current.MainWindow;
+            DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(title, message);
+            double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
+            double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
+            confirmationWindow.Left = left;
+            confirmationWindow.Top = top;
+            confirmationWindow.ShowDialog();
+            if (confirmationWindow.closeWindow)
+            {
+                LogInUser logInPage = new LogInUser();
+                this.NavigationService.Navigate(logInPage);
+                NavigationService.RemoveBackEntry();
+            }
         }
     }
 }

@@ -24,7 +24,7 @@
             <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="0001" CornerRadius="5" Margin="78,270,931,376">
                 <Button x:Name="bttNewGame" Content = "{x:Static p:Resources.bttNewGame}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonMainMenuStyle}" Click="CLicButtonNewGame" HorizontalAlignment="Left" Width="247" Margin="-1,-1,0,1" />
             </Border>
-            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
+            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1092,19,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
                 <ComboBoxItem Content="Español" Tag="es-MX"/>
             </ComboBox>

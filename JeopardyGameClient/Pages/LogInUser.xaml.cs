@@ -3,7 +3,10 @@ using Microsoft.Win32;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Windows.Forms.AxHost;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace JeopardyGame.Pages
 {
@@ -78,11 +81,11 @@ namespace JeopardyGame.Pages
                 };
 
                 int result = proxyServer.validateCredentials(userValidate);
-
                 proxyServer.Close();
-
                 if (result == 1)
                 {
+                    
+
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
                     NavigationService.RemoveBackEntry();
@@ -101,9 +104,9 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
-            ActiveFriends ac = new ActiveFriends();
+            ///ActiveFriends ac = new ActiveFriends();
             UserRegister userRegistrerPage = new UserRegister();
-            this.NavigationService.Navigate(ac);
+            this.NavigationService.Navigate(userRegistrerPage);
             NavigationService.RemoveBackEntry();
         
         }
