@@ -62,7 +62,15 @@
           </Key>
           <Property Name="IdFrineds" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Player_IdPlayer" Type="int" Nullable="false" />
+          <Property Name="IdFriendState" Type="int" Nullable="false" />
           <Property Name="PlayerFriend_IdPlayer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FriendsStates">
+          <Key>
+            <PropertyRef Name="IdFriendState" />
+          </Key>
+          <Property Name="IdFriendState" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateDescription" Type="nvarchar" MaxLength="40" Nullable="false" />
         </EntityType>
         <EntityType Name="GamePlayers">
           <Key>
@@ -170,6 +178,18 @@
             </Principal>
             <Dependent Role="Boards">
               <PropertyRef Name="Category_IdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendState">
+          <End Role="FriendsStates" Type="Self.FriendsStates" Multiplicity="1" />
+          <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FriendsStates">
+              <PropertyRef Name="IdFriendState" />
+            </Principal>
+            <Dependent Role="Friends">
+              <PropertyRef Name="IdFriendState" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -313,6 +333,7 @@
           <EntitySet Name="Boards" EntityType="Self.Boards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FriendsStates" EntityType="Self.FriendsStates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GamePlayers" EntityType="Self.GamePlayers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hosts" EntityType="Self.Hosts" Schema="dbo" store:Type="Tables" />
@@ -332,6 +353,10 @@
           <AssociationSet Name="FK_CategoryBoard" Association="Self.FK_CategoryBoard">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Boards" EntitySet="Boards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendState" Association="Self.FK_FriendState">
+            <End Role="FriendsStates" EntitySet="FriendsStates" />
+            <End Role="Friends" EntitySet="Friends" />
           </AssociationSet>
           <AssociationSet Name="FK_GameBoard" Association="Self.FK_GameBoard">
             <End Role="Games" EntitySet="Games" />
@@ -452,6 +477,8 @@
           <Property Name="PlayerFriend_IdPlayer" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Player" Relationship="Self.FK_PlayerFriends" FromRole="Friends" ToRole="Players" />
           <NavigationProperty Name="Player1" Relationship="Self.FK_PlayerFriends1" FromRole="Friends" ToRole="Players" />
+          <Property Name="IdFriendState" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FriendsState" Relationship="JeopardyModel.FK_FriendState" FromRole="Friend" ToRole="FriendsState" />
         </EntityType>
         <EntityType Name="GamePlayer">
           <Key>
@@ -782,7 +809,32 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
+          <EntitySet Name="FriendsStates" EntityType="JeopardyModel.FriendsState" />
+          <AssociationSet Name="FK_FriendState" Association="JeopardyModel.FK_FriendState">
+            <End Role="FriendsState" EntitySet="FriendsStates" />
+            <End Role="Friend" EntitySet="Friends" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FriendsState">
+          <Key>
+            <PropertyRef Name="IdFriendState" />
+          </Key>
+          <Property Name="IdFriendState" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateDescription" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Friends" Relationship="JeopardyModel.FK_FriendState" FromRole="FriendsState" ToRole="Friend" />
+        </EntityType>
+        <Association Name="FK_FriendState">
+          <End Type="JeopardyModel.FriendsState" Role="FriendsState" Multiplicity="1" />
+          <End Type="JeopardyModel.Friend" Role="Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FriendsState">
+              <PropertyRef Name="IdFriendState" />
+            </Principal>
+            <Dependent Role="Friend">
+              <PropertyRef Name="IdFriendState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -849,7 +901,8 @@
     <EntitySetMapping Name="Friends">
       <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Friend)">
         <MappingFragment StoreEntitySet="Friends">
-          <ScalarProperty Name="IdFrineds" ColumnName="IdFrineds" />
+          <ScalarProperty Name="IdFriendState" ColumnName="IdFriendState" />
+                <ScalarProperty Name="IdFrineds" ColumnName="IdFrineds" />
           <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
           <ScalarProperty Name="PlayerFriend_IdPlayer" ColumnName="PlayerFriend_IdPlayer" />
         </MappingFragment>
@@ -936,6 +989,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="FriendsStates">
+            <EntityTypeMapping TypeName="JeopardyModel.FriendsState">
+              <MappingFragment StoreEntitySet="FriendsStates">
+                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
+                <ScalarProperty Name="IdFriendState" ColumnName="IdFriendState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

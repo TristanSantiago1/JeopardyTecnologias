@@ -34,6 +34,8 @@
         <AssociationConnector Association="JeopardyModel.FK_HostGame" ManuallyRouted="false" />
         <AssociationConnector Association="JeopardyModel.FK_StatePlayer" ManuallyRouted="false" />
         <AssociationConnector Association="JeopardyModel.FK_UserPlayer" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JeopardyModel.FriendsState" Width="1.5" PointX="8.5" PointY="8.375" />
+        <AssociationConnector Association="JeopardyModel.FK_FriendState" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

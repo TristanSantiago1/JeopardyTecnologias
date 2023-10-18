@@ -12,15 +12,18 @@ namespace JeopardyGame.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Friend
+    public partial class FriendsState
     {
-        public int IdFrineds { get; set; }
-        public int Player_IdPlayer { get; set; }
-        public int PlayerFriend_IdPlayer { get; set; }
-        public int IdFriendState { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FriendsState()
+        {
+            this.Friends = new HashSet<Friend>();
+        }
     
-        public virtual Player Player { get; set; }
-        public virtual Player Player1 { get; set; }
-        public virtual FriendsState FriendsState { get; set; }
+        public int IdFriendState { get; set; }
+        public string StateDescription { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Friend> Friends { get; set; }
     }
 }
