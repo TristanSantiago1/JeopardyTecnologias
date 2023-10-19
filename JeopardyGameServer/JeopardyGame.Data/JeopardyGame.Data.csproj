@@ -86,6 +86,9 @@
     <Compile Include="Friend.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="FriendsState.cs">
+      <DependentUpon>JeopardyDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>

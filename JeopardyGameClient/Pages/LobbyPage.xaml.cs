@@ -24,6 +24,33 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
         }
+
+        private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
+        {
+            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
+        }
+
+        private void clicListFriends(object sender, MouseButtonEventArgs e)
+        {
+            ActiveFriends friendsListPage = new ActiveFriends();
+            this.NavigationService.Navigate(friendsListPage);
+        }
+        private void ShowWarningMessage(String title, String message)
+        {
+            Window currentPage = App.Current.MainWindow;
+            DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(title, message);
+            double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
+            double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
+            confirmationWindow.Left = left;
+            confirmationWindow.Top = top;
+            confirmationWindow.ShowDialog();
+            if (confirmationWindow.closeWindow)
+            {
+                MainMenu mainMenuPage = new MainMenu();
+                this.NavigationService.Navigate(mainMenuPage);
+                NavigationService.RemoveBackEntry();
+            }
+        }
     }
     
         

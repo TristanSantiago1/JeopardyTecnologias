@@ -75,6 +75,9 @@
     <Compile Include="Pages\CodeConfirmation.xaml.cs">
       <DependentUpon>CodeConfirmation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LobbyPage.xaml.cs">
+      <DependentUpon>LobbyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LogInUser.xaml.cs">
       <DependentUpon>LogInUser.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
     <Page Include="Pages\CodeConfirmation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LobbyPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\LogInUser.xaml">
       <Generator>MSBuild:Compile</Generator>

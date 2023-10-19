@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/06/2023 12:11:34
--- Generated from EDMX file: C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\JeopardyDB.edmx
+-- Date Created: 10/18/2023 17:56:09
+-- Generated from EDMX file: C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameServer\JeopardyGame.Data\JeopardyDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -25,6 +25,9 @@ IF OBJECT_ID(N'[dbo].[FK_CategoryAwnser]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_CategoryBoard]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Boards] DROP CONSTRAINT [FK_CategoryBoard];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FriendState]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Friends] DROP CONSTRAINT [FK_FriendState];
 GO
 IF OBJECT_ID(N'[dbo].[FK_GameBoard]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Boards] DROP CONSTRAINT [FK_GameBoard];
@@ -84,6 +87,9 @@ IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Friends]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Friends];
+GO
+IF OBJECT_ID(N'[dbo].[FriendsStates]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FriendsStates];
 GO
 IF OBJECT_ID(N'[dbo].[GamePlayers]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GamePlayers];
@@ -169,7 +175,8 @@ GO
 CREATE TABLE [dbo].[Friends] (
     [IdFrineds] int IDENTITY(1,1) NOT NULL,
     [Player_IdPlayer] int  NOT NULL,
-    [PlayerFriend_IdPlayer] int  NOT NULL
+    [PlayerFriend_IdPlayer] int  NOT NULL,
+    [IdFriendState] int  NOT NULL
 );
 GO
 
@@ -241,8 +248,15 @@ CREATE TABLE [dbo].[Users] (
     [IdUser] int IDENTITY(1,1) NOT NULL,
     [UserName] nvarchar(15)  NOT NULL,
     [EmailAddress] nvarchar(90)  NOT NULL,
-    [Password] nvarchar(30)  NOT NULL,
+    [Password] nvarchar(60)  NOT NULL,
     [Name] nvarchar(30)  NOT NULL
+);
+GO
+
+-- Creating table 'FriendsStates'
+CREATE TABLE [dbo].[FriendsStates] (
+    [IdFriendState] int IDENTITY(1,1) NOT NULL,
+    [StateDescription] nvarchar(40)  NOT NULL
 );
 GO
 
@@ -338,6 +352,12 @@ GO
 ALTER TABLE [dbo].[Users]
 ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([IdUser] ASC);
+GO
+
+-- Creating primary key on [IdFriendState] in table 'FriendsStates'
+ALTER TABLE [dbo].[FriendsStates]
+ADD CONSTRAINT [PK_FriendsStates]
+    PRIMARY KEY CLUSTERED ([IdFriendState] ASC);
 GO
 
 -- --------------------------------------------------
@@ -552,6 +572,21 @@ GO
 CREATE INDEX [IX_FK_UserPlayer]
 ON [dbo].[Players]
     ([User_IdUser]);
+GO
+
+-- Creating foreign key on [IdFriendState] in table 'Friends'
+ALTER TABLE [dbo].[Friends]
+ADD CONSTRAINT [FK_FriendState]
+    FOREIGN KEY ([IdFriendState])
+    REFERENCES [dbo].[FriendsStates]
+        ([IdFriendState])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FriendState'
+CREATE INDEX [IX_FK_FriendState]
+ON [dbo].[Friends]
+    ([IdFriendState]);
 GO
 
 -- --------------------------------------------------

@@ -26,11 +26,18 @@ namespace JeopardyGame.Pages
         public ActiveFriends()
         {
             InitializeComponent();
-            GetFriend();
-            SetFriend();
+            //GetFriend();
+           // SetFriend();
         }
 
-        private void GetFriend()
+        private void ClicCloseListFriends(object sender, MouseButtonEventArgs e)
+        {
+            LobbyPage lobyGamePage = new LobbyPage();
+            this.NavigationService.Navigate(lobyGamePage);
+            NavigationService.RemoveBackEntry();
+        }
+
+        /*private void GetFriend()
         {
             ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
             ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
@@ -55,6 +62,6 @@ namespace JeopardyGame.Pages
                 stcFriendList.Children.Add(new FriendCard(item.UserName, state, "Invite"));
             }
         }
-
+        */
     }
 }
