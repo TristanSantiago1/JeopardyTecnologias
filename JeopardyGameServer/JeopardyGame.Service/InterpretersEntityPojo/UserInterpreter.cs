@@ -55,7 +55,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             player.IdAvatarActual = playerPojo.IdActualAvatar;
             player.User_IdUser = playerPojo.IdUser;
             player.State_idState = playerPojo.IdState;
-            player.User = dataAccess.GetUserById(playerPojo.IdUser);
+            player.User =  dataAccess.GetUserById(playerPojo.IdUser);
             player.State = dataAccess.GetStateById(playerPojo.IdState);
             return player;
         } 

@@ -55,6 +55,7 @@ namespace JeopardyGame.Pages
             char altChar1 = (char)random.Next('A', 'Z' + 1);
             char altChar2 = (char)random.Next('A', 'Z' + 1);
             string codeGenerated = $"{altChar1}{altChar2}{altNumber:D4}";
+            MessageBox.Show(codeGenerated);
             currentCode = codeGenerated;
         }
 

@@ -20,7 +20,7 @@ namespace JeopardyGame.Data.DataAccess
                 using (var context = new JeopardyDBContainer())
                 {
                     var friendsOfUser = context.Friends.
-                        Where(Friend => Friend.Player_IdPlayer == player.IdPlayer).ToList();
+                        Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
                     return friendsOfUser;                  
                 }
             }

@@ -559,7 +559,7 @@ ON [dbo].[Players]
     ([State_idState]);
 GO
 
--- Creating foreign key on [User_IdUser] in table 'Players'
+-- Creating foreign key on [User_IdUser] in table 'Players'     
 ALTER TABLE [dbo].[Players]
 ADD CONSTRAINT [FK_UserPlayer]
     FOREIGN KEY ([User_IdUser])
