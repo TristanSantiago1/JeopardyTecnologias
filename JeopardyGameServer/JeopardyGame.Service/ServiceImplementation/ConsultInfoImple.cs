@@ -42,5 +42,13 @@ namespace JeopardyGame.Service.ServiceImplementation
             userConsulted = InterpretersEntityPojo.UserInterpreter.FromUserEntityToUserPojo(dataAcces.GetUserById(player.IdUser));
             return userConsulted;
         }
+
+        public UserPOJO ConsultUserByUserName(string userName)
+        {
+            Data.DataAccess.UserManagerDataOperation dataAcces = new Data.DataAccess.UserManagerDataOperation();
+            UserPOJO userConsulted = new UserPOJO();
+            userConsulted = InterpretersEntityPojo.UserInterpreter.FromUserEntityToUserPojo(dataAcces.GetUserByUserName (userName));
+            return userConsulted;
+        }
     }
 }

@@ -18,5 +18,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         PlayerPOJO ConsultPlayerById(int idPlayer);
         [OperationContract]
         PlayerPOJO ConsultPlayerByIdUser(int idUser);
+        [OperationContract]
+        UserPOJO ConsultUserByUserName(String userName);
     }
 }

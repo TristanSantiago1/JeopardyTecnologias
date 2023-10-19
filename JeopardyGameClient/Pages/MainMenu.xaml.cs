@@ -31,6 +31,11 @@ namespace JeopardyGame.Pages
                     }
                 }
             }
+
+            UserSingleton user = UserSingleton.GetMainUser();
+            string userName = user.UserName;
+
+
         }
         private void CLicButtonNewGame(object sender, RoutedEventArgs e)
         {
@@ -92,5 +97,7 @@ namespace JeopardyGame.Pages
                 NavigationService.RemoveBackEntry();
             }
         }
+
+
     }
 }

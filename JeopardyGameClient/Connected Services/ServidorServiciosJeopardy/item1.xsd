@@ -143,6 +143,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ConsultUserByUserName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConsultUserByUserNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="ConsultUserByUserNameResult" nillable="true" type="q9:UserPOJO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="PlayerIsAvailable">
     <xs:complexType>
       <xs:sequence>

@@ -8,14 +8,14 @@ using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.ServiceModel;
-
+using JeopardyGame.ServidorServiciosJeopardy;
 
 namespace JeopardyGame.Pages
 {
     /// <summary>
     /// Lógica de interacción para LogInUser.xaml
     /// </summary>
-    public partial class LogInUser : System.Windows.Controls.Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback 
+    public partial class LogInUser : System.Windows.Controls.Page 
     {
         public LogInUser()
         {
@@ -86,10 +86,13 @@ namespace JeopardyGame.Pages
                 proxyServer.Close();
                 if (result == 1)
                 {
-                    InstanceContext contexto = new InstanceContext(this);
-                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
-                                        
-                    proxy.PlayerIsAvailable(15);
+                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = new ServidorServiciosJeopardy.ConsultInformationClient();
+                    UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userName);
+                    PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
+                    InstanceSingleton(currentUser, currentPlayer);
+                    //Console.WriteLine(currentUser.IdUser);
+                    //MessageBox.Show(currentUser.IdUser.ToString());
+                   
 
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
@@ -147,11 +150,19 @@ namespace JeopardyGame.Pages
             }
 
         }
-
-        public void Response(int status, int idFriend)
+        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer)
         {
-           ActiveFriends activeFriends = new ActiveFriends();
-            activeFriends.RefreshFriendsList();
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            userSingleton.IdUser = currentUser.IdUser;
+            userSingleton.Name = currentUser.Name;
+            userSingleton.UserName = currentUser.UserName;
+            userSingleton.Email = currentUser.EmailAddress;
+            userSingleton.Password = currentUser.Password;
+            userSingleton.IdPlayer = currenPlayer.IdPlayer;
+            userSingleton.GeneralPoints = currenPlayer.GeneralPoints;
+            userSingleton.NoReports = currenPlayer.NoReports;
+            userSingleton.IdState = currenPlayer.IdState;
+            userSingleton.IdCurrentAvatar = currenPlayer.IdActualAvatar;
         }
     }
 }

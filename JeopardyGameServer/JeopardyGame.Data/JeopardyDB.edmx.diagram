@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="28f9e1a645bf4c6d882ac2fb158997b3" Name="Diagram1">
+      <Diagram DiagramId="28f9e1a645bf4c6d882ac2fb158997b3" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="JeopardyModel.AvatarPlayer" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="JeopardyModel.Avatar" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JeopardyModel.Awnser" Width="1.5" PointX="11" PointY="10.5" IsExpanded="true" />
@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="JeopardyModel.Host" Width="1.5" PointX="3.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JeopardyModel.Player" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="JeopardyModel.Question" Width="1.5" PointX="8.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="JeopardyModel.State" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JeopardyModel.State" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JeopardyModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JeopardyModel.User" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <AssociationConnector Association="JeopardyModel.FK_AvatarAvatarPlayer" ManuallyRouted="false" />

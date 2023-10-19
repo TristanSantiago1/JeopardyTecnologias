@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Service.InterfacesSevices;
+﻿using JeopardyGame.Data;
+using JeopardyGame.Service.InterfacesSevices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public UserPOJO ConsultUserByIdPlayer(int idPlayer)
         {
             return ((IConsultInformation)consultInfoImple).ConsultUserByIdPlayer(idPlayer);
+        }
+
+        public UserPOJO ConsultUserByUserName(string userName)
+        {
+            return ((IConsultInformation)consultInfoImple).ConsultUserByUserName(userName);
         }
     }
 

@@ -99,6 +99,12 @@
   <wsdl:message name="IConsultInformation_ConsultPlayerByIdUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultPlayerByIdUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultUserByUserName_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultUserByUserName" />
+  </wsdl:message>
+  <wsdl:message name="IConsultInformation_ConsultUserByUserName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConsultUserByUserNameResponse" />
+  </wsdl:message>
   <wsdl:message name="INotifyUserAvailability_PlayerIsAvailable_InputMessage">
     <wsdl:part name="parameters" element="tns:PlayerIsAvailable" />
   </wsdl:message>
@@ -155,6 +161,10 @@
     <wsdl:operation name="ConsultPlayerByIdUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUser" message="tns:IConsultInformation_ConsultPlayerByIdUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUserResponse" message="tns:IConsultInformation_ConsultPlayerByIdUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultUserByUserName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultUserByUserName" message="tns:IConsultInformation_ConsultUserByUserName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultUserByUserNameResponse" message="tns:IConsultInformation_ConsultUserByUserName_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="INotifyUserAvailability">
@@ -263,6 +273,15 @@
     </wsdl:operation>
     <wsdl:operation name="ConsultPlayerByIdUser">
       <soap12:operation soapAction="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultUserByUserName">
+      <soap12:operation soapAction="http://tempuri.org/IConsultInformation/ConsultUserByUserName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

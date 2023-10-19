@@ -3,6 +3,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,7 +21,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para ActiveFriends.xaml
     /// </summary>
-    public partial class ActiveFriends : Page
+    public partial class ActiveFriends : Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
     {
         FriendInfo[] friends;
         public ActiveFriends()
@@ -28,6 +29,10 @@ namespace JeopardyGame.Pages
             InitializeComponent();
             GetFriend();
             SetFriend();
+            InstanceContext contexto = new InstanceContext(this);
+            ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+            UserSingleton us = UserSingleton.GetMainUser();
+            proxy.PlayerIsAvailable(us.IdUser);
         }
 
         private void ClicCloseListFriends(object sender, MouseButtonEventArgs e)
@@ -41,7 +46,8 @@ namespace JeopardyGame.Pages
         {
             ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
             ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
-            UserPOJO user = proxyUser.ConsultUserById(1);    
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            UserPOJO user = proxyUser.ConsultUserById(userSingleton.IdUser);    
             friends = proxyFriend.GetUserFriends(user);
         }
 
@@ -69,6 +75,12 @@ namespace JeopardyGame.Pages
         
 
         public void RefreshFriendsList()
+        {
+            GetFriend();
+            SetFriend();
+        }
+
+        public void Response(int status, int idFriend)
         {
             GetFriend();
             SetFriend();

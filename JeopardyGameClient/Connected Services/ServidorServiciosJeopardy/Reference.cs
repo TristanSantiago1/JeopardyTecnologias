@@ -561,6 +561,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUser", ReplyAction="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUserResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO> ConsultPlayerByIdUserAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultInformation/ConsultUserByUserName", ReplyAction="http://tempuri.org/IConsultInformation/ConsultUserByUserNameResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.UserPOJO ConsultUserByUserName(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultInformation/ConsultUserByUserName", ReplyAction="http://tempuri.org/IConsultInformation/ConsultUserByUserNameResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.UserPOJO> ConsultUserByUserNameAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -620,6 +626,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO> ConsultPlayerByIdUserAsync(int idUser) {
             return base.Channel.ConsultPlayerByIdUserAsync(idUser);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.UserPOJO ConsultUserByUserName(string userName) {
+            return base.Channel.ConsultUserByUserName(userName);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.UserPOJO> ConsultUserByUserNameAsync(string userName) {
+            return base.Channel.ConsultUserByUserNameAsync(userName);
         }
     }
     
