@@ -57,9 +57,11 @@ namespace JeopardyGame.Data.DataAccess
                 {
                     context.Users.Attach(userSaved);
                     context.States.Attach(defaultState);
-                    var newPlayera = context.Players.Add(newPlayer);
+                    newPlayer.User = userSaved;
+                    newPlayer.State = defaultState;
+                    var newPlayerSaved = context.Players.Add(newPlayer);
                     context.SaveChanges();
-                    return newPlayer;
+                    return newPlayerSaved;
                 }
             }
             catch (SqlException sqlE)

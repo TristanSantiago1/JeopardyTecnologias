@@ -71,4 +71,19 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IConsultInformation)consultInfoImple).ConsultUserByIdPlayer(idPlayer);
         }
     }
+
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability 
+    {
+        NotifyUserAvbImple NotifyUserAvbImple = new NotifyUserAvbImple();
+
+        public void PlayerIsAvailable(int idUser)
+        {
+            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsAvailable(idUser);
+        }
+
+        public void PlayerIsNotAvailable(int idUser)
+        {
+            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsNotAvailable(idUser);
+        }
+    }
 }

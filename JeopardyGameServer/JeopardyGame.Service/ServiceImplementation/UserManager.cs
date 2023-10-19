@@ -50,7 +50,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
             }            
         }
-
+        
         private int SavePlayer(PlayerPOJO playerPojoNew)
         {
             if (playerPojoNew == null) return 0;
