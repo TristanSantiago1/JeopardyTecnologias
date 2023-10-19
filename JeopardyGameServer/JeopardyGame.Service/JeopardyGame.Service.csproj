@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveUsers.cs" />
     <Compile Include="InterfacesSevices\IConsultInformation.cs" />
     <Compile Include="InterfacesSevices\IFriendsManager.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />

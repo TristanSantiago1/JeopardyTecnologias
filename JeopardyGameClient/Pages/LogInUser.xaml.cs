@@ -7,13 +7,15 @@ using static System.Windows.Forms.AxHost;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.ServiceModel;
+
 
 namespace JeopardyGame.Pages
 {
     /// <summary>
     /// Lógica de interacción para LogInUser.xaml
     /// </summary>
-    public partial class LogInUser : System.Windows.Controls.Page
+    public partial class LogInUser : System.Windows.Controls.Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback 
     {
         public LogInUser()
         {
@@ -84,7 +86,10 @@ namespace JeopardyGame.Pages
                 proxyServer.Close();
                 if (result == 1)
                 {
-                    
+                    InstanceContext contexto = new InstanceContext(this);
+                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                                        
+                    proxy.PlayerIsAvailable(15);
 
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
@@ -98,6 +103,7 @@ namespace JeopardyGame.Pages
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show("Error connecting to the server, please try again");
 
             }
@@ -141,7 +147,11 @@ namespace JeopardyGame.Pages
             }
 
         }
-        
-        
+
+        public void Response(int status, int idFriend)
+        {
+           ActiveFriends activeFriends = new ActiveFriends();
+            activeFriends.RefreshFriendsList();
+        }
     }
 }

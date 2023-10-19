@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.InterfacesSevices
 {
-    [ServiceContract(CallbackContract = typeof(IStatusPlayerCallBack))]
+
+    [ServiceContract(CallbackContract = typeof(INotifyUserAvailabilityCallBack))]
     public interface INotifyUserAvailability
     {
         [OperationContract(IsOneWay = true)]
@@ -20,9 +21,9 @@ namespace JeopardyGame.Service.InterfacesSevices
 
 
     [ServiceContract]
-    public interface IStatusPlayerCallBack
+    public interface INotifyUserAvailabilityCallBack
     {
         [OperationContract]
-        void Response(int status);
+        void Response(int status, int idFriend);
     }
 }

@@ -24,6 +24,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_INotifyUserAvailability_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -91,6 +99,18 @@
   <wsdl:message name="IConsultInformation_ConsultPlayerByIdUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultPlayerByIdUserResponse" />
   </wsdl:message>
+  <wsdl:message name="INotifyUserAvailability_PlayerIsAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerIsAvailable" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserAvailability_PlayerIsNotAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerIsNotAvailable" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserAvailability_Response_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:Response" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserAvailability_Response_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -135,6 +155,18 @@
     <wsdl:operation name="ConsultPlayerByIdUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUser" message="tns:IConsultInformation_ConsultPlayerByIdUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConsultInformation/ConsultPlayerByIdUserResponse" message="tns:IConsultInformation_ConsultPlayerByIdUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INotifyUserAvailability">
+    <wsdl:operation name="PlayerIsAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable" message="tns:INotifyUserAvailability_PlayerIsAvailable_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlayerIsNotAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable" message="tns:INotifyUserAvailability_PlayerIsNotAvailable_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Response">
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/Response" message="tns:INotifyUserAvailability_Response_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseResponse" message="tns:INotifyUserAvailability_Response_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -239,6 +271,31 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_INotifyUserAvailability" type="tns:INotifyUserAvailability">
+    <wsp:PolicyReference URI="#NetTcpBinding_INotifyUserAvailability_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="PlayerIsAvailable">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="PlayerIsNotAvailable">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Response">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/Response" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
@@ -253,6 +310,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IConsultInformation" binding="tns:NetTcpBinding_IConsultInformation">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_INotifyUserAvailability" binding="tns:NetTcpBinding_INotifyUserAvailability">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,6 +72,8 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IConsultInformation)consultInfoImple).ConsultUserByIdPlayer(idPlayer);
         }
     }
+
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
 
     public partial class ServicesReferenceAuthor : INotifyUserAvailability 
     {

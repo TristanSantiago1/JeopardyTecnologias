@@ -3,6 +3,7 @@ using JeopardyGame.Service.InterfacesSevices;
 using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -16,32 +17,44 @@ namespace JeopardyGame.Service.ServiceImplementation
             ConsultInfoImple consultInfo = new ConsultInfoImple();
             User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
             Player playerConsulted = userManger.GetPlayerByIdUser(userConsulted.IdUser);
-            List<Friend> playerFriends = friends.ConsultFriendsOfUser(playerConsulted);             
+            List<Friend> playerFriends = friends.ConsultFriendsOfUser(playerConsulted);
             List<FriendInfo> friendsInfos = new List<FriendInfo>();
             foreach (Friend friend in playerFriends)
             {
                 FriendInfo userFriend = new FriendInfo();
-                PlayerPOJO playerFriend = new PlayerPOJO();
                 UserPOJO friendPojo = new UserPOJO();
+                int status;
                 if ((friend.Player_IdPlayer == playerConsulted.IdPlayer) && friend.IdFriendState == 2)
                 {
-                    playerFriend = UserInterpreter.FromPlayerEntityToPlayerPojo(userManger.GetPlayerByIdPlayer(friend.PlayerFriend_IdPlayer));
+                    status = GetFriendState(friend.PlayerFriend_IdPlayer);                
                     friendPojo = consultInfo.ConsultUserByIdPlayer(friend.PlayerFriend_IdPlayer);
                 }
                 else
                 {
-                    playerFriend = UserInterpreter.FromPlayerEntityToPlayerPojo(userManger.GetPlayerByIdPlayer(friend.Player_IdPlayer));
+                    status = GetFriendState(friend.Player_IdPlayer);
                     friendPojo = consultInfo.ConsultUserByIdPlayer(friend.Player_IdPlayer);
                 }
                 userFriend.UserName = friendPojo.UserName;
                 userFriend.IdUser = friendPojo.IdUser;
-                userFriend.IdStatus = playerFriend.IdState;
+                userFriend.IdStatus = status;
                 friendsInfos.Add(userFriend);
             }
             return friendsInfos;
-           
+
         }
+
+        private int GetFriendState(int idFriend)
+        {           
+            var channelSaved = ActiveUsers.GetChannelUser(idFriend);
+            if (channelSaved != null)
+            {
+                return 1;
+            }
+            return 2;
+        }
+
     }
+    
 }
 
 

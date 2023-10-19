@@ -622,4 +622,73 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.ConsultPlayerByIdUserAsync(idUser);
         }
     }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.INotifyUserAvailability", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.INotifyUserAvailabilityCallback))]
+    public interface INotifyUserAvailability {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
+        void PlayerIsAvailable(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
+        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable")]
+        void PlayerIsNotAvailable(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable")]
+        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface INotifyUserAvailabilityCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserAvailability/Response", ReplyAction="http://tempuri.org/INotifyUserAvailability/ResponseResponse")]
+        void Response(int status, int idFriend);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface INotifyUserAvailabilityChannel : JeopardyGame.ServidorServiciosJeopardy.INotifyUserAvailability, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class NotifyUserAvailabilityClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.INotifyUserAvailability>, JeopardyGame.ServidorServiciosJeopardy.INotifyUserAvailability {
+        
+        public NotifyUserAvailabilityClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public NotifyUserAvailabilityClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public NotifyUserAvailabilityClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public NotifyUserAvailabilityClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public NotifyUserAvailabilityClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void PlayerIsAvailable(int idUser) {
+            base.Channel.PlayerIsAvailable(idUser);
+        }
+        
+        public System.Threading.Tasks.Task PlayerIsAvailableAsync(int idUser) {
+            return base.Channel.PlayerIsAvailableAsync(idUser);
+        }
+        
+        public void PlayerIsNotAvailable(int idUser) {
+            base.Channel.PlayerIsNotAvailable(idUser);
+        }
+        
+        public System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser) {
+            return base.Channel.PlayerIsNotAvailableAsync(idUser);
+        }
+    }
 }
