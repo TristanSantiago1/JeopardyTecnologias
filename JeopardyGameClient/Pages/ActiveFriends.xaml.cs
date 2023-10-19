@@ -48,19 +48,23 @@ namespace JeopardyGame.Pages
         private void SetFriend()
         {            
             stcFriendList.Orientation = Orientation.Vertical;
-            foreach (var item in friends)
+            if(friends != null)
             {
-                bool state;
-                if (item.IdStatus == 1)
+                foreach (var item in friends)
                 {
-                    state = true;  
+                    bool state;
+                    if (item.IdStatus == 1)
+                    {
+                        state = true;
+                    }
+                    else
+                    {
+                        state = false;
+                    }
+                    stcFriendList.Children.Add(new FriendCard(item.UserName, state, "Invite"));
                 }
-                else
-                {
-                    state = false;
-                }
-                stcFriendList.Children.Add(new FriendCard(item.UserName, state, "Invite"));
             }
+            
         }
         
 
