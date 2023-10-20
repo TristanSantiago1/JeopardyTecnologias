@@ -232,6 +232,10 @@ namespace JeopardyGame.Pages
                 }
             }
         }
+        public static void CleanDictionary()
+        {
+            friendList.Clear();
+        }
 
         public static Dictionary<int, Friend> GetActiveFirendsList()
         {

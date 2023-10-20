@@ -58,5 +58,10 @@ namespace JeopardyGame
             return instance;
         }
 
+        public static void CleanSingleton()
+        {
+            instance = null;
+        }
+
     }
 }

@@ -71,6 +71,7 @@ namespace JeopardyGame.Pages
                 key.SetValue("SelectedLanguage", selectedLanguage);
                 key.Close();
 
+                
                 if (selectedLanguage == "es-MX")
                 {
                     bttEnterGame.Content = JeopardyGame.Properties.Resources.bttEnterGame;
@@ -95,10 +96,12 @@ namespace JeopardyGame.Pages
             confirmationWindow.ShowDialog();
             if (confirmationWindow.closeWindow)
             {
-                InstanceContext contexto = new InstanceContext(this);
-                ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                FriendList.CleanDictionary();
                 UserSingleton us = UserSingleton.GetMainUser();
-                proxy.PlayerIsNotAvailable(us.IdUser, us.IdPlayer);
+                us.proxyForAvailability.PlayerIsNotAvailable(us.IdUser, us.IdPlayer);
+                us.proxyForAvailability.Close();
+                us.proxyForAvailability = null;
+                UserSingleton.CleanSingleton();
                 LogInUser logInPage = new LogInUser();
                 this.NavigationService.Navigate(logInPage);
                 NavigationService.RemoveBackEntry();
