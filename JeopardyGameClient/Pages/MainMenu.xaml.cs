@@ -5,16 +5,19 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using JeopardyGame.Views;
 using System;
+using System.Runtime.Remoting.Contexts;
+using System.ServiceModel;
+using JeopardyGame.ServidorServiciosJeopardy;
 
 namespace JeopardyGame.Pages
 {
     /// <summary>
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class MainMenu : Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
     {
         public MainMenu()
-        {
+        {            
             InitializeComponent();
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
             if (key != null)
@@ -92,12 +95,22 @@ namespace JeopardyGame.Pages
             confirmationWindow.ShowDialog();
             if (confirmationWindow.closeWindow)
             {
+                InstanceContext contexto = new InstanceContext(this);
+                ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                UserSingleton us = UserSingleton.GetMainUser();
+                proxy.PlayerIsNotAvailable(us.IdUser, us.IdPlayer);
                 LogInUser logInPage = new LogInUser();
                 this.NavigationService.Navigate(logInPage);
                 NavigationService.RemoveBackEntry();
             }
         }
 
+        ActiveFriends ActiveFriends = new ActiveFriends();
+
+        public void Response(int status, int idFriend)
+        {
+            ((INotifyUserAvailabilityCallback)ActiveFriends).Response(status, idFriend);
+        }
 
     }
 }

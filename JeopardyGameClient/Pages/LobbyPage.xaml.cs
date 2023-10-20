@@ -20,6 +20,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LobbyPage : Page
     {
+        
         public LobbyPage()
         {
             InitializeComponent();
@@ -32,8 +33,9 @@ namespace JeopardyGame.Pages
 
         private void clicListFriends(object sender, MouseButtonEventArgs e)
         {
-            ActiveFriends friendsListPage = new ActiveFriends();
+            ActiveFriends friendsListPage = LogInUser.ActiveFriendsInstance;
             this.NavigationService.Navigate(friendsListPage);
+            friendsListPage.StartPage();
         }
         private void ShowWarningMessage(String title, String message)
         {

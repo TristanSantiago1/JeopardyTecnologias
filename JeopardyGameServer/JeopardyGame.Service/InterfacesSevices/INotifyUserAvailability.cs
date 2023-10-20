@@ -12,10 +12,10 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface INotifyUserAvailability
     {
         [OperationContract(IsOneWay = true)]
-        void PlayerIsAvailable(int idUser);
+        void PlayerIsAvailable(int idUser, int idPlayer);
 
         [OperationContract(IsOneWay = true)]
-        void PlayerIsNotAvailable(int idUser);
+        void PlayerIsNotAvailable(int idUser, int idPlayer);
     }
 
 

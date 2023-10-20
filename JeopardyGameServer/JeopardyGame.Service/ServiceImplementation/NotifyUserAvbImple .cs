@@ -16,41 +16,46 @@ namespace JeopardyGame.Service.ServiceImplementation
         private int AVAILABLE_STATUS = 1;
         private int PLAYING_STATUS = 2;
       
-        public void PlayerIsAvailable(int idNewActiveUser)
+        public void PlayerIsAvailable(int idNewActiveUser, int idNewActiviePlayer)
         {
-            var channel = OperationContext.Current.GetCallbackChannel<INotifyUserAvailabilityCallBack>();
+            var channel = OperationContext.Current;
             ActiveUsers.RegisterNewUserInDictionary(idNewActiveUser, channel);   
-            Console.WriteLine(idNewActiveUser +" entro " );
-            NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
+            Console.WriteLine(idNewActiveUser + " entro " );
+            NotifyFriends(idNewActiveUser, AVAILABLE_STATUS, idNewActiviePlayer);
         }
 
-        public void PlayerIsNotAvailable(int idUserDisconnecting)
+        public void PlayerIsNotAvailable(int idUserDisconnecting, int idNewActiviePlayer)
         {
             var channel = ActiveUsers.GetChannelUser(idUserDisconnecting);
             if (channel != null)
             {                
                 ActiveUsers.RemoveRegistryFromDictionary(idUserDisconnecting);
-                NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);
+                NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS, idNewActiviePlayer);
                 Console.WriteLine(idUserDisconnecting + " salio ");
             }
         }
 
     
 
-        private void NotifyFriends(int idUser, int status)
+        private void NotifyFriends(int idUser, int status, int idPlayer)
         {
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();
             FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
             UserPOJO user = consultInfoImple.ConsultUserById(idUser);
-            List<FriendInfo> friendsNewUser = friendsManagerImplementation.GetUserFriends(user);           
-            foreach (var friend in friendsNewUser)
+            PlayerPOJO player = consultInfoImple.ConsultPlayerById(idPlayer);
+            List<FriendInfo> friendsNewUser = friendsManagerImplementation.GetUserFriends(user);  
+            if(friendsNewUser != null)
             {
-                var channelSaved = ActiveUsers.GetChannelUser(friend.IdUser);
-                if (channelSaved != null)
+                foreach (var friend in friendsNewUser)
                 {
-                    channelSaved.Response(status, idUser);
+                    var channelSaved = ActiveUsers.GetChannelUser(friend.IdUser);
+                    if (channelSaved != null)
+                    {
+                        channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().Response(status, idUser);
+                    }
                 }
-            }           
+            }
+                    
         }
 
         

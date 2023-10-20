@@ -9,6 +9,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class FriendsManagerImplementation : IFriendsManager
     {
+        private int THEY_ARE_FRIENDS = 2;
         public List<FriendInfo> GetUserFriends(UserPOJO user)
         {
             if (user == null) return null;
@@ -18,20 +19,21 @@ namespace JeopardyGame.Service.ServiceImplementation
             User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
             Player playerConsulted = userManger.GetPlayerByIdUser(userConsulted.IdUser);
             List<Friend> playerFriends = friends.ConsultFriendsOfUser(playerConsulted);
-            List<FriendInfo> friendsInfos = new List<FriendInfo>();
+            if (playerFriends == null) return null;
+            List<FriendInfo> friendsInfos = new List<FriendInfo>();            
             foreach (Friend friend in playerFriends)
             {
                 FriendInfo userFriend = new FriendInfo();
                 UserPOJO friendPojo = new UserPOJO();
                 int status;
-                if ((friend.Player_IdPlayer == playerConsulted.IdPlayer) && friend.IdFriendState == 2)
+                if ((friend.Player_IdPlayer == playerConsulted.IdPlayer) && friend.IdFriendState == THEY_ARE_FRIENDS)
                 {
-                    status = GetFriendState(friend.PlayerFriend_IdPlayer);                
+                    status = GetFriendStatus(friend.PlayerFriend_IdPlayer);                
                     friendPojo = consultInfo.ConsultUserByIdPlayer(friend.PlayerFriend_IdPlayer);
                 }
                 else
                 {
-                    status = GetFriendState(friend.Player_IdPlayer);
+                    status = GetFriendStatus(friend.Player_IdPlayer);
                     friendPojo = consultInfo.ConsultUserByIdPlayer(friend.Player_IdPlayer);
                 }
                 userFriend.UserName = friendPojo.UserName;
@@ -43,9 +45,11 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         }
 
-        private int GetFriendState(int idFriend)
-        {           
-            var channelSaved = ActiveUsers.GetChannelUser(idFriend);
+        private int GetFriendStatus(int idFriend)
+        {
+            ConsultInfoImple consultInfo = new ConsultInfoImple();
+            UserPOJO userPOJO = consultInfo.ConsultUserByIdPlayer(idFriend);
+            var channelSaved = ActiveUsers.GetChannelUser(userPOJO.IdUser);
             if (channelSaved != null)
             {
                 return 1;

@@ -85,14 +85,14 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         NotifyUserAvbImple NotifyUserAvbImple = new NotifyUserAvbImple();
 
-        public void PlayerIsAvailable(int idUser)
+        public void PlayerIsAvailable(int idUser, int idPlayer)
         {
-            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsAvailable(idUser);
+            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsAvailable(idUser, idPlayer);
         }
 
-        public void PlayerIsNotAvailable(int idUser)
+        public void PlayerIsNotAvailable(int idUser, int idPlayer)
         {
-            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsNotAvailable(idUser);
+            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsNotAvailable(idUser, idPlayer);
         }
     }
 }

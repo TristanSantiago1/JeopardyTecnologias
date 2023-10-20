@@ -9,14 +9,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.ServiceModel;
 using JeopardyGame.ServidorServiciosJeopardy;
+using System.Collections.Generic;
 
 namespace JeopardyGame.Pages
 {
     /// <summary>
     /// Lógica de interacción para LogInUser.xaml
     /// </summary>
-    public partial class LogInUser : System.Windows.Controls.Page 
+    public partial class LogInUser : System.Windows.Controls.Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
     {
+        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
         public LogInUser()
         {
             InitializeComponent();
@@ -89,10 +91,17 @@ namespace JeopardyGame.Pages
                     ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = new ServidorServiciosJeopardy.ConsultInformationClient();
                     UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userName);
                     PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
-                    InstanceSingleton(currentUser, currentPlayer);
+
+                    InstanceContext contexto = new InstanceContext(this);
+                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+
+                    InstanceSingleton(currentUser, currentPlayer, proxy);            
+                    UserSingleton us = UserSingleton.GetMainUser();
+                    us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
+
                     //Console.WriteLine(currentUser.IdUser);
                     //MessageBox.Show(currentUser.IdUser.ToString());
-                   
+
 
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
@@ -150,7 +159,7 @@ namespace JeopardyGame.Pages
             }
 
         }
-        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer)
+        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer, NotifyUserAvailabilityClient context)
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             userSingleton.IdUser = currentUser.IdUser;
@@ -163,6 +172,71 @@ namespace JeopardyGame.Pages
             userSingleton.NoReports = currenPlayer.NoReports;
             userSingleton.IdState = currenPlayer.IdState;
             userSingleton.IdCurrentAvatar = currenPlayer.IdActualAvatar;
+            userSingleton.proxyForAvailability = context;
+        }
+       
+
+        public void Response(int status, int idFriend)
+        {
+            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).Response(status, idFriend);
+        }
+
+    }
+    public partial class Friend()
+    {
+        public int IdUser { get; set; }
+        public string Name { get; set; }
+        public int idStatus { get; set; }
+    }
+    public partial class FriendList()
+    {
+        private static Dictionary<int, Friend> friendList = new Dictionary<int, Friend>();
+        public static void RegisterNewFriendInDictionary(int idUser, Friend friend)
+        {
+            if (!friendList.ContainsKey(idUser))
+            {
+                friendList.Add(idUser, friend);
+            }
+        }
+
+        public static Friend GetFriend(int idUser)
+        {
+            foreach (var item in friendList)
+            {
+                if (item.Key == idUser)
+                {
+                    return item.Value;
+                }
+            }
+            return null;
+        }
+
+        public static void RemoveRegistryFromDictionary(int idUser)
+        {
+            if (friendList.ContainsKey(idUser))
+            {
+                friendList.Remove(idUser);
+            }
+        }
+
+        public static void ChangeStatus(int idUser, int idStatus)
+        {
+            if (friendList.ContainsKey(idUser))
+            {
+                foreach (var item in friendList)
+                {
+                    if (item.Key == idUser)
+                    {
+                        item.Value.idStatus = idStatus;
+                    }
+                }
+            }
+        }
+
+        public static Dictionary<int, Friend> GetActiveFirendsList()
+        {
+            return friendList;
         }
     }
 }
+

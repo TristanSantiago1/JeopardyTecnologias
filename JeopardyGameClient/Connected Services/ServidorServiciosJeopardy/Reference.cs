@@ -642,16 +642,16 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     public interface INotifyUserAvailability {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
-        void PlayerIsAvailable(int idUser);
+        void PlayerIsAvailable(int idUser, int idPlayer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
-        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idUser);
+        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idUser, int idPlayer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable")]
-        void PlayerIsNotAvailable(int idUser);
+        void PlayerIsNotAvailable(int idUser, int idPlayer);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable")]
-        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser);
+        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser, int idPlayer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -689,20 +689,20 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void PlayerIsAvailable(int idUser) {
-            base.Channel.PlayerIsAvailable(idUser);
+        public void PlayerIsAvailable(int idUser, int idPlayer) {
+            base.Channel.PlayerIsAvailable(idUser, idPlayer);
         }
         
-        public System.Threading.Tasks.Task PlayerIsAvailableAsync(int idUser) {
-            return base.Channel.PlayerIsAvailableAsync(idUser);
+        public System.Threading.Tasks.Task PlayerIsAvailableAsync(int idUser, int idPlayer) {
+            return base.Channel.PlayerIsAvailableAsync(idUser, idPlayer);
         }
         
-        public void PlayerIsNotAvailable(int idUser) {
-            base.Channel.PlayerIsNotAvailable(idUser);
+        public void PlayerIsNotAvailable(int idUser, int idPlayer) {
+            base.Channel.PlayerIsNotAvailable(idUser, idPlayer);
         }
         
-        public System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser) {
-            return base.Channel.PlayerIsNotAvailableAsync(idUser);
+        public System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser, int idPlayer) {
+            return base.Channel.PlayerIsNotAvailableAsync(idUser, idPlayer);
         }
     }
 }

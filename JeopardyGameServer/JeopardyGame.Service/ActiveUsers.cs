@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,10 +10,10 @@ namespace JeopardyGame.Service
 {
     public  class ActiveUsers
     {
-        private static Dictionary<int, INotifyUserAvailabilityCallBack> activeUsers = new Dictionary<int, INotifyUserAvailabilityCallBack>();
+        private static Dictionary<int, OperationContext> activeUsers = new Dictionary<int, OperationContext>();
 
 
-        public static void RegisterNewUserInDictionary(int idUser, INotifyUserAvailabilityCallBack canal )
+        public static void RegisterNewUserInDictionary(int idUser, OperationContext canal)
         {
             if (!activeUsers.ContainsKey(idUser))
             {
@@ -20,7 +21,7 @@ namespace JeopardyGame.Service
             }
         }
 
-        public static INotifyUserAvailabilityCallBack GetChannelUser(int idUser)
+        public static OperationContext GetChannelUser(int idUser)
         {
             foreach (var item in activeUsers)
             {
@@ -40,7 +41,7 @@ namespace JeopardyGame.Service
             }
         }
 
-        public Dictionary<int, INotifyUserAvailabilityCallBack> GetActiveFirendsList() 
+        public Dictionary<int, OperationContext> GetActiveFirendsList() 
         { 
             return activeUsers; 
         }

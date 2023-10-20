@@ -26,13 +26,13 @@ namespace JeopardyGame.Pages
         FriendInfo[] friends;
         public ActiveFriends()
         {
-            InitializeComponent();
+            InitializeComponent();                                   
+        }
+
+        public void StartPage()
+        {
             GetFriend();
             SetFriend();
-            InstanceContext contexto = new InstanceContext(this);
-            ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
-            UserSingleton us = UserSingleton.GetMainUser();
-            proxy.PlayerIsAvailable(us.IdUser);
         }
 
         private void ClicCloseListFriends(object sender, MouseButtonEventArgs e)
@@ -49,17 +49,29 @@ namespace JeopardyGame.Pages
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             UserPOJO user = proxyUser.ConsultUserById(userSingleton.IdUser);    
             friends = proxyFriend.GetUserFriends(user);
+            foreach (var item in friends)
+            {
+                Friend f = new Friend();
+                f.IdUser=item.IdUser;
+                f.Name = item.UserName;
+                f.idStatus = item.IdStatus;
+                FriendList.RegisterNewFriendInDictionary(item.IdUser,f);
+            }
         }
 
+
+
         private void SetFriend()
-        {            
+        {   
+            stcFriendList.Children.Clear();
             stcFriendList.Orientation = Orientation.Vertical;
-            if(friends != null)
-            {
-                foreach (var item in friends)
+            Dictionary<int, Friend> friendList = FriendList.GetActiveFirendsList();
+            if (friendList != null)
+            {               
+                foreach (var item in friendList)
                 {
                     bool state;
-                    if (item.IdStatus == 1)
+                    if (item.Value.idStatus == 1)
                     {
                         state = true;
                     }
@@ -67,22 +79,19 @@ namespace JeopardyGame.Pages
                     {
                         state = false;
                     }
-                    stcFriendList.Children.Add(new FriendCard(item.UserName, state, "Invite"));
+                    stcFriendList.Children.Add(new FriendCard(item.Value.Name, state, "Invite"));
+                    
                 }
             }
             
         }
-        
-
-        public void RefreshFriendsList()
-        {
-            GetFriend();
-            SetFriend();
-        }
-
         public void Response(int status, int idFriend)
         {
-            GetFriend();
+            Dictionary<int, Friend> friendList = FriendList.GetActiveFirendsList();          
+            if (friendList.ContainsKey(idFriend))
+            {
+                FriendList.ChangeStatus(idFriend, status);
+            }
             SetFriend();
         }
     }

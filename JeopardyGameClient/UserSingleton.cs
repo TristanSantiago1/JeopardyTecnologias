@@ -1,6 +1,8 @@
-﻿using System;
+﻿using JeopardyGame.ServidorServiciosJeopardy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +21,7 @@ namespace JeopardyGame
         public int NoReports { get; set; }
         public int IdCurrentAvatar { get; set; }
         public int IdState { get; set; }
+        public NotifyUserAvailabilityClient proxyForAvailability { get; set; }
 
         private UserSingleton() { }
         private UserSingleton(int idUser, String name, String userName, String email, String password, 
