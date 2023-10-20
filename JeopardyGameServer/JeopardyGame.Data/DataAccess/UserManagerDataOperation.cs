@@ -153,21 +153,40 @@ namespace JeopardyGame.Data.DataAccess
 
         public bool VerifyPassword(string password, string hashedPassword)
         {
-            byte[] hashBytes = Convert.FromBase64String(hashedPassword);
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes, 0, salt, 0, 16);
-            var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-            byte[] hash = passBaseKeyDerFun2.GetBytes(20);
-            for (int i = 0; i < 20; i++)
+            try
             {
-                if (hashBytes[i + 16] != hash[i])
-                    return false;
-            }
+                byte[] hashBytes = Convert.FromBase64String(hashedPassword);
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
+                var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
+                byte[] hash = passBaseKeyDerFun2.GetBytes(20);
+                for (int i = 0; i < 20; i++)
+                {
+                    if (hashBytes[i + 16] != hash[i])
+                        return false;
+                }
 
-            return true;
+                return true;
+            }
+            catch (SqlException sqlE)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException entityEx)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            }
+            return false;
         }
 
-        public int ValidateIfEmailExist(String email)
+            public int ValidateIfEmailExist(String email)
         {
             int EXIST = 0;
             int NOT_EXIST = 1;

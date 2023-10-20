@@ -174,4 +174,42 @@
         <Setter Property="VerticalContentAlignment" Value="center"/>
     </Style>
 
+    <!-- RadioButton kind of game  style -->
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid Background="Transparent">
+                        <Ellipse Name="border"
+                             Width="30"
+                            Height="30"
+                            Stroke="#592C75"
+                             StrokeThickness="1"
+                             Fill="White"/>
+                            <ContentPresenter
+                        Margin="25,0,0,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        Content="{TemplateBinding Content}"
+                        RecognizesAccessKey="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="border" Property="Fill" Value="#592C75"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Storyboard x:Key="SlideInFromRight">
+        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
+        <DoubleAnimation Storyboard.TargetProperty="TranslateTransform.X" To="0" Duration="0:0:0.5">
+            <DoubleAnimation.EasingFunction>
+                <BackEase EasingMode="EaseInOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+
 </ResourceDictionary>

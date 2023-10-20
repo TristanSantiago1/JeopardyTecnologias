@@ -8,30 +8,32 @@
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="LobbyPage">
-    <Viewbox Stretch="Fill">
-        <Grid Height="751">
+
+    <Grid Height="751" RenderTransformOrigin="0.522,0.558">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/BackGround.jpg">
             </ImageBrush>
 
         </Grid.Background>
-            <Image HorizontalAlignment="Left" Height="69" Margin="1137,247,0,0" 
+        <Image HorizontalAlignment="Left" Height="69" Margin="1112,244,0,0" 
                VerticalAlignment="Top" Width="61" Source="/Images/FriendsIcon.png" MouseDown="clicListFriends" RenderTransformOrigin="4.252,2.317"/>
-        <Image HorizontalAlignment="Left" Height="217" 
-               Width="374" Margin="46,0,0,0" VerticalAlignment="Top" 
+        <Image HorizontalAlignment="Left" Height="229" 
+               Width="400" Margin="46,0,0,0" VerticalAlignment="Top" 
                Source="/Images/logoJeopardy.png" RenderTransformOrigin="0.914,0.526"/>
-        <Label x:Name="lblCodeRoom" Content="Código de sala" Style="{StaticResource labelStyleSimple}" Margin="548,53,0,0"/>
-        <Label x:Name="lblModalityGame" Content="Modalidad de juego:" Style="{StaticResource labelStyleSimple}" HorizontalAlignment="Left" Margin="94,247,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblPlayersInGame" Content="Jugadores en partida:" Style="{StaticResource labelStyleSimple}" Margin="94,376,0,0"/>
+        <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeRoom}" Style="{StaticResource labelStyleSimple}" Margin="576,39,0,0" Height="48" Width="228"/>
+        <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="94,247,0,0"/>
+        <Label x:Name="lblPlayersInGame" Content = "{x:Static p:Resources.lblPlayersInGame}" Style="{StaticResource labelStyleSimple}" Margin="94,376,0,0"/>
         <GridSplitter HorizontalAlignment="Left" Height="141" Margin="674,454,0,0" VerticalAlignment="Top" Width="5"/>
-        <Label x:Name="lblListOfFriends" Content="Lista amigos" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1108,320,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="bttStartGame" Content="Iniciar partida" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="845,655,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
-            <Button x:Name="bttCancelGame" Content="Cancelar" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="1049,654,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
+        <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="clicListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1090,310,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="856,655,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
+        <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="1045,655,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
+        <RadioButton x:Name="rdbIndividual" Content = "{x:Static p:Resources.rdbIndividual}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" HorizontalAlignment="Left" Margin="535,312,0,0" VerticalAlignment="Top" Height="50" Width="407"/>
+        <RadioButton x:Name="rdbTeam" Content = "{x:Static p:Resources.rdbTeam}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" HorizontalAlignment="Left" Margin="179,312,0,0" VerticalAlignment="Top" Height="49" Width="380" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked">
 
-
+        </RadioButton>
 
     </Grid>
 
-    </Viewbox>
+
 
 </Page>

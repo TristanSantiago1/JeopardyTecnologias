@@ -28,7 +28,7 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
         {
-            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
+            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.tbxSignOutGame);
         }
 
         private void clicListFriends(object sender, MouseButtonEventArgs e)
@@ -52,6 +52,11 @@ namespace JeopardyGame.Pages
                 this.NavigationService.Navigate(mainMenuPage);
                 NavigationService.RemoveBackEntry();
             }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
     
