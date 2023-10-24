@@ -27,7 +27,6 @@ namespace JeopardyGame.Service.InterfacesSevices
         int SentEmailCodeConfirmation(String email, String subject, String body);
         }
 
-
         [DataContract]
         public class UserPOJO
         {
@@ -48,29 +47,31 @@ namespace JeopardyGame.Service.InterfacesSevices
             [DataMember]
             public String Password { get { return password; } set { password = value; } }
         }
-    [DataContract]
-    public class PlayerPOJO
-    {
-        private int idPlayer;
-        private int generalPoints;
-        private int noReports;
-        private int idUser;
-        private int idState;
-        private int idActualAvatar;
 
-        [DataMember]
-        public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
-        [DataMember]
-        public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
-        [DataMember]
-        public int NoReports { get { return noReports; } set { noReports = value; } }
-        [DataMember]
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        [DataMember]
-        public int IdState { get { return idState; } set { idState = value; } }
-        [DataMember]
-        public int IdActualAvatar { get { return  idActualAvatar; } set {  idActualAvatar = value; } }
-    }
+        [DataContract]
+        public class PlayerPOJO
+        {
+            private int idPlayer;
+            private int generalPoints;
+            private int noReports;
+            private int idUser;
+            private int idState;
+            private int idActualAvatar;
+
+            [DataMember]
+            public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
+            [DataMember]
+            public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
+            [DataMember]
+            public int NoReports { get { return noReports; } set { noReports = value; } }
+            [DataMember]
+            public int IdUser { get { return idUser; } set { idUser = value; } }
+            [DataMember]
+            public int IdState { get { return idState; } set { idState = value; } }
+            [DataMember]
+            public int IdActualAvatar { get { return idActualAvatar; } set { idActualAvatar = value; } }
+        }
+
         [DataContract]
         public class UserValidate
         {

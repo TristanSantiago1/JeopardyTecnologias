@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -51,11 +52,11 @@ namespace JeopardyGame.Pages
             friends = proxyFriend.GetUserFriends(user);
             foreach (var item in friends)
             {
-                Friend f = new Friend();
-                f.IdUser=item.IdUser;
-                f.Name = item.UserName;
-                f.idStatus = item.IdStatus;
-                FriendList.RegisterNewFriendInDictionary(item.IdUser,f);
+                Friend activeFriend = new Friend();
+                activeFriend.IdUser=item.IdUser;
+                activeFriend.Name = item.UserName;
+                activeFriend.idStatus = item.IdStatus;
+                FriendList.RegisterNewFriendInDictionary(item.IdUser,activeFriend);
             }
             proxyFriend.Close();
             proxyUser.Close();
@@ -84,6 +85,7 @@ namespace JeopardyGame.Pages
                 }
             }            
         }
+
         public void Response(int status, int idFriend)
         {
             Dictionary<int, Friend> friendList = FriendList.GetActiveFirendsList();          

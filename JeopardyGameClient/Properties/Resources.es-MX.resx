@@ -126,6 +126,9 @@
   <data name="bttAccept" xml:space="preserve">
     <value>Aceptar</value>
   </data>
+  <data name="bttCancelGame" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
   <data name="bttCancellAction" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="bttSaveUser" xml:space="preserve">
     <value>Guardar</value>
   </data>
+  <data name="bttStartGame" xml:space="preserve">
+    <value>Iniciar partida</value>
+  </data>
   <data name="EmailCodeDescrip" xml:space="preserve">
     <value>es el codigo para que te verifiques en Jeopardy, rapido, ingresalo en el apartado de codigo y empieza a divertirte.</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="lblCodeDescrip" xml:space="preserve">
     <value>Codigo :</value>
+  </data>
+  <data name="lblCodeRoom" xml:space="preserve">
+    <value>Código de sala</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Correo :</value>
@@ -164,6 +173,12 @@
   </data>
   <data name="lblInvalidEmail" xml:space="preserve">
     <value>El correo electronico no es valido.</value>
+  </data>
+  <data name="lblListOfFriends" xml:space="preserve">
+    <value>Lista amigos</value>
+  </data>
+  <data name="lblModalityGame" xml:space="preserve">
+    <value>Modalidad de juego:</value>
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre :</value>
@@ -195,6 +210,9 @@
   <data name="lblPasswordWrong" xml:space="preserve">
     <value>Por favor ingresa tu contraseña</value>
   </data>
+  <data name="lblPlayersInGame" xml:space="preserve">
+    <value>Jugadores en partida:</value>
+  </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
     <value>Este correo electronico ya ha sido registrado.</value>
   </data>
@@ -213,8 +231,20 @@
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>
   </data>
+  <data name="rdbIndividual" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+  <data name="rdbTeam" xml:space="preserve">
+    <value>Equipo</value>
+  </data>
   <data name="SentEmailIssue" xml:space="preserve">
     <value>Ocurrio un problema al enviar el codigó de verificación, intentelo de nuevo o verifique su correo.</value>
+  </data>
+  <data name="tbxSignOut" xml:space="preserve">
+    <value>¿Estás seguro de que deseas salir de Jeopardy?</value>
+  </data>
+  <data name="tbxSignOutGame" xml:space="preserve">
+    <value>¿Estás seguro de que deseas cancelar la partida?</value>
   </data>
   <data name="txbCodeInstructions" xml:space="preserve">
     <value>Se ha enviado un codigo a tu correo electronico, por favor, revisalo e ingresa el codigo.</value>

@@ -57,7 +57,7 @@ namespace JeopardyGame.Pages
         }
         private void ClicSingOut(object sender, MouseButtonEventArgs e)
         {
-            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
+            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.tbxSignOut);
         }
         
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

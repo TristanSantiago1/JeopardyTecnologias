@@ -18,8 +18,6 @@ namespace JeopardyGame.Service.InterfacesSevices
         void PlayerIsNotAvailable(int idUser, int idPlayer);
     }
 
-
-
     [ServiceContract]
     public interface INotifyUserAvailabilityCallBack
     {

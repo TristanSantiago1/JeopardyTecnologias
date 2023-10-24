@@ -6,24 +6,22 @@
         xmlns:local="clr-namespace:JeopardyGame.DialogWindows"
         xmlns:p="clr-namespace:JeopardyGame.Properties"
         mc:Ignorable="d"
-        Title="Error"  Height="150" Width="330" ResizeMode="NoResize">
+        Title="Error"  Height="300" Width="600" ResizeMode="NoResize">
     <Viewbox>
-    <Grid Margin="0,0,0,-6" Background="#FFB59090">
+        <Grid Background="White" Height="188">
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
-            <!-- Contenido de la pantalla de error -->
-            <Border BorderBrush="Red" BorderThickness="2" Padding="20" CornerRadius="10" >
-                <StackPanel Margin="78,-5,17,16" >
-                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="137" Margin="0,0,80,0"/>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
+                <!-- Contenido de la pantalla de error -->
+                <StackPanel Margin="76,11,19,0" >
                     <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="255" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="212"/>
                 </StackPanel>
-            </Border>
-            <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="1" Width="68" Margin="166,109,166,8"  >
-                <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttCancellAction}" FontStretch="Expanded" Click="AcceptButton_Click"
-         Style="{StaticResource ButtonConfirmationStyle}" />
-            </Border>
+                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Width="68" Margin="166,109,166,8"  >
+                    <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttCancellAction}" FontStretch="Expanded" Click="AcceptButton_Click"
+         Style="{StaticResource ButtonConfirmationStyle}" Background="Red" Margin="8,-2,-21,-4" />
+                </Border>
+            </Grid>
+            <Image HorizontalAlignment="Left" Height="80" Margin="32,0,0,0" VerticalAlignment="Center" Width="81" Source="/Images/ErrorIcon.png"/>
         </Grid>
-        <Image HorizontalAlignment="Left" Height="60" Margin="0,30,0,0" VerticalAlignment="Top" Width="67" Source="/Images/ErrorImage.png"/>
-    </Grid>
     </Viewbox>
 </Window>

@@ -59,7 +59,6 @@ namespace JeopardyGame.Pages
                 LblWrongUserName.Visibility = Visibility.Collapsed;
             }
 
-
             if (string.IsNullOrEmpty(password))
             {
                 lblPasswordWrong.Content = JeopardyGame.Properties.Resources.lblPasswordWrong;
@@ -88,20 +87,18 @@ namespace JeopardyGame.Pages
                 proxyServer.Close();
                 if (result == 1)
                 {
-                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = new ServidorServiciosJeopardy.ConsultInformationClient();
+                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = 
+                        new ServidorServiciosJeopardy.ConsultInformationClient();
                     UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userName);
                     PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
 
                     InstanceContext contexto = new InstanceContext(this);
-                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxyChannelCallback = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = 
+                        new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
 
                     InstanceSingleton(currentUser, currentPlayer, proxyChannelCallback);            
                     UserSingleton us = UserSingleton.GetMainUser();
                     us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
-
-                    //Console.WriteLine(currentUser.IdUser);
-                    //MessageBox.Show(currentUser.IdUser.ToString());
-
 
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
@@ -126,7 +123,6 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(userRegistrerPage);
             NavigationService.RemoveBackEntry();        
         }
-
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (LanguajeComboBox.SelectedItem != null)
@@ -201,48 +197,65 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public static Friend GetFriend(int idUser)
+        public partial class Friend()
         {
-            foreach (var item in friendList)
+            public int IdUser { get; set; }
+            public string Name { get; set; }
+            public int idStatus { get; set; }
+        }
+        public partial class FriendList()
+        {
+            private static Dictionary<int, Friend> friendList = new Dictionary<int, Friend>();
+            public static void RegisterNewFriendInDictionary(int idUser, Friend friend)
             {
-                if (item.Key == idUser)
+                if (!friendList.ContainsKey(idUser))
                 {
-                    return item.Value;
+                    friendList.Add(idUser, friend);
                 }
             }
-            return null;
-        }
 
-        public static void RemoveRegistryFromDictionary(int idUser)
-        {
-            if (friendList.ContainsKey(idUser))
-            {
-                friendList.Remove(idUser);
-            }
-        }
-
-        public static void ChangeStatus(int idUser, int idStatus)
-        {
-            if (friendList.ContainsKey(idUser))
+            public static Friend GetFriend(int idUser)
             {
                 foreach (var item in friendList)
                 {
                     if (item.Key == idUser)
                     {
-                        item.Value.idStatus = idStatus;
+                        return item.Value;
+                    }
+                }
+                return null;
+            }
+
+            public static void RemoveRegistryFromDictionary(int idUser)
+            {
+                if (friendList.ContainsKey(idUser))
+                {
+                    friendList.Remove(idUser);
+                }
+            }
+
+            public static void ChangeStatus(int idUser, int idStatus)
+            {
+                if (friendList.ContainsKey(idUser))
+                {
+                    foreach (var item in friendList)
+                    {
+                        if (item.Key == idUser)
+                        {
+                            item.Value.idStatus = idStatus;
+                        }
                     }
                 }
             }
-        }
-        public static void CleanDictionary()
-        {
-            friendList.Clear();
-        }
+            public static void CleanDictionary()
+            {
+                friendList.Clear();
+            }
 
-        public static Dictionary<int, Friend> GetActiveFirendsList()
-        {
-            return friendList;
+            public static Dictionary<int, Friend> GetActiveFirendsList()
+            {
+                return friendList;
+            }
         }
-    }
-}
+     }
 

@@ -1,12 +1,9 @@
-﻿using JeopardyGame.Helpers;
-using JeopardyGame.ServidorServiciosJeopardy;
+﻿using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,21 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace JeopardyGame.Pages
 {
     /// <summary>
     /// Lógica de interacción para CodeConfirmation.xaml
     /// </summary>
-    public partial class CodeConfirmation : Page, INotifyUserAvailabilityCallback
+    public partial class CodeConfirmation : Page
     {
-        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
-        private Timer timer; 
-        private int leftTime = 180;
+        private DispatcherTimer timer;
+        private int leftTime = 360;
         private String currentEmail;
         private String currentCode;
-        private String resentCodeMessage;
         private static Random random = new Random();
         UserPOJO userToSave;
         public CodeConfirmation(String emailToConfirm, UserPOJO user)
@@ -39,7 +33,6 @@ namespace JeopardyGame.Pages
             this.userToSave = user;
             this.currentEmail = emailToConfirm;
             InitializeComponent();
-            resentCodeMessage = lblResentCode.Content.ToString();
             GenerateCode();
             StartTimer();
             SentEmail(currentEmail);
@@ -49,7 +42,9 @@ namespace JeopardyGame.Pages
         private void SentEmail(String email)
         {
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-            int sentEmailSucc = proxyServer.SentEmailCodeConfirmation(email, JeopardyGame.Properties.Resources.EmailSubjectCode, currentCode + " " + JeopardyGame.Properties.Resources.EmailCodeDescrip);
+            int sentEmailSucc = proxyServer.SentEmailCodeConfirmation
+                (email, JeopardyGame.Properties.Resources.EmailSubjectCode, currentCode + " " + 
+                JeopardyGame.Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc == 0 )
             {
                 ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.SentEmailIssue);
@@ -62,56 +57,44 @@ namespace JeopardyGame.Pages
             char altChar1 = (char)random.Next('A', 'Z' + 1);
             char altChar2 = (char)random.Next('A', 'Z' + 1);
             string codeGenerated = $"{altChar1}{altChar2}{altNumber:D4}";
-            MessageBox.Show(codeGenerated);
             currentCode = codeGenerated;
         }
 
         private void StartTimer()
         {
-            timer = new Timer(1000);
-            timer.Elapsed += TimerTick;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
         }
 
-        private void TimerTick(object sender, ElapsedEventArgs e)
-        {           
-            Dispatcher.Invoke(() =>
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (leftTime > 0)
             {
                 leftTime--;
-                lblResentCode.Content = resentCodeMessage + leftTime;
-                
-                if (leftTime <= 0)
-                {
-                    timer.Stop();                    
-                }
-            });
+                lblResentCode.Content = lblResentCode.Content + " " + leftTime;
+            }
+            else
+            {               
+                timer.Stop();
+            }
         }
            
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Equals(currentCode))
-            {                
-                String encryptedPassword = EncryptationClass.EncryptPassword(userToSave.Password.ToString().Trim());
+            {
+                Helpers.EncryptationClass encryptation = new Helpers.EncryptationClass();
+                String encryptedPassword = encryptation.EncryptPassword(userToSave.Password.ToString().Trim());
                 userToSave.Password = encryptedPassword;
                 userToSave.IdUser = 0;
                 UserManagerClient proxyServer = new UserManagerClient();
                 int idUsuario = proxyServer.SaveUser(userToSave);
                 if (idUsuario != 0)
                 {                    
-                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
-                    
-                    ConsultInformationClient proxyConsult = new ConsultInformationClient();
-                    UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userToSave.UserName);
-                    PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
-                    InstanceContext contexto = new InstanceContext(this);
-                    NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(contexto);
-                    InstanceSingleton(currentUser, currentPlayer, proxyChannelCallback);
-                    UserSingleton userSingletonInstance = UserSingleton.GetMainUser();
-                    userSingletonInstance.proxyForAvailability.PlayerIsAvailable(userSingletonInstance.IdUser, userSingletonInstance.IdPlayer);
-                    proxyServer.Close();
-                    proxyConsult.Close();
+                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, 
+                        JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
                     MainMenu lobby = new MainMenu();
                     this.NavigationService.Navigate(lobby);
                     NavigationService.RemoveBackEntry();
@@ -119,7 +102,8 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
+                        JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
                 }
             }
             else
@@ -138,13 +122,12 @@ namespace JeopardyGame.Pages
 
         private void ResentCode(object sender, MouseButtonEventArgs e)
         {
-            if (leftTime <= 0)
+            if (leftTime == 0)
             {
                 currentCode = null;
-                GenerateCode();                
-                leftTime = 180;
-                StartTimer();
+                GenerateCode();
                 SentEmail(currentEmail);
+                StartTimer();
             }
             
         }
@@ -184,26 +167,6 @@ namespace JeopardyGame.Pages
             {
                 bttSaveUser.IsEnabled=false;
             }
-        }
-        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer, NotifyUserAvailabilityClient context)
-        {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            userSingleton.IdUser = currentUser.IdUser;
-            userSingleton.Name = currentUser.Name;
-            userSingleton.UserName = currentUser.UserName;
-            userSingleton.Email = currentUser.EmailAddress;
-            userSingleton.Password = currentUser.Password;
-            userSingleton.IdPlayer = currenPlayer.IdPlayer;
-            userSingleton.GeneralPoints = currenPlayer.GeneralPoints;
-            userSingleton.NoReports = currenPlayer.NoReports;
-            userSingleton.IdState = currenPlayer.IdState;
-            userSingleton.IdCurrentAvatar = currenPlayer.IdActualAvatar;
-            userSingleton.proxyForAvailability = context;
-        }
-
-        public void Response(int status, int idFriend)
-        {
-            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).Response(status, idFriend);
         }
     }
 

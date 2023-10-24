@@ -19,7 +19,6 @@ namespace JeopardyGame.Data.DataAccess
 {
     public class UserManagerDataOperation
     {
-
         public User SaveUserInDataBase(User user)
         {
             if (user == null) return null;
@@ -76,7 +75,6 @@ namespace JeopardyGame.Data.DataAccess
             return null;
         }
 
-
         public User GetUserById(int idUser)
         {
             if (idUser == 0) return null;
@@ -111,7 +109,6 @@ namespace JeopardyGame.Data.DataAccess
             }
         }
 
-
         public Player GetPlayerByIdUser(int idUser)
         {
             using (var context = new JeopardyDBContainer())
@@ -130,7 +127,6 @@ namespace JeopardyGame.Data.DataAccess
             }
 
         }
-
 
         public State GetStateById(int idSatate)
         {
@@ -168,18 +164,37 @@ namespace JeopardyGame.Data.DataAccess
 
         public bool VerifyPassword(string password, string hashedPassword)
         {
-            byte[] hashBytes = Convert.FromBase64String(hashedPassword);
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes, 0, salt, 0, 16);
-            var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-            byte[] hash = passBaseKeyDerFun2.GetBytes(20);
-            for (int i = 0; i < 20; i++)
+            try
             {
-                if (hashBytes[i + 16] != hash[i])
-                    return false;
-            }
+                byte[] hashBytes = Convert.FromBase64String(hashedPassword);
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
+                var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
+                byte[] hash = passBaseKeyDerFun2.GetBytes(20);
+                for (int i = 0; i < 20; i++)
+                {
+                    if (hashBytes[i + 16] != hash[i])
+                        return false;
+                }
 
-            return true;
+                return true;
+            }
+            catch (SqlException sqlE)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException entityEx)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler exceptionHandler = new ExceptionHandler();
+                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            }
+            return false;
         }
 
         public int ValidateIfEmailExist(String email)
@@ -195,7 +210,7 @@ namespace JeopardyGame.Data.DataAccess
                     bool exist = context.Users.Any(u => u.EmailAddress == email);
                     if (!exist)
                     {
-                        return NOT_EXIST;                        
+                        return NOT_EXIST;
                     }
                     return EXIST;
                 }
@@ -213,7 +228,7 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return ERROR;
-        }
+        }   
         public int ValidateIfUserNameExist(String userName)
         {
             int EXIST = 0;
