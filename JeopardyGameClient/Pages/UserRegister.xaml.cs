@@ -59,17 +59,23 @@ namespace JeopardyGame.Pages
 
         private void CreateRuleLabels()
         {
-            Label PasswordLengthRule = new Label(); PasswordLengthRule.Content = JeopardyGame.Properties.Resources.lblPassLengthRuleDesc;
+            Label PasswordLengthRule = new Label(); PasswordLengthRule.Content = 
+                JeopardyGame.Properties.Resources.lblPassLengthRuleDesc;
             PasswordLengthRule.Foreground = Brushes.White; PasswordLengthRule.FontSize = 10;
-            Label PasswordNumbersRule = new Label(); PasswordNumbersRule.Content = JeopardyGame.Properties.Resources.lblPassNumberRuleDesc;
+            Label PasswordNumbersRule = new Label(); PasswordNumbersRule.Content = 
+                JeopardyGame.Properties.Resources.lblPassNumberRuleDesc;
             PasswordNumbersRule.Foreground = Brushes.White; PasswordNumbersRule.FontSize = 10;
-            Label PasswordCapitalsRule = new Label(); PasswordCapitalsRule.Content = JeopardyGame.Properties.Resources.lblPassCapitalRuleDesc;
+            Label PasswordCapitalsRule = new Label(); PasswordCapitalsRule.Content = 
+                JeopardyGame.Properties.Resources.lblPassCapitalRuleDesc;
             PasswordCapitalsRule.Foreground = Brushes.White; PasswordCapitalsRule.FontSize = 10;
-            Label PasswordSpeCharRule = new Label(); PasswordSpeCharRule.Content = JeopardyGame.Properties.Resources.lblPassSpeCharRuleDesc;
+            Label PasswordSpeCharRule = new Label(); PasswordSpeCharRule.Content = 
+                JeopardyGame.Properties.Resources.lblPassSpeCharRuleDesc;
             PasswordSpeCharRule.Foreground = Brushes.White; PasswordSpeCharRule.FontSize = 10;
-            Label PasswordPuntuationRule = new Label(); PasswordPuntuationRule.Content = JeopardyGame.Properties.Resources.lblPassPuntSigRuleDesc;
+            Label PasswordPuntuationRule = new Label(); PasswordPuntuationRule.Content = 
+                JeopardyGame.Properties.Resources.lblPassPuntSigRuleDesc;
             PasswordPuntuationRule.Foreground = Brushes.White; PasswordPuntuationRule.FontSize = 10;
-            Label PasswordSameEmailRule = new Label(); PasswordSameEmailRule.Content = JeopardyGame.Properties.Resources.lblPassEqualsEmailRuleDesc;
+            Label PasswordSameEmailRule = new Label(); PasswordSameEmailRule.Content = 
+                JeopardyGame.Properties.Resources.lblPassEqualsEmailRuleDesc;
             PasswordSameEmailRule.Foreground = Brushes.White; PasswordSameEmailRule.FontSize = 10;
             ListBoxRules.Add(PasswordLengthRule); ListBoxRules.Add(PasswordNumbersRule);
             ListBoxRules.Add(PasswordCapitalsRule); ListBoxRules.Add(PasswordSpeCharRule);
@@ -88,7 +94,6 @@ namespace JeopardyGame.Pages
                 bttSaveUser.IsEnabled = false;
             }
         }
-
 
         private void TextBoxRegexConfig(object sender, TextCompositionEventArgs e)
         {
@@ -264,11 +269,13 @@ namespace JeopardyGame.Pages
             {
                 if (emailIsNew == 0)
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblRepeatedEmail);
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
+                        JeopardyGame.Properties.Resources.lblRepeatedEmail);
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
+                        JeopardyGame.Properties.Resources.lblFailToRegisterUser);
                 }
                 return 0;
             }
@@ -286,11 +293,13 @@ namespace JeopardyGame.Pages
             {
                 if (userIsNew == 0)
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblRepeatedUserName);
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
+                        JeopardyGame.Properties.Resources.lblRepeatedUserName);
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
+                        JeopardyGame.Properties.Resources.lblFailToRegisterUser);
                 }
                 return 0;
             }
@@ -312,7 +321,6 @@ namespace JeopardyGame.Pages
             psbPasswordCreateAcc.Clear();
             bttSaveUser.IsEnabled = false;
         }
-
 
         private void ClicViewPasswordRules(object sender, MouseButtonEventArgs e)
         {
@@ -338,7 +346,6 @@ namespace JeopardyGame.Pages
             psbPasswordCreateAcc.PasswordChar = '■';
             lblViewPassword.Visibility = Visibility.Collapsed;
         }
-
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {

@@ -14,7 +14,7 @@
                 <StackPanel Height="357" Width="1259">
                     <Label x:Name="lblCodeDescripCreateAcc" Content="{x:Static p:Resources.lblCodeDescrip}" Style="{StaticResource labelStyleSimple}" 
                             Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40"/>
-                    <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="873" HorizontalAlignment="Center">
+                    <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="873">
                         <TextBox x:Name="txbCodeCreateAcc" Style="{StaticResource TextFieldAddUser}" FontSize="40" Width="860" 
                                  BorderThickness="0" HorizontalAlignment="Center" Height="124" TextChanged="CodeEntry" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     </Border>
@@ -26,11 +26,11 @@
             <Border Background="Transparent" BorderBrush="Purple" BorderThickness="4" CornerRadius="5" Margin="970,669,138,33">
                 <Button x:Name="bttCancellAction" Content="{x:Static p:Resources.bttCancellAction}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonCancellationStyle}" Click="CLicButtonCancelSaving" />
             </Border>
-            <TextBlock HorizontalAlignment="Left" Margin="157,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
+            <TextBlock HorizontalAlignment="Left" Margin="207,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
                        Height="131" Width="923" Foreground="White" FontSize="35" Text="{x:Static p:Resources.txbCodeInstructions}"/>
             <TextBlock x:Name="txbWrongCode" HorizontalAlignment="Left" Margin="325,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"
                         Height="58" Width="401" Foreground="red" FontSize="15" Text="{x:Static p:Resources.txbCodeInstructions}"/>
-            <Label x:Name="lblResentCode" FontSize="25" Foreground="DeepSkyBlue" Margin="756,485,261,244" MouseDown="ResentCode" Content="{x:Static p:Resources.lblResentCode}" />
+            <Label x:Name="lblResentCode" FontSize="25" Foreground="DeepSkyBlue" Margin="737,494,280,235" MouseDown="ResentCode" Content="{x:Static p:Resources.lblResentCode}" />
         </Grid>
     </Viewbox>
 </Page>

@@ -52,15 +52,13 @@ namespace JeopardyGame.Pages
             friends = proxyFriend.GetUserFriends(user);
             foreach (var item in friends)
             {
-                Friend f = new Friend();
-                f.IdUser=item.IdUser;
-                f.Name = item.UserName;
-                f.idStatus = item.IdStatus;
-                FriendList.RegisterNewFriendInDictionary(item.IdUser,f);
+                Friend activeFriend = new Friend();
+                activeFriend.IdUser=item.IdUser;
+                activeFriend.Name = item.UserName;
+                activeFriend.idStatus = item.IdStatus;
+                FriendList.RegisterNewFriendInDictionary(item.IdUser,activeFriend);
             }
         }
-
-
 
         private void SetFriend()
         {   
@@ -86,6 +84,7 @@ namespace JeopardyGame.Pages
             }
             
         }
+
         public void Response(int status, int idFriend)
         {
             Dictionary<int, Friend> friendList = FriendList.GetActiveFirendsList();          

@@ -19,7 +19,6 @@ namespace JeopardyGame.Data.DataAccess
 {
     public class UserManagerDataOperation
     {
-
         public User SaveUserInDataBase(User user)
         {
             if (user == null) return null;
@@ -82,7 +81,6 @@ namespace JeopardyGame.Data.DataAccess
             return null;
         }
 
-
         public User GetUserById(int idUser)
         {
             if (idUser == 0) return null;
@@ -120,7 +118,6 @@ namespace JeopardyGame.Data.DataAccess
             }
         }
 
-
         public Player GetPlayerByIdUser(int idUser)
         {
             using (var context = new JeopardyDBContainer())
@@ -140,7 +137,6 @@ namespace JeopardyGame.Data.DataAccess
 
         }
 
-
         public State GetStateById(int idSatate)
         {
             using (var context = new JeopardyDBContainer())
@@ -149,7 +145,6 @@ namespace JeopardyGame.Data.DataAccess
                 return stateConsulted;
             }
         }
-
 
         public bool VerifyPassword(string password, string hashedPassword)
         {
@@ -186,7 +181,7 @@ namespace JeopardyGame.Data.DataAccess
             return false;
         }
 
-            public int ValidateIfEmailExist(String email)
+        public int ValidateIfEmailExist(String email)
         {
             int EXIST = 0;
             int NOT_EXIST = 1;
@@ -199,7 +194,7 @@ namespace JeopardyGame.Data.DataAccess
                     bool exist = context.Users.Any(u => u.EmailAddress == email);
                     if (!exist)
                     {
-                        return NOT_EXIST;                        
+                        return NOT_EXIST;
                     }
                     return EXIST;
                 }
@@ -220,7 +215,7 @@ namespace JeopardyGame.Data.DataAccess
                 exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return ERROR;
-        }
+        }   
         public int ValidateIfUserNameExist(String userName)
         {
             int EXIST = 0;

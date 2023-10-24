@@ -59,7 +59,6 @@ namespace JeopardyGame.Pages
                 LblWrongUserName.Visibility = Visibility.Collapsed;
             }
 
-
             if (string.IsNullOrEmpty(password))
             {
                 lblPasswordWrong.Content = JeopardyGame.Properties.Resources.lblPasswordWrong;
@@ -88,12 +87,14 @@ namespace JeopardyGame.Pages
                 proxyServer.Close();
                 if (result == 1)
                 {
-                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = new ServidorServiciosJeopardy.ConsultInformationClient();
+                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = 
+                        new ServidorServiciosJeopardy.ConsultInformationClient();
                     UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userName);
                     PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
 
                     InstanceContext contexto = new InstanceContext(this);
-                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = 
+                        new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
 
                     InstanceSingleton(currentUser, currentPlayer, proxy);            
                     UserSingleton us = UserSingleton.GetMainUser();
@@ -123,7 +124,6 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         
         }
-
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (LanguajeComboBox.SelectedItem != null)

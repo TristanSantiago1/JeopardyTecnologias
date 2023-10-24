@@ -42,7 +42,9 @@ namespace JeopardyGame.Pages
         private void SentEmail(String email)
         {
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-            int sentEmailSucc = proxyServer.SentEmailCodeConfirmation(email, JeopardyGame.Properties.Resources.EmailSubjectCode, currentCode + " " + JeopardyGame.Properties.Resources.EmailCodeDescrip);
+            int sentEmailSucc = proxyServer.SentEmailCodeConfirmation
+                (email, JeopardyGame.Properties.Resources.EmailSubjectCode, currentCode + " " + 
+                JeopardyGame.Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc == 0 )
             {
                 ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.SentEmailIssue);
@@ -55,7 +57,6 @@ namespace JeopardyGame.Pages
             char altChar1 = (char)random.Next('A', 'Z' + 1);
             char altChar2 = (char)random.Next('A', 'Z' + 1);
             string codeGenerated = $"{altChar1}{altChar2}{altNumber:D4}";
-            MessageBox.Show(codeGenerated);
             currentCode = codeGenerated;
         }
 
@@ -92,7 +93,8 @@ namespace JeopardyGame.Pages
                 int idUsuario = proxyServer.SaveUser(userToSave);
                 if (idUsuario != 0)
                 {                    
-                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
+                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, 
+                        JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
                     MainMenu lobby = new MainMenu();
                     this.NavigationService.Navigate(lobby);
                     NavigationService.RemoveBackEntry();
@@ -100,7 +102,8 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
+                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
+                        JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
                 }
             }
             else
