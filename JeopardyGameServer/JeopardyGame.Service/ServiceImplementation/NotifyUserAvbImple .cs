@@ -18,21 +18,25 @@ namespace JeopardyGame.Service.ServiceImplementation
       
         public void PlayerIsAvailable(int idNewActiveUser, int idNewActiviePlayer)
         {
-            var channel = OperationContext.Current;
-            ActiveUsers.RegisterNewUserInDictionary(idNewActiveUser, channel);   
-            Console.WriteLine(idNewActiveUser + " entro " );
-            NotifyFriends(idNewActiveUser, AVAILABLE_STATUS, idNewActiviePlayer);
+            if (idNewActiveUser != 0 && idNewActiviePlayer != 0)
+            {
+                var channel = OperationContext.Current;
+                ActiveUsers.RegisterNewUserInDictionary(idNewActiveUser, channel);               
+                NotifyFriends(idNewActiveUser, AVAILABLE_STATUS, idNewActiviePlayer);
+            }           
         }
 
         public void PlayerIsNotAvailable(int idUserDisconnecting, int idNewActiviePlayer)
         {
-            var channel = ActiveUsers.GetChannelUser(idUserDisconnecting);
-            if (channel != null)
-            {                
-                ActiveUsers.RemoveRegistryFromDictionary(idUserDisconnecting);
-                NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS, idNewActiviePlayer);
-                Console.WriteLine(idUserDisconnecting + " salio ");
-            }
+            if (idUserDisconnecting != 0 && idNewActiviePlayer != 0)
+            {
+                var channel = ActiveUsers.GetChannelUser(idUserDisconnecting);
+                if (channel != null)
+                {
+                    ActiveUsers.RemoveRegistryFromDictionary(idUserDisconnecting);
+                    NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS, idNewActiviePlayer);              
+                }
+            }           
         }
 
     
@@ -42,7 +46,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();
             FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
             UserPOJO user = consultInfoImple.ConsultUserById(idUser);
-            PlayerPOJO player = consultInfoImple.ConsultPlayerById(idPlayer);
+            //PlayerPOJO player = consultInfoImple.ConsultPlayerById(idPlayer);
             List<FriendInfo> friendsNewUser = friendsManagerImplementation.GetUserFriends(user);  
             if(friendsNewUser != null)
             {

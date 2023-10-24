@@ -98,8 +98,7 @@ namespace JeopardyGame.Pages
             {
                 if (!regex.IsMatch(currentTextBox.Text + e.Text))
                 {
-                    e.Handled = true;
-                    lblNameWarning.Visibility = Visibility.Visible;
+                    e.Handled = true;                    
                 }
 
             }
@@ -117,11 +116,11 @@ namespace JeopardyGame.Pages
 
         public int CheckEmptyFields() /// Publica para las pruebas
         {
-            int Awnser = 1;
+            int anwser = 1;
             if (txbNameCreateAcc.Text.Trim().Length == 0)
             {
                 lblNameWarning.Visibility = Visibility.Visible;
-                Awnser = 0;
+                anwser = 0;
             }
             else
             {
@@ -130,7 +129,7 @@ namespace JeopardyGame.Pages
             if (txbUserNameCreateAcc.Text.Trim().Length == 0)
             {
                 lblUserNameWarning.Visibility = Visibility.Visible;
-                Awnser = 0;
+                anwser = 0;
             }
             else
             {
@@ -140,7 +139,7 @@ namespace JeopardyGame.Pages
             {
                 lblEmailWarning.Content = JeopardyGame.Properties.Resources.lblEmptyField;
                 lblEmailWarning.Visibility = Visibility.Visible;
-                Awnser = 0;
+                anwser = 0;
             }
             else
             {
@@ -150,13 +149,13 @@ namespace JeopardyGame.Pages
             if (psbPasswordCreateAcc.Password.Trim().Length == 0)
             {
                 lblPasswordWarning.Visibility = Visibility.Visible;
-                Awnser = 0;
+                anwser = 0;
             }
             else
             {
                 lblPasswordWarning.Visibility = Visibility.Collapsed;
             }
-            return Awnser;
+            return anwser;
         }
         public int CheckPassword()
         {
@@ -218,8 +217,8 @@ namespace JeopardyGame.Pages
                 ClearBrokenRule(ListBoxRules[4]);
             }
 
-            int indiceArroba = (txbEmailCreateAcc.Text.IndexOf('@') != -1) ? txbEmailCreateAcc.Text.IndexOf('@') : 0;
-            if (txbEmailCreateAcc.Text.Trim().Substring(0, indiceArroba).Equals(passwordChecked))
+            int arrobaIndex = (txbEmailCreateAcc.Text.IndexOf('@') != -1) ? txbEmailCreateAcc.Text.IndexOf('@') : 0;
+            if (txbEmailCreateAcc.Text.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
             {
                 ResaltBrokenRule(ListBoxRules[5]);
                 awnser = 0;
@@ -256,6 +255,7 @@ namespace JeopardyGame.Pages
         {
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
             int emailIsNew = proxyServer.EmailAlreadyExist(email);
+            proxyServer.Close();
             if (emailIsNew == 1)
             {
                 return 1;
@@ -278,6 +278,7 @@ namespace JeopardyGame.Pages
         {
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
             int userIsNew = proxyServer.UserNameAlreadyExist(userName);
+            proxyServer.Close();
             if (userIsNew == 1)
             {
                 return 1;
@@ -334,8 +335,7 @@ namespace JeopardyGame.Pages
         }
 
         private void HiddePsasword(object sender, MouseEventArgs e)
-        {
-            psbPasswordCreateAcc.PasswordChar = '■';
+        {            
             lblViewPassword.Visibility = Visibility.Collapsed;
         }
 

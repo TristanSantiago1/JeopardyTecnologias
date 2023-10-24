@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,16 +11,39 @@ namespace JeopardyGame.Host.Connetion
 {
     class OpenConnetion
     {
-        static void Main(string[] args)        {
-           
-            using(ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.ServicesReferenceAuthor)))
-            {               
-                host.Open();
-                Console.WriteLine("Server is running");
-                Console.ReadLine();
-            }
-
+        static void Main(string[] args)        
+        {
             SeriLogConfig logConfig = new SeriLogConfig();
+            try
+            {
+                using (ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.ServicesReferenceAuthor)))
+                {
+                    host.Open();
+                    Console.WriteLine("Server is running");
+                    Console.ReadLine();
+                }
+            }
+            catch(ProtocolException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+            }
+            catch(SecurityNegotiationException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+            }
+            catch (AddressAlreadyInUseException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+            }
+            catch (SystemException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+            }
+           
            
         }
     }

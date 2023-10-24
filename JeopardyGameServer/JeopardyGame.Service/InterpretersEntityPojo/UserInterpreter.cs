@@ -11,7 +11,8 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
     public class UserInterpreter
     {
         public static User FromUserPojoToUserEntity(UserPOJO userPojo)
-        { 
+        {
+            if (userPojo == null)return null;            
             User userEntity = new User();
             userEntity.IdUser = userPojo.IdUser;
             userEntity.UserName = userPojo.UserName;
@@ -23,6 +24,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 
         public static UserPOJO FromUserEntityToUserPojo(User user)
         {
+            if (user == null) return null;
             UserPOJO userPOJO = new UserPOJO();
             userPOJO.IdUser = user.IdUser;
             userPOJO.Name = user.Name;
@@ -34,6 +36,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 
         public static PlayerPOJO FromPlayerEntityToPlayerPojo(Player player)
         {
+            if (player == null) return null;
             PlayerPOJO playerPOJO = new PlayerPOJO();
             playerPOJO.IdPlayer = player.IdPlayer;
             playerPOJO.GeneralPoints = (int) player.GeneralPoints;
@@ -47,6 +50,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 
         public static Player FromPlayerPojoToPlyerEntity(PlayerPOJO playerPojo)
         {
+            if (playerPojo == null) return null;
             Data.DataAccess.UserManagerDataOperation dataAccess = new Data.DataAccess.UserManagerDataOperation();
             Player player = new Player();
             player.IdPlayer = playerPojo.IdPlayer;

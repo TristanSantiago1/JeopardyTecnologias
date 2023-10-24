@@ -22,43 +22,38 @@ namespace JeopardyGame.Service.ServiceImplementation
         public int SaveUser(UserPOJO userPojoNew)
         {
             if (userPojoNew == null) return 0;
-            Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new Data.DataAccess.UserManagerDataOperation();
+            Data.DataAccess.UserManagerDataOperation dataAccessConexion = new Data.DataAccess.UserManagerDataOperation();
             userPojoNew.IdUser = 0;
             User usuarioNuevo = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
-            User UserSaved = ConexionAccesoDatos.SaveUserInDataBase(usuarioNuevo);
-            if (UserSaved == null) 
+            User UserSaved = dataAccessConexion.SaveUserInDataBase(usuarioNuevo);
+            if (UserSaved == null) return 0;            
+            PlayerPOJO playerToSave = new PlayerPOJO();
+            playerToSave.IdPlayer = 0;
+            playerToSave.GeneralPoints = 0;
+            playerToSave.NoReports = 0;
+            playerToSave.IdActualAvatar = 0;
+            playerToSave.IdUser = UserSaved.IdUser;
+            playerToSave.IdState = 1;
+            int idPlayer = SavePlayer(playerToSave);
+            if (idPlayer != 0)
             {
-                return 0;
+                return UserSaved.IdUser;
             }
             else
             {
-                PlayerPOJO playerToSave = new PlayerPOJO();
-                playerToSave.IdPlayer = 0;
-                playerToSave.GeneralPoints = 0;
-                playerToSave.NoReports = 0;
-                playerToSave.IdActualAvatar = 0;
-                playerToSave.IdUser = UserSaved.IdUser;
-                playerToSave.IdState = 1;
-                int idPlayer = SavePlayer(playerToSave);
-                if (idPlayer != 0)
-                {
-                    return UserSaved.IdUser;
-                }
-                else
-                {
-                    return 0;
-                }
-            }            
+                dataAccessConexion.DeleteUserById(UserSaved.IdUser);
+                return 0;
+            }                       
         }
         
         private int SavePlayer(PlayerPOJO playerPojoNew)
         {
             if (playerPojoNew == null) return 0;
-            Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new Data.DataAccess.UserManagerDataOperation();     
+            Data.DataAccess.UserManagerDataOperation dataAccessConexion = new Data.DataAccess.UserManagerDataOperation();     
             Player newPlayerAccount = InterpretersEntityPojo.UserInterpreter.FromPlayerPojoToPlyerEntity(playerPojoNew);
-            User userSaved = ConexionAccesoDatos.GetUserById(playerPojoNew.IdUser);
-            State defaultState = ConexionAccesoDatos.GetStateById(playerPojoNew.IdState);
-            Player playerSaved = ConexionAccesoDatos.SavePlayerInDataBase(userSaved, defaultState, newPlayerAccount);
+            User userSaved = dataAccessConexion.GetUserById(playerPojoNew.IdUser);
+            State defaultState = dataAccessConexion.GetStateById(playerPojoNew.IdState);
+            Player playerSaved = dataAccessConexion.SavePlayerInDataBase(userSaved, defaultState, newPlayerAccount);
             if (playerSaved == null)
             {
                 return 0;
@@ -71,11 +66,11 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public int validateCredentials(UserValidate newUserValidate)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            User user = ConexionAccesoDatos.GetUserByUserName(newUserValidate.UserName);
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            User user = dataAccessConexion.GetUserByUserName(newUserValidate.UserName);
             if (user != null)
             {
-                bool isPasswordValid = ConexionAccesoDatos.VerifyPassword(newUserValidate.Password, user.Password);
+                bool isPasswordValid = dataAccessConexion.VerifyPassword(newUserValidate.Password, user.Password);
 
                 if (isPasswordValid)
                 {
@@ -88,15 +83,15 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public int EmailAlreadyExist(String email)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            int emailIsNew = ConexionAccesoDatos.ValidateIfEmailExist(email);
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            int emailIsNew = dataAccessConexion.ValidateIfEmailExist(email);
             return emailIsNew;
         }
 
         public int UserNameAlreadyExist(String userName)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation ConexionAccesoDatos = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            int userNameIsNew = ConexionAccesoDatos.ValidateIfUserNameExist(userName);
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            int userNameIsNew = dataAccessConexion.ValidateIfUserNameExist(userName);
             return userNameIsNew;
         }
 
@@ -119,14 +114,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (SmtpException ex)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
                 return 0;
             }
             catch (Exception ex)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
                 return 0;
             }
         }  

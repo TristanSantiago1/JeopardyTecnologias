@@ -24,20 +24,17 @@ namespace JeopardyGame.Data.DataAccess
                     return friendsOfUser;                  
                 }
             }
-            catch (SqlException sqlE)
+            catch (SqlException ex)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.HandleExcpeotion(ex,ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (EntityException entityEx)
+            catch (EntityException ex)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
-            {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            {;
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return null; ;
         }

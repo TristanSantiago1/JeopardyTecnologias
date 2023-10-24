@@ -14,12 +14,6 @@ namespace JeopardyGame.Data.Exceptions
     public class SeriLogConfig
     {
         private String logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
-        //private readonly IWebHostEnvironment _webHostEnvironment;
-
-        //public MyController(IWebHostEnvironment webHostEnvironment)
-        //{
-        //    _webHostEnvironment = webHostEnvironment;
-        //}
         public SeriLogConfig() 
         {
             ConfigureLogger(logFileName);

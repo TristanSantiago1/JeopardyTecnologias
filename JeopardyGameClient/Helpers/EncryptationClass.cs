@@ -10,7 +10,7 @@ namespace JeopardyGame.Helpers
     public class EncryptationClass
     { 
 
-        public string EncryptPassword(string password)
+        public static string EncryptPassword(string password)
         {           
             byte[] salt; //Extra character for each password
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);

@@ -57,9 +57,9 @@ namespace JeopardyGame.Pages
                 f.idStatus = item.IdStatus;
                 FriendList.RegisterNewFriendInDictionary(item.IdUser,f);
             }
+            proxyFriend.Close();
+            proxyUser.Close();
         }
-
-
 
         private void SetFriend()
         {   
@@ -82,8 +82,7 @@ namespace JeopardyGame.Pages
                     stcFriendList.Children.Add(new FriendCard(item.Value.Name, state, "Invite"));
                     
                 }
-            }
-            
+            }            
         }
         public void Response(int status, int idFriend)
         {
@@ -94,5 +93,6 @@ namespace JeopardyGame.Pages
             }
             SetFriend();
         }
+
     }
 }

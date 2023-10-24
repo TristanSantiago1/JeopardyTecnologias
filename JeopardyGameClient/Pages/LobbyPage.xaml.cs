@@ -33,7 +33,8 @@ namespace JeopardyGame.Pages
 
         private void clicListFriends(object sender, MouseButtonEventArgs e)
         {
-            ActiveFriends friendsListPage = LogInUser.ActiveFriendsInstance;
+
+            ActiveFriends friendsListPage = LogInUser.ActiveFriendsInstance;      
             this.NavigationService.Navigate(friendsListPage);
             friendsListPage.StartPage();
         }

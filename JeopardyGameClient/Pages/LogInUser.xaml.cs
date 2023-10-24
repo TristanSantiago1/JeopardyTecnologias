@@ -93,9 +93,9 @@ namespace JeopardyGame.Pages
                     PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
 
                     InstanceContext contexto = new InstanceContext(this);
-                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxyChannelCallback = new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
 
-                    InstanceSingleton(currentUser, currentPlayer, proxy);            
+                    InstanceSingleton(currentUser, currentPlayer, proxyChannelCallback);            
                     UserSingleton us = UserSingleton.GetMainUser();
                     us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
 
@@ -122,11 +122,9 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonRegister(object sender, RoutedEventArgs e)
         {
-            ///ActiveFriends ac = new ActiveFriends();
             UserRegister userRegistrerPage = new UserRegister();
             this.NavigationService.Navigate(userRegistrerPage);
-            NavigationService.RemoveBackEntry();
-        
+            NavigationService.RemoveBackEntry();        
         }
 
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -139,22 +137,26 @@ namespace JeopardyGame.Pages
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
                 key.Close();
+                lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
+                lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
+                btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
+                btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
 
-                if (selectedLanguage == "es-MX")
-                {
-                    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
-                    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
-                    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
-                    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
-                }
-                else if (selectedLanguage == "en-EU")
-                {
-                    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
-                    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
-                    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
-                    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
+                //if (selectedLanguage == "es-MX")
+                //{
+                //    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
+                //    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
+                //    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
+                //    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
+                //}
+                //else if (selectedLanguage == "en-EU")
+                //{
+                //    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
+                //    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
+                //    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
+                //    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
 
-                }
+                //}
 
             }
 
@@ -183,7 +185,7 @@ namespace JeopardyGame.Pages
 
     }
     public partial class Friend()
-    {
+    { 
         public int IdUser { get; set; }
         public string Name { get; set; }
         public int idStatus { get; set; }
