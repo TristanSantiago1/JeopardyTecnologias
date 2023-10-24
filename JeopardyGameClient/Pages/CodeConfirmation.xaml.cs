@@ -1,4 +1,5 @@
-﻿using JeopardyGame.ServidorServiciosJeopardy;
+﻿using JeopardyGame.Helpers;
+using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,9 +85,8 @@ namespace JeopardyGame.Pages
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Equals(currentCode))
-            {
-                Helpers.EncryptationClass encryptation = new Helpers.EncryptationClass();
-                String encryptedPassword = encryptation.EncryptPassword(userToSave.Password.ToString().Trim());
+            {              
+                String encryptedPassword = EncryptationClass.EncryptPassword(userToSave.Password.ToString().Trim());
                 userToSave.Password = encryptedPassword;
                 userToSave.IdUser = 0;
                 UserManagerClient proxyServer = new UserManagerClient();

@@ -87,16 +87,16 @@ namespace JeopardyGame.Pages
                 proxyServer.Close();
                 if (result == 1)
                 {
-                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult = 
+                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult =
                         new ServidorServiciosJeopardy.ConsultInformationClient();
                     UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userName);
                     PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
 
                     InstanceContext contexto = new InstanceContext(this);
-                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxy = 
+                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxyChannelCallback =
                         new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
 
-                    InstanceSingleton(currentUser, currentPlayer, proxyChannelCallback);            
+                    InstanceSingleton(currentUser, currentPlayer, proxyChannelCallback);
                     UserSingleton us = UserSingleton.GetMainUser();
                     us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
 
@@ -121,7 +121,7 @@ namespace JeopardyGame.Pages
         {
             UserRegister userRegistrerPage = new UserRegister();
             this.NavigationService.Navigate(userRegistrerPage);
-            NavigationService.RemoveBackEntry();        
+            NavigationService.RemoveBackEntry();
         }
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -137,23 +137,6 @@ namespace JeopardyGame.Pages
                 lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
                 btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
                 btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
-
-                //if (selectedLanguage == "es-MX")
-                //{
-                //    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
-                //    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
-                //    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
-                //    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
-                //}
-                //else if (selectedLanguage == "en-EU")
-                //{
-                //    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
-                //    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
-                //    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
-                //    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
-
-                //}
-
             }
 
         }
@@ -172,7 +155,7 @@ namespace JeopardyGame.Pages
             userSingleton.IdCurrentAvatar = currenPlayer.IdActualAvatar;
             userSingleton.proxyForAvailability = context;
         }
-       
+
 
         public void Response(int status, int idFriend)
         {
@@ -181,7 +164,7 @@ namespace JeopardyGame.Pages
 
     }
     public partial class Friend()
-    { 
+    {
         public int IdUser { get; set; }
         public string Name { get; set; }
         public int idStatus { get; set; }
@@ -189,6 +172,7 @@ namespace JeopardyGame.Pages
     public partial class FriendList()
     {
         private static Dictionary<int, Friend> friendList = new Dictionary<int, Friend>();
+       
         public static void RegisterNewFriendInDictionary(int idUser, Friend friend)
         {
             if (!friendList.ContainsKey(idUser))
@@ -197,65 +181,50 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public partial class Friend()
+        public static Friend GetFriend(int idUser)
         {
-            public int IdUser { get; set; }
-            public string Name { get; set; }
-            public int idStatus { get; set; }
-        }
-        public partial class FriendList()
-        {
-            private static Dictionary<int, Friend> friendList = new Dictionary<int, Friend>();
-            public static void RegisterNewFriendInDictionary(int idUser, Friend friend)
+            foreach (var item in friendList)
             {
-                if (!friendList.ContainsKey(idUser))
+                if (item.Key == idUser)
                 {
-                    friendList.Add(idUser, friend);
+                    return item.Value;
                 }
             }
+            return null;
+        }
 
-            public static Friend GetFriend(int idUser)
+        public static void RemoveRegistryFromDictionary(int idUser)
+        {
+            if (friendList.ContainsKey(idUser))
+            {
+                friendList.Remove(idUser);
+            }
+        }
+
+        public static void ChangeStatus(int idUser, int idStatus)
+        {
+            if (friendList.ContainsKey(idUser))
             {
                 foreach (var item in friendList)
                 {
                     if (item.Key == idUser)
                     {
-                        return item.Value;
+                        item.Value.idStatus = idStatus;
                     }
                 }
-                return null;
-            }
-
-            public static void RemoveRegistryFromDictionary(int idUser)
-            {
-                if (friendList.ContainsKey(idUser))
-                {
-                    friendList.Remove(idUser);
-                }
-            }
-
-            public static void ChangeStatus(int idUser, int idStatus)
-            {
-                if (friendList.ContainsKey(idUser))
-                {
-                    foreach (var item in friendList)
-                    {
-                        if (item.Key == idUser)
-                        {
-                            item.Value.idStatus = idStatus;
-                        }
-                    }
-                }
-            }
-            public static void CleanDictionary()
-            {
-                friendList.Clear();
-            }
-
-            public static Dictionary<int, Friend> GetActiveFirendsList()
-            {
-                return friendList;
             }
         }
-     }
+        public static void CleanDictionary()
+        {
+            friendList.Clear();
+        }
+
+        public static Dictionary<int, Friend> GetActiveFirendsList()
+        {
+            return friendList;
+        }
+    }
+    
+}
+
 
