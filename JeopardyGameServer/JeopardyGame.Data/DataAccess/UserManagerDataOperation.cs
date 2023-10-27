@@ -30,20 +30,23 @@ namespace JeopardyGame.Data.DataAccess
                     context.SaveChanges();
                     return newUser;
                 }
-            }catch(SqlException ex)
-            {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);                
             }
-            catch (EntityException ex) 
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);               
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch(Exception ex)
+            catch (EntityException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
             {
                 ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return null; ;
         }
+
+
         public Player SavePlayerInDataBase(User userSaved, State defaultState, Player newPlayer)
         {
             if (userSaved == null || defaultState == null || newPlayer == null) return null;
@@ -62,15 +65,15 @@ namespace JeopardyGame.Data.DataAccess
             }
             catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);               
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);              
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);                
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return null;
         }
@@ -164,38 +167,22 @@ namespace JeopardyGame.Data.DataAccess
 
         public bool VerifyPassword(string password, string hashedPassword)
         {
-            try
-            {
-                byte[] hashBytes = Convert.FromBase64String(hashedPassword);
-                byte[] salt = new byte[16];
-                Array.Copy(hashBytes, 0, salt, 0, 16);
-                var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-                byte[] hash = passBaseKeyDerFun2.GetBytes(20);
-                for (int i = 0; i < 20; i++)
-                {
-                    if (hashBytes[i + 16] != hash[i])
-                        return false;
-                }
 
-                return true;
-            }
-            catch (SqlException sqlE)
+            byte[] hashBytes = Convert.FromBase64String(hashedPassword);
+            byte[] salt = new byte[16];
+            Array.Copy(hashBytes, 0, salt, 0, 16);
+            var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
+            byte[] hash = passBaseKeyDerFun2.GetBytes(20);
+            for (int i = 0; i < 20; i++)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+                if (hashBytes[i + 16] != hash[i])
+                    return false;
             }
-            catch (EntityException entityEx)
-            {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
-            }
-            return false;
+
+            return true;
         }
+
+
 
         public int ValidateIfEmailExist(String email)
         {
@@ -228,7 +215,7 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return ERROR;
-        }   
+        }
         public int ValidateIfUserNameExist(String userName)
         {
             int EXIST = 0;
@@ -248,7 +235,7 @@ namespace JeopardyGame.Data.DataAccess
                 }
             }
             catch (SqlException ex)
-            {               
+            {
                 ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
@@ -262,6 +249,54 @@ namespace JeopardyGame.Data.DataAccess
             return ERROR;
         }
 
+        public int UpdateUserInformation(string editedName, string editedEmail)
+        {
+            int EXIST = 1;
+            int ERROR = -1;
+
+            if (string.IsNullOrEmpty(editedName) && string.IsNullOrEmpty(editedEmail))
+            {
+                return ERROR;
+            }
+            try
+            {
+                using (var context = new JeopardyDBContainer())
+                {
+                    var userToUpdate = context.Users.FirstOrDefault(u => u.UserName == editedName);
+
+                    if (userToUpdate == null)
+                    {
+                        return ERROR;
+                    }
+
+                    if (!string.IsNullOrEmpty(editedName))
+                    {
+                        userToUpdate.Name = editedName;
+                    }
+
+                    if (!string.IsNullOrEmpty(editedEmail))
+                    {
+                        userToUpdate.EmailAddress = editedEmail;
+                    }
+
+                    context.SaveChanges();
+                    return EXIST;
+                }
+            }
+            catch (SqlException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            }
+            return ERROR;
+        }
 
     }
 }

@@ -61,6 +61,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Choose an image.
+        /// </summary>
+        public static string btnChoseImage {
+            get {
+                return ResourceManager.GetString("btnChoseImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Log in.
         /// </summary>
         public static string btnEnter {
@@ -75,6 +84,15 @@ namespace JeopardyGame.Properties {
         public static string btnRegistrer {
             get {
                 return ResourceManager.GetString("btnRegistrer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Save.
+        /// </summary>
+        public static string btnSaveChanges {
+            get {
+                return ResourceManager.GetString("btnSaveChanges", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace JeopardyGame.Properties {
         public static string lblCodeRoom {
             get {
                 return ResourceManager.GetString("lblCodeRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit.
+        /// </summary>
+        public static string lblEditUserInformation {
+            get {
+                return ResourceManager.GetString("lblEditUserInformation", resourceCulture);
             }
         }
         
@@ -345,6 +372,15 @@ namespace JeopardyGame.Properties {
         public static string lblPlayersInGame {
             get {
                 return ResourceManager.GetString("lblPlayersInGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Profile.
+        /// </summary>
+        public static string lblProfileInformation {
+            get {
+                return ResourceManager.GetString("lblProfileInformation", resourceCulture);
             }
         }
         

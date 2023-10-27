@@ -37,6 +37,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             return ((IUserManager)UserManager).validateCredentials(newUserValidate);
         }
+
+        public int UpdateUserInformation(string editedName, string editedEmail)
+        {
+            return ((IUserManager)UserManager).UpdateUserInformation(editedName, editedEmail);
+        }
     }
 
     public partial class ServicesReferenceAuthor: IFriendsManager

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using JeopardyGame.Data.Exceptions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -122,7 +123,14 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
                 return 0;
             }
-        }  
+        }
+
+        public int UpdateUserInformation(string editedName, string editedEmail)
+        {
+            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
+            int updateInformation = dataAccessConexion.UpdateUserInformation(editedName, editedEmail);
+            return updateInformation;
+        }
 
     }
 }

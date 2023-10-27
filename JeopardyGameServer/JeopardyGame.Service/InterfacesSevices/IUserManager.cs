@@ -25,7 +25,10 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract]
         int SentEmailCodeConfirmation(String email, String subject, String body);
-        }
+
+        [OperationContract]
+        int UpdateUserInformation(string editedName, string editedEmail);
+    }
 
         [DataContract]
         public class UserPOJO

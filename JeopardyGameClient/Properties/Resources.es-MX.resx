@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnChoseImage" xml:space="preserve">
+    <value>Seleccionar imagen</value>
+  </data>
   <data name="btnEnter" xml:space="preserve">
     <value>Ingresar</value>
   </data>
   <data name="btnRegistrer" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="btnSaveChanges" xml:space="preserve">
+    <value>Guardar</value>
   </data>
   <data name="bttAccept" xml:space="preserve">
     <value>Aceptar</value>
@@ -161,6 +167,9 @@
   </data>
   <data name="lblCodeRoom" xml:space="preserve">
     <value>Código de sala</value>
+  </data>
+  <data name="lblEditUserInformation" xml:space="preserve">
+    <value>Editar</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Correo :</value>
@@ -212,6 +221,9 @@
   </data>
   <data name="lblPlayersInGame" xml:space="preserve">
     <value>Jugadores en partida:</value>
+  </data>
+  <data name="lblProfileInformation" xml:space="preserve">
+    <value>Perfil</value>
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
     <value>Este correo electronico ya ha sido registrado.</value>

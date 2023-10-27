@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnChoseImage" xml:space="preserve">
+    <value>Choose an image</value>
+  </data>
   <data name="btnEnter" xml:space="preserve">
     <value>Log in</value>
   </data>
   <data name="btnRegistrer" xml:space="preserve">
     <value>Sing in</value>
+  </data>
+  <data name="btnSaveChanges" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="bttAccept" xml:space="preserve">
     <value>Acept</value>
@@ -161,6 +167,9 @@
   </data>
   <data name="lblCodeRoom" xml:space="preserve">
     <value>Room code</value>
+  </data>
+  <data name="lblEditUserInformation" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Email</value>
@@ -212,6 +221,9 @@
   </data>
   <data name="lblPlayersInGame" xml:space="preserve">
     <value>Players in game:</value>
+  </data>
+  <data name="lblProfileInformation" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="lblRepeatedEmail" xml:space="preserve">
     <value>Email</value>

@@ -77,6 +77,7 @@ namespace JeopardyGame.Pages
                     bttEnterGame.Content = JeopardyGame.Properties.Resources.bttEnterGame;
                     bttFriends.Content = JeopardyGame.Properties.Resources.bttFriends;
                     bttNewGame.Content = JeopardyGame.Properties.Resources.bttNewGame;
+                    lblProfileInformation.Content = JeopardyGame.Properties.Resources.lblProfileInformation;
                 }
 
 
@@ -113,6 +114,13 @@ namespace JeopardyGame.Pages
         public void Response(int status, int idFriend)
         {
             ((INotifyUserAvailabilityCallback)ActiveFriends).Response(status, idFriend);
+        }
+
+        private void ClicUserProfile(object sender, MouseButtonEventArgs e)
+        {
+            ProfileDataConsult profileInformation = new ProfileDataConsult();
+            this.NavigationService.Navigate(profileInformation);
+            NavigationService.RemoveBackEntry();
         }
 
     }
