@@ -13,12 +13,14 @@
 
         <Grid Height="751">
 
-            <Viewbox Width="auto" Height="auto" Margin="323,247,-44,386">
+            <Viewbox Width="auto" Height="auto" Margin="323,247,35,386">
                 <StackPanel Height="auto" Width="1230" >
                     <Label x:Name="lblUserNameLogIn" Content = "{x:Static p:Resources.lblUserNameLogIn}"  Style="{StaticResource labelStyleSimple}" 
                          Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="823" HorizontalAlignment="Left">
-                        <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" TextChanged="txbUserNameCreateAcc_TextChanged" Width="822"/>
+                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="747" HorizontalAlignment="Left">
+                        <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" TextChanged="txbUserNameCreateAcc_TextChanged" HorizontalAlignment="Stretch" Margin="0,0,110,0">
+                            TexBox.Bac
+                        </TextBox>
                     </Border>
                 </StackPanel>
             </Viewbox>

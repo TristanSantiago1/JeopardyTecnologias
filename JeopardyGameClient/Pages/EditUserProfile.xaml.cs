@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -42,7 +43,24 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonSaveChanges(object sender, RoutedEventArgs e)
         {
+            String nameEdited = txbEditName.Text;
+            String originalName = UserSingleton.GetMainUser().Name;
 
+            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+
+            int result = proxyServer.UpdateUserInformation(nameEdited, originalName);
+
+            if (result == 1)
+            {
+                MessageBox.Show("La información del usuario ha sido actualizada correctamente.");
+            }
+            else
+            {
+                
+                MessageBox.Show("No se pudo actualizar la información del usuario.");
+            }
+
+            proxyServer.Close();
         }
 
         private void CLicButtonCancelChanges(object sender, RoutedEventArgs e)

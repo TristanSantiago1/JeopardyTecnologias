@@ -203,6 +203,7 @@
         </Setter>
     </Style>
 
+    <!-- Style for buttons in main menu -->
     <Storyboard x:Key="SlideInFromRight">
         <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.5" />
         <DoubleAnimation Storyboard.TargetProperty="TranslateTransform.X" To="0" Duration="0:0:0.5">
@@ -211,5 +212,28 @@
             </DoubleAnimation.EasingFunction>
         </DoubleAnimation>
     </Storyboard>
+
+    <Style x:Key="NoHoverStyle" TargetType="Button">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+            BorderThickness="1"
+            Padding="4,2" 
+            CornerRadius="3" 
+            Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 </ResourceDictionary>

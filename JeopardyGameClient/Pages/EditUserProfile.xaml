@@ -17,24 +17,24 @@
                 <Image Source="/Images/JeopardyFosfoSign.jpg" Stretch="UniformToFill" Margin="-51,-32,35,-29" />
             </Border>
             <StackPanel Height="auto" Margin="698,105,229,500" >
-                <Label x:Name="lblNameDescripCreateAcc" Content = "X" Style="{StaticResource labelStyleSimple}" 
-                    Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="lblNameDescripCreateAcc" Content = "{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
+                    Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="568">
                     <TextBox x:Name="txbEditName" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="552" Margin="8,0,0,0" />
                 </Border>
             </StackPanel>
 
             <StackPanel Height="auto" Margin="698,269,229,336" >
-                <Label x:Name="lblUserNameDescripCreateAcc" Content = "X" Style="{StaticResource labelStyleSimple}" 
-                    Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="lblUserNameDescripCreateAcc" Content = "{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
+                    Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="582">
                     <TextBox x:Name="txbEditUserName" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="562" Margin="8,0,0,0"/>
                 </Border>
             </StackPanel>
 
             <StackPanel Height="auto" Margin="698,434,229,171" >
-                <Label x:Name="lblEmailDescripCreateAcc" Content = "X" Style="{StaticResource labelStyleSimple}" 
-                    Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="lblEmailDescripCreateAcc" Content = "{x:Static p:Resources.lblEmailDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
+                    Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="587">
                     <TextBox x:Name="txbEditEmail" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="567" HorizontalAlignment="Center" />
                 </Border>

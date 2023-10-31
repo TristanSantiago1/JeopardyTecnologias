@@ -73,6 +73,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateUserInformation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="editedName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="originalName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserInformationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserInformationResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetUserFriends">
     <xs:complexType>
       <xs:sequence>

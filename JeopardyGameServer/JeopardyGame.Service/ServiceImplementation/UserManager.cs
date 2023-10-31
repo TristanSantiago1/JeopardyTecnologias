@@ -125,10 +125,10 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public int UpdateUserInformation(string editedName, string editedEmail)
+        public int UpdateUserInformation(string editedName, string originalName)
         {
             JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            int updateInformation = dataAccessConexion.UpdateUserInformation(editedName, editedEmail);
+            int updateInformation = dataAccessConexion.UpdateUserInformation(editedName, originalName);
             return updateInformation;
         }
 

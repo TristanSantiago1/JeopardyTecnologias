@@ -27,7 +27,8 @@ namespace JeopardyGame.Service.InterfacesSevices
         int SentEmailCodeConfirmation(String email, String subject, String body);
 
         [OperationContract]
-        int UpdateUserInformation(string editedName, string editedEmail);
+        int UpdateUserInformation(String editedName, String originalName);
+
     }
 
         [DataContract]
@@ -86,6 +87,16 @@ namespace JeopardyGame.Service.InterfacesSevices
             [DataMember]
             public String Password { get { return password; } set { password = value; } }
 
+        }
+
+        [DataContract]
+        public class AvatarChoice
+        {
+        [DataMember]
+        public int IdAvatar { get; set; }
+
+        [DataMember]
+        public int idPlayer { get; set; }
         }
     
 }

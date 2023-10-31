@@ -20,10 +20,15 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LobbyPage : Page
     {
+        private Random generateAleatory;
         
-        public LobbyPage()
+        public LobbyPage(int gameCode)
         {
             InitializeComponent();
+            generateAleatory = new Random(DateTime.Now.Millisecond);
+            int aleatoryNumber = generateAleatory.Next();
+            aleatoryNumber = gameCode;
+            lblAleatoryCode.Content = aleatoryNumber;
         }
 
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
@@ -59,6 +64,8 @@ namespace JeopardyGame.Pages
         {
 
         }
+
+        
     }
     
         

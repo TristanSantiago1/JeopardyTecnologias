@@ -249,38 +249,28 @@ namespace JeopardyGame.Data.DataAccess
             return ERROR;
         }
 
-        public int UpdateUserInformation(string editedName, string editedEmail)
+        public int UpdateUserInformation(string editedName, string originalName)
         {
-            int EXIST = 1;
-            int ERROR = -1;
 
-            if (string.IsNullOrEmpty(editedName) && string.IsNullOrEmpty(editedEmail))
+            if (string.IsNullOrEmpty(editedName))
             {
-                return ERROR;
+                return -1;
             }
+
             try
             {
                 using (var context = new JeopardyDBContainer())
                 {
-                    var userToUpdate = context.Users.FirstOrDefault(u => u.UserName == editedName);
+                    var userToUpdate = context.Users.FirstOrDefault(u => u.Name == originalName);
 
                     if (userToUpdate == null)
                     {
-                        return ERROR;
+                        return -1;
                     }
 
-                    if (!string.IsNullOrEmpty(editedName))
-                    {
-                        userToUpdate.Name = editedName;
-                    }
-
-                    if (!string.IsNullOrEmpty(editedEmail))
-                    {
-                        userToUpdate.EmailAddress = editedEmail;
-                    }
-
+                    userToUpdate.Name = editedName;
                     context.SaveChanges();
-                    return EXIST;
+                    return 1;
                 }
             }
             catch (SqlException ex)
@@ -295,8 +285,10 @@ namespace JeopardyGame.Data.DataAccess
             {
                 ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
-            return ERROR;
+            return -1;
         }
+
+
 
     }
 }

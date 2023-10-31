@@ -417,6 +417,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SentEmailCodeConfirmation", ReplyAction="http://tempuri.org/IUserManager/SentEmailCodeConfirmationResponse")]
         System.Threading.Tasks.Task<int> SentEmailCodeConfirmationAsync(string email, string subject, string body);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
+        int UpdateUserInformation(string editedName, string originalName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserInformationAsync(string editedName, string originalName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -484,6 +490,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<int> SentEmailCodeConfirmationAsync(string email, string subject, string body) {
             return base.Channel.SentEmailCodeConfirmationAsync(email, subject, body);
+        }
+        
+        public int UpdateUserInformation(string editedName, string originalName) {
+            return base.Channel.UpdateUserInformation(editedName, originalName);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateUserInformationAsync(string editedName, string originalName) {
+            return base.Channel.UpdateUserInformationAsync(editedName, originalName);
         }
     }
     
