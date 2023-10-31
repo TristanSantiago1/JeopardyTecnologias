@@ -79,6 +79,33 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Join.
+        /// </summary>
+        public static string btnEnterCode {
+            get {
+                return ResourceManager.GetString("btnEnterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Guest.
+        /// </summary>
+        public static string btnInvite {
+            get {
+                return ResourceManager.GetString("btnInvite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Play.
+        /// </summary>
+        public static string btnLogIn {
+            get {
+                return ResourceManager.GetString("btnLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sing in.
         /// </summary>
         public static string btnRegistrer {
@@ -201,6 +228,15 @@ namespace JeopardyGame.Properties {
         public static string lblCodeDescrip {
             get {
                 return ResourceManager.GetString("lblCodeDescrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Game code.
+        /// </summary>
+        public static string lblCodeGame {
+            get {
+                return ResourceManager.GetString("lblCodeGame", resourceCulture);
             }
         }
         

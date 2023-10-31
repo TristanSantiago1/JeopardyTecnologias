@@ -21,13 +21,18 @@ namespace JeopardyGame.Pages
     public partial class LobbyPage : Page
     {
         private Random generateAleatory;
+        private int aleatoryNumber;
         
-        public LobbyPage(int gameCode)
+        public LobbyPage()
         {
             InitializeComponent();
             generateAleatory = new Random(DateTime.Now.Millisecond);
             int aleatoryNumber = generateAleatory.Next();
-            aleatoryNumber = gameCode;
+            lblAleatoryCode.Content = aleatoryNumber;
+        }
+        public LobbyPage(int codigoPartida) : this()
+        {
+            aleatoryNumber = codigoPartida;
             lblAleatoryCode.Content = aleatoryNumber;
         }
 

@@ -9,20 +9,18 @@
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="EditUserProfile">
     <Viewbox Stretch="Fill">
+
         <Grid Height="770">
-            <Border   Margin="108,220,844,287">
-                <Border.Clip>
-                    <EllipseGeometry RadiusX="180" RadiusY="180" Center="150,150" />
-                </Border.Clip>
-                <Image Source="/Images/JeopardyFosfoSign.jpg" Stretch="UniformToFill" Margin="-51,-32,35,-29" />
-            </Border>
-            <StackPanel Height="auto" Margin="698,105,229,500" >
+            <StackPanel Height="auto" Margin="698,104,229,501" >
                 <Label x:Name="lblNameDescripCreateAcc" Content = "{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="568">
                     <TextBox x:Name="txbEditName" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="552" Margin="8,0,0,0" />
                 </Border>
             </StackPanel>
+            <Image HorizontalAlignment="Left" Height="526" 
+       Width="672" Margin="0,167,0,0" VerticalAlignment="Top" 
+       Source="/Images/logoJeopardy.png" RenderTransformOrigin="0.914,0.526"/>
 
             <StackPanel Height="auto" Margin="698,269,229,336" >
                 <Label x:Name="lblUserNameDescripCreateAcc" Content = "{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
@@ -39,10 +37,6 @@
                     <TextBox x:Name="txbEditEmail" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="567" HorizontalAlignment="Center" />
                 </Border>
             </StackPanel>
-
-            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="177,563,1155,165">
-                <Button x:Name="btnChoseImage" FontSize="20" Content = "Seleccionar imagen" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonChoseImage" />
-            </Border>
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="776,661,522,62">
                 <Button x:Name="btnSaveChanges" FontSize="20" Content = "Guardar" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonSaveChanges" />
             </Border>
@@ -53,6 +47,8 @@
                 <ImageBrush ImageSource="/Images/BackGround.jpg">
                 </ImageBrush>
             </Grid.Background>
+
         </Grid>
+
     </Viewbox>
 </Page>

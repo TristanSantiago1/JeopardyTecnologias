@@ -18,7 +18,7 @@ namespace JeopardyGame.Views
 
         private void PrincipalWindowLoaded(object sender, RoutedEventArgs e)
         {
-            contentFrame.Navigate(new Pages.LogInUser());
+            contentFrame.Navigate(new Pages.PrincipalPage());
             contentFrame.Visibility = Visibility.Visible;
         }
 

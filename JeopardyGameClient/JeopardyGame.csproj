@@ -98,6 +98,9 @@
     <Compile Include="DialogWindows\InfoMessageDW.xaml.cs">
       <DependentUpon>InfoMessageDW.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PrincipalPage.xaml.cs">
+      <DependentUpon>PrincipalPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -162,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DialogWindows\InfoMessageDW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PrincipalPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,7 +248,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Resource Include="Assets\Avatar 2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\BackGround.jpg" />
@@ -308,6 +315,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Avatar 1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

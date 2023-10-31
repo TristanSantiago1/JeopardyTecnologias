@@ -123,6 +123,15 @@
   <data name="btnEnter" xml:space="preserve">
     <value>Ingresar</value>
   </data>
+  <data name="btnEnterCode" xml:space="preserve">
+    <value>Unirse</value>
+  </data>
+  <data name="btnInvite" xml:space="preserve">
+    <value>Invitado</value>
+  </data>
+  <data name="btnLogIn" xml:space="preserve">
+    <value>Jugar</value>
+  </data>
   <data name="btnRegistrer" xml:space="preserve">
     <value>Registrarse</value>
   </data>
@@ -160,10 +169,13 @@
     <value>es el codigo para que te verifiques en Jeopardy, rapido, ingresalo en el apartado de codigo y empieza a divertirte.</value>
   </data>
   <data name="EmailSubjectCode" xml:space="preserve">
-    <value>Codigó de Verificación</value>
+    <value>Codigo de Verificación</value>
   </data>
   <data name="lblCodeDescrip" xml:space="preserve">
     <value>Codigo :</value>
+  </data>
+  <data name="lblCodeGame" xml:space="preserve">
+    <value>Código partida</value>
   </data>
   <data name="lblCodeRoom" xml:space="preserve">
     <value>Código de sala</value>

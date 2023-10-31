@@ -27,7 +27,24 @@ namespace JeopardyGame.Pages
 
         private void clicEnterCode(object sender, RoutedEventArgs e)
         {
-            
+            int codigoIngresado;
+
+            if (int.TryParse(tbxCode.Text, out codigoIngresado))
+            {
+                LobbyPage lobbyPage = new LobbyPage(codigoIngresado);
+                this.NavigationService.Navigate(lobbyPage);
+            }
+            else
+            {
+                MessageBox.Show("Ingresa un código de partida válido.");
+            }
+        }
+
+        private void ClicClose(object sender, MouseButtonEventArgs e)
+        {
+            PrincipalPage pagePrincipal = new PrincipalPage();
+            this.NavigationService.Navigate(pagePrincipal);
+            NavigationService.RemoveBackEntry();
         }
     }
 }

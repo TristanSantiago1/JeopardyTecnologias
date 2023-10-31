@@ -3,14 +3,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p = "clr-namespace:JeopardyGame.Properties"
       xmlns:local="clr-namespace:JeopardyGame.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="400" d:DesignWidth="600"
       Title="enterGameWithCode">
 
     <Grid>
-        <Button x:Name="btnEnterCode" Click="clicEnterCode" Content="Button" HorizontalAlignment="Left" Margin="327,249,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbxCode" HorizontalAlignment="Left" Margin="347,167,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Image HorizontalAlignment="Left" Height="19" Margin="536,1,0,0" VerticalAlignment="Top" 
+       MouseDown="ClicClose" Width="15" Source="/Images/CrossImageWhite.png" RenderTransformOrigin="-0.148,1.811"/>
+        <Button x:Name="btnEnterCode" Click="clicEnterCode" Content = "{x:Static p:Resources.btnEnterCode}" Style="{StaticResource ButtonStartGame}" FontSize="25" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top" Height="53" Width="132"/>
+        <TextBox x:Name="tbxCode" Style="{StaticResource TextFieldAddUser}" Background="White" FontSize="20" TextWrapping="Wrap" Text="" Width="305" Height="56" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCodeGame" Style="{StaticResource labelStyleSimple}" FontSize="40" Content = "{x:Static p:Resources.lblCodeRoom}" Margin="0,72,0,0" HorizontalAlignment="Center" Width="224"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
 
     </Grid>
+
 </Page>

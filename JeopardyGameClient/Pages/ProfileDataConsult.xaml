@@ -37,7 +37,6 @@
             <Border.Clip>
                 <EllipseGeometry RadiusX="130" RadiusY="130" Center="100,100" />
             </Border.Clip>
-            <Image Source="/Images/JeopardyFosfoSign.jpg"  MouseDown="ClicEditUserInformation" Stretch="UniformToFill" Margin="-135,-58,73,-63" />
         </Border>
         <Image HorizontalAlignment="Left" Height="31" Width="33" Margin="997,252,0,0" VerticalAlignment="Top" Stretch="Fill" Source="/Images/EditIcon.png" />
         <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClicEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>

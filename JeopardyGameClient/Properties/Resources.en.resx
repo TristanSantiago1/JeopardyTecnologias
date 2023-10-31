@@ -123,6 +123,15 @@
   <data name="btnEnter" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="btnEnterCode" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="btnInvite" xml:space="preserve">
+    <value>Guest</value>
+  </data>
+  <data name="btnLogIn" xml:space="preserve">
+    <value>Play</value>
+  </data>
   <data name="btnRegistrer" xml:space="preserve">
     <value>Sing in</value>
   </data>
@@ -164,6 +173,9 @@
   </data>
   <data name="lblCodeDescrip" xml:space="preserve">
     <value>Code : </value>
+  </data>
+  <data name="lblCodeGame" xml:space="preserve">
+    <value>Game code</value>
   </data>
   <data name="lblCodeRoom" xml:space="preserve">
     <value>Room code</value>

@@ -136,6 +136,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Avatar\avatar1.jpg" />
     <Content Include="JeopardyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JeopardyDB.edmx</DependentUpon>

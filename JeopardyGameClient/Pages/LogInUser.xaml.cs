@@ -162,6 +162,12 @@ namespace JeopardyGame.Pages
             ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).Response(status, idFriend);
         }
 
+        private void ClicSingOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            PrincipalPage principalPage = new PrincipalPage();
+            this.NavigationService.Navigate(principalPage);
+            NavigationService.RemoveBackEntry();
+        }
     }
     public partial class Friend()
     {

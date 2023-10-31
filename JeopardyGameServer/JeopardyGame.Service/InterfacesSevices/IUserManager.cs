@@ -88,8 +88,15 @@ namespace JeopardyGame.Service.InterfacesSevices
             public String Password { get { return password; } set { password = value; } }
 
         }
-
         [DataContract]
+        public class Avatar
+        {
+            public int Id { get; set; }
+            public string AvatarName { get; set; }
+            public byte[] ImageData { get; set; }
+        }
+
+    [DataContract]
         public class AvatarChoice
         {
         [DataMember]

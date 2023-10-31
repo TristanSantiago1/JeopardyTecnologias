@@ -29,6 +29,7 @@ namespace JeopardyGame.Pages
         public static void DisplayUserInfo(TextBox txbEditName, TextBox txbEditUserName, TextBox txbEditEmail)
         {
             txbEditUserName.IsReadOnly = true;
+            txbEditEmail.IsReadOnly = true;
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             txbEditName.Text = userSingleton.Name; 
             txbEditUserName.Text = userSingleton.UserName; 

@@ -13,41 +13,49 @@
 
         <Grid Height="751">
 
-            <Viewbox Width="auto" Height="auto" Margin="323,247,35,386">
+            <Viewbox Width="auto" Height="auto" Margin="442,279,-84,354">
                 <StackPanel Height="auto" Width="1230" >
                     <Label x:Name="lblUserNameLogIn" Content = "{x:Static p:Resources.lblUserNameLogIn}"  Style="{StaticResource labelStyleSimple}" 
                          Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="747" HorizontalAlignment="Left">
-                        <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" TextChanged="txbUserNameCreateAcc_TextChanged" HorizontalAlignment="Stretch" Margin="0,0,110,0">
-                            TexBox.Bac
-                        </TextBox>
+                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="611" HorizontalAlignment="Left">
+                        <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="40" TextChanged="txbUserNameCreateAcc_TextChanged" HorizontalAlignment="Stretch" Margin="8,0,8,0"/>
                     </Border>
                 </StackPanel>
             </Viewbox>
-            <Viewbox Width="auto" Height="auto" Margin="335,418,-58,212">
+            <Viewbox Width="auto" Height="auto" Margin="414,433,-137,197">
                 <StackPanel Height="auto" Width="1230" >
                     <Label x:Name="lblPasswordLogIn" Content = "{x:Static p:Resources.lblPasswordLogIn}" Style="{StaticResource labelStyleSimple}" 
                         Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="798" HorizontalAlignment="Left">
-                        <PasswordBox x:Name="PssPasswordLogIn" Style="{StaticResource PasswordBox}" FontSize="40" Width="849" Margin="-2,0,0,0"/>
+                    <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="593" HorizontalAlignment="Left">
+                        <PasswordBox x:Name="PssPasswordLogIn" Style="{StaticResource PasswordBox}" FontSize="40" Width="586" Margin="-2,0,0,0" RenderTransformOrigin="0.5,0.5">
+                            <PasswordBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleY="0.192"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="1.422"/>
+                                </TransformGroup>
+                            </PasswordBox.RenderTransform>
+                        </PasswordBox>
                     </Border>
                 </StackPanel>
             </Viewbox>
-            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="426,610,683,92">
+            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="470,610,683,92">
                 <Button x:Name="btnEnter" FontSize="20" Content = "{x:Static p:Resources.btnEnter}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonEnterAccount" />
             </Border>
-            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="684,610,426,92">
+            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="716,610,429,92">
                 <Button x:Name="btnRegistrer" FontSize="20" Content = "{x:Static p:Resources.btnRegistrer}" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonRegister" />
             </Border>
-            <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" HorizontalAlignment="Left" Margin="335,365,0,0" VerticalAlignment="Top" Width="657"/>
-            <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}"  HorizontalAlignment="Left" Margin="335,544,0,0" VerticalAlignment="Top" Width="657"/>
+            <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" Margin="442,402,0,0" Width="657" Height="31"/>
+            <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}" Margin="442,559,0,0" Width="657" Height="28"/>
             <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
                 <ComboBoxItem Content="Español" Tag="es-MX"/>
             </ComboBox>
-            <Image HorizontalAlignment="Left" Height="237" 
-                Width="432" Margin="462,10,0,0" VerticalAlignment="Top" 
+            <Image HorizontalAlignment="Left" Height="290" 
+                Width="571" Margin="470,0,0,0" VerticalAlignment="Top" 
                 Source="/Images/logoJeopardy.png"/>
+            <Image Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" Margin="46,27,1260,658" />
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
             </Grid.Background>
