@@ -14,23 +14,25 @@
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
             </Grid.Background>
-            <Viewbox Width="auto" Height="auto" Margin="102,98,101,-217">
-                <Image HorizontalAlignment="Center" Height="1222" 
-                Width="854" VerticalAlignment="Top" 
-                Source="/Images/logoJeopardy.png"/>
-            </Viewbox>
-            <Button x:Name="btnInvite" Content = "{x:Static p:Resources.btnInvite}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-        FontSize="25" Click="CLicButtonInvite" HorizontalAlignment="Left" Margin="442,486,0,0" VerticalAlignment="Top" Height="95" Width="143" >
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/blueBtn.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="btnLogIn" Content = "{x:Static p:Resources.btnLogIn}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-        FontSize="25" Click="CLicButtonLogin" HorizontalAlignment="Left" Margin="275,486,0,0" VerticalAlignment="Top" Height="95" Width="131" >
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/purpleBtn.png"/>
-                </Button.Background>
-            </Button>
+            <Image HorizontalAlignment="Center" Height="320" Stretch="Fill"
+                Width="376" VerticalAlignment="Top" 
+                Source="/Images/logoJeopardy.png" Margin="0,157,0,0" RenderTransformOrigin="0.5,0.5">
+
+            </Image>
+            <StackPanel Orientation="Horizontal" Margin="119,517,120,118">
+                <Button x:Name="btnInvite" Content = "{x:Static p:Resources.btnInvite}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                FontSize="25" Click="CLicButtonInvite" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95" Width="143" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/blueBtn.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnLogIn" Content = "{x:Static p:Resources.btnLogIn}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+        FontSize="25" Click="CLicButtonLogin" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95" Width="131" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/purpleBtn.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
         </Grid>
     </Viewbox>
 </Page>

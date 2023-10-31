@@ -54,7 +54,7 @@
             </ComboBox>
             <Image HorizontalAlignment="Left" Height="290" 
                 Width="571" Margin="470,0,0,0" VerticalAlignment="Top" 
-                Source="/Images/logoJeopardy.png"/>
+                Source="/Images/logoWBack.png"/>
             <Image Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" Margin="46,27,1260,658" />
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
