@@ -53,7 +53,9 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonFriendsList(object sender, RoutedEventArgs e)
         {
-
+           FriendManager friendManager = new FriendManager();   
+            this.NavigationService.Navigate(friendManager);
+            NavigationService.RemoveBackEntry();
         }
         private void ClicSingOut(object sender, MouseButtonEventArgs e)
         {

@@ -12,8 +12,13 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface IFriendsManager
     {
         [OperationContract]
-        List<FriendInfo> GetUserFriends(UserPOJO user);   
-        
+        List<FriendInfo> GetUserFriends(UserPOJO user);
+
+        [OperationContract]
+        List<FriendInfo> GetUserFriendRequests(UserPOJO user);
+
+        [OperationContract]
+        List<FriendInfo> GetUsersNotFriends(UserPOJO user);
     }
 
     [DataContract]

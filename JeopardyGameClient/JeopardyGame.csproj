@@ -71,11 +71,15 @@
     </Compile>
     <Compile Include="Helpers\EncryptationClass.cs" />
     <Compile Include="Helpers\FriendCard.cs" />
+    <Compile Include="Helpers\FriendCardManagementWindow.cs" />
     <Compile Include="Pages\ActiveFriends.xaml.cs">
       <DependentUpon>ActiveFriends.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CodeConfirmation.xaml.cs">
       <DependentUpon>CodeConfirmation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FriendManager.xaml.cs">
+      <DependentUpon>FriendManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
@@ -128,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\CodeConfirmation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FriendManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,6 +290,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\ErrorIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SearchIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

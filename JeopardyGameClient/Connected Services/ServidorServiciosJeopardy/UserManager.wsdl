@@ -32,6 +32,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_INotifyUserActionFriendsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -75,6 +83,18 @@
   <wsdl:message name="IFriendsManager_GetUserFriends_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserFriendsResponse" />
   </wsdl:message>
+  <wsdl:message name="IFriendsManager_GetUserFriendRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFriendRequests" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_GetUserFriendRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFriendRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_GetUsersNotFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersNotFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_GetUsersNotFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersNotFriendsResponse" />
+  </wsdl:message>
   <wsdl:message name="IConsultInformation_ConsultUserById_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultUserById" />
   </wsdl:message>
@@ -117,6 +137,48 @@
   <wsdl:message name="INotifyUserAvailability_Response_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseResponse" />
   </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_RegisterFriendManagerUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterFriendManagerUser" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_RegisterFriendManagerUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterFriendManagerUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_UnregisterFriendManagerUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterFriendManagerUser" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ReportPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportPlayer" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_EliminateUserFromFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminateUserFromFriends" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_SendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_AcceptFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_DeclineFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ResponseReported_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseReported" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ResponseReported_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseReportedResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ResponseEliminationFromFriends_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseEliminationFromFriends" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ResponseEliminationFromFriends_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseEliminationFromFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ResponseResquestAction_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseResquestAction" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserActionFriendsManager_ResponseResquestAction_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseResquestActionResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -143,6 +205,14 @@
     <wsdl:operation name="GetUserFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/GetUserFriends" message="tns:IFriendsManager_GetUserFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/GetUserFriendsResponse" message="tns:IFriendsManager_GetUserFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFriendRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/GetUserFriendRequests" message="tns:IFriendsManager_GetUserFriendRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/GetUserFriendRequestsResponse" message="tns:IFriendsManager_GetUserFriendRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersNotFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/GetUsersNotFriends" message="tns:IFriendsManager_GetUsersNotFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/GetUsersNotFriendsResponse" message="tns:IFriendsManager_GetUsersNotFriends_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IConsultInformation">
@@ -177,6 +247,42 @@
     <wsdl:operation name="Response">
       <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/Response" message="tns:INotifyUserAvailability_Response_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseResponse" message="tns:INotifyUserAvailability_Response_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INotifyUserActionFriendsManager">
+    <wsdl:operation name="RegisterFriendManagerUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUser" message="tns:INotifyUserActionFriendsManager_RegisterFriendManagerUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUserResponse" message="tns:INotifyUserActionFriendsManager_RegisterFriendManagerUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterFriendManagerUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/UnregisterFriendManagerUser" message="tns:INotifyUserActionFriendsManager_UnregisterFriendManagerUser_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ReportPlayer" message="tns:INotifyUserActionFriendsManager_ReportPlayer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminateUserFromFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/EliminateUserFromFriends" message="tns:INotifyUserActionFriendsManager_EliminateUserFromFriends_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/SendFriendRequest" message="tns:INotifyUserActionFriendsManager_SendFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/AcceptFriendRequest" message="tns:INotifyUserActionFriendsManager_AcceptFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/DeclineFriendRequest" message="tns:INotifyUserActionFriendsManager_DeclineFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseReported">
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseReported" message="tns:INotifyUserActionFriendsManager_ResponseReported_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseReportedResponse" message="tns:INotifyUserActionFriendsManager_ResponseReported_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEliminationFromFriends">
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseEliminationFromFriends" message="tns:INotifyUserActionFriendsManager_ResponseEliminationFromFriends_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseEliminationFromFriendsResponse" message="tns:INotifyUserActionFriendsManager_ResponseEliminationFromFriends_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseResquestAction">
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseResquestAction" message="tns:INotifyUserActionFriendsManager_ResponseResquestAction_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseResquestActionResponse" message="tns:INotifyUserActionFriendsManager_ResponseResquestAction_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -233,6 +339,24 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="GetUserFriends">
       <soap12:operation soapAction="http://tempuri.org/IFriendsManager/GetUserFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFriendRequests">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/GetUserFriendRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersNotFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/GetUsersNotFriends" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -315,6 +439,82 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_INotifyUserActionFriendsManager" type="tns:INotifyUserActionFriendsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_INotifyUserActionFriendsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegisterFriendManagerUser">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterFriendManagerUser">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/UnregisterFriendManagerUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReportPlayer">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/ReportPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EliminateUserFromFriends">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/EliminateUserFromFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/AcceptFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/DeclineFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseReported">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/ResponseReported" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEliminationFromFriends">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/ResponseEliminationFromFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseResquestAction">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserActionFriendsManager/ResponseResquestAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
@@ -335,6 +535,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_INotifyUserAvailability" binding="tns:NetTcpBinding_INotifyUserAvailability">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_INotifyUserActionFriendsManager" binding="tns:NetTcpBinding_INotifyUserActionFriendsManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

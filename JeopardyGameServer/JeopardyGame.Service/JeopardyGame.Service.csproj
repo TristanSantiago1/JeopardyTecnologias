@@ -46,14 +46,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActiveUsers.cs" />
+    <Compile Include="FriendManagerDictionary.cs" />
     <Compile Include="InterfacesSevices\IConsultInformation.cs" />
     <Compile Include="InterfacesSevices\IFriendsManager.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
+    <Compile Include="InterfacesSevices\INotifyUserFriendlyActions.cs" />
     <Compile Include="InterfacesSevices\IUserManager.cs" />
     <Compile Include="InterpretersEntityPojo\UserInterpreter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceImplementation\ConsultInfoImple.cs" />
     <Compile Include="ServiceImplementation\FriendsManagerImplementation.cs" />
+    <Compile Include="ServiceImplementation\NotifyFriendlyActionsImple.cs" />
     <Compile Include="ServiceImplementation\NotifyUserAvbImple .cs" />
     <Compile Include="ServiceImplementation\ServicesReferenceAuthor.cs" />
     <Compile Include="ServiceImplementation\UserManager.cs" />

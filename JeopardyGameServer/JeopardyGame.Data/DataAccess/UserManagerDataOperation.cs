@@ -9,6 +9,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 using System.ServiceModel.Dispatcher;
 using System.Text;
@@ -100,7 +101,7 @@ namespace JeopardyGame.Data.DataAccess
             }
             return null;
         }
-        public User GetUserByUserName(String userName)
+        public  User GetUserByUserName(String userName)
         {
             using (var context = new JeopardyDBContainer())
             {
@@ -108,6 +109,53 @@ namespace JeopardyGame.Data.DataAccess
                 return userFindedByUserName;
             }
         }
+
+        public List<User> GetAllActiveUser()
+        {
+            using (var context = new JeopardyDBContainer())
+            {
+                var allUsers = context.Users.ToList();
+                return allUsers;
+            }
+        }
+
+        public static int UpdatePlayer(int idPlayerReported)
+        {
+            if (idPlayerReported == 0) return 0;
+            try
+            {
+                using (var context = new JeopardyDBContainer())
+                {
+                    var player = context.Players.FirstOrDefault(p => p.IdPlayer == idPlayerReported);
+                    player.NoReports++;
+                    context.Entry(player).State = EntityState.Modified;
+                    int result = context.SaveChanges();
+                    if (result != 0)
+                    {
+                        return result;
+                    }
+                    return 0;
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+            }
+            return 0;
+        }
+
 
         public Player GetPlayerByIdUser(int idUser)
         {
@@ -181,18 +229,15 @@ namespace JeopardyGame.Data.DataAccess
             }
             catch (SqlException sqlE)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.HandleExcpeotion(sqlE, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException entityEx)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-                ExceptionHandler exceptionHandler = new ExceptionHandler();
-                exceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+               ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
             }
             return false;
         }

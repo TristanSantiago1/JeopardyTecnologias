@@ -126,6 +126,12 @@
   <data name="bttAccept" xml:space="preserve">
     <value>Aceptar</value>
   </data>
+  <data name="bttAcceptFriendRequest" xml:space="preserve">
+    <value>Aceptar Solicitud</value>
+  </data>
+  <data name="bttAddFriend" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
   <data name="bttCancelGame" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -134,6 +140,12 @@
   </data>
   <data name="bttContinue" xml:space="preserve">
     <value>Continuar</value>
+  </data>
+  <data name="bttDeclineFriendRequest" xml:space="preserve">
+    <value>Rechazar Solicitud</value>
+  </data>
+  <data name="bttEliminate" xml:space="preserve">
+    <value>Eliminar</value>
   </data>
   <data name="bttEnterGame" xml:space="preserve">
     <value>Unirse partida</value>
@@ -144,8 +156,14 @@
   <data name="bttNewGame" xml:space="preserve">
     <value>Nueva partida</value>
   </data>
+  <data name="bttReport" xml:space="preserve">
+    <value>Reportar</value>
+  </data>
   <data name="bttSaveUser" xml:space="preserve">
     <value>Guardar</value>
+  </data>
+  <data name="bttSearch" xml:space="preserve">
+    <value>Buscar</value>
   </data>
   <data name="bttStartGame" xml:space="preserve">
     <value>Iniciar partida</value>
@@ -179,6 +197,12 @@
   </data>
   <data name="lblModalityGame" xml:space="preserve">
     <value>Modalidad de juego:</value>
+  </data>
+  <data name="lblMorePeopleFriendManager" xml:space="preserve">
+    <value>Mas Personas</value>
+  </data>
+  <data name="lblMyFriendsFriendManager" xml:space="preserve">
+    <value>Mis Amigos</value>
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre :</value>
@@ -219,6 +243,9 @@
   <data name="lblRepeatedUserName" xml:space="preserve">
     <value>El nombre de usuario ya ha sido registrado.</value>
   </data>
+  <data name="lblRequestFriendManager" xml:space="preserve">
+    <value>Solicitudes</value>
+  </data>
   <data name="lblResentCode" xml:space="preserve">
     <value>Reenviar Codigo en : </value>
   </data>
@@ -257,6 +284,9 @@
   </data>
   <data name="txbInfoMessgSuccRegUser" xml:space="preserve">
     <value>Se ha registrado correctamente el usuario :</value>
+  </data>
+  <data name="txbPromtTextSerarch" xml:space="preserve">
+    <value>Buscar</value>
   </data>
   <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
     <value>INFORMACIÓN</value>

@@ -22,7 +22,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para ActiveFriends.xaml
     /// </summary>
-    public partial class ActiveFriends : Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
+    public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
         FriendInfo[] friends;
         public ActiveFriends()
