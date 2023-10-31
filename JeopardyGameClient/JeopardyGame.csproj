@@ -149,7 +149,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\enterGameWithCode.xaml">
-    <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\FriendManager.xaml">
@@ -256,9 +256,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Avatar 2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\BackGround.jpg" />
     <Resource Include="Images\BackIcon.png" />
     <Resource Include="Images\EditIcon.png" />
@@ -325,9 +322,10 @@
     <Resource Include="Images\Background.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Avatar 1.jpg" />
-  <ItemGroup>
     <Resource Include="Images\SearchIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
