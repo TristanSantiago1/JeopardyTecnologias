@@ -510,6 +510,18 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetUserFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetUserFriendsResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendInfo[]> GetUserFriendsAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetUserFriendRequests", ReplyAction="http://tempuri.org/IFriendsManager/GetUserFriendRequestsResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.FriendInfo[] GetUserFriendRequests(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetUserFriendRequests", ReplyAction="http://tempuri.org/IFriendsManager/GetUserFriendRequestsResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendInfo[]> GetUserFriendRequestsAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetUsersNotFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetUsersNotFriendsResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.FriendInfo[] GetUsersNotFriends(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManager/GetUsersNotFriends", ReplyAction="http://tempuri.org/IFriendsManager/GetUsersNotFriendsResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendInfo[]> GetUsersNotFriendsAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -545,6 +557,22 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendInfo[]> GetUserFriendsAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
             return base.Channel.GetUserFriendsAsync(user);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.FriendInfo[] GetUserFriendRequests(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.GetUserFriendRequests(user);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendInfo[]> GetUserFriendRequestsAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.GetUserFriendRequestsAsync(user);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.FriendInfo[] GetUsersNotFriends(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.GetUsersNotFriends(user);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendInfo[]> GetUsersNotFriendsAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.GetUsersNotFriendsAsync(user);
         }
     }
     
@@ -717,6 +745,156 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUser, int idPlayer) {
             return base.Channel.PlayerIsNotAvailableAsync(idUser, idPlayer);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.INotifyUserActionFriendsManager", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.INotifyUserActionFriendsManagerCallback))]
+    public interface INotifyUserActionFriendsManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUser", ReplyAction="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUserRespo" +
+            "nse")]
+        int RegisterFriendManagerUser(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUser", ReplyAction="http://tempuri.org/INotifyUserActionFriendsManager/RegisterFriendManagerUserRespo" +
+            "nse")]
+        System.Threading.Tasks.Task<int> RegisterFriendManagerUserAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/UnregisterFriendManagerUser")]
+        void UnregisterFriendManagerUser(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/UnregisterFriendManagerUser")]
+        System.Threading.Tasks.Task UnregisterFriendManagerUserAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/ReportPlayer")]
+        void ReportPlayer(int idUser, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/ReportPlayer")]
+        System.Threading.Tasks.Task ReportPlayerAsync(int idUser, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/EliminateUserFromFriends")]
+        void EliminateUserFromFriends(int idUser1, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/EliminateUserFromFriends")]
+        System.Threading.Tasks.Task EliminateUserFromFriendsAsync(int idUser1, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/SendFriendRequest")]
+        void SendFriendRequest(int idUser, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/SendFriendRequest")]
+        System.Threading.Tasks.Task SendFriendRequestAsync(int idUser, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/AcceptFriendRequest")]
+        void AcceptFriendRequest(int idUser, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/AcceptFriendRequest")]
+        System.Threading.Tasks.Task AcceptFriendRequestAsync(int idUser, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/DeclineFriendRequest")]
+        void DeclineFriendRequest(int idUser, int idUser2);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserActionFriendsManager/DeclineFriendRequest")]
+        System.Threading.Tasks.Task DeclineFriendRequestAsync(int idUser, int idUser2);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface INotifyUserActionFriendsManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseReported", ReplyAction="http://tempuri.org/INotifyUserActionFriendsManager/ResponseReportedResponse")]
+        void ResponseReported(int numReports);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseEliminationFromFriends" +
+            "", ReplyAction="http://tempuri.org/INotifyUserActionFriendsManager/ResponseEliminationFromFriends" +
+            "Response")]
+        void ResponseEliminationFromFriends(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserActionFriendsManager/ResponseResquestAction", ReplyAction="http://tempuri.org/INotifyUserActionFriendsManager/ResponseResquestActionResponse" +
+            "")]
+        void ResponseResquestAction(int idUser, int requestStatus, string userName);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface INotifyUserActionFriendsManagerChannel : JeopardyGame.ServidorServiciosJeopardy.INotifyUserActionFriendsManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class NotifyUserActionFriendsManagerClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.INotifyUserActionFriendsManager>, JeopardyGame.ServidorServiciosJeopardy.INotifyUserActionFriendsManager {
+        
+        public NotifyUserActionFriendsManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public NotifyUserActionFriendsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public NotifyUserActionFriendsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public NotifyUserActionFriendsManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public NotifyUserActionFriendsManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public int RegisterFriendManagerUser(int idUser) {
+            return base.Channel.RegisterFriendManagerUser(idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> RegisterFriendManagerUserAsync(int idUser) {
+            return base.Channel.RegisterFriendManagerUserAsync(idUser);
+        }
+        
+        public void UnregisterFriendManagerUser(int idUser) {
+            base.Channel.UnregisterFriendManagerUser(idUser);
+        }
+        
+        public System.Threading.Tasks.Task UnregisterFriendManagerUserAsync(int idUser) {
+            return base.Channel.UnregisterFriendManagerUserAsync(idUser);
+        }
+        
+        public void ReportPlayer(int idUser, string userName) {
+            base.Channel.ReportPlayer(idUser, userName);
+        }
+        
+        public System.Threading.Tasks.Task ReportPlayerAsync(int idUser, string userName) {
+            return base.Channel.ReportPlayerAsync(idUser, userName);
+        }
+        
+        public void EliminateUserFromFriends(int idUser1, int idUser2) {
+            base.Channel.EliminateUserFromFriends(idUser1, idUser2);
+        }
+        
+        public System.Threading.Tasks.Task EliminateUserFromFriendsAsync(int idUser1, int idUser2) {
+            return base.Channel.EliminateUserFromFriendsAsync(idUser1, idUser2);
+        }
+        
+        public void SendFriendRequest(int idUser, int idUser2) {
+            base.Channel.SendFriendRequest(idUser, idUser2);
+        }
+        
+        public System.Threading.Tasks.Task SendFriendRequestAsync(int idUser, int idUser2) {
+            return base.Channel.SendFriendRequestAsync(idUser, idUser2);
+        }
+        
+        public void AcceptFriendRequest(int idUser, int idUser2) {
+            base.Channel.AcceptFriendRequest(idUser, idUser2);
+        }
+        
+        public System.Threading.Tasks.Task AcceptFriendRequestAsync(int idUser, int idUser2) {
+            return base.Channel.AcceptFriendRequestAsync(idUser, idUser2);
+        }
+        
+        public void DeclineFriendRequest(int idUser, int idUser2) {
+            base.Channel.DeclineFriendRequest(idUser, idUser2);
+        }
+        
+        public System.Threading.Tasks.Task DeclineFriendRequestAsync(int idUser, int idUser2) {
+            return base.Channel.DeclineFriendRequestAsync(idUser, idUser2);
         }
     }
 }

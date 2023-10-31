@@ -46,7 +46,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();
             FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
             UserPOJO user = consultInfoImple.ConsultUserById(idUser);
-            //PlayerPOJO player = consultInfoImple.ConsultPlayerById(idPlayer);
             List<FriendInfo> friendsNewUser = friendsManagerImplementation.GetUserFriends(user);  
             if(friendsNewUser != null)
             {

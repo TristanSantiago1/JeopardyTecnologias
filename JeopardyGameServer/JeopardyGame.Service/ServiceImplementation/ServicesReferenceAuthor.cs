@@ -48,9 +48,19 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
 
+        public List<FriendInfo> GetUserFriendRequests(UserPOJO user)
+        {
+            return ((IFriendsManager)friendsManagerImplementation).GetUserFriendRequests(user);
+        }
+
         public List<FriendInfo> GetUserFriends(UserPOJO user)
         {
             return ((IFriendsManager)friendsManagerImplementation).GetUserFriends(user);
+        }
+
+        public List<FriendInfo> GetUsersNotFriends(UserPOJO user)
+        {
+            return ((IFriendsManager)friendsManagerImplementation).GetUsersNotFriends(user);
         }
     }
 
@@ -85,10 +95,25 @@ namespace JeopardyGame.Service.ServiceImplementation
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability 
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager
     {
         NotifyUserAvbImple NotifyUserAvbImple = new NotifyUserAvbImple();
+        NotifyFriendlyActionsImple NotifyFriendlyActionsImple = new NotifyFriendlyActionsImple();
+
+        public void AcceptFriendRequest(int idUser, int idUser2)
+        {
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).AcceptFriendRequest(idUser, idUser2);
+        }
+
+        public void DeclineFriendRequest(int idUser, int idUser2)
+        {
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).DeclineFriendRequest(idUser, idUser2);
+        }
+
+        public void EliminateUserFromFriends(int idUser1, int idUser2)
+        {
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).EliminateUserFromFriends(idUser1, idUser2);
+        }
 
         public void PlayerIsAvailable(int idUser, int idPlayer)
         {
@@ -99,5 +124,27 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsNotAvailable(idUser, idPlayer);
         }
+
+        public int RegisterFriendManagerUser(int idUser)
+        {
+            return ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).RegisterFriendManagerUser(idUser);
+        }
+
+        public void ReportPlayer(int idUser, string userName)
+        {
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).ReportPlayer(idUser, userName);
+        }
+
+        public void SendFriendRequest(int idUser, int idUser2)
+        {
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).SendFriendRequest(idUser, idUser2);
+        }
+
+        public void UnregisterFriendManagerUser(int idUser)
+        {
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).UnregisterFriendManagerUser(idUser);
+        }
     }
+
+
 }

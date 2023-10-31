@@ -133,6 +133,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Accept Request.
+        /// </summary>
+        public static string bttAcceptFriendRequest {
+            get {
+                return ResourceManager.GetString("bttAcceptFriendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Add .
+        /// </summary>
+        public static string bttAddFriend {
+            get {
+                return ResourceManager.GetString("bttAddFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cancel.
         /// </summary>
         public static string bttCancelGame {
@@ -156,6 +174,24 @@ namespace JeopardyGame.Properties {
         public static string bttContinue {
             get {
                 return ResourceManager.GetString("bttContinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Decline Request.
+        /// </summary>
+        public static string bttDeclineFriendRequest {
+            get {
+                return ResourceManager.GetString("bttDeclineFriendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Eliminate.
+        /// </summary>
+        public static string bttEliminate {
+            get {
+                return ResourceManager.GetString("bttEliminate", resourceCulture);
             }
         }
         
@@ -187,11 +223,29 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Report.
+        /// </summary>
+        public static string bttReport {
+            get {
+                return ResourceManager.GetString("bttReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Save.
         /// </summary>
         public static string bttSaveUser {
             get {
                 return ResourceManager.GetString("bttSaveUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Search.
+        /// </summary>
+        public static string bttSearch {
+            get {
+                return ResourceManager.GetString("bttSearch", resourceCulture);
             }
         }
         
@@ -309,6 +363,24 @@ namespace JeopardyGame.Properties {
         public static string lblModalityGame {
             get {
                 return ResourceManager.GetString("lblModalityGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a More People.
+        /// </summary>
+        public static string lblMorePeopleFriendManager {
+            get {
+                return ResourceManager.GetString("lblMorePeopleFriendManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a My Friends.
+        /// </summary>
+        public static string lblMyFriendsFriendManager {
+            get {
+                return ResourceManager.GetString("lblMyFriendsFriendManager", resourceCulture);
             }
         }
         
@@ -439,6 +511,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Solicitude.
+        /// </summary>
+        public static string lblRequestFriendManager {
+            get {
+                return ResourceManager.GetString("lblRequestFriendManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Resent Code.
         /// </summary>
         public static string lblResentCode {
@@ -552,6 +633,15 @@ namespace JeopardyGame.Properties {
         public static string txbInfoMessgSuccRegUser {
             get {
                 return ResourceManager.GetString("txbInfoMessgSuccRegUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Search.
+        /// </summary>
+        public static string txbPromtTextSerarch {
+            get {
+                return ResourceManager.GetString("txbPromtTextSerarch", resourceCulture);
             }
         }
         
