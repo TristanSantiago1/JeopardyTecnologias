@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Helpers;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Helpers;
 using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
@@ -18,6 +19,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace JeopardyGame.Pages
@@ -27,18 +29,29 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class FriendManager : Page, INotifyUserActionFriendsManagerCallback
     {
-        private List<FriendInfo> friends ;
+        private List<FriendInfo> friends;
         private List<FriendInfo> friendRequests;
         private List<FriendInfo> otherPeople;
-        private int typeUserConsult = 1;
         private String textLeftButton = Properties.Resources.bttReport;
         private String textRightButton = Properties.Resources.bttEliminate;
-        private InstanceContext context;
+        private DispatcherTimer timer;
+        private int leftTime = 5;
+        private const int NOT_STATUS = 0;
+        private const int MY_FRIENDS = 1;
+        private const int FRIENDS_REQUEST = 2;
+        private const int OTHER_PEOPLE = 3;
+        private int typeUserConsult = MY_FRIENDS;
         NotifyUserActionFriendsManagerClient notifyUserActionFriendsManagerClient;
+        private InstanceContext context;
 
         public FriendManager()
         {
             InitializeComponent();
+            PrepareWindow();
+        }
+
+        private void PrepareWindow()
+        {
             context = new InstanceContext(this);
             notifyUserActionFriendsManagerClient = new NotifyUserActionFriendsManagerClient(context);
             UserSingleton userSingleton = UserSingleton.GetMainUser();
@@ -46,8 +59,6 @@ namespace JeopardyGame.Pages
             GetAllTables();
             SetCards();
             txbUserToSearch.PreviewTextInput += TextBoxSearchListener;
-
-
         }
 
         private void SetCards()
@@ -56,23 +67,23 @@ namespace JeopardyGame.Pages
             List<FriendInfo> listOfUsers;
             switch (typeUserConsult)
             {
-                case 1:
-                   listOfUsers = new List<FriendInfo>(friends); break;
-                case 2:
+                case MY_FRIENDS:
+                    listOfUsers = new List<FriendInfo>(friends); break;
+                case FRIENDS_REQUEST:
                     listOfUsers = new List<FriendInfo>(friendRequests); break;
-                case 3:
+                case OTHER_PEOPLE:
                     listOfUsers = new List<FriendInfo>(otherPeople); break;
                 default:
                     listOfUsers = new List<FriendInfo>(); break;
             }
             foreach (var item in listOfUsers)
-            {       
+            {
                 Border brdCard = new Border();
                 FriendCardManagementWindow friendCardManagement = new FriendCardManagementWindow(item.IdUser, item.UserName, typeUserConsult, textLeftButton, textRightButton, this);
                 brdCard.Child = friendCardManagement;
                 stcFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
-                                
-            }            
+
+            }
         }
 
         private void GetAllTables()
@@ -80,38 +91,16 @@ namespace JeopardyGame.Pages
             ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
             ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            UserPOJO user = proxyUser.ConsultUserById(userSingleton.IdUser);          
-            friends = proxyFriend.GetUserFriends(user).ToList();                   
-            friendRequests = proxyFriend.GetUserFriendRequests(user).ToList();                
-            otherPeople = proxyFriend.GetUsersNotFriends(user).ToList();            
-            proxyFriend.Close();
-            proxyUser.Close();
-        }
-
-        private void GetInfoCards()
-        {
-            ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
-            ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
             UserPOJO user = proxyUser.ConsultUserById(userSingleton.IdUser);
-            switch(typeUserConsult)
-            {
-                case 1:
-                    friends = proxyFriend.GetUserFriends(user).ToList();
-                    break;
-                case 2:
-                    friendRequests = proxyFriend.GetUserFriendRequests(user).ToList();
-                    break;
-                case 3:
-                    otherPeople = proxyFriend.GetUsersNotFriends(user).ToList();
-                    break;
-            }                      
+            friends = proxyFriend.GetUserFriends(user).ToList();
+            friendRequests = proxyFriend.GetUserFriendRequests(user).ToList();
+            otherPeople = proxyFriend.GetUsersNotFriends(user).ToList();
             proxyFriend.Close();
             proxyUser.Close();
         }
 
         private Border SetBorderCardStyle(Border brdCard)
-        {            
+        {
             brdCard.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D9D9D9"));
             brdCard.Background.Opacity = 0.20;
             brdCard.CornerRadius = new CornerRadius(15);
@@ -125,39 +114,39 @@ namespace JeopardyGame.Pages
 
         private void ClicConsultMyFriends(object sender, MouseButtonEventArgs e)
         {
-            typeUserConsult = 1;
+            typeUserConsult = MY_FRIENDS;
             textLeftButton = Properties.Resources.bttReport;
             textRightButton = Properties.Resources.bttEliminate;
             SelectLabel(lblMyFriends);
             if (friends == null)
-            {               
-                GetInfoCards();
+            {
+                GetAllTables();
             }
             SetCards();
         }
 
         private void ClicConsultFriendSolicitudes(object sender, MouseButtonEventArgs e)
         {
-            typeUserConsult = 2;
+            typeUserConsult = FRIENDS_REQUEST;
             textLeftButton = Properties.Resources.bttAcceptFriendRequest;
             textRightButton = Properties.Resources.bttDeclineFriendRequest;
             SelectLabel(lblRequests);
             if (friendRequests == null)
-            {                
-                GetInfoCards();                
+            {
+                GetAllTables();
             }
             SetCards();
         }
 
         private void ClicConsultMorePeople(object sender, MouseButtonEventArgs e)
         {
-            typeUserConsult = 3;
+            typeUserConsult = OTHER_PEOPLE;
             textLeftButton = Properties.Resources.bttAddFriend;
             textRightButton = Properties.Resources.bttReport;
             SelectLabel(lblMorePeople);
             if (otherPeople == null)
-            {              
-                GetInfoCards();                
+            {
+                GetAllTables();
             }
             SetCards();
         }
@@ -175,35 +164,35 @@ namespace JeopardyGame.Pages
         }
 
         public void ReportUser(int idPlayer, string userNmae)
-        {           
+        {
             notifyUserActionFriendsManagerClient.ReportPlayer(idPlayer, userNmae);
         }
 
         public void EliminateFriend(int idUserFriendToEliminate)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();            
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
             notifyUserActionFriendsManagerClient.EliminateUserFromFriends(userSingleton.IdPlayer, idUserFriendToEliminate);
-            String userName = "nono";
+            String userName = String.Empty;
             foreach (var item in friends)
             {
                 if (item.IdUser == idUserFriendToEliminate)
                 {
-                    friends.Remove(item); 
+                    friends.Remove(item);
                     userName = item.UserName;
                     break;
                 }
-            }            
+            }
             FriendInfo newFriend = new FriendInfo();
             newFriend.IdUser = idUserFriendToEliminate;
             newFriend.UserName = userName;
-            newFriend.IdStatus = 0;
+            newFriend.IdStatus = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();
         }
 
         public void SentFriendRequest(int idUserRequested, String userName)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser(); 
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
             notifyUserActionFriendsManagerClient.SendFriendRequest(userSingleton.IdPlayer, idUserRequested);
             foreach (var item in otherPeople)
             {
@@ -218,7 +207,7 @@ namespace JeopardyGame.Pages
 
         public void AcceptFriendRequest(int idUserRequesting, String userName)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();          
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
             notifyUserActionFriendsManagerClient.AcceptFriendRequest(userSingleton.IdPlayer, idUserRequesting);
             foreach (var item in friendRequests)
             {
@@ -227,19 +216,19 @@ namespace JeopardyGame.Pages
                     friendRequests.Remove(item);
                     break;
                 }
-            }            
-            FriendInfo newFriend = new FriendInfo();    
+            }
+            FriendInfo newFriend = new FriendInfo();
             newFriend.IdUser = idUserRequesting;
             newFriend.UserName = userName;
-            newFriend.IdStatus = 0;
+            newFriend.IdStatus = NOT_STATUS;
             friends.Add(newFriend);
             SetCards();
         }
 
         public void DeclineFriendRequest(int idUserRequesting, String userName)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();           
-            notifyUserActionFriendsManagerClient.DeclineFriendRequest(userSingleton.IdPlayer, idUserRequesting);           
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            notifyUserActionFriendsManagerClient.DeclineFriendRequest(userSingleton.IdPlayer, idUserRequesting);
             foreach (var item in friendRequests)
             {
                 if (item.IdUser == idUserRequesting)
@@ -247,19 +236,20 @@ namespace JeopardyGame.Pages
                     friendRequests.Remove(item);
                     break;
                 }
-            }                    
+            }
             FriendInfo newFriend = new FriendInfo();
             newFriend.IdUser = idUserRequesting;
             newFriend.UserName = userName;
-            newFriend.IdStatus = 0;
+            newFriend.IdStatus = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();
         }
 
         public void ResponseReported(int numReports)
         {
-            MessageBox.Show("Te han reportado por :" + numReports + ", Cuidado");
-        }       
+            InfoMessageDW infoMessageDW = new InfoMessageDW(Properties.Resources.txbInfoMessgSuccRegUser, Properties.Resources.MessageReported + numReports.ToString());
+            infoMessageDW.Show();
+        }
 
         public void ResponseResquestAction(int idUserOperation, int requestStatus, String userName)
         {
@@ -277,22 +267,23 @@ namespace JeopardyGame.Pages
                     }
                     newFriend.IdUser = idUserOperation;
                     newFriend.UserName = userName;
-                    newFriend.IdStatus = 0;
+                    newFriend.IdStatus = NOT_STATUS;
                     otherPeople.Add(newFriend);
-                    lblDeclineRequestMessage.Content = "HA RECHAZADO TU SOLCIITUD" + idUserOperation;
+                    lblDeclineRequestMessage.Content = idUserOperation + " " + Properties.Resources.MessageFriRequeDeclined;
+                    StartTimer();
                     break;
                 case 1:
-                   foreach (var item in otherPeople)
+                    foreach (var item in otherPeople)
                     {
                         if (item.IdUser == idUserOperation)
                         {
                             otherPeople.Remove(item);
                             break;
                         }
-                    }                                      
+                    }
                     newFriend.IdUser = idUserOperation;
                     newFriend.UserName = userName;
-                    newFriend.IdStatus = 0;
+                    newFriend.IdStatus = NOT_STATUS;
                     friendRequests.Add(newFriend);
                     break;
                 case 2:
@@ -303,18 +294,18 @@ namespace JeopardyGame.Pages
                             friendRequests.Remove(item);
                             break;
                         }
-                    }                              
+                    }
                     newFriend.IdUser = idUserOperation;
                     newFriend.UserName = userName;
-                    newFriend.IdStatus = 0;
+                    newFriend.IdStatus = NOT_STATUS;
                     friends.Add(newFriend);
                     break;
             }
             SetCards();
-        } 
+        }
         public void ResponseEliminationFromFriends(int idPlayerWhoEliminatedU)
         {
-            String userNmae = "none";
+            String userNmae = String.Empty;
             foreach (var item in friends)
             {
                 if (item.IdUser == idPlayerWhoEliminatedU)
@@ -323,30 +314,23 @@ namespace JeopardyGame.Pages
                     userNmae = item.UserName;
                     break;
                 }
-            }            
-            FriendInfo newFriend = new FriendInfo();           
+            }
+            FriendInfo newFriend = new FriendInfo();
             newFriend.IdUser = idPlayerWhoEliminatedU;
             newFriend.UserName = userNmae;
-            newFriend.IdStatus = 0;
+            newFriend.IdStatus = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();
         }
 
         private void ClicBackToMenu(object sender, MouseButtonEventArgs e)
-        {           
+        {
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             notifyUserActionFriendsManagerClient.UnregisterFriendManagerUser(userSingleton.IdUser);
             MainMenu mainMenu = new MainMenu();
             this.NavigationService.Navigate(mainMenu);
             NavigationService.RemoveBackEntry();
         }
-
-        private void DeleteMesage(object sender, MouseButtonEventArgs e)
-        {
-            lblDeclineRequestMessage.Content = string.Empty;
-        }
-
-      
 
         private void ClicSearchPlayerButton(object sender, RoutedEventArgs e)
         {
@@ -355,11 +339,11 @@ namespace JeopardyGame.Pages
             List<FriendInfo> listOfUsers;
             switch (typeUserConsult)
             {
-                case 1:
+                case MY_FRIENDS:
                     listOfUsers = new List<FriendInfo>(friends); break;
-                case 2:
+                case FRIENDS_REQUEST:
                     listOfUsers = new List<FriendInfo>(friendRequests); break;
-                case 3:
+                case OTHER_PEOPLE:
                     listOfUsers = new List<FriendInfo>(otherPeople); break;
                 default:
                     listOfUsers = new List<FriendInfo>(); break;
@@ -373,6 +357,26 @@ namespace JeopardyGame.Pages
                     brdCard.Child = friendCardManagement;
                     stcFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
                 }
+            }
+        }
+
+        private void StartTimer()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (leftTime > 0)
+            {
+                leftTime--;
+            }
+            else
+            {
+                lblDeclineRequestMessage.Content = string.Empty;
+                timer.Stop();
             }
         }
 

@@ -556,6 +556,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a had declined your friend request..
+        /// </summary>
+        public static string MessageFriRequeDeclined {
+            get {
+                return ResourceManager.GetString("MessageFriRequeDeclined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Careful, You&apos;ve been reported, Now you have :.
+        /// </summary>
+        public static string MessageReported {
+            get {
+                return ResourceManager.GetString("MessageReported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Individual.
         /// </summary>
         public static string rdbIndividual {

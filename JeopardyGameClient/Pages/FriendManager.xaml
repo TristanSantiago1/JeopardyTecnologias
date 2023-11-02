@@ -7,7 +7,7 @@
       xmlns:p="clr-namespace:JeopardyGame.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
-      Title="FriendManager" MouseDown="DeleteMesage">
+      Title="FriendManager">
     <Viewbox Stretch="Fill">
         <Grid Height="770" Width="1300">
             <Border Margin="95,186,300,516" BorderBrush="Beige" BorderThickness="3" Background="AliceBlue" CornerRadius="13">
@@ -31,8 +31,8 @@
                 </Grid>
             </Border>
             <Label x:Name="imgLook" Content="{x:Static p:Resources.txbPromtTextSerarch}" HorizontalAlignment="Left" VerticalContentAlignment="Center"  Margin="164,191,0,0" VerticalAlignment="Top" Height="54" Width="auto" FontSize="35" Foreground="Gray"/>
-            <Image HorizontalAlignment="Left" Height="40" Margin="118,207,0,0" VerticalAlignment="Top" Width="44" Source="/Images/SearchIcon.png"/>
-            <Image HorizontalAlignment="Left" Height="88" Margin="95,47,0,0" VerticalAlignment="Top" Width="56" Source="/Images/BackIcon.png" MouseDown="ClicBackToMenu"/>
+            <Image HorizontalAlignment="Left" Height="40" Margin="113,203,0,0" VerticalAlignment="Top" Width="44" Source="/Images/SearchIcon.png"/>
+            <Image HorizontalAlignment="Left" Height="63" Margin="29,36,0,0" VerticalAlignment="Top" Width="29" Source="/Images/BackIcon.png" MouseDown="ClicBackToMenu"/>
             <Label x:Name="lblDeclineRequestMessage" Content="" HorizontalAlignment="Left" Height="35" Margin="118,272,0,0" VerticalAlignment="Top" Width="751" VerticalContentAlignment="Center" Foreground="Red" FontSize="20"/>
 
         </Grid>

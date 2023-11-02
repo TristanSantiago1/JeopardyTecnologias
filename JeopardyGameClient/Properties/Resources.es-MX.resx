@@ -282,6 +282,12 @@
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>
   </data>
+  <data name="MessageFriRequeDeclined" xml:space="preserve">
+    <value>ha rechazado tu solicitud de amistad</value>
+  </data>
+  <data name="MessageReported" xml:space="preserve">
+    <value>Ten cuidado, has sido reportado, Ahora tienes : </value>
+  </data>
   <data name="rdbIndividual" xml:space="preserve">
     <value>Individual</value>
   </data>
