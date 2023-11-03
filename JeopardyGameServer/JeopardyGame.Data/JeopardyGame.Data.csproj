@@ -136,7 +136,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Avatar\avatar1.jpg" />
     <Content Include="JeopardyDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JeopardyDB.edmx</DependentUpon>
@@ -168,6 +167,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Avatar\" />
     <Folder Include="Exceptions\Logs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

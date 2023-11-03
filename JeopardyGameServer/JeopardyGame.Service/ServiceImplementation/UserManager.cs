@@ -132,6 +132,33 @@ namespace JeopardyGame.Service.ServiceImplementation
             return updateInformation;
         }
 
+        public List<FriendScore> GetFriendScores(int userId)
+        {
+            Data.DataAccess.UserManagerDataOperation userManager = new Data.DataAccess.UserManagerDataOperation();
+            Data.DataAccess.FriendsManagerDataOperation friendsManager = new Data.DataAccess.FriendsManagerDataOperation();
+            ConsultInfoImple consultInfo = new ConsultInfoImple();
+
+            Player playerConsulted = userManager.GetPlayerByIdPlayer(userId);
+            List<Player> playerFriends = friendsManager.Get20NotFriendsPlayer(playerConsulted);
+
+            List<FriendScore> friendScores = new List<FriendScore>();
+
+            foreach (var friend in playerFriends)
+            {
+                FriendScore friendScore = new FriendScore
+                {
+                    IdUser = friend.IdPlayer,
+                    GeneralPoints = (int)friend.GeneralPoints,
+                    UserName = friend.User.UserName
+                };
+
+                friendScores.Add(friendScore);
+            }
+
+            return friendScores;
+        }
+
+
     }
 }
 

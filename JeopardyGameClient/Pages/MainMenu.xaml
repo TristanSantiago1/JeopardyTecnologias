@@ -17,41 +17,43 @@
 
             </Grid.Background>
             <Image HorizontalAlignment="Left" Height="234" 
-       Width="399" Margin="158,14,0,0" VerticalAlignment="Top" 
+       Width="399" Margin="107,14,0,0" VerticalAlignment="Top" 
        Source="/Images/logoJeopardy.png"/>
-            <Image HorizontalAlignment="Left" Height="66" Margin="50,38,0,0" VerticalAlignment="Top" Width="37" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
-            <Image HorizontalAlignment="Left" Height="117" Margin="1021,19,0,0" VerticalAlignment="Top" Width="99" Source="/Images/userProfile.png" MouseDown="ClicUserProfile" RenderTransformOrigin="0.491,2.068" />
+            <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
+            <Image HorizontalAlignment="Left" Height="73" Margin="1004,19,0,0" VerticalAlignment="Top" Width="82" Source="/Images/userProfile.png" MouseDown="ClicUserProfile" RenderTransformOrigin="0.491,2.068" />
 
             <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1066,692,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
                 <ComboBoxItem Content="Español" Tag="es-MX"/>
             </ComboBox>
 
-            <Label x:Name="lblProfileInformation"  Content= "{x:Static p:Resources.lblProfileInformation}"  MouseDown="ClicUserProfile" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1037,123,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblProfileInformation"  Content= "{x:Static p:Resources.lblProfileInformation}"  MouseDown="ClicUserProfile" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1011,97,0,0" VerticalAlignment="Top"/>
             <Button x:Name="bttNewGame" Content = "{x:Static p:Resources.bttNewGame}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="CLicButtonNewGame" HorizontalAlignment="Left" Margin="138,253,0,0" VerticalAlignment="Top" Height="118" Width="400" >
+                    FontSize="25" Click="CLicButtonNewGame" HorizontalAlignment="Left" Margin="87,258,0,0" VerticalAlignment="Top" Height="118" Width="400" >
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>
             </Button>
 
             <Button x:Name="bttEnterGame" Content = "{x:Static p:Resources.bttEnterGame}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Margin="138,415,0,0" VerticalAlignment="Top" Height="117" Width="400" >
+                    FontSize="25" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Margin="87,414,0,0" VerticalAlignment="Top" Height="118" Width="400" >
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/purpleBtn.png"/>
                 </Button.Background>
             </Button>
 
             <Button x:Name="bttFriends" Content = "{x:Static p:Resources.bttFriends}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Margin="138,570,0,0" VerticalAlignment="Top" Height="117" Width="400" >
+                    FontSize="25" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Margin="87,563,0,0" VerticalAlignment="Top" Height="117" Width="400" >
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>
             </Button>
+            <Border Margin="703,181,83,71" CornerRadius="16" Background="#7F592C75">
+                <Border Margin="30,20,30,20" CornerRadius="16" Background="#592C75" Opacity="0.5">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" ></ScrollViewer>
+                </Border>
 
-
-
-
+            </Border>
         </Grid>
 
     </Viewbox>

@@ -42,6 +42,10 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             return ((IUserManager)UserManager).UpdateUserInformation(editedName, originalName);
         }
+        public List<FriendScore> GetFriendScores(int IdUser)
+        {
+            return ((IUserManager)UserManager).GetFriendScores(IdUser);
+        }
     }
 
     public partial class ServicesReferenceAuthor: IFriendsManager

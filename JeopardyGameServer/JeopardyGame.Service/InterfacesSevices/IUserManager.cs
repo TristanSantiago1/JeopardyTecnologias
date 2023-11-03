@@ -29,6 +29,9 @@ namespace JeopardyGame.Service.InterfacesSevices
         [OperationContract]
         int UpdateUserInformation(String editedName, String originalName);
 
+        [OperationContract]
+        List<FriendScore> GetFriendScores(int userId);
+
     }
 
         [DataContract]
@@ -96,14 +99,30 @@ namespace JeopardyGame.Service.InterfacesSevices
             public byte[] ImageData { get; set; }
         }
 
-    [DataContract]
+        [DataContract]
         public class AvatarChoice
         {
-        [DataMember]
-        public int IdAvatar { get; set; }
 
-        [DataMember]
-        public int idPlayer { get; set; }
+            [DataMember]
+            public int IdAvatar { get; set; }
+
+            [DataMember]
+            public int idPlayer { get; set; }
+
         }
-    
+        [DataContract]
+        public struct FriendScore
+        {
+            private int idUser;
+            private string userName;
+            private int generalPoints;
+
+            [DataMember]
+            public int IdUser { get { return idUser; } set { idUser = value; } }
+            [DataMember]
+            public string UserName { get { return userName; } set { userName = value; } }
+            [DataMember]
+            public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
+        }
+
 }

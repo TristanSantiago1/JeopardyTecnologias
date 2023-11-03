@@ -350,9 +350,29 @@ namespace JeopardyGame.Data.DataAccess
             }
             return -1;
         }
+        public List<Player> Get20FriendScores(int userId)
+        {
+            using (var dbContext = new JeopardyDBContainer())
+            {
+                List<Player> friendScores = dbContext.Friends
+                    .Where(f => f.Player_IdPlayer == userId || f.PlayerFriend_IdPlayer == userId)
+                    .Select(f => f.Player_IdPlayer == userId ? f.PlayerFriend_IdPlayer : f.Player_IdPlayer)
+                    .Join(dbContext.Players,
+                        friendId => friendId,
+                        player => player.IdPlayer,
+                        (friendId, player) => new Player
+                        {
+                            IdPlayer = player.IdPlayer,
+                            GeneralPoints = player.GeneralPoints,
+                        })
+                    .ToList();
+
+                return friendScores;
+            }
+        }
 
     }
-
+    
 }
 
 
