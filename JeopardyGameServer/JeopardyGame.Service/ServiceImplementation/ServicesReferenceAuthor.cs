@@ -95,14 +95,25 @@ namespace JeopardyGame.Service.ServiceImplementation
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions
     {
         NotifyUserAvbImple NotifyUserAvbImple = new NotifyUserAvbImple();
         NotifyFriendlyActionsImple NotifyFriendlyActionsImple = new NotifyFriendlyActionsImple();
+        LobbyActionsImple LobbyActionsImple = new LobbyActionsImple();
 
         public void AcceptFriendRequest(int idUser, int idUser2)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).AcceptFriendRequest(idUser, idUser2);
+        }
+
+        public void ChangePlayerSide(int RoomCode, int idUser, int side)
+        {
+            ((ILobbyActions)LobbyActionsImple).ChangePlayerSide(RoomCode, idUser, side);
+        }
+
+        public int CreateNewLobby(int RoomCode, int idUser)
+        {
+            return ((ILobbyActions)LobbyActionsImple).CreateNewLobby(RoomCode, idUser);
         }
 
         public void DeclineFriendRequest(int idUser, int idUser2)
@@ -110,9 +121,44 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).DeclineFriendRequest(idUser, idUser2);
         }
 
+        public void DissolveLobby(int RoomCode, int idUser)
+        {
+            ((ILobbyActions)LobbyActionsImple).DissolveLobby(RoomCode, idUser);
+        }
+
+        public void EliminatePlayerFromMatch(int roomCode, int idUser)
+        {
+            ((ILobbyActions)LobbyActionsImple).EliminatePlayerFromMatch(roomCode, idUser);
+        }
+
         public void EliminateUserFromFriends(int idUser1, int idUser2)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).EliminateUserFromFriends(idUser1, idUser2);
+        }
+
+        public List<PlayerInLobby> GetAllCurrentPlayerInLobby(int roomCode, int idUser)
+        {
+            return ((ILobbyActions)LobbyActionsImple).GetAllCurrentPlayerInLobby(roomCode, idUser);
+        }
+
+        public int joinLobby(int roomCode, int idUser)
+        {
+            return ((ILobbyActions)LobbyActionsImple).joinLobby(roomCode, idUser);
+        }
+
+        public void leaveLobby(int roomCode, int idUser)
+        {
+            ((ILobbyActions)LobbyActionsImple).leaveLobby(roomCode, idUser);
+        }
+
+        public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
+        {
+            ((ILobbyActions)LobbyActionsImple).MakeTeams(roomCode, idUser, wannaTeam);
+        }
+
+        public void NotifyPlayerInlobby(int roomCode, int idUser)
+        {
+            ((ILobbyActions)LobbyActionsImple).NotifyPlayerInlobby(roomCode, idUser);
         }
 
         public void PlayerIsAvailable(int idUser, int idPlayer)

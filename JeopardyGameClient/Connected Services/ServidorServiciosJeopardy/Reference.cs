@@ -384,6 +384,114 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerInLobby", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices")]
+    [System.SerializableAttribute()]
+    public partial struct PlayerInLobby : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdPlayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumPlayersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SideField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdPlayer {
+            get {
+                return this.IdPlayerField;
+            }
+            set {
+                if ((this.IdPlayerField.Equals(value) != true)) {
+                    this.IdPlayerField = value;
+                    this.RaisePropertyChanged("IdPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUser {
+            get {
+                return this.IdUserField;
+            }
+            set {
+                if ((this.IdUserField.Equals(value) != true)) {
+                    this.IdUserField = value;
+                    this.RaisePropertyChanged("IdUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumPlayers {
+            get {
+                return this.NumPlayersField;
+            }
+            set {
+                if ((this.NumPlayersField.Equals(value) != true)) {
+                    this.NumPlayersField = value;
+                    this.RaisePropertyChanged("NumPlayers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Side {
+            get {
+                return this.SideField;
+            }
+            set {
+                if ((this.SideField.Equals(value) != true)) {
+                    this.SideField = value;
+                    this.RaisePropertyChanged("Side");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserManager")]
     public interface IUserManager {
@@ -895,6 +1003,182 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task DeclineFriendRequestAsync(int idUser, int idUser2) {
             return base.Channel.DeclineFriendRequestAsync(idUser, idUser2);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ILobbyActions", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.ILobbyActionsCallback))]
+    public interface ILobbyActions {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/CreateNewLobby", ReplyAction="http://tempuri.org/ILobbyActions/CreateNewLobbyResponse")]
+        int CreateNewLobby(int RoomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/CreateNewLobby", ReplyAction="http://tempuri.org/ILobbyActions/CreateNewLobbyResponse")]
+        System.Threading.Tasks.Task<int> CreateNewLobbyAsync(int RoomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobby", ReplyAction="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobbyResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby[] GetAllCurrentPlayerInLobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobby", ReplyAction="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobbyResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby[]> GetAllCurrentPlayerInLobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/DissolveLobby")]
+        void DissolveLobby(int RoomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/DissolveLobby")]
+        System.Threading.Tasks.Task DissolveLobbyAsync(int RoomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/joinLobby", ReplyAction="http://tempuri.org/ILobbyActions/joinLobbyResponse")]
+        int joinLobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/joinLobby", ReplyAction="http://tempuri.org/ILobbyActions/joinLobbyResponse")]
+        System.Threading.Tasks.Task<int> joinLobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/NotifyPlayerInlobby")]
+        void NotifyPlayerInlobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/NotifyPlayerInlobby")]
+        System.Threading.Tasks.Task NotifyPlayerInlobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/leaveLobby")]
+        void leaveLobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/leaveLobby")]
+        System.Threading.Tasks.Task leaveLobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/ChangePlayerSide")]
+        void ChangePlayerSide(int RoomCode, int idUser, int side);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/ChangePlayerSide")]
+        System.Threading.Tasks.Task ChangePlayerSideAsync(int RoomCode, int idUser, int side);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/EliminatePlayerFromMatch")]
+        void EliminatePlayerFromMatch(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/EliminatePlayerFromMatch")]
+        System.Threading.Tasks.Task EliminatePlayerFromMatchAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/MakeTeams")]
+        void MakeTeams(int roomCode, int idUser, bool wannaTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/MakeTeams")]
+        System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyActionsCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse", ReplyAction="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponseResponse")]
+        void UpdateJoinedPlayerResponse(JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby[] playersInTheLobby);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/MakeTeamsResponse", ReplyAction="http://tempuri.org/ILobbyActions/MakeTeamsResponseResponse")]
+        void MakeTeamsResponse(bool teamUp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/UpdateTeamSide", ReplyAction="http://tempuri.org/ILobbyActions/UpdateTeamSideResponse")]
+        void UpdateTeamSide(JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby[] playersInTheLobby);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/DissolvingLobby", ReplyAction="http://tempuri.org/ILobbyActions/DissolvingLobbyResponse")]
+        void DissolvingLobby();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyActionsChannel : JeopardyGame.ServidorServiciosJeopardy.ILobbyActions, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyActionsClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.ILobbyActions>, JeopardyGame.ServidorServiciosJeopardy.ILobbyActions {
+        
+        public LobbyActionsClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public LobbyActionsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public LobbyActionsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyActionsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyActionsClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public int CreateNewLobby(int RoomCode, int idUser) {
+            return base.Channel.CreateNewLobby(RoomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> CreateNewLobbyAsync(int RoomCode, int idUser) {
+            return base.Channel.CreateNewLobbyAsync(RoomCode, idUser);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby[] GetAllCurrentPlayerInLobby(int roomCode, int idUser) {
+            return base.Channel.GetAllCurrentPlayerInLobby(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby[]> GetAllCurrentPlayerInLobbyAsync(int roomCode, int idUser) {
+            return base.Channel.GetAllCurrentPlayerInLobbyAsync(roomCode, idUser);
+        }
+        
+        public void DissolveLobby(int RoomCode, int idUser) {
+            base.Channel.DissolveLobby(RoomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task DissolveLobbyAsync(int RoomCode, int idUser) {
+            return base.Channel.DissolveLobbyAsync(RoomCode, idUser);
+        }
+        
+        public int joinLobby(int roomCode, int idUser) {
+            return base.Channel.joinLobby(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> joinLobbyAsync(int roomCode, int idUser) {
+            return base.Channel.joinLobbyAsync(roomCode, idUser);
+        }
+        
+        public void NotifyPlayerInlobby(int roomCode, int idUser) {
+            base.Channel.NotifyPlayerInlobby(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task NotifyPlayerInlobbyAsync(int roomCode, int idUser) {
+            return base.Channel.NotifyPlayerInlobbyAsync(roomCode, idUser);
+        }
+        
+        public void leaveLobby(int roomCode, int idUser) {
+            base.Channel.leaveLobby(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task leaveLobbyAsync(int roomCode, int idUser) {
+            return base.Channel.leaveLobbyAsync(roomCode, idUser);
+        }
+        
+        public void ChangePlayerSide(int RoomCode, int idUser, int side) {
+            base.Channel.ChangePlayerSide(RoomCode, idUser, side);
+        }
+        
+        public System.Threading.Tasks.Task ChangePlayerSideAsync(int RoomCode, int idUser, int side) {
+            return base.Channel.ChangePlayerSideAsync(RoomCode, idUser, side);
+        }
+        
+        public void EliminatePlayerFromMatch(int roomCode, int idUser) {
+            base.Channel.EliminatePlayerFromMatch(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task EliminatePlayerFromMatchAsync(int roomCode, int idUser) {
+            return base.Channel.EliminatePlayerFromMatchAsync(roomCode, idUser);
+        }
+        
+        public void MakeTeams(int roomCode, int idUser, bool wannaTeam) {
+            base.Channel.MakeTeams(roomCode, idUser, wannaTeam);
+        }
+        
+        public System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam) {
+            return base.Channel.MakeTeamsAsync(roomCode, idUser, wannaTeam);
         }
     }
 }

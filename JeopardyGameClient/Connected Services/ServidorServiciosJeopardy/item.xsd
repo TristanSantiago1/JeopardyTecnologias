@@ -48,4 +48,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PlayerPOJO" nillable="true" type="tns:PlayerPOJO" />
+  <xs:complexType name="ArrayOfPlayerInLobby">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerInLobby" type="tns:PlayerInLobby" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayerInLobby" nillable="true" type="tns:ArrayOfPlayerInLobby" />
+  <xs:complexType name="PlayerInLobby">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdPlayer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="NumPlayers" type="xs:int" />
+      <xs:element minOccurs="0" name="Side" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerInLobby" nillable="true" type="tns:PlayerInLobby" />
 </xs:schema>

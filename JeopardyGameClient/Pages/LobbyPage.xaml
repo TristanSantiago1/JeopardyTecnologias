@@ -13,25 +13,80 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/BackGround.jpg">
             </ImageBrush>
-
         </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="69" Margin="1112,244,0,0" 
-               VerticalAlignment="Top" Width="61" Source="/Images/FriendsIcon.png" MouseDown="clicListFriends" RenderTransformOrigin="4.252,2.317"/>
         <Image HorizontalAlignment="Left" Height="229" 
                Width="400" Margin="46,0,0,0" VerticalAlignment="Top" 
                Source="/Images/logoJeopardy.png" RenderTransformOrigin="0.914,0.526"/>
-        <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeRoom}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="48" Width="228" HorizontalAlignment="Center"/>
-        <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="94,247,0,0"/>
-        <Label x:Name="lblPlayersInGame" Content = "{x:Static p:Resources.lblPlayersInGame}" Style="{StaticResource labelStyleSimple}" Margin="94,376,0,0"/>
-        <GridSplitter HorizontalAlignment="Left" Height="141" Margin="674,454,0,0" VerticalAlignment="Top" Width="5"/>
-        <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="clicListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1090,310,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="856,655,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
-        <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="1045,655,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
-        <RadioButton x:Name="rdbIndividual" Content = "{x:Static p:Resources.rdbIndividual}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" HorizontalAlignment="Left" Margin="535,312,0,0" VerticalAlignment="Top" Height="50" Width="407"/>
-        <RadioButton x:Name="rdbTeam" Content = "{x:Static p:Resources.rdbTeam}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" HorizontalAlignment="Left" Margin="179,312,0,0" VerticalAlignment="Top" Height="49" Width="380" RenderTransformOrigin="0.5,0.5" Checked="RadioButton_Checked">
 
-        </RadioButton>
-        <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="764,39,0,0"/>
+        <Image HorizontalAlignment="Left" Height="69" Margin="1112,244,0,0" 
+               VerticalAlignment="Top" Width="61" Source="/Images/FriendsIcon.png" MouseDown="clicListFriends" RenderTransformOrigin="4.252,2.317"/>
+        <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="clicListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1090,310,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeRoom}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="58" Width="auto" HorizontalAlignment="Center"/>
+        <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="804,39,0,0"/>
+        <Grid Margin="94,205,251,404">
+            <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="0"/>
+            <RadioButton x:Name="rdbIndividual" Content = "{x:Static p:Resources.rdbIndividual}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" Height="auto" Width="auto" Margin="365,84,236,0" Click="ClicChoseModality"/>
+            <RadioButton x:Name="rdbTeam" Content = "{x:Static p:Resources.rdbTeam}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}"  Margin="78,89,599,4" Height="auto" Width="auto" HorizontalContentAlignment="Stretch" Click="ClicChoseModality"/>
+        </Grid>
+        <Grid Margin="94,376,91,80">
+            <Label x:Name="lblPlayersInGame" Content = "{x:Static p:Resources.lblPlayersInGame}" Style="{StaticResource labelStyleSimple}" Margin="0"/>
+            <GridSplitter HorizontalAlignment="Left" Height="266" Margin="530,29,0,0" Width="5"/>
+            
+            <StackPanel x:Name="stcTeamBlue" Margin="0,58,590,0">
+                <Border x:Name="brdLeaderBlue" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#9926B1FF" BorderBrush="White" BorderThickness="1"  MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Image  Source =" /Images/starImage.png"  Margin= "10,0,10,0" Width="40" Height="40" />
+                        <Label  x:Name="lblLeaderBlue" Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="136" Height="36"/>                        
+                    </StackPanel>
+                </Border>
+                <Border x:Name="brdPlayer2Blue" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#9926B1FF" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblPlayer2Blue" Margin ="10,0,10,0 " Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="178" Height="36"/>
+                        <Image Margin= "10,0,10,0" HorizontalAlignment="Right" Width="40" Height="40" Source="/Images/crossImagePLayer.png" MouseDown="ClicEliminatePlayerFromLobby"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="brdPlayer3Blue" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#9926B1FF" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblPlayer3Blue" Margin ="10,0,10,0 " Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="178" Height="36"/>
+                        <Image Margin= "10,0,10,0" HorizontalAlignment="Right" Width="40" Height="40" Source="/Images/crossImagePLayer.png" MouseDown="ClicEliminatePlayerFromLobby"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="brdPlayer4Blue" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#9926B1FF" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Label  x:Name="lblPlayer4Blue" Margin ="10,0,10,0 " Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="178" Height="36"/>
+                        <Image Margin= "10,0,10,0" HorizontalAlignment="Right" Width="40" Height="40" Source="/Images/crossImagePLayer.png" MouseDown="ClicEliminatePlayerFromLobby" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <StackPanel x:Name="stcTeamRed"  Margin="562,58,28,0" >
+                <Border x:Name="brdLeaderRed" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#99592C75" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source =" /Images/starImage.png" Margin= "10,0,10,0" Width="40" Height="40"/>
+                        <Label x:Name="lblLeaderRed" Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="136" Height="36"/>                       
+                    </StackPanel>
+                </Border>
+                <Border x:Name="brdPlayer2Red" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#99592C75" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblPlayer2Red" Margin ="10,0,10,0 " Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="178" Height="36"/>
+                        <Image Margin= "10,0,10,0" HorizontalAlignment="Right" Width="40" Height="40" Source="/Images/crossImagePLayer.png" MouseDown="ClicEliminatePlayerFromLobby" />
+                    </StackPanel>
+                </Border>
+                <Border x:Name="brdPlayer3Red" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#99592C75" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblPlayer3Red" Margin ="10,0,10,0 " Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="178" Height="36"/>
+                        <Image Margin= "10,0,10,0" HorizontalAlignment="Right" Width="40" Height="40" Source="/Images/crossImagePLayer.png" MouseDown="ClicEliminatePlayerFromLobby" />
+                    </StackPanel>
+                </Border>
+                <Border x:Name="brdPlayer4Red" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#99592C75" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClicChangeTeamSide">
+                    <StackPanel Orientation="Horizontal">
+                        <Label x:Name="lblPlayer4Red" Margin ="10,0,10,0 " Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="178" Height="36"/>
+                        <Image Margin= "10,0,10,0" HorizontalAlignment="Right" Width="40" Height="40" Source="/Images/crossImagePLayer.png" MouseDown="ClicEliminatePlayerFromLobby" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+        <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="854,677,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
+        <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="1037,676,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
 
     </Grid>
 

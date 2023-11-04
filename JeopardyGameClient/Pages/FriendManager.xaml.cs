@@ -6,21 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace JeopardyGame.Pages
 {
@@ -253,10 +244,11 @@ namespace JeopardyGame.Pages
 
         public void ResponseResquestAction(int idUserOperation, int requestStatus, String userName)
         {
+            const int DECLINED_REQUEST = 0, SEND_REQUEST = 1, ACCEPT_REQUEST = 2;
             FriendInfo newFriend = new FriendInfo();
             switch (requestStatus)
             {
-                case 0:
+                case DECLINED_REQUEST:
                     foreach (var item in friendRequests)
                     {
                         if (item.IdUser == idUserOperation)
@@ -272,7 +264,7 @@ namespace JeopardyGame.Pages
                     lblDeclineRequestMessage.Content = idUserOperation + " " + Properties.Resources.MessageFriRequeDeclined;
                     StartTimer();
                     break;
-                case 1:
+                case SEND_REQUEST:
                     foreach (var item in otherPeople)
                     {
                         if (item.IdUser == idUserOperation)
@@ -286,7 +278,7 @@ namespace JeopardyGame.Pages
                     newFriend.IdStatus = NOT_STATUS;
                     friendRequests.Add(newFriend);
                     break;
-                case 2:
+                case ACCEPT_REQUEST:
                     foreach (var item in friendRequests)
                     {
                         if (item.IdUser == idUserOperation)
