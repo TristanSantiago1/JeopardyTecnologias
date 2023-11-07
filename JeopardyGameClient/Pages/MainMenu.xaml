@@ -17,8 +17,8 @@
 
             </Grid.Background>
             <Image HorizontalAlignment="Left" Height="234" 
-       Width="399" Margin="107,14,0,0" VerticalAlignment="Top" 
-       Source="/Images/logoJeopardy.png"/>
+               Width="399" Margin="107,14,0,0" VerticalAlignment="Top" 
+               Source="/Images/logoJeopardy.png"/>
             <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
             <Image HorizontalAlignment="Left" Height="73" Margin="1004,19,0,0" VerticalAlignment="Top" Width="82" Source="/Images/userProfile.png" MouseDown="ClicUserProfile" RenderTransformOrigin="0.491,2.068" />
 
@@ -49,11 +49,15 @@
                 </Button.Background>
             </Button>
             <Border Margin="703,181,83,71" CornerRadius="16" Background="#7F592C75">
-                <Border Margin="30,20,30,20" CornerRadius="16" Background="#592C75" Opacity="0.5">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" ></ScrollViewer>
+                <Border Margin="30,107,30,20" CornerRadius="16" Background="#592C75" Opacity="0.5">
+                    <ListBox x:Name="lstWinners" HorizontalAlignment="Center" Height="336" BorderThickness="0" FontSize="15" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}"/>
                 </Border>
 
             </Border>
+            <Label x:Name="lblWinnerList" Content = "{x:Static p:Resources.lblWinnerList}" Foreground="White" FontWeight="Bold" FontSize="30" HorizontalAlignment="Left" Margin="749,216,0,0" VerticalAlignment="Top" Width="272"/>
+            <Image HorizontalAlignment="Left" Height="60" 
+                Width="31" Margin="1029,224,0,0" VerticalAlignment="Top" 
+                Source="/Images/winnerIcon.png"/>
         </Grid>
 
     </Viewbox>

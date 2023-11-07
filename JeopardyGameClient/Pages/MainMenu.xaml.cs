@@ -8,6 +8,9 @@ using System;
 using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
 using JeopardyGame.ServidorServiciosJeopardy;
+using System.Linq;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace JeopardyGame.Pages
 {
@@ -16,10 +19,13 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class MainMenu : Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
     {
+        private List<FriendScore> friendScores;
         public MainMenu()
         {            
             InitializeComponent();
+            
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
+
             if (key != null)
             {
                 string selectedLanguage = key.GetValue("SelectedLanguage") as string;
@@ -87,7 +93,6 @@ namespace JeopardyGame.Pages
             }
 
         }
-
         private void ShowWarningMessage(String title, String message)
         {
             Window currentPage = App.Current.MainWindow;
@@ -117,13 +122,21 @@ namespace JeopardyGame.Pages
         {
             ((INotifyUserAvailabilityCallback)ActiveFriends).Response(status, idFriend);
         }
-
         private void ClicUserProfile(object sender, MouseButtonEventArgs e)
         {
             ProfileDataConsult profileInformation = new ProfileDataConsult();
             this.NavigationService.Navigate(profileInformation);
             NavigationService.RemoveBackEntry();
         }
+        private void GetInfoCards()
+        {
+            ServidorServiciosJeopardy.UserManagerClient proxyUser = new ServidorServiciosJeopardy.UserManagerClient();
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            FriendScore[] friendScoresArray = proxyUser.GetFriendScores(userSingleton.IdUser);
+            List<FriendScore> friendScores = friendScoresArray.ToList();
+            lstWinners.ItemsSource = friendScores;
 
+            proxyUser.Close();
+        }
     }
 }

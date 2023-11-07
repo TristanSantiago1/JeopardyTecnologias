@@ -279,6 +279,9 @@
   <data name="lblUserNameLogIn" xml:space="preserve">
     <value>Usuario</value>
   </data>
+  <data name="lblWinnerList" xml:space="preserve">
+    <value>Mejores jugadores</value>
+  </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>
   </data>

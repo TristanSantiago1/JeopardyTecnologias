@@ -547,6 +547,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Best players.
+        /// </summary>
+        public static string lblWinnerList {
+            get {
+                return ResourceManager.GetString("lblWinnerList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Please enter a username.
         /// </summary>
         public static string LblWrongUserName {

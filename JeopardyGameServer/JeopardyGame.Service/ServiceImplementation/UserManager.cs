@@ -135,11 +135,10 @@ namespace JeopardyGame.Service.ServiceImplementation
         public List<FriendScore> GetFriendScores(int userId)
         {
             Data.DataAccess.UserManagerDataOperation userManager = new Data.DataAccess.UserManagerDataOperation();
-            Data.DataAccess.FriendsManagerDataOperation friendsManager = new Data.DataAccess.FriendsManagerDataOperation();
             ConsultInfoImple consultInfo = new ConsultInfoImple();
 
             Player playerConsulted = userManager.GetPlayerByIdPlayer(userId);
-            List<Player> playerFriends = friendsManager.Get20NotFriendsPlayer(playerConsulted);
+            List<Player> playerFriends = userManager.Get20FriendScores(userId);
 
             List<FriendScore> friendScores = new List<FriendScore>();
 
