@@ -11,6 +11,8 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using JeopardyGame.Helpers;
+using System.Collections.ObjectModel;
 
 namespace JeopardyGame.Pages
 {
@@ -20,10 +22,10 @@ namespace JeopardyGame.Pages
     public partial class MainMenu : Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
     {
         private List<FriendScore> friendScores;
+        FriendInfo[] friends;
         public MainMenu()
         {            
             InitializeComponent();
-            
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
 
             if (key != null)
@@ -43,8 +45,13 @@ namespace JeopardyGame.Pages
 
             UserSingleton user = UserSingleton.GetMainUser();
             string userName = user.UserName;
+            List<string> Friends = new List<string>
+            {
+                "tris1 1500",
+                "gatos1 820"
+            };
 
-
+            lstWinners.ItemsSource = Friends;
         }
         private void CLicButtonNewGame(object sender, RoutedEventArgs e)
         {
@@ -55,7 +62,9 @@ namespace JeopardyGame.Pages
         }
         private void CLicButtonEnterGame(object sender, RoutedEventArgs e)
         {
-
+            GameBoard gameBoardPage = new GameBoard();
+            this.NavigationService.Navigate(gameBoardPage);
+            NavigationService.RemoveBackEntry();
         }
         private void CLicButtonFriendsList(object sender, RoutedEventArgs e)
         {
@@ -128,15 +137,9 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(profileInformation);
             NavigationService.RemoveBackEntry();
         }
-        private void GetInfoCards()
+        private void lstWinners_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ServidorServiciosJeopardy.UserManagerClient proxyUser = new ServidorServiciosJeopardy.UserManagerClient();
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            FriendScore[] friendScoresArray = proxyUser.GetFriendScores(userSingleton.IdUser);
-            List<FriendScore> friendScores = friendScoresArray.ToList();
-            lstWinners.ItemsSource = friendScores;
 
-            proxyUser.Close();
         }
     }
 }

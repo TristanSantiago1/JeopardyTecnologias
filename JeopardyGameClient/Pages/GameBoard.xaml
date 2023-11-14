@@ -1,0 +1,109 @@
+﻿<Page x:Class="JeopardyGame.Pages.GameBoard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:JeopardyGame.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="770" d:DesignWidth="1300"
+      Title="GameBoard">
+    <Viewbox>
+        <Grid Width="1093" Height="643">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/backgroundGame.png"  Stretch="Fill"/>
+            </Grid.Background>
+
+            <Canvas x:Name="answerGrid" Visibility="Collapsed" Background="White" Opacity="0.7" >
+                <Label Content="a)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="332"/>
+                <Label Content="b)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.607,0.479"/>
+                <Button x:Name="bttSecondAnswer_Copiar" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="203" Canvas.Top="442" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                    </Button.Background>
+                </Button>
+                <Label Content="c)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="327" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label Content="d)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.26,2.645"/>
+                <Button x:Name="bttThridAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                FontSize="25" Click="CLicSelectAnswer" Height="70" Width="303" Canvas.Left="610" Canvas.Top="322" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="bttFourAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="616" Canvas.Top="437" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                    </Button.Background>
+                </Button>
+                <Border Background="#26B1FF" Width="602" Height="141" CornerRadius="10" Canvas.Left="246" Canvas.Top="137" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                </Border>
+                <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                FontSize="25" Click="CLicSelectAnswer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="303" Canvas.Left="205" Canvas.Top="322" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                    </Button.Background>
+                </Button>
+            </Canvas>
+            <Canvas Visibility="Collapsed" Margin="1172,631,40,41">
+                <Button x:Name="bttChat" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                FontSize="25" Click="CLicOpenChat" Height="74" Width="63" Canvas.Left="10" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/buttonChat.png"/>
+                    </Button.Background>
+                </Button>
+
+            </Canvas>
+
+            <Grid x:Name="boardGrid" Visibility="Collapsed" >
+                <Border Margin="75,109,87,74" CornerRadius="30,30,30,30" Background="#42384F" Opacity="0.8" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.13"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+
+                </Border>
+                <Rectangle x:Name="firstCategory" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="132,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="firstQuestionFC" MouseDown="Rectangulo_Click" HorizontalAlignment ="Left" Fill="#0802A3"  Height="90" Margin="132,250,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="secondQuestionFC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="128,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Cursor="Hand">
+                </Rectangle>
+                <Rectangle x:Name="thirdQuestionFC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="132,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="secondCategory" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="423,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="thirdCategory" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="714,137,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="firstQuestionSC" MouseDown="Rectangulo_Click" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Margin="0,250,0,0"/>
+                <Rectangle x:Name="secondQuestionSC" MouseDown="Rectangulo_Click" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="thirdQuestionSC" MouseDown="Rectangulo_Click" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="firstQuestionTC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,252,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="secondQuestionTC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,354,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Rectangle x:Name="thirdQuestionTC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                </Rectangle>
+                <Label x:Name="historyCategory" FontSize="40" Foreground="White" FontWeight="Bold" Content="History" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="159,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
+                <Label x:Name="scienceCategory" FontSize="40" Foreground="White" Content="Science" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="454,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
+                <Label x:Name="moviesCategory" FontSize="40" Foreground="White" Content="Movies" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="772,151,0,0" VerticalAlignment="Top" Height="56" Width="157"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="214,267,0,0" VerticalAlignment="Top" Height="56" Width="86" RenderTransformOrigin="0.741,0.554"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="208,368,0,0" VerticalAlignment="Top" Height="56" Width="90" Background="{x:Null}" Cursor="Hand"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="203,472,0,0" VerticalAlignment="Top" Height="56" Width="100" RenderTransformOrigin="1.096,0.523"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="83" Margin="0,266,0,0"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="510,472,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,472,0,0" VerticalAlignment="Top" Height="56" Width="82"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,368,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="-0.327,-0.12"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,265,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="0.46,0.171"/>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Page>

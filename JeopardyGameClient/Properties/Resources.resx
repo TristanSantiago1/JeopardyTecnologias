@@ -168,8 +168,14 @@
   <data name="bttFriends" xml:space="preserve">
     <value>Friends</value>
   </data>
+  <data name="bttGuest" xml:space="preserve">
+    <value>Guest</value>
+  </data>
   <data name="bttNewGame" xml:space="preserve">
     <value>New game</value>
+  </data>
+  <data name="bttPlayer" xml:space="preserve">
+    <value>Player</value>
   </data>
   <data name="bttReport" xml:space="preserve">
     <value>Report</value>

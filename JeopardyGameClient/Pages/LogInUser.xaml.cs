@@ -122,6 +122,7 @@ namespace JeopardyGame.Pages
             UserRegister userRegistrerPage = new UserRegister();
             this.NavigationService.Navigate(userRegistrerPage);
             NavigationService.RemoveBackEntry();
+
         }
         private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -133,10 +134,6 @@ namespace JeopardyGame.Pages
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
                 key.Close();
-                lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
-                lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
-                btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
-                btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
             }
 
         }
@@ -174,6 +171,7 @@ namespace JeopardyGame.Pages
         public int IdUser { get; set; }
         public string Name { get; set; }
         public int idStatus { get; set; }
+        public int GeneralPoints { get; set; }
     }
     public partial class FriendList()
     {
@@ -186,6 +184,7 @@ namespace JeopardyGame.Pages
                 friendList.Add(idUser, friend);
             }
         }
+
 
         public static Friend GetFriend(int idUser)
         {
@@ -230,6 +229,7 @@ namespace JeopardyGame.Pages
             return friendList;
         }
     }
+   
     
 }
 
