@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,16 +14,16 @@ namespace JeopardyGame.Service.InterfacesSevices
     public  interface ILobbyActions
     {
         [OperationContract]
-        int CreateNewLobby(int RoomCode, int idUser);
+        GenericClass<int> CreateNewLobby(int RoomCode, int idUser);
 
         [OperationContract]
-        List<PlayerInLobby> GetAllCurrentPlayerInLobby(int roomCode, int idUser);
+        GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
         void DissolveLobby(int RoomCode,int idUser);
 
         [OperationContract]
-        int joinLobby(int roomCode, int idUser);
+        GenericClass<int> joinLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
         void NotifyPlayerInlobby(int roomCode, int idUser);
@@ -43,37 +44,18 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface ILobbyActionsCallback
     {
         [OperationContract]
-        public void UpdateJoinedPlayerResponse(List<PlayerInLobby> playersInTheLobby);       
+        public void UpdateJoinedPlayerResponse(GenericClass<List<PlayerInLobby>> playersInTheLobby);       
 
         [OperationContract]
         public void MakeTeamsResponse(bool teamUp);       
 
         [OperationContract]
-        public void UpdateTeamSide(List<PlayerInLobby> playersInTheLobby);
+        public void UpdateTeamSide(GenericClass<List<PlayerInLobby>> playersInTheLobby);
 
         [OperationContract]
         public void DissolvingLobby();
     }
 
-    [DataContract]
-    public struct PlayerInLobby
-    {
-        private int idUser;
-        private int idPlayer;
-        private string userName;
-        private int numPlayer;
-        private int side;
-
-        [DataMember]
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        [DataMember] 
-        public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
-        [DataMember]
-        public string UserName { get { return userName; } set { userName = value; } }
-        [DataMember]
-        public int NumPlayers { get {  return numPlayer; } set { numPlayer = value; } }
-        [DataMember]
-        public int Side { get { return side; } set { side = value; } }
-    }
+  
 
 }

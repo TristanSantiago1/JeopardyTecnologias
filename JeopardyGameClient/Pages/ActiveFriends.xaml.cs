@@ -24,7 +24,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
-        FriendInfo[] friends;
+        GenericClassOfArrayOfFriendInfoxY0a3WX4 friends;
         public ActiveFriends()
         {
             InitializeComponent();                                   
@@ -45,12 +45,12 @@ namespace JeopardyGame.Pages
 
         private  void GetFriend()
         {
-            ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
-            ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
+            FriendsManagerClient proxyFriend = new FriendsManagerClient();
+            ConsultInformationClient proxyUser = new ConsultInformationClient();
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            UserPOJO user = proxyUser.ConsultUserById(userSingleton.IdUser);    
-            friends = proxyFriend.GetUserFriends(user);
-            foreach (var item in friends)
+            GenericClassOfUserPOJOxY0a3WX4 user = proxyUser.ConsultUserById(userSingleton.IdUser);    
+            friends = proxyFriend.GetUserFriends(user.ObjectSaved);
+            foreach (var item in friends.ObjectSaved)
             {
                 Friend activeFriend = new Friend();
                 activeFriend.IdUser=item.IdUser;

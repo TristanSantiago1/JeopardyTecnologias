@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using JeopardyGame.Data.Exceptions;
 using System.Security.Cryptography.X509Certificates;
+using JeopardyGame.Data.DataAccess;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -20,58 +21,65 @@ namespace JeopardyGame.Service.ServiceImplementation
     /// </summary>
     public partial class UserManager : IUserManager
     {
-        public int SaveUser(UserPOJO userPojoNew)
+        public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
-            if (userPojoNew == null) return 0;
-            Data.DataAccess.UserManagerDataOperation dataAccessConexion = new Data.DataAccess.UserManagerDataOperation();
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            if (userPojoNew == null) { return NullParametersHandler.HandleNullParametersService(resultToReturn); }            
             userPojoNew.IdUser = 0;
             User usuarioNuevo = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
-            User UserSaved = dataAccessConexion.SaveUserInDataBase(usuarioNuevo);
-            if (UserSaved == null) return 0;            
-            PlayerPOJO playerToSave = new PlayerPOJO();
-            playerToSave.IdPlayer = 0;
-            playerToSave.GeneralPoints = 0;
-            playerToSave.NoReports = 0;
-            playerToSave.IdActualAvatar = 0;
-            playerToSave.IdUser = UserSaved.IdUser;
-            playerToSave.IdState = 1;
-            int idPlayer = SavePlayer(playerToSave);
-            if (idPlayer != 0)
+            GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(usuarioNuevo);
+            if (userSaved.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
             {
-                return UserSaved.IdUser;
+                PlayerPOJO playerToSave = new PlayerPOJO();
+                playerToSave.IdPlayer = 0;
+                playerToSave.GeneralPoints = 0;
+                playerToSave.NoReports = 0;
+                playerToSave.IdActualAvatar = 0;
+                playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
+                playerToSave.IdState = 1;
+                int isPlayerSavedSucc = SavePlayer(playerToSave);
+                if (isPlayerSavedSucc == ExceptionDiccionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.ObjectSaved = userSaved.ObjectSaved.IdUser;
+                    resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                    UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
+                    resultToReturn.CodeEvent = isPlayerSavedSucc;
+                }
             }
-            else
-            {
-                dataAccessConexion.DeleteUserById(UserSaved.IdUser);
-                return 0;
-            }                       
+            else { resultToReturn.CodeEvent = userSaved.CodeEvent; }
+            return resultToReturn;
+                                 
         }
         
         private int SavePlayer(PlayerPOJO playerPojoNew)
         {
-            if (playerPojoNew == null) return 0;
-            Data.DataAccess.UserManagerDataOperation dataAccessConexion = new Data.DataAccess.UserManagerDataOperation();     
+            int response = 0;
+            if (playerPojoNew == null) return response;             
             Player newPlayerAccount = InterpretersEntityPojo.UserInterpreter.FromPlayerPojoToPlyerEntity(playerPojoNew);
-            User userSaved = dataAccessConexion.GetUserById(playerPojoNew.IdUser);
-            State defaultState = dataAccessConexion.GetStateById(playerPojoNew.IdState);
-            Player playerSaved = dataAccessConexion.SavePlayerInDataBase(userSaved, defaultState, newPlayerAccount);
-            if (playerSaved == null)
+            GenericClassServer<User> userSaved = UserManagerDataOperation.GetUserById(playerPojoNew.IdUser);
+            if(userSaved.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
             {
-                return 0;
+                GenericClassServer<State> defaultState = UserManagerDataOperation.GetStateById(playerPojoNew.IdState);
+                if (defaultState.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
+                {
+                    GenericClassServer<Player> playerSaved = UserManagerDataOperation.SavePlayerInDataBase(userSaved.ObjectSaved, defaultState.ObjectSaved, newPlayerAccount);
+                    response = playerSaved.CodeEvent;
+                }
+                else { response = defaultState.CodeEvent; }
             }
-            else
-            {
-                return playerSaved.IdPlayer;
-            }
+            else { response = userSaved.CodeEvent; }
+            return response;           
         }
 
         public int validateCredentials(UserValidate newUserValidate)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            User user = dataAccessConexion.GetUserByUserName(newUserValidate.UserName);
+            User user = UserManagerDataOperation.GetUserByUserName(newUserValidate.UserName).ObjectSaved;
             if (user != null)
             {
-                bool isPasswordValid = dataAccessConexion.VerifyPassword(newUserValidate.Password, user.Password);
+                bool isPasswordValid = UserManagerDataOperation.VerifyPassword(newUserValidate.Password, user.Password);
 
                 if (isPasswordValid)
                 {
@@ -82,22 +90,33 @@ namespace JeopardyGame.Service.ServiceImplementation
             return 0;
         }
 
-        public int EmailAlreadyExist(String email)
+        public GenericClass<int> EmailAlreadyExist(String email)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            int emailIsNew = dataAccessConexion.ValidateIfEmailExist(email);
-            return emailIsNew;
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            if (email == null) { return NullParametersHandler.HandleNullParametersService(resultToReturn); }            
+            GenericClassServer<int> emailIsNew = UserManagerDataOperation.ValidateIfEmailExist(email);
+            resultToReturn.ObjectSaved = emailIsNew.ObjectSaved;
+            resultToReturn.CodeEvent = emailIsNew.CodeEvent;
+            return resultToReturn;
         }
 
-        public int UserNameAlreadyExist(String userName)
+        public GenericClass<int> UserNameAlreadyExist(String userName)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            int userNameIsNew = dataAccessConexion.ValidateIfUserNameExist(userName);
-            return userNameIsNew;
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            if (userName == null) { return NullParametersHandler.HandleNullParametersService(resultToReturn); }
+            GenericClassServer<int> emailIsNew = UserManagerDataOperation.ValidateIfUserNameExist(userName);
+            resultToReturn.ObjectSaved = emailIsNew.ObjectSaved;
+            resultToReturn.CodeEvent = emailIsNew.CodeEvent;
+            return resultToReturn;           
         }
 
-        public int SentEmailCodeConfirmation(String email, String subject, String Code)
+        public GenericClass<int> SentEmailCodeConfirmation(String email, String subject, String code)
         {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            GenericClassServer<int> result = new GenericClassServer<int>();
+            int SUCCESFULL = 1;
+            int UNSSUCCESFUL = 0;
+            if (email == null || subject == null || code == null) { return NullParametersHandler.HandleNullParametersService(resultToReturn); }
             var client = new SmtpClient("smtp.Gmail.com", 587)
             {
                 EnableSsl = true,
@@ -106,29 +125,51 @@ namespace JeopardyGame.Service.ServiceImplementation
             };
             try
             {
-                Task succes =  client.SendMailAsync(new MailMessage(from: "jeopardy.tec@Gmail.com", to: email, subject, Code));
+                Task succes =  client.SendMailAsync(new MailMessage(from: "jeopardy.tec@Gmail.com", to: email, subject, code));
                 if (succes != null)
                 {
-                    return 1;
+                    result.ObjectSaved = SUCCESFULL;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                 }
-                return 0;
+                else
+                {
+                    result.ObjectSaved = UNSSUCCESFUL;
+                    result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch(FormatException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch(ArgumentException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (SmtpException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
-                return 0;
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
-            {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
-                return 0;
-            }
+            resultToReturn.ObjectSaved = result.ObjectSaved;
+            resultToReturn.CodeEvent = result.CodeEvent;
+            return resultToReturn;
         }
 
         public int UpdateUserInformation(string editedName, string originalName)
         {
-            JeopardyGame.Data.DataAccess.UserManagerDataOperation dataAccessConexion = new JeopardyGame.Data.DataAccess.UserManagerDataOperation();
-            int updateInformation = dataAccessConexion.UpdateUserInformation(editedName, originalName);
+            int updateInformation = UserManagerDataOperation.UpdateUserInformation(editedName, originalName);
             return updateInformation;
         }
 

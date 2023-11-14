@@ -50,22 +50,27 @@ namespace JeopardyGame.Pages
         {
             context = new InstanceContext(this);
             LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
+            rdbIndividual.IsChecked = true;
             if (isAdminOfLobby)
-            {
-                rdbIndividual.IsChecked = true;
+            {                
                 generateAleatory = new Random();
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);               
                 roomCode = aleatoryNumber;
                 lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);
-                currentPlayerInLobby = lobbyActionsClient.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser).ToList();
+                currentPlayerInLobby = lobbyActionsClient.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser).ObjectSaved.ToList();
             }
             else
             {
-                int succesful = lobbyActionsClient.joinLobby(roomCode, userSingleton.IdUser);
-                if(succesful == 1)
+                GenericClassOfint succesful = lobbyActionsClient.joinLobby(roomCode, userSingleton.IdUser);
+                if(succesful.ObjectSaved == 1)
                 {
                     lobbyActionsClient.NotifyPlayerInlobby(roomCode, userSingleton.IdUser);
-                    currentPlayerInLobby = lobbyActionsClient.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser).ToList();
+                    currentPlayerInLobby = lobbyActionsClient.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser).ObjectSaved.ToList();
+                    if (currentPlayerInLobby.Count == 4)
+                    {
+                        rdbTeam.IsChecked = true;
+                        rdbIndividual.IsChecked= false;
+                    }                   
                 }
                 else
                 {
@@ -137,10 +142,10 @@ namespace JeopardyGame.Pages
                 borderRed.Visibility= Visibility.Hidden;
             }
         }
-        void ILobbyActionsCallback.UpdateJoinedPlayerResponse(PlayerInLobby[] playersInTheLobby)
+        void ILobbyActionsCallback.UpdateJoinedPlayerResponse(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
         {
             bool iAmActive = false;
-            currentPlayerInLobby = playersInTheLobby.ToList();
+            currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
             foreach (var item in currentPlayerInLobby)
             {
                 if (item.IdPlayer == userSingleton.IdPlayer)
@@ -173,41 +178,45 @@ namespace JeopardyGame.Pages
 
         private void DoOrUndoTeams(bool teamUp)
         {
+            List<PlayerInLobby> auxiliarPlayerInlobby = new List<PlayerInLobby>();
             if (teamUp)
             {
+                rdbIndividual.IsChecked = false;
+                rdbTeam.IsChecked = true;
                 foreach (var item in currentPlayerInLobby)
                 {
                     var updatedPlayer = item;
-                    if (item.NumPlayers < 2)
+                    if (item.NumPlayers <= 2)
                     {
-                        updatedPlayer.Side = 1;
-                        currentPlayerInLobby.Remove(item);
-                        currentPlayerInLobby.Add(updatedPlayer);
+                        updatedPlayer.Side = 1;                        
+                        auxiliarPlayerInlobby.Add(updatedPlayer);
                         break;
                     }
                     else
                     {
-                        updatedPlayer.Side = 2;
-                        currentPlayerInLobby.Remove(item);
-                        currentPlayerInLobby.Add(updatedPlayer);
+                        updatedPlayer.Side = 2;                        
+                        auxiliarPlayerInlobby.Add(updatedPlayer);
                         break;
                     }            
                 }
             }
             else
             {
+                rdbIndividual.IsChecked = true;
+                rdbTeam.IsChecked = false;
                 foreach (var item in currentPlayerInLobby)
                 {                   
                     var updatedPlayer = item;
-                    updatedPlayer.Side = 1;
-                    currentPlayerInLobby.Remove(item);
-                    currentPlayerInLobby.Add(updatedPlayer);
+                    updatedPlayer.Side = 1;                   
+                    auxiliarPlayerInlobby.Add(updatedPlayer);
                 }
             }
+            currentPlayerInLobby.Clear();
+            currentPlayerInLobby.AddRange(auxiliarPlayerInlobby);
         }
-        public void UpdateTeamSide(PlayerInLobby[] playersInTheLobby)
+        public void UpdateTeamSide(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
         {
-            currentPlayerInLobby = playersInTheLobby.ToList();
+            currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
             SetPlayerInLabels();
         }
         
@@ -314,7 +323,7 @@ namespace JeopardyGame.Pages
 
         private void ClicChangeTeamSide(object sender, MouseButtonEventArgs e)
         {
-            if (isAdminOfLobby)
+            if (isAdminOfLobby && currentPlayerInLobby.Count == 4 && (bool)rdbTeam.IsChecked)
             {
                 String userName = null;
                 Border borderChossen = (Border)sender;
@@ -371,20 +380,22 @@ namespace JeopardyGame.Pages
             if (isAdminOfLobby)
             {
                 bool teamUp = false;
-                LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
-                if ((bool)rdbIndividual.IsChecked)
+                LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);             
+                if ((bool)rdbIndividual.IsChecked && currentPlayerInLobby.Count == 4)
                 {
-                    if (currentPlayerInLobby.Count == 4)
-                    {
-                        teamUp = true;
-                        lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);
-                    }
+                    rdbIndividual.IsChecked = false;
+                    rdbTeam.IsChecked = true;
+                    teamUp = true;
+                    lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);                    
                 }
                 else
                 {
                     teamUp = false;
+                    rdbIndividual.IsChecked = true;
+                    rdbTeam.IsChecked = false;
                     lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);
                 }
+                if (currentPlayerInLobby.Count < 4) { MessageBox.Show("Deben de ser 4 jugadores"); }
                 DoOrUndoTeams(teamUp);
                 SetPlayerInLabels();
             }

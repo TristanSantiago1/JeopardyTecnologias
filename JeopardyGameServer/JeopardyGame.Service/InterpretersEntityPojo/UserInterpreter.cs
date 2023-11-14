@@ -1,4 +1,5 @@
 ﻿using JeopardyGame.Data;
+using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Service.InterfacesSevices;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 
         public static Player FromPlayerPojoToPlyerEntity(PlayerPOJO playerPojo)
         {
-            if (playerPojo == null) return null;
-            Data.DataAccess.UserManagerDataOperation dataAccess = new Data.DataAccess.UserManagerDataOperation();
+            if (playerPojo == null) return null;        
             Player player = new Player();
             player.IdPlayer = playerPojo.IdPlayer;
             player.GeneralPoints = playerPojo.GeneralPoints;
@@ -59,8 +59,8 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             player.IdAvatarActual = playerPojo.IdActualAvatar;
             player.User_IdUser = playerPojo.IdUser;
             player.State_idState = playerPojo.IdState;
-            player.User =  dataAccess.GetUserById(playerPojo.IdUser);
-            player.State = dataAccess.GetStateById(playerPojo.IdState);
+            player.User =  UserManagerDataOperation.GetUserById(playerPojo.IdUser).ObjectSaved;
+            player.State = UserManagerDataOperation.GetStateById(playerPojo.IdState).ObjectSaved;
             return player;
         } 
     }

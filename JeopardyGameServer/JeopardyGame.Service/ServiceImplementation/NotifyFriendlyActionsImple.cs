@@ -1,5 +1,6 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.DataAccess;
+using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.InterfacesSevices;
 using System;
 using System.Collections.Generic;
@@ -12,20 +13,23 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     partial class NotifyFriendlyActionsImple : INotifyUserActionFriendsManager
     {
-        public int RegisterFriendManagerUser(int idUserFriendManager)
+        private const int CHANNEL_ALREADY_EXIST = -1;
+        private const int CHANNEL_SAVED = 1;
+        public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
-            if (idUserFriendManager != 0 )
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            if (idUserFriendManager == 0) { return NullParametersHandler.HandleNullParametersService(resultToReturn); }            
+            var channelSaved = FriendManagerDictionary.GetChannelUser(idUserFriendManager);
+            if (channelSaved == null)
             {
-                var channelSaved = FriendManagerDictionary.GetChannelUser(idUserFriendManager);
-                if (channelSaved == null)
-                {
-                    var channel = OperationContext.Current;
-                    FriendManagerDictionary.RegisterNewUserInDictionary(idUserFriendManager, channel);
-                    return 1;
-                } 
-                else { return 0; }
-            }
-            else { return 0; }
+                var channel = OperationContext.Current;
+                FriendManagerDictionary.RegisterNewUserInDictionary(idUserFriendManager, channel);
+                resultToReturn.ObjectSaved = CHANNEL_SAVED;
+                resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+            } 
+            else { resultToReturn.ObjectSaved = CHANNEL_ALREADY_EXIST; resultToReturn.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT; }
+            return resultToReturn;
+           
         }
 
         public void UnregisterFriendManagerUser(int idUserFriendManager)
@@ -48,10 +52,10 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void ReportPlayer(int idUser, string userName)
         {
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();
-            PlayerPOJO playerPojo = consultInfoImple.ConsultPlayerById(idUser);          
+            PlayerPOJO playerPojo = consultInfoImple.ConsultPlayerById(idUser).ObjectSaved;          
             if (playerPojo.NoReports < 3)
             {                
-                int result = UserManagerDataOperation.UpdatePlayer(playerPojo.IdPlayer);
+                int result = UserManagerDataOperation.UpdatePlayer(playerPojo.IdPlayer).ObjectSaved;
                 var channelSaved = FriendManagerDictionary.GetChannelUser(idUser);
                 if (channelSaved != null)
                 {
@@ -69,16 +73,15 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         public void EliminateUserFromFriends(int idPlayerDeleating, int idUserToEliminate)
         {
-            ConsultInfoImple consultInfoImple = new ConsultInfoImple();           
-            FriendsManagerDataOperation friendsManagerDataOperation = new FriendsManagerDataOperation();
-            int idPlayerToEliminated = consultInfoImple.ConsultPlayerByIdUser(idUserToEliminate).IdPlayer;
-            int affectedRows = friendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeleating, idPlayerToEliminated);
+            ConsultInfoImple consultInfoImple = new ConsultInfoImple();               
+            int idPlayerToEliminated = consultInfoImple.ConsultPlayerByIdUser(idUserToEliminate).ObjectSaved.IdPlayer;
+            int affectedRows = FriendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeleating, idPlayerToEliminated).ObjectSaved;
             if (affectedRows != 0)
             {                
                 var channelSaved = FriendManagerDictionary.GetChannelUser(idUserToEliminate);
                 if (channelSaved != null)
                 {
-                    UserPOJO userDeleating = consultInfoImple.ConsultUserByIdPlayer(idPlayerDeleating);
+                    UserPOJO userDeleating = consultInfoImple.ConsultUserByIdPlayer(idPlayerDeleating).ObjectSaved;
                     channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseEliminationFromFriends(userDeleating.IdUser);
                 }
             }
@@ -90,10 +93,9 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
         {
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();
-            UserPOJO userPojo = consultInfoImple.ConsultUserByIdPlayer(idPlayerDeclining);
-            FriendsManagerDataOperation friendsManagerDataOperation = new FriendsManagerDataOperation();
-            int idPlayerDeclined = consultInfoImple.ConsultPlayerByIdUser(idUserRequesting).IdPlayer;
-            int affectedRows = friendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeclining, idPlayerDeclined);
+            UserPOJO userPojo = consultInfoImple.ConsultUserByIdPlayer(idPlayerDeclining).ObjectSaved;
+            int idPlayerDeclined = consultInfoImple.ConsultPlayerByIdUser(idUserRequesting).ObjectSaved.IdPlayer;
+            int affectedRows = FriendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeclining, idPlayerDeclined).ObjectSaved;
             if (affectedRows != 0)
             {
                 var channelSaved = FriendManagerDictionary.GetChannelUser(idUserRequesting);
@@ -107,11 +109,10 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
         {
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();
-            UserPOJO userPojo = consultInfoImple.ConsultUserByIdPlayer(idPLayerRequesting);
-            FriendsManagerDataOperation friendsManagerDataOperation = new FriendsManagerDataOperation();
-            UserPOJO user = consultInfoImple.ConsultUserByIdPlayer(idPLayerRequesting);
-            int idPlayerRequested = consultInfoImple.ConsultPlayerByIdUser(idUserRequested).IdPlayer;
-            int affectedRows = friendsManagerDataOperation.SendFriendRequest(idPLayerRequesting, idPlayerRequested);
+            UserPOJO userPojo = consultInfoImple.ConsultUserByIdPlayer(idPLayerRequesting).ObjectSaved;           
+            UserPOJO user = consultInfoImple.ConsultUserByIdPlayer(idPLayerRequesting).ObjectSaved;
+            int idPlayerRequested = consultInfoImple.ConsultPlayerByIdUser(idUserRequested).ObjectSaved.IdPlayer;
+            int affectedRows = FriendsManagerDataOperation.SendFriendRequest(idPLayerRequesting, idPlayerRequested).ObjectSaved;
             if (affectedRows != 0)
             {
                 var channelSaved = FriendManagerDictionary.GetChannelUser(idUserRequested);
@@ -125,10 +126,9 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
             ConsultInfoImple consultInfoImple = new ConsultInfoImple();            
-            UserPOJO userPojo = consultInfoImple.ConsultUserByIdPlayer(idPlayerAccepting);
-            FriendsManagerDataOperation friendsManagerDataOperation = new FriendsManagerDataOperation();
-            int idPlayerRequesting = consultInfoImple.ConsultPlayerByIdUser(idUserRequesting).IdPlayer;
-            int affectedRows = friendsManagerDataOperation.AcceptFriendRequest(idPlayerAccepting, idPlayerRequesting);
+            UserPOJO userPojo = consultInfoImple.ConsultUserByIdPlayer(idPlayerAccepting).ObjectSaved;            
+            int idPlayerRequesting = consultInfoImple.ConsultPlayerByIdUser(idUserRequesting).ObjectSaved.IdPlayer;
+            int affectedRows = FriendsManagerDataOperation.AcceptFriendRequest(idPlayerAccepting, idPlayerRequesting).ObjectSaved;
             if (affectedRows != 0)
             {
                 var channelSaved = FriendManagerDictionary.GetChannelUser(idUserRequesting);

@@ -1,4 +1,5 @@
-﻿using JeopardyGame.ReGexs;
+﻿using JeopardyGame.Helpers;
+using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
 using JeopardyGame.Views;
 using System;
@@ -258,52 +259,69 @@ namespace JeopardyGame.Pages
 
         public int CheckEmailAddressExistance(String email)
         {
-            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-            int emailIsNew = proxyServer.EmailAlreadyExist(email);
+            UserManagerClient proxyServer = new UserManagerClient();
+            GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
             proxyServer.Close();
-            if (emailIsNew == 1)
+            if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                return 1;
-            }
-            else
-            {
-                if (emailIsNew == 0)
+                if (emailIsNew.ObjectSaved == 1)
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
-                        JeopardyGame.Properties.Resources.lblRepeatedEmail);
+                    return 1;
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
-                        JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                    if (emailIsNew.ObjectSaved == 0)
+                    {
+                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
+                            JeopardyGame.Properties.Resources.lblRepeatedEmail);
+                    }
+                    else
+                    {
+                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
+                            JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                    }
+                    return 0;
                 }
-                return 0;
             }
+            else
+            {
+                ExceptionHandler.HandleException(emailIsNew.CodeEvent);
+                return 0;
+            }           
         }
 
         public int CheckUserNameExistance(String userName)
         {
-            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-            int userIsNew = proxyServer.UserNameAlreadyExist(userName);
-            proxyServer.Close();
-            if (userIsNew == 1)
+            UserManagerClient proxyServer = new UserManagerClient();
+            GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
+            
+            if(userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                return 1;
-            }
-            else
-            {
-                if (userIsNew == 0)
+                if (userIsNew.ObjectSaved == 1)
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
-                        JeopardyGame.Properties.Resources.lblRepeatedUserName);
+                    return 1;
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
-                        JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                    if (userIsNew.ObjectSaved == 0)
+                    {
+                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
+                            JeopardyGame.Properties.Resources.lblRepeatedUserName);
+                    }
+                    else
+                    {
+                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
+                            JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                    }
+                    return 0;
                 }
+            }
+            else
+            {
+                ExceptionHandler.HandleException(userIsNew.CodeEvent);
                 return 0;
             }
+            proxyServer.Close();
         }
 
         private void ResaltBrokenRule(Label missingRule)
@@ -343,7 +361,8 @@ namespace JeopardyGame.Pages
         }
 
         private void HiddePsasword(object sender, MouseEventArgs e)
-        {            
+        {
+            psbPasswordCreateAcc.PasswordChar = '*';
             lblViewPassword.Visibility = Visibility.Collapsed;
         }
 

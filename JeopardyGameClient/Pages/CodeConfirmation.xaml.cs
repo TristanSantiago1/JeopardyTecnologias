@@ -43,10 +43,15 @@ namespace JeopardyGame.Pages
         private void SentEmail(String email)
         {
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-            int sentEmailSucc = proxyServer.SentEmailCodeConfirmation
+            GenericClassOfint sentEmailSucc = proxyServer.SentEmailCodeConfirmation
                 (email, JeopardyGame.Properties.Resources.EmailSubjectCode, currentCode + " " + 
                 JeopardyGame.Properties.Resources.EmailCodeDescrip);
-            if (sentEmailSucc == 0 )
+            if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                ExceptionHandler.HandleException(sentEmailSucc.CodeEvent);
+                //regresara pagina anterior
+            }
+            if (sentEmailSucc.ObjectSaved == 0 )
             {
                 ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.SentEmailIssue);
             }
@@ -90,20 +95,28 @@ namespace JeopardyGame.Pages
                 userToSave.Password = encryptedPassword;
                 userToSave.IdUser = 0;
                 UserManagerClient proxyServer = new UserManagerClient();
-                int idUsuario = proxyServer.SaveUser(userToSave);
-                if (idUsuario != 0)
-                {                    
-                    ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle, 
-                        JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
-                    MainMenu lobby = new MainMenu();
-                    this.NavigationService.Navigate(lobby);
-                    NavigationService.RemoveBackEntry();
-                    
+                GenericClassOfint idUsuario = proxyServer.SaveUser(userToSave);
+                if (idUsuario.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    if (idUsuario.ObjectSaved != 0)
+                    {
+                        ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle,
+                            JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
+                        MainMenu lobby = new MainMenu();
+                        this.NavigationService.Navigate(lobby);
+                        NavigationService.RemoveBackEntry();
+
+                    }
+                    else
+                    {
+                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
+                            JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
+                    }
                 }
                 else
                 {
-                    ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, 
-                        JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
+                    ExceptionHandler.HandleException(idUsuario.CodeEvent);
+                    //regresar a ventana anterior
                 }
             }
             else

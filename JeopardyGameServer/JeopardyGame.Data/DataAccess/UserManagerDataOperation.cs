@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -21,37 +22,43 @@ namespace JeopardyGame.Data.DataAccess
 {
     public class UserManagerDataOperation
     {
-        public User SaveUserInDataBase(User user)
+        public static GenericClassServer<User> SaveUserInDataBase(User user)
         {
-            if (user == null) return null;
+            GenericClassServer<User> result  = new GenericClassServer<User>();
+            if (user == null) return NullParametersHandler.HandleNullParametersDataBase(result);           
             try
             {
                 using (var context = new JeopardyDBContainer())
                 {
                     var newUser = context.Users.Add(user);
                     context.SaveChanges();
-                    return newUser;
+                    result.ObjectSaved = newUser;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;                   
                 }
             }
-            catch (SqlException ex)
+            catch(DbUpdateException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
-            }
-            return null; ;
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }                    
+            return result; 
         }
 
 
-        public Player SavePlayerInDataBase(User userSaved, State defaultState, Player newPlayer)
+        public static GenericClassServer<Player> SavePlayerInDataBase(User userSaved, State defaultState, Player newPlayer)
         {
-            if (userSaved == null || defaultState == null || newPlayer == null) return null;
+            GenericClassServer<Player> result = new GenericClassServer<Player>();
+            if (userSaved == null || defaultState == null || newPlayer == null) return NullParametersHandler.HandleNullParametersDataBase(result);
             try
             {
                 using (var context = new JeopardyDBContainer())
@@ -62,70 +69,88 @@ namespace JeopardyGame.Data.DataAccess
                     newPlayer.State = defaultState;
                     var newPlayerSaved = context.Players.Add(newPlayer);
                     context.SaveChanges();
-                    return newPlayerSaved;
+                    result.ObjectSaved = newPlayerSaved;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                 }
             }
-            catch (SqlException ex)
+            catch (DbUpdateException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
-            }
-            return null;
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }       
+            return result;
         }
 
-        public User GetUserById(int idUser)
+        public static GenericClassServer<User> GetUserById(int idUser)
         {
-            if (idUser == 0) return null;
+            GenericClassServer<User> result = new GenericClassServer<User>();
+            if (idUser == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
             try
             {
                 using (var context = new JeopardyDBContainer())
                 {
                     var userConsulted = context.Users.Find(idUser);
-                    return userConsulted;
+                    result.ObjectSaved = userConsulted;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                 }
-            }
-            catch (SqlException ex)
-            {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
-            }
-            return null;
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }         
+            return result;
         }
-        public  User GetUserByUserName(String userName)
+        public static GenericClassServer<User> GetUserByUserName(String userName)
         {
-            using (var context = new JeopardyDBContainer())
+            GenericClassServer<User> result = new GenericClassServer<User>();
+            if (userName == null) return NullParametersHandler.HandleNullParametersDataBase(result);
+            try
             {
-                var userFindedByUserName = context.Users.FirstOrDefault(u => u.UserName == userName);
-                return userFindedByUserName;
+                using (var context = new JeopardyDBContainer())
+                {
+                    var userFindedByUserName = context.Users.FirstOrDefault(u => u.UserName == userName);
+                    result.ObjectSaved = userFindedByUserName;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                }
             }
+            catch(ArgumentNullException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            } 
+            return result;
         }
 
-        public List<User> GetAllActiveUser()
+        public static GenericClassServer<int> UpdatePlayer(int idPlayerReported)
         {
-            using (var context = new JeopardyDBContainer())
-            {
-                var allUsers = context.Users.ToList();
-                return allUsers;
-            }
-        }
-
-        public static int UpdatePlayer(int idPlayerReported)
-        {
-            if (idPlayerReported == 0) return 0;
+            GenericClassServer<int> result = new GenericClassServer<int>();
+            if (idPlayerReported == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
             try
             {
                 using (var context = new JeopardyDBContainer())
@@ -133,63 +158,130 @@ namespace JeopardyGame.Data.DataAccess
                     var player = context.Players.FirstOrDefault(p => p.IdPlayer == idPlayerReported);
                     player.NoReports++;
                     context.Entry(player).State = EntityState.Modified;
-                    int result = context.SaveChanges();
-                    if (result != 0)
+                    int resultUpdate = context.SaveChanges();
+                    if (resultUpdate != 0)
                     {
-                        return result;
-                    }
-                    return 0;
+                        result.ObjectSaved = resultUpdate;
+                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    }                   
                 }
             }
             catch (ArgumentNullException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (SqlException ex)
+            catch(DbUpdateException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
-            }
-            return 0;
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }         
+            return result;
         }
 
 
-        public Player GetPlayerByIdUser(int idUser)
+        public static GenericClassServer<Player> GetPlayerByIdUser(int idUser)
         {
-            using (var context = new JeopardyDBContainer())
+            GenericClassServer<Player> result = new GenericClassServer<Player>();
+            try
             {
-                var playerConsulted = context.Players.FirstOrDefault(player => player.User_IdUser == idUser);
-                return playerConsulted;
+                using (var context = new JeopardyDBContainer())
+                {
+                    var playerConsulted = context.Players.FirstOrDefault(player => player.User_IdUser == idUser);
+                    result.ObjectSaved = playerConsulted;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                }
             }
+            catch (ArgumentNullException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }   
+            catch (EntityException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            return result;
 
         }
-        public Player GetPlayerByIdPlayer(int idPlayer)
+        public static GenericClassServer<Player> GetPlayerByIdPlayer(int idPlayer)
         {
-            using (var context = new JeopardyDBContainer())
+            GenericClassServer<Player> result = new GenericClassServer<Player>();
+            try
             {
-                var playerConsulted = context.Players.FirstOrDefault(player => player.IdPlayer == idPlayer);
-                return playerConsulted;
+                using (var context = new JeopardyDBContainer())
+                {
+                    var playerConsulted = context.Players.FirstOrDefault(player => player.IdPlayer == idPlayer);
+                    result.ObjectSaved = playerConsulted;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                }
             }
+            catch (ArgumentNullException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            return result;
 
         }
 
-        public State GetStateById(int idSatate)
+        public static GenericClassServer<State> GetStateById(int idSatate)
         {
-            using (var context = new JeopardyDBContainer())
+            GenericClassServer<State> result = new GenericClassServer<State>();
+            try
             {
-                var stateConsulted = context.States.Find(idSatate);
-                return stateConsulted;
+                using (var context = new JeopardyDBContainer())
+                {
+                    var stateConsulted = context.States.Find(idSatate);
+                    result.ObjectSaved = stateConsulted;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                }
             }
+            catch (InvalidOperationException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            return result;
         }
 
-        public void DeleteUserById(int idUser)
+        public static void DeleteUserById(int idUser)
         {
             try
             {
@@ -201,20 +293,20 @@ namespace JeopardyGame.Data.DataAccess
             }
             catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.UNKNOW);
             }
         }
 
 
-        public bool VerifyPassword(string password, string hashedPassword)
+        public static bool VerifyPassword(string password, string hashedPassword)
         {
             try { 
             byte[] hashBytes = Convert.FromBase64String(hashedPassword);
@@ -232,27 +324,27 @@ namespace JeopardyGame.Data.DataAccess
             }
             catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }            
             catch (EntityException entityEx)
             {
-                ExceptionHandler.HandleExcpeotion(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-               ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+               ExceptionHandler.LogException(ex, ExceptionDiccionary.UNKNOW);
             }
             return false;
         }
 
 
 
-        public int ValidateIfEmailExist(String email)
+        public static GenericClassServer<int> ValidateIfEmailExist(String email)
         {
+            GenericClassServer<int> result = new GenericClassServer<int>();
             int EXIST = 0;
             int NOT_EXIST = 1;
-            int ERROR = -1;
-            if (email.Length == 0) return ERROR;
+            if (email.Length == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
             try
             {
                 using (var context = new JeopardyDBContainer())
@@ -260,31 +352,39 @@ namespace JeopardyGame.Data.DataAccess
                     bool exist = context.Users.Any(u => u.EmailAddress == email);
                     if (!exist)
                     {
-                        return NOT_EXIST;
+                        result.ObjectSaved = NOT_EXIST;
+                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                     }
-                    return EXIST;
+                    else
+                    {
+                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
+                        result.ObjectSaved = EXIST;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (ArgumentNullException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            return ERROR;
+            return result;
         }
-        public int ValidateIfUserNameExist(String userName)
+        public static GenericClassServer<int> ValidateIfUserNameExist(String userName)
         {
+            GenericClassServer<int> result = new GenericClassServer<int>();
             int EXIST = 0;
-            int NOT_EXIST = 1;
-            int ERROR = -1;
-            if (userName.Length == 0) return ERROR;
+            int NOT_EXIST = 1;            
+            if (userName.Length == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
             try
             {
                 using (var context = new JeopardyDBContainer())
@@ -292,27 +392,35 @@ namespace JeopardyGame.Data.DataAccess
                     bool exist = context.Users.Any(u => u.UserName == userName);
                     if (!exist)
                     {
-                        return NOT_EXIST;
+                        result.ObjectSaved = NOT_EXIST;
+                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                     }
-                    return EXIST;
+                    else
+                    {
+                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
+                        result.ObjectSaved = EXIST;
+                    }
                 }
             }
-            catch (SqlException ex)
+            catch (ArgumentNullException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            return ERROR;
+            return result;
         }
 
-        public int UpdateUserInformation(string editedName, string originalName)
+        public static int UpdateUserInformation(string editedName, string originalName)
         {
 
             if (string.IsNullOrEmpty(editedName))
@@ -338,15 +446,15 @@ namespace JeopardyGame.Data.DataAccess
             }
             catch (SqlException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.UNKNOW);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.UNKNOW);
             }
             return -1;
         }

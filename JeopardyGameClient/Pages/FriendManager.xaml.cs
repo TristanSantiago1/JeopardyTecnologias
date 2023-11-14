@@ -82,12 +82,20 @@ namespace JeopardyGame.Pages
             ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
             ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            UserPOJO user = proxyUser.ConsultUserById(userSingleton.IdUser);
-            friends = proxyFriend.GetUserFriends(user).ToList();
-            friendRequests = proxyFriend.GetUserFriendRequests(user).ToList();
-            otherPeople = proxyFriend.GetUsersNotFriends(user).ToList();
-            proxyFriend.Close();
-            proxyUser.Close();
+            GenericClassOfUserPOJOxY0a3WX4 user = proxyUser.ConsultUserById(userSingleton.IdUser);
+            if (user.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                friends = proxyFriend.GetUserFriends(user.ObjectSaved).ObjectSaved.ToList();
+                friendRequests = proxyFriend.GetUserFriendRequests(user.ObjectSaved).ObjectSaved.ToList();
+                otherPeople = proxyFriend.GetUsersNotFriends(user.ObjectSaved).ObjectSaved.ToList();
+                proxyFriend.Close();
+                proxyUser.Close();
+            }
+            else
+            {
+                ExceptionHandler.HandleException(user.CodeEvent);
+                //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
+            }
         }
 
         private Border SetBorderCardStyle(Border brdCard)

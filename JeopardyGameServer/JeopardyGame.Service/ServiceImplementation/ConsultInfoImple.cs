@@ -1,5 +1,7 @@
 ﻿using JeopardyGame.Data;
+using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.InterfacesSevices;
+using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,55 +12,56 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class ConsultInfoImple : IConsultInformation
     {
-        public  PlayerPOJO ConsultPlayerById(int idPlayer)
+        public GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer)
         {
-            if (idPlayer == 0) return null;
-            Data.DataAccess.UserManagerDataOperation dataAcces = new Data.DataAccess.UserManagerDataOperation();
-            PlayerPOJO playerConsulted = new PlayerPOJO();
-            playerConsulted = InterpretersEntityPojo.UserInterpreter.FromPlayerEntityToPlayerPojo(dataAcces.GetPlayerByIdPlayer(idPlayer));
-            if (playerConsulted == null) return null;          
-            return playerConsulted;
+            GenericClass<PlayerPOJO> resultToReturn = new GenericClass<PlayerPOJO>();
+            if (idPlayer == 0) return NullParametersHandler.HandleNullParametersService(resultToReturn);       
+            GenericClassServer<Player> playerConsulted = Data.DataAccess.UserManagerDataOperation.GetPlayerByIdPlayer(idPlayer);
+            resultToReturn.ObjectSaved = UserInterpreter.FromPlayerEntityToPlayerPojo(playerConsulted.ObjectSaved);
+            resultToReturn.CodeEvent = playerConsulted.CodeEvent;
+            return resultToReturn;
         }
 
-        public  PlayerPOJO ConsultPlayerByIdUser(int idUser)
+        public GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser)
         {
-            if (idUser == 0) { return null; }
-            Data.DataAccess.UserManagerDataOperation dataAcces = new Data.DataAccess.UserManagerDataOperation();
-            PlayerPOJO playerConsulted = new PlayerPOJO();
-            playerConsulted = InterpretersEntityPojo.UserInterpreter.FromPlayerEntityToPlayerPojo(dataAcces.GetPlayerByIdUser(idUser));
-            if (playerConsulted == null)  return null;    
-            return playerConsulted;
+            GenericClass<PlayerPOJO> resultToReturn = new GenericClass<PlayerPOJO>();
+            if (idUser == 0) return NullParametersHandler.HandleNullParametersService(resultToReturn);
+            GenericClassServer<Player> playerConsulted = Data.DataAccess.UserManagerDataOperation.GetPlayerByIdUser(idUser);
+            resultToReturn.ObjectSaved = UserInterpreter.FromPlayerEntityToPlayerPojo(playerConsulted.ObjectSaved);
+            resultToReturn.CodeEvent = playerConsulted.CodeEvent;
+            return resultToReturn;
         }
 
-        public  UserPOJO ConsultUserById(int idUser)
+        public GenericClass<UserPOJO> ConsultUserById(int idUser)
         {
-            if (idUser == 0) { return null; }
-            Data.DataAccess.UserManagerDataOperation dataAcces = new Data.DataAccess.UserManagerDataOperation();
-            UserPOJO userConsulted = new UserPOJO();
-            userConsulted = InterpretersEntityPojo.UserInterpreter.FromUserEntityToUserPojo(dataAcces.GetUserById(idUser));
-            if(userConsulted == null) return null;
-            return userConsulted;
+            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            if (idUser == 0)  return NullParametersHandler.HandleNullParametersService(resultToReturn);
+            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserById(idUser);
+            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
+            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+            return resultToReturn;
         }
 
-        public  UserPOJO ConsultUserByIdPlayer(int idPlayer)
+        public GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer)
         {
-            if (idPlayer == 0) { return null; }
-            Data.DataAccess.UserManagerDataOperation dataAcces = new Data.DataAccess.UserManagerDataOperation();
-            PlayerPOJO player = ConsultPlayerById(idPlayer);
-            UserPOJO userConsulted = new UserPOJO();
-            userConsulted = InterpretersEntityPojo.UserInterpreter.FromUserEntityToUserPojo(dataAcces.GetUserById(player.IdUser));
-            if (userConsulted == null) return null;  
-            return userConsulted;
+            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            if (idPlayer == 0) return NullParametersHandler.HandleNullParametersService(resultToReturn);            
+            PlayerPOJO player = ConsultPlayerById(idPlayer).ObjectSaved;
+            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserById(player.IdUser);
+            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
+            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+            return resultToReturn;
         }
 
-        public UserPOJO ConsultUserByUserName(string userName)
+        public GenericClass<UserPOJO> ConsultUserByUserName(string userName)
         {
-            if(userName == null) { return null; }   
-            Data.DataAccess.UserManagerDataOperation dataAcces = new Data.DataAccess.UserManagerDataOperation();
-            UserPOJO userConsulted = new UserPOJO();
-            userConsulted = InterpretersEntityPojo.UserInterpreter.FromUserEntityToUserPojo(dataAcces.GetUserByUserName (userName));
-            if (userConsulted == null) return null;
-            return userConsulted;
+            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            if (userName == null) NullParametersHandler.HandleNullParametersService(resultToReturn);
+            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserByUserName (userName);
+            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
+            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+            return resultToReturn;
         }
+
     }
 }

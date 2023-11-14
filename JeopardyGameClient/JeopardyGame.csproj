@@ -70,6 +70,7 @@
       <DependentUpon>ConfirmationDW.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\EncryptationClass.cs" />
+    <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="Helpers\FriendCard.cs" />
     <Compile Include="Helpers\FriendCardManagementWindow.cs" />
     <Compile Include="Pages\ActiveFriends.xaml.cs">
@@ -237,16 +238,19 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.FriendInfo.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfFriendInfoxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.UserPOJO.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfPlayerPOJOxY0a3WX4.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\UserManager.wsdl" />

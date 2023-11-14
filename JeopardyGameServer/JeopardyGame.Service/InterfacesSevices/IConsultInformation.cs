@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -11,14 +12,14 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface IConsultInformation
     {
         [OperationContract]
-        UserPOJO ConsultUserById(int idUser);
+        GenericClass<UserPOJO> ConsultUserById(int idUser);
         [OperationContract]
-        UserPOJO ConsultUserByIdPlayer(int idPlayer);
+        GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer);
         [OperationContract]
-        PlayerPOJO ConsultPlayerById(int idPlayer);
+        GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer);
         [OperationContract]
-        PlayerPOJO ConsultPlayerByIdUser(int idUser);
+        GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser);
         [OperationContract]
-        UserPOJO ConsultUserByUserName(String userName);
+        GenericClass<UserPOJO> ConsultUserByUserName(String userName);
     }
 }

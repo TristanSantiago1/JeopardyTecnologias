@@ -95,6 +95,7 @@
     <Compile Include="GamePlayer.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="GenericClass.cs" />
     <Compile Include="Host.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>

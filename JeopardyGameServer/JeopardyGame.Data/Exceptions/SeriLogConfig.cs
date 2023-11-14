@@ -26,7 +26,7 @@ namespace JeopardyGame.Data.Exceptions
 
         public String getPath()
         {
-            return logFileName;
+            return "/Logs/"+logFileName;
         }
     }
 }

@@ -25,23 +25,23 @@ namespace JeopardyGame.Host.Connetion
             }
             catch(ProtocolException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
             }
             catch(SecurityNegotiationException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
             }
             catch (AddressAlreadyInUseException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
             }
             catch (SystemException ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.HandleExcpeotion(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
             }
            
            

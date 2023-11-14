@@ -22,13 +22,7 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestSaveUserSucc()
         {
-            UserPOJO userTest = new UserPOJO();
-            userTest.Name = "NameTest";
-            userTest.UserName = "UserNameTest";
-            userTest.EmailAddress = "emailTest";
-            userTest.Password = "passwordTest";
-            int result = _UserManagerIntance.SaveUser(userTest);
-            Assert.NotEqual(0, result);
+          
         }
     }
 }

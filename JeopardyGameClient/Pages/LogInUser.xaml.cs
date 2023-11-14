@@ -10,6 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.ServiceModel;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System.Collections.Generic;
+using JeopardyGame.Helpers;
 
 namespace JeopardyGame.Pages
 {
@@ -75,9 +76,9 @@ namespace JeopardyGame.Pages
             }
             try
             {
-                ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
+                UserManagerClient proxyServer = new UserManagerClient();
 
-                ServidorServiciosJeopardy.UserValidate userValidate = new ServidorServiciosJeopardy.UserValidate
+                UserValidate userValidate = new UserValidate
                 {
                     UserName = userName,
                     Password = password
@@ -87,23 +88,35 @@ namespace JeopardyGame.Pages
                 proxyServer.Close();
                 if (result == 1)
                 {
-                    ServidorServiciosJeopardy.ConsultInformationClient proxyConsult =
-                        new ServidorServiciosJeopardy.ConsultInformationClient();
-                    UserPOJO currentUser = proxyConsult.ConsultUserByUserName(userName);
-                    PlayerPOJO currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.IdUser);
+                    ConsultInformationClient proxyConsult = new ConsultInformationClient();
+                    GenericClassOfUserPOJOxY0a3WX4 currentUser = proxyConsult.ConsultUserByUserName(userName);
+                    if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
+                    {
+                        GenericClassOfPlayerPOJOxY0a3WX4 currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+                        if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            InstanceContext contexto = new InstanceContext(this);
+                            NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(contexto);
 
-                    InstanceContext contexto = new InstanceContext(this);
-                    ServidorServiciosJeopardy.NotifyUserAvailabilityClient proxyChannelCallback =
-                        new ServidorServiciosJeopardy.NotifyUserAvailabilityClient(contexto);
+                            InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, proxyChannelCallback);
+                            UserSingleton us = UserSingleton.GetMainUser();
+                            us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
 
-                    InstanceSingleton(currentUser, currentPlayer, proxyChannelCallback);
-                    UserSingleton us = UserSingleton.GetMainUser();
-                    us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
-
-                    MainMenu mainMenuPage = new MainMenu();
-                    this.NavigationService.Navigate(mainMenuPage);
-                    NavigationService.RemoveBackEntry();
-
+                            MainMenu mainMenuPage = new MainMenu();
+                            this.NavigationService.Navigate(mainMenuPage);
+                            NavigationService.RemoveBackEntry();
+                        }
+                        else
+                        {
+                            ExceptionHandler.HandleException(currentPlayer.CodeEvent);
+                            //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
+                        }
+                    }
+                    else
+                    {
+                        ExceptionHandler.HandleException(currentUser.CodeEvent);
+                        //LOGICA DE SI OCURRE LA EXPTION
+                    }
                 }
                 else if (result == 0)
                 {

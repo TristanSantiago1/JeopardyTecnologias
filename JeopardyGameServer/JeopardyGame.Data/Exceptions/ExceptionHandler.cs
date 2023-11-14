@@ -5,16 +5,75 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using JeopardyGame.Data.Exceptions;
+using System.Data.SqlClient;
+using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
 
 namespace JeopardyGame.Data.Exceptions
 {
     public class ExceptionHandler
     {
-        public static void HandleExcpeotion(Exception exception, String Category)
+        public static void LogException(Exception exception, String Category)
         {
             string logMessage = $"[{DateTime.Now}] Exception: {exception.Message}\nStackTrace: {exception.StackTrace}\n";
             SeriLogConfig logConfig = new SeriLogConfig();  
             File.AppendAllText(logConfig.getPath(), logMessage);
         }
+
+        public static GenericClassServer<T> HandleException<T>(GenericClassServer<T> resultException, Exception exception)
+        {
+            resultException.ObjectSaved = default;
+            if (exception is InvalidOperationException)
+            {
+                resultException.CodeEvent = ExceptionDiccionary.INVALID_OPERATION;
+                return resultException;
+            }
+            if (exception is ArgumentNullException)
+            {
+                resultException.CodeEvent = ExceptionDiccionary.SAVE_CHANGES_ERROR;
+                return resultException;
+            }
+            if (exception is DbUpdateException)
+            {
+                resultException.CodeEvent = ExceptionDiccionary.SAVE_CHANGES_ERROR;
+                return resultException;
+            }
+            if (exception is EntityException)
+            {
+                resultException.CodeEvent = ExceptionDiccionary.ENTITY_ERROR;
+                return resultException;
+            }
+            if (exception is SqlException)
+            {
+                resultException.CodeEvent = ExceptionDiccionary.SQL_ERROR;
+                return resultException;
+            }
+            if (exception is Exception)
+            {
+                resultException.CodeEvent = ExceptionDiccionary.UNKOWN_EXCEPTION_OCURRED;
+                return resultException;
+            }
+            return resultException;
+        }
+
     }
+
+    public class NullParametersHandler
+    {
+        public static GenericClassServer<T> HandleNullParametersDataBase<T>(GenericClassServer<T> resultWithNull)
+        {
+            resultWithNull.ObjectSaved = default;
+            resultWithNull.CodeEvent = ExceptionDiccionary.NULL_PARAEMETER;
+            return resultWithNull;
+        }
+
+        public static GenericClass<T> HandleNullParametersService<T>(GenericClass<T> resultWithNull)
+        {
+            resultWithNull.ObjectSaved = default;
+            resultWithNull.CodeEvent = ExceptionDiccionary.NULL_PARAEMETER;
+            return resultWithNull;
+        }
+    }
+
+    
 }

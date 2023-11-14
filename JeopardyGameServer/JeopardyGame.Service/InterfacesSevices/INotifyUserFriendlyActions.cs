@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -11,7 +12,7 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface INotifyUserActionFriendsManager
     {
         [OperationContract]
-        int RegisterFriendManagerUser(int idUser);
+        GenericClass<int> RegisterFriendManagerUser(int idUser);
 
         [OperationContract(IsOneWay = true)]
         void UnregisterFriendManagerUser(int idUser);
