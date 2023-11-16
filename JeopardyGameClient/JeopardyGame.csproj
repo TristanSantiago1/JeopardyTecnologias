@@ -88,6 +88,9 @@
     <Compile Include="Pages\FriendManager.xaml.cs">
       <DependentUpon>FriendManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GameBoard.xaml.cs">
+      <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LobbyPage.xaml.cs">
       <DependentUpon>LobbyPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,9 @@
     </Compile>
     <Compile Include="ReGexs\RegularExpresionsLibrary.cs" />
     <Compile Include="UserSingleton.cs" />
+    <Compile Include="Views\EnterWithGameCode.xaml.cs">
+      <DependentUpon>EnterWithGameCode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrincipalWindow.xaml.cs">
       <DependentUpon>PrincipalWindow.xaml</DependentUpon>
     </Compile>
@@ -157,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LobbyPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -186,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UserRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EnterWithGameCode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,6 +256,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4.datasource">
+    <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.FriendScore.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint.datasource">
@@ -336,7 +356,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\crossImagePlayer.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\starImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logoWBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\winnerIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backgroundGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttonAnswer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\buttonChat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logoJeopardy2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

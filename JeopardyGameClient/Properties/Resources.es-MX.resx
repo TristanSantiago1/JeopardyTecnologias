@@ -168,8 +168,14 @@
   <data name="bttFriends" xml:space="preserve">
     <value>Amigos</value>
   </data>
+  <data name="bttGuest" xml:space="preserve">
+    <value>Invitado</value>
+  </data>
   <data name="bttNewGame" xml:space="preserve">
     <value>Nueva partida</value>
+  </data>
+  <data name="bttPlayer" xml:space="preserve">
+    <value>Jugador</value>
   </data>
   <data name="bttReport" xml:space="preserve">
     <value>Reportar</value>
@@ -278,6 +284,9 @@
   </data>
   <data name="lblUserNameLogIn" xml:space="preserve">
     <value>Usuario</value>
+  </data>
+  <data name="lblWinnerList" xml:space="preserve">
+    <value>Mejores jugadores</value>
   </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>

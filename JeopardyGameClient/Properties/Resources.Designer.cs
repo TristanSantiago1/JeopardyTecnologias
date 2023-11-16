@@ -214,11 +214,29 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Guest.
+        /// </summary>
+        public static string bttGuest {
+            get {
+                return ResourceManager.GetString("bttGuest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a New game.
         /// </summary>
         public static string bttNewGame {
             get {
                 return ResourceManager.GetString("bttNewGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Player.
+        /// </summary>
+        public static string bttPlayer {
+            get {
+                return ResourceManager.GetString("bttPlayer", resourceCulture);
             }
         }
         
@@ -543,6 +561,15 @@ namespace JeopardyGame.Properties {
         public static string lblUserNameLogIn {
             get {
                 return ResourceManager.GetString("lblUserNameLogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Best players.
+        /// </summary>
+        public static string lblWinnerList {
+            get {
+                return ResourceManager.GetString("lblWinnerList", resourceCulture);
             }
         }
         

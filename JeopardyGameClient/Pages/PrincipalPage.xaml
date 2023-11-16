@@ -8,29 +8,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="PrincipalPage">
-    <Viewbox Stretch="Fill">
-        <Grid Height="751" >
+    <Viewbox>
+        <Grid Height="751" Width="1285" >
 
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
             </Grid.Background>
-            <Viewbox Width="auto" Height="auto" Margin="102,98,101,-217">
-                <Image HorizontalAlignment="Center" Height="1222" 
-                Width="854" VerticalAlignment="Top" 
-                Source="/Images/logoJeopardy.png"/>
-            </Viewbox>
-            <Button x:Name="btnInvite" Content = "{x:Static p:Resources.btnInvite}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-        FontSize="25" Click="CLicButtonInvite" HorizontalAlignment="Left" Margin="442,486,0,0" VerticalAlignment="Top" Height="95" Width="143" >
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/blueBtn.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="btnLogIn" Content = "{x:Static p:Resources.btnLogIn}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-        FontSize="25" Click="CLicButtonLogin" HorizontalAlignment="Left" Margin="275,486,0,0" VerticalAlignment="Top" Height="95" Width="131" >
-                <Button.Background>
-                    <ImageBrush ImageSource="/Images/purpleBtn.png"/>
-                </Button.Background>
-            </Button>
+            <Image HorizontalAlignment="Center" Height="437" Stretch="Fill"
+                Width="763" VerticalAlignment="Top" 
+                Source="/Images/logoJeopardy2.png" Margin="0,90,0,0" RenderTransformOrigin="0.5,0.5">
+
+            </Image>
+            <Button x:Name="bttPlayer" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.bttPlayer}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLicButtonLogin" Margin="446,505,446,184" />
+            <Button x:Name="bttGuest"  FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.bttGuest}" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonInvite" Margin="446,597,446,96" />
         </Grid>
     </Viewbox>
 </Page>

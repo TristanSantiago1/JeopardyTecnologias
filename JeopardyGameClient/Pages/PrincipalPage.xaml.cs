@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,8 +35,11 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonInvite(object sender, RoutedEventArgs e)
         {
-            enterGameWithCode gameCodePage = new enterGameWithCode();
-            this.NavigationService.Navigate(gameCodePage);
+
+            Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
+            codeWindow.Show();
+            enterGameWithCode codePage = new enterGameWithCode();
+            codeWindow.contentFrame.NavigationService.Navigate(codePage);
         }
     }
 }

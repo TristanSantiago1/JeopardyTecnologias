@@ -31,8 +31,10 @@ namespace JeopardyGame.Pages
 
             if (int.TryParse(tbxCode.Text, out codigoIngresado))
             {
+                Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
+                gameWindow.Show();
                 LobbyPage lobbyPage = new LobbyPage(codigoIngresado);
-                this.NavigationService.Navigate(lobbyPage);
+                gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
             }
             else
             {

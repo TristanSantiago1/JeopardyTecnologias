@@ -836,6 +836,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
         System.Threading.Tasks.Task<int> UpdateUserInformationAsync(string editedName, string originalName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetFriendScores", ReplyAction="http://tempuri.org/IUserManager/GetFriendScoresResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.FriendScore[] GetFriendScores(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetFriendScores", ReplyAction="http://tempuri.org/IUserManager/GetFriendScoresResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendScore[]> GetFriendScoresAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -911,6 +917,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<int> UpdateUserInformationAsync(string editedName, string originalName) {
             return base.Channel.UpdateUserInformationAsync(editedName, originalName);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.FriendScore[] GetFriendScores(int userId) {
+            return base.Channel.GetFriendScores(userId);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendScore[]> GetFriendScoresAsync(int userId) {
+            return base.Channel.GetFriendScoresAsync(userId);
         }
     }
     

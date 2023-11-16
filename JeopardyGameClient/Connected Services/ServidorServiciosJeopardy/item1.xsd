@@ -88,6 +88,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetFriendScores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFriendScoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesSevices" minOccurs="0" name="GetFriendScoresResult" nillable="true" type="q3:ArrayOfFriendScore" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetUserFriends">
     <xs:complexType>
       <xs:sequence>

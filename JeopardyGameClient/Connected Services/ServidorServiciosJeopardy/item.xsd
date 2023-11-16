@@ -33,6 +33,27 @@
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
+  <xs:element name="UserValidate" nillable="true" type="tns:UserValidate" />
+  <xs:complexType name="ArrayOfFriendScore">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FriendScore" type="tns:FriendScore" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFriendScore" nillable="true" type="tns:ArrayOfFriendScore" />
+  <xs:complexType name="FriendScore">
+    <xs:annotation>
+      <xs:appinfo>
+        <IsValueType xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsValueType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GeneralPoints" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FriendScore" nillable="true" type="tns:FriendScore" />
+  <xs:complexType name="ArrayOfFriendInfo">
     <xs:sequence>
       <xs:element minOccurs="0" name="CodeEvent" type="xs:int" />
       <xs:element minOccurs="0" name="ObjectSaved" type="tns:FriendInfo" />
