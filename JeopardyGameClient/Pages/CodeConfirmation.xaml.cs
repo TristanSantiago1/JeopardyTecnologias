@@ -3,6 +3,8 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,8 +23,10 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para CodeConfirmation.xaml
     /// </summary>
-    public partial class CodeConfirmation : Page
+    public partial class CodeConfirmation : Page, INotifyUserAvailabilityCallback
     {
+        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
+
         private DispatcherTimer timer;
         private int leftTime = 360;
         private String currentEmail;
@@ -100,8 +104,9 @@ namespace JeopardyGame.Pages
                 {
                     if (idUsuario.ObjectSaved != 0)
                     {
+                        SetSingleton();
                         ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle,
-                            JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);
+                            JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);                        
                         MainMenu lobby = new MainMenu();
                         this.NavigationService.Navigate(lobby);
                         NavigationService.RemoveBackEntry();
@@ -180,6 +185,33 @@ namespace JeopardyGame.Pages
             {
                 bttSaveUser.IsEnabled=false;
             }
+        }
+        
+        private void SetSingleton()
+        {
+            ConsultInformationClient consultInformationClient = new ConsultInformationClient();           
+            var userSaved =  consultInformationClient.ConsultUserByUserName(userToSave.UserName);
+            var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            userSingleton.IdUser = userSaved.ObjectSaved.IdUser;
+            userSingleton.Name = userSaved.ObjectSaved.Name;
+            userSingleton.UserName = userSaved.ObjectSaved.UserName;
+            userSingleton.Email = userSaved.ObjectSaved.EmailAddress;
+            userSingleton.Password = userSaved.ObjectSaved .Password;
+            userSingleton.IdPlayer = playerSaved.ObjectSaved.IdPlayer;
+            userSingleton.GeneralPoints = playerSaved.ObjectSaved.GeneralPoints;
+            userSingleton.NoReports = playerSaved.ObjectSaved.NoReports;
+            userSingleton.IdState = playerSaved.ObjectSaved.IdState;
+            userSingleton.IdCurrentAvatar = playerSaved.ObjectSaved.IdActualAvatar;
+            InstanceContext contexto = new InstanceContext(this);
+            NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(contexto);
+            userSingleton.proxyForAvailability = proxyChannelCallback;
+            userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser, userSingleton.IdPlayer);
+        }
+
+        public void Response(int status, int idFriend)
+        {
+            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).Response(status, idFriend);
         }
     }
 

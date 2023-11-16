@@ -145,11 +145,21 @@ namespace JeopardyGame.Pages
                 App.ChangeLanguaje(selectedLanguage);
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
-                key.Close();
-                lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
-                lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
-                btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
-                btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
+                key.Close();              
+                if (selectedLanguage == "es-MX")
+                {
+                    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
+                    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
+                    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
+                    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
+                }
+                else if (selectedLanguage == "en-EU")
+                {
+                    lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
+                    lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
+                    btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
+                    btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
+                }
             }
 
         }

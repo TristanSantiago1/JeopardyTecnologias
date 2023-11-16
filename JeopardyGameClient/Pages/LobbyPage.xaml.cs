@@ -381,7 +381,7 @@ namespace JeopardyGame.Pages
             {
                 bool teamUp = false;
                 LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);             
-                if ((bool)rdbIndividual.IsChecked && currentPlayerInLobby.Count == 4)
+                if ((!(bool)rdbTeam.IsChecked) && currentPlayerInLobby.Count == 4)
                 {
                     rdbIndividual.IsChecked = false;
                     rdbTeam.IsChecked = true;

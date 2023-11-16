@@ -42,9 +42,23 @@ namespace JeopardyGame.Pages
 
         private void ClicClose(object sender, MouseButtonEventArgs e)
         {
-            PrincipalPage pagePrincipal = new PrincipalPage();
-            this.NavigationService.Navigate(pagePrincipal);
-            NavigationService.RemoveBackEntry();
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            if (userSingleton.proxyForAvailability == null)
+            {
+                PrincipalPage pagePrincipal = new PrincipalPage();
+                this.NavigationService.Navigate(pagePrincipal);
+                NavigationService.RemoveBackEntry();
+            }
+            else
+            {
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
+            }
+           
+
+
+
         }
     }
 }

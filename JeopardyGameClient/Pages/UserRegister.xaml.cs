@@ -262,7 +262,7 @@ namespace JeopardyGame.Pages
             UserManagerClient proxyServer = new UserManagerClient();
             GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
             proxyServer.Close();
-            if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
             {
                 if (emailIsNew.ObjectSaved == 1)
                 {
@@ -295,7 +295,7 @@ namespace JeopardyGame.Pages
             UserManagerClient proxyServer = new UserManagerClient();
             GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
             
-            if(userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if(userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
             {
                 if (userIsNew.ObjectSaved == 1)
                 {
