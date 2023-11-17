@@ -48,7 +48,7 @@ namespace JeopardyGame.Pages
             FriendsManagerClient proxyFriend = new FriendsManagerClient();
             ConsultInformationClient proxyUser = new ConsultInformationClient();
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            GenericClassOfUserPOJOxY0a3WX4 user = proxyUser.ConsultUserById(userSingleton.IdUser);    
+            var user = proxyUser.ConsultUserById(userSingleton.IdUser);    
             friends = proxyFriend.GetUserFriends(user.ObjectSaved);
             foreach (var item in friends.ObjectSaved)
             {

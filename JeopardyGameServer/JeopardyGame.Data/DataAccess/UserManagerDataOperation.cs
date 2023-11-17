@@ -125,8 +125,16 @@ namespace JeopardyGame.Data.DataAccess
                 using (var context = new JeopardyDBContainer())
                 {
                     var userFindedByUserName = context.Users.FirstOrDefault(u => u.UserName == userName);
-                    result.ObjectSaved = userFindedByUserName;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    if(userFindedByUserName != null)
+                    {
+                        result.ObjectSaved = userFindedByUserName;
+                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        result.ObjectSaved = userFindedByUserName;
+                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
+                    }                   
                 }
             }
             catch(ArgumentNullException ex)

@@ -32,7 +32,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void leaveLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        void ChangePlayerSide(int RoomCode, int idUser, int side);
+        public void ChangePlayerSide(int RoomCode, int idUser, int side);
 
         [OperationContract(IsOneWay = true)]
         void EliminatePlayerFromMatch(int roomCode, int idUser);

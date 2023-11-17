@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using JeopardyGame.Data.Exceptions;
 using System.Security.Cryptography.X509Certificates;
 using JeopardyGame.Data.DataAccess;
+using System.Diagnostics.SymbolStore;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -80,7 +81,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<int> responseServer = new GenericClass<int>();
             if (user.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
             {
-                var isPasswordValid = UserManagerDataOperation.VerifyPassword(newUserValidate.Password, user.ObjectSaved.Password);
+                GenericClassServer<bool> isPasswordValid = UserManagerDataOperation.VerifyPassword(newUserValidate.Password, user.ObjectSaved.Password);
                 if (isPasswordValid.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT || isPasswordValid.CodeEvent == ExceptionDiccionary.UNSUCCESFULL_EVENT)
                 {
                     if (isPasswordValid.ObjectSaved)

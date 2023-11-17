@@ -17,7 +17,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para LogInUser.xaml
     /// </summary>
-    public partial class LogInUser : System.Windows.Controls.Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
+    public partial class LogInUser : System.Windows.Controls.Page, INotifyUserAvailabilityCallback
     {
         public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
         public LogInUser()
@@ -91,10 +91,10 @@ namespace JeopardyGame.Pages
                     if (result.ObjectSaved == 1)
                     {
                         ConsultInformationClient proxyConsult = new ConsultInformationClient();
-                        GenericClassOfUserPOJOxY0a3WX4 currentUser = proxyConsult.ConsultUserByUserName(userName);
+                        var currentUser = proxyConsult.ConsultUserByUserName(userName);
                         if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            GenericClassOfPlayerPOJOxY0a3WX4 currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+                            var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
                             if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                             {
                                 InstanceContext contexto = new InstanceContext(this);

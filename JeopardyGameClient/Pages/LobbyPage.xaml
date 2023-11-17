@@ -8,8 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="LobbyPage">
-    <Viewbox >
-        <Grid Height="751">
+    
+    <Viewbox  Stretch="Fill">
+        <Grid >
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/BackGround.jpg">
                 </ImageBrush>
@@ -18,15 +19,15 @@
                Width="400" Margin="46,0,0,0" VerticalAlignment="Top" 
                Source="/Images/logoJeopardy.png" RenderTransformOrigin="0.914,0.526"/>
 
-            <Image HorizontalAlignment="Left" Height="68" Margin="1057,246,0,0" 
+            <Image HorizontalAlignment="Left" Height="68" Margin="1053,246,0,0" 
                VerticalAlignment="Top" Width="61" Source="/Images/FriendsIcon.png" MouseDown="clicListFriends" RenderTransformOrigin="4.252,2.317"/>
-            <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="clicListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1037,312,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="clicListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1021,312,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeRoom}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="58" Width="auto" HorizontalAlignment="Center"/>
-            <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="804,39,0,0"/>
+            <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="792,39,0,0"/>
             <Grid Margin="94,205,251,404">
                 <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="0"/>
-                <RadioButton x:Name="rdbIndividual" Content = "{x:Static p:Resources.rdbIndividual}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" Height="auto" Width="auto" Margin="365,84,173,0" Click="ClicChoseModality"/>
-                <RadioButton x:Name="rdbTeam" Content = "{x:Static p:Resources.rdbTeam}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}"  Margin="78,89,504,4" Height="auto" Width="auto" HorizontalContentAlignment="Stretch" Click="ClicChoseModality"/>
+                <RadioButton x:Name="rdbIndividual" Content = "{x:Static p:Resources.rdbIndividual}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}" Height="auto" Width="auto" Margin="365,84,115,0" Click="ClicChoseModality"/>
+                <RadioButton x:Name="rdbTeam" Content = "{x:Static p:Resources.rdbTeam}" FontSize="25" Foreground="White" Style="{StaticResource RadioButtonStyle}"  Margin="78,89,445,4" Height="auto" Width="auto" HorizontalContentAlignment="Stretch" Click="ClicChoseModality"/>
             </Grid>
             <Grid Margin="94,376,91,80">
                 <Label x:Name="lblPlayersInGame" Content = "{x:Static p:Resources.lblPlayersInGame}" Style="{StaticResource labelStyleSimple}" Margin="0"/>
@@ -85,11 +86,13 @@
                     </Border>
                 </StackPanel>
             </Grid>
-            <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="854,677,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
-            <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="1037,676,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
+            <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="792,674,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
+            <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="965,673,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
+            <Image HorizontalAlignment="Left" Height="101" Margin="1044,354,0,299" Width="76" Source="/Images/buttonChat.png" MouseDown="ClicOpenChat"/>
 
         </Grid>
     </Viewbox>
 
+    
 
 </Page>

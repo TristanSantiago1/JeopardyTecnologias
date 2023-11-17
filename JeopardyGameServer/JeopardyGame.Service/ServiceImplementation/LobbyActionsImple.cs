@@ -45,6 +45,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                         newLobby.idAdmin = idUser;
                         newLobby.listOfPlayerInLobby.Add(leader);
                         GameLobbies.RegisterNewLobby(roomCode, newLobby);
+                        //////
+                        //LiveChatImple liveChatImple = new LiveChatImple();
+                        //liveChatImple.CreateChatForLobby(roomCode, idUser);
+                        /////
                         resultToReturn.ObjectSaved = SUCCESFUL;
                         resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                     }

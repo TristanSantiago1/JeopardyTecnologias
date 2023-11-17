@@ -22,8 +22,9 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para LobbyPage.xaml
     /// </summary>
-    public partial class LobbyPage : Page, ILobbyActionsCallback
+    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback
     {
+        public LiveChat liveChat = new LiveChat();
         private Random generateAleatory;
         private int roomCode;
         private bool isAdminOfLobby;
@@ -70,7 +71,7 @@ namespace JeopardyGame.Pages
                     {
                         rdbTeam.IsChecked = true;
                         rdbIndividual.IsChecked= false;
-                    }                   
+                    }
                 }
                 else
                 {
@@ -272,8 +273,8 @@ namespace JeopardyGame.Pages
         }
         private void CloseWindow()
         {
-            MainMenu mainMenuPage = new MainMenu();
-            this.NavigationService.Navigate(mainMenuPage);
+            LobbyPage lobyGamePage = new LobbyPage();
+            this.NavigationService.Navigate(lobyGamePage);
             NavigationService.RemoveBackEntry();
         }
 
@@ -401,5 +402,16 @@ namespace JeopardyGame.Pages
             }
         }
 
+        public void ReciveMessage(GenericClassOfMessageChatxY0a3WX4 message)
+        {
+            ((ILiveChatCallback)liveChat).ReciveMessage(message);
+        }
+
+        private void ClicOpenChat(object sender, MouseButtonEventArgs e)
+        {
+            LiveChat chat = liveChat;
+            this.NavigationService.Navigate(chat);
+            chat.StartPage(isAdminOfLobby, roomCode);
+        }
     }    
 }

@@ -797,6 +797,204 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfArrayOfMessageChatxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class GenericClassOfArrayOfMessageChatxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodeEventField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.MessageChat[] ObjectSavedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodeEvent {
+            get {
+                return this.CodeEventField;
+            }
+            set {
+                if ((this.CodeEventField.Equals(value) != true)) {
+                    this.CodeEventField = value;
+                    this.RaisePropertyChanged("CodeEvent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.MessageChat[] ObjectSaved {
+            get {
+                return this.ObjectSavedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
+                    this.ObjectSavedField = value;
+                    this.RaisePropertyChanged("ObjectSaved");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageChat", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial struct MessageChat : System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUser {
+            get {
+                return this.IdUserField;
+            }
+            set {
+                if ((this.IdUserField.Equals(value) != true)) {
+                    this.IdUserField = value;
+                    this.RaisePropertyChanged("IdUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfMessageChatxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class GenericClassOfMessageChatxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodeEventField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.MessageChat ObjectSavedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodeEvent {
+            get {
+                return this.CodeEventField;
+            }
+            set {
+                if ((this.CodeEventField.Equals(value) != true)) {
+                    this.CodeEventField = value;
+                    this.RaisePropertyChanged("CodeEvent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.MessageChat ObjectSaved {
+            get {
+                return this.ObjectSavedField;
+            }
+            set {
+                if ((this.ObjectSavedField.Equals(value) != true)) {
+                    this.ObjectSavedField = value;
+                    this.RaisePropertyChanged("ObjectSaved");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserManager")]
     public interface IUserManager {
@@ -1484,6 +1682,103 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam) {
             return base.Channel.MakeTeamsAsync(roomCode, idUser, wannaTeam);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ILiveChat", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.ILiveChatCallback))]
+    public interface ILiveChat {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/SendMessage")]
+        void SendMessage(int idUser, int room, string userName, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(int idUser, int room, string userName, string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/GetAllMessages", ReplyAction="http://tempuri.org/ILiveChat/GetAllMessagesResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4 GetAllMessages(int room, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/GetAllMessages", ReplyAction="http://tempuri.org/ILiveChat/GetAllMessagesResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4> GetAllMessagesAsync(int room, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/DeleteChat")]
+        void DeleteChat(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/DeleteChat")]
+        System.Threading.Tasks.Task DeleteChatAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/CreateChatForLobby")]
+        void CreateChatForLobby(int roomCode, int idAdmin);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/CreateChatForLobby")]
+        System.Threading.Tasks.Task CreateChatForLobbyAsync(int roomCode, int idAdmin);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILiveChatCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/ReciveMessage", ReplyAction="http://tempuri.org/ILiveChat/ReciveMessageResponse")]
+        void ReciveMessage(JeopardyGame.ServidorServiciosJeopardy.GenericClassOfMessageChatxY0a3WX4 message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILiveChatChannel : JeopardyGame.ServidorServiciosJeopardy.ILiveChat, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LiveChatClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.ILiveChat>, JeopardyGame.ServidorServiciosJeopardy.ILiveChat {
+        
+        public LiveChatClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public LiveChatClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public LiveChatClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LiveChatClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LiveChatClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void SendMessage(int idUser, int room, string userName, string message) {
+            base.Channel.SendMessage(idUser, room, userName, message);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(int idUser, int room, string userName, string message) {
+            return base.Channel.SendMessageAsync(idUser, room, userName, message);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4 GetAllMessages(int room, int idUser) {
+            return base.Channel.GetAllMessages(room, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4> GetAllMessagesAsync(int room, int idUser) {
+            return base.Channel.GetAllMessagesAsync(room, idUser);
+        }
+        
+        public void DeleteChat(int roomCode, int idUser) {
+            base.Channel.DeleteChat(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task DeleteChatAsync(int roomCode, int idUser) {
+            return base.Channel.DeleteChatAsync(roomCode, idUser);
+        }
+        
+        public void CreateChatForLobby(int roomCode, int idAdmin) {
+            base.Channel.CreateChatForLobby(roomCode, idAdmin);
+        }
+        
+        public System.Threading.Tasks.Task CreateChatForLobbyAsync(int roomCode, int idAdmin) {
+            return base.Channel.CreateChatForLobbyAsync(roomCode, idAdmin);
         }
     }
 }

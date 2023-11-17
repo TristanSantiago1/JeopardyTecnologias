@@ -50,7 +50,7 @@ namespace JeopardyGame.Pages
 
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
 
-            var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
+            var  result = proxyServer.UpdateUserInformation(nameEdited, originalName);
 
             if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {

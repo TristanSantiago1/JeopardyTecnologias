@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -18,6 +19,7 @@ namespace JeopardyGame.Data
     [KnownType(typeof(GenericClass<UserValidate>))]
     [KnownType(typeof(GenericClass<AvatarPojo>))]
     [KnownType(typeof(GenericClass<AvatarChoice>))]
+    [KnownType(typeof(GenericClass<MessageChat>))]    
     public class GenericClass<T>
     {
         [DataMember]
@@ -166,6 +168,19 @@ namespace JeopardyGame.Data
         public string UserName { get { return userName; } set { userName = value; } }
 
         public int IdStatus { get { return idStatus; } set { idStatus = value; } }
+    }
+
+    public struct MessageChat
+    {
+        private string userName;
+        private string message;
+        private int idUser;
+        public int IdUser { get { return idUser; } set { idUser = value; } }
+
+        public string UserName { get { return userName; } set { userName = value; } }
+
+        public string Message { get { return message; } set { message = value; } }
+
     }
 
 

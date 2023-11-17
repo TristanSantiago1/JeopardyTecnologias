@@ -95,11 +95,12 @@ namespace JeopardyGame.Service.ServiceImplementation
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat
     {
         NotifyUserAvbImple NotifyUserAvbImple = new NotifyUserAvbImple();
         NotifyFriendlyActionsImple NotifyFriendlyActionsImple = new NotifyFriendlyActionsImple();
         LobbyActionsImple LobbyActionsImple = new LobbyActionsImple();
+        LiveChatImple LiveChatImple = new LiveChatImple();
 
         public void AcceptFriendRequest(int idUser, int idUser2)
         {
@@ -111,6 +112,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILobbyActions)LobbyActionsImple).ChangePlayerSide(RoomCode, idUser, side);
         }
 
+        public void CreateChatForLobby(int roomCode, int idAdmin)
+        {
+            ((ILiveChat)LiveChatImple).CreateChatForLobby(roomCode, idAdmin);
+        }
+
         public GenericClass<int> CreateNewLobby(int RoomCode, int idUser)
         {
             return ((ILobbyActions)LobbyActionsImple).CreateNewLobby(RoomCode, idUser);
@@ -119,6 +125,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void DeclineFriendRequest(int idUser, int idUser2)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).DeclineFriendRequest(idUser, idUser2);
+        }
+
+        public void DeleteChat(int roomCode, int idUser)
+        {
+            ((ILiveChat)LiveChatImple).DeleteChat(roomCode, idUser);
         }
 
         public void DissolveLobby(int RoomCode, int idUser)
@@ -139,6 +150,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUser)
         {
             return ((ILobbyActions)LobbyActionsImple).GetAllCurrentPlayerInLobby(roomCode, idUser);
+        }
+
+        public GenericClass<List<MessageChat>> GetAllMessages(int room, int idUser)
+        {
+            return ((ILiveChat)LiveChatImple).GetAllMessages(room, idUser);
         }
 
         public GenericClass<int> joinLobby(int roomCode, int idUser)
@@ -184,6 +200,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void SendFriendRequest(int idUser, int idUser2)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).SendFriendRequest(idUser, idUser2);
+        }
+
+        public void SendMessage(int idUser, int room, string userName, string message)
+        {
+            ((ILiveChat)LiveChatImple).SendMessage(idUser, room, userName, message);
         }
 
         public void UnregisterFriendManagerUser(int idUser)
