@@ -306,35 +306,43 @@ namespace JeopardyGame.Data.DataAccess
         }
 
 
-        public static bool VerifyPassword(string password, string hashedPassword)
+        public static GenericClassServer<bool> VerifyPassword(string password, string hashedPassword)
         {
+            GenericClassServer<bool> result = new GenericClassServer<bool>();
+            if (password.Length == 0 || hashedPassword.Length == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
             try { 
             byte[] hashBytes = Convert.FromBase64String(hashedPassword);
             byte[] salt = new byte[16];
             Array.Copy(hashBytes, 0, salt, 0, 16);
             var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
             byte[] hash = passBaseKeyDerFun2.GetBytes(20);
+            result.ObjectSaved = true;
+            result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
             for (int i = 0; i < 20; i++)
             {
                 if (hashBytes[i + 16] != hash[i])
-                    return false;
+                {
+                    result.ObjectSaved = false;
+                    result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
+                }                    
             }
-
-            return true;
             }
             catch (SqlException ex)
             {
+                result = ExceptionHandler.HandleException(result, ex);
                 ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }            
-            catch (EntityException entityEx)
+            catch (EntityException ex)
             {
-                ExceptionHandler.LogException(entityEx, ExceptionDiccionary.FATAL_EXCEPTION);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-               ExceptionHandler.LogException(ex, ExceptionDiccionary.UNKNOW);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            return false;
+            return result;
         }
 
 
@@ -420,14 +428,12 @@ namespace JeopardyGame.Data.DataAccess
             return result;
         }
 
-        public static int UpdateUserInformation(string editedName, string originalName)
+        public static GenericClassServer<int> UpdateUserInformation(string editedName, string originalName)
         {
-
-            if (string.IsNullOrEmpty(editedName))
-            {
-                return -1;
-            }
-
+            GenericClassServer<int> result = new GenericClassServer<int>();
+            if (string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName)) { return NullParametersHandler.HandleNullParametersDataBase(result); }
+            int USER_NOT_FOUND = -1;
+            int OPERATION_DONE = 1;
             try
             {
                 using (var context = new JeopardyDBContainer())
@@ -436,47 +442,74 @@ namespace JeopardyGame.Data.DataAccess
 
                     if (userToUpdate == null)
                     {
-                        return -1;
+                        result.ObjectSaved = USER_NOT_FOUND;
+                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
                     }
-
                     userToUpdate.Name = editedName;
                     context.SaveChanges();
-                    return 1;
+                    result.ObjectSaved = OPERATION_DONE;
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
                 }
             }
             catch (SqlException ex)
             {
+                result = ExceptionHandler.HandleException(result, ex);
                 ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
+                result = ExceptionHandler.HandleException(result, ex);
                 ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.UNKNOW);
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
             }
-            return -1;
+            return result;
         }
-        public List<Player> Get20FriendScores(int userId)
+        public GenericClassServer<List<Player>> Get20FriendScores(int userId)
         {
-            using (var dbContext = new JeopardyDBContainer())
+            GenericClassServer<List<Player>> result = new GenericClassServer<List<Player>>();
+            if (userId <= 0) { return NullParametersHandler.HandleNullParametersDataBase(result); }
+            try
             {
-                List<Player> friendScores = dbContext.Friends
-                    .Where(f => f.Player_IdPlayer == userId || f.PlayerFriend_IdPlayer == userId)
-                    .Select(f => f.Player_IdPlayer == userId ? f.PlayerFriend_IdPlayer : f.Player_IdPlayer)
-                    .Join(dbContext.Players,
-                        friendId => friendId,
-                        player => player.IdPlayer,
-                        (friendId, player) => new Player
-                        {
-                            IdPlayer = player.IdPlayer,
-                            GeneralPoints = player.GeneralPoints,
-                        })
-                    .ToList();
+                using (var dbContext = new JeopardyDBContainer())
+                {
+                    List<Player> friendScores = dbContext.Friends
+                        .Where(f => f.Player_IdPlayer == userId || f.PlayerFriend_IdPlayer == userId)
+                        .Select(f => f.Player_IdPlayer == userId ? f.PlayerFriend_IdPlayer : f.Player_IdPlayer)
+                        .Join(dbContext.Players,
+                            friendId => friendId,
+                            player => player.IdPlayer,
+                            (friendId, player) => new Player
+                            {
+                                IdPlayer = player.IdPlayer,
+                                GeneralPoints = player.GeneralPoints,
+                            })
+                        .ToList();
+                    result.ObjectSaved = friendScores;                      
+                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    
 
-                return friendScores;
+                }
             }
+            catch (SqlException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            catch (Exception ex)
+            {
+                result = ExceptionHandler.HandleException(result, ex);
+                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+            }
+            return result;
         }
 
     }

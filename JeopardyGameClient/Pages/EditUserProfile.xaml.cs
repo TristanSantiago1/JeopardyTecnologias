@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Channels;
@@ -49,18 +50,17 @@ namespace JeopardyGame.Pages
 
             ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
 
-            int result = proxyServer.UpdateUserInformation(nameEdited, originalName);
+            var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
 
-            if (result == 1)
+            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 MessageBox.Show("La información del usuario ha sido actualizada correctamente.");
             }
             else
             {
-                
+                ExceptionHandler.HandleExceptionSQLorEntity(result.CodeEvent, "Mensaje");
                 MessageBox.Show("No se pudo actualizar la información del usuario.");
             }
-
             proxyServer.Close();
         }
 

@@ -74,20 +74,37 @@ namespace JeopardyGame.Service.ServiceImplementation
             return response;           
         }
 
-        public int validateCredentials(UserValidate newUserValidate)
-        {
-            User user = UserManagerDataOperation.GetUserByUserName(newUserValidate.UserName).ObjectSaved;
-            if (user != null)
+        public GenericClass<int> validateCredentials(UserValidate newUserValidate)
+        {          
+            var user = UserManagerDataOperation.GetUserByUserName(newUserValidate.UserName);
+            GenericClass<int> responseServer = new GenericClass<int>();
+            if (user.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
             {
-                bool isPasswordValid = UserManagerDataOperation.VerifyPassword(newUserValidate.Password, user.Password);
-
-                if (isPasswordValid)
+                var isPasswordValid = UserManagerDataOperation.VerifyPassword(newUserValidate.Password, user.ObjectSaved.Password);
+                if (isPasswordValid.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT || isPasswordValid.CodeEvent == ExceptionDiccionary.UNSUCCESFULL_EVENT)
                 {
-                    return 1;
+                    if (isPasswordValid.ObjectSaved)
+                    {
+                        responseServer.ObjectSaved = 1;
+                        responseServer.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+
+                    }
+                    else
+                    {
+                        responseServer.ObjectSaved = 0;
+                        responseServer.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
+                    }
+                }
+                else
+                {
+                    responseServer.CodeEvent = isPasswordValid.CodeEvent;
                 }
             }
-
-            return 0;
+            else
+            {
+                responseServer.CodeEvent = user.CodeEvent;
+            }
+            return responseServer;            
         }
 
         public GenericClass<int> EmailAlreadyExist(String email)
@@ -167,36 +184,47 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public int UpdateUserInformation(string editedName, string originalName)
+        public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
         {
-            int updateInformation = UserManagerDataOperation.UpdateUserInformation(editedName, originalName);
-            return updateInformation;
-        }
-
-        public List<FriendScore> GetFriendScores(int userId)
-        {
-            Data.DataAccess.UserManagerDataOperation userManager = new Data.DataAccess.UserManagerDataOperation();
-            ConsultInfoImple consultInfo = new ConsultInfoImple();
-
-            Player playerConsulted = userManager.GetPlayerByIdPlayer(userId);
-            List<Player> playerFriends = userManager.Get20FriendScores(userId);
-
-            List<FriendScore> friendScores = new List<FriendScore>();
-
-            foreach (var friend in playerFriends)
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            if(string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName)) {return NullParametersHandler.HandleNullParametersService(resultToReturn);}
+            var updateInformation = UserManagerDataOperation.UpdateUserInformation(editedName, originalName);
+            if (updateInformation.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
             {
-                FriendScore friendScore = new FriendScore
-                {
-                    IdUser = friend.IdPlayer,
-                    GeneralPoints = (int)friend.GeneralPoints,
-                    UserName = friend.User.UserName
-                };
-
-                friendScores.Add(friendScore);
+                resultToReturn.ObjectSaved = updateInformation.ObjectSaved;
+                resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
             }
-
-            return friendScores;
+            else
+            {
+                resultToReturn.CodeEvent = updateInformation.CodeEvent;
+            }
+            return resultToReturn;
         }
+
+        //public List<FriendScore> GetFriendScores(int userId)
+        //{
+        //    Data.DataAccess.UserManagerDataOperation userManager = new Data.DataAccess.UserManagerDataOperation();
+        //    ConsultInfoImple consultInfo = new ConsultInfoImple();
+
+        //    Player playerConsulted = userManager.GetPlayerByIdPlayer(userId).ObjectSaved;
+        //    List<Player> playerFriends = userManager.Get20FriendScores(userId);
+
+        //    List<FriendScore> friendScores = new List<FriendScore>();
+
+        //    foreach (var friend in playerFriends)
+        //    {
+        //        FriendScore friendScore = new FriendScore
+        //        {
+        //            IdUser = friend.IdPlayer,
+        //            GeneralPoints = (int)friend.GeneralPoints,
+        //            UserName = friend.User.UserName
+        //        };
+
+        //        friendScores.Add(friendScore);
+        //    }
+
+        //    return friendScores;
+        //}
 
 
     }

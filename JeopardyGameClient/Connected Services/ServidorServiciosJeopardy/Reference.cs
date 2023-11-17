@@ -808,10 +808,10 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SaveUserAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO userPojoNew);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/validateCredentials", ReplyAction="http://tempuri.org/IUserManager/validateCredentialsResponse")]
-        int validateCredentials(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate);
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint validateCredentials(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/validateCredentials", ReplyAction="http://tempuri.org/IUserManager/validateCredentialsResponse")]
-        System.Threading.Tasks.Task<int> validateCredentialsAsync(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate);
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> validateCredentialsAsync(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/EmailAlreadyExist", ReplyAction="http://tempuri.org/IUserManager/EmailAlreadyExistResponse")]
         JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint EmailAlreadyExist(string email);
@@ -832,16 +832,10 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailCodeConfirmationAsync(string email, string subject, string body);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
-        int UpdateUserInformation(string editedName, string originalName);
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateUserInformation(string editedName, string originalName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
-        System.Threading.Tasks.Task<int> UpdateUserInformationAsync(string editedName, string originalName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetFriendScores", ReplyAction="http://tempuri.org/IUserManager/GetFriendScoresResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.FriendScore[] GetFriendScores(int userId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetFriendScores", ReplyAction="http://tempuri.org/IUserManager/GetFriendScoresResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendScore[]> GetFriendScoresAsync(int userId);
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -879,11 +873,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.SaveUserAsync(userPojoNew);
         }
         
-        public int validateCredentials(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate) {
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint validateCredentials(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate) {
             return base.Channel.validateCredentials(newUserValidate);
         }
         
-        public System.Threading.Tasks.Task<int> validateCredentialsAsync(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate) {
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> validateCredentialsAsync(JeopardyGame.ServidorServiciosJeopardy.UserValidate newUserValidate) {
             return base.Channel.validateCredentialsAsync(newUserValidate);
         }
         
@@ -911,20 +905,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.SentEmailCodeConfirmationAsync(email, subject, body);
         }
         
-        public int UpdateUserInformation(string editedName, string originalName) {
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateUserInformation(string editedName, string originalName) {
             return base.Channel.UpdateUserInformation(editedName, originalName);
         }
         
-        public System.Threading.Tasks.Task<int> UpdateUserInformationAsync(string editedName, string originalName) {
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName) {
             return base.Channel.UpdateUserInformationAsync(editedName, originalName);
-        }
-        
-        public JeopardyGame.ServidorServiciosJeopardy.FriendScore[] GetFriendScores(int userId) {
-            return base.Channel.GetFriendScores(userId);
-        }
-        
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.FriendScore[]> GetFriendScoresAsync(int userId) {
-            return base.Channel.GetFriendScoresAsync(userId);
         }
     }
     

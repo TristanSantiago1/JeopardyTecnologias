@@ -52,7 +52,7 @@ namespace JeopardyGame.Pages
                 JeopardyGame.Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                ExceptionHandler.HandleException(sentEmailSucc.CodeEvent);
+                ExceptionHandler.HandleExceptionSQLorEntity(sentEmailSucc.CodeEvent, "Mensaje");
                 //regresara pagina anterior
             }
             if (sentEmailSucc.ObjectSaved == 0 )
@@ -120,7 +120,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(idUsuario.CodeEvent);
+                    ExceptionHandler.HandleExceptionSQLorEntity(idUsuario.CodeEvent, "Mensaje");
                     //regresar a ventana anterior
                 }
             }

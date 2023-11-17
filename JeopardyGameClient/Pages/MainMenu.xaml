@@ -50,7 +50,7 @@
             </Button>
             <Border Margin="703,181,83,71" CornerRadius="16" Background="#7F592C75">
                 <Border Margin="30,107,30,20" CornerRadius="16" Background="#592C75" Opacity="0.5">
-                    <ListBox x:Name="lstWinners" FontWeight="Bold" HorizontalAlignment="Center" Height="336" BorderThickness="0" FontSize="20" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="lstWinners_SelectionChanged"/>
+                    <ListBox x:Name="lstWinners" FontWeight="Bold" HorizontalAlignment="Center" Height="336" BorderThickness="0" FontSize="20" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="lstWinners_SelectionChanged" />
                 </Border>
 
             </Border>

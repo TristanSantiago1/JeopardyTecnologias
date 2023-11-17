@@ -291,11 +291,17 @@
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Please enter a user name</value>
   </data>
+  <data name="MessageEntityException" xml:space="preserve">
+    <value>A issue has ocurred while doing the operation, please, try it later.</value>
+  </data>
   <data name="MessageFriRequeDeclined" xml:space="preserve">
     <value>had declined your friend request.</value>
   </data>
   <data name="MessageReported" xml:space="preserve">
     <value>Careful, You've been reported, Now you have :</value>
+  </data>
+  <data name="MessageSQLException" xml:space="preserve">
+    <value>A issue has ocurred while connecting to de data base, please, try it later.</value>
   </data>
   <data name="rdbIndividual" xml:space="preserve">
     <value>Individual</value>

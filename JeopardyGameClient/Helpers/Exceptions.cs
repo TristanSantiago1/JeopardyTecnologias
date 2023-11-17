@@ -33,27 +33,31 @@ namespace JeopardyGame.Helpers
 
     public class ExceptionHandler
     {
-        public static void HandleException(int codeException)
+        public static void HandleExceptionSQLorEntity(int codeException, String message)
         {
             switch (codeException)
-            {
+            {               
+                case ExceptionDictionary.ENTITY_ERROR:
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle,Properties.Resources.MessageEntityException);
+                    break;
+                case ExceptionDictionary.SQL_ERROR:
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException);
+                    break;              
+                case ExceptionDictionary.NO_DB_CONECTION:
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException);
+                    break;
                 case ExceptionDictionary.UNSUCCESFULL_EVENT:
                     ShowErrorMessage("j", "k");
                     break;
                 case ExceptionDictionary.NULL_PARAEMETER:
-                    break;
-                case ExceptionDictionary.ENTITY_ERROR:
-                    break;
-                case ExceptionDictionary.SQL_ERROR:
-                    break;
+                    break;                
                 case ExceptionDictionary.SMTP_EXCEPTION:
-                    break;
-                case ExceptionDictionary.NO_DB_CONECTION:
-                    break;
+                    break;              
                 default:
-                    break;
+                    break;                
             }
         }
+    
 
         private static void ShowErrorMessage(String title, String message)
         {

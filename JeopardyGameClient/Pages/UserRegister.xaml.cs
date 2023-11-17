@@ -285,7 +285,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                ExceptionHandler.HandleException(emailIsNew.CodeEvent);
+                ExceptionHandler.HandleExceptionSQLorEntity(emailIsNew.CodeEvent, "Mensaje");
                 return 0;
             }           
         }
@@ -294,8 +294,9 @@ namespace JeopardyGame.Pages
         {
             UserManagerClient proxyServer = new UserManagerClient();
             GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
-            
-            if(userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+            proxyServer.Close();
+
+            if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
             {
                 if (userIsNew.ObjectSaved == 1)
                 {
@@ -318,10 +319,10 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                ExceptionHandler.HandleException(userIsNew.CodeEvent);
+                ExceptionHandler.HandleExceptionSQLorEntity(userIsNew.CodeEvent, "Mensaje");
                 return 0;
             }
-            proxyServer.Close();
+            
         }
 
         private void ResaltBrokenRule(Label missingRule)

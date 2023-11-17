@@ -291,11 +291,17 @@
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>
   </data>
+  <data name="MessageEntityException" xml:space="preserve">
+    <value>Ocurrio un oroblema al realizar la operación en la base de datos, intentelo mas tarde.</value>
+  </data>
   <data name="MessageFriRequeDeclined" xml:space="preserve">
     <value>ha rechazado tu solicitud de amistad</value>
   </data>
   <data name="MessageReported" xml:space="preserve">
     <value>Ten cuidado, has sido reportado, Ahora tienes : </value>
+  </data>
+  <data name="MessageSQLException" xml:space="preserve">
+    <value>Ocurrio un problema al conectarse a la base de datos, intentelo mas mas tarde</value>
   </data>
   <data name="rdbIndividual" xml:space="preserve">
     <value>Individual</value>

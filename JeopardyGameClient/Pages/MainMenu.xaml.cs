@@ -8,6 +8,7 @@ using System;
 using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
 using JeopardyGame.ServidorServiciosJeopardy;
+using JeopardyGame.Helpers;
 
 namespace JeopardyGame.Pages
 {
@@ -82,12 +83,14 @@ namespace JeopardyGame.Pages
                     bttFriends.Content = JeopardyGame.Properties.Resources.bttFriends;
                     bttNewGame.Content = JeopardyGame.Properties.Resources.bttNewGame;
                     lblProfileInformation.Content = JeopardyGame.Properties.Resources.lblProfileInformation;
+                }else if(selectedLanguage == "en")
+                {
+                    bttEnterGame.Content = JeopardyGame.Properties.Resources.bttEnterGame;
+                    bttFriends.Content = JeopardyGame.Properties.Resources.bttFriends;
+                    bttNewGame.Content = JeopardyGame.Properties.Resources.bttNewGame;
+                    lblProfileInformation.Content = JeopardyGame.Properties.Resources.lblProfileInformation;
                 }
-
-
-
             }
-
         }
 
         private void ShowWarningMessage(String title, String message)
@@ -127,5 +130,9 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
+        private void lstWinners_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

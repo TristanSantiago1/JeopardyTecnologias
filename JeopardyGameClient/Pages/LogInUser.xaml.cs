@@ -84,43 +84,52 @@ namespace JeopardyGame.Pages
                     Password = password
                 };
 
-                int result = proxyServer.validateCredentials(userValidate);
+                var result = proxyServer.validateCredentials(userValidate);
                 proxyServer.Close();
-                if (result == 1)
+                if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || result.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
-                    ConsultInformationClient proxyConsult = new ConsultInformationClient();
-                    GenericClassOfUserPOJOxY0a3WX4 currentUser = proxyConsult.ConsultUserByUserName(userName);
-                    if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
+                    if (result.ObjectSaved == 1)
                     {
-                        GenericClassOfPlayerPOJOxY0a3WX4 currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
-                        if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        ConsultInformationClient proxyConsult = new ConsultInformationClient();
+                        GenericClassOfUserPOJOxY0a3WX4 currentUser = proxyConsult.ConsultUserByUserName(userName);
+                        if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            InstanceContext contexto = new InstanceContext(this);
-                            NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(contexto);
+                            GenericClassOfPlayerPOJOxY0a3WX4 currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+                            if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                InstanceContext contexto = new InstanceContext(this);
+                                NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(contexto);
 
-                            InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, proxyChannelCallback);
-                            UserSingleton us = UserSingleton.GetMainUser();
-                            us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
+                                InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, proxyChannelCallback);
+                                UserSingleton us = UserSingleton.GetMainUser();
+                                us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
 
-                            MainMenu mainMenuPage = new MainMenu();
-                            this.NavigationService.Navigate(mainMenuPage);
-                            NavigationService.RemoveBackEntry();
+                                MainMenu mainMenuPage = new MainMenu();
+                                this.NavigationService.Navigate(mainMenuPage);
+                                NavigationService.RemoveBackEntry();
+                            }
+                            else
+                            {
+                                ExceptionHandler.HandleExceptionSQLorEntity(currentPlayer.CodeEvent, "Mensaje");
+                                //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
+                            }
                         }
                         else
                         {
-                            ExceptionHandler.HandleException(currentPlayer.CodeEvent);
-                            //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
+                            ExceptionHandler.HandleExceptionSQLorEntity(currentUser.CodeEvent, "Mensaje");
+                            //LOGICA DE SI OCURRE LA EXPTION
                         }
                     }
-                    else
+                    else if (result.ObjectSaved == 0)
                     {
-                        ExceptionHandler.HandleException(currentUser.CodeEvent);
-                        //LOGICA DE SI OCURRE LA EXPTION
+                        MessageBox.Show("Invalid credentials, please try again");
                     }
                 }
-                else if (result == 0)
+                else
                 {
-                    MessageBox.Show("Invalid credentials, please try again");
+                    ExceptionHandler.HandleExceptionSQLorEntity(result.CodeEvent, "Mensaje");
+                    //LOGICA DE SI OCURRE LA EXPTION                
+
                 }
             }
             catch (Exception ex)
@@ -147,13 +156,13 @@ namespace JeopardyGame.Pages
                 key.SetValue("SelectedLanguage", selectedLanguage);
                 key.Close();              
                 if (selectedLanguage == "es-MX")
-                {
+                {                   
                     lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
                     lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
                     btnEnter.Content = JeopardyGame.Properties.Resources.btnEnter;
                     btnRegistrer.Content = JeopardyGame.Properties.Resources.btnRegistrer;
                 }
-                else if (selectedLanguage == "en-EU")
+                if(selectedLanguage == "en")
                 {
                     lblUserNameLogIn.Content = JeopardyGame.Properties.Resources.lblUserNameLogIn;
                     lblPasswordLogIn.Content = JeopardyGame.Properties.Resources.lblPasswordLogIn;
@@ -190,67 +199,6 @@ namespace JeopardyGame.Pages
             PrincipalPage principalPage = new PrincipalPage();
             this.NavigationService.Navigate(principalPage);
             NavigationService.RemoveBackEntry();
-        }
-    }
-    public partial class Friend()
-    {
-        public int IdUser { get; set; }
-        public string Name { get; set; }
-        public int idStatus { get; set; }
-    }
-    public partial class FriendList()
-    {
-        private static Dictionary<int, Friend> friendList = new Dictionary<int, Friend>();
-       
-        public static void RegisterNewFriendInDictionary(int idUser, Friend friend)
-        {
-            if (!friendList.ContainsKey(idUser))
-            {
-                friendList.Add(idUser, friend);
-            }
-        }
-
-        public static Friend GetFriend(int idUser)
-        {
-            foreach (var item in friendList)
-            {
-                if (item.Key == idUser)
-                {
-                    return item.Value;
-                }
-            }
-            return null;
-        }
-
-        public static void RemoveRegistryFromDictionary(int idUser)
-        {
-            if (friendList.ContainsKey(idUser))
-            {
-                friendList.Remove(idUser);
-            }
-        }
-
-        public static void ChangeStatus(int idUser, int idStatus)
-        {
-            if (friendList.ContainsKey(idUser))
-            {
-                foreach (var item in friendList)
-                {
-                    if (item.Key == idUser)
-                    {
-                        item.Value.idStatus = idStatus;
-                    }
-                }
-            }
-        }
-        public static void CleanDictionary()
-        {
-            friendList.Clear();
-        }
-
-        public static Dictionary<int, Friend> GetActiveFirendsList()
-        {
-            return friendList;
         }
     }
     

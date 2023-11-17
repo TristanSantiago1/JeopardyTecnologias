@@ -13,7 +13,7 @@ namespace JeopardyGame.Host.Connetion
     {
         static void Main(string[] args)        
         {
-            SeriLogConfig logConfig = new SeriLogConfig();
+           
             try
             {
                 using (ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.ServicesReferenceAuthor)))

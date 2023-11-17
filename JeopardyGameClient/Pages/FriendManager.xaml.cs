@@ -93,7 +93,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                ExceptionHandler.HandleException(user.CodeEvent);
+                ExceptionHandler.HandleExceptionSQLorEntity(user.CodeEvent, "Mensaje");
                 //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
             }
         }

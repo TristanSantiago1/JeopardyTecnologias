@@ -583,6 +583,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Entity Exception.
+        /// </summary>
+        public static string MessageEntityException {
+            get {
+                return ResourceManager.GetString("MessageEntityException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a had declined your friend request..
         /// </summary>
         public static string MessageFriRequeDeclined {
@@ -597,6 +606,15 @@ namespace JeopardyGame.Properties {
         public static string MessageReported {
             get {
                 return ResourceManager.GetString("MessageReported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a SQL EXCEPTION.
+        /// </summary>
+        public static string MessageSQLException {
+            get {
+                return ResourceManager.GetString("MessageSQLException", resourceCulture);
             }
         }
         

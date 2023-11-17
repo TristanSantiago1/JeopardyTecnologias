@@ -28,7 +28,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).SentEmailCodeConfirmation(email, subject, body);
         }
 
-        public int UpdateUserInformation(string editedName, string originalName)
+        public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
         {
             return ((IUserManager)UserManager).UpdateUserInformation(editedName, originalName);
         }
@@ -38,18 +38,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).UserNameAlreadyExist(userName);
         }
 
-        public int validateCredentials(UserValidate newUserValidate)
+        public GenericClass<int> validateCredentials(UserValidate newUserValidate)
         {
             return ((IUserManager)UserManager).validateCredentials(newUserValidate);
-        }
-
-        public int UpdateUserInformation(string editedName, string originalName)
-        {
-            return ((IUserManager)UserManager).UpdateUserInformation(editedName, originalName);
-        }
-        public List<FriendScore> GetFriendScores(int IdUser)
-        {
-            return ((IUserManager)UserManager).GetFriendScores(IdUser);
         }
     }
 

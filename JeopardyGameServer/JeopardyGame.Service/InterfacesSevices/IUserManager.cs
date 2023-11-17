@@ -16,7 +16,7 @@ namespace JeopardyGame.Service.InterfacesSevices
              GenericClass<int> SaveUser(UserPOJO userPojoNew); 
 
             [OperationContract]
-            int validateCredentials(UserValidate newUserValidate);
+            GenericClass<int> validateCredentials(UserValidate newUserValidate);
 
             [OperationContract]
             GenericClass<int> EmailAlreadyExist(String email);
@@ -28,7 +28,7 @@ namespace JeopardyGame.Service.InterfacesSevices
             GenericClass<int> SentEmailCodeConfirmation(String email, String subject, String body);
 
             [OperationContract]
-            int UpdateUserInformation(String editedName, String originalName);
+            GenericClass<int> UpdateUserInformation(String editedName, String originalName);
 
         }
 
