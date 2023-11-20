@@ -130,6 +130,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="ReGexs\RegularExpressionsLibrary.cs" />
+    <Compile Include="UserControls\ActiveUsersControl.xaml.cs">
+      <DependentUpon>ActiveUsersControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserSingleton.cs" />
     <Compile Include="Views\EnterWithGameCode.xaml.cs">
       <DependentUpon>EnterWithGameCode.xaml</DependentUpon>
@@ -205,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\UserRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ActiveUsersControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

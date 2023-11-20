@@ -70,11 +70,11 @@ namespace JeopardyGame.Helpers
 
             if (state)
             {
-                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Green);
+               ellConnectionStatus.Fill = new SolidColorBrush(Colors.Green);
             }
             else
             {
-                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Gray);
+                 ellConnectionStatus.Fill = new SolidColorBrush(Colors.Gray);
             }
         }
 

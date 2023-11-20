@@ -23,7 +23,7 @@ namespace JeopardyGame.DialogWindows
         private void ClickAccept(object sender, RoutedEventArgs e)
         {
             closeWindow = true;
-            this.Close();
+           this.Close();
         }
 
         private void ClickCancel(object sender, RoutedEventArgs e)

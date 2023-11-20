@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="GenericClassOfPlayerPOJOxY0a3WX4" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>JeopardyGame.ServidorServiciosJeopardy.GenericClassOfPlayerPOJOxY0a3WX4, Connected Services.ServidorServiciosJeopardy.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>JeopardyGame.ServidorServiciosJeopardy.GenericClassOfPlayerPOJOxY0a3WX4, JeopardyGame, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

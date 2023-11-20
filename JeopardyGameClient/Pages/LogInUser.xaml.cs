@@ -13,6 +13,10 @@ using System.Collections.Generic;
 using JeopardyGame.Helpers;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Windows.Input;
+using System.Windows.Forms;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using JeopardyGame.DialogWindows;
+using Application = System.Windows.Application;
 
 namespace JeopardyGame.Pages
 {
@@ -21,7 +25,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LogInUser : System.Windows.Controls.Page, INotifyUserAvailabilityCallback
     {
-        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
+        public static LobbyPage ActiveFriendsInstance = new LobbyPage();
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
 
@@ -49,33 +53,6 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private bool CheckEmptyFields()
-        {
-            bool answer = true;
-            if (string.IsNullOrEmpty(txbUserNameLogIn.Text))
-            {
-                LblWrongUserName.Content = Properties.Resources.LblWrongUserName;
-                LblWrongUserName.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                answer = false;
-                LblWrongUserName.Visibility = Visibility.Collapsed;
-            }
-
-            if (string.IsNullOrEmpty(PssPasswordLogIn.Password))
-            {
-                lblPasswordWrong.Content = Properties.Resources.lblPasswordWrong;
-                lblPasswordWrong.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                answer = false;
-                lblPasswordWrong.Visibility = Visibility.Collapsed;
-            }
-            return answer;
-        }
-
         private void CLickLogIn(object sender, RoutedEventArgs e)
         {
             if (CheckEmptyFields())
@@ -96,7 +73,7 @@ namespace JeopardyGame.Pages
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
-                            MessageBox.Show("Invalid credentials, please try again");
+                            new ErrorMessageDialogWindow("ERROR", "Invalid credentials, please try again", Application.Current.MainWindow);
                         }
                         else
                         {
@@ -116,6 +93,33 @@ namespace JeopardyGame.Pages
                     //LOGICA DE SI OCURRE LA EXPTION
                 }
             }
+        }
+
+        private bool CheckEmptyFields()
+        {
+            bool answer = true;
+            if (string.IsNullOrEmpty(txbUserNameLogIn.Text))
+            {
+                LblWrongUserName.Content = Properties.Resources.LblWrongUserName;
+                LblWrongUserName.Visibility = Visibility.Visible;
+                answer = false;
+            }
+            else
+            {                
+                LblWrongUserName.Visibility = Visibility.Collapsed;
+            }
+
+            if (string.IsNullOrEmpty(PssPasswordLogIn.Password))
+            {
+                lblPasswordWrong.Content = Properties.Resources.lblPasswordWrong;
+                lblPasswordWrong.Visibility = Visibility.Visible;
+                answer = false;
+            }
+            else
+            {                
+                lblPasswordWrong.Visibility = Visibility.Collapsed;
+            }
+            return answer;
         }
 
         private void DoLogin(String userName)
@@ -224,19 +228,24 @@ namespace JeopardyGame.Pages
         private void ClickSeePassword(object sender, MouseButtonEventArgs e)
         {
             lblViewPassword.Content = PssPasswordLogIn.Password.ToString();
-            PssPasswordLogIn.PasswordChar = '\0';
+            PssPasswordLogIn.Visibility = Visibility.Collapsed;         
             lblViewPassword.Visibility = Visibility.Visible;
         }
 
         private void HidePassword(object sender, MouseEventArgs e)
         {
-            PssPasswordLogIn.PasswordChar = default;
-            lblViewPassword.Visibility = Visibility.Collapsed;
+            if (lblViewPassword.IsVisible)
+            {
+                PssPasswordLogIn.Visibility = Visibility.Visible;
+                PssPasswordLogIn.PasswordChar = '*';
+                PssPasswordLogIn.Password = (string)lblViewPassword.Content;
+                lblViewPassword.Visibility = Visibility.Collapsed;
+            }            
         }
 
         public void ResponseOfPlayerAvailability(int status, int idFriend)
         {
-            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);
+            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);         
         }
 
     }

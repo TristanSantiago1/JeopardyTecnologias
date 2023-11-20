@@ -372,14 +372,19 @@ namespace JeopardyGame.Pages
         private void ClickSeePassword(object sender, MouseButtonEventArgs e)
         {
             lblViewPassword.Content = psbPasswordCreateAccount.Password.ToString();
-            psbPasswordCreateAccount.PasswordChar = '\0';
+            psbPasswordCreateAccount.Visibility = Visibility.Collapsed;           
             lblViewPassword.Visibility = Visibility.Visible;
         }
 
         private void HidePassword(object sender, MouseEventArgs e)
         {
-            psbPasswordCreateAccount.PasswordChar = default;
-            lblViewPassword.Visibility = Visibility.Collapsed;
+            if (lblViewPassword.IsVisible)
+            {
+                psbPasswordCreateAccount.Visibility = Visibility.Visible;
+                psbPasswordCreateAccount.PasswordChar = '*';
+                psbPasswordCreateAccount.Password = (string)lblViewPassword.Content;
+                lblViewPassword.Visibility = Visibility.Collapsed;
+            }            
         }
 
 

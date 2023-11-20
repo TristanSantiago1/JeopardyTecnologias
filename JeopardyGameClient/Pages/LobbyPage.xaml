@@ -4,11 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p = "clr-namespace:JeopardyGame.Properties"
+      xmlns:cu = "clr-namespace:JeopardyGame.UserControls"
       xmlns:local="clr-namespace:JeopardyGame.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="LobbyPage">
-    
+
     <Viewbox  Stretch="Fill">
         <Grid >
             <Grid.Background>
@@ -18,10 +19,6 @@
             <Image HorizontalAlignment="Left" Height="229" 
                Width="400" Margin="46,0,0,0" VerticalAlignment="Top" 
                Source="/Images/logoJeopardy.png" RenderTransformOrigin="0.914,0.526"/>
-
-            <Image HorizontalAlignment="Left" Height="68" Margin="1053,246,0,0" 
-               VerticalAlignment="Top" Width="61" Source="/Images/FriendsIcon.png" MouseDown="ClickListFriends" RenderTransformOrigin="4.252,2.317"/>
-            <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="ClickListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1021,312,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeRoom}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="58" Width="auto" HorizontalAlignment="Center"/>
             <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="792,39,0,0"/>
             <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="94,218,0,0"/>
@@ -36,7 +33,7 @@
                         </Style.Triggers>
                     </Style>
                 </CheckBox.Style>
-            </CheckBox>            
+            </CheckBox>
             <Grid Margin="94,376,91,80">
                 <Label x:Name="lblPlayersInGame" Content = "{x:Static p:Resources.lblPlayersInGame}" Style="{StaticResource labelStyleSimple}" Margin="0"/>
                 <GridSplitter HorizontalAlignment="Left" Height="266" Margin="530,29,0,0" Width="5"/>
@@ -94,13 +91,19 @@
                     </Border>
                 </StackPanel>
             </Grid>
-            <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="792,674,0,0" VerticalAlignment="Top" Height="44" Width="151"/>
-            <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="965,673,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="45" Width="149"/>
-            <Image HorizontalAlignment="Left" Height="101" Margin="1044,354,0,299" Width="76" Source="/Images/buttonChat.png" MouseDown="ClickOpenChat"/>
-
+            <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="766,692,0,0" VerticalAlignment="Top" Height="44" Width="151" RenderTransformOrigin="0.534,1.267"/>
+            <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="940,692,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="44" Width="149"/>
+            <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="ClickListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="963,307,0,0" VerticalAlignment="Top"/>
+            <Image HorizontalAlignment="Left" Height="68" Margin="984,246,0,0" 
+               Width="61" 
+               VerticalAlignment="Top" Source="/Images/FriendsIcon.png" MouseDown="ClickListFriends" RenderTransformOrigin="4.252,2.317"/>
+            <Image HorizontalAlignment="Left" Height="101" Margin="978,349,0,317" Width="76" Source="/Images/buttonChat.png" MouseDown="ClickOpenChat" RenderTransformOrigin="0.157,0.546"/>
+            <Grid x:Name="grdActiveUser" Margin="597,0,4,0"  Visibility="Hidden">
+                <cu:ActiveUsersControls x:Name="userControlActiveUsers"/>
+            </Grid>
         </Grid>
     </Viewbox>
 
-    
+
 
 </Page>

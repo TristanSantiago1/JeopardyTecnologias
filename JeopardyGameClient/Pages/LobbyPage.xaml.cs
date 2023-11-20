@@ -1,6 +1,7 @@
 ﻿using JeopardyGame.DialogWindows;
 using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
+using JeopardyGame.UserControls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,7 +25,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para LobbyPage.xaml
     /// </summary>
-    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback
+    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback, INotifyUserAvailabilityCallback
     {
         public LiveChat liveChat = new LiveChat();
         private const int NULL_INT_VALUE = 0;
@@ -50,6 +51,7 @@ namespace JeopardyGame.Pages
             this.roomCode = roomCode;
             isAdminOfLobby = false;
             PrepareWindow() ;
+            
         }
 
         private void PrepareWindow()
@@ -89,6 +91,7 @@ namespace JeopardyGame.Pages
             }
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
+            userControlActiveUsers.StartPage(grdActiveUser);
         }
 
         private void ThereAreTeams()
@@ -382,9 +385,11 @@ namespace JeopardyGame.Pages
 
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
-            ActiveFriends friendsListPage = LogInUser.ActiveFriendsInstance;
-            this.NavigationService.Navigate(friendsListPage);
-            friendsListPage.StartPage();
+            //ActiveFriends friendsListPage = LogInUser.ActiveFriendsInstance;
+            //this.NavigationService.Navigate(friendsListPage);
+            //friendsListPage.StartPage();
+            
+            grdActiveUser.Visibility = Visibility.Visible;
         }
 
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
@@ -411,8 +416,8 @@ namespace JeopardyGame.Pages
         }
         private void CloseWindow()
         {
-            LobbyPage lobbyGamePage = new LobbyPage();
-            this.NavigationService.Navigate(lobbyGamePage);
+            MainMenu mainMenu = new MainMenu();
+            this.NavigationService.Navigate(mainMenu);
             NavigationService.RemoveBackEntry();
         }
 
@@ -421,5 +426,9 @@ namespace JeopardyGame.Pages
             ((ILiveChatCallback)liveChat).ReceiveMessage(message);
         }
 
+        public void ResponseOfPlayerAvailability(int status, int idFriend)
+        {
+            userControlActiveUsers.UpdatePlayerAvailability(status, idFriend);       
+        }
     }
 }

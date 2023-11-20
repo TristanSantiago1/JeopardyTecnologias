@@ -27,6 +27,8 @@ namespace JeopardyGame.Helpers
         public FriendCardManagementWindow(int idUser,String userName, int state, String textLeftButton, String textRigthButton, FriendManager windowInstance)
         {
             SetCardStyle();
+            this.idUser = idUser;
+            friendManager = windowInstance;
             InitializeComponents();
             SetLabelStyle(userName);
             SetEllipseStyle();
@@ -49,9 +51,7 @@ namespace JeopardyGame.Helpers
         }
 
         private void InitializeComponents()
-        {
-            this.idUser = idUser;
-            friendManager = windowInstance;
+        {        
             stcName = new StackPanel();
             stcButtons = new StackPanel();
             lblUserName = new Label();

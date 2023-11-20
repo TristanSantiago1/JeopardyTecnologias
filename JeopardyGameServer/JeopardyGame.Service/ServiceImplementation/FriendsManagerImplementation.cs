@@ -154,10 +154,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                     foreach (var player in playersNotFriends.ObjectSaved)
                     {
                         FriendBasicInformation userNotFriendInformation = new FriendBasicInformation();
-                        var userFriendConsulted = new GenericClass<UserPOJO>();
+                        var userFriendConsulted = consultInformation.ConsultUserByIdPlayer(player.IdPlayer);
                         if (userFriendConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            userFriendConsulted = consultInformation.ConsultUserByIdPlayer(player.IdPlayer);
                             userNotFriendInformation.UserName = userFriendConsulted.ObjectSaved.UserName;
                             userNotFriendInformation.IdUser = userFriendConsulted.ObjectSaved.IdUser;
                             userNotFriendInformation.IdStatusAvailability = NOT_STATUS;

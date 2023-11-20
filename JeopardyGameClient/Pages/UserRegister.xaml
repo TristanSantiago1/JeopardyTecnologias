@@ -50,7 +50,7 @@
                      Height="Auto" Width="Auto" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     <Border Background="Transparent" BorderBrush="#28B1FF" BorderThickness="2" CornerRadius="10" Width="1208" Height="75">
                         <PasswordBox x:Name="psbPasswordCreateAccount" FontSize="40" PreviewKeyDown="TextBoxPasteBlockConfiguration" BorderThickness="0" VerticalAlignment="Center"
-                                  Background="Black" Margin="8,0,87,0" PasswordChanged="PasswordChangedEvent" Foreground="Purple"/>
+                                  Background="Black" Margin="8,0,87,0" PasswordChanged="PasswordChangedEvent" Foreground="Purple" PasswordChar="*"/>
                     </Border>
                 </StackPanel>
             </Viewbox>

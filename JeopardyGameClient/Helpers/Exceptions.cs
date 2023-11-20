@@ -61,15 +61,7 @@ namespace JeopardyGame.Helpers
 
         private static void ShowErrorMessage(String title, String message)
         {
-            DialogWindows.ErrorMessageDialogWindow ErrorWindow = new DialogWindows.ErrorMessageDialogWindow(title, message);
-            Window currentPage = Application.Current.MainWindow;
-            double left = currentPage.Left + (currentPage.Width - ErrorWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - ErrorWindow.Height) / 2;
-            ErrorWindow.Left = left;
-            ErrorWindow.Top = top;
-            ErrorWindow.HorizontalAlignment = HorizontalAlignment.Center;
-            ErrorWindow.VerticalAlignment = VerticalAlignment.Center;
-            ErrorWindow.ShowDialog();
+            new DialogWindows.ErrorMessageDialogWindow(title, message, Application.Current.MainWindow);          
         }
 
     }
