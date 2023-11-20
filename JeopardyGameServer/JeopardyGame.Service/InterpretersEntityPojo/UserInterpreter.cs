@@ -1,6 +1,6 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.DataAccess;
-using JeopardyGame.Service.InterfacesSevices;
+using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,10 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
     {
         public static User FromUserPojoToUserEntity(UserPOJO userPojo)
         {
-            if (userPojo == null)return null;            
+            if (userPojo == null)
+            {
+                return null;
+            }            
             User userEntity = new User();
             userEntity.IdUser = userPojo.IdUser;
             userEntity.UserName = userPojo.UserName;
@@ -25,7 +28,10 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 
         public static UserPOJO FromUserEntityToUserPojo(User user)
         {
-            if (user == null) return null;
+            if (user == null)
+            {
+                return null;
+            }
             UserPOJO userPOJO = new UserPOJO();
             userPOJO.IdUser = user.IdUser;
             userPOJO.Name = user.Name;
@@ -37,7 +43,10 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 
         public static PlayerPOJO FromPlayerEntityToPlayerPojo(Player player)
         {
-            if (player == null) return null;
+            if (player == null)
+            {
+                return null;
+            }
             PlayerPOJO playerPOJO = new PlayerPOJO();
             playerPOJO.IdPlayer = player.IdPlayer;
             playerPOJO.GeneralPoints = (int) player.GeneralPoints;
@@ -49,9 +58,12 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             return playerPOJO;
         }
 
-        public static Player FromPlayerPojoToPlyerEntity(PlayerPOJO playerPojo)
+        public static Player FromPlayerPojoToPlayerEntity(PlayerPOJO playerPojo)
         {
-            if (playerPojo == null) return null;        
+            if (playerPojo == null)
+            {
+                return null;
+            }       
             Player player = new Player();
             player.IdPlayer = playerPojo.IdPlayer;
             player.GeneralPoints = playerPojo.GeneralPoints;
@@ -61,6 +73,10 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             player.State_idState = playerPojo.IdState;
             player.User =  UserManagerDataOperation.GetUserById(playerPojo.IdUser).ObjectSaved;
             player.State = UserManagerDataOperation.GetStateById(playerPojo.IdState).ObjectSaved;
+            if (player.User == null || player.State == null)
+            {
+                return null;
+            }
             return player;
         } 
     }

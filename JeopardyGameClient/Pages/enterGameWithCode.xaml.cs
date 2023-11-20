@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JeopardyGame.DialogWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,24 +26,23 @@ namespace JeopardyGame.Pages
             InitializeComponent();
         }
 
-        private void clicEnterCode(object sender, RoutedEventArgs e)
+        private void clickEnterLobbyWithCode(object sender, RoutedEventArgs e)
         {
-            int codigoIngresado;
-
-            if (int.TryParse(tbxCode.Text, out codigoIngresado))
+            int enteredCode;
+            if (int.TryParse(tbxCode.Text, out enteredCode))
             {
                 Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
                 gameWindow.Show();
-                LobbyPage lobbyPage = new LobbyPage(codigoIngresado);
+                LobbyPage lobbyPage = new LobbyPage(enteredCode);
                 gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
             }
             else
             {
-                MessageBox.Show("Ingresa un código de partida válido.");
+                new ErrorMessageDialogWindow("ERROR", "Ingresa un codigo valido", Application.Current.MainWindow);
             }
         }
 
-        private void ClicClose(object sender, MouseButtonEventArgs e)
+        private void ClickClose(object sender, MouseButtonEventArgs e)
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             if (userSingleton.proxyForAvailability == null)
@@ -57,10 +57,7 @@ namespace JeopardyGame.Pages
                 this.NavigationService.Navigate(mainMenu);
                 NavigationService.RemoveBackEntry();
             }
-           
-
-
-
         }
+    
     }
 }

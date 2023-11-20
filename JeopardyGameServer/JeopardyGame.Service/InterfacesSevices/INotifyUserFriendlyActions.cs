@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JeopardyGame.Service.InterfacesSevices
+namespace JeopardyGame.Service.InterfacesServices
 {
     [ServiceContract(CallbackContract = typeof(INotifyUserActionFriendsManagerCallBack))]
     public interface INotifyUserActionFriendsManager
@@ -43,7 +43,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void ResponseEliminationFromFriends(int idUser);
 
         [OperationContract]
-        void ResponseResquestAction(int idUser, int requestStatus, String userName);
+        void ResponseRequestAction(int idUser, int requestStatus, String userName);
     }
 
 }

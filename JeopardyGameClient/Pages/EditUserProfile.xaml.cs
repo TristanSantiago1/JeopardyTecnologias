@@ -1,4 +1,6 @@
-﻿using JeopardyGame.Helpers;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Helpers;
+using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,44 +49,33 @@ namespace JeopardyGame.Pages
         {
             String nameEdited = txbEditName.Text;
             String originalName = UserSingleton.GetMainUser().Name;
-
-            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-
+            UserManagerClient proxyServer = new UserManagerClient();
             var  result = proxyServer.UpdateUserInformation(nameEdited, originalName);
-
             if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                MessageBox.Show("La información del usuario ha sido actualizada correctamente.");
+                new InformationMessageDialogWindow("EXITO","Se ha guardado los cmabiso del ususario",Application.Current.MainWindow);
             }
             else
             {
-                ExceptionHandler.HandleExceptionSQLorEntity(result.CodeEvent, "Mensaje");
-                MessageBox.Show("No se pudo actualizar la información del usuario.");
+                ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
+                new ErrorMessageDialogWindow("ERROR", "No see ha pordido guardar los cmabiso del ususario", Application.Current.MainWindow);
             }
             proxyServer.Close();
         }
 
         private void CLicButtonCancelChanges(object sender, RoutedEventArgs e)
         {
-            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
-
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).closeWindow)
+            {
+                CloseWindow();
+            }
         }
 
-        private void ShowWarningMessage(String title, String message)
+        private void CloseWindow()
         {
-            Window currentPage = App.Current.MainWindow;
-            DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(title, message);
-            double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
-            confirmationWindow.Left = left;
-            confirmationWindow.Top = top;
-            confirmationWindow.ShowDialog();
-            if (confirmationWindow.closeWindow)
-            {
-                MainMenu mainMenuPage = new MainMenu();
-                this.NavigationService.Navigate(mainMenuPage);
-                NavigationService.RemoveBackEntry();
-            }
+            MainMenu mainMenuPage = new MainMenu();
+            this.NavigationService.Navigate(mainMenuPage);
+            NavigationService.RemoveBackEntry();            
         }
     }
 }

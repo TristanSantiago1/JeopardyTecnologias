@@ -38,7 +38,7 @@ namespace JeopardyGame.Pages
             answerGrid.Visibility = Visibility.Collapsed;
             bttChat.Visibility = Visibility.Collapsed;
         }
-        private void Rectangulo_Click(object sender, MouseButtonEventArgs e)
+        private void ClickRectangulo(object sender, MouseButtonEventArgs e)
         {
             boardGrid.Visibility = Visibility.Collapsed;
             answerGrid.Visibility = Visibility.Visible;

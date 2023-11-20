@@ -10,7 +10,7 @@ namespace JeopardyGame
 {
     public class UserSingleton
     {
-        private static UserSingleton instance;
+        private static UserSingleton instanceOfUserSingleton;
         public int IdUser { get; set; }
         public String Name { get; set; }
         public String UserName { get; set; }
@@ -41,26 +41,26 @@ namespace JeopardyGame
 
         public static UserSingleton GetMainUser()
         {
-            if (instance == null)
+            if (instanceOfUserSingleton == null)
             {
-                instance = new UserSingleton();
+                instanceOfUserSingleton = new UserSingleton();
             }
-            return instance;
+            return instanceOfUserSingleton;
         }
 
         public static UserSingleton GetMainUser(int idUser, String name, String userName, String email, String password,
             int idPlayer, int generalPoints, int noReports, int idCurrentAvatar, int idState)
         {
-            if (instance == null)
+            if (instanceOfUserSingleton == null)
             {
-                instance = new UserSingleton(idUser,name,userName,email,password,idPlayer,generalPoints, noReports,idCurrentAvatar,idState );
+                instanceOfUserSingleton = new UserSingleton(idUser,name,userName,email,password,idPlayer,generalPoints, noReports,idCurrentAvatar,idState);
             }
-            return instance;
+            return instanceOfUserSingleton;
         }
 
         public static void CleanSingleton()
         {
-            instance = null;
+            instanceOfUserSingleton = null;
         }
 
     }

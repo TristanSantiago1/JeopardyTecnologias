@@ -1,4 +1,4 @@
-﻿using JeopardyGame.Service.InterfacesSevices;
+﻿using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,10 @@ namespace TestJeopardyServidor.TestService
     public class TestsUserManager
     {
 
-        private readonly JeopardyGame.Service.ServiceImplementation.UserManager _UserManagerIntance;
+        private readonly JeopardyGame.Service.ServiceImplementation.UserManagerImplementation _UserManagerIntance;
         public TestsUserManager()
         {
-            _UserManagerIntance = new JeopardyGame.Service.ServiceImplementation.UserManager();
+            _UserManagerIntance = new JeopardyGame.Service.ServiceImplementation.UserManagerImplementation();
         }
  
 

@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JeopardyGame.Service.InterfacesSevices
+namespace JeopardyGame.Service.InterfacesServices
 {
 
     [ServiceContract(CallbackContract = typeof(INotifyUserAvailabilityCallBack))]
@@ -22,6 +22,6 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface INotifyUserAvailabilityCallBack
     {
         [OperationContract]
-        void Response(int status, int idFriend);
+        void ResponseOfPlayerAvailability(int status, int idFriend);
     }
 }

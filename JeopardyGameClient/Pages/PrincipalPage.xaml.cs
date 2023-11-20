@@ -26,14 +26,14 @@ namespace JeopardyGame.Pages
             InitializeComponent();
         }
 
-        private void CLicButtonLogin(object sender, RoutedEventArgs e)
+        private void CLickButtonLogin(object sender, RoutedEventArgs e)
         {
             LogInUser logInPage = new LogInUser();
             this.NavigationService.Navigate(logInPage);
             NavigationService.RemoveBackEntry();
         }
 
-        private void CLicButtonInvite(object sender, RoutedEventArgs e)
+        private void CLickButtonInvite(object sender, RoutedEventArgs e)
         {
 
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();

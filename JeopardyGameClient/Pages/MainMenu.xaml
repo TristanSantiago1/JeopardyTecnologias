@@ -19,31 +19,31 @@
             <Image HorizontalAlignment="Left" Height="234" 
                Width="399" Margin="107,14,0,0" VerticalAlignment="Top" 
                Source="/Images/logoJeopardy.png"/>
-            <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
-            <Image HorizontalAlignment="Left" Height="73" Margin="1004,19,0,0" VerticalAlignment="Top" Width="82" Source="/Images/userProfile.png" MouseDown="ClicUserProfile" RenderTransformOrigin="0.491,2.068" />
+            <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
+            <Image HorizontalAlignment="Left" Height="73" Margin="1004,19,0,0" VerticalAlignment="Top" Width="82" Source="/Images/userProfile.png" MouseDown="ClickUserProfile" RenderTransformOrigin="0.491,2.068" />
 
-            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1066,692,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="LanguageComboBox_SelectionChanged">
+            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1066,692,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="ClickSelectLanguage">
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
                 <ComboBoxItem Content="Español" Tag="es-MX"/>
             </ComboBox>
 
-            <Label x:Name="lblProfileInformation"  Content= "{x:Static p:Resources.lblProfileInformation}"  MouseDown="ClicUserProfile" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1011,97,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lblProfileInformation"  Content= "{x:Static p:Resources.lblProfileInformation}"  MouseDown="ClickUserProfile" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1011,97,0,0" VerticalAlignment="Top"/>
             <Button x:Name="bttNewGame" Content = "{x:Static p:Resources.bttNewGame}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="CLicButtonNewGame" HorizontalAlignment="Left" Margin="87,258,0,0" VerticalAlignment="Top" Height="118" Width="400" >
+                    FontSize="25" Click="CLickButtonNewGame" HorizontalAlignment="Left" Margin="87,258,0,0" VerticalAlignment="Top" Height="118" Width="400" >
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>
             </Button>
 
             <Button x:Name="bttEnterGame" Content = "{x:Static p:Resources.bttEnterGame}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="CLicButtonEnterGame" HorizontalAlignment="Left" Margin="87,414,0,0" VerticalAlignment="Top" Height="118" Width="400" >
+                    FontSize="25" Click="CLickButtonEnterGame" HorizontalAlignment="Left" Margin="87,414,0,0" VerticalAlignment="Top" Height="118" Width="400" >
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/purpleBtn.png"/>
                 </Button.Background>
             </Button>
 
             <Button x:Name="bttFriends" Content = "{x:Static p:Resources.bttFriends}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="CLicButtonFriendsList" HorizontalAlignment="Left" Margin="87,563,0,0" VerticalAlignment="Top" Height="117" Width="400" >
+                    FontSize="25" Click="CLickButtonFriendsList" HorizontalAlignment="Left" Margin="87,563,0,0" VerticalAlignment="Top" Height="117" Width="400" >
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>

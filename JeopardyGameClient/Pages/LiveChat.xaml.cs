@@ -26,13 +26,13 @@ namespace JeopardyGame.Pages
         private bool isAdmin;
         private int roomCode;
         private UserSingleton userSingleton;
-        private List<MessageChat> messageChats = new List<MessageChat>();
+        private List<MessageChat> messagesInChats = new List<MessageChat>();
         private LiveChatClient proxyChannelCallback;
         public LiveChat()
         {
             InitializeComponent();
-            InstanceContext contexto = new InstanceContext(this);
-            proxyChannelCallback = new LiveChatClient(contexto);
+            InstanceContext context = new InstanceContext(this);
+            proxyChannelCallback = new LiveChatClient(context);
         }
 
         public void StartPage(bool rol,int room)
@@ -51,19 +51,19 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                var serverRepsonse = proxyChannelCallback.GetAllMessages(roomCode, userSingleton.IdUser);
-                if (serverRepsonse.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                var serverResponse = proxyChannelCallback.GetAllMessages(roomCode, userSingleton.IdUser);
+                if (serverResponse.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    messageChats = serverRepsonse.ObjectSaved.ToList();
+                    messagesInChats = serverResponse.ObjectSaved.ToList();
                 }                
             }
         }
 
-        public void CargarChat()
+        public void LoadChat()
         {
-            foreach (var item in messageChats)
+            foreach (var item in messagesInChats)
             {
-                ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.Message);
+                ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.MessageToSend);
                 if (item.IdUser == userSingleton.IdUser)
                 {
                     chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
@@ -75,20 +75,15 @@ namespace JeopardyGame.Pages
                 stpChat.Children.Add(chatMessageCard);
             }
         }
-        public void ReciveMessage(GenericClassOfMessageChatxY0a3WX4 message)
-        {
-            messageChats.Add(message.ObjectSaved);
-            CargarChat();
-        }
 
-        private void ClicCloseChat(object sender, MouseButtonEventArgs e)
+        private void ClickCloseChat(object sender, MouseButtonEventArgs e)
         {
             MainMenu mainMenuPage = new MainMenu();
             this.NavigationService.Navigate(mainMenuPage);
             NavigationService.RemoveBackEntry();
         }
 
-        private void ClicSendMessage(object sender, MouseButtonEventArgs e)
+        private void ClickSendMessage(object sender, MouseButtonEventArgs e)
         {
             string message = txbMessageToSend.Text;
             if (!string.IsNullOrEmpty(message))
@@ -98,8 +93,18 @@ namespace JeopardyGame.Pages
                 chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
                 stpChat.Children.Add(chatMessageCard);
                 txbMessageToSend.Text = string.Empty;
-            }  
-            
+            }              
         }
+
+        public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
+        {
+            if(message.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                messagesInChats.Add(message.ObjectSaved);
+                LoadChat();
+            }
+        }
+
     }
+
 }

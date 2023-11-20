@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Helpers;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Helpers;
 using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
 using JeopardyGame.Views;
@@ -18,6 +19,10 @@ namespace JeopardyGame.Pages
     public partial class UserRegister : Page
     {
         private List<Label> ListBoxRules = new List<Label>();
+        private const int DISALLOWED_VALUES = 0;
+        private const int ALLOWED_VALUES = 1;
+        private const int MINIMUN_PASSWORD_LENGTH = 10;
+        private const int MAXIMUM_PASSWORD_LENGTH = 30;
         public UserRegister()
         {
             InitializeComponent();
@@ -28,10 +33,10 @@ namespace JeopardyGame.Pages
         {
             ListBoxRules.Clear();
             PrepareWindow();            
-            txbNameCreateAcc.Text = user.Name;
-            txbUserNameCreateAcc.Text = user.UserName;
-            txbEmailCreateAcc.Text = user.EmailAddress;
-            psbPasswordCreateAcc.Password = user.Password;
+            txbNameCreateAccount.Text = user.Name;
+            txbUserNameCreateAccount.Text = user.UserName;
+            txbEmailCreateAccount.Text = user.EmailAddress;
+            psbPasswordCreateAccount.Password = user.Password;
         }
 
         private void PrepareWindow()
@@ -46,47 +51,23 @@ namespace JeopardyGame.Pages
 
         private void InitializeListeners()
         {
-            psbPasswordCreateAcc.PasswordChanged += PasswordChanged;
-            psbPasswordCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+            psbPasswordCreateAccount.PasswordChanged += PasswordChangedEvent;
+            psbPasswordCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
 
-            txbNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
-            txbUserNameCreateAcc.PreviewTextInput += TextBoxRegexConfig;
+            txbNameCreateAccount.PreviewTextInput += TextBoxRegexConfiguration;
+            txbUserNameCreateAccount.PreviewTextInput += TextBoxRegexConfiguration;
 
-            txbNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
-            txbUserNameCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
-            txbEmailCreateAcc.PreviewTextInput += TextBoxRegexConfig;
-            txbEmailCreateAcc.PreviewKeyDown += TextBlocPasteBlock;
+            txbNameCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
+            txbUserNameCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
+            txbEmailCreateAccount.PreviewTextInput += TextBoxRegexConfiguration;
+            txbEmailCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
         }
 
-        private void CreateRuleLabels()
-        {
-            Label PasswordLengthRule = new Label(); PasswordLengthRule.Content = 
-                JeopardyGame.Properties.Resources.lblPassLengthRuleDesc;
-            PasswordLengthRule.Foreground = Brushes.White; PasswordLengthRule.FontSize = 10;
-            Label PasswordNumbersRule = new Label(); PasswordNumbersRule.Content = 
-                JeopardyGame.Properties.Resources.lblPassNumberRuleDesc;
-            PasswordNumbersRule.Foreground = Brushes.White; PasswordNumbersRule.FontSize = 10;
-            Label PasswordCapitalsRule = new Label(); PasswordCapitalsRule.Content = 
-                JeopardyGame.Properties.Resources.lblPassCapitalRuleDesc;
-            PasswordCapitalsRule.Foreground = Brushes.White; PasswordCapitalsRule.FontSize = 10;
-            Label PasswordSpeCharRule = new Label(); PasswordSpeCharRule.Content = 
-                JeopardyGame.Properties.Resources.lblPassSpeCharRuleDesc;
-            PasswordSpeCharRule.Foreground = Brushes.White; PasswordSpeCharRule.FontSize = 10;
-            Label PasswordPuntuationRule = new Label(); PasswordPuntuationRule.Content = 
-                JeopardyGame.Properties.Resources.lblPassPuntSigRuleDesc;
-            PasswordPuntuationRule.Foreground = Brushes.White; PasswordPuntuationRule.FontSize = 10;
-            Label PasswordSameEmailRule = new Label(); PasswordSameEmailRule.Content = 
-                JeopardyGame.Properties.Resources.lblPassEqualsEmailRuleDesc;
-            PasswordSameEmailRule.Foreground = Brushes.White; PasswordSameEmailRule.FontSize = 10;
-            ListBoxRules.Add(PasswordLengthRule); ListBoxRules.Add(PasswordNumbersRule);
-            ListBoxRules.Add(PasswordCapitalsRule); ListBoxRules.Add(PasswordSpeCharRule);
-            ListBoxRules.Add(PasswordPuntuationRule); ListBoxRules.Add(PasswordSameEmailRule);
-        }
-        private void PasswordChanged(object sender, RoutedEventArgs e)
+        private void PasswordChangedEvent(object sender, RoutedEventArgs e)
         {
             PasswordBox passwordBox = sender as PasswordBox;
             int changeButtonStateForPassword = CheckPassword();
-            if (changeButtonStateForPassword == 1)
+            if (changeButtonStateForPassword == ALLOWED_VALUES)
             {
                 bttSaveUser.IsEnabled = true;
             }
@@ -96,20 +77,20 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void TextBoxRegexConfig(object sender, TextCompositionEventArgs e)
+        private void TextBoxRegexConfiguration(object sender, TextCompositionEventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
-            RegularExpresionsLibrary regularExpresionsLibrary = new RegularExpresionsLibrary(); ;
-            if (regularExpresionsLibrary.validationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex))
+            RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary(); ;
+            if (regularExpressionsLibrary.validationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex))
             {
                 if (!regex.IsMatch(currentTextBox.Text + e.Text))
                 {
-                    e.Handled = true;                    
+                    e.Handled = true;
                 }
 
             }
         }
-        private void TextBlocPasteBlock(object sender, KeyEventArgs e)
+        private void TextBoxPasteBlockConfiguration(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
@@ -120,177 +101,190 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public int CheckEmptyFields() /// Publica para las pruebas
+        private void CreateRuleLabels()
         {
-            int anwser = 1;
-            if (txbNameCreateAcc.Text.Trim().Length == 0)
+            Label PasswordLengthRule = new Label();
+            PasswordLengthRule.Content = Properties.Resources.lblPassLengthRuleDesc;
+            PasswordLengthRule.Foreground = Brushes.White; 
+            PasswordLengthRule.FontSize = 10;
+            Label PasswordNumbersRule = new Label(); 
+            PasswordNumbersRule.Content = Properties.Resources.lblPassNumberRuleDesc;
+            PasswordNumbersRule.Foreground = Brushes.White;
+            PasswordNumbersRule.FontSize = 10;
+            Label PasswordCapitalsRule = new Label(); 
+            PasswordCapitalsRule.Content = Properties.Resources.lblPassCapitalRuleDesc;
+            PasswordCapitalsRule.Foreground = Brushes.White; 
+            PasswordCapitalsRule.FontSize = 10;
+            Label PasswordSpeCharRule = new Label(); 
+            PasswordSpeCharRule.Content = Properties.Resources.lblPassSpeCharRuleDesc;
+            PasswordSpeCharRule.Foreground = Brushes.White; 
+            PasswordSpeCharRule.FontSize = 10;
+            Label PasswordPunctuationRule = new Label();
+            PasswordPunctuationRule.Content =  Properties.Resources.lblPassPuntSigRuleDesc;
+            PasswordPunctuationRule.Foreground = Brushes.White;
+            PasswordPunctuationRule.FontSize = 10;
+            Label PasswordSameEmailRule = new Label(); 
+            PasswordSameEmailRule.Content = Properties.Resources.lblPassEqualsEmailRuleDesc;
+            PasswordSameEmailRule.Foreground = Brushes.White;
+            PasswordSameEmailRule.FontSize = 10;
+            ListBoxRules.Add(PasswordLengthRule); 
+            ListBoxRules.Add(PasswordNumbersRule);
+            ListBoxRules.Add(PasswordCapitalsRule);
+            ListBoxRules.Add(PasswordSpeCharRule);
+            ListBoxRules.Add(PasswordPunctuationRule);
+            ListBoxRules.Add(PasswordSameEmailRule);
+        }
+
+
+        private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
+        {
+            if (CheckEmptyFields() == ALLOWED_VALUES &&
+                CheckEmailAddressFormat() == ALLOWED_VALUES &&
+                CheckUserNameExistence(txbUserNameCreateAccount.Text.Trim()) == ALLOWED_VALUES &&
+                CheckEmailAddressExistence(txbEmailCreateAccount.Text.Trim()) == ALLOWED_VALUES)
+            {
+                UserPOJO userToSave = new UserPOJO();
+                userToSave.Name = txbNameCreateAccount.Text.Trim();
+                userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
+                userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
+                userToSave.Password = psbPasswordCreateAccount.Password.Trim();
+                GoToCodeConfirmationWindow(userToSave);
+            }
+        }
+
+        private int CheckEmptyFields() 
+        {
+            int answer = ALLOWED_VALUES;
+            if (string.IsNullOrEmpty(txbNameCreateAccount.Text.Trim()))
             {
                 lblNameWarning.Visibility = Visibility.Visible;
-                anwser = 0;
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 lblNameWarning.Visibility = Visibility.Collapsed;
             }
-            if (txbUserNameCreateAcc.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(txbUserNameCreateAccount.Text.Trim()))
             {
                 lblUserNameWarning.Visibility = Visibility.Visible;
-                anwser = 0;
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 lblUserNameWarning.Visibility = Visibility.Collapsed;
             }
-            if (txbEmailCreateAcc.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(txbEmailCreateAccount.Text.Trim()))
             {
-                lblEmailWarning.Content = JeopardyGame.Properties.Resources.lblEmptyField;
+                lblEmailWarning.Content = Properties.Resources.lblEmptyField;
                 lblEmailWarning.Visibility = Visibility.Visible;
-                anwser = 0;
+                answer = DISALLOWED_VALUES;
             }
             else
             {
-                lblEmailWarning.Content = "";
+                lblEmailWarning.Content = string.Empty;
                 lblEmailWarning.Visibility = Visibility.Collapsed;
             }
-            if (psbPasswordCreateAcc.Password.Trim().Length == 0)
+            if (string.IsNullOrEmpty(psbPasswordCreateAccount.Password.Trim()))
             {
                 lblPasswordWarning.Visibility = Visibility.Visible;
-                anwser = 0;
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 lblPasswordWarning.Visibility = Visibility.Collapsed;
             }
-            return anwser;
+            return answer;
         }
-        public int CheckPassword()
+        
+        private int CheckEmailAddressFormat()
         {
-            int awnser = 1;
-            ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
-            Regex regesExpresion = new Regex("");
-            String passwordChecked = psbPasswordCreateAcc.Password.ToString().Trim();
-            if (passwordChecked.Length < 10 || passwordChecked.Length > 30)
+            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            int answer = ALLOWED_VALUES;
+            String email = txbEmailCreateAccount.Text.Trim();
+            if (!regexExpression.IsMatch(email))
             {
-                ResaltBrokenRule(ListBoxRules[0]);
-                awnser = 0;
+                lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
+                lblEmailWarning.Visibility = Visibility.Visible;
+                answer = DISALLOWED_VALUES;
+            }
+            else
+            {
+                lblEmailWarning.Content = string.Empty;
+                lblEmailWarning.Visibility = Visibility.Collapsed;
+                answer = CheckPassword();
+            }
+            return answer;
+        }
+
+        private int CheckPassword()
+        {
+            int answer = ALLOWED_VALUES;
+            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+            Regex regexExpression = new Regex(string.Empty);
+            String passwordChecked = psbPasswordCreateAccount.Password.ToString().Trim();
+            if (passwordChecked.Length < MINIMUN_PASSWORD_LENGTH || passwordChecked.Length > MAXIMUM_PASSWORD_LENGTH)
+            {
+                HighLightBrokenRule(ListBoxRules[0]);
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 ClearBrokenRule(ListBoxRules[0]);
             }
-
-            regesExpresion = new Regex(regexInstance.GetAt_LEAST_TWO_NUMBER());
-            if (!regesExpresion.IsMatch(passwordChecked))
+            regexExpression = new Regex(regexInstance.GetAt_LEAST_TWO_NUMBER());
+            if (!regexExpression.IsMatch(passwordChecked))
             {
-                ResaltBrokenRule(ListBoxRules[1]);
-                awnser = 0;
+                HighLightBrokenRule(ListBoxRules[1]);
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 ClearBrokenRule(ListBoxRules[1]);
             }
-
-            regesExpresion = new Regex(regexInstance.GetAt_LEAST_TWO_CAPITAL_LETTER());
-            if (!regesExpresion.IsMatch(passwordChecked))
+            regexExpression = new Regex(regexInstance.GetAt_LEAST_TWO_CAPITAL_LETTER());
+            if (!regexExpression.IsMatch(passwordChecked))
             {
-                ResaltBrokenRule(ListBoxRules[2]);
-                awnser = 0;
+                HighLightBrokenRule(ListBoxRules[2]);
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 ClearBrokenRule(ListBoxRules[2]);
             }
-
-            regesExpresion = new Regex(regexInstance.GetAt_LEAST_ONE_SPECIAL_CHARACTER());
-            if (!regesExpresion.IsMatch(passwordChecked))
+            regexExpression = new Regex(regexInstance.GetAt_LEAST_ONE_SPECIAL_CHARACTER());
+            if (!regexExpression.IsMatch(passwordChecked))
             {
-                ResaltBrokenRule(ListBoxRules[3]);
-                awnser = 0;
+                HighLightBrokenRule(ListBoxRules[3]);
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 ClearBrokenRule(ListBoxRules[3]);
             }
-
-            regesExpresion = new Regex(regexInstance.GetAt_LEAST_ONE_PUTUATION_MARK());
-            if (!regesExpresion.IsMatch(passwordChecked))
+            regexExpression = new Regex(regexInstance.GetAt_LEAST_ONE_PUTUATION_MARK());
+            if (!regexExpression.IsMatch(passwordChecked))
             {
-                ResaltBrokenRule(ListBoxRules[4]);
-                awnser = 0;
+                HighLightBrokenRule(ListBoxRules[4]);
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 ClearBrokenRule(ListBoxRules[4]);
             }
-
-            int arrobaIndex = (txbEmailCreateAcc.Text.IndexOf('@') != -1) ? txbEmailCreateAcc.Text.IndexOf('@') : 0;
-            if (txbEmailCreateAcc.Text.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
+            int arrobaIndex = (txbEmailCreateAccount.Text.IndexOf('@') != -1) ? txbEmailCreateAccount.Text.IndexOf('@') : 0;
+            if (txbEmailCreateAccount.Text.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
             {
-                ResaltBrokenRule(ListBoxRules[5]);
-                awnser = 0;
+                HighLightBrokenRule(ListBoxRules[5]);
+                answer = DISALLOWED_VALUES;
             }
             else
             {
                 ClearBrokenRule(ListBoxRules[5]);
             }
-
-            return awnser;
+            return answer;
         }
-        public int CheckEmailAddressFormat()
-        {
-            ReGexs.RegularExpresionsLibrary regexInstance = new ReGexs.RegularExpresionsLibrary();
-            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-            int awnser = 1;
-            String email = txbEmailCreateAcc.Text.Trim();
-            if (!regexExpression.IsMatch(email))
-            {
-                lblEmailWarning.Content = JeopardyGame.Properties.Resources.lblInvalidEmail;
-                lblEmailWarning.Visibility = Visibility.Visible;
-                awnser = 0;
-            }
-            else
-            {
-                lblEmailWarning.Content = "";
-                lblEmailWarning.Visibility = Visibility.Collapsed;
-                awnser = CheckPassword();
-            }
-            return awnser;
-        }
-
-        public int CheckEmailAddressExistance(String email)
-        {
-            UserManagerClient proxyServer = new UserManagerClient();
-            GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
-            proxyServer.Close();
-            if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
-            {
-                if (emailIsNew.ObjectSaved == 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (emailIsNew.ObjectSaved == 0)
-                    {
-                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
-                            JeopardyGame.Properties.Resources.lblRepeatedEmail);
-                    }
-                    else
-                    {
-                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
-                            JeopardyGame.Properties.Resources.lblFailToRegisterUser);
-                    }
-                    return 0;
-                }
-            }
-            else
-            {
-                ExceptionHandler.HandleExceptionSQLorEntity(emailIsNew.CodeEvent, "Mensaje");
-                return 0;
-            }           
-        }
-
-        public int CheckUserNameExistance(String userName)
+        private int CheckUserNameExistence(String userName)
         {
             UserManagerClient proxyServer = new UserManagerClient();
             GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
@@ -298,34 +292,63 @@ namespace JeopardyGame.Pages
 
             if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
             {
-                if (userIsNew.ObjectSaved == 1)
+                if (userIsNew.ObjectSaved == ALLOWED_VALUES)
                 {
-                    return 1;
+                    return ALLOWED_VALUES;
                 }
                 else
                 {
-                    if (userIsNew.ObjectSaved == 0)
+                    if (userIsNew.ObjectSaved == DISALLOWED_VALUES)
                     {
-                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
-                            JeopardyGame.Properties.Resources.lblRepeatedUserName);
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
                     }
                     else
                     {
-                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
-                            JeopardyGame.Properties.Resources.lblFailToRegisterUser);
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
                     }
-                    return 0;
+                    return DISALLOWED_VALUES;
                 }
             }
             else
             {
-                ExceptionHandler.HandleExceptionSQLorEntity(userIsNew.CodeEvent, "Mensaje");
-                return 0;
+                ExceptionHandler.HandleException(userIsNew.CodeEvent, "Mensaje");
+                return DISALLOWED_VALUES;
             }
-            
+
         }
 
-        private void ResaltBrokenRule(Label missingRule)
+        private int CheckEmailAddressExistence(String email)
+        {
+            UserManagerClient proxyServer = new UserManagerClient();
+            GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
+            proxyServer.Close();
+            if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+            {
+                if (emailIsNew.ObjectSaved == ALLOWED_VALUES)
+                {
+                    return ALLOWED_VALUES;
+                }
+                else
+                {
+                    if (emailIsNew.ObjectSaved == DISALLOWED_VALUES)
+                    {
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                    }
+                    else
+                    {
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle,Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                    }
+                    return DISALLOWED_VALUES;
+                }
+            }
+            else
+            {
+                ExceptionHandler.HandleException(emailIsNew.CodeEvent, "Mensaje");
+                return DISALLOWED_VALUES;
+            }           
+        }
+
+        private void HighLightBrokenRule(Label missingRule)
         {
             missingRule.Foreground = Brushes.Red;
         }
@@ -333,106 +356,39 @@ namespace JeopardyGame.Pages
         {
             missingRule.Foreground = Brushes.White;
         }
-        private void ClearFields()
-        {
-            txbNameCreateAcc.Clear();
-            txbUserNameCreateAcc.Clear();
-            txbEmailCreateAcc.Clear();
-            psbPasswordCreateAcc.Clear();
-            bttSaveUser.IsEnabled = false;
-        }
 
-        private void ClicViewPasswordRules(object sender, MouseButtonEventArgs e)
+        private void ClickViewPasswordRules(object sender, MouseButtonEventArgs e)
         {
             brdPasswordRules.Visibility = Visibility.Visible;
             imgViewPasswordRules.Visibility = Visibility.Hidden;
 
         }
-        private void ClosePaswordRules(object sender, MouseButtonEventArgs e)
+        private void ClosePasswordRules(object sender, MouseButtonEventArgs e)
         {
             brdPasswordRules.Visibility = Visibility.Hidden;
             imgViewPasswordRules.Visibility = Visibility.Visible;
         }
 
-        private void ClicSeePassword(object sender, MouseButtonEventArgs e)
+        private void ClickSeePassword(object sender, MouseButtonEventArgs e)
         {
-            lblViewPassword.Content = psbPasswordCreateAcc.Password.ToString();
-            psbPasswordCreateAcc.PasswordChar = '\0';
+            lblViewPassword.Content = psbPasswordCreateAccount.Password.ToString();
+            psbPasswordCreateAccount.PasswordChar = '\0';
             lblViewPassword.Visibility = Visibility.Visible;
         }
 
-        private void HiddePsasword(object sender, MouseEventArgs e)
+        private void HidePassword(object sender, MouseEventArgs e)
         {
-            psbPasswordCreateAcc.PasswordChar = '*';
+            psbPasswordCreateAccount.PasswordChar = default;
             lblViewPassword.Visibility = Visibility.Collapsed;
         }
 
-        private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
-        {
-            if (CheckEmptyFields() == 1 && CheckEmailAddressFormat() == 1 &&
-                CheckUserNameExistance(txbUserNameCreateAcc.Text.Trim()) == 1 &&
-                CheckEmailAddressExistance(txbEmailCreateAcc.Text.Trim()) == 1)
-            {               
-                UserPOJO userToSave = new UserPOJO();
-                userToSave.Name = txbNameCreateAcc.Text.Trim();
-                userToSave.UserName = txbUserNameCreateAcc.Text.Trim();
-                userToSave.EmailAddress = txbEmailCreateAcc.Text.Trim();
-                userToSave.Password = psbPasswordCreateAcc.Password.Trim();
 
-                CodeConfirmation codeW = new CodeConfirmation(txbEmailCreateAcc.Text.Trim(), userToSave);             
-                this.NavigationService.Navigate(codeW);
-                NavigationService.RemoveBackEntry();             
-            }
-        }
-
-        private void ShowInfoMessage(String title, String message)
+        private void CLickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
-            DialogWindows.InfoMessageDW ConfirmationWindow = new DialogWindows.InfoMessageDW(title, message);
-            Window currentPage = Application.Current.MainWindow;
-            double left = currentPage.Left + (currentPage.Width - ConfirmationWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - ConfirmationWindow.Height) / 2;
-            ConfirmationWindow.Left = left;
-            ConfirmationWindow.Top = top;
-            ConfirmationWindow.VerticalAlignment = VerticalAlignment.Center;
-            ConfirmationWindow.ShowDialog();
-        }
-
-        private void ShowErrorMessage(String title, String message)
-        {
-            DialogWindows.ErrorMessageDW ErrorWindow = new DialogWindows.ErrorMessageDW(title, message);
-            Window currentPage = Application.Current.MainWindow;
-            double left = currentPage.Left + (currentPage.Width - ErrorWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - ErrorWindow.Height) / 2;
-            ErrorWindow.Left = left;
-            ErrorWindow.Top = top;
-            ErrorWindow.HorizontalAlignment = HorizontalAlignment.Center;
-            ErrorWindow.VerticalAlignment = VerticalAlignment.Center;
-            ErrorWindow.ShowDialog();
-        }
-        private void ShowWarningMessage(String title, String message)
-        {
-            Window currentPage = App.Current.MainWindow;
-            DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(title,message);
-            double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
-            confirmationWindow.Left = left;
-            confirmationWindow.Top = top;
-            confirmationWindow.ShowDialog();
-            if (confirmationWindow.closeWindow)
+            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).closeWindow)
             {
-                GoToLogInWindow(); 
+                GoToLogInWindow();
             }
-        }
-
-        private void ClicCancellRegistration(object sender, MouseButtonEventArgs e)
-        {
-            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
-        }
-
-        private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
-        {
-            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.txbWarningMessCloseWin);
-
         }
 
         private void GoToLogInWindow()
@@ -441,6 +397,12 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(logInPage);
             NavigationService.RemoveBackEntry();
         }
-       
+        private void GoToCodeConfirmationWindow(UserPOJO userToSave)
+        {
+            CodeConfirmation codeWindow = new CodeConfirmation(txbEmailCreateAccount.Text.Trim(), userToSave);
+            this.NavigationService.Navigate(codeWindow);
+            NavigationService.RemoveBackEntry();
+        }
+
     }
 }

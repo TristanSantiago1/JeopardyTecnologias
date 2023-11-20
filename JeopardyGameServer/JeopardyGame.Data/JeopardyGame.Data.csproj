@@ -80,6 +80,7 @@
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\FriendsManagerDataOperation.cs" />
+    <Compile Include="DataAccess\LoginOperations.cs" />
     <Compile Include="DataAccess\UserManagerDataOperation.cs" />
     <Compile Include="Exceptions\ExceptionDiccionary.cs" />
     <Compile Include="Exceptions\ExceptionHandler.cs" />
@@ -96,7 +97,7 @@
     <Compile Include="GamePlayer.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="GenericClass.cs" />
+    <Compile Include="GenericClassAndObjecSaved.cs" />
     <Compile Include="Host.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>

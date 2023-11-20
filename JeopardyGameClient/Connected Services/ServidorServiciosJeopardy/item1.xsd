@@ -15,17 +15,17 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="validateCredentials">
+  <xs:element name="ValidateCredentials">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="newUserValidate" nillable="true" type="q3:UserValidate" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="validateCredentialsResponse">
+  <xs:element name="ValidateCredentialsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="validateCredentialsResult" nillable="true" type="q4:GenericClassOfint" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="ValidateCredentialsResult" nillable="true" type="q4:GenericClassOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,7 +98,7 @@
   <xs:element name="GetUserFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="GetUserFriendsResult" nillable="true" type="q10:GenericClassOfArrayOfFriendInfoxY0a3WX4" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="GetUserFriendsResult" nillable="true" type="q10:GenericClassOfArrayOfFriendBasicInformationxY0a3WX4" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -112,7 +112,7 @@
   <xs:element name="GetUserFriendRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="GetUserFriendRequestsResult" nillable="true" type="q12:GenericClassOfArrayOfFriendInfoxY0a3WX4" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="GetUserFriendRequestsResult" nillable="true" type="q12:GenericClassOfArrayOfFriendBasicInformationxY0a3WX4" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -126,7 +126,7 @@
   <xs:element name="GetUsersNotFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="GetUsersNotFriendsResult" nillable="true" type="q14:GenericClassOfArrayOfFriendInfoxY0a3WX4" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="GetUsersNotFriendsResult" nillable="true" type="q14:GenericClassOfArrayOfFriendBasicInformationxY0a3WX4" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -216,7 +216,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Response">
+  <xs:element name="ResponseOfPlayerAvailability">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="status" type="xs:int" />
@@ -224,7 +224,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseResponse">
+  <xs:element name="ResponseOfPlayerAvailabilityResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -314,7 +314,7 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseResquestAction">
+  <xs:element name="ResponseRequestAction">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
@@ -323,7 +323,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ResponseResquestActionResponse">
+  <xs:element name="ResponseRequestActionResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -366,7 +366,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="joinLobby">
+  <xs:element name="JoinLobby">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="roomCode" type="xs:int" />
@@ -374,14 +374,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="joinLobbyResponse">
+  <xs:element name="JoinLobbyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="joinLobbyResult" nillable="true" type="q23:GenericClassOfint" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="JoinLobbyResult" nillable="true" type="q23:GenericClassOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="NotifyPlayerInlobby">
+  <xs:element name="NotifyPlayerInLobby">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="roomCode" type="xs:int" />
@@ -389,7 +389,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="leaveLobby">
+  <xs:element name="LeaveLobby">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="roomCode" type="xs:int" />
@@ -510,14 +510,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReciveMessage">
+  <xs:element name="CreateChatForLobbyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="message" nillable="true" type="q27:GenericClassOfMessageChatxY0a3WX4" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="CreateChatForLobbyResult" nillable="true" type="q27:GenericClassOfboolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReciveMessageResponse">
+  <xs:element name="ReceiveMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="message" nillable="true" type="q28:GenericClassOfMessageChatxY0a3WX4" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReceiveMessageResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

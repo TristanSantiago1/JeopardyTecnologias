@@ -1,5 +1,5 @@
 ﻿using JeopardyGame.Data;
-using JeopardyGame.Service.InterfacesSevices;
+using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial  class ServicesReferenceAuthor: IUserManager
     {
-        UserManager UserManager = new UserManager();
+        UserManagerImplementation UserManager = new UserManagerImplementation();
 
         public GenericClass<int> EmailAlreadyExist(string email)
         {
@@ -38,9 +38,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).UserNameAlreadyExist(userName);
         }
 
-        public GenericClass<int> validateCredentials(UserValidate newUserValidate)
+        public GenericClass<int> ValidateCredentials(UserValidate newUserValidate)
         {
-            return ((IUserManager)UserManager).validateCredentials(newUserValidate);
+            return ((IUserManager)UserManager).ValidateCredentials(newUserValidate);
         }
     }
 
@@ -48,17 +48,17 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
 
-        public GenericClass<List<FriendInfo>> GetUserFriendRequests(UserPOJO user)
+        public GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user)
         {
             return ((IFriendsManager)friendsManagerImplementation).GetUserFriendRequests(user);
         }
 
-        public GenericClass<List<FriendInfo>> GetUserFriends(UserPOJO user)
+        public GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user)
         {
             return ((IFriendsManager)friendsManagerImplementation).GetUserFriends(user);
         }
 
-        public GenericClass<List<FriendInfo>> GetUsersNotFriends(UserPOJO user)
+        public GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user)
         {
             return ((IFriendsManager)friendsManagerImplementation).GetUsersNotFriends(user);
         }
@@ -66,7 +66,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public partial class ServicesReferenceAuthor: IConsultInformation
     {
-        ConsultInfoImple consultInfoImple = new ConsultInfoImple();
+        ConsultInformationImplementation consultInfoImple = new ConsultInformationImplementation();
 
         public GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer)
         {
@@ -97,10 +97,10 @@ namespace JeopardyGame.Service.ServiceImplementation
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat
     {
-        NotifyUserAvbImple NotifyUserAvbImple = new NotifyUserAvbImple();
-        NotifyFriendlyActionsImple NotifyFriendlyActionsImple = new NotifyFriendlyActionsImple();
-        LobbyActionsImple LobbyActionsImple = new LobbyActionsImple();
-        LiveChatImple LiveChatImple = new LiveChatImple();
+        NotifyUserAvailabilityImplementation NotifyUserAvbImple = new NotifyUserAvailabilityImplementation();
+        NotifyFriendlyActionsImplementation NotifyFriendlyActionsImple = new NotifyFriendlyActionsImplementation();
+        LobbyActionsImplementation LobbyActionsImple = new LobbyActionsImplementation();
+        LiveChatImplementation LiveChatImple = new LiveChatImplementation();
 
         public void AcceptFriendRequest(int idUser, int idUser2)
         {
@@ -157,14 +157,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((ILiveChat)LiveChatImple).GetAllMessages(room, idUser);
         }
 
-        public GenericClass<int> joinLobby(int roomCode, int idUser)
+        public GenericClass<int> JoinLobby(int roomCode, int idUser)
         {
-            return ((ILobbyActions)LobbyActionsImple).joinLobby(roomCode, idUser);
+            return ((ILobbyActions)LobbyActionsImple).JoinLobby(roomCode, idUser);
         }
 
-        public void leaveLobby(int roomCode, int idUser)
+        public void LeaveLobby(int roomCode, int idUser)
         {
-            ((ILobbyActions)LobbyActionsImple).leaveLobby(roomCode, idUser);
+            ((ILobbyActions)LobbyActionsImple).LeaveLobby(roomCode, idUser);
         }
 
         public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
@@ -172,9 +172,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILobbyActions)LobbyActionsImple).MakeTeams(roomCode, idUser, wannaTeam);
         }
 
-        public void NotifyPlayerInlobby(int roomCode, int idUser)
+        public void NotifyPlayerInLobby(int roomCode, int idUser)
         {
-            ((ILobbyActions)LobbyActionsImple).NotifyPlayerInlobby(roomCode, idUser);
+            ((ILobbyActions)LobbyActionsImple).NotifyPlayerInLobby(roomCode, idUser);
         }
 
         public void PlayerIsAvailable(int idUser, int idPlayer)
@@ -210,6 +210,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void UnregisterFriendManagerUser(int idUser)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).UnregisterFriendManagerUser(idUser);
+        }
+
+        GenericClass<bool> ILiveChat.CreateChatForLobby(int roomCode, int idAdmin)
+        {
+            return ((ILiveChat)LiveChatImple).CreateChatForLobby(roomCode, idAdmin);
         }
     }
 

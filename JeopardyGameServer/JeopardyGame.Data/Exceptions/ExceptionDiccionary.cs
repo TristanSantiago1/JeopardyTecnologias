@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Data.Exceptions
 {
-    public class ExceptionDiccionary
+    public class ExceptionDictionary
     {
         public static String FATAL_EXCEPTION = "Fatal";
         public static String ERROR = "Error";
@@ -17,6 +17,8 @@ namespace JeopardyGame.Data.Exceptions
         public static int NULL_PARAEMETER = -200;
         public static int ARGUMENT_NULL = -210;
         public static int ARGUMENT_OUT_OF_RANGE_EXCEPTION = -211;
+        public static int FORMMAT_EXCEPTION = -212;
+        public static int RANK_EXCEPTION = -213;
         public static int EMAIL_FORMAT_INVALID = -219; 
         public static int INVALID_OPERATION = -220; 
         public static int NO_DB_CONECTION = -300;

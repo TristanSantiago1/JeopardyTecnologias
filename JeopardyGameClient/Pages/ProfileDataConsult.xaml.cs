@@ -16,27 +16,26 @@ namespace JeopardyGame.Pages
         public ProfileDataConsult()
         {
             InitializeComponent();
-            DisplayUserInfo(lblNameEditAcc, lblUserNameEditAcc, lblAddresEditAcc);
+            DisplayUserInfo(lblNameEditAccount, lblUserNameEditAccount, lblAddresEditAccount);
         }
 
-        public static void DisplayUserInfo(Label lblNameEditAcc, Label lblUserNameEditAcc, 
-            Label lblAddresEditAcc)
+        public static void DisplayUserInfo(Label lblNameEditAccount, Label lblUserNameEditAccount, Label lblAddressEditAccount)
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            lblUserNameEditAcc.Content = userSingleton.UserName;
-            lblNameEditAcc.Content = userSingleton.Name;
-            lblAddresEditAcc.Content = userSingleton.Email;
+            lblUserNameEditAccount.Content = userSingleton.UserName;
+            lblNameEditAccount.Content = userSingleton.Name;
+            lblAddressEditAccount.Content = userSingleton.Email;
 
         }
 
-        private void ClicEditUserInformation(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ClickEditUserInformation(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             EditUserProfile editUserProfilePage = new EditUserProfile();
             this.NavigationService.Navigate(editUserProfilePage);
             NavigationService.RemoveBackEntry();
         }
 
-        private void ClicSingOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ClickSingOut(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             MainMenu mainMenuPage = new MainMenu();
             this.NavigationService.Navigate(mainMenuPage);

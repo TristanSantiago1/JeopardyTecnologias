@@ -15,11 +15,16 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
-    public partial class MainMenu : Page, ServidorServiciosJeopardy.INotifyUserAvailabilityCallback
-    {
+    public partial class MainMenu : Page
+    { 
         public MainMenu()
         {            
             InitializeComponent();
+            PrepareMainMenuWindow();
+        }
+
+        private void PrepareMainMenuWindow()
+        {
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
             if (key != null)
             {
@@ -35,37 +40,30 @@ namespace JeopardyGame.Pages
                     }
                 }
             }
-
-            UserSingleton user = UserSingleton.GetMainUser();
-            string userName = user.UserName;
-
-
         }
-        private void CLicButtonNewGame(object sender, RoutedEventArgs e)
+       
+        private void ClickSingOut(object sender, MouseButtonEventArgs e)
         {
-            LobbyPage lobbyGamePage = new LobbyPage();  
-            this.NavigationService.Navigate(lobbyGamePage);
-            NavigationService.RemoveBackEntry();
+            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).closeWindow)
+            {
+                CleanGlobalParameters();
+                LogInUser logInPage = new LogInUser();
+                this.NavigationService.Navigate(logInPage);
+                NavigationService.RemoveBackEntry();
+            }
+        }
 
-        }
-        private void CLicButtonEnterGame(object sender, RoutedEventArgs e)
+        private void CleanGlobalParameters()
         {
-            enterGameWithCode enterGameWithCode = new enterGameWithCode();
-            this.NavigationService.Navigate(enterGameWithCode);
-            NavigationService.RemoveBackEntry();
-        }
-        private void CLicButtonFriendsList(object sender, RoutedEventArgs e)
-        {
-           FriendManager friendManager = new FriendManager();   
-            this.NavigationService.Navigate(friendManager);
-            NavigationService.RemoveBackEntry();
-        }
-        private void ClicSingOut(object sender, MouseButtonEventArgs e)
-        {
-            ShowWarningMessage(JeopardyGame.Properties.Resources.txbWarningTitle, JeopardyGame.Properties.Resources.tbxSignOut);
+            FriendList.CleanDictionary();
+            UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
+            currentUserSingleton.proxyForAvailability.PlayerIsNotAvailable(currentUserSingleton.IdUser, currentUserSingleton.IdPlayer);
+            currentUserSingleton.proxyForAvailability.Close();
+            currentUserSingleton.proxyForAvailability = null;
+            UserSingleton.CleanSingleton();
         }
         
-        private void LanguageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
         {
             if (LanguajeComboBox.SelectedItem != null)
             {
@@ -74,56 +72,24 @@ namespace JeopardyGame.Pages
                 App.ChangeLanguaje(selectedLanguage);
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
-                key.Close();
-
-                
+                key.Close();                
                 if (selectedLanguage == "es-MX")
                 {
-                    bttEnterGame.Content = JeopardyGame.Properties.Resources.bttEnterGame;
-                    bttFriends.Content = JeopardyGame.Properties.Resources.bttFriends;
-                    bttNewGame.Content = JeopardyGame.Properties.Resources.bttNewGame;
-                    lblProfileInformation.Content = JeopardyGame.Properties.Resources.lblProfileInformation;
+                    bttEnterGame.Content = Properties.Resources.bttEnterGame;
+                    bttFriends.Content = Properties.Resources.bttFriends;
+                    bttNewGame.Content = Properties.Resources.bttNewGame;
+                    lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
                 }else if(selectedLanguage == "en")
                 {
-                    bttEnterGame.Content = JeopardyGame.Properties.Resources.bttEnterGame;
-                    bttFriends.Content = JeopardyGame.Properties.Resources.bttFriends;
-                    bttNewGame.Content = JeopardyGame.Properties.Resources.bttNewGame;
-                    lblProfileInformation.Content = JeopardyGame.Properties.Resources.lblProfileInformation;
+                    bttEnterGame.Content = Properties.Resources.bttEnterGame;
+                    bttFriends.Content = Properties.Resources.bttFriends;
+                    bttNewGame.Content = Properties.Resources.bttNewGame;
+                    lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
                 }
             }
-        }
+        }       
 
-        private void ShowWarningMessage(String title, String message)
-        {
-            Window currentPage = App.Current.MainWindow;
-            DialogWindows.ConfirmationDW confirmationWindow = new DialogWindows.ConfirmationDW(title, message);
-            double left = currentPage.Left + (currentPage.Width - confirmationWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - confirmationWindow.Height) / 2;
-            confirmationWindow.Left = left;
-            confirmationWindow.Top = top;
-            confirmationWindow.ShowDialog();
-            if (confirmationWindow.closeWindow)
-            {
-                FriendList.CleanDictionary();
-                UserSingleton us = UserSingleton.GetMainUser();
-                us.proxyForAvailability.PlayerIsNotAvailable(us.IdUser, us.IdPlayer);
-                us.proxyForAvailability.Close();
-                us.proxyForAvailability = null;
-                UserSingleton.CleanSingleton();
-                LogInUser logInPage = new LogInUser();
-                this.NavigationService.Navigate(logInPage);
-                NavigationService.RemoveBackEntry();
-            }
-        }
-
-        ActiveFriends ActiveFriends = new ActiveFriends();
-
-        public void Response(int status, int idFriend)
-        {
-            ((INotifyUserAvailabilityCallback)ActiveFriends).Response(status, idFriend);
-        }
-
-        private void ClicUserProfile(object sender, MouseButtonEventArgs e)
+        private void ClickUserProfile(object sender, MouseButtonEventArgs e)
         {
             ProfileDataConsult profileInformation = new ProfileDataConsult();
             this.NavigationService.Navigate(profileInformation);
@@ -133,6 +99,30 @@ namespace JeopardyGame.Pages
         private void lstWinners_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            ///Que hace esto???
+
         }
+
+        private void CLickButtonNewGame(object sender, RoutedEventArgs e)
+        {
+            LobbyPage lobbyGamePage = new LobbyPage();
+            this.NavigationService.Navigate(lobbyGamePage);
+            NavigationService.RemoveBackEntry();
+
+        }
+        private void CLickButtonEnterGame(object sender, RoutedEventArgs e)
+        {
+            enterGameWithCode enterGameWithCode = new enterGameWithCode();
+            this.NavigationService.Navigate(enterGameWithCode);
+            NavigationService.RemoveBackEntry();
+        }
+        private void CLickButtonFriendsList(object sender, RoutedEventArgs e)
+        {
+            FriendManager friendManager = new FriendManager();
+            this.NavigationService.Navigate(friendManager);
+            NavigationService.RemoveBackEntry();
+        }
+
+
     }
 }

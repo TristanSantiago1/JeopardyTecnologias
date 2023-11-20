@@ -66,8 +66,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="DialogWindows\ConfirmationDW.xaml.cs">
-      <DependentUpon>ConfirmationDW.xaml</DependentUpon>
+    <Compile Include="DialogWindows\ConfirmationDialogWindow.xaml.cs">
+      <DependentUpon>ConfirmationDialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ChatMessageCard.cs" />
     <Compile Include="Helpers\EncryptationClass.cs" />
@@ -105,11 +105,11 @@
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DialogWindows\ErrorMessageDW.xaml.cs">
-      <DependentUpon>ErrorMessageDW.xaml</DependentUpon>
+    <Compile Include="DialogWindows\ErrorMessageDialogWindow.xaml.cs">
+      <DependentUpon>ErrorMessageDialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DialogWindows\InfoMessageDW.xaml.cs">
-      <DependentUpon>InfoMessageDW.xaml</DependentUpon>
+    <Compile Include="DialogWindows\InformationMessageDialogWindow.xaml.cs">
+      <DependentUpon>InformationMessageDialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PrincipalPage.xaml.cs">
       <DependentUpon>PrincipalPage.xaml</DependentUpon>
@@ -129,7 +129,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ReGexs\RegularExpresionsLibrary.cs" />
+    <Compile Include="ReGexs\RegularExpressionsLibrary.cs" />
     <Compile Include="UserSingleton.cs" />
     <Compile Include="Views\EnterWithGameCode.xaml.cs">
       <DependentUpon>EnterWithGameCode.xaml</DependentUpon>
@@ -144,7 +144,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="DialogWindows\ConfirmationDW.xaml">
+    <Page Include="DialogWindows\ConfirmationDialogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,11 +188,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DialogWindows\ErrorMessageDW.xaml">
+    <Page Include="DialogWindows\ErrorMessageDialogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DialogWindows\InfoMessageDW.xaml">
+    <Page Include="DialogWindows\InformationMessageDialogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,13 +261,16 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfFriendInfoxY0a3WX4.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfFriendBasicInformationxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO.datasource">

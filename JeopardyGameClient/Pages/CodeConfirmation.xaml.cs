@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Helpers;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
@@ -26,12 +27,12 @@ namespace JeopardyGame.Pages
     public partial class CodeConfirmation : Page, INotifyUserAvailabilityCallback
     {
         public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
-
+        public const int NULL_INT_VALUE = 0;
         private DispatcherTimer timer;
         private int leftTime = 360;
         private String currentEmail;
         private String currentCode;
-        private static Random random = new Random();
+        private static Random randomNumber = new Random();
         UserPOJO userToSave;
         public CodeConfirmation(String emailToConfirm, UserPOJO user)
         {
@@ -43,31 +44,12 @@ namespace JeopardyGame.Pages
             SentEmail(currentEmail);
             
         }
-
-        private void SentEmail(String email)
-        {
-            ServidorServiciosJeopardy.UserManagerClient proxyServer = new ServidorServiciosJeopardy.UserManagerClient();
-            GenericClassOfint sentEmailSucc = proxyServer.SentEmailCodeConfirmation
-                (email, JeopardyGame.Properties.Resources.EmailSubjectCode, currentCode + " " + 
-                JeopardyGame.Properties.Resources.EmailCodeDescrip);
-            if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                ExceptionHandler.HandleExceptionSQLorEntity(sentEmailSucc.CodeEvent, "Mensaje");
-                //regresara pagina anterior
-            }
-            if (sentEmailSucc.ObjectSaved == 0 )
-            {
-                ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle, JeopardyGame.Properties.Resources.SentEmailIssue);
-            }
-        }
-
         private void GenerateCode()
-        {           
-            int altNumber = random.Next(1000, 9999);          
-            char altChar1 = (char)random.Next('A', 'Z' + 1);
-            char altChar2 = (char)random.Next('A', 'Z' + 1);
-            string codeGenerated = $"{altChar1}{altChar2}{altNumber:D4}";
-            currentCode = codeGenerated;
+        {
+            int fourDigitsAleatoryNumber = randomNumber.Next(1000, 9999);
+            char firstRandomCharacter = (char)randomNumber.Next('A', 'Z' + 1);
+            char secondRandomCharacter = (char)randomNumber.Next('A', 'Z' + 1);
+            currentCode = $"{firstRandomCharacter}{secondRandomCharacter}{fourDigitsAleatoryNumber:D4}";
         }
 
         private void StartTimer()
@@ -79,48 +61,51 @@ namespace JeopardyGame.Pages
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (leftTime > 0)
+            if (leftTime > NULL_INT_VALUE)
             {
                 leftTime--;
                 lblResentCode.Content = lblResentCode.Content + " " + leftTime;
             }
             else
-            {               
+            {
                 timer.Stop();
             }
         }
-           
+
+
+        private void SentEmail(String email)
+        {
+            UserManagerClient proxyServer = new UserManagerClient();
+            GenericClassOfint sentEmailSucc = proxyServer.SentEmailCodeConfirmation(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
+            if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                ExceptionHandler.HandleException(sentEmailSucc.CodeEvent, "Mensaje");
+                //regresara pagina anterior
+            }
+            if (sentEmailSucc.ObjectSaved == NULL_INT_VALUE)
+            {
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+            }
+        }  
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Equals(currentCode))
-            {              
-                String encryptedPassword = EncryptationClass.EncryptPassword(userToSave.Password.ToString().Trim());
-                userToSave.Password = encryptedPassword;
-                userToSave.IdUser = 0;
+            {
+                PrepareUserToBeSaved();
                 UserManagerClient proxyServer = new UserManagerClient();
-                GenericClassOfint idUsuario = proxyServer.SaveUser(userToSave);
-                if (idUsuario.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                GenericClassOfint userSaved = proxyServer.SaveUser(userToSave);
+                if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    if (idUsuario.ObjectSaved != 0)
-                    {
                         SetSingleton();
-                        ShowInfoMessage(JeopardyGame.Properties.Resources.txbUserRegisteredSuccTittle,
-                            JeopardyGame.Properties.Resources.txbInfoMessgSuccRegUser);                        
+                        new InformationMessageDialogWindow(Properties.Resources.txbUserRegisteredSuccTittle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
                         MainMenu lobby = new MainMenu();
                         this.NavigationService.Navigate(lobby);
-                        NavigationService.RemoveBackEntry();
-
-                    }
-                    else
-                    {
-                        ShowErrorMessage(JeopardyGame.Properties.Resources.txbErrorTitle,
-                            JeopardyGame.Properties.Resources.txbErrorMessageRegisterUser);
-                    }
+                        NavigationService.RemoveBackEntry();                   
                 }
                 else
                 {
-                    ExceptionHandler.HandleExceptionSQLorEntity(idUsuario.CodeEvent, "Mensaje");
+                    ExceptionHandler.HandleException(userSaved.CodeEvent, Properties.Resources.txbErrorMessageRegisterUser);
                     //regresar a ventana anterior
                 }
             }
@@ -130,52 +115,32 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void CLicButtonCancelSaving(object sender, RoutedEventArgs e)
+        private void PrepareUserToBeSaved()
         {
-            UserRegister userRegister = new UserRegister();
-            this.NavigationService.Navigate(userRegister);
-            userRegister.ChargeField(userToSave);
+            String encryptedPassword = EncryptionClass.EncryptPassword(userToSave.Password.ToString().Trim());
+            userToSave.Password = encryptedPassword;
+            userToSave.IdUser = NULL_INT_VALUE;
+        }
+
+        private void CLickButtonCancelSaving(object sender, RoutedEventArgs e)
+        {
+            UserRegister userToRegister = new UserRegister();
+            this.NavigationService.Navigate(userToRegister);
+            userToRegister.ChargeField(userToSave);
             NavigationService.RemoveBackEntry();
         }
 
-        private void ResentCode(object sender, MouseButtonEventArgs e)
+        private void ClickResentCode(object sender, MouseButtonEventArgs e)
         {
-            if (leftTime == 0)
+            if (leftTime == NULL_INT_VALUE)
             {
                 currentCode = null;
                 GenerateCode();
                 SentEmail(currentEmail);
                 StartTimer();
-            }
-            
+            }            
         }
-
-        private void ShowErrorMessage(String title, String message)
-        {
-            DialogWindows.ErrorMessageDW ErrorWindow = new DialogWindows.ErrorMessageDW(title, message);
-            Window currentPage = Application.Current.MainWindow;
-            double left = currentPage.Left + (currentPage.Width - ErrorWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - ErrorWindow.Height) / 2;
-            ErrorWindow.Left = left;
-            ErrorWindow.Top = top;
-            ErrorWindow.HorizontalAlignment = HorizontalAlignment.Center;
-            ErrorWindow.VerticalAlignment = VerticalAlignment.Center;
-            ErrorWindow.ShowDialog();
-        }
-
-        private void ShowInfoMessage(String title, String message)
-        {
-            DialogWindows.InfoMessageDW ConfirmationWindow = new DialogWindows.InfoMessageDW(title, message);
-            Window currentPage = Application.Current.MainWindow;
-            double left = currentPage.Left + (currentPage.Width - ConfirmationWindow.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - ConfirmationWindow.Height) / 2;
-            ConfirmationWindow.Left = left;
-            ConfirmationWindow.Top = top;
-            ConfirmationWindow.VerticalAlignment = VerticalAlignment.Center;
-            ConfirmationWindow.ShowDialog();
-        }
-
-        private void CodeEntry(object sender, TextChangedEventArgs e)
+        private void CodeEntryValidator(object sender, TextChangedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Length == 6)
             {
@@ -191,28 +156,43 @@ namespace JeopardyGame.Pages
         {
             ConsultInformationClient consultInformationClient = new ConsultInformationClient();           
             var userSaved =  consultInformationClient.ConsultUserByUserName(userToSave.UserName);
-            var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            userSingleton.IdUser = userSaved.ObjectSaved.IdUser;
-            userSingleton.Name = userSaved.ObjectSaved.Name;
-            userSingleton.UserName = userSaved.ObjectSaved.UserName;
-            userSingleton.Email = userSaved.ObjectSaved.EmailAddress;
-            userSingleton.Password = userSaved.ObjectSaved .Password;
-            userSingleton.IdPlayer = playerSaved.ObjectSaved.IdPlayer;
-            userSingleton.GeneralPoints = playerSaved.ObjectSaved.GeneralPoints;
-            userSingleton.NoReports = playerSaved.ObjectSaved.NoReports;
-            userSingleton.IdState = playerSaved.ObjectSaved.IdState;
-            userSingleton.IdCurrentAvatar = playerSaved.ObjectSaved.IdActualAvatar;
-            InstanceContext contexto = new InstanceContext(this);
-            NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(contexto);
-            userSingleton.proxyForAvailability = proxyChannelCallback;
-            userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser, userSingleton.IdPlayer);
+            if(userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
+                if (playerSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    UserSingleton userSingleton = UserSingleton.GetMainUser();
+                    userSingleton.IdUser = userSaved.ObjectSaved.IdUser;
+                    userSingleton.Name = userSaved.ObjectSaved.Name;
+                    userSingleton.UserName = userSaved.ObjectSaved.UserName;
+                    userSingleton.Email = userSaved.ObjectSaved.EmailAddress;
+                    userSingleton.Password = userSaved.ObjectSaved.Password;
+                    userSingleton.IdPlayer = playerSaved.ObjectSaved.IdPlayer;
+                    userSingleton.GeneralPoints = playerSaved.ObjectSaved.GeneralPoints;
+                    userSingleton.NoReports = playerSaved.ObjectSaved.NoReports;
+                    userSingleton.IdState = playerSaved.ObjectSaved.IdState;
+                    userSingleton.IdCurrentAvatar = playerSaved.ObjectSaved.IdActualAvatar;
+                    InstanceContext context = new InstanceContext(this);
+                    NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(context);
+                    userSingleton.proxyForAvailability = proxyChannelCallback;
+                    userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser, userSingleton.IdPlayer);
+                }
+                else
+                {
+                    ExceptionHandler.HandleException(playerSaved.CodeEvent, "");
+                }
+            }
+            else
+            {
+                ExceptionHandler.HandleException(userSaved.CodeEvent, "");
+            }
         }
 
-        public void Response(int status, int idFriend)
+        public void ResponseOfPlayerAvailability(int status, int idFriend)
         {
-            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).Response(status, idFriend);
+            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);
         }
+
     }
 
 }

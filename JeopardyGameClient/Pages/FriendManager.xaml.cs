@@ -5,6 +5,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace JeopardyGame.Pages
 {
@@ -20,9 +22,9 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class FriendManager : Page, INotifyUserActionFriendsManagerCallback
     {
-        private List<FriendInfo> friends;
-        private List<FriendInfo> friendRequests;
-        private List<FriendInfo> otherPeople;
+        private List<FriendBasicInformation> friends;
+        private List<FriendBasicInformation> friendRequests;
+        private List<FriendBasicInformation> otherPeople;
         private String textLeftButton = Properties.Resources.bttReport;
         private String textRightButton = Properties.Resources.bttEliminate;
         private DispatcherTimer timer;
@@ -31,6 +33,9 @@ namespace JeopardyGame.Pages
         private const int MY_FRIENDS = 1;
         private const int FRIENDS_REQUEST = 2;
         private const int OTHER_PEOPLE = 3;
+        private const int DECLINED_REQUEST = 0;
+        private const int SEND_REQUEST = 1;
+        private const int ACCEPT_REQUEST = 2;
         private int typeUserConsult = MY_FRIENDS;
         NotifyUserActionFriendsManagerClient notifyUserActionFriendsManagerClient;
         private InstanceContext context;
@@ -49,23 +54,71 @@ namespace JeopardyGame.Pages
             notifyUserActionFriendsManagerClient.RegisterFriendManagerUser(userSingleton.IdUser);
             GetAllTables();
             SetCards();
-            txbUserToSearch.PreviewTextInput += TextBoxSearchListener;
+        }
+
+        private void GetAllTables()
+        {
+            FriendsManagerClient proxyFriend = new FriendsManagerClient();
+            ConsultInformationClient proxyUser = new ConsultInformationClient();
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            var userConsulted = proxyUser.ConsultUserById(userSingleton.IdUser);
+            if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                var friendsConsulted = proxyFriend.GetUserFriends(userConsulted.ObjectSaved);
+                if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    var friendRequestsConsulted = proxyFriend.GetUserFriendRequests(userConsulted.ObjectSaved);
+                    if (friendRequestsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        var otherPeopleConsulted = proxyFriend.GetUsersNotFriends(userConsulted.ObjectSaved);
+                        if (otherPeopleConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            friends = friendsConsulted.ObjectSaved.ToList();
+                            friendRequests = friendRequestsConsulted.ObjectSaved.ToList();
+                            otherPeople = otherPeopleConsulted.ObjectSaved.ToList();
+                        }
+                        else
+                        {
+                            ExceptionHandler.HandleException(otherPeopleConsulted.CodeEvent, "");
+                        }
+                    }
+                    else
+                    {
+                        ExceptionHandler.HandleException(friendRequestsConsulted.CodeEvent, "");
+                    }                   
+                }
+                else
+                {
+                    ExceptionHandler.HandleException(friendsConsulted.CodeEvent, "");
+                }
+                proxyFriend.Close();
+                proxyUser.Close();
+            }
+            else
+            {
+                ExceptionHandler.HandleException(userConsulted.CodeEvent, "Mensaje");
+                //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
+            }
         }
 
         private void SetCards()
         {
             stcFrinedsManagerList.Children.Clear();
-            List<FriendInfo> listOfUsers;
+            List<FriendBasicInformation> listOfUsers;
             switch (typeUserConsult)
             {
                 case MY_FRIENDS:
-                    listOfUsers = new List<FriendInfo>(friends); break;
+                    listOfUsers = new List<FriendBasicInformation>(friends); 
+                    break;
                 case FRIENDS_REQUEST:
-                    listOfUsers = new List<FriendInfo>(friendRequests); break;
+                    listOfUsers = new List<FriendBasicInformation>(friendRequests); 
+                    break;
                 case OTHER_PEOPLE:
-                    listOfUsers = new List<FriendInfo>(otherPeople); break;
+                    listOfUsers = new List<FriendBasicInformation>(otherPeople);
+                    break;
                 default:
-                    listOfUsers = new List<FriendInfo>(); break;
+                    listOfUsers = new List<FriendBasicInformation>();
+                    break;
             }
             foreach (var item in listOfUsers)
             {
@@ -73,30 +126,9 @@ namespace JeopardyGame.Pages
                 FriendCardManagementWindow friendCardManagement = new FriendCardManagementWindow(item.IdUser, item.UserName, typeUserConsult, textLeftButton, textRightButton, this);
                 brdCard.Child = friendCardManagement;
                 stcFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
-
             }
         }
 
-        private void GetAllTables()
-        {
-            ServidorServiciosJeopardy.FriendsManagerClient proxyFriend = new ServidorServiciosJeopardy.FriendsManagerClient();
-            ServidorServiciosJeopardy.ConsultInformationClient proxyUser = new ServidorServiciosJeopardy.ConsultInformationClient();
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            GenericClassOfUserPOJOxY0a3WX4 user = proxyUser.ConsultUserById(userSingleton.IdUser);
-            if (user.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                friends = proxyFriend.GetUserFriends(user.ObjectSaved).ObjectSaved.ToList();
-                friendRequests = proxyFriend.GetUserFriendRequests(user.ObjectSaved).ObjectSaved.ToList();
-                otherPeople = proxyFriend.GetUsersNotFriends(user.ObjectSaved).ObjectSaved.ToList();
-                proxyFriend.Close();
-                proxyUser.Close();
-            }
-            else
-            {
-                ExceptionHandler.HandleExceptionSQLorEntity(user.CodeEvent, "Mensaje");
-                //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
-            }
-        }
 
         private Border SetBorderCardStyle(Border brdCard)
         {
@@ -111,7 +143,7 @@ namespace JeopardyGame.Pages
             return brdCard;
         }
 
-        private void ClicConsultMyFriends(object sender, MouseButtonEventArgs e)
+        private void ClickConsultMyFriends(object sender, MouseButtonEventArgs e)
         {
             typeUserConsult = MY_FRIENDS;
             textLeftButton = Properties.Resources.bttReport;
@@ -124,7 +156,7 @@ namespace JeopardyGame.Pages
             SetCards();
         }
 
-        private void ClicConsultFriendSolicitudes(object sender, MouseButtonEventArgs e)
+        private void ClickConsultFriendSolicitudes(object sender, MouseButtonEventArgs e)
         {
             typeUserConsult = FRIENDS_REQUEST;
             textLeftButton = Properties.Resources.bttAcceptFriendRequest;
@@ -137,7 +169,7 @@ namespace JeopardyGame.Pages
             SetCards();
         }
 
-        private void ClicConsultMorePeople(object sender, MouseButtonEventArgs e)
+        private void ClickConsultMorePeople(object sender, MouseButtonEventArgs e)
         {
             typeUserConsult = OTHER_PEOPLE;
             textLeftButton = Properties.Resources.bttAddFriend;
@@ -150,7 +182,7 @@ namespace JeopardyGame.Pages
             SetCards();
         }
 
-        private void SelectLabel(Label selectedLbael)
+        private void SelectLabel(Label selectedLabel)
         {
             lblMyFriends.FontSize = 36;
             lblMyFriends.Foreground = new SolidColorBrush(Colors.White);
@@ -158,8 +190,8 @@ namespace JeopardyGame.Pages
             lblRequests.Foreground = new SolidColorBrush(Colors.White);
             lblMorePeople.FontSize = 36;
             lblMorePeople.Foreground = new SolidColorBrush(Colors.White);
-            selectedLbael.FontSize = 40;
-            selectedLbael.Foreground = new SolidColorBrush(Colors.LightGray);
+            selectedLabel.FontSize = 40;
+            selectedLabel.Foreground = new SolidColorBrush(Colors.LightGray);
         }
 
         public void ReportUser(int idPlayer, string userNmae)
@@ -181,10 +213,10 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendInfo newFriend = new FriendInfo();
+            FriendBasicInformation newFriend = new FriendBasicInformation();
             newFriend.IdUser = idUserFriendToEliminate;
             newFriend.UserName = userName;
-            newFriend.IdStatus = NOT_STATUS;
+            newFriend.IdStatusAvailability = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();
         }
@@ -216,10 +248,10 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendInfo newFriend = new FriendInfo();
+            FriendBasicInformation newFriend = new FriendBasicInformation();
             newFriend.IdUser = idUserRequesting;
             newFriend.UserName = userName;
-            newFriend.IdStatus = NOT_STATUS;
+            newFriend.IdStatusAvailability = NOT_STATUS;
             friends.Add(newFriend);
             SetCards();
         }
@@ -236,94 +268,76 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendInfo newFriend = new FriendInfo();
+            FriendBasicInformation newFriend = new FriendBasicInformation();
             newFriend.IdUser = idUserRequesting;
             newFriend.UserName = userName;
-            newFriend.IdStatus = NOT_STATUS;
+            newFriend.IdStatusAvailability = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();
         }
 
         public void ResponseReported(int numReports)
         {
-            InfoMessageDW infoMessageDW = new InfoMessageDW(Properties.Resources.txbInfoMessgSuccRegUser, Properties.Resources.MessageReported + numReports.ToString());
-            infoMessageDW.Show();
+            new InformationMessageDialogWindow(Properties.Resources.txbInfoMessgSuccRegUser, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow);
         }
 
-        public void ResponseResquestAction(int idUserOperation, int requestStatus, String userName)
-        {
-            const int DECLINED_REQUEST = 0, SEND_REQUEST = 1, ACCEPT_REQUEST = 2;
-            FriendInfo newFriend = new FriendInfo();
+        public void ResponseRequestAction(int idUser, int requestStatus, string userName)
+        {           
             switch (requestStatus)
             {
-                case DECLINED_REQUEST:
-                    foreach (var item in friendRequests)
-                    {
-                        if (item.IdUser == idUserOperation)
-                        {
-                            friendRequests.Remove(item);
-                            break;
-                        }
-                    }
-                    newFriend.IdUser = idUserOperation;
-                    newFriend.UserName = userName;
-                    newFriend.IdStatus = NOT_STATUS;
-                    otherPeople.Add(newFriend);
-                    lblDeclineRequestMessage.Content = idUserOperation + " " + Properties.Resources.MessageFriRequeDeclined;
+                case DECLINED_REQUEST:                   
+                    ManageResponse(friendRequests, otherPeople,idUser,userName);
+                    lblDeclineRequestMessage.Content = idUser + " " + Properties.Resources.MessageFriRequeDeclined;
                     StartTimer();
                     break;
-                case SEND_REQUEST:
-                    foreach (var item in otherPeople)
-                    {
-                        if (item.IdUser == idUserOperation)
-                        {
-                            otherPeople.Remove(item);
-                            break;
-                        }
-                    }
-                    newFriend.IdUser = idUserOperation;
-                    newFriend.UserName = userName;
-                    newFriend.IdStatus = NOT_STATUS;
-                    friendRequests.Add(newFriend);
+                case SEND_REQUEST:                    
+                    ManageResponse(otherPeople, friendRequests, idUser, userName);
                     break;
-                case ACCEPT_REQUEST:
-                    foreach (var item in friendRequests)
-                    {
-                        if (item.IdUser == idUserOperation)
-                        {
-                            friendRequests.Remove(item);
-                            break;
-                        }
-                    }
-                    newFriend.IdUser = idUserOperation;
-                    newFriend.UserName = userName;
-                    newFriend.IdStatus = NOT_STATUS;
-                    friends.Add(newFriend);
+                case ACCEPT_REQUEST:                   
+                    ManageResponse(friendRequests, friends, idUser, userName);
                     break;
             }
             SetCards();
         }
+
+        private void ManageResponse(List<FriendBasicInformation> deleteFromList, List<FriendBasicInformation> addToList, int idUserOperation, string userName)
+        {
+            foreach (var item in deleteFromList)
+            {
+                if (item.IdUser == idUserOperation)
+                {
+                    friendRequests.Remove(item);
+                    break;
+                }
+            }
+            FriendBasicInformation newFriend = new FriendBasicInformation();
+            newFriend.IdUser = idUserOperation;
+            newFriend.UserName = userName;
+            newFriend.IdStatusAvailability = NOT_STATUS;
+            addToList.Add(newFriend);
+        }
+
         public void ResponseEliminationFromFriends(int idPlayerWhoEliminatedU)
         {
-            String userNmae = String.Empty;
+            String userName = String.Empty;
             foreach (var item in friends)
             {
                 if (item.IdUser == idPlayerWhoEliminatedU)
                 {
                     friends.Remove(item);
-                    userNmae = item.UserName;
+                    userName = item.UserName;
                     break;
                 }
             }
-            FriendInfo newFriend = new FriendInfo();
+            FriendBasicInformation newFriend = new FriendBasicInformation();
             newFriend.IdUser = idPlayerWhoEliminatedU;
-            newFriend.UserName = userNmae;
-            newFriend.IdStatus = NOT_STATUS;
+            newFriend.UserName = userName;
+            newFriend.IdStatusAvailability = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();
         }
 
-        private void ClicBackToMenu(object sender, MouseButtonEventArgs e)
+        private void ClickBackToMenu(object sender, MouseButtonEventArgs e)
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             notifyUserActionFriendsManagerClient.UnregisterFriendManagerUser(userSingleton.IdUser);
@@ -332,32 +346,39 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        private void ClicSearchPlayerButton(object sender, RoutedEventArgs e)
+        private void ClickSearchPlayerButton(object sender, RoutedEventArgs e)
         {
             String userNameToSearch = txbUserToSearch.Text;
-            stcFrinedsManagerList.Children.Clear();
-            List<FriendInfo> listOfUsers;
-            switch (typeUserConsult)
+            if (!userNameToSearch.Equals(Properties.Resources.bttSearch))
             {
-                case MY_FRIENDS:
-                    listOfUsers = new List<FriendInfo>(friends); break;
-                case FRIENDS_REQUEST:
-                    listOfUsers = new List<FriendInfo>(friendRequests); break;
-                case OTHER_PEOPLE:
-                    listOfUsers = new List<FriendInfo>(otherPeople); break;
-                default:
-                    listOfUsers = new List<FriendInfo>(); break;
-            }
-            foreach (FriendInfo item in listOfUsers)
-            {
-                if (item.UserName == userNameToSearch)
+                stcFrinedsManagerList.Children.Clear();
+                List<FriendBasicInformation> listOfUsers;
+                switch (typeUserConsult)
                 {
-                    Border brdCard = new Border();
-                    FriendCardManagementWindow friendCardManagement = new FriendCardManagementWindow(item.IdUser, item.UserName, typeUserConsult, textLeftButton, textRightButton, this);
-                    brdCard.Child = friendCardManagement;
-                    stcFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
+                    case MY_FRIENDS:
+                        listOfUsers = new List<FriendBasicInformation>(friends);
+                        break;
+                    case FRIENDS_REQUEST:
+                        listOfUsers = new List<FriendBasicInformation>(friendRequests);
+                        break;
+                    case OTHER_PEOPLE:
+                        listOfUsers = new List<FriendBasicInformation>(otherPeople);
+                        break;
+                    default:
+                        listOfUsers = new List<FriendBasicInformation>();
+                        break;
                 }
-            }
+                foreach (FriendBasicInformation item in listOfUsers)
+                {
+                    if (item.UserName == userNameToSearch)
+                    {
+                        Border brdCard = new Border();
+                        FriendCardManagementWindow friendCardManagement = new FriendCardManagementWindow(item.IdUser, item.UserName, typeUserConsult, textLeftButton, textRightButton, this);
+                        brdCard.Child = friendCardManagement;
+                        stcFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
+                    }
+                }
+            }    
         }
 
         private void StartTimer()
@@ -379,18 +400,9 @@ namespace JeopardyGame.Pages
                 timer.Stop();
             }
         }
-
-        private void TextBoxSearchListener(object sender, TextCompositionEventArgs e)
+        private void WriteInSearchBar(object sender, MouseEventArgs e)
         {
-            if (txbUserToSearch.Text.Trim().Length > 0)
-            {
-                imgLook.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                imgLook.Visibility = Visibility.Visible;
-            }
+            txbUserToSearch.Text = string.Empty;
         }
-
     }
 }

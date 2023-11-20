@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JeopardyGame.Service.InterfacesSevices
+namespace JeopardyGame.Service.InterfacesServices
 {
 
     [ServiceContract(CallbackContract = typeof(ILobbyActionsCallback))]
@@ -23,22 +23,22 @@ namespace JeopardyGame.Service.InterfacesSevices
         void DissolveLobby(int RoomCode,int idUser);
 
         [OperationContract]
-        GenericClass<int> joinLobby(int roomCode, int idUser);
+        GenericClass<int> JoinLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        void NotifyPlayerInlobby(int roomCode, int idUser);
+        void NotifyPlayerInLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        void leaveLobby(int roomCode, int idUser);
+        void LeaveLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        public void ChangePlayerSide(int RoomCode, int idUser, int side);
+        void ChangePlayerSide(int RoomCode, int idUser, int side);
 
         [OperationContract(IsOneWay = true)]
         void EliminatePlayerFromMatch(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        public void MakeTeams(int roomCode, int idUser, bool wannaTeam);
+        void MakeTeams(int roomCode, int idUser, bool wannaTeam);
     }
 
     public interface ILobbyActionsCallback

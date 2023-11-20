@@ -1,6 +1,6 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.Exceptions;
-using JeopardyGame.Service.InterfacesSevices;
+using JeopardyGame.Service.InterfacesServices;
 using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
@@ -18,133 +18,187 @@ namespace JeopardyGame.Service.ServiceImplementation
         private int THERE_IS_A_REQUEST = 1;
         private int THEY_ARE_FRIENDS = 2;
 
-        public GenericClass<List<FriendInfo>> GetUserFriendRequests(UserPOJO user)
+        public GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user)
         {
-            GenericClass<List<FriendInfo>> resultToReturn = new GenericClass<List<FriendInfo>>();
-            if (user == null) return NullParametersHandler.HandleNullParametersService(resultToReturn);
-            ConsultInfoImple consultInfo = new ConsultInfoImple();
+            GenericClass<List<FriendBasicInformation>> resultToReturn = new GenericClass<List<FriendBasicInformation>>();
+            if (user == null)
+            {
+                return NullParametersHandler.HandleNullParametersService(resultToReturn);
+            }            
             User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
             GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
-            if (playerConsulted.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
+            if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                GenericClassServer<List<Friend>> playerFriends = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsulted.ObjectSaved);
-                if (playerFriends.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
+                GenericClassServer<List<Friend>> playerFriendsRequests = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsulted.ObjectSaved);
+                if (playerFriendsRequests.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    List<FriendInfo> friendsInfos = new List<FriendInfo>();
-                    foreach (Friend friend in playerFriends.ObjectSaved)
+                    ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                    List<FriendBasicInformation> friendsBasicInformation = new List<FriendBasicInformation>();
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    foreach (Friend friend in playerFriendsRequests.ObjectSaved)
                     {
-                        FriendInfo userFriend = new FriendInfo();
-                        UserPOJO friendPojo = new UserPOJO();
+                        FriendBasicInformation userFriend = new FriendBasicInformation();
+                        UserPOJO newUserFriend = new UserPOJO();
                         if (friend.PlayerFriend_IdPlayer == playerConsulted.ObjectSaved.IdPlayer && friend.IdFriendState == THERE_IS_A_REQUEST)
                         {
-                            friendPojo = consultInfo.ConsultUserByIdPlayer(friend.Player_IdPlayer).ObjectSaved;
-                            userFriend.UserName = friendPojo.UserName;
-                            userFriend.IdUser = friendPojo.IdUser;
-                            userFriend.IdStatus = NOT_STATUS;
-                            friendsInfos.Add(userFriend);
+                            var userFriendConsulted = consultInformation.ConsultUserByIdPlayer(friend.Player_IdPlayer);
+                            if (userFriendConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                newUserFriend = userFriendConsulted.ObjectSaved;
+                                userFriend.UserName = newUserFriend.UserName;
+                                userFriend.IdUser = newUserFriend.IdUser;
+                                userFriend.IdStatusAvailability = NOT_STATUS;
+                                friendsBasicInformation.Add(userFriend);
+                            }
+                            else
+                            {
+                                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                                break;
+                            }
                         }
                     }
-                    resultToReturn.ObjectSaved = friendsInfos;
-                    resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = friendsBasicInformation;                    
                 }
-                else { resultToReturn.CodeEvent = playerFriends.CodeEvent; }
+                else
+                {
+                    resultToReturn.CodeEvent = playerFriendsRequests.CodeEvent;
+                }
             }
-            else {resultToReturn.CodeEvent = playerConsulted.CodeEvent; }
+            else
+            {
+                resultToReturn.CodeEvent = playerConsulted.CodeEvent; 
+            }
             return resultToReturn;
         }
 
 
-        public GenericClass<List<FriendInfo>> GetUserFriends(UserPOJO user)
+        public GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user)
         {
-            GenericClass<List<FriendInfo>> resultToReturn = new GenericClass<List<FriendInfo>>();
-            if (user == null) return NullParametersHandler.HandleNullParametersService(resultToReturn);            
-            ConsultInfoImple consultInfo = new ConsultInfoImple();
+            GenericClass<List<FriendBasicInformation>> resultToReturn = new GenericClass<List<FriendBasicInformation>>();
+            if (user == null)
+            {
+                return NullParametersHandler.HandleNullParametersService(resultToReturn);
+            }            
             User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
             GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
-            if (playerConsulted.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
+            if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                GenericClassServer<List<Friend>> friendsConsulted = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsulted.ObjectSaved);
-                if (friendsConsulted.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
+                ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                GenericClassServer<List<Friend>> friendsOfPlayer = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsulted.ObjectSaved);
+                if (friendsOfPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    List<FriendInfo> friendsInfos = new List<FriendInfo>();
-                    foreach (Friend friend in friendsConsulted.ObjectSaved)
+                    List<FriendBasicInformation> friendsOfUserInformation = new List<FriendBasicInformation>();
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    foreach (Friend friend in friendsOfPlayer.ObjectSaved)
                     {
                         if (friend.IdFriendState == THEY_ARE_FRIENDS)
                         {
-                            FriendInfo userFriend = new FriendInfo();
-                            UserPOJO friendPojo = new UserPOJO();
+                            FriendBasicInformation userFriendInformation = new FriendBasicInformation();
+                            var userFriendPojo = new GenericClass<UserPOJO>();
                             int status;
                             if ((friend.Player_IdPlayer == playerConsulted.ObjectSaved.IdPlayer))
                             {
                                 status = GetFriendStatus(friend.PlayerFriend_IdPlayer);
-                                friendPojo = consultInfo.ConsultUserByIdPlayer(friend.PlayerFriend_IdPlayer).ObjectSaved;
+                                userFriendPojo = consultInformation.ConsultUserByIdPlayer(friend.PlayerFriend_IdPlayer);
                             }
                             else
                             {
                                 status = GetFriendStatus(friend.Player_IdPlayer);
-                                friendPojo = consultInfo.ConsultUserByIdPlayer(friend.Player_IdPlayer).ObjectSaved;
+                                userFriendPojo = consultInformation.ConsultUserByIdPlayer(friend.Player_IdPlayer);
                             }
-                            userFriend.UserName = friendPojo.UserName;
-                            userFriend.IdUser = friendPojo.IdUser;
-                            userFriend.IdStatus = status;
-                            friendsInfos.Add(userFriend);
+                            if (userFriendPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                userFriendInformation.UserName = userFriendPojo.ObjectSaved.UserName;
+                                userFriendInformation.IdUser = userFriendPojo.ObjectSaved.IdUser;
+                                userFriendInformation.IdStatusAvailability = status;
+                                friendsOfUserInformation.Add(userFriendInformation);
+                            }
+                            else
+                            {
+                                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                                break;
+                            }
                         }
                     }
-                    resultToReturn.ObjectSaved = friendsInfos;
-                    resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = friendsOfUserInformation;                    
                 }
-                else { resultToReturn.CodeEvent = friendsConsulted.CodeEvent; }
+                else 
+                {
+                    resultToReturn.CodeEvent = friendsOfPlayer.CodeEvent;
+                }
             }
-            else { resultToReturn.CodeEvent = playerConsulted.CodeEvent; }
+            else
+            { 
+                resultToReturn.CodeEvent = playerConsulted.CodeEvent;
+            }
             return resultToReturn;
         }
 
-        public GenericClass<List<FriendInfo>> GetUsersNotFriends(UserPOJO user)
+        public GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user)
         {
-            GenericClass<List<FriendInfo>> resultToReturn = new GenericClass<List<FriendInfo>>();
-            if (user == null) return NullParametersHandler.HandleNullParametersService(resultToReturn);          
-            ConsultInfoImple consultInfo = new ConsultInfoImple();
+            GenericClass<List<FriendBasicInformation>> resultToReturn = new GenericClass<List<FriendBasicInformation>>();
+            if (user == null) 
+            { 
+                return NullParametersHandler.HandleNullParametersService(resultToReturn); 
+            }                
             User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
             GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
-            if (playerConsulted.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT) 
+            if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
             {
-                GenericClassServer<List<Player>> playerNotFriends = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerConsulted.ObjectSaved);
-                if (playerNotFriends.CodeEvent == ExceptionDiccionary.SUCCESFULL_EVENT)
+                GenericClassServer<List<Player>> playersNotFriends = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerConsulted.ObjectSaved);
+                if (playersNotFriends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    List<FriendInfo> notFriends = new List<FriendInfo>();
-                    foreach (var item in playerNotFriends.ObjectSaved)
+                    ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                    List<FriendBasicInformation> ListUsersNotFriendsInformation = new List<FriendBasicInformation>();
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    foreach (var player in playersNotFriends.ObjectSaved)
                     {
-                        FriendInfo userNotFriend = new FriendInfo();
-                        UserPOJO userPOJO = new UserPOJO();
-                        userPOJO = consultInfo.ConsultUserByIdPlayer(item.IdPlayer).ObjectSaved;
-                        userNotFriend.UserName = userPOJO.UserName;
-                        userNotFriend.IdUser = userPOJO.IdUser;
-                        userNotFriend.IdStatus = NOT_STATUS;
-                        notFriends.Add(userNotFriend);
+                        FriendBasicInformation userNotFriendInformation = new FriendBasicInformation();
+                        var userFriendConsulted = new GenericClass<UserPOJO>();
+                        if (userFriendConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            userFriendConsulted = consultInformation.ConsultUserByIdPlayer(player.IdPlayer);
+                            userNotFriendInformation.UserName = userFriendConsulted.ObjectSaved.UserName;
+                            userNotFriendInformation.IdUser = userFriendConsulted.ObjectSaved.IdUser;
+                            userNotFriendInformation.IdStatusAvailability = NOT_STATUS;
+                            ListUsersNotFriendsInformation.Add(userNotFriendInformation);
+                        }
+                        else
+                        {
+                            resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            break;
+                        }
                     }
-                    resultToReturn.ObjectSaved = notFriends;
-                    resultToReturn.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = ListUsersNotFriendsInformation;                    
                 }
-                else { resultToReturn.CodeEvent = playerNotFriends.CodeEvent; }
+                else 
+                { 
+                    resultToReturn.CodeEvent = playersNotFriends.CodeEvent; 
+                }
             }
-            else { resultToReturn.CodeEvent = playerConsulted.CodeEvent; }
+            else 
+            {
+                resultToReturn.CodeEvent = playerConsulted.CodeEvent;
+            }
             return resultToReturn;
         }
 
         private int GetFriendStatus(int idFriend)
         {
-            ConsultInfoImple consultInfo = new ConsultInfoImple();
-            UserPOJO userPOJO = consultInfo.ConsultUserByIdPlayer(idFriend).ObjectSaved;
-            var channelSaved = ActiveUsers.GetChannelUser(userPOJO.IdUser);
-            if (channelSaved != null)
+            ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+            var userPOJO = consultInformation.ConsultUserByIdPlayer(idFriend);
+            if (userPOJO.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
             {
-                return ACTIVE;
+                var channelSaved = ActiveUsersDictionary.GetChannelCallBackActiveUser(userPOJO.ObjectSaved.IdUser);
+                if (channelSaved != null)
+                {
+                    return ACTIVE;
+                }
             }
             return INACTIVE;
         }
    
-    }
-    
+    }    
 }
 
 

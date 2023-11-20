@@ -7,19 +7,19 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JeopardyGame.Service.InterfacesSevices
+namespace JeopardyGame.Service.InterfacesServices
 {
     [ServiceContract]
     public interface IFriendsManager
     {
         [OperationContract]
-        GenericClass<List<FriendInfo>> GetUserFriends(UserPOJO user);
+        GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user);
 
         [OperationContract]
-        GenericClass<List<FriendInfo>> GetUserFriendRequests(UserPOJO user);
+        GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user);
 
         [OperationContract]
-        GenericClass<List<FriendInfo>> GetUsersNotFriends(UserPOJO user);
+        GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user);
     }
 
   

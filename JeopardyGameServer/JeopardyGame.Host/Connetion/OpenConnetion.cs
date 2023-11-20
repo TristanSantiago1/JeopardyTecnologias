@@ -1,19 +1,14 @@
 ﻿using JeopardyGame.Data.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Security;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JeopardyGame.Host.Connetion
+namespace JeopardyGame.Host.Connection
 {
-    class OpenConnetion
+    class OpenConnection
     {
         static void Main(string[] args)        
         {
-           
             try
             {
                 using (ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.ServicesReferenceAuthor)))
@@ -23,28 +18,30 @@ namespace JeopardyGame.Host.Connetion
                     Console.ReadLine();
                 }
             }
-            catch(ProtocolException ex)
+            catch (SecurityNegotiationException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
             }
-            catch(SecurityNegotiationException ex)
+            catch (InvalidOperationException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
             }
             catch (AddressAlreadyInUseException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+            }
+            catch (ProtocolException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
             }
             catch (SystemException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.ERROR);
-            }
-           
-           
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+            }         
         }
     }
 }

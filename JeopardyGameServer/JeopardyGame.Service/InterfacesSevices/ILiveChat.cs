@@ -6,29 +6,29 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JeopardyGame.Service.InterfacesSevices
+namespace JeopardyGame.Service.InterfacesServices
 {
     [ServiceContract(CallbackContract = typeof(ILiveChatCallBack))]
     public interface ILiveChat
     {
         [OperationContract(IsOneWay = true)]
-       public void SendMessage(int idUser, int room, String userName, String message);
+        void SendMessage(int idUser, int room, String userName, String message);
 
         [OperationContract]
-        public GenericClass<List<MessageChat>> GetAllMessages(int room, int idUser);
+        GenericClass<List<MessageChat>> GetAllMessages(int room, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        public void DeleteChat(int roomCode, int idUser);
+        void DeleteChat(int roomCode, int idUser);
 
-        [OperationContract(IsOneWay = true)]
-        public void CreateChatForLobby(int roomCode, int idAdmin);
+        [OperationContract]
+        GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin);
 
     }
 
     public interface ILiveChatCallBack
     {
         [OperationContract]
-        public void ReciveMessage(GenericClass<MessageChat> message);
+        void ReceiveMessage(GenericClass<MessageChat> message);
     }
 
 }

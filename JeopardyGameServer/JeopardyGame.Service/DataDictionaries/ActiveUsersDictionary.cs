@@ -1,4 +1,4 @@
-﻿using JeopardyGame.Service.InterfacesSevices;
+﻿using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service
 {
-    public  class ActiveUsers
+    public  class ActiveUsersDictionary
     {
         private static Dictionary<int, OperationContext> activeUsers = new Dictionary<int, OperationContext>();
 
 
-        public static void RegisterNewUserInDictionary(int idUser, OperationContext canal)
+        public static void RegisterNewActiveUserInDictionary(int idUser, OperationContext channel)
         {
             if (!activeUsers.ContainsKey(idUser))
             {
-                activeUsers.Add(idUser, canal);
+                activeUsers.Add(idUser, channel);
             }
         }
 
-        public static OperationContext GetChannelUser(int idUser)
+        public static OperationContext GetChannelCallBackActiveUser(int idUser)
         {
             foreach (var item in activeUsers)
             {
@@ -33,7 +33,7 @@ namespace JeopardyGame.Service
             return null;
         }
 
-        public static void RemoveRegistryFromDictionary(int idUser)
+        public static void RemoveRegistryOfActiveUserFromDictionary(int idUser)
         {
             if (activeUsers.ContainsKey(idUser))
             {
@@ -41,7 +41,7 @@ namespace JeopardyGame.Service
             }
         }
 
-        public Dictionary<int, OperationContext> GetActiveFirendsList() 
+        public Dictionary<int, OperationContext> GetActiveUsersList() 
         { 
             return activeUsers; 
         }

@@ -15,22 +15,29 @@ namespace JeopardyGame.Helpers
         Label lblMessage;
         public ChatMessageCard(String userName,  String message)
         {
-            this.Margin = new System.Windows.Thickness(1, 2, 1, 2);
-            this.Width = 400;            
-            this.MaxWidth = 500;
-            this.Height = double.NaN;            
-            this.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
-            this.Opacity = .4;
-
-            lblUserName = new Label();
-            lblMessage = new Label();
-            stpUserMessage = new StackPanel();
-
+            SetCardStyle();
+            InitializeComponents();
             SetUserNameStyle(userName);
             SetMessageStyle(message);
             SetStackPanelStyle();
-
             this.Child = stpUserMessage;
+        }
+        
+        private void SetCardStyle()
+        {
+            this.Margin = new System.Windows.Thickness(1, 2, 1, 2);
+            this.Width = 400;
+            this.MaxWidth = 500;
+            this.Height = double.NaN;
+            this.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+            this.Opacity = .4;
+        }
+
+        private void InitializeComponents()
+        {
+            lblUserName = new Label();
+            lblMessage = new Label();
+            stpUserMessage = new StackPanel();
         }
 
         private void SetStackPanelStyle()

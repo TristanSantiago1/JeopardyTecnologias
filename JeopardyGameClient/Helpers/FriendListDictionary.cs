@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Helpers
 {
-    public partial class Friend()
+    public partial class FriendAvailabilityInformation()
     {
         public int IdUser { get; set; }
         public string Name { get; set; }
-        public int idStatus { get; set; }
+        public int idStatusOfAvailability { get; set; }
     }
     public partial class FriendList()
     {
-        private static Dictionary<int, Friend> friendList = new Dictionary<int, Friend>();
+        private static Dictionary<int, FriendAvailabilityInformation> friendOfUserList = new Dictionary<int, FriendAvailabilityInformation>();
 
-        public static void RegisterNewFriendInDictionary(int idUser, Friend friend)
+        public static void RegisterNewFriendInDictionary(int idUser, FriendAvailabilityInformation friend)
         {
-            if (!friendList.ContainsKey(idUser))
+            if (!friendOfUserList.ContainsKey(idUser))
             {
-                friendList.Add(idUser, friend);
+                friendOfUserList.Add(idUser, friend);
             }
         }
 
-        public static Friend GetFriend(int idUser)
+        public static FriendAvailabilityInformation GetFriend(int idUser)
         {
-            foreach (var item in friendList)
+            foreach (var item in friendOfUserList)
             {
                 if (item.Key == idUser)
                 {
@@ -36,35 +36,35 @@ namespace JeopardyGame.Helpers
             return null;
         }
 
-        public static void RemoveRegistryFromDictionary(int idUser)
+        public static void RemoveFriendFromDictionary(int idUser)
         {
-            if (friendList.ContainsKey(idUser))
+            if (friendOfUserList.ContainsKey(idUser))
             {
-                friendList.Remove(idUser);
+                friendOfUserList.Remove(idUser);
             }
         }
 
-        public static void ChangeStatus(int idUser, int idStatus)
+        public static void ChangeStatusOfFriend(int idUser, int idStatus)
         {
-            if (friendList.ContainsKey(idUser))
+            if (friendOfUserList.ContainsKey(idUser))
             {
-                foreach (var item in friendList)
+                foreach (var item in friendOfUserList)
                 {
                     if (item.Key == idUser)
                     {
-                        item.Value.idStatus = idStatus;
+                        item.Value.idStatusOfAvailability = idStatus;
                     }
                 }
             }
         }
         public static void CleanDictionary()
         {
-            friendList.Clear();
+            friendOfUserList.Clear();
         }
 
-        public static Dictionary<int, Friend> GetActiveFirendsList()
+        public static Dictionary<int, FriendAvailabilityInformation> GetActiveFriendsList()
         {
-            return friendList;
+            return friendOfUserList;
         }
     }
 }

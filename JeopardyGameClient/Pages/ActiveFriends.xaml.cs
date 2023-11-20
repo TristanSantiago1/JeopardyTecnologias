@@ -24,7 +24,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
-        GenericClassOfArrayOfFriendInfoxY0a3WX4 friends;
+        private const int AVAILABLE_STATUS = 1;
         public ActiveFriends()
         {
             InitializeComponent();                                   
@@ -36,10 +36,10 @@ namespace JeopardyGame.Pages
             SetFriend();
         }
 
-        private void ClicCloseListFriends(object sender, MouseButtonEventArgs e)
+        private void ClickCloseListFriends(object sender, MouseButtonEventArgs e)
         {
-            LobbyPage lobyGamePage = new LobbyPage();
-            this.NavigationService.Navigate(lobyGamePage);
+            LobbyPage lobbyGamePage = new LobbyPage();
+            this.NavigationService.Navigate(lobbyGamePage);
             NavigationService.RemoveBackEntry();
         }
 
@@ -47,16 +47,23 @@ namespace JeopardyGame.Pages
         {
             FriendsManagerClient proxyFriend = new FriendsManagerClient();
             ConsultInformationClient proxyUser = new ConsultInformationClient();
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            var user = proxyUser.ConsultUserById(userSingleton.IdUser);    
-            friends = proxyFriend.GetUserFriends(user.ObjectSaved);
-            foreach (var item in friends.ObjectSaved)
+            UserSingleton mainCurrentUser = UserSingleton.GetMainUser();
+            var user = proxyUser.ConsultUserById(mainCurrentUser.IdUser);    
+            var friends = proxyFriend.GetUserFriends(user.ObjectSaved);
+            if(friends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                Friend activeFriend = new Friend();
-                activeFriend.IdUser=item.IdUser;
-                activeFriend.Name = item.UserName;
-                activeFriend.idStatus = item.IdStatus;
-                FriendList.RegisterNewFriendInDictionary(item.IdUser,activeFriend);
+                foreach (var item in friends.ObjectSaved)
+                {
+                    FriendAvailabilityInformation activeFriend = new FriendAvailabilityInformation();
+                    activeFriend.IdUser = item.IdUser;
+                    activeFriend.Name = item.UserName;
+                    activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
+                    FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
+                }
+            }
+            else
+            {
+                ExceptionHandler.HandleException(friends.CodeEvent, string.Empty);
             }
             proxyFriend.Close();
             proxyUser.Close();
@@ -66,13 +73,13 @@ namespace JeopardyGame.Pages
         {   
             stcFriendList.Children.Clear();
             stcFriendList.Orientation = Orientation.Vertical;
-            Dictionary<int, Friend> friendList = FriendList.GetActiveFirendsList();
+            Dictionary<int, FriendAvailabilityInformation> friendList = FriendList.GetActiveFriendsList();
             if (friendList != null)
             {               
                 foreach (var item in friendList)
                 {
                     bool state;
-                    if (item.Value.idStatus == 1)
+                    if (item.Value.idStatusOfAvailability == AVAILABLE_STATUS)
                     {
                         state = true;
                     }
@@ -85,16 +92,15 @@ namespace JeopardyGame.Pages
                 }
             }            
         }
-
-        public void Response(int status, int idFriend)
+        public void ResponseOfPlayerAvailability(int status, int idFriend)
         {
-            Dictionary<int, Friend> friendList = FriendList.GetActiveFirendsList();          
+            Dictionary<int, FriendAvailabilityInformation> friendList = FriendList.GetActiveFriendsList();
             if (friendList.ContainsKey(idFriend))
             {
-                FriendList.ChangeStatus(idFriend, status);
+                FriendList.ChangeStatusOfFriend(idFriend, status);
             }
             SetFriend();
         }
-
     }
+
 }

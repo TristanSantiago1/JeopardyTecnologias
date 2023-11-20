@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.DataDictionaries
 {
-    public class GameLobbies
+    public class GameLobbiesDictionary
     {        
-        private static Dictionary<int, Lobby> activeLobbies = new Dictionary<int, Lobby>();
+        private static Dictionary<int, Lobby> activeLobbiesDictionary = new Dictionary<int, Lobby>();
 
 
         public static void RegisterNewLobby(int roomCode, Lobby newLobby)
         {
 
-            if (!activeLobbies.ContainsKey(roomCode))
+            if (!activeLobbiesDictionary.ContainsKey(roomCode))
             {
-                activeLobbies.Add(roomCode, newLobby);
+                activeLobbiesDictionary.Add(roomCode, newLobby);
             }
         }
 
-        public static Lobby GetLobby(int roomCode)
+        public static Lobby GetSpecificActiveLobby(int roomCode)
         {
-            foreach (var item in activeLobbies)
+            foreach (var item in activeLobbiesDictionary)
             {
                 if (item.Key == roomCode)
                 {
@@ -34,17 +34,17 @@ namespace JeopardyGame.Service.DataDictionaries
             return null;
         }
 
-        public static void RemoveRegistryFromDictionary(int roomCode)
+        public static void RemoveRegistryOfLobbyFromDictionary(int roomCode)
         {
-            if (activeLobbies.ContainsKey(roomCode))
+            if (activeLobbiesDictionary.ContainsKey(roomCode))
             {
-                activeLobbies.Remove(roomCode);
+                activeLobbiesDictionary.Remove(roomCode);
             }
         }
 
         public Dictionary<int, Lobby> GetActiveLobbiesList()
         {
-            return activeLobbies;
+            return activeLobbiesDictionary;
         }
 
     }
@@ -64,10 +64,10 @@ namespace JeopardyGame.Service.DataDictionaries
     {
         public int idUser { get; set; }
         public int idPlayer { get; set; }
-        public String username { get; set; }
-        public int numPlayer { get; set; }
-        public int side { get; set; }
-        public OperationContext comunicationChannelLobby { get; set;}        
+        public String userName { get; set; }
+        public int numberOfPlayerInLobby { get; set; }
+        public int sideTeam { get; set; }
+        public OperationContext lobbyCommunicationChannelCallback { get; set;}        
     }
 
 }

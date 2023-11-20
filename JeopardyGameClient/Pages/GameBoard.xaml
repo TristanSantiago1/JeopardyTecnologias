@@ -68,41 +68,41 @@
                     </Border.RenderTransform>
 
                 </Border>
-                <Rectangle x:Name="firstCategory" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="132,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstCategory" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="132,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="firstQuestionFC" MouseDown="Rectangulo_Click" HorizontalAlignment ="Left" Fill="#0802A3"  Height="90" Margin="132,250,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstQuestionFC" MouseDown="ClickRectangulo" HorizontalAlignment ="Left" Fill="#0802A3"  Height="90" Margin="132,250,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="secondQuestionFC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="128,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Cursor="Hand">
+                <Rectangle x:Name="secondQuestionFC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="128,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Cursor="Hand">
                 </Rectangle>
-                <Rectangle x:Name="thirdQuestionFC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="132,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdQuestionFC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="132,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="secondCategory" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="423,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="secondCategory" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="423,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="thirdCategory" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="714,137,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdCategory" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="714,137,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="firstQuestionSC" MouseDown="Rectangulo_Click" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Margin="0,250,0,0"/>
-                <Rectangle x:Name="secondQuestionSC" MouseDown="Rectangulo_Click" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstQuestionSC" MouseDown="ClickRectangulo" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Margin="0,250,0,0"/>
+                <Rectangle x:Name="secondQuestionSC" MouseDown="ClickRectangulo" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="thirdQuestionSC" MouseDown="Rectangulo_Click" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdQuestionSC" MouseDown="ClickRectangulo" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="firstQuestionTC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,252,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstQuestionTC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,252,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="secondQuestionTC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,354,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="secondQuestionTC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,354,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="thirdQuestionTC" MouseDown="Rectangulo_Click" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdQuestionTC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
                 <Label x:Name="historyCategory" FontSize="40" Foreground="White" FontWeight="Bold" Content="History" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="159,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
                 <Label x:Name="scienceCategory" FontSize="40" Foreground="White" Content="Science" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="454,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
                 <Label x:Name="moviesCategory" FontSize="40" Foreground="White" Content="Movies" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="772,151,0,0" VerticalAlignment="Top" Height="56" Width="157"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="214,267,0,0" VerticalAlignment="Top" Height="56" Width="86" RenderTransformOrigin="0.741,0.554"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="208,368,0,0" VerticalAlignment="Top" Height="56" Width="90" Background="{x:Null}" Cursor="Hand"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="203,472,0,0" VerticalAlignment="Top" Height="56" Width="100" RenderTransformOrigin="1.096,0.523"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="83" Margin="0,266,0,0"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="510,472,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,472,0,0" VerticalAlignment="Top" Height="56" Width="82"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,368,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="-0.327,-0.12"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="Rectangulo_Click" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,265,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="0.46,0.171"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="214,267,0,0" VerticalAlignment="Top" Height="56" Width="86" RenderTransformOrigin="0.741,0.554"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="208,368,0,0" VerticalAlignment="Top" Height="56" Width="90" Background="{x:Null}" Cursor="Hand"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="203,472,0,0" VerticalAlignment="Top" Height="56" Width="100" RenderTransformOrigin="1.096,0.523"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="83" Margin="0,266,0,0"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="510,472,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,472,0,0" VerticalAlignment="Top" Height="56" Width="82"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,368,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="-0.327,-0.12"/>
+                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,265,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="0.46,0.171"/>
             </Grid>
         </Grid>
     </Viewbox>

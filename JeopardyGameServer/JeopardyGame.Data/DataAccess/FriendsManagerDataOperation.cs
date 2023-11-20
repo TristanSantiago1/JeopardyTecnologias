@@ -12,219 +12,262 @@ using System.Threading.Tasks;
 namespace JeopardyGame.Data.DataAccess
 {
     public class FriendsManagerDataOperation
-    { 
+    {
+        private static int FRIEND_STATUS_NEW = 1;
+        private static int FRIEND_STATUS_ACCCEPT_REQUEST = 2;
+        private static int NULL_INT_VALUE = 0;
         public static GenericClassServer<List<Friend>> ConsultFriendsOfPlayer(Player player) 
         {
-            GenericClassServer<List<Friend>> result = new GenericClassServer<List<Friend>>();
-            if (player == null) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<List<Friend>> resultOfOperation = new GenericClassServer<List<Friend>>();
+            if (player == null)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
                     
-                    var friendsOfUser = context.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();                    
-                    result.ObjectSaved = friendsOfUser;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-                                      
+                    var friendsOfUser = contextBD.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
+                    resultOfOperation.ObjectSaved = friendsOfUser;
+                    if (friendsOfUser != null)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {                        
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }                                 
                 }
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result; 
+            return resultOfOperation; 
         }
 
         public static GenericClassServer<List<Player>> Get20NotFriendsPlayer(Player player)
         {
-            GenericClassServer<List<Player>> result = new GenericClassServer<List<Player>>();
-            if (player == null) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<List<Player>> resultOfOperation = new GenericClassServer<List<Player>>();
+            if (player == null)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation); 
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var friendsOfUser = context.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
+                    var friendsOfUser = ConsultFriendsOfPlayer(player).ObjectSaved;
                     List<int> idsFriends = new List<int>();
-                    foreach (var friend in friendsOfUser)
+                    if(friendsOfUser != null)
                     {
-                        if (friend.Player_IdPlayer == player.IdPlayer)
+                        foreach (var friend in friendsOfUser)
                         {
-                            idsFriends.Add(friend.PlayerFriend_IdPlayer);
+                            if (friend.Player_IdPlayer == player.IdPlayer)
+                            {
+                                idsFriends.Add(friend.PlayerFriend_IdPlayer);
+                            }
+                            else
+                            {
+                                idsFriends.Add(friend.Player_IdPlayer);
+                            }
+                        }
+                        idsFriends.Add(player.IdPlayer);
+                        var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer)).Take(20).ToList();
+                        resultOfOperation.ObjectSaved = playersNotFriends;
+                        if (playersNotFriends != null)
+                        {                            
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
-                            idsFriends.Add(friend.Player_IdPlayer);
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
-                    idsFriends.Add(player.IdPlayer);
-                    var playersNotFriends = context.Players.Where(p => !idsFriends.Contains(p.IdPlayer)).Take(20).ToList();                 
-                    result.ObjectSaved = playersNotFriends;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    else
+                    {
+                        resultOfOperation.ObjectSaved = null;
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }                    
                 }
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
         }
 
-        public static  GenericClassServer<int> DeleteFriendsRegister(int idPlayer1, int idPlayer2)
+        public static  GenericClassServer<int> DeleteFriendsRegister(int idPlayerFriend1, int idPlayerFriend2)
         {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            if (idPlayer1 == 0 || idPlayer2 == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (idPlayerFriend1 == NULL_INT_VALUE || idPlayerFriend2 == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var frienshipToDelete = context.Friends.FirstOrDefault(f => (f.Player_IdPlayer == idPlayer1 && f.PlayerFriend_IdPlayer == idPlayer2) || (f.Player_IdPlayer == idPlayer2 && f.PlayerFriend_IdPlayer == idPlayer1));
-                    context.Friends.Remove((Friend)frienshipToDelete);
-                    int resultEvent = context.SaveChanges();
-                    if (resultEvent != 0)
+                    var friendshipToDelete = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
+                    contextBD.Friends.Remove((Friend)friendshipToDelete);
+                    int resultEvent = contextBD.SaveChanges();
+                    resultOfOperation.ObjectSaved = resultEvent;
+                    if (resultEvent != NULL_INT_VALUE)
                     {
-                        result.ObjectSaved = resultEvent;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT; 
-                    }                    
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
                 }
             }
             catch (DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
         }
 
-        public static GenericClassServer<int> AcceptFriendRequest(int idUser1, int idUser2)
+        public static GenericClassServer<int> AcceptFriendRequest(int idPlayerFriend1, int idPlayerFriend2)
         {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            if (idUser1 == 0 || idUser2 == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (idPlayerFriend1 == NULL_INT_VALUE || idPlayerFriend2 == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var frienshipToChange = context.Friends.FirstOrDefault(f => (f.Player_IdPlayer == idUser1 && f.PlayerFriend_IdPlayer == idUser2) || (f.Player_IdPlayer == idUser2 && f.PlayerFriend_IdPlayer == idUser1));
-                    frienshipToChange.IdFriendState = 2;
-                    context.Entry(frienshipToChange).State = EntityState.Modified;
-                    int resultEvent = context.SaveChanges();
-                    if (resultEvent != 0)
+                    var friendshipToChange = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
+                    friendshipToChange.IdFriendState = FRIEND_STATUS_ACCCEPT_REQUEST;
+                    contextBD.Entry(friendshipToChange).State = EntityState.Modified;
+                    int resultEvent = contextBD.SaveChanges();
+                    resultOfOperation.ObjectSaved = resultEvent;
+                    if (resultEvent != NULL_INT_VALUE)
                     {
-                        result.ObjectSaved = resultEvent;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-                    }                    
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
                 }
             }
             catch (DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
         }
 
-        public static GenericClassServer<int> SendFriendRequest(int idUserSender, int idUserReciver)
+        public static GenericClassServer<int> SendFriendRequest(int idPlayerSender, int idPlayerCatcher)
         {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            if (idUserReciver == 0 || idUserSender == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (idPlayerCatcher == NULL_INT_VALUE || idPlayerSender == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
                     Friend newRelationShip = new Friend();
-                    newRelationShip.IdFriendState = 0;
-                    newRelationShip.Player_IdPlayer = idUserSender;
-                    newRelationShip.PlayerFriend_IdPlayer = idUserReciver;
-                    newRelationShip.IdFriendState = 1;
-                    context.Friends.Add(newRelationShip);
-                    int resultEvent = context.SaveChanges();
-                    if (resultEvent != 0)
-                    {
-                        result.ObjectSaved = resultEvent;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    newRelationShip.IdFriendState = NULL_INT_VALUE;
+                    newRelationShip.Player_IdPlayer = idPlayerSender;
+                    newRelationShip.PlayerFriend_IdPlayer = idPlayerCatcher;
+                    newRelationShip.IdFriendState = FRIEND_STATUS_NEW;
+                    contextBD.Friends.Add(newRelationShip);
+                    int resultEvent = contextBD.SaveChanges();
+                    resultOfOperation.ObjectSaved = resultEvent;
+                    if (resultEvent != NULL_INT_VALUE)
+                    {                        
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                     }
-                    //else
-                    //{
-                    //    var frienshipToChange = context.Friends.Where(f => (f.Player_IdPlayer == idUserSender && f.PlayerFriend_IdPlayer == idUserReciver) || (f.Player_IdPlayer == idUserReciver && f.PlayerFriend_IdPlayer == idUserSender));
-                    //    if (frienshipToChange.Any())
-                    //    {
-
-                    //    }
-                    //}               
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }                                  
                 }
             }
             catch (DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
         }
 
     }

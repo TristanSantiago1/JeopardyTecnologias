@@ -1,4 +1,4 @@
-﻿<Window x:Class="JeopardyGame.DialogWindows.InfoMessageDW"
+﻿<Window x:Class="JeopardyGame.DialogWindows.InformationMessageDialogWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,7 +17,7 @@
                 </StackPanel>
 
                 <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Width="68" Margin="166,109,166,8"  >
-                    <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttAccept}" FontStretch="Expanded" Click="AcceptButton_Click"
+                    <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttAccept}" FontStretch="Expanded" Click="ClickAcceptButton"
                         Style="{StaticResource ButtonConfirmationStyle}" Background="#592C75" Margin="-2,-2,-29,-2" />
                 </Border>
             </Grid>

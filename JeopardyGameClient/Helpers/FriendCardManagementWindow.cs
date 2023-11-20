@@ -26,36 +26,40 @@ namespace JeopardyGame.Helpers
 
         public FriendCardManagementWindow(int idUser,String userName, int state, String textLeftButton, String textRigthButton, FriendManager windowInstance)
         {
-            this.Margin = new System.Windows.Thickness(0);
-            this.Width = 1030;
-            this.MaxWidth = 1130;         
-            this.Orientation = System.Windows.Controls.Orientation.Horizontal;          
-            this.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            this.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-
-            this.idUser = idUser;
-            friendManager = windowInstance;
-            stcName = new StackPanel();
-            stcButtons = new StackPanel();
-            lblUserName = new Label();
-            brdLeftButton = new Border();
-            brdRigthButton = new Border();  
-            ellPointMark = new System.Windows.Shapes.Ellipse();
-            bttLeftFunction = new Button();
-            bttRightFunction = new Button();
-           
-            
-
+            SetCardStyle();
+            InitializeComponents();
             SetLabelStyle(userName);
             SetEllipseStyle();
             SetLefButtonStyle(textLeftButton, state);
             SetRigthButtonStyle(textRigthButton, state);
             SetStackPanelStyle();
             SetStackPanelButtonsStyle();
-
             this.Children.Add(stcName);
             this.Children.Add(stcButtons);
+        }
 
+        private void SetCardStyle()
+        {
+            this.Margin = new System.Windows.Thickness(0);
+            this.Width = 1030;
+            this.MaxWidth = 1130;
+            this.Orientation = System.Windows.Controls.Orientation.Horizontal;
+            this.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            this.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+        }
+
+        private void InitializeComponents()
+        {
+            this.idUser = idUser;
+            friendManager = windowInstance;
+            stcName = new StackPanel();
+            stcButtons = new StackPanel();
+            lblUserName = new Label();
+            brdLeftButton = new Border();
+            brdRigthButton = new Border();
+            ellPointMark = new System.Windows.Shapes.Ellipse();
+            bttLeftFunction = new Button();
+            bttRightFunction = new Button();
         }
 
         private void SetLabelStyle(string userName)

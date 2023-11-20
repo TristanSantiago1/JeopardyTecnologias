@@ -7,16 +7,16 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JeopardyGame.Service.InterfacesSevices
+namespace JeopardyGame.Service.InterfacesServices
 {
        [ServiceContract]   
         public interface IUserManager
         {
             [OperationContract]
-             GenericClass<int> SaveUser(UserPOJO userPojoNew); 
+            GenericClass<int> SaveUser(UserPOJO userPojoNew); 
 
             [OperationContract]
-            GenericClass<int> validateCredentials(UserValidate newUserValidate);
+            GenericClass<int> ValidateCredentials(UserValidate newUserValidate);
 
             [OperationContract]
             GenericClass<int> EmailAlreadyExist(String email);

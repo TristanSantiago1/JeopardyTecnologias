@@ -14,22 +14,22 @@
 
 
 
-        <Label x:Name="lblNameDescripEditAcc" Content="Name:" Style="{StaticResource labelStyleSimple}" 
+        <Label x:Name="lblNameDescripEditAccount" Content="Name:" Style="{StaticResource labelStyleSimple}" 
                   Height="60" Width="217" Margin="323,431,0,0"/>
-        <Label x:Name="lblUserNameDescripEditAcc" Content="User name:" Style="{StaticResource labelStyleSimple}" 
+        <Label x:Name="lblUserNameDescripEditAccount" Content="User name:" Style="{StaticResource labelStyleSimple}" 
                  Height="60" Width="250" Margin="323,366,0,0" />
-        <Label x:Name="lblAddresDescripEditAcc" Content="Correo :" Style="{StaticResource labelStyleSimple}" 
+        <Label x:Name="lblAddresDescripEditAccount" Content="Correo :" Style="{StaticResource labelStyleSimple}" 
                   Height="60" Width="194" Margin="323,506,0,0"/>
 
 
 
         <Viewbox Width="auto" Height="auto" Margin="629,335,308,153">
             <StackPanel Width="328">
-                <Label x:Name="lblNameEditAcc" Content="jjjjjjj" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}" 
+                <Label x:Name="lblNameEditAccount" Content="jjjjjjj" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}" 
                 Height="60" Width="325"/>
-                <Label x:Name="lblUserNameEditAcc" Content="jauanan"  Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}"               
+                <Label x:Name="lblUserNameEditAccount" Content="jauanan"  Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}"               
                 Height="60" Width="261"/>
-                <Label x:Name="lblAddresEditAcc" Content="nsafba" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}"
+                <Label x:Name="lblAddresEditAccount" Content="nsafba" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}"
                  Height="60" Width="261"/>
             </StackPanel>
         </Viewbox>
@@ -39,7 +39,7 @@
             </Border.Clip>
         </Border>
         <Image HorizontalAlignment="Left" Height="31" Width="33" Margin="997,252,0,0" VerticalAlignment="Top" Stretch="Fill" Source="/Images/EditIcon.png" />
-        <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClicEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top" Width="27" Source="/Images/BackIcon.png" MouseDown="ClicSingOut" RenderTransformOrigin="0.491,2.068" />
+        <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClickEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top" Width="27" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
     </Grid>
 </Page>

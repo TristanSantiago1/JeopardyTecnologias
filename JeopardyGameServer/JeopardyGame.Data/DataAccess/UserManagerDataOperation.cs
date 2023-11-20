@@ -22,505 +22,484 @@ namespace JeopardyGame.Data.DataAccess
 {
     public class UserManagerDataOperation
     {
+        private static int NULL_INT_VALUE = 0;
+        private static int USER_NOT_FOUND = -1;
+        private static int OPERATION_DONE = 1;
         public static GenericClassServer<User> SaveUserInDataBase(User user)
         {
-            GenericClassServer<User> result  = new GenericClassServer<User>();
-            if (user == null) return NullParametersHandler.HandleNullParametersDataBase(result);           
+            GenericClassServer<User> resultOfOperation  = new GenericClassServer<User>();
+            if (user == null)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var newUser = context.Users.Add(user);
-                    context.SaveChanges();
-                    result.ObjectSaved = newUser;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;                   
+                    var newUser = contextBD.Users.Add(user);
+                    int resultEvent = contextBD.SaveChanges();
+                    if (resultEvent != NULL_INT_VALUE)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = newUser;                                      
                 }
             }
             catch(DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }                    
-            return result; 
+            return resultOfOperation; 
         }
 
 
         public static GenericClassServer<Player> SavePlayerInDataBase(User userSaved, State defaultState, Player newPlayer)
         {
-            GenericClassServer<Player> result = new GenericClassServer<Player>();
-            if (userSaved == null || defaultState == null || newPlayer == null) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<Player> resultOfOperation = new GenericClassServer<Player>();
+            if (userSaved == null || defaultState == null || newPlayer == null)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    context.Users.Attach(userSaved);
-                    context.States.Attach(defaultState);
+                    contextBD.Users.Attach(userSaved);
+                    contextBD.States.Attach(defaultState);
                     newPlayer.User = userSaved;
                     newPlayer.State = defaultState;
-                    var newPlayerSaved = context.Players.Add(newPlayer);
-                    context.SaveChanges();
-                    result.ObjectSaved = newPlayerSaved;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    var newPlayerSaved = contextBD.Players.Add(newPlayer);
+                    int resultEvent = contextBD.SaveChanges();
+                    if (resultEvent != NULL_INT_VALUE)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = newPlayerSaved;                   
                 }
             }
             catch (DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }       
-            return result;
+            return resultOfOperation;
         }
 
         public static GenericClassServer<User> GetUserById(int idUser)
         {
-            GenericClassServer<User> result = new GenericClassServer<User>();
-            if (idUser == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<User> resultOfOperation = new GenericClassServer<User>();
+            if (idUser == 0)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var userConsulted = context.Users.Find(idUser);
-                    result.ObjectSaved = userConsulted;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    var userConsulted = contextBD.Users.Find(idUser);
+                    if (userConsulted != null)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = userConsulted;                    
                 }
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }         
-            return result;
+            return resultOfOperation;
         }
         public static GenericClassServer<User> GetUserByUserName(String userName)
         {
-            GenericClassServer<User> result = new GenericClassServer<User>();
-            if (userName == null) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<User> resultOfOperation = new GenericClassServer<User>();
+            if (userName == null) 
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation); 
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var userFindedByUserName = context.Users.FirstOrDefault(u => u.UserName == userName);
-                    if(userFindedByUserName != null)
-                    {
-                        result.ObjectSaved = userFindedByUserName;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    var user = contextBD.Users.FirstOrDefault(u => u.UserName == userName);
+                    if(user != null)
+                    {                        
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                     }
                     else
                     {
-                        result.ObjectSaved = userFindedByUserName;
-                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
-                    }                   
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = user;
                 }
             }
             catch(ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             } 
-            return result;
+            return resultOfOperation;
         }
 
         public static GenericClassServer<int> UpdatePlayer(int idPlayerReported)
         {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            if (idPlayerReported == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (idPlayerReported == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var player = context.Players.FirstOrDefault(p => p.IdPlayer == idPlayerReported);
-                    player.NoReports++;
-                    context.Entry(player).State = EntityState.Modified;
-                    int resultUpdate = context.SaveChanges();
-                    if (resultUpdate != 0)
+                    var player = GetPlayerByIdPlayer(idPlayerReported).ObjectSaved;
+                    if (player != null)
                     {
-                        result.ObjectSaved = resultUpdate;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-                    }                   
+                        player.NoReports++;
+                        contextBD.Entry(player).State = EntityState.Modified;
+                        int resultUpdate = contextBD.SaveChanges();
+                        if (resultUpdate != NULL_INT_VALUE)
+                        {                            
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
+                        resultOfOperation.ObjectSaved = resultUpdate;
+                    }
+                    else
+                    {
+                        resultOfOperation.ObjectSaved = default;
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }                                    
                 }
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch(DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }         
-            return result;
+            return resultOfOperation;
         }
 
 
         public static GenericClassServer<Player> GetPlayerByIdUser(int idUser)
         {
-            GenericClassServer<Player> result = new GenericClassServer<Player>();
+            GenericClassServer<Player> resultOfOperation = new GenericClassServer<Player>();
+            if (idUser == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var playerConsulted = context.Players.FirstOrDefault(player => player.User_IdUser == idUser);
-                    result.ObjectSaved = playerConsulted;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    var playerConsulted = contextBD.Players.FirstOrDefault(player => player.User_IdUser == idUser);
+                    if (playerConsulted != null)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = playerConsulted;
                 }
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }   
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
 
         }
         public static GenericClassServer<Player> GetPlayerByIdPlayer(int idPlayer)
         {
-            GenericClassServer<Player> result = new GenericClassServer<Player>();
+            GenericClassServer<Player> resultOfOperation = new GenericClassServer<Player>();
+            if (idPlayer == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var playerConsulted = context.Players.FirstOrDefault(player => player.IdPlayer == idPlayer);
-                    result.ObjectSaved = playerConsulted;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    var playerConsulted = contextBD.Players.FirstOrDefault(player => player.IdPlayer == idPlayer);
+                    if (playerConsulted != null)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = playerConsulted;                    
                 }
             }
             catch (ArgumentNullException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
 
         }
 
         public static GenericClassServer<State> GetStateById(int idSatate)
         {
-            GenericClassServer<State> result = new GenericClassServer<State>();
+            GenericClassServer<State> resultOfOperation = new GenericClassServer<State>();
+            if (idSatate == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
-                using (var context = new JeopardyDBContainer())
+                using (var contextBD = new JeopardyDBContainer())
                 {
-                    var stateConsulted = context.States.Find(idSatate);
-                    result.ObjectSaved = stateConsulted;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                    var stateConsulted = contextBD.States.Find(idSatate);
+                    if (stateConsulted != null)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = stateConsulted;                    
                 }
             }
             catch (InvalidOperationException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return result;
+            return resultOfOperation;
         }
 
         public static void DeleteUserById(int idUser)
         {
-            try
+            if (idUser != NULL_INT_VALUE)
             {
-                using (var context = new JeopardyDBContainer())
+                try
                 {
-                    var userConsulted = context.Users.Find(idUser);
-                    context.Users.Remove(userConsulted);
-                }
-            }
-            catch (SqlException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (EntityException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.UNKNOW);
-            }
-        }
-
-
-        public static GenericClassServer<bool> VerifyPassword(string password, string hashedPassword)
-        {
-            GenericClassServer<bool> result = new GenericClassServer<bool>();
-            if (password.Length == 0 || hashedPassword.Length == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
-            try { 
-            byte[] hashBytes = Convert.FromBase64String(hashedPassword);
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes, 0, salt, 0, 16);
-            var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-            byte[] hash = passBaseKeyDerFun2.GetBytes(20);
-            result.ObjectSaved = true;
-            result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-            for (int i = 0; i < 20; i++)
-            {
-                if (hashBytes[i + 16] != hash[i])
-                {
-                    result.ObjectSaved = false;
-                    result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
-                }                    
-            }
-            }
-            catch (SqlException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }            
-            catch (EntityException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (Exception ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            return result;
-        }
-
-
-
-        public static GenericClassServer<int> ValidateIfEmailExist(String email)
-        {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            int EXIST = 0;
-            int NOT_EXIST = 1;
-            if (email.Length == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
-            try
-            {
-                using (var context = new JeopardyDBContainer())
-                {
-                    bool exist = context.Users.Any(u => u.EmailAddress == email);
-                    if (!exist)
+                    using (var contextBD = new JeopardyDBContainer())
                     {
-                        result.ObjectSaved = NOT_EXIST;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
+                        var userConsulted = contextBD.Users.Find(idUser);
+                        if (userConsulted != null)
+                        {
+                            contextBD.Users.Remove(userConsulted);
+                        }                        
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (EntityException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+            }          
+        }     
+
+        public static GenericClassServer<int> UpdateUserInformation(string editedName, string originalName) 
+        {
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName))
+            { 
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation); 
+            }           
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    var userToUpdate = contextBD.Users.FirstOrDefault(u => u.Name == originalName);
+                    if (userToUpdate != null)
+                    {
+                        userToUpdate.Name = editedName;
+                        int resultOfEvent = contextBD.SaveChanges();
+                        if (resultOfEvent == 0)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
+                        resultOfOperation.ObjectSaved = OPERATION_DONE;                        
                     }
                     else
                     {
-                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
-                        result.ObjectSaved = EXIST;
-                    }
+                        resultOfOperation.ObjectSaved = USER_NOT_FOUND;
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }                   
                 }
             }
-            catch (ArgumentNullException ex)
+            catch (DbUpdateException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (EntityException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            return result;
-        }
-        public static GenericClassServer<int> ValidateIfUserNameExist(String userName)
-        {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            int EXIST = 0;
-            int NOT_EXIST = 1;            
-            if (userName.Length == 0) return NullParametersHandler.HandleNullParametersDataBase(result);
-            try
-            {
-                using (var context = new JeopardyDBContainer())
-                {
-                    bool exist = context.Users.Any(u => u.UserName == userName);
-                    if (!exist)
-                    {
-                        result.ObjectSaved = NOT_EXIST;
-                        result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-                    }
-                    else
-                    {
-                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
-                        result.ObjectSaved = EXIST;
-                    }
-                }
-            }
-            catch (ArgumentNullException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            catch (SqlException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            return result;
-        }
-
-        public static GenericClassServer<int> UpdateUserInformation(string editedName, string originalName)
-        {
-            GenericClassServer<int> result = new GenericClassServer<int>();
-            if (string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName)) { return NullParametersHandler.HandleNullParametersDataBase(result); }
-            int USER_NOT_FOUND = -1;
-            int OPERATION_DONE = 1;
-            try
-            {
-                using (var context = new JeopardyDBContainer())
-                {
-                    var userToUpdate = context.Users.FirstOrDefault(u => u.Name == originalName);
-
-                    if (userToUpdate == null)
-                    {
-                        result.ObjectSaved = USER_NOT_FOUND;
-                        result.CodeEvent = ExceptionDiccionary.UNSUCCESFULL_EVENT;
-                    }
-                    userToUpdate.Name = editedName;
-                    context.SaveChanges();
-                    result.ObjectSaved = OPERATION_DONE;
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-                }
-            }
-            catch (SqlException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (EntityException ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (Exception ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            return result;
+            return resultOfOperation;
         }
         public GenericClassServer<List<Player>> Get20FriendScores(int userId)
         {
-            GenericClassServer<List<Player>> result = new GenericClassServer<List<Player>>();
-            if (userId <= 0) { return NullParametersHandler.HandleNullParametersDataBase(result); }
+            GenericClassServer<List<Player>> resultOfOperation = new GenericClassServer<List<Player>>();
+            if (userId <= NULL_INT_VALUE) 
+            { 
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation); 
+            }
             try
             {
-                using (var dbContext = new JeopardyDBContainer())
+                using (var contextDB = new JeopardyDBContainer())
                 {
-                    List<Player> friendScores = dbContext.Friends
-                        .Where(f => f.Player_IdPlayer == userId || f.PlayerFriend_IdPlayer == userId)
-                        .Select(f => f.Player_IdPlayer == userId ? f.PlayerFriend_IdPlayer : f.Player_IdPlayer)
-                        .Join(dbContext.Players,
-                            friendId => friendId,
-                            player => player.IdPlayer,
-                            (friendId, player) => new Player
+                    List<Player> friendScores = contextDB.Friends
+                        .Where(friendRegistry => friendRegistry.Player_IdPlayer == userId || friendRegistry.PlayerFriend_IdPlayer == userId)
+                        .Select(friendSelection => friendSelection.Player_IdPlayer == userId ? friendSelection.PlayerFriend_IdPlayer : friendSelection.Player_IdPlayer)
+                        .Join(contextDB.Players, friendId => friendId, player => player.IdPlayer, 
+                        (friendId, player) => new Player
                             {
                                 IdPlayer = player.IdPlayer,
                                 GeneralPoints = player.GeneralPoints,
                             })
                         .ToList();
-                    result.ObjectSaved = friendScores;                      
-                    result.CodeEvent = ExceptionDiccionary.SUCCESFULL_EVENT;
-                    
-
+                    if (friendScores != null)
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                    resultOfOperation.ObjectSaved = friendScores;                  
                 }
+            }
+            catch (ArgumentNullException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            catch (Exception ex)
-            {
-                result = ExceptionHandler.HandleException(result, ex);
-                ExceptionHandler.LogException(ex, ExceptionDiccionary.FATAL_EXCEPTION);
-            }
-            return result;
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }      
+            return resultOfOperation;
         }
 
     }
+
     
 }
 

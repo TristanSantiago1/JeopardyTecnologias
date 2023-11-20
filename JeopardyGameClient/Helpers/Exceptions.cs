@@ -19,6 +19,8 @@ namespace JeopardyGame.Helpers
         public const int NULL_PARAEMETER = -200;
         public const int ARGUMENT_NULL = -210;
         public const int ARGUMENT_OUT_OF_RANGE_EXCEPTION = -211;
+        public const int FORMMAT_EXCEPTION = -212;
+        public const int RANK_EXCEPTION = -213;
         public const int EMAIL_FORMAT_INVALID = -219;
         public const int INVALID_OPERATION = -220;
         public const int NO_DB_CONECTION = -300;
@@ -26,14 +28,12 @@ namespace JeopardyGame.Helpers
         public const int SQL_ERROR = -350;
         public const int ENTITY_ERROR = -360;
         public const int SMTP_EXCEPTION = -400;
-        public const int NO_SERVER_ERROR = -410;
-        public const int TIME_OUT_EXCE = -420;
         public const int UNKOWN_EXCEPTION_OCURRED = -500;
     }
 
     public class ExceptionHandler
     {
-        public static void HandleExceptionSQLorEntity(int codeException, String message)
+        public static void HandleException(int codeException, String message)
         {
             switch (codeException)
             {               
@@ -61,7 +61,7 @@ namespace JeopardyGame.Helpers
 
         private static void ShowErrorMessage(String title, String message)
         {
-            DialogWindows.ErrorMessageDW ErrorWindow = new DialogWindows.ErrorMessageDW(title, message);
+            DialogWindows.ErrorMessageDialogWindow ErrorWindow = new DialogWindows.ErrorMessageDialogWindow(title, message);
             Window currentPage = Application.Current.MainWindow;
             double left = currentPage.Left + (currentPage.Width - ErrorWindow.Width) / 2;
             double top = currentPage.Top + (currentPage.Height - ErrorWindow.Height) / 2;
@@ -71,9 +71,6 @@ namespace JeopardyGame.Helpers
             ErrorWindow.VerticalAlignment = VerticalAlignment.Center;
             ErrorWindow.ShowDialog();
         }
-
-
-
 
     }
 
