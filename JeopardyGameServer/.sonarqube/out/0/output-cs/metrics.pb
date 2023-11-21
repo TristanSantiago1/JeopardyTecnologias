@@ -1,0 +1,18 @@
+Û
+ŒC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\FriendsManagerDataOperation.csp 8r›	
+ !"#$%&'()*+,-./0123456789:;=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’x4‚  !#'-.2378:@BFHJLNPTWXYZ\`eflmqrvwy…‡ˆ‰Š‹‘—˜œ¡¢¦§©¯±µ·¸¹º»¼¾ÂÈÉÍÎÒÓ×ØÚàâæéêëìíîïğòöüı‚†‡‹Œ•
+€C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\LoginOperations.cs? 8jr»	 !"#$%&'()*+,-./0123456789;<=>?@ABCDEFGHIKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrsuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ x‚D!#$%+,01568@ABCGNPTVWYZ^_efjkoprxz~€ƒ„ˆ‰”•™šœ¶
+
+‰C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\UserManagerDataOperation.csÃ 8(r×	
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrsuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊÌÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõ÷øùúûüışÿ€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóõøxN‚Á!%'()+/167;<@ACJLPRSTUVWXZ^`efjkoprxz~€ƒ‡‰“”–›¡£¤¦ª¬±²¶·»¼¾ÄÆÊÌÍÏĞÑÒÔØÚŞßåæêëïğôõ÷ş€„†‡‰”•™šŸ¡§©­¯°²¶¸½¾ÂÃÇÈÊÑÓ×ÙÚÜàâçèìíñòôùıÿ€‚ˆŒ”–šœŸ ¡£§©­®´µ¹º¾¿ÁÆÈÌÎÏĞÑÒÔÕØÚŞàåæêëïğò¨
+„C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\ExceptionDiccionary.csr	
+!‡
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\ExceptionHandler.cs# 8rR	
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCEHIJKLMNOQRSTUVWZx‚"!"$&')+,.013568:;=?@BLMNSTUü
+~C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\SeriLogConfig.cs 8rU	
+ !"#$%&()*+./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWZ]x
+‚ !%*34679?@DEIJNOSTVŸ
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\GenericClassAndObjecSaved.cs
+0 D8Dry "#%&')+,./123456789;<=>?@ABCDEFGHIJKLMNOPSTUVWXYZ[\]^_`abcdefghijklmnpqrstuvxyz{|}€‚ƒ…‚678@ABKLMNOZ[\]^hijklmtu¡
+}C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Properties\AssemblyInfo.csj !"r	
+#$

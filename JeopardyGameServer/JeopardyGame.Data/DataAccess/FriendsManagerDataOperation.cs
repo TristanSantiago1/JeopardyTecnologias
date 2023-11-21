@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Data.DataAccess
 {
-    public class FriendsManagerDataOperation
+    public static class FriendsManagerDataOperation
     {
-        private static int FRIEND_STATUS_NEW = 1;
-        private static int FRIEND_STATUS_ACCCEPT_REQUEST = 2;
-        private static int NULL_INT_VALUE = 0;
+        private static readonly int FRIEND_STATUS_NEW = 1;
+        private static readonly int FRIEND_STATUS_ACCCEPT_REQUEST = 2;
+        private static readonly int NULL_INT_VALUE = 0;
         public static GenericClassServer<List<Friend>> ConsultFriendsOfPlayer(Player player) 
         {
             GenericClassServer<List<Friend>> resultOfOperation = new GenericClassServer<List<Friend>>();
@@ -30,14 +30,9 @@ namespace JeopardyGame.Data.DataAccess
                     
                     var friendsOfUser = contextBD.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
                     resultOfOperation.ObjectSaved = friendsOfUser;
-                    if (friendsOfUser != null)
-                    {
+                    
                         resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                    }
-                    else
-                    {                        
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    }                                 
+                                                    
                 }
             }
             catch (ArgumentNullException ex)
@@ -87,14 +82,9 @@ namespace JeopardyGame.Data.DataAccess
                         idsFriends.Add(player.IdPlayer);
                         var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer)).Take(20).ToList();
                         resultOfOperation.ObjectSaved = playersNotFriends;
-                        if (playersNotFriends != null)
-                        {                            
+                                                   
                             resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                        }
-                        else
-                        {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                        }
+                        
                     }
                     else
                     {
@@ -133,7 +123,7 @@ namespace JeopardyGame.Data.DataAccess
                 using (var contextBD = new JeopardyDBContainer())
                 {
                     var friendshipToDelete = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
-                    contextBD.Friends.Remove((Friend)friendshipToDelete);
+                    contextBD.Friends.Remove(friendshipToDelete);
                     int resultEvent = contextBD.SaveChanges();
                     resultOfOperation.ObjectSaved = resultEvent;
                     if (resultEvent != NULL_INT_VALUE)

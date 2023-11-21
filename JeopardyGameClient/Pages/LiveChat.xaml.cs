@@ -28,6 +28,7 @@ namespace JeopardyGame.Pages
         private UserSingleton userSingleton;
         private List<MessageChat> messagesInChats = new List<MessageChat>();
         private LiveChatClient proxyChannelCallback;
+        private LobbyPage lobbyPage;
         public LiveChat()
         {
             InitializeComponent();
@@ -35,8 +36,9 @@ namespace JeopardyGame.Pages
             proxyChannelCallback = new LiveChatClient(context);
         }
 
-        public void StartPage(bool rol,int room)
+        public void StartPage(bool rol,int room, LobbyPage lobby)
         {
+            lobbyPage = lobby;
             isAdmin = rol;
             roomCode = room;
             PrepareWindow();
@@ -55,12 +57,14 @@ namespace JeopardyGame.Pages
                 if (serverResponse.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     messagesInChats = serverResponse.ObjectSaved.ToList();
+                    LoadChat();
                 }                
             }
         }
 
         public void LoadChat()
-        {
+        {         
+            stpChat.Children.Clear();
             foreach (var item in messagesInChats)
             {
                 ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.MessageToSend);
@@ -78,9 +82,7 @@ namespace JeopardyGame.Pages
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
         {
-            MainMenu mainMenuPage = new MainMenu();
-            this.NavigationService.Navigate(mainMenuPage);
-            NavigationService.RemoveBackEntry();
+            lobbyPage.CloseLiveChat();
         }
 
         private void ClickSendMessage(object sender, MouseButtonEventArgs e)
@@ -98,7 +100,7 @@ namespace JeopardyGame.Pages
 
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
-            if(message.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            if(message.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 messagesInChats.Add(message.ObjectSaved);
                 LoadChat();

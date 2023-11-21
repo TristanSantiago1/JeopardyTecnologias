@@ -25,7 +25,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LogInUser : System.Windows.Controls.Page, INotifyUserAvailabilityCallback
     {
-        public static LobbyPage ActiveFriendsInstance = new LobbyPage();
+        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
 

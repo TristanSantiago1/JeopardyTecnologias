@@ -12,11 +12,11 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class FriendsManagerImplementation : IFriendsManager
     {
-        private int NOT_STATUS = 0;
-        private int ACTIVE = 1;
-        private int INACTIVE = 2;
-        private int THERE_IS_A_REQUEST = 1;
-        private int THEY_ARE_FRIENDS = 2;
+        private readonly int NOT_STATUS = 0;
+        private readonly int ACTIVE = 1;
+        private readonly int INACTIVE = 2;
+        private readonly int THERE_IS_A_REQUEST = 1;
+        private readonly int THEY_ARE_FRIENDS = 2;
 
         public GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user)
         {

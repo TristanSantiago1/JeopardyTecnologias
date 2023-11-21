@@ -1,0 +1,7 @@
+﻿C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\Class1.cs
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\Properties\AssemblyInfo.cs
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestUserManager.cs
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\packages\xunit.runner.visualstudio.2.5.1\build\net462\xunit.runner.visualstudio.testadapter.dll
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\packages\xunit.runner.visualstudio.2.5.1\build\net462\xunit.abstractions.dll
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\App.config
+C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\packages.config

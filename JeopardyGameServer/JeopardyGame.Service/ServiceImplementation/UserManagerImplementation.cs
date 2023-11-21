@@ -22,10 +22,10 @@ namespace JeopardyGame.Service.ServiceImplementation
     /// </summary>
     public partial class UserManagerImplementation : IUserManager
     {
-        private const int DEFAULT_INT_VALUE = 0;
-        private const int NOT_BANNED_STATE = 1;
-        private const int SUCCESFULL_EVENT = 1;
-        private const int UNSUCCESFULL_EVENT = 0;
+        private readonly int DEFAULT_INT_VALUE = 0;
+        private readonly int NOT_BANNED_STATE = 1;
+        private readonly int SUCCESFULL_EVENT = 1;
+        private readonly int UNSUCCESFULL_EVENT = 0;
         public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();

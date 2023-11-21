@@ -94,12 +94,12 @@
             <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="766,692,0,0" VerticalAlignment="Top" Height="44" Width="151" RenderTransformOrigin="0.534,1.267"/>
             <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="940,692,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="44" Width="149"/>
             <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="ClickListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="963,307,0,0" VerticalAlignment="Top"/>
-            <Image HorizontalAlignment="Left" Height="68" Margin="984,246,0,0" 
+            <Image x:Name="imgActiveFriends" HorizontalAlignment="Left" Height="68" Margin="984,246,0,0" 
                Width="61" 
                VerticalAlignment="Top" Source="/Images/FriendsIcon.png" MouseDown="ClickListFriends" RenderTransformOrigin="4.252,2.317"/>
             <Image HorizontalAlignment="Left" Height="101" Margin="978,349,0,317" Width="76" Source="/Images/buttonChat.png" MouseDown="ClickOpenChat" RenderTransformOrigin="0.157,0.546"/>
             <Grid x:Name="grdActiveUser" Margin="597,0,4,0"  Visibility="Hidden">
-                <cu:ActiveUsersControls x:Name="userControlActiveUsers"/>
+                <Frame x:Name="frmActiveFriendsAndChat" />
             </Grid>
         </Grid>
     </Viewbox>

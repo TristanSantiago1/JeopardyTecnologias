@@ -25,22 +25,22 @@ namespace JeopardyGame.Pages
     public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
         private const int AVAILABLE_STATUS = 1;
+        private LobbyPage lobbyPage;
         public ActiveFriends()
         {
             InitializeComponent();                                   
         }
 
-        public void StartPage()
+        public void StartPage(LobbyPage lobby)
         {
+            lobbyPage = lobby;
             GetFriend();
             SetFriend();
         }
 
         private void ClickCloseListFriends(object sender, MouseButtonEventArgs e)
         {
-            LobbyPage lobbyGamePage = new LobbyPage();
-            this.NavigationService.Navigate(lobbyGamePage);
-            NavigationService.RemoveBackEntry();
+            lobbyPage.CloseFriendList();
         }
 
         private  void GetFriend()

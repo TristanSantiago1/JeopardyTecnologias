@@ -87,7 +87,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }                      
         }
 
-        public void DeleteChannelRegistries(int roomCode)
+        private void DeleteChannelRegistries(int roomCode)
         {          
             if (roomCode != NULL_INT_VALUE)
             {

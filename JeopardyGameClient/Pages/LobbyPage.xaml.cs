@@ -13,21 +13,25 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Application = System.Windows.Application;
+using Label = System.Windows.Controls.Label;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 
 namespace JeopardyGame.Pages
 {
     /// <summary>
     /// Lógica de interacción para LobbyPage.xaml
     /// </summary>
-    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback, INotifyUserAvailabilityCallback
+    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback
     {
-        public LiveChat liveChat = new LiveChat();
+        private static ActiveFriends activeUsersControls;
+        private static LiveChat liveChatUser;
         private const int NULL_INT_VALUE = 0;
         private const int TEAM_LEFT_SIDE = 1;
         private const int TEMA_RIGHT_SIDE = 2;
@@ -35,7 +39,7 @@ namespace JeopardyGame.Pages
         private int roomCode;
         private bool isAdminOfLobby;
         private InstanceContext context;      
-        private List <PlayerInLobby> currentPlayerInLobby;       
+        private List <PlayerInLobby> currentPlayerInLobby;
         private UserSingleton userSingleton = UserSingleton.GetMainUser();
 
         public LobbyPage()
@@ -51,13 +55,14 @@ namespace JeopardyGame.Pages
             this.roomCode = roomCode;
             isAdminOfLobby = false;
             PrepareWindow() ;
-            
         }
 
         private void PrepareWindow()
         {
+            activeUsersControls = LogInUser.ActiveFriendsInstance;
+            liveChatUser = new LiveChat();
             context = new InstanceContext(this);
-            LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
+            LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);            
             chbTeamUp.IsChecked = false;
             if (isAdminOfLobby)
             {                
@@ -91,7 +96,6 @@ namespace JeopardyGame.Pages
             }
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
-            userControlActiveUsers.StartPage(grdActiveUser);
         }
 
         private void ThereAreTeams()
@@ -378,17 +382,15 @@ namespace JeopardyGame.Pages
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
-            LiveChat chat = liveChat;
-            this.NavigationService.Navigate(chat);
-            chat.StartPage(isAdminOfLobby, roomCode);
+            frmActiveFriendsAndChat.Content = liveChatUser;
+            liveChatUser.StartPage(isAdminOfLobby, roomCode, this);            
+            grdActiveUser.Visibility = Visibility.Visible;
         }
 
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
-            //ActiveFriends friendsListPage = LogInUser.ActiveFriendsInstance;
-            //this.NavigationService.Navigate(friendsListPage);
-            //friendsListPage.StartPage();
-            
+            frmActiveFriendsAndChat.Content = activeUsersControls;
+            activeUsersControls.StartPage(this);        
             grdActiveUser.Visibility = Visibility.Visible;
         }
 
@@ -421,14 +423,22 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
+        public void CloseFriendList()
         {
-            ((ILiveChatCallback)liveChat).ReceiveMessage(message);
+            frmActiveFriendsAndChat.Content = null; ;
+            grdActiveUser.Visibility = Visibility.Collapsed;
+        }       
+
+        public void CloseLiveChat()
+        {
+            frmActiveFriendsAndChat.Content = null;
+            grdActiveUser.Visibility = Visibility.Collapsed;
         }
 
-        public void ResponseOfPlayerAvailability(int status, int idFriend)
+        public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
-            userControlActiveUsers.UpdatePlayerAvailability(status, idFriend);       
+            ((ILiveChatCallback)liveChatUser).ReceiveMessage(message);
         }
+
     }
 }

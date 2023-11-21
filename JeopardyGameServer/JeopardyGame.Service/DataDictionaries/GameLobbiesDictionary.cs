@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.DataDictionaries
 {
-    public class GameLobbiesDictionary
+    public static class GameLobbiesDictionary
     {        
         private static Dictionary<int, Lobby> activeLobbiesDictionary = new Dictionary<int, Lobby>();
 
@@ -42,7 +42,7 @@ namespace JeopardyGame.Service.DataDictionaries
             }
         }
 
-        public Dictionary<int, Lobby> GetActiveLobbiesList()
+        public static Dictionary<int, Lobby> GetActiveLobbiesList()
         {
             return activeLobbiesDictionary;
         }

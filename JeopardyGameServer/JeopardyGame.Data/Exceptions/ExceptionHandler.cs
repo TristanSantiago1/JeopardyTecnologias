@@ -11,7 +11,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace JeopardyGame.Data.Exceptions
 {
-    public class ExceptionHandler
+    public static class ExceptionHandler
     {
         public static void LogException(Exception exception, String Category)
         {
@@ -69,7 +69,7 @@ namespace JeopardyGame.Data.Exceptions
     }
 
 
-    public class NullParametersHandler
+    public static class NullParametersHandler
     {
         public static GenericClassServer<T> HandleNullParametersDataBase<T>(GenericClassServer<T> resultWithNull)
         {

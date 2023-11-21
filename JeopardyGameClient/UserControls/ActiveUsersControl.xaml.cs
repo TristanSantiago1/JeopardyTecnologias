@@ -24,22 +24,22 @@ namespace JeopardyGame.UserControls
     public  partial class ActiveUsersControls : UserControl
     { 
         private const int AVAILABLE_STATUS = 1;
-        private Grid containerGrid; 
+        private LobbyPage lobbyPage;
         public ActiveUsersControls()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
-        public void StartPage(Grid griContainer)
+
+        public void StartPage(LobbyPage currentLobby)
         {
-            containerGrid = griContainer;
+            lobbyPage = currentLobby;
             GetFriend();
             SetFriend();
         }
 
-        private void ClickCloseListFriends(object sender, MouseButtonEventArgs e)
-        {
-           containerGrid.Visibility = Visibility.Collapsed;
+        public void ClickCloseListFriends(object sender, MouseButtonEventArgs e)
+        {            
+            lobbyPage.CloseFriendList();
         }
 
         private void GetFriend()
@@ -87,18 +87,9 @@ namespace JeopardyGame.UserControls
                         state = false;
                     }
                    stcFriendList.Children.Add(new FriendCard(item.Value.Name, state, "Invite"));
-
                 }
             }
         }
-        public void UpdatePlayerAvailability(int status, int idFriend)
-        {           
-            Dictionary<int, FriendAvailabilityInformation> friendList = FriendList.GetActiveFriendsList();
-            if (friendList.ContainsKey(idFriend))
-            {
-                FriendList.ChangeStatusOfFriend(idFriend, status);
-            }            
-            SetFriend();
-        }
+
     }
 }

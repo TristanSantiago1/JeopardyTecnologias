@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service
 {
-    public  class ActiveUsersDictionary
+    public static class ActiveUsersDictionary
     {
         private static Dictionary<int, OperationContext> activeUsers = new Dictionary<int, OperationContext>();
 
@@ -41,7 +41,7 @@ namespace JeopardyGame.Service
             }
         }
 
-        public Dictionary<int, OperationContext> GetActiveUsersList() 
+        public static Dictionary<int, OperationContext> GetActiveUsersList() 
         { 
             return activeUsers; 
         }

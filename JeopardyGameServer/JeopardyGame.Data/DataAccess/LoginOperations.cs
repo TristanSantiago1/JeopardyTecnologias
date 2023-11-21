@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Data.DataAccess
 {
-    public class LoginOperations
+    public static class LoginOperations
     {
-        private static int NULL_INT_VALUE = 0;
-        private static int VALUE_EXIST = 0;
-        private static int VALUE_NOT_EXIST = 1;
+        private static readonly int NULL_INT_VALUE = 0;
+        private static readonly int VALUE_EXIST = 0;
+        private static readonly int VALUE_NOT_EXIST = 1;
         public static GenericClassServer<bool> VerifyPassword(string password, string hashedPassword)
         {
             GenericClassServer<bool> resultOfOperation = new GenericClassServer<bool>();

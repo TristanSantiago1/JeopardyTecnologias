@@ -12,10 +12,10 @@ namespace JeopardyGame.Service.InterfacesServices
     public interface ILiveChat
     {
         [OperationContract(IsOneWay = true)]
-        void SendMessage(int idUser, int room, String userName, String message);
+        void SendMessage(int idUser, int roomCode, String userName, String messageToSend);
 
         [OperationContract]
-        GenericClass<List<MessageChat>> GetAllMessages(int room, int idUser);
+        GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
         void DeleteChat(int roomCode, int idUser);
@@ -25,6 +25,7 @@ namespace JeopardyGame.Service.InterfacesServices
 
     }
 
+    [ServiceContract]
     public interface ILiveChatCallBack
     {
         [OperationContract]

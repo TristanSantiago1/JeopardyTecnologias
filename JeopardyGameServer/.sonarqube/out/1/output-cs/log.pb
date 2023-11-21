@@ -1,0 +1,1 @@
+Roslyn version: 4.8.0.0Language version: Preview!Concurrent execution: enabled ≈File 'C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs' was recognized as generated

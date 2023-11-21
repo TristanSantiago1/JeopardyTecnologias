@@ -16,15 +16,15 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     internal class LobbyActionsImplementation : ILobbyActions
     {
-        private const int NULL_INT_VALUE = 0;
-        private const int ROOMCODE_IS_FULL = -2;
-        private const int ROOMCODE_ALREADY_EXIST = -1;
-        private const int ROOMCODE_DOES_NOT_EXIST= 0;        
-        private const int SUCCESFUL = 1;
-        private const int LEADER_POSITION_IN_LOBBY = 1;
-        private const int TEAM_LEFT_SIDE = 1;
-        private const int TEAM_RIGTH_SIDE = 2;
-        private const int MAX_PLAYERS = 4;
+        private readonly int NULL_INT_VALUE = 0;
+        private readonly int ROOMCODE_IS_FULL = -2;
+        private readonly int ROOMCODE_ALREADY_EXIST = -1;
+        private readonly int ROOMCODE_DOES_NOT_EXIST= 0;        
+        private readonly int SUCCESFUL = 1;
+        private readonly int LEADER_POSITION_IN_LOBBY = 1;
+        private readonly int TEAM_LEFT_SIDE = 1;
+        private readonly int TEAM_RIGTH_SIDE = 2;
+        private readonly int MAX_PLAYERS = 4;
         public GenericClass<int> CreateNewLobby(int roomCode, int idUser)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();

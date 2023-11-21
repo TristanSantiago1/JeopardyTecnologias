@@ -1,0 +1,6 @@
+projectKey=proyecto-Tecnologias-jeopardy
+serverUrl=http://localhost:9000
+serverVersion=10.3.0.82913
+dashboardUrl=http://localhost:9000/dashboard?id=proyecto-Tecnologias-jeopardy
+ceTaskId=AYvyQK2_0hQrkZRQI3u1
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYvyQK2_0hQrkZRQI3u1

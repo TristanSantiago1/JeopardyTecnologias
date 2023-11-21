@@ -20,11 +20,11 @@ using ExceptionHandler = JeopardyGame.Data.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Data.DataAccess
 {
-    public class UserManagerDataOperation
+    public static class UserManagerDataOperation
     {
-        private static int NULL_INT_VALUE = 0;
-        private static int USER_NOT_FOUND = -1;
-        private static int OPERATION_DONE = 1;
+        private static readonly int NULL_INT_VALUE = 0;
+        private static readonly int USER_NOT_FOUND = -1;
+        private static readonly int OPERATION_DONE = 1;
         public static GenericClassServer<User> SaveUserInDataBase(User user)
         {
             GenericClassServer<User> resultOfOperation  = new GenericClassServer<User>();

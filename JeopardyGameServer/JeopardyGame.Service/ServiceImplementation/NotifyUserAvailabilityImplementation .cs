@@ -13,10 +13,10 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     partial class NotifyUserAvailabilityImplementation : INotifyUserAvailability
     {
-        private const int NULL_INT_VALUE = 0;
-        private const int UNAVAILABLE_STATUS = 0;
-        private const int AVAILABLE_STATUS = 1;
-        private const int PLAYING_STATUS = 2;
+        private readonly int NULL_INT_VALUE = 0;
+        private readonly int UNAVAILABLE_STATUS = 0;
+        private readonly int AVAILABLE_STATUS = 1;
+        private readonly int PLAYING_STATUS = 2;
       
         public void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer)
         {

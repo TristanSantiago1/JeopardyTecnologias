@@ -51,9 +51,9 @@ namespace JeopardyGame.Data
         private int idUser;
         private string userName;
         private int idStatusAvailability;
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        public string UserName { get { return userName; } set { userName = value; } }
-        public int IdStatusAvailability { get { return idStatusAvailability; } set { idStatusAvailability = value; } }
+        public int IdUser { get; set; }
+        public string UserName { get; set; }
+        public int IdStatusAvailability { get; set; }
     }
 
     public struct MessageChat
@@ -61,9 +61,9 @@ namespace JeopardyGame.Data
         private string userName;
         private string messageToSend;
         private int idUser;
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        public string UserName { get { return userName; } set { userName = value; } }
-        public string MessageToSend { get { return messageToSend; } set { messageToSend = value; } }
+        public int IdUser { get; set;    }
+        public string UserName { get; set; }
+        public string MessageToSend { get; set; }
     }
     public struct PlayerInLobby
     {
@@ -72,11 +72,11 @@ namespace JeopardyGame.Data
         private string userName;
         private int numberOfPlayerInLobby;
         private int sideOfTeam;
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
-        public string UserName { get { return userName; } set { userName = value; } }
-        public int NumberOfPlayerInLobby { get { return numberOfPlayerInLobby; } set { numberOfPlayerInLobby = value; } }
-        public int SideOfTeam { get { return sideOfTeam; } set { sideOfTeam = value; } }
+        public int IdUser { get; set; }
+        public int IdPlayer { get; set; }
+        public string UserName { get; set; }
+        public int NumberOfPlayerInLobby { get; set; }
+        public int SideOfTeam { get; set; }
     }
 
 
@@ -87,11 +87,11 @@ namespace JeopardyGame.Data
         private String userName;
         private String emailAddress;
         private String password;
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        public String UserName { get { return userName; } set { userName = value; } }
-        public String Name { get { return name; } set { name = value; } }
-        public String EmailAddress { get { return emailAddress; } set { emailAddress = value; } }
-        public String Password { get { return password; } set { password = value; } }
+        public int IdUser { get; set; }
+        public String UserName { get; set; }
+        public String Name { get; set; }
+        public String EmailAddress { get; set; }
+        public String Password { get; set; }
     }
     public class PlayerPOJO
     {
@@ -101,20 +101,20 @@ namespace JeopardyGame.Data
         private int idUser;
         private int idState;
         private int idActualAvatar;
-        public int IdPlayer { get { return idPlayer; } set { idPlayer = value; } }
-        public int GeneralPoints { get { return generalPoints; } set { generalPoints = value; } }
-        public int NoReports { get { return noReports; } set { noReports = value; } }
-        public int IdUser { get { return idUser; } set { idUser = value; } }
-        public int IdState { get { return idState; } set { idState = value; } }
-        public int IdActualAvatar { get { return idActualAvatar; } set { idActualAvatar = value; } }
+        public int IdPlayer { get; set; }
+        public int GeneralPoints { get; set; }
+        public int NoReports { get; set; }
+        public int IdUser { get; set; }
+        public int IdState { get; set; }
+        public int IdActualAvatar { get; set; }
     }
 
     public class UserValidate
     {
         private String userName;
         private String password;
-        public String UserName { get { return userName; } set { userName = value; } }
-        public String Password { get { return password; } set { password = value; } }
+        public String UserName { get; set; }
+        public String Password { get; set; }
     }
 
     public class AvatarPojo

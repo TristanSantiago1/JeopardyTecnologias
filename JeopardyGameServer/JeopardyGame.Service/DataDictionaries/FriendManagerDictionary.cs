@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service
 {
-    public class FriendManagerDictionary
+    public static class FriendManagerDictionary
     {
 
         private static Dictionary<int, OperationContext> friendManagerUsersDictionary = new Dictionary<int, OperationContext>();
@@ -41,7 +41,7 @@ namespace JeopardyGame.Service
             }
         }
 
-        public Dictionary<int, OperationContext> GetActiveFriendsList()
+        public static Dictionary<int, OperationContext> GetActiveFriendsList()
         {
             return friendManagerUsersDictionary;
         }

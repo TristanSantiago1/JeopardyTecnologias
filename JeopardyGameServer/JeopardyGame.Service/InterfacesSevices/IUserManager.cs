@@ -25,7 +25,7 @@ namespace JeopardyGame.Service.InterfacesServices
             GenericClass<int> UserNameAlreadyExist(String userName);
 
             [OperationContract]
-            GenericClass<int> SentEmailCodeConfirmation(String email, String subject, String body);
+            GenericClass<int> SentEmailCodeConfirmation(String email, String subject, String code);
 
             [OperationContract]
             GenericClass<int> UpdateUserInformation(String editedName, String originalName);

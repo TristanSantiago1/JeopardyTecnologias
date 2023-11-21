@@ -11,10 +11,12 @@
             <Grid Background="#592C75" Height="700" Width="500" MaxHeight="700">
                 <Label x:Name="lblListOfFriends" Margin="155,56,0,0" Style="{StaticResource labelStyleSimple}" Height="60" Width="286" Content="hacer resource"/>
                 <Image HorizontalAlignment="Left" Height="80" Margin="32,50,0,0" VerticalAlignment="Top" Width="71" Source="/Images/FriendsIcon.png"/>
-                <Image HorizontalAlignment="Left" Height="52" Margin="441,20,0,0" VerticalAlignment="Top" 
+                <Image x:Name="imgCloseActiveFriends" HorizontalAlignment="Left" Height="52" Margin="441,20,0,0" VerticalAlignment="Top" 
                     MouseDown="ClickCloseListFriends" Width="54" Source="/Images/CrossImageWhite.png"/>
                 <Border CornerRadius="30" BorderBrush="Black" BorderThickness="10" Margin="32,162,27,29" Background="#66FFFFFF">
-                    <StackPanel x:Name="stcFriendList" Background="Transparent" Margin="1" MaxHeight="500"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="1">
+                        <StackPanel x:Name="stcFriendList" Background="Transparent" Margin="0" MaxHeight="500"/>
+                    </ScrollViewer>
                 </Border>
             </Grid>
         </Border>

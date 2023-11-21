@@ -12,25 +12,25 @@ namespace JeopardyGame.Service.InterfacesServices
     public interface INotifyUserActionFriendsManager
     {
         [OperationContract]
-        GenericClass<int> RegisterFriendManagerUser(int idUser);
+        GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager);
 
         [OperationContract(IsOneWay = true)]
-        void UnregisterFriendManagerUser(int idUser);
+        void UnregisterFriendManagerUser(int idUserFriendManager);
 
         [OperationContract(IsOneWay = true)]
         void ReportPlayer(int idUser, String userName);
 
         [OperationContract(IsOneWay = true)]
-        void EliminateUserFromFriends(int idUser1, int idUser2);
+        void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate);
 
         [OperationContract(IsOneWay = true)]
-        void SendFriendRequest(int idUser, int idUser2);
+        void SendFriendRequest(int idPLayerRequesting, int idUserRequested);
 
         [OperationContract(IsOneWay = true)]
-        void AcceptFriendRequest(int idUser, int idUser2);
+        void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting);
 
         [OperationContract(IsOneWay = true)]
-        void DeclineFriendRequest(int idUser, int idUser2);
+        void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting);
     }
 
     [ServiceContract]

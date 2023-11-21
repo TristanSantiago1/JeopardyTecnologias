@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.InterpretersEntityPojo
 {
-    public class UserInterpreter
+    public static class UserInterpreter
     {
         public static User FromUserPojoToUserEntity(UserPOJO userPojo)
         {
