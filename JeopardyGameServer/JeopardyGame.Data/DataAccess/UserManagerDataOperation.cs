@@ -448,7 +448,7 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
-        public GenericClassServer<List<Player>> Get20FriendScores(int userId)
+        public  static GenericClassServer<List<Player>> Get20FriendScores(int userId)
         {
             GenericClassServer<List<Player>> resultOfOperation = new GenericClassServer<List<Player>>();
             if (userId <= NULL_INT_VALUE) 
