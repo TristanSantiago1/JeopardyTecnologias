@@ -91,7 +91,7 @@
                     </Border>
                 </StackPanel>
             </Grid>
-            <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="766,692,0,0" VerticalAlignment="Top" Height="44" Width="151" RenderTransformOrigin="0.534,1.267"/>
+            <Button x:Name="bttStartGame" Content = "{x:Static p:Resources.bttStartGame}" Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="766,692,0,0" VerticalAlignment="Top" Height="44" Width="151" RenderTransformOrigin="0.534,1.267" Click="bttStartGame_Click"/>
             <Button x:Name="bttCancelGame" Content = "{x:Static p:Resources.bttCancelGame}" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="940,692,0,0" Click="CLicButtonCancelGame" VerticalAlignment="Top" Height="44" Width="149"/>
             <Label x:Name="lblListOfFriends" Content = "{x:Static p:Resources.lblListOfFriends}" MouseDown="ClickListFriends" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="963,307,0,0" VerticalAlignment="Top"/>
             <Image HorizontalAlignment="Left" Height="68" Margin="984,246,0,0" 

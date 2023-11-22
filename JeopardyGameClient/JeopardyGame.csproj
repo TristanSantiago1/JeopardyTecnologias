@@ -268,6 +268,9 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfFriendBasicInformationxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -280,9 +283,6 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.PlayerPOJO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -292,7 +292,7 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\UserManager.wsdl" />
+    <None Include="Connected Services\ServidorServiciosJeopardy\ServicesReferenceAuthor.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -310,24 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServidorServiciosJeopardy\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\CrossImageBlack.png" />
@@ -399,6 +381,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\sendMessageIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorServiciosJeopardy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

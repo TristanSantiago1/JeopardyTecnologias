@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.ServidorServiciosJeopardy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,13 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class GameBoard : Page
     {
+        public const int FIRSTVALUE = 100;
+        public const int SECONDVALUE = 300;
+        public const int THIRDVALUE = 500;
+        public const int HISTORYCATEGORY = 1;
+        public const int SCIENCECATEGORY = 2;
+        public const int MOVIESCATEGORY = 3;
+        private IDictionary<string, object> history100Question;
         public GameBoard()
         {
             InitializeComponent();
@@ -48,12 +57,71 @@ namespace JeopardyGame.Pages
 
         private void CLicSelectAnswer(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void CLicOpenChat(object sender, RoutedEventArgs e)
         {
+            
+        }
 
+        private void ClickHistory100(object sender, MouseButtonEventArgs e)
+        {
+            QuestionsManagerClient proxyQuestions = new QuestionsManagerClient();
+            history100Question = proxyQuestions.GetQuestionByValue(FIRSTVALUE, HISTORYCATEGORY);
+            MostrarPreguntaEnInterfaz();
+        }
+
+        private void ClickHistory300(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickHistory500(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickScience100(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickScience300(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickScience500(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickMovies100(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickMovies300(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickMovies500(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void MostrarPreguntaEnInterfaz()
+        {
+            if (history100Question != null && history100Question.ContainsKey("Description"))
+            {
+                string questionDescription = history100Question["Description"].ToString();
+                lblQuestion.Content = questionDescription;
+            }
+            else
+            {
+                
+            }
         }
     }
 }

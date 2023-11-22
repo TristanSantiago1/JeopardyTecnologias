@@ -1,5 +1,6 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Service.InterfacesServices;
+using JeopardyGame.Service.InterfacesSevices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,18 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> ValidateCredentials(UserValidate newUserValidate)
         {
             return ((IUserManager)UserManager).ValidateCredentials(newUserValidate);
+        }
+    }
+    public partial class ServicesReferenceAuthor: IQuestionsManager
+    {
+        QuestionsManagerImplementation questionsManager = new QuestionsManagerImplementation();
+        public GenericClass<bool> CheckAnswer(int questionId, string selectedAnswer)
+        {
+            return ((IQuestionsManager)questionsManager).CheckAnswer(questionId, selectedAnswer);
+        }
+        public IDictionary<string, object> GetQuestionByValue(int value, int categoryId)
+        {
+            return ((IQuestionsManager)questionsManager).GetQuestionByValue(value, categoryId);
         }
     }
 

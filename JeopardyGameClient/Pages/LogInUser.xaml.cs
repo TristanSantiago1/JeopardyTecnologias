@@ -88,7 +88,7 @@ namespace JeopardyGame.Pages
 
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     //LOGICA DE SI OCURRE LA EXPTION
                 }

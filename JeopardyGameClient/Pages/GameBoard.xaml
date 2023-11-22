@@ -13,7 +13,7 @@
                 <ImageBrush ImageSource="/Images/backgroundGame.png"  Stretch="Fill"/>
             </Grid.Background>
 
-            <Canvas x:Name="answerGrid" Visibility="Collapsed" Background="White" Opacity="0.7" >
+            <Canvas x:Name="answerGrid" Visibility="Visible" Background="White" Opacity="0.7" >
                 <Label Content="a)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="332"/>
                 <Label Content="b)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.607,0.479"/>
                 <Button x:Name="bttSecondAnswer_Copiar" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
@@ -37,6 +37,7 @@
                     </Button.Background>
                 </Button>
                 <Border Background="#26B1FF" Width="602" Height="141" CornerRadius="10" Canvas.Left="246" Canvas.Top="137" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label x:Name="lblQuestion" FontSize="30" Content="Label"/>
 
                 </Border>
                 <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
@@ -68,28 +69,28 @@
                     </Border.RenderTransform>
 
                 </Border>
-                <Rectangle x:Name="firstCategory" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="132,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstCategory" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="132,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="firstQuestionFC" MouseDown="ClickRectangulo" HorizontalAlignment ="Left" Fill="#0802A3"  Height="90" Margin="132,250,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstQuestionFC" MouseDown="ClickHistory100" HorizontalAlignment ="Left" Fill="#0802A3"  Height="90" Margin="132,250,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="secondQuestionFC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="128,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Cursor="Hand">
+                <Rectangle x:Name="secondQuestionFC" MouseDown="ClickHistory300" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="128,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Cursor="Hand">
                 </Rectangle>
-                <Rectangle x:Name="thirdQuestionFC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="132,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdQuestionFC" MouseDown="ClickHistory500" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="132,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="secondCategory" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="423,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="secondCategory"  HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="423,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="thirdCategory" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="714,137,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdCategory"  HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="714,137,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="firstQuestionSC" MouseDown="ClickRectangulo" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Margin="0,250,0,0"/>
-                <Rectangle x:Name="secondQuestionSC" MouseDown="ClickRectangulo" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstQuestionSC" MouseDown="ClickScience100" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Margin="0,250,0,0"/>
+                <Rectangle x:Name="secondQuestionSC" MouseDown="ClickScience300" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="thirdQuestionSC" MouseDown="ClickRectangulo" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdQuestionSC" MouseDown="ClickScience500" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="firstQuestionTC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,252,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="firstQuestionTC" MouseDown="ClickMovies100" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,252,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="secondQuestionTC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,354,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="secondQuestionTC" MouseDown="ClickMovies300" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,354,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
-                <Rectangle x:Name="thirdQuestionTC" MouseDown="ClickRectangulo" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
+                <Rectangle x:Name="thirdQuestionTC" MouseDown="ClickMovies500" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
                 </Rectangle>
                 <Label x:Name="historyCategory" FontSize="40" Foreground="White" FontWeight="Bold" Content="History" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="159,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
                 <Label x:Name="scienceCategory" FontSize="40" Foreground="White" Content="Science" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="454,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>

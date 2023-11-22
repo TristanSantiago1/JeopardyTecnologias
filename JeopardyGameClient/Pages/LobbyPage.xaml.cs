@@ -430,5 +430,12 @@ namespace JeopardyGame.Pages
         {
             userControlActiveUsers.UpdatePlayerAvailability(status, idFriend);       
         }
+
+        private void bttStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameBoard gameBoard = new GameBoard();
+            this.NavigationService.Navigate(gameBoard);
+            NavigationService.RemoveBackEntry();
+        }
     }
 }
