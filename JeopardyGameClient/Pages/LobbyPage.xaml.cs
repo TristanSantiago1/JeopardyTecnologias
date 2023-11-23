@@ -440,5 +440,11 @@ namespace JeopardyGame.Pages
             ((ILiveChatCallback)liveChatUser).ReceiveMessage(message);
         }
 
+        private void bttStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameBoard gameBoard = new GameBoard();
+            this.NavigationService.Navigate(gameBoard);
+            NavigationService.RemoveBackEntry();
+        }
     }
 }

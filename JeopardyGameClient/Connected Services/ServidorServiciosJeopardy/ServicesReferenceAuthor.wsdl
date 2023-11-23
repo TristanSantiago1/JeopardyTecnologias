@@ -56,11 +56,20 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IQuestionsManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -285,6 +294,18 @@
   <wsdl:message name="ILiveChat_ReceiveMessage_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveMessageResponse" />
   </wsdl:message>
+  <wsdl:message name="IQuestionsManager_GetQuestionByValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionByValue" />
+  </wsdl:message>
+  <wsdl:message name="IQuestionsManager_GetQuestionByValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionByValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IQuestionsManager_CheckAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IQuestionsManager_CheckAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckAnswerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -461,6 +482,16 @@
     <wsdl:operation name="ReceiveMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/ILiveChat/ReceiveMessage" message="tns:ILiveChat_ReceiveMessage_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILiveChat/ReceiveMessageResponse" message="tns:ILiveChat_ReceiveMessage_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IQuestionsManager">
+    <wsdl:operation name="GetQuestionByValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuestionsManager/GetQuestionByValue" message="tns:IQuestionsManager_GetQuestionByValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuestionsManager/GetQuestionByValueResponse" message="tns:IQuestionsManager_GetQuestionByValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IQuestionsManager/CheckAnswer" message="tns:IQuestionsManager_CheckAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IQuestionsManager/CheckAnswerResponse" message="tns:IQuestionsManager_CheckAnswer_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -848,6 +879,28 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IQuestionsManager" type="tns:IQuestionsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IQuestionsManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetQuestionByValue">
+      <soap12:operation soapAction="http://tempuri.org/IQuestionsManager/GetQuestionByValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IQuestionsManager/CheckAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
@@ -886,6 +939,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILiveChat" binding="tns:NetTcpBinding_ILiveChat">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IQuestionsManager" binding="tns:NetTcpBinding_IQuestionsManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

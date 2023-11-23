@@ -66,7 +66,7 @@ namespace JeopardyGame.Data.DataAccess
                 byte[] hash = passBaseKeyDerFun2.GetBytes(20);
                 return hash;
             }
-            catch (RankException ex)
+            catch (RankException )
             {
                 throw new RankException();
             }
