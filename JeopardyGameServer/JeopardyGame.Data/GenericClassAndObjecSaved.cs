@@ -48,9 +48,6 @@ namespace JeopardyGame.Data
    
     public struct FriendBasicInformation
     {
-        private int idUser;
-        private string userName;
-        private int idStatusAvailability;
         public int IdUser { get; set; }
         public string UserName { get; set; }
         public int IdStatusAvailability { get; set; }
@@ -58,20 +55,12 @@ namespace JeopardyGame.Data
 
     public struct MessageChat
     {
-        private string userName;
-        private string messageToSend;
-        private int idUser;
         public int IdUser { get; set;    }
         public string UserName { get; set; }
         public string MessageToSend { get; set; }
     }
     public struct PlayerInLobby
     {
-        private int idUser;
-        private int idPlayer;
-        private string userName;
-        private int numberOfPlayerInLobby;
-        private int sideOfTeam;
         public int IdUser { get; set; }
         public int IdPlayer { get; set; }
         public string UserName { get; set; }
@@ -82,11 +71,6 @@ namespace JeopardyGame.Data
 
     public class UserPOJO
     {
-        private int idUser;
-        private String name;
-        private String userName;
-        private String emailAddress;
-        private String password;
         public int IdUser { get; set; }
         public String UserName { get; set; }
         public String Name { get; set; }
@@ -95,12 +79,6 @@ namespace JeopardyGame.Data
     }
     public class PlayerPOJO
     {
-        private int idPlayer;
-        private int generalPoints;
-        private int noReports;
-        private int idUser;
-        private int idState;
-        private int idActualAvatar;
         public int IdPlayer { get; set; }
         public int GeneralPoints { get; set; }
         public int NoReports { get; set; }
@@ -111,8 +89,6 @@ namespace JeopardyGame.Data
 
     public class UserValidate
     {
-        private String userName;
-        private String password;
         public String UserName { get; set; }
         public String Password { get; set; }
     }

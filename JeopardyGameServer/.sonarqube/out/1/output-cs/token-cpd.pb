@@ -1,4 +1,4 @@
-ü
+«
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\ActiveUsersDictionary.cs
 	namespace		 	
 JeopardyGame		
@@ -9,9 +9,10 @@
 
  
 public 
-
-class !
-ActiveUsersDictionary '
+
+static 
+class !
+ActiveUsersDictionary -
 { 
 private 
 static 
@@ -134,24 +135,25 @@ DictionaryK U
 ;((* +
 })) 
 }** 	
-public,, 
+public,, 
+static,, 
 
-Dictionary,, 
-<,, 
-int,, 
-,,, 
-OperationContext,, /
->,,/ 0
-GetActiveUsersList,,1 C
-(,,C D
-),,D E
+Dictionary,,  
+<,,  !
+int,,! $
+,,,$ %
+OperationContext,,& 6
+>,,6 7
+GetActiveUsersList,,8 J
+(,,J K
+),,K L
 {-- 	
 return.. 
 activeUsers.. 
 ;.. 
 }// 	
 }00 
-}11 ≠9
+}11 ¡9
 âC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\ChatsDictionary.cs
 	namespace		 	
 JeopardyGame		
@@ -164,9 +166,10 @@ Dictionary,, 
 
  
 public 
-
-class 
-ChatsDictionary  
+
+static 
+class 
+ChatsDictionary '
 { 
 private 
 static 
@@ -544,7 +547,7 @@ newChannel889 C
 ;kkC D
 }kkE F
 }ll 
-}nn ü%
+}nn «%
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\GameLobbiesDictionary.cs
 	namespace		 	
 JeopardyGame		
@@ -557,9 +560,10 @@ newChannel889 C
 
  
 public 
-
-class !
-GameLobbiesDictionary &
+
+static 
+class !
+GameLobbiesDictionary -
 { 
 private 
 static 
@@ -682,17 +686,18 @@ DictionaryL V
 ;))8 9
 }** 
 }++ 	
-public-- 
+public-- 
+static-- 
 
-Dictionary-- 
-<-- 
-int-- 
-,-- 
-Lobby-- $
->--$ % 
-GetActiveLobbiesList--& :
-(--: ;
-)--; <
+Dictionary--  
+<--  !
+int--! $
+,--$ %
+Lobby--& +
+>--+ , 
+GetActiveLobbiesList--- A
+(--A B
+)--B C
 {.. 	
 return// #
 activeLobbiesDictionary// *
@@ -804,7 +809,7 @@ Dictionary-- 
 ;FFL M
 }FFM N
 }GG 
-}II ç
+}II µ
 ëC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\FriendManagerDictionary.cs
 	namespace 	
 JeopardyGame
@@ -815,13 +820,16 @@ Dictionary-- 
 public
 
  
-
+
+static
+
+ 
 class
 
- #
+ #
 FriendManagerDictionary
 
- (
+ /
 { 
 private 
 static 
@@ -944,17 +952,18 @@ $RemoveRegistryOfFriendFromDictionary$$ ?
 ;((; <
 })) 
 }** 	
-public,, 
+public,, 
+static,, 
 
-Dictionary,, 
-<,, 
-int,, 
-,,, 
-OperationContext,, /
->,,/ 0 
-GetActiveFriendsList,,1 E
-(,,E F
-),,F G
+Dictionary,,  
+<,,  !
+int,,! $
+,,,$ %
+OperationContext,,& 6
+>,,6 7 
+GetActiveFriendsList,,8 L
+(,,L M
+),,M N
 {-- 	
 return.. (
 friendManagerUsersDictionary.. /
@@ -1128,7 +1137,7 @@ PlayerPOJO 
 )S T
 ;T U
 } 
-} ‹%
+} ø&
 àC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\ILobbyActions.cs
 	namespace
 
@@ -1176,7 +1185,7 @@ PlayerPOJO 
 CreateNewLobby (
 (( )
 int) ,
-RoomCode- 5
+roomCode- 5
 ,5 6
 int7 :
 idUser; A
@@ -1197,10 +1206,10 @@ PlayerPOJO 
 intE H
 roomCodeI Q
 ,Q R
-intS V
-idUserW ]
-)] ^
-;^ _
+intS V
+idUserRequestingW g
+)g h
+;h i
 [ 	
 OperationContract	 
 ( 
@@ -1213,7 +1222,7 @@ PlayerPOJO 
 DissolveLobby 
 ( 
 int 
-RoomCode '
+roomCode '
 ,' (
 int( +
 idUser, 2
@@ -1284,15 +1293,15 @@ LeaveLobby   
 ChangePlayerSide## 
 (## 
 int## !
-RoomCode##" *
+roomCode##" *
 ,##* +
-int##, /
-idUser##0 6
-,##6 7
-int##8 ;
-side##< @
-)##@ A
-;##A B
+int##, /
+idUserToChangeTeam##0 B
+,##B C
+int##D G
+newSideTeam##H S
+)##S T
+;##T U
 [%% 	
 OperationContract%%	 
 (%% 
@@ -1307,10 +1316,10 @@ LeaveLobby   
 int&&& )
 roomCode&&* 2
 ,&&2 3
-int&&4 7
-idUser&&8 >
-)&&> ?
-;&&? @
+int&&4 7
+idUserToEliminate&&8 I
+)&&I J
+;&&J K
 [(( 	
 OperationContract((	 
 ((( 
@@ -1332,68 +1341,71 @@ LeaveLobby   
 	wannaTeam))6 ?
 )))? @
 ;))@ A
-}** 
-public,, 
+}** 
+[,, 
+ServiceContract,, 
+],, 
+public-- 
 
-	interface,, !
-ILobbyActionsCallback,, *
-{-- 
-[.. 	
-OperationContract..	 
-].. 
-public// 
-void// &
-UpdateJoinedPlayerResponse// .
-(//. /
-GenericClass/// ;
-<//; <
-List//< @
-<//@ A
-PlayerInLobby//A N
->//N O
->//O P
-playersInTheLobby//Q b
-)//b c
-;//c d
-[11 	
-OperationContract11	 
-]11 
-public22 
-void22 
-MakeTeamsResponse22 %
-(22% &
-bool22& *
-teamUp22+ 1
-)221 2
-;222 3
-[44 	
-OperationContract44	 
-]44 
-public55 
-void55 
-UpdateTeamSide55 "
-(55" #
-GenericClass55# /
-<55/ 0
-List550 4
-<554 5
-PlayerInLobby555 B
->55B C
->55C D
-playersInTheLobby55E V
-)55V W
-;55W X
-[77 	
-OperationContract77	 
-]77 
-public88 
-void88 
-DissolvingLobby88 #
-(88# $
-)88$ %
-;88% &
-}99 
-}== œ
+	interface-- !
+ILobbyActionsCallback-- *
+{.. 
+[// 	
+OperationContract//	 
+]// 
+public00 
+void00 &
+UpdateJoinedPlayerResponse00 .
+(00. /
+GenericClass00/ ;
+<00; <
+List00< @
+<00@ A
+PlayerInLobby00A N
+>00N O
+>00O P
+playersInTheLobby00Q b
+)00b c
+;00c d
+[22 	
+OperationContract22	 
+]22 
+public33 
+void33 
+MakeTeamsResponse33 %
+(33% &
+bool33& *
+teamUp33+ 1
+)331 2
+;332 3
+[55 	
+OperationContract55	 
+]55 
+public66 
+void66 
+UpdateTeamSide66 "
+(66" #
+GenericClass66# /
+<66/ 0
+List660 4
+<664 5
+PlayerInLobby665 B
+>66B C
+>66C D
+playersInTheLobby66E V
+)66V W
+;66W X
+[88 	
+OperationContract88	 
+]88 
+public99 
+void99 
+DissolvingLobby99 #
+(99# $
+)99$ %
+;99% &
+}:: 
+}>> ˚
 íC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\INotifyUserAvailability.cs
 	namespace 	
 JeopardyGame
@@ -1430,13 +1442,13 @@ LeaveLobby   
 void 
 PlayerIsAvailable 
 ( 
-int "
-idUser# )
-,) *
-int+ .
-idPlayer/ 7
-)7 8
-;8 9
+int "
+idNewActiveUser# 2
+,2 3
+int4 7
+idNewActivePlayer8 I
+)I J
+;J K
 [ 	
 OperationContract	 
 ( 
@@ -1448,13 +1460,13 @@ LeaveLobby   
 void  
 PlayerIsNotAvailable !
 (! "
-int" %
-idUser& ,
-,, -
-int. 1
-idPlayer2 :
-): ;
-;; <
+int" %
+idUserDisconnecting& 9
+,9 :
+int; >!
+idPlayerDisconnecting? T
+)T U
+;U V
 } 
 [ 
 ServiceContract 
@@ -1478,7 +1490,7 @@ LeaveLobby   
 )B C
 ;C D
 } 
-} ¥
+} ù
 ïC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\INotifyUserFriendlyActions.cs
 	namespace		 	
 JeopardyGame		
@@ -1515,10 +1527,10 @@ LeaveLobby   
 > %
 RegisterFriendManagerUser 3
 (3 4
-int4 7
-idUser8 >
-)> ?
-;? @
+int4 7
+idUserFriendManager8 K
+)K L
+;L M
 [ 	
 OperationContract	 
 ( 
@@ -1530,10 +1542,10 @@ LeaveLobby   
 void '
 UnregisterFriendManagerUser (
 (( )
-int) ,
-idUser- 3
-)3 4
-;4 5
+int) ,
+idUserFriendManager- @
+)@ A
+;A B
 [ 	
 OperationContract	 
 ( 
@@ -1563,13 +1575,13 @@ LeaveLobby   
 void $
 EliminateUserFromFriends %
 (% &
-int& )
-idUser1* 1
-,1 2
-int3 6
-idUser27 >
-)> ?
-;? @
+int& )
+idPlayerDeleting* :
+,: ;
+int< ?
+idUserToEliminate@ Q
+)Q R
+;R S
 [ 	
 OperationContract	 
 ( 
@@ -1581,13 +1593,13 @@ LeaveLobby   
 void 
 SendFriendRequest 
 ( 
-int "
-idUser# )
-,) *
-int+ .
-idUser2/ 6
-)6 7
-;7 8
+int "
+idPLayerRequesting# 5
+,5 6
+int7 :
+idUserRequested; J
+)J K
+;K L
 [ 	
 OperationContract	 
 ( 
@@ -1599,13 +1611,13 @@ LeaveLobby   
 void 
 AcceptFriendRequest  
 (  !
-int! $
-idUser% +
-,+ ,
-int- 0
-idUser21 8
-)8 9
-;9 :
+int! $
+idPlayerAccepting% 6
+,6 7
+int8 ;
+idUserRequesting< L
+)L M
+;M N
 [   	
 OperationContract  	 
 (   
@@ -1617,13 +1629,13 @@ LeaveLobby   
 void!!  
 DeclineFriendRequest!! !
 (!!! "
-int!!" %
-idUser!!& ,
-,!!, -
-int!!. 1
-idUser2!!2 9
-)!!9 :
-;!!: ;
+int!!" %
+idPlayerDeclining!!& 7
+,!!7 8
+int!!9 <
+idUserRequesting!!= M
+)!!M N
+;!!N O
 }"" 
 [$$ 
 ServiceContract$$ 
@@ -1768,7 +1780,7 @@ numReports((" ,
 subjectM T
 ,T U
 StringV \
-body] a
+code] a
 )a b
 ;b c
 [ 
@@ -1789,7 +1801,7 @@ editedName; E
 )Z [
 ;[ \
 }!! 	
-}%% ƒ
+}%% ç
 ÑC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\ILiveChat.cs
 	namespace		 	
 JeopardyGame		
@@ -1831,16 +1843,16 @@ editedName; E
 int 
 idUser #
 ,# $
-int% (
-room) -
-,- .
-String/ 5
-userName6 >
-,> ?
-String@ F
-messageG N
-)N O
-;O P
+int% (
+roomCode) 1
+,1 2
+String3 9
+userName: B
+,B C
+StringD J
+messageToSendK X
+)X Y
+;Y Z
 [ 	
 OperationContract	 
 ] 
@@ -1853,13 +1865,13 @@ editedName; E
 >& '
 GetAllMessages( 6
 (6 7
-int7 :
-room; ?
-,? @
-intA D
-idUserE K
-)K L
-;L M
+int7 :
+roomCode; C
+,C D
+intE H
+idUserI O
+)O P
+;P Q
 [ 	
 OperationContract	 
 ( 
@@ -1895,27 +1907,30 @@ DeleteChat 
 idAdmin@ G
 )G H
 ;H I
-} 
-public 
+} 
+[ 
+ServiceContract 
+] 
+public 
 
-	interface 
-ILiveChatCallBack &
-{ 
-[ 	
-OperationContract	 
-] 
-void 
-ReceiveMessage 
-( 
-GenericClass (
-<( )
-MessageChat) 4
->4 5
-message6 =
-)= >
-;> ?
-}   
-}"" §9
+	interface 
+ILiveChatCallBack &
+{ 
+[ 	
+OperationContract	 
+] 
+void   
+ReceiveMessage   
+(   
+GenericClass   (
+<  ( )
+MessageChat  ) 4
+>  4 5
+message  6 =
+)  = >
+;  > ?
+}!! 
+}## ∏9
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterpretersEntityPojo\UserInterpreter.cs
 	namespace
 
@@ -1938,9 +1953,10 @@ DeleteChat 
  5
 { 
 public 
-
-class 
-UserInterpreter  
+
+static 
+class 
+UserInterpreter '
 { 
 public 
 static 
@@ -2943,7 +2959,7 @@ DataAccessMM: D
 ;PP! "
 }QQ 	
 }SS 
-}TT í®
+}TT Ä©
 õC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\FriendsManagerImplementation.cs
 	namespace 	
 JeopardyGame
@@ -2961,37 +2977,42 @@ DataAccessMM: D
 :6 7
 IFriendsManager8 G
 { 
-private 
-int 
+private 
+readonly 
+int 
 
-NOT_STATUS 
-=  
-$num! "
-;" #
-private 
-int 
-ACTIVE 
-= 
-$num 
-; 
-private 
-int 
-INACTIVE 
-= 
-$num  
-;  !
-private 
-int 
-THERE_IS_A_REQUEST &
-=' (
-$num) *
-;* +
-private 
-int 
-THEY_ARE_FRIENDS $
-=% &
-$num' (
-;( )
+NOT_STATUS '
+=( )
+$num* +
+;+ ,
+private 
+readonly 
+int 
+ACTIVE #
+=$ %
+$num& '
+;' (
+private 
+readonly 
+int 
+INACTIVE %
+=& '
+$num( )
+;) *
+private 
+readonly 
+int 
+THERE_IS_A_REQUEST /
+=0 1
+$num2 3
+;3 4
+private 
+readonly 
+int 
+THEY_ARE_FRIENDS -
+=. /
+$num0 1
+;1 2
 public 
 GenericClass 
 < 
@@ -4329,7 +4350,7 @@ NOT_STATUS
 ∆∆ 	
 }
 »» 
-}…… Äm
+}…… Åm
 ïC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LiveChatImplementation.cs
 	namespace 	
 JeopardyGame
@@ -4749,14 +4770,14 @@ DeleteChat;; 
 )VVY Z
 ;VVZ [
 }WW 
-}XX 	
-publicZZ 
-voidZZ #
-DeleteChannelRegistriesZZ +
-(ZZ+ ,
-intZZ, /
-roomCodeZZ0 8
-)ZZ8 9
+}XX 	
+privateZZ 
+voidZZ #
+DeleteChannelRegistriesZZ ,
+(ZZ, -
+intZZ- 0
+roomCodeZZ1 9
+)ZZ9 :
 {[[ 	
 if\\ 
 (\\ 
@@ -5102,7 +5123,7 @@ NotifyUser{{ 
 åå 	
 }
 èè 
-}êê ¡û
+}êê ‹û
 ôC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LobbyActionsImplementation.cs
 	namespace 	
 JeopardyGame
@@ -5118,71 +5139,71 @@ NotifyUser{{ 
 :. /
 ILobbyActions0 =
 { 
-private 
-const 
-int 
-NULL_INT_VALUE (
-=) *
-$num+ ,
-;, -
-private 
-const 
-int 
-ROOMCODE_IS_FULL *
-=+ ,
--- .
-$num. /
-;/ 0
-private 
-const 
-int "
-ROOMCODE_ALREADY_EXIST 0
-=1 2
--3 4
-$num4 5
-;5 6
-private 
-const 
-int #
-ROOMCODE_DOES_NOT_EXIST 1
-=1 2
-$num3 4
-;4 5
-private 
-const 
-int 
-	SUCCESFUL #
-=$ %
-$num& '
-;' (
-private 
-const 
-int $
-LEADER_POSITION_IN_LOBBY 2
-=3 4
-$num5 6
-;6 7
-private 
-const 
-int 
-TEAM_LEFT_SIDE (
-=) *
-$num+ ,
-;, -
-private 
-const 
-int 
-TEAM_RIGTH_SIDE )
-=* +
-$num, -
-;- .
-private 
-const 
-int 
-MAX_PLAYERS %
-=& '
-$num( )
-;) *
+private 
+readonly 
+int 
+NULL_INT_VALUE +
+=, -
+$num. /
+;/ 0
+private 
+readonly 
+int 
+ROOMCODE_IS_FULL -
+=. /
+-0 1
+$num1 2
+;2 3
+private 
+readonly 
+int "
+ROOMCODE_ALREADY_EXIST 3
+=4 5
+-6 7
+$num7 8
+;8 9
+private 
+readonly 
+int #
+ROOMCODE_DOES_NOT_EXIST 4
+=4 5
+$num6 7
+;7 8
+private 
+readonly 
+int 
+	SUCCESFUL &
+=' (
+$num) *
+;* +
+private 
+readonly 
+int $
+LEADER_POSITION_IN_LOBBY 5
+=6 7
+$num8 9
+;9 :
+private 
+readonly 
+int 
+TEAM_LEFT_SIDE +
+=, -
+$num. /
+;/ 0
+private 
+readonly 
+int 
+TEAM_RIGTH_SIDE ,
+=- .
+$num/ 0
+;0 1
+private 
+readonly 
+int 
+MAX_PLAYERS (
+=) *
+$num+ ,
+;, -
 public 
 GenericClass 
 < 
@@ -8046,7 +8067,7 @@ leftPlayer
 ¸¸ 	
 }
 ˛˛ 
-}ˇˇ Óó
+}ˇˇ Äò
 ¢C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\NotifyFriendlyActionsImplementation.cs
 	namespace 	
 JeopardyGame
@@ -8062,49 +8083,49 @@ leftPlayer
 :6 7+
 INotifyUserActionFriendsManager8 W
 { 
-private 
-const 
-int 
-NULL_INT_VALUE (
-=) *
-$num+ ,
-;, -
-private 
-const 
-int !
-CHANNEL_ALREADY_EXIST /
-=0 1
--2 3
-$num3 4
-;4 5
-private 
-const 
-int 
-CHANNEL_SAVED '
-=( )
-$num* +
-;+ ,
-private 
-const 
-int "
-DECLINE_FRIEND_REQUEST 0
-=1 2
-$num3 4
-;4 5
-private 
-const 
-int 
-SEND_FRIEND_REQUEST -
-=. /
-$num0 1
-;1 2
-private 
-const 
-int !
-ACCEPT_FRIEND_REQUEST /
-=0 1
-$num2 3
-;3 4
+private 
+readonly 
+int 
+NULL_INT_VALUE +
+=, -
+$num. /
+;/ 0
+private 
+readonly 
+int !
+CHANNEL_ALREADY_EXIST 2
+=3 4
+-5 6
+$num6 7
+;7 8
+private 
+readonly 
+int 
+CHANNEL_SAVED *
+=+ ,
+$num- .
+;. /
+private 
+readonly 
+int "
+DECLINE_FRIEND_REQUEST 3
+=4 5
+$num6 7
+;7 8
+private 
+readonly 
+int 
+SEND_FRIEND_REQUEST 0
+=1 2
+$num3 4
+;4 5
+private 
+readonly 
+int !
+ACCEPT_FRIEND_REQUEST 2
+=3 4
+$num5 6
+;6 7
 public 
 GenericClass 
 < 
@@ -9211,7 +9232,7 @@ $RemoveRegistryOfFriendFromDictionary55, P
 ∞∞ 	
 }
 ≤≤ 
-}≥≥ Ö1
+}≥≥ ë1
 §C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\NotifyUserAvailabilityImplementation .cs
 	namespace 	
 JeopardyGame
@@ -9227,34 +9248,34 @@ $NotifyUserAvailabilityImplementation 6
 :7 8#
 INotifyUserAvailability9 P
 { 
-private 
-const 
-int 
-NULL_INT_VALUE (
-=) *
-$num+ ,
-;, -
-private 
-const 
-int 
-UNAVAILABLE_STATUS ,
-=- .
-$num/ 0
-;0 1
-private 
-const 
-int 
-AVAILABLE_STATUS *
-=+ ,
-$num- .
-;. /
-private 
-const 
-int 
-PLAYING_STATUS (
-=) *
-$num+ ,
-;, -
+private 
+readonly 
+int 
+NULL_INT_VALUE +
+=, -
+$num. /
+;/ 0
+private 
+readonly 
+int 
+UNAVAILABLE_STATUS /
+=0 1
+$num2 3
+;3 4
+private 
+readonly 
+int 
+AVAILABLE_STATUS -
+=. /
+$num0 1
+;1 2
+private 
+readonly 
+int 
+PLAYING_STATUS +
+=, -
+$num. /
+;/ 0
 public 
 void 
 PlayerIsAvailable %
@@ -11170,7 +11191,7 @@ LeaveLobby
 ⁄⁄ 	
 }
 €€ 
-}ﬁﬁ ¡∫
+}ﬁﬁ Õ∫
 òC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\UserManagerImplementation.cs
 	namespace 	
 JeopardyGame
@@ -11188,34 +11209,34 @@ LeaveLobby
 :3 4
 IUserManager5 A
 { 
-private 
-const 
-int 
-DEFAULT_INT_VALUE +
-=, -
-$num. /
-;/ 0
-private 
-const 
-int 
-NOT_BANNED_STATE *
-=+ ,
-$num- .
-;. /
-private 
-const 
-int 
-SUCCESFULL_EVENT *
-=+ ,
-$num- .
-;. /
-private 
-const 
-int 
-UNSUCCESFULL_EVENT ,
-=- .
-$num/ 0
-;0 1
+private 
+readonly 
+int 
+DEFAULT_INT_VALUE .
+=/ 0
+$num1 2
+;2 3
+private 
+readonly 
+int 
+NOT_BANNED_STATE -
+=. /
+$num0 1
+;1 2
+private 
+readonly 
+int 
+SUCCESFULL_EVENT -
+=. /
+$num0 1
+;1 2
+private 
+readonly 
+int 
+UNSUCCESFULL_EVENT /
+=0 1
+$num2 3
+;3 4
 public 
 GenericClass 
 < 

@@ -23,9 +23,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).SaveUser(userPojoNew);
         }
 
-        public GenericClass<int> SentEmailCodeConfirmation(string email, string subject, string body)
+        public GenericClass<int> SentEmailCodeConfirmation(string email, string subject, string code)
         {
-            return ((IUserManager)UserManager).SentEmailCodeConfirmation(email, subject, body);
+            return ((IUserManager)UserManager).SentEmailCodeConfirmation(email, subject, code);
         }
 
         public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
@@ -66,155 +66,150 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public partial class ServicesReferenceAuthor: IConsultInformation
     {
-        ConsultInformationImplementation consultInfoImple = new ConsultInformationImplementation();
+        ConsultInformationImplementation consultInfoImplementation = new ConsultInformationImplementation();
 
         public GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer)
         {
-            return ((IConsultInformation)consultInfoImple).ConsultPlayerById(idPlayer);
+            return ((IConsultInformation)consultInfoImplementation).ConsultPlayerById(idPlayer);
         }
 
         public GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser)
         {
-            return ((IConsultInformation)consultInfoImple).ConsultPlayerByIdUser(idUser);
+            return ((IConsultInformation)consultInfoImplementation).ConsultPlayerByIdUser(idUser);
         }
 
         public GenericClass<UserPOJO> ConsultUserById(int idUser)
         {
-            return ((IConsultInformation)consultInfoImple).ConsultUserById(idUser);
+            return ((IConsultInformation)consultInfoImplementation).ConsultUserById(idUser);
         }
 
         public GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer)
         {
-            return ((IConsultInformation)consultInfoImple).ConsultUserByIdPlayer(idPlayer);
+            return ((IConsultInformation)consultInfoImplementation).ConsultUserByIdPlayer(idPlayer);
         }
 
         public GenericClass<UserPOJO> ConsultUserByUserName(string userName)
         {
-            return ((IConsultInformation)consultInfoImple).ConsultUserByUserName(userName);
+            return ((IConsultInformation)consultInfoImplementation).ConsultUserByUserName(userName);
         }
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat
     {
-        NotifyUserAvailabilityImplementation NotifyUserAvbImple = new NotifyUserAvailabilityImplementation();
-        NotifyFriendlyActionsImplementation NotifyFriendlyActionsImple = new NotifyFriendlyActionsImplementation();
-        LobbyActionsImplementation LobbyActionsImple = new LobbyActionsImplementation();
-        LiveChatImplementation LiveChatImple = new LiveChatImplementation();
+        NotifyUserAvailabilityImplementation NotifyUserAvb = new NotifyUserAvailabilityImplementation();
+        NotifyFriendlyActionsImplementation NotifyFriendlyActions = new NotifyFriendlyActionsImplementation();
+        LobbyActionsImplementation LobbyActions = new LobbyActionsImplementation();
+        LiveChatImplementation LiveChat = new LiveChatImplementation();
 
-        public void AcceptFriendRequest(int idUser, int idUser2)
+        public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).AcceptFriendRequest(idUser, idUser2);
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
         }
 
-        public void ChangePlayerSide(int RoomCode, int idUser, int side)
+        public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
         {
-            ((ILobbyActions)LobbyActionsImple).ChangePlayerSide(RoomCode, idUser, side);
+            ((ILobbyActions)LobbyActions).ChangePlayerSide(roomCode, idUserToChangeTeam, newSideTeam);
         }
 
-        public void CreateChatForLobby(int roomCode, int idAdmin)
+        public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
         {
-            ((ILiveChat)LiveChatImple).CreateChatForLobby(roomCode, idAdmin);
+            return ((ILiveChat)LiveChat).CreateChatForLobby(roomCode, idAdmin);
         }
 
-        public GenericClass<int> CreateNewLobby(int RoomCode, int idUser)
+        public GenericClass<int> CreateNewLobby(int roomCode, int idUser)
         {
-            return ((ILobbyActions)LobbyActionsImple).CreateNewLobby(RoomCode, idUser);
+            return ((ILobbyActions)LobbyActions).CreateNewLobby(roomCode, idUser);
         }
 
-        public void DeclineFriendRequest(int idUser, int idUser2)
+        public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).DeclineFriendRequest(idUser, idUser2);
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
         }
 
         public void DeleteChat(int roomCode, int idUser)
         {
-            ((ILiveChat)LiveChatImple).DeleteChat(roomCode, idUser);
+            ((ILiveChat)LiveChat).DeleteChat(roomCode, idUser);
         }
 
-        public void DissolveLobby(int RoomCode, int idUser)
+        public void DissolveLobby(int roomCode, int idUser)
         {
-            ((ILobbyActions)LobbyActionsImple).DissolveLobby(RoomCode, idUser);
+            ((ILobbyActions)LobbyActions).DissolveLobby(roomCode, idUser);
         }
 
-        public void EliminatePlayerFromMatch(int roomCode, int idUser)
+        public void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate)
         {
-            ((ILobbyActions)LobbyActionsImple).EliminatePlayerFromMatch(roomCode, idUser);
+            ((ILobbyActions)LobbyActions).EliminatePlayerFromMatch(roomCode, idUserToEliminate);
         }
 
-        public void EliminateUserFromFriends(int idUser1, int idUser2)
+        public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).EliminateUserFromFriends(idUser1, idUser2);
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
         }
 
-        public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUser)
+        public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting)
         {
-            return ((ILobbyActions)LobbyActionsImple).GetAllCurrentPlayerInLobby(roomCode, idUser);
+            return ((ILobbyActions)LobbyActions).GetAllCurrentPlayerInLobby(roomCode, idUserRequesting);
         }
 
-        public GenericClass<List<MessageChat>> GetAllMessages(int room, int idUser)
+        public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
-            return ((ILiveChat)LiveChatImple).GetAllMessages(room, idUser);
+            return ((ILiveChat)LiveChat).GetAllMessages(roomCode, idUser);
         }
 
         public GenericClass<int> JoinLobby(int roomCode, int idUser)
         {
-            return ((ILobbyActions)LobbyActionsImple).JoinLobby(roomCode, idUser);
+            return ((ILobbyActions)LobbyActions).JoinLobby(roomCode, idUser);
         }
 
         public void LeaveLobby(int roomCode, int idUser)
         {
-            ((ILobbyActions)LobbyActionsImple).LeaveLobby(roomCode, idUser);
+            ((ILobbyActions)LobbyActions).LeaveLobby(roomCode, idUser);
         }
 
         public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
         {
-            ((ILobbyActions)LobbyActionsImple).MakeTeams(roomCode, idUser, wannaTeam);
+            ((ILobbyActions)LobbyActions).MakeTeams(roomCode, idUser, wannaTeam);
         }
 
         public void NotifyPlayerInLobby(int roomCode, int idUser)
         {
-            ((ILobbyActions)LobbyActionsImple).NotifyPlayerInLobby(roomCode, idUser);
+            ((ILobbyActions)LobbyActions).NotifyPlayerInLobby(roomCode, idUser);
         }
 
-        public void PlayerIsAvailable(int idUser, int idPlayer)
+        public void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer)
         {
-            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsAvailable(idUser, idPlayer);
+            ((INotifyUserAvailability)NotifyUserAvb).PlayerIsAvailable(idNewActiveUser, idNewActivePlayer);
         }
 
-        public void PlayerIsNotAvailable(int idUser, int idPlayer)
+        public void PlayerIsNotAvailable(int idUserDisconnecting, int idPlayerDisconnecting)
         {
-            ((INotifyUserAvailability)NotifyUserAvbImple).PlayerIsNotAvailable(idUser, idPlayer);
+            ((INotifyUserAvailability)NotifyUserAvb).PlayerIsNotAvailable(idUserDisconnecting, idPlayerDisconnecting);
         }
 
-        public GenericClass<int> RegisterFriendManagerUser(int idUser)
+        public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
-            return ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).RegisterFriendManagerUser(idUser);
+            return ((INotifyUserActionFriendsManager)NotifyFriendlyActions).RegisterFriendManagerUser(idUserFriendManager);
         }
 
         public void ReportPlayer(int idUser, string userName)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).ReportPlayer(idUser, userName);
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).ReportPlayer(idUser, userName);
         }
 
-        public void SendFriendRequest(int idUser, int idUser2)
+        public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).SendFriendRequest(idUser, idUser2);
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).SendFriendRequest(idPLayerRequesting, idUserRequested);
         }
 
-        public void SendMessage(int idUser, int room, string userName, string message)
+        public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
         {
-            ((ILiveChat)LiveChatImple).SendMessage(idUser, room, userName, message);
+            ((ILiveChat)LiveChat).SendMessage(idUser, roomCode, userName, messageToSend);
         }
 
-        public void UnregisterFriendManagerUser(int idUser)
+        public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActionsImple).UnregisterFriendManagerUser(idUser);
-        }
-
-        GenericClass<bool> ILiveChat.CreateChatForLobby(int roomCode, int idAdmin)
-        {
-            return ((ILiveChat)LiveChatImple).CreateChatForLobby(roomCode, idAdmin);
+            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).UnregisterFriendManagerUser(idUserFriendManager);
         }
     }
 

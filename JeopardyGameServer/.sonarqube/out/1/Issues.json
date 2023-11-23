@@ -12,165 +12,39 @@
       },
       "results": [
         {
-          "ruleId": "S1118",
+          "ruleId": "CS0414",
           "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
+          "message": "El campo 'NotifyUserAvailabilityImplementation.PLAYING_STATUS' está asignado pero su valor nunca se usa",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/DataDictionaries/ChatsDictionary.cs",
-                "region": {
-                  "startLine": 11,
-                  "startColumn": 18,
-                  "endLine": 11,
-                  "endColumn": 33
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1118",
-          "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/InterpretersEntityPojo/UserInterpreter.cs",
-                "region": {
-                  "startLine": 12,
-                  "startColumn": 18,
-                  "endLine": 12,
-                  "endColumn": 33
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2933",
-          "level": "warning",
-          "message": "Make 'NOT_STATUS' 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
-                "region": {
-                  "startLine": 15,
-                  "startColumn": 21,
-                  "endLine": 15,
-                  "endColumn": 31
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2933",
-          "level": "warning",
-          "message": "Make 'ACTIVE' 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
-                "region": {
-                  "startLine": 16,
-                  "startColumn": 21,
-                  "endLine": 16,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2933",
-          "level": "warning",
-          "message": "Make 'INACTIVE' 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 21,
-                  "endLine": 17,
-                  "endColumn": 29
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2933",
-          "level": "warning",
-          "message": "Make 'THERE_IS_A_REQUEST' 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
-                "region": {
-                  "startLine": 18,
-                  "startColumn": 21,
-                  "endLine": 18,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2933",
-          "level": "warning",
-          "message": "Make 'THEY_ARE_FRIENDS' 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
                 "region": {
                   "startLine": 19,
-                  "startColumn": 21,
+                  "startColumn": 30,
                   "endLine": 19,
-                  "endColumn": 37
+                  "endColumn": 44
                 }
               }
             }
           ],
           "properties": {
-            "warningLevel": 1
+            "warningLevel": 3
           }
         },
         {
-          "ruleId": "S3597",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Add the 'ServiceContract' attribute to  this interface.",
+          "message": "Remove the unused private field 'PLAYING_STATUS'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/InterfacesSevices/ILobbyActions.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
                 "region": {
-                  "startLine": 44,
-                  "startColumn": 22,
-                  "endLine": 44,
-                  "endColumn": 43
+                  "startLine": 19,
+                  "startColumn": 9,
+                  "endLine": 19,
+                  "endColumn": 49
                 }
               }
             }
@@ -192,48 +66,6 @@
                   "startColumn": 9,
                   "endLine": 235,
                   "endColumn": 12
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S3597",
-          "level": "warning",
-          "message": "Add the 'ServiceContract' attribute to  this interface.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/InterfacesSevices/ILiveChat.cs",
-                "region": {
-                  "startLine": 28,
-                  "startColumn": 22,
-                  "endLine": 28,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1144",
-          "level": "warning",
-          "message": "Remove the unused private field 'PLAYING_STATUS'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
-                "region": {
-                  "startLine": 19,
-                  "startColumn": 9,
-                  "endLine": 19,
-                  "endColumn": 46
                 }
               }
             }
@@ -388,6 +220,27 @@
           }
         },
         {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'body' to 'code' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 97,
+                  "endLine": 26,
+                  "endColumn": 101
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S1854",
           "level": "warning",
           "message": "Remove this useless assignment to local variable 'newUserFriend'.",
@@ -409,18 +262,18 @@
           }
         },
         {
-          "ruleId": "S927",
+          "ruleId": "S1481",
           "level": "warning",
-          "message": "Rename parameter 'idUserFriendManager' to 'idUser' to match the interface declaration.",
+          "message": "Remove the unused local variable 'channel'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
                 "region": {
-                  "startLine": 22,
-                  "startColumn": 64,
-                  "endLine": 22,
-                  "endColumn": 83
+                  "startLine": 52,
+                  "startColumn": 25,
+                  "endLine": 52,
+                  "endColumn": 32
                 }
               }
             }
@@ -430,108 +283,27 @@
           }
         },
         {
-          "ruleId": "S927",
+          "ruleId": "S1172",
           "level": "warning",
-          "message": "Rename parameter 'roomCode' to 'room' to match the interface declaration.",
+          "message": "Remove this unused method parameter 'idPlayer'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LiveChatImplementation.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
                 "region": {
-                  "startLine": 38,
-                  "startColumn": 67,
-                  "endLine": 38,
-                  "endColumn": 75
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idUserFriendManager' to 'idUser' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 45,
-                  "startColumn": 53,
-                  "endLine": 45,
+                  "startLine": 59,
+                  "startColumn": 60,
+                  "endLine": 59,
                   "endColumn": 72
                 }
               }
             }
           ],
           "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'roomCode' to 'RoomCode' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
-                "region": {
-                  "startLine": 28,
-                  "startColumn": 53,
-                  "endLine": 28,
-                  "endColumn": 61
-                }
-              }
+            "warningLevel": 1,
+            "customProperties": {
+              "IsRemovable": "True"
             }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idNewActiveUser' to 'idUser' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
-                "region": {
-                  "startLine": 21,
-                  "startColumn": 43,
-                  "endLine": 21,
-                  "endColumn": 58
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idNewActivePlayer' to 'idPlayer' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
-                "region": {
-                  "startLine": 21,
-                  "startColumn": 64,
-                  "endLine": 21,
-                  "endColumn": 81
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
           }
         },
         {
@@ -692,48 +464,6 @@
           }
         },
         {
-          "ruleId": "S1854",
-          "level": "warning",
-          "message": "Remove this useless assignment to local variable 'userFriendPojo'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
-                "region": {
-                  "startLine": 97,
-                  "startColumn": 33,
-                  "endLine": 97,
-                  "endColumn": 78
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1481",
-          "level": "warning",
-          "message": "Remove the unused local variable 'channel'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 52,
-                  "startColumn": 25,
-                  "endLine": 52,
-                  "endColumn": 32
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S3776",
           "level": "warning",
           "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
@@ -881,249 +611,99 @@
         {
           "ruleId": "S927",
           "level": "warning",
-          "message": "Rename parameter 'idUserDisconnecting' to 'idUser' to match the interface declaration.",
+          "message": "Rename parameter 'idUser' to 'idPlayerAccepting' to match the interface declaration.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
                 "region": {
-                  "startLine": 39,
-                  "startColumn": 46,
-                  "endLine": 39,
-                  "endColumn": 65
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idPlayerDisconnecting' to 'idPlayer' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
-                "region": {
-                  "startLine": 39,
-                  "startColumn": 71,
-                  "endLine": 39,
-                  "endColumn": 92
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idPlayerDeleting' to 'idUser1' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 84,
-                  "startColumn": 50,
-                  "endLine": 84,
-                  "endColumn": 66
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idUserToEliminate' to 'idUser2' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 84,
-                  "startColumn": 72,
-                  "endLine": 84,
-                  "endColumn": 89
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1172",
-          "level": "warning",
-          "message": "Remove this unused method parameter 'idPlayer'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyUserAvailabilityImplementation%20.cs",
-                "region": {
-                  "startLine": 59,
-                  "startColumn": 60,
-                  "endLine": 59,
-                  "endColumn": 72
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "IsRemovable": "True"
-            }
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'roomCode' to 'room' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LiveChatImplementation.cs",
-                "region": {
-                  "startLine": 98,
-                  "startColumn": 49,
-                  "endLine": 98,
-                  "endColumn": 57
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'messageToSend' to 'message' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LiveChatImplementation.cs",
-                "region": {
-                  "startLine": 98,
-                  "startColumn": 83,
-                  "endLine": 98,
-                  "endColumn": 96
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idPlayerDeclining' to 'idUser' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 110,
-                  "startColumn": 46,
-                  "endLine": 110,
-                  "endColumn": 63
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idUserRequesting' to 'idUser2' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 110,
-                  "startColumn": 69,
-                  "endLine": 110,
-                  "endColumn": 85
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idPLayerRequesting' to 'idUser' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 133,
-                  "startColumn": 43,
-                  "endLine": 133,
-                  "endColumn": 61
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idUserRequested' to 'idUser2' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 133,
-                  "startColumn": 67,
-                  "endLine": 133,
-                  "endColumn": 82
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idPlayerAccepting' to 'idUser' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
-                "region": {
-                  "startLine": 156,
+                  "startLine": 105,
                   "startColumn": 45,
-                  "endLine": 156,
+                  "endLine": 105,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser2' to 'idUserRequesting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 105,
+                  "startColumn": 57,
+                  "endLine": 105,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'userFriendPojo'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/FriendsManagerImplementation.cs",
+                "region": {
+                  "startLine": 97,
+                  "startColumn": 33,
+                  "endLine": 97,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'RoomCode' to 'roomCode' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 42,
+                  "endLine": 110,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idUserToChangeTeam' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 110,
+                  "startColumn": 56,
+                  "endLine": 110,
                   "endColumn": 62
                 }
               }
@@ -1136,16 +716,16 @@
         {
           "ruleId": "S927",
           "level": "warning",
-          "message": "Rename parameter 'idUserRequesting' to 'idUser2' to match the interface declaration.",
+          "message": "Rename parameter 'side' to 'newSideTeam' to match the interface declaration.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/NotifyFriendlyActionsImplementation.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
                 "region": {
-                  "startLine": 156,
+                  "startLine": 110,
                   "startColumn": 68,
-                  "endLine": 156,
-                  "endColumn": 84
+                  "endLine": 110,
+                  "endColumn": 72
                 }
               }
             }
@@ -1157,16 +737,373 @@
         {
           "ruleId": "S927",
           "level": "warning",
-          "message": "Rename parameter 'idUserRequesting' to 'idUser' to match the interface declaration.",
+          "message": "Rename parameter 'RoomCode' to 'roomCode' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 120,
+                  "startColumn": 53,
+                  "endLine": 120,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idPlayerDeclining' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 46,
+                  "endLine": 125,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser2' to 'idUserRequesting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 125,
+                  "startColumn": 58,
+                  "endLine": 125,
+                  "endColumn": 65
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'RoomCode' to 'roomCode' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 39,
+                  "endLine": 135,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idUserToEliminate' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 140,
+                  "startColumn": 64,
+                  "endLine": 140,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser1' to 'idPlayerDeleting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 50,
+                  "endLine": 145,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser2' to 'idUserToEliminate' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 145,
+                  "startColumn": 63,
+                  "endLine": 145,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idUserRequesting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 150,
+                  "startColumn": 95,
+                  "endLine": 150,
+                  "endColumn": 101
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'room' to 'roomCode' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 155,
+                  "startColumn": 67,
+                  "endLine": 155,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idNewActiveUser' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 180,
+                  "startColumn": 43,
+                  "endLine": 180,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idPlayer' to 'idNewActivePlayer' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 180,
+                  "startColumn": 55,
+                  "endLine": 180,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idUserDisconnecting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 46,
+                  "endLine": 185,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idPlayer' to 'idPlayerDisconnecting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 185,
+                  "startColumn": 58,
+                  "endLine": 185,
+                  "endColumn": 66
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idUserFriendManager' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 190,
+                  "startColumn": 64,
+                  "endLine": 190,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser' to 'idPLayerRequesting' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 200,
+                  "startColumn": 43,
+                  "endLine": 200,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S927",
+          "level": "warning",
+          "message": "Rename parameter 'idUser2' to 'idUserRequested' to match the interface declaration.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
+                "region": {
+                  "startLine": 200,
+                  "startColumn": 55,
+                  "endLine": 200,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'numberOfPlayerInLobby'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
                 "region": {
-                  "startLine": 156,
-                  "startColumn": 95,
-                  "endLine": 156,
-                  "endColumn": 111
+                  "startLine": 195,
+                  "startColumn": 48,
+                  "endLine": 195,
+                  "endColumn": 86
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1854",
+          "level": "warning",
+          "message": "Remove this useless assignment to local variable 'idPlayer'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 21,
+                  "endLine": 195,
+                  "endColumn": 46
                 }
               }
             }
@@ -1220,16 +1157,16 @@
         {
           "ruleId": "S927",
           "level": "warning",
-          "message": "Rename parameter 'roomCode' to 'RoomCode' to match the interface declaration.",
+          "message": "Rename parameter 'room' to 'roomCode' to match the interface declaration.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
                 "region": {
-                  "startLine": 232,
-                  "startColumn": 42,
-                  "endLine": 232,
-                  "endColumn": 50
+                  "startLine": 205,
+                  "startColumn": 49,
+                  "endLine": 205,
+                  "endColumn": 53
                 }
               }
             }
@@ -1241,16 +1178,16 @@
         {
           "ruleId": "S927",
           "level": "warning",
-          "message": "Rename parameter 'idUserToChangeTeam' to 'idUser' to match the interface declaration.",
+          "message": "Rename parameter 'message' to 'messageToSend' to match the interface declaration.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
                 "region": {
-                  "startLine": 232,
-                  "startColumn": 56,
-                  "endLine": 232,
-                  "endColumn": 74
+                  "startLine": 205,
+                  "startColumn": 79,
+                  "endLine": 205,
+                  "endColumn": 86
                 }
               }
             }
@@ -1262,16 +1199,16 @@
         {
           "ruleId": "S927",
           "level": "warning",
-          "message": "Rename parameter 'newSideTeam' to 'side' to match the interface declaration.",
+          "message": "Rename parameter 'idUser' to 'idUserFriendManager' to match the interface declaration.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/ServicesReferenceAuthor.cs",
                 "region": {
-                  "startLine": 232,
-                  "startColumn": 80,
-                  "endLine": 232,
-                  "endColumn": 91
+                  "startLine": 210,
+                  "startColumn": 53,
+                  "endLine": 210,
+                  "endColumn": 59
                 }
               }
             }
@@ -1556,48 +1493,6 @@
           }
         },
         {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'roomCode' to 'RoomCode' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
-                "region": {
-                  "startLine": 267,
-                  "startColumn": 39,
-                  "endLine": 267,
-                  "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'idUserToEliminate' to 'idUser' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/LobbyActionsImplementation.cs",
-                "region": {
-                  "startLine": 303,
-                  "startColumn": 64,
-                  "endLine": 303,
-                  "endColumn": 81
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2068",
           "level": "warning",
           "message": "Please review this hard-coded password.",
@@ -1638,30 +1533,23 @@
           "properties": {
             "warningLevel": 1
           }
-        },
-        {
-          "ruleId": "S927",
-          "level": "warning",
-          "message": "Rename parameter 'code' to 'body' to match the interface declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Service/ServiceImplementation/UserManagerImplementation.cs",
-                "region": {
-                  "startLine": 156,
-                  "startColumn": 97,
-                  "endLine": 156,
-                  "endColumn": 101
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
         }
       ],
       "rules": {
+        "CS0414": {
+          "id": "CS0414",
+          "shortDescription": "El campo está asignado pero nunca se usa su valor",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0414)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
         "S1116": {
           "id": "S1116",
           "shortDescription": "Empty statements should be removed",
@@ -1670,23 +1558,6 @@
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1116",
           "properties": {
             "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S1118": {
-          "id": "S1118",
-          "shortDescription": "Utility classes should not have public constructors",
-          "fullDescription": "Whenever there are portions of code that are duplicated and do not depend on the state of their container class, they can be centralized inside a \"utility class\". A utility class is a class that only has static members, hence it should not be instantiated.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
-          "properties": {
-            "category": "Major Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -1797,23 +1668,6 @@
             ]
           }
         },
-        "S2933": {
-          "id": "S2933",
-          "shortDescription": "Fields that are only assigned in the constructor should be \"readonly\"",
-          "fullDescription": "readonly fields can only be assigned in a class constructor. If a class has a field that’s not marked readonly but is only set in the constructor, it could cause confusion about the field’s intended use. To avoid confusion, such fields should be marked readonly to make their intended use explicit, and to prevent future maintainers from inadvertently changing their use.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2933",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S3267": {
           "id": "S3267",
           "shortDescription": "Loops should be simplified with \"LINQ\" expressions",
@@ -1826,23 +1680,6 @@
             "tags": [
               "C#",
               "MainSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S3597": {
-          "id": "S3597",
-          "shortDescription": "\"ServiceContract\" and \"OperationContract\" attributes should be used together",
-          "fullDescription": "The ServiceContract attribute specifies that a class or interface defines the communication contract of a Windows Communication Foundation (WCF) service. The service operations of this class or interface are defined by OperationContract attributes added to methods. It doesn’t make sense to define a contract without any service operations; thus, in a ServiceContract class or interface at least one method should be annotated with OperationContract. Similarly, WCF only serves OperationContract methods that are defined inside ServiceContract classes or interfaces; thus, this rule also checks that ServiceContract is added to the containing type of OperationContract methods.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-3597",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
               "SonarWay"
             ]
           }

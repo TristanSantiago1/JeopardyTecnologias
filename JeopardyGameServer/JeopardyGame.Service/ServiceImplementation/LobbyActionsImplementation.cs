@@ -192,10 +192,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         {            
             if (roomCode != NULL_INT_VALUE && idUser != NULL_INT_VALUE && idUser != 0)
             {
-                int idPlayer = NULL_INT_VALUE, numberOfPlayerInLobby = NULL_INT_VALUE;
                 var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                 if (lobby != null)
                 {
+                    int idPlayer;
+                    int numberOfPlayerInLobby;
                     foreach (var item in lobby.listOfPlayerInLobby)
                     {
                         if (item.idUser == idUser)
@@ -266,25 +267,27 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void DissolveLobby(int roomCode, int idUser)
         {
-            if (roomCode != NULL_INT_VALUE && idUser != NULL_INT_VALUE)
+            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+            if (lobby != null)
             {
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
+                foreach (var item in lobby.listOfPlayerInLobby)
                 {
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    if (item.idUser == idUser && item.numberOfPlayerInLobby  == LEADER_POSITION_IN_LOBBY)
                     {
-                        if (item.idUser == idUser && item.numberOfPlayerInLobby  == LEADER_POSITION_IN_LOBBY)
-                        {
-                           lobby.listOfPlayerInLobby.Remove(item);
-                           NotifyClosingLobby(lobby);
-                           foreach (var leftPlayer in lobby.listOfPlayerInLobby)
-                           {
-                               lobby.listOfPlayerInLobby.Remove(leftPlayer);
-                           }
-                           break;
-                        }
-                    }                   
-                }
+                        lobby.listOfPlayerInLobby.Remove(item);
+                        NotifyClosingLobby(lobby);
+                        EliminateRestOfPlayers(lobby);
+                        break;
+                    }
+                }                   
+            }            
+        }
+
+        private void EliminateRestOfPlayers(Lobby lobby)
+        {
+            foreach (var leftPlayer in lobby.listOfPlayerInLobby)
+            {
+                lobby.listOfPlayerInLobby.Remove(leftPlayer);
             }
         }
 
@@ -324,14 +327,23 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void RearrangePositions(Lobby lobby, int eliminatedPosition)
         {
-            foreach (var item in lobby.listOfPlayerInLobby)
-            {
-                if (item.numberOfPlayerInLobby > eliminatedPosition)
-                {
-                    item.numberOfPlayerInLobby--;
-                }
-            }
+            lobby.listOfPlayerInLobby
+                 .Where(item => item.numberOfPlayerInLobby > eliminatedPosition)
+                 .ToList()
+                 .ForEach(item => item.numberOfPlayerInLobby--);
         }
+
+
+        //private void RearrangePositions(Lobby lobby, int eliminatedPosition)
+        //{
+        //    foreach (var item in lobby.listOfPlayerInLobby)
+        //    {
+        //        if (item.numberOfPlayerInLobby > eliminatedPosition)
+        //        {
+        //            item.numberOfPlayerInLobby--;
+        //        }
+        //    }
+        //}
 
         public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
         {
@@ -342,29 +354,39 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {                    
                     if(lobby.listOfPlayerInLobby.Count == MAX_PLAYERS && wannaTeam)
                     {
-                        foreach (var item in lobby.listOfPlayerInLobby)
-                        {
-                            if (item.numberOfPlayerInLobby <= 2)
-                            {
-                                item.sideTeam = TEAM_LEFT_SIDE;                                ;
-                                break;
-                            }
-                            else
-                            {
-                                item.sideTeam = TEAM_RIGTH_SIDE;                               
-                                break;
-                            }                                                    
-                        }             
+                        AssignTeamSide(lobby);
                     }
                     else
                     {
-                        foreach (var item in lobby.listOfPlayerInLobby)
-                        {                           
-                            item.sideTeam = TEAM_LEFT_SIDE;                            
-                        }
+                        DissolveTeamsSides(lobby);
                     }
                     NotifyPlayersAboutTeams(lobby, idUser, wannaTeam);
                 }
+            }
+        }
+
+        private void AssignTeamSide(Lobby lobby)
+        {
+            foreach (var item in lobby.listOfPlayerInLobby)
+            {
+                if (item.numberOfPlayerInLobby <= 2)
+                {
+                    item.sideTeam = TEAM_LEFT_SIDE;
+                    break;
+                }
+                else
+                {
+                    item.sideTeam = TEAM_RIGTH_SIDE;
+                    break;
+                }
+            }
+        }
+
+        private void DissolveTeamsSides(Lobby lobby)
+        {
+            foreach (var item in lobby.listOfPlayerInLobby)
+            {
+                item.sideTeam = TEAM_LEFT_SIDE;
             }
         }
 

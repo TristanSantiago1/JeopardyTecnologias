@@ -33,6 +33,636 @@
           }
         },
         {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerInLobby.userName' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 72,
+                  "startColumn": 24,
+                  "endLine": 72,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerPOJO.generalPoints' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 21,
+                  "endLine": 99,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'FriendBasicInformation.idStatusAvailability' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 21,
+                  "endLine": 53,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserPOJO.password' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 24,
+                  "endLine": 89,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserPOJO.emailAddress' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 24,
+                  "endLine": 88,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserPOJO.name' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 24,
+                  "endLine": 86,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerPOJO.noReports' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 21,
+                  "endLine": 100,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserPOJO.idUser' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 21,
+                  "endLine": 85,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerPOJO.idState' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 21,
+                  "endLine": 102,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerPOJO.idPlayer' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 21,
+                  "endLine": 98,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerPOJO.idActualAvatar' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 21,
+                  "endLine": 103,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerPOJO.idUser' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 21,
+                  "endLine": 101,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'MessageChat.userName' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 61,
+                  "startColumn": 24,
+                  "endLine": 61,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserPOJO.userName' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 24,
+                  "endLine": 87,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'FriendBasicInformation.idUser' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 51,
+                  "startColumn": 21,
+                  "endLine": 51,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerInLobby.numberOfPlayerInLobby' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 21,
+                  "endLine": 73,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'MessageChat.messageToSend' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 62,
+                  "startColumn": 24,
+                  "endLine": 62,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerInLobby.idPlayer' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 21,
+                  "endLine": 71,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserValidate.password' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 24,
+                  "endLine": 115,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'MessageChat.idUser' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 21,
+                  "endLine": 63,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'UserValidate.userName' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 24,
+                  "endLine": 114,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerInLobby.sideOfTeam' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 21,
+                  "endLine": 74,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'FriendBasicInformation.userName' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 24,
+                  "endLine": 52,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "CS0169",
+          "level": "warning",
+          "message": "El campo 'PlayerInLobby.idUser' nunca se usa",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 21,
+                  "endLine": 70,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 3
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idPlayer'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 98,
+                  "startColumn": 9,
+                  "endLine": 98,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'generalPoints'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 99,
+                  "startColumn": 9,
+                  "endLine": 99,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'noReports'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 9,
+                  "endLine": 100,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idUser'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 9,
+                  "endLine": 101,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idState'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 9,
+                  "endLine": 102,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idActualAvatar'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 9,
+                  "endLine": 103,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S101",
           "level": "warning",
           "message": "Rename class 'PlayerPOJO' to match pascal case naming rules, consider using 'PlayerPojo'.",
@@ -54,38 +684,17 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'userName'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 104,
-                  "startColumn": 20,
-                  "endLine": 104,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 105,
-                  "startColumn": 20,
-                  "endLine": 105,
+                  "startLine": 61,
+                  "startColumn": 9,
+                  "endLine": 61,
                   "endColumn": 33
                 }
               }
@@ -96,18 +705,18 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'messageToSend'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 106,
-                  "startColumn": 20,
-                  "endLine": 106,
-                  "endColumn": 29
+                  "startLine": 62,
+                  "startColumn": 9,
+                  "endLine": 62,
+                  "endColumn": 38
                 }
               }
             }
@@ -117,164 +726,17 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'idUser'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 107,
-                  "startColumn": 20,
-                  "endLine": 107,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 108,
-                  "startColumn": 20,
-                  "endLine": 108,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 109,
-                  "startColumn": 20,
-                  "endLine": 109,
-                  "endColumn": 34
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 64,
-                  "startColumn": 20,
-                  "endLine": 64,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 65,
-                  "startColumn": 23,
-                  "endLine": 65,
-                  "endColumn": 31
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 66,
-                  "startColumn": 23,
-                  "endLine": 66,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 75,
-                  "startColumn": 20,
-                  "endLine": 75,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 76,
-                  "startColumn": 20,
-                  "endLine": 76,
+                  "startLine": 63,
+                  "startColumn": 9,
+                  "endLine": 63,
                   "endColumn": 28
                 }
               }
@@ -285,18 +747,18 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'idUser'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 78,
-                  "startColumn": 20,
-                  "endLine": 78,
-                  "endColumn": 41
+                  "startLine": 51,
+                  "startColumn": 9,
+                  "endLine": 51,
+                  "endColumn": 28
                 }
               }
             }
@@ -306,18 +768,18 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'userName'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 77,
-                  "startColumn": 23,
-                  "endLine": 77,
-                  "endColumn": 31
+                  "startLine": 52,
+                  "startColumn": 9,
+                  "endLine": 52,
+                  "endColumn": 33
                 }
               }
             }
@@ -327,17 +789,101 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'idStatusAvailability'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 79,
-                  "startColumn": 20,
-                  "endLine": 79,
+                  "startLine": 53,
+                  "startColumn": 9,
+                  "endLine": 53,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'userName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 9,
+                  "endLine": 114,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'password'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 9,
+                  "endLine": 115,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idUser'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 9,
+                  "endLine": 70,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idPlayer'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 71,
+                  "startColumn": 9,
+                  "endLine": 71,
                   "endColumn": 30
                 }
               }
@@ -348,18 +894,18 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'userName'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 116,
-                  "startColumn": 23,
-                  "endLine": 116,
-                  "endColumn": 31
+                  "startLine": 72,
+                  "startColumn": 9,
+                  "endLine": 72,
+                  "endColumn": 33
                 }
               }
             }
@@ -369,18 +915,144 @@
           }
         },
         {
-          "ruleId": "S2292",
+          "ruleId": "S1144",
           "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
+          "message": "Remove the unused private field 'numberOfPlayerInLobby'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 117,
-                  "startColumn": 23,
-                  "endLine": 117,
-                  "endColumn": 31
+                  "startLine": 73,
+                  "startColumn": 9,
+                  "endLine": 73,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'sideOfTeam'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 74,
+                  "startColumn": 9,
+                  "endLine": 74,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'idUser'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 85,
+                  "startColumn": 9,
+                  "endLine": 85,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'name'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 9,
+                  "endLine": 86,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'userName'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 9,
+                  "endLine": 87,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'emailAddress'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 9,
+                  "endLine": 88,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "S1144",
+          "level": "warning",
+          "message": "Remove the unused private field 'password'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
+                "region": {
+                  "startLine": 89,
+                  "startColumn": 9,
+                  "endLine": 89,
+                  "endColumn": 33
                 }
               }
             }
@@ -411,111 +1083,6 @@
           }
         },
         {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 90,
-                  "startColumn": 20,
-                  "endLine": 90,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 91,
-                  "startColumn": 23,
-                  "endLine": 91,
-                  "endColumn": 31
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 92,
-                  "startColumn": 23,
-                  "endLine": 92,
-                  "endColumn": 27
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 93,
-                  "startColumn": 23,
-                  "endLine": 93,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 94,
-                  "startColumn": 23,
-                  "endLine": 94,
-                  "endColumn": 31
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S1118",
           "level": "warning",
           "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
@@ -537,720 +1104,6 @@
           }
         },
         {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 15,
-                  "startColumn": 27,
-                  "endLine": 15,
-                  "endColumn": 50
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'SUCCESFULL_EVENT' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 15,
-                  "startColumn": 27,
-                  "endLine": 15,
-                  "endColumn": 43
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 16,
-                  "startColumn": 27,
-                  "endLine": 16,
-                  "endColumn": 51
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'UNSUCCESFULL_EVENT' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 16,
-                  "startColumn": 27,
-                  "endLine": 16,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 27,
-                  "endLine": 17,
-                  "endColumn": 49
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'NULL_PARAEMETER' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 17,
-                  "startColumn": 27,
-                  "endLine": 17,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 18,
-                  "startColumn": 27,
-                  "endLine": 18,
-                  "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'ARGUMENT_NULL' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 18,
-                  "startColumn": 27,
-                  "endLine": 18,
-                  "endColumn": 40
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 19,
-                  "startColumn": 27,
-                  "endLine": 19,
-                  "endColumn": 65
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'ARGUMENT_OUT_OF_RANGE_EXCEPTION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 19,
-                  "startColumn": 27,
-                  "endLine": 19,
-                  "endColumn": 58
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 20,
-                  "startColumn": 27,
-                  "endLine": 20,
-                  "endColumn": 51
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 21,
-                  "startColumn": 27,
-                  "endLine": 21,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'FORMMAT_EXCEPTION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 20,
-                  "startColumn": 27,
-                  "endLine": 20,
-                  "endColumn": 44
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'RANK_EXCEPTION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 21,
-                  "startColumn": 27,
-                  "endLine": 21,
-                  "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 22,
-                  "startColumn": 27,
-                  "endLine": 22,
-                  "endColumn": 54
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 23,
-                  "startColumn": 27,
-                  "endLine": 23,
-                  "endColumn": 51
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 24,
-                  "startColumn": 27,
-                  "endLine": 24,
-                  "endColumn": 49
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'INVALID_OPERATION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 23,
-                  "startColumn": 27,
-                  "endLine": 23,
-                  "endColumn": 44
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'EMAIL_FORMAT_INVALID' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 22,
-                  "startColumn": 27,
-                  "endLine": 22,
-                  "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'NO_DB_CONECTION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 24,
-                  "startColumn": 27,
-                  "endLine": 24,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 25,
-                  "startColumn": 27,
-                  "endLine": 25,
-                  "endColumn": 52
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'SAVE_CHANGES_ERROR' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 25,
-                  "startColumn": 27,
-                  "endLine": 25,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 27,
-                  "startColumn": 27,
-                  "endLine": 27,
-                  "endColumn": 46
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'ENTITY_ERROR' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 27,
-                  "startColumn": 27,
-                  "endLine": 27,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 26,
-                  "startColumn": 27,
-                  "endLine": 26,
-                  "endColumn": 43
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 28,
-                  "startColumn": 27,
-                  "endLine": 28,
-                  "endColumn": 48
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'SQL_ERROR' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 26,
-                  "startColumn": 27,
-                  "endLine": 26,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'SMTP_EXCEPTION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 28,
-                  "startColumn": 27,
-                  "endLine": 28,
-                  "endColumn": 41
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 29,
-                  "startColumn": 27,
-                  "endLine": 29,
-                  "endColumn": 58
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'UNKOWN_EXCEPTION_OCURRED' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 29,
-                  "startColumn": 27,
-                  "endLine": 29,
-                  "endColumn": 51
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1118",
-          "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/LoginOperations.cs",
-                "region": {
-                  "startLine": 13,
-                  "startColumn": 18,
-                  "endLine": 13,
-                  "endColumn": 33
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1118",
-          "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionHandler.cs",
-                "region": {
-                  "startLine": 14,
-                  "startColumn": 18,
-                  "endLine": 14,
-                  "endColumn": 34
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1118",
-          "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionHandler.cs",
-                "region": {
-                  "startLine": 72,
-                  "startColumn": 18,
-                  "endLine": 72,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1118",
-          "level": "warning",
-          "message": "Add a 'protected' constructor or the 'static' keyword to the class declaration.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 14,
-                  "startColumn": 18,
-                  "endLine": 14,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2933",
           "level": "warning",
           "message": "Make 'absolutePath' 'readonly'.",
@@ -1263,195 +1116,6 @@
                   "startColumn": 24,
                   "endLine": 20,
                   "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 54,
-                  "startColumn": 20,
-                  "endLine": 54,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 55,
-                  "startColumn": 23,
-                  "endLine": 55,
-                  "endColumn": 31
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2292",
-          "level": "warning",
-          "message": "Make this an auto-implemented property and remove its backing field.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 56,
-                  "startColumn": 20,
-                  "endLine": 56,
-                  "endColumn": 40
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 11,
-                  "startColumn": 30,
-                  "endLine": 11,
-                  "endColumn": 55
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 13,
-                  "startColumn": 30,
-                  "endLine": 13,
-                  "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1104",
-          "level": "warning",
-          "message": "Make this field 'private' and encapsulate it in a 'public' property.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 12,
-                  "startColumn": 30,
-                  "endLine": 12,
-                  "endColumn": 45
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'UNKNOW' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 13,
-                  "startColumn": 30,
-                  "endLine": 13,
-                  "endColumn": 36
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'ERROR' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 12,
-                  "startColumn": 30,
-                  "endLine": 12,
-                  "endColumn": 35
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2223",
-          "level": "warning",
-          "message": "Change the visibility of 'FATAL_EXCEPTION' or make it 'const' or 'readonly'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionDiccionary.cs",
-                "region": {
-                  "startLine": 11,
-                  "startColumn": 30,
-                  "endLine": 11,
-                  "endColumn": 45
                 }
               }
             }
@@ -1528,6 +1192,27 @@
           }
         },
         {
+          "ruleId": "S3217",
+          "level": "warning",
+          "message": "Either change the type of 'drive' to 'ManagementBaseObject' or iterate on a generic collection of type 'ManagementObject'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/SeriLogConfig.cs",
+                "region": {
+                  "startLine": 52,
+                  "startColumn": 26,
+                  "endLine": 52,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S1172",
           "level": "warning",
           "message": "Remove this unused method parameter 'hashedPassword'.",
@@ -1552,61 +1237,6 @@
           }
         },
         {
-          "ruleId": "S3217",
-          "level": "warning",
-          "message": "Either change the type of 'drive' to 'ManagementBaseObject' or iterate on a generic collection of type 'ManagementObject'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/SeriLogConfig.cs",
-                "region": {
-                  "startLine": 52,
-                  "startColumn": 26,
-                  "endLine": 52,
-                  "endColumn": 42
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2583",
-          "level": "warning",
-          "message": "Change this condition so that it does not always evaluate to 'True'. Some code paths are unreachable.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 33,
-                  "startColumn": 25,
-                  "endLine": 33,
-                  "endColumn": 46
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 39,
-                  "startColumn": 25,
-                  "endLine": 39,
-                  "endColumn": 94
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2053",
           "level": "warning",
           "message": "Make this salt unpredictable.",
@@ -1628,61 +1258,6 @@
           }
         },
         {
-          "ruleId": "S2583",
-          "level": "warning",
-          "message": "Change this condition so that it does not always evaluate to 'True'. Some code paths are unreachable.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 90,
-                  "startColumn": 29,
-                  "endLine": 90,
-                  "endColumn": 54
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 96,
-                  "startColumn": 29,
-                  "endLine": 96,
-                  "endColumn": 98
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1905",
-          "level": "warning",
-          "message": "Remove this unnecessary cast to 'Friend'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 136,
-                  "startColumn": 47,
-                  "endLine": 136,
-                  "endColumn": 53
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2259",
           "level": "warning",
           "message": "'friendshipToChange' is null on at least one execution path.",
@@ -1691,9 +1266,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
                 "region": {
-                  "startLine": 184,
+                  "startLine": 174,
                   "startColumn": 21,
-                  "endLine": 184,
+                  "endLine": 174,
                   "endColumn": 39
                 }
               }
@@ -1753,6 +1328,20 @@
             ]
           }
         },
+        "CS0169": {
+          "id": "CS0169",
+          "shortDescription": "Nunca se usa el campo",
+          "defaultLevel": "warning",
+          "helpUri": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn&k=k(CS0169)",
+          "properties": {
+            "category": "Compiler",
+            "isEnabledByDefault": true,
+            "tags": [
+              "Compiler",
+              "Telemetry"
+            ]
+          }
+        },
         "S101": {
           "id": "S101",
           "shortDescription": "Types should be named in PascalCase",
@@ -1786,28 +1375,29 @@
             ]
           }
         },
-        "S1104": {
-          "id": "S1104",
-          "shortDescription": "Fields should not have public accessibility",
-          "fullDescription": "Public fields in public classes do not respect the encapsulation principle and have three main disadvantages:",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1104",
-          "properties": {
-            "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S1118": {
           "id": "S1118",
           "shortDescription": "Utility classes should not have public constructors",
           "fullDescription": "Whenever there are portions of code that are duplicated and do not depend on the state of their container class, they can be centralized inside a \"utility class\". A utility class is a class that only has static members, hence it should not be instantiated.",
           "defaultLevel": "warning",
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1118",
+          "properties": {
+            "category": "Major Code Smell",
+            "isEnabledByDefault": true,
+            "tags": [
+              "C#",
+              "MainSourceScope",
+              "TestSourceScope",
+              "SonarWay"
+            ]
+          }
+        },
+        "S1144": {
+          "id": "S1144",
+          "shortDescription": "Unused private types or members should be removed",
+          "fullDescription": "This rule raises an issue when a private/internal type or member is never referenced in the code.",
+          "defaultLevel": "warning",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
           "properties": {
             "category": "Major Code Smell",
             "isEnabledByDefault": true,
@@ -1827,23 +1417,6 @@
           "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1172",
           "properties": {
             "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S1905": {
-          "id": "S1905",
-          "shortDescription": "Redundant casts should not be used",
-          "fullDescription": "Casting expressions are utilized to convert one data type to another, such as transforming an integer into a string. This is especially crucial in strongly typed languages like C, C++, C#, Java, Python, and others.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1905",
-          "properties": {
-            "category": "Minor Code Smell",
             "isEnabledByDefault": true,
             "tags": [
               "C#",
@@ -1886,22 +1459,6 @@
             ]
           }
         },
-        "S2223": {
-          "id": "S2223",
-          "shortDescription": "Non-constant static fields should not be visible",
-          "fullDescription": "Unlike instance fields, which can only be accessed by code having a hold on the instance, static fields can be accessed by any code having visibility of the field and its type.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2223",
-          "properties": {
-            "category": "Critical Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S2259": {
           "id": "S2259",
           "shortDescription": "Null pointers should not be dereferenced",
@@ -1914,23 +1471,6 @@
             "tags": [
               "C#",
               "MainSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S2292": {
-          "id": "S2292",
-          "shortDescription": "Trivial properties should be auto-implemented",
-          "fullDescription": "Trivial properties, which include no logic but setting and getting a backing field should be converted to auto-implemented properties, yielding cleaner and more readable code.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2292",
-          "properties": {
-            "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
               "SonarWay"
             ]
           }

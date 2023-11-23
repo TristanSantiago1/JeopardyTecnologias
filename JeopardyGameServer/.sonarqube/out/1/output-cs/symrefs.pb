@@ -1,7 +1,7 @@
 Ç
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\ActiveUsersDictionary.cs
 
- 'F
+ -F
 9 D  ! ,&& (( .. 
 
  <
@@ -14,10 +14,10 @@
 $$ C
 $$H N&&( .((# )
 
-,,1 Cπ
+,,8 Jπ
 âC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\ChatsDictionary.cs
 
-  F
+ 'F
 @ K  ! ,%% '' -- 
 
  6
@@ -57,7 +57,7 @@
 kk  8 
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\GameLobbiesDictionary.cs
 
- &F
+ -F
 . E ( '! 8'' ')) '// *
 
  +
@@ -70,8 +70,8 @@
 %% >
 %%C K''4 <))/ 7
 
---& :<
-44 ' ,\ a: ? -- $
+--- A<
+44 ' ,\ a: ? --& +
 
 66 
 77' :;; 
@@ -92,7 +92,7 @@
 
 
 
- (F
+ /F
 9 U - ,! =&& ,(( ,.. /
 
  <
@@ -105,7 +105,7 @@
 $$ ?
 $$D J&&9 ?((4 :
 
-,,1 Eï
+,,8 Lï
 éC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\IConsultInformation.cs
 
  (
@@ -158,7 +158,7 @@
 
 I Q
 
-W ]
+W g
 
  
 
@@ -188,15 +188,15 @@
 
 ##" *
 
-##0 6
+##0 B
 
-##< @
+##H S
 
 && %
 
 &&* 2
 
-&&8 >
+&&8 I
 
 )) 
 
@@ -205,36 +205,36 @@
 ))) /
 
 ))6 ?
-,, */ D
+-- */ D
 
-// .
+00 .
 
-//Q b
+00Q b
 
-22 %
+33 %
 
-22+ 1
+33+ 1
 
-55 "
+66 "
 
-55E V
+66E V
 
-88 #£
+99 #£
 íC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\INotifyUserAvailability.cs
 
  ,
 
  
 
-# )
+# 2
 
-/ 7
+8 I
 
  !
 
-& ,
+& 9
 
-2 :
+? T
  4/ N
 
  )
@@ -248,11 +248,11 @@
 
  3
 
-8 >
+8 K
 
  (
 
-- 3
+- @
 
  
 
@@ -262,27 +262,27 @@
 
  %
 
-* 1
+* :
 
-7 >
+@ Q
 
  
 
-# )
+# 5
 
-/ 6
+; J
 
   
 
-% +
+% 6
 
-1 8
+< L
 
 !! !
 
-!!& ,
+!!& 7
 
-!!2 9
+!!= M
 %% </ V
 
 (( 
@@ -341,17 +341,17 @@
 
  #
 
-) -
+) 1
 
-6 >
+: B
 
-G N
+K X
 
 ( 6
 
-; ?
+; C
 
-E K
+I O
 
  
 
@@ -364,14 +364,14 @@
 2 :
 
 @ G
- &/ @
+ &/ @
 
- 
+   
 
-6 =Ü
+  6 =Ü
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterpretersEntityPojo\UserInterpreter.cs
 
-  
+ '
 
  3F
 = E   (" *" * && .F
@@ -421,14 +421,14 @@
 õC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\FriendsManagerImplementation.cs
 
  5 
- 22B L
+ '22B L
 ¢¢L V
- 
+ #
 ¬¬ !
- 
+ %
 ≈≈ 
- &	**| é
- $^^4 D
+ /	**| é
+ -^^4 D
 
 : O
 Y ] J NP
@@ -545,8 +545,8 @@
 GG( 3HH II VVN Y
 JJ* LLL! CVV 2
 KK PP TT 
-ZZ +AA '
-ZZ0 8\\ ^^R Z
+ZZ ,AA '
+ZZ1 9\\ ^^R Z
 
 bb <
 bb$ *dd ff? Enn) /rr< BvvC I<
@@ -576,7 +576,7 @@
 ôC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LobbyActionsImplementation.cs
 
  -˛
- ( *8 FPP *PP8 F
+ + *8 FPP *PP8 F
 ãã *
 ãã8 F
 üü *
@@ -594,18 +594,18 @@
 ±±C Q
 ““ *
 ““8 F
- *ww1 A
- 0GG- C
- 1}}- D
- #885 >hh9 B 
- 2117 O
+ -ww1 A
+ 3GG- C
+ 4}}- D
+ &885 >hh9 B 
+ 5117 O
 îîT l6
- (22* 8ee5 C
+ +22* 8ee5 C
 ››0 >
 ÎÎ, :
- )
+ ,
 ‚‚0 ? 
- %WW6 A
+ (WW6 A
 ◊◊: E
 
 ! /(
@@ -873,13 +873,13 @@
 ¢C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\NotifyFriendlyActionsImplementation.cs
 
  5
- (' 5//' 5
- /''- B
- '""- :
- 0
+ +' 5//' 5
+ 2''- B
+ *""- :
+ 3
 }}ü µ
- -îîü ≤
- /´´ü ¥
+ 0îîü ≤
+ 2´´ü ¥
 
 ! :(
 ? R #L _!!J ]F
@@ -980,11 +980,11 @@
 §C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\NotifyUserAvailabilityImplementation .cs
 
  62
- (# 1J X))' 5))R `
- ,//7 I
- *3 C
+ +# 1J X))' 5))R `
+ ///7 I
+ -3 C
 
- (
+ +
 
  %2
 * 9 V eL [" 1
@@ -1251,11 +1251,11 @@
 òC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\UserManagerImplementation.cs
 
  2F
- +$$! 2**( 9++- >,,) :--. ?FF& 7
- *//' 7 
- *ll5 E
+ .$$! 2**( 9++- >,,) :--. ?FF& 7
+ -//' 7 
+ -ll5 E
 ØØ) 9 
- ,rr5 G
+ /rr5 G
 ¥¥) ;
 
 ! )(
