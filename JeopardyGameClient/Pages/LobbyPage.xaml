@@ -42,7 +42,7 @@
                     <Border x:Name="brdLeaderBlue" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#9926B1FF" BorderBrush="White" BorderThickness="1"  MouseDown="ClickChangeTeamSide">
                         <StackPanel Orientation="Horizontal">
                             <Image  Source =" /Images/starImage.png"  Margin= "10,0,10,0" Width="40" Height="40" />
-                            <Label  x:Name="lblLeaderBlue" Content="juann" Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="136" Height="36"/>
+                            <Label  x:Name="lblLeaderBlue"  Background="Transparent" Foreground="White" FontSize="18" VerticalContentAlignment="Top" Width="136" Height="36"/>
                         </StackPanel>
                     </Border>
                     <Border x:Name="brdPlayer2Blue" Margin="0,10,0,10"  Width="255" Height="40" CornerRadius="15" Background="#9926B1FF" BorderBrush="White" BorderThickness="1" Visibility="Hidden" MouseDown="ClickChangeTeamSide">

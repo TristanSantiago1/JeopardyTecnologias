@@ -26,14 +26,16 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class CodeConfirmation : Page, INotifyUserAvailabilityCallback
     {
-        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
+        private static ActiveFriends activeFriendsInstance = new ActiveFriends();
         public const int NULL_INT_VALUE = 0;
         private DispatcherTimer timer;
         private int leftTime = 360;
         private String currentEmail;
         private String currentCode;
         private static Random randomNumber = new Random();
-        UserPOJO userToSave;
+        private UserPOJO userToSave;
+        public static ActiveFriends ActiveFriendsInstance { get => activeFriendsInstance; set => activeFriendsInstance = value; }
+
         public CodeConfirmation(String emailToConfirm, UserPOJO user)
         {
             this.userToSave = user;

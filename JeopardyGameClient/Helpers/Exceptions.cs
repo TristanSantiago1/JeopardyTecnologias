@@ -8,11 +8,7 @@ using System.Windows;
 
 namespace JeopardyGame.Helpers
 {
-    public class Exceptions
-    {
-
-    }
-    public class ExceptionDictionary
+    public static class ExceptionDictionary
     {
         public const int SUCCESFULL_EVENT = -100;
         public const int UNSUCCESFULL_EVENT = -99;
@@ -31,7 +27,7 @@ namespace JeopardyGame.Helpers
         public const int UNKOWN_EXCEPTION_OCURRED = -500;
     }
 
-    public class ExceptionHandler
+    public static class ExceptionHandler
     {
         public static void HandleException(int codeException, String message)
         {

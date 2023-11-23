@@ -30,7 +30,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<int> resultToReturn = new GenericClass<int>();
             if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE) 
             {
-                NullParametersHandler.HandleNullParametersService(resultToReturn); 
+                return NullParametersHandler.HandleNullParametersService(resultToReturn); 
             }
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
             if (lobby == null)
@@ -97,7 +97,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             playerJoining.idUser = idUser;
                             playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
                             playerJoining.userName = userPojo.ObjectSaved.UserName;
-                            playerJoining.numberOfPlayerInLobby = GetNumOfPlayer(lobby);
+                            playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
                             playerJoining.sideTeam = TEAM_LEFT_SIDE;
                             playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
                             lobby.listOfPlayerInLobby.Add(playerJoining);
@@ -128,7 +128,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        private int GetNumOfPlayer(Lobby lobby)
+        private int GetPositionOfPlayer(Lobby lobby)
         {
             int position = lobby.listOfPlayerInLobby.Count + 1;
             return position;

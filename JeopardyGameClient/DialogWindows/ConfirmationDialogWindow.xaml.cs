@@ -10,19 +10,22 @@ namespace JeopardyGame.DialogWindows
     /// </summary>
     public partial class ConfirmationDialogWindow : Window
     {
-        public bool closeWindow ;
+        private bool closeWindow;
+        public bool CloseWindow { get => closeWindow; set => closeWindow = value; }
         public ConfirmationDialogWindow(String title, String message, Window currentPage)
         {
             InitializeComponent();
             txbErrorTitle.Text = title;
             txbErrorMessage.Text = message; 
-            closeWindow = false;
+            CloseWindow = false;
             ShowConfirmationMessage(currentPage);           
         }
 
+        
+
         private void ClickAccept(object sender, RoutedEventArgs e)
         {
-            closeWindow = true;
+           CloseWindow = true;
            this.Close();
         }
 

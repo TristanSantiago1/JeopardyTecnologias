@@ -25,9 +25,10 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LogInUser : System.Windows.Controls.Page, INotifyUserAvailabilityCallback
     {
-        public static ActiveFriends ActiveFriendsInstance = new ActiveFriends();
+        private static ActiveFriends activeFriendsInstance = new ActiveFriends();
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
+        public static ActiveFriends ActiveFriendsInstance { get => activeFriendsInstance; set => activeFriendsInstance = value; }
 
         public LogInUser()
         {
@@ -88,8 +89,8 @@ namespace JeopardyGame.Pages
 
                     }
                 }
-                catch (Exception )
-                {
+                catch (Exception ex)
+                {                    
                     //LOGICA DE SI OCURRE LA EXPTION
                 }
             }

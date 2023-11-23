@@ -63,7 +63,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="subject" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -204,16 +204,16 @@
   <xs:element name="PlayerIsAvailable">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+        <xs:element minOccurs="0" name="idNewActiveUser" type="xs:int" />
+        <xs:element minOccurs="0" name="idNewActivePlayer" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PlayerIsNotAvailable">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserDisconnecting" type="xs:int" />
+        <xs:element minOccurs="0" name="idPlayerDisconnecting" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -233,7 +233,7 @@
   <xs:element name="RegisterFriendManagerUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserFriendManager" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -247,7 +247,7 @@
   <xs:element name="UnregisterFriendManagerUser">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserFriendManager" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -262,32 +262,32 @@
   <xs:element name="EliminateUserFromFriends">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser1" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser2" type="xs:int" />
+        <xs:element minOccurs="0" name="idPlayerDeleting" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserToEliminate" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendFriendRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser2" type="xs:int" />
+        <xs:element minOccurs="0" name="idPLayerRequesting" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserRequested" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AcceptFriendRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser2" type="xs:int" />
+        <xs:element minOccurs="0" name="idPlayerAccepting" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserRequesting" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeclineFriendRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser2" type="xs:int" />
+        <xs:element minOccurs="0" name="idPlayerDeclining" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserRequesting" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -332,7 +332,7 @@
   <xs:element name="CreateNewLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RoomCode" type="xs:int" />
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -348,7 +348,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="roomCode" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserRequesting" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -362,7 +362,7 @@
   <xs:element name="DissolveLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RoomCode" type="xs:int" />
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -401,9 +401,9 @@
   <xs:element name="ChangePlayerSide">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="RoomCode" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="side" type="xs:int" />
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserToChangeTeam" type="xs:int" />
+        <xs:element minOccurs="0" name="newSideTeam" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -411,7 +411,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="roomCode" type="xs:int" />
-        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+        <xs:element minOccurs="0" name="idUserToEliminate" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -474,16 +474,16 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
-        <xs:element minOccurs="0" name="room" type="xs:int" />
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
         <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="messageToSend" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllMessages">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="room" type="xs:int" />
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

@@ -17,7 +17,7 @@ namespace JeopardyGame.Data.Exceptions
         private static readonly string logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
         private readonly String pathTris = "C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\Logs\\";
         private readonly String pathDodonaji =" ";
-        private String absolutePath; 
+        private readonly String absolutePath; 
         public SeriLogConfig() 
         {
             String pathPC;
@@ -49,7 +49,7 @@ namespace JeopardyGame.Data.Exceptions
             {
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
                 ManagementObjectCollection drives = searcher.Get();
-                foreach (ManagementObject drive in drives)
+                foreach (ManagementBaseObject drive in drives)
                 {
                     string serialNumber = drive["SerialNumber"]?.ToString();
                     if (!string.IsNullOrEmpty(serialNumber))

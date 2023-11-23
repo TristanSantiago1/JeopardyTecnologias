@@ -44,7 +44,7 @@ namespace JeopardyGame.Pages
        
         private void ClickSingOut(object sender, MouseButtonEventArgs e)
         {
-            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).closeWindow)
+            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).CloseWindow)
             {
                 CleanGlobalParameters();
                 LogInUser logInPage = new LogInUser();

@@ -317,12 +317,12 @@ namespace JeopardyGame.Pages
             addToList.Add(newFriend);
         }
 
-        public void ResponseEliminationFromFriends(int idPlayerWhoEliminatedU)
+        public void ResponseEliminationFromFriends(int idPlayerWhoEliminatedYou)
         {
             String userName = String.Empty;
             foreach (var item in friends)
             {
-                if (item.IdUser == idPlayerWhoEliminatedU)
+                if (item.IdUser == idPlayerWhoEliminatedYou)
                 {
                     friends.Remove(item);
                     userName = item.UserName;
@@ -330,7 +330,7 @@ namespace JeopardyGame.Pages
                 }
             }
             FriendBasicInformation newFriend = new FriendBasicInformation();
-            newFriend.IdUser = idPlayerWhoEliminatedU;
+            newFriend.IdUser = idPlayerWhoEliminatedYou;
             newFriend.UserName = userName;
             newFriend.IdStatusAvailability = NOT_STATUS;
             otherPeople.Add(newFriend);

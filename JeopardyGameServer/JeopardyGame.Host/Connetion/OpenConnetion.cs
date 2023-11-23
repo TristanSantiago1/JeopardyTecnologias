@@ -5,7 +5,7 @@ using System.ServiceModel.Security;
 
 namespace JeopardyGame.Host.Connection
 {
-    class OpenConnection
+    public class OpenConnection
     {
         static void Main(string[] args)        
         {

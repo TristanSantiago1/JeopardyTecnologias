@@ -13,7 +13,7 @@ namespace JeopardyGame.Helpers
 {
     public  class FriendCardManagementWindow : StackPanel
     {
-        int idUser;
+        readonly int idUser;
         StackPanel stcName;
         StackPanel stcButtons;
         Label lblUserName;
@@ -22,7 +22,7 @@ namespace JeopardyGame.Helpers
         System.Windows.Shapes.Ellipse ellPointMark;
         Button bttLeftFunction;
         Button bttRightFunction;
-        FriendManager friendManager;
+        readonly FriendManager friendManager;
 
         public FriendCardManagementWindow(int idUser,String userName, int state, String textLeftButton, String textRigthButton, FriendManager windowInstance)
         {

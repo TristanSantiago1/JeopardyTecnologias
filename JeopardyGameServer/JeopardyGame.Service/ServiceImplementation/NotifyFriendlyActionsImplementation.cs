@@ -49,7 +49,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
                 if (channelSaved != null)
                 {
-                    var channel = OperationContext.Current;
                     FriendManagerDictionary.RemoveRegistryOfFriendFromDictionary(idUserFriendManager);                   
                 }               
             }            

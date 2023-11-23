@@ -25,7 +25,7 @@ namespace JeopardyGame.Data.DataAccess
             try
             {
                 byte[] hashBytes = Convert.FromBase64String(hashedPassword);// CMABIAR NOMBRE DE HASHBYTES a algo mas entendible
-                byte[] hash = HasherPassword(password, hashedPassword, hashBytes);
+                byte[] hash = HasherPassword(password, hashBytes);
                 resultOfOperation.ObjectSaved = true;
                 resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                 for (int index = 0; index < 20; index++)
@@ -56,7 +56,7 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
-        private static byte[] HasherPassword(string password, string hashedPassword, byte[] hashBytes)
+        private static byte[] HasherPassword(string password, byte[] hashBytes)
         {
             try
             {
@@ -66,9 +66,11 @@ namespace JeopardyGame.Data.DataAccess
                 byte[] hash = passBaseKeyDerFun2.GetBytes(20);
                 return hash;
             }
-            catch (RankException )
+            catch (RankException ex)
             {
-                throw new RankException();
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                byte[] hash = new byte[2];
+                return hash;
             }
         }
 

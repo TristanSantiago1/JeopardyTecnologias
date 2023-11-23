@@ -40,12 +40,13 @@ namespace JeopardyGame.Pages
         private bool isAdminOfLobby;
         private InstanceContext context;      
         private List <PlayerInLobby> currentPlayerInLobby;
-        private UserSingleton userSingleton = UserSingleton.GetMainUser();
+        private UserSingleton userSingleton;
 
         public LobbyPage()
         {
             InitializeComponent();
             isAdminOfLobby = true;
+            PrepareChatAndFriendList();
             PrepareWindow();
            
         }
@@ -54,13 +55,19 @@ namespace JeopardyGame.Pages
             InitializeComponent();
             this.roomCode = roomCode;
             isAdminOfLobby = false;
-            PrepareWindow() ;
+            PrepareChatAndFriendList();
+            PrepareWindow();
         }
 
-        private void PrepareWindow()
+        private static void  PrepareChatAndFriendList()
         {
             activeUsersControls = LogInUser.ActiveFriendsInstance;
             liveChatUser = new LiveChat();
+        }
+
+        private void PrepareWindow()
+        {            
+            userSingleton =  UserSingleton.GetMainUser();
             context = new InstanceContext(this);
             LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);            
             chbTeamUp.IsChecked = false;
@@ -278,15 +285,11 @@ namespace JeopardyGame.Pages
         {
             PlayerInLobby playerInLobby = new PlayerInLobby();
             playerInLobby.IdUser = NULL_INT_VALUE;
-            foreach (var item in currentPlayerInLobby)
+            foreach (var item in from item in currentPlayerInLobby where item.UserName.Equals(userName) select item)
             {
-                if (item.UserName.Equals(userName))
-                {
-                    var updatedSide = item;                   
-                    currentPlayerInLobby.Remove(item);                   
-                    playerInLobby = item;
-                    break;
-                }
+                currentPlayerInLobby.Remove(item);
+                playerInLobby = item;
+                break;
             }
             return playerInLobby;
         }
@@ -396,7 +399,7 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
         {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).closeWindow)
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
             {
                 ClosingLobby();
             }
@@ -425,7 +428,7 @@ namespace JeopardyGame.Pages
 
         public void CloseFriendList()
         {
-            frmActiveFriendsAndChat.Content = null; ;
+            frmActiveFriendsAndChat.Content = null; 
             grdActiveUser.Visibility = Visibility.Collapsed;
         }       
 

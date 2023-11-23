@@ -65,7 +65,6 @@ namespace JeopardyGame.Pages
 
         private void PasswordChangedEvent(object sender, RoutedEventArgs e)
         {
-            PasswordBox passwordBox = sender as PasswordBox;
             int changeButtonStateForPassword = CheckPassword();
             if (changeButtonStateForPassword == ALLOWED_VALUES)
             {
@@ -80,24 +79,17 @@ namespace JeopardyGame.Pages
         private void TextBoxRegexConfiguration(object sender, TextCompositionEventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
-            RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary(); ;
-            if (regularExpressionsLibrary.validationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex))
-            {
-                if (!regex.IsMatch(currentTextBox.Text + e.Text))
-                {
-                    e.Handled = true;
-                }
-
+            RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary(); 
+            if ((regularExpressionsLibrary.ValidationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex)) && (!regex.IsMatch(currentTextBox.Text + e.Text)))
+            {                                   
+                e.Handled = true;                
             }
         }
         private void TextBoxPasteBlockConfiguration(object sender, KeyEventArgs e)
         {
-            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (e.Key == Key.V))
             {
-                if (e.Key == Key.V)
-                {
                     e.Handled = true;
-                }
             }
         }
 
@@ -221,7 +213,7 @@ namespace JeopardyGame.Pages
         {
             int answer = ALLOWED_VALUES;
             RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression = new Regex(string.Empty);
+            Regex regexExpression;
             String passwordChecked = psbPasswordCreateAccount.Password.ToString().Trim();
             if (passwordChecked.Length < MINIMUN_PASSWORD_LENGTH || passwordChecked.Length > MAXIMUM_PASSWORD_LENGTH)
             {
@@ -390,7 +382,7 @@ namespace JeopardyGame.Pages
 
         private void CLickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
-            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).closeWindow)
+            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
             {
                 GoToLogInWindow();
             }

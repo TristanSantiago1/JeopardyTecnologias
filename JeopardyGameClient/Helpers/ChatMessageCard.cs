@@ -46,7 +46,7 @@ namespace JeopardyGame.Helpers
             stpUserMessage.Height = Double.NaN;
             stpUserMessage.Width = Double.NaN;           
             stpUserMessage.MaxWidth = 450;
-            stpUserMessage.Margin = new System.Windows.Thickness(0); ;
+            stpUserMessage.Margin = new System.Windows.Thickness(0); 
             stpUserMessage.Children.Add(lblUserName);
             stpUserMessage.Children.Add(lblMessage);           
         }

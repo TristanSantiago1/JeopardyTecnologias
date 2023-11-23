@@ -27,7 +27,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     var newChannel = OperationContext.Current;
                     ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
-                    NotifyFriends(idNewActiveUser, AVAILABLE_STATUS, idNewActivePlayer);
+                    NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
                 }
                 else 
                 {
@@ -44,7 +44,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 if (channel != null)
                 {
                     ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
-                    NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS, idPlayerDisconnecting);              
+                    NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);              
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         //FALTA METODO PARA NOTIFICAR CUANDO ENTRE A APRTIDA
     
 
-        private void NotifyFriends(int idUser, int status, int idPlayer)
+        private void NotifyFriends(int idUser, int status)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
             FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();

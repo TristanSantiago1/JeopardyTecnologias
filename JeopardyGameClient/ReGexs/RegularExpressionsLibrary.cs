@@ -6,22 +6,24 @@ namespace JeopardyGame.ReGexs
 {
     public class RegularExpressionsLibrary
     {
-        private static String AT_LEAST_TWO_NUMBERS = @"(?:.*\d.*\D.*\d)|(?:.*\D.*\d.*\D.*\d)";
-        private static String AT_LEAST_TWO_CAPITAL_LETTER = @"^(?=(?:[^A-Z]*[A-Z]){2})[^A-Z]*(?:[A-Z](?![A-Z])[^A-Z]*)+$";
-        private static String AT_LEAST_ONE_SPECIAL_CHARACTER = @"[!¡¿?=&%$#\-_]";
-        private static String AT_LEAST_ONE_PUNTUATION_MARK = @"[.:;,]";
-        private static string NAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ ]{1,30}$";
-        private static string USERNAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ]{1,15}$";
-        private static string EMAIL_RULES_CHAR = "^(?=.{1,90}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-        private static string EMAIL_ALLOW_CHAR = "^[a-zA-Z0-9@,._=]{1,90}$";
+        private static readonly String AT_LEAST_TWO_NUMBERS = @"(?:.*\d.*\D.*\d)|(?:.*\D.*\d.*\D.*\d)";
+        private static readonly String AT_LEAST_TWO_CAPITAL_LETTER = @"^(?=(?:[^A-Z]*[A-Z]){2})[^A-Z]*(?:[A-Z](?![A-Z])[^A-Z]*)+$";
+        private static readonly String AT_LEAST_ONE_SPECIAL_CHARACTER = @"[!¡¿?=&%$#\-_]";
+        private static readonly String AT_LEAST_ONE_PUNTUATION_MARK = @"[.:;,]";
+        private static readonly string NAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ ]{1,30}$";
+        private static readonly string USERNAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ]{1,15}$";
+        private static readonly string EMAIL_RULES_CHAR = "^(?=.{1,90}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        private static readonly string EMAIL_ALLOW_CHAR = "^[a-zA-Z0-9@,._=]{1,90}$";
 
 
-        public Dictionary<string, Regex> validationTextBoxRegexes = new Dictionary<string, Regex>
+        private Dictionary<string, Regex> validationTextBoxRegexes = new Dictionary<string, Regex>
         {
             { "txbNameCreateAcc", new Regex(NAME_RULES_CHAR) },
             { "txbUserNameCreateAcc", new Regex(USERNAME_RULES_CHAR) },
             {"txbEmailCreateAcc", new Regex(EMAIL_ALLOW_CHAR) }
         };
+
+        public Dictionary<string, Regex> ValidationTextBoxRegexes { get => validationTextBoxRegexes; set => validationTextBoxRegexes = value; }
 
         public String GetAt_LEAST_TWO_NUMBER()
         {

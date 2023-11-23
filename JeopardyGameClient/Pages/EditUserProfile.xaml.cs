@@ -65,7 +65,7 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonCancelChanges(object sender, RoutedEventArgs e)
         {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).closeWindow)
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
             {
                 CloseWindow();
             }

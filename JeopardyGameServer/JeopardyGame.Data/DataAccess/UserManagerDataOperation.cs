@@ -469,7 +469,7 @@ namespace JeopardyGame.Data.DataAccess
                                 GeneralPoints = player.GeneralPoints,
                             })
                         .ToList();
-                    if (friendScores != null)
+                    if (friendScores.Count < 0)
                     {
                         resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                     }

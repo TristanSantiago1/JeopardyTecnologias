@@ -24,19 +24,18 @@ namespace JeopardyGame
         public NotifyUserAvailabilityClient proxyForAvailability { get; set; }
 
         private UserSingleton() { }
-        private UserSingleton(int idUser, String name, String userName, String email, String password, 
-            int idPlayer, int generalPoints, int noReports, int idCurrentAvatar, int idState) 
+        private UserSingleton(UserPOJO userSingleton, PlayerPOJO playerSingleton) 
         {
-            IdUser = idUser;
-            Name = name;
-            UserName = userName;
-            Email = email;
-            Password = password;
-            IdPlayer = idPlayer;
-            GeneralPoints = generalPoints;
-            NoReports = noReports;
-            IdCurrentAvatar = idCurrentAvatar;
-            IdState = idState;
+            IdUser = userSingleton.IdUser;
+            Name = userSingleton.Name;
+            UserName = userSingleton.UserName;
+            Email = userSingleton.EmailAddress;
+            Password = userSingleton.Password;
+            IdPlayer = playerSingleton.IdPlayer;
+            GeneralPoints = playerSingleton.GeneralPoints;
+            NoReports = playerSingleton.NoReports;
+            IdCurrentAvatar = playerSingleton.IdActualAvatar;
+            IdState = playerSingleton.IdState;
         }
 
         public static UserSingleton GetMainUser()
@@ -48,12 +47,11 @@ namespace JeopardyGame
             return instanceOfUserSingleton;
         }
 
-        public static UserSingleton GetMainUser(int idUser, String name, String userName, String email, String password,
-            int idPlayer, int generalPoints, int noReports, int idCurrentAvatar, int idState)
+        public static UserSingleton GetMainUser(UserPOJO userSingleton, PlayerPOJO playerSingleton)
         {
             if (instanceOfUserSingleton == null)
             {
-                instanceOfUserSingleton = new UserSingleton(idUser,name,userName,email,password,idPlayer,generalPoints, noReports,idCurrentAvatar,idState);
+                instanceOfUserSingleton = new UserSingleton(userSingleton, playerSingleton);
             }
             return instanceOfUserSingleton;
         }
