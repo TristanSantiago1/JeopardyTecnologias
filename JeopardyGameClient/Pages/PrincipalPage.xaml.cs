@@ -37,6 +37,7 @@ namespace JeopardyGame.Pages
         {
 
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
+            codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             codeWindow.Show();
             enterGameWithCode codePage = new enterGameWithCode();
             codeWindow.contentFrame.NavigationService.Navigate(codePage);

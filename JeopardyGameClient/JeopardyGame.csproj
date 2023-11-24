@@ -78,6 +78,9 @@
     <Compile Include="Pages\ActiveFriends.xaml.cs">
       <DependentUpon>ActiveFriends.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BanerPlayer.xaml.cs">
+      <DependentUpon>BanerPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CodeConfirmation.xaml.cs">
       <DependentUpon>CodeConfirmation.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ActiveFriends.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BanerPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

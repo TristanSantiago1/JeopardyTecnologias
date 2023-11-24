@@ -9,6 +9,7 @@ namespace JeopardyGame
         {
             base.OnStartup(e);
             Views.PrincipalWindow mainWindow = new Views.PrincipalWindow();
+            mainWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.MainWindow = mainWindow;
             mainWindow.Show();
         }
