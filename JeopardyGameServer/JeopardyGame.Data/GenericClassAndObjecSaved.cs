@@ -27,6 +27,7 @@ namespace JeopardyGame.Data
 
         [DataMember]
         public int CodeEvent { get; set; }
+        public bool IsSuccess { get; set; }
 
         public GenericClass()
         {

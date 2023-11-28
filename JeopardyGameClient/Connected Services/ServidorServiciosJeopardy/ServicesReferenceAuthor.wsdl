@@ -69,7 +69,8 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -108,6 +109,12 @@
   <wsdl:message name="IUserManager_UpdateUserInformation_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserInformationResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_GetPlayersInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayersInfo" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_GetPlayersInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayersInfoResponse" />
+  </wsdl:message>
   <wsdl:message name="IFriendsManager_GetUserFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserFriends" />
   </wsdl:message>
@@ -125,6 +132,24 @@
   </wsdl:message>
   <wsdl:message name="IFriendsManager_GetUsersNotFriends_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUsersNotFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_BanUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:BanUser" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_BanUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BanUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_UnbanUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnbanUser" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_UnbanUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnbanUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_IsUserBanned_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserBanned" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManager_IsUserBanned_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserBannedResponse" />
   </wsdl:message>
   <wsdl:message name="IConsultInformation_ConsultUserById_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultUserById" />
@@ -331,6 +356,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformation" message="tns:IUserManager_UpdateUserInformation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformationResponse" message="tns:IUserManager_UpdateUserInformation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetPlayersInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfo" message="tns:IUserManager_GetPlayersInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfoResponse" message="tns:IUserManager_GetPlayersInfo_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
     <wsdl:operation name="GetUserFriends">
@@ -344,6 +373,18 @@
     <wsdl:operation name="GetUsersNotFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/GetUsersNotFriends" message="tns:IFriendsManager_GetUsersNotFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/GetUsersNotFriendsResponse" message="tns:IFriendsManager_GetUsersNotFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BanUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/BanUser" message="tns:IFriendsManager_BanUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/BanUserResponse" message="tns:IFriendsManager_BanUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnbanUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/UnbanUser" message="tns:IFriendsManager_UnbanUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/UnbanUserResponse" message="tns:IFriendsManager_UnbanUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsUserBanned">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/IsUserBanned" message="tns:IFriendsManager_IsUserBanned_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/IsUserBannedResponse" message="tns:IFriendsManager_IsUserBanned_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IConsultInformation">
@@ -551,6 +592,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPlayersInfo">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/GetPlayersInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IFriendsManager" type="tns:IFriendsManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IFriendsManager_policy" />
@@ -575,6 +625,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsersNotFriends">
       <soap12:operation soapAction="http://tempuri.org/IFriendsManager/GetUsersNotFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BanUser">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/BanUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnbanUser">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/UnbanUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserBanned">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/IsUserBanned" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

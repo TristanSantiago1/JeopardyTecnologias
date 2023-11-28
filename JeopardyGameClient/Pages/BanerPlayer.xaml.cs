@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.ServidorServiciosJeopardy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,5 +27,23 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
         }
+
+        private void clicConfirmBaner(object sender, RoutedEventArgs e)
+        {
+            FriendsManagerClient proxyBaneFriend = new FriendsManagerClient();
+            UserPOJO userToBan = new UserPOJO();
+            var result = proxyBaneFriend.BanUser(userToBan);
+            var infoDialog = new InformationMessageDialogWindow(Properties.Resources.txbInfoBanner, 
+                Properties.Resources.txbInformationMessage, Application.Current.MainWindow);
+            
+        }
+
+        private void clicCancelBaner(object sender, RoutedEventArgs e)
+        {
+            FriendManager friendManagerPage = new FriendManager();
+            this.NavigationService.Navigate(friendManagerPage);
+            NavigationService.RemoveBackEntry();
+        }
+        
     }
 }

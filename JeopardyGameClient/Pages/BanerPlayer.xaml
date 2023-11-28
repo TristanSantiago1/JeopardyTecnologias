@@ -7,19 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="450"
       Title="BanerPlayer" Width="600">
-    <Grid>
+    <Grid Margin="0,0,0,-13">
         <Grid.Background>
             <ImageBrush ImageSource="/Images/BackGround.jpg">
             </ImageBrush>
 
         </Grid.Background>
-        <Label x:Name="lblBanerPlayer" Content="Motivo del Baneo" Foreground="White" FontWeight="Bold" FontSize="35" HorizontalAlignment="Left" Margin="145,31,0,0" VerticalAlignment="Top" Height="54" Width="326"/>
-        <Border Margin="150,117,150,117" CornerRadius="16" Background="#7F592C75">
-        </Border>
-        <CheckBox Content="Trampa" Foreground="White" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="188,230,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Conducta anti deportiva" Foreground="White" FontWeight="Bold" FontSize="15" HorizontalAlignment="Left" Margin="188,191,0,0" VerticalAlignment="Top" Width="217"/>
-        <CheckBox Content="Uso de lenguaje inadecuado" Foreground="White" FontWeight="Bold" FontSize="15" Margin="188,152,172,273"/>
-        <Button Content="Confirmar"  Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="316,370,0,0" VerticalAlignment="Top" Height="37" Width="112" RenderTransformOrigin="1.884,8.319"/>
-        <Button Content="Cancelar" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="451,369,0,0" VerticalAlignment="Top" Height="38" Width="99"/>
+        <Label x:Name="lblBanerPlayer" Content="Bane user" Foreground="White" FontWeight="Bold" FontSize="35" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top" Height="54" Width="176"/>
+        <Button 
+           Click="clicConfirmBaner" Content="Confirm"  Style="{StaticResource ButtonStartGame}" HorizontalAlignment="Left" Margin="300,326,0,0" VerticalAlignment="Top" Height="37" Width="112" RenderTransformOrigin="1.884,8.319"/>
+        <Button  Click="clicCancelBaner" Content="Cancel" Style="{StaticResource ButtonCancelGame}" HorizontalAlignment="Left" Margin="447,327,0,0" VerticalAlignment="Top" Height="38" Width="99"/>
+        <Label Content="¿Estás seguro de banear a este usuario?" FontSize="25"  Foreground="White" Margin="70,179,70,179"/>
     </Grid>
 </Page>

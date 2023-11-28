@@ -213,8 +213,14 @@
   <data name="lblEmptyField" xml:space="preserve">
     <value>Campo Requrido</value>
   </data>
+  <data name="lblEnglish" xml:space="preserve">
+    <value>Inglés</value>
+  </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
     <value>Error : No fue posible rgistrar al ususario </value>
+  </data>
+  <data name="lblGameLanguaje" xml:space="preserve">
+    <value>Ajustes</value>
   </data>
   <data name="lblInvalidEmail" xml:space="preserve">
     <value>El correo electronico no es valido.</value>
@@ -279,6 +285,12 @@
   <data name="lblResentCode" xml:space="preserve">
     <value>Reenviar Codigo en : </value>
   </data>
+  <data name="lblSettingsIcon" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="lblSpanish" xml:space="preserve">
+    <value>Español</value>
+  </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>
   </data>
@@ -327,8 +339,14 @@
   <data name="txbErrorTitle" xml:space="preserve">
     <value>ERROR</value>
   </data>
+  <data name="txbInfoBanner" xml:space="preserve">
+    <value>Notificación baneo</value>
+  </data>
   <data name="txbInfoMessgSuccRegUser" xml:space="preserve">
     <value>Se ha registrado correctamente el usuario :</value>
+  </data>
+  <data name="txbInformationMessage" xml:space="preserve">
+    <value>El usuario ha sido baneado</value>
   </data>
   <data name="txbPromtTextSerarch" xml:space="preserve">
     <value>Buscar</value>

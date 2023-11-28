@@ -89,6 +89,11 @@ namespace JeopardyGame.Data.Exceptions
             resultWithNull.CodeEvent = ExceptionDictionary.NULL_PARAEMETER;
             return resultWithNull;
         }
+
+        internal static GenericClass<T> HandleNullParametersDataBase<T>(GenericClass<T> resultOfOperation)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     
