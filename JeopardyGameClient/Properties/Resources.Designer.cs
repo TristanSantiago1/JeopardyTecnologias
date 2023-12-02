@@ -61,7 +61,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Choose an avatar.
+        ///   Busca una cadena traducida similar a Choose an avatarPlayer1.
         /// </summary>
         public static string btnChoseImage {
             get {

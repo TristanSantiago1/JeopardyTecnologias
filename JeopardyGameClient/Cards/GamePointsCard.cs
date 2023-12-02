@@ -32,7 +32,7 @@ namespace JeopardyGame.Helpers
         private void SetStyle()
         {
             this.Style = (Style) FindResource("BorderCardGameStyle");
-            this.Margin = new Thickness(10);
+            this.Margin = new Thickness(20, 10, 20, 10);
         }
 
         private void SetLabelStyle(string pointsValue)

@@ -444,11 +444,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateJoinedPlayerResponseResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="MakeTeamsResponse">
     <xs:complexType>
       <xs:sequence>
@@ -474,11 +469,6 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="DissolvingLobby">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="DissolvingLobbyResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

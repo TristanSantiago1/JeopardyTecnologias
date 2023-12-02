@@ -26,7 +26,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar)
         {
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            var playerOnLobbySubscribing = lobby.listOfPlayerInLobby.Find(u => u.idUser == idUserSubscribing);
+            var playerOnLobbySubscribing = lobby.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
             if (playerOnLobbySubscribing != null)
             {
                 PlayerPlaying playerJoiningGame = new()

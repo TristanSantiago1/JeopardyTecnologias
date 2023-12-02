@@ -38,9 +38,9 @@ namespace JeopardyGame.Pages
         private Random generateAleatory;
         private int roomCode;
         private bool isAdminOfLobby;
-        private InstanceContext context;      
-        private List <PlayerInLobby> currentPlayerInLobby;
-        private UserSingleton userSingleton;
+        private InstanceContext context;
+        private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
+        private UserSingleton userSingleton = UserSingleton.GetMainUser();
         private LobbyActionsClient lobbyActionsClient;
 
         public LobbyPage()
@@ -49,7 +49,6 @@ namespace JeopardyGame.Pages
             isAdminOfLobby = true;
             PrepareChatAndFriendList();
             PrepareWindow();
-
             Loaded += AskForQuestions;
         }
 
@@ -67,43 +66,41 @@ namespace JeopardyGame.Pages
             PrepareWindow();
         }
 
-        private static void  PrepareChatAndFriendList()
+        private static void PrepareChatAndFriendList()
         {
             activeUsersControls = LogInUser.ActiveFriendsInstance;
             liveChatUser = new LiveChat();
         }
 
         private void PrepareWindow()
-        {            
-            userSingleton =  UserSingleton.GetMainUser();
+        {
             context = new InstanceContext(this);
-            lobbyActionsClient = new LobbyActionsClient(context);            
-            chbTeamUp.IsChecked = false;
+            lobbyActionsClient = new LobbyActionsClient(context);
             if (isAdminOfLobby)
-            {                
+            {
                 generateAleatory = new Random();
-                int aleatoryNumber = generateAleatory.Next(10000, 99999);               
+                int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
-                lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);                
+                lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);
             }
             else
             {
                 GenericClassOfint successful = lobbyActionsClient.JoinLobby(roomCode, userSingleton.IdUser);
-                if(successful.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (successful.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    lobbyActionsClient.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);                    
+                    lobbyActionsClient.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, "Error", Application.Current.MainWindow);
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, "Error", Window.GetWindow(this));
                     return;
                 }
+                chbTeamUp.IsEnabled = false;
             }
             var playersInLobby = lobbyActionsClient.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser);
-            if(playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 currentPlayerInLobby = playersInLobby.ObjectSaved.ToList();
-                ThereAreTeams();
             }
             else
             {
@@ -111,18 +108,6 @@ namespace JeopardyGame.Pages
             }
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
-        }
-
-        private void ThereAreTeams()
-        {
-            foreach (var item in currentPlayerInLobby)
-            {
-                if (item.SideOfTeam == TEMA_RIGHT_SIDE)
-                {
-                    chbTeamUp.IsChecked = true;
-                    break;
-                }
-            }
         }
 
         private void SetPlayerInLabels()
@@ -144,11 +129,11 @@ namespace JeopardyGame.Pages
                             ShowPlayer(lblPlayer3Blue, lblPlayer3Red, brdPlayer3Blue, brdPlayer3Red, item.UserName, item.SideOfTeam);
                             break;
                         case 4:
-                            ShowPlayer(lblPlayer4Blue, lblPlayer4Red, brdPlayer4Blue, brdPlayer4Red,item.UserName, item.SideOfTeam);
+                            ShowPlayer(lblPlayer4Blue, lblPlayer4Red, brdPlayer4Blue, brdPlayer4Red, item.UserName, item.SideOfTeam);
                             break;
                     }
                 }
-            }          
+            }
         }
 
         private void CleanAllLabels()
@@ -168,7 +153,7 @@ namespace JeopardyGame.Pages
             lblPlayer3Blue.Content = string.Empty;
             lblPlayer3Red.Content = string.Empty;
             lblPlayer4Blue.Content = string.Empty;
-            lblPlayer4Red.Content = string.Empty;   
+            lblPlayer4Red.Content = string.Empty;
         }
 
         private void ShowPlayer(Label labelBlue, Label labelRed, Border borderBlue, Border borderRed, String userName, int side)
@@ -182,111 +167,48 @@ namespace JeopardyGame.Pages
             else
             {
                 labelRed.Content = userName;
-                borderBlue.Visibility= Visibility.Visible;
-                borderRed.Visibility= Visibility.Hidden;
+                borderBlue.Visibility = Visibility.Hidden;
+                borderRed.Visibility = Visibility.Visible;
             }
         }
-        void ILobbyActionsCallback.UpdateJoinedPlayerResponse(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
-        {
-            bool iAmActive = false;
-            if(playersInTheLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
-            {
-                currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
-                foreach (var item in currentPlayerInLobby)
-                {
-                    if (item.IdPlayer == userSingleton.IdPlayer)
-                    {
-                        iAmActive = true;
-                    }
-                }
-                if (iAmActive)
-                {
-                    SetPlayerInLabels();
-                }
-                else
-                {
-                    new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, "Tehan eliminado del lobby", Application.Current.MainWindow);
-                    CloseWindow();
-                }
-            }                       
-        }
 
-
-        public void DissolvingLobby()
-        {
-            new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, "Se ha cancelado la partida", Application.Current.MainWindow);
-            CloseWindow();
-        }
-
-        public void MakeTeamsResponse(bool teamUp)
-        {
-            DoOrUndoTeams(teamUp);
-            SetPlayerInLabels();
-        }
-
-        private void DoOrUndoTeams(bool teamUp)
-        {
-            List<PlayerInLobby> auxiliaryPlayerLobby = new List<PlayerInLobby>();
-            if (teamUp)
-            {
-                chbTeamUp.IsChecked = true;
-                foreach (var item in currentPlayerInLobby)
-                {
-                    var updatedPlayer = item;
-                    if (item.NumberOfPlayerInLobby <= TEAM_LEFT_SIDE)
-                    {
-                        updatedPlayer.SideOfTeam = TEAM_LEFT_SIDE;                        
-                        auxiliaryPlayerLobby.Add(updatedPlayer);
-                        break;
-                    }
-                    else
-                    {
-                        updatedPlayer.SideOfTeam = TEMA_RIGHT_SIDE;                        
-                        auxiliaryPlayerLobby.Add(updatedPlayer);
-                        break;
-                    }            
-                }
-            }
-            else
-            {
-                chbTeamUp.IsChecked = false;
-                foreach (var item in currentPlayerInLobby)
-                {                   
-                    var updatedPlayer = item;
-                    updatedPlayer.SideOfTeam = TEAM_LEFT_SIDE;                   
-                    auxiliaryPlayerLobby.Add(updatedPlayer);
-                }
-            }
-            currentPlayerInLobby.Clear();
-            currentPlayerInLobby.AddRange(auxiliaryPlayerLobby);
-        }
-
-        public void UpdateTeamSide(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
+        public void UpdateJoinedPlayerResponse(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
         {
             if (playersInTheLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
-                SetPlayerInLabels();
+                currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();                
+                if (currentPlayerInLobby.Any(pla => pla.IdPlayer == userSingleton.IdPlayer))
+                {
+                    SetPlayerInLabels();
+                    if ((bool)chbTeamUp.IsChecked)
+                    {
+                        chbTeamUp.IsChecked = false;
+                    }
+                }
+                else
+                {
+                    new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, "Tehan eliminado del lobby", Window.GetWindow(this));
+                    CloseWindow();
+                }
             }
         }
-        
 
         private void ClickEliminatePlayerFromLobby(object sender, MouseButtonEventArgs e)
         {
             if (isAdminOfLobby)
             {
-                string userName = GetUserNameFromLabel(sender);
+                string userName = GetUserNameFromLabelByImage(sender);
                 if (userName != null)
                 {
                     var userChanged = EliminateUserFromLobby(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        lobbyActionsClient.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);                        
+                        lobbyActionsClient.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);
                     }
                 }
-                SetPlayerInLabels();
             }
         }
+
 
         private PlayerInLobby EliminateUserFromLobby(String userName)
         {
@@ -301,24 +223,128 @@ namespace JeopardyGame.Pages
             return playerInLobby;
         }
 
+        private String GetUserNameFromLabelByImage(object sender)
+        {
+            String userName = null;
+            Image imgChosen = (Image)sender;
+            StackPanel stcChosen = GetParent.FindParent<StackPanel>(imgChosen);
+            foreach (var item in stcChosen.Children)
+            {
+                if (item is Label)
+                {
+                    Label label = item as Label;
+                    userName = label.Content.ToString();
+                }
+            }
+            return userName;
+        }
+
+
+        private void ClickTeamUp(object sender, RoutedEventArgs e)
+        {
+            if (isAdminOfLobby)
+            {
+                if (currentPlayerInLobby.Count == 4)
+                {
+                    DoOrUndoTeams(true);
+                    SetPlayerInLabels();
+                    lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, true);
+                }
+                else
+                {
+                    chbTeamUp.IsChecked = false;
+                    new ErrorMessageDialogWindow("Error", "Deben haber almenos 4 jugadores", Window.GetWindow(this));
+                }
+            }
+        }
+
+        private void ClickNoTeamUp(object sender, RoutedEventArgs e)
+        {
+            if (isAdminOfLobby)
+            {
+                DoOrUndoTeams(false);
+                SetPlayerInLabels();
+                lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, false);
+            }
+        }
+
+        public void MakeTeamsResponse(bool teamUp)
+        {
+            DoOrUndoTeams(teamUp);
+            SetPlayerInLabels();
+        }
+
+        private void DoOrUndoTeams(bool teamUp)
+        {
+            if (teamUp)
+            {                
+                currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
+                {
+                    if (pla.NumberOfPlayerInLobby <= TEMA_RIGHT_SIDE)
+                    {
+                        pla.SideOfTeam = TEAM_LEFT_SIDE;
+                    }
+                    else
+                    {
+                        pla.SideOfTeam = TEMA_RIGHT_SIDE;
+                    }
+                    return pla;
+                }).ToList();
+            }
+            else
+            {
+                currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
+                {
+                    pla.SideOfTeam = TEAM_LEFT_SIDE; 
+                    return pla;
+                }).ToList();
+            }
+            if (!isAdminOfLobby)
+            {
+                chbTeamUp.IsChecked = teamUp;
+            }
+        }
+    
+
         private void ClickChangeTeamSide(object sender, MouseButtonEventArgs e)
         {
             if (isAdminOfLobby && currentPlayerInLobby.Count == 4 && (bool)chbTeamUp.IsChecked)
             {
-                string userName = GetUserNameFromLabel(sender);
+                string userName = GetUserNameFromLabelByBorder(sender);
                 if (userName != null)
                 {
-                    var userChanged = ChangeSideOfPlayer(userName);
+                    PlayerInLobby userChanged = ChangeSideOfPlayer(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        lobbyActionsClient.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);
                         SetPlayerInLabels();
+                        lobbyActionsClient.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);                        
                     }
                 }
             }
         }
 
-        private String GetUserNameFromLabel(object sender)
+        private PlayerInLobby ChangeSideOfPlayer(String userName)
+        {
+            currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
+            {
+                if (pla.UserName.Equals(userName))
+                {
+                    if (pla.SideOfTeam == TEAM_LEFT_SIDE)
+                    {
+                        pla.SideOfTeam = TEMA_RIGHT_SIDE;
+                    }
+                    else
+                    {
+                        pla.SideOfTeam = TEAM_LEFT_SIDE;
+                    }
+                }
+                return pla;
+            }).ToList();
+            PlayerInLobby player = currentPlayerInLobby.Find(x => x.UserName.Equals(userName));
+            return player;
+        }
+
+        private String GetUserNameFromLabelByBorder(object sender)
         {
             String userName = null;
             Border brdChosen = (Border)sender;
@@ -334,76 +360,20 @@ namespace JeopardyGame.Pages
             return userName;
         }
 
-        private void ClickNoTeamUp(object sender, RoutedEventArgs e)
+        public void UpdateTeamSide(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
         {
-            if (isAdminOfLobby)
+            if (playersInTheLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                bool teamUp = false;
-                lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);
+                currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
+                SetPlayerInLabels();
             }
         }
+        
 
-        private void ClickTeamUp(object sender, RoutedEventArgs e)
-        {
-            if (isAdminOfLobby)
-            {
-                if (currentPlayerInLobby.Count == 4)
-                {
-                    bool teamUp = true;
-                    lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);
-                    DoOrUndoTeams(teamUp);
-                    SetPlayerInLabels();
-                }
-                else
-                {
-                    new ErrorMessageDialogWindow("Error", "Deben haber almenos 4 jugadores", Application.Current.MainWindow);
-                }
-            }
-        }
-
-        private PlayerInLobby ChangeSideOfPlayer(String userName)
-        {
-            PlayerInLobby playerInLobby = new PlayerInLobby();
-            playerInLobby.IdUser = NULL_INT_VALUE;
-            foreach (var item in currentPlayerInLobby)
-            {
-                if (item.UserName.Equals(userName))
-                {                    
-                    var updatedSide = item;
-                    if (item.SideOfTeam == TEAM_LEFT_SIDE)
-                    {
-                        updatedSide.SideOfTeam = TEMA_RIGHT_SIDE;
-                    }
-                    else
-                    {
-                        updatedSide.SideOfTeam = TEAM_LEFT_SIDE;
-                    }
-                    currentPlayerInLobby.Remove(item);
-                    currentPlayerInLobby.Add(updatedSide);
-                    playerInLobby = updatedSide;
-                    break;
-                }
-            }
-            return playerInLobby;
-        }
-
-        private void ClickOpenChat(object sender, MouseButtonEventArgs e)
-        {
-            frmActiveFriendsAndChat.Content = liveChatUser;
-            liveChatUser.StartPage(isAdminOfLobby, roomCode, this);            
-            grdActiveUser.Visibility = Visibility.Visible;
-        }
-
-        private void ClickListFriends(object sender, MouseButtonEventArgs e)
-        {
-            frmActiveFriendsAndChat.Content = activeUsersControls;
-            activeUsersControls.StartPage(this);        
-            grdActiveUser.Visibility = Visibility.Visible;
-        }
-
+       
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
         {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Window.GetWindow(this)).CloseWindow)
             {
                 ClosingLobby();
             }
@@ -420,8 +390,14 @@ namespace JeopardyGame.Pages
                 lobbyActionsClient.LeaveLobby(roomCode, userSingleton.IdUser);
             }
             CloseWindow();
-
         }
+
+        public void DissolvingLobby()
+        {
+            new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, "Se ha cancelado la partida", Window.GetWindow(this));
+            CloseWindow();
+        }
+
         private void CloseWindow()
         {
             MainMenu mainMenu = new MainMenu();
@@ -429,46 +405,38 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        public void CloseFriendList()
-        {
-            frmActiveFriendsAndChat.Content = null; 
-            grdActiveUser.Visibility = Visibility.Collapsed;
-        }       
 
+
+        private void ClickOpenChat(object sender, MouseButtonEventArgs e)
+        {
+            frmActiveFriendsAndChat.Content = liveChatUser;
+            liveChatUser.StartPage(isAdminOfLobby, roomCode, this);            
+            grdActiveUser.Visibility = Visibility.Visible;
+        }
         public void CloseLiveChat()
         {
             frmActiveFriendsAndChat.Content = null;
             grdActiveUser.Visibility = Visibility.Collapsed;
         }
-
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
             ((ILiveChatCallback)liveChatUser).ReceiveMessage(message);
         }
 
-        private void ClickStartGame(object sender, RoutedEventArgs e)
-        {
-            if (isAdminOfLobby)
-            {
-                try
-                {
-                   lobbyActionsClient.StartGame(roomCode);
-                   
-                }
-                catch(FaultException ex)
-                {
-                    
-                }
-                catch (CommunicationException ex)
-                {
-                    context = new InstanceContext(this);
-                    lobbyActionsClient = new LobbyActionsClient(context);
-                }
-                
 
-                
-            }
+        private void ClickListFriends(object sender, MouseButtonEventArgs e)
+        {
+            frmActiveFriendsAndChat.Content = activeUsersControls;
+            activeUsersControls.StartPage(this);        
+            grdActiveUser.Visibility = Visibility.Visible;
+        }  
+        public void CloseFriendList()
+        {
+            frmActiveFriendsAndChat.Content = null; 
+            grdActiveUser.Visibility = Visibility.Collapsed;
         }
+
+
 
         public void NotifyQuestionsAreReady(int codeEvent)
         {
@@ -479,6 +447,43 @@ namespace JeopardyGame.Pages
             else
             {
                 //MOstra mensaje de error y pedir que se cierre el lobby y hacer otor
+            }
+        }
+
+
+        private void ClickStartGame(object sender, RoutedEventArgs e)
+        {
+            if ((bool) chbTeamUp.IsChecked)
+            {
+                if (currentPlayerInLobby.Where(pl => pl.SideOfTeam == TEAM_LEFT_SIDE).ToList().Count == currentPlayerInLobby.Where(pl => pl.SideOfTeam == TEMA_RIGHT_SIDE).ToList().Count)
+                {
+                    CallMethodToStartGame();
+                }
+                else
+                {
+                   new ErrorMessageDialogWindow("Error", "Deben de haber 2 jugadore spro equipo", Window.GetWindow(this));
+                }
+            }
+            else
+            {
+                CallMethodToStartGame();
+            }
+        }
+
+        private void CallMethodToStartGame()
+        {
+            try
+            {
+                lobbyActionsClient.StartGame(roomCode);
+            }
+            catch (FaultException ex)
+            {
+
+            }
+            catch (CommunicationException)
+            {
+                context = new InstanceContext(this);
+                lobbyActionsClient = new LobbyActionsClient(context);
             }
         }
 

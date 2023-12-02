@@ -254,9 +254,6 @@
   <wsdl:message name="ILobbyActions_UpdateJoinedPlayerResponse_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateJoinedPlayerResponse" />
   </wsdl:message>
-  <wsdl:message name="ILobbyActions_UpdateJoinedPlayerResponse_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:UpdateJoinedPlayerResponseResponse" />
-  </wsdl:message>
   <wsdl:message name="ILobbyActions_MakeTeamsResponse_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:MakeTeamsResponse" />
   </wsdl:message>
@@ -271,9 +268,6 @@
   </wsdl:message>
   <wsdl:message name="ILobbyActions_DissolvingLobby_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DissolvingLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_DissolvingLobby_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:DissolvingLobbyResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyActions_NotifyQuestionsAreReady_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReady" />
@@ -517,7 +511,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateJoinedPlayerResponse">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse" message="tns:ILobbyActions_UpdateJoinedPlayerResponse_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponseResponse" message="tns:ILobbyActions_UpdateJoinedPlayerResponse_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="MakeTeamsResponse">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/MakeTeamsResponse" message="tns:ILobbyActions_MakeTeamsResponse_OutputCallbackMessage" />
@@ -529,7 +522,6 @@
     </wsdl:operation>
     <wsdl:operation name="DissolvingLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/DissolvingLobby" message="tns:ILobbyActions_DissolvingLobby_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/DissolvingLobbyResponse" message="tns:ILobbyActions_DissolvingLobby_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="NotifyQuestionsAreReady">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady" message="tns:ILobbyActions_NotifyQuestionsAreReady_OutputCallbackMessage" />
@@ -932,9 +924,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateJoinedPlayerResponse">
       <soap12:operation soapAction="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -959,9 +948,6 @@
     </wsdl:operation>
     <wsdl:operation name="DissolvingLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyActions/DissolvingLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

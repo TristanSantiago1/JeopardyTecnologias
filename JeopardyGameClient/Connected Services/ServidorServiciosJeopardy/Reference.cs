@@ -2361,7 +2361,7 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ILobbyActionsCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse", ReplyAction="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponseResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse")]
         void UpdateJoinedPlayerResponse(JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/MakeTeamsResponse", ReplyAction="http://tempuri.org/ILobbyActions/MakeTeamsResponseResponse")]
@@ -2370,7 +2370,7 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/UpdateTeamSide", ReplyAction="http://tempuri.org/ILobbyActions/UpdateTeamSideResponse")]
         void UpdateTeamSide(JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/DissolvingLobby", ReplyAction="http://tempuri.org/ILobbyActions/DissolvingLobbyResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/DissolvingLobby")]
         void DissolvingLobby();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady", ReplyAction="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReadyResponse")]

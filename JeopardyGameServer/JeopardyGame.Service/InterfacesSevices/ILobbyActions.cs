@@ -50,7 +50,7 @@ namespace JeopardyGame.Service.InterfacesServices
     [ServiceContract]
     public interface ILobbyActionsCallback
     {
-        [OperationContract]
+        [OperationContract (IsOneWay = true)]
         public void UpdateJoinedPlayerResponse(GenericClass<List<PlayerInLobby>> playersInTheLobby);       
 
         [OperationContract]
@@ -59,7 +59,7 @@ namespace JeopardyGame.Service.InterfacesServices
         [OperationContract]
         public void UpdateTeamSide(GenericClass<List<PlayerInLobby>> playersInTheLobby);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         public void DissolvingLobby();
 
         [OperationContract]

@@ -234,105 +234,30 @@ namespace JeopardyGame.Service.ServiceImplementation
             }                   
         }   
 
-        public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
-        {            
-            if (roomCode != NULL_INT_VALUE && idUserToChangeTeam != NULL_INT_VALUE && newSideTeam != NULL_INT_VALUE)
-            {                
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
-                {
-                    foreach (var item in lobby.listOfPlayerInLobby)
-                    {
-                        if (item.idUser == idUserToChangeTeam)
-                        {
-                            item.sideTeam = newSideTeam;
-                            NotifyPlayerChangedOfSide(roomCode, idUserToChangeTeam, lobby);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void NotifyPlayerChangedOfSide(int roomCode, int idUser, Lobby lobby)
-        {
-            GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
-            if (playersLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                foreach (var item in lobby.listOfPlayerInLobby)
-                {
-                    var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
-                    if (channel != null && lobby.idAdmin != item.idUser)
-                    {
-                        channel.UpdateTeamSide(playersLobby);
-                    }
-                }
-            }          
-        }
-
         public void DissolveLobby(int roomCode, int idUser)
         {
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
             if (lobby != null)
             {
-                foreach (var item in lobby.listOfPlayerInLobby)
+                var Leader = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUser && pl.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                if (Leader != null)
                 {
-                    if (item.idUser == idUser && item.numberOfPlayerInLobby  == LEADER_POSITION_IN_LOBBY)
-                    {
-                        lobby.listOfPlayerInLobby.Remove(item);
-                        NotifyClosingLobby(lobby);
-                        EliminateRestOfPlayers(lobby);
-                        break;
-                    }
-                }                   
+                    NotifyClosingLobby(lobby);
+                    GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
+                }                                   
             }            
-        }
-
-        private void EliminateRestOfPlayers(Lobby lobby)
-        {
-            foreach (var leftPlayer in lobby.listOfPlayerInLobby)
-            {
-                lobby.listOfPlayerInLobby.Remove(leftPlayer);
-            }
-        }
+        } 
 
         private void NotifyClosingLobby(Lobby lobby)
         {
             foreach (var item in lobby.listOfPlayerInLobby)
             {
                 var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
-                if (channel != null )
+                if (channel != null && item.numberOfPlayerInLobby != LEADER_POSITION_IN_LOBBY)
                 {
                     channel.DissolvingLobby();
                 }
             }
-        }
-
-        public void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate)
-        {
-            if (roomCode != NULL_INT_VALUE && idUserToEliminate != NULL_INT_VALUE)
-            {
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
-                {
-                    foreach (var item in lobby.listOfPlayerInLobby)
-                    {
-                        if (item.idUser == idUserToEliminate)
-                        {
-                            lobby.listOfPlayerInLobby.Remove(item);
-                            RearrangePositions(lobby, item.numberOfPlayerInLobby);
-                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserToEliminate, lobby);                            
-                            item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().UpdateJoinedPlayerResponse(GetAllCurrentPlayerInLobby(roomCode, idUserToEliminate));                           
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void RearrangePositions(Lobby lobby, int eliminatedPosition)
-        {
-            lobby.listOfPlayerInLobby.Where(item => item.numberOfPlayerInLobby > eliminatedPosition).ToList().ForEach(item => item.numberOfPlayerInLobby--);
         }
 
         public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
@@ -361,13 +286,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 if (item.numberOfPlayerInLobby <= 2)
                 {
-                    item.sideTeam = TEAM_LEFT_SIDE;
-                    break;
+                    item.sideTeam = TEAM_LEFT_SIDE;                    
                 }
                 else
                 {
                     item.sideTeam = TEAM_RIGTH_SIDE;
-                    break;
                 }
             }
         }
@@ -389,6 +312,66 @@ namespace JeopardyGame.Service.ServiceImplementation
                     item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().MakeTeamsResponse(wannaTeam);
                 }
             }
+        }
+
+        public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
+        {
+            if (roomCode != NULL_INT_VALUE && idUserToChangeTeam != NULL_INT_VALUE && newSideTeam != NULL_INT_VALUE)
+            {
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                if (lobby != null)
+                {
+                    var player = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserToChangeTeam);                    
+                    if (player != null)
+                    {
+                        player.sideTeam = newSideTeam;
+                        NotifyPlayerChangedOfSide(roomCode, idUserToChangeTeam, lobby);                            
+                    }                    
+                }
+            }
+        }
+
+        private void NotifyPlayerChangedOfSide(int roomCode, int idUser, Lobby lobby)
+        {
+            GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
+            if (playersLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                foreach (var item in lobby.listOfPlayerInLobby)
+                {
+                    var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
+                    if (channel != null && lobby.idAdmin != item.idUser)
+                    {
+                        channel.UpdateTeamSide(playersLobby);
+                    }
+                }
+            }
+        }
+
+        public void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate)
+        {
+            if (roomCode != NULL_INT_VALUE && idUserToEliminate != NULL_INT_VALUE)
+            {
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                if (lobby != null)
+                {
+                    foreach (var item in lobby.listOfPlayerInLobby)
+                    {
+                        if (item.idUser == idUserToEliminate)
+                        {
+                            lobby.listOfPlayerInLobby.Remove(item);
+                            RearrangePositions(lobby, item.numberOfPlayerInLobby);
+                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserToEliminate, lobby);
+                            item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().UpdateJoinedPlayerResponse(GetAllCurrentPlayerInLobby(roomCode, idUserToEliminate));
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void RearrangePositions(Lobby lobby, int eliminatedPosition)
+        {
+            lobby.listOfPlayerInLobby.Where(item => item.numberOfPlayerInLobby > eliminatedPosition).ToList().ForEach(item => item.numberOfPlayerInLobby--);
         }
 
         public void SelectQuestionsForGame(int roomCode)

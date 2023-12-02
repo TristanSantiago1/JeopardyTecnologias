@@ -93,7 +93,7 @@
                 </Grid>
             </Canvas>
 
-            <StackPanel x:Name="stpPlayers" Margin="45,0,53,545" Orientation="Horizontal"/>
+            <StackPanel x:Name="stpPlayers" Margin="7,0,4,545" Orientation="Horizontal"/>
 
 
             <Grid x:Name="grWinnerPanel" Visibility="Hidden" Background="Transparent" Opacity="0.85" Height="408" VerticalAlignment="Top">

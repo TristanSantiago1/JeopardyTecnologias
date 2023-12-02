@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cards\GameTeamCard.cs" />
     <Compile Include="Connected Services\ServidorServiciosJeopardy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,15 +70,15 @@
     <Compile Include="DialogWindows\ConfirmationDialogWindow.xaml.cs">
       <DependentUpon>ConfirmationDialogWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ChatMessageCard.cs" />
+    <Compile Include="Cards\ChatMessageCard.cs" />
     <Compile Include="Helpers\EncryptationClass.cs" />
     <Compile Include="Helpers\Exceptions.cs" />
-    <Compile Include="Helpers\FriendCard.cs" />
-    <Compile Include="Helpers\FriendCardManagementWindow.cs" />
+    <Compile Include="Cards\FriendCard.cs" />
+    <Compile Include="Cards\FriendCardManagementWindow.cs" />
     <Compile Include="Helpers\FriendListDictionary.cs" />
-    <Compile Include="Helpers\GameCategoryCard.cs" />
-    <Compile Include="Helpers\GamePlayerCard.cs" />
-    <Compile Include="Helpers\GamePointsCard.cs" />
+    <Compile Include="Cards\GameCategoryCard.cs" />
+    <Compile Include="Cards\GamePlayerCard.cs" />
+    <Compile Include="Cards\GamePointsCard.cs" />
     <Compile Include="Helpers\GetHostImage.cs" />
     <Compile Include="Pages\ActiveFriends.xaml.cs">
       <DependentUpon>ActiveFriends.xaml</DependentUpon>

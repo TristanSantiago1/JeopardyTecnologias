@@ -24,7 +24,7 @@ namespace JeopardyGame.Helpers
         public GamePlayerCard(PlayerInGameDataContract player)
         {
             playerOfCard = player;
-            this.Name = "_"+player.IdPlayer.ToString();
+            this.Name = "_"+player.IdUser.ToString();
             InitializeComponents();
             SetBorderStyle();
             SetStyleGrid();
@@ -78,7 +78,7 @@ namespace JeopardyGame.Helpers
 
         private void SetStyleUserName()
         {
-            userName.Margin = new System.Windows.Thickness(0,0,73,30);
+            userName.Margin = new System.Windows.Thickness(0,0,75,30);
             userName.Height = 30;
             userName.Width = 189;
             userName.TextAlignment = System.Windows.TextAlignment.Center;
@@ -89,7 +89,7 @@ namespace JeopardyGame.Helpers
 
         private void SetStylePoints()
         {
-            points.Margin = new System.Windows.Thickness(0, 30, 73, 0);
+            points.Margin = new System.Windows.Thickness(0, 30, 75, 0);
             points.Height = 30;
             points.Width = 189;
             points.TextAlignment = System.Windows.TextAlignment.Center;
@@ -103,7 +103,7 @@ namespace JeopardyGame.Helpers
         private void SetAvatarImage()
         {
             avatar.Source = new BitmapImage(new Uri(GetHostImage.GetAvatrImage(playerOfCard.IdAvatar), UriKind.Relative));
-            avatar.Margin = new System.Windows.Thickness(190,2,2,4);
+            avatar.Margin = new System.Windows.Thickness(190,2,2,2);
         }
 
         public  void UpdatePoints(int nePoints)

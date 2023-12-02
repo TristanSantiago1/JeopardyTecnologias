@@ -1,4 +1,5 @@
-﻿using JeopardyGame.DialogWindows;
+﻿using JeopardyGame.Cards;
+using JeopardyGame.DialogWindows;
 using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
@@ -30,6 +31,7 @@ namespace JeopardyGame.Pages
         private const int ROUND_ONE = 1;
         private const int ROUND_TWO = 2;
         private const int ROUND_THREE = 3;
+        private bool itsTeamGame;
         private int roomCode;
         private int pointsBet;
         private int idLeader;
@@ -69,8 +71,7 @@ namespace JeopardyGame.Pages
         {
             context = new InstanceContext(this);
             gameActionsClient = new GameActionsClient(context);
-            gameActionsClient.SubscribeToGameCallBack(roomCode, userSingleton.IdUser, userSingleton.IdCurrentAvatar);           
-
+            gameActionsClient.SubscribeToGameCallBack(roomCode, userSingleton.IdUser, userSingleton.IdCurrentAvatar); 
         }
 
         public void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, PlayerInGameDataContract[] playerInGame)
@@ -84,6 +85,7 @@ namespace JeopardyGame.Pages
 
         private void PrepareWindow()
         {                       
+            VerifyThereAreTeams();
             PrepareListOfQuestionsAndCategories();            
             CreatePlayersScoresBoards();
             if (IsLoaded)
@@ -91,6 +93,18 @@ namespace JeopardyGame.Pages
                 BeginHostPresentation();
             }
             PrepareRoundOne();
+        }
+
+        private void VerifyThereAreTeams()
+        {
+            if (playersInGame.Any(pla => pla.SideTeam == 2))
+            {
+                itsTeamGame = true;
+            }
+            else
+            {
+                itsTeamGame = false;
+            }
         }
 
         private void PrepareListOfQuestionsAndCategories()
@@ -128,11 +142,21 @@ namespace JeopardyGame.Pages
         private void CreatePlayersScoresBoards()
         {
             stpPlayers.Children.Clear();
-            foreach (var item in playersInGame)
+            if (itsTeamGame)
             {
-                GamePlayerCard playerCard = new GamePlayerCard(item);
-                stpPlayers.Children.Add(playerCard);
+                var team1 = playersInGame.Where(pla => pla.SideTeam == 1).ToList();
+                var team2 = playersInGame.Where(pla => pla.SideTeam == 2).ToList();
+                stpPlayers.Children.Add(new GameTeamCard(team1[0], team1[1]));
+                stpPlayers.Children.Add(new GameTeamCard(team2[0], team2[1]));
             }
+            else
+            {
+                foreach (var item in playersInGame)
+                {
+                    GamePlayerCard playerCard = new GamePlayerCard(item);
+                    stpPlayers.Children.Add(playerCard);
+                }
+            }            
         }
 
        private void PrepareRoundOne()
@@ -374,16 +398,37 @@ namespace JeopardyGame.Pages
         private async void AnimationSumOrRestPoints(bool isCorrect, int points)
         {
             var playerChoosing = playersInGame.Find(player => player.TurnOfPlayer == currentTurn);
-            GamePlayerCard specificPlayer = (GamePlayerCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals("_" + playerChoosing.IdPlayer));
+            int idUserPlayerBody =0;
             if (isCorrect)
             {
                 playerChoosing.CurrentPointsOfRound += questionBeingAsked.ValueWorth;
+                if (itsTeamGame)
+                {
+                    var playerTamBody = playersInGame.Find(pla => pla.SideTeam == playerChoosing.SideTeam);
+                    playerTamBody.CurrentPointsOfRound += questionBeingAsked.ValueWorth;
+                    idUserPlayerBody = playerTamBody.IdUser;
+                }
             }
             else
             {
                 playerChoosing.CurrentPointsOfRound -= questionBeingAsked.ValueWorth;
+                if (itsTeamGame)
+                {
+                    var playerTamBody = playersInGame.Find(pla => pla.SideTeam == playerChoosing.SideTeam);
+                    playerTamBody.CurrentPointsOfRound += questionBeingAsked.ValueWorth;
+                    idUserPlayerBody = playerTamBody.IdUser;
+                }
             }
-            specificPlayer.UpdatePoints(playerChoosing.CurrentPointsOfRound);
+            if (itsTeamGame)
+            {
+                GameTeamCard specificPlayer = (GameTeamCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals("_" + playerChoosing.IdUser+ idUserPlayerBody.ToString()));
+                specificPlayer.UpdatePoints(playerChoosing.CurrentPointsOfRound);
+            }
+            else
+            {
+                GamePlayerCard specificPlayer = (GamePlayerCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals("_" + playerChoosing.IdUser.ToString()));
+                specificPlayer.UpdatePoints(playerChoosing.CurrentPointsOfRound);
+            }           
             await Task.Delay(5000);
             cnvResultOfAwnser.Visibility = Visibility.Hidden;
         }
@@ -423,20 +468,39 @@ namespace JeopardyGame.Pages
 
         private void ShowIfItsYourTurn()
         {
-            int idPlayerTurn = playersInGame.FirstOrDefault(pla => pla.TurnOfPlayer == currentTurn).IdPlayer;
+            int idUserTurn = playersInGame.FirstOrDefault(pla => pla.TurnOfPlayer == currentTurn).IdUser;            
             List<Border> specificPlayer = stpPlayers.Children.OfType<Border>().ToList();
-            foreach (Border card in specificPlayer)
+            if (itsTeamGame)
             {
-                GamePlayerCard playerCard = card as GamePlayerCard;
-                if (playerCard.Name.Equals("_" + idPlayerTurn))
+                int idUserTeamBody = playersInGame.Find(pla => pla.SideTeam == playersInGame.Find(pla => pla.IdUser == idUserTurn).SideTeam).IdUser;
+                foreach (Border card in specificPlayer)
                 {
-                    playerCard.MakeBorderSpecial();
-                }
-                else
-                {
-                    playerCard.MakeBoredNormal();   
+                    GameTeamCard playerCard = card as GameTeamCard;
+                    if (playerCard.Name.Equals("_" + idUserTurn+idUserTeamBody))
+                    {
+                        playerCard.MakeBorderSpecial();
+                    }
+                    else
+                    {
+                        playerCard.MakeBoredNormal();
+                    }
                 }
             }
+            else
+            {
+                foreach (Border card in specificPlayer)
+                {
+                    GamePlayerCard playerCard = card as GamePlayerCard;
+                    if (playerCard.Name.Equals("_" + idUserTurn))
+                    {
+                        playerCard.MakeBorderSpecial();
+                    }
+                    else
+                    {
+                        playerCard.MakeBoredNormal();
+                    }
+                }
+            }            
             if (yourTurn == currentTurn)
             {                
                 ellYourTurn.Fill = Brushes.Green;
@@ -486,9 +550,25 @@ namespace JeopardyGame.Pages
         {            
             List<Border> pillarRectangles = new List<Border>() { brdFirstPlaceSpot, brdSecondPlaceSpot, brdtThirdPlace, brdForthPlacePlaceSpot}; 
             List<Border> borderPositions = new List<Border>() {brdFirstPlace, brdSecondPlace, brdThirdPlace, brdForthPlace };
-            for (int i = playerInGame.Count()-1; i < 0; i--)
+            int valueOfCounter;
+            if (itsTeamGame)
             {
-                borderPositions[i] = playerBorder.Find(pla => pla.Name.Equals("-" + playerInGame[i].IdUser.ToString()));
+                valueOfCounter = 1;
+            }
+            else
+            {
+                valueOfCounter = playerInGame.Count() - 1;
+            }
+            for (int i = valueOfCounter; i < 0; i--)
+            {
+                if (itsTeamGame)
+                {
+                    borderPositions[i] = playerBorder.Find(pla => pla.Name.Equals("-" + playerInGame[i].IdUser.ToString() + playerInGame[i-1].ToString()));
+                }
+                else
+                {
+                    borderPositions[i] = playerBorder.Find(pla => pla.Name.Equals("-" + playerInGame[i].IdUser.ToString()));
+                }                
                 borderPositions[i].Visibility = Visibility.Visible;
                 pillarRectangles[i].Background = borderPositions[i].Background;
                 pillarRectangles[i].Visibility = Visibility.Visible;
