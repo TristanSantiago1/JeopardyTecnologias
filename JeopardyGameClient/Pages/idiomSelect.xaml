@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:JeopardyGame.Pages"
       mc:Ignorable="d" 
       xmlns:p = "clr-namespace:JeopardyGame.Properties"
-      d:DesignHeight="400" d:DesignWidth="600"
-      Title="idiomSelect">
+      Title="idiomSelect" Height="619" Width="946">
 
 
     <Grid Width="960" Height="617" RenderTransformOrigin="0.498,0.528">

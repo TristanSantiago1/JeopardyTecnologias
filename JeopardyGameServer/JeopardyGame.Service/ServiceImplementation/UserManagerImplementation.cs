@@ -236,13 +236,13 @@ namespace JeopardyGame.Service.ServiceImplementation
             using (var context = new JeopardyDBContainer())
             {
                 var playersInfo = context.Players
-                                        .OrderByDescending(p => p.GeneralPoints)
-                                        .Select(p => new IUserManager.PlayerInfo
-                                        {
-                                            Name = p.User.Name,
-                                            Points = p.GeneralPoints ?? 0 
-                                        })
-                                        .ToList();
+                                .OrderByDescending(p => p.GeneralPoints)
+                                .Select(p => new IUserManager.PlayerInfo
+                                {
+                                  Name = p.User.UserName,
+                                  Points = p.GeneralPoints ?? 0 
+                                })
+                                .ToList();
 
                 return playersInfo;
             }
