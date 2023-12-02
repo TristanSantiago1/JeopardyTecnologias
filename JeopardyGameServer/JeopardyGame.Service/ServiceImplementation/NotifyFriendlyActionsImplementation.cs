@@ -13,12 +13,14 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
     {
+
         private readonly int NULL_INT_VALUE = 0;
         private readonly int CHANNEL_ALREADY_EXIST = -1;
         private readonly int CHANNEL_SAVED = 1;
         private readonly int DECLINE_FRIEND_REQUEST = 0;
         private readonly int SEND_FRIEND_REQUEST = 1;
         private readonly int ACCEPT_FRIEND_REQUEST = 2;
+
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();

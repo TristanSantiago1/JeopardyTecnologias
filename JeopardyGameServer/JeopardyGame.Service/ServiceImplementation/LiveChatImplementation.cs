@@ -13,7 +13,9 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class LiveChatImplementation : ILiveChat
     {
+
         private readonly int NULL_INT_VALUE = 0;
+
         public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
         {
             GenericClass<bool> resultToReturn = new GenericClass<bool>();
@@ -35,6 +37,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
             return resultToReturn;
         }
+
         public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
            GenericClass<List<MessageChat>> resultToReturn = new GenericClass<List<MessageChat>>();
@@ -72,16 +75,16 @@ namespace JeopardyGame.Service.ServiceImplementation
             channelChat.idUser = idUser;
             channelChat.communicationChannelChat = OperationContext.Current;            
             ChannelsCallBackInActiveChats specificActiveInChannelChatStorage = ChatsDictionary.GetChannelCallBackChat(roomCode);
-            bool save = true;
+            bool isNotSaved = true;
             foreach (var item in specificActiveInChannelChatStorage.listOfChannelsCallBack)
             {
                 if (item.idUser == idUser)
                 {
-                    save = false;
+                    isNotSaved = false;
                     break;
                 }
             }
-            if (save)
+            if (isNotSaved)
             {
                 specificActiveInChannelChatStorage.listOfChannelsCallBack.Add(channelChat);
             }                      

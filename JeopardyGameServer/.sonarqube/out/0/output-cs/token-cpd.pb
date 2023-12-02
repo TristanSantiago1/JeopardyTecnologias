@@ -1,4 +1,4 @@
-–â
+¢ã
 ŒC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\FriendsManagerDataOperation.cs
 	namespace 	
 JeopardyGame
@@ -1155,959 +1155,974 @@ idsFriendsSS[ e
 friendshipToChange
 ­­ *
 =
-­­+ ,
-	contextBD
-­­- 6
-.
-­­6 7
-Friends
-­­7 >
-.
-­­> ?
-FirstOrDefault
-­­? M
+­­+ ,
+new
+­­- 0
+Friend
+­­1 7
 (
-­­M N
-friendRegistry
-­­N \
-=>
-­­] _
-(
-­­` a
-friendRegistry
-­­a o
-.
-­­o p
-Player_IdPlayer
-­­p 
-==­­€ ‚
-idPlayerFriend1­­ƒ ’
-&&­­“ •
-friendRegistry­­– ¤
-.­­¤ ¥%
-PlayerFriend_IdPlayer­­¥ º
-==­­» ½
-idPlayerFriend2­­¾ Í
-)­­Í Î
-||­­Ï Ñ
-(­­Ò Ó
-friendRegistry­­Ó á
-.­­á â
-Player_IdPlayer­­â ñ
-==­­ò ô
-idPlayerFriend2­­õ „
-&&­­… ‡
-friendRegistry­­ˆ –
-.­­– —%
-PlayerFriend_IdPlayer­­— ¬
-==­­­ ¯
-idPlayerFriend1­­° ¿
-)­­¿ À
-)­­À Á
-;­­Á Â 
+­­7 8
+)
+­­8 9
+;
+­­9 : 
 friendshipToChange
 ®® &
-.
-®®& '
-IdFriendState
-®®' 4
 =
-®®5 6+
-FRIEND_STATUS_ACCCEPT_REQUEST
-®®7 T
-;
-®®T U
+®®' (
 	contextBD
-¯¯ 
+®®) 2
 .
-¯¯ 
-Entry
-¯¯ #
+®®2 3
+Friends
+®®3 :
+.
+®®: ;
+FirstOrDefault
+®®; I
 (
-¯¯# $ 
+®®I J
+friendRegistry
+®®J X
+=>
+®®Y [
+(
+®®\ ]
+friendRegistry
+®®] k
+.
+®®k l
+Player_IdPlayer
+®®l {
+==
+®®| ~
+idPlayerFriend1®® 
+&&®® ‘
+friendRegistry®®’  
+.®®  ¡%
+PlayerFriend_IdPlayer®®¡ ¶
+==®®· ¹
+idPlayerFriend2®®º É
+)®®É Ê
+||®®Ë Í
+(®®Î Ï
+friendRegistry®®Ï İ
+.®®İ Ş
+Player_IdPlayer®®Ş í
+==®®î ğ
+idPlayerFriend2®®ñ €
+&&®® ƒ
+friendRegistry®®„ ’
+.®®’ “%
+PlayerFriend_IdPlayer®®“ ¨
+==®®© «
+idPlayerFriend1®®¬ »
+)®®» ¼
+)®®¼ ½
+;®®½ ¾ 
 friendshipToChange
-¯¯$ 6
-)
-¯¯6 7
+¯¯ &
 .
-¯¯7 8
-State
-¯¯8 =
-=
-¯¯> ?
-EntityState
-¯¯@ K
-.
-¯¯K L
-Modified
-¯¯L T
-;
-¯¯T U
-int
-°° 
-resultEvent
-°° #
-=
-°°$ %
-	contextBD
-°°& /
-.
-°°/ 0
-SaveChanges
-°°0 ;
-(
-°°; <
-)
-°°< =
-;
-°°= >
-resultOfOperation
-±± %
-.
-±±% &
-ObjectSaved
-±±& 1
-=
-±±2 3
-resultEvent
-±±4 ?
-;
-±±? @
-if
-²² 
-(
-²² 
-resultEvent
-²² #
-!=
-²²$ &
-NULL_INT_VALUE
-²²' 5
-)
-²²5 6
-{
-³³ 
-resultOfOperation
-´´ )
-.
-´´) *
-	CodeEvent
-´´* 3
-=
-´´4 5!
-ExceptionDictionary
-´´6 I
-.
-´´I J
-SUCCESFULL_EVENT
-´´J Z
-;
-´´Z [
-}
-µµ 
-else
-¶¶ 
-{
-·· 
-resultOfOperation
-¸¸ )
-.
-¸¸) *
-	CodeEvent
-¸¸* 3
-=
-¸¸4 5!
-ExceptionDictionary
-¸¸6 I
-.
-¸¸I J 
-UNSUCCESFULL_EVENT
-¸¸J \
-;
-¸¸\ ]
-}
-¹¹ 
-}
-ºº 
-}
-»» 
-catch
-¼¼ 
-(
-¼¼ 
-DbUpdateException
-¼¼ $
-ex
-¼¼% '
-)
-¼¼' (
-{
-½½ 
-resultOfOperation
-¾¾ !
-=
-¾¾" #
-ExceptionHandler
-¾¾$ 4
-.
-¾¾4 5+
-HandleExceptionDataAccesLevel
-¾¾5 R
-(
-¾¾R S
-resultOfOperation
-¾¾S d
-,
-¾¾d e
-ex
-¾¾f h
-)
-¾¾h i
-;
-¾¾i j
-ExceptionHandler
-¿¿  
-.
-¿¿  !
-LogException
-¿¿! -
-(
-¿¿- .
-ex
-¿¿. 0
-,
-¿¿0 1!
-ExceptionDictionary
-¿¿2 E
-.
-¿¿E F
-FATAL_EXCEPTION
-¿¿F U
-)
-¿¿U V
-;
-¿¿V W
-}
-ÀÀ 
-catch
-ÁÁ 
-(
-ÁÁ #
-ArgumentNullException
-ÁÁ (
-ex
-ÁÁ) +
-)
-ÁÁ+ ,
-{
-ÂÂ 
-resultOfOperation
-ÃÃ !
-=
-ÃÃ" #
-ExceptionHandler
-ÃÃ$ 4
-.
-ÃÃ4 5+
-HandleExceptionDataAccesLevel
-ÃÃ5 R
-(
-ÃÃR S
-resultOfOperation
-ÃÃS d
-,
-ÃÃd e
-ex
-ÃÃf h
-)
-ÃÃh i
-;
-ÃÃi j
-ExceptionHandler
-ÄÄ  
-.
-ÄÄ  !
-LogException
-ÄÄ! -
-(
-ÄÄ- .
-ex
-ÄÄ. 0
-,
-ÄÄ0 1!
-ExceptionDictionary
-ÄÄ2 E
-.
-ÄÄE F
-FATAL_EXCEPTION
-ÄÄF U
-)
-ÄÄU V
-;
-ÄÄV W
-}
-ÅÅ 
-catch
-ÆÆ 
-(
-ÆÆ 
-EntityException
-ÆÆ "
-ex
-ÆÆ# %
-)
-ÆÆ% &
-{
-ÇÇ 
-resultOfOperation
-ÈÈ !
-=
-ÈÈ" #
-ExceptionHandler
-ÈÈ$ 4
-.
-ÈÈ4 5+
-HandleExceptionDataAccesLevel
-ÈÈ5 R
-(
-ÈÈR S
-resultOfOperation
-ÈÈS d
-,
-ÈÈd e
-ex
-ÈÈf h
-)
-ÈÈh i
-;
-ÈÈi j
-ExceptionHandler
-ÉÉ  
-.
-ÉÉ  !
-LogException
-ÉÉ! -
-(
-ÉÉ- .
-ex
-ÉÉ. 0
-,
-ÉÉ0 1!
-ExceptionDictionary
-ÉÉ2 E
-.
-ÉÉE F
-FATAL_EXCEPTION
-ÉÉF U
-)
-ÉÉU V
-;
-ÉÉV W
-}
-ÊÊ 
-catch
-ËË 
-(
-ËË 
-SqlException
-ËË 
-ex
-ËË  "
-)
-ËË" #
-{
-ÌÌ 
-resultOfOperation
-ÍÍ !
-=
-ÍÍ" #
-ExceptionHandler
-ÍÍ$ 4
-.
-ÍÍ4 5+
-HandleExceptionDataAccesLevel
-ÍÍ5 R
-(
-ÍÍR S
-resultOfOperation
-ÍÍS d
-,
-ÍÍd e
-ex
-ÍÍf h
-)
-ÍÍh i
-;
-ÍÍi j
-ExceptionHandler
-ÎÎ  
-.
-ÎÎ  !
-LogException
-ÎÎ! -
-(
-ÎÎ- .
-ex
-ÎÎ. 0
-,
-ÎÎ0 1!
-ExceptionDictionary
-ÎÎ2 E
-.
-ÎÎE F
-FATAL_EXCEPTION
-ÎÎF U
-)
-ÎÎU V
-;
-ÎÎV W
-}
-ÏÏ 
-return
-ĞĞ 
-resultOfOperation
-ĞĞ $
-;
-ĞĞ$ %
-}
-ÑÑ 	
-public
-ÓÓ 
-static
-ÓÓ  
-GenericClassServer
-ÓÓ (
-<
-ÓÓ( )
-int
-ÓÓ) ,
->
-ÓÓ, -
-SendFriendRequest
-ÓÓ. ?
-(
-ÓÓ? @
-int
-ÓÓ@ C
-idPlayerSender
-ÓÓD R
-,
-ÓÓR S
-int
-ÓÓT W
-idPlayerCatcher
-ÓÓX g
-)
-ÓÓg h
-{
-ÔÔ 	 
-GenericClassServer
-ÕÕ 
-<
-ÕÕ 
-int
-ÕÕ "
->
-ÕÕ" #
-resultOfOperation
-ÕÕ$ 5
-=
-ÕÕ6 7
-new
-ÕÕ8 ; 
-GenericClassServer
-ÕÕ< N
-<
-ÕÕN O
-int
-ÕÕO R
->
-ÕÕR S
-(
-ÕÕS T
-)
-ÕÕT U
-;
-ÕÕU V
-if
-ÖÖ 
-(
-ÖÖ 
-idPlayerCatcher
-ÖÖ 
-==
-ÖÖ  "
-NULL_INT_VALUE
-ÖÖ# 1
-||
-ÖÖ2 4
-idPlayerSender
-ÖÖ5 C
-==
-ÖÖD F
-NULL_INT_VALUE
-ÖÖG U
-)
-ÖÖU V
-{
-×× 
-return
-ØØ #
-NullParametersHandler
-ØØ ,
-.
-ØØ, -*
-HandleNullParametersDataBase
-ØØ- I
-(
-ØØI J
-resultOfOperation
-ØØJ [
-)
-ØØ[ \
-;
-ØØ\ ]
-}
-ÙÙ 
-try
-ÚÚ 
-{
-ÛÛ 
-using
-ÜÜ 
-(
-ÜÜ 
-var
-ÜÜ 
-	contextBD
-ÜÜ $
-=
-ÜÜ% &
-new
-ÜÜ' *!
-JeopardyDBContainer
-ÜÜ+ >
-(
-ÜÜ> ?
-)
-ÜÜ? @
-)
-ÜÜ@ A
-{
-İİ 
-Friend
-ŞŞ 
-newRelationShip
-ŞŞ *
-=
-ŞŞ+ ,
-new
-ŞŞ- 0
-Friend
-ŞŞ1 7
-(
-ŞŞ7 8
-)
-ŞŞ8 9
-;
-ŞŞ9 :
-newRelationShip
-ßß #
-.
-ßß# $
+¯¯& '
 IdFriendState
-ßß$ 1
+¯¯' 4
 =
-ßß2 3
-NULL_INT_VALUE
-ßß4 B
+¯¯5 6+
+FRIEND_STATUS_ACCCEPT_REQUEST
+¯¯7 T
 ;
-ßßB C
+¯¯T U
+	contextBD
+°° 
+.
+°° 
+Entry
+°° #
+(
+°°# $ 
+friendshipToChange
+°°$ 6
+)
+°°6 7
+.
+°°7 8
+State
+°°8 =
+=
+°°> ?
+EntityState
+°°@ K
+.
+°°K L
+Modified
+°°L T
+;
+°°T U
+int
+±± 
+resultEvent
+±± #
+=
+±±$ %
+	contextBD
+±±& /
+.
+±±/ 0
+SaveChanges
+±±0 ;
+(
+±±; <
+)
+±±< =
+;
+±±= >
+resultOfOperation
+²² %
+.
+²²% &
+ObjectSaved
+²²& 1
+=
+²²2 3
+resultEvent
+²²4 ?
+;
+²²? @
+if
+³³ 
+(
+³³ 
+resultEvent
+³³ #
+!=
+³³$ &
+NULL_INT_VALUE
+³³' 5
+)
+³³5 6
+{
+´´ 
+resultOfOperation
+µµ )
+.
+µµ) *
+	CodeEvent
+µµ* 3
+=
+µµ4 5!
+ExceptionDictionary
+µµ6 I
+.
+µµI J
+SUCCESFULL_EVENT
+µµJ Z
+;
+µµZ [
+}
+¶¶ 
+else
+·· 
+{
+¸¸ 
+resultOfOperation
+¹¹ )
+.
+¹¹) *
+	CodeEvent
+¹¹* 3
+=
+¹¹4 5!
+ExceptionDictionary
+¹¹6 I
+.
+¹¹I J 
+UNSUCCESFULL_EVENT
+¹¹J \
+;
+¹¹\ ]
+}
+ºº 
+}
+»» 
+}
+¼¼ 
+catch
+½½ 
+(
+½½ 
+DbUpdateException
+½½ $
+ex
+½½% '
+)
+½½' (
+{
+¾¾ 
+resultOfOperation
+¿¿ !
+=
+¿¿" #
+ExceptionHandler
+¿¿$ 4
+.
+¿¿4 5+
+HandleExceptionDataAccesLevel
+¿¿5 R
+(
+¿¿R S
+resultOfOperation
+¿¿S d
+,
+¿¿d e
+ex
+¿¿f h
+)
+¿¿h i
+;
+¿¿i j
+ExceptionHandler
+ÀÀ  
+.
+ÀÀ  !
+LogException
+ÀÀ! -
+(
+ÀÀ- .
+ex
+ÀÀ. 0
+,
+ÀÀ0 1!
+ExceptionDictionary
+ÀÀ2 E
+.
+ÀÀE F
+FATAL_EXCEPTION
+ÀÀF U
+)
+ÀÀU V
+;
+ÀÀV W
+}
+ÁÁ 
+catch
+ÂÂ 
+(
+ÂÂ #
+ArgumentNullException
+ÂÂ (
+ex
+ÂÂ) +
+)
+ÂÂ+ ,
+{
+ÃÃ 
+resultOfOperation
+ÄÄ !
+=
+ÄÄ" #
+ExceptionHandler
+ÄÄ$ 4
+.
+ÄÄ4 5+
+HandleExceptionDataAccesLevel
+ÄÄ5 R
+(
+ÄÄR S
+resultOfOperation
+ÄÄS d
+,
+ÄÄd e
+ex
+ÄÄf h
+)
+ÄÄh i
+;
+ÄÄi j
+ExceptionHandler
+ÅÅ  
+.
+ÅÅ  !
+LogException
+ÅÅ! -
+(
+ÅÅ- .
+ex
+ÅÅ. 0
+,
+ÅÅ0 1!
+ExceptionDictionary
+ÅÅ2 E
+.
+ÅÅE F
+FATAL_EXCEPTION
+ÅÅF U
+)
+ÅÅU V
+;
+ÅÅV W
+}
+ÆÆ 
+catch
+ÇÇ 
+(
+ÇÇ 
+EntityException
+ÇÇ "
+ex
+ÇÇ# %
+)
+ÇÇ% &
+{
+ÈÈ 
+resultOfOperation
+ÉÉ !
+=
+ÉÉ" #
+ExceptionHandler
+ÉÉ$ 4
+.
+ÉÉ4 5+
+HandleExceptionDataAccesLevel
+ÉÉ5 R
+(
+ÉÉR S
+resultOfOperation
+ÉÉS d
+,
+ÉÉd e
+ex
+ÉÉf h
+)
+ÉÉh i
+;
+ÉÉi j
+ExceptionHandler
+ÊÊ  
+.
+ÊÊ  !
+LogException
+ÊÊ! -
+(
+ÊÊ- .
+ex
+ÊÊ. 0
+,
+ÊÊ0 1!
+ExceptionDictionary
+ÊÊ2 E
+.
+ÊÊE F
+FATAL_EXCEPTION
+ÊÊF U
+)
+ÊÊU V
+;
+ÊÊV W
+}
+ËË 
+catch
+ÌÌ 
+(
+ÌÌ 
+SqlException
+ÌÌ 
+ex
+ÌÌ  "
+)
+ÌÌ" #
+{
+ÍÍ 
+resultOfOperation
+ÎÎ !
+=
+ÎÎ" #
+ExceptionHandler
+ÎÎ$ 4
+.
+ÎÎ4 5+
+HandleExceptionDataAccesLevel
+ÎÎ5 R
+(
+ÎÎR S
+resultOfOperation
+ÎÎS d
+,
+ÎÎd e
+ex
+ÎÎf h
+)
+ÎÎh i
+;
+ÎÎi j
+ExceptionHandler
+ÏÏ  
+.
+ÏÏ  !
+LogException
+ÏÏ! -
+(
+ÏÏ- .
+ex
+ÏÏ. 0
+,
+ÏÏ0 1!
+ExceptionDictionary
+ÏÏ2 E
+.
+ÏÏE F
+FATAL_EXCEPTION
+ÏÏF U
+)
+ÏÏU V
+;
+ÏÏV W
+}
+ĞĞ 
+return
+ÑÑ 
+resultOfOperation
+ÑÑ $
+;
+ÑÑ$ %
+}
+ÒÒ 	
+public
+ÔÔ 
+static
+ÔÔ  
+GenericClassServer
+ÔÔ (
+<
+ÔÔ( )
+int
+ÔÔ) ,
+>
+ÔÔ, -
+SendFriendRequest
+ÔÔ. ?
+(
+ÔÔ? @
+int
+ÔÔ@ C
+idPlayerSender
+ÔÔD R
+,
+ÔÔR S
+int
+ÔÔT W
+idPlayerCatcher
+ÔÔX g
+)
+ÔÔg h
+{
+ÕÕ 	 
+GenericClassServer
+ÖÖ 
+<
+ÖÖ 
+int
+ÖÖ "
+>
+ÖÖ" #
+resultOfOperation
+ÖÖ$ 5
+=
+ÖÖ6 7
+new
+ÖÖ8 ; 
+GenericClassServer
+ÖÖ< N
+<
+ÖÖN O
+int
+ÖÖO R
+>
+ÖÖR S
+(
+ÖÖS T
+)
+ÖÖT U
+;
+ÖÖU V
+if
+×× 
+(
+×× 
+idPlayerCatcher
+×× 
+==
+××  "
+NULL_INT_VALUE
+××# 1
+||
+××2 4
+idPlayerSender
+××5 C
+==
+××D F
+NULL_INT_VALUE
+××G U
+)
+××U V
+{
+ØØ 
+return
+ÙÙ #
+NullParametersHandler
+ÙÙ ,
+.
+ÙÙ, -*
+HandleNullParametersDataBase
+ÙÙ- I
+(
+ÙÙI J
+resultOfOperation
+ÙÙJ [
+)
+ÙÙ[ \
+;
+ÙÙ\ ]
+}
+ÚÚ 
+try
+ÛÛ 
+{
+ÜÜ 
+using
+İİ 
+(
+İİ 
+var
+İİ 
+	contextBD
+İİ $
+=
+İİ% &
+new
+İİ' *!
+JeopardyDBContainer
+İİ+ >
+(
+İİ> ?
+)
+İİ? @
+)
+İİ@ A
+{
+ŞŞ 
+Friend
+ßß 
+newRelationShip
+ßß *
+=
+ßß+ ,
+new
+ßß- 0
+Friend
+ßß1 7
+(
+ßß7 8
+)
+ßß8 9
+;
+ßß9 :
 newRelationShip
 àà #
 .
-àà# $
-Player_IdPlayer
-àà$ 3
+àà# $
+IdFriendState
+àà$ 1
 =
-àà4 5
-idPlayerSender
-àà6 D
+àà2 3
+NULL_INT_VALUE
+àà4 B
 ;
-ààD E
+ààB C
 newRelationShip
 áá #
 .
-áá# $#
-PlayerFriend_IdPlayer
-áá$ 9
+áá# $
+Player_IdPlayer
+áá$ 3
 =
-áá: ;
-idPlayerCatcher
-áá< K
+áá4 5
+idPlayerSender
+áá6 D
 ;
-ááK L
+ááD E
 newRelationShip
 ââ #
 .
-ââ# $
-IdFriendState
-ââ$ 1
+ââ# $#
+PlayerFriend_IdPlayer
+ââ$ 9
 =
-ââ2 3
-FRIEND_STATUS_NEW
-ââ4 E
+ââ: ;
+idPlayerCatcher
+ââ< K
 ;
-ââE F
-	contextBD
-ãã 
-.
-ãã 
-Friends
-ãã %
-.
-ãã% &
-Add
-ãã& )
-(
-ãã) *
+ââK L
 newRelationShip
-ãã* 9
-)
-ãã9 :
-;
-ãã: ;
-int
-ää 
-resultEvent
-ää #
+ãã #
+.
+ãã# $
+IdFriendState
+ãã$ 1
 =
-ää$ %
+ãã2 3
+FRIEND_STATUS_NEW
+ãã4 E
+;
+ããE F
 	contextBD
-ää& /
+ää 
 .
-ää/ 0
+ää 
+Friends
+ää %
+.
+ää% &
+Add
+ää& )
+(
+ää) *
+newRelationShip
+ää* 9
+)
+ää9 :
+;
+ää: ;
+int
+åå 
+resultEvent
+åå #
+=
+åå$ %
+	contextBD
+åå& /
+.
+åå/ 0
 SaveChanges
-ää0 ;
+åå0 ;
 (
-ää; <
+åå; <
 )
-ää< =
+åå< =
 ;
-ää= >
+åå= >
 resultOfOperation
-åå %
+ææ %
 .
-åå% &
+ææ% &
 ObjectSaved
-åå& 1
+ææ& 1
 =
-åå2 3
+ææ2 3
 resultEvent
-åå4 ?
+ææ4 ?
 ;
-åå? @
+ææ? @
 if
-ææ 
+çç 
 (
-ææ 
+çç 
 resultEvent
-ææ #
+çç #
 !=
-ææ$ &
+çç$ &
 NULL_INT_VALUE
-ææ' 5
+çç' 5
 )
-ææ5 6
+çç5 6
 {
-çç 
+èè 
 resultOfOperation
-èè )
+éé )
 .
-èè) *
+éé) *
 	CodeEvent
-èè* 3
+éé* 3
 =
-èè4 5!
+éé4 5!
 ExceptionDictionary
-èè6 I
+éé6 I
 .
-èèI J
+ééI J
 SUCCESFULL_EVENT
-èèJ Z
+ééJ Z
 ;
-èèZ [
+ééZ [
 }
-éé 
+êê 
 else
-êê 
+ëë 
 {
-ëë 
+ìì 
 resultOfOperation
-ìì )
+íí )
 .
-ìì) *
+íí) *
 	CodeEvent
-ìì* 3
+íí* 3
 =
-ìì4 5!
+íí4 5!
 ExceptionDictionary
-ìì6 I
+íí6 I
 .
-ììI J 
+ííI J 
 UNSUCCESFULL_EVENT
-ììJ \
+ííJ \
 ;
-ìì\ ]
+íí\ ]
 }
-íí 
+îî 
 }
-îî 
+ïï 
 }
-ïï 
+ğğ 
 catch
-ğğ 
+ññ 
 (
-ğğ 
+ññ 
 DbUpdateException
-ğğ $
+ññ $
 ex
-ğğ% '
+ññ% '
 )
-ğğ' (
+ññ' (
 {
-ññ 
+òò 
 resultOfOperation
-òò !
+óó !
 =
-òò" #
+óó" #
 ExceptionHandler
-òò$ 4
+óó$ 4
 .
-òò4 5+
+óó4 5+
 HandleExceptionDataAccesLevel
-òò5 R
+óó5 R
 (
-òòR S
+óóR S
 resultOfOperation
-òòS d
+óóS d
 ,
-òòd e
+óód e
 ex
-òòf h
+óóf h
 )
-òòh i
+óóh i
 ;
-òòi j
+óói j
 ExceptionHandler
-óó  
+ôô  
 .
-óó  !
+ôô  !
 LogException
-óó! -
+ôô! -
 (
-óó- .
+ôô- .
 ex
-óó. 0
+ôô. 0
 ,
-óó0 1!
+ôô0 1!
 ExceptionDictionary
-óó2 E
+ôô2 E
 .
-óóE F
+ôôE F
 FATAL_EXCEPTION
-óóF U
+ôôF U
 )
-óóU V
+ôôU V
 ;
-óóV W
+ôôV W
 }
-ôô 
+õõ 
 catch
-õõ 
+öö 
 (
-õõ #
+öö #
 ArgumentNullException
-õõ (
+öö (
 ex
-õõ) +
+öö) +
 )
-õõ+ ,
+öö+ ,
 {
-öö 
+÷÷ 
 resultOfOperation
-÷÷ !
+øø !
 =
-÷÷" #
+øø" #
 ExceptionHandler
-÷÷$ 4
+øø$ 4
 .
-÷÷4 5+
+øø4 5+
 HandleExceptionDataAccesLevel
-÷÷5 R
+øø5 R
 (
-÷÷R S
+øøR S
 resultOfOperation
-÷÷S d
+øøS d
 ,
-÷÷d e
+øød e
 ex
-÷÷f h
+øøf h
 )
-÷÷h i
+øøh i
 ;
-÷÷i j
+øøi j
 ExceptionHandler
-øø  
+ùù  
 .
-øø  !
+ùù  !
 LogException
-øø! -
+ùù! -
 (
-øø- .
+ùù- .
 ex
-øø. 0
+ùù. 0
 ,
-øø0 1!
+ùù0 1!
 ExceptionDictionary
-øø2 E
+ùù2 E
 .
-øøE F
+ùùE F
 FATAL_EXCEPTION
-øøF U
+ùùF U
 )
-øøU V
+ùùU V
 ;
-øøV W
+ùùV W
 }
-ùù 
+úú 
 catch
-úú 
+ûû 
 (
-úú 
+ûû 
 EntityException
-úú "
+ûû "
 ex
-úú# %
+ûû# %
 )
-úú% &
+ûû% &
 {
-ûû 
+üü 
 resultOfOperation
-üü !
+ıı !
 =
-üü" #
+ıı" #
 ExceptionHandler
-üü$ 4
+ıı$ 4
 .
-üü4 5+
+ıı4 5+
 HandleExceptionDataAccesLevel
-üü5 R
+ıı5 R
 (
-üüR S
+ııR S
 resultOfOperation
-üüS d
+ııS d
 ,
-üüd e
+ııd e
 ex
-üüf h
+ııf h
 )
-üüh i
+ııh i
 ;
-üüi j
+ııi j
 ExceptionHandler
-ıı  
+şş  
 .
-ıı  !
+şş  !
 LogException
-ıı! -
+şş! -
 (
-ıı- .
+şş- .
 ex
-ıı. 0
+şş. 0
 ,
-ıı0 1!
+şş0 1!
 ExceptionDictionary
-ıı2 E
+şş2 E
 .
-ııE F
+şşE F
 FATAL_EXCEPTION
-ııF U
+şşF U
 )
-ııU V
+şşU V
 ;
-ııV W
+şşV W
 }
-şş 
+ÿÿ 
 catch
-ÿÿ 
+€€ 
 (
-ÿÿ 
+€€ 
 SqlException
-ÿÿ 
+€€ 
 ex
-ÿÿ  "
+€€  "
 )
-ÿÿ" #
+€€" #
 {
-€€ 
+ 
 resultOfOperation
- !
+‚‚ !
 =
-" #
+‚‚" #
 ExceptionHandler
-$ 4
+‚‚$ 4
 .
-4 5+
+‚‚4 5+
 HandleExceptionDataAccesLevel
-5 R
+‚‚5 R
 (
-R S
+‚‚R S
 resultOfOperation
-S d
+‚‚S d
 ,
-d e
+‚‚d e
 ex
-f h
+‚‚f h
 )
-h i
+‚‚h i
 ;
-i j
+‚‚i j
 ExceptionHandler
-‚‚  
+ƒƒ  
 .
-‚‚  !
+ƒƒ  !
 LogException
-‚‚! -
+ƒƒ! -
 (
-‚‚- .
+ƒƒ- .
 ex
-‚‚. 0
+ƒƒ. 0
 ,
-‚‚0 1!
+ƒƒ0 1!
 ExceptionDictionary
-‚‚2 E
+ƒƒ2 E
 .
-‚‚E F
+ƒƒE F
 FATAL_EXCEPTION
-‚‚F U
+ƒƒF U
 )
-‚‚U V
+ƒƒU V
 ;
-‚‚V W
+ƒƒV W
 }
-ƒƒ 
+„„ 
 return
-„„ 
+…… 
 resultOfOperation
-„„ $
+…… $
 ;
-„„$ %
+……$ %
 }
-…… 	
+†† 	
 }
-‡‡ 
-}ˆˆ Úy
+ˆˆ 
+}‰‰ â{
 €C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\LoginOperations.cs
 	namespace 	
 JeopardyGame
@@ -2223,12 +2238,10 @@ DataAccess &
 HasherPassword ,
 (, -
 password- 5
-,5 6
-hashedPassword7 E
-,E F
-	hashBytesG P
-)P Q
-;Q R
+,5 6
+	hashBytes7 @
+)@ A
+;A B
 resultOfOperation !
 .! "
 ObjectSaved" -
@@ -2392,15 +2405,12 @@ DataAccess &
 (;;, -
 string;;- 3
 password;;4 <
-,;;< =
-string;;> D
-hashedPassword;;E S
-,;;S T
-byte;;U Y
-[;;Y Z
-];;Z [
-	hashBytes;;\ e
-);;e f
+,;;< =
+byte;;> B
+[;;B C
+];;C D
+	hashBytes;;E N
+);;N O
 {<< 	
 try== 
 {>> 
@@ -2468,581 +2478,611 @@ DataAccess &
 RankExceptionEE  
 exEE! #
 )EE# $
-{FF 
-throwGG 
-newGG 
-RankExceptionGG '
-(GG' (
-)GG( )
-;GG) *
-}HH 
-}II 	
-publicKK 
-staticKK 
-GenericClassServerKK (
-<KK( )
-intKK) ,
->KK, - 
-ValidateIfEmailExistKK. B
-(KKB C
-StringKKC I
-emailKKJ O
-)KKO P
-{LL 	
-GenericClassServerMM 
-<MM 
-intMM "
->MM" #
-resultOfOperationMM$ 5
-=MM6 7
-newMM8 ;
-GenericClassServerMM< N
-<MMN O
-intMMO R
->MMR S
-(MMS T
-)MMT U
-;MMU V
-ifNN 
-(NN 
-stringNN 
-.NN 
-IsNullOrEmptyNN $
-(NN$ %
-emailNN% *
-)NN* +
-)NN+ ,
-{OO 
-returnPP !
-NullParametersHandlerPP ,
-.PP, -(
-HandleNullParametersDataBasePP- I
-(PPI J
-resultOfOperationPPJ [
-)PP[ \
-;PP\ ]
-}QQ 
-tryRR 
-{SS 
-usingTT 
-(TT 
-varTT 
-	contextBDTT $
-=TT% &
-newTT' *
-JeopardyDBContainerTT+ >
-(TT> ?
-)TT? @
-)TT@ A
-{UU 
-boolVV 
-existVV 
-=VV  
-	contextBDVV! *
-.VV* +
-UsersVV+ 0
-.VV0 1
-AnyVV1 4
-(VV4 5
-userVV5 9
-=>VV: <
-userVV= A
-.VVA B
-EmailAddressVVB N
-==VVO Q
-emailVVR W
-)VVW X
-;VVX Y
-ifWW 
-(WW 
-!WW 
-existWW 
-)WW 
-{XX 
-resultOfOperationYY )
-.YY) *
-ObjectSavedYY* 5
-=YY6 7
-VALUE_NOT_EXISTYY8 G
-;YYG H
-resultOfOperationZZ )
-.ZZ) *
-	CodeEventZZ* 3
-=ZZ4 5
-ExceptionDictionaryZZ6 I
-.ZZI J
-SUCCESFULL_EVENTZZJ Z
-;ZZZ [
-}[[ 
-else\\ 
-{]] 
-resultOfOperation^^ )
-.^^) *
-	CodeEvent^^* 3
-=^^4 5
-ExceptionDictionary^^6 I
-.^^I J
-UNSUCCESFULL_EVENT^^J \
-;^^\ ]
-resultOfOperation__ )
-.__) *
-ObjectSaved__* 5
-=__6 7
-VALUE_EXIST__8 C
-;__C D
-}`` 
-}aa 
-}bb 
-catchcc 
-(cc !
-ArgumentNullExceptioncc (
-excc) +
-)cc+ ,
-{dd 
-resultOfOperationee !
-=ee" #
-ExceptionHandleree$ 4
-.ee4 5)
-HandleExceptionDataAccesLevelee5 R
-(eeR S
-resultOfOperationeeS d
-,eed e
-exeef h
-)eeh i
-;eei j
-ExceptionHandlerff  
-.ff  !
-LogExceptionff! -
-(ff- .
-exff. 0
-,ff0 1
-ExceptionDictionaryff2 E
-.ffE F
-FATAL_EXCEPTIONffF U
-)ffU V
-;ffV W
-}gg 
-catchhh 
-(hh 
-EntityExceptionhh "
-exhh# %
-)hh% &
-{ii 
-resultOfOperationjj !
-=jj" #
-ExceptionHandlerjj$ 4
-.jj4 5)
-HandleExceptionDataAccesLeveljj5 R
-(jjR S
-resultOfOperationjjS d
-,jjd e
-exjjf h
-)jjh i
-;jji j
-ExceptionHandlerkk  
-.kk  !
-LogExceptionkk! -
-(kk- .
-exkk. 0
-,kk0 1
-ExceptionDictionarykk2 E
-.kkE F
-FATAL_EXCEPTIONkkF U
-)kkU V
-;kkV W
-}ll 
-catchmm 
-(mm 
-SqlExceptionmm 
-exmm  "
-)mm" #
-{nn 
-resultOfOperationoo !
-=oo" #
-ExceptionHandleroo$ 4
-.oo4 5)
-HandleExceptionDataAccesLeveloo5 R
-(ooR S
-resultOfOperationooS d
-,ood e
-exoof h
-)ooh i
-;ooi j
-ExceptionHandlerpp  
-.pp  !
-LogExceptionpp! -
-(pp- .
-expp. 0
-,pp0 1
-ExceptionDictionarypp2 E
-.ppE F
-FATAL_EXCEPTIONppF U
-)ppU V
-;ppV W
-}qq 
-returnrr 
-resultOfOperationrr $
-;rr$ %
-}ss 	
-publicuu 
-staticuu 
-GenericClassServeruu (
-<uu( )
-intuu) ,
->uu, -#
-ValidateIfUserNameExistuu. E
-(uuE F
-StringuuF L
-userNameuuM U
-)uuU V
-{vv 	
-GenericClassServerww 
-<ww 
-intww "
->ww" #
-resultOfOperationww$ 5
-=ww6 7
-newww8 ;
-GenericClassServerww< N
-<wwN O
-intwwO R
->wwR S
-(wwS T
-)wwT U
-;wwU V
-ifxx 
-(xx 
-stringxx 
-.xx 
-IsNullOrEmptyxx $
-(xx$ %
-userNamexx% -
-)xx- .
-)xx. /
-{yy 
-returnzz !
-NullParametersHandlerzz ,
-.zz, -(
-HandleNullParametersDataBasezz- I
-(zzI J
-resultOfOperationzzJ [
-)zz[ \
-;zz\ ]
-}{{ 
-try|| 
-{}} 
-using~~ 
-(~~ 
-var~~ 
-	contextBD~~ $
-=~~% &
-new~~' *
-JeopardyDBContainer~~+ >
-(~~> ?
-)~~? @
-)~~@ A
-{ 
-bool
-€€ 
-exist
-€€ 
-=
-€€  
+{FF 
+ExceptionHandlerGG  
+.GG  !
+LogExceptionGG! -
+(GG- .
+exGG. 0
+,GG0 1
+ExceptionDictionaryGG2 E
+.GGE F
+FATAL_EXCEPTIONGGF U
+)GGU V
+;GGV W
+byteHH 
+[HH 
+]HH 
+hashHH 
+=HH 
+newHH !
+byteHH" &
+[HH& '
+$numHH' (
+]HH( )
+;HH) *
+returnII 
+hashII 
+;II 
+}JJ 
+}KK 	
+publicMM 
+staticMM 
+GenericClassServerMM (
+<MM( )
+intMM) ,
+>MM, - 
+ValidateIfEmailExistMM. B
+(MMB C
+StringMMC I
+emailMMJ O
+)MMO P
+{NN 	
+GenericClassServerOO 
+<OO 
+intOO "
+>OO" #
+resultOfOperationOO$ 5
+=OO6 7
+newOO8 ;
+GenericClassServerOO< N
+<OON O
+intOOO R
+>OOR S
+(OOS T
+)OOT U
+;OOU V
+ifPP 
+(PP 
+stringPP 
+.PP 
+IsNullOrEmptyPP $
+(PP$ %
+emailPP% *
+)PP* +
+)PP+ ,
+{QQ 
+returnRR !
+NullParametersHandlerRR ,
+.RR, -(
+HandleNullParametersDataBaseRR- I
+(RRI J
+resultOfOperationRRJ [
+)RR[ \
+;RR\ ]
+}SS 
+tryTT 
+{UU 
+usingVV 
+(VV 
+varVV 
+	contextBDVV $
+=VV% &
+newVV' *
+JeopardyDBContainerVV+ >
+(VV> ?
+)VV? @
+)VV@ A
+{WW 
+boolXX 
+existXX 
+=XX  
+	contextBDXX! *
+.XX* +
+UsersXX+ 0
+.XX0 1
+AnyXX1 4
+(XX4 5
+userXX5 9
+=>XX: <
+userXX= A
+.XXA B
+EmailAddressXXB N
+==XXO Q
+emailXXR W
+)XXW X
+;XXX Y
+ifYY 
+(YY 
+!YY 
+existYY 
+)YY 
+{ZZ 
+resultOfOperation[[ )
+.[[) *
+ObjectSaved[[* 5
+=[[6 7
+VALUE_NOT_EXIST[[8 G
+;[[G H
+resultOfOperation\\ )
+.\\) *
+	CodeEvent\\* 3
+=\\4 5
+ExceptionDictionary\\6 I
+.\\I J
+SUCCESFULL_EVENT\\J Z
+;\\Z [
+}]] 
+else^^ 
+{__ 
+resultOfOperation`` )
+.``) *
+	CodeEvent``* 3
+=``4 5
+ExceptionDictionary``6 I
+.``I J
+UNSUCCESFULL_EVENT``J \
+;``\ ]
+resultOfOperationaa )
+.aa) *
+ObjectSavedaa* 5
+=aa6 7
+VALUE_EXISTaa8 C
+;aaC D
+}bb 
+}cc 
+}dd 
+catchee 
+(ee !
+ArgumentNullExceptionee (
+exee) +
+)ee+ ,
+{ff 
+resultOfOperationgg !
+=gg" #
+ExceptionHandlergg$ 4
+.gg4 5)
+HandleExceptionDataAccesLevelgg5 R
+(ggR S
+resultOfOperationggS d
+,ggd e
+exggf h
+)ggh i
+;ggi j
+ExceptionHandlerhh  
+.hh  !
+LogExceptionhh! -
+(hh- .
+exhh. 0
+,hh0 1
+ExceptionDictionaryhh2 E
+.hhE F
+FATAL_EXCEPTIONhhF U
+)hhU V
+;hhV W
+}ii 
+catchjj 
+(jj 
+EntityExceptionjj "
+exjj# %
+)jj% &
+{kk 
+resultOfOperationll !
+=ll" #
+ExceptionHandlerll$ 4
+.ll4 5)
+HandleExceptionDataAccesLevelll5 R
+(llR S
+resultOfOperationllS d
+,lld e
+exllf h
+)llh i
+;lli j
+ExceptionHandlermm  
+.mm  !
+LogExceptionmm! -
+(mm- .
+exmm. 0
+,mm0 1
+ExceptionDictionarymm2 E
+.mmE F
+FATAL_EXCEPTIONmmF U
+)mmU V
+;mmV W
+}nn 
+catchoo 
+(oo 
+SqlExceptionoo 
+exoo  "
+)oo" #
+{pp 
+resultOfOperationqq !
+=qq" #
+ExceptionHandlerqq$ 4
+.qq4 5)
+HandleExceptionDataAccesLevelqq5 R
+(qqR S
+resultOfOperationqqS d
+,qqd e
+exqqf h
+)qqh i
+;qqi j
+ExceptionHandlerrr  
+.rr  !
+LogExceptionrr! -
+(rr- .
+exrr. 0
+,rr0 1
+ExceptionDictionaryrr2 E
+.rrE F
+FATAL_EXCEPTIONrrF U
+)rrU V
+;rrV W
+}ss 
+returntt 
+resultOfOperationtt $
+;tt$ %
+}uu 	
+publicww 
+staticww 
+GenericClassServerww (
+<ww( )
+intww) ,
+>ww, -#
+ValidateIfUserNameExistww. E
+(wwE F
+StringwwF L
+userNamewwM U
+)wwU V
+{xx 	
+GenericClassServeryy 
+<yy 
+intyy "
+>yy" #
+resultOfOperationyy$ 5
+=yy6 7
+newyy8 ;
+GenericClassServeryy< N
+<yyN O
+intyyO R
+>yyR S
+(yyS T
+)yyT U
+;yyU V
+ifzz 
+(zz 
+stringzz 
+.zz 
+IsNullOrEmptyzz $
+(zz$ %
+userNamezz% -
+)zz- .
+)zz. /
+{{{ 
+return|| !
+NullParametersHandler|| ,
+.||, -(
+HandleNullParametersDataBase||- I
+(||I J
+resultOfOperation||J [
+)||[ \
+;||\ ]
+}}} 
+try~~ 
+{ 
+using
+€€ 
+(
+€€ 
+var
+€€ 
 	contextBD
-€€! *
-.
-€€* +
-Users
-€€+ 0
-.
-€€0 1
-Any
-€€1 4
+€€ $
+=
+€€% &
+new
+€€' *!
+JeopardyDBContainer
+€€+ >
 (
-€€4 5
-user
-€€5 9
-=>
-€€: <
-user
-€€= A
-.
-€€A B
-UserName
-€€B J
-==
-€€K M
-userName
-€€N V
+€€> ?
 )
-€€V W
-;
-€€W X
-if
- 
-(
- 
-!
- 
+€€? @
+)
+€€@ A
+{
+ 
+bool
+‚‚ 
 exist
- 
-)
- 
-{
-‚‚ 
-resultOfOperation
-ƒƒ )
-.
-ƒƒ) *
-ObjectSaved
-ƒƒ* 5
+‚‚ 
 =
-ƒƒ6 7
+‚‚  
+	contextBD
+‚‚! *
+.
+‚‚* +
+Users
+‚‚+ 0
+.
+‚‚0 1
+Any
+‚‚1 4
+(
+‚‚4 5
+user
+‚‚5 9
+=>
+‚‚: <
+user
+‚‚= A
+.
+‚‚A B
+UserName
+‚‚B J
+==
+‚‚K M
+userName
+‚‚N V
+)
+‚‚V W
+;
+‚‚W X
+if
+ƒƒ 
+(
+ƒƒ 
+!
+ƒƒ 
+exist
+ƒƒ 
+)
+ƒƒ 
+{
+„„ 
+resultOfOperation
+…… )
+.
+……) *
+ObjectSaved
+……* 5
+=
+……6 7
 VALUE_NOT_EXIST
-ƒƒ8 G
+……8 G
 ;
-ƒƒG H
+……G H
 resultOfOperation
-„„ )
+†† )
 .
-„„) *
+††) *
 	CodeEvent
-„„* 3
+††* 3
 =
-„„4 5!
+††4 5!
 ExceptionDictionary
-„„6 I
+††6 I
 .
-„„I J
+††I J
 SUCCESFULL_EVENT
-„„J Z
+††J Z
 ;
-„„Z [
+††Z [
 }
-…… 
+‡‡ 
 else
-†† 
+ˆˆ 
 {
-‡‡ 
+‰‰ 
 resultOfOperation
-ˆˆ )
+ŠŠ )
 .
-ˆˆ) *
+ŠŠ) *
 	CodeEvent
-ˆˆ* 3
+ŠŠ* 3
 =
-ˆˆ4 5!
+ŠŠ4 5!
 ExceptionDictionary
-ˆˆ6 I
+ŠŠ6 I
 .
-ˆˆI J 
+ŠŠI J 
 UNSUCCESFULL_EVENT
-ˆˆJ \
+ŠŠJ \
 ;
-ˆˆ\ ]
+ŠŠ\ ]
 resultOfOperation
-‰‰ )
+‹‹ )
 .
-‰‰) *
+‹‹) *
 ObjectSaved
-‰‰* 5
+‹‹* 5
 =
-‰‰6 7
+‹‹6 7
 VALUE_EXIST
-‰‰8 C
+‹‹8 C
 ;
-‰‰C D
+‹‹C D
 }
-ŠŠ 
+ŒŒ 
 }
-‹‹ 
+ 
 }
-ŒŒ 
+ 
 catch
- 
+ 
 (
- #
+ #
 ArgumentNullException
- (
+ (
 ex
-) +
+) +
 )
-+ ,
++ ,
 {
- 
+ 
 resultOfOperation
- !
+‘‘ !
 =
-" #
+‘‘" #
 ExceptionHandler
-$ 4
+‘‘$ 4
 .
-4 5+
+‘‘4 5+
 HandleExceptionDataAccesLevel
-5 R
+‘‘5 R
 (
-R S
+‘‘R S
 resultOfOperation
-S d
+‘‘S d
 ,
-d e
+‘‘d e
 ex
-f h
+‘‘f h
 )
-h i
+‘‘h i
 ;
-i j
+‘‘i j
 ExceptionHandler
-  
+’’  
 .
-  !
+’’  !
 LogException
-! -
+’’! -
 (
-- .
+’’- .
 ex
-. 0
+’’. 0
 ,
-0 1!
+’’0 1!
 ExceptionDictionary
-2 E
+’’2 E
 .
-E F
+’’E F
 FATAL_EXCEPTION
-F U
+’’F U
 )
-U V
+’’U V
 ;
-V W
+’’V W
 }
-‘‘ 
+““ 
 catch
-’’ 
+”” 
 (
-’’ 
+”” 
 EntityException
-’’ "
+”” "
 ex
-’’# %
+””# %
 )
-’’% &
+””% &
 {
-““ 
+•• 
 resultOfOperation
-”” !
+–– !
 =
-””" #
+––" #
 ExceptionHandler
-””$ 4
+––$ 4
 .
-””4 5+
+––4 5+
 HandleExceptionDataAccesLevel
-””5 R
+––5 R
 (
-””R S
+––R S
 resultOfOperation
-””S d
+––S d
 ,
-””d e
+––d e
 ex
-””f h
+––f h
 )
-””h i
+––h i
 ;
-””i j
+––i j
 ExceptionHandler
-••  
+——  
 .
-••  !
+——  !
 LogException
-••! -
+——! -
 (
-••- .
+——- .
 ex
-••. 0
+——. 0
 ,
-••0 1!
+——0 1!
 ExceptionDictionary
-••2 E
+——2 E
 .
-••E F
+——E F
 FATAL_EXCEPTION
-••F U
+——F U
 )
-••U V
+——U V
 ;
-••V W
+——V W
 }
-–– 
+˜˜ 
 catch
-—— 
+™™ 
 (
-—— 
+™™ 
 SqlException
-—— 
+™™ 
 ex
-——  "
+™™  "
 )
-——" #
+™™" #
 {
-˜˜ 
+šš 
 resultOfOperation
-™™ !
+›› !
 =
-™™" #
+››" #
 ExceptionHandler
-™™$ 4
+››$ 4
 .
-™™4 5+
+››4 5+
 HandleExceptionDataAccesLevel
-™™5 R
+››5 R
 (
-™™R S
+››R S
 resultOfOperation
-™™S d
+››S d
 ,
-™™d e
+››d e
 ex
-™™f h
+››f h
 )
-™™h i
+››h i
 ;
-™™i j
+››i j
 ExceptionHandler
-šš  
+œœ  
 .
-šš  !
+œœ  !
 LogException
-šš! -
+œœ! -
 (
-šš- .
+œœ- .
 ex
-šš. 0
+œœ. 0
 ,
-šš0 1!
+œœ0 1!
 ExceptionDictionary
-šš2 E
+œœ2 E
 .
-ššE F
+œœE F
 FATAL_EXCEPTION
-ššF U
+œœF U
 )
-ššU V
+œœU V
 ;
-ššV W
+œœV W
 }
-›› 
+ 
 return
-œœ 
+ 
 resultOfOperation
-œœ $
+ $
 ;
-œœ$ %
+$ %
 }
- 	
+ŸŸ 	
 }
-ŸŸ 
-}   ÿ„
+¡¡ 
+}¢¢ ¤…
 ‰C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\UserManagerDataOperation.cs
 	namespace 	
 JeopardyGame
@@ -6935,13 +6975,17 @@ editedName
 (
 ØØ 
 friendScores
-ØØ $
-!=
-ØØ% '
-null
-ØØ( ,
+ØØ $
+.
+ØØ$ %
+Count
+ØØ% *
+<
+ØØ+ ,
+$num
+ØØ- .
 )
-ØØ, -
+ØØ. /
 {
 ÙÙ 
 resultOfOperation
@@ -7184,7 +7228,7 @@ editedName
 óó 	
 }
 õõ 
-}øø ş/
+}øø ’0
 „C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\ExceptionDiccionary.cs
 	namespace 	
 JeopardyGame
@@ -7196,9 +7240,10 @@ editedName
 Exceptions &
 { 
 public		 
-
-class		 
-ExceptionDictionary		 $
+
+static		 
+class		 
+ExceptionDictionary		 +
 {
 
  
@@ -7490,7 +7535,7 @@ _SQL_ERROR;;' 1
 _UNKOWN_EXCEPTION_OCURREDAA6 O
 ;AAO P
 }BB 
-}EE ‘5
+}EE 8
 C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\ExceptionHandler.cs
 	namespace 	
 JeopardyGame
@@ -7756,92 +7801,111 @@ logMessage4 >
 return@@ 
 resultException@@ &
 ;@@& '
-}AA 
-returnBB 
-resultExceptionBB "
-;BB" #
-}CC 	
-}EE 
-publicHH 
+}AA 
+ifBB 
+(BB 
+	exceptionBB 
+isBB 
+nullBB !
+)BB! "
+{CC 
+resultExceptionDD 
+.DD  
+	CodeEventDD  )
+=DD* +
+ExceptionDictionaryDD, ?
+.DD? @$
+UNKOWN_EXCEPTION_OCURREDDD@ X
+;DDX Y
+returnEE 
+resultExceptionEE &
+;EE& '
+}FF 
+returnGG 
+resultExceptionGG "
+;GG" #
+}HH 	
+}JJ 
+publicMM 
 
-staticHH 
-classHH !
-NullParametersHandlerHH -
-{II 
-publicJJ 
-staticJJ 
-GenericClassServerJJ (
-<JJ( )
-TJJ) *
->JJ* +(
-HandleNullParametersDataBaseJJ, H
-<JJH I
-TJJI J
->JJJ K
-(JJK L
-GenericClassServerJJL ^
-<JJ^ _
-TJJ_ `
->JJ` a
-resultWithNullJJb p
-)JJp q
-{KK 	
-resultWithNullLL 
-.LL 
-ObjectSavedLL &
-=LL' (
-defaultLL) 0
-;LL0 1
-resultWithNullMM 
-.MM 
-	CodeEventMM $
-=MM% &
-ExceptionDictionaryMM' :
-.MM: ;
-NULL_PARAEMETERMM; J
-;MMJ K
-returnNN 
-resultWithNullNN !
-;NN! "
-}OO 	
-publicQQ 
-staticQQ 
-GenericClassQQ "
-<QQ" #
-TQQ# $
->QQ$ %'
-HandleNullParametersServiceQQ& A
-<QQA B
-TQQB C
->QQC D
-(QQD E
-GenericClassQQE Q
-<QQQ R
-TQQR S
->QQS T
-resultWithNullQQU c
-)QQc d
-{RR 	
-resultWithNullSS 
-.SS 
-ObjectSavedSS &
-=SS' (
-defaultSS) 0
-;SS0 1
-resultWithNullTT 
-.TT 
-	CodeEventTT $
-=TT% &
-ExceptionDictionaryTT' :
-.TT: ;
-NULL_PARAEMETERTT; J
-;TTJ K
-returnUU 
-resultWithNullUU !
-;UU! "
-}VV 	
-}WW 
-}ZZ Ğ3
+staticMM 
+classMM !
+NullParametersHandlerMM -
+{NN 
+publicOO 
+staticOO 
+GenericClassServerOO (
+<OO( )
+TOO) *
+>OO* +(
+HandleNullParametersDataBaseOO, H
+<OOH I
+TOOI J
+>OOJ K
+(OOK L
+GenericClassServerOOL ^
+<OO^ _
+TOO_ `
+>OO` a
+resultWithNullOOb p
+)OOp q
+{PP 	
+resultWithNullQQ 
+.QQ 
+ObjectSavedQQ &
+=QQ' (
+defaultQQ) 0
+;QQ0 1
+resultWithNullRR 
+.RR 
+	CodeEventRR $
+=RR% &
+ExceptionDictionaryRR' :
+.RR: ;
+NULL_PARAEMETERRR; J
+;RRJ K
+returnSS 
+resultWithNullSS !
+;SS! "
+}TT 	
+publicVV 
+staticVV 
+GenericClassVV "
+<VV" #
+TVV# $
+>VV$ %'
+HandleNullParametersServiceVV& A
+<VVA B
+TVVB C
+>VVC D
+(VVD E
+GenericClassVVE Q
+<VVQ R
+TVVR S
+>VVS T
+resultWithNullVVU c
+)VVc d
+{WW 	
+resultWithNullXX 
+.XX 
+ObjectSavedXX &
+=XX' (
+defaultXX) 0
+;XX0 1
+resultWithNullYY 
+.YY 
+	CodeEventYY $
+=YY% &
+ExceptionDictionaryYY' :
+.YY: ;
+NULL_PARAEMETERYY; J
+;YYJ K
+returnZZ 
+resultWithNullZZ !
+;ZZ! "
+}[[ 	
+}\\ 
+}__ ê3
 ~C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\SeriLogConfig.cs
 	namespace 	
 JeopardyGame
@@ -7893,10 +7957,11 @@ Exceptions &
 =- .
 $str. 1
 ;1 2
-private 
-String 
-absolutePath #
-;# $
+private 
+readonly 
+String 
+absolutePath  ,
+;, -
 public 
 SeriLogConfig 
 ( 
@@ -8034,12 +8099,12 @@ Exceptions &
 )33A B
 ;33B C
 foreach44 
-(44 
-ManagementObject44 )
-drive44* /
-in440 2
-drives443 9
-)449 :
+(44  
+ManagementBaseObject44 -
+drive44. 3
+in444 6
+drives447 =
+)44= >
 {55 
 string66 
 serialNumber66 '
@@ -8199,7 +8264,7 @@ Exceptions &
 ;VV, -
 }WW 	
 }ZZ 
-}]] ˜S
+}]] §D
 C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\GenericClassAndObjecSaved.cs
 	namespace 	
 JeopardyGame
@@ -8398,64 +8463,73 @@ DataMember	 
 
 struct11 "
 FriendBasicInformation11 (
-{22 
-private33 
-int33 
-idUser33 
-;33 
-private44 
-string44 
-userName44 
-;44  
-private55 
-int55  
-idStatusAvailability55 (
-;55( )
-public66 
-int66 
-IdUser66 
-{66 
-get66 
-;66  
-set66! $
-;66$ %
-}66& '
-public77 
-string77 
-UserName77 
-{77  
-get77! $
-;77$ %
-set77& )
-;77) *
-}77+ ,
-public88 
-int88  
-IdStatusAvailability88 '
-{88( )
-get88* -
-;88- .
-set88/ 2
-;882 3
-}884 5
-}99 
-public;; 
+{22 
+public33 
+int33 
+IdUser33 
+{33 
+get33 
+;33  
+set33! $
+;33$ %
+}33& '
+public44 
+string44 
+UserName44 
+{44  
+get44! $
+;44$ %
+set44& )
+;44) *
+}44+ ,
+public55 
+int55  
+IdStatusAvailability55 '
+{55( )
+get55* -
+;55- .
+set55/ 2
+;552 3
+}554 5
+}66 
+public88 
 
-struct;; 
-MessageChat;; 
-{<< 
-private== 
-string== 
-userName== 
-;==  
-private>> 
-string>> 
-messageToSend>> $
-;>>$ %
-private?? 
-int?? 
-idUser?? 
-;?? 
+struct88 
+MessageChat88 
+{99 
+public:: 
+int:: 
+IdUser:: 
+{:: 
+get:: 
+;::  
+set::! $
+;::$ %
+}::) *
+public;; 
+string;; 
+UserName;; 
+{;;  
+get;;! $
+;;;$ %
+set;;& )
+;;;) *
+};;+ ,
+public<< 
+string<< 
+MessageToSend<< #
+{<<$ %
+get<<& )
+;<<) *
+set<<+ .
+;<<. /
+}<<0 1
+}== 
+public>> 
+
+struct>> 
+PlayerInLobby>> 
+{?? 
 public@@ 
 int@@ 
 IdUser@@ 
@@ -8464,369 +8538,243 @@ DataMember	 
 ;@@  
 set@@! $
 ;@@$ %
-}@@) *
-publicAA 
-stringAA 
-UserNameAA 
-{AA  
-getAA! $
-;AA$ %
-setAA& )
-;AA) *
-}AA+ ,
+}@@& '
+publicAA 
+intAA 
+IdPlayerAA 
+{AA 
+getAA !
+;AA! "
+setAA# &
+;AA& '
+}AA( )
 publicBB 
-stringBB 
-MessageToSendBB #
-{BB$ %
-getBB& )
-;BB) *
-setBB+ .
-;BB. /
-}BB0 1
-}CC 
-publicDD 
-
-structDD 
-PlayerInLobbyDD 
-{EE 
-privateFF 
-intFF 
-idUserFF 
-;FF 
-privateGG 
-intGG 
-idPlayerGG 
-;GG 
-privateHH 
-stringHH 
-userNameHH 
-;HH  
-privateII 
-intII !
-numberOfPlayerInLobbyII )
-;II) *
-privateJJ 
-intJJ 
+stringBB 
+UserNameBB 
+{BB  
+getBB! $
+;BB$ %
+setBB& )
+;BB) *
+}BB+ ,
+publicCC 
+intCC !
+NumberOfPlayerInLobbyCC (
+{CC) *
+getCC+ .
+;CC. /
+setCC0 3
+;CC3 4
+}CC5 6
+publicDD 
+intDD 
 
-sideOfTeamJJ 
-;JJ 
-publicKK 
-intKK 
-IdUserKK 
-{KK 
-getKK 
-;KK  
-setKK! $
-;KK$ %
-}KK& '
-publicLL 
-intLL 
-IdPlayerLL 
-{LL 
-getLL !
-;LL! "
-setLL# &
-;LL& '
-}LL( )
-publicMM 
-stringMM 
-UserNameMM 
-{MM  
-getMM! $
-;MM$ %
-setMM& )
-;MM) *
-}MM+ ,
-publicNN 
-intNN !
-NumberOfPlayerInLobbyNN (
-{NN) *
-getNN+ .
-;NN. /
-setNN0 3
-;NN3 4
-}NN5 6
-publicOO 
-intOO 
-
-SideOfTeamOO 
-{OO 
-getOO  #
-;OO# $
-setOO% (
-;OO( )
-}OO* +
-}PP 
-publicSS 
+SideOfTeamDD 
+{DD 
+getDD  #
+;DD# $
+setDD% (
+;DD( )
+}DD* +
+}EE 
+publicHH 
 
-classSS 
-UserPOJOSS 
-{TT 
-privateUU 
-intUU 
-idUserUU 
-;UU 
-privateVV 
-StringVV 
-nameVV 
-;VV 
-privateWW 
-StringWW 
-userNameWW 
-;WW  
-privateXX 
-StringXX 
-emailAddressXX #
-;XX# $
-privateYY 
-StringYY 
-passwordYY 
-;YY  
-publicZZ 
-intZZ 
-IdUserZZ 
-{ZZ 
-getZZ 
-;ZZ  
-setZZ! $
-;ZZ$ %
-}ZZ& '
-public[[ 
-String[[ 
-UserName[[ 
-{[[  
-get[[! $
-;[[$ %
-set[[& )
-;[[) *
-}[[+ ,
+classHH 
+UserPOJOHH 
+{II 
+publicJJ 
+intJJ 
+IdUserJJ 
+{JJ 
+getJJ 
+;JJ  
+setJJ! $
+;JJ$ %
+}JJ& '
+publicKK 
+StringKK 
+UserNameKK 
+{KK  
+getKK! $
+;KK$ %
+setKK& )
+;KK) *
+}KK+ ,
+publicLL 
+StringLL 
+NameLL 
+{LL 
+getLL  
+;LL  !
+setLL" %
+;LL% &
+}LL' (
+publicMM 
+StringMM 
+EmailAddressMM "
+{MM# $
+getMM% (
+;MM( )
+setMM* -
+;MM- .
+}MM/ 0
+publicNN 
+StringNN 
+PasswordNN 
+{NN  
+getNN! $
+;NN$ %
+setNN& )
+;NN) *
+}NN+ ,
+}OO 
+publicPP 
+
+classPP 
+
+PlayerPOJOPP 
+{QQ 
+publicRR 
+intRR 
+IdPlayerRR 
+{RR 
+getRR !
+;RR! "
+setRR# &
+;RR& '
+}RR( )
+publicSS 
+intSS 
+GeneralPointsSS  
+{SS! "
+getSS# &
+;SS& '
+setSS( +
+;SS+ ,
+}SS- .
+publicTT 
+intTT 
+	NoReportsTT 
+{TT 
+getTT "
+;TT" #
+setTT$ '
+;TT' (
+}TT) *
+publicUU 
+intUU 
+IdUserUU 
+{UU 
+getUU 
+;UU  
+setUU! $
+;UU$ %
+}UU& '
+publicVV 
+intVV 
+IdStateVV 
+{VV 
+getVV  
+;VV  !
+setVV" %
+;VV% &
+}VV' (
+publicWW 
+intWW 
+IdActualAvatarWW !
+{WW" #
+getWW$ '
+;WW' (
+setWW) ,
+;WW, -
+}WW. /
+}XX 
+publicZZ 
+
+classZZ 
+UserValidateZZ 
+{[[ 
 public\\ 
-String\\ 
-Name\\ 
-{\\ 
-get\\  
-;\\  !
-set\\" %
-;\\% &
-}\\' (
+String\\ 
+UserName\\ 
+{\\  
+get\\! $
+;\\$ %
+set\\& )
+;\\) *
+}\\+ ,
 public]] 
-String]] 
-EmailAddress]] "
-{]]# $
-get]]% (
-;]]( )
-set]]* -
-;]]- .
-}]]/ 0
-public^^ 
-String^^ 
-Password^^ 
-{^^  
-get^^! $
-;^^$ %
-set^^& )
-;^^) *
-}^^+ ,
-}__ 
+String]] 
+Password]] 
+{]]  
+get]]! $
+;]]$ %
+set]]& )
+;]]) *
+}]]+ ,
+}^^ 
 public`` 
 
 class`` 
 
-PlayerPOJO`` 
-{aa 
-privatebb 
-intbb 
-idPlayerbb 
-;bb 
-privatecc 
-intcc 
-generalPointscc !
-;cc! "
-privatedd 
-intdd 
-	noReportsdd 
-;dd 
-privateee 
-intee 
-idUseree 
-;ee 
-privateff 
-intff 
-idStateff 
-;ff 
-privategg 
-intgg 
-idActualAvatargg "
-;gg" #
-publichh 
-inthh 
-IdPlayerhh 
-{hh 
-gethh !
-;hh! "
-sethh# &
-;hh& '
-}hh( )
+AvatarPojo`` 
+{aa 
+publicbb 
+intbb 
+Idbb 
+{bb 
+getbb 
+;bb 
+setbb  
+;bb  !
+}bb" #
+publiccc 
+stringcc 
+
+AvatarNamecc  
+{cc! "
+getcc# &
+;cc& '
+setcc( +
+;cc+ ,
+}cc- .
+publicdd 
+bytedd 
+[dd 
+]dd 
+	ImageDatadd 
+{dd  !
+getdd" %
+;dd% &
+setdd' *
+;dd* +
+}dd, -
+}ee 
+publicgg 
+
+classgg 
+AvatarChoicegg 
+{hh 
 publicii 
-intii 
-GeneralPointsii  
-{ii! "
-getii# &
-;ii& '
-setii( +
-;ii+ ,
-}ii- .
+intii 
+IdAvatarii 
+{ii 
+getii !
+;ii! "
+setii# &
+;ii& '
+}ii( )
 publicjj 
-intjj 
-	NoReportsjj 
-{jj 
-getjj "
-;jj" #
-setjj$ '
-;jj' (
-}jj) *
-publickk 
-intkk 
-IdUserkk 
-{kk 
-getkk 
-;kk  
-setkk! $
-;kk$ %
-}kk& '
-publicll 
-intll 
-IdStatell 
-{ll 
-getll  
-;ll  !
-setll" %
-;ll% &
-}ll' (
-publicmm 
-intmm 
-IdActualAvatarmm !
-{mm" #
-getmm$ '
-;mm' (
-setmm) ,
-;mm, -
-}mm. /
-}nn 
-publicpp 
-
-classpp 
-UserValidatepp 
-{qq 
-privaterr 
-Stringrr 
-userNamerr 
-;rr  
-privatess 
-Stringss 
-passwordss 
-;ss  
-publictt 
-Stringtt 
-UserNamett 
-{tt  
-gettt! $
-;tt$ %
-settt& )
-;tt) *
-}tt+ ,
-publicuu 
-Stringuu 
-Passworduu 
-{uu  
-getuu! $
-;uu$ %
-setuu& )
-;uu) *
-}uu+ ,
-}vv 
-publicxx 
-
-classxx 
-
-AvatarPojoxx 
-{yy 
-publiczz 
-intzz 
-Idzz 
-{zz 
-getzz 
-;zz 
-setzz  
-;zz  !
-}zz" #
-public{{ 
-string{{ 
-
-AvatarName{{  
-{{{! "
-get{{# &
-;{{& '
-set{{( +
-;{{+ ,
-}{{- .
-public|| 
-byte|| 
-[|| 
-]|| 
-	ImageData|| 
-{||  !
-get||" %
-;||% &
-set||' *
-;||* +
-}||, -
-}}} 
-public 
-
-class 
-AvatarChoice 
-{
-€€ 
-public
- 
-int
- 
-IdAvatar
- 
-{
- 
-get
- !
-;
-! "
-set
-# &
-;
-& '
-}
-( )
-public
-‚‚ 
-int
-‚‚ 
-idPlayer
-‚‚ 
-{
-‚‚ 
-get
-‚‚ !
-;
-‚‚! "
-set
-‚‚# &
-;
-‚‚& '
-}
-‚‚( )
-}
-ƒƒ 
-}…… ¨
+intjj 
+idPlayerjj 
+{jj 
+getjj !
+;jj! "
+setjj# &
+;jj& '
+}jj( )
+}kk 
+}mm ¨
 }C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Properties\AssemblyInfo.cs
 [ 
 assembly 	

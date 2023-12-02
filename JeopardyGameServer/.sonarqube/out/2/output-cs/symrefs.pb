@@ -1,8 +1,7 @@
 ¹
 }C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Host\Connetion\OpenConnetion.cs
 
-
- 
+ 
 
 
 

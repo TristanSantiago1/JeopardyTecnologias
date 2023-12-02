@@ -44,18 +44,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).ValidateCredentials(newUserValidate);
         }
     }
-    public partial class ServicesReferenceAuthor: IQuestionsManager
-    {
-        QuestionsManagerImplementation questionsManager = new QuestionsManagerImplementation();
-        public GenericClass<bool> CheckAnswer(int questionId, string selectedAnswer)
-        {
-            return ((IQuestionsManager)questionsManager).CheckAnswer(questionId, selectedAnswer);
-        }
-        public IDictionary<string, object> GetQuestionByValue(int value, int categoryId)
-        {
-            return ((IQuestionsManager)questionsManager).GetQuestionByValue(value, categoryId);
-        }
-    }
 
     public partial class ServicesReferenceAuthor: IFriendsManager
     {
@@ -108,12 +96,13 @@ namespace JeopardyGame.Service.ServiceImplementation
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat, IGameActions
     {
         NotifyUserAvailabilityImplementation NotifyUserAvb = new NotifyUserAvailabilityImplementation();
         NotifyFriendlyActionsImplementation NotifyFriendlyActions = new NotifyFriendlyActionsImplementation();
         LobbyActionsImplementation LobbyActions = new LobbyActionsImplementation();
         LiveChatImplementation LiveChat = new LiveChatImplementation();
+        GameActionsImplementation GameActions = new GameActionsImplementation();
 
         public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
@@ -123,6 +112,26 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
         {
             ((ILobbyActions)LobbyActions).ChangePlayerSide(roomCode, idUserToChangeTeam, newSideTeam);
+        }
+
+        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn)
+        {
+            ((IGameActions)GameActions).ChooseAnswer(roomCode, idUserSelecting, answerSelected, isCorrect, pointsWorth, currentTurn);
+        }
+
+        public void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
+        {
+            ((IGameActions)GameActions).ChooseQuestion(roomCode, idUserSelecting, currentRound, questionToShow);
+        }
+
+        public void ConfirmBet(int roomCode, int idUser)
+        {
+            ((IGameActions)GameActions).ConfirmBet(roomCode, idUser);
+        }
+
+        public void ConfirmLastQuestionAnswer(int roomCode, PlayerInGameDataContract playerAnswering, int points, bool isCorrect)
+        {
+            ((IGameActions)GameActions).ConfirmLastQuestionAnswer(roomCode, playerAnswering, points, isCorrect);
         }
 
         public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
@@ -160,6 +169,16 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((INotifyUserActionFriendsManager)NotifyFriendlyActions).EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
         }
 
+        public void FinishGame(int roomCode, int idUserLeader, List<PlayerInGameDataContract> playerInGame)
+        {
+            ((IGameActions)GameActions).FinishGame(roomCode, idUserLeader, playerInGame );
+        }
+
+        public void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished)
+        {
+            ((IGameActions)GameActions).FinishRound(roomCode, playerInGame, roundFinished);
+        }
+
         public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting)
         {
             return ((ILobbyActions)LobbyActions).GetAllCurrentPlayerInLobby(roomCode, idUserRequesting);
@@ -190,6 +209,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILobbyActions)LobbyActions).NotifyPlayerInLobby(roomCode, idUser);
         }
 
+
         public void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer)
         {
             ((INotifyUserAvailability)NotifyUserAvb).PlayerIsAvailable(idNewActiveUser, idNewActivePlayer);
@@ -210,6 +230,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((INotifyUserActionFriendsManager)NotifyFriendlyActions).ReportPlayer(idUser, userName);
         }
 
+        public void SelectQuestionsForGame(int roomCode)
+        {
+            ((ILobbyActions)LobbyActions).SelectQuestionsForGame(roomCode);
+        }
+
         public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActions).SendFriendRequest(idPLayerRequesting, idUserRequested);
@@ -220,9 +245,24 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILiveChat)LiveChat).SendMessage(idUser, roomCode, userName, messageToSend);
         }
 
+        public void StartGame(int roomCode)
+        {
+             ((ILobbyActions)LobbyActions).StartGame(roomCode);
+        }
+
+        public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar)
+        {
+            ((IGameActions)GameActions).SubscribeToGameCallBack(roomCode, idUserSubscribing, idAvatar);
+        }
+
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
             ((INotifyUserActionFriendsManager)NotifyFriendlyActions).UnregisterFriendManagerUser(idUserFriendManager);
+        }
+
+        public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
+        {
+            ((IGameActions)GameActions).UnSubscribeFromGameCallBack(roomCode, idUserUnsubscribing);
         }
     }
 

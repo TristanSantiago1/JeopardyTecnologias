@@ -6,6 +6,7 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Policy;
 using System.ServiceModel;
@@ -16,6 +17,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     internal class LobbyActionsImplementation : ILobbyActions
     {
+
         private readonly int NULL_INT_VALUE = 0;
         private readonly int ROOMCODE_IS_FULL = -2;
         private readonly int ROOMCODE_ALREADY_EXIST = -1;
@@ -25,6 +27,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int TEAM_LEFT_SIDE = 1;
         private readonly int TEAM_RIGTH_SIDE = 2;
         private readonly int MAX_PLAYERS = 4;
+
         public GenericClass<int> CreateNewLobby(int roomCode, int idUser)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
@@ -35,7 +38,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
             if (lobby == null)
             {
-                ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                ConsultInformationImplementation consultInformation = new();
                 GenericClass<UserPOJO> userConsulted = consultInformation.ConsultUserById(idUser);
                 if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -52,9 +55,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                         Lobby newLobby = new Lobby();
                         newLobby.idAdmin = idUser;
                         newLobby.listOfPlayerInLobby.Add(leader);
-                        GameLobbiesDictionary.RegisterNewLobby(roomCode, newLobby);                      
+                        GameLobbiesDictionary.RegisterNewLobby(roomCode, newLobby);                        
                         resultToReturn.ObjectSaved = SUCCESFUL;
-                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;                        
                     }
                     else 
                     { 
@@ -73,7 +76,8 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         } 
-        
+
+             
         public GenericClass<int> JoinLobby(int roomCode, int idUser)
         {            
             GenericClass<int> resultToReturn = new GenericClass<int>();
@@ -249,6 +253,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
             }
         }
+
         private void NotifyPlayerChangedOfSide(int roomCode, int idUser, Lobby lobby)
         {
             GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
@@ -327,23 +332,8 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void RearrangePositions(Lobby lobby, int eliminatedPosition)
         {
-            lobby.listOfPlayerInLobby
-                 .Where(item => item.numberOfPlayerInLobby > eliminatedPosition)
-                 .ToList()
-                 .ForEach(item => item.numberOfPlayerInLobby--);
+            lobby.listOfPlayerInLobby.Where(item => item.numberOfPlayerInLobby > eliminatedPosition).ToList().ForEach(item => item.numberOfPlayerInLobby--);
         }
-
-
-        //private void RearrangePositions(Lobby lobby, int eliminatedPosition)
-        //{
-        //    foreach (var item in lobby.listOfPlayerInLobby)
-        //    {
-        //        if (item.numberOfPlayerInLobby > eliminatedPosition)
-        //        {
-        //            item.numberOfPlayerInLobby--;
-        //        }
-        //    }
-        //}
 
         public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
         {
@@ -399,7 +389,45 @@ namespace JeopardyGame.Service.ServiceImplementation
                     item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().MakeTeamsResponse(wannaTeam);
                 }
             }
-        }       
+        }
 
+        public void SelectQuestionsForGame(int roomCode)
+        {
+            QuestionsManagerImplementation questionsManagerImplementation = new();
+            var questions = questionsManagerImplementation.GetQuestionForBoard(roomCode);
+            if (questions.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                QuestionsForLobbyDictionary.RegisterNewSetOfQuestionsInDictionary(roomCode, questions);                
+            }
+            NotifyQuestionsReady(roomCode, questions.CodeEvent);
+        }
+
+        private void NotifyQuestionsReady(int roomCode, int codeEvent)
+        {
+            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+            if (lobby != null)
+            { 
+                var playerLeader = lobby.listOfPlayerInLobby.Find(player => player.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                if (playerLeader != null)
+                {
+                    playerLeader.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().NotifyQuestionsAreReady(codeEvent);
+                }                
+            }
+        }
+
+        public void StartGame(int roomCode)
+        {
+            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+            var questions = QuestionsForLobbyDictionary.GetSpecificSetOfQuestionsForLobby(roomCode);
+            if (lobby != null && questions != null)
+            {
+                foreach ( var item in lobby.listOfPlayerInLobby)
+                {                    
+                   item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().NotifyGameWillStart(questions.ObjectSaved);   
+                }                
+            }
+        }
+
+       
     }
 }

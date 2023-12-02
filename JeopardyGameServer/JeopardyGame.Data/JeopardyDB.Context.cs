@@ -29,7 +29,6 @@ namespace JeopardyGame.Data
         public virtual DbSet<Avatar> Avatars { get; set; }
         public virtual DbSet<Awnser> Awnsers { get; set; }
         public virtual DbSet<Baneo> Baneos { get; set; }
-        public virtual DbSet<Board> Boards { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Friend> Friends { get; set; }
         public virtual DbSet<GamePlayer> GamePlayers { get; set; }

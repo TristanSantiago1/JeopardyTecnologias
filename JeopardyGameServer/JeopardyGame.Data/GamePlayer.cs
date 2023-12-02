@@ -17,7 +17,7 @@ namespace JeopardyGame.Data
         public int IdGamePlayer { get; set; }
         public long PointsInGame { get; set; }
         public short PlaceInGame { get; set; }
-        public string Game_RoomCode { get; set; }
+        public int Game_RoomCode { get; set; }
         public int Player_IdPlayer { get; set; }
     
         public virtual Game Game { get; set; }

@@ -251,6 +251,53 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPlayerInLobby" nillable="true" type="tns:ArrayOfPlayerInLobby" />
+  <xs:complexType name="ArrayOfQuestionCardInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QuestionCardInformation" nillable="true" type="tns:QuestionCardInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQuestionCardInformation" nillable="true" type="tns:ArrayOfQuestionCardInformation" />
+  <xs:complexType name="QuestionCardInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CategoryOfQuestion" nillable="true" type="tns:CategoryPOJO" />
+      <xs:element minOccurs="0" name="IdQuestionCard" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfRound" type="xs:int" />
+      <xs:element minOccurs="0" name="RightAnswer" nillable="true" type="tns:AnswerPOJO" />
+      <xs:element minOccurs="0" name="SpecificQuestionDetails" nillable="true" type="tns:QuestionPOJO" />
+      <xs:element minOccurs="0" name="WrongOptionOne" nillable="true" type="tns:AnswerPOJO" />
+      <xs:element minOccurs="0" name="WrongOptionThree" nillable="true" type="tns:AnswerPOJO" />
+      <xs:element minOccurs="0" name="WrongOptionTwo" nillable="true" type="tns:AnswerPOJO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuestionCardInformation" nillable="true" type="tns:QuestionCardInformation" />
+  <xs:complexType name="CategoryPOJO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EnglishCategoryDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdCategory" type="xs:int" />
+      <xs:element minOccurs="0" name="SpanishCategoryDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryPOJO" nillable="true" type="tns:CategoryPOJO" />
+  <xs:complexType name="AnswerPOJO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EnglishAnswerDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCategory" type="xs:int" />
+      <xs:element minOccurs="0" name="SpanishAnswerDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnswerPOJO" nillable="true" type="tns:AnswerPOJO" />
+  <xs:complexType name="QuestionPOJO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EnglishQuestionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdAnswerOfQuestion" type="xs:int" />
+      <xs:element minOccurs="0" name="IdCategoryBelong" type="xs:int" />
+      <xs:element minOccurs="0" name="IdQuestion" type="xs:int" />
+      <xs:element minOccurs="0" name="SpanishQuestionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValueWorth" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QuestionPOJO" nillable="true" type="tns:QuestionPOJO" />
   <xs:complexType name="GenericClassOfArrayOfMessageChatxY0a3WX4">
     <xs:annotation>
       <xs:appinfo>
@@ -285,4 +332,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GenericClassOfboolean" nillable="true" type="tns:GenericClassOfboolean" />
+  <xs:complexType name="CurrentQuestionToShowContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdFirstAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdFourthAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdQuestion" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSecondAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdThirdAnswer" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrentQuestionToShowContract" nillable="true" type="tns:CurrentQuestionToShowContract" />
+  <xs:complexType name="ArrayOfPlayerInGameDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerInGameDataContract" nillable="true" type="tns:PlayerInGameDataContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayerInGameDataContract" nillable="true" type="tns:ArrayOfPlayerInGameDataContract" />
+  <xs:complexType name="PlayerInGameDataContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrentPointsOfRound" type="xs:int" />
+      <xs:element minOccurs="0" name="FinalPosition" type="xs:int" />
+      <xs:element minOccurs="0" name="IdAvatar" type="xs:int" />
+      <xs:element minOccurs="0" name="IdPlayer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="SideTeam" type="xs:int" />
+      <xs:element minOccurs="0" name="TurnOfPlayer" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerInGameDataContract" nillable="true" type="tns:PlayerInGameDataContract" />
 </xs:schema>

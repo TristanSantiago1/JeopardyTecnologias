@@ -55,22 +55,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataDictionaries\ActiveGamesDictionary.cs" />
     <Compile Include="DataDictionaries\ActiveUsersDictionary.cs" />
     <Compile Include="DataDictionaries\ChatsDictionary.cs" />
     <Compile Include="DataDictionaries\GameLobbiesDictionary.cs" />
     <Compile Include="DataDictionaries\FriendManagerDictionary.cs" />
+    <Compile Include="DataDictionaries\QuestionsForLobbyDictionary.cs" />
     <Compile Include="InterfacesSevices\IConsultInformation.cs" />
     <Compile Include="InterfacesSevices\IFriendsManager.cs" />
+    <Compile Include="InterfacesSevices\IGameActions.cs" />
     <Compile Include="InterfacesSevices\ILobbyActions.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
     <Compile Include="InterfacesSevices\INotifyUserFriendlyActions.cs" />
-    <Compile Include="InterfacesSevices\IQuestionsManager.cs" />
     <Compile Include="InterfacesSevices\IUserManager.cs" />
     <Compile Include="InterfacesSevices\ILiveChat.cs" />
+    <Compile Include="InterpretersEntityPojo\QuestionsInterpreter.cs" />
     <Compile Include="InterpretersEntityPojo\UserInterpreter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceImplementation\ConsultInformationImplementation.cs" />
     <Compile Include="ServiceImplementation\FriendsManagerImplementation.cs" />
+    <Compile Include="ServiceImplementation\GameActionsImplementation.cs" />
     <Compile Include="ServiceImplementation\LiveChatImplementation.cs" />
     <Compile Include="ServiceImplementation\LobbyActionsImplementation.cs" />
     <Compile Include="ServiceImplementation\NotifyFriendlyActionsImplementation.cs" />

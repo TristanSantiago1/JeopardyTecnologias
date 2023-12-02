@@ -56,7 +56,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IQuestionsManager_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameActions_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -69,7 +69,6 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -246,6 +245,12 @@
   <wsdl:message name="ILobbyActions_MakeTeams_InputMessage">
     <wsdl:part name="parameters" element="tns:MakeTeams" />
   </wsdl:message>
+  <wsdl:message name="ILobbyActions_SelectQuestionsForGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectQuestionsForGame" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyActions_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
   <wsdl:message name="ILobbyActions_UpdateJoinedPlayerResponse_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateJoinedPlayerResponse" />
   </wsdl:message>
@@ -269,6 +274,18 @@
   </wsdl:message>
   <wsdl:message name="ILobbyActions_DissolvingLobby_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:DissolvingLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyActions_NotifyQuestionsAreReady_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReady" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyActions_NotifyQuestionsAreReady_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyActions_NotifyGameWillStart_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyGameWillStart" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyActions_NotifyGameWillStart_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyGameWillStartResponse" />
   </wsdl:message>
   <wsdl:message name="ILiveChat_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
@@ -294,17 +311,62 @@
   <wsdl:message name="ILiveChat_ReceiveMessage_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveMessageResponse" />
   </wsdl:message>
-  <wsdl:message name="IQuestionsManager_GetQuestionByValue_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetQuestionByValue" />
+  <wsdl:message name="IGameActions_SubscribeToGameCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToGameCallBack" />
   </wsdl:message>
-  <wsdl:message name="IQuestionsManager_GetQuestionByValue_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetQuestionByValueResponse" />
+  <wsdl:message name="IGameActions_UnSubscribeFromGameCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnSubscribeFromGameCallBack" />
   </wsdl:message>
-  <wsdl:message name="IQuestionsManager_CheckAnswer_InputMessage">
-    <wsdl:part name="parameters" element="tns:CheckAnswer" />
+  <wsdl:message name="IGameActions_ChooseQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChooseQuestion" />
   </wsdl:message>
-  <wsdl:message name="IQuestionsManager_CheckAnswer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CheckAnswerResponse" />
+  <wsdl:message name="IGameActions_ChooseAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChooseAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_FinishRound_InputMessage">
+    <wsdl:part name="parameters" element="tns:FinishRound" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_FinishGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:FinishGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ConfirmBet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmBet" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ConfirmLastQuestionAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmLastQuestionAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationEverybodyIsPlaying" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ReceiveNotificationAboutTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurn" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ReceiveNotificationAboutTurn_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseSomeOneSelectAQuestion_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseSomeOneSelectAQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseSomeOneSelectAQuestion_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseSomeOneSelectAQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseSomeOneChooseAnAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseSomeOneChooseAnAnswer_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseSomeOneChooseAnAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseBeginRound_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseBeginRound" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseShowWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseShowWinner" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseFinishGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseFinishGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameActions_ResponseShowLastQuestion_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseShowLastQuestion" />
   </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
@@ -447,6 +509,12 @@
     <wsdl:operation name="MakeTeams">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/MakeTeams" message="tns:ILobbyActions_MakeTeams_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="SelectQuestionsForGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/SelectQuestionsForGame" message="tns:ILobbyActions_SelectQuestionsForGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/StartGame" message="tns:ILobbyActions_StartGame_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateJoinedPlayerResponse">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse" message="tns:ILobbyActions_UpdateJoinedPlayerResponse_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponseResponse" message="tns:ILobbyActions_UpdateJoinedPlayerResponse_InputCallbackMessage" />
@@ -462,6 +530,14 @@
     <wsdl:operation name="DissolvingLobby">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/DissolvingLobby" message="tns:ILobbyActions_DissolvingLobby_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/DissolvingLobbyResponse" message="tns:ILobbyActions_DissolvingLobby_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyQuestionsAreReady">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady" message="tns:ILobbyActions_NotifyQuestionsAreReady_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReadyResponse" message="tns:ILobbyActions_NotifyQuestionsAreReady_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyGameWillStart">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/NotifyGameWillStart" message="tns:ILobbyActions_NotifyGameWillStart_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/NotifyGameWillStartResponse" message="tns:ILobbyActions_NotifyGameWillStart_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILiveChat">
@@ -484,14 +560,57 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILiveChat/ReceiveMessageResponse" message="tns:ILiveChat_ReceiveMessage_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="IQuestionsManager">
-    <wsdl:operation name="GetQuestionByValue">
-      <wsdl:input wsaw:Action="http://tempuri.org/IQuestionsManager/GetQuestionByValue" message="tns:IQuestionsManager_GetQuestionByValue_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IQuestionsManager/GetQuestionByValueResponse" message="tns:IQuestionsManager_GetQuestionByValue_OutputMessage" />
+  <wsdl:portType name="IGameActions">
+    <wsdl:operation name="SubscribeToGameCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/SubscribeToGameCallBack" message="tns:IGameActions_SubscribeToGameCallBack_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="CheckAnswer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IQuestionsManager/CheckAnswer" message="tns:IQuestionsManager_CheckAnswer_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IQuestionsManager/CheckAnswerResponse" message="tns:IQuestionsManager_CheckAnswer_OutputMessage" />
+    <wsdl:operation name="UnSubscribeFromGameCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/UnSubscribeFromGameCallBack" message="tns:IGameActions_UnSubscribeFromGameCallBack_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChooseQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ChooseQuestion" message="tns:IGameActions_ChooseQuestion_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChooseAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ChooseAnswer" message="tns:IGameActions_ChooseAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishRound">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/FinishRound" message="tns:IGameActions_FinishRound_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/FinishGame" message="tns:IGameActions_FinishGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmBet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ConfirmBet" message="tns:IGameActions_ConfirmBet_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmLastQuestionAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ConfirmLastQuestionAnswer" message="tns:IGameActions_ConfirmLastQuestionAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying" message="tns:IGameActions_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationAboutTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn" message="tns:IGameActions_ReceiveNotificationAboutTurn_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurnResponse" message="tns:IGameActions_ReceiveNotificationAboutTurn_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneSelectAQuestion">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion" message="tns:IGameActions_ResponseSomeOneSelectAQuestion_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestionResponse" message="tns:IGameActions_ResponseSomeOneSelectAQuestion_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer" message="tns:IGameActions_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswerResponse" message="tns:IGameActions_ResponseSomeOneChooseAnAnswer_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBeginRound">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseBeginRound" message="tns:IGameActions_ResponseBeginRound_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowWinner" message="tns:IGameActions_ResponseShowWinner_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseFinishGame">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseFinishGame" message="tns:IGameActions_ResponseFinishGame_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowLastQuestion">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion" message="tns:IGameActions_ResponseShowLastQuestion_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -799,6 +918,18 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="SelectQuestionsForGame">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/SelectQuestionsForGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/StartGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="UpdateJoinedPlayerResponse">
       <soap12:operation soapAction="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse" style="document" />
       <wsdl:input>
@@ -828,6 +959,24 @@
     </wsdl:operation>
     <wsdl:operation name="DissolvingLobby">
       <soap12:operation soapAction="http://tempuri.org/ILobbyActions/DissolvingLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyQuestionsAreReady">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyGameWillStart">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/NotifyGameWillStart" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -879,11 +1028,65 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IQuestionsManager" type="tns:IQuestionsManager">
-    <wsp:PolicyReference URI="#NetTcpBinding_IQuestionsManager_policy" />
+  <wsdl:binding name="NetTcpBinding_IGameActions" type="tns:IGameActions">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameActions_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetQuestionByValue">
-      <soap12:operation soapAction="http://tempuri.org/IQuestionsManager/GetQuestionByValue" style="document" />
+    <wsdl:operation name="SubscribeToGameCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/SubscribeToGameCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribeFromGameCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/UnSubscribeFromGameCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChooseQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ChooseQuestion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChooseAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ChooseAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="FinishRound">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/FinishRound" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="FinishGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/FinishGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmBet">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ConfirmBet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmLastQuestionAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ConfirmLastQuestionAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationAboutTurn">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -891,11 +1094,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="CheckAnswer">
-      <soap12:operation soapAction="http://tempuri.org/IQuestionsManager/CheckAnswer" style="document" />
+    <wsdl:operation name="ResponseSomeOneSelectAQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBeginRound">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseBeginRound" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowWinner">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseShowWinner" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseFinishGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseFinishGame" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowLastQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseShowLastQuestion" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -944,7 +1180,7 @@
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IQuestionsManager" binding="tns:NetTcpBinding_IQuestionsManager">
+    <wsdl:port name="NetTcpBinding_IGameActions" binding="tns:NetTcpBinding_IGameActions">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

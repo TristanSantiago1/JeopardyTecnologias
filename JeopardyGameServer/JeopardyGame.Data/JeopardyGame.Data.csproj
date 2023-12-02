@@ -73,13 +73,11 @@
     <Compile Include="Baneo.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Board.cs">
-      <DependentUpon>JeopardyDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\FriendsManagerDataOperation.cs" />
+    <Compile Include="DataAccess\GameDataOperation.cs" />
     <Compile Include="DataAccess\LoginOperations.cs" />
     <Compile Include="DataAccess\UserManagerDataOperation.cs" />
     <Compile Include="Exceptions\ExceptionDiccionary.cs" />

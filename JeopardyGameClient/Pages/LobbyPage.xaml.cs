@@ -41,6 +41,7 @@ namespace JeopardyGame.Pages
         private InstanceContext context;      
         private List <PlayerInLobby> currentPlayerInLobby;
         private UserSingleton userSingleton;
+        private LobbyActionsClient lobbyActionsClient;
 
         public LobbyPage()
         {
@@ -48,8 +49,15 @@ namespace JeopardyGame.Pages
             isAdminOfLobby = true;
             PrepareChatAndFriendList();
             PrepareWindow();
-           
+
+            Loaded += AskForQuestions;
         }
+
+        private void AskForQuestions(object sender, RoutedEventArgs e)
+        {
+            lobbyActionsClient.SelectQuestionsForGameAsync(roomCode);
+        }
+
         public LobbyPage(int roomCode)
         {
             InitializeComponent();
@@ -69,14 +77,14 @@ namespace JeopardyGame.Pages
         {            
             userSingleton =  UserSingleton.GetMainUser();
             context = new InstanceContext(this);
-            LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);            
+            lobbyActionsClient = new LobbyActionsClient(context);            
             chbTeamUp.IsChecked = false;
             if (isAdminOfLobby)
             {                
                 generateAleatory = new Random();
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);               
                 roomCode = aleatoryNumber;
-                lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);
+                lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);                
             }
             else
             {
@@ -273,7 +281,6 @@ namespace JeopardyGame.Pages
                     var userChanged = EliminateUserFromLobby(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
                         lobbyActionsClient.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);                        
                     }
                 }
@@ -304,7 +311,6 @@ namespace JeopardyGame.Pages
                     var userChanged = ChangeSideOfPlayer(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
                         lobbyActionsClient.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);
                         SetPlayerInLabels();
                     }
@@ -333,7 +339,6 @@ namespace JeopardyGame.Pages
             if (isAdminOfLobby)
             {
                 bool teamUp = false;
-                LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
                 lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);
             }
         }
@@ -345,7 +350,6 @@ namespace JeopardyGame.Pages
                 if (currentPlayerInLobby.Count == 4)
                 {
                     bool teamUp = true;
-                    LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
                     lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, teamUp);
                     DoOrUndoTeams(teamUp);
                     SetPlayerInLabels();
@@ -407,7 +411,6 @@ namespace JeopardyGame.Pages
 
         private void ClosingLobby()
         {
-            LobbyActionsClient lobbyActionsClient = new LobbyActionsClient(context);
             if (isAdminOfLobby)
             {
                 lobbyActionsClient.DissolveLobby(roomCode, userSingleton.IdUser);
@@ -443,11 +446,58 @@ namespace JeopardyGame.Pages
             ((ILiveChatCallback)liveChatUser).ReceiveMessage(message);
         }
 
-        private void bttStartGame_Click(object sender, RoutedEventArgs e)
+        private void ClickStartGame(object sender, RoutedEventArgs e)
         {
-            GameBoard gameBoard = new GameBoard();
-            this.NavigationService.Navigate(gameBoard);
+            if (isAdminOfLobby)
+            {
+                try
+                {
+                   lobbyActionsClient.StartGame(roomCode);
+                   
+                }
+                catch(FaultException ex)
+                {
+                    
+                }
+                catch (CommunicationException ex)
+                {
+                    context = new InstanceContext(this);
+                    lobbyActionsClient = new LobbyActionsClient(context);
+                }
+                
+
+                
+            }
+        }
+
+        public void NotifyQuestionsAreReady(int codeEvent)
+        {
+            if (codeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                bttStartGame.IsEnabled = true;
+            }
+            else
+            {
+                //MOstra mensaje de error y pedir que se cierre el lobby y hacer otor
+            }
+        }
+
+        public void NotifyGameWillStart(QuestionCardInformation[] questionsForGame)
+        {            
+            GoToGameBoard(questionsForGame.ToList());            
+        }
+
+        private void GoToGameBoard(List<QuestionCardInformation> questionsForGame)
+        {
+            int idLeader = 0;
+            if (isAdminOfLobby)
+            {
+                idLeader = userSingleton.IdUser;
+            }
+            GameBoard game = new GameBoard(questionsForGame, roomCode, idLeader);
+            this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
         }
+
     }
 }

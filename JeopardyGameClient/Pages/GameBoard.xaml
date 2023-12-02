@@ -7,46 +7,55 @@
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="GameBoard">
+
     <Viewbox>
-        <Grid Width="1093" Height="643">
+        <Grid Width="1093" Height="639">
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/backgroundGame.png"  Stretch="Fill"/>
             </Grid.Background>
 
-            <Canvas x:Name="answerGrid" Visibility="Visible" Background="White" Opacity="0.7" >
+            <Grid x:Name="boardGrid" Visibility="Visible" >
+                <Border Margin="75,109,87,74" CornerRadius="30,30,30,30" Background="#42384F" Opacity="0.8" RenderTransformOrigin="0.5,0.5">
+                    <WrapPanel x:Name="wrpBoardOfCards" Margin="0" Orientation="Vertical" Width="930"/>
+                </Border>
+            </Grid>
+
+
+            <Canvas x:Name="grdAnswerChoices" Visibility="Hidden" Background="White" Opacity="0.9" >
+                <Border Background="#26B1FF" Width="602" Height="141" CornerRadius="10" Canvas.Left="246" Canvas.Top="137" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock x:Name="txbQuestion" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                </Border>
                 <Label Content="a)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="332"/>
+                <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                    FontSize="25" Click="CLicSelectAnswer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="303" Canvas.Left="205" Canvas.Top="322" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                    </Button.Background>
+                </Button>
                 <Label Content="b)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.607,0.479"/>
-                <Button x:Name="bttSecondAnswer_Copiar" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="203" Canvas.Top="442" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                <Button x:Name="bttSecondAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
+                     FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="203" Canvas.Top="442" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
                     </Button.Background>
                 </Button>
                 <Label Content="c)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="327" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Label Content="d)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.26,2.645"/>
                 <Button x:Name="bttThridAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                FontSize="25" Click="CLicSelectAnswer" Height="70" Width="303" Canvas.Left="610" Canvas.Top="322" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                     FontSize="25" Click="CLicSelectAnswer" Height="70" Width="303" Canvas.Left="610" Canvas.Top="322" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
                     </Button.Background>
                 </Button>
+                <Label Content="d)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.26,2.645"/>
                 <Button x:Name="bttFourAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="616" Canvas.Top="437" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="616" Canvas.Top="437" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
                         <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
                     </Button.Background>
                 </Button>
-                <Border Background="#26B1FF" Width="602" Height="141" CornerRadius="10" Canvas.Left="246" Canvas.Top="137" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Label x:Name="lblQuestion" FontSize="30" Content="Label"/>
-
-                </Border>
-                <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                FontSize="25" Click="CLicSelectAnswer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="303" Canvas.Left="205" Canvas.Top="322" >
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
-                    </Button.Background>
-                </Button>
+                <TextBlock x:Name="txbAdvicement" Height="63" Width="509" Canvas.Left="289" Canvas.Top="540" FontSize="25" VerticalAlignment="Center" Text="Esperando respuesta de otros jugadores" Visibility="Hidden"/>
             </Canvas>
+
             <Canvas Visibility="Collapsed" Margin="1172,631,40,41">
                 <Button x:Name="bttChat" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
                 FontSize="25" Click="CLicOpenChat" Height="74" Width="63" Canvas.Left="10" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" >
@@ -54,57 +63,67 @@
                         <ImageBrush ImageSource="/Images/buttonChat.png"/>
                     </Button.Background>
                 </Button>
-
             </Canvas>
 
-            <Grid x:Name="boardGrid" Visibility="Collapsed" >
-                <Border Margin="75,109,87,74" CornerRadius="30,30,30,30" Background="#42384F" Opacity="0.8" RenderTransformOrigin="0.5,0.5">
-                    <Border.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="0.13"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Border.RenderTransform>
+            <StackPanel x:Name="stpTurnLigth" Height="53" Orientation="Horizontal" Margin="79,579,665,0">
+                <Ellipse x:Name="ellYourTurn"  Height="50" Margin="10, 0,10,0" Stroke="Black" Fill="Gray" StrokeThickness="3" VerticalAlignment="Top" Width="50" />
+                <Label  Height="50" Width="270" Content="Your Turn" FontSize="25" Foreground="White"/>
+            </StackPanel>
 
+            <Grid x:Name="grdBet" Visibility="Hidden"  Background="White" Opacity="0.80">
+                <Border Margin="94,135,84,313" CornerRadius="13" Background="#42384F">
+                    <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="Ultima ronda, ingresa cuanto vas a apostar, no puede ser mayor a tus puntos actuales"/>
                 </Border>
-                <Rectangle x:Name="firstCategory" HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="132,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="firstQuestionFC" MouseDown="ClickHistory100" HorizontalAlignment ="Left" Fill="#0802A3"  Height="90" Margin="132,250,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="secondQuestionFC" MouseDown="ClickHistory300" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="128,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Cursor="Hand">
-                </Rectangle>
-                <Rectangle x:Name="thirdQuestionFC" MouseDown="ClickHistory500" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="132,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="secondCategory"  HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="423,134,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="thirdCategory"  HorizontalAlignment="Left" Fill="#1D1CE5"  Height="90" Margin="714,137,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="firstQuestionSC" MouseDown="ClickScience100" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35" Margin="0,250,0,0"/>
-                <Rectangle x:Name="secondQuestionSC" MouseDown="ClickScience300" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,351,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="thirdQuestionSC" MouseDown="ClickScience500" HorizontalAlignment="Center" Fill="#0802A3"  Height="90" Margin="0,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="firstQuestionTC" MouseDown="ClickMovies100" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,252,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="secondQuestionTC" MouseDown="ClickMovies300" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,354,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Rectangle x:Name="thirdQuestionTC" MouseDown="ClickMovies500" HorizontalAlignment="Left" Fill="#0802A3"  Height="90" Margin="714,455,0,0" VerticalAlignment="Top" Width="250" RadiusX="35" RadiusY="35">
-                </Rectangle>
-                <Label x:Name="historyCategory" FontSize="40" Foreground="White" FontWeight="Bold" Content="History" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="159,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
-                <Label x:Name="scienceCategory" FontSize="40" Foreground="White" Content="Science" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="454,151,0,0" VerticalAlignment="Top" Height="56" Width="196"/>
-                <Label x:Name="moviesCategory" FontSize="40" Foreground="White" Content="Movies" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="772,151,0,0" VerticalAlignment="Top" Height="56" Width="157"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="214,267,0,0" VerticalAlignment="Top" Height="56" Width="86" RenderTransformOrigin="0.741,0.554"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="208,368,0,0" VerticalAlignment="Top" Height="56" Width="90" Background="{x:Null}" Cursor="Hand"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="203,472,0,0" VerticalAlignment="Top" Height="56" Width="100" RenderTransformOrigin="1.096,0.523"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,368,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="56" Width="83" Margin="0,266,0,0"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="510,472,0,0" VerticalAlignment="Top" Height="56" Width="83"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="500" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,472,0,0" VerticalAlignment="Top" Height="56" Width="82"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="300" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,368,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="-0.327,-0.12"/>
-                <Label FontSize="40" Foreground="#FFC436" MouseDown="ClickRectangulo" FontWeight="Bold" Content="100" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,265,0,0" VerticalAlignment="Top" Height="56" Width="82" RenderTransformOrigin="0.46,0.171"/>
+                <Border  Margin="358,348,369,125" Background="#FF41B241" CornerRadius="13">
+                    <TextBox x:Name="txbPointsToBet" Background="White" Margin="35" FontSize="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" PreviewTextInput="TxbBetPointsTextInput"/>
+                </Border>
+                <Border Margin="448,538,469,31" Background="#FF41B241" CornerRadius="13">
+                    <Button x:Name="bttConfirmBet" Background="Transparent" Content="Confirmar" Foreground="White" FontSize="25" Click="ClickConfirmBet"/>
+                </Border>
             </Grid>
+
+            <Canvas x:Name="cnvResultOfAwnser" Visibility="Hidden" Background="White" Opacity="0.85">
+                <Grid Height="643" Width="1093" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Image x:Name="imgAnswerResult" Height="194" Margin="293,322,225,127" />
+                    <Border Background="#26B1FF" Width="602" Height="141" CornerRadius="10" Margin="267,141,224,361" >
+                        <TextBlock x:Name="txbQuestionResult" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                    </Border>
+                    <TextBlock x:Name="txbStringAnswerChoose" Margin="332,361,410,214"  HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="25" Foreground="White"/>
+                    <TextBlock x:Name="txbPointsEarnedOrLost" Margin="419,444,497,137"   HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="40" Foreground="White" />
+                </Grid>
+            </Canvas>
+
+            <StackPanel x:Name="stpPlayers" Margin="45,0,53,545" Orientation="Horizontal"/>
+
+
+            <Grid x:Name="grWinnerPanel" Visibility="Hidden" Background="Transparent" Opacity="0.85" Height="408" VerticalAlignment="Top">
+                <Border x:Name="brdFirstPlaceSpot" Visibility="Hidden" Height="328" Margin="89,77,904,3" BorderBrush="Black" Width="100" >
+                    <Label Content="1" HorizontalAlignment="Left" Margin="120,80,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold"/>
+                </Border>
+                <Border x:Name="brdFirstPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="10,15,821,333" Background="black" Height="60" Width="262"/>
+                <Border x:Name="brdSecondPlace" Visibility="Hidden" HorizontalAlignment="Left" Height="250" Margin="337,165,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100">
+                    <Label Content="2" HorizontalAlignment="Left" Margin="365,170,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold"/>
+                </Border>
+                <Border x:Name="brdSecondPlaceSpot" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="247,105,584,243" Background="black" Height="60" Width="262"/>
+                <Border x:Name="brdtThirdPlace" Visibility="Hidden" HorizontalAlignment="Left" Height="165" Margin="623,251,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100" Background="AliceBlue">
+                    <Label Content="3" HorizontalAlignment="Left" Margin="653,247,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold"/>
+                </Border>
+                <Border x:Name="brdThirdPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="528,187,303,161" Background="black" Height="60" Width="262"/>
+                <Border x:Name="brdForthPlacePlaceSpot" Visibility="Hidden" HorizontalAlignment="Left" Height="77" Margin="918,336,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100" Background="AliceBlue" >
+                    <Label Content="4" HorizontalAlignment="Left" Margin="943,327,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold" Height="90"/>
+                </Border>
+                <Border x:Name="brdForthPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="824,276,7,72" Background="black" Height="60" Width="262"/>
+                </Grid>
+
+            <Grid x:Name ="grdPresentation" Visibility="Hidden" Margin="0,372,0,0" >
+                <Image x:Name="imgHostImage" Margin="49,21,765,13" />
+                <Border Margin="326,41,28,35" CornerRadius="13" Background="White" Opacity=".7">
+                    <TextBlock x:Name="txbHostMessage" Margin="0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                </Border>
+            </Grid>
+
+
+
         </Grid>
     </Viewbox>
 </Page>

@@ -22,7 +22,6 @@ namespace JeopardyGame.Data
     
         public int IdHost { get; set; }
         public string HostName { get; set; }
-        public byte[] ImageHost { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Game> Games { get; set; }

@@ -17,15 +17,12 @@ namespace JeopardyGame.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Game()
         {
-            this.Boards = new HashSet<Board>();
             this.GamePlayers = new HashSet<GamePlayer>();
         }
     
-        public string RoomCode { get; set; }
+        public int RoomCode { get; set; }
         public int Host_IdHost { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Board> Boards { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GamePlayer> GamePlayers { get; set; }
         public virtual Host Host { get; set; }

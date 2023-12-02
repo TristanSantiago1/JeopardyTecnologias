@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace JeopardyGame.Data
     [KnownType(typeof(GenericClass<UserValidate>))]
     [KnownType(typeof(GenericClass<AvatarPojo>))]
     [KnownType(typeof(GenericClass<AvatarChoice>))]
-    [KnownType(typeof(GenericClass<MessageChat>))]    
+    [KnownType(typeof(GenericClass<MessageChat>))]
     public class GenericClass<T>
     {
         [DataMember]
@@ -106,9 +107,91 @@ namespace JeopardyGame.Data
         public int idPlayer { get; set; }
     }
 
+    [DataContract]
+    public class QuestionCardInformation
+    {
+        [DataMember]
+        public int IdQuestionCard { get; set; }
+        [DataMember]
+        public CategoryPOJO CategoryOfQuestion { get; set; }
+        [DataMember]
+        public QuestionPOJO SpecificQuestionDetails{ get; set; }
+        [DataMember]
+        public AnswerPOJO RightAnswer { get; set; }
+        [DataMember]
+        public AnswerPOJO WrongOptionOne { get; set; }
+        [DataMember]
+        public AnswerPOJO WrongOptionTwo { get; set; }
+        [DataMember]
+        public AnswerPOJO WrongOptionThree { get; set; }
+        [DataMember]
+        public int NumberOfRound { get; set; }        
+    }
+
+    public class QuestionPOJO
+    {
+        public int IdQuestion { get; set; }
+        public string SpanishQuestionDescription { get; set; }
+        public string EnglishQuestionDescription { get; set; }
+        public int IdCategoryBelong { get; set; }
+        public int IdAnswerOfQuestion { get; set; }
+        public int ValueWorth { get; set; }
+    }
+
+    public class AnswerPOJO
+    {
+        public int IdAnswer { get; set; }
+        public string SpanishAnswerDescription { get; set; }
+        public string EnglishAnswerDescription { get; set; }
+        public int IdCategory { get; set; }
+    }
+
+    public class CategoryPOJO
+    {
+        public int IdCategory { get; set; }
+        public string SpanishCategoryDescription { get; set; }
+        public string EnglishCategoryDescription { get; set; }
+    }
+
+    [DataContract]
+    public class PlayerInGameDataContract
+    {
+        [DataMember]
+        public int IdUser { get; set; }
+        [DataMember]
+        public int IdPlayer { get; set; }
+        [DataMember]
+        public int FinalPosition { get; set; }
+        [DataMember]
+        public String UserName { get; set; }
+        [DataMember]
+        public int SideTeam { get; set; }
+        [DataMember]
+        public int TurnOfPlayer { get; set; }
+        [DataMember]
+        public int IdAvatar { get; set; }
+        [DataMember]
+        public int CurrentPointsOfRound { get; set; }
+    }
+
+
+    [DataContract]
+    public class CurrentQuestionToShowContract
+    {
+        [DataMember]
+        public int IdQuestion { get; set; }
+        [DataMember]
+        public int IdFirstAnswer { get; set; }
+        [DataMember]
+        public int IdSecondAnswer { get; set; }
+        [DataMember]
+        public int IdThirdAnswer { get; set; }
+        [DataMember]
+        public int IdFourthAnswer { get; set; }
+    }
+
+
 }
-
-
 
 
 

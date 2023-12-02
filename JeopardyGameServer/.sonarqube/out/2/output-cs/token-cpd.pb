@@ -1,4 +1,4 @@
-Ì
+à
 }C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Host\Connetion\OpenConnetion.cs
 	namespace 	
 JeopardyGame
@@ -8,10 +8,11 @@
 . 
 
 Connection &
-{ 
-class 	
-OpenConnection
- 
+{ 
+public 
+
+class 
+OpenConnection 
 {		 
 static
 

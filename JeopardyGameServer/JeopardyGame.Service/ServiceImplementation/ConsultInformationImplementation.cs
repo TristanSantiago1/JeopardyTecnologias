@@ -74,7 +74,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 return NullParametersHandler.HandleNullParametersService(resultToReturn);
             }
-            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserByUserName (userName);
+            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserByUserName(userName);
             resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
             resultToReturn.CodeEvent = userConsulted.CodeEvent;
             return resultToReturn;

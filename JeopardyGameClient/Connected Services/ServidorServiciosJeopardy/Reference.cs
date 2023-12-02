@@ -799,6 +799,458 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QuestionCardInformation", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class QuestionCardInformation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.CategoryPOJO CategoryOfQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdQuestionCardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NumberOfRoundField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO RightAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.QuestionPOJO SpecificQuestionDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO WrongOptionOneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO WrongOptionThreeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO WrongOptionTwoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.CategoryPOJO CategoryOfQuestion {
+            get {
+                return this.CategoryOfQuestionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryOfQuestionField, value) != true)) {
+                    this.CategoryOfQuestionField = value;
+                    this.RaisePropertyChanged("CategoryOfQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdQuestionCard {
+            get {
+                return this.IdQuestionCardField;
+            }
+            set {
+                if ((this.IdQuestionCardField.Equals(value) != true)) {
+                    this.IdQuestionCardField = value;
+                    this.RaisePropertyChanged("IdQuestionCard");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NumberOfRound {
+            get {
+                return this.NumberOfRoundField;
+            }
+            set {
+                if ((this.NumberOfRoundField.Equals(value) != true)) {
+                    this.NumberOfRoundField = value;
+                    this.RaisePropertyChanged("NumberOfRound");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO RightAnswer {
+            get {
+                return this.RightAnswerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RightAnswerField, value) != true)) {
+                    this.RightAnswerField = value;
+                    this.RaisePropertyChanged("RightAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.QuestionPOJO SpecificQuestionDetails {
+            get {
+                return this.SpecificQuestionDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpecificQuestionDetailsField, value) != true)) {
+                    this.SpecificQuestionDetailsField = value;
+                    this.RaisePropertyChanged("SpecificQuestionDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO WrongOptionOne {
+            get {
+                return this.WrongOptionOneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WrongOptionOneField, value) != true)) {
+                    this.WrongOptionOneField = value;
+                    this.RaisePropertyChanged("WrongOptionOne");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO WrongOptionThree {
+            get {
+                return this.WrongOptionThreeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WrongOptionThreeField, value) != true)) {
+                    this.WrongOptionThreeField = value;
+                    this.RaisePropertyChanged("WrongOptionThree");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.AnswerPOJO WrongOptionTwo {
+            get {
+                return this.WrongOptionTwoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WrongOptionTwoField, value) != true)) {
+                    this.WrongOptionTwoField = value;
+                    this.RaisePropertyChanged("WrongOptionTwo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryPOJO", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class CategoryPOJO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EnglishCategoryDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdCategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SpanishCategoryDescriptionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EnglishCategoryDescription {
+            get {
+                return this.EnglishCategoryDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EnglishCategoryDescriptionField, value) != true)) {
+                    this.EnglishCategoryDescriptionField = value;
+                    this.RaisePropertyChanged("EnglishCategoryDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCategory {
+            get {
+                return this.IdCategoryField;
+            }
+            set {
+                if ((this.IdCategoryField.Equals(value) != true)) {
+                    this.IdCategoryField = value;
+                    this.RaisePropertyChanged("IdCategory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SpanishCategoryDescription {
+            get {
+                return this.SpanishCategoryDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpanishCategoryDescriptionField, value) != true)) {
+                    this.SpanishCategoryDescriptionField = value;
+                    this.RaisePropertyChanged("SpanishCategoryDescription");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AnswerPOJO", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class AnswerPOJO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EnglishAnswerDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdCategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SpanishAnswerDescriptionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EnglishAnswerDescription {
+            get {
+                return this.EnglishAnswerDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EnglishAnswerDescriptionField, value) != true)) {
+                    this.EnglishAnswerDescriptionField = value;
+                    this.RaisePropertyChanged("EnglishAnswerDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdAnswer {
+            get {
+                return this.IdAnswerField;
+            }
+            set {
+                if ((this.IdAnswerField.Equals(value) != true)) {
+                    this.IdAnswerField = value;
+                    this.RaisePropertyChanged("IdAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCategory {
+            get {
+                return this.IdCategoryField;
+            }
+            set {
+                if ((this.IdCategoryField.Equals(value) != true)) {
+                    this.IdCategoryField = value;
+                    this.RaisePropertyChanged("IdCategory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SpanishAnswerDescription {
+            get {
+                return this.SpanishAnswerDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpanishAnswerDescriptionField, value) != true)) {
+                    this.SpanishAnswerDescriptionField = value;
+                    this.RaisePropertyChanged("SpanishAnswerDescription");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QuestionPOJO", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class QuestionPOJO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EnglishQuestionDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdAnswerOfQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdCategoryBelongField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SpanishQuestionDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ValueWorthField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EnglishQuestionDescription {
+            get {
+                return this.EnglishQuestionDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EnglishQuestionDescriptionField, value) != true)) {
+                    this.EnglishQuestionDescriptionField = value;
+                    this.RaisePropertyChanged("EnglishQuestionDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdAnswerOfQuestion {
+            get {
+                return this.IdAnswerOfQuestionField;
+            }
+            set {
+                if ((this.IdAnswerOfQuestionField.Equals(value) != true)) {
+                    this.IdAnswerOfQuestionField = value;
+                    this.RaisePropertyChanged("IdAnswerOfQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCategoryBelong {
+            get {
+                return this.IdCategoryBelongField;
+            }
+            set {
+                if ((this.IdCategoryBelongField.Equals(value) != true)) {
+                    this.IdCategoryBelongField = value;
+                    this.RaisePropertyChanged("IdCategoryBelong");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdQuestion {
+            get {
+                return this.IdQuestionField;
+            }
+            set {
+                if ((this.IdQuestionField.Equals(value) != true)) {
+                    this.IdQuestionField = value;
+                    this.RaisePropertyChanged("IdQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SpanishQuestionDescription {
+            get {
+                return this.SpanishQuestionDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpanishQuestionDescriptionField, value) != true)) {
+                    this.SpanishQuestionDescriptionField = value;
+                    this.RaisePropertyChanged("SpanishQuestionDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ValueWorth {
+            get {
+                return this.ValueWorthField;
+            }
+            set {
+                if ((this.ValueWorthField.Equals(value) != true)) {
+                    this.ValueWorthField = value;
+                    this.RaisePropertyChanged("ValueWorth");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfArrayOfMessageChatxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
     [System.SerializableAttribute()]
     public partial class GenericClassOfArrayOfMessageChatxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1058,18 +1510,27 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfFriendBasicInformationxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CurrentQuestionToShowContract", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
     [System.SerializableAttribute()]
-    public partial class GenericClassOfFriendBasicInformationxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class CurrentQuestionToShowContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodeEventField;
+        private int IdFirstAnswerField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private JeopardyGame.ServidorServiciosJeopardy.FriendBasicInformation ObjectSavedField;
+        private int IdFourthAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdSecondAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdThirdAnswerField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1082,27 +1543,66 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodeEvent {
+        public int IdFirstAnswer {
             get {
-                return this.CodeEventField;
+                return this.IdFirstAnswerField;
             }
             set {
-                if ((this.CodeEventField.Equals(value) != true)) {
-                    this.CodeEventField = value;
-                    this.RaisePropertyChanged("CodeEvent");
+                if ((this.IdFirstAnswerField.Equals(value) != true)) {
+                    this.IdFirstAnswerField = value;
+                    this.RaisePropertyChanged("IdFirstAnswer");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public JeopardyGame.ServidorServiciosJeopardy.FriendBasicInformation ObjectSaved {
+        public int IdFourthAnswer {
             get {
-                return this.ObjectSavedField;
+                return this.IdFourthAnswerField;
             }
             set {
-                if ((this.ObjectSavedField.Equals(value) != true)) {
-                    this.ObjectSavedField = value;
-                    this.RaisePropertyChanged("ObjectSaved");
+                if ((this.IdFourthAnswerField.Equals(value) != true)) {
+                    this.IdFourthAnswerField = value;
+                    this.RaisePropertyChanged("IdFourthAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdQuestion {
+            get {
+                return this.IdQuestionField;
+            }
+            set {
+                if ((this.IdQuestionField.Equals(value) != true)) {
+                    this.IdQuestionField = value;
+                    this.RaisePropertyChanged("IdQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdSecondAnswer {
+            get {
+                return this.IdSecondAnswerField;
+            }
+            set {
+                if ((this.IdSecondAnswerField.Equals(value) != true)) {
+                    this.IdSecondAnswerField = value;
+                    this.RaisePropertyChanged("IdSecondAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdThirdAnswer {
+            get {
+                return this.IdThirdAnswerField;
+            }
+            set {
+                if ((this.IdThirdAnswerField.Equals(value) != true)) {
+                    this.IdThirdAnswerField = value;
+                    this.RaisePropertyChanged("IdThirdAnswer");
                 }
             }
         }
@@ -1119,339 +1619,36 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfPlayerInLobbyxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerInGameDataContract", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
     [System.SerializableAttribute()]
-    public partial class GenericClassOfPlayerInLobbyxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class PlayerInGameDataContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodeEventField;
+        private int CurrentPointsOfRoundField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby ObjectSavedField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodeEvent {
-            get {
-                return this.CodeEventField;
-            }
-            set {
-                if ((this.CodeEventField.Equals(value) != true)) {
-                    this.CodeEventField = value;
-                    this.RaisePropertyChanged("CodeEvent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public JeopardyGame.ServidorServiciosJeopardy.PlayerInLobby ObjectSaved {
-            get {
-                return this.ObjectSavedField;
-            }
-            set {
-                if ((this.ObjectSavedField.Equals(value) != true)) {
-                    this.ObjectSavedField = value;
-                    this.RaisePropertyChanged("ObjectSaved");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfUserValidatexY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
-    [System.SerializableAttribute()]
-    public partial class GenericClassOfUserValidatexY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodeEventField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private JeopardyGame.ServidorServiciosJeopardy.UserValidate ObjectSavedField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodeEvent {
-            get {
-                return this.CodeEventField;
-            }
-            set {
-                if ((this.CodeEventField.Equals(value) != true)) {
-                    this.CodeEventField = value;
-                    this.RaisePropertyChanged("CodeEvent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public JeopardyGame.ServidorServiciosJeopardy.UserValidate ObjectSaved {
-            get {
-                return this.ObjectSavedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
-                    this.ObjectSavedField = value;
-                    this.RaisePropertyChanged("ObjectSaved");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfAvatarPojoxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
-    [System.SerializableAttribute()]
-    public partial class GenericClassOfAvatarPojoxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodeEventField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private JeopardyGame.ServidorServiciosJeopardy.AvatarPojo ObjectSavedField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodeEvent {
-            get {
-                return this.CodeEventField;
-            }
-            set {
-                if ((this.CodeEventField.Equals(value) != true)) {
-                    this.CodeEventField = value;
-                    this.RaisePropertyChanged("CodeEvent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public JeopardyGame.ServidorServiciosJeopardy.AvatarPojo ObjectSaved {
-            get {
-                return this.ObjectSavedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
-                    this.ObjectSavedField = value;
-                    this.RaisePropertyChanged("ObjectSaved");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AvatarPojo", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
-    [System.SerializableAttribute()]
-    public partial class AvatarPojo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AvatarNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] ImageDataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AvatarName {
-            get {
-                return this.AvatarNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AvatarNameField, value) != true)) {
-                    this.AvatarNameField = value;
-                    this.RaisePropertyChanged("AvatarName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] ImageData {
-            get {
-                return this.ImageDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ImageDataField, value) != true)) {
-                    this.ImageDataField = value;
-                    this.RaisePropertyChanged("ImageData");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfAvatarChoicexY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
-    [System.SerializableAttribute()]
-    public partial class GenericClassOfAvatarChoicexY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodeEventField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private JeopardyGame.ServidorServiciosJeopardy.AvatarChoice ObjectSavedField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodeEvent {
-            get {
-                return this.CodeEventField;
-            }
-            set {
-                if ((this.CodeEventField.Equals(value) != true)) {
-                    this.CodeEventField = value;
-                    this.RaisePropertyChanged("CodeEvent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public JeopardyGame.ServidorServiciosJeopardy.AvatarChoice ObjectSaved {
-            get {
-                return this.ObjectSavedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
-                    this.ObjectSavedField = value;
-                    this.RaisePropertyChanged("ObjectSaved");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AvatarChoice", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
-    [System.SerializableAttribute()]
-    public partial class AvatarChoice : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        private int FinalPositionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdAvatarField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int idPlayerField;
+        private int IdPlayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SideTeamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TurnOfPlayerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1460,6 +1657,32 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentPointsOfRound {
+            get {
+                return this.CurrentPointsOfRoundField;
+            }
+            set {
+                if ((this.CurrentPointsOfRoundField.Equals(value) != true)) {
+                    this.CurrentPointsOfRoundField = value;
+                    this.RaisePropertyChanged("CurrentPointsOfRound");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int FinalPosition {
+            get {
+                return this.FinalPositionField;
+            }
+            set {
+                if ((this.FinalPositionField.Equals(value) != true)) {
+                    this.FinalPositionField = value;
+                    this.RaisePropertyChanged("FinalPosition");
+                }
             }
         }
         
@@ -1477,14 +1700,66 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int idPlayer {
+        public int IdPlayer {
             get {
-                return this.idPlayerField;
+                return this.IdPlayerField;
             }
             set {
-                if ((this.idPlayerField.Equals(value) != true)) {
-                    this.idPlayerField = value;
-                    this.RaisePropertyChanged("idPlayer");
+                if ((this.IdPlayerField.Equals(value) != true)) {
+                    this.IdPlayerField = value;
+                    this.RaisePropertyChanged("IdPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUser {
+            get {
+                return this.IdUserField;
+            }
+            set {
+                if ((this.IdUserField.Equals(value) != true)) {
+                    this.IdUserField = value;
+                    this.RaisePropertyChanged("IdUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SideTeam {
+            get {
+                return this.SideTeamField;
+            }
+            set {
+                if ((this.SideTeamField.Equals(value) != true)) {
+                    this.SideTeamField = value;
+                    this.RaisePropertyChanged("SideTeam");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TurnOfPlayer {
+            get {
+                return this.TurnOfPlayerField;
+            }
+            set {
+                if ((this.TurnOfPlayerField.Equals(value) != true)) {
+                    this.TurnOfPlayerField = value;
+                    this.RaisePropertyChanged("TurnOfPlayer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
                 }
             }
         }
@@ -2069,6 +2344,18 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/MakeTeams")]
         System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/SelectQuestionsForGame")]
+        void SelectQuestionsForGame(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/SelectQuestionsForGame")]
+        System.Threading.Tasks.Task SelectQuestionsForGameAsync(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/StartGame")]
+        void StartGame(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(int roomCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2085,6 +2372,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/DissolvingLobby", ReplyAction="http://tempuri.org/ILobbyActions/DissolvingLobbyResponse")]
         void DissolvingLobby();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady", ReplyAction="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReadyResponse")]
+        void NotifyQuestionsAreReady(int codeEvent);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/NotifyGameWillStart", ReplyAction="http://tempuri.org/ILobbyActions/NotifyGameWillStartResponse")]
+        void NotifyGameWillStart(JeopardyGame.ServidorServiciosJeopardy.QuestionCardInformation[] questionsForGame);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2186,6 +2479,22 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         public System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam) {
             return base.Channel.MakeTeamsAsync(roomCode, idUser, wannaTeam);
         }
+        
+        public void SelectQuestionsForGame(int roomCode) {
+            base.Channel.SelectQuestionsForGame(roomCode);
+        }
+        
+        public System.Threading.Tasks.Task SelectQuestionsForGameAsync(int roomCode) {
+            return base.Channel.SelectQuestionsForGameAsync(roomCode);
+        }
+        
+        public void StartGame(int roomCode) {
+            base.Channel.StartGame(roomCode);
+        }
+        
+        public System.Threading.Tasks.Task StartGameAsync(int roomCode) {
+            return base.Channel.StartGameAsync(roomCode);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2286,63 +2595,176 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IQuestionsManager")]
-    public interface IQuestionsManager {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IGameActions", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.IGameActionsCallback))]
+    public interface IGameActions {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionsManager/GetQuestionByValue", ReplyAction="http://tempuri.org/IQuestionsManager/GetQuestionByValueResponse")]
-        System.Collections.Generic.Dictionary<string, object> GetQuestionByValue(int value, int categoryId);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/SubscribeToGameCallBack")]
+        void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionsManager/GetQuestionByValue", ReplyAction="http://tempuri.org/IQuestionsManager/GetQuestionByValueResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, object>> GetQuestionByValueAsync(int value, int categoryId);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/SubscribeToGameCallBack")]
+        System.Threading.Tasks.Task SubscribeToGameCallBackAsync(int roomCode, int idUserSubscribing, int idAvatar);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionsManager/CheckAnswer", ReplyAction="http://tempuri.org/IQuestionsManager/CheckAnswerResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean CheckAnswer(int questionId, string selectedAnswer);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/UnSubscribeFromGameCallBack")]
+        void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IQuestionsManager/CheckAnswer", ReplyAction="http://tempuri.org/IQuestionsManager/CheckAnswerResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean> CheckAnswerAsync(int questionId, string selectedAnswer);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/UnSubscribeFromGameCallBack")]
+        System.Threading.Tasks.Task UnSubscribeFromGameCallBackAsync(int roomCode, int idUserUnsubscribing);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseQuestion")]
+        void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseQuestion")]
+        System.Threading.Tasks.Task ChooseQuestionAsync(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseAnswer")]
+        void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseAnswer")]
+        System.Threading.Tasks.Task ChooseAnswerAsync(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishRound")]
+        void FinishRound(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishRound")]
+        System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishGame")]
+        void FinishGame(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishGame")]
+        System.Threading.Tasks.Task FinishGameAsync(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmBet")]
+        void ConfirmBet(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmBet")]
+        System.Threading.Tasks.Task ConfirmBetAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmLastQuestionAnswer")]
+        void ConfirmLastQuestionAnswer(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmLastQuestionAnswer")]
+        System.Threading.Tasks.Task ConfirmLastQuestionAnswerAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IQuestionsManagerChannel : JeopardyGame.ServidorServiciosJeopardy.IQuestionsManager, System.ServiceModel.IClientChannel {
+    public interface IGameActionsCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying")]
+        void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn", ReplyAction="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurnResponse")]
+        void ReceiveNotificationAboutTurn(int isYourTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion", ReplyAction="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestionResponse")]
+        void ResponseSomeOneSelectAQuestion(JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow, int currentRound, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer", ReplyAction="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswerResponse")]
+        void ResponseSomeOneChooseAnAnswer(int idAnswerSelected, bool isCorrect, int pointsWorth);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseBeginRound")]
+        void ResponseBeginRound(int isYourTurn, int roundToStart, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseShowWinner")]
+        void ResponseShowWinner(JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseFinishGame")]
+        void ResponseFinishGame();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion")]
+        void ResponseShowLastQuestion();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameActionsChannel : JeopardyGame.ServidorServiciosJeopardy.IGameActions, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class QuestionsManagerClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IQuestionsManager>, JeopardyGame.ServidorServiciosJeopardy.IQuestionsManager {
+    public partial class GameActionsClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.IGameActions>, JeopardyGame.ServidorServiciosJeopardy.IGameActions {
         
-        public QuestionsManagerClient() {
+        public GameActionsClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public QuestionsManagerClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public GameActionsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public QuestionsManagerClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public GameActionsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public QuestionsManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public GameActionsClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public QuestionsManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public GameActionsClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.Dictionary<string, object> GetQuestionByValue(int value, int categoryId) {
-            return base.Channel.GetQuestionByValue(value, categoryId);
+        public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar) {
+            base.Channel.SubscribeToGameCallBack(roomCode, idUserSubscribing, idAvatar);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, object>> GetQuestionByValueAsync(int value, int categoryId) {
-            return base.Channel.GetQuestionByValueAsync(value, categoryId);
+        public System.Threading.Tasks.Task SubscribeToGameCallBackAsync(int roomCode, int idUserSubscribing, int idAvatar) {
+            return base.Channel.SubscribeToGameCallBackAsync(roomCode, idUserSubscribing, idAvatar);
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean CheckAnswer(int questionId, string selectedAnswer) {
-            return base.Channel.CheckAnswer(questionId, selectedAnswer);
+        public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing) {
+            base.Channel.UnSubscribeFromGameCallBack(roomCode, idUserUnsubscribing);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean> CheckAnswerAsync(int questionId, string selectedAnswer) {
-            return base.Channel.CheckAnswerAsync(questionId, selectedAnswer);
+        public System.Threading.Tasks.Task UnSubscribeFromGameCallBackAsync(int roomCode, int idUserUnsubscribing) {
+            return base.Channel.UnSubscribeFromGameCallBackAsync(roomCode, idUserUnsubscribing);
+        }
+        
+        public void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow) {
+            base.Channel.ChooseQuestion(roomCode, idUserSelecting, currentRound, questionToShow);
+        }
+        
+        public System.Threading.Tasks.Task ChooseQuestionAsync(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow) {
+            return base.Channel.ChooseQuestionAsync(roomCode, idUserSelecting, currentRound, questionToShow);
+        }
+        
+        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn) {
+            base.Channel.ChooseAnswer(roomCode, idUserSelecting, answerSelected, isCorrect, pointsWorth, currentTurn);
+        }
+        
+        public System.Threading.Tasks.Task ChooseAnswerAsync(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn) {
+            return base.Channel.ChooseAnswerAsync(roomCode, idUserSelecting, answerSelected, isCorrect, pointsWorth, currentTurn);
+        }
+        
+        public void FinishRound(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished) {
+            base.Channel.FinishRound(roomCode, playerInGame, roundFinished);
+        }
+        
+        public System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished) {
+            return base.Channel.FinishRoundAsync(roomCode, playerInGame, roundFinished);
+        }
+        
+        public void FinishGame(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
+            base.Channel.FinishGame(roomCode, idUserLeader, playerInGame);
+        }
+        
+        public System.Threading.Tasks.Task FinishGameAsync(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
+            return base.Channel.FinishGameAsync(roomCode, idUserLeader, playerInGame);
+        }
+        
+        public void ConfirmBet(int roomCode, int idUser) {
+            base.Channel.ConfirmBet(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task ConfirmBetAsync(int roomCode, int idUser) {
+            return base.Channel.ConfirmBetAsync(roomCode, idUser);
+        }
+        
+        public void ConfirmLastQuestionAnswer(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect) {
+            base.Channel.ConfirmLastQuestionAnswer(roomCode, playerAnswering, points, isCorrect);
+        }
+        
+        public System.Threading.Tasks.Task ConfirmLastQuestionAnswerAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect) {
+            return base.Channel.ConfirmLastQuestionAnswerAsync(roomCode, playerAnswering, points, isCorrect);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace JeopardyGame.Service.InterfacesServices
 {
 
     [ServiceContract(CallbackContract = typeof(ILobbyActionsCallback))]
-    public  interface ILobbyActions
+    public interface ILobbyActions
     {
         [OperationContract]
         GenericClass<int> CreateNewLobby(int roomCode, int idUser);
@@ -20,7 +20,7 @@ namespace JeopardyGame.Service.InterfacesServices
         GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting);
 
         [OperationContract(IsOneWay = true)]
-        void DissolveLobby(int roomCode,int idUser);
+        void DissolveLobby(int roomCode, int idUser);
 
         [OperationContract]
         GenericClass<int> JoinLobby(int roomCode, int idUser);
@@ -39,6 +39,12 @@ namespace JeopardyGame.Service.InterfacesServices
 
         [OperationContract(IsOneWay = true)]
         void MakeTeams(int roomCode, int idUser, bool wannaTeam);
+
+        [OperationContract(IsOneWay = true)]
+        void SelectQuestionsForGame(int roomCode);
+
+        [OperationContract (IsOneWay = true)]
+        void StartGame(int roomCode);
     }
 
     [ServiceContract]
@@ -55,6 +61,13 @@ namespace JeopardyGame.Service.InterfacesServices
 
         [OperationContract]
         public void DissolvingLobby();
+
+        [OperationContract]
+        public void NotifyQuestionsAreReady(int codeEvent);
+
+        [OperationContract]
+        public void NotifyGameWillStart(List<QuestionCardInformation> questionsForGame);
+
     }
 
   

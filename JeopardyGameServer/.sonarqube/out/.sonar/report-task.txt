@@ -1,6 +1,6 @@
-projectKey=Proyecto-Tecnologias-Server-V.2
+projectKey=Jeopardy-Server-V3
 serverUrl=http://localhost:9000
 serverVersion=10.3.0.82913
-dashboardUrl=http://localhost:9000/dashboard?id=Proyecto-Tecnologias-Server-V.2
-ceTaskId=AYvyuRu90hQrkZRQI3vQ
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYvyuRu90hQrkZRQI3vQ
+dashboardUrl=http://localhost:9000/dashboard?id=Jeopardy-Server-V3
+ceTaskId=AYv80EiueONkMUFjXuFL
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYv80EiueONkMUFjXuFL

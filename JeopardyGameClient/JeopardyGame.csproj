@@ -75,6 +75,10 @@
     <Compile Include="Helpers\FriendCard.cs" />
     <Compile Include="Helpers\FriendCardManagementWindow.cs" />
     <Compile Include="Helpers\FriendListDictionary.cs" />
+    <Compile Include="Helpers\GameCategoryCard.cs" />
+    <Compile Include="Helpers\GamePlayerCard.cs" />
+    <Compile Include="Helpers\GamePointsCard.cs" />
+    <Compile Include="Helpers\GetHostImage.cs" />
     <Compile Include="Pages\ActiveFriends.xaml.cs">
       <DependentUpon>ActiveFriends.xaml</DependentUpon>
     </Compile>
@@ -275,9 +279,6 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfFriendBasicInformationxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -406,6 +407,24 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HostImages\CristianoRonaldo.png" />
+    <Resource Include="Images\HostImages\MikeRichards.png" />
+    <Resource Include="Images\HostImages\PedroPresenta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rigthAwnserImage.png" />
+    <Resource Include="Images\worngAwnserImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Avatars\Alacran.png" />
+    <Resource Include="Images\Avatars\AvatarCarro.png" />
+    <Resource Include="Images\Avatars\BatMan.png" />
+    <Resource Include="Images\Avatars\Caballo.png" />
+    <Resource Include="Images\Avatars\IronMan.png" />
+    <Resource Include="Images\Avatars\RealMadrid.png" />
+    <Resource Include="Images\Avatars\SpiterMan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

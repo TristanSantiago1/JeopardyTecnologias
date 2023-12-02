@@ -17,10 +17,8 @@ namespace JeopardyGame.Data
         public int IdAwnser { get; set; }
         public string SpanishAwnserDescription { get; set; }
         public string EnglichAwnserDescription { get; set; }
-        public int Question_IdQuestion { get; set; }
-        public int Category_IdCategory { get; set; }
+        public int CategoryIdCategory { get; set; }
     
         public virtual Category Category { get; set; }
-        public virtual Question Question { get; set; }
     }
 }

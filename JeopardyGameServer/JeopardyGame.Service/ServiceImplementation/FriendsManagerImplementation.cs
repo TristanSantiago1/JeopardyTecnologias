@@ -217,8 +217,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ListUsersNotFriendsInformation;
         }
 
-
-
         private int GetFriendStatus(int idFriend)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
