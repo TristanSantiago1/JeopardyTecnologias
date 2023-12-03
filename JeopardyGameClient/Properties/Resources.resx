@@ -213,8 +213,14 @@
   <data name="lblEmptyField" xml:space="preserve">
     <value>Empty field</value>
   </data>
+  <data name="lblEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
     <value>fail to register</value>
+  </data>
+  <data name="lblGameLanguaje" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="lblInvalidEmail" xml:space="preserve">
     <value>invalid email</value>
@@ -279,6 +285,12 @@
   <data name="lblResentCode" xml:space="preserve">
     <value>Resent Code</value>
   </data>
+  <data name="lblSettingsIcon" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="lblSpanish" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Username</value>
   </data>
@@ -327,8 +339,14 @@
   <data name="txbErrorTitle" xml:space="preserve">
     <value>ERROR</value>
   </data>
+  <data name="txbInfoBanner" xml:space="preserve">
+    <value>Ban notification</value>
+  </data>
   <data name="txbInfoMessgSuccRegUser" xml:space="preserve">
     <value>The user has been saved succesfully</value>
+  </data>
+  <data name="txbInformationMessage" xml:space="preserve">
+    <value>The user has been banned</value>
   </data>
   <data name="txbPromtTextSerarch" xml:space="preserve">
     <value>Search</value>

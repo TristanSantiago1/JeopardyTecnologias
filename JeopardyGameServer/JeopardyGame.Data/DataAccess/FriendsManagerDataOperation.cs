@@ -260,6 +260,46 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
+        public static GenericClass<bool> BannerUser(UserPOJO user)
+        {
+            GenericClass<bool> resultOfOperation = new GenericClass<bool>();
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    bool isAlreadyBanned = contextBD.Baneos.Any(b => b.Player_IdPlayer == user.IdUser);
 
+                    if (!isAlreadyBanned)
+                    {
+                        var nuevoBaneo = new Baneo
+                        {
+                            BanTimeBegin = DateTime.Now,
+                            BanTimeFinish = null, 
+                            Player_IdPlayer = user.IdUser,
+                        };
+
+                        contextBD.Baneos.Add(nuevoBaneo);
+                        var resultEvent = contextBD.SaveChanges();
+                        resultOfOperation.ObjectSaved = resultEvent > 0; 
+                        if (resultEvent > 0)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                return resultOfOperation;
+            }
+
+            return resultOfOperation;
+        }
     }
 }

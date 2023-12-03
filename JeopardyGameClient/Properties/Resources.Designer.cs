@@ -349,11 +349,29 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a English.
+        /// </summary>
+        public static string lblEnglish {
+            get {
+                return ResourceManager.GetString("lblEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a fail to register.
         /// </summary>
         public static string lblFailToRegisterUser {
             get {
                 return ResourceManager.GetString("lblFailToRegisterUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Settings.
+        /// </summary>
+        public static string lblGameLanguaje {
+            get {
+                return ResourceManager.GetString("lblGameLanguaje", resourceCulture);
             }
         }
         
@@ -547,6 +565,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Settings.
+        /// </summary>
+        public static string lblSettingsIcon {
+            get {
+                return ResourceManager.GetString("lblSettingsIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Spanish.
+        /// </summary>
+        public static string lblSpanish {
+            get {
+                return ResourceManager.GetString("lblSpanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Username.
         /// </summary>
         public static string lblUserNameDescripCreateAcc {
@@ -691,11 +727,29 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Ban notification.
+        /// </summary>
+        public static string txbInfoBanner {
+            get {
+                return ResourceManager.GetString("txbInfoBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The user has been saved succesfully.
         /// </summary>
         public static string txbInfoMessgSuccRegUser {
             get {
                 return ResourceManager.GetString("txbInfoMessgSuccRegUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The user has been banned.
+        /// </summary>
+        public static string txbInformationMessage {
+            get {
+                return ResourceManager.GetString("txbInformationMessage", resourceCulture);
             }
         }
         

@@ -30,7 +30,22 @@ namespace JeopardyGame.Service.InterfacesServices
             [OperationContract]
             GenericClass<int> UpdateUserInformation(String editedName, String originalName);
 
+            [OperationContract]
+            List<PlayerInfo> GetPlayersInfo();
+
+
+
+            [DataContract]
+            public class PlayerInfo
+            {
+                [DataMember]
+                public string Name { get; set; }
+
+                [DataMember]
+                public long Points { get; set; }
         }
+
+    }
 
  
 

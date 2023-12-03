@@ -198,7 +198,13 @@ namespace JeopardyGame.Helpers
         }
         private void ClicReportUser(object sender, RoutedEventArgs e)
         {
+            Views.BannerWindow bannerpage = new Views.BannerWindow();
+            bannerpage.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            bannerpage.Show();
+            Pages.BanerPlayer banerPlayer = new BanerPlayer();
+            bannerpage.contentFrame.NavigationService.Navigate(banerPlayer);
             friendManager.ReportUser(idUser, lblUserName.Content.ToString());
+
         }
 
         private void ClicEliminateFriend(object sender, RoutedEventArgs e)

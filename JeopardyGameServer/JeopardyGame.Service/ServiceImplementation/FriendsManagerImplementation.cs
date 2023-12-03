@@ -231,8 +231,35 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return INACTIVE;
         }
-   
-    }    
+
+        GenericClass<bool> IFriendsManager.BanUser(UserPOJO user)
+        {
+            ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+            var userPOJO = consultInformation.ConsultPlayerById(user.IdUser);
+            User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
+            GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
+            GenericClass<bool> baneUser = FriendsManagerDataOperation.BannerUser(user);
+            if (baneUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                return new GenericClass<bool> { IsSuccess = true, CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT };
+            }
+            else
+            {
+                return new GenericClass<bool> { IsSuccess = false, CodeEvent = baneUser.CodeEvent };
+            }
+        }
+
+        GenericClass<bool> IFriendsManager.UnbanUser(UserPOJO user)
+        {
+            throw new NotImplementedException();
+        }
+
+        GenericClass<bool> IFriendsManager.IsUserBanned(UserPOJO user)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
 }
 
 

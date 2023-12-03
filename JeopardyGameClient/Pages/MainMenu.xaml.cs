@@ -9,6 +9,7 @@ using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
 using JeopardyGame.ServidorServiciosJeopardy;
 using JeopardyGame.Helpers;
+using System.Collections.Generic;
 
 namespace JeopardyGame.Pages
 {
@@ -21,6 +22,7 @@ namespace JeopardyGame.Pages
         {            
             InitializeComponent();
             PrepareMainMenuWindow();
+            LoadPlayersData();
         }
 
         private void PrepareMainMenuWindow()
@@ -96,12 +98,6 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        private void lstWinners_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-            ///Que hace esto???
-
-        }
 
         private void CLickButtonNewGame(object sender, RoutedEventArgs e)
         {
@@ -112,9 +108,11 @@ namespace JeopardyGame.Pages
         }
         private void CLickButtonEnterGame(object sender, RoutedEventArgs e)
         {
-            enterGameWithCode enterGameWithCode = new enterGameWithCode();
-            this.NavigationService.Navigate(enterGameWithCode);
-            NavigationService.RemoveBackEntry();
+            Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
+            codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            codeWindow.Show();
+            enterGameWithCode codePage = new enterGameWithCode();
+            codeWindow.contentFrame.NavigationService.Navigate(codePage);
         }
         private void CLickButtonFriendsList(object sender, RoutedEventArgs e)
         {
@@ -122,7 +120,21 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(friendManager);
             NavigationService.RemoveBackEntry();
         }
+        private void LoadPlayersData()
+        {
+            UserManagerClient proxyScores = new UserManagerClient();
+            var playersInfo = proxyScores.GetPlayersInfo();
 
+            foreach (var playerInfo in playersInfo)
+            {
+                string playerName = playerInfo.Name;
+                long score = playerInfo.Points; 
+
+                ListBoxItem item = new ListBoxItem();
+                item.Content = $"{playerName}: {score}";
+                lstWinners.Items.Add(item);
+            }
+        }
 
     }
 }

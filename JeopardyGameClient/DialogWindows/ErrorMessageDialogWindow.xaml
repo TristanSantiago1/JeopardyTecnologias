@@ -13,8 +13,8 @@
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
                 <!-- Contenido de la pantalla de error -->
                 <StackPanel Margin="76,11,19,0" >
-                    <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="255" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="212"/>
+                    <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="255" Height="39"/>
                 </StackPanel>
                 <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Width="68" Margin="166,109,166,8"  >
                     <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttCancellAction}" FontStretch="Expanded" Click="ClickAcceptButton"

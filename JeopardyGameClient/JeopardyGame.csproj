@@ -83,6 +83,9 @@
     <Compile Include="Pages\ActiveFriends.xaml.cs">
       <DependentUpon>ActiveFriends.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BanerPlayer.xaml.cs">
+      <DependentUpon>BanerPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CodeConfirmation.xaml.cs">
       <DependentUpon>CodeConfirmation.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,9 @@
     </Compile>
     <Compile Include="Pages\GameBoard.xaml.cs">
       <DependentUpon>GameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\idiomSelect.xaml.cs">
+      <DependentUpon>idiomSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LiveChat.xaml.cs">
       <DependentUpon>LiveChat.xaml</DependentUpon>
@@ -142,8 +148,14 @@
       <DependentUpon>LiveChatUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserSingleton.cs" />
+    <Compile Include="Views\BannerWindow.xaml.cs">
+      <DependentUpon>BannerWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EnterWithGameCode.xaml.cs">
       <DependentUpon>EnterWithGameCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IdiomSelect.xaml.cs">
+      <DependentUpon>IdiomSelect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrincipalWindow.xaml.cs">
       <DependentUpon>PrincipalWindow.xaml</DependentUpon>
@@ -160,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ActiveFriends.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BanerPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\GameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\idiomSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,7 +247,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\BannerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EnterWithGameCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IdiomSelect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,6 +308,12 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfFriendBasicInformationxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -299,6 +333,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\ServicesReferenceAuthor.wsdl" />
@@ -426,6 +463,11 @@
     <Resource Include="Images\Avatars\IronMan.png" />
     <Resource Include="Images\Avatars\RealMadrid.png" />
     <Resource Include="Images\Avatars\SpiterMan.png" />
+    <Resource Include="Images\english.png" />
+    <Resource Include="Images\spanish.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\settingsIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

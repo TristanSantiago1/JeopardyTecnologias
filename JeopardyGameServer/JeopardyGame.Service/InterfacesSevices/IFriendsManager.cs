@@ -20,6 +20,15 @@ namespace JeopardyGame.Service.InterfacesServices
 
         [OperationContract]
         GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user);
+
+        [OperationContract]
+        GenericClass<bool> BanUser(UserPOJO user);
+
+        [OperationContract]
+        GenericClass<bool> UnbanUser(UserPOJO user);
+
+        [OperationContract]
+        GenericClass<bool> IsUserBanned(UserPOJO user);
     }
 
   

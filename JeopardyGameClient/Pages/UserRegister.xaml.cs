@@ -382,7 +382,7 @@ namespace JeopardyGame.Pages
 
         private void CLickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
-            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
+            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbInformationMessage, Application.Current.MainWindow).CloseWindow)
             {
                 GoToLogInWindow();
             }
