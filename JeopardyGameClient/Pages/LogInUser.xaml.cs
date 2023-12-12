@@ -34,6 +34,8 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
             PrepareLogInWindow();
+            txbUserNameLogIn.MaxLength = 15;
+            PssPasswordLogIn.MaxLength = 30;
         }
 
         private void PrepareLogInWindow()

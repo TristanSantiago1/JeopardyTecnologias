@@ -324,6 +324,12 @@
   <data name="SentEmailIssue" xml:space="preserve">
     <value>A problem has ocurred while sending the code verification, try it again or check if your email is correct.</value>
   </data>
+  <data name="tbxBodyInvitation" xml:space="preserve">
+    <value>Hello! I invite you to join my game. The code is:</value>
+  </data>
+  <data name="tbxEmailSend" xml:space="preserve">
+    <value>Invitation sent</value>
+  </data>
   <data name="tbxSignOut" xml:space="preserve">
     <value>Are you sure you want to sign out of Jeopardy?</value>
   </data>
@@ -342,6 +348,9 @@
   <data name="txbInfoBanner" xml:space="preserve">
     <value>Ban notification</value>
   </data>
+  <data name="txbInfoEmailSend" xml:space="preserve">
+    <value>The game code has been shared correctly</value>
+  </data>
   <data name="txbInfoMessgSuccRegUser" xml:space="preserve">
     <value>The user has been saved succesfully</value>
   </data>
@@ -350,6 +359,9 @@
   </data>
   <data name="txbPromtTextSerarch" xml:space="preserve">
     <value>SEARCH</value>
+  </data>
+  <data name="txbTitleEmailInvitation" xml:space="preserve">
+    <value>Invitation to the game</value>
   </data>
   <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
     <value>INFORMATION</value>

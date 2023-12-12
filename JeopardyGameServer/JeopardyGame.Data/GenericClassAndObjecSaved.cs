@@ -52,6 +52,7 @@ namespace JeopardyGame.Data
     {
         public int IdUser { get; set; }
         public string UserName { get; set; }
+        public string EmailAddress { get; set; }
         public int IdStatusAvailability { get; set; }
     }
 

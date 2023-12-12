@@ -145,6 +145,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         UserPOJO newUserFriend = userFriendConsulted.ObjectSaved;
                         userFriendRegistry.UserName = newUserFriend.UserName;
                         userFriendRegistry.IdUser = newUserFriend.IdUser;
+                        userFriendRegistry.EmailAddress = newUserFriend.EmailAddress;
                         userFriendRegistry.IdStatusAvailability = NOT_STATUS;
                         friendsBasicInformation.Add(userFriendRegistry);
                     }
@@ -182,6 +183,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     {
                         userFriendInformation.UserName = userFriendPojo.ObjectSaved.UserName;
                         userFriendInformation.IdUser = userFriendPojo.ObjectSaved.IdUser;
+                        userFriendInformation.EmailAddress= userFriendPojo.ObjectSaved.EmailAddress;
                         userFriendInformation.IdStatusAvailability = status;
                         friendsOfUserInformation.Add(userFriendInformation);
                     }
@@ -206,6 +208,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     userNotFriendInformation.UserName = userFriendConsulted.ObjectSaved.UserName;
                     userNotFriendInformation.IdUser = userFriendConsulted.ObjectSaved.IdUser;
+                    userNotFriendInformation.EmailAddress = userFriendConsulted.ObjectSaved.EmailAddress;
                     userNotFriendInformation.IdStatusAvailability = NOT_STATUS;
                     ListUsersNotFriendsInformation.Add(userNotFriendInformation);
                 }

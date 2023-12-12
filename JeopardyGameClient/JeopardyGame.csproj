@@ -140,6 +140,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\ResourcesImage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesImage.resx</DependentUpon>
+    </Compile>
     <Compile Include="ReGexs\RegularExpressionsLibrary.cs" />
     <Compile Include="UserControls\ActiveUsersControl.xaml.cs">
       <DependentUpon>ActiveUsersControl.xaml</DependentUpon>
@@ -303,6 +308,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ResourcesImage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesImage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Connected Services\ServidorServiciosJeopardy\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -430,24 +439,6 @@
     <Resource Include="Images\sendMessageIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServidorServiciosJeopardy\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\ServidorServiciosJeopardy\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\HostImages\CristianoRonaldo.png" />
     <Resource Include="Images\HostImages\MikeRichards.png" />
     <Resource Include="Images\HostImages\PedroPresenta.png" />
@@ -475,6 +466,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\LeaveGameImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServidorServiciosJeopardy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServidorServiciosJeopardy\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

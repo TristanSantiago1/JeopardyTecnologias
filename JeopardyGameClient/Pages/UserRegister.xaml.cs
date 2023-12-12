@@ -27,6 +27,10 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
             PrepareWindow();
+            txbNameCreateAccount.MaxLength = 30;
+            txbUserNameCreateAccount.MaxLength = 15;
+            txbEmailCreateAccount.MaxLength = 40;
+            psbPasswordCreateAccount.MaxLength = 30;
         }
 
         public void ChargeField(UserPOJO user)

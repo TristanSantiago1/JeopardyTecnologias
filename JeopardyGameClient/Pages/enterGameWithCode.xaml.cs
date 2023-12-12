@@ -26,6 +26,7 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
             this.mainMenu = mainMenu;
+            tbxCode.MaxLength = 10;
         }
 
         private void clickEnterLobbyWithCode(object sender, RoutedEventArgs e)

@@ -267,6 +267,29 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ExceptionDictionary.NULL_PARAEMETER;
         }
 
+        public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            var updatePhoto = UserManagerDataOperation.UpdatePhotoPlayer(idPlayer, imageId);
+            if (updatePhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+            }
+            else
+            {
+                resultToReturn.CodeEvent = updatePhoto.CodeEvent;
+            }
+            return resultToReturn;
+        }
+
+        public GenericClass<int> recoverPlayerPhoto(int idPlayer)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            var updatePhoto = UserManagerDataOperation.RecoverPhoto(idPlayer);
+            
+            return resultToReturn;
+        }
     }  
 }
 

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/24/2023 13:48:25
--- Generated from EDMX file: C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\JeopardyDB.edmx
+-- Date Created: 12/10/2023 07:36:52
+-- Generated from EDMX file: C:\Users\dnava\source\repos\JeopardyProject\JeopardyGameTecnologias\JeopardyProject\JeopardyGameServer\JeopardyGame.Data\JeopardyDB.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -20,23 +20,29 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AvatarAvatarPlayer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AvatarPlayers] DROP CONSTRAINT [FK_AvatarAvatarPlayer];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PlayerAvatarPlayer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AvatarPlayers] DROP CONSTRAINT [FK_PlayerAvatarPlayer];
+IF OBJECT_ID(N'[dbo].[FK_AwnserQuestion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_AwnserQuestion];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CategoryAwnser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Awnsers] DROP CONSTRAINT [FK_CategoryAwnser];
 GO
-IF OBJECT_ID(N'[dbo].[FK_QuestionAwnser]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Awnsers] DROP CONSTRAINT [FK_QuestionAwnser];
+IF OBJECT_ID(N'[dbo].[FK_CategoryQuestion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Questions] DROP CONSTRAINT [FK_CategoryQuestion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FriendState]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Friends] DROP CONSTRAINT [FK_FriendState];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GameGamePlayer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[GamePlayers] DROP CONSTRAINT [FK_GameGamePlayer];
+GO
+IF OBJECT_ID(N'[dbo].[FK_HostGame]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_HostGame];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlayerAvatarPlayer]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AvatarPlayers] DROP CONSTRAINT [FK_PlayerAvatarPlayer];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PlayerBaneo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Baneos] DROP CONSTRAINT [FK_PlayerBaneo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CategoryBoard]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Boards] DROP CONSTRAINT [FK_CategoryBoard];
-GO
-IF OBJECT_ID(N'[dbo].[FK_GameBoard]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Boards] DROP CONSTRAINT [FK_GameBoard];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PlayerFriends]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Friends] DROP CONSTRAINT [FK_PlayerFriends];
@@ -44,23 +50,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PlayerFriends1]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Friends] DROP CONSTRAINT [FK_PlayerFriends1];
 GO
-IF OBJECT_ID(N'[dbo].[FK_GameGamePlayer]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[GamePlayers] DROP CONSTRAINT [FK_GameGamePlayer];
-GO
 IF OBJECT_ID(N'[dbo].[FK_PlayerGamePlayer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[GamePlayers] DROP CONSTRAINT [FK_PlayerGamePlayer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_HostGame]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Games] DROP CONSTRAINT [FK_HostGame];
 GO
 IF OBJECT_ID(N'[dbo].[FK_StatePlayer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Players] DROP CONSTRAINT [FK_StatePlayer];
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserPlayer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Players] DROP CONSTRAINT [FK_UserPlayer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_FriendState]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Friends] DROP CONSTRAINT [FK_FriendState];
 GO
 
 -- --------------------------------------------------
@@ -79,14 +76,14 @@ GO
 IF OBJECT_ID(N'[dbo].[Baneos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Baneos];
 GO
-IF OBJECT_ID(N'[dbo].[Boards]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Boards];
-GO
 IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Categories];
 GO
 IF OBJECT_ID(N'[dbo].[Friends]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Friends];
+GO
+IF OBJECT_ID(N'[dbo].[FriendsStates]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[FriendsStates];
 GO
 IF OBJECT_ID(N'[dbo].[GamePlayers]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GamePlayers];
@@ -112,9 +109,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
 GO
-IF OBJECT_ID(N'[dbo].[FriendsStates]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[FriendsStates];
-GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -139,8 +133,8 @@ GO
 -- Creating table 'Awnsers'
 CREATE TABLE [dbo].[Awnsers] (
     [IdAwnser] int IDENTITY(1,1) NOT NULL,
-    [SpanishAwnserDescription] nvarchar(40)  NOT NULL,
-    [EnglichAwnserDescription] nvarchar(40)  NOT NULL,
+    [SpanishAwnserDescription] nvarchar(400)  NOT NULL,
+    [EnglichAwnserDescription] nvarchar(400)  NOT NULL,
     [CategoryIdCategory] int  NOT NULL
 );
 GO
@@ -151,15 +145,6 @@ CREATE TABLE [dbo].[Baneos] (
     [BanTimeBegin] datetime  NULL,
     [BanTimeFinish] datetime  NULL,
     [Player_IdPlayer] int  NOT NULL
-);
-GO
-
--- Creating table 'Boards'
-CREATE TABLE [dbo].[Boards] (
-    [idBoard] int IDENTITY(1,1) NOT NULL,
-    [Game_RoomCode] nchar(6)  NOT NULL,
-    [ActiveStatus] bit  NOT NULL,
-    [typeBoard] nvarchar(50)  NOT NULL
 );
 GO
 
@@ -185,14 +170,14 @@ CREATE TABLE [dbo].[GamePlayers] (
     [IdGamePlayer] int IDENTITY(1,1) NOT NULL,
     [PointsInGame] bigint  NOT NULL,
     [PlaceInGame] smallint  NOT NULL,
-    [Game_RoomCode] nchar(6)  NOT NULL,
+    [Game_RoomCode] int  NOT NULL,
     [Player_IdPlayer] int  NOT NULL
 );
 GO
 
 -- Creating table 'Games'
 CREATE TABLE [dbo].[Games] (
-    [RoomCode] nchar(6)  NOT NULL,
+    [RoomCode] int  NOT NULL,
     [Host_IdHost] int  NOT NULL
 );
 GO
@@ -200,8 +185,7 @@ GO
 -- Creating table 'Hosts'
 CREATE TABLE [dbo].[Hosts] (
     [IdHost] int IDENTITY(1,1) NOT NULL,
-    [HostName] nvarchar(15)  NULL,
-    [ImageHost] varbinary(max)  NOT NULL
+    [HostName] nvarchar(15)  NULL
 );
 GO
 
@@ -219,9 +203,9 @@ GO
 -- Creating table 'Questions'
 CREATE TABLE [dbo].[Questions] (
     [IdQuestion] int IDENTITY(1,1) NOT NULL,
-    [SpanishQuestionDescription] nvarchar(70)  NOT NULL,
-    [EnglishQuestionDescription] nvarchar(70)  NOT NULL,
-    [RigthAwnser] nvarchar(30)  NOT NULL,
+    [SpanishQuestionDescription] nvarchar(500)  NOT NULL,
+    [EnglishQuestionDescription] nvarchar(500)  NOT NULL,
+    [RigthAwnser] nvarchar(400)  NOT NULL,
     [ValueWorth] int  NULL,
     [CategoryIdCategory] int  NOT NULL,
     [Awnser_IdAwnser] int  NOT NULL
@@ -262,14 +246,6 @@ CREATE TABLE [dbo].[FriendsStates] (
 );
 GO
 
--- Creating table 'ColumnOfBoards'
-CREATE TABLE [dbo].[ColumnOfBoards] (
-    [IdColumnOfBoard] int IDENTITY(1,1) NOT NULL,
-    [Board_idBoard] int  NOT NULL,
-    [CategoryIdCategory] int  NOT NULL
-);
-GO
-
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -296,12 +272,6 @@ GO
 ALTER TABLE [dbo].[Baneos]
 ADD CONSTRAINT [PK_Baneos]
     PRIMARY KEY CLUSTERED ([IdBaneo] ASC);
-GO
-
--- Creating primary key on [idBoard] in table 'Boards'
-ALTER TABLE [dbo].[Boards]
-ADD CONSTRAINT [PK_Boards]
-    PRIMARY KEY CLUSTERED ([idBoard] ASC);
 GO
 
 -- Creating primary key on [IdCategory] in table 'Categories'
@@ -370,12 +340,6 @@ ADD CONSTRAINT [PK_FriendsStates]
     PRIMARY KEY CLUSTERED ([IdFriendState] ASC);
 GO
 
--- Creating primary key on [IdColumnOfBoard] in table 'ColumnOfBoards'
-ALTER TABLE [dbo].[ColumnOfBoards]
-ADD CONSTRAINT [PK_ColumnOfBoards]
-    PRIMARY KEY CLUSTERED ([IdColumnOfBoard] ASC);
-GO
-
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
@@ -423,21 +387,6 @@ GO
 CREATE INDEX [IX_FK_PlayerBaneo]
 ON [dbo].[Baneos]
     ([Player_IdPlayer]);
-GO
-
--- Creating foreign key on [Game_RoomCode] in table 'Boards'
-ALTER TABLE [dbo].[Boards]
-ADD CONSTRAINT [FK_GameBoard]
-    FOREIGN KEY ([Game_RoomCode])
-    REFERENCES [dbo].[Games]
-        ([RoomCode])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_GameBoard'
-CREATE INDEX [IX_FK_GameBoard]
-ON [dbo].[Boards]
-    ([Game_RoomCode]);
 GO
 
 -- Creating foreign key on [Player_IdPlayer] in table 'Friends'
@@ -603,36 +552,6 @@ GO
 CREATE INDEX [IX_FK_AwnserQuestion]
 ON [dbo].[Questions]
     ([Awnser_IdAwnser]);
-GO
-
--- Creating foreign key on [Board_idBoard] in table 'ColumnOfBoards'
-ALTER TABLE [dbo].[ColumnOfBoards]
-ADD CONSTRAINT [FK_ColumnOfBoardBoard]
-    FOREIGN KEY ([Board_idBoard])
-    REFERENCES [dbo].[Boards]
-        ([idBoard])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ColumnOfBoardBoard'
-CREATE INDEX [IX_FK_ColumnOfBoardBoard]
-ON [dbo].[ColumnOfBoards]
-    ([Board_idBoard]);
-GO
-
--- Creating foreign key on [CategoryIdCategory] in table 'ColumnOfBoards'
-ALTER TABLE [dbo].[ColumnOfBoards]
-ADD CONSTRAINT [FK_ColumnOfBoardCategory]
-    FOREIGN KEY ([CategoryIdCategory])
-    REFERENCES [dbo].[Categories]
-        ([IdCategory])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ColumnOfBoardCategory'
-CREATE INDEX [IX_FK_ColumnOfBoardCategory]
-ON [dbo].[ColumnOfBoards]
-    ([CategoryIdCategory]);
 GO
 
 -- --------------------------------------------------

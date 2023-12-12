@@ -46,6 +46,7 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdStatusAvailability" type="xs:int" />
       <xs:element minOccurs="0" name="IdUser" type="xs:int" />
       <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />

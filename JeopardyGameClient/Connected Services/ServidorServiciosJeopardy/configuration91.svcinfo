@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="GTLLIkQMJRdwR20sWVpjCQQYID2yhwKUPUoEEflUA1I=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUserManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IUserManager1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IUserManager</serializedValue>
+          <serializedValue>NetTcpBinding_IUserManager1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -119,10 +119,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IFriendsManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IFriendsManager1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IFriendsManager</serializedValue>
+          <serializedValue>NetTcpBinding_IFriendsManager1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -237,10 +237,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IConsultInformation">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IConsultInformation1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IConsultInformation</serializedValue>
+          <serializedValue>NetTcpBinding_IConsultInformation1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -355,10 +355,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_INotifyUserAvailability">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_INotifyUserAvailability1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_INotifyUserAvailability</serializedValue>
+          <serializedValue>NetTcpBinding_INotifyUserAvailability1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -473,10 +473,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_INotifyUserActionFriendsManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_INotifyUserActionFriendsManager1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_INotifyUserActionFriendsManager</serializedValue>
+          <serializedValue>NetTcpBinding_INotifyUserActionFriendsManager1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -591,10 +591,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ILobbyActions">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ILobbyActions1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_ILobbyActions</serializedValue>
+          <serializedValue>NetTcpBinding_ILobbyActions1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -709,10 +709,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ILiveChat">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ILiveChat1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_ILiveChat</serializedValue>
+          <serializedValue>NetTcpBinding_ILiveChat1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -827,10 +827,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IGameActions">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IGameActions1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IGameActions</serializedValue>
+          <serializedValue>NetTcpBinding_IGameActions1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1065,7 +1065,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IUserManager" contract="ServidorServiciosJeopardy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserManager">
+    <endpoint name="NetTcpBinding_IUserManager" contract="ServidorServiciosJeopardy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserManager1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1077,7 +1077,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IUserManager</serializedValue>
+          <serializedValue>NetTcpBinding_IUserManager1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.IUserManager</serializedValue>
@@ -1150,7 +1150,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IFriendsManager" contract="ServidorServiciosJeopardy.IFriendsManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendsManager">
+    <endpoint name="NetTcpBinding_IFriendsManager" contract="ServidorServiciosJeopardy.IFriendsManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendsManager1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1162,7 +1162,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IFriendsManager</serializedValue>
+          <serializedValue>NetTcpBinding_IFriendsManager1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.IFriendsManager</serializedValue>
@@ -1235,7 +1235,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConsultInformation" contract="ServidorServiciosJeopardy.IConsultInformation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultInformation">
+    <endpoint name="NetTcpBinding_IConsultInformation" contract="ServidorServiciosJeopardy.IConsultInformation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultInformation1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1247,7 +1247,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IConsultInformation</serializedValue>
+          <serializedValue>NetTcpBinding_IConsultInformation1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.IConsultInformation</serializedValue>
@@ -1320,7 +1320,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_INotifyUserAvailability" contract="ServidorServiciosJeopardy.INotifyUserAvailability" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyUserAvailability">
+    <endpoint name="NetTcpBinding_INotifyUserAvailability" contract="ServidorServiciosJeopardy.INotifyUserAvailability" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyUserAvailability1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1332,7 +1332,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_INotifyUserAvailability</serializedValue>
+          <serializedValue>NetTcpBinding_INotifyUserAvailability1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.INotifyUserAvailability</serializedValue>
@@ -1405,7 +1405,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_INotifyUserActionFriendsManager" contract="ServidorServiciosJeopardy.INotifyUserActionFriendsManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyUserActionFriendsManager">
+    <endpoint name="NetTcpBinding_INotifyUserActionFriendsManager" contract="ServidorServiciosJeopardy.INotifyUserActionFriendsManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyUserActionFriendsManager1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1417,7 +1417,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_INotifyUserActionFriendsManager</serializedValue>
+          <serializedValue>NetTcpBinding_INotifyUserActionFriendsManager1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.INotifyUserActionFriendsManager</serializedValue>
@@ -1490,7 +1490,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyActions" contract="ServidorServiciosJeopardy.ILobbyActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyActions">
+    <endpoint name="NetTcpBinding_ILobbyActions" contract="ServidorServiciosJeopardy.ILobbyActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyActions1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1502,7 +1502,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_ILobbyActions</serializedValue>
+          <serializedValue>NetTcpBinding_ILobbyActions1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.ILobbyActions</serializedValue>
@@ -1575,7 +1575,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILiveChat" contract="ServidorServiciosJeopardy.ILiveChat" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChat">
+    <endpoint name="NetTcpBinding_ILiveChat" contract="ServidorServiciosJeopardy.ILiveChat" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChat1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1587,7 +1587,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_ILiveChat</serializedValue>
+          <serializedValue>NetTcpBinding_ILiveChat1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.ILiveChat</serializedValue>
@@ -1660,7 +1660,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameActions" contract="ServidorServiciosJeopardy.IGameActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameActions">
+    <endpoint name="NetTcpBinding_IGameActions" contract="ServidorServiciosJeopardy.IGameActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameActions1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -1672,7 +1672,7 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IGameActions</serializedValue>
+          <serializedValue>NetTcpBinding_IGameActions1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServidorServiciosJeopardy.IGameActions</serializedValue>

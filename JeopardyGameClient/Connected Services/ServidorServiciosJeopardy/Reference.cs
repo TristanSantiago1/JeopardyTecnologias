@@ -376,6 +376,9 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdStatusAvailabilityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -390,6 +393,19 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EmailAddress {
+            get {
+                return this.EmailAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailAddressField, value) != true)) {
+                    this.EmailAddressField = value;
+                    this.RaisePropertyChanged("EmailAddress");
+                }
             }
         }
         
@@ -1880,6 +1896,17 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
         System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdatePlayerPhoto(int idPlayer, int imageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdatePlayerPhotoAsync(int idPlayer, int imageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/recoverPlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/recoverPlayerPhotoResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint recoverPlayerPhoto(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/recoverPlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/recoverPlayerPhotoResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> recoverPlayerPhotoAsync(int idPlayer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetPlayersInfo", ReplyAction="http://tempuri.org/IUserManager/GetPlayersInfoResponse")]
         JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo();
@@ -1962,13 +1989,27 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName) {
             return base.Channel.UpdateUserInformationAsync(editedName, originalName);
         }
-        
         public int ValidateThereIsOnlyOneAActiveAccount(int idUser) {
             return base.Channel.ValidateThereIsOnlyOneAActiveAccount(idUser);
         }
         
         public System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser) {
             return base.Channel.ValidateThereIsOnlyOneAActiveAccountAsync(idUser);
+        }
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdatePlayerPhoto(int idPlayer, int imageId) {
+            return base.Channel.UpdatePlayerPhoto(idPlayer, imageId);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdatePlayerPhotoAsync(int idPlayer, int imageId) {
+            return base.Channel.UpdatePlayerPhotoAsync(idPlayer, imageId);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint recoverPlayerPhoto(int idPlayer) {
+            return base.Channel.recoverPlayerPhoto(idPlayer);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> recoverPlayerPhotoAsync(int idPlayer) {
+            return base.Channel.recoverPlayerPhotoAsync(idPlayer);
         }
         
         public JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo() {

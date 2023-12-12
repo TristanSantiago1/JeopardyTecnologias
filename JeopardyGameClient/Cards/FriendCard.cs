@@ -11,6 +11,8 @@ using System.Windows.Media;
 using Color = System.Windows.Media.Color;
 using Label = System.Windows.Controls.Label;
 using Button = System.Windows.Controls.Button;
+using System.Windows;
+
 namespace JeopardyGame.Helpers
 {
     public partial class FriendCard : StackPanel
@@ -20,6 +22,7 @@ namespace JeopardyGame.Helpers
         Border brdButton;
         System.Windows.Shapes.Ellipse ellConnectionStatus;
         Button bttInviteFriend;
+        public event EventHandler InviteButtonClicked;
         public FriendCard(String userName, bool state, String textInvite) 
         {
             SetCardStyle();
@@ -29,7 +32,8 @@ namespace JeopardyGame.Helpers
             SetButtonStyle(textInvite);
             SetStackPanelStyle();         
             this.Children.Add(stoNameAndStatus);
-            this.Children.Add(brdButton);           
+            this.Children.Add(brdButton);
+            bttInviteFriend.Click += BttInviteFriend_Click;
         }
 
         private void SetCardStyle()
@@ -108,7 +112,10 @@ namespace JeopardyGame.Helpers
             brdButton.Child = bttInviteFriend;
 
         }
-
+        private void BttInviteFriend_Click(object sender, RoutedEventArgs e)
+        {
+            InviteButtonClicked?.Invoke(this, EventArgs.Empty);
+        }
 
     }
 }

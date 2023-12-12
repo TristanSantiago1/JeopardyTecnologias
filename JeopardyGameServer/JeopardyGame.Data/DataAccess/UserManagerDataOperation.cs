@@ -16,6 +16,7 @@ using System.Security.Cryptography;
 using System.ServiceModel.Dispatcher;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 using ExceptionHandler = JeopardyGame.Data.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Data.DataAccess
@@ -396,8 +397,75 @@ namespace JeopardyGame.Data.DataAccess
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }          
-        }     
+        }
+        public static int RecoverPhoto(int idPlayer)
+        {
+            int defaultAvatarId = 0; 
 
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
+                    if (player != null)
+                    {
+                        return (int)player.IdAvatarActual;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return defaultAvatarId;
+        }
+
+
+        public static GenericClassServer<int> UpdatePhotoPlayer (int idPlayer, int imageId)
+        {
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
+                    if (player != null)
+                    {
+                        player.IdAvatarActual = imageId;
+                        int resultOfEvent = contextBD.SaveChanges();
+                        if (resultOfEvent == 0)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
+                        resultOfOperation.ObjectSaved = OPERATION_DONE;
+                    }
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultOfOperation;
+        }
         public static GenericClassServer<int> UpdateUserInformation(string editedName, string originalName) 
         {
             GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
@@ -499,8 +567,9 @@ namespace JeopardyGame.Data.DataAccess
         }
 
     }
-
     
-}
+
+
+    }
 
 

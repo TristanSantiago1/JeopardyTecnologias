@@ -19,6 +19,12 @@
                 </Border>
             </StackPanel>
             <Image HorizontalAlignment="Left" Height="526"  Width="672" Margin="0,167,0,0" VerticalAlignment="Top" Source="{StaticResource LogoJeopardyIcon}" RenderTransformOrigin="0.914,0.526"/>
+           
+            <Grid Grid.Column="0">
+                <Border BorderThickness="1" HorizontalAlignment="Left" Height="288" Margin="208,183,0,0" VerticalAlignment="Top" Width="325" BorderBrush="#FFF7F7F7" Background="#FF6B6868"/>
+                <Image x:Name="imageProfile" Height="290" Margin="203,183,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="327"/>
+                <ListBox x:Name="lxtImageSelector" d:ItemsSource="{d:SampleData ItemCount=7}" Margin="208,508,0,0" SelectionChanged="ImageSelector" Background="{x:Null}" Foreground="#26B1FF" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Width="325" />
+            </Grid>
 
             <StackPanel Height="auto" Margin="698,269,229,336" >
                 <Label x:Name="lblUserNameDescripCreateAcc" Content = "{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
