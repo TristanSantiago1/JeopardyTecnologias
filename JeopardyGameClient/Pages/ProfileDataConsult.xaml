@@ -15,15 +15,15 @@
 
 
         <Label x:Name="lblNameDescripEditAccount" Content="Name:" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="217" Margin="323,431,0,0"/>
+                  Height="60" Width="217" Margin="411,455,0,0"/>
         <Label x:Name="lblUserNameDescripEditAccount" Content="User name:" Style="{StaticResource labelStyleSimple}" 
-                 Height="60" Width="250" Margin="323,366,0,0" />
+                 Height="60" Width="250" Margin="416,390,0,0" />
         <Label x:Name="lblAddresDescripEditAccount" Content="Correo :" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="194" Margin="323,506,0,0"/>
+                  Height="60" Width="194" Margin="411,530,0,0"/>
 
 
 
-        <Viewbox Width="auto" Height="auto" Margin="629,335,308,153">
+        <Viewbox Width="auto" Height="auto" Margin="666,349,271,139">
             <StackPanel Width="328">
                 <Label x:Name="lblNameEditAccount" Content="jjjjjjj" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}" 
                 Height="60" Width="325"/>
@@ -38,8 +38,22 @@
                 <EllipseGeometry RadiusX="130" RadiusY="130" Center="100,100" />
             </Border.Clip>
         </Border>
-        <Image HorizontalAlignment="Left" Height="31" Width="33" Margin="997,252,0,0" VerticalAlignment="Top" Stretch="Fill" Source="/Images/EditIcon.png" />
-        <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClickEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top" Width="27" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
+        <Image HorizontalAlignment="Left" Height="31" Width="33" Margin="1002,269,0,0" VerticalAlignment="Top" Stretch="Fill" Source="/Images/EditIcon.png" MouseDown="ClickEditUserInformation"/>
+        <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClickEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,300,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top"  Width="27" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
+        <Grid Grid.Column="0">
+            <Border x:Name="borderProfile" BorderThickness="10" HorizontalAlignment="Center" Height="288" Margin="0,92,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#592C75" Background="Transparent">
+                <Border.Clip>
+                    <EllipseGeometry Center="163,144" RadiusX="133.5" RadiusY="133.5"/>
+                </Border.Clip>
+                <Image x:Name="imageProfile" Stretch="UniformToFill" Margin="-14,0,-6,0"/>
+            </Border>
+            <Grid Width="267" Height="267" Margin="219,194,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid.Clip>
+                    <EllipseGeometry Center="133.5,133.5" RadiusX="133.5" RadiusY="133.5"/>
+                </Grid.Clip>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Page>

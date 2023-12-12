@@ -5,6 +5,13 @@ using System.Text;
 using System;
 using System.Windows.Controls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Collections.Generic;
+using JeopardyGame.Helpers;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Interop;
+using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace JeopardyGame.Pages
 {
@@ -13,9 +20,12 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class ProfileDataConsult : Page
     {
+        private Dictionary<string, int> imageIdMappings;
         public ProfileDataConsult()
         {
             InitializeComponent();
+            InitializeImageMappings();
+            ImagenInit();
             DisplayUserInfo(lblNameEditAccount, lblUserNameEditAccount, lblAddresEditAccount);
         }
 
@@ -40,6 +50,56 @@ namespace JeopardyGame.Pages
             MainMenu mainMenuPage = new MainMenu();
             this.NavigationService.Navigate(mainMenuPage);
             NavigationService.RemoveBackEntry();
+        }
+        private void InitializeImageMappings()
+        {
+            imageIdMappings = new Dictionary<string, int>
+        {
+            { "Alacran", 1 },
+            { "AvatarCarro", 2 },
+            { "BatMan", 3 },
+            {"Caballo",4 },
+            {"IronMan",5 },
+            {"RealMadrid",6 },
+            {"SpiterMan",7 }
+        };
+        }
+        private void ImagenInit()
+        {
+            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
+            ConsultInformationClient proxyServer = new ConsultInformationClient();
+
+            var playerInfo = proxyServer.ConsultPlayerById(idPlayer);
+            proxyServer.Close();
+
+            if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                var playerWrapper = playerInfo.ObjectSaved;
+
+                if (playerWrapper != null && playerWrapper is PlayerPOJO)
+                {
+                    var player = (PlayerPOJO)playerWrapper;
+
+                    int imageId = player.IdActualAvatar;
+
+                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+
+                    if (!string.IsNullOrEmpty(imageName))
+                    {
+                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+
+                        BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                            bmp.GetHbitmap(),
+                            IntPtr.Zero,
+                            Int32Rect.Empty,
+                            BitmapSizeOptions.FromEmptyOptions()
+                        );
+
+                        imageProfile.Source = bmpImage;
+                    }
+                }
+            }
+
         }
     }
 }
