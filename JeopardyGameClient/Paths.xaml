@@ -5,7 +5,16 @@
     <ImageSource x:Key="InterrogationIcon">/Images/InterrogationIcon.png</ImageSource>
     <ImageSource x:Key="ErrorIcon" >/Images/ErrorIcon.png</ImageSource>
     <ImageSource x:Key="InformationIcon" >/Images/InfoImage.png</ImageSource>
-
+    <ImageSource x:Key="ActiveFriendsIcon" >/Images/FriendsIcon.png</ImageSource>
+    <ImageSource x:Key="LogoJeopardyIcon" >/Images/logoJeopardy.png</ImageSource>
+    <ImageSource x:Key="PurpleBackGroundIcon" >/Images/Background.png</ImageSource>
+    <ImageSource x:Key="BackArrowIcon" >/Images/BackIcon.png</ImageSource>
+    <ImageSource x:Key="SearchIcon" >/Images/SearchIcon.png</ImageSource>
+    <ImageSource x:Key="BackGroundGameIcon" >/Images/backgroundGame.png</ImageSource>
+    <ImageSource x:Key="ButtonAnswerLayerIcon" >/Images/buttonAnswer.png</ImageSource>
+    <ImageSource x:Key="ButtonChatIcon" >/Images/buttonChat.png</ImageSource>
+    <ImageSource x:Key="ClocktIcon" >/Images/clock.png</ImageSource>
+    <ImageSource x:Key="LeaveGameIcon" >/Images/LeaveGameImage.png</ImageSource>
 
 
     <ImageSource x:Key="HostPedro" >/Images/HostImages/PedroPresenta.png</ImageSource>
