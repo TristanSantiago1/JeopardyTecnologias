@@ -14,12 +14,12 @@
 
 
 
-        <Label x:Name="lblNameDescripEditAccount" Content="Name:" Style="{StaticResource labelStyleSimple}" 
+        <Label x:Name="lblNameDescripEditAccount" Content = "{x:Static p:Resources.lblNameInformation}" Style="{StaticResource labelStyleSimple}" 
                   Height="60" Width="217" Margin="411,455,0,0"/>
-        <Label x:Name="lblUserNameDescripEditAccount" Content="User name:" Style="{StaticResource labelStyleSimple}" 
-                 Height="60" Width="250" Margin="416,390,0,0" />
-        <Label x:Name="lblAddresDescripEditAccount" Content="Correo :" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="194" Margin="411,530,0,0"/>
+        <Label x:Name="lblUserNameDescripEditAccount" Content = "{x:Static p:Resources.lblUserNameInformation}" Style="{StaticResource labelStyleSimple}" 
+                 Height="60" Width="250" Margin="411,390,0,0" />
+        <Label x:Name="lblAddresDescripEditAccount" Content = "{x:Static p:Resources.lblEmailInformation}" Style="{StaticResource labelStyleSimple}" 
+                  Height="60" Width="194" Margin="411,520,0,0"/>
 
 
 
@@ -41,7 +41,7 @@
         <Image HorizontalAlignment="Left" Height="31" Width="33" Margin="1002,269,0,0" VerticalAlignment="Top" Stretch="Fill" Source="/Images/EditIcon.png" MouseDown="ClickEditUserInformation"/>
         <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClickEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,300,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top"  Width="27" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Margin="21,0,-21,0">
             <Border x:Name="borderProfile" BorderThickness="10" HorizontalAlignment="Center" Height="288" Margin="0,92,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#592C75" Background="Transparent">
                 <Border.Clip>
                     <EllipseGeometry Center="163,144" RadiusX="133.5" RadiusY="133.5"/>

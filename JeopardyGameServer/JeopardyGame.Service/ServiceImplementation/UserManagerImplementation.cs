@@ -282,13 +282,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public GenericClass<int> recoverPlayerPhoto(int idPlayer)
-        {
-            GenericClass<int> resultToReturn = new GenericClass<int>();
-            var updatePhoto = UserManagerDataOperation.RecoverPhoto(idPlayer);
-            
-            return resultToReturn;
-        }
     }  
 }
 

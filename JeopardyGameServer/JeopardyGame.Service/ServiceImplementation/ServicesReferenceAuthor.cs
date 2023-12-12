@@ -25,11 +25,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).GetPlayersInfo();
         }
 
-        public GenericClass<int> recoverPlayerPhoto(int idPlayer)
-        {
-            return ((IUserManager)UserManager).recoverPlayerPhoto(idPlayer);
-        }
-
         public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
             return ((IUserManager)UserManager).SaveUser(userPojoNew);

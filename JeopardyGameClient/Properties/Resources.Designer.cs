@@ -349,6 +349,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Email.
+        /// </summary>
+        public static string lblEmailInformation {
+            get {
+                return ResourceManager.GetString("lblEmailInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Empty field.
         /// </summary>
         public static string lblEmptyField {
@@ -435,6 +444,15 @@ namespace JeopardyGame.Properties {
         public static string lblNameDescripCreateAcc {
             get {
                 return ResourceManager.GetString("lblNameDescripCreateAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Name.
+        /// </summary>
+        public static string lblNameInformation {
+            get {
+                return ResourceManager.GetString("lblNameInformation", resourceCulture);
             }
         }
         
@@ -597,6 +615,15 @@ namespace JeopardyGame.Properties {
         public static string lblUserNameDescripCreateAcc {
             get {
                 return ResourceManager.GetString("lblUserNameDescripCreateAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User name.
+        /// </summary>
+        public static string lblUserNameInformation {
+            get {
+                return ResourceManager.GetString("lblUserNameInformation", resourceCulture);
             }
         }
         

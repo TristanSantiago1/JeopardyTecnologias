@@ -213,6 +213,9 @@
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="lblEmailInformation" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="lblEmptyField" xml:space="preserve">
     <value>Empty field</value>
   </data>
@@ -241,6 +244,9 @@
     <value>My Friends</value>
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblNameInformation" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
@@ -296,6 +302,9 @@
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="lblUserNameInformation" xml:space="preserve">
+    <value>User name</value>
   </data>
   <data name="lblUserNameLogIn" xml:space="preserve">
     <value>User name</value>

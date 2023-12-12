@@ -210,6 +210,9 @@
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Correo :</value>
   </data>
+  <data name="lblEmailInformation" xml:space="preserve">
+    <value>Correo</value>
+  </data>
   <data name="lblEmptyField" xml:space="preserve">
     <value>Campo Requrido</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre :</value>
+  </data>
+  <data name="lblNameInformation" xml:space="preserve">
+    <value>Nombre</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
     <value>*La contraseña debe tener al menos 2 letrass mayusculas no consecutivas</value>
@@ -293,6 +299,9 @@
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>
+  </data>
+  <data name="lblUserNameInformation" xml:space="preserve">
+    <value>Nombre usuario</value>
   </data>
   <data name="lblUserNameLogIn" xml:space="preserve">
     <value>Usuario</value>

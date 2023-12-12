@@ -31,8 +31,7 @@ namespace JeopardyGame.Service.InterfacesServices
             GenericClass<int> UpdateUserInformation(String editedName, String originalName);
             [OperationContract]
             GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId);
-            [OperationContract]
-            GenericClass<int> recoverPlayerPhoto(int idPlayer);
+
             [OperationContract]
             int ValidateThereIsOnlyOneAActiveAccount(int idUser);
 
