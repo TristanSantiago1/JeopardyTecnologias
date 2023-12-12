@@ -210,6 +210,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             lobby.listOfPlayerInLobby.Remove(item);
                             RearrangePositions(lobby, item.numberOfPlayerInLobby);
                             NotifyPlayerJoiningOrLeavingLobby(roomCode, idUser, lobby);
+                            ChatsDictionary.GetChannelCallBackChat(roomCode).listOfChannelsCallBack.RemoveAll(pl => pl.idUser == idUser);                            
                             break;
                         }
                     }                                                                       
@@ -244,6 +245,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     NotifyClosingLobby(lobby);
                     GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
+                    QuestionsForLobbyDictionary.RemoveSetOFQuestionsFromDictionary(roomCode);
+                    ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
+                    ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
                 }                                   
             }            
         } 

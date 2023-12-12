@@ -21,9 +21,11 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class enterGameWithCode : Page
     {
-        public enterGameWithCode()
+        private Window mainMenu; 
+        public enterGameWithCode(Window mainMenu)
         {
             InitializeComponent();
+            this.mainMenu = mainMenu;
         }
 
         private void clickEnterLobbyWithCode(object sender, RoutedEventArgs e)
@@ -35,6 +37,8 @@ namespace JeopardyGame.Pages
                 gameWindow.Show();
                 LobbyPage lobbyPage = new LobbyPage(enteredCode);
                 gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
+                mainMenu.Close();
+                Window.GetWindow(this).Close();
             }
             else
             {

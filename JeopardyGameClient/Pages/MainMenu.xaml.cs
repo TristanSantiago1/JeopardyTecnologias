@@ -59,7 +59,7 @@ namespace JeopardyGame.Pages
         {
             FriendList.CleanDictionary();
             UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
-            currentUserSingleton.proxyForAvailability.PlayerIsNotAvailable(currentUserSingleton.IdUser, currentUserSingleton.IdPlayer);
+            currentUserSingleton.proxyForAvailability.PlayerIsNotAvailable(currentUserSingleton.IdUser);
             currentUserSingleton.proxyForAvailability.Close();
             currentUserSingleton.proxyForAvailability = null;
             UserSingleton.CleanSingleton();
@@ -111,7 +111,7 @@ namespace JeopardyGame.Pages
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
             codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             codeWindow.Show();
-            enterGameWithCode codePage = new enterGameWithCode();
+            enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this));
             codeWindow.contentFrame.NavigationService.Navigate(codePage);
         }
         private void CLickButtonFriendsList(object sender, RoutedEventArgs e)

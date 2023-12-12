@@ -10,9 +10,9 @@ namespace JeopardyGame.Helpers
 {
     public class ChatMessageCard : Border
     {
-        StackPanel stpUserMessage;
-        Label lblUserName;
-        Label lblMessage;
+        private StackPanel stpUserMessage;
+        private TextBlock lblUserName;
+        private TextBlock txbMessage;
         public ChatMessageCard(String userName,  String message)
         {
             SetCardStyle();
@@ -26,17 +26,18 @@ namespace JeopardyGame.Helpers
         private void SetCardStyle()
         {
             this.Margin = new System.Windows.Thickness(1, 2, 1, 2);
-            this.Width = 400;
+            this.Width = double.NaN;
             this.MaxWidth = 500;
             this.Height = double.NaN;
-            this.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
-            this.Opacity = .4;
+            this.Background = new SolidColorBrush(Colors.White);
+            this.Opacity = .9;
+            this.CornerRadius = new System.Windows.CornerRadius(14);
         }
 
         private void InitializeComponents()
         {
-            lblUserName = new Label();
-            lblMessage = new Label();
+            lblUserName = new TextBlock();
+            txbMessage = new TextBlock();
             stpUserMessage = new StackPanel();
         }
 
@@ -48,32 +49,30 @@ namespace JeopardyGame.Helpers
             stpUserMessage.MaxWidth = 450;
             stpUserMessage.Margin = new System.Windows.Thickness(0); 
             stpUserMessage.Children.Add(lblUserName);
-            stpUserMessage.Children.Add(lblMessage);           
+            stpUserMessage.Children.Add(txbMessage);           
         }
 
         private void SetUserNameStyle(string userName)
         {
-            lblUserName.Height = 10;
+            lblUserName.Height = Double.NaN;
             lblUserName.Width = Double.NaN;
             lblUserName.MaxWidth = 400;
-            lblUserName.FontSize = 10;
-            lblUserName.Foreground = new SolidColorBrush(Colors.WhiteSmoke);
-            lblUserName.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Left;
-            lblUserName.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            lblUserName.Content = userName;
-            lblUserName.Margin = new System.Windows.Thickness(0, 0, 0, 2);
+            lblUserName.FontSize = 15;
+            lblUserName.Foreground = new SolidColorBrush(Colors.DarkRed);
+            lblUserName.Text = userName;
+            lblUserName.Margin = new System.Windows.Thickness(10, 0, 10, 2);
         }
 
         private void SetMessageStyle(string message)
         {
-            lblUserName.Height = Double.NaN;
-            lblUserName.Width = Double.NaN;
-            lblUserName.MaxWidth = 400;
-            lblUserName.FontSize = 16;
-            lblUserName.Foreground = new SolidColorBrush(Colors.Black);
-            lblUserName.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Left;
-            lblUserName.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            lblUserName.Content = message;
+            txbMessage.Height = Double.NaN;
+            txbMessage.Width = Double.NaN;
+            txbMessage.MaxWidth = 400;
+            txbMessage.FontSize = 20;
+            txbMessage.Foreground = new SolidColorBrush(Colors.Black);
+            txbMessage.Margin = new System.Windows.Thickness(10, 0, 10, 2);
+            txbMessage.Text = message;
+            txbMessage.TextWrapping = System.Windows.TextWrapping.Wrap;
         }
         
     }

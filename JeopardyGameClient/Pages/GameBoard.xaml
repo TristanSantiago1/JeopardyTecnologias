@@ -9,7 +9,7 @@
       Title="GameBoard">
 
     <Viewbox>
-        <Grid Width="1093" Height="639">
+        <Grid Width="1093" Height="639" >
             <Grid.Background>
                 <ImageBrush ImageSource="/Images/backgroundGame.png"  Stretch="Fill"/>
             </Grid.Background>
@@ -65,11 +65,6 @@
                 </Button>
             </Canvas>
 
-            <StackPanel x:Name="stpTurnLigth" Height="53" Orientation="Horizontal" Margin="79,579,665,0">
-                <Ellipse x:Name="ellYourTurn"  Height="50" Margin="10, 0,10,0" Stroke="Black" Fill="Gray" StrokeThickness="3" VerticalAlignment="Top" Width="50" />
-                <Label  Height="50" Width="270" Content="Your Turn" FontSize="25" Foreground="White"/>
-            </StackPanel>
-
             <Grid x:Name="grdBet" Visibility="Hidden"  Background="White" Opacity="0.80">
                 <Border Margin="94,135,84,313" CornerRadius="13" Background="#42384F">
                     <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="Ultima ronda, ingresa cuanto vas a apostar, no puede ser mayor a tus puntos actuales"/>
@@ -82,7 +77,7 @@
                 </Border>
             </Grid>
 
-            <Canvas x:Name="cnvResultOfAwnser" Visibility="Hidden" Background="White" Opacity="0.85">
+            <Canvas x:Name="cnvResultOfAwnser" Visibility="Hidden" Background="White" Opacity="0.85" >
                 <Grid Height="643" Width="1093" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Image x:Name="imgAnswerResult" Height="194" Margin="293,322,225,127" />
                     <Border Background="#26B1FF" Width="602" Height="141" CornerRadius="10" Margin="267,141,224,361" >
@@ -113,7 +108,7 @@
                     <Label Content="4" HorizontalAlignment="Left" Margin="943,327,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold" Height="90"/>
                 </Border>
                 <Border x:Name="brdForthPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="824,276,7,72" Background="black" Height="60" Width="262"/>
-                </Grid>
+            </Grid>
 
             <Grid x:Name ="grdPresentation" Visibility="Hidden" Margin="0,372,0,0" >
                 <Image x:Name="imgHostImage" Margin="49,21,765,13" />
@@ -121,6 +116,18 @@
                     <TextBlock x:Name="txbHostMessage" Margin="0" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"/>
                 </Border>
             </Grid>
+
+            <Grid x:Name="grTimer" Margin="419,575,492,4" Visibility="Hidden">
+                <Image Source="/Images/clock.png" Margin="0,0,117,1"/>
+                <TextBlock x:Name="txbTimer" Margin="73,9,0,8" TextAlignment="Center" FontSize="30" Foreground="Black"/>
+            </Grid>
+            
+            <StackPanel x:Name="stpTurnLigth" Height="53" Orientation="Horizontal" Margin="79,579,665,0">
+                <Ellipse x:Name="ellYourTurn"  Height="50" Margin="10, 0,10,0" Stroke="Black" Fill="Gray" StrokeThickness="3" VerticalAlignment="Top" Width="50" />
+                <Label  Height="50" Width="270" Content="Your Turn" FontSize="25" Foreground="White"/>
+            </StackPanel>
+
+            <Image Source="/Images/LeaveGameImage.png" Margin="7,596,1049,10" MouseDown="ClickLeaveGame"/>
 
 
 

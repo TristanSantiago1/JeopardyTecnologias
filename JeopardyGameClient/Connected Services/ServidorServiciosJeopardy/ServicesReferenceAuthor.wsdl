@@ -64,13 +64,20 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IHeartBeat_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -108,6 +115,12 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_UpdateUserInformation_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccount" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccountResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManager_GetPlayersInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersInfo" />
@@ -192,6 +205,12 @@
   </wsdl:message>
   <wsdl:message name="INotifyUserAvailability_ResponseOfPlayerAvailability_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserAvailability_VerifyPlayerAvailability_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPlayerAvailability" />
+  </wsdl:message>
+  <wsdl:message name="INotifyUserAvailability_VerifyPlayerAvailability_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:VerifyPlayerAvailabilityResponse" />
   </wsdl:message>
   <wsdl:message name="INotifyUserActionFriendsManager_RegisterFriendManagerUser_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterFriendManagerUser" />
@@ -358,6 +377,9 @@
   <wsdl:message name="IGameActions_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveNotificationEverybodyIsPlaying" />
   </wsdl:message>
+  <wsdl:message name="IGameActions_ReceiveNotificationSomeOneLeft_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationSomeOneLeft" />
+  </wsdl:message>
   <wsdl:message name="IGameActions_ReceiveNotificationAboutTurn_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurn" />
   </wsdl:message>
@@ -388,6 +410,12 @@
   <wsdl:message name="IGameActions_ResponseShowLastQuestion_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseShowLastQuestion" />
   </wsdl:message>
+  <wsdl:message name="IHeartBeat_Heartbeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:Heartbeat" />
+  </wsdl:message>
+  <wsdl:message name="IHeartBeat_Heartbeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HeartbeatResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -412,6 +440,10 @@
     <wsdl:operation name="UpdateUserInformation">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformation" message="tns:IUserManager_UpdateUserInformation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformationResponse" message="tns:IUserManager_UpdateUserInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPlayersInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfo" message="tns:IUserManager_GetPlayersInfo_InputMessage" />
@@ -476,6 +508,10 @@
     <wsdl:operation name="ResponseOfPlayerAvailability">
       <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability" message="tns:INotifyUserAvailability_ResponseOfPlayerAvailability_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailabilityResponse" message="tns:INotifyUserAvailability_ResponseOfPlayerAvailability_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPlayerAvailability">
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailability" message="tns:INotifyUserAvailability_VerifyPlayerAvailability_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailabilityResponse" message="tns:INotifyUserAvailability_VerifyPlayerAvailability_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="INotifyUserActionFriendsManager">
@@ -622,6 +658,9 @@
     <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying" message="tns:IGameActions_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationSomeOneLeft">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationSomeOneLeft" message="tns:IGameActions_ReceiveNotificationSomeOneLeft_OutputCallbackMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReceiveNotificationAboutTurn">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn" message="tns:IGameActions_ReceiveNotificationAboutTurn_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurnResponse" message="tns:IGameActions_ReceiveNotificationAboutTurn_InputCallbackMessage" />
@@ -645,6 +684,12 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseShowLastQuestion">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion" message="tns:IGameActions_ResponseShowLastQuestion_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IHeartBeat">
+    <wsdl:operation name="Heartbeat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IHeartBeat/Heartbeat" message="tns:IHeartBeat_Heartbeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IHeartBeat/HeartbeatResponse" message="tns:IHeartBeat_Heartbeat_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -697,6 +742,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUserInformation">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateUserInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -838,6 +892,15 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseOfPlayerAvailability">
       <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyPlayerAvailability">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailability" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1149,6 +1212,12 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationSomeOneLeft">
+      <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationSomeOneLeft" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReceiveNotificationAboutTurn">
       <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn" style="document" />
       <wsdl:input>
@@ -1201,6 +1270,19 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IHeartBeat" type="tns:IHeartBeat">
+    <wsp:PolicyReference URI="#NetTcpBinding_IHeartBeat_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Heartbeat">
+      <soap12:operation soapAction="http://tempuri.org/IHeartBeat/Heartbeat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
@@ -1245,6 +1327,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameActions" binding="tns:NetTcpBinding_IGameActions">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IHeartBeat" binding="tns:NetTcpBinding_IHeartBeat">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

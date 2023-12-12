@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChannelsAdministrator\ChannelAdministrator.cs" />
     <Compile Include="DataDictionaries\ActiveGamesDictionary.cs" />
     <Compile Include="DataDictionaries\ActiveUsersDictionary.cs" />
     <Compile Include="DataDictionaries\ChatsDictionary.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="InterfacesSevices\IConsultInformation.cs" />
     <Compile Include="InterfacesSevices\IFriendsManager.cs" />
     <Compile Include="InterfacesSevices\IGameActions.cs" />
+    <Compile Include="InterfacesSevices\IHeartBeat.cs" />
     <Compile Include="InterfacesSevices\ILobbyActions.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
     <Compile Include="InterfacesSevices\INotifyUserFriendlyActions.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="ServiceImplementation\ConsultInformationImplementation.cs" />
     <Compile Include="ServiceImplementation\FriendsManagerImplementation.cs" />
     <Compile Include="ServiceImplementation\GameActionsImplementation.cs" />
+    <Compile Include="ServiceImplementation\HeartBeatImplementation.cs" />
     <Compile Include="ServiceImplementation\LiveChatImplementation.cs" />
     <Compile Include="ServiceImplementation\LobbyActionsImplementation.cs" />
     <Compile Include="ServiceImplementation\NotifyFriendlyActionsImplementation.cs" />

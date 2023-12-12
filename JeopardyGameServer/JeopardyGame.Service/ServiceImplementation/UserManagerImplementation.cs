@@ -14,6 +14,8 @@ using JeopardyGame.Data.Exceptions;
 using System.Security.Cryptography.X509Certificates;
 using JeopardyGame.Data.DataAccess;
 using System.Diagnostics.SymbolStore;
+using System.ServiceModel;
+using JeopardyGame.Service.ChannelsAdministrator;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -247,6 +249,24 @@ namespace JeopardyGame.Service.ServiceImplementation
                 return playersInfo;
             }
         }
+
+        public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
+        {
+            if (idUser != DEFAULT_INT_VALUE)
+            {
+                var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUser);
+                if (savedChannel == null)
+                {
+                    return ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                   return ChannelAdministrator.VerifyUserIsStillActive(idUser);                  
+                }
+            }
+            return ExceptionDictionary.NULL_PARAEMETER;
+        }
+
     }  
 }
 

@@ -1,10 +1,17 @@
-﻿using JeopardyGame.ServidorServiciosJeopardy;
+﻿using JeopardyGame.Pages;
+using JeopardyGame.ServidorServiciosJeopardy;
+using JeopardyGame.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Navigation;
+using Application = System.Windows.Application;
+using MainMenu = JeopardyGame.Pages.MainMenu;
 
 namespace JeopardyGame.Helpers
 {
@@ -53,7 +60,32 @@ namespace JeopardyGame.Helpers
                     break;                
             }
         }
-    
+
+        public static void HandleCommunicationException(String message, Window currentWindow, bool needToReload)
+        {
+            if (needToReload)
+            {
+                GototLogin(currentWindow);
+            }
+            else
+            {
+                GotoMainMenu((PrincipalWindow)currentWindow);
+            }
+        }
+
+        private static void GototLogin(Window currentWindow)
+        {
+            PrincipalWindow principalWindow = new PrincipalWindow();
+            principalWindow.Show();
+            currentWindow.Close();
+        }
+
+        private static void GotoMainMenu(PrincipalWindow currentWindow)
+        {
+            MainMenu menu = new MainMenu(); 
+            currentWindow.contentFrame.NavigationService.Navigate(menu);
+            currentWindow.contentFrame.NavigationService.RemoveBackEntry();
+        }
 
         private static void ShowErrorMessage(String title, String message)
         {

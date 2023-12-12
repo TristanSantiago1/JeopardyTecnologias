@@ -177,7 +177,7 @@ namespace JeopardyGame.Pages
                     InstanceContext context = new InstanceContext(this);
                     NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(context);
                     userSingleton.proxyForAvailability = proxyChannelCallback;
-                    userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser, userSingleton.IdPlayer);
+                    userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser);
                 }
                 else
                 {
@@ -193,6 +193,11 @@ namespace JeopardyGame.Pages
         public void ResponseOfPlayerAvailability(int status, int idFriend)
         {
             ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);
+        }
+
+        public void VerifyPlayerAvailability()
+        {
+            ((INotifyUserAvailabilityCallback)activeFriendsInstance).VerifyPlayerAvailability();
         }
 
     }

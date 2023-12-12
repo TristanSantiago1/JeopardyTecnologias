@@ -47,5 +47,9 @@ namespace JeopardyGame.Helpers
         {
             board.SelectQuestion(questionCardInformation);
         }
+        public QuestionCardInformation GetQuestionCardInformation()
+        {
+            return questionCardInformation;
+        }
     }
 }

@@ -18,9 +18,9 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int AVAILABLE_STATUS = 1;
         private readonly int PLAYING_STATUS = 2;
       
-        public void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer)
+        public void PlayerIsAvailable(int idNewActiveUser)
         {
-            if (idNewActiveUser != NULL_INT_VALUE && idNewActivePlayer != NULL_INT_VALUE)
+            if (idNewActiveUser != NULL_INT_VALUE)
             {
                 var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
                 if (savedChannel == null)
@@ -36,9 +36,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             }           
         }
 
-        public void PlayerIsNotAvailable(int idUserDisconnecting, int idPlayerDisconnecting)
+        public void PlayerIsNotAvailable(int idUserDisconnecting)
         {
-            if (idUserDisconnecting != NULL_INT_VALUE && idPlayerDisconnecting != NULL_INT_VALUE)
+            if (idUserDisconnecting != NULL_INT_VALUE)
             {
                 var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserDisconnecting);
                 if (channel != null)

@@ -21,47 +21,51 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ROUND_THREE = 3;
         private const int GAME_FINISHED = 4;
         private const int FIRST_TURN = 1;
+        private static object lockObject = new object();
 
 
         public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar)
         {
-            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            var playerOnLobbySubscribing = lobby.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
-            if (playerOnLobbySubscribing != null)
+            lock (lockObject)
             {
-                PlayerPlaying playerJoiningGame = new()
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                var playerOnLobbySubscribing = lobby.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
+                if (playerOnLobbySubscribing != null)
                 {
-                    IdUser = idUserSubscribing,
-                    IdPlayer = playerOnLobbySubscribing.idPlayer,
-                    UserName = playerOnLobbySubscribing.userName,
-                    NumberOfPlayerInGame = playerOnLobbySubscribing.numberOfPlayerInLobby,
-                    SideTeam = playerOnLobbySubscribing.sideTeam,
-                    TurnOfPlayer = playerOnLobbySubscribing.numberOfPlayerInLobby,
-                    DidBet = false,
-                    DidAnswerLastQuestion = false,
-                    FinalPoints = 0,               
-                    IdAvatar = idAvatar,
-                    gameCallbackChannel = OperationContext.Current
-                };
-                if(ActiveGamesDictionary.GetSpecificActiveGame(roomCode) == null)
-                {
-                    List<PlayerPlaying> playersPlaying = new()
+                    PlayerPlaying playerJoiningGame = new()
+                    {
+                        IdUser = idUserSubscribing,
+                        IdPlayer = playerOnLobbySubscribing.idPlayer,
+                        UserName = playerOnLobbySubscribing.userName,
+                        NumberOfPlayerInGame = playerOnLobbySubscribing.numberOfPlayerInLobby,
+                        SideTeam = playerOnLobbySubscribing.sideTeam,
+                        TurnOfPlayer = playerOnLobbySubscribing.numberOfPlayerInLobby,
+                        DidBet = false,
+                        DidAnswerLastQuestion = false,
+                        FinalPoints = 0,
+                        IdAvatar = idAvatar,
+                        gameCallbackChannel = OperationContext.Current
+                    };
+                    if (ActiveGamesDictionary.GetSpecificActiveGame(roomCode) == null)
+                    {
+                        List<PlayerPlaying> playersPlaying = new()
                     {
                         playerJoiningGame
                     };
-                    ActiveGamesDictionary.RegisterNewGameIndDictionary(roomCode, playersPlaying);
+                        ActiveGamesDictionary.RegisterNewGameIndDictionary(roomCode, playersPlaying);
+                    }
+                    else
+                    {
+                        var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                        activeGame.Add(playerJoiningGame);
+                    }
+                    var activeGameStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                    if (lobby.listOfPlayerInLobby.Count == activeGameStatus.Count)
+                    {
+                        NotifyEveryBodyIsReady(activeGameStatus);
+                    }
                 }
-                else
-                {
-                    var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                    activeGame.Add(playerJoiningGame);
-                }
-                var activeGameStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                if (lobby.listOfPlayerInLobby.Count == activeGameStatus.Count)
-                {
-                    NotifyEveryBodyIsReady(activeGameStatus);
-                }               
-            }
+            }            
         }
 
         private void NotifyEveryBodyIsReady(List<PlayerPlaying> playersPlaying)
@@ -81,12 +85,29 @@ namespace JeopardyGame.Service.ServiceImplementation
                 var playerLeaving = activeGame.Where(player => player.IdUser == idUserUnsubscribing).FirstOrDefault();
                 if (playerLeaving != null)
                 {
+                    int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
                     activeGame.Remove(playerLeaving);
-                }                
+                    RearrangeTurns(activeGame, turnLeaving);
+                    NotifySomeOneLeaveTheGame(activeGame);
+                }                  
             }
             else
             {
                 //no se
+            }
+        }
+
+        private void RearrangeTurns(List<PlayerPlaying> playersPlaying, int turnLeaving)
+        {
+            playersPlaying.Where(item => item.TurnOfPlayer > turnLeaving).ToList().ForEach(item => item.TurnOfPlayer--);
+        }
+
+        private void NotifySomeOneLeaveTheGame(List<PlayerPlaying> playersPlaying)
+        {
+            List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
+            foreach (var player in playersPlaying)
+            {
+                player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationSomeOneLeft(player.TurnOfPlayer, playersInGame);
             }
         }
 

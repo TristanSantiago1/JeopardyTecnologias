@@ -1875,6 +1875,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
+        int ValidateThereIsOnlyOneAActiveAccount(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
+        System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetPlayersInfo", ReplyAction="http://tempuri.org/IUserManager/GetPlayersInfoResponse")]
         JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo();
         
@@ -1955,6 +1961,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName) {
             return base.Channel.UpdateUserInformationAsync(editedName, originalName);
+        }
+        
+        public int ValidateThereIsOnlyOneAActiveAccount(int idUser) {
+            return base.Channel.ValidateThereIsOnlyOneAActiveAccount(idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser) {
+            return base.Channel.ValidateThereIsOnlyOneAActiveAccountAsync(idUser);
         }
         
         public JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo() {
@@ -2191,16 +2205,16 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     public interface INotifyUserAvailability {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
-        void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer);
+        void PlayerIsAvailable(int idNewActiveUser);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
-        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser, int idNewActivePlayer);
+        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable")]
-        void PlayerIsNotAvailable(int idUserDisconnecting, int idPlayerDisconnecting);
+        void PlayerIsNotAvailable(int idUserDisconnecting);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsNotAvailable")]
-        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUserDisconnecting, int idPlayerDisconnecting);
+        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUserDisconnecting);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2208,6 +2222,9 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability", ReplyAction="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailabilityResponse")]
         void ResponseOfPlayerAvailability(int status, int idFriend);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailability", ReplyAction="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailabilityResponse")]
+        void VerifyPlayerAvailability();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2238,20 +2255,20 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer) {
-            base.Channel.PlayerIsAvailable(idNewActiveUser, idNewActivePlayer);
+        public void PlayerIsAvailable(int idNewActiveUser) {
+            base.Channel.PlayerIsAvailable(idNewActiveUser);
         }
         
-        public System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser, int idNewActivePlayer) {
-            return base.Channel.PlayerIsAvailableAsync(idNewActiveUser, idNewActivePlayer);
+        public System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser) {
+            return base.Channel.PlayerIsAvailableAsync(idNewActiveUser);
         }
         
-        public void PlayerIsNotAvailable(int idUserDisconnecting, int idPlayerDisconnecting) {
-            base.Channel.PlayerIsNotAvailable(idUserDisconnecting, idPlayerDisconnecting);
+        public void PlayerIsNotAvailable(int idUserDisconnecting) {
+            base.Channel.PlayerIsNotAvailable(idUserDisconnecting);
         }
         
-        public System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUserDisconnecting, int idPlayerDisconnecting) {
-            return base.Channel.PlayerIsNotAvailableAsync(idUserDisconnecting, idPlayerDisconnecting);
+        public System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUserDisconnecting) {
+            return base.Channel.PlayerIsNotAvailableAsync(idUserDisconnecting);
         }
     }
     
@@ -2770,6 +2787,9 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying")]
         void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ReceiveNotificationSomeOneLeft")]
+        void ReceiveNotificationSomeOneLeft(int isYourTurn, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn", ReplyAction="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurnResponse")]
         void ReceiveNotificationAboutTurn(int isYourTurn);
         
@@ -2882,6 +2902,53 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task ConfirmLastQuestionAnswerAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect) {
             return base.Channel.ConfirmLastQuestionAnswerAsync(roomCode, playerAnswering, points, isCorrect);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IHeartBeat")]
+    public interface IHeartBeat {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHeartBeat/Heartbeat", ReplyAction="http://tempuri.org/IHeartBeat/HeartbeatResponse")]
+        void Heartbeat();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHeartBeat/Heartbeat", ReplyAction="http://tempuri.org/IHeartBeat/HeartbeatResponse")]
+        System.Threading.Tasks.Task HeartbeatAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IHeartBeatChannel : JeopardyGame.ServidorServiciosJeopardy.IHeartBeat, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class HeartBeatClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IHeartBeat>, JeopardyGame.ServidorServiciosJeopardy.IHeartBeat {
+        
+        public HeartBeatClient() {
+        }
+        
+        public HeartBeatClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public HeartBeatClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public HeartBeatClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public HeartBeatClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void Heartbeat() {
+            base.Channel.Heartbeat();
+        }
+        
+        public System.Threading.Tasks.Task HeartbeatAsync() {
+            return base.Channel.HeartbeatAsync();
         }
     }
 }

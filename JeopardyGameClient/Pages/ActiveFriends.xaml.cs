@@ -101,6 +101,10 @@ namespace JeopardyGame.Pages
             }
             SetFriend();
         }
+
+        public void VerifyPlayerAvailability()
+        {
+        }
     }
 
 }

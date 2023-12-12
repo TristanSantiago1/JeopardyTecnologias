@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace JeopardyGame.Pages
 {
@@ -23,12 +24,13 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LiveChat : Page, ILiveChatCallback
     {
-        private bool isAdmin;
-        private int roomCode;
-        private UserSingleton userSingleton;
-        private List<MessageChat> messagesInChats = new List<MessageChat>();
-        private LiveChatClient proxyChannelCallback;
-        private LobbyPage lobbyPage;
+        private static bool isAdmin;
+        private static int roomCode;
+        private static UserSingleton userSingleton;
+        private static List<MessageChat> messagesInChats = new List<MessageChat>();
+        private static LiveChatClient proxyChannelCallback;
+        private static LobbyPage lobbyPage;
+
         public LiveChat()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace JeopardyGame.Pages
             proxyChannelCallback = new LiveChatClient(context);
         }
 
-        public void StartPage(bool rol,int room, LobbyPage lobby)
+        public void StartPage(bool rol, int room, LobbyPage lobby)
         {
             lobbyPage = lobby;
             isAdmin = rol;
@@ -91,6 +93,11 @@ namespace JeopardyGame.Pages
             if (!string.IsNullOrEmpty(message))
             {
                 proxyChannelCallback.SendMessage(userSingleton.IdUser, roomCode, userSingleton.UserName, message);
+                MessageChat messageChat = new MessageChat();
+                messageChat.IdUser = userSingleton.IdUser;
+                messageChat.UserName = userSingleton.UserName;
+                messageChat.MessageToSend = message;
+                messagesInChats.Add(messageChat);
                 ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, message);
                 chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
                 stpChat.Children.Add(chatMessageCard);

@@ -9,9 +9,11 @@
 
     <Viewbox Stretch="Fill" Margin="0" >
         <Grid Background="Black" Height="648" Width="500" MaxHeight="700">
-            <Border CornerRadius="30" BorderBrush="Black" BorderThickness="10" Margin="0" Background="#9CFFFFFF">
-                <StackPanel x:Name="stpChat" Background="Transparent" Margin="1,69,1,60" MaxHeight="500" Orientation="Vertical"/>
-            </Border>
+            <Border CornerRadius="30" BorderBrush="Black" BorderThickness="10" Margin="0,0,0,-2" Background="Purple">
+                <ScrollViewer Margin="1,69,1,61" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="stpChat" Background="Transparent" Margin="0" Orientation="Vertical"/>
+                </ScrollViewer>
+                </Border>
             <Label x:Name="lblLiveChat" Margin="0,15,0,0" Style="{StaticResource labelStyleSimple}" Height="54" Width="279" Content="Hacer resource" HorizontalAlignment="Center"/>
             <Image HorizontalAlignment="Left" Height="32" Margin="442,20,0,0" VerticalAlignment="Top" MouseDown="ClickCloseChat" Width="33" Source="/Images/CrossImageWhite.png" RenderTransformOrigin="1.723,1.862"/>
             <Border Margin="10,582,10,10" CornerRadius="20" BorderBrush="Black" BorderThickness="2" Background="White">

@@ -31,6 +31,9 @@ namespace JeopardyGame.Service.InterfacesServices
             GenericClass<int> UpdateUserInformation(String editedName, String originalName);
 
             [OperationContract]
+            int ValidateThereIsOnlyOneAActiveAccount(int idUser);
+
+            [OperationContract]
             List<PlayerInfo> GetPlayersInfo();
 
 

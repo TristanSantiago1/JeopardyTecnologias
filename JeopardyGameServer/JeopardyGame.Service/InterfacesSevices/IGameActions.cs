@@ -45,6 +45,9 @@ namespace JeopardyGame.Service.InterfacesSevices
     {
         [OperationContract(IsOneWay = true)]
         void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, List<PlayerInGameDataContract> playerInGame);
+        
+        [OperationContract(IsOneWay = true)]
+        void ReceiveNotificationSomeOneLeft(int isYourTurn, List<PlayerInGameDataContract> playerInGame);
 
         [OperationContract]
         void ReceiveNotificationAboutTurn(int isYourTurn);

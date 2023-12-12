@@ -27,6 +27,7 @@ namespace JeopardyGame.Views
             overlayFrame.Content = overlayPage;
             overlayFrame.Visibility = Visibility.Visible;
         }
+       
 
     }
 }

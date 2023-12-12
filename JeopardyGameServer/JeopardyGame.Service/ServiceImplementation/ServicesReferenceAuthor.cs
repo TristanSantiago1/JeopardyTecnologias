@@ -48,6 +48,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             return ((IUserManager)UserManager).ValidateCredentials(newUserValidate);
         }
+
+        public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
+        {
+            return ((IUserManager)UserManager).ValidateThereIsOnlyOneAActiveAccount(idUser);
+        }
     }
 
     public partial class ServicesReferenceAuthor: IFriendsManager
@@ -229,15 +234,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILobbyActions)LobbyActions).NotifyPlayerInLobby(roomCode, idUser);
         }
 
-
-        public void PlayerIsAvailable(int idNewActiveUser, int idNewActivePlayer)
+        public void PlayerIsAvailable(int idNewActiveUser)
         {
-            ((INotifyUserAvailability)NotifyUserAvb).PlayerIsAvailable(idNewActiveUser, idNewActivePlayer);
+            ((INotifyUserAvailability)NotifyUserAvb).PlayerIsAvailable(idNewActiveUser);
         }
 
-        public void PlayerIsNotAvailable(int idUserDisconnecting, int idPlayerDisconnecting)
+        public void PlayerIsNotAvailable(int idUserDisconnecting)
         {
-            ((INotifyUserAvailability)NotifyUserAvb).PlayerIsNotAvailable(idUserDisconnecting, idPlayerDisconnecting);
+            ((INotifyUserAvailability)NotifyUserAvb).PlayerIsNotAvailable(idUserDisconnecting);
         }
 
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
@@ -251,7 +255,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
         public void SelectQuestionsForGame(int roomCode)
-        {
+       {
             ((ILobbyActions)LobbyActions).SelectQuestionsForGame(roomCode);
         }
 
@@ -283,6 +287,16 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
             ((IGameActions)GameActions).UnSubscribeFromGameCallBack(roomCode, idUserUnsubscribing);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : IHeartBeat
+    {
+        HeartBeatImplementation heartBeatImplementation = new();
+
+        public void Heartbeat()
+        {
+            ((IHeartBeat)heartBeatImplementation).Heartbeat();
         }
     }
 

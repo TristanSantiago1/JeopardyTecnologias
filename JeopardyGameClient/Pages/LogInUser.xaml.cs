@@ -64,17 +64,24 @@ namespace JeopardyGame.Pages
                 try
                 {
                     UserManagerClient proxyServer = new UserManagerClient();
-                    var result = proxyServer.ValidateCredentials(userValidate);
-                    proxyServer.Close();
+                    var result = proxyServer.ValidateCredentials(userValidate);                    
                     if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || result.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                     {
-                        if (result.ObjectSaved == RIGTH_CREDENTIALS)
+                        ConsultInformationClient consultInformationClient = new ConsultInformationClient();
+                        var userConsulted = consultInformationClient.ConsultUserByUserName(userValidate.UserName);
+                        var isAlreadyConnected = proxyServer.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.IdUser);
+                        proxyServer.Close();
+                        if (result.ObjectSaved == RIGTH_CREDENTIALS && isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
                             DoLogin(userValidate.UserName);
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
                             new ErrorMessageDialogWindow("ERROR", "Invalid credentials, please try again", Application.Current.MainWindow);
+                        }
+                        else if(isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            new ErrorMessageDialogWindow("ERROR", "Ya Hay una sesion iniciada", Application.Current.MainWindow);
                         }
                         else
                         {
@@ -159,7 +166,7 @@ namespace JeopardyGame.Pages
         private void NotifyAvailability()
         {
             UserSingleton us = UserSingleton.GetMainUser();
-            us.proxyForAvailability.PlayerIsAvailable(us.IdUser, us.IdPlayer);
+            us.proxyForAvailability.PlayerIsAvailable(us.IdUser);
         }
 
         private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
@@ -249,6 +256,23 @@ namespace JeopardyGame.Pages
             ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);         
         }
 
+        private void BeginHeartBeat()
+        {
+            var heartbeatClient = new HeartBeatClient();
+            try
+            {
+                var heartbeatTimer = new System.Threading.Timer(state => { heartbeatClient.Heartbeat(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
+            }
+            catch
+            { 
+                // El servidor se cayo
+            }            
+        }
+
+        public void VerifyPlayerAvailability()
+        {
+            ((INotifyUserAvailabilityCallback)activeFriendsInstance).VerifyPlayerAvailability();
+        }
     }
 }
     

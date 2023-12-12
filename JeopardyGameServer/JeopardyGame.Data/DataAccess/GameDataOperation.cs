@@ -52,7 +52,7 @@ namespace JeopardyGame.Data.DataAccess
             catch (UpdateException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex.GetBaseException(), ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {

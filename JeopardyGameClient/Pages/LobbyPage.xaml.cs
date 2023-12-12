@@ -47,8 +47,8 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
             isAdminOfLobby = true;
-            PrepareChatAndFriendList();
             PrepareWindow();
+            PrepareChatAndFriendList();            
             Loaded += AskForQuestions;
         }
 
@@ -62,14 +62,16 @@ namespace JeopardyGame.Pages
             InitializeComponent();
             this.roomCode = roomCode;
             isAdminOfLobby = false;
-            PrepareChatAndFriendList();
             PrepareWindow();
+            PrepareChatAndFriendList();            
         }
 
-        private static void PrepareChatAndFriendList()
+        private void PrepareChatAndFriendList()
         {
             activeUsersControls = LogInUser.ActiveFriendsInstance;
             liveChatUser = new LiveChat();
+            liveChatUser.StartPage(isAdminOfLobby, roomCode, this);
+            activeUsersControls.StartPage(this);
         }
 
         private void PrepareWindow()
@@ -410,7 +412,7 @@ namespace JeopardyGame.Pages
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
             frmActiveFriendsAndChat.Content = liveChatUser;
-            liveChatUser.StartPage(isAdminOfLobby, roomCode, this);            
+           // liveChatUser.StartPage(isAdminOfLobby, roomCode, this);            
             grdActiveUser.Visibility = Visibility.Visible;
         }
         public void CloseLiveChat()
@@ -422,12 +424,10 @@ namespace JeopardyGame.Pages
         {
             ((ILiveChatCallback)liveChatUser).ReceiveMessage(message);
         }
-
-
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
             frmActiveFriendsAndChat.Content = activeUsersControls;
-            activeUsersControls.StartPage(this);        
+            //activeUsersControls.StartPage(this);        
             grdActiveUser.Visibility = Visibility.Visible;
         }  
         public void CloseFriendList()
