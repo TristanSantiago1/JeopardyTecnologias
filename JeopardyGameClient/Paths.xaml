@@ -15,6 +15,20 @@
     <ImageSource x:Key="ButtonChatIcon" >/Images/buttonChat.png</ImageSource>
     <ImageSource x:Key="ClocktIcon" >/Images/clock.png</ImageSource>
     <ImageSource x:Key="LeaveGameIcon" >/Images/LeaveGameImage.png</ImageSource>
+    <ImageSource x:Key="RightAnswerIcon" >/Images/rigthAwnserImage.png</ImageSource>
+    <ImageSource x:Key="WrongAnswerIcon" >/Images/worngAwnserImage.png</ImageSource>
+    <ImageSource x:Key="SpanishFlagIcon" >/Images/spanish.png</ImageSource>
+    <ImageSource x:Key="EnglishFlagIcon" >/Images/english.png</ImageSource>
+    <ImageSource x:Key="CirculeCrossIcon" >/Images/CrossImageWhite.png</ImageSource>
+    <ImageSource x:Key="SentMessageIcon" >/Images/sendMessageIcon.png</ImageSource>
+    <ImageSource x:Key="StarLeaderIcon" >/Images/starImage.png</ImageSource>
+    <ImageSource x:Key="CrossPlayerIcon" >/Images/crossImagePLayer.png</ImageSource>
+    <ImageSource x:Key="BackIcon" >/Images/crossImagePLayer.png</ImageSource>
+    <ImageSource x:Key="EyeIcon" >/Images/eyeImage.png</ImageSource>
+    <ImageSource x:Key="UserProfileIcon" >/Images/userProfile.png</ImageSource>
+    <ImageSource x:Key="WinnerCrownIcon" >/Images/winnerIcon.png</ImageSource>
+    <ImageSource x:Key="EditPencilIcon" >/Images/EditIcon.png</ImageSource>
+    <ImageSource x:Key="BlackBricksBackGroundIcon" >/Images/BackGround.jpg</ImageSource>
 
 
     <ImageSource x:Key="HostPedro" >/Images/HostImages/PedroPresenta.png</ImageSource>

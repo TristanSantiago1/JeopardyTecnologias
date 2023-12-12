@@ -102,7 +102,7 @@ namespace JeopardyGame.Helpers
 
         private void SetAvatarImage()
         {
-            avatar.Source = new BitmapImage(new Uri(GetHostImage.GetAvatrImage(playerOfCard.IdAvatar), UriKind.Relative));
+            avatar.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCard.IdAvatar), UriKind.Relative));
             avatar.Margin = new System.Windows.Thickness(190,2,2,2);
         }
 

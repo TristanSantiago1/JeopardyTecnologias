@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="BannerWindow" Height="450" Width="600">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource BlackBricksBackGroundIcon}"/>
+        </Grid.Background>
         <Frame x:Name="contentFrame" />
     </Grid>
 </Window>

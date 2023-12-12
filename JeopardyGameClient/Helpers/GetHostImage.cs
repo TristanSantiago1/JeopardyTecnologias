@@ -21,7 +21,7 @@ namespace JeopardyGame.Helpers
             };
         }
 
-        public static string GetAvatrImage(int idAvatar)
+        public static string GetAvatarImage(int idAvatar)
         {
             return idAvatar switch
             {

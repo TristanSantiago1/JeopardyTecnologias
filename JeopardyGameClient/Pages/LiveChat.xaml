@@ -15,11 +15,11 @@
                 </ScrollViewer>
                 </Border>
             <Label x:Name="lblLiveChat" Margin="0,15,0,0" Style="{StaticResource labelStyleSimple}" Height="54" Width="279" Content="Hacer resource" HorizontalAlignment="Center"/>
-            <Image HorizontalAlignment="Left" Height="32" Margin="442,20,0,0" VerticalAlignment="Top" MouseDown="ClickCloseChat" Width="33" Source="/Images/CrossImageWhite.png" RenderTransformOrigin="1.723,1.862"/>
+            <Image HorizontalAlignment="Left" Height="32" Margin="442,20,0,0" VerticalAlignment="Top" MouseDown="ClickCloseChat" Width="33" Source="{StaticResource CirculeCrossIcon}" RenderTransformOrigin="1.723,1.862"/>
             <Border Margin="10,582,10,10" CornerRadius="20" BorderBrush="Black" BorderThickness="2" Background="White">
                 <TextBox x:Name="txbMessageToSend" Margin="10,0,38,0"  Padding="7,0,0,0" TextWrapping="Wrap" TextAlignment="Left" VerticalAlignment="Center" FontSize="25" Foreground="Black" Background="Transparent" Height="36"/>
             </Border>
-            <Image Margin="455,599,16,26" Source="/Images/sendMessageIcon.png" MouseDown="ClickSendMessage"/>
+            <Image Margin="455,599,16,26" Source="{StaticResource SentMessageIcon}" MouseDown="ClickSendMessage"/>
         </Grid>
     </Viewbox>
 

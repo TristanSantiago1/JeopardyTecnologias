@@ -24,10 +24,10 @@
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
                 <ComboBoxItem Content="Español" Tag="es-MX"/>
             </ComboBox>
-            <Image Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" Margin="38,38,1275,670" />
+            <Image Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" Margin="38,38,1275,670" />
             <Image HorizontalAlignment="Center" Height="317" Stretch="Fill"
                 Width="595" VerticalAlignment="Top" 
-                Source="/Images/logoJeopardy2.png" Margin="0,38,0,0" RenderTransformOrigin="0.5,0.5"/>
+                Source="{StaticResource LogoJeopardyIcon}" Margin="0,38,0,0" RenderTransformOrigin="0.5,0.5"/>
 
             <Label x:Name="lblPasswordLogIn" Content = "{x:Static p:Resources.lblPasswordLogIn}" Style="{StaticResource labelStyleSimple}" 
                         Height="Auto" Width="Auto" FontSize="30" Margin="413,475,0,0"/>
@@ -48,12 +48,10 @@
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="513" HorizontalAlignment="Center" Margin="0,360,0,332" Padding="2">
                 <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="27" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
             </Border>
-            <Image HorizontalAlignment="Left" Height="30" Margin="872,541,0,0" VerticalAlignment="Top" Width="41" Source="/Images/eyeImage.png" MouseDown="ClickSeePassword" MouseLeave="HidePassword"/>
+            <Image HorizontalAlignment="Left" Height="30" Margin="872,541,0,0" VerticalAlignment="Top" Width="41" Source="{StaticResource EyeIcon}" MouseDown="ClickSeePassword" MouseLeave="HidePassword"/>
             <Label x:Name="lblViewPassword" HorizontalAlignment="Left" Margin="422,531,0,176" Width="443" Height="44" FontSize="27" 
                     BorderBrush="Transparent" Background="Transparent" Foreground="Purple" Visibility="Collapsed"/>
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
-            </Grid.Background>
+          
         </Grid>
     </Viewbox>
 </Page>

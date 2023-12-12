@@ -38,8 +38,10 @@
                 <EllipseGeometry RadiusX="130" RadiusY="130" Center="100,100" />
             </Border.Clip>
         </Border>
-        <Image HorizontalAlignment="Left" Height="31" Width="33" Margin="997,252,0,0" VerticalAlignment="Top" Stretch="Fill" Source="/Images/EditIcon.png" />
-        <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  MouseDown="ClickEditUserInformation" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="997,283,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.219"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top" Width="27" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
+        <Grid Margin="996,248,235,449"  MouseDown="ClickEditUserInformation">
+            <Image HorizontalAlignment="Center" Height="31" Width="33"  VerticalAlignment="Top" Stretch="Fill" Source="{StaticResource EditPencilIcon}" />
+            <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  FontSize="20" Foreground="White" HorizontalAlignment="Center" Height="33" Margin="0,29,0,1"/>
+        </Grid>            
+        <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top" Width="27" Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
     </Grid>
 </Page>

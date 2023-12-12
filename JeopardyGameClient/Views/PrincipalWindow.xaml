@@ -8,11 +8,11 @@
         Title="PrincipalWindow" Height="770" Width="1300">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="{StaticResource BlackBricksBackGroundIcon}"/>
         </Grid.Background>
         <Image HorizontalAlignment="Left" Height="135" 
                Width="261" Margin="296,10,0,0" VerticalAlignment="Top" 
-               Source="/Images/logoJeopardy.png"/>     
+               Source="{StaticResource LogoJeopardyIcon}"/>     
         <Frame x:Name="contentFrame" NavigationUIVisibility="Hidden"/>
         <Frame x:Name="overlayFrame" NavigationUIVisibility="Hidden" IsHitTestVisible="False" Background="Transparent"/>
     </Grid>

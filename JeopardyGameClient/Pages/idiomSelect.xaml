@@ -16,10 +16,10 @@
         <Label x:Name="lblGameLanguaje" Style="{StaticResource labelStyleSimple}" FontSize="40" Content = "{x:Static p:Resources.lblGameLanguaje}" Margin="409,76,0,0" Width="170" Height="61"/>
         <Image HorizontalAlignment="Left" Height="80" Stretch="Fill"
             Width="118" VerticalAlignment="Top" 
-            Source="/Images/spanish.png" Margin="283,238,0,0" RenderTransformOrigin="0.5,0.5"/>
+            Source="{StaticResource SpanishFlagIcon}" Margin="283,238,0,0" RenderTransformOrigin="0.5,0.5"/>
         <Image HorizontalAlignment="Left" Height="81" Stretch="Fill"
             Width="101" VerticalAlignment="Top" 
-            Source="/Images/english.png" Margin="559,238,0,0" RenderTransformOrigin="0.5,0.5"/>
+            Source="{StaticResource EnglishFlagIcon}" Margin="559,238,0,0" RenderTransformOrigin="0.5,0.5"/>
         <Label x:Name="lblSpanish"  Content= "Español"  MouseDown="ClicSpanishIdiom" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="299,344,0,0" VerticalAlignment="Top" Height="45" Width="86"/>
         <Label x:Name= "lblLanguajeMxn"  Content= "México"  MouseDown="ClicSpanishIdiom" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="299,376,0,0" VerticalAlignment="Top" Height="45" Width="86"/>
         <Label x:Name="lblEnglish"  Content= "Inglés"  MouseDown="ClicEnglishIdiom" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="576,350,0,0" VerticalAlignment="Top" Height="36" Width="68"/>

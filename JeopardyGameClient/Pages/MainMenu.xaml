@@ -11,16 +11,11 @@
     <Viewbox Stretch="Fill">
         <Grid Height="751">
 
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/BackGround.jpg">
-                </ImageBrush>
-
-            </Grid.Background>
             <Image HorizontalAlignment="Left" Height="234" 
                Width="399" Margin="107,14,0,0" VerticalAlignment="Top" 
-               Source="/Images/logoJeopardy.png"/>
-            <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="/Images/BackIcon.png" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
-            <Image HorizontalAlignment="Left" Height="73" Margin="1008,16,0,0" VerticalAlignment="Top" Width="82" Source="/Images/userProfile.png" MouseDown="ClickUserProfile" RenderTransformOrigin="0.491,2.068" />
+               Source="{StaticResource LogoJeopardyIcon}"/>
+            <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
+            <Image HorizontalAlignment="Left" Height="73" Margin="1008,16,0,0" VerticalAlignment="Top" Width="82" Source="{StaticResource UserProfileIcon}" MouseDown="ClickUserProfile" RenderTransformOrigin="0.491,2.068" />
 
             <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="856,53,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="ClickSelectLanguage">
                 <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
@@ -55,9 +50,9 @@
 
             </Border>
             <Label x:Name="lblWinnerList" Content = "{x:Static p:Resources.lblWinnerList}" Foreground="White" FontWeight="Bold" FontSize="30" HorizontalAlignment="Left" Margin="749,216,0,0" VerticalAlignment="Top" Width="272"/>
-            <Image HorizontalAlignment="Left" Height="60" 
-                Width="31" Margin="945,224,0,0" VerticalAlignment="Top" 
-                Source="/Images/winnerIcon.png"/>
+            <Image HorizontalAlignment="Left" Height="38" 
+                Width="31" Margin="715,224,0,0" VerticalAlignment="Top" 
+                Source="{StaticResource WinnerCrownIcon}" RenderTransformOrigin="-3.173,0.485"/>
         </Grid>
 
     </Viewbox>

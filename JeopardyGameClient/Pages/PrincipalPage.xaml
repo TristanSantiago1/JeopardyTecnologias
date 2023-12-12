@@ -11,12 +11,9 @@
     <Viewbox>
         <Grid Height="751" Width="1285" >
 
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/BackGround.jpg"  Stretch="UniformToFill"/>
-            </Grid.Background>
             <Image HorizontalAlignment="Center" Height="437" Stretch="Fill"
                 Width="763" VerticalAlignment="Top" 
-                Source="/Images/logoJeopardy2.png" Margin="0,90,0,0" RenderTransformOrigin="0.5,0.5">
+                Source="{StaticResource LogoJeopardyIcon}" Margin="0,90,0,0" RenderTransformOrigin="0.5,0.5">
 
             </Image>
             <Button x:Name="bttPlayer" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.bttPlayer}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLickButtonLogin" Margin="446,505,446,184" />

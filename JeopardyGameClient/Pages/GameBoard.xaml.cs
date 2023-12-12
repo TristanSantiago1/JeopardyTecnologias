@@ -402,12 +402,12 @@ namespace JeopardyGame.Pages
             txbStringAnswerChoose.Text = answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected).EnglishAnswerDescription;
             if (isCorrect)
             {
-                imgAnswerResult.Source = new BitmapImage(new Uri("/Images/rigthAwnserImage.png", UriKind.Relative));
+                imgAnswerResult.Source = new BitmapImage(new Uri(App.Current.Resources["RightAnswerIcon"].ToString(), UriKind.Relative));
                 txbPointsEarnedOrLost.Text = "+ " + points;
             }
             else
             {
-                imgAnswerResult.Source = new BitmapImage(new Uri("/Images/worngAwnserImage.png", UriKind.Relative));
+                imgAnswerResult.Source = new BitmapImage(new Uri(App.Current.Resources["WrongAnswerIcon"].ToString(), UriKind.Relative));
                 txbPointsEarnedOrLost.Text = "- " + points;
             }
             await Task.Delay(2000);
