@@ -14,10 +14,10 @@ namespace JeopardyGame.Helpers
         {
             return idHost switch
             {
-                2 => "/Images/HostImages/PedroPresenta.png",
-                4 => "/Images/HostImages/CristianoRonaldo.png",
-                5 => "/Images/HostImages/MikeRichards.png",
-                _ => "/Images/HostImages/MikeRichards.png",
+                2 => App.Current.Resources["HostPedro"].ToString(),
+                4 => App.Current.Resources["HostCR7"].ToString(),
+                5 => App.Current.Resources["HostMike"].ToString(),
+                _ => App.Current.Resources["HostMike"].ToString(),
             };
         }
 
@@ -25,14 +25,14 @@ namespace JeopardyGame.Helpers
         {
             return idAvatar switch
             {
-                1 => "/Images/Avatars/Alacran.png",
-                2 => "/Images/Avatars/AvatarCarro.png",
-                3 => "/Images/Avatars/BatMan.png",
-                4 => "/Images/Avatars/Caballo.png",
-                5 => "/Images/Avatars/IronMan.png",
-                6 => "/Images/Avatars/RealMadrid.png",
-                7 => "/Images/Avatars/SpiterMan.png",
-                _ => "/Images/Avatars/AvatarCarro.png",
+                1 => App.Current.Resources["AvatarScorpion"].ToString(),
+                2 => App.Current.Resources["AvatarCar"].ToString(),
+                3 => App.Current.Resources["AvatarBatMan"].ToString(),
+                4 => App.Current.Resources["AvatarHorse"].ToString(),
+                5 => App.Current.Resources["AvatarIronMan"].ToString(),
+                6 => App.Current.Resources["AvatarMadrid"].ToString(),
+                7 => App.Current.Resources["AvatarSpiterMan"].ToString(),
+                _ => App.Current.Resources["AvatarCar"].ToString(),
             };
         }
 

@@ -21,7 +21,7 @@
                         Style="{StaticResource ButtonConfirmationStyle}" Background="#592C75" Margin="-2,-2,-29,-2" />
                 </Border>
             </Grid>
-            <Image HorizontalAlignment="Left" Height="75" Margin="32,0,0,0" VerticalAlignment="Center" Width="73" Source="/Images/InfoImage.png"/>
+            <Image HorizontalAlignment="Left" Height="75" Margin="32,0,0,0" VerticalAlignment="Center" Width="73" Source="{StaticResource InformationIcon}"/>
         </Grid>
     </Viewbox>
 </Window>

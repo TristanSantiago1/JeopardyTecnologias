@@ -21,7 +21,7 @@
          Style="{StaticResource ButtonConfirmationStyle}" Background="Red" Margin="8,-2,-21,-4" />
                 </Border>
             </Grid>
-            <Image HorizontalAlignment="Left" Height="80" Margin="32,0,0,0" VerticalAlignment="Center" Width="81" Source="/Images/ErrorIcon.png"/>
+            <Image HorizontalAlignment="Left" Height="80" Margin="32,0,0,0" VerticalAlignment="Center" Width="81" Source="{StaticResource ErrorIcon}"/>
         </Grid>
     </Viewbox>
 </Window>

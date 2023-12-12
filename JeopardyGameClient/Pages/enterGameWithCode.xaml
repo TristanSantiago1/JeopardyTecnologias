@@ -14,7 +14,7 @@
         <TextBox x:Name="tbxCode" Style="{StaticResource TextFieldAddUser}" Background="White" FontSize="20" TextWrapping="Wrap" Text="" Width="305" Height="56" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCodeGame" Style="{StaticResource labelStyleSimple}" FontSize="40" Content = "{x:Static p:Resources.lblCodeRoom}" Margin="0,72,0,0" HorizontalAlignment="Center" Width="224"/>
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/Background.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="{StaticResource PurpleBackGroundIcon}" Stretch="UniformToFill"/>
         </Grid.Background>
 
 

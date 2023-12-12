@@ -11,7 +11,7 @@
     <Viewbox>
         <Grid Width="1093" Height="639" >
             <Grid.Background>
-                <ImageBrush ImageSource="/Images/backgroundGame.png"  Stretch="Fill"/>
+                <ImageBrush ImageSource="{StaticResource BackGroundGameIcon}"  Stretch="Fill"/>
             </Grid.Background>
 
             <Grid x:Name="boardGrid" Visibility="Visible" >
@@ -29,28 +29,28 @@
                 <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
                     FontSize="25" Click="CLicSelectAnswer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="303" Canvas.Left="205" Canvas.Top="322" >
                     <Button.Background>
-                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                        <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <Label Content="b)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.607,0.479"/>
                 <Button x:Name="bttSecondAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
                      FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="203" Canvas.Top="442" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
-                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                        <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <Label Content="c)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="327" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button x:Name="bttThridAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
                      FontSize="25" Click="CLicSelectAnswer" Height="70" Width="303" Canvas.Left="610" Canvas.Top="322" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
-                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                        <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <Label Content="d)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.26,2.645"/>
                 <Button x:Name="bttFourAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
                     FontSize="25" Click="CLicSelectAnswer" Height="70" Width="302" Canvas.Left="616" Canvas.Top="437" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
-                        <ImageBrush ImageSource="/Images/buttonAnswer.png"/>
+                        <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <TextBlock x:Name="txbAdvicement" Height="63" Width="509" Canvas.Left="289" Canvas.Top="540" FontSize="25" VerticalAlignment="Center" Text="Esperando respuesta de otros jugadores" Visibility="Hidden"/>
@@ -60,7 +60,7 @@
                 <Button x:Name="bttChat" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
                 FontSize="25" Click="CLicOpenChat" Height="74" Width="63" Canvas.Left="10" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
-                        <ImageBrush ImageSource="/Images/buttonChat.png"/>
+                        <ImageBrush ImageSource="{StaticResource ButtonChatIcon}"/>
                     </Button.Background>
                 </Button>
             </Canvas>
@@ -118,7 +118,7 @@
             </Grid>
 
             <Grid x:Name="grTimer" Margin="419,575,492,4" Visibility="Hidden">
-                <Image Source="/Images/clock.png" Margin="0,0,117,1"/>
+                <Image Source="{StaticResource ClocktIcon}" Margin="0,0,117,1"/>
                 <TextBlock x:Name="txbTimer" Margin="73,9,0,8" TextAlignment="Center" FontSize="30" Foreground="Black"/>
             </Grid>
             
@@ -127,7 +127,7 @@
                 <Label  Height="50" Width="270" Content="Your Turn" FontSize="25" Foreground="White"/>
             </StackPanel>
 
-            <Image Source="/Images/LeaveGameImage.png" Margin="7,596,1049,10" MouseDown="ClickLeaveGame"/>
+            <Image Source="{StaticResource LeaveGameIcon}" Margin="7,596,1049,10" MouseDown="ClickLeaveGame"/>
 
 
 

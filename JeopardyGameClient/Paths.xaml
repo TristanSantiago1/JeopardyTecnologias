@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <ImageSource x:Key="InterrogationIcon">/Images/InterrogationIcon.png</ImageSource>
+    <ImageSource x:Key="ErrorIcon" >/Images/ErrorIcon.png</ImageSource>
+    <ImageSource x:Key="InformationIcon" >/Images/InfoImage.png</ImageSource>
+
+
+
+    <ImageSource x:Key="HostPedro" >/Images/HostImages/PedroPresenta.png</ImageSource>
+    <ImageSource x:Key="HostCR7" >/Images/HostImages/CristianoRonaldo.png</ImageSource>
+    <ImageSource x:Key="HostMike" >/Images/HostImages/MikeRichards.png</ImageSource>
+
+    <ImageSource x:Key="AvatarScorpion" >/Images/Avatars/Alacran.png</ImageSource>
+    <ImageSource x:Key="AvatarCar" >/Images/Avatars/AvatarCarro.png</ImageSource>
+    <ImageSource x:Key="AvatarBatMan" >/Images/Avatars/BatMan.png</ImageSource>
+    <ImageSource x:Key="AvatarHorse" >/Images/Avatars/Caballo.png</ImageSource>
+    <ImageSource x:Key="AvatarIronMan" >/Images/Avatars/IronMan.png</ImageSource>
+    <ImageSource x:Key="AvatarMadrid" >/Images/Avatars/RealMadrid.png</ImageSource>
+    <ImageSource x:Key="AvatarSpiterMan" >/Images/Avatars/SpiterMan.png</ImageSource>
+
+</ResourceDictionary>

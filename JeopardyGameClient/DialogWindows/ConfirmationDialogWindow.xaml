@@ -25,7 +25,7 @@
                        Style="{StaticResource ButtonCancellationStyle}" Background="Red" Margin="1,0,-1,0" Click="ClickCancel" />
                 </Border>
             </Grid>
-            <Image HorizontalAlignment="Left" Height="86" Margin="27,48,0,0" VerticalAlignment="Top" Width="82" Source="/Images/InterrogationIcon.png"/>
+            <Image HorizontalAlignment="Left" Height="86" Margin="27,48,0,0" VerticalAlignment="Top" Width="82" Source="{StaticResource  InterrogationIcon}"/>
         </Grid>
     </Viewbox>
 </Window>

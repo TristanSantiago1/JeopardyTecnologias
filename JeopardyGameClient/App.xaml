@@ -4,21 +4,17 @@
              xmlns:local="clr-namespace:JeopardyGame">
 
     <Application.Resources>
-        
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries >
                 <ResourceDictionary  Source="StylesTempleate.xaml"/>
+                <ResourceDictionary  Source="Paths.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
-       
-
 
 
     </Application.Resources>
-    
 
-    
 
 
 </Application>

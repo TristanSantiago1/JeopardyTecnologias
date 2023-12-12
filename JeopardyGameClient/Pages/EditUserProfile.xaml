@@ -18,9 +18,7 @@
                     <TextBox x:Name="txbEditName" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="552" Margin="8,0,0,0" />
                 </Border>
             </StackPanel>
-            <Image HorizontalAlignment="Left" Height="526" 
-       Width="672" Margin="0,167,0,0" VerticalAlignment="Top" 
-       Source="/Images/logoJeopardy.png" RenderTransformOrigin="0.914,0.526"/>
+            <Image HorizontalAlignment="Left" Height="526"  Width="672" Margin="0,167,0,0" VerticalAlignment="Top" Source="{StaticResource LogoJeopardyIcon}" RenderTransformOrigin="0.914,0.526"/>
 
             <StackPanel Height="auto" Margin="698,269,229,336" >
                 <Label x:Name="lblUserNameDescripCreateAcc" Content = "{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
@@ -43,12 +41,6 @@
             <Border Background="Transparent" BorderBrush="Purple" BorderThickness="4" CornerRadius="5" Margin="1069,661,229,62">
                 <Button x:Name="bttCancellAction" Content="{x:Static p:Resources.bttCancellAction}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonCancellationStyle}" Click="CLicButtonCancelChanges" />
             </Border>
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/BackGround.jpg">
-                </ImageBrush>
-            </Grid.Background>
-
         </Grid>
-
     </Viewbox>
 </Page>
