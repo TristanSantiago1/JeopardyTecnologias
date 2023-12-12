@@ -30,6 +30,7 @@ namespace JeopardyGame.Pages
         public EditUserProfile()
         {
             InitializeComponent();
+            ImagenInit();
             ShowPlayerImage();
             ReadResource();
             DisplayUserInfo(txbEditName, txbEditUserName, txbEditEmail);
@@ -158,6 +159,19 @@ namespace JeopardyGame.Pages
                     imageProfile.Source = bmpImage;
                 }
             }
+        }
+        private void ImagenInit()
+        {
+            Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject("RealMadrid");
+
+            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                bmp.GetHbitmap(),
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions()
+                );
+
+            imageProfile.Source = bmpImage;
         }
 
     }

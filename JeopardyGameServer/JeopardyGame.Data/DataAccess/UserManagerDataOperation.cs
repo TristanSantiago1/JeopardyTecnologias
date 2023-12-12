@@ -400,7 +400,7 @@ namespace JeopardyGame.Data.DataAccess
         }
         public static int RecoverPhoto(int idPlayer)
         {
-            int defaultAvatarId = 3; 
+            int defaultAvatarId = 0; 
 
             try
             {
