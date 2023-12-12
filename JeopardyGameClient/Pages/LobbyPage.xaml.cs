@@ -82,6 +82,7 @@ namespace JeopardyGame.Pages
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
                 lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);
+                GameCodeContainer.RoomCode = roomCode;
             }
             else
             {
@@ -503,6 +504,9 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
         }
-
+        public static class GameCodeContainer
+        {
+            public static int RoomCode { get; set; }
+        }
     }
 }

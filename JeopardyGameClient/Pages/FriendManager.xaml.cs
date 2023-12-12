@@ -216,6 +216,7 @@ namespace JeopardyGame.Pages
             FriendBasicInformation newFriend = new FriendBasicInformation();
             newFriend.IdUser = idUserFriendToEliminate;
             newFriend.UserName = userName;
+            
             newFriend.IdStatusAvailability = NOT_STATUS;
             otherPeople.Add(newFriend);
             SetCards();

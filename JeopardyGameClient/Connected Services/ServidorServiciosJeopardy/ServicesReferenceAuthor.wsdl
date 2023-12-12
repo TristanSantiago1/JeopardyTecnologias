@@ -70,7 +70,6 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -108,6 +107,18 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_UpdateUserInformation_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdatePlayerPhoto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlayerPhoto" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdatePlayerPhoto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlayerPhotoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_recoverPlayerPhoto_InputMessage">
+    <wsdl:part name="parameters" element="tns:recoverPlayerPhoto" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_recoverPlayerPhoto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:recoverPlayerPhotoResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManager_GetPlayersInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersInfo" />
@@ -413,6 +424,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformation" message="tns:IUserManager_UpdateUserInformation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformationResponse" message="tns:IUserManager_UpdateUserInformation_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdatePlayerPhoto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto" message="tns:IUserManager_UpdatePlayerPhoto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse" message="tns:IUserManager_UpdatePlayerPhoto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="recoverPlayerPhoto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/recoverPlayerPhoto" message="tns:IUserManager_recoverPlayerPhoto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/recoverPlayerPhotoResponse" message="tns:IUserManager_recoverPlayerPhoto_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetPlayersInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfo" message="tns:IUserManager_GetPlayersInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfoResponse" message="tns:IUserManager_GetPlayersInfo_OutputMessage" />
@@ -697,6 +716,24 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUserInformation">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateUserInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlayerPhoto">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdatePlayerPhoto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="recoverPlayerPhoto">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/recoverPlayerPhoto" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

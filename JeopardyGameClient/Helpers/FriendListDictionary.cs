@@ -10,6 +10,7 @@ namespace JeopardyGame.Helpers
     {
         public int IdUser { get; set; }
         public string Name { get; set; }
+        public string EmailAddress { get; set; }
         public int idStatusOfAvailability { get; set; }
     }
     public partial class FriendList

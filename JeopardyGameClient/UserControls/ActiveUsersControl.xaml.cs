@@ -56,6 +56,7 @@ namespace JeopardyGame.UserControls
                     FriendAvailabilityInformation activeFriend = new FriendAvailabilityInformation();
                     activeFriend.IdUser = item.IdUser;
                     activeFriend.Name = item.UserName;
+                    activeFriend.EmailAddress = item.EmailAddress;
                     activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
                     FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
                 }

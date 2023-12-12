@@ -7,6 +7,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -24,6 +25,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).GetPlayersInfo();
         }
 
+        public GenericClass<int> recoverPlayerPhoto(int idPlayer)
+        {
+            return ((IUserManager)UserManager).recoverPlayerPhoto(idPlayer);
+        }
+
         public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
             return ((IUserManager)UserManager).SaveUser(userPojoNew);
@@ -32,6 +38,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> SentEmailCodeConfirmation(string email, string subject, string code)
         {
             return ((IUserManager)UserManager).SentEmailCodeConfirmation(email, subject, code);
+        }
+
+        public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
+        {
+            return ((IUserManager)UserManager).UpdatePlayerPhoto(idPlayer, imageId);
         }
 
         public GenericClass<int> UpdateUserInformation(string editedName, string originalName)

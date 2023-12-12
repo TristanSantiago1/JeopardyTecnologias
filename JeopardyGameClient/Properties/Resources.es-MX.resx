@@ -324,6 +324,12 @@
   <data name="SentEmailIssue" xml:space="preserve">
     <value>Ocurrio un problema al enviar el codigó de verificación, intentelo de nuevo o verifique su correo.</value>
   </data>
+  <data name="tbxBodyInvitation" xml:space="preserve">
+    <value>¡Hola! Te invito a unirte a mi partida. El código es:</value>
+  </data>
+  <data name="tbxEmailSend" xml:space="preserve">
+    <value>Invitation sent</value>
+  </data>
   <data name="tbxSignOut" xml:space="preserve">
     <value>¿Estás seguro de que deseas salir de Jeopardy?</value>
   </data>
@@ -342,6 +348,9 @@
   <data name="txbInfoBanner" xml:space="preserve">
     <value>Notificación baneo</value>
   </data>
+  <data name="txbInfoEmailSend" xml:space="preserve">
+    <value>Se ha compartido el código de la partida correctamente</value>
+  </data>
   <data name="txbInfoMessgSuccRegUser" xml:space="preserve">
     <value>Se ha registrado correctamente el usuario :</value>
   </data>
@@ -350,6 +359,9 @@
   </data>
   <data name="txbPromtTextSerarch" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="txbTitleEmailInvitation" xml:space="preserve">
+    <value>Invitación a la partida</value>
   </data>
   <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
     <value>INFORMACIÓN</value>

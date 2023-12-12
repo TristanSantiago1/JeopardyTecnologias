@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Helpers;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static JeopardyGame.Pages.LobbyPage;
 
 namespace JeopardyGame.Pages
 {
@@ -26,6 +28,8 @@ namespace JeopardyGame.Pages
     {
         private const int AVAILABLE_STATUS = 1;
         private LobbyPage lobbyPage;
+        public event EventHandler InviteButtonClicked;
+        public const int NULL_INT_VALUE = 0;
         public ActiveFriends()
         {
             InitializeComponent();                                   
@@ -57,6 +61,7 @@ namespace JeopardyGame.Pages
                     FriendAvailabilityInformation activeFriend = new FriendAvailabilityInformation();
                     activeFriend.IdUser = item.IdUser;
                     activeFriend.Name = item.UserName;
+                    activeFriend.EmailAddress = item.EmailAddress;
                     activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
                     FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
                 }
@@ -73,22 +78,25 @@ namespace JeopardyGame.Pages
         {   
             stcFriendList.Children.Clear();
             stcFriendList.Orientation = Orientation.Vertical;
+            int roomCode = GameCodeContainer.RoomCode;
             Dictionary<int, FriendAvailabilityInformation> friendList = FriendList.GetActiveFriendsList();
             if (friendList != null)
             {               
                 foreach (var item in friendList)
                 {
-                    bool state;
-                    if (item.Value.idStatusOfAvailability == AVAILABLE_STATUS)
+                    bool state = item.Value.idStatusOfAvailability == AVAILABLE_STATUS;
+                    FriendCard friendCard = new FriendCard(item.Value.Name, state, "Invite");
+                    friendCard.InviteButtonClicked += (sender, e) =>
                     {
-                        state = true;
-                    }
-                    else
-                    {
-                        state = false;
-                    }
-                    stcFriendList.Children.Add(new FriendCard(item.Value.Name, state, "Invite"));
-                    
+                        string friendEmail = item.Value.EmailAddress;
+                        string subject = Properties.Resources.txbTitleEmailInvitation;
+                        string body = Properties.Resources.tbxBodyInvitation + " "+ $"{roomCode}";
+                        SendEmail(friendEmail, subject, body);
+                        new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                    };
+
+                    stcFriendList.Children.Add(friendCard);
+
                 }
             }            
         }
@@ -100,6 +108,23 @@ namespace JeopardyGame.Pages
                 FriendList.ChangeStatusOfFriend(idFriend, status);
             }
             SetFriend();
+        }
+        private void SendEmail(string email, string subject, string body)
+        {
+            UserManagerClient proxyServer = new UserManagerClient();
+            GenericClassOfint sentEmailResult = proxyServer.SentEmailCodeConfirmation(email, subject, body);
+
+            if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                ExceptionHandler.HandleException(sentEmailResult.CodeEvent, "Mensaje");
+                new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+            }
+
+            if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+            {
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                
+            }
         }
     }
 

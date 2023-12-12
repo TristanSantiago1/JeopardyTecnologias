@@ -61,7 +61,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Choose an avatarPlayer1.
+        ///   Busca una cadena traducida similar a Choose an image.
         /// </summary>
         public static string btnChoseImage {
             get {
@@ -291,6 +291,15 @@ namespace JeopardyGame.Properties {
         public static string EmailSubjectCode {
             get {
                 return ResourceManager.GetString("EmailSubjectCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invitación enviada.
+        /// </summary>
+        public static string Invitation_sent {
+            get {
+                return ResourceManager.GetString("Invitation sent", resourceCulture);
             }
         }
         
@@ -682,6 +691,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Hello! I invite you to join my game. The code is:.
+        /// </summary>
+        public static string tbxBodyInvitation {
+            get {
+                return ResourceManager.GetString("tbxBodyInvitation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invitation sent.
+        /// </summary>
+        public static string tbxEmailSend {
+            get {
+                return ResourceManager.GetString("tbxEmailSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Are you sure you want to sign out of Jeopardy?.
         /// </summary>
         public static string tbxSignOut {
@@ -736,6 +763,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The game code has been shared correctly.
+        /// </summary>
+        public static string txbInfoEmailSend {
+            get {
+                return ResourceManager.GetString("txbInfoEmailSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The user has been saved succesfully.
         /// </summary>
         public static string txbInfoMessgSuccRegUser {
@@ -759,6 +795,15 @@ namespace JeopardyGame.Properties {
         public static string txbPromtTextSerarch {
             get {
                 return ResourceManager.GetString("txbPromtTextSerarch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Invitation to the game.
+        /// </summary>
+        public static string txbTitleEmailInvitation {
+            get {
+                return ResourceManager.GetString("txbTitleEmailInvitation", resourceCulture);
             }
         }
         

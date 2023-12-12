@@ -24,6 +24,7 @@ namespace JeopardyGame.Pages
         public enterGameWithCode()
         {
             InitializeComponent();
+            tbxCode.MaxLength = 10;
         }
 
         private void clickEnterLobbyWithCode(object sender, RoutedEventArgs e)
