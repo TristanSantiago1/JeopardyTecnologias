@@ -116,12 +116,6 @@
   <wsdl:message name="IUserManager_UpdateUserInformation_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserInformationResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage">
-    <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccount" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccountResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserManager_UpdatePlayerPhoto_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerPhoto" />
   </wsdl:message>
@@ -133,6 +127,12 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_recoverPlayerPhoto_OutputMessage">
     <wsdl:part name="parameters" element="tns:recoverPlayerPhotoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccount" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccountResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManager_GetPlayersInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersInfo" />
@@ -453,10 +453,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformation" message="tns:IUserManager_UpdateUserInformation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateUserInformationResponse" message="tns:IUserManager_UpdateUserInformation_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage" />
-    </wsdl:message>
     <wsdl:operation name="UpdatePlayerPhoto">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto" message="tns:IUserManager_UpdatePlayerPhoto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse" message="tns:IUserManager_UpdatePlayerPhoto_OutputMessage" />
@@ -464,6 +460,10 @@
     <wsdl:operation name="recoverPlayerPhoto">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/recoverPlayerPhoto" message="tns:IUserManager_recoverPlayerPhoto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/recoverPlayerPhotoResponse" message="tns:IUserManager_recoverPlayerPhoto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPlayersInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfo" message="tns:IUserManager_GetPlayersInfo_InputMessage" />
@@ -769,9 +769,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" style="document" />
-    </wsdl:message>
     <wsdl:operation name="UpdatePlayerPhoto">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdatePlayerPhoto" style="document" />
       <wsdl:input>
@@ -783,6 +780,15 @@
     </wsdl:operation>
     <wsdl:operation name="recoverPlayerPhoto">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/recoverPlayerPhoto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

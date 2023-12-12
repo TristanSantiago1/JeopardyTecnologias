@@ -1891,11 +1891,6 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
-        int ValidateThereIsOnlyOneAActiveAccount(int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
-        System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser);
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse")]
         JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdatePlayerPhoto(int idPlayer, int imageId);
         
@@ -1907,6 +1902,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/recoverPlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/recoverPlayerPhotoResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> recoverPlayerPhotoAsync(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
+        int ValidateThereIsOnlyOneAActiveAccount(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse")]
+        System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/GetPlayersInfo", ReplyAction="http://tempuri.org/IUserManager/GetPlayersInfoResponse")]
         JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo();
@@ -1989,13 +1990,7 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName) {
             return base.Channel.UpdateUserInformationAsync(editedName, originalName);
         }
-        public int ValidateThereIsOnlyOneAActiveAccount(int idUser) {
-            return base.Channel.ValidateThereIsOnlyOneAActiveAccount(idUser);
-        }
         
-        public System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser) {
-            return base.Channel.ValidateThereIsOnlyOneAActiveAccountAsync(idUser);
-        }
         public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdatePlayerPhoto(int idPlayer, int imageId) {
             return base.Channel.UpdatePlayerPhoto(idPlayer, imageId);
         }
@@ -2010,6 +2005,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> recoverPlayerPhotoAsync(int idPlayer) {
             return base.Channel.recoverPlayerPhotoAsync(idPlayer);
+        }
+        
+        public int ValidateThereIsOnlyOneAActiveAccount(int idUser) {
+            return base.Channel.ValidateThereIsOnlyOneAActiveAccount(idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser) {
+            return base.Channel.ValidateThereIsOnlyOneAActiveAccountAsync(idUser);
         }
         
         public JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo() {
