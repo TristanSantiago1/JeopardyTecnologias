@@ -14,16 +14,16 @@
 
 
 
-        <Label x:Name="lblNameDescripEditAccount" Content="Name:" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="217" Margin="323,431,0,0"/>
-        <Label x:Name="lblUserNameDescripEditAccount" Content="User name:" Style="{StaticResource labelStyleSimple}" 
-                 Height="60" Width="250" Margin="323,366,0,0" />
-        <Label x:Name="lblAddresDescripEditAccount" Content="Correo :" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="194" Margin="323,506,0,0"/>
+        <Label x:Name="lblNameDescripEditAccount" Content="{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
+                  Height="60" Width="313" Margin="323,431,0,0"/>
+        <Label x:Name="lblUserNameDescripEditAccount" Content="{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
+                 Height="60" Width="364" Margin="323,366,0,0" />
+        <Label x:Name="lblAddresDescripEditAccount" Content="{x:Static p:Resources.lblEmailDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
+                  Height="60" Width="282" Margin="323,506,0,0"/>
 
 
 
-        <Viewbox Width="auto" Height="auto" Margin="629,335,308,153">
+        <Viewbox Width="auto" Height="auto" Margin="693,337,244,151">
             <StackPanel Width="328">
                 <Label x:Name="lblNameEditAccount" Content="jjjjjjj" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}" 
                 Height="60" Width="325"/>

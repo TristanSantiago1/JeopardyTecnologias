@@ -18,8 +18,8 @@
             <Image HorizontalAlignment="Left" Height="73" Margin="1008,16,0,0" VerticalAlignment="Top" Width="82" Source="{StaticResource UserProfileIcon}" MouseDown="ClickUserProfile" RenderTransformOrigin="0.491,2.068" />
 
             <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="856,53,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="ClickSelectLanguage">
-                <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
-                <ComboBoxItem Content="Español" Tag="es-MX"/>
+                <ComboBoxItem Content="{x:Static p:Resources.lblEnglish}" Tag="en-EU" IsSelected="True"/>
+                <ComboBoxItem Content="{x:Static p:Resources.lblSpanish}" Tag="es-MX"/>
             </ComboBox>
 
             <Label x:Name="lblProfileInformation"  Content= "{x:Static p:Resources.lblProfileInformation}"  MouseDown="ClickUserProfile" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1015,94,0,0" VerticalAlignment="Top"/>
@@ -45,7 +45,7 @@
             </Button>
             <Border Margin="707,178,79,74" CornerRadius="16" Background="#7F592C75">
                 <Border Margin="30,107,30,20" CornerRadius="16" Background="#592C75" Opacity="0.5">
-                    <ListBox x:Name="lstWinners" FontWeight="Bold" HorizontalAlignment="Center" Height="336" BorderThickness="0" FontSize="20" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="276" d:ItemsSource="{d:SampleData ItemCount=5}" />
+                    <ListBox x:Name="lstWinners" FontWeight="Bold" HorizontalAlignment="Center" Height="336" BorderThickness="0" FontSize="20" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="276"  />
                 </Border>
 
             </Border>

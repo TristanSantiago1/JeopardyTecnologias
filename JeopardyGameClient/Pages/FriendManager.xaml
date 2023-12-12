@@ -32,7 +32,7 @@
             </Border>
             <Image HorizontalAlignment="Left" Height="40" Margin="113,203,0,0" VerticalAlignment="Top" Width="44" Source="{StaticResource SearchIcon}"/>
             <Image HorizontalAlignment="Left" Height="63" Margin="29,36,0,0" VerticalAlignment="Top" Width="29" Source="{StaticResource BackArrowIcon}" MouseDown="ClickBackToMenu"/>
-            <Label x:Name="lblDeclineRequestMessage" Content="" HorizontalAlignment="Left" Height="35" Margin="118,272,0,0" VerticalAlignment="Top" Width="751" VerticalContentAlignment="Center" Foreground="Red" FontSize="20"/>
+            <Label x:Name="lblDeclineRequestMessage" HorizontalAlignment="Left" Height="35" Margin="118,272,0,0" VerticalAlignment="Top" Width="751" VerticalContentAlignment="Center" Foreground="Red" FontSize="20"/>
 
         </Grid>
     </Viewbox>

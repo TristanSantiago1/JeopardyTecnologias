@@ -39,6 +39,7 @@ namespace JeopardyGame.Pages
         private int typeUserConsult = MY_FRIENDS;
         NotifyUserActionFriendsManagerClient notifyUserActionFriendsManagerClient;
         private InstanceContext context;
+        private Window dialogMessage;
 
         public FriendManager()
         {
@@ -79,24 +80,24 @@ namespace JeopardyGame.Pages
                         }
                         else
                         {
-                            ExceptionHandler.HandleException(otherPeopleConsulted.CodeEvent, "");
+                            ExceptionHandler.HandleException(otherPeopleConsulted.CodeEvent, string.Empty);
                         }
                     }
                     else
                     {
-                        ExceptionHandler.HandleException(friendRequestsConsulted.CodeEvent, "");
+                        ExceptionHandler.HandleException(friendRequestsConsulted.CodeEvent, string.Empty);
                     }                   
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(friendsConsulted.CodeEvent, "");
+                    ExceptionHandler.HandleException(friendsConsulted.CodeEvent, string.Empty);
                 }
                 proxyFriend.Close();
                 proxyUser.Close();
             }
             else
             {
-                ExceptionHandler.HandleException(userConsulted.CodeEvent, "Mensaje");
+                ExceptionHandler.HandleException(userConsulted.CodeEvent, string.Empty);
                 //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
             }
         }
@@ -279,7 +280,7 @@ namespace JeopardyGame.Pages
 
         public void ResponseReported(int numReports)
         {
-            new InformationMessageDialogWindow(Properties.Resources.txbInfoMessgSuccRegUser, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow);
+            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInfoMessgSuccRegUser, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow);
         }
 
         public void ResponseRequestAction(int idUser, int requestStatus, string userName)

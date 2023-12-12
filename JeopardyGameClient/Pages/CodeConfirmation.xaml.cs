@@ -34,6 +34,7 @@ namespace JeopardyGame.Pages
         private String currentCode;
         private static Random randomNumber = new Random();
         private UserPOJO userToSave;
+        private Window dialogMessage;
         public static ActiveFriends ActiveFriendsInstance { get => activeFriendsInstance; set => activeFriendsInstance = value; }
 
         public CodeConfirmation(String emailToConfirm, UserPOJO user)
@@ -43,9 +44,9 @@ namespace JeopardyGame.Pages
             InitializeComponent();
             GenerateCode();
             StartTimer();
-            SentEmail(currentEmail);
-            
+            SentEmail(currentEmail);            
         }
+
         private void GenerateCode()
         {
             int fourDigitsAleatoryNumber = randomNumber.Next(1000, 9999);
@@ -81,12 +82,12 @@ namespace JeopardyGame.Pages
             GenericClassOfint sentEmailSucc = proxyServer.SentEmailCodeConfirmation(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                ExceptionHandler.HandleException(sentEmailSucc.CodeEvent, "Mensaje");
+                ExceptionHandler.HandleException(sentEmailSucc.CodeEvent, string.Empty);
                 //regresara pagina anterior
             }
             if (sentEmailSucc.ObjectSaved == NULL_INT_VALUE)
             {
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                dialogMessage =  new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
             }
         }  
 
@@ -100,7 +101,7 @@ namespace JeopardyGame.Pages
                 if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                         SetSingleton();
-                        new InformationMessageDialogWindow(Properties.Resources.txbUserRegisteredSuccTittle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbUserRegisteredSuccTittle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
                         MainMenu lobby = new MainMenu();
                         this.NavigationService.Navigate(lobby);
                         NavigationService.RemoveBackEntry();                   
@@ -181,12 +182,12 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(playerSaved.CodeEvent, "");
+                    ExceptionHandler.HandleException(playerSaved.CodeEvent, string.Empty);
                 }
             }
             else
             {
-                ExceptionHandler.HandleException(userSaved.CodeEvent, "");
+                ExceptionHandler.HandleException(userSaved.CodeEvent, string.Empty);
             }
         }
 

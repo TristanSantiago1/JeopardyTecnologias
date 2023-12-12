@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="2PlayerByTeam" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="btnChoseImage" xml:space="preserve">
     <value>Choose an image</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="bttGuest" xml:space="preserve">
     <value>Guest</value>
   </data>
+  <data name="bttInvite" xml:space="preserve">
+    <value>Invite</value>
+  </data>
   <data name="bttNewGame" xml:space="preserve">
     <value>New game</value>
   </data>
@@ -195,8 +201,44 @@
   <data name="EmailSubjectCode" xml:space="preserve">
     <value>Verification code</value>
   </data>
+  <data name="ErrorJoiningLobby" xml:space="preserve">
+    <value>Error joining</value>
+  </data>
+  <data name="GameCancelled" xml:space="preserve">
+    <value>game cancelled</value>
+  </data>
+  <data name="GameFinished" xml:space="preserve">
+    <value>Game finished</value>
+  </data>
+  <data name="GenericEmailIssue" xml:space="preserve">
+    <value>There was a problem sending the email</value>
+  </data>
+  <data name="HostCategoriesPresentation" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="HostRoun2Presentation" xml:space="preserve">
+    <value>round 2</value>
+  </data>
+  <data name="HostRound1Presentation" xml:space="preserve">
+    <value>re</value>
+  </data>
+  <data name="HostRound3Presentation" xml:space="preserve">
+    <value>Last round</value>
+  </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>invalid</value>
+  </data>
   <data name="Invitation sent" xml:space="preserve">
     <value>Invitación enviada</value>
+  </data>
+  <data name="KickedFromLobby" xml:space="preserve">
+    <value>Kicked</value>
+  </data>
+  <data name="lblBanConfirmationMessage" xml:space="preserve">
+    <value>U sure</value>
+  </data>
+  <data name="lblBaneUserTitle" xml:space="preserve">
+    <value>Bane User</value>
   </data>
   <data name="lblCodeDescrip" xml:space="preserve">
     <value>Code</value>
@@ -219,6 +261,9 @@
   <data name="lblEnglish" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="lblEnglishEU" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
     <value>fail to register</value>
   </data>
@@ -230,6 +275,9 @@
   </data>
   <data name="lblListOfFriends" xml:space="preserve">
     <value>Friends list</value>
+  </data>
+  <data name="lblLiveChat" xml:space="preserve">
+    <value>chat</value>
   </data>
   <data name="lblModalityGame" xml:space="preserve">
     <value>Game mode:</value>
@@ -288,11 +336,17 @@
   <data name="lblResentCode" xml:space="preserve">
     <value>Resent Code</value>
   </data>
+  <data name="lblSecondsAbrevation" xml:space="preserve">
+    <value>sec</value>
+  </data>
   <data name="lblSettingsIcon" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="lblSpanish" xml:space="preserve">
     <value>Spanish</value>
+  </data>
+  <data name="lblSpanishMexico" xml:space="preserve">
+    <value>spanish</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Username</value>
@@ -303,8 +357,17 @@
   <data name="lblWinnerList" xml:space="preserve">
     <value>Best players</value>
   </data>
+  <data name="lblWrongRoomCode" xml:space="preserve">
+    <value>Wrong code</value>
+  </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Please enter a username</value>
+  </data>
+  <data name="lblYourTurn" xml:space="preserve">
+    <value>Yuor Turn</value>
+  </data>
+  <data name="LeaveGameConfirmation" xml:space="preserve">
+    <value>Are u sure</value>
   </data>
   <data name="MessageEntityException" xml:space="preserve">
     <value>Entity Exception</value>
@@ -318,6 +381,12 @@
   <data name="MessageSQLException" xml:space="preserve">
     <value>SQL EXCEPTION</value>
   </data>
+  <data name="MoreThan1Player" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MustBe4Players" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="rdbIndividual" xml:space="preserve">
     <value>Individual</value>
   </data>
@@ -326,6 +395,9 @@
   </data>
   <data name="SentEmailIssue" xml:space="preserve">
     <value>A problem has ocurred</value>
+  </data>
+  <data name="ServerErrorMessage" xml:space="preserve">
+    <value>There was a problem </value>
   </data>
   <data name="tbxBodyInvitation" xml:space="preserve">
     <value>Hello! I invite you to join my game. The code is:</value>
@@ -338,6 +410,9 @@
   </data>
   <data name="tbxSignOutGame" xml:space="preserve">
     <value>Are you sure you want to cancel the game?</value>
+  </data>
+  <data name="ThereIsAnActiveSession" xml:space="preserve">
+    <value>s</value>
   </data>
   <data name="txbCodeInstructions" xml:space="preserve">
     <value>A code was sent ...</value>
@@ -360,6 +435,9 @@
   <data name="txbInformationMessage" xml:space="preserve">
     <value>The user has been banned</value>
   </data>
+  <data name="txbLastRoundInstruction" xml:space="preserve">
+    <value>last round</value>
+  </data>
   <data name="txbPromtTextSerarch" xml:space="preserve">
     <value>Search</value>
   </data>
@@ -374,6 +452,9 @@
   </data>
   <data name="txbWarningTitle" xml:space="preserve">
     <value>WARNING</value>
+  </data>
+  <data name="UserChangesSaved" xml:space="preserve">
+    <value>changes saved</value>
   </data>
   <data name="WrongCode" xml:space="preserve">
     <value>The code is wrong</value>

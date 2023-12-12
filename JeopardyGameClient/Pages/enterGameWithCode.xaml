@@ -11,8 +11,8 @@
 
     <Grid>
         <Button x:Name="btnEnterCode" Click="clickEnterLobbyWithCode" Content = "{x:Static p:Resources.btnEnterCode}" Style="{StaticResource ButtonStartGame}" FontSize="25" HorizontalAlignment="Center" Margin="0,291,0,0" VerticalAlignment="Top" Height="53" Width="132"/>
-        <TextBox x:Name="tbxCode" Style="{StaticResource TextFieldAddUser}" Background="White" FontSize="20" TextWrapping="Wrap" Text="" Width="305" Height="56" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCodeGame" Style="{StaticResource labelStyleSimple}" FontSize="40" Content = "{x:Static p:Resources.lblCodeRoom}" Margin="0,72,0,0" HorizontalAlignment="Center" Width="224"/>
+        <TextBox x:Name="tbxCode" Style="{StaticResource TextFieldAddUser}" Background="White" FontSize="20" TextWrapping="Wrap" Text="" Width="305" Height="56" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblCodeGame" Style="{StaticResource labelStyleSimple}" FontSize="40" Content = "{x:Static p:Resources.lblCodeRoom}" Margin="0,72,0,0" HorizontalAlignment="Center" Width="auto"/>
         <Grid.Background>
             <ImageBrush ImageSource="{StaticResource PurpleBackGroundIcon}" Stretch="UniformToFill"/>
         </Grid.Background>

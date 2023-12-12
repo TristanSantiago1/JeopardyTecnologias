@@ -61,6 +61,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 2.
+        /// </summary>
+        public static string _2PlayerByTeam {
+            get {
+                return ResourceManager.GetString("2PlayerByTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Choose an image.
         /// </summary>
         public static string btnChoseImage {
@@ -223,6 +232,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Invite.
+        /// </summary>
+        public static string bttInvite {
+            get {
+                return ResourceManager.GetString("bttInvite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a New game.
         /// </summary>
         public static string bttNewGame {
@@ -295,11 +313,119 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error joining.
+        /// </summary>
+        public static string ErrorJoiningLobby {
+            get {
+                return ResourceManager.GetString("ErrorJoiningLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a game cancelled.
+        /// </summary>
+        public static string GameCancelled {
+            get {
+                return ResourceManager.GetString("GameCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Game finished.
+        /// </summary>
+        public static string GameFinished {
+            get {
+                return ResourceManager.GetString("GameFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There was a problem sending the email.
+        /// </summary>
+        public static string GenericEmailIssue {
+            get {
+                return ResourceManager.GetString("GenericEmailIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Categories.
+        /// </summary>
+        public static string HostCategoriesPresentation {
+            get {
+                return ResourceManager.GetString("HostCategoriesPresentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a round 2.
+        /// </summary>
+        public static string HostRoun2Presentation {
+            get {
+                return ResourceManager.GetString("HostRoun2Presentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a re.
+        /// </summary>
+        public static string HostRound1Presentation {
+            get {
+                return ResourceManager.GetString("HostRound1Presentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Last round.
+        /// </summary>
+        public static string HostRound3Presentation {
+            get {
+                return ResourceManager.GetString("HostRound3Presentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a invalid.
+        /// </summary>
+        public static string InvalidCredentials {
+            get {
+                return ResourceManager.GetString("InvalidCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Invitación enviada.
         /// </summary>
         public static string Invitation_sent {
             get {
                 return ResourceManager.GetString("Invitation sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Kicked.
+        /// </summary>
+        public static string KickedFromLobby {
+            get {
+                return ResourceManager.GetString("KickedFromLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a U sure.
+        /// </summary>
+        public static string lblBanConfirmationMessage {
+            get {
+                return ResourceManager.GetString("lblBanConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Bane User.
+        /// </summary>
+        public static string lblBaneUserTitle {
+            get {
+                return ResourceManager.GetString("lblBaneUserTitle", resourceCulture);
             }
         }
         
@@ -367,6 +493,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a English.
+        /// </summary>
+        public static string lblEnglishEU {
+            get {
+                return ResourceManager.GetString("lblEnglishEU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a fail to register.
         /// </summary>
         public static string lblFailToRegisterUser {
@@ -399,6 +534,15 @@ namespace JeopardyGame.Properties {
         public static string lblListOfFriends {
             get {
                 return ResourceManager.GetString("lblListOfFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a chat.
+        /// </summary>
+        public static string lblLiveChat {
+            get {
+                return ResourceManager.GetString("lblLiveChat", resourceCulture);
             }
         }
         
@@ -574,6 +718,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a sec.
+        /// </summary>
+        public static string lblSecondsAbrevation {
+            get {
+                return ResourceManager.GetString("lblSecondsAbrevation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Settings.
         /// </summary>
         public static string lblSettingsIcon {
@@ -588,6 +741,15 @@ namespace JeopardyGame.Properties {
         public static string lblSpanish {
             get {
                 return ResourceManager.GetString("lblSpanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a spanish.
+        /// </summary>
+        public static string lblSpanishMexico {
+            get {
+                return ResourceManager.GetString("lblSpanishMexico", resourceCulture);
             }
         }
         
@@ -619,11 +781,38 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Wrong code.
+        /// </summary>
+        public static string lblWrongRoomCode {
+            get {
+                return ResourceManager.GetString("lblWrongRoomCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Please enter a username.
         /// </summary>
         public static string LblWrongUserName {
             get {
                 return ResourceManager.GetString("LblWrongUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Yuor Turn.
+        /// </summary>
+        public static string lblYourTurn {
+            get {
+                return ResourceManager.GetString("lblYourTurn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are u sure.
+        /// </summary>
+        public static string LeaveGameConfirmation {
+            get {
+                return ResourceManager.GetString("LeaveGameConfirmation", resourceCulture);
             }
         }
         
@@ -664,6 +853,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a 1.
+        /// </summary>
+        public static string MoreThan1Player {
+            get {
+                return ResourceManager.GetString("MoreThan1Player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a 4.
+        /// </summary>
+        public static string MustBe4Players {
+            get {
+                return ResourceManager.GetString("MustBe4Players", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Individual.
         /// </summary>
         public static string rdbIndividual {
@@ -687,6 +894,15 @@ namespace JeopardyGame.Properties {
         public static string SentEmailIssue {
             get {
                 return ResourceManager.GetString("SentEmailIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There was a problem .
+        /// </summary>
+        public static string ServerErrorMessage {
+            get {
+                return ResourceManager.GetString("ServerErrorMessage", resourceCulture);
             }
         }
         
@@ -723,6 +939,15 @@ namespace JeopardyGame.Properties {
         public static string tbxSignOutGame {
             get {
                 return ResourceManager.GetString("tbxSignOutGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a s.
+        /// </summary>
+        public static string ThereIsAnActiveSession {
+            get {
+                return ResourceManager.GetString("ThereIsAnActiveSession", resourceCulture);
             }
         }
         
@@ -790,6 +1015,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a last round.
+        /// </summary>
+        public static string txbLastRoundInstruction {
+            get {
+                return ResourceManager.GetString("txbLastRoundInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Search.
         /// </summary>
         public static string txbPromtTextSerarch {
@@ -831,6 +1065,15 @@ namespace JeopardyGame.Properties {
         public static string txbWarningTitle {
             get {
                 return ResourceManager.GetString("txbWarningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a changes saved.
+        /// </summary>
+        public static string UserChangesSaved {
+            get {
+                return ResourceManager.GetString("UserChangesSaved", resourceCulture);
             }
         }
         

@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p = "clr-namespace:JeopardyGame.Properties"
-      xmlns:cu = "clr-namespace:JeopardyGame.UserControls"
       xmlns:local="clr-namespace:JeopardyGame.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
@@ -19,7 +18,7 @@
             <Image HorizontalAlignment="Left" Height="229" 
                Width="400" Margin="46,0,0,0" VerticalAlignment="Top" 
                Source="{StaticResource LogoJeopardyIcon}" RenderTransformOrigin="0.914,0.526"/>
-            <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeRoom}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="58" Width="auto" HorizontalAlignment="Center"/>
+            <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeDescrip}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="58" Width="auto" HorizontalAlignment="Center"/>
             <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="792,39,0,0"/>
             <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="94,218,0,0"/>
             <CheckBox Content="{x:Static p:Resources.rdbTeam}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" FontSize="30" x:Name="chbTeamUp" Margin="260,281,741,447" Width="auto" Checked="ClickTeamUp" Unchecked="ClickNoTeamUp">

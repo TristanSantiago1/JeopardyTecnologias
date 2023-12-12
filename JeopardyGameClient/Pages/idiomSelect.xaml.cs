@@ -46,16 +46,16 @@ namespace JeopardyGame.Pages
             if (selectedLanguage == "es-MX")
             {
                 lblGameLanguaje.Content = Properties.Resources.lblUserNameLogIn;
-                lblSpanish.Content = Properties.Resources.lblSpanish;
-                lblEnglish.Content = Properties.Resources.lblEnglish;
+                lblSpanish.Content = Properties.Resources.lblSpanishMexico;
+                lblEnglish.Content = Properties.Resources.lblEnglishEU;
 
 
             }
             else if (selectedLanguage == "en")
             {
                 lblGameLanguaje.Content = Properties.Resources.lblUserNameLogIn;
-                lblSpanish.Content = Properties.Resources.lblSpanish;
-                lblEnglish.Content = Properties.Resources.lblEnglish;
+                lblSpanish.Content = Properties.Resources.lblSpanishMexico;
+                lblEnglish.Content = Properties.Resources.lblEnglishEU;
             }
         }
         private void LoadSelectedLanguage()

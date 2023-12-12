@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:JeopardyGame.Pages"
+      xmlns:p="clr-namespace:JeopardyGame.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="770" d:DesignWidth="1300"
       Title="GameBoard">
@@ -67,13 +68,13 @@
 
             <Grid x:Name="grdBet" Visibility="Hidden"  Background="White" Opacity="0.80">
                 <Border Margin="94,135,84,313" CornerRadius="13" Background="#42384F">
-                    <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="Ultima ronda, ingresa cuanto vas a apostar, no puede ser mayor a tus puntos actuales"/>
+                    <TextBlock FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="White" Text="{x:Static p:Resources.txbLastRoundInstruction}"/>
                 </Border>
                 <Border  Margin="358,348,369,125" Background="#FF41B241" CornerRadius="13">
                     <TextBox x:Name="txbPointsToBet" Background="White" Margin="35" FontSize="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" PreviewTextInput="TxbBetPointsTextInput"/>
                 </Border>
                 <Border Margin="448,538,469,31" Background="#FF41B241" CornerRadius="13">
-                    <Button x:Name="bttConfirmBet" Background="Transparent" Content="Confirmar" Foreground="White" FontSize="25" Click="ClickConfirmBet"/>
+                    <Button x:Name="bttConfirmBet" Background="Transparent" Content="{x:Static p:Resources.bttContinue}" Foreground="White" FontSize="25" Click="ClickConfirmBet"/>
                 </Border>
             </Grid>
 
@@ -124,7 +125,7 @@
             
             <StackPanel x:Name="stpTurnLigth" Height="53" Orientation="Horizontal" Margin="79,579,665,0">
                 <Ellipse x:Name="ellYourTurn"  Height="50" Margin="10, 0,10,0" Stroke="Black" Fill="Gray" StrokeThickness="3" VerticalAlignment="Top" Width="50" />
-                <Label  Height="50" Width="270" Content="Your Turn" FontSize="25" Foreground="White"/>
+                <Label  Height="50" Width="270" Content="{x:Static p:Resources.lblYourTurn}" FontSize="25" Foreground="White"/>
             </StackPanel>
 
             <Image Source="{StaticResource LeaveGameIcon}" Margin="7,596,1049,10" MouseDown="ClickLeaveGame"/>

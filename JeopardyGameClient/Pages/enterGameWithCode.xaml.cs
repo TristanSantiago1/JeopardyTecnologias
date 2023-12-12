@@ -21,7 +21,9 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class enterGameWithCode : Page
     {
-        private Window mainMenu; 
+        private Window mainMenu;
+        private Window dialogMessage;
+
         public enterGameWithCode(Window mainMenu)
         {
             InitializeComponent();
@@ -43,7 +45,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                new ErrorMessageDialogWindow("ERROR", "Ingresa un codigo valido", Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongRoomCode, Application.Current.MainWindow);
             }
         }
 

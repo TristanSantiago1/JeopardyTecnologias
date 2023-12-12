@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Media;
-using Color = System.Windows.Media.Color;
 using Label = System.Windows.Controls.Label;
 using Button = System.Windows.Controls.Button;
 using System.Windows;

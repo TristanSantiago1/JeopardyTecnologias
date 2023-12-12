@@ -11,14 +11,14 @@
         <Grid Margin="0,0,0,-6" Background="White" >
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
 
-                <StackPanel Margin="56,-2,-12,13" >
-                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="330" />
-                    <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="240" Height="34"/>
-                </StackPanel>
+                <Grid Margin="108,-2,2,36" >
+                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Margin="0,0,1,71" />
+                    <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="240" Margin="25,40,25,8"/>
+                </Grid>
 
                 <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Width="68" Margin="166,109,166,8"  >
                     <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttAccept}" FontStretch="Expanded" Click="ClickAcceptButton"
-                        Style="{StaticResource ButtonConfirmationStyle}" Background="#592C75" Margin="-2,-2,-29,-2" />
+                        Style="{StaticResource ButtonConfirmationStyle}" Background="#592C75" Margin="0" />
                 </Border>
             </Grid>
             <Image HorizontalAlignment="Left" Height="75" Margin="32,0,0,0" VerticalAlignment="Center" Width="73" Source="{StaticResource InformationIcon}"/>

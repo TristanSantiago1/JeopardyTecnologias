@@ -50,13 +50,16 @@ namespace JeopardyGame.Helpers
                     ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException);
                     break;
                 case ExceptionDictionary.UNSUCCESFULL_EVENT:
-                    ShowErrorMessage("j", "k");
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle, message);
                     break;
                 case ExceptionDictionary.NULL_PARAEMETER:
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.MessageEntityException);
                     break;                
                 case ExceptionDictionary.SMTP_EXCEPTION:
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.GenericEmailIssue);
                     break;              
                 default:
+                    ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.MessageEntityException);
                     break;                
             }
         }
@@ -65,10 +68,12 @@ namespace JeopardyGame.Helpers
         {
             if (needToReload)
             {
+                ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.ServerErrorMessage);
                 GototLogin(currentWindow);
             }
             else
             {
+                ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.ServerErrorMessage);
                 GotoMainMenu((PrincipalWindow)currentWindow);
             }
         }
@@ -89,7 +94,7 @@ namespace JeopardyGame.Helpers
 
         private static void ShowErrorMessage(String title, String message)
         {
-            new DialogWindows.ErrorMessageDialogWindow(title, message, Application.Current.MainWindow);          
+            Window dialogMessage = new DialogWindows.ErrorMessageDialogWindow(title, message, Application.Current.MainWindow);          
         }
 
     }

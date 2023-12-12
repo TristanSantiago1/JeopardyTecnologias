@@ -307,7 +307,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                ExceptionHandler.HandleException(userIsNew.CodeEvent, "Mensaje");
+                ExceptionHandler.HandleException(userIsNew.CodeEvent, string.Empty);
                 return DISALLOWED_VALUES;
             }
 
@@ -339,7 +339,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                ExceptionHandler.HandleException(emailIsNew.CodeEvent, "Mensaje");
+                ExceptionHandler.HandleException(emailIsNew.CodeEvent, string.Empty);
                 return DISALLOWED_VALUES;
             }           
         }

@@ -1,13 +1,5 @@
-﻿using JeopardyGame.Pages;
-using JeopardyGame.ServidorServiciosJeopardy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System;
 using System.Windows;
-using System.Reflection.Emit;
 using System.Windows.Controls;
 
 namespace JeopardyGame.Helpers

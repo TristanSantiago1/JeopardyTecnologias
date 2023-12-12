@@ -32,15 +32,6 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(logInPage);
             NavigationService.RemoveBackEntry();
         }
-
-        private void CLickButtonInvite(object sender, RoutedEventArgs e)
-        {
-
-            Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
-            codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            codeWindow.Show();
-            enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this));
-            codeWindow.contentFrame.NavigationService.Navigate(codePage);
-        }
+      
     }
 }

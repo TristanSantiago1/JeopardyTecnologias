@@ -1,27 +1,15 @@
 ﻿using JeopardyGame.DialogWindows;
 using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
-using JeopardyGame.UserControls;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Application = System.Windows.Application;
 using Label = System.Windows.Controls.Label;
-using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 
 namespace JeopardyGame.Pages
 {
@@ -95,7 +83,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, "Error", Window.GetWindow(this));
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ErrorJoiningLobby, Window.GetWindow(this));
                     return;
                 }
                 chbTeamUp.IsEnabled = false;
@@ -190,7 +178,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, "Tehan eliminado del lobby", Window.GetWindow(this));
+                    new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.KickedFromLobby, Window.GetWindow(this));
                     CloseWindow();
                 }
             }
@@ -256,7 +244,7 @@ namespace JeopardyGame.Pages
                 else
                 {
                     chbTeamUp.IsChecked = false;
-                    new ErrorMessageDialogWindow("Error", "Deben haber almenos 4 jugadores", Window.GetWindow(this));
+                    new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.MustBe4Players, Window.GetWindow(this));
                 }
             }
         }
@@ -397,7 +385,7 @@ namespace JeopardyGame.Pages
 
         public void DissolvingLobby()
         {
-            new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, "Se ha cancelado la partida", Window.GetWindow(this));
+            new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this));
             CloseWindow();
         }
 
@@ -462,12 +450,16 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                   new ErrorMessageDialogWindow("Error", "Deben de haber 2 jugadore spro equipo", Window.GetWindow(this));
+                   new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources._2PlayerByTeam, Window.GetWindow(this));
                 }
+            }
+            else if(currentPlayerInLobby.Count > 1)
+            {
+                CallMethodToStartGame();
             }
             else
             {
-                CallMethodToStartGame();
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MoreThan1Player, Window.GetWindow(this));
             }
         }
 

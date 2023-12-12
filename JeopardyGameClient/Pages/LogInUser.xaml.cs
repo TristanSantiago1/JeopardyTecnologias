@@ -69,31 +69,35 @@ namespace JeopardyGame.Pages
                     var result = proxyServer.ValidateCredentials(userValidate);                    
                     if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || result.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                     {
-                        ConsultInformationClient consultInformationClient = new ConsultInformationClient();
-                        var userConsulted = consultInformationClient.ConsultUserByUserName(userValidate.UserName);
-                        var isAlreadyConnected = proxyServer.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.IdUser);
-                        proxyServer.Close();
-                        if (result.ObjectSaved == RIGTH_CREDENTIALS && isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
+                        
+                        if (result.ObjectSaved == RIGTH_CREDENTIALS)
                         {
-                            DoLogin(userValidate.UserName);
+                            ConsultInformationClient consultInformationClient = new ConsultInformationClient();
+                            var userConsulted = consultInformationClient.ConsultUserByUserName(userValidate.UserName);
+                            var isAlreadyConnected = proxyServer.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.IdUser);
+                            proxyServer.Close();
+                            if(isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                DoLogin(userValidate.UserName);
+                            }
+                            else
+                            {
+                                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ThereIsAnActiveSession, Application.Current.MainWindow);
+                            }                            
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
-                            new ErrorMessageDialogWindow("ERROR", "Invalid credentials, please try again", Application.Current.MainWindow);
-                        }
-                        else if(isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
-                        {
-                            new ErrorMessageDialogWindow("ERROR", "Ya Hay una sesion iniciada", Application.Current.MainWindow);
-                        }
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.InvalidCredentials, Application.Current.MainWindow);
+                        }                       
                         else
                         {
-                            ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
+                            ExceptionHandler.HandleException(result.CodeEvent, string.Empty);
                             //LOGICA DE SI OCURRE LA EXPTION   
                         }
                     }
                     else
                     {
-                        ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
+                        ExceptionHandler.HandleException(result.CodeEvent, string.Empty);
                         //LOGICA DE SI OCURRE LA EXPTION                
 
                     }
@@ -147,13 +151,13 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(currentPlayer.CodeEvent, "Mensaje");
+                    ExceptionHandler.HandleException(currentPlayer.CodeEvent, string.Empty);
                     //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
                 }
             }
             else
             {
-                ExceptionHandler.HandleException(currentUser.CodeEvent, "Mensaje");
+                ExceptionHandler.HandleException(currentUser.CodeEvent, string.Empty);
                 //LOGICA DE SI OCURRE LA EXPTION
             }
         }

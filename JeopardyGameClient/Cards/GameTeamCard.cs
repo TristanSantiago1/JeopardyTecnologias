@@ -1,10 +1,6 @@
 ﻿using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
@@ -109,11 +105,11 @@ namespace JeopardyGame.Cards
 
         private void SetAvatarImage()
         {
-            avatarPlayer1.Source = new BitmapImage(new Uri(GetHostImage.GetAvatrImage(playerOfCardNumberOne.IdAvatar), UriKind.Relative));
+            avatarPlayer1.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberOne.IdAvatar), UriKind.Relative));
             avatarPlayer1.Margin = new System.Windows.Thickness(0, 2, 2, 190);
             avatarPlayer1.Height = 70;
             avatarPlayer1.Width = 70;
-            avatarPlayer2.Source = new BitmapImage(new Uri(GetHostImage.GetAvatrImage(playerOfCardNumberTwo.IdAvatar), UriKind.Relative));
+            avatarPlayer2.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberTwo.IdAvatar), UriKind.Relative));
             avatarPlayer1.Margin = new System.Windows.Thickness(190, 2, 2, 0);
             avatarPlayer2.Height = 70;
             avatarPlayer2.Width = 70;

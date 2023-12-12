@@ -9,10 +9,7 @@
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="{StaticResource BlackBricksBackGroundIcon}"/>
-        </Grid.Background>
-        <Image HorizontalAlignment="Left" Height="135" 
-               Width="261" Margin="296,10,0,0" VerticalAlignment="Top" 
-               Source="{StaticResource LogoJeopardyIcon}"/>     
+        </Grid.Background>   
         <Frame x:Name="contentFrame" NavigationUIVisibility="Hidden"/>
         <Frame x:Name="overlayFrame" NavigationUIVisibility="Hidden" IsHitTestVisible="False" Background="Transparent"/>
     </Grid>

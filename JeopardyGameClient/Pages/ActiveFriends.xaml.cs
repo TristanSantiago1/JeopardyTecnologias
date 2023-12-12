@@ -30,6 +30,8 @@ namespace JeopardyGame.Pages
         private LobbyPage lobbyPage;
         public event EventHandler InviteButtonClicked;
         public const int NULL_INT_VALUE = 0;
+        private Window dialogMessage;
+
         public ActiveFriends()
         {
             InitializeComponent();                                   
@@ -85,14 +87,14 @@ namespace JeopardyGame.Pages
                 foreach (var item in friendList)
                 {
                     bool state = item.Value.idStatusOfAvailability == AVAILABLE_STATUS;
-                    FriendCard friendCard = new FriendCard(item.Value.Name, state, "Invite");
+                    FriendCard friendCard = new FriendCard(item.Value.Name, state, Properties.Resources.bttInvite);
                     friendCard.InviteButtonClicked += (sender, e) =>
                     {
                         string friendEmail = item.Value.EmailAddress;
                         string subject = Properties.Resources.txbTitleEmailInvitation;
                         string body = Properties.Resources.tbxBodyInvitation + " "+ $"{roomCode}";
                         SendEmail(friendEmail, subject, body);
-                        new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
                     };
 
                     stcFriendList.Children.Add(friendCard);
@@ -121,13 +123,13 @@ namespace JeopardyGame.Pages
 
             if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                ExceptionHandler.HandleException(sentEmailResult.CodeEvent, "Mensaje");
-                new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                ExceptionHandler.HandleException(sentEmailResult.CodeEvent, String.Empty);
+                dialogMessage =  new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
             }
 
             if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
             {
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                dialogMessage =  new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
                 
             }
         }

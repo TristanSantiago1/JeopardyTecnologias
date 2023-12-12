@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="2PlayerByTeam" xml:space="preserve">
+    <value>Deben haber 2 jugadores por equipo</value>
+  </data>
   <data name="btnChoseImage" xml:space="preserve">
     <value>Seleccionar imagen</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="bttGuest" xml:space="preserve">
     <value>Invitado</value>
   </data>
+  <data name="bttInvite" xml:space="preserve">
+    <value>Invitar</value>
+  </data>
   <data name="bttNewGame" xml:space="preserve">
     <value>Nueva partida</value>
   </data>
@@ -195,6 +201,42 @@
   <data name="EmailSubjectCode" xml:space="preserve">
     <value>Codigo de Verificación</value>
   </data>
+  <data name="ErrorJoiningLobby" xml:space="preserve">
+    <value>No fue posible unirse al lobby</value>
+  </data>
+  <data name="GameCancelled" xml:space="preserve">
+    <value>La partida fue cancelada.</value>
+  </data>
+  <data name="GameFinished" xml:space="preserve">
+    <value>La partida ha terminado.</value>
+  </data>
+  <data name="GenericEmailIssue" xml:space="preserve">
+    <value>Hubo un problema al enviar el correo.</value>
+  </data>
+  <data name="HostCategoriesPresentation" xml:space="preserve">
+    <value>Las categoria para la ronda numero * son: \n 1 \n 2 \n 3 \n  4 \n  Comencemos.</value>
+  </data>
+  <data name="HostRoun2Presentation" xml:space="preserve">
+    <value>Ahora es tiempo de la segunda ronda, recuerda que los puntos valen dobles.</value>
+  </data>
+  <data name="HostRound1Presentation" xml:space="preserve">
+    <value>Sean bienvenidos a el Jeopardy del dia, Yo soy su anfitrion *, empecemos la priemra ronda</value>
+  </data>
+  <data name="HostRound3Presentation" xml:space="preserve">
+    <value>Ahora es tiempo de la ronda final y la pregunta final, recuerda apostar tantos puntos como puedas.</value>
+  </data>
+  <data name="InvalidCredentials" xml:space="preserve">
+    <value>Credenciales invalidas, por favor intentalo de nuevo</value>
+  </data>
+  <data name="KickedFromLobby" xml:space="preserve">
+    <value>Te han sacado del lobby.</value>
+  </data>
+  <data name="lblBanConfirmationMessage" xml:space="preserve">
+    <value>¿Estás seguro que quieres bannear a este usuario?</value>
+  </data>
+  <data name="lblBaneUserTitle" xml:space="preserve">
+    <value>Bannear Usuario</value>
+  </data>
   <data name="lblCodeDescrip" xml:space="preserve">
     <value>Codigo :</value>
   </data>
@@ -216,6 +258,10 @@
   <data name="lblEnglish" xml:space="preserve">
     <value>Inglés</value>
   </data>
+  <data name="lblEnglishEU" xml:space="preserve">
+    <value>Ingles 
+EU</value>
+  </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
     <value>Error : No fue posible rgistrar al ususario </value>
   </data>
@@ -227,6 +273,9 @@
   </data>
   <data name="lblListOfFriends" xml:space="preserve">
     <value>Lista amigos</value>
+  </data>
+  <data name="lblLiveChat" xml:space="preserve">
+    <value>Chat en vivo</value>
   </data>
   <data name="lblModalityGame" xml:space="preserve">
     <value>Modalidad de juego:</value>
@@ -285,11 +334,18 @@
   <data name="lblResentCode" xml:space="preserve">
     <value>Reenviar Codigo en : </value>
   </data>
+  <data name="lblSecondsAbrevation" xml:space="preserve">
+    <value>Seg</value>
+  </data>
   <data name="lblSettingsIcon" xml:space="preserve">
     <value>Ajustes</value>
   </data>
   <data name="lblSpanish" xml:space="preserve">
     <value>Español</value>
+  </data>
+  <data name="lblSpanishMexico" xml:space="preserve">
+    <value>Español
+Mexico</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>
@@ -300,8 +356,17 @@
   <data name="lblWinnerList" xml:space="preserve">
     <value>Mejores jugadores</value>
   </data>
+  <data name="lblWrongRoomCode" xml:space="preserve">
+    <value>Ingresa un codigo valido</value>
+  </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>
+  </data>
+  <data name="lblYourTurn" xml:space="preserve">
+    <value>Tu Turno</value>
+  </data>
+  <data name="LeaveGameConfirmation" xml:space="preserve">
+    <value>¿Estás seguro que deseas abandonar la partida?</value>
   </data>
   <data name="MessageEntityException" xml:space="preserve">
     <value>Ocurrio un oroblema al realizar la operación en la base de datos, intentelo mas tarde.</value>
@@ -315,6 +380,12 @@
   <data name="MessageSQLException" xml:space="preserve">
     <value>Ocurrio un problema al conectarse a la base de datos, intentelo mas mas tarde</value>
   </data>
+  <data name="MoreThan1Player" xml:space="preserve">
+    <value>¿No tienes amigos?, Invita a alguien, Deben haber al menos 2 jugadores para empezar.</value>
+  </data>
+  <data name="MustBe4Players" xml:space="preserve">
+    <value>Deben haber 4 jugaores para poder hacer equipos.</value>
+  </data>
   <data name="rdbIndividual" xml:space="preserve">
     <value>Individual</value>
   </data>
@@ -323,6 +394,9 @@
   </data>
   <data name="SentEmailIssue" xml:space="preserve">
     <value>Ocurrio un problema al enviar el codigó de verificación, intentelo de nuevo o verifique su correo.</value>
+  </data>
+  <data name="ServerErrorMessage" xml:space="preserve">
+    <value>Hubo un problema con el servidor.</value>
   </data>
   <data name="tbxBodyInvitation" xml:space="preserve">
     <value>¡Hola! Te invito a unirte a mi partida. El código es:</value>
@@ -335,6 +409,9 @@
   </data>
   <data name="tbxSignOutGame" xml:space="preserve">
     <value>¿Estás seguro de que deseas cancelar la partida?</value>
+  </data>
+  <data name="ThereIsAnActiveSession" xml:space="preserve">
+    <value>Ya hay una sesión activa que usa esas credenciales.</value>
   </data>
   <data name="txbCodeInstructions" xml:space="preserve">
     <value>Se ha enviado un codigo a tu correo electronico, por favor, revisalo e ingresa el codigo.</value>
@@ -357,20 +434,26 @@
   <data name="txbInformationMessage" xml:space="preserve">
     <value>El usuario ha sido baneado</value>
   </data>
+  <data name="txbInformationTitle" xml:space="preserve">
+    <value>INFORMACIÓN</value>
+  </data>
+  <data name="txbLastRoundInstruction" xml:space="preserve">
+    <value>Ultima ronda, ingresa tus puntos a apostar, recuerda que no puede ser mayor a los que tienes,</value>
+  </data>
   <data name="txbPromtTextSerarch" xml:space="preserve">
     <value>Buscar</value>
   </data>
   <data name="txbTitleEmailInvitation" xml:space="preserve">
     <value>Invitación a la partida</value>
   </data>
-  <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
-    <value>INFORMACIÓN</value>
-  </data>
   <data name="txbWarningMessCloseWin" xml:space="preserve">
     <value>¿Estas seguro que deseas cancelar el proceso?</value>
   </data>
   <data name="txbWarningTitle" xml:space="preserve">
     <value>Cuidado</value>
+  </data>
+  <data name="UserChangesSaved" xml:space="preserve">
+    <value>Se ha guardado los cmabios del usuario correctamente</value>
   </data>
   <data name="WrongCode" xml:space="preserve">
     <value>El codigo ingresado no es correcto, verificalo o intentalo de nuevo.</value>

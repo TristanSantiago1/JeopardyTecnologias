@@ -31,6 +31,7 @@ namespace JeopardyGame.Pages
         private const int ROUND_ONE = 1;
         private const int ROUND_TWO = 2;
         private const int ROUND_THREE = 3;
+        private readonly string secondsAbbreviation = Properties.Resources.lblSecondsAbrevation;
         private int timeLeft;
         private bool itsTeamGame;
         private readonly int roomCode;
@@ -53,6 +54,7 @@ namespace JeopardyGame.Pages
         private GameActionsClient gameActionsClient;
         private InstanceContext context;
         private readonly UserSingleton userSingleton = UserSingleton.GetMainUser();
+        private Window dialogMessage;
 
 
         public GameBoard(List<QuestionCardInformation> questions, int roomCode, int idLeader)
@@ -203,9 +205,15 @@ namespace JeopardyGame.Pages
             string hostPath = GetHostImage.GetHosImage(1);
             imgHostImage.Source = new BitmapImage(new Uri(hostPath, UriKind.Relative));
             string hostName = System.IO.Path.GetFileNameWithoutExtension(hostPath);
-            txbHostMessage.Text = "Sean Bienvenidos a Jeopardy, yo soy su anfitrion " + hostName + " empecemos con la ronda 1";  
+            txbHostMessage.Text = Properties.Resources.HostRound1Presentation.Replace("*", hostName);  
             await Task.Delay(7000);
-            txbHostMessage.Text = "Las categorias de la ronda 1 son : " + categoriesOfGameRound1[0].EnglishCategoryDescription +", " +categoriesOfGameRound1[1].EnglishCategoryDescription + " y " + categoriesOfGameRound1[2].EnglishCategoryDescription + ". Empecemos";
+            string categoriesPresentation = Properties.Resources.HostCategoriesPresentation;
+            categoriesPresentation = categoriesPresentation.Replace("1", categoriesOfGameRound1[0].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("2", categoriesOfGameRound1[1].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("3", categoriesOfGameRound1[2].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("4", categoriesOfGameRound1[3].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("*", ROUND_ONE.ToString());
+            txbHostMessage.Text = categoriesPresentation;
             await Task.Delay(7000);
             wrpBoardOfCards.Visibility = Visibility.Visible;
             stpTurnLigth.Visibility = Visibility.Visible;
@@ -220,9 +228,15 @@ namespace JeopardyGame.Pages
             wrpBoardOfCards.Visibility = Visibility.Hidden;
             stpTurnLigth.Visibility = Visibility.Hidden;
             grdPresentation.Visibility = Visibility.Visible;           
-            txbHostMessage.Text = "Ahora comencemos el segundo round";
+            txbHostMessage.Text = Properties.Resources.HostRoun2Presentation;
             await Task.Delay(3000);
-            txbHostMessage.Text = "Las categorias de la ronda 2 son : " + categoriesOfGameRound2[0].EnglishCategoryDescription + ", " + categoriesOfGameRound2[1].EnglishCategoryDescription + " y " + categoriesOfGameRound2[2].EnglishCategoryDescription + ". Empecemos";
+            string categoriesPresentation = Properties.Resources.HostCategoriesPresentation;
+            categoriesPresentation = categoriesPresentation.Replace("1", categoriesOfGameRound2[0].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("2", categoriesOfGameRound2[1].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("3", categoriesOfGameRound2[2].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("4", categoriesOfGameRound2[3].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("*", ROUND_TWO.ToString());
+            txbHostMessage.Text = categoriesPresentation; 
             await Task.Delay(7000);
             wrpBoardOfCards.Visibility = Visibility.Visible;
             stpTurnLigth.Visibility = Visibility.Visible;
@@ -236,7 +250,7 @@ namespace JeopardyGame.Pages
             wrpBoardOfCards.Visibility = Visibility.Hidden;
             stpTurnLigth.Visibility = Visibility.Hidden;
             grdPresentation.Visibility = Visibility.Visible;
-            txbHostMessage.Text = "Ahora comencemos el es el momento del round final y la pregunta final ";
+            txbHostMessage.Text = Properties.Resources.HostRound3Presentation;
             await Task.Delay(5000);
             grdBet.Visibility = Visibility.Visible;
             grTimer.Visibility = Visibility.Visible;
@@ -603,7 +617,7 @@ namespace JeopardyGame.Pages
 
         private void ClickLeaveGame(object sender, MouseButtonEventArgs e)
         {
-            if (new ConfirmationDialogWindow("Seguro", "Seguro que quiere dejar la aprtida", Window.GetWindow(this)).CloseWindow)
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.LeaveGameConfirmation, Window.GetWindow(this)).CloseWindow)
             {
                 NotifyLeavingGame();
                 MainMenu mainMenu = new MainMenu();
@@ -646,7 +660,7 @@ namespace JeopardyGame.Pages
         }
         private void  CloseWindow()
         {
-            new InformationMessageDialogWindow("Information", "fin de la partida ", Window.GetWindow(this));
+            new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
             MainMenu mainMenu = new MainMenu();
             this.NavigationService.Navigate(mainMenu);
             NavigationService.RemoveBackEntry();
@@ -664,7 +678,7 @@ namespace JeopardyGame.Pages
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            txbTimer.Text = timeLeft.ToString() + " seg";
+            txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
             if (timeLeft <= 0)
             {
                 if(currentRound != ROUND_THREE)

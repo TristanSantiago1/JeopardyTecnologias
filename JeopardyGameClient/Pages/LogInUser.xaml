@@ -21,8 +21,8 @@
             <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" Margin="422,424,0,0" Width="513" Height="31"/>
             <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}" Margin="422,587,0,0" Width="513" Height="28"/>
             <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="ClickSelectLanguage">
-                <ComboBoxItem Content="English" Tag="en-EU" IsSelected="True"/>
-                <ComboBoxItem Content="Español" Tag="es-MX"/>
+                <ComboBoxItem Content="{x:Static p:Resources.lblEnglish}" Tag="en-EU" IsSelected="True"/>
+                <ComboBoxItem Content="{x:Static p:Resources.lblSpanish}" Tag="es-MX"/>
             </ComboBox>
             <Image Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" Margin="38,38,1275,670" />
             <Image HorizontalAlignment="Center" Height="317" Stretch="Fill"

@@ -69,12 +69,11 @@ namespace JeopardyGame.Pages
 
             if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                new InformationMessageDialogWindow("EXITO", "Se ha guardado los cmabiso del ususario", Application.Current.MainWindow);
+                new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.UserChangesSaved, Application.Current.MainWindow);
             }
             else
             {
-                ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
-                new ErrorMessageDialogWindow("ERROR", "No see ha pordido guardar los cmabiso del ususario", Application.Current.MainWindow);
+                ExceptionHandler.HandleException(result.CodeEvent, String.Empty);
             }
             proxyServer.Close();
         }

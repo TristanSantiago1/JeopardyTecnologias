@@ -37,6 +37,7 @@ namespace JeopardyGame.Helpers
         }
 
     }
+
     public static class GetParent
     {
         public static T FindParent<T>(DependencyObject child) where T : DependencyObject
