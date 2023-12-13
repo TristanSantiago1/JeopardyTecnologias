@@ -134,38 +134,38 @@ namespace JeopardyGame.Pages
         }
 
         private void DoLogin(String userName)
-{
-    ConsultInformationClient proxyConsult = new ConsultInformationClient();
-    var currentUser = proxyConsult.ConsultUserByUserName(userName);
-    if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-    {
-        var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
-        if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
         {
-            
-            if (currentPlayer.ObjectSaved.NoReports >= 3)
+            ConsultInformationClient proxyConsult = new ConsultInformationClient();
+            var currentUser = proxyConsult.ConsultUserByUserName(userName);
+            if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
-                return; 
-            }
+                var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+                if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+            
+                    if (currentPlayer.ObjectSaved.NoReports >= 3)
+                    {
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
+                        return; 
+                    }
 
            
-            InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
-            NotifyAvailability();
-            GoToMainMenu();
+                    InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
+                    NotifyAvailability();
+                    GoToMainMenu();
+                }
+                else
+                {
+                    ExceptionHandler.HandleException(currentPlayer.CodeEvent, "Mensaje");
+                    //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
+                }
+            }
+            else
+            {
+                ExceptionHandler.HandleException(currentUser.CodeEvent, "Mensaje");
+                //LOGICA DE SI OCURRE LA EXPTION
+            }
         }
-        else
-        {
-            ExceptionHandler.HandleException(currentPlayer.CodeEvent, "Mensaje");
-            //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
-        }
-    }
-    else
-    {
-        ExceptionHandler.HandleException(currentUser.CodeEvent, "Mensaje");
-        //LOGICA DE SI OCURRE LA EXPTION
-    }
-}
 
 
         private NotifyUserAvailabilityClient ObtainCallBackChannel()
