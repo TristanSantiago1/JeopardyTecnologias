@@ -30,6 +30,7 @@ namespace JeopardyGame.Pages
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton = UserSingleton.GetMainUser();
         private LobbyActionsClient lobbyActionsClient;
+        private Window dialogMessage;
 
         public LobbyPage()
         {
@@ -83,7 +84,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ErrorJoiningLobby, Window.GetWindow(this));
+                    dialogMessage =  new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ErrorJoiningLobby, Window.GetWindow(this));
                     return;
                 }
                 chbTeamUp.IsEnabled = false;
@@ -178,7 +179,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.KickedFromLobby, Window.GetWindow(this));
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.KickedFromLobby, Window.GetWindow(this));
                     CloseWindow();
                 }
             }
@@ -244,7 +245,7 @@ namespace JeopardyGame.Pages
                 else
                 {
                     chbTeamUp.IsChecked = false;
-                    new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.MustBe4Players, Window.GetWindow(this));
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.MustBe4Players, Window.GetWindow(this));
                 }
             }
         }
@@ -385,7 +386,7 @@ namespace JeopardyGame.Pages
 
         public void DissolvingLobby()
         {
-            new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this));
+            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this));
             CloseWindow();
         }
 
@@ -400,8 +401,7 @@ namespace JeopardyGame.Pages
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
-            frmActiveFriendsAndChat.Content = liveChatUser;
-           // liveChatUser.StartPage(isAdminOfLobby, roomCode, this);            
+            frmActiveFriendsAndChat.Content = liveChatUser;            
             grdActiveUser.Visibility = Visibility.Visible;
         }
         public void CloseLiveChat()
@@ -416,7 +416,6 @@ namespace JeopardyGame.Pages
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
             frmActiveFriendsAndChat.Content = activeUsersControls;
-            //activeUsersControls.StartPage(this);        
             grdActiveUser.Visibility = Visibility.Visible;
         }  
         public void CloseFriendList()
@@ -450,7 +449,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                   new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources._2PlayerByTeam, Window.GetWindow(this));
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources._2PlayerByTeam, Window.GetWindow(this));
                 }
             }
             else if(currentPlayerInLobby.Count > 1)
@@ -459,7 +458,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MoreThan1Player, Window.GetWindow(this));
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MoreThan1Player, Window.GetWindow(this));
             }
         }
 

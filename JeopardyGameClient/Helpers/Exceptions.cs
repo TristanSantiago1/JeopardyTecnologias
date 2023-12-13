@@ -66,19 +66,19 @@ namespace JeopardyGame.Helpers
 
         public static void HandleCommunicationException(String message, Window currentWindow, bool needToReload)
         {
+
+            ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.ServerErrorMessage);
             if (needToReload)
             {
-                ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.ServerErrorMessage);
-                GototLogin(currentWindow);
+                GotoLogin(currentWindow);
             }
             else
             {
-                ShowErrorMessage(Properties.Resources.txbErrorTitle, Properties.Resources.ServerErrorMessage);
                 GotoMainMenu((PrincipalWindow)currentWindow);
             }
         }
 
-        private static void GototLogin(Window currentWindow)
+        private static void GotoLogin(Window currentWindow)
         {
             PrincipalWindow principalWindow = new PrincipalWindow();
             principalWindow.Show();

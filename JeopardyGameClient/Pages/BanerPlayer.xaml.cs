@@ -33,8 +33,7 @@ namespace JeopardyGame.Pages
             FriendsManagerClient proxyBaneFriend = new FriendsManagerClient();
             UserPOJO userToBan = new UserPOJO();
             var result = proxyBaneFriend.BanUser(userToBan);
-            var infoDialog = new InformationMessageDialogWindow(Properties.Resources.txbInfoBanner, 
-                Properties.Resources.txbInformationMessage, Application.Current.MainWindow);
+            var infoDialog = new InformationMessageDialogWindow(Properties.Resources.txbInfoBanner, Properties.Resources.txbInformationMessage, Application.Current.MainWindow);
             
         }
 

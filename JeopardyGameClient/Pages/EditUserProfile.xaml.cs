@@ -26,7 +26,9 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class EditUserProfile : Page
     {
-        String imageResource = "";
+        private String imageResource = "";
+        private Window dialogMessage;
+
         public EditUserProfile()
         {
             InitializeComponent();
@@ -69,7 +71,7 @@ namespace JeopardyGame.Pages
 
             if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.UserChangesSaved, Application.Current.MainWindow);
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.UserChangesSaved, Application.Current.MainWindow);
             }
             else
             {

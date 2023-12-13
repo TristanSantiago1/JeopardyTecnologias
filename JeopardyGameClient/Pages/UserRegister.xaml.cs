@@ -23,6 +23,8 @@ namespace JeopardyGame.Pages
         private const int ALLOWED_VALUES = 1;
         private const int MINIMUN_PASSWORD_LENGTH = 10;
         private const int MAXIMUM_PASSWORD_LENGTH = 30;
+        private Window dialogMessage;
+
         public UserRegister()
         {
             InitializeComponent();
@@ -296,11 +298,11 @@ namespace JeopardyGame.Pages
                 {
                     if (userIsNew.ObjectSaved == DISALLOWED_VALUES)
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
                     }
                     else
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
                     }
                     return DISALLOWED_VALUES;
                 }
@@ -328,11 +330,11 @@ namespace JeopardyGame.Pages
                 {
                     if (emailIsNew.ObjectSaved == DISALLOWED_VALUES)
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
                     }
                     else
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle,Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle,Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
                     }
                     return DISALLOWED_VALUES;
                 }

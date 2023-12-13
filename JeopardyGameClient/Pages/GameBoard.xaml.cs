@@ -430,7 +430,7 @@ namespace JeopardyGame.Pages
         private async void AnimationSumOrRestPoints(bool isCorrect, int points)
         {
             var playerChoosing = playersInGame.Find(player => player.TurnOfPlayer == currentTurn);
-            int idUserPlayerBody =0;
+            int idUserPlayerBody = 0;
             if (isCorrect)
             {
                 playerChoosing.CurrentPointsOfRound += questionBeingAsked.ValueWorth;
@@ -660,7 +660,7 @@ namespace JeopardyGame.Pages
         }
         private void  CloseWindow()
         {
-            new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
+            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
             MainMenu mainMenu = new MainMenu();
             this.NavigationService.Navigate(mainMenu);
             NavigationService.RemoveBackEntry();

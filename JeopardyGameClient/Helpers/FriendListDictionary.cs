@@ -11,7 +11,7 @@ namespace JeopardyGame.Helpers
         public int IdUser { get; set; }
         public string Name { get; set; }
         public string EmailAddress { get; set; }
-        public int idStatusOfAvailability { get; set; }
+        public int IdStatusOfAvailability { get; set; }
     }
 
     public partial class FriendList
@@ -54,7 +54,7 @@ namespace JeopardyGame.Helpers
                 {
                     if (item.Key == idUser)
                     {
-                        item.Value.idStatusOfAvailability = idStatus;
+                        item.Value.IdStatusOfAvailability = idStatus;
                     }
                 }
             }

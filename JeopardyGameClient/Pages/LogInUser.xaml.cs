@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using JeopardyGame.DialogWindows;
 using Application = System.Windows.Application;
+using Window = System.Windows.Window;
 
 namespace JeopardyGame.Pages
 {
@@ -28,6 +29,7 @@ namespace JeopardyGame.Pages
         private static ActiveFriends activeFriendsInstance = new ActiveFriends();
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
+        private Window dialogMessage;
         public static ActiveFriends ActiveFriendsInstance { get => activeFriendsInstance; set => activeFriendsInstance = value; }
 
         public LogInUser()
@@ -82,12 +84,12 @@ namespace JeopardyGame.Pages
                             }
                             else
                             {
-                                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ThereIsAnActiveSession, Application.Current.MainWindow);
+                                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ThereIsAnActiveSession, Application.Current.MainWindow);
                             }                            
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
-                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.InvalidCredentials, Application.Current.MainWindow);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.InvalidCredentials, Application.Current.MainWindow);
                         }                       
                         else
                         {

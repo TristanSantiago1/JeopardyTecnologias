@@ -64,7 +64,7 @@ namespace JeopardyGame.Pages
                     activeFriend.IdUser = item.IdUser;
                     activeFriend.Name = item.UserName;
                     activeFriend.EmailAddress = item.EmailAddress;
-                    activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
+                    activeFriend.IdStatusOfAvailability = item.IdStatusAvailability;
                     FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
                 }
             }
@@ -86,7 +86,7 @@ namespace JeopardyGame.Pages
             {               
                 foreach (var item in friendList)
                 {
-                    bool state = item.Value.idStatusOfAvailability == AVAILABLE_STATUS;
+                    bool state = item.Value.IdStatusOfAvailability == AVAILABLE_STATUS;
                     FriendCard friendCard = new FriendCard(item.Value.Name, state, Properties.Resources.bttInvite);
                     friendCard.InviteButtonClicked += (sender, e) =>
                     {

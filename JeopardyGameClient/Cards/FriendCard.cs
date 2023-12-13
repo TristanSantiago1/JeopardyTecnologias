@@ -25,7 +25,7 @@ namespace JeopardyGame.Helpers
             SetStackPanelStyle();         
             this.Children.Add(stoNameAndStatus);
             this.Children.Add(brdButton);
-            bttInviteFriend.Click += BttInviteFriend_Click;
+            bttInviteFriend.Click += ClickInviteFriend;
         }
 
         private void SetCardStyle()
@@ -104,7 +104,7 @@ namespace JeopardyGame.Helpers
             brdButton.Child = bttInviteFriend;
 
         }
-        private void BttInviteFriend_Click(object sender, RoutedEventArgs e)
+        private void ClickInviteFriend(object sender, RoutedEventArgs e)
         {
             InviteButtonClicked?.Invoke(this, EventArgs.Empty);
         }

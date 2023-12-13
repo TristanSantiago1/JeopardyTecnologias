@@ -107,15 +107,15 @@ namespace JeopardyGame.Helpers
             {
                 case 1:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F4A100"));
-                    bttLeftFunction.Click += ClicReportUser;
+                    bttLeftFunction.Click += ClickReportUser;
                     break;
                 case 2:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00E6F4"));
-                    bttLeftFunction.Click += ClicAcceptRequest;
+                    bttLeftFunction.Click += ClickAcceptRequest;
                     break;
                 case 3:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00E6F4"));
-                    bttLeftFunction.Click += ClicSendRequest;
+                    bttLeftFunction.Click += ClickSendRequest;
                     break;
                 default:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00E6F4"));
@@ -154,15 +154,15 @@ namespace JeopardyGame.Helpers
             {
                 case 1:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#EF8989"));
-                    bttRightFunction.Click += ClicEliminateFriend;
+                    bttRightFunction.Click += ClickEliminateFriend;
                     break;
                 case 2:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#EF8989"));
-                    bttRightFunction.Click += ClicDeclineRequest;
+                    bttRightFunction.Click += ClickDeclineRequest;
                     break;
                 case 3:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F4A100"));
-                    bttRightFunction.Click += ClicReportUser;
+                    bttRightFunction.Click += ClickReportUser;
                     break;
                 default:
                     backGroundColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F4A100"));
@@ -191,7 +191,7 @@ namespace JeopardyGame.Helpers
             stcButtons.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;   
             stcButtons.VerticalAlignment = System.Windows.VerticalAlignment.Center;
         }
-        private void ClicReportUser(object sender, RoutedEventArgs e)
+        private void ClickReportUser(object sender, RoutedEventArgs e)
         {
             Views.BannerWindow bannerpage = new Views.BannerWindow();
             bannerpage.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
@@ -202,22 +202,22 @@ namespace JeopardyGame.Helpers
 
         }
 
-        private void ClicEliminateFriend(object sender, RoutedEventArgs e)
+        private void ClickEliminateFriend(object sender, RoutedEventArgs e)
         {
             friendManager.EliminateFriend(idUser);
         }
 
-        private void ClicAcceptRequest(object sender, RoutedEventArgs e)
+        private void ClickAcceptRequest(object sender, RoutedEventArgs e)
         {
             friendManager.AcceptFriendRequest(idUser, lblUserName.Content.ToString());
         }
 
-        private void ClicDeclineRequest(object sender, RoutedEventArgs e)
+        private void ClickDeclineRequest(object sender, RoutedEventArgs e)
         {
             friendManager.DeclineFriendRequest(idUser, lblUserName.Content.ToString());
         }
 
-        private void ClicSendRequest(object sender, RoutedEventArgs e)
+        private void ClickSendRequest(object sender, RoutedEventArgs e)
         {
             friendManager.SentFriendRequest(idUser, lblUserName.Content.ToString());
         }
