@@ -1,5 +1,6 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,14 @@ namespace JeopardyGame.Service.ServiceImplementation
                         var channelSaved = ActiveUsersDictionary.GetChannelCallBackActiveUser(friend.IdUser);
                         if (channelSaved != null)
                         {
-                            channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().ResponseOfPlayerAvailability(status, idUser);
+                            try
+                            {
+                                channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().ResponseOfPlayerAvailability(status, idUser);
+                            }
+                            catch (CommunicationException ex)
+                            {
+                                ChannelAdministrator.VerifyUserIsStillActive(idUser);
+                            }
                         }
                     }
                 }

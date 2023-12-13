@@ -57,7 +57,7 @@ namespace JeopardyGame.Helpers
 
         private void SetBorderStyle()
         {
-            this.Margin = new System.Windows.Thickness(10, 10, 10, 0);
+            this.Margin = new System.Windows.Thickness(5, 10, 5, 0);
             this.Height = 60;
             this.Width = 262;
             this.BorderBrush = new SolidColorBrush(Colors.CadetBlue);
@@ -97,7 +97,7 @@ namespace JeopardyGame.Helpers
 
         private void SetAvatarImage()
         {
-            avatar.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCard.IdAvatar), UriKind.Relative));
+            avatar.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCard.IdAvatar), UriKind.Absolute));
             avatar.Margin = new System.Windows.Thickness(190,2,2,2);
         }
 

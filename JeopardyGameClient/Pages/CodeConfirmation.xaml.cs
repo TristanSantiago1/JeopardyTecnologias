@@ -101,7 +101,7 @@ namespace JeopardyGame.Pages
                 if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                         SetSingleton();
-                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbUserRegisteredSuccTittle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
                         MainMenu lobby = new MainMenu();
                         this.NavigationService.Navigate(lobby);
                         NavigationService.RemoveBackEntry();                   

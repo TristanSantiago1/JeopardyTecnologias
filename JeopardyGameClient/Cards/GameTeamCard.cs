@@ -33,6 +33,8 @@ namespace JeopardyGame.Cards
             grid.Children.Add(userNamePlayer1);
             grid.Children.Add(points);
             grid.Children.Add(avatarPlayer1);
+            grid.Children.Add(userNamePlayer2);
+            grid.Children.Add(avatarPlayer2);
             this.Child = grid;
         }
 
@@ -58,8 +60,8 @@ namespace JeopardyGame.Cards
         private void SetBorderStyle()
         {
             this.Margin = new System.Windows.Thickness(10, 10, 10, 0);
-            this.Height = 200;
-            this.Width = 262;
+            this.Height = 100;
+            this.Width = 450;
             this.BorderBrush = new SolidColorBrush(Colors.CadetBlue);
             this.Background = color;
         }
@@ -67,23 +69,23 @@ namespace JeopardyGame.Cards
         private void SetStyleGrid()
         {
             grid.Margin = new System.Windows.Thickness(0);
-            grid.Height = 200;
-            grid.Width = 262;
+            grid.Height = 100;
+            grid.Width = 450;
         }
 
         private void SetStyleUserName()
         {
-            userNamePlayer1.Margin = new System.Windows.Thickness(100, 0, 70, 30);
-            userNamePlayer1.Height = 30;
-            userNamePlayer1.Width = 189;
+            userNamePlayer1.Margin = new System.Windows.Thickness(70, 0, 225, 45);
+            userNamePlayer1.Height = 45;
+            userNamePlayer1.Width = 155;
             userNamePlayer1.TextAlignment = System.Windows.TextAlignment.Center;
             userNamePlayer1.FontSize = 20;
             userNamePlayer1.Foreground = new SolidColorBrush(Colors.Black);
             userNamePlayer1.Text = playerOfCardNumberOne.UserName;
 
-            userNamePlayer2.Margin = new System.Windows.Thickness(70, 0, 100, 30);
-            userNamePlayer2.Height = 30;
-            userNamePlayer2.Width = 189;
+            userNamePlayer2.Margin = new System.Windows.Thickness(225, 0, 70, 45);
+            userNamePlayer2.Height = 45;
+            userNamePlayer2.Width = 155;
             userNamePlayer2.TextAlignment = System.Windows.TextAlignment.Center;
             userNamePlayer2.FontSize = 20;
             userNamePlayer2.Foreground = new SolidColorBrush(Colors.Black);
@@ -92,9 +94,9 @@ namespace JeopardyGame.Cards
 
         private void SetStylePoints()
         {
-            points.Margin = new System.Windows.Thickness(70, 30, 70, 0);
-            points.Height = 60;
-            points.Width = 189;
+            points.Margin = new System.Windows.Thickness(70, 45, 70, 0);
+            points.Height = 45;
+            points.Width = 310;
             points.TextAlignment = System.Windows.TextAlignment.Center;
             points.FontSize = 20;
             points.Foreground = new SolidColorBrush(Colors.White);
@@ -105,14 +107,14 @@ namespace JeopardyGame.Cards
 
         private void SetAvatarImage()
         {
-            avatarPlayer1.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberOne.IdAvatar), UriKind.Relative));
-            avatarPlayer1.Margin = new System.Windows.Thickness(0, 2, 2, 190);
-            avatarPlayer1.Height = 70;
+            avatarPlayer1.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberOne.IdAvatar), UriKind.Absolute));            
+            avatarPlayer1.Height = double.NaN;
             avatarPlayer1.Width = 70;
-            avatarPlayer2.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberTwo.IdAvatar), UriKind.Relative));
-            avatarPlayer1.Margin = new System.Windows.Thickness(190, 2, 2, 0);
-            avatarPlayer2.Height = 70;
+            avatarPlayer1.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            avatarPlayer2.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberTwo.IdAvatar), UriKind.Absolute));            
+            avatarPlayer2.Height = double.NaN;
             avatarPlayer2.Width = 70;
+            avatarPlayer2.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
         }
 
         public void UpdatePoints(int nePoints)

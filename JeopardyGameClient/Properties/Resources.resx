@@ -435,6 +435,9 @@
   <data name="txbInformationMessage" xml:space="preserve">
     <value>The user has been banned</value>
   </data>
+  <data name="txbInformationTitle" xml:space="preserve">
+    <value>INFORMATION</value>
+  </data>
   <data name="txbLastRoundInstruction" xml:space="preserve">
     <value>last round</value>
   </data>
@@ -443,9 +446,6 @@
   </data>
   <data name="txbTitleEmailInvitation" xml:space="preserve">
     <value>Invitation to the game</value>
-  </data>
-  <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
-    <value>INFORMATION</value>
   </data>
   <data name="txbWarningMessCloseWin" xml:space="preserve">
     <value>Are your sure, do want to cancell the process?</value>

@@ -16,18 +16,21 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         public static int VerifyUserIsStillActive(int idUser)
         {
             var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUser);
-            try
+            if (channel != null)
             {
-                channel.GetCallbackChannel<INotifyUserAvailabilityCallBack>().VerifyPlayerAvailability();
-                return ExceptionDictionary.UNSUCCESFULL_EVENT;
+                try
+                {
+                    channel.GetCallbackChannel<INotifyUserAvailabilityCallBack>().VerifyPlayerAvailability();
+                    return ExceptionDictionary.UNSUCCESFULL_EVENT;
+                }
+                catch (CommunicationException ex)
+                {
+                    KickUserFromDictionaries(idUser);
+                    return ExceptionDictionary.SUCCESFULL_EVENT;
+                }
             }
-            catch(CommunicationException ex)
-            {
-                KickUserFromDictionaries(idUser);
-                return ExceptionDictionary.SUCCESFULL_EVENT;
-            }
-                
-            
+            KickUserFromDictionaries(idUser);
+            return ExceptionDictionary.SUCCESFULL_EVENT;
         }
 
         public static void KickUserFromDictionaries(int idUser)

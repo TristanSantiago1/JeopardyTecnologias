@@ -1015,6 +1015,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a INFORMATION.
+        /// </summary>
+        public static string txbInformationTitle {
+            get {
+                return ResourceManager.GetString("txbInformationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a last round.
         /// </summary>
         public static string txbLastRoundInstruction {
@@ -1038,15 +1047,6 @@ namespace JeopardyGame.Properties {
         public static string txbTitleEmailInvitation {
             get {
                 return ResourceManager.GetString("txbTitleEmailInvitation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a INFORMATION.
-        /// </summary>
-        public static string txbUserRegisteredSuccTittle {
-            get {
-                return ResourceManager.GetString("txbUserRegisteredSuccTittle", resourceCulture);
             }
         }
         

@@ -132,13 +132,14 @@ namespace JeopardyGame.Service.ServiceImplementation
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat, IGameActions
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat, IGameActions, IChatForTeams
     {
         NotifyUserAvailabilityImplementation NotifyUserAvb = new NotifyUserAvailabilityImplementation();
         NotifyFriendlyActionsImplementation NotifyFriendlyActions = new NotifyFriendlyActionsImplementation();
         LobbyActionsImplementation LobbyActions = new LobbyActionsImplementation();
         LiveChatImplementation LiveChat = new LiveChatImplementation();
         GameActionsImplementation GameActions = new GameActionsImplementation();
+        ChatForTeamsImplementation TeamChat = new ChatForTeamsImplementation();
 
         public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
@@ -150,9 +151,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILobbyActions)LobbyActions).ChangePlayerSide(roomCode, idUserToChangeTeam, newSideTeam);
         }
 
-        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn)
+        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn)
         {
-            ((IGameActions)GameActions).ChooseAnswer(roomCode, idUserSelecting, answerSelected, isCorrect, pointsWorth, currentTurn);
+            ((IGameActions)GameActions).ChooseAnswer(roomCode, idUserSelecting, answerSelected, pointsWorth, currentTurn);
         }
 
         public void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
@@ -207,7 +208,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void FinishGame(int roomCode, int idUserLeader, List<PlayerInGameDataContract> playerInGame)
         {
-            ((IGameActions)GameActions).FinishGame(roomCode, idUserLeader, playerInGame );
+            ((IGameActions)GameActions).FinishGame(roomCode, idUserLeader, playerInGame);
         }
 
         public void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished)
@@ -255,6 +256,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((INotifyUserAvailability)NotifyUserAvb).PlayerIsNotAvailable(idUserDisconnecting);
         }
 
+        public void RegisterForTeamChat(int idUser)
+        {
+            ((IChatForTeams)TeamChat).RegisterForTeamChat(idUser);
+        }
+
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
             return ((INotifyUserActionFriendsManager)NotifyFriendlyActions).RegisterFriendManagerUser(idUserFriendManager);
@@ -266,7 +272,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
         public void SelectQuestionsForGame(int roomCode)
-       {
+        {
             ((ILobbyActions)LobbyActions).SelectQuestionsForGame(roomCode);
         }
 
@@ -280,9 +286,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILiveChat)LiveChat).SendMessage(idUser, roomCode, userName, messageToSend);
         }
 
+        public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend)
+        {
+            ((IChatForTeams)TeamChat).SendMessageTeam(idUser, idTeamMate, userName, messageToSend);
+        }
+
         public void StartGame(int roomCode)
         {
-             ((ILobbyActions)LobbyActions).StartGame(roomCode);
+            ((ILobbyActions)LobbyActions).StartGame(roomCode);
         }
 
         public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar)
@@ -295,11 +306,18 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((INotifyUserActionFriendsManager)NotifyFriendlyActions).UnregisterFriendManagerUser(idUserFriendManager);
         }
 
+        public void UnregisterFromTeamChat(int idUser)
+        {
+            ((IChatForTeams)TeamChat).UnregisterFromTeamChat(idUser);
+        }
+
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
             ((IGameActions)GameActions).UnSubscribeFromGameCallBack(roomCode, idUserUnsubscribing);
         }
     }
+
+
 
     public partial class ServicesReferenceAuthor : IHeartBeat
     {

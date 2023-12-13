@@ -111,16 +111,16 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn)
+        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn)
         {
             var playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
             if (playersPlaying != null)
             {
                 foreach (var playerPlaying in playersPlaying)
                 {
-                    if (playerPlaying.IdUser != idUserSelecting)
+                    if (playerPlaying.gameCallbackChannel != null)
                     {
-                        playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneChooseAnAnswer(answerSelected, isCorrect, pointsWorth);
+                        playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneChooseAnAnswer(answerSelected, idUserSelecting, pointsWorth);
                     }
                 }                
                 NotifyPlayerAboutTurn(playersPlaying, currentTurn);
@@ -152,7 +152,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 foreach (var playerPlaying in activeGame)
                 {
-                    if (playerPlaying.IdUser != idUserSelecting)
+                    if (playerPlaying.gameCallbackChannel != null)
                     {
                         playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneSelectAQuestion(questionToShow, currentRound, idUserSelecting);
                     }

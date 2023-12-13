@@ -125,6 +125,9 @@
     <Compile Include="Pages\PrincipalPage.xaml.cs">
       <DependentUpon>PrincipalPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TeamChat.xaml.cs">
+      <DependentUpon>TeamChat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProfileDataConsult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\TeamChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -348,7 +355,6 @@
     <Resource Include="Images\BackIcon.png" />
     <Resource Include="Images\EditIcon.png" />
     <Resource Include="Images\EditiImagaAvatar.png" />
-    <Resource Include="Images\JeopardyFosfoSign.jpg" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -404,9 +410,6 @@
     <Resource Include="Images\starImage.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\logoWBack.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\winnerIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -417,9 +420,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\buttonChat.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\logoJeopardy2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\sendMessageIcon.png" />

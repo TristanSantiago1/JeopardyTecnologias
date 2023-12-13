@@ -214,7 +214,7 @@
     <value>Hubo un problema al enviar el correo.</value>
   </data>
   <data name="HostCategoriesPresentation" xml:space="preserve">
-    <value>Las categoria para la ronda numero * son: \n 1 \n 2 \n 3 \n  4 \n  Comencemos.</value>
+    <value>Las categoria para la ronda numero * son: \n 1 \n 2 \n 3  \n  Comencemos.</value>
   </data>
   <data name="HostRoun2Presentation" xml:space="preserve">
     <value>Ahora es tiempo de la segunda ronda, recuerda que los puntos valen dobles.</value>

@@ -23,7 +23,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow);
 
         [OperationContract(IsOneWay = true)]
-        void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, bool isCorrect, int pointsWorth, int currentTurn);
+        void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn);
 
         [OperationContract(IsOneWay = true)]
         void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished);
@@ -52,11 +52,11 @@ namespace JeopardyGame.Service.InterfacesSevices
         [OperationContract]
         void ReceiveNotificationAboutTurn(int isYourTurn);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void ResponseSomeOneSelectAQuestion(CurrentQuestionToShowContract questionToShow, int currentRound, int idUser);
 
-        [OperationContract]
-        void ResponseSomeOneChooseAnAnswer(int idAnswerSelected, bool isCorrect, int pointsWorth);
+        [OperationContract(IsOneWay = true)]
+        void ResponseSomeOneChooseAnAnswer(int idAnswerSelected, int idUserAnswering, int pointsWorth);
 
         [OperationContract(IsOneWay = true)]
         void ResponseBeginRound(int isYourTurn, int roundToStart, List<PlayerInGameDataContract> playerInGam);

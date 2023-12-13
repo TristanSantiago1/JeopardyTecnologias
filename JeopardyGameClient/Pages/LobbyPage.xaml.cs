@@ -245,7 +245,7 @@ namespace JeopardyGame.Pages
                 else
                 {
                     chbTeamUp.IsChecked = false;
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.MustBe4Players, Window.GetWindow(this));
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.MustBe4Players, Window.GetWindow(this));
                 }
             }
         }

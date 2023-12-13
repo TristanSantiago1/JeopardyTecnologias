@@ -25,8 +25,8 @@
                 <ComboBoxItem Content="{x:Static p:Resources.lblSpanish}" Tag="es-MX"/>
             </ComboBox>
             <Image Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" Margin="38,38,1275,670" />
-            <Image HorizontalAlignment="Center" Height="317" Stretch="Fill"
-                Width="595" VerticalAlignment="Top" 
+            <Image HorizontalAlignment="Center" Height="269" Stretch="Fill"
+                Width="540" VerticalAlignment="Top" 
                 Source="{StaticResource LogoJeopardyIcon}" Margin="0,38,0,0" RenderTransformOrigin="0.5,0.5"/>
 
             <Label x:Name="lblPasswordLogIn" Content = "{x:Static p:Resources.lblPasswordLogIn}" Style="{StaticResource labelStyleSimple}" 
@@ -51,7 +51,7 @@
             <Image HorizontalAlignment="Left" Height="30" Margin="872,541,0,0" VerticalAlignment="Top" Width="41" Source="{StaticResource EyeIcon}" MouseDown="ClickSeePassword" MouseLeave="HidePassword"/>
             <Label x:Name="lblViewPassword" HorizontalAlignment="Left" Margin="422,531,0,176" Width="443" Height="44" FontSize="27" 
                     BorderBrush="Transparent" Background="Transparent" Foreground="Purple" Visibility="Collapsed"/>
-          
+
         </Grid>
     </Viewbox>
 </Page>

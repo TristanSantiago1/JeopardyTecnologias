@@ -214,7 +214,7 @@
     <value>There was a problem sending the email.</value>
   </data>
   <data name="HostCategoriesPresentation" xml:space="preserve">
-    <value>The categories for the round number * are: \n 1 \n 2 \n 3 \n  4 \n  Let´s Begin</value>
+    <value>The categories for the round number * are: \n 1 \n 2 \n 3 \n  Let´s Begin</value>
   </data>
   <data name="HostRoun2Presentation" xml:space="preserve">
     <value>Now, it is time for the second round, remeber points worth double.</value>
@@ -381,7 +381,7 @@ Mexico</value>
     <value>A issue has ocurred while connecting to de data base, please, try it later.</value>
   </data>
   <data name="MoreThan1Player" xml:space="preserve">
-    <value>Don't you have friends?, Invite someone, ther must be at least player to play.</value>
+    <value>Don't you have friends?, Invite someone, ther must be at least 2 players to play.</value>
   </data>
   <data name="MustBe4Players" xml:space="preserve">
     <value>There must be 4 players in order to make teams.</value>
@@ -434,6 +434,9 @@ Mexico</value>
   <data name="txbInformationMessage" xml:space="preserve">
     <value>The user has been banned</value>
   </data>
+  <data name="txbInformationTitle" xml:space="preserve">
+    <value>INFORMATION</value>
+  </data>
   <data name="txbLastRoundInstruction" xml:space="preserve">
     <value>Last Round, Enter the amount of points you want to bet, remeber it can´t be higher than your actual points.</value>
   </data>
@@ -442,9 +445,6 @@ Mexico</value>
   </data>
   <data name="txbTitleEmailInvitation" xml:space="preserve">
     <value>Invitation to the game</value>
-  </data>
-  <data name="txbUserRegisteredSuccTittle" xml:space="preserve">
-    <value>INFORMATION</value>
   </data>
   <data name="txbWarningMessCloseWin" xml:space="preserve">
     <value>Are your sure, do want to cancell the process?</value>

@@ -8,6 +8,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatForTeams_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IFriendsManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -139,6 +147,30 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_GetPlayersInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_SendMessageTeam_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageTeam" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_SendMessageTeam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessageTeamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_UnregisterFromTeamChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterFromTeamChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_UnregisterFromTeamChat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterFromTeamChatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_RegisterForTeamChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterForTeamChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_RegisterForTeamChat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterForTeamChatResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_ReceiveMessageTeamChat_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeams_ReceiveMessageTeamChat_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChatResponse" />
   </wsdl:message>
   <wsdl:message name="IFriendsManager_GetUserFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserFriends" />
@@ -401,14 +433,8 @@
   <wsdl:message name="IGameActions_ResponseSomeOneSelectAQuestion_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseSomeOneSelectAQuestion" />
   </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseSomeOneSelectAQuestion_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseSomeOneSelectAQuestionResponse" />
-  </wsdl:message>
   <wsdl:message name="IGameActions_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseSomeOneChooseAnAnswer" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseSomeOneChooseAnAnswer_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseSomeOneChooseAnAnswerResponse" />
   </wsdl:message>
   <wsdl:message name="IGameActions_ResponseBeginRound_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseBeginRound" />
@@ -468,6 +494,24 @@
     <wsdl:operation name="GetPlayersInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfo" message="tns:IUserManager_GetPlayersInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/GetPlayersInfoResponse" message="tns:IUserManager_GetPlayersInfo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatForTeams">
+    <wsdl:operation name="SendMessageTeam">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/SendMessageTeam" message="tns:IChatForTeams_SendMessageTeam_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/SendMessageTeamResponse" message="tns:IChatForTeams_SendMessageTeam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterFromTeamChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat" message="tns:IChatForTeams_UnregisterFromTeamChat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChatResponse" message="tns:IChatForTeams_UnregisterFromTeamChat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterForTeamChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat" message="tns:IChatForTeams_RegisterForTeamChat_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/RegisterForTeamChatResponse" message="tns:IChatForTeams_RegisterForTeamChat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessageTeamChat">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChat" message="tns:IChatForTeams_ReceiveMessageTeamChat_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChatResponse" message="tns:IChatForTeams_ReceiveMessageTeamChat_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendsManager">
@@ -687,11 +731,9 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseSomeOneSelectAQuestion">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion" message="tns:IGameActions_ResponseSomeOneSelectAQuestion_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestionResponse" message="tns:IGameActions_ResponseSomeOneSelectAQuestion_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer" message="tns:IGameActions_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswerResponse" message="tns:IGameActions_ResponseSomeOneChooseAnAnswer_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseBeginRound">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseBeginRound" message="tns:IGameActions_ResponseBeginRound_OutputCallbackMessage" />
@@ -798,6 +840,46 @@
     </wsdl:operation>
     <wsdl:operation name="GetPlayersInfo">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/GetPlayersInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatForTeams" type="tns:IChatForTeams">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatForTeams_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendMessageTeam">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/SendMessageTeam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterFromTeamChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterForTeamChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/RegisterForTeamChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessageTeamChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1267,18 +1349,12 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseSomeOneSelectAQuestion">
       <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
       <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -1326,6 +1402,12 @@
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatForTeams" binding="tns:NetTcpBinding_IChatForTeams">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Sevice" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Sevice</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IFriendsManager" binding="tns:NetTcpBinding_IFriendsManager">
