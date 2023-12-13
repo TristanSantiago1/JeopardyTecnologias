@@ -61,17 +61,17 @@ namespace JeopardyGame.Exceptions
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(logFileName);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(logFileName);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(logFileName);
             }
             return Guid.NewGuid().ToString();

@@ -19,7 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static JeopardyGame.Pages.LobbyPage;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
-using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+using JeopardyGame.Exceptions;
 
 namespace JeopardyGame.Pages
 {
@@ -67,7 +67,7 @@ namespace JeopardyGame.Pages
                         activeFriend.IdUser = item.IdUser;
                         activeFriend.Name = item.UserName;
                         activeFriend.EmailAddress = item.EmailAddress;
-                        activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
+                        activeFriend.IdStatusOfAvailability = item.IdStatusAvailability;
                         FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
                     }
                 }
@@ -80,17 +80,17 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Exceptions
 {
-    internal class ExceptionHandler
+    internal class ExceptionHandlerForLogs
     {
         public static void LogException(Exception exception, String Category)
         {
