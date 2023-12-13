@@ -8,6 +8,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -23,37 +24,63 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
+
             GenericClass<int> resultToReturn = new GenericClass<int>();
-            if (idUserFriendManager == NULL_INT_VALUE) 
-            { 
-                return NullParametersHandler.HandleNullParametersService(resultToReturn); 
-            }            
-            var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
-            if (channelSaved == null)
+            try
             {
-                var newCallBackChannel = OperationContext.Current;
-                FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
-                resultToReturn.ObjectSaved = CHANNEL_SAVED;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-            } 
-            else 
-            { 
-                resultToReturn.ObjectSaved = CHANNEL_ALREADY_EXIST;
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT; 
+                if (idUserFriendManager == NULL_INT_VALUE)
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
+                if (channelSaved == null)
+                {
+                    var newCallBackChannel = OperationContext.Current;
+                    FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
+                    resultToReturn.ObjectSaved = CHANNEL_SAVED;
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                    resultToReturn.ObjectSaved = CHANNEL_ALREADY_EXIST;
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                }
             }
-            return resultToReturn;           
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+
+
+
         }
 
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
-            if (idUserFriendManager != NULL_INT_VALUE)
+            try
             {
-                var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
-                if (channelSaved != null)
+                if (idUserFriendManager != NULL_INT_VALUE)
                 {
-                    FriendManagerDictionary.RemoveRegistryOfFriendFromDictionary(idUserFriendManager);                   
-                }               
-            }            
+                    var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
+                    if (channelSaved != null)
+                    {
+                        FriendManagerDictionary.RemoveRegistryOfFriendFromDictionary(idUserFriendManager);
+                    }
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
     }
 
@@ -86,22 +113,33 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();               
             var playerToEliminated = consultInformation.ConsultPlayerByIdUser(idUserToEliminate);
-            if(playerToEliminated.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var affectedRows = FriendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeleting, playerToEliminated.ObjectSaved.IdPlayer);
-                if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (playerToEliminated.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserToEliminate);
-                    if (channelSaved != null)
+                    var affectedRows = FriendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeleting, playerToEliminated.ObjectSaved.IdPlayer);
+                    if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        var userDeleting = consultInformation.ConsultUserByIdPlayer(idPlayerDeleting);
-                        if (userDeleting.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserToEliminate);
+                        if (channelSaved != null)
                         {
-                            channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseEliminationFromFriends(userDeleting.ObjectSaved.IdUser);
-                        }                        
+                            var userDeleting = consultInformation.ConsultUserByIdPlayer(idPlayerDeleting);
+                            if (userDeleting.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseEliminationFromFriends(userDeleting.ObjectSaved.IdUser);
+                            }
+                        }
                     }
                 }
-            }            
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
     }
@@ -112,68 +150,101 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
             var userConsulted = consultInformation.ConsultUserByIdPlayer(idPlayerDeclining);
-            if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var playerDeclined = consultInformation.ConsultPlayerByIdUser(idUserRequesting);
-                if (playerDeclined.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var affectedRows = FriendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeclining, playerDeclined.ObjectSaved.IdPlayer);
-                    if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    var playerDeclined = consultInformation.ConsultPlayerByIdUser(idUserRequesting);
+                    if (playerDeclined.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
-                        if (channelSaved != null)
+                        var affectedRows = FriendsManagerDataOperation.DeleteFriendsRegister(idPlayerDeclining, playerDeclined.ObjectSaved.IdPlayer);
+                        if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, DECLINE_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                            var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
+                            if (channelSaved != null)
+                            {
+                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, DECLINE_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                            }
                         }
                     }
-                }                
+                }
             }
-            
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+
         }
 
         public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
             var userConsulted = consultInformation.ConsultUserByIdPlayer(idPLayerRequesting);
-            if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var playerConsulted = consultInformation.ConsultPlayerByIdUser(idUserRequested);
-                if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var affectedRows = FriendsManagerDataOperation.SendFriendRequest(idPLayerRequesting, playerConsulted.ObjectSaved.IdPlayer);
-                    if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    var playerConsulted = consultInformation.ConsultPlayerByIdUser(idUserRequested);
+                    if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequested);
-                        if (channelSaved != null)
+                        var affectedRows = FriendsManagerDataOperation.SendFriendRequest(idPLayerRequesting, playerConsulted.ObjectSaved.IdPlayer);
+                        if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, SEND_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                            var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequested);
+                            if (channelSaved != null)
+                            {
+                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, SEND_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                            }
                         }
                     }
-                }                
+                }
             }
-            
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+
         }      
 
         public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();            
             var userConsulted = consultInformation.ConsultUserByIdPlayer(idPlayerAccepting);
-            if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var playerConsulted = consultInformation.ConsultPlayerByIdUser(idUserRequesting);
-                if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var affectedRows = FriendsManagerDataOperation.AcceptFriendRequest(idPlayerAccepting, playerConsulted.ObjectSaved.IdPlayer);
-                    if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    var playerConsulted = consultInformation.ConsultPlayerByIdUser(idUserRequesting);
+                    if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
-                        if (channelSaved != null)
+                        var affectedRows = FriendsManagerDataOperation.AcceptFriendRequest(idPlayerAccepting, playerConsulted.ObjectSaved.IdPlayer);
+                        if (affectedRows.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, ACCEPT_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                            var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
+                            if (channelSaved != null)
+                            {
+                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, ACCEPT_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                            }
                         }
                     }
-                }               
-            }            
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
     }

@@ -261,10 +261,10 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
-        public static GenericClass<int> BannerUser(int idPlayer)
+        public static GenericClassServer<int> BannerUser(int idPlayer)
         {
-            GenericClass<int> resultOfOperation = new GenericClass<int>();
-            int numberOfReports = 0;
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            
             try
             {
                 using (var contextBD = new JeopardyDBContainer())
@@ -288,12 +288,26 @@ namespace JeopardyGame.Data.DataAccess
                     
                 }
             }
-            catch (Exception e)
+            catch (DbUpdateException ex)
             {
-                resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                return resultOfOperation;
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-
+            catch (ArgumentNullException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }
     }

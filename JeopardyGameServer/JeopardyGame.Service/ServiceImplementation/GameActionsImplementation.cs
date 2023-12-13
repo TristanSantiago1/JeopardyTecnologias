@@ -30,6 +30,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                 var playerOnLobbySubscribing = lobby.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
+                try { 
                 if (playerOnLobbySubscribing != null)
                 {
                     PlayerPlaying playerJoiningGame = new()
@@ -65,36 +66,64 @@ namespace JeopardyGame.Service.ServiceImplementation
                         NotifyEveryBodyIsReady(activeGameStatus);
                     }
                 }
+            }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }            
         }
 
         private void NotifyEveryBodyIsReady(List<PlayerPlaying> playersPlaying)
         {
-            List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);         
-            foreach (var player in playersPlaying)
+            List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
+            try
             {
-                player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationEverybodyIsPlaying(true, player.TurnOfPlayer, playersInGame);
+                foreach (var player in playersPlaying)
+                {
+                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationEverybodyIsPlaying(true, player.TurnOfPlayer, playersInGame);
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
             var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            if (activeGame != null)
-            {                
-                var playerLeaving = activeGame.Where(player => player.IdUser == idUserUnsubscribing).FirstOrDefault();
-                if (playerLeaving != null)
-                {
-                    int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
-                    activeGame.Remove(playerLeaving);
-                    RearrangeTurns(activeGame, turnLeaving);
-                    NotifySomeOneLeaveTheGame(activeGame);
-                }                  
-            }
-            else
+            try
             {
-                //no se
+                if (activeGame != null)
+                {
+                    var playerLeaving = activeGame.Where(player => player.IdUser == idUserUnsubscribing).FirstOrDefault();
+                    if (playerLeaving != null)
+                    {
+                        int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
+                        activeGame.Remove(playerLeaving);
+                        RearrangeTurns(activeGame, turnLeaving);
+                        NotifySomeOneLeaveTheGame(activeGame);
+                    }
+                }
             }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+
         }
 
         private void RearrangeTurns(List<PlayerPlaying> playersPlaying, int turnLeaving)
@@ -105,9 +134,20 @@ namespace JeopardyGame.Service.ServiceImplementation
         private void NotifySomeOneLeaveTheGame(List<PlayerPlaying> playersPlaying)
         {
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
-            foreach (var player in playersPlaying)
+            try
             {
-                player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationSomeOneLeft(player.TurnOfPlayer, playersInGame);
+                foreach (var player in playersPlaying)
+                {
+                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationSomeOneLeft(player.TurnOfPlayer, playersInGame);
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -116,80 +156,135 @@ namespace JeopardyGame.Service.ServiceImplementation
             var playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
             if (playersPlaying != null)
             {
-                foreach (var playerPlaying in playersPlaying)
+                try
                 {
-                    if (playerPlaying.IdUser != idUserSelecting)
+                    foreach (var playerPlaying in playersPlaying)
                     {
-                        playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneChooseAnAnswer(answerSelected, isCorrect, pointsWorth);
+                        if (playerPlaying.IdUser != idUserSelecting)
+                        {
+                            playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneChooseAnAnswer(answerSelected, isCorrect, pointsWorth);
+                        }
                     }
-                }                
-                NotifyPlayerAboutTurn(playersPlaying, currentTurn);
+                    NotifyPlayerAboutTurn(playersPlaying, currentTurn);
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
         private void NotifyPlayerAboutTurn(List<PlayerPlaying> playersPlaying, int turnJustPassed)
         {
             int yourTurn;
-            if (playersPlaying.Count == turnJustPassed)
+            try
             {
-                yourTurn = FIRST_TURN;
+                if (playersPlaying.Count == turnJustPassed)
+                {
+                    yourTurn = FIRST_TURN;
+                }
+                else
+                {
+                    turnJustPassed++;
+                    yourTurn = turnJustPassed;
+                }
+                foreach (var playerPlaying in playersPlaying)
+                {
+                    playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationAboutTurn(yourTurn);
+                }
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                turnJustPassed++;
-                yourTurn = turnJustPassed;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            foreach (var playerPlaying in playersPlaying)
+            catch (TimeoutException ex)
             {
-               playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationAboutTurn(yourTurn);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
         public void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
         {
             var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            if (activeGame != null)
+            try
             {
-                foreach (var playerPlaying in activeGame)
+                if (activeGame != null)
                 {
-                    if (playerPlaying.IdUser != idUserSelecting)
+                    foreach (var playerPlaying in activeGame)
                     {
-                        playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneSelectAQuestion(questionToShow, currentRound, idUserSelecting);
+                        if (playerPlaying.IdUser != idUserSelecting)
+                        {
+                            playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseSomeOneSelectAQuestion(questionToShow, currentRound, idUserSelecting);
+                        }
                     }
                 }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
         public void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished)
         {            
             int newRound = ERROR;
-            switch (roundFinished)
+            try
             {
-                case ROUND_ONE:
-                    var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                    AssignTurnsByPoints(playerInGame, activeGame);
-                    newRound = ROUND_TWO;
-                    break;
-                case ROUND_TWO:
-                    newRound = ROUND_THREE;
-                    break;
-                case ROUND_THREE:                    
-                    newRound = GAME_FINISHED;
-                    break;
-            }             
-            var playerPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            NotifyPrepareNewRound(playerPlaying, newRound);
+                switch (roundFinished)
+                {
+                    case ROUND_ONE:
+                        var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                        AssignTurnsByPoints(playerInGame, activeGame);
+                        newRound = ROUND_TWO;
+                        break;
+                    case ROUND_TWO:
+                        newRound = ROUND_THREE;
+                        break;
+                    case ROUND_THREE:
+                        newRound = GAME_FINISHED;
+                        break;
+                }
+                var playerPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                NotifyPrepareNewRound(playerPlaying, newRound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void NotifyPrepareNewRound(List<PlayerPlaying> playersPlaying, int newRound)
         {
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
-            if (playersPlaying != null)
+            try
             {
-                foreach (var playerPlaying in playersPlaying)
+                if (playersPlaying != null)
                 {
-                    playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseBeginRound(playerPlaying.TurnOfPlayer, newRound, playersInGame);
+                    foreach (var playerPlaying in playersPlaying)
+                    {
+                        playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseBeginRound(playerPlaying.TurnOfPlayer, newRound, playersInGame);
+                    }
                 }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         } 
 
@@ -197,14 +292,25 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             playerInGame.OrderBy(player => player.CurrentPointsOfRound).ToList();
             int turn = FIRST_TURN;
-            foreach (var player in playerInGame)
+            try
             {
-                var playerChangingTurn = playersPlaying.FirstOrDefault(play => play.IdUser == player.IdUser);
-                if (true)
+                foreach (var player in playerInGame)
                 {
-                    playerChangingTurn.TurnOfPlayer = turn;
+                    var playerChangingTurn = playersPlaying.FirstOrDefault(play => play.IdUser == player.IdUser);
+                    if (true)
+                    {
+                        playerChangingTurn.TurnOfPlayer = turn;
+                    }
+                    turn++;
                 }
-                turn++;
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -213,12 +319,23 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             List<PlayerPlaying> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
             playersPlaying.FirstOrDefault(pla => pla.IdUser == idUser).DidBet = true;
-            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet == true).ToList().Count)
+            try
             {
-                foreach (PlayerPlaying player in playersPlaying)
+                if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet == true).ToList().Count)
                 {
-                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowLastQuestion();
+                    foreach (PlayerPlaying player in playersPlaying)
+                    {
+                        player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowLastQuestion();
+                    }
                 }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -229,26 +346,48 @@ namespace JeopardyGame.Service.ServiceImplementation
             PlayerPlaying specificPlayer = playersPlaying.FirstOrDefault(pla => pla.IdUser == playerAnswering.IdUser);
             //si alguiens e sale durante la ultima regunta, quitarlo del diccionario y verificar playerAwnserin = null
             specificPlayer.DidAnswerLastQuestion = true;
-            if (isCorrect)
+            try
             {
-                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+                if (isCorrect)
+                {
+                    specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+                }
+                else
+                {
+                    specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+                }
+                if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion == true).ToList().Count)
+                {
+                    NotifyPlayersWinner(playersPlaying);
+                }
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion == true).ToList().Count)
+            catch (TimeoutException ex)
             {
-                NotifyPlayersWinner(playersPlaying);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
         private void NotifyPlayersWinner(List<PlayerPlaying> playersPlaying)
         {
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
-            foreach (PlayerPlaying player in playersPlaying)
+            try
             {
-                player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowWinner(playersInGame);
+                foreach (PlayerPlaying player in playersPlaying)
+                {
+                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowWinner(playersInGame);
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -257,18 +396,29 @@ namespace JeopardyGame.Service.ServiceImplementation
             QuestionsManagerImplementation managerImplementation = new QuestionsManagerImplementation();
             managerImplementation.RegistryGamePlayers(roomCode, playerInGame);
             var playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            if (playersPlaying != null)
+            try
             {
-                foreach (var playerPlaying in playersPlaying)
+                if (playersPlaying != null)
                 {
-                    if (playerPlaying.IdUser != idUserLeader)
+                    foreach (var playerPlaying in playersPlaying)
                     {
-                        playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseFinishGame();
+                        if (playerPlaying.IdUser != idUserLeader)
+                        {
+                            playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseFinishGame();
+                        }
                     }
+                    CleanDictionariesAfterGame(roomCode, true);
+                    QuestionsManagerImplementation questionsManager = new();
+                    questionsManager.RegistryGamePlayers(roomCode, playerInGame);
                 }
-                CleanDictionariesAfterGame(roomCode, true);
-                QuestionsManagerImplementation questionsManager = new();
-                questionsManager.RegistryGamePlayers(roomCode, playerInGame);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -288,20 +438,31 @@ namespace JeopardyGame.Service.ServiceImplementation
         private List<PlayerInGameDataContract> GetPlayerInGameDataContractList(List<PlayerPlaying> playersPlaying)
         {
             List<PlayerInGameDataContract> playersInGame = new();
-            foreach (var playing in playersPlaying)
+            try
             {
-                PlayerInGameDataContract playerInGame = new PlayerInGameDataContract()
+                foreach (var playing in playersPlaying)
                 {
-                    IdUser = playing.IdUser,
-                    IdPlayer = playing.IdPlayer,
-                    SideTeam = playing.SideTeam,
-                    TurnOfPlayer = playing.TurnOfPlayer,
-                    UserName = playing.UserName,
-                    CurrentPointsOfRound = playing.FinalPoints,
-                    FinalPosition = playing.FinalPoints,
-                    IdAvatar = playing.IdAvatar,
-                };
-                playersInGame.Add(playerInGame);
+                    PlayerInGameDataContract playerInGame = new PlayerInGameDataContract()
+                    {
+                        IdUser = playing.IdUser,
+                        IdPlayer = playing.IdPlayer,
+                        SideTeam = playing.SideTeam,
+                        TurnOfPlayer = playing.TurnOfPlayer,
+                        UserName = playing.UserName,
+                        CurrentPointsOfRound = playing.FinalPoints,
+                        FinalPosition = playing.FinalPoints,
+                        IdAvatar = playing.IdAvatar,
+                    };
+                    playersInGame.Add(playerInGame);
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return playersInGame;
         }

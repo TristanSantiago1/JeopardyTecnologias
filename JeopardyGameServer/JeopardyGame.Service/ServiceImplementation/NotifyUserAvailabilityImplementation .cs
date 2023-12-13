@@ -20,37 +20,59 @@ namespace JeopardyGame.Service.ServiceImplementation
       
         public void PlayerIsAvailable(int idNewActiveUser)
         {
-            if (idNewActiveUser != NULL_INT_VALUE)
+            try
             {
-                var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
-                if (savedChannel == null)
+                if (idNewActiveUser != NULL_INT_VALUE)
                 {
-                    var newChannel = OperationContext.Current;
-                    ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
-                    NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
+                    var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
+                    if (savedChannel == null)
+                    {
+                        var newChannel = OperationContext.Current;
+                        ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
+                        NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
+                    }
+                    else
+                    {
+                        //Channel ya existe
+                    }
                 }
-                else 
-                {
-                    //Channel ya existe
-                }
-            }           
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         public void PlayerIsNotAvailable(int idUserDisconnecting)
         {
-            if (idUserDisconnecting != NULL_INT_VALUE)
+            try
             {
-                var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserDisconnecting);
-                if (channel != null)
+                if (idUserDisconnecting != NULL_INT_VALUE)
                 {
-                    ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
-                    NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);              
+                    var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserDisconnecting);
+                    if (channel != null)
+                    {
+                        ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
+                        NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);
+                    }
+                    else
+                    {
+                        // channel no existe
+                    }
                 }
-                else
-                {
-                    // channel no existe
-                }
-            }           
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         //FALTA METODO PARA NOTIFICAR CUANDO ENTRE A APRTIDA
@@ -61,21 +83,32 @@ namespace JeopardyGame.Service.ServiceImplementation
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
             FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
             var userConsulted = consultInformation.ConsultUserById(idUser);
-            if(userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var friendsNewUser = friendsManagerImplementation.GetUserFriends(userConsulted.ObjectSaved);
-                if (friendsNewUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    foreach (var friend in friendsNewUser.ObjectSaved)
+                    var friendsNewUser = friendsManagerImplementation.GetUserFriends(userConsulted.ObjectSaved);
+                    if (friendsNewUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        var channelSaved = ActiveUsersDictionary.GetChannelCallBackActiveUser(friend.IdUser);
-                        if (channelSaved != null)
+                        foreach (var friend in friendsNewUser.ObjectSaved)
                         {
-                            channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().ResponseOfPlayerAvailability(status, idUser);
+                            var channelSaved = ActiveUsersDictionary.GetChannelCallBackActiveUser(friend.IdUser);
+                            if (channelSaved != null)
+                            {
+                                channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().ResponseOfPlayerAvailability(status, idUser);
+                            }
                         }
                     }
                 }
-            }                    
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         
