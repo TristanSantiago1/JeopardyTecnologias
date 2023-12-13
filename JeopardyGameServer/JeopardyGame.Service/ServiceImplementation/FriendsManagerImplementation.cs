@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Xml.XPath;
 using JeopardyGame.Data.DataAccess;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -235,31 +236,20 @@ namespace JeopardyGame.Service.ServiceImplementation
             return INACTIVE;
         }
 
-        GenericClass<bool> IFriendsManager.BanUser(UserPOJO user)
+        public GenericClass<int> BanUser(int idPlayer)
         {
-            ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-            var userPOJO = consultInformation.ConsultPlayerById(user.IdUser);
-            User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
-            GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
-            GenericClass<bool> baneUser = FriendsManagerDataOperation.BannerUser(user);
-            if (baneUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            var banerUsers = FriendsManagerDataOperation.BannerUser(idPlayer);
+            if (banerUsers.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                return new GenericClass<bool> { IsSuccess = true, CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT };
+                resultToReturn.ObjectSaved = banerUsers.ObjectSaved;
+                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
             }
             else
             {
-                return new GenericClass<bool> { IsSuccess = false, CodeEvent = baneUser.CodeEvent };
+                resultToReturn.CodeEvent = banerUsers.CodeEvent;
             }
-        }
-
-        GenericClass<bool> IFriendsManager.UnbanUser(UserPOJO user)
-        {
-            throw new NotImplementedException();
-        }
-
-        GenericClass<bool> IFriendsManager.IsUserBanned(UserPOJO user)
-        {
-            throw new NotImplementedException();
+            return resultToReturn;
         }
     }
     

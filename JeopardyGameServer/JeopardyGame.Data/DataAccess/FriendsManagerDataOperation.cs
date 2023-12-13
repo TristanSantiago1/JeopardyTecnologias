@@ -6,6 +6,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -260,27 +261,21 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
-        public static GenericClass<bool> BannerUser(UserPOJO user)
+        public static GenericClass<int> BannerUser(int idPlayer)
         {
-            GenericClass<bool> resultOfOperation = new GenericClass<bool>();
+            GenericClass<int> resultOfOperation = new GenericClass<int>();
+            int numberOfReports = 0;
             try
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    bool isAlreadyBanned = contextBD.Baneos.Any(b => b.Player_IdPlayer == user.IdUser);
+                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
 
-                    if (!isAlreadyBanned)
+                    if (player != null)
                     {
-                        var nuevoBaneo = new Baneo
-                        {
-                            BanTimeBegin = DateTime.Now,
-                            BanTimeFinish = null, 
-                            Player_IdPlayer = user.IdUser,
-                        };
-
-                        contextBD.Baneos.Add(nuevoBaneo);
-                        var resultEvent = contextBD.SaveChanges();
-                        resultOfOperation.ObjectSaved = resultEvent > 0; 
+                        player.NoReports++;
+                        int resultEvent = contextBD.SaveChanges();
+                        resultOfOperation.ObjectSaved = resultEvent; 
                         if (resultEvent > 0)
                         {
                             resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;

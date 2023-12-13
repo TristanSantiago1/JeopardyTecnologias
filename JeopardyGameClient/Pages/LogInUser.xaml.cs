@@ -63,6 +63,7 @@ namespace JeopardyGame.Pages
                 UserValidate userValidate = new UserValidate();
                 userValidate.UserName = txbUserNameLogIn.Text;
                 userValidate.Password = PssPasswordLogIn.Password;
+                UserSingleton mainUser = UserSingleton.GetMainUser();
                 try
                 {
                     UserManagerClient proxyServer = new UserManagerClient();
@@ -79,11 +80,11 @@ namespace JeopardyGame.Pages
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
-                            new ErrorMessageDialogWindow("ERROR", "Invalid credentials, please try again", Application.Current.MainWindow);
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow);
                         }
                         else if(isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            new ErrorMessageDialogWindow("ERROR", "Ya Hay una sesion iniciada", Application.Current.MainWindow);
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
                         }
                         else
                         {
@@ -133,30 +134,39 @@ namespace JeopardyGame.Pages
         }
 
         private void DoLogin(String userName)
+{
+    ConsultInformationClient proxyConsult = new ConsultInformationClient();
+    var currentUser = proxyConsult.ConsultUserByUserName(userName);
+    if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+    {
+        var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+        if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
         {
-            ConsultInformationClient proxyConsult = new ConsultInformationClient();
-            var currentUser = proxyConsult.ConsultUserByUserName(userName);
-            if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            
+            if (currentPlayer.ObjectSaved.NoReports >= 3)
             {
-                var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
-                if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
-                    NotifyAvailability();
-                    GoToMainMenu();
-                }
-                else
-                {
-                    ExceptionHandler.HandleException(currentPlayer.CodeEvent, "Mensaje");
-                    //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
-                }
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
+                return; 
             }
-            else
-            {
-                ExceptionHandler.HandleException(currentUser.CodeEvent, "Mensaje");
-                //LOGICA DE SI OCURRE LA EXPTION
-            }
+
+           
+            InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
+            NotifyAvailability();
+            GoToMainMenu();
         }
+        else
+        {
+            ExceptionHandler.HandleException(currentPlayer.CodeEvent, "Mensaje");
+            //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
+        }
+    }
+    else
+    {
+        ExceptionHandler.HandleException(currentUser.CodeEvent, "Mensaje");
+        //LOGICA DE SI OCURRE LA EXPTION
+    }
+}
+
 
         private NotifyUserAvailabilityClient ObtainCallBackChannel()
         {

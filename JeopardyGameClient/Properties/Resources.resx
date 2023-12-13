@@ -228,11 +228,17 @@
   <data name="lblGameLanguaje" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="lblinvalidCredentials" xml:space="preserve">
+    <value>Invalid credentials, please try again</value>
+  </data>
   <data name="lblInvalidEmail" xml:space="preserve">
     <value>invalid email</value>
   </data>
   <data name="lblListOfFriends" xml:space="preserve">
     <value>Friends list</value>
+  </data>
+  <data name="lblLogInExist" xml:space="preserve">
+    <value>Sorry, you are already logged in with these credentials.</value>
   </data>
   <data name="lblModalityGame" xml:space="preserve">
     <value>Game mode:</value>
@@ -299,6 +305,9 @@
   </data>
   <data name="lblSpanish" xml:space="preserve">
     <value>Spanish</value>
+  </data>
+  <data name="lblUserBanner" xml:space="preserve">
+    <value>Sorry, you already have more than three reports so you will have to create a new account to continue playing.</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Username</value>

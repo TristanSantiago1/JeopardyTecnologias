@@ -394,6 +394,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Invalid credentials, please try again.
+        /// </summary>
+        public static string lblinvalidCredentials {
+            get {
+                return ResourceManager.GetString("lblinvalidCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a invalid email.
         /// </summary>
         public static string lblInvalidEmail {
@@ -408,6 +417,15 @@ namespace JeopardyGame.Properties {
         public static string lblListOfFriends {
             get {
                 return ResourceManager.GetString("lblListOfFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, you are already logged in with these credentials..
+        /// </summary>
+        public static string lblLogInExist {
+            get {
+                return ResourceManager.GetString("lblLogInExist", resourceCulture);
             }
         }
         
@@ -606,6 +624,15 @@ namespace JeopardyGame.Properties {
         public static string lblSpanish {
             get {
                 return ResourceManager.GetString("lblSpanish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, you already have more than three reports so you will have to create a new account to continue playing..
+        /// </summary>
+        public static string lblUserBanner {
+            get {
+                return ResourceManager.GetString("lblUserBanner", resourceCulture);
             }
         }
         

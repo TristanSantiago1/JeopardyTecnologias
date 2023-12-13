@@ -225,11 +225,17 @@
   <data name="lblGameLanguaje" xml:space="preserve">
     <value>Ajustes</value>
   </data>
+  <data name="lblinvalidCredentials" xml:space="preserve">
+    <value>Credenciales inválidas, por favor intenta de nuevo</value>
+  </data>
   <data name="lblInvalidEmail" xml:space="preserve">
     <value>El correo electronico no es valido.</value>
   </data>
   <data name="lblListOfFriends" xml:space="preserve">
     <value>Lista amigos</value>
+  </data>
+  <data name="lblLogInExist" xml:space="preserve">
+    <value>Lo sentimos, ya cuenta con una sesión iniciada con estas credenciales</value>
   </data>
   <data name="lblModalityGame" xml:space="preserve">
     <value>Modalidad de juego:</value>
@@ -296,6 +302,9 @@
   </data>
   <data name="lblSpanish" xml:space="preserve">
     <value>Español</value>
+  </data>
+  <data name="lblUserBanner" xml:space="preserve">
+    <value>Lo sentimos, ya cuenta con más de tres reportes por lo que deberá crearse una nueva cuenta para seguir jugando.</value>
   </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>

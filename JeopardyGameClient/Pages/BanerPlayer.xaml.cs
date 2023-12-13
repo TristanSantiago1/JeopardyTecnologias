@@ -30,11 +30,7 @@ namespace JeopardyGame.Pages
 
         private void clicConfirmBaner(object sender, RoutedEventArgs e)
         {
-            FriendsManagerClient proxyBaneFriend = new FriendsManagerClient();
-            UserPOJO userToBan = new UserPOJO();
-            var result = proxyBaneFriend.BanUser(userToBan);
-            var infoDialog = new InformationMessageDialogWindow(Properties.Resources.txbInfoBanner, 
-                Properties.Resources.txbInformationMessage, Application.Current.MainWindow);
+            
             
         }
 

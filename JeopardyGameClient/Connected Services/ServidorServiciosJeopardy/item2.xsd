@@ -232,20 +232,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfFriendBasicInformation" nillable="true" type="tns:ArrayOfFriendBasicInformation" />
-  <xs:complexType name="GenericClassOfboolean">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="GenericClassOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CodeEvent" type="xs:int" />
-      <xs:element minOccurs="0" name="ObjectSaved" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GenericClassOfboolean" nillable="true" type="tns:GenericClassOfboolean" />
   <xs:complexType name="GenericClassOfArrayOfPlayerInLobbyxY0a3WX4">
     <xs:annotation>
       <xs:appinfo>
@@ -333,6 +319,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMessageChat" nillable="true" type="tns:ArrayOfMessageChat" />
+  <xs:complexType name="GenericClassOfboolean">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericClassOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeEvent" type="xs:int" />
+      <xs:element minOccurs="0" name="ObjectSaved" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericClassOfboolean" nillable="true" type="tns:GenericClassOfboolean" />
   <xs:complexType name="CurrentQuestionToShowContract">
     <xs:sequence>
       <xs:element minOccurs="0" name="IdFirstAnswer" type="xs:int" />
