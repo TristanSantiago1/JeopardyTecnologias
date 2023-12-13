@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Pages
 {
@@ -32,18 +36,36 @@ namespace JeopardyGame.Pages
         private void clickEnterLobbyWithCode(object sender, RoutedEventArgs e)
         {
             int enteredCode;
-            if (int.TryParse(tbxCode.Text, out enteredCode))
+            try
             {
-                Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
-                gameWindow.Show();
-                LobbyPage lobbyPage = new LobbyPage(enteredCode);
-                gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
-                mainMenu.Close();
-                Window.GetWindow(this).Close();
+                if (int.TryParse(tbxCode.Text, out enteredCode))
+                {
+                    Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
+                    gameWindow.Show();
+                    LobbyPage lobbyPage = new LobbyPage(enteredCode);
+                    gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
+                    mainMenu.Close();
+                    Window.GetWindow(this).Close();
+                }
+                else
+                {
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
+                }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                new ErrorMessageDialogWindow("ERROR", "Ingresa un codigo valido", Application.Current.MainWindow);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
@@ -52,8 +74,8 @@ namespace JeopardyGame.Pages
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             if (userSingleton.proxyForAvailability == null)
             {
-                PrincipalPage pagePrincipal = new PrincipalPage();
-                this.NavigationService.Navigate(pagePrincipal);
+                UserRegister userRegistrer = new UserRegister();
+                this.NavigationService.Navigate(userRegistrer);
                 NavigationService.RemoveBackEntry();
             }
             else

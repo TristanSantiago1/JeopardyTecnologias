@@ -17,6 +17,9 @@ using System.Windows.Forms;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using JeopardyGame.DialogWindows;
 using Application = System.Windows.Application;
+using JeopardyGame.Exceptions;
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Pages
 {
@@ -86,22 +89,22 @@ namespace JeopardyGame.Pages
                         {
                             new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
                         }
-                        else
-                        {
-                            ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
-                            //LOGICA DE SI OCURRE LA EXPTION   
-                        }
-                    }
-                    else
-                    {
-                        ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
-                        //LOGICA DE SI OCURRE LA EXPTION                
-
                     }
                 }
-                catch (Exception ex)
-                {                    
-                    //LOGICA DE SI OCURRE LA EXPTION
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
                 }
             }
         }
@@ -135,35 +138,49 @@ namespace JeopardyGame.Pages
 
         private void DoLogin(String userName)
         {
-            ConsultInformationClient proxyConsult = new ConsultInformationClient();
-            var currentUser = proxyConsult.ConsultUserByUserName(userName);
-            if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
-                if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                ConsultInformationClient proxyConsult = new ConsultInformationClient();
+                var currentUser = proxyConsult.ConsultUserByUserName(userName);
+                if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-            
-                    if (currentPlayer.ObjectSaved.NoReports >= 3)
+                    var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+                    if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
-                        return; 
-                    }
 
-           
-                    InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
-                    NotifyAvailability();
-                    GoToMainMenu();
+                        if (currentPlayer.ObjectSaved.NoReports >= 3)
+                        {
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
+                            return;
+                        }
+                        InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
+                        NotifyAvailability();
+                        GoToMainMenu();
+                    }
+                    else
+                    {
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    }
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(currentPlayer.CodeEvent, "Mensaje");
-                    //LOGICA DE SI OCURRE LA EXPTION, QUE SE HACE LIMPIA CAMPOS, REINICIA LA APP ETC.
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
                 }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(currentUser.CodeEvent, "Mensaje");
-                //LOGICA DE SI OCURRE LA EXPTION
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
@@ -275,10 +292,21 @@ namespace JeopardyGame.Pages
             {
                 var heartbeatTimer = new System.Threading.Timer(state => { heartbeatClient.Heartbeat(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
             }
-            catch
-            { 
-                // El servidor se cayo
-            }            
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void VerifyPlayerAvailability()

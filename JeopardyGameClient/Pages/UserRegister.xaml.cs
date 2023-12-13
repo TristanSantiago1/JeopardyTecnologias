@@ -5,11 +5,15 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using JeopardyGame.Views;
 using System;
 using System.Collections.Generic;
+using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Pages
 {
@@ -134,18 +138,37 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
-            if (CheckEmptyFields() == ALLOWED_VALUES &&
-                CheckEmailAddressFormat() == ALLOWED_VALUES &&
-                CheckUserNameExistence(txbUserNameCreateAccount.Text.Trim()) == ALLOWED_VALUES &&
-                CheckEmailAddressExistence(txbEmailCreateAccount.Text.Trim()) == ALLOWED_VALUES)
+            try
             {
-                UserPOJO userToSave = new UserPOJO();
-                userToSave.Name = txbNameCreateAccount.Text.Trim();
-                userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
-                userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
-                userToSave.Password = psbPasswordCreateAccount.Password.Trim();
-                GoToCodeConfirmationWindow(userToSave);
+                if (CheckEmptyFields() == ALLOWED_VALUES &&
+                    CheckEmailAddressFormat() == ALLOWED_VALUES &&
+                    CheckUserNameExistence(txbUserNameCreateAccount.Text.Trim()) == ALLOWED_VALUES &&
+                    CheckEmailAddressExistence(txbEmailCreateAccount.Text.Trim()) == ALLOWED_VALUES)
+                {
+                    UserPOJO userToSave = new UserPOJO();
+                    userToSave.Name = txbNameCreateAccount.Text.Trim();
+                    userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
+                    userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
+                    userToSave.Password = psbPasswordCreateAccount.Password.Trim();
+                    GoToCodeConfirmationWindow(userToSave);
+                }
             }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
+
         }
 
         private int CheckEmptyFields() 
@@ -282,66 +305,102 @@ namespace JeopardyGame.Pages
         }
         private int CheckUserNameExistence(String userName)
         {
-            UserManagerClient proxyServer = new UserManagerClient();
-            GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
-            proxyServer.Close();
-
-            if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+            try
             {
-                if (userIsNew.ObjectSaved == ALLOWED_VALUES)
+                UserManagerClient proxyServer = new UserManagerClient();
+                GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
+                proxyServer.Close();
+
+                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
-                    return ALLOWED_VALUES;
-                }
-                else
-                {
-                    if (userIsNew.ObjectSaved == DISALLOWED_VALUES)
+                    if (userIsNew.ObjectSaved == ALLOWED_VALUES)
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                        return ALLOWED_VALUES;
                     }
                     else
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        if (userIsNew.ObjectSaved == DISALLOWED_VALUES)
+                        {
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                        }
+                        else
+                        {
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        }
+                        return DISALLOWED_VALUES;
                     }
+                }
+                else
+                {
                     return DISALLOWED_VALUES;
                 }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(userIsNew.CodeEvent, "Mensaje");
-                return DISALLOWED_VALUES;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
+            return DISALLOWED_VALUES;
 
         }
 
         private int CheckEmailAddressExistence(String email)
         {
-            UserManagerClient proxyServer = new UserManagerClient();
-            GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
-            proxyServer.Close();
-            if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+            try
             {
-                if (emailIsNew.ObjectSaved == ALLOWED_VALUES)
+                UserManagerClient proxyServer = new UserManagerClient();
+                GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
+                proxyServer.Close();
+                if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
-                    return ALLOWED_VALUES;
-                }
-                else
-                {
-                    if (emailIsNew.ObjectSaved == DISALLOWED_VALUES)
+                    if (emailIsNew.ObjectSaved == ALLOWED_VALUES)
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                        return ALLOWED_VALUES;
                     }
                     else
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle,Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        if (emailIsNew.ObjectSaved == DISALLOWED_VALUES)
+                        {
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                        }
+                        else
+                        {
+                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        }
+                        return DISALLOWED_VALUES;
                     }
+                }
+                else
+                {
                     return DISALLOWED_VALUES;
                 }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(emailIsNew.CodeEvent, "Mensaje");
-                return DISALLOWED_VALUES;
-            }           
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
+            return DISALLOWED_VALUES;
         }
 
         private void HighLightBrokenRule(Label missingRule)

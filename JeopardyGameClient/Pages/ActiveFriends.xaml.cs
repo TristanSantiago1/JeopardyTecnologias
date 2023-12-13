@@ -18,6 +18,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static JeopardyGame.Pages.LobbyPage;
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Pages
 {
@@ -47,31 +49,48 @@ namespace JeopardyGame.Pages
             lobbyPage.CloseFriendList();
         }
 
-        private  void GetFriend()
+        private void GetFriend()
         {
-            FriendsManagerClient proxyFriend = new FriendsManagerClient();
-            ConsultInformationClient proxyUser = new ConsultInformationClient();
-            UserSingleton mainCurrentUser = UserSingleton.GetMainUser();
-            var user = proxyUser.ConsultUserById(mainCurrentUser.IdUser);    
-            var friends = proxyFriend.GetUserFriends(user.ObjectSaved);
-            if(friends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                foreach (var item in friends.ObjectSaved)
+            try {
+                FriendsManagerClient proxyFriend = new FriendsManagerClient();
+                ConsultInformationClient proxyUser = new ConsultInformationClient();
+                UserSingleton mainCurrentUser = UserSingleton.GetMainUser();
+                var user = proxyUser.ConsultUserById(mainCurrentUser.IdUser);
+                var friends = proxyFriend.GetUserFriends(user.ObjectSaved);
+                if (friends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    FriendAvailabilityInformation activeFriend = new FriendAvailabilityInformation();
-                    activeFriend.IdUser = item.IdUser;
-                    activeFriend.Name = item.UserName;
-                    activeFriend.EmailAddress = item.EmailAddress;
-                    activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
-                    FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
+                    foreach (var item in friends.ObjectSaved)
+                    {
+                        FriendAvailabilityInformation activeFriend = new FriendAvailabilityInformation();
+                        activeFriend.IdUser = item.IdUser;
+                        activeFriend.Name = item.UserName;
+                        activeFriend.EmailAddress = item.EmailAddress;
+                        activeFriend.idStatusOfAvailability = item.IdStatusAvailability;
+                        FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
+                    }
                 }
+                else
+                {
+                    new ErrorMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow);
+                }
+                proxyFriend.Close();
+                proxyUser.Close();
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(friends.CodeEvent, string.Empty);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
-            proxyFriend.Close();
-            proxyUser.Close();
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         private void SetFriend()
@@ -121,7 +140,6 @@ namespace JeopardyGame.Pages
 
             if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                ExceptionHandler.HandleException(sentEmailResult.CodeEvent, "Mensaje");
                 new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
             }
 

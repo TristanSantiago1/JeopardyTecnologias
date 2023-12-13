@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Helpers;
+﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Helpers;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+
 
 namespace JeopardyGame.Pages
 {
@@ -33,9 +37,27 @@ namespace JeopardyGame.Pages
 
         public LiveChat()
         {
-            InitializeComponent();
-            InstanceContext context = new InstanceContext(this);
-            proxyChannelCallback = new LiveChatClient(context);
+            try
+            {
+                InitializeComponent();
+                InstanceContext context = new InstanceContext(this);
+                proxyChannelCallback = new LiveChatClient(context);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void StartPage(bool rol, int room, LobbyPage lobby)
@@ -65,20 +87,37 @@ namespace JeopardyGame.Pages
         }
 
         public void LoadChat()
-        {         
+        {
+            try { 
             stpChat.Children.Clear();
-            foreach (var item in messagesInChats)
+                foreach (var item in messagesInChats)
+                {
+                    ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.MessageToSend);
+                    if (item.IdUser == userSingleton.IdUser)
+                    {
+                        chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
+                    }
+                    else
+                    {
+                        chatMessageCard.HorizontalAlignment = HorizontalAlignment.Left;
+                    }
+                    stpChat.Children.Add(chatMessageCard);
+                }
+            }
+            catch (EndpointNotFoundException ex)
             {
-                ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.MessageToSend);
-                if (item.IdUser == userSingleton.IdUser)
-                {
-                    chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
-                }
-                else
-                {
-                    chatMessageCard.HorizontalAlignment = HorizontalAlignment.Left;
-                }
-                stpChat.Children.Add(chatMessageCard);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
@@ -89,28 +128,64 @@ namespace JeopardyGame.Pages
 
         private void ClickSendMessage(object sender, MouseButtonEventArgs e)
         {
-            string message = txbMessageToSend.Text;
-            if (!string.IsNullOrEmpty(message))
+            try
             {
-                proxyChannelCallback.SendMessage(userSingleton.IdUser, roomCode, userSingleton.UserName, message);
-                MessageChat messageChat = new MessageChat();
-                messageChat.IdUser = userSingleton.IdUser;
-                messageChat.UserName = userSingleton.UserName;
-                messageChat.MessageToSend = message;
-                messagesInChats.Add(messageChat);
-                ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, message);
-                chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
-                stpChat.Children.Add(chatMessageCard);
-                txbMessageToSend.Text = string.Empty;
-            }              
+                string message = txbMessageToSend.Text;
+                if (!string.IsNullOrEmpty(message))
+                {
+                    proxyChannelCallback.SendMessage(userSingleton.IdUser, roomCode, userSingleton.UserName, message);
+                    MessageChat messageChat = new MessageChat();
+                    messageChat.IdUser = userSingleton.IdUser;
+                    messageChat.UserName = userSingleton.UserName;
+                    messageChat.MessageToSend = message;
+                    messagesInChats.Add(messageChat);
+                    ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, message);
+                    chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
+                    stpChat.Children.Add(chatMessageCard);
+                    txbMessageToSend.Text = string.Empty;
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
-            if(message.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                messagesInChats.Add(message.ObjectSaved);
-                LoadChat();
+                if (message.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    messagesInChats.Add(message.ObjectSaved);
+                    LoadChat();
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 

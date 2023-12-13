@@ -97,7 +97,9 @@ namespace JeopardyGame.Pages
             else
             {
                 ExceptionHandler.HandleException(userConsulted.CodeEvent, "Mensaje");
-                //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
             }
         }
 

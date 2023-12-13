@@ -340,6 +340,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, you have been removed from the game lobby.
+        /// </summary>
+        public static string lblEliminateFromLobby {
+            get {
+                return ResourceManager.GetString("lblEliminateFromLobby", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Email.
         /// </summary>
         public static string lblEmailDescripCreateAcc {
@@ -376,11 +385,29 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error entering lobby, try again later.
+        /// </summary>
+        public static string lblErrorEnter {
+            get {
+                return ResourceManager.GetString("lblErrorEnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a fail to register.
         /// </summary>
         public static string lblFailToRegisterUser {
             get {
                 return ResourceManager.GetString("lblFailToRegisterUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, the game has been canceled.
+        /// </summary>
+        public static string lblGameCancel {
+            get {
+                return ResourceManager.GetString("lblGameCancel", resourceCulture);
             }
         }
         
@@ -471,6 +498,42 @@ namespace JeopardyGame.Properties {
         public static string lblNameInformation {
             get {
                 return ResourceManager.GetString("lblNameInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, we were unable to generate a match, please leave the lobby and try again later.
+        /// </summary>
+        public static string lblNotGame {
+            get {
+                return ResourceManager.GetString("lblNotGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, there should only be two players per team.
+        /// </summary>
+        public static string lblNotTwoPlayers {
+            get {
+                return ResourceManager.GetString("lblNotTwoPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a There must be 4 players to access this option.
+        /// </summary>
+        public static string lblNumberOfPlayers {
+            get {
+                return ResourceManager.GetString("lblNumberOfPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enter a valid code.
+        /// </summary>
+        public static string lblnvalidCode {
+            get {
+                return ResourceManager.GetString("lblnvalidCode", resourceCulture);
             }
         }
         
@@ -628,6 +691,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, the action has timed out, please try again later..
+        /// </summary>
+        public static string lblTimeExpired {
+            get {
+                return ResourceManager.GetString("lblTimeExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a User changes have been saved.
+        /// </summary>
+        public static string lblUpdateInformation {
+            get {
+                return ResourceManager.GetString("lblUpdateInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sorry, you already have more than three reports so you will have to create a new account to continue playing..
         /// </summary>
         public static string lblUserBanner {
@@ -669,6 +750,33 @@ namespace JeopardyGame.Properties {
         public static string lblWinnerList {
             get {
                 return ResourceManager.GetString("lblWinnerList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, it was not possible to establish communication with the server at the moment, please try again later.
+        /// </summary>
+        public static string lblWithoutConection {
+            get {
+                return ResourceManager.GetString("lblWithoutConection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, we couldn&apos;t recover your friends list at the moment, try again later..
+        /// </summary>
+        public static string lblWithoutFriends {
+            get {
+                return ResourceManager.GetString("lblWithoutFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Could not update user information.
+        /// </summary>
+        public static string lblWrongUpdateInformation {
+            get {
+                return ResourceManager.GetString("lblWrongUpdateInformation", resourceCulture);
             }
         }
         

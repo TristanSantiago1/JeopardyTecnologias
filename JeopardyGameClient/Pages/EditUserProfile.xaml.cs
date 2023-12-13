@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
 
 namespace JeopardyGame.Pages
 {
@@ -49,25 +53,44 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonSaveChanges(object sender, RoutedEventArgs e)
         {
-            String nameEdited = txbEditName.Text;
-            String originalName = UserSingleton.GetMainUser().Name;
-            UserManagerClient proxyServer = new UserManagerClient();
-            var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
-            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
+            try {
+                String nameEdited = txbEditName.Text;
+                String originalName = UserSingleton.GetMainUser().Name;
+                UserManagerClient proxyServer = new UserManagerClient();
+                var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
+                int idPlayer = UserSingleton.GetMainUser().IdPlayer;
 
-            imageIdMappings.TryGetValue(imageResource, out int imageId);
-            var resultPhoto = proxyServer.UpdatePlayerPhoto(idPlayer, imageId);
+                imageIdMappings.TryGetValue(imageResource, out int imageId);
+                var resultPhoto = proxyServer.UpdatePlayerPhoto(idPlayer, imageId);
 
-            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                new InformationMessageDialogWindow("EXITO", "Se ha guardado los cmabiso del ususario", Application.Current.MainWindow);
+                if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    new InformationMessageDialogWindow(Properties.Resources.txbUserRegisteredSuccTittle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
+                    MainMenu mainMenu = new MainMenu();
+                    this.NavigationService.Navigate(mainMenu);
+                    NavigationService.RemoveBackEntry();
+                }
+                else
+                {
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+                }
+                proxyServer.Close();
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
-                new ErrorMessageDialogWindow("ERROR", "No see ha pordido guardar los cmabiso del ususario", Application.Current.MainWindow);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
-            proxyServer.Close();
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         private void CLicButtonCancelChanges(object sender, RoutedEventArgs e)

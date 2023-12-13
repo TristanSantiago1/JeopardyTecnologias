@@ -210,6 +210,9 @@
   <data name="lblEditUserInformation" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="lblEliminateFromLobby" xml:space="preserve">
+    <value>Sorry, you have been removed from the game lobby</value>
+  </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Email</value>
   </data>
@@ -222,8 +225,14 @@
   <data name="lblEnglish" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="lblErrorEnter" xml:space="preserve">
+    <value>Error entering lobby, try again later</value>
+  </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
     <value>fail to register</value>
+  </data>
+  <data name="lblGameCancel" xml:space="preserve">
+    <value>Sorry, the game has been canceled</value>
   </data>
   <data name="lblGameLanguaje" xml:space="preserve">
     <value>Settings</value>
@@ -254,6 +263,18 @@
   </data>
   <data name="lblNameInformation" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="lblNotGame" xml:space="preserve">
+    <value>Sorry, we were unable to generate a match, please leave the lobby and try again later</value>
+  </data>
+  <data name="lblNotTwoPlayers" xml:space="preserve">
+    <value>Sorry, there should only be two players per team</value>
+  </data>
+  <data name="lblNumberOfPlayers" xml:space="preserve">
+    <value>There must be 4 players to access this option</value>
+  </data>
+  <data name="lblnvalidCode" xml:space="preserve">
+    <value>Enter a valid code</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
     <value>Capital rules</value>
@@ -306,6 +327,12 @@
   <data name="lblSpanish" xml:space="preserve">
     <value>Spanish</value>
   </data>
+  <data name="lblTimeExpired" xml:space="preserve">
+    <value>Sorry, the action has timed out, please try again later.</value>
+  </data>
+  <data name="lblUpdateInformation" xml:space="preserve">
+    <value>User changes have been saved</value>
+  </data>
   <data name="lblUserBanner" xml:space="preserve">
     <value>Sorry, you already have more than three reports so you will have to create a new account to continue playing.</value>
   </data>
@@ -320,6 +347,15 @@
   </data>
   <data name="lblWinnerList" xml:space="preserve">
     <value>Best players</value>
+  </data>
+  <data name="lblWithoutConection" xml:space="preserve">
+    <value>Sorry, it was not possible to establish communication with the server at the moment, please try again later</value>
+  </data>
+  <data name="lblWithoutFriends" xml:space="preserve">
+    <value>Sorry, we couldn't recover your friends list at the moment, try again later.</value>
+  </data>
+  <data name="lblWrongUpdateInformation" xml:space="preserve">
+    <value>Could not update user information</value>
   </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Please enter a username</value>

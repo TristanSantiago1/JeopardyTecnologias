@@ -11,6 +11,9 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using JeopardyGame.Helpers;
 using System.Collections.Generic;
 
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+
 namespace JeopardyGame.Pages
 {
     /// <summary>
@@ -122,17 +125,35 @@ namespace JeopardyGame.Pages
         }
         private void LoadPlayersData()
         {
-            UserManagerClient proxyScores = new UserManagerClient();
-            var playersInfo = proxyScores.GetPlayersInfo();
-
-            foreach (var playerInfo in playersInfo)
+            try
             {
-                string playerName = playerInfo.Name;
-                long score = playerInfo.Points; 
+                UserManagerClient proxyScores = new UserManagerClient();
+                var playersInfo = proxyScores.GetPlayersInfo();
 
-                ListBoxItem item = new ListBoxItem();
-                item.Content = $"{playerName}: {score}";
-                lstWinners.Items.Add(item);
+                foreach (var playerInfo in playersInfo)
+                {
+                    string playerName = playerInfo.Name;
+                    long score = playerInfo.Points;
+
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = $"{playerName}: {score}";
+                    lstWinners.Items.Add(item);
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
