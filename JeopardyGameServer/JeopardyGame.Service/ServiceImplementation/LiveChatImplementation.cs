@@ -19,10 +19,22 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
         {
             GenericClass<bool> resultToReturn = new GenericClass<bool>();
-            if (roomCode == NULL_INT_VALUE || idAdmin == NULL_INT_VALUE) 
+            try
             {
-                return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                if (roomCode == NULL_INT_VALUE || idAdmin == NULL_INT_VALUE)
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
             }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+
             HistoricalOfAllMessages messagesHistorical = new HistoricalOfAllMessages();
             messagesHistorical.idAdmin = idAdmin; 
             ChatsDictionary.RegisterNewChatInDictionary(roomCode, messagesHistorical);   
@@ -41,20 +53,31 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
            GenericClass<List<MessageChat>> resultToReturn = new GenericClass<List<MessageChat>>();
-           if (roomCode <= NULL_INT_VALUE)
-            { 
-                return NullParametersHandler.HandleNullParametersService(resultToReturn); 
-            }
-            HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);          
-            if (messagesHistorical != null)
+            try
             {
-                resultToReturn.ObjectSaved = messagesHistorical.listOfMessages;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                RegisterNewChannelInChatChannelStorage(roomCode, idUser);
+                if (roomCode <= NULL_INT_VALUE)
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
+                if (messagesHistorical != null)
+                {
+                    resultToReturn.ObjectSaved = messagesHistorical.listOfMessages;
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    RegisterNewChannelInChatChannelStorage(roomCode, idUser);
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                }
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -71,23 +94,34 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void RegisterNewChannelInChatChannelStorage(int roomCode, int idUser)
         {
-            SpecificChannelCallBackChat channelChat = new SpecificChannelCallBackChat();
-            channelChat.idUser = idUser;
-            channelChat.communicationChannelChat = OperationContext.Current;            
-            ChannelsCallBackInActiveChats specificActiveInChannelChatStorage = ChatsDictionary.GetChannelCallBackChat(roomCode);
-            bool isNotSaved = true;
-            foreach (var item in specificActiveInChannelChatStorage.listOfChannelsCallBack)
+            try
             {
-                if (item.idUser == idUser)
+                SpecificChannelCallBackChat channelChat = new SpecificChannelCallBackChat();
+                channelChat.idUser = idUser;
+                channelChat.communicationChannelChat = OperationContext.Current;
+                ChannelsCallBackInActiveChats specificActiveInChannelChatStorage = ChatsDictionary.GetChannelCallBackChat(roomCode);
+                bool isNotSaved = true;
+                foreach (var item in specificActiveInChannelChatStorage.listOfChannelsCallBack)
                 {
-                    isNotSaved = false;
-                    break;
+                    if (item.idUser == idUser)
+                    {
+                        isNotSaved = false;
+                        break;
+                    }
+                }
+                if (isNotSaved)
+                {
+                    specificActiveInChannelChatStorage.listOfChannelsCallBack.Add(channelChat);
                 }
             }
-            if (isNotSaved)
+            catch (CommunicationObjectFaultedException ex)
             {
-                specificActiveInChannelChatStorage.listOfChannelsCallBack.Add(channelChat);
-            }                      
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void DeleteChannelRegistries(int roomCode)
@@ -100,45 +134,67 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
         {
-            if (idUser <=  NULL_INT_VALUE || roomCode <= NULL_INT_VALUE || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(messageToSend))
+            try
             {
-                NotifyUser(roomCode, new MessageChat(), false, idUser);
-            }
-            else
-            {
-                HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
-                if (messagesHistorical != null)
-                {
-                    MessageChat messageChat = new MessageChat();
-                    messageChat.IdUser = idUser;
-                    messageChat.UserName = userName;
-                    messageChat.MessageToSend = messageToSend;
-                    messagesHistorical.listOfMessages.Add(messageChat);
-                    NotifyUser(roomCode, messageChat, true, idUser);
-                }
-                else
+                if (idUser <= NULL_INT_VALUE || roomCode <= NULL_INT_VALUE || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(messageToSend))
                 {
                     NotifyUser(roomCode, new MessageChat(), false, idUser);
                 }
+                else
+                {
+                    HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
+                    if (messagesHistorical != null)
+                    {
+                        MessageChat messageChat = new MessageChat();
+                        messageChat.IdUser = idUser;
+                        messageChat.UserName = userName;
+                        messageChat.MessageToSend = messageToSend;
+                        messagesHistorical.listOfMessages.Add(messageChat);
+                        NotifyUser(roomCode, messageChat, true, idUser);
+                    }
+                    else
+                    {
+                        NotifyUser(roomCode, new MessageChat(), false, idUser);
+                    }
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
         private void NotifyUser(int roomCode, MessageChat messageToSend, bool success, int idSender)
         {
-            if (success)
+            try
             {
-                var chatChannel = ChatsDictionary.GetChannelCallBackChat(roomCode);
-                foreach (var item in chatChannel.listOfChannelsCallBack)
+                if (success)
                 {
-                    var channel = item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>();
-                    if (item.idUser != idSender)
+                    var chatChannel = ChatsDictionary.GetChannelCallBackChat(roomCode);
+                    foreach (var item in chatChannel.listOfChannelsCallBack)
                     {
-                        GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
-                        resultToReturn.ObjectSaved = messageToSend;
-                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                        channel.ReceiveMessage(resultToReturn);
+                        var channel = item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>();
+                        if (item.idUser != idSender)
+                        {
+                            GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
+                            resultToReturn.ObjectSaved = messageToSend;
+                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            channel.ReceiveMessage(resultToReturn);
+                        }
                     }
                 }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 

@@ -398,32 +398,6 @@ namespace JeopardyGame.Data.DataAccess
                 }
             }          
         }
-        public static int RecoverPhoto(int idPlayer)
-        {
-            int defaultAvatarId = 0; 
-
-            try
-            {
-                using (var contextBD = new JeopardyDBContainer())
-                {
-                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
-                    if (player != null)
-                    {
-                        return (int)player.IdAvatarActual;
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (EntityException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            return defaultAvatarId;
-        }
-
 
         public static GenericClassServer<int> UpdatePhotoPlayer (int idPlayer, int imageId)
         {
@@ -516,60 +490,10 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
-        public  static GenericClassServer<List<Player>> Get20FriendScores(int userId)
-        {
-            GenericClassServer<List<Player>> resultOfOperation = new GenericClassServer<List<Player>>();
-            if (userId <= NULL_INT_VALUE) 
-            { 
-                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation); 
-            }
-            try
-            {
-                using (var contextDB = new JeopardyDBContainer())
-                {
-                    List<Player> friendScores = contextDB.Friends
-                        .Where(friendRegistry => friendRegistry.Player_IdPlayer == userId || friendRegistry.PlayerFriend_IdPlayer == userId)
-                        .Select(friendSelection => friendSelection.Player_IdPlayer == userId ? friendSelection.PlayerFriend_IdPlayer : friendSelection.Player_IdPlayer)
-                        .Join(contextDB.Players, friendId => friendId, player => player.IdPlayer, 
-                        (friendId, player) => new Player
-                            {
-                                IdPlayer = player.IdPlayer,
-                                GeneralPoints = player.GeneralPoints,
-                            })
-                        .ToList();
-                    if (friendScores.Count < 0)
-                    {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                    }
-                    else
-                    {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    }
-                    resultOfOperation.ObjectSaved = friendScores;                  
-                }
-            }
-            catch (ArgumentNullException ex)
-            {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (SqlException ex)
-            {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (EntityException ex)
-            {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }      
-            return resultOfOperation;
-        }
-
+        
     }
+
+ }
     
-
-
-    }
 
 

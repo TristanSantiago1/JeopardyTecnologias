@@ -130,12 +130,6 @@
   <wsdl:message name="IUserManager_UpdatePlayerPhoto_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerPhotoResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserManager_recoverPlayerPhoto_InputMessage">
-    <wsdl:part name="parameters" element="tns:recoverPlayerPhoto" />
-  </wsdl:message>
-  <wsdl:message name="IUserManager_recoverPlayerPhoto_OutputMessage">
-    <wsdl:part name="parameters" element="tns:recoverPlayerPhotoResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateThereIsOnlyOneAActiveAccount" />
   </wsdl:message>
@@ -186,18 +180,6 @@
   </wsdl:message>
   <wsdl:message name="IFriendsManager_BanUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:BanUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendsManager_UnbanUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:UnbanUser" />
-  </wsdl:message>
-  <wsdl:message name="IFriendsManager_UnbanUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UnbanUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendsManager_IsUserBanned_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsUserBanned" />
-  </wsdl:message>
-  <wsdl:message name="IFriendsManager_IsUserBanned_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IsUserBannedResponse" />
   </wsdl:message>
   <wsdl:message name="IConsultInformation_ConsultUserById_InputMessage">
     <wsdl:part name="parameters" element="tns:ConsultUserById" />
@@ -474,10 +456,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto" message="tns:IUserManager_UpdatePlayerPhoto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse" message="tns:IUserManager_UpdatePlayerPhoto_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="recoverPlayerPhoto">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/recoverPlayerPhoto" message="tns:IUserManager_recoverPlayerPhoto_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/recoverPlayerPhotoResponse" message="tns:IUserManager_recoverPlayerPhoto_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccountResponse" message="tns:IUserManager_ValidateThereIsOnlyOneAActiveAccount_OutputMessage" />
@@ -518,14 +496,6 @@
     <wsdl:operation name="BanUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/BanUser" message="tns:IFriendsManager_BanUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/BanUserResponse" message="tns:IFriendsManager_BanUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UnbanUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/UnbanUser" message="tns:IFriendsManager_UnbanUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/UnbanUserResponse" message="tns:IFriendsManager_UnbanUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="IsUserBanned">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManager/IsUserBanned" message="tns:IFriendsManager_IsUserBanned_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManager/IsUserBannedResponse" message="tns:IFriendsManager_IsUserBanned_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IConsultInformation">
@@ -808,15 +778,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="recoverPlayerPhoto">
-      <soap12:operation soapAction="http://tempuri.org/IUserManager/recoverPlayerPhoto" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ValidateThereIsOnlyOneAActiveAccount">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/ValidateThereIsOnlyOneAActiveAccount" style="document" />
       <wsdl:input>
@@ -899,24 +860,6 @@
     </wsdl:operation>
     <wsdl:operation name="BanUser">
       <soap12:operation soapAction="http://tempuri.org/IFriendsManager/BanUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UnbanUser">
-      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/UnbanUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="IsUserBanned">
-      <soap12:operation soapAction="http://tempuri.org/IFriendsManager/IsUserBanned" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -14,16 +14,16 @@
 
 
 
-        <Label x:Name="lblNameDescripEditAccount" Content="{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="313" Margin="323,431,0,0"/>
-        <Label x:Name="lblUserNameDescripEditAccount" Content="{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
-                 Height="60" Width="364" Margin="323,366,0,0" />
-        <Label x:Name="lblAddresDescripEditAccount" Content="{x:Static p:Resources.lblEmailDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
-                  Height="60" Width="282" Margin="323,506,0,0"/>
+        <Label x:Name="lblNameDescripEditAccount" Content = "{x:Static p:Resources.lblNameInformation}" Style="{StaticResource labelStyleSimple}" 
+                  Height="60" Width="217" Margin="411,455,0,0"/>
+        <Label x:Name="lblUserNameDescripEditAccount" Content = "{x:Static p:Resources.lblUserNameInformation}" Style="{StaticResource labelStyleSimple}" 
+                 Height="60" Width="250" Margin="411,390,0,0" />
+        <Label x:Name="lblAddresDescripEditAccount" Content = "{x:Static p:Resources.lblEmailInformation}" Style="{StaticResource labelStyleSimple}" 
+                  Height="60" Width="194" Margin="411,520,0,0"/>
 
 
 
-        <Viewbox Width="auto" Height="auto" Margin="693,337,244,151">
+        <Viewbox Width="auto" Height="auto" Margin="666,349,271,139">
             <StackPanel Width="328">
                 <Label x:Name="lblNameEditAccount" Content="jjjjjjj" Foreground="GhostWhite" Style="{StaticResource labelStyleSimple}" 
                 Height="60" Width="325"/>
@@ -43,5 +43,19 @@
             <Label x:Name="lblEditUserInformation" Content= "{x:Static p:Resources.lblEditUserInformation}"  FontSize="20" Foreground="White" HorizontalAlignment="Center" Height="33" Margin="0,29,0,1"/>
         </Grid>            
         <Image HorizontalAlignment="Left" Height="42" Margin="31,52,0,0" VerticalAlignment="Top" Width="27" Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
+        <Grid Grid.Column="0" Margin="21,0,-21,0">
+            <Border x:Name="borderProfile" BorderThickness="10" HorizontalAlignment="Center" Height="288" Margin="0,92,0,0" VerticalAlignment="Top" Width="326" BorderBrush="#592C75" Background="Transparent">
+                <Border.Clip>
+                    <EllipseGeometry Center="163,144" RadiusX="133.5" RadiusY="133.5"/>
+                </Border.Clip>
+                <Image x:Name="imageProfile" Stretch="UniformToFill" Margin="-14,0,-6,0"/>
+            </Border>
+            <Grid Width="267" Height="267" Margin="219,194,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid.Clip>
+                    <EllipseGeometry Center="133.5,133.5" RadiusX="133.5" RadiusY="133.5"/>
+                </Grid.Clip>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Page>

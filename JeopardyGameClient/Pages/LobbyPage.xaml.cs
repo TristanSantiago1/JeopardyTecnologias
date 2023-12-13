@@ -10,6 +10,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Label = System.Windows.Controls.Label;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+
 
 namespace JeopardyGame.Pages
 {
@@ -166,15 +170,23 @@ namespace JeopardyGame.Pages
 
         public void UpdateJoinedPlayerResponse(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
         {
-            if (playersInTheLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();                
-                if (currentPlayerInLobby.Any(pla => pla.IdPlayer == userSingleton.IdPlayer))
+                if (playersInTheLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    SetPlayerInLabels();
-                    if ((bool)chbTeamUp.IsChecked)
+                    currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
+                    if (currentPlayerInLobby.Any(pla => pla.IdPlayer == userSingleton.IdPlayer))
                     {
-                        chbTeamUp.IsChecked = false;
+                        SetPlayerInLabels();
+                        if ((bool)chbTeamUp.IsChecked)
+                        {
+                            chbTeamUp.IsChecked = false;
+                        }
+                    }
+                    else
+                    {
+                        new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblEliminateFromLobby, Window.GetWindow(this));
+                        CloseWindow();
                     }
                 }
                 else
@@ -182,6 +194,21 @@ namespace JeopardyGame.Pages
                     dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.KickedFromLobby, Window.GetWindow(this));
                     CloseWindow();
                 }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
@@ -434,7 +461,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                //MOstra mensaje de error y pedir que se cierre el lobby y hacer otor
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblNotGame, Window.GetWindow(this));
             }
         }
 

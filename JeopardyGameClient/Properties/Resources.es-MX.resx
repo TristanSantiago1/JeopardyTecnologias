@@ -249,8 +249,14 @@
   <data name="lblEditUserInformation" xml:space="preserve">
     <value>Editar</value>
   </data>
+  <data name="lblEliminateFromLobby" xml:space="preserve">
+    <value>Lo sentimos, has sido eliminado del lobby de la partida</value>
+  </data>
   <data name="lblEmailDescripCreateAcc" xml:space="preserve">
     <value>Correo :</value>
+  </data>
+  <data name="lblEmailInformation" xml:space="preserve">
+    <value>Correo</value>
   </data>
   <data name="lblEmptyField" xml:space="preserve">
     <value>Campo Requrido</value>
@@ -262,11 +268,20 @@
     <value>Ingles 
 EU</value>
   </data>
+  <data name="lblErrorEnter" xml:space="preserve">
+    <value>Error ingresando a loby, intente más tarde</value>
+  </data>
   <data name="lblFailToRegisterUser" xml:space="preserve">
     <value>Error : No fue posible rgistrar al ususario </value>
   </data>
+  <data name="lblGameCancel" xml:space="preserve">
+    <value>Lo sentimos, la partida ha sido cancelada</value>
+  </data>
   <data name="lblGameLanguaje" xml:space="preserve">
     <value>Ajustes</value>
+  </data>
+  <data name="lblinvalidCredentials" xml:space="preserve">
+    <value>Credenciales inválidas, por favor intenta de nuevo</value>
   </data>
   <data name="lblInvalidEmail" xml:space="preserve">
     <value>El correo electronico no es valido.</value>
@@ -276,6 +291,9 @@ EU</value>
   </data>
   <data name="lblLiveChat" xml:space="preserve">
     <value>Chat en vivo</value>
+  </data> 
+  <data name="lblLogInExist" xml:space="preserve">
+    <value>Lo sentimos, ya cuenta con una sesión iniciada con estas credenciales</value>
   </data>
   <data name="lblModalityGame" xml:space="preserve">
     <value>Modalidad de juego:</value>
@@ -288,6 +306,21 @@ EU</value>
   </data>
   <data name="lblNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre :</value>
+  </data>
+  <data name="lblNameInformation" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="lblNotGame" xml:space="preserve">
+    <value>Lo sentimos, no hemos podido generar una partida, por favor abandona el lobby e intenta más tarde</value>
+  </data>
+  <data name="lblNotTwoPlayers" xml:space="preserve">
+    <value>Lo sentimos, debe de haber únicamente dos jugadores por equipo</value>
+  </data>
+  <data name="lblNumberOfPlayers" xml:space="preserve">
+    <value>Deben de existir 4 jugadores para acceder a esta opción</value>
+  </data>
+  <data name="lblnvalidCode" xml:space="preserve">
+    <value>Ingresa un codigo valido</value>
   </data>
   <data name="lblPassCapitalRuleDesc" xml:space="preserve">
     <value>*La contraseña debe tener al menos 2 letrass mayusculas no consecutivas</value>
@@ -347,8 +380,20 @@ EU</value>
     <value>Español
 Mexico</value>
   </data>
+  <data name="lblTimeExpired" xml:space="preserve">
+    <value>Lo sentimos, el tiempo de espera para completar la acción ha sido agotado, intente más tarde.</value>
+  </data>
+  <data name="lblUpdateInformation" xml:space="preserve">
+    <value>Se ha guardado los cambios del ususario</value>
+  </data>
+  <data name="lblUserBanner" xml:space="preserve">
+    <value>Lo sentimos, ya cuenta con más de tres reportes por lo que deberá crearse una nueva cuenta para seguir jugando.</value>
+  </data>
   <data name="lblUserNameDescripCreateAcc" xml:space="preserve">
     <value>Nombre de Usuario:</value>
+  </data>
+  <data name="lblUserNameInformation" xml:space="preserve">
+    <value>Nombre usuario</value>
   </data>
   <data name="lblUserNameLogIn" xml:space="preserve">
     <value>Usuario</value>
@@ -358,6 +403,15 @@ Mexico</value>
   </data>
   <data name="lblWrongRoomCode" xml:space="preserve">
     <value>Ingresa un codigo valido</value>
+  </data>
+  <data name="lblWithoutConection" xml:space="preserve">
+    <value>Lo sentimos, por el momento no fue posible establecer comunicación con el servidor, intente nuevamente más tarde</value>
+  </data>
+  <data name="lblWithoutFriends" xml:space="preserve">
+    <value>Lo sentimos, por el momento no pudimos recuperar la lista de amigos, intenta más tarde.</value>
+  </data>
+  <data name="lblWrongUpdateInformation" xml:space="preserve">
+    <value>No se ha podido actualizar la información del usuario</value>
   </data>
   <data name="LblWrongUserName" xml:space="preserve">
     <value>Por favor ingresa tu usuario</value>

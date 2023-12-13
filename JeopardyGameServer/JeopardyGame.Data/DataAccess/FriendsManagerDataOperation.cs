@@ -6,6 +6,7 @@ using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -260,27 +261,21 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
-        public static GenericClass<bool> BannerUser(UserPOJO user)
+        public static GenericClassServer<int> BannerUser(int idPlayer)
         {
-            GenericClass<bool> resultOfOperation = new GenericClass<bool>();
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            
             try
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    bool isAlreadyBanned = contextBD.Baneos.Any(b => b.Player_IdPlayer == user.IdUser);
+                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
 
-                    if (!isAlreadyBanned)
+                    if (player != null)
                     {
-                        var nuevoBaneo = new Baneo
-                        {
-                            BanTimeBegin = DateTime.Now,
-                            BanTimeFinish = null, 
-                            Player_IdPlayer = user.IdUser,
-                        };
-
-                        contextBD.Baneos.Add(nuevoBaneo);
-                        var resultEvent = contextBD.SaveChanges();
-                        resultOfOperation.ObjectSaved = resultEvent > 0; 
+                        player.NoReports++;
+                        int resultEvent = contextBD.SaveChanges();
+                        resultOfOperation.ObjectSaved = resultEvent; 
                         if (resultEvent > 0)
                         {
                             resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -293,12 +288,26 @@ namespace JeopardyGame.Data.DataAccess
                     
                 }
             }
-            catch (Exception e)
+            catch (DbUpdateException ex)
             {
-                resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                return resultOfOperation;
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-
+            catch (ArgumentNullException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }
     }

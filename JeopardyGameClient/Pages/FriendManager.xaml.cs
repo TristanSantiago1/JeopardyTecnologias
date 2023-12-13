@@ -97,8 +97,10 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                ExceptionHandler.HandleException(userConsulted.CodeEvent, string.Empty);
-                //LOGICA DESPUES, REGRESAR AUNA VENTANA ANTEIROR SEGURMANTE.
+                ExceptionHandler.HandleException(userConsulted.CodeEvent, "Mensaje");
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
             }
         }
 
@@ -195,9 +197,22 @@ namespace JeopardyGame.Pages
             selectedLabel.Foreground = new SolidColorBrush(Colors.LightGray);
         }
 
-        public void ReportUser(int idPlayer, string userNmae)
+        public void ReportUser(int idPlayer)
         {
-            notifyUserActionFriendsManagerClient.ReportPlayer(idPlayer, userNmae);
+            UserManagerClient proxyServer = new UserManagerClient();
+            FriendsManagerClient proxy = new FriendsManagerClient();
+            var result = proxy.BanUser(idPlayer);
+            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                new InformationMessageDialogWindow("EXITO", "Ha sido reportado", Application.Current.MainWindow);
+            }
+            else
+            {
+                ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
+                new ErrorMessageDialogWindow("ERROR", "No se ha reportado", Application.Current.MainWindow);
+            }
+            proxyServer.Close();
+
         }
 
         public void EliminateFriend(int idUserFriendToEliminate)

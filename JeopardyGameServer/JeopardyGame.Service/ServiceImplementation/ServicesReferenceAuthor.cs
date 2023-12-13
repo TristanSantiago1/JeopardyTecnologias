@@ -25,11 +25,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).GetPlayersInfo();
         }
 
-        public GenericClass<int> recoverPlayerPhoto(int idPlayer)
-        {
-            return ((IUserManager)UserManager).recoverPlayerPhoto(idPlayer);
-        }
-
         public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
             return ((IUserManager)UserManager).SaveUser(userPojoNew);
@@ -70,6 +65,11 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
 
+        public GenericClass<int> BanUser(int idPlayer)
+        {
+            return ((IFriendsManager)friendsManagerImplementation).BanUser(idPlayer);
+        }
+
         public GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user)
         {
             return ((IFriendsManager)friendsManagerImplementation).GetUserFriendRequests(user);
@@ -83,21 +83,6 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user)
         {
             return ((IFriendsManager)friendsManagerImplementation).GetUsersNotFriends(user);
-        }
-
-        GenericClass<bool> IFriendsManager.BanUser(UserPOJO user)
-        {
-            return ((IFriendsManager)friendsManagerImplementation).BanUser(user);
-        }
-
-        GenericClass<bool> IFriendsManager.IsUserBanned(UserPOJO user)
-        {
-            return ((IFriendsManager)friendsManagerImplementation).IsUserBanned(user);
-        }
-
-        GenericClass<bool> IFriendsManager.UnbanUser(UserPOJO user)
-        {
-            return ((IFriendsManager)friendsManagerImplementation).UnbanUser(user);
         }
     }
 

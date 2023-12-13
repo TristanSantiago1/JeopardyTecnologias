@@ -19,6 +19,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+
 namespace JeopardyGame.Pages
 {
     /// <summary>
@@ -82,7 +85,7 @@ namespace JeopardyGame.Pages
             GenericClassOfint sentEmailSucc = proxyServer.SentEmailCodeConfirmation(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                ExceptionHandler.HandleException(sentEmailSucc.CodeEvent, string.Empty);
+                
                 //regresara pagina anterior
             }
             if (sentEmailSucc.ObjectSaved == NULL_INT_VALUE)
@@ -93,28 +96,48 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
         {
-            if (txbCodeCreateAcc.Text.Trim().Equals(currentCode))
+            try
             {
-                PrepareUserToBeSaved();
-                UserManagerClient proxyServer = new UserManagerClient();
-                GenericClassOfint userSaved = proxyServer.SaveUser(userToSave);
-                if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (txbCodeCreateAcc.Text.Trim().Equals(currentCode))
                 {
+                    PrepareUserToBeSaved();
+                    UserManagerClient proxyServer = new UserManagerClient();
+                    GenericClassOfint userSaved = proxyServer.SaveUser(userToSave);
+                    if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
                         SetSingleton();
                         dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
                         MainMenu lobby = new MainMenu();
                         this.NavigationService.Navigate(lobby);
-                        NavigationService.RemoveBackEntry();                   
+                        NavigationService.RemoveBackEntry();
+                    }
+                    else
+                    {
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow);
+                        UserRegister userRegister = new UserRegister();
+                        this.NavigationService.Navigate(userRegister);
+                        NavigationService.RemoveBackEntry();
+                    }
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(userSaved.CodeEvent, Properties.Resources.txbErrorMessageRegisterUser);
-                    //regresar a ventana anterior
+                    txbWrongCode.Visibility = Visibility.Visible;
                 }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                txbWrongCode.Visibility = Visibility.Visible;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
@@ -157,37 +180,55 @@ namespace JeopardyGame.Pages
         
         private void SetSingleton()
         {
-            ConsultInformationClient consultInformationClient = new ConsultInformationClient();           
-            var userSaved =  consultInformationClient.ConsultUserByUserName(userToSave.UserName);
-            if(userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
-                if (playerSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                ConsultInformationClient consultInformationClient = new ConsultInformationClient();
+                var userSaved = consultInformationClient.ConsultUserByUserName(userToSave.UserName);
+                if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    UserSingleton userSingleton = UserSingleton.GetMainUser();
-                    userSingleton.IdUser = userSaved.ObjectSaved.IdUser;
-                    userSingleton.Name = userSaved.ObjectSaved.Name;
-                    userSingleton.UserName = userSaved.ObjectSaved.UserName;
-                    userSingleton.Email = userSaved.ObjectSaved.EmailAddress;
-                    userSingleton.Password = userSaved.ObjectSaved.Password;
-                    userSingleton.IdPlayer = playerSaved.ObjectSaved.IdPlayer;
-                    userSingleton.GeneralPoints = playerSaved.ObjectSaved.GeneralPoints;
-                    userSingleton.NoReports = playerSaved.ObjectSaved.NoReports;
-                    userSingleton.IdState = playerSaved.ObjectSaved.IdState;
-                    userSingleton.IdCurrentAvatar = playerSaved.ObjectSaved.IdActualAvatar;
-                    InstanceContext context = new InstanceContext(this);
-                    NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(context);
-                    userSingleton.proxyForAvailability = proxyChannelCallback;
-                    userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser);
+                    var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
+                    if (playerSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        UserSingleton userSingleton = UserSingleton.GetMainUser();
+                        userSingleton.IdUser = userSaved.ObjectSaved.IdUser;
+                        userSingleton.Name = userSaved.ObjectSaved.Name;
+                        userSingleton.UserName = userSaved.ObjectSaved.UserName;
+                        userSingleton.Email = userSaved.ObjectSaved.EmailAddress;
+                        userSingleton.Password = userSaved.ObjectSaved.Password;
+                        userSingleton.IdPlayer = playerSaved.ObjectSaved.IdPlayer;
+                        userSingleton.GeneralPoints = playerSaved.ObjectSaved.GeneralPoints;
+                        userSingleton.NoReports = playerSaved.ObjectSaved.NoReports;
+                        userSingleton.IdState = playerSaved.ObjectSaved.IdState;
+                        userSingleton.IdCurrentAvatar = playerSaved.ObjectSaved.IdActualAvatar;
+                        InstanceContext context = new InstanceContext(this);
+                        NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(context);
+                        userSingleton.proxyForAvailability = proxyChannelCallback;
+                        userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser);
+                    }
+                    else
+                    {
+                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    }
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(playerSaved.CodeEvent, string.Empty);
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
                 }
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(userSaved.CodeEvent, string.Empty);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 

@@ -21,6 +21,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+
 namespace JeopardyGame.Pages
 {
     /// <summary>
@@ -74,18 +77,54 @@ namespace JeopardyGame.Pages
 
         private void SubscribeCallBackChannel(object sender, RoutedEventArgs e)
         {
-            context = new InstanceContext(this);
-            gameActionsClient = new GameActionsClient(context);
-            gameActionsClient.SubscribeToGameCallBack(roomCode, userSingleton.IdUser, userSingleton.IdCurrentAvatar);            
+            try
+            {
+                context = new InstanceContext(this);
+                gameActionsClient = new GameActionsClient(context);
+                gameActionsClient.SubscribeToGameCallBack(roomCode, userSingleton.IdUser, userSingleton.IdCurrentAvatar);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, PlayerInGameDataContract[] playerInGame)
         {
-            currentTurn = 1;
-            yourTurn = isYourTurn;
-            playersInGame = playerInGame.ToList();
-            PrepareWindow();
-            ShowIfItsYourTurn();
+            try
+            {
+                currentTurn = 1;
+                yourTurn = isYourTurn;
+                playersInGame = playerInGame.ToList();
+                PrepareWindow();
+                ShowIfItsYourTurn();
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         private void PrepareWindow()
@@ -704,24 +743,60 @@ namespace JeopardyGame.Pages
 
         private void NotifyLeavingGame()
         {
-            gameActionsClient.UnSubscribeFromGameCallBack(roomCode, userSingleton.IdUser);
+            try
+            {
+                gameActionsClient.UnSubscribeFromGameCallBack(roomCode, userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void ReceiveNotificationSomeOneLeft(int isYourTurn, PlayerInGameDataContract[] playerInGame)
         {
-            if (playerInGame.Count() == 1 || itsTeamGame)
+            try
             {
-                CloseWindow();
-                return;
+                if (playerInGame.Count() == 1 || itsTeamGame)
+                {
+                    CloseWindow();
+                    return;
+                }
+                if (currentTurn == playerInGame.Count())
+                {
+                    currentTurn = 1;
+                }
+                grdAnswerChoices.Visibility = Visibility.Hidden;
+                yourTurn = isYourTurn;
+                playersInGame = playerInGame.ToList();
+                ShowIfItsYourTurn();
             }
-            if (currentTurn == playerInGame.Count())
+            catch (EndpointNotFoundException ex)
             {
-                currentTurn = 1;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
-            grdAnswerChoices.Visibility = Visibility.Hidden;
-            yourTurn = isYourTurn;
-            playersInGame = playerInGame.ToList();
-            ShowIfItsYourTurn();
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void ResponseFinishGame()

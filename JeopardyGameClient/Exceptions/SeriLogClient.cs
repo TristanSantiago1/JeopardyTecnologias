@@ -1,24 +1,25 @@
-﻿using Serilog;
-using Serilog.Sinks.File;
-using Serilog.Events;
+﻿using JeopardyGame.Helpers;
+using Serilog;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 using System.Management;
 using System.Security;
+using System.ServiceModel;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace JeopardyGame.Data.Exceptions
+namespace JeopardyGame.Exceptions
 {
-    public class SeriLogConfig
+    internal class SeriLogClient
     {
         private static readonly string logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
         private readonly String pathTris = "C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\Logs\\";
-        private readonly String pathDodonaji = "C:\\Users\\dnava\\source\\repos\\JeopardyProject\\JeopardyGameTecnologias\\JeopardyProject\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\logs\\";
-        private readonly String absolutePath; 
-        public SeriLogConfig() 
+        private readonly String pathDodonaji = "C:\\Users\\dnava\\source\\repos\\JeopardyProject\\JeopardyGameTecnologias\\JeopardyProject\\JeopardyGameClient\\Logs\\";
+        private readonly String absolutePath;
+
+        public SeriLogClient()
         {
             String pathPC;
             if (GetMachineId().Equals("6479_A753_1090_3048."))
@@ -38,7 +39,7 @@ namespace JeopardyGame.Data.Exceptions
         }
 
         public String getPath()
-        {            
+        {
             return absolutePath;
         }
 
@@ -53,32 +54,22 @@ namespace JeopardyGame.Data.Exceptions
                 {
                     string serialNumber = drive["SerialNumber"]?.ToString();
                     if (!string.IsNullOrEmpty(serialNumber))
-                    {                       
+                    {
                         return serialNumber;
                     }
                 }
             }
-            catch (SecurityException ex)
-            {
-                ExceptionHandler.LogException(ex,ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
-            }
-            catch (UnauthorizedAccessException ex)
+            catch (EndpointNotFoundException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(logFileName);
             }
-            catch (ManagementException ex)
+            catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(logFileName);
             }
-            catch (NullReferenceException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
-            }
-            catch (Exception ex)
+            catch (TimeoutException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(logFileName);
@@ -88,6 +79,5 @@ namespace JeopardyGame.Data.Exceptions
 
 
     }
-
-
 }
+

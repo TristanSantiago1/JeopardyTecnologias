@@ -19,7 +19,7 @@ namespace JeopardyGame.Helpers
         Button bttRightFunction;
         readonly FriendManager friendManager;
 
-        public FriendCardManagementWindow(int idUser,String userName, int state, String textLeftButton, String textRigthButton, FriendManager windowInstance)
+        public FriendCardManagementWindow(int idUser, String userName, int state, String textLeftButton, String textRigthButton, FriendManager windowInstance)
         {
             SetCardStyle();
             this.idUser = idUser;
@@ -193,12 +193,7 @@ namespace JeopardyGame.Helpers
         }
         private void ClickReportUser(object sender, RoutedEventArgs e)
         {
-            Views.BannerWindow bannerpage = new Views.BannerWindow();
-            bannerpage.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            bannerpage.Show();
-            Pages.BanerPlayer banerPlayer = new BanerPlayer();
-            bannerpage.contentFrame.NavigationService.Navigate(banerPlayer);
-            friendManager.ReportUser(idUser, lblUserName.Content.ToString());
+            friendManager.ReportUser(idUser);
 
         }
 

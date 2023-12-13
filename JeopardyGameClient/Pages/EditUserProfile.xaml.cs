@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
+using ExceptionHandler = JeopardyGame.Exceptions.ExceptionHandler;
+
 namespace JeopardyGame.Pages
 {
     /// <summary>
@@ -26,14 +30,15 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class EditUserProfile : Page
     {
-        private String imageResource = "";
         private Window dialogMessage;
 
+        String imageResource = "";
+        private Dictionary<string, int> imageIdMappings;
         public EditUserProfile()
         {
             InitializeComponent();
+            InitializeImageMappings();
             ImagenInit();
-            ShowPlayerImage();
             ReadResource();
             DisplayUserInfo(txbEditName, txbEditUserName, txbEditEmail);
         }
@@ -50,34 +55,44 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonSaveChanges(object sender, RoutedEventArgs e)
         {
-            String nameEdited = txbEditName.Text;
-            String originalName = UserSingleton.GetMainUser().Name;
-            UserManagerClient proxyServer = new UserManagerClient();
-            var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
-            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
+            try {
+                String nameEdited = txbEditName.Text;
+                String originalName = UserSingleton.GetMainUser().Name;
+                UserManagerClient proxyServer = new UserManagerClient();
+                var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
+                int idPlayer = UserSingleton.GetMainUser().IdPlayer;
 
-            Dictionary<string, int> imageIdMappings = new Dictionary<string, int>
-            {
-                { "Alacran", 1 },
-                { "AvatarCarro", 2 },
-                { "BatMan", 3 },
-                {"Caballo",4 },
-                {"IronMan",5 },
-                {"RealMadrid",6 },
-                {"SpiterMan",7 }
-            };
-            imageIdMappings.TryGetValue(imageResource, out int imageId);
-            var resultPhoto = proxyServer.UpdatePlayerPhoto(idPlayer, imageId);
+                imageIdMappings.TryGetValue(imageResource, out int imageId);
+                var resultPhoto = proxyServer.UpdatePlayerPhoto(idPlayer, imageId);
 
-            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.UserChangesSaved, Application.Current.MainWindow);
+                if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    new InformationMessageDialogWindow(Properties.Resources.txbUserRegisteredSuccTittle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
+                    MainMenu mainMenu = new MainMenu();
+                    this.NavigationService.Navigate(mainMenu);
+                    NavigationService.RemoveBackEntry();
+                }
+                else
+                {
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+                }
+                proxyServer.Close();
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(result.CodeEvent, String.Empty);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
-            proxyServer.Close();
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         private void CLicButtonCancelChanges(object sender, RoutedEventArgs e)
@@ -123,56 +138,55 @@ namespace JeopardyGame.Pages
             lxtImageSelector.Items.Add("RealMadrid");
             lxtImageSelector.Items.Add("SpiterMan");
         }
-        private void ShowPlayerImage()
-        {
-            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-            UserManagerClient proxyServer = new UserManagerClient();
-            var avatarId = proxyServer.recoverPlayerPhoto(idPlayer);
-
-            Dictionary<int, string> imageIdMappings = new Dictionary<int, string>
-                {
-                    { 1, "Alacran" },
-                    { 2, "AvatarCarro" },
-                    { 3, "BatMan" },
-                    { 4, "Caballo" },
-                    { 5, "IronMan" },
-                    { 6, "RealMadrid" },
-                    { 7, "SpiterMan" }
-                };
-
-            if (avatarId != null && avatarId.ObjectSaved != 0)
-            {
-                int avatarValue = avatarId.ObjectSaved;
-
-                if (imageIdMappings.ContainsKey(avatarValue))
-                {
-                    string avatarName = imageIdMappings[avatarValue];
-
-                    Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(avatarName);
-
-                    BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                        bmp.GetHbitmap(),
-                        IntPtr.Zero,
-                        Int32Rect.Empty,
-                        BitmapSizeOptions.FromEmptyOptions()
-                    );
-
-                    imageProfile.Source = bmpImage;
-                }
-            }
-        }
         private void ImagenInit()
         {
-            Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject("RealMadrid");
+            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
+            ConsultInformationClient proxyServer = new ConsultInformationClient();
 
-            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                bmp.GetHbitmap(),
-                IntPtr.Zero,
-                Int32Rect.Empty,
-                BitmapSizeOptions.FromEmptyOptions()
-                );
+            var playerInfo = proxyServer.ConsultPlayerById(idPlayer);
+            proxyServer.Close();
 
-            imageProfile.Source = bmpImage;
+            if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                var playerWrapper = playerInfo.ObjectSaved; 
+
+                if (playerWrapper != null && playerWrapper is PlayerPOJO)
+                {
+                    var player = (PlayerPOJO)playerWrapper; 
+
+                    int imageId = player.IdActualAvatar;
+
+                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+
+                    if (!string.IsNullOrEmpty(imageName))
+                    {
+                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+
+                        BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                            bmp.GetHbitmap(),
+                            IntPtr.Zero,
+                            Int32Rect.Empty,
+                            BitmapSizeOptions.FromEmptyOptions()
+                        );
+
+                        imageProfile.Source = bmpImage;
+                    }
+                }
+            }
+
+        }
+        private void InitializeImageMappings()
+        {
+            imageIdMappings = new Dictionary<string, int>
+        {
+            { "Alacran", 1 },
+            { "AvatarCarro", 2 },
+            { "BatMan", 3 },
+            {"Caballo",4 },
+            {"IronMan",5 },
+            {"RealMadrid",6 },
+            {"SpiterMan",7 }
+        };
         }
 
     }
