@@ -46,10 +46,10 @@ namespace JeopardyGame.Cards
             points = new TextBlock();
             avatarPlayer1 = new Image();
             avatarPlayer2 = new Image();
-            switch (playerOfCardNumberOne.TurnOfPlayer)
+            switch (playerOfCardNumberOne.SideTeam)
             {
                 case 1:
-                    color = new SolidColorBrush(Colors.CornflowerBlue);
+                    color = new SolidColorBrush(Colors.CadetBlue);
                     break;
                 case 2:
                     color = new SolidColorBrush(Colors.IndianRed);
@@ -60,16 +60,17 @@ namespace JeopardyGame.Cards
         private void SetBorderStyle()
         {
             this.Margin = new System.Windows.Thickness(10, 10, 10, 0);
-            this.Height = 100;
+            this.Height = 90;
             this.Width = 450;
             this.BorderBrush = new SolidColorBrush(Colors.CadetBlue);
             this.Background = color;
+            this.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
         }
 
         private void SetStyleGrid()
         {
             grid.Margin = new System.Windows.Thickness(0);
-            grid.Height = 100;
+            grid.Height = 90;
             grid.Width = 450;
         }
 

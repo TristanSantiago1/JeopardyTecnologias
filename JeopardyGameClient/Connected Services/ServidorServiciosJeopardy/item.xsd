@@ -154,11 +154,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SendMessageTeamResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="UnregisterFromTeamChat">
     <xs:complexType>
       <xs:sequence>
@@ -166,21 +161,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UnregisterFromTeamChatResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="RegisterForTeamChat">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="idUser" type="xs:int" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RegisterForTeamChatResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ReceiveMessageTeamChat">

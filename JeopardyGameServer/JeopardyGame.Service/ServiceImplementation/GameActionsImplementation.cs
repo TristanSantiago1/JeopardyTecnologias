@@ -49,20 +49,25 @@ namespace JeopardyGame.Service.ServiceImplementation
                     if (ActiveGamesDictionary.GetSpecificActiveGame(roomCode) == null)
                     {
                         List<PlayerPlaying> playersPlaying = new()
-                    {
-                        playerJoiningGame
-                    };
+                        {
+                            playerJoiningGame
+                        };
                         ActiveGamesDictionary.RegisterNewGameIndDictionary(roomCode, playersPlaying);
                     }
                     else
                     {
                         var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                         activeGame.Add(playerJoiningGame);
-                    }
+                    }                   
                     var activeGameStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                    if (lobby.listOfPlayerInLobby.Count == activeGameStatus.Count)
+                    if (activeGameStatus.Count == 4 && activeGameStatus.Any(pl => pl.SideTeam == 2))
                     {
-                        NotifyEveryBodyIsReady(activeGameStatus);
+                        ActiveGamesDictionary.RearrangeTurnsForTeams(roomCode);
+                    }
+                    var playersPlayinStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                    if (lobby.listOfPlayerInLobby.Count == playersPlayinStatus.Count)
+                    {
+                        NotifyEveryBodyIsReady(playersPlayinStatus);
                     }
                 }
             }            
@@ -70,6 +75,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void NotifyEveryBodyIsReady(List<PlayerPlaying> playersPlaying)
         {
+            
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);         
             foreach (var player in playersPlaying)
             {

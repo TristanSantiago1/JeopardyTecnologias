@@ -71,7 +71,6 @@
     <Compile Include="InterfacesSevices\ILobbyActions.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
     <Compile Include="InterfacesSevices\INotifyUserFriendlyActions.cs" />
-    <Compile Include="InterfacesSevices\ITeamChat.cs" />
     <Compile Include="InterfacesSevices\IUserManager.cs" />
     <Compile Include="InterfacesSevices\ILiveChat.cs" />
     <Compile Include="InterpretersEntityPojo\QuestionsInterpreter.cs" />
@@ -88,7 +87,6 @@
     <Compile Include="ServiceImplementation\NotifyUserAvailabilityImplementation .cs" />
     <Compile Include="ServiceImplementation\QuestionsManagerImplementation.cs" />
     <Compile Include="ServiceImplementation\ServicesReferenceAuthor.cs" />
-    <Compile Include="ServiceImplementation\TeamChatImplementation.cs" />
     <Compile Include="ServiceImplementation\UserManagerImplementation.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2028,22 +2028,22 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IChatForTeams", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.IChatForTeamsCallback))]
     public interface IChatForTeams {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/SendMessageTeam", ReplyAction="http://tempuri.org/IChatForTeams/SendMessageTeamResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/SendMessageTeam")]
         void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/SendMessageTeam", ReplyAction="http://tempuri.org/IChatForTeams/SendMessageTeamResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/SendMessageTeam")]
         System.Threading.Tasks.Task SendMessageTeamAsync(int idUser, int idTeamMate, string userName, string messageToSend);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat", ReplyAction="http://tempuri.org/IChatForTeams/UnregisterFromTeamChatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat")]
         void UnregisterFromTeamChat(int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat", ReplyAction="http://tempuri.org/IChatForTeams/UnregisterFromTeamChatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat")]
         System.Threading.Tasks.Task UnregisterFromTeamChatAsync(int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat", ReplyAction="http://tempuri.org/IChatForTeams/RegisterForTeamChatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat")]
         void RegisterForTeamChat(int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat", ReplyAction="http://tempuri.org/IChatForTeams/RegisterForTeamChatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat")]
         System.Threading.Tasks.Task RegisterForTeamChatAsync(int idUser);
     }
     

@@ -35,14 +35,9 @@ namespace JeopardyGame.Pages
             this.idTeamMate = idTeam;
             InstanceContext context = new InstanceContext(this);
             proxyChannelCallback = new ChatForTeamsClient(context);
-            PrepareWindow();
-        }
-
-        private void PrepareWindow()
-        {
-            userSingleton = UserSingleton.GetMainUser();            
-            proxyChannelCallback.RegisterForTeamChat(userSingleton.IdUser);          
-        }     
+            userSingleton = UserSingleton.GetMainUser();
+            proxyChannelCallback.RegisterForTeamChat(userSingleton.IdUser);
+        }   
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
         {

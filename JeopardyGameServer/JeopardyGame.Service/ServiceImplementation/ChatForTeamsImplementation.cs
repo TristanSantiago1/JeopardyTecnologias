@@ -2,12 +2,7 @@
 using JeopardyGame.Data;
 using JeopardyGame.Service.DataDictionaries;
 using JeopardyGame.Service.InterfacesSevices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -24,11 +19,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 if (savedChannel == null)
                 {
                     var newChannel = OperationContext.Current;
-                    ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idUser, newChannel);
-                }
-                else
-                {
-                    //Channel ya existe
+                    TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannel);
                 }
             }
         }
@@ -69,16 +60,13 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             if (idUser != NULL_INT_VALUE)
             {
-                var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUser);
+                var channel = TeamChats.GetChannelCallBackTeamChatUser(idUser);
                 if (channel != null)
                 {
-                    ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUser);
-                }
-                else
-                {
-                    // channel no existe
+                    TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUser);
                 }
             }
         }
+
     }
 }

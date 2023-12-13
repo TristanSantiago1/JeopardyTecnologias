@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -46,6 +47,22 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             return gamesBeenPlayingDictionary;
         }  
+
+        public static void RearrangeTurnsForTeams(int roomCode)
+        {
+            foreach (var item in gamesBeenPlayingDictionary)
+            {
+                if (item.Key == roomCode)
+                {
+                    var team1 = item.Value.Where(pl => pl.SideTeam == 1).ToList();
+                    var team2 = item.Value.Where(pl => pl.SideTeam == 2).ToList();
+                    team1[0].TurnOfPlayer = 1;
+                    team1[1].TurnOfPlayer = 3;
+                    team2[0].TurnOfPlayer = 2;
+                    team2[1].TurnOfPlayer = 4;
+                }
+            }
+        }
 
         public class PlayerPlaying
         {

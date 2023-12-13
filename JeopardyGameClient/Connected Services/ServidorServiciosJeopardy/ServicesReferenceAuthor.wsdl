@@ -151,20 +151,11 @@
   <wsdl:message name="IChatForTeams_SendMessageTeam_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessageTeam" />
   </wsdl:message>
-  <wsdl:message name="IChatForTeams_SendMessageTeam_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SendMessageTeamResponse" />
-  </wsdl:message>
   <wsdl:message name="IChatForTeams_UnregisterFromTeamChat_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterFromTeamChat" />
   </wsdl:message>
-  <wsdl:message name="IChatForTeams_UnregisterFromTeamChat_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UnregisterFromTeamChatResponse" />
-  </wsdl:message>
   <wsdl:message name="IChatForTeams_RegisterForTeamChat_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterForTeamChat" />
-  </wsdl:message>
-  <wsdl:message name="IChatForTeams_RegisterForTeamChat_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterForTeamChatResponse" />
   </wsdl:message>
   <wsdl:message name="IChatForTeams_ReceiveMessageTeamChat_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChat" />
@@ -499,15 +490,12 @@
   <wsdl:portType name="IChatForTeams">
     <wsdl:operation name="SendMessageTeam">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/SendMessageTeam" message="tns:IChatForTeams_SendMessageTeam_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/SendMessageTeamResponse" message="tns:IChatForTeams_SendMessageTeam_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UnregisterFromTeamChat">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat" message="tns:IChatForTeams_UnregisterFromTeamChat_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChatResponse" message="tns:IChatForTeams_UnregisterFromTeamChat_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RegisterForTeamChat">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat" message="tns:IChatForTeams_RegisterForTeamChat_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/RegisterForTeamChatResponse" message="tns:IChatForTeams_RegisterForTeamChat_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReceiveMessageTeamChat">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChat" message="tns:IChatForTeams_ReceiveMessageTeamChat_OutputCallbackMessage" />
@@ -856,27 +844,18 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UnregisterFromTeamChat">
       <soap12:operation soapAction="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RegisterForTeamChat">
       <soap12:operation soapAction="http://tempuri.org/IChatForTeams/RegisterForTeamChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReceiveMessageTeamChat">
       <soap12:operation soapAction="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChat" style="document" />
