@@ -11,17 +11,13 @@ namespace JeopardyGame.Service.DataDictionaries
     public static class GameLobbiesDictionary
     {        
         private static Dictionary<int, Lobby> activeLobbiesDictionary = new Dictionary<int, Lobby>();
-
-
         public static void RegisterNewLobby(int roomCode, Lobby newLobby)
         {
-
             if (!activeLobbiesDictionary.ContainsKey(roomCode))
             {
                 activeLobbiesDictionary.Add(roomCode, newLobby);
             }
         }
-
         public static Lobby GetSpecificActiveLobby(int roomCode)
         {
             foreach (var item in activeLobbiesDictionary)
@@ -33,7 +29,6 @@ namespace JeopardyGame.Service.DataDictionaries
             }
             return null;
         }
-
         public static void RemoveRegistryOfLobbyFromDictionary(int roomCode)
         {
             if (activeLobbiesDictionary.ContainsKey(roomCode))
@@ -41,14 +36,12 @@ namespace JeopardyGame.Service.DataDictionaries
                 activeLobbiesDictionary.Remove(roomCode);
             }
         }
-
         public static Dictionary<int, Lobby> GetActiveLobbiesList()
         {
             return activeLobbiesDictionary;
         }
 
     }
-
     public class Lobby
     {
         public int idAdmin { get; set; }
@@ -59,7 +52,6 @@ namespace JeopardyGame.Service.DataDictionaries
             listOfPlayerInLobby = new List<PlayerOnLobbyList>();
         }
     }
-
     public class PlayerOnLobbyList()
     {
         public int idUser { get; set; }
@@ -69,5 +61,4 @@ namespace JeopardyGame.Service.DataDictionaries
         public int sideTeam { get; set; }
         public OperationContext lobbyCommunicationChannelCallback { get; set;}        
     }
-
 }

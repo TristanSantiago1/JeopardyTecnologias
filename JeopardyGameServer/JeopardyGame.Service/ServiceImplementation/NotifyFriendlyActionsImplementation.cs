@@ -3,28 +3,20 @@ using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.InterfacesServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
     partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
     {
-
         private readonly int NULL_INT_VALUE = 0;
         private readonly int CHANNEL_ALREADY_EXIST = -1;
         private readonly int CHANNEL_SAVED = 1;
         private readonly int DECLINE_FRIEND_REQUEST = 0;
         private readonly int SEND_FRIEND_REQUEST = 1;
         private readonly int ACCEPT_FRIEND_REQUEST = 2;
-
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
-
             GenericClass<int> resultToReturn = new GenericClass<int>();
             try
             {
@@ -55,11 +47,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
-
-
-
         }
-
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
             try
@@ -83,7 +71,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
     }
-
     partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
     {
         public void ReportPlayer(int idUser, string userName)
@@ -106,7 +93,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
     }
-
     partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
     {
         public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
@@ -141,9 +127,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
     }
-
     partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
     {
         public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
@@ -163,7 +147,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                             var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
                             if (channelSaved != null)
                             {
-                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, DECLINE_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(
+                                    userConsulted.ObjectSaved.IdUser, DECLINE_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
                             }
                         }
                     }
@@ -197,7 +182,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                             var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequested);
                             if (channelSaved != null)
                             {
-                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, SEND_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(
+                                    userConsulted.ObjectSaved.IdUser, SEND_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
                             }
                         }
                     }
@@ -211,9 +197,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-
         }      
-
         public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();            
@@ -246,6 +230,5 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
     }
 }

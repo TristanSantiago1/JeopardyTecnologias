@@ -6,9 +6,6 @@ using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -20,7 +17,6 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ROUND_THREE = 3;
         private const int ID_LAST_QUESTION = 19;
         private const int LIMIT_OF_CARDS_FOR_ONE_ROUND = 9;
-
         public GenericClass<List<QuestionCardInformation>> GetQuestionForBoard(int roomCode)
         {
             GenericClass<List<QuestionCardInformation>> resultToReturn = new GenericClass<List<QuestionCardInformation>>();
@@ -41,7 +37,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         }
-
         private int CreateGame(int roomCode)
         {
             Game newGame = new()
@@ -51,7 +46,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             };
             return GameDataOperation.SaveNewGameInDataBase(newGame).CodeEvent;
         }
-
         private int ChoseHost()
         {
             var idHosts = GameDataOperation.GetHostIds();
@@ -62,13 +56,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return idHosts.CodeEvent;
         }
-
         private bool RoomCodeExist(int roomCode)
         {
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);            
             return (lobby != null); 
         }
-
         private GenericClassServer<List<QuestionCardInformation>> GetQuestionInformation()
         {           
             GenericClassServer<List<QuestionCardInformation>> listOfQuestions = new GenericClassServer<List<QuestionCardInformation>>();
@@ -101,7 +93,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return listOfQuestions;
         }
-
         private List<QuestionCardInformation> OrderQuestionsInCards(List<Question> questionPool)
         {
             List<QuestionCardInformation> questionCardInformation = new List<QuestionCardInformation>();
@@ -123,8 +114,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             IdAnswerOfQuestion = question.Awnser.IdAwnser,
                             IdCategoryBelong = question.CategoryIdCategory,
                             ValueWorth = (int)question.ValueWorth
-                        }
-                        
+                        } 
                     };
                     questionCardInformation.Add(questionCard);
                     iterator++;
@@ -149,13 +139,13 @@ namespace JeopardyGame.Service.ServiceImplementation
             questionCardInformation.Add(specialQuestionCard);
             return questionCardInformation;
         }
-
         private List<QuestionCardInformation> OrderAnswersInCards(List<Awnser> answerPool, List<QuestionCardInformation> questionCardInformation)
         {
             foreach (var questionCard in questionCardInformation)
             {
                 var answersOfQuestion = answerPool.Where(answer => answer.CategoryIdCategory  == questionCard.SpecificQuestionDetails.IdCategoryBelong).ToList();
-                questionCard.RightAnswer = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.Find(answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
+                questionCard.RightAnswer = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.Find(
+                    answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
                 answersOfQuestion.Remove(answersOfQuestion.Find(answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
                 questionCard.WrongOptionOne = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.First());
                 answersOfQuestion.Remove(answersOfQuestion.First());
@@ -165,7 +155,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }            
             return questionCardInformation;
         }
-
         private int SetNumberOfRound(int iterator)
         {
             if (iterator <= LIMIT_OF_CARDS_FOR_ONE_ROUND)
@@ -177,7 +166,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 return ROUND_TWO;
             }
         }
-
         public int RegistryGamePlayers(int roomCode, List<PlayerInGameDataContract> playerInGames)
         {            
             int result = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -213,8 +201,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return result;
         }
-
-
     }
 }
     

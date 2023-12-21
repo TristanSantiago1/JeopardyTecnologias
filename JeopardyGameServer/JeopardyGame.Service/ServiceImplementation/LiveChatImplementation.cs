@@ -4,18 +4,13 @@ using JeopardyGame.Service.DataDictionaries;
 using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class LiveChatImplementation : ILiveChat
     {
-
         private readonly int NULL_INT_VALUE = 0;
-
         public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
         {
             GenericClass<bool> resultToReturn = new GenericClass<bool>();
@@ -49,7 +44,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
             return resultToReturn;
         }
-
         public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
            GenericClass<List<MessageChat>> resultToReturn = new GenericClass<List<MessageChat>>();
@@ -81,7 +75,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         }
-
         public void DeleteChat(int roomCode, int idUser)
         {
             HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
@@ -96,9 +89,9 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             try
             {
-                SpecificChannelCallBackChat channelChat = new SpecificChannelCallBackChat();
-                channelChat.idUser = idUser;
-                channelChat.communicationChannelChat = OperationContext.Current;
+                SpecificChannelCallBackChat channelForChat = new SpecificChannelCallBackChat();
+                channelForChat.idUser = idUser;
+                channelForChat.communicationChannelChat = OperationContext.Current;
                 ChannelsCallBackInActiveChats specificActiveInChannelChatStorage = ChatsDictionary.GetChannelCallBackChat(roomCode);
                 bool isNotSaved = true;
                 foreach (var item in specificActiveInChannelChatStorage.listOfChannelsCallBack)
@@ -111,7 +104,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
                 if (isNotSaved)
                 {
-                    specificActiveInChannelChatStorage.listOfChannelsCallBack.Add(channelChat);
+                    specificActiveInChannelChatStorage.listOfChannelsCallBack.Add(channelForChat);
                 }
             }
             catch (CommunicationObjectFaultedException ex)
@@ -131,7 +124,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);   
             }         
         }
-
         public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
         {
             try
@@ -145,12 +137,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
                     if (messagesHistorical != null)
                     {
-                        MessageChat messageChat = new MessageChat();
-                        messageChat.IdUser = idUser;
-                        messageChat.UserName = userName;
-                        messageChat.MessageToSend = messageToSend;
-                        messagesHistorical.listOfMessages.Add(messageChat);
-                        NotifyUser(roomCode, messageChat, true, idUser);
+                        MessageChat messageInTheChat = new MessageChat();
+                        messageInTheChat.IdUser = idUser;
+                        messageInTheChat.UserName = userName;
+                        messageInTheChat.MessageToSend = messageToSend;
+                        messagesHistorical.listOfMessages.Add(messageInTheChat);
+                        NotifyUser(roomCode, messageInTheChat, true, idUser);
                     }
                     else
                     {
@@ -167,7 +159,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         private void NotifyUser(int roomCode, MessageChat messageToSend, bool success, int idSender)
         {
             try
@@ -197,7 +188,5 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
-
     }
 }

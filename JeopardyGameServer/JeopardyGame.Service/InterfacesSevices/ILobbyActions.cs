@@ -23,7 +23,7 @@ namespace JeopardyGame.Service.InterfacesServices
         void DissolveLobby(int roomCode, int idUser);
 
         [OperationContract]
-        GenericClass<int> JoinLobby(int roomCode, int idUser);
+        GenericClass<int> JoinIntoLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
         void NotifyPlayerInLobby(int roomCode, int idUser);

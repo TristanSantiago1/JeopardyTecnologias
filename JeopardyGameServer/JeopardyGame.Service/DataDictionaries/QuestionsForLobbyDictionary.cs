@@ -10,7 +10,6 @@ namespace JeopardyGame.Service.DataDictionaries
 {
     public static class QuestionsForLobbyDictionary
     {
-
         private static Dictionary<int, GenericClass<List<QuestionCardInformation>>> questionsForLobby = new Dictionary<int, GenericClass<List<QuestionCardInformation>>>();
 
         public static void RegisterNewSetOfQuestionsInDictionary(int roomCode, GenericClass<List<QuestionCardInformation>> questionsSelected)
@@ -20,7 +19,6 @@ namespace JeopardyGame.Service.DataDictionaries
                 questionsForLobby.Add(roomCode, questionsSelected);
             }
         }
-
         public static GenericClass<List<QuestionCardInformation>> GetSpecificSetOfQuestionsForLobby(int roomCode)
         {
             foreach (var item in questionsForLobby)
@@ -32,7 +30,6 @@ namespace JeopardyGame.Service.DataDictionaries
             }
             return null;
         }
-
         public static void RemoveSetOFQuestionsFromDictionary(int roomCode)
         {
             if (questionsForLobby.ContainsKey(roomCode))
@@ -40,7 +37,6 @@ namespace JeopardyGame.Service.DataDictionaries
                 questionsForLobby.Remove(roomCode);
             }
         }
-
         public static Dictionary<int, GenericClass<List<QuestionCardInformation>>> GetAllActiveSetsOfQuestions()
         {
             return questionsForLobby;

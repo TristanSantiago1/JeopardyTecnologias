@@ -10,11 +10,8 @@ namespace JeopardyGame.Service.DataDictionaries
 {
     public static class ActiveGamesDictionary
     {
-
-        private static Dictionary<int, List<PlayerPlaying>> gamesBeenPlayingDictionary = new Dictionary<int, List<PlayerPlaying>>();
-
-
-        public static void RegisterNewGameIndDictionary(int roomCode, List<PlayerPlaying> newActiveGame)
+        private static Dictionary<int, List<PlayerPlayingInGame>> gamesBeenPlayingDictionary = new Dictionary<int, List<PlayerPlayingInGame>>();
+        public static void RegisterNewGameIndDictionary(int roomCode, List<PlayerPlayingInGame> newActiveGame)
         {
 
             if (!gamesBeenPlayingDictionary.ContainsKey(roomCode))
@@ -22,8 +19,7 @@ namespace JeopardyGame.Service.DataDictionaries
                 gamesBeenPlayingDictionary.Add(roomCode, newActiveGame);
             }
         }
-
-        public static List<PlayerPlaying> GetSpecificActiveGame(int roomCode)
+        public static List<PlayerPlayingInGame> GetSpecificActiveGame(int roomCode)
         {
             foreach (var item in gamesBeenPlayingDictionary)
             {
@@ -43,7 +39,7 @@ namespace JeopardyGame.Service.DataDictionaries
             }
         }
 
-        public static Dictionary<int, List<PlayerPlaying>> GetActiveGamesList()
+        public static Dictionary<int, List<PlayerPlayingInGame>> GetActiveGamesList()
         {
             return gamesBeenPlayingDictionary;
         }  
@@ -64,9 +60,8 @@ namespace JeopardyGame.Service.DataDictionaries
             }
         }
 
-        public class PlayerPlaying
+        public class PlayerPlayingInGame
         {
-
             public int IdUser { get; set; }
             public int IdPlayer { get; set; }
             public String UserName { get; set; }
@@ -78,9 +73,6 @@ namespace JeopardyGame.Service.DataDictionaries
             public bool DidAnswerLastQuestion { get; set; }
             public int IdAvatar { get; set; }
             public OperationContext gameCallbackChannel { get; set; }
-            
         }
-
-
     }
 }

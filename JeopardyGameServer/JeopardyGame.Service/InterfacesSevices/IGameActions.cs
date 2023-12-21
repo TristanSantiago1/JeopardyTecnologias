@@ -20,7 +20,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing);
 
         [OperationContract(IsOneWay = true)]
-        void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow);
+        void ChooseQuestionOfBoard(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow);
 
         [OperationContract(IsOneWay = true)]
         void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn);

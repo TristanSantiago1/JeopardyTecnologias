@@ -1,14 +1,8 @@
-﻿using JeopardyGame.Data;
-using JeopardyGame.Data.Exceptions;
+﻿using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.InterfacesServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.ServiceModel.Channels;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -47,7 +41,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         public void PlayerIsNotAvailable(int idUserDisconnecting)
         {
             try
@@ -75,11 +68,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         //FALTA METODO PARA NOTIFICAR CUANDO ENTRE A APRTIDA
-    
-
-        private void NotifyFriends(int idUser, int status)
+      private void NotifyFriends(int idUser, int status)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
             FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
@@ -101,7 +91,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                                     channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().ResponseOfPlayerAvailability(status, idUser);
                                 }
                             }
-                            catch (CommunicationException ex)
+                            catch (CommunicationException)
                             {
                                 ChannelAdministrator.VerifyUserIsStillActive(idUser);
                             }
@@ -118,9 +108,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-        }
-
-        
+        }   
     }
-
 }
