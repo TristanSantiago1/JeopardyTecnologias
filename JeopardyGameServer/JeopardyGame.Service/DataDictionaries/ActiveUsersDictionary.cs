@@ -11,8 +11,6 @@ namespace JeopardyGame.Service
     public static class ActiveUsersDictionary
     {
         private static Dictionary<int, OperationContext> activeUsers = new Dictionary<int, OperationContext>();
-
-
         public static void RegisterNewActiveUserInDictionary(int idUser, OperationContext channel)
         {
             if (!activeUsers.ContainsKey(idUser))
@@ -20,7 +18,6 @@ namespace JeopardyGame.Service
                 activeUsers.Add(idUser, channel);
             }
         }
-
         public static OperationContext GetChannelCallBackActiveUser(int idUser)
         {
             foreach (var item in activeUsers)
@@ -32,7 +29,6 @@ namespace JeopardyGame.Service
             }
             return null;
         }
-
         public static void RemoveRegistryOfActiveUserFromDictionary(int idUser)
         {
             if (activeUsers.ContainsKey(idUser))
@@ -40,7 +36,6 @@ namespace JeopardyGame.Service
                 activeUsers.Remove(idUser);
             }
         }
-
         public static Dictionary<int, OperationContext> GetActiveUsersList() 
         { 
             return activeUsers; 

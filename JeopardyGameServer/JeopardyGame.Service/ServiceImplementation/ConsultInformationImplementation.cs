@@ -2,12 +2,6 @@
 using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.InterfacesServices;
 using JeopardyGame.Service.InterpretersEntityPojo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -21,12 +15,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 return NullParametersHandler.HandleNullParametersService(resultToReturn);
             }   
-            GenericClassServer<Player> playerConsulted = Data.DataAccess.UserManagerDataOperation.GetPlayerByIdPlayer(idPlayer);
-            resultToReturn.ObjectSaved = UserInterpreter.FromPlayerEntityToPlayerPojo(playerConsulted.ObjectSaved);
-            resultToReturn.CodeEvent = playerConsulted.CodeEvent;
+            GenericClassServer<Player> playerConsultedByIdPlayer = Data.DataAccess.UserManagerDataOperation.GetPlayerByIdPlayer(idPlayer);
+            resultToReturn.ObjectSaved = UserInterpreter.FromPlayerEntityToPlayerPojo(playerConsultedByIdPlayer.ObjectSaved);
+            resultToReturn.CodeEvent = playerConsultedByIdPlayer.CodeEvent;
             return resultToReturn;
         }
-
         public GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser)
         {
             GenericClass<PlayerPOJO> resultToReturn = new GenericClass<PlayerPOJO>();
@@ -34,12 +27,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 return NullParametersHandler.HandleNullParametersService(resultToReturn); 
             }
-            GenericClassServer<Player> playerConsulted = Data.DataAccess.UserManagerDataOperation.GetPlayerByIdUser(idUser);
-            resultToReturn.ObjectSaved = UserInterpreter.FromPlayerEntityToPlayerPojo(playerConsulted.ObjectSaved);
-            resultToReturn.CodeEvent = playerConsulted.CodeEvent;
+            GenericClassServer<Player> playerConsultedByIdUser = Data.DataAccess.UserManagerDataOperation.GetPlayerByIdUser(idUser);
+            resultToReturn.ObjectSaved = UserInterpreter.FromPlayerEntityToPlayerPojo(playerConsultedByIdUser.ObjectSaved);
+            resultToReturn.CodeEvent = playerConsultedByIdUser.CodeEvent;
             return resultToReturn;
         }
-
         public GenericClass<UserPOJO> ConsultUserById(int idUser)
         {
             GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
@@ -47,12 +39,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 return NullParametersHandler.HandleNullParametersService(resultToReturn);
             }
-            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserById(idUser);
-            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
-            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+            GenericClassServer<User> userConsultedByIdUser = Data.DataAccess.UserManagerDataOperation.GetUserById(idUser);
+            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsultedByIdUser.ObjectSaved);
+            resultToReturn.CodeEvent = userConsultedByIdUser.CodeEvent;
             return resultToReturn;
         }
-
         public GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer)
         {
             GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
@@ -61,12 +52,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 return NullParametersHandler.HandleNullParametersService(resultToReturn);
             }     
             PlayerPOJO player = ConsultPlayerById(idPlayer).ObjectSaved;
-            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserById(player.IdUser);
-            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
-            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+            GenericClassServer<User> userConsultedByIdPlayer = Data.DataAccess.UserManagerDataOperation.GetUserById(player.IdUser);
+            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsultedByIdPlayer.ObjectSaved);
+            resultToReturn.CodeEvent = userConsultedByIdPlayer.CodeEvent;
             return resultToReturn;
         }
-
         public GenericClass<UserPOJO> ConsultUserByUserName(string userName)
         {
             GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
@@ -74,9 +64,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 return NullParametersHandler.HandleNullParametersService(resultToReturn);
             }
-            GenericClassServer<User> userConsulted = Data.DataAccess.UserManagerDataOperation.GetUserByUserName(userName);
-            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsulted.ObjectSaved);
-            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+            GenericClassServer<User> userConsultedByUserName = Data.DataAccess.UserManagerDataOperation.GetUserByUserName(userName);
+            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsultedByUserName.ObjectSaved);
+            resultToReturn.CodeEvent = userConsultedByUserName.CodeEvent;
             return resultToReturn;
         }
 

@@ -9,10 +9,7 @@ namespace JeopardyGame.Service
 {
     public static class FriendManagerDictionary
     {
-
         private static Dictionary<int, OperationContext> friendManagerUsersDictionary = new Dictionary<int, OperationContext>();
-
-
         public static void RegisterNewFriendUserInDictionary(int idUser, OperationContext canal)
         {
             if (!friendManagerUsersDictionary.ContainsKey(idUser))
@@ -20,7 +17,6 @@ namespace JeopardyGame.Service
                 friendManagerUsersDictionary.Add(idUser, canal);
             }
         }
-
         public static OperationContext GetChannelFriendUser(int idUser)
         {
             foreach (var item in friendManagerUsersDictionary)
@@ -32,7 +28,6 @@ namespace JeopardyGame.Service
             }
             return null;
         }
-
         public static void RemoveRegistryOfFriendFromDictionary(int idUser)
         {
             if (friendManagerUsersDictionary.ContainsKey(idUser))
@@ -40,11 +35,9 @@ namespace JeopardyGame.Service
                 friendManagerUsersDictionary.Remove(idUser);
             }
         }
-
         public static Dictionary<int, OperationContext> GetActiveFriendsList()
         {
             return friendManagerUsersDictionary;
         }
     }
-
 }

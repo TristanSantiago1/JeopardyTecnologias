@@ -6,15 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using static JeopardyGame.Service.DataDictionaries.ActiveGamesDictionary;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class GameActionsImplementation : IGameActions
     {
-
         private const int ERROR = 0;
         private const int ROUND_ONE = 1;
         private const int ROUND_TWO = 2;
@@ -22,18 +19,16 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int GAME_FINISHED = 4;
         private const int FIRST_TURN = 1;
         private static object lockObject = new object();
-
-
         public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar)
         {
             lock (lockObject)
             {
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                var playerOnLobbySubscribing = lobby.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
+                var lobbyOfGame = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                var playerOnLobbySubscribing = lobbyOfGame.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
                 try { 
                 if (playerOnLobbySubscribing != null)
                 {
-                    PlayerPlaying playerJoiningGame = new()
+                    PlayerPlayingInGame playerJoiningGame = new()
                     {
                         IdUser = idUserSubscribing,
                         IdPlayer = playerOnLobbySubscribing.idPlayer,
@@ -47,9 +42,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                         IdAvatar = idAvatar,
                         gameCallbackChannel = OperationContext.Current
                     };
+
                     if (ActiveGamesDictionary.GetSpecificActiveGame(roomCode) == null)
                     {
-                        List<PlayerPlaying> playersPlaying = new()
+                        List<PlayerPlayingInGame> playersPlaying = new()
                         {
                             playerJoiningGame
                         };
@@ -57,8 +53,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                     else
                     {
-                        var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                        activeGame.Add(playerJoiningGame);
+                        var activeCurrentGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                        activeCurrentGame.Add(playerJoiningGame);
                     }                   
                     var activeGameStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                     if (activeGameStatus.Count == 4 && activeGameStatus.Any(pl => pl.SideTeam == 2))
@@ -66,7 +62,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         ActiveGamesDictionary.RearrangeTurnsForTeams(roomCode);
                     }
                     var playersPlayinStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                    if (lobby.listOfPlayerInLobby.Count == playersPlayinStatus.Count)
+                    if (lobbyOfGame.listOfPlayerInLobby.Count == playersPlayinStatus.Count)
                     {
                         NotifyEveryBodyIsReady(playersPlayinStatus);
                     }
@@ -82,8 +78,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
             }            
         }
-
-        private void NotifyEveryBodyIsReady(List<PlayerPlaying> playersPlaying)
+        private void NotifyEveryBodyIsReady(List<PlayerPlayingInGame> playersPlaying)
         {            
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
             try
@@ -102,7 +97,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
             var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
@@ -115,8 +109,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                     {
                         int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
                         activeGame.Remove(playerLeaving);
-                        RearrangeTurns(activeGame, turnLeaving);
-                        NotifySomeOneLeaveTheGame(activeGame);
+                        ReArrangeTurns(activeGame, turnLeaving);
+                        NotifySomePlayerLeaveTheGame(activeGame);
                     }
                 }
             }
@@ -131,19 +125,18 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         }
 
-        private void RearrangeTurns(List<PlayerPlaying> playersPlaying, int turnLeaving)
+        private void ReArrangeTurns(List<PlayerPlayingInGame> playersPlayingInCurrentGame, int turnLeaving)
         {
-            playersPlaying.Where(item => item.TurnOfPlayer > turnLeaving).ToList().ForEach(item => item.TurnOfPlayer--);
+            playersPlayingInCurrentGame.Where(item => item.TurnOfPlayer > turnLeaving).ToList().ForEach(item => item.TurnOfPlayer--);
         }
-
-        private void NotifySomeOneLeaveTheGame(List<PlayerPlaying> playersPlaying)
+        private void NotifySomePlayerLeaveTheGame(List<PlayerPlayingInGame> playersPlaying)
         {
-            List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
+            List<PlayerInGameDataContract> playersInCurrentGame = GetPlayerInGameDataContractList(playersPlaying);
             try
             {
                 foreach (var player in playersPlaying)
                 {
-                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationSomeOneLeft(player.TurnOfPlayer, playersInGame);
+                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationSomeOneLeft(player.TurnOfPlayer, playersInCurrentGame);
                 }
             }
             catch (CommunicationObjectFaultedException ex)
@@ -155,7 +148,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn)
         {
             var playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
@@ -182,24 +174,23 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
             }
         }
-
-        private void NotifyPlayerAboutTurn(List<PlayerPlaying> playersPlaying, int turnJustPassed)
+        private void NotifyPlayerAboutTurn(List<PlayerPlayingInGame> playersPlaying, int turnJustPassed)
         {
-            int yourTurn;
+            int playerTurn;
             try
             {
                 if (playersPlaying.Count == turnJustPassed)
                 {
-                    yourTurn = FIRST_TURN;
+                    playerTurn = FIRST_TURN;
                 }
                 else
                 {
                     turnJustPassed++;
-                    yourTurn = turnJustPassed;
+                    playerTurn = turnJustPassed;
                 }
                 foreach (var playerPlaying in playersPlaying)
                 {
-                    playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationAboutTurn(yourTurn);
+                    playerPlaying.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ReceiveNotificationAboutTurn(playerTurn);
                 }
             }
             catch (CommunicationObjectFaultedException ex)
@@ -212,14 +203,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public void ChooseQuestion(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
+        public void ChooseQuestionOfBoard(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
         {
-            var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+            var activeCurrentGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
             try
             {
-                if (activeGame != null)
+                if (activeCurrentGame != null)
                 {                    
-                    foreach (var playerPlaying in activeGame)
+                    foreach (var playerPlaying in activeCurrentGame)
                     {
                         if (playerPlaying.gameCallbackChannel != null)
                         {
@@ -270,7 +261,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        private void NotifyPrepareNewRound(List<PlayerPlaying> playersPlaying, int newRound)
+        private void NotifyPrepareNewRound(List<PlayerPlayingInGame> playersPlaying, int newRound)
         {
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
             try
@@ -292,8 +283,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         } 
-
-        private void AssignTurnsByPoints(List<PlayerInGameDataContract> playerInGame, List<PlayerPlaying> playersPlaying)
+        private void AssignTurnsByPoints(List<PlayerInGameDataContract> playerInGame, List<PlayerPlayingInGame> playersPlaying)
         {
             playerInGame.OrderBy(player => player.CurrentPointsOfRound).ToList();
             int turn = FIRST_TURN;
@@ -318,17 +308,15 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
-
         public void ConfirmBet(int roomCode, int idUser)
         {
-            List<PlayerPlaying> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+            List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
             playersPlaying.FirstOrDefault(pla => pla.IdUser == idUser).DidBet = true;
             try
             {
                 if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet == true).ToList().Count)
                 {
-                    foreach (PlayerPlaying player in playersPlaying)
+                    foreach (PlayerPlayingInGame player in playersPlaying)
                     {
                         player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowLastQuestion();
                     }
@@ -343,12 +331,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
-
         public void ConfirmLastQuestionAnswer(int roomCode, PlayerInGameDataContract playerAnswering, int points, bool isCorrect)
         {
-            List<PlayerPlaying> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            PlayerPlaying specificPlayer = playersPlaying.FirstOrDefault(pla => pla.IdUser == playerAnswering.IdUser);
+            List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+            PlayerPlayingInGame specificPlayer = playersPlaying.FirstOrDefault(pla => pla.IdUser == playerAnswering.IdUser);
             //si alguiens e sale durante la ultima regunta, quitarlo del diccionario y verificar playerAwnserin = null
             specificPlayer.DidAnswerLastQuestion = true;
             try
@@ -375,13 +361,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
-        private void NotifyPlayersWinner(List<PlayerPlaying> playersPlaying)
+        private void NotifyPlayersWinner(List<PlayerPlayingInGame> playersPlaying)
         {
             List<PlayerInGameDataContract> playersInGame = GetPlayerInGameDataContractList(playersPlaying);
             try
             {
-                foreach (PlayerPlaying player in playersPlaying)
+                foreach (PlayerPlayingInGame player in playersPlaying)
                 {
                     player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowWinner(playersInGame);
                 }
@@ -395,7 +380,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         public void FinishGame(int roomCode, int idUserLeader, List<PlayerInGameDataContract> playerInGame)
         {
             QuestionsManagerImplementation managerImplementation = new QuestionsManagerImplementation();
@@ -426,7 +410,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-
         private void CleanDictionariesAfterGame(int roomCode, bool playAgaing)
         {
             ActiveGamesDictionary.RemoveRegistryOfGameFromDictionary(roomCode);
@@ -438,9 +421,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
             }
         }
-
-
-        private List<PlayerInGameDataContract> GetPlayerInGameDataContractList(List<PlayerPlaying> playersPlaying)
+        private List<PlayerInGameDataContract> GetPlayerInGameDataContractList(List<PlayerPlayingInGame> playersPlaying)
         {
             List<PlayerInGameDataContract> playersInGame = new();
             try
@@ -471,6 +452,5 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return playersInGame;
         }
-
     }
 }

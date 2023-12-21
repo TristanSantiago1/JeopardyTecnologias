@@ -2,26 +2,16 @@
 using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net.Mail;
 using System.Net;
-using System.ServiceModel.Channels;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using JeopardyGame.Data.Exceptions;
-using System.Security.Cryptography.X509Certificates;
 using JeopardyGame.Data.DataAccess;
-using System.Diagnostics.SymbolStore;
-using System.ServiceModel;
 using JeopardyGame.Service.ChannelsAdministrator;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    /// <summary>
-    /// Class for User registration 
-    /// </summary>
     public partial class UserManagerImplementation : IUserManager
     {
         private readonly int DEFAULT_INT_VALUE = 0;
@@ -141,7 +131,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             resultToReturn.CodeEvent = emailIsNew.CodeEvent;
             return resultToReturn;
         }
-
         public GenericClass<int> UserNameAlreadyExist(String userName)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
@@ -154,7 +143,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             resultToReturn.CodeEvent = emailIsNew.CodeEvent;
             return resultToReturn;           
         }
-
         public GenericClass<int> SentEmailCodeConfirmation(String email, String subject, String code)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
@@ -212,7 +200,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             resultToReturn.CodeEvent = result.CodeEvent;
             return resultToReturn;
         }
-
         public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
@@ -232,7 +219,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         }
-
         public List<IUserManager.PlayerInfo> GetPlayersInfo()
         {
             using (var context = new JeopardyDBContainer())
@@ -248,7 +234,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 return playersInfo;
             }
         }
-
         public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
         {
             if (idUser != DEFAULT_INT_VALUE)
@@ -265,7 +250,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return ExceptionDictionary.NULL_PARAEMETER;
         }
-
         public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
@@ -281,7 +265,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         }
-
     }  
 }
 

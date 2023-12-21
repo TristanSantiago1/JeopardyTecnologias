@@ -15,11 +15,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             if (idUser != NULL_INT_VALUE)
             {
-                var savedChannel = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                if (savedChannel == null)
+                var savedChannelOfTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
+                if (savedChannelOfTeamChat == null)
                 {
-                    var newChannel = OperationContext.Current;
-                    TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannel);
+                    var newChannelForTeamChat = OperationContext.Current;
+                    TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannelForTeamChat);
                 }
             }
         }
@@ -28,30 +28,30 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             if (idUser <= NULL_INT_VALUE || idTeamMate <= NULL_INT_VALUE || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(messageToSend))
             {
-                NotifyUser(idTeamMate, new MessageChat(), false);
+                NotifyUserOfNewMessage(idTeamMate, new MessageChat(), false);
             }
             else
             {
-                MessageChat messageChat = new MessageChat();
-                messageChat.IdUser = idUser;
-                messageChat.UserName = userName;
-                messageChat.MessageToSend = messageToSend;
-                NotifyUser(idTeamMate, messageChat, true);
+                MessageChat newMessageInTeamChat = new MessageChat();
+                newMessageInTeamChat.IdUser = idUser;
+                newMessageInTeamChat.UserName = userName;
+                newMessageInTeamChat.MessageToSend = messageToSend;
+                NotifyUserOfNewMessage(idTeamMate, newMessageInTeamChat, true);
 
             }
         }
 
-        private void NotifyUser(int idTeamMate, MessageChat messageToSend, bool success)
+        private void NotifyUserOfNewMessage(int idTeamMate, MessageChat messageToSend, bool success)
         {
             if (success)
             {
-                var savedChannel = TeamChats.GetChannelCallBackTeamChatUser(idTeamMate);
-                if (savedChannel != null)
+                var savedChannelForMessage = TeamChats.GetChannelCallBackTeamChatUser(idTeamMate);
+                if (savedChannelForMessage != null)
                 {
                     GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
                     resultToReturn.ObjectSaved = messageToSend;
                     resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                    savedChannel.GetCallbackChannel<IIChatForTeamsCallBack>().ReceiveMessageTeamChat(resultToReturn);
+                    savedChannelForMessage.GetCallbackChannel<IIChatForTeamsCallBack>().ReceiveMessageTeamChat(resultToReturn);
                 }
             }
         }
@@ -60,8 +60,8 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             if (idUser != NULL_INT_VALUE)
             {
-                var channel = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                if (channel != null)
+                var channelForUnregisterTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
+                if (channelForUnregisterTeamChat != null)
                 {
                     TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUser);
                 }
