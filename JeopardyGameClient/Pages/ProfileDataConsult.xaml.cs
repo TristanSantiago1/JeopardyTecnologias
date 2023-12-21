@@ -67,10 +67,10 @@ namespace JeopardyGame.Pages
         private void ImagenInit()
         {
             int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-            ConsultInformationClient proxyServer = new ConsultInformationClient();
+            ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
 
-            var playerInfo = proxyServer.ConsultPlayerById(idPlayer);
-            proxyServer.Close();
+            var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
+            consultInformationProxy.Close();
 
             if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
@@ -78,7 +78,7 @@ namespace JeopardyGame.Pages
 
                 if (playerWrapper != null && playerWrapper is PlayerPOJO)
                 {
-                    var player = (PlayerPOJO)playerWrapper;
+                    var player = (PlayerPOJO)playerWrapper;//Porque no sacas el id de la imagen del Singleton???
 
                     int imageId = player.IdActualAvatar;
 

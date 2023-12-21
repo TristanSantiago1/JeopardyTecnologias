@@ -8,16 +8,16 @@ namespace JeopardyGame.Helpers
 {
     public  class FriendCardManagementWindow : StackPanel
     {
-        readonly int idUser;
-        StackPanel stcName;
-        StackPanel stcButtons;
-        Label lblUserName;
-        Border brdLeftButton;
-        Border brdRigthButton;
-        System.Windows.Shapes.Ellipse ellPointMark;
-        Button bttLeftFunction;
-        Button bttRightFunction;
-        readonly FriendManager friendManager;
+        private  int idUser;
+        private StackPanel stcName;
+        private StackPanel stcButtons;
+        private Label lblUserName;
+        private Border brdLeftButton;
+        private Border brdRightButton;
+        private System.Windows.Shapes.Ellipse ellPointMark;
+        private Button bttLeftFunction;
+        private Button bttRightFunction;
+        private FriendManager friendManager;
 
         public FriendCardManagementWindow(int idUser, String userName, int state, String textLeftButton, String textRigthButton, FriendManager windowInstance)
         {
@@ -37,12 +37,12 @@ namespace JeopardyGame.Helpers
 
         private void SetCardStyle()
         {
-            this.Margin = new System.Windows.Thickness(0);
+            this.Margin = new Thickness(0);
             this.Width = 1030;
             this.MaxWidth = 1130;
-            this.Orientation = System.Windows.Controls.Orientation.Horizontal;
-            this.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            this.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            this.Orientation = Orientation.Horizontal;
+            this.HorizontalAlignment = HorizontalAlignment.Left;
+            this.VerticalAlignment = VerticalAlignment.Center;
         }
 
         private void InitializeComponents()
@@ -51,7 +51,7 @@ namespace JeopardyGame.Helpers
             stcButtons = new StackPanel();
             lblUserName = new Label();
             brdLeftButton = new Border();
-            brdRigthButton = new Border();
+            brdRightButton = new Border();
             ellPointMark = new System.Windows.Shapes.Ellipse();
             bttLeftFunction = new Button();
             bttRightFunction = new Button();
@@ -61,12 +61,12 @@ namespace JeopardyGame.Helpers
         {
             lblUserName.Height = Double.NaN;
             lblUserName.Width = Double.NaN;
-            lblUserName.Margin = new System.Windows.Thickness(0, 0, 0, 0);
+            lblUserName.Margin = new Thickness(0, 0, 0, 0);
             lblUserName.FontSize = 40;
             lblUserName.FontWeight = FontWeights.Bold;
             lblUserName.Foreground = new SolidColorBrush(Colors.Black);
-            lblUserName.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Left;
-            lblUserName.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            lblUserName.HorizontalContentAlignment = HorizontalAlignment.Left;
+            lblUserName.VerticalAlignment = VerticalAlignment.Top;
             lblUserName.Content = userName;
         }
 
@@ -74,7 +74,7 @@ namespace JeopardyGame.Helpers
         {
             ellPointMark.Height = 20;
             ellPointMark.Width = 20;
-            ellPointMark.Margin = new System.Windows.Thickness(0, 0, 10, 0);         
+            ellPointMark.Margin = new Thickness(0, 0, 10, 0);         
             ellPointMark.Fill = new SolidColorBrush(Colors.Black);          
         }
 
@@ -84,9 +84,9 @@ namespace JeopardyGame.Helpers
             stcName.Children.Add(lblUserName);            
             stcName.Orientation = Orientation.Horizontal;
             stcName.Width = 480;        
-            stcName.Margin = new System.Windows.Thickness(10,0,10,0);
-            stcName.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;  
-            stcName.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            stcName.Margin = new Thickness(10,0,10,0);
+            stcName.HorizontalAlignment = HorizontalAlignment.Left;  
+            stcName.VerticalAlignment = VerticalAlignment.Center;
         }
 
         private void SetLefButtonStyle(string textLefB, int typeOfButton)
@@ -94,8 +94,8 @@ namespace JeopardyGame.Helpers
             bttLeftFunction.Height = 40;
             bttLeftFunction.Width = Double.NaN;
             bttLeftFunction.Padding = new Thickness(10,0,10,0);
-            bttLeftFunction.Margin = new System.Windows.Thickness(0);
-            bttLeftFunction.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            bttLeftFunction.Margin = new Thickness(0);
+            bttLeftFunction.HorizontalAlignment = HorizontalAlignment.Center;
             bttLeftFunction.FontSize = 25;
             bttLeftFunction.Foreground = new SolidColorBrush(Colors.White);
             bttLeftFunction.Background = new SolidColorBrush(Colors.Transparent);
@@ -122,15 +122,15 @@ namespace JeopardyGame.Helpers
                     break;
             }     
 
-            brdLeftButton.CornerRadius = new System.Windows.CornerRadius(15);           
+            brdLeftButton.CornerRadius = new CornerRadius(15);           
             brdLeftButton.Background = backGroundColor;            
             brdLeftButton.BorderBrush = new SolidColorBrush(Colors.White);
             brdLeftButton.BorderThickness = new Thickness(2);
-            brdLeftButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            brdLeftButton.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            brdLeftButton.HorizontalAlignment = HorizontalAlignment.Left;
+            brdLeftButton.VerticalAlignment = VerticalAlignment.Center;
             brdLeftButton.Height = 40;
             brdLeftButton.Width = Double.NaN;
-            brdLeftButton.Margin = new System.Windows.Thickness(50,0,0,0);
+            brdLeftButton.Margin = new Thickness(50,0,0,0);
             brdLeftButton.Child = bttLeftFunction;
         }
 
@@ -140,9 +140,9 @@ namespace JeopardyGame.Helpers
         {
             bttRightFunction.Height = 40;
             bttRightFunction.Width = Double.NaN;
-            bttRightFunction.Margin = new System.Windows.Thickness(0);
+            bttRightFunction.Margin = new Thickness(0);
             bttRightFunction.Padding = new Thickness(10,0,10,0);
-            bttRightFunction.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            bttRightFunction.HorizontalAlignment = HorizontalAlignment.Center;
             bttRightFunction.FontSize = 25;
             bttRightFunction.Foreground = new SolidColorBrush(Colors.White);
             bttRightFunction.Background = new SolidColorBrush(Colors.Transparent);
@@ -169,27 +169,27 @@ namespace JeopardyGame.Helpers
                     break;
             }
 
-            brdRigthButton.CornerRadius = new System.Windows.CornerRadius(15);
-            brdRigthButton.Background = backGroundColor;
-            brdRigthButton.BorderBrush = new SolidColorBrush(Colors.White);
-            brdRigthButton.BorderThickness = new Thickness(2);
-            brdRigthButton.BorderThickness = new System.Windows.Thickness(1);
-            brdRigthButton.Margin = new System.Windows.Thickness(50,0,0,0);
-            brdRigthButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-            brdRigthButton.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            brdRigthButton.Height = 40;
-            brdRigthButton.Width = Double.NaN;
-            brdRigthButton.Child = bttRightFunction;
+            brdRightButton.CornerRadius = new CornerRadius(15);
+            brdRightButton.Background = backGroundColor;
+            brdRightButton.BorderBrush = new SolidColorBrush(Colors.White);
+            brdRightButton.BorderThickness = new Thickness(2);
+            brdRightButton.BorderThickness = new Thickness(1);
+            brdRightButton.Margin = new Thickness(50,0,0,0);
+            brdRightButton.HorizontalAlignment = HorizontalAlignment.Right;
+            brdRightButton.VerticalAlignment = VerticalAlignment.Center;
+            brdRightButton.Height = 40;
+            brdRightButton.Width = Double.NaN;
+            brdRightButton.Child = bttRightFunction;
         }
         private void SetStackPanelButtonsStyle()
         {
             stcButtons.Children.Add(brdLeftButton);
-            stcButtons.Children.Add(brdRigthButton);
-            stcButtons.Orientation = System.Windows.Controls.Orientation.Horizontal;
-            stcButtons.Margin = new System.Windows.Thickness(10,0,0,0);           
+            stcButtons.Children.Add(brdRightButton);
+            stcButtons.Orientation = Orientation.Horizontal;
+            stcButtons.Margin = new Thickness(10,0,0,0);           
             stcButtons.MaxWidth = 560;           
-            stcButtons.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;   
-            stcButtons.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            stcButtons.HorizontalAlignment = HorizontalAlignment.Right;   
+            stcButtons.VerticalAlignment =  VerticalAlignment.Center;
         }
         private void ClickReportUser(object sender, RoutedEventArgs e)
         {
@@ -214,7 +214,7 @@ namespace JeopardyGame.Helpers
 
         private void ClickSendRequest(object sender, RoutedEventArgs e)
         {
-            friendManager.SentFriendRequest(idUser, lblUserName.Content.ToString());
+            friendManager.SentFriendRequest(idUser);
         }
     }
 }

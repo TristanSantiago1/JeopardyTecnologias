@@ -12,16 +12,15 @@ namespace JeopardyGame.DialogWindows
     {
         private bool closeWindow;
         public bool CloseWindow { get => closeWindow; set => closeWindow = value; }
-        public ConfirmationDialogWindow(String title, String message, Window currentPage)
+
+        public ConfirmationDialogWindow(String title, String message, Window currentWindow)
         {
             InitializeComponent();
             txbErrorTitle.Text = title;
             txbErrorMessage.Text = message; 
             CloseWindow = false;
-            ShowConfirmationMessage(currentPage);           
-        }
-
-        
+            ShowConfirmationMessage(currentWindow);           
+        }        
 
         private void ClickAccept(object sender, RoutedEventArgs e)
         {
@@ -33,10 +32,10 @@ namespace JeopardyGame.DialogWindows
         {
             this.Close();   
         }
-        private void ShowConfirmationMessage(Window currentPage)
+        private void ShowConfirmationMessage(Window currentWindow)
         {
-            double left = currentPage.Left + (currentPage.Width - this.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - this.Height) / 2;
+            double left = currentWindow.Left + (currentWindow.Width - this.Width) / 2;
+            double top = currentWindow.Top + (currentWindow.Height - this.Height) / 2;
             this.Left = left;
             this.Top = top;
             this.VerticalAlignment = VerticalAlignment.Center;

@@ -4,17 +4,19 @@ using System.Windows.Media;
 using Label = System.Windows.Controls.Label;
 using Button = System.Windows.Controls.Button;
 using System.Windows;
+using System.Windows.Shapes;
 
 namespace JeopardyGame.Helpers
 {
     public partial class FriendCard : StackPanel
     {
-        StackPanel stoNameAndStatus;
-        Label lblFriendName;
-        Border brdButton;
-        System.Windows.Shapes.Ellipse ellConnectionStatus;
-        Button bttInviteFriend;
+        private StackPanel stpNameAndStatus;
+        private Label lblFriendName;
+        private Border brdButton;
+        private Ellipse ellConnectionStatus;
+        private Button bttInviteFriend;
         public event EventHandler InviteButtonClicked;
+
         public FriendCard(String userName, bool state, String textInvite) 
         {
             SetCardStyle();
@@ -23,14 +25,14 @@ namespace JeopardyGame.Helpers
             SetEllipseStyle(state);
             SetButtonStyle(textInvite);
             SetStackPanelStyle();         
-            this.Children.Add(stoNameAndStatus);
+            this.Children.Add(stpNameAndStatus);
             this.Children.Add(brdButton);
             bttInviteFriend.Click += ClickInviteFriend;
         }
 
         private void SetCardStyle()
         {
-            this.Margin = new System.Windows.Thickness(1, 2, 1, 2);
+            this.Margin = new Thickness(1, 2, 1, 2);
             this.Width = 419;
             this.MaxWidth = 420;
             this.Orientation = System.Windows.Controls.Orientation.Horizontal;
@@ -40,9 +42,9 @@ namespace JeopardyGame.Helpers
         private void InitializeComponents()
         {
             lblFriendName = new Label();
-            ellConnectionStatus = new System.Windows.Shapes.Ellipse();
+            ellConnectionStatus = new Ellipse();
             bttInviteFriend = new Button();
-            stoNameAndStatus = new StackPanel();
+            stpNameAndStatus = new StackPanel();
             brdButton = new Border();
         }
 
@@ -51,7 +53,7 @@ namespace JeopardyGame.Helpers
         {
             lblFriendName.Height = 50;
             lblFriendName.Width = Double.NaN;  
-            lblFriendName.Margin = new System.Windows.Thickness(5, 5, 0, 5);  
+            lblFriendName.Margin = new Thickness(5, 5, 0, 5);  
             lblFriendName.FontSize = 25;
             lblFriendName.Foreground = new SolidColorBrush(Colors.White);
             lblFriendName.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Left;
@@ -62,8 +64,7 @@ namespace JeopardyGame.Helpers
         {
             ellConnectionStatus.Height = 20;
             ellConnectionStatus.Width = 20;
-            ellConnectionStatus.Margin = new System.Windows.Thickness(0, 5, 10, 5);  
-
+            ellConnectionStatus.Margin = new Thickness(0, 5, 10, 5);  
             if (state)
             {
                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Green);
@@ -76,29 +77,29 @@ namespace JeopardyGame.Helpers
 
         private void SetStackPanelStyle()
         {
-            stoNameAndStatus.Children.Add(lblFriendName);
-            stoNameAndStatus.Children.Add(ellConnectionStatus);
-            stoNameAndStatus.Orientation = System.Windows.Controls.Orientation.Horizontal;
-            stoNameAndStatus.Width = 300;
-            stoNameAndStatus.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            stpNameAndStatus.Children.Add(lblFriendName);
+            stpNameAndStatus.Children.Add(ellConnectionStatus);
+            stpNameAndStatus.Orientation = Orientation.Horizontal;
+            stpNameAndStatus.Width = 300;
+            stpNameAndStatus.HorizontalAlignment = HorizontalAlignment.Left;
         }
 
         private void SetButtonStyle(string textInvite)
         {            
             bttInviteFriend.Height = 30;
             bttInviteFriend.Width = 60;
-            bttInviteFriend.Margin = new System.Windows.Thickness(0);  
-            bttInviteFriend.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;  
+            bttInviteFriend.Margin = new Thickness(0);  
+            bttInviteFriend.HorizontalAlignment = HorizontalAlignment.Center;  
             bttInviteFriend.FontSize = 15;
             bttInviteFriend.Foreground = new SolidColorBrush(Colors.White); 
             bttInviteFriend.Background = new SolidColorBrush(Colors.Transparent);
             bttInviteFriend.BorderBrush = new SolidColorBrush(Colors.Transparent);
             bttInviteFriend.Content = textInvite;            
-            brdButton.CornerRadius = new System.Windows.CornerRadius(15);
+            brdButton.CornerRadius = new CornerRadius(15);
             brdButton.BorderBrush = new SolidColorBrush(Colors.Blue);
             brdButton.Background = new SolidColorBrush(Colors.CadetBlue);
-            brdButton.BorderThickness = new System.Windows.Thickness(1);
-            brdButton.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            brdButton.BorderThickness = new Thickness(1);
+            brdButton.HorizontalAlignment = HorizontalAlignment.Right;
             brdButton.Height = 30;
             brdButton.Width = 60;
             brdButton.Child = bttInviteFriend;

@@ -9,9 +9,9 @@ namespace JeopardyGame.Exceptions
 {
     internal class ExceptionHandlerForLogs
     {
-        public static void LogException(Exception exception, String Category)
+        public static void LogException(Exception exception, String category)
         {
-            string logMessage = $"[{DateTime.Now}] Type: {Category}\n Exception: {exception.Message} \nStackTrace: {exception.StackTrace}\n";
+            string logMessage = $"[{DateTime.Now}] Type: {category}\n Exception: {exception.Message} \nStackTrace: {exception.StackTrace}\n";
             SeriLogClient logConfig = new SeriLogClient();
             File.AppendAllText(logConfig.getPath(), logMessage);
         }

@@ -38,7 +38,7 @@ namespace JeopardyGame.Helpers
 
     }
 
-    public static class GetParent
+    public static class GetParentOfGraphicInterfaceComponent
     {
         public static T FindParent<T>(DependencyObject child) where T : DependencyObject
         {

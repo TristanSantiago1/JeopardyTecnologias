@@ -39,7 +39,7 @@ namespace JeopardyGame.Pages
             psbPasswordCreateAccount.MaxLength = 30;
         }
 
-        public void ChargeField(UserPOJO user)
+        public void LoadFields(UserPOJO user)
         {
             ListBoxRules.Clear();
             PrepareWindow();            
@@ -61,19 +61,19 @@ namespace JeopardyGame.Pages
 
         private void InitializeListeners()
         {
-            psbPasswordCreateAccount.PasswordChanged += PasswordChangedEvent;
-            psbPasswordCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
+            psbPasswordCreateAccount.PasswordChanged += EntryPasswordChar;
+            psbPasswordCreateAccount.PreviewKeyDown += EntryTextBoxPaste;
 
-            txbNameCreateAccount.PreviewTextInput += TextBoxRegexConfiguration;
-            txbUserNameCreateAccount.PreviewTextInput += TextBoxRegexConfiguration;
+            txbNameCreateAccount.PreviewTextInput += EntryTextBoxCharValidation;
+            txbUserNameCreateAccount.PreviewTextInput += EntryTextBoxCharValidation;
 
-            txbNameCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
-            txbUserNameCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
-            txbEmailCreateAccount.PreviewTextInput += TextBoxRegexConfiguration;
-            txbEmailCreateAccount.PreviewKeyDown += TextBoxPasteBlockConfiguration;
+            txbNameCreateAccount.PreviewKeyDown += EntryTextBoxPaste;
+            txbUserNameCreateAccount.PreviewKeyDown += EntryTextBoxPaste;
+            txbEmailCreateAccount.PreviewTextInput += EntryTextBoxCharValidation;
+            txbEmailCreateAccount.PreviewKeyDown += EntryTextBoxPaste;
         }
 
-        private void PasswordChangedEvent(object sender, RoutedEventArgs e)
+        private void EntryPasswordChar(object sender, RoutedEventArgs e)
         {
             int changeButtonStateForPassword = CheckPassword();
             if (changeButtonStateForPassword == ALLOWED_VALUES)
@@ -86,7 +86,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void TextBoxRegexConfiguration(object sender, TextCompositionEventArgs e)
+        private void EntryTextBoxCharValidation(object sender, TextCompositionEventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
             RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary(); 
@@ -95,7 +95,7 @@ namespace JeopardyGame.Pages
                 e.Handled = true;                
             }
         }
-        private void TextBoxPasteBlockConfiguration(object sender, KeyEventArgs e)
+        private void EntryTextBoxPaste(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (e.Key == Key.V))
             {
@@ -138,7 +138,7 @@ namespace JeopardyGame.Pages
         }
 
 
-        private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
+        private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -158,17 +158,17 @@ namespace JeopardyGame.Pages
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
 
         }
@@ -221,7 +221,7 @@ namespace JeopardyGame.Pages
         {
             RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
             Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-            int answer = ALLOWED_VALUES;
+            int answer;
             String email = txbEmailCreateAccount.Text.Trim();
             if (!regexExpression.IsMatch(email))
             {
@@ -309,9 +309,9 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                UserManagerClient proxyServer = new UserManagerClient();
-                GenericClassOfint userIsNew = proxyServer.UserNameAlreadyExist(userName);
-                proxyServer.Close();
+                UserManagerClient userManagerProxy = new UserManagerClient();
+                GenericClassOfint userIsNew = userManagerProxy.UserNameAlreadyExist(userName);
+                userManagerProxy.Close();
 
                 if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
@@ -323,11 +323,11 @@ namespace JeopardyGame.Pages
                     {
                         if (userIsNew.ObjectSaved == DISALLOWED_VALUES)
                         {
-                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
                         }
                         else
                         {
-                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
                         }
                         return DISALLOWED_VALUES;
                     }
@@ -340,29 +340,28 @@ namespace JeopardyGame.Pages
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
             return DISALLOWED_VALUES;
-
         }
 
         private int CheckEmailAddressExistence(String email)
         {
             try
             {
-                UserManagerClient proxyServer = new UserManagerClient();
-                GenericClassOfint emailIsNew = proxyServer.EmailAlreadyExist(email);
-                proxyServer.Close();
+                UserManagerClient userManagerProxy = new UserManagerClient();
+                GenericClassOfint emailIsNew = userManagerProxy.EmailAlreadyExist(email);
+                userManagerProxy.Close();
                 if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
                     if (emailIsNew.ObjectSaved == ALLOWED_VALUES)
@@ -373,11 +372,11 @@ namespace JeopardyGame.Pages
                     {
                         if (emailIsNew.ObjectSaved == DISALLOWED_VALUES)
                         {
-                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
                         }
                         else
                         {
-                            new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
                         }
                         return DISALLOWED_VALUES;
                     }
@@ -390,17 +389,17 @@ namespace JeopardyGame.Pages
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
             return DISALLOWED_VALUES;
         }
@@ -420,7 +419,7 @@ namespace JeopardyGame.Pages
             imgViewPasswordRules.Visibility = Visibility.Hidden;
 
         }
-        private void ClosePasswordRules(object sender, MouseButtonEventArgs e)
+        private void ClickClosePasswordRules(object sender, MouseButtonEventArgs e)
         {
             brdPasswordRules.Visibility = Visibility.Hidden;
             imgViewPasswordRules.Visibility = Visibility.Visible;
@@ -433,7 +432,7 @@ namespace JeopardyGame.Pages
             lblViewPassword.Visibility = Visibility.Visible;
         }
 
-        private void HidePassword(object sender, MouseEventArgs e)
+        private void OverLeaveHidePassword(object sender, MouseEventArgs e)
         {
             if (lblViewPassword.IsVisible)
             {
@@ -445,7 +444,7 @@ namespace JeopardyGame.Pages
         }
 
 
-        private void CLickButtonCancelSaving(object sender, RoutedEventArgs e)
+        private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
             if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbInformationMessage, Application.Current.MainWindow).CloseWindow)
             {
@@ -459,6 +458,7 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(logInPage);
             NavigationService.RemoveBackEntry();
         }
+
         private void GoToCodeConfirmationWindow(UserPOJO userToSave)
         {
             CodeConfirmation codeWindow = new CodeConfirmation(txbEmailCreateAccount.Text.Trim(), userToSave);

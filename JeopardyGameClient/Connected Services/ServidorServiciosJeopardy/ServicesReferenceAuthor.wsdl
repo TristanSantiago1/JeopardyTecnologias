@@ -82,10 +82,10 @@
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices" />
+      <xsd:import schemaLocation="http://192.168.251.1:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.251.1:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.251.1:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
+      <xsd:import schemaLocation="http://192.168.251.1:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -1321,63 +1321,63 @@
   </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IChatForTeams" binding="tns:NetTcpBinding_IChatForTeams">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Sevice" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Sevice" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Sevice</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Sevice</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IFriendsManager" binding="tns:NetTcpBinding_IFriendsManager">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IConsultInformation" binding="tns:NetTcpBinding_IConsultInformation">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_INotifyUserAvailability" binding="tns:NetTcpBinding_INotifyUserAvailability">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_INotifyUserActionFriendsManager" binding="tns:NetTcpBinding_INotifyUserActionFriendsManager">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyActions" binding="tns:NetTcpBinding_ILobbyActions">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILiveChat" binding="tns:NetTcpBinding_ILiveChat">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameActions" binding="tns:NetTcpBinding_IGameActions">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IHeartBeat" binding="tns:NetTcpBinding_IHeartBeat">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.251.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.251.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

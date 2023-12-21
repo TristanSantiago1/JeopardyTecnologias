@@ -26,7 +26,7 @@ namespace JeopardyGame.Pages
             InitializeComponent();
         }
 
-        private void CLickButtonLogin(object sender, RoutedEventArgs e)
+        private void ClickButtonLogin(object sender, RoutedEventArgs e)
         {
             LogInUser logInPage = new LogInUser();
             this.NavigationService.Navigate(logInPage);

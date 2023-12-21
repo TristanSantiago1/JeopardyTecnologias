@@ -11,12 +11,12 @@ namespace JeopardyGame.Views
         public PrincipalWindow()
         {
             InitializeComponent();
-            Loaded += PrincipalWindowLoaded;
+            Loaded += LoadedPrincipalWindow;
             this.HorizontalAlignment = HorizontalAlignment.Center;
             this.VerticalAlignment = VerticalAlignment.Top;
         }
 
-        private void PrincipalWindowLoaded(object sender, RoutedEventArgs e)
+        private void LoadedPrincipalWindow(object sender, RoutedEventArgs e)
         {
             contentFrame.Navigate(new Pages.PrincipalPage());
             contentFrame.Visibility = Visibility.Visible;

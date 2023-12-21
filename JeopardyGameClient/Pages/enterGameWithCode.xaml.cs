@@ -35,7 +35,7 @@ namespace JeopardyGame.Pages
             tbxCode.MaxLength = 10;
         }
 
-        private void clickEnterLobbyWithCode(object sender, RoutedEventArgs e)
+        private void ClickEnterLobbyWithCode(object sender, RoutedEventArgs e)
         {
             int enteredCode;
             try
@@ -51,23 +51,23 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
                 }
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
@@ -76,8 +76,8 @@ namespace JeopardyGame.Pages
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             if (userSingleton.proxyForAvailability == null)
             {
-                UserRegister userRegistrer = new UserRegister();
-                this.NavigationService.Navigate(userRegistrer);
+                UserRegister userRegister = new UserRegister();
+                this.NavigationService.Navigate(userRegister);
                 NavigationService.RemoveBackEntry();
             }
             else

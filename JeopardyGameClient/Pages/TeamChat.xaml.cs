@@ -24,7 +24,7 @@ namespace JeopardyGame.Pages
     public partial class TeamChat : Page, IChatForTeamsCallback
     {
         private static UserSingleton userSingleton;
-        private static ChatForTeamsClient proxyChannelCallback;
+        private static ChatForTeamsClient chatForTeamProxy;
         private int idTeamMate;
         private GameBoard gameBoard;
 
@@ -34,9 +34,9 @@ namespace JeopardyGame.Pages
             this.gameBoard = game;
             this.idTeamMate = idTeam;
             InstanceContext context = new InstanceContext(this);
-            proxyChannelCallback = new ChatForTeamsClient(context);
+            chatForTeamProxy = new ChatForTeamsClient(context);
             userSingleton = UserSingleton.GetMainUser();
-            proxyChannelCallback.RegisterForTeamChat(userSingleton.IdUser);
+            chatForTeamProxy.RegisterForTeamChat(userSingleton.IdUser);
         }   
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
@@ -49,7 +49,7 @@ namespace JeopardyGame.Pages
             string message = txbMessageToSend.Text;
             if (!string.IsNullOrEmpty(message))
             {
-                proxyChannelCallback.SendMessageTeam(userSingleton.IdUser, idTeamMate, userSingleton.UserName, message);                
+                chatForTeamProxy.SendMessageTeam(userSingleton.IdUser, idTeamMate, userSingleton.UserName, message);                
                 ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, message);
                 chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
                 stpChat.Children.Add(chatMessageCard);

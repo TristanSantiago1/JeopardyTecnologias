@@ -6,7 +6,7 @@ namespace JeopardyGame.Helpers
 {
     public  class GameCategoryCard : Border
     {
-        private System.Windows.Controls.Label lblCategoryName;
+        private Label lblCategoryName;
 
         public GameCategoryCard(String  category)
         {            

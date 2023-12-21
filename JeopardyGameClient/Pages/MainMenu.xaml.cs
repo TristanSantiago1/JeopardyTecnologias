@@ -30,10 +30,10 @@ namespace JeopardyGame.Pages
 
         private void PrepareMainMenuWindow()
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
-            if (key != null)
+            RegistryKey keyLanguage = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
+            if (keyLanguage != null)
             {
-                string selectedLanguage = key.GetValue("SelectedLanguage") as string;
+                string selectedLanguage = keyLanguage.GetValue("SelectedLanguage") as string;
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedLanguage);
 
                 foreach (ComboBoxItem item in LanguajeComboBox.Items)
@@ -62,8 +62,8 @@ namespace JeopardyGame.Pages
         {
             FriendList.CleanDictionary();
             UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
-            currentUserSingleton.proxyForAvailability.PlayerIsNotAvailable(currentUserSingleton.IdUser);
-            currentUserSingleton.proxyForAvailability.Close();
+            NotifyUserAvailabilityClient userAvailabilityProxy = new NotifyUserAvailabilityClient(new InstanceContext(this));
+            userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
             currentUserSingleton.proxyForAvailability = null;
             UserSingleton.CleanSingleton();
         }
@@ -74,7 +74,7 @@ namespace JeopardyGame.Pages
             {
                 ComboBoxItem selectedItem = (ComboBoxItem)LanguajeComboBox.SelectedItem;
                 string selectedLanguage = selectedItem.Tag.ToString();
-                App.ChangeLanguaje(selectedLanguage);
+                App.ChangeLanguage(selectedLanguage);
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
                 key.Close();                
@@ -109,6 +109,7 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
 
         }
+
         private void CLickButtonEnterGame(object sender, RoutedEventArgs e)
         {
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
@@ -117,18 +118,20 @@ namespace JeopardyGame.Pages
             enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this));
             codeWindow.contentFrame.NavigationService.Navigate(codePage);
         }
+
         private void CLickButtonFriendsList(object sender, RoutedEventArgs e)
         {
             FriendManager friendManager = new FriendManager();
             this.NavigationService.Navigate(friendManager);
             NavigationService.RemoveBackEntry();
         }
+
         private void LoadPlayersData()
         {
             try
             {
-                UserManagerClient proxyScores = new UserManagerClient();
-                var playersInfo = proxyScores.GetPlayersInfo();
+                UserManagerClient userManagerProxy = new UserManagerClient();
+                var playersInfo = userManagerProxy.GetPlayersInfo();
 
                 foreach (var playerInfo in playersInfo)
                 {

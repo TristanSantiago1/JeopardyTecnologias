@@ -18,7 +18,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
@@ -32,7 +31,7 @@ namespace JeopardyGame.Pages
         private static ActiveFriends activeFriendsInstance = new ActiveFriends();
         public const int NULL_INT_VALUE = 0;
         private DispatcherTimer timer;
-        private int leftTime = 360;
+        private int leftTime;
         private String currentEmail;
         private String currentCode;
         private static Random randomNumber = new Random();
@@ -60,9 +59,11 @@ namespace JeopardyGame.Pages
 
         private void StartTimer()
         {
+            leftTime = 360;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
+            timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -81,8 +82,8 @@ namespace JeopardyGame.Pages
 
         private void SentEmail(String email)
         {
-            UserManagerClient proxyServer = new UserManagerClient();
-            GenericClassOfint sentEmailSucc = proxyServer.SentEmailCodeConfirmation(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
+            UserManagerClient userManagerProxy = new UserManagerClient();
+            GenericClassOfint sentEmailSucc = userManagerProxy.SentEmailCodeConfirmation(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 
@@ -94,29 +95,27 @@ namespace JeopardyGame.Pages
             }
         }  
 
-        private void CLicButtonSaveUser(object sender, RoutedEventArgs e)
+        private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (txbCodeCreateAcc.Text.Trim().Equals(currentCode))
                 {
                     PrepareUserToBeSaved();
-                    UserManagerClient proxyServer = new UserManagerClient();
-                    GenericClassOfint userSaved = proxyServer.SaveUser(userToSave);
+                    UserManagerClient userManagerProxy = new UserManagerClient();
+                    GenericClassOfint userSaved = userManagerProxy.SaveUser(userToSave);
                     if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
                         SetSingleton();
                         dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
-                        MainMenu lobby = new MainMenu();
-                        this.NavigationService.Navigate(lobby);
+                        MainMenu mainMenu = new MainMenu();
+                        this.NavigationService.Navigate(mainMenu);
                         NavigationService.RemoveBackEntry();
                     }
                     else
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow);
-                        UserRegister userRegister = new UserRegister();
-                        this.NavigationService.Navigate(userRegister);
-                        NavigationService.RemoveBackEntry();
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow);
+                        ///Dependiendo la excepcion que hacer , son excepciones de Base sde datos asi que le puede decir que lo itnente mas tarde
                     }
                 }
                 else
@@ -148,11 +147,11 @@ namespace JeopardyGame.Pages
             userToSave.IdUser = NULL_INT_VALUE;
         }
 
-        private void CLickButtonCancelSaving(object sender, RoutedEventArgs e)
+        private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
             UserRegister userToRegister = new UserRegister();
             this.NavigationService.Navigate(userToRegister);
-            userToRegister.ChargeField(userToSave);
+            userToRegister.LoadFields(userToSave);
             NavigationService.RemoveBackEntry();
         }
 
@@ -166,7 +165,8 @@ namespace JeopardyGame.Pages
                 StartTimer();
             }            
         }
-        private void CodeEntryValidator(object sender, TextChangedEventArgs e)
+
+        private void EntryCodeCharValidator(object sender, TextChangedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Length == 6)
             {
@@ -207,28 +207,28 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
                     }
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
                 }
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 

@@ -8,12 +8,12 @@ namespace JeopardyGame.DialogWindows
     /// </summary>
     public partial class ErrorMessageDialogWindow : Window
     {
-        public ErrorMessageDialogWindow(String windowTitle, String message, Window currentPage)
+        public ErrorMessageDialogWindow(String windowTitle, String message, Window currentWindow)
         {
             InitializeComponent();
             txbErrorTitle.Text = windowTitle;
             txbErrorMessage.Text = message;
-            ShowErrorMessage(currentPage);
+            ShowErrorMessage(currentWindow);
         }
 
         private void ClickAcceptButton(object sender, RoutedEventArgs e)
@@ -21,14 +21,15 @@ namespace JeopardyGame.DialogWindows
             this.Close();
         }
 
-        private void ShowErrorMessage(Window currentPage)
+        private void ShowErrorMessage(Window currentWindow)
         {
-            double left = currentPage.Left + (currentPage.Width - this.Width) / 2;
-            double top = currentPage.Top + (currentPage.Height - this.Height) / 2;
+            double left = currentWindow.Left + (currentWindow.Width - this.Width) / 2;
+            double top = currentWindow.Top + (currentWindow.Height - this.Height) / 2;
             this.Left = left;
             this.Top = top;
             this.VerticalAlignment = VerticalAlignment.Center;
             this.ShowDialog();
         }
+
     }
 }

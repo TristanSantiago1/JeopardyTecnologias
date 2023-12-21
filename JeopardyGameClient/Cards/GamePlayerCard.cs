@@ -21,15 +21,20 @@ namespace JeopardyGame.Helpers
             playerOfCard = player;
             this.Name = "_"+player.IdUser.ToString();
             InitializeComponents();
-            SetBorderStyle();
-            SetStyleGrid();
-            SetStyleUserName();
-            SetStylePoints();
-            SetAvatarImage();            
+            SetStyles();
             grid.Children.Add(userName);
             grid.Children.Add(points);
             grid.Children.Add(avatar);
             this.Child = grid;
+        }
+
+        private void SetStyles()
+        {
+            SetBorderStyle();
+            SetStyleGrid();
+            SetStyleUserName();
+            SetStylePoints();
+            SetAvatarImage();
         }
 
         private void InitializeComponents()

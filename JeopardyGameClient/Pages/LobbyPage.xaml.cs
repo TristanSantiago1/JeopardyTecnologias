@@ -22,8 +22,8 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback
     {
-        private static ActiveFriends activeUsersControls;
-        private static LiveChat liveChatUser;
+        private static ActiveFriends activeUsersInstance;
+        private static LiveChat liveChatInstance;
         private const int NULL_INT_VALUE = 0;
         private const int TEAM_LEFT_SIDE = 1;
         private const int TEMA_RIGHT_SIDE = 2;
@@ -33,7 +33,7 @@ namespace JeopardyGame.Pages
         private InstanceContext context;
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton = UserSingleton.GetMainUser();
-        private LobbyActionsClient lobbyActionsClient;
+        private LobbyActionsClient lobbyActionsProxy;
         private Window dialogMessage;
 
         public LobbyPage()
@@ -42,12 +42,12 @@ namespace JeopardyGame.Pages
             isAdminOfLobby = true;
             PrepareWindow();
             PrepareChatAndFriendList();            
-            Loaded += AskForQuestions;
+            Loaded += LoadedAskForQuestions;
         }
 
-        private void AskForQuestions(object sender, RoutedEventArgs e)
+        private void LoadedAskForQuestions(object sender, RoutedEventArgs e)
         {
-            lobbyActionsClient.SelectQuestionsForGameAsync(roomCode);
+            lobbyActionsProxy.SelectQuestionsForGameAsync(roomCode);
         }
 
         public LobbyPage(int roomCode)
@@ -61,30 +61,30 @@ namespace JeopardyGame.Pages
 
         private void PrepareChatAndFriendList()
         {
-            activeUsersControls = LogInUser.ActiveFriendsInstance;
-            liveChatUser = new LiveChat();
-            liveChatUser.StartPage(isAdminOfLobby, roomCode, this);
-            activeUsersControls.StartPage(this);
+            activeUsersInstance = LogInUser.ActiveFriendsInstance;
+            liveChatInstance = new LiveChat();
+            liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
+            activeUsersInstance.StartPage(this);
         }
 
         private void PrepareWindow()
         {
             context = new InstanceContext(this);
-            lobbyActionsClient = new LobbyActionsClient(context);
+            lobbyActionsProxy = new LobbyActionsClient(context);
             if (isAdminOfLobby)
             {
                 generateAleatory = new Random();
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
-                lobbyActionsClient.CreateNewLobby(roomCode, userSingleton.IdUser);
+                lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
                 GameCodeContainer.RoomCode = roomCode;
             }
             else
             {
-                GenericClassOfint successful = lobbyActionsClient.JoinLobby(roomCode, userSingleton.IdUser);
+                GenericClassOfint successful = lobbyActionsProxy.JoinLobby(roomCode, userSingleton.IdUser);
                 if (successful.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    lobbyActionsClient.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);
+                    lobbyActionsProxy.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace JeopardyGame.Pages
                 }
                 chbTeamUp.IsEnabled = false;
             }
-            var playersInLobby = lobbyActionsClient.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser);
+            var playersInLobby = lobbyActionsProxy.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser);
             if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 currentPlayerInLobby = playersInLobby.ObjectSaved.ToList();
@@ -222,7 +222,7 @@ namespace JeopardyGame.Pages
                     var userChanged = EliminateUserFromLobby(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        lobbyActionsClient.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);
+                        lobbyActionsProxy.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);
                     }
                 }
             }
@@ -246,7 +246,7 @@ namespace JeopardyGame.Pages
         {
             String userName = null;
             Image imgChosen = (Image)sender;
-            StackPanel stcChosen = GetParent.FindParent<StackPanel>(imgChosen);
+            StackPanel stcChosen = GetParentOfGraphicInterfaceComponent.FindParent<StackPanel>(imgChosen);
             foreach (var item in stcChosen.Children)
             {
                 if (item is Label)
@@ -267,7 +267,7 @@ namespace JeopardyGame.Pages
                 {
                     DoOrUndoTeams(true);
                     SetPlayerInLabels();
-                    lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, true);
+                    lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, true);
                 }
                 else
                 {
@@ -283,7 +283,7 @@ namespace JeopardyGame.Pages
             {
                 DoOrUndoTeams(false);
                 SetPlayerInLabels();
-                lobbyActionsClient.MakeTeams(roomCode, userSingleton.IdUser, false);
+                lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, false);
             }
         }
 
@@ -336,7 +336,7 @@ namespace JeopardyGame.Pages
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
                         SetPlayerInLabels();
-                        lobbyActionsClient.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);                        
+                        lobbyActionsProxy.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);                        
                     }
                 }
             }
@@ -402,11 +402,11 @@ namespace JeopardyGame.Pages
         {
             if (isAdminOfLobby)
             {
-                lobbyActionsClient.DissolveLobby(roomCode, userSingleton.IdUser);
+                lobbyActionsProxy.DissolveLobby(roomCode, userSingleton.IdUser);
             }
             else
             {
-                lobbyActionsClient.LeaveLobby(roomCode, userSingleton.IdUser);
+                lobbyActionsProxy.LeaveLobby(roomCode, userSingleton.IdUser);
             }
             CloseWindow();
         }
@@ -428,7 +428,7 @@ namespace JeopardyGame.Pages
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
-            frmActiveFriendsAndChat.Content = liveChatUser;            
+            frmActiveFriendsAndChat.Content = liveChatInstance;            
             grdActiveUser.Visibility = Visibility.Visible;
         }
         public void CloseLiveChat()
@@ -438,11 +438,11 @@ namespace JeopardyGame.Pages
         }
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
-            ((ILiveChatCallback)liveChatUser).ReceiveMessage(message);
+            ((ILiveChatCallback)liveChatInstance).ReceiveMessage(message);
         }
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
-            frmActiveFriendsAndChat.Content = activeUsersControls;
+            frmActiveFriendsAndChat.Content = activeUsersInstance;
             grdActiveUser.Visibility = Visibility.Visible;
         }  
         public void CloseFriendList()
@@ -461,7 +461,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblNotGame, Window.GetWindow(this));
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblNotGame, Window.GetWindow(this));
             }
         }
 
@@ -493,7 +493,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                lobbyActionsClient.StartGame(roomCode);
+                lobbyActionsProxy.StartGame(roomCode);
             }
             catch (FaultException ex)
             {
@@ -502,7 +502,7 @@ namespace JeopardyGame.Pages
             catch (CommunicationException)
             {
                 context = new InstanceContext(this);
-                lobbyActionsClient = new LobbyActionsClient(context);
+                lobbyActionsProxy = new LobbyActionsClient(context);
             }
         }
 
@@ -522,9 +522,12 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
         }
+
+
         public static class GameCodeContainer
         {
             public static int RoomCode { get; set; }
         }
+
     }
 }

@@ -25,17 +25,22 @@ namespace JeopardyGame.Cards
             playerOfCardNumberTwo = playerNumber2;
             this.Name = "_" + playerNumber1.IdUser.ToString()+playerOfCardNumberTwo.IdUser.ToString();
             InitializeComponents();
-            SetBorderStyle();
-            SetStyleGrid();
-            SetStyleUserName();
-            SetStylePoints();
-            SetAvatarImage();
+            SetStyles();
             grid.Children.Add(userNamePlayer1);
             grid.Children.Add(points);
             grid.Children.Add(avatarPlayer1);
             grid.Children.Add(userNamePlayer2);
             grid.Children.Add(avatarPlayer2);
             this.Child = grid;
+        }
+
+        private void SetStyles()
+        {
+            SetBorderStyle();
+            SetStyleGrid();
+            SetStyleUserName();
+            SetStylePoints();
+            SetAvatarImage();
         }
 
         private void InitializeComponents()

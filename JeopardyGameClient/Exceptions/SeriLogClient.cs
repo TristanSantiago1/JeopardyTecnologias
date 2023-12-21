@@ -15,7 +15,7 @@ namespace JeopardyGame.Exceptions
     internal class SeriLogClient
     {
         private static readonly string logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
-        private readonly String pathTris = "C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\Logs\\";
+        private readonly String pathTris = "C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameClient\\Logs\\";
         private readonly String pathDodonaji = "C:\\Users\\dnava\\source\\repos\\JeopardyProject\\JeopardyGameTecnologias\\JeopardyProject\\JeopardyGameClient\\Logs\\";
         private readonly String absolutePath;
 
@@ -33,6 +33,7 @@ namespace JeopardyGame.Exceptions
             absolutePath = Path.Combine(pathPC, logFileName);
             ConfigureLogger(absolutePath);
         }
+
         public static void ConfigureLogger(String relativePath)
         {
             Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File(relativePath, rollingInterval: RollingInterval.Day).CreateLogger();

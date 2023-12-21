@@ -59,6 +59,7 @@ namespace JeopardyGame.Helpers
                 }
             }
         }
+
         public static void CleanDictionary()
         {
             friendOfUserList.Clear();

@@ -17,12 +17,11 @@ namespace JeopardyGame
         App()
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EU");
-
         }
 
-        public static void ChangeLanguaje (string languaje)
+        public static void ChangeLanguage (string language)
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(languaje);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
         }
 
     }

@@ -13,10 +13,10 @@
 
         <Grid Height="751">
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="461,643,692,58">
-                <Button x:Name="btnEnter" FontStyle="Normal"  FontSize="20" Content = "{x:Static p:Resources.btnEnter}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLickLogIn" />
+                <Button x:Name="btnEnter" FontStyle="Normal"  FontSize="20" Content = "{x:Static p:Resources.btnEnter}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="ClickDoLogIn" />
             </Border>
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="678,644,467,58">
-                <Button x:Name="btnRegistrer" FontStyle="Normal" FontSize="20" Content = "{x:Static p:Resources.btnRegistrer}" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLicButtonRegister" />
+                <Button x:Name="btnRegistrer" FontStyle="Normal" FontSize="20" Content = "{x:Static p:Resources.btnRegistrer}" FontStretch="Expanded" Style="{StaticResource ButtonRegistrerStyle}" Click="CLickButtonRegister" />
             </Border>
             <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" Margin="422,424,0,0" Width="513" Height="31"/>
             <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}" Margin="422,587,0,0" Width="513" Height="28"/>
@@ -34,7 +34,7 @@
             <Label x:Name="lblUserNameLogIn" Content = "{x:Static p:Resources.lblUserNameLogIn}"  Style="{StaticResource labelStyleSimple}" 
                          Height="Auto" Width="Auto" FontSize="30" Margin="404,305,0,0"/>
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="513" HorizontalAlignment="Center" Height="57" VerticalAlignment="Top" Margin="0,525,0,0" Padding="2">
-                <PasswordBox x:Name="PssPasswordLogIn" Style="{StaticResource PasswordBox}" FontSize="27" Width="433" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" Margin="0" PasswordChar="*">
+                <PasswordBox x:Name="pssPasswordLogIn" Style="{StaticResource PasswordBox}" FontSize="27" Width="433" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" Margin="0" PasswordChar="*">
                     <PasswordBox.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -48,7 +48,7 @@
             <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="2" CornerRadius="10" Width="513" HorizontalAlignment="Center" Margin="0,360,0,332" Padding="2">
                 <TextBox x:Name="txbUserNameLogIn" Style="{StaticResource TextFieldAddUser}" FontSize="27" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" />
             </Border>
-            <Image HorizontalAlignment="Left" Height="30" Margin="872,541,0,0" VerticalAlignment="Top" Width="41" Source="{StaticResource EyeIcon}" MouseDown="ClickSeePassword" MouseLeave="HidePassword"/>
+            <Image HorizontalAlignment="Left" Height="30" Margin="872,541,0,0" VerticalAlignment="Top" Width="41" Source="{StaticResource EyeIcon}" MouseDown="ClickSeePassword" MouseLeave="OverLeaveHidePassword"/>
             <Label x:Name="lblViewPassword" HorizontalAlignment="Left" Margin="422,531,0,176" Width="443" Height="44" FontSize="27" 
                     BorderBrush="Transparent" Background="Transparent" Foreground="Purple" Visibility="Collapsed"/>
 

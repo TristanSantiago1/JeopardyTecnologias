@@ -17,10 +17,10 @@ namespace JeopardyGame.Helpers
             board = currentBoard;
             questionCardInformation = questionCard;
             SetStyle();
-            SetLabelStyle(questionCard.SpecificQuestionDetails.ValueWorth.ToString());
-            this.MouseDown += ClickOnCard;
+            SetLabelStyle(questionCard.SpecificQuestionDetails.ValueWorth.ToString());            
             this.Child = lblPoints;
             this.Name = "_"+questionCard.SpecificQuestionDetails.IdQuestion.ToString();
+            this.MouseDown += ClickOnCardToSelectQuestion;
         }
 
         private void SetStyle()
@@ -31,16 +31,16 @@ namespace JeopardyGame.Helpers
 
         private void SetLabelStyle(string pointsValue)
         {
-            lblPoints = new Label();
-            
+            lblPoints = new Label();            
             lblPoints.Style = (Style) FindResource("LabelPointsStyle");
             lblPoints.Content = pointsValue;
         }
        
-        private void ClickOnCard(object sender, MouseButtonEventArgs args)
+        private void ClickOnCardToSelectQuestion(object sender, MouseButtonEventArgs args)
         {
             board.SelectQuestion(questionCardInformation);
         }
+
         public QuestionCardInformation GetQuestionCardInformation()
         {
             return questionCardInformation;

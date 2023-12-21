@@ -54,29 +54,29 @@ namespace JeopardyGame.Pages
         private void GetFriend()
         {
             try {
-                FriendsManagerClient proxyFriend = new FriendsManagerClient();
-                ConsultInformationClient proxyUser = new ConsultInformationClient();
                 UserSingleton mainCurrentUser = UserSingleton.GetMainUser();
-                var user = proxyUser.ConsultUserById(mainCurrentUser.IdUser);
-                var friends = proxyFriend.GetUserFriends(user.ObjectSaved);
+                ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
+                var user = consultInformationProxy.ConsultUserById(mainCurrentUser.IdUser);
+                FriendsManagerClient friendManagerProxy = new FriendsManagerClient();
+                var friends = friendManagerProxy.GetUserFriends(user.ObjectSaved);
                 if (friends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     foreach (var item in friends.ObjectSaved)
                     {
-                        FriendAvailabilityInformation activeFriend = new FriendAvailabilityInformation();
-                        activeFriend.IdUser = item.IdUser;
-                        activeFriend.Name = item.UserName;
-                        activeFriend.EmailAddress = item.EmailAddress;
-                        activeFriend.IdStatusOfAvailability = item.IdStatusAvailability;
-                        FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriend);
+                        FriendAvailabilityInformation activeFriendProxy = new FriendAvailabilityInformation();
+                        activeFriendProxy.IdUser = item.IdUser;
+                        activeFriendProxy.Name = item.UserName;
+                        activeFriendProxy.EmailAddress = item.EmailAddress;
+                        activeFriendProxy.IdStatusOfAvailability = item.IdStatusAvailability;
+                        FriendList.RegisterNewFriendInDictionary(item.IdUser, activeFriendProxy);
                     }
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow);
                 }
-                proxyFriend.Close();
-                proxyUser.Close();
+                friendManagerProxy.Close();
+                consultInformationProxy.Close();
             }
             catch (EndpointNotFoundException ex)
             {
@@ -112,15 +112,14 @@ namespace JeopardyGame.Pages
                         string friendEmail = item.Value.EmailAddress;
                         string subject = Properties.Resources.txbTitleEmailInvitation;
                         string body = Properties.Resources.tbxBodyInvitation + " "+ $"{roomCode}";
-                        SendEmail(friendEmail, subject, body);
+                        SendEmailForInvitationToGame(friendEmail, subject, body);
                         dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
                     };
-
                     stcFriendList.Children.Add(friendCard);
-
                 }
             }            
         }
+
         public void ResponseOfPlayerAvailability(int status, int idFriend)
         {
             Dictionary<int, FriendAvailabilityInformation> friendList = FriendList.GetActiveFriendsList();
@@ -135,23 +134,22 @@ namespace JeopardyGame.Pages
         {
         }
         
-        private void SendEmail(string email, string subject, string body)
+        private void SendEmailForInvitationToGame(string email, string subject, string body)
         {
-            UserManagerClient proxyServer = new UserManagerClient();
-            GenericClassOfint sentEmailResult = proxyServer.SentEmailCodeConfirmation(email, subject, body);
-
+            UserManagerClient userManagerProxy = new UserManagerClient();
+            GenericClassOfint sentEmailResult = userManagerProxy.SentEmailCodeConfirmation(email, subject, body);
             if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 ExceptionHandler.HandleException(sentEmailResult.CodeEvent, String.Empty);
                 dialogMessage =  new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
             }
-
             if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
             {
                 dialogMessage =  new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
                 
             }
         }
+
     }
 
 }

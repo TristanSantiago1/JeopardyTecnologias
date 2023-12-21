@@ -43,7 +43,7 @@ namespace JeopardyGame.Helpers
 
         private void SetStackPanelStyle()
         {
-            stpUserMessage.Orientation = System.Windows.Controls.Orientation.Vertical;
+            stpUserMessage.Orientation = Orientation.Vertical;
             stpUserMessage.Height = Double.NaN;
             stpUserMessage.Width = Double.NaN;           
             stpUserMessage.MaxWidth = 450;

@@ -19,7 +19,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
@@ -31,17 +30,18 @@ namespace JeopardyGame.Pages
     public partial class EditUserProfile : Page
     {
         private Window dialogMessage;
-
         String imageResource = "";
         private Dictionary<string, int> imageIdMappings;
+
         public EditUserProfile()
         {
             InitializeComponent();
             InitializeImageMappings();
-            ImagenInit();
+            ImagenInitialization();
             ReadResource();
             DisplayUserInfo(txbEditName, txbEditUserName, txbEditEmail);
         }
+
         public static void DisplayUserInfo(TextBox txbEditName, TextBox txbEditUserName, TextBox txbEditEmail)
         {
             txbEditUserName.IsReadOnly = true;
@@ -50,52 +50,51 @@ namespace JeopardyGame.Pages
             txbEditName.Text = userSingleton.Name;
             txbEditUserName.Text = userSingleton.UserName;
             txbEditEmail.Text = userSingleton.Email;
-
         }
 
-        private void CLicButtonSaveChanges(object sender, RoutedEventArgs e)
+        private void CLickButtonSaveChanges(object sender, RoutedEventArgs e)
         {
             try {
                 String nameEdited = txbEditName.Text;
                 String originalName = UserSingleton.GetMainUser().Name;
-                UserManagerClient proxyServer = new UserManagerClient();
-                var result = proxyServer.UpdateUserInformation(nameEdited, originalName);
+                UserManagerClient useManagerProxy = new UserManagerClient();
+                var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
                 int idPlayer = UserSingleton.GetMainUser().IdPlayer;
 
                 imageIdMappings.TryGetValue(imageResource, out int imageId);
-                var resultPhoto = proxyServer.UpdatePlayerPhoto(idPlayer, imageId);
+                var resultPhoto = useManagerProxy.UpdatePlayerPhoto(idPlayer, imageId);
 
                 if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
                     MainMenu mainMenu = new MainMenu();
                     this.NavigationService.Navigate(mainMenu);
                     NavigationService.RemoveBackEntry();
                 }
                 else
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
                 }
-                proxyServer.Close();
+                useManagerProxy.Close();
             }
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
 
-        private void CLicButtonCancelChanges(object sender, RoutedEventArgs e)
+        private void CLickButtonCancelChanges(object sender, RoutedEventArgs e)
         {
             if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
             {
@@ -110,7 +109,7 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        private void ImageSelector(object sender, SelectionChangedEventArgs e)
+        private void SelectImage(object sender, SelectionChangedEventArgs e)
         {
             if (lxtImageSelector.SelectedItem != null)
             {
@@ -128,6 +127,7 @@ namespace JeopardyGame.Pages
                 imageResource = lxtImageSelector.SelectedItem.ToString();
             }
         }
+
         private void ReadResource()
         {
             lxtImageSelector.Items.Add("Alacran");
@@ -138,13 +138,14 @@ namespace JeopardyGame.Pages
             lxtImageSelector.Items.Add("RealMadrid");
             lxtImageSelector.Items.Add("SpiterMan");
         }
-        private void ImagenInit()
+
+        private void ImagenInitialization()
         {
             int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-            ConsultInformationClient proxyServer = new ConsultInformationClient();
+            ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
 
-            var playerInfo = proxyServer.ConsultPlayerById(idPlayer);
-            proxyServer.Close();
+            var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
+            consultInformationProxy.Close();
 
             if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
@@ -152,7 +153,7 @@ namespace JeopardyGame.Pages
 
                 if (playerWrapper != null && playerWrapper is PlayerPOJO)
                 {
-                    var player = (PlayerPOJO)playerWrapper; 
+                    var player = (PlayerPOJO)playerWrapper; ////Aqui proque no sacas directamente el idActualAvatar directamente del Wrapper??
 
                     int imageId = player.IdActualAvatar;
 
@@ -178,15 +179,15 @@ namespace JeopardyGame.Pages
         private void InitializeImageMappings()
         {
             imageIdMappings = new Dictionary<string, int>
-        {
-            { "Alacran", 1 },
-            { "AvatarCarro", 2 },
-            { "BatMan", 3 },
-            {"Caballo",4 },
-            {"IronMan",5 },
-            {"RealMadrid",6 },
-            {"SpiterMan",7 }
-        };
+            {
+                { "Alacran", 1 },
+                { "AvatarCarro", 2 },
+                { "BatMan", 3 },
+                {"Caballo",4 },
+                {"IronMan",5 },
+                {"RealMadrid",6 },
+                {"SpiterMan",7 }
+            };
         }
 
     }
