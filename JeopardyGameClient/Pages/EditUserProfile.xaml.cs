@@ -142,7 +142,7 @@ namespace JeopardyGame.Pages
         private void ImagenInitialization()
         {
             int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-            ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
+            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
 
             var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
             consultInformationProxy.Close();

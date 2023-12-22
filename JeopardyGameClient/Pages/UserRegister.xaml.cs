@@ -309,9 +309,9 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                UserManagerClient userManagerProxy = new UserManagerClient();
-                GenericClassOfint userIsNew = userManagerProxy.UserNameAlreadyExist(userName);
-                userManagerProxy.Close();
+                UserDataCheckerClient dataCheckerProxy = new UserDataCheckerClient();
+                GenericClassOfint userIsNew = dataCheckerProxy.UserNameAlreadyExist(userName);
+                dataCheckerProxy.Close();
 
                 if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
@@ -359,9 +359,9 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                UserManagerClient userManagerProxy = new UserManagerClient();
-                GenericClassOfint emailIsNew = userManagerProxy.EmailAlreadyExist(email);
-                userManagerProxy.Close();
+                UserDataCheckerClient dataCheckerProxy = new UserDataCheckerClient();
+                GenericClassOfint emailIsNew = dataCheckerProxy.EmailAlreadyExist(email);
+                dataCheckerProxy.Close();
                 if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
                     if (emailIsNew.ObjectSaved == ALLOWED_VALUES)

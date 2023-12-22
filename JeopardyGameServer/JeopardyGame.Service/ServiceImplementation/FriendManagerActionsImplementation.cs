@@ -7,7 +7,7 @@ using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
+    partial class FriendManagerActionsImplementation : IFriendManagerActions
     {
         private readonly int NULL_INT_VALUE = 0;
         private readonly int CHANNEL_ALREADY_EXIST = -1;
@@ -71,7 +71,8 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
     }
-    partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
+
+    partial class FriendManagerActionsImplementation : IFriendManagerActions
     {
         public void ReportPlayer(int idUser, string userName)
         {
@@ -84,7 +85,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUser);
                 if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT &&  channelSaved != null)
                 {
-                    channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseReported(playerConsulted.ObjectSaved.NoReports);
+                    channelSaved.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseReported(playerConsulted.ObjectSaved.NoReports);
                 }                
             }
             else
@@ -92,8 +93,27 @@ namespace JeopardyGame.Service.ServiceImplementation
                 //logica para baennar
             }
         }
+
+        public GenericClass<int> BanUser(int idPlayer)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            var banerUsers = FriendsManagerDataOperation.BannerUser(idPlayer);
+            if (banerUsers.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                resultToReturn.ObjectSaved = banerUsers.ObjectSaved;
+                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+            }
+            else
+            {
+                resultToReturn.CodeEvent = banerUsers.CodeEvent;
+            }
+            return resultToReturn;
+        }
     }
-    partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
+
+
+
+    partial class FriendManagerActionsImplementation : IFriendManagerActions
     {
         public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
         {
@@ -112,7 +132,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             var userDeleting = consultInformation.ConsultUserByIdPlayer(idPlayerDeleting);
                             if (userDeleting.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                             {
-                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseEliminationFromFriends(userDeleting.ObjectSaved.IdUser);
+                                channelSaved.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseEliminationFromFriends(userDeleting.ObjectSaved.IdUser);
                             }
                         }
                     }
@@ -128,7 +148,8 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
     }
-    partial class NotifyFriendlyActionsImplementation : INotifyUserActionFriendsManager
+
+    partial class FriendManagerActionsImplementation : IFriendManagerActions
     {
         public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
         {
@@ -147,7 +168,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
                             if (channelSaved != null)
                             {
-                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(
+                                channelSaved.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseRequestAction(
                                     userConsulted.ObjectSaved.IdUser, DECLINE_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
                             }
                         }
@@ -182,7 +203,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequested);
                             if (channelSaved != null)
                             {
-                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(
+                                channelSaved.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseRequestAction(
                                     userConsulted.ObjectSaved.IdUser, SEND_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
                             }
                         }
@@ -215,7 +236,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserRequesting);
                             if (channelSaved != null)
                             {
-                                channelSaved.GetCallbackChannel<INotifyUserActionFriendsManagerCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, ACCEPT_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
+                                channelSaved.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseRequestAction(userConsulted.ObjectSaved.IdUser, ACCEPT_FRIEND_REQUEST, userConsulted.ObjectSaved.UserName);
                             }
                         }
                     }

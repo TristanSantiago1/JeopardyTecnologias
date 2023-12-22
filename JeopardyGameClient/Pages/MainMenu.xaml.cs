@@ -21,8 +21,10 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class MainMenu : Page
     { 
+
         public MainMenu()
         {            
+           
             InitializeComponent();
             PrepareMainMenuWindow();
             LoadPlayersData();
@@ -62,7 +64,7 @@ namespace JeopardyGame.Pages
         {
             FriendList.CleanDictionary();
             UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
-            NotifyUserAvailabilityClient userAvailabilityProxy = new NotifyUserAvailabilityClient(new InstanceContext(this));
+            NotifyUserIsNotAvailableClient userAvailabilityProxy = new();
             userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
             currentUserSingleton.proxyForAvailability = null;
             UserSingleton.CleanSingleton();
@@ -130,8 +132,8 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                UserManagerClient userManagerProxy = new UserManagerClient();
-                var playersInfo = userManagerProxy.GetPlayersInfo();
+                ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
+                var playersInfo = consultInformationProxy.GetPlayersInfo();
 
                 foreach (var playerInfo in playersInfo)
                 {

@@ -82,8 +82,8 @@ namespace JeopardyGame.Pages
 
         private void SentEmail(String email)
         {
-            UserManagerClient userManagerProxy = new UserManagerClient();
-            GenericClassOfint sentEmailSucc = userManagerProxy.SentEmailCodeConfirmation(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
+            EmailSenderManagerClient emailSender = new EmailSenderManagerClient();
+            GenericClassOfint sentEmailSucc = emailSender.SentEmailConfirmationToCreateAccount(email, Properties.Resources.EmailSubjectCode, currentCode + " " + Properties.Resources.EmailCodeDescrip);
             if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 
@@ -182,7 +182,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                ConsultInformationClient consultInformationClient = new ConsultInformationClient();
+                ConsultUserInformationClient consultInformationClient = new ConsultUserInformationClient();
                 var userSaved = consultInformationClient.ConsultUserByUserName(userToSave.UserName);
                 if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {

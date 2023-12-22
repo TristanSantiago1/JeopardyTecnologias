@@ -55,9 +55,9 @@ namespace JeopardyGame.Pages
         {
             try {
                 UserSingleton mainCurrentUser = UserSingleton.GetMainUser();
-                ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
+                ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
                 var user = consultInformationProxy.ConsultUserById(mainCurrentUser.IdUser);
-                FriendsManagerClient friendManagerProxy = new FriendsManagerClient();
+                ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
                 var friends = friendManagerProxy.GetUserFriends(user.ObjectSaved);
                 if (friends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -136,8 +136,8 @@ namespace JeopardyGame.Pages
         
         private void SendEmailForInvitationToGame(string email, string subject, string body)
         {
-            UserManagerClient userManagerProxy = new UserManagerClient();
-            GenericClassOfint sentEmailResult = userManagerProxy.SentEmailCodeConfirmation(email, subject, body);
+            EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
+            GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(email, subject, body);
             if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 ExceptionHandler.HandleException(sentEmailResult.CodeEvent, String.Empty);

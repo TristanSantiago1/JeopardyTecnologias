@@ -71,17 +71,17 @@ namespace JeopardyGame.Pages
                 UserSingleton mainUser = UserSingleton.GetMainUser();
                 try
                 {
-                    UserManagerClient userManagerProxy = new UserManagerClient();
-                    var result = userManagerProxy.ValidateCredentials(userValidate);                    
+                    LogInVerificationClient logInVerificationProxy = new LogInVerificationClient();
+                    var result = logInVerificationProxy.ValidateCredentials(userValidate);                    
                     if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || result.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                     {
                         
                         if (result.ObjectSaved == RIGTH_CREDENTIALS)
                         {
-                            ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
+                            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
                             var userConsulted = consultInformationProxy.ConsultUserByUserName(userValidate.UserName);
-                            var isAlreadyConnected = userManagerProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.IdUser);
-                            userManagerProxy.Close();
+                            var isAlreadyConnected = logInVerificationProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.IdUser);
+                            logInVerificationProxy.Close();
                             if(isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
                             {
                                 DoLogin(userValidate.UserName);
@@ -147,11 +147,11 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                ConsultInformationClient proxyConsult = new ConsultInformationClient();
-                var currentUser = proxyConsult.ConsultUserByUserName(userName);
+                ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
+                var currentUser = consultInformationProxy.ConsultUserByUserName(userName);
                 if (currentUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var currentPlayer = proxyConsult.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
+                    var currentPlayer = consultInformationProxy.ConsultPlayerByIdUser(currentUser.ObjectSaved.IdUser);
                     if (currentPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
 

@@ -45,6 +45,7 @@ namespace JeopardyGame.Service.InterfacesServices
 
         [OperationContract (IsOneWay = true)]
         void StartGame(int roomCode);
+
     }
 
     [ServiceContract]

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace JeopardyGame.Service.InterfacesServices
 {
     [ServiceContract]
-    public interface IFriendsManager
+    public interface IConsultFriends
     {
         [OperationContract]
         GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user);
@@ -21,8 +21,6 @@ namespace JeopardyGame.Service.InterfacesServices
         [OperationContract]
         GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user);
 
-        [OperationContract]
-        GenericClass<int> BanUser(int idPlayer);
     }
 
   

@@ -34,10 +34,10 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         }
 
         public static void KickUserFromDictionaries(int idUser)
-        {           
-            NotifyUserAvailabilityImplementation notifyUser = new();
+        {  
+            NotifyUserIsNotAvailableImplementation notifyUser = new();
             GameActionsImplementation gameActions = new ();
-            NotifyFriendlyActionsImplementation friendsManager = new();
+            FriendManagerActionsImplementation friendsManager = new();
             LobbyActionsImplementation lobbyActions = new();
 
             notifyUser.PlayerIsNotAvailable(idUser);

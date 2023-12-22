@@ -407,7 +407,7 @@ namespace JeopardyGame.Pages
                     IdThirdAnswer = answersQuestionsAsked[2].IdAnswer,
                     IdFourthAnswer = answersQuestionsAsked[3].IdAnswer,
                 };
-                gameActionsClientProxy.ChooseQuestion(roomCode,userSingleton.IdUser, question.NumberOfRound, currentQuestionToShow);               
+                gameActionsClientProxy.ChooseQuestionOfBoard(roomCode,userSingleton.IdUser, question.NumberOfRound, currentQuestionToShow);               
             }            
         }
 

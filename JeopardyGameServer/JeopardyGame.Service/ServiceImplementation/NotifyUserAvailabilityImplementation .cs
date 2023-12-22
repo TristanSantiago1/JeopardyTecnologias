@@ -40,39 +40,15 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-        }
-        public void PlayerIsNotAvailable(int idUserDisconnecting)
-        {
-            try
-            {
-                if (idUserDisconnecting != NULL_INT_VALUE)
-                {
-                    var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserDisconnecting);
-                    if (channel != null)
-                    {
-                        ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
-                        NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);
-                    }
-                    else
-                    {
-                        // channel no existe
-                    }
-                }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-        }
+        }  
+
+
+
         //FALTA METODO PARA NOTIFICAR CUANDO ENTRE A APRTIDA
-      private void NotifyFriends(int idUser, int status)
+        public void NotifyFriends(int idUser, int status)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-            FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
+            ConsultFriendsImplementation friendsManagerImplementation = new ConsultFriendsImplementation();
             var userConsulted = consultInformation.ConsultUserById(idUser);
             try
             {
@@ -109,5 +85,51 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }   
+
     }
+
+
+    public class NotifyUserIsNotAvailableImplementation : INotifyUserIsNotAvailable
+    {
+        private readonly int NULL_INT_VALUE = 0;
+        private readonly int UNAVAILABLE_STATUS = 0;
+
+        public void PlayerIsNotAvailable(int idUserDisconnecting)
+        {
+            try
+            {
+                if (idUserDisconnecting != NULL_INT_VALUE)
+                {
+                    var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserDisconnecting);
+                    if (channel != null)
+                    {
+                        ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
+                        NotifyUserAvailabilityImplementation notifyUserAvailability = new();
+                        notifyUserAvailability.NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);
+                    }
+                    else
+                    {
+                        // channel no existe
+                    }
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
+
+
+        public void PlayerIsPlaying(int idUserPlaying)
+        {
+            throw new NotImplementedException();
+        }
+
+
+    }
+
 }

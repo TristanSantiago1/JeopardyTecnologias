@@ -2,10 +2,12 @@
 using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.InterfacesServices;
 using JeopardyGame.Service.InterpretersEntityPojo;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    public partial class ConsultInformationImplementation : IConsultInformation
+    public partial class ConsultInformationImplementation : IConsultUserInformation
     {
         private readonly int NULL_INT_VALUE = 0;
         public GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer)
@@ -68,6 +70,22 @@ namespace JeopardyGame.Service.ServiceImplementation
             resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsultedByUserName.ObjectSaved);
             resultToReturn.CodeEvent = userConsultedByUserName.CodeEvent;
             return resultToReturn;
+        }
+
+        public List<IUserManager.PlayerInfo> GetPlayersInfo()
+        {
+            using (var context = new JeopardyDBContainer())
+            {
+                var playersInfo = context.Players.OrderByDescending(p => p.GeneralPoints)
+                    .Select(p => new IUserManager.PlayerInfo
+                    {
+                        Name = p.User.UserName,
+                        Points = p.GeneralPoints ?? 0
+                    })
+                    .ToList();
+
+                return playersInfo;
+            }
         }
 
     }

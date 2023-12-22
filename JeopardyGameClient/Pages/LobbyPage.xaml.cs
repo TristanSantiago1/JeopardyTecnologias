@@ -81,7 +81,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                GenericClassOfint successful = lobbyActionsProxy.JoinLobby(roomCode, userSingleton.IdUser);
+                GenericClassOfint successful = lobbyActionsProxy.JoinIntoLobby(roomCode, userSingleton.IdUser);
                 if (successful.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     lobbyActionsProxy.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);

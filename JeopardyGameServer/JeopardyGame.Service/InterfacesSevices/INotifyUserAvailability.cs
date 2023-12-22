@@ -13,6 +13,13 @@ namespace JeopardyGame.Service.InterfacesServices
     {
         [OperationContract(IsOneWay = true)]
         void PlayerIsAvailable(int idNewActiveUser);
+    }
+
+    [ServiceContract]
+    public interface INotifyUserIsNotAvailable
+    {
+        [OperationContract(IsOneWay = true)]
+        void PlayerIsPlaying(int idUserPlaying);
 
         [OperationContract(IsOneWay = true)]
         void PlayerIsNotAvailable(int idUserDisconnecting);

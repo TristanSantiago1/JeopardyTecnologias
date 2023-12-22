@@ -7,7 +7,7 @@ using JeopardyGame.Data.DataAccess;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    public partial class FriendsManagerImplementation : IFriendsManager
+    public partial class ConsultFriendsImplementation : IConsultFriends
     {
         private readonly int NOT_STATUS = 0;
         private readonly int ACTIVE = 1;
@@ -227,21 +227,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return INACTIVE;
         }
 
-        public GenericClass<int> BanUser(int idPlayer)
-        {
-            GenericClass<int> resultToReturn = new GenericClass<int>();
-            var banerUsers = FriendsManagerDataOperation.BannerUser(idPlayer);
-            if (banerUsers.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                resultToReturn.ObjectSaved = banerUsers.ObjectSaved;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-            }
-            else
-            {
-                resultToReturn.CodeEvent = banerUsers.CodeEvent;
-            }
-            return resultToReturn;
-        }
     }
     
 }

@@ -20,7 +20,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para friendManager.xaml
     /// </summary>
-    public partial class FriendManager : Page, INotifyUserActionFriendsManagerCallback
+    public partial class FriendManager : Page, IFriendManagerActionsCallback
     {
         private List<FriendBasicInformation> friends;
         private List<FriendBasicInformation> friendRequests;
@@ -37,7 +37,7 @@ namespace JeopardyGame.Pages
         private const int SEND_REQUEST = 1;
         private const int ACCEPT_REQUEST = 2;
         private int typeUserConsult = MY_FRIENDS;
-        NotifyUserActionFriendsManagerClient friendActionsProxy;
+        FriendManagerActionsClient friendActionsProxy;
         private InstanceContext context;
         private Window dialogMessage;
 
@@ -50,7 +50,7 @@ namespace JeopardyGame.Pages
         private void PrepareWindow()
         {
             context = new InstanceContext(this);
-            friendActionsProxy = new NotifyUserActionFriendsManagerClient(context);
+            friendActionsProxy = new FriendManagerActionsClient(context);
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             friendActionsProxy.RegisterFriendManagerUser(userSingleton.IdUser);
             GetAllTables();
@@ -59,12 +59,12 @@ namespace JeopardyGame.Pages
 
         private void GetAllTables()
         {
-            ConsultInformationClient consultInformationProxy = new ConsultInformationClient();
+            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             var userConsulted = consultInformationProxy.ConsultUserById(userSingleton.IdUser);
             if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                FriendsManagerClient friendManagerProxy = new FriendsManagerClient();
+                ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
                 var friendsConsulted = friendManagerProxy.GetUserFriends(userConsulted.ObjectSaved);
                 if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -199,9 +199,7 @@ namespace JeopardyGame.Pages
 
         public void ReportUser(int idPlayer)
         {
-            UserManagerClient userManagerProxy = new UserManagerClient();
-            FriendsManagerClient friendManagerProxy = new FriendsManagerClient();
-            var result = friendManagerProxy.BanUser(idPlayer);
+            var result = friendActionsProxy.BanUser(idPlayer);
             if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 new InformationMessageDialogWindow("EXITO", "Ha sido reportado", Application.Current.MainWindow);
@@ -211,7 +209,6 @@ namespace JeopardyGame.Pages
                 ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
                 new ErrorMessageDialogWindow("ERROR", "No se ha reportado", Application.Current.MainWindow);
             }
-            userManagerProxy.Close();
         }
 
         public void EliminateFriend(int idUserFriendToEliminate)

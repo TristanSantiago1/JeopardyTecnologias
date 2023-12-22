@@ -2,6 +2,7 @@
 using JeopardyGame.Service.InterfacesServices;
 using JeopardyGame.Service.InterfacesSevices;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
@@ -10,22 +11,12 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         UserManagerImplementation UserManager = new UserManagerImplementation();
 
-        public GenericClass<int> EmailAlreadyExist(string email)
-        {
-            return ((IUserManager)UserManager).EmailAlreadyExist(email);
-        }
-        public List<IUserManager.PlayerInfo> GetPlayersInfo()
-        {
-            return ((IUserManager)UserManager).GetPlayersInfo();
-        }
+       
         public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
             return ((IUserManager)UserManager).SaveUser(userPojoNew);
         }
-        public GenericClass<int> SentEmailCodeConfirmation(string email, string subject, string code)
-        {
-            return ((IUserManager)UserManager).SentEmailCodeConfirmation(email, subject, code);
-        }
+       
         public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
         {
             return ((IUserManager)UserManager).UpdatePlayerPhoto(idPlayer, imageId);
@@ -33,81 +24,136 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
         {
             return ((IUserManager)UserManager).UpdateUserInformation(editedName, originalName);
-        }
-        public GenericClass<int> UserNameAlreadyExist(string userName)
+        }       
+    }
+
+    public partial class ServicesReferenceAuthor : IEmailSenderManager
+    {
+        EmailSenderManagerImplementation emailSenderManagerImplementation = new EmailSenderManagerImplementation();
+
+        public GenericClass<int> SentEmailConfirmationToCreateAccount(string email, string subject, string bodyMessage)
         {
-            return ((IUserManager)UserManager).UserNameAlreadyExist(userName);
+            return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailConfirmationToCreateAccount(email, subject, bodyMessage);
         }
-        public GenericClass<int> ValidateCredentials(UserValidate newUserValidate)
+
+        public GenericClass<int> SentEmailInvitingToGame(string email, string subject, string bodyMessage)
         {
-            return ((IUserManager)UserManager).ValidateCredentials(newUserValidate);
-        }
-        public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
-        {
-            return ((IUserManager)UserManager).ValidateThereIsOnlyOneAActiveAccount(idUser);
+            return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailInvitingToGame(email, subject, bodyMessage);
         }
     }
 
-    public partial class ServicesReferenceAuthor: IFriendsManager
+    public partial class ServicesReferenceAuthor : ILogInVerification
     {
-        FriendsManagerImplementation friendsManagerImplementation = new FriendsManagerImplementation();
+        LoginVerificationImplementation verificationImplementation = new LoginVerificationImplementation();
 
-        public GenericClass<int> BanUser(int idPlayer)
+        public GenericClass<int> ValidateCredentials(UserValidate newUserValidate)
         {
-            return ((IFriendsManager)friendsManagerImplementation).BanUser(idPlayer);
+            return ((ILogInVerification)verificationImplementation).ValidateCredentials(newUserValidate);
         }
+
+        public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
+        {
+            return ((ILogInVerification)verificationImplementation).ValidateThereIsOnlyOneAActiveAccount(idUser);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : IUserDataChecker
+    {
+        UserDataCheckerImplementation userDataCheckerImplementation = new UserDataCheckerImplementation();
+
+        public GenericClass<int> EmailAlreadyExist(string email)
+        {
+            return ((IUserDataChecker)userDataCheckerImplementation).EmailAlreadyExist(email);
+        }
+
+        public GenericClass<int> UserNameAlreadyExist(string userName)
+        {
+            return ((IUserDataChecker)userDataCheckerImplementation).UserNameAlreadyExist(userName);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor: IConsultFriends
+    {
+        ConsultFriendsImplementation friendsManagerImplementation = new ConsultFriendsImplementation();
+
         public GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user)
         {
-            return ((IFriendsManager)friendsManagerImplementation).GetUserFriendRequests(user);
+            return ((IConsultFriends)friendsManagerImplementation).GetUserFriendRequests(user);
         }
         public GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user)
         {
-            return ((IFriendsManager)friendsManagerImplementation).GetUserFriends(user);
+            return ((IConsultFriends)friendsManagerImplementation).GetUserFriends(user);
         }
         public GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user)
         {
-            return ((IFriendsManager)friendsManagerImplementation).GetUsersNotFriends(user);
+            return ((IConsultFriends)friendsManagerImplementation).GetUsersNotFriends(user);
         }
     }
 
-    public partial class ServicesReferenceAuthor: IConsultInformation
+    public partial class ServicesReferenceAuthor: IConsultUserInformation
     {
         ConsultInformationImplementation consultInfoImplementation = new ConsultInformationImplementation();
         public GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer)
         {
-            return ((IConsultInformation)consultInfoImplementation).ConsultPlayerById(idPlayer);
+            return ((IConsultUserInformation)consultInfoImplementation).ConsultPlayerById(idPlayer);
         }
         public GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser)
         {
-            return ((IConsultInformation)consultInfoImplementation).ConsultPlayerByIdUser(idUser);
+            return ((IConsultUserInformation)consultInfoImplementation).ConsultPlayerByIdUser(idUser);
         }
         public GenericClass<UserPOJO> ConsultUserById(int idUser)
         {
-            return ((IConsultInformation)consultInfoImplementation).ConsultUserById(idUser);
+            return ((IConsultUserInformation)consultInfoImplementation).ConsultUserById(idUser);
         }
         public GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer)
         {
-            return ((IConsultInformation)consultInfoImplementation).ConsultUserByIdPlayer(idPlayer);
+            return ((IConsultUserInformation)consultInfoImplementation).ConsultUserByIdPlayer(idPlayer);
         }
         public GenericClass<UserPOJO> ConsultUserByUserName(string userName)
         {
-            return ((IConsultInformation)consultInfoImplementation).ConsultUserByUserName(userName);
+            return ((IConsultUserInformation)consultInfoImplementation).ConsultUserByUserName(userName);
+        }
+
+        public List<IUserManager.PlayerInfo> GetPlayersInfo()
+        {
+            return ((IConsultUserInformation)consultInfoImplementation).GetPlayersInfo();
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : INotifyUserIsNotAvailable
+    {
+        NotifyUserIsNotAvailableImplementation notifyUserIsNotAvailable = new();
+
+        public void PlayerIsNotAvailable(int idUserDisconnecting)
+        {
+            ((INotifyUserIsNotAvailable)notifyUserIsNotAvailable).PlayerIsNotAvailable(idUserDisconnecting);
+        }
+
+        public void PlayerIsPlaying(int idUserPlaying)
+        {
+            ((INotifyUserIsNotAvailable)notifyUserIsNotAvailable).PlayerIsPlaying(idUserPlaying);
         }
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability, INotifyUserActionFriendsManager, ILobbyActions, ILiveChat, IGameActions, IChatForTeams
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, IFriendManagerActions, ILobbyActions, ILiveChat, IGameActions, IChatForTeams
     {
         NotifyUserAvailabilityImplementation NotifyUserAvailability = new NotifyUserAvailabilityImplementation();
-        NotifyFriendlyActionsImplementation NotifyFriendlyActions = new NotifyFriendlyActionsImplementation();
+        FriendManagerActionsImplementation NotifyFriendlyActions = new FriendManagerActionsImplementation();
         LobbyActionsImplementation LobbyActions = new LobbyActionsImplementation();
         LiveChatImplementation LiveChat = new LiveChatImplementation();
         GameActionsImplementation GameActions = new GameActionsImplementation();
         ChatForTeamsImplementation TeamChat = new ChatForTeamsImplementation();
         public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
+            ((IFriendManagerActions)NotifyFriendlyActions).AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
         }
+
+        public GenericClass<int> BanUser(int idPlayer)
+        {
+            return ((IFriendManagerActions)NotifyFriendlyActions).BanUser(idPlayer);
+        }
+
         public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
         {
             ((ILobbyActions)LobbyActions).ChangePlayerSide(roomCode, idUserToChangeTeam, newSideTeam);
@@ -138,7 +184,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
         public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
+            ((IFriendManagerActions)NotifyFriendlyActions).DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
         }
         public void DeleteChat(int roomCode, int idUser)
         {
@@ -154,7 +200,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
         public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
+            ((IFriendManagerActions)NotifyFriendlyActions).EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
         }
         public void FinishGame(int roomCode, int idUserLeader, List<PlayerInGameDataContract> playerInGame)
         {
@@ -193,10 +239,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ((INotifyUserAvailability)NotifyUserAvailability).PlayerIsAvailable(idNewActiveUser);
         }
-        public void PlayerIsNotAvailable(int idUserDisconnecting)
-        {
-            ((INotifyUserAvailability)NotifyUserAvailability).PlayerIsNotAvailable(idUserDisconnecting);
-        }
+
         public void RegisterForTeamChat(int idUser)
         {
             ((IChatForTeams)TeamChat).RegisterForTeamChat(idUser);
@@ -204,11 +247,11 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
-            return ((INotifyUserActionFriendsManager)NotifyFriendlyActions).RegisterFriendManagerUser(idUserFriendManager);
+            return ((IFriendManagerActions)NotifyFriendlyActions).RegisterFriendManagerUser(idUserFriendManager);
         }
         public void ReportPlayer(int idUser, string userName)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).ReportPlayer(idUser, userName);
+            ((IFriendManagerActions)NotifyFriendlyActions).ReportPlayer(idUser, userName);
         }
         public void SelectQuestionsForGame(int roomCode)
         {
@@ -216,7 +259,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
         public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).SendFriendRequest(idPLayerRequesting, idUserRequested);
+            ((IFriendManagerActions)NotifyFriendlyActions).SendFriendRequest(idPLayerRequesting, idUserRequested);
         }
         public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
         {
@@ -236,7 +279,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
-            ((INotifyUserActionFriendsManager)NotifyFriendlyActions).UnregisterFriendManagerUser(idUserFriendManager);
+            ((IFriendManagerActions)NotifyFriendlyActions).UnregisterFriendManagerUser(idUserFriendManager);
         }
         public void UnregisterFromTeamChat(int idUser)
         {
