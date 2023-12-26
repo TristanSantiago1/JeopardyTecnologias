@@ -24,7 +24,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IUserDataChecker_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IUserCreateAccountCode_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -80,6 +80,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IValidateUserExistance_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_ILobbyActions_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -117,7 +125,6 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
@@ -162,17 +169,35 @@
   <wsdl:message name="IEmailSenderManager_SentEmailInvitingToGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:SentEmailInvitingToGameResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserDataChecker_EmailAlreadyExist_InputMessage">
-    <wsdl:part name="parameters" element="tns:EmailAlreadyExist" />
+  <wsdl:message name="IUserCreateAccountCode_AddUserToConfirmationDictionary_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToConfirmationDictionary" />
   </wsdl:message>
-  <wsdl:message name="IUserDataChecker_EmailAlreadyExist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EmailAlreadyExistResponse" />
+  <wsdl:message name="IUserCreateAccountCode_AddUserToConfirmationDictionary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToConfirmationDictionaryResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserDataChecker_UserNameAlreadyExist_InputMessage">
-    <wsdl:part name="parameters" element="tns:UserNameAlreadyExist" />
+  <wsdl:message name="IUserCreateAccountCode_CheckCodeEntered_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCodeEntered" />
   </wsdl:message>
-  <wsdl:message name="IUserDataChecker_UserNameAlreadyExist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UserNameAlreadyExistResponse" />
+  <wsdl:message name="IUserCreateAccountCode_CheckCodeEntered_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCodeEnteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserCreateAccountCode_ResendCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResendCode" />
+  </wsdl:message>
+  <wsdl:message name="IUserCreateAccountCode_ResendCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResendCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserCreateAccountCode_TakeUserOutOfDictionary_InputMessage">
+    <wsdl:part name="parameters" element="tns:TakeUserOutOfDictionary" />
+  </wsdl:message>
+  <wsdl:message name="IUserCreateAccountCode_TakeUserOutOfDictionary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TakeUserOutOfDictionaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserCreateAccountCode_VerifyUserDictionaryAreActive_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:VerifyUserDictionaryAreActive" />
+  </wsdl:message>
+  <wsdl:message name="IUserCreateAccountCode_VerifyUserDictionaryAreActive_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:VerifyUserDictionaryAreActiveResponse" />
   </wsdl:message>
   <wsdl:message name="IChatForTeams_SendMessageTeam_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessageTeam" />
@@ -237,11 +262,11 @@
   <wsdl:message name="IConsultUserInformation_ConsultUserByUserName_OutputMessage">
     <wsdl:part name="parameters" element="tns:ConsultUserByUserNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IConsultUserInformation_GetPlayersInfo_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayersInfo" />
+  <wsdl:message name="IConsultUserInformation_GetPlayersInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayersInformation" />
   </wsdl:message>
-  <wsdl:message name="IConsultUserInformation_GetPlayersInfo_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPlayersInfoResponse" />
+  <wsdl:message name="IConsultUserInformation_GetPlayersInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayersInformationResponse" />
   </wsdl:message>
   <wsdl:message name="INotifyUserAvailability_PlayerIsAvailable_InputMessage">
     <wsdl:part name="parameters" element="tns:PlayerIsAvailable" />
@@ -311,6 +336,12 @@
   </wsdl:message>
   <wsdl:message name="IFriendManagerActions_ResponseRequestAction_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseRequestActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IValidateUserExistance_UserAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserAlreadyExist" />
+  </wsdl:message>
+  <wsdl:message name="IValidateUserExistance_UserAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserAlreadyExistResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyActions_CreateNewLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewLobby" />
@@ -465,9 +496,6 @@
   <wsdl:message name="IHeartBeat_Heartbeat_InputMessage">
     <wsdl:part name="parameters" element="tns:Heartbeat" />
   </wsdl:message>
-  <wsdl:message name="IHeartBeat_Heartbeat_OutputMessage">
-    <wsdl:part name="parameters" element="tns:HeartbeatResponse" />
-  </wsdl:message>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -502,14 +530,26 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGameResponse" message="tns:IEmailSenderManager_SentEmailInvitingToGame_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="IUserDataChecker">
-    <wsdl:operation name="EmailAlreadyExist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserDataChecker/EmailAlreadyExist" message="tns:IUserDataChecker_EmailAlreadyExist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserDataChecker/EmailAlreadyExistResponse" message="tns:IUserDataChecker_EmailAlreadyExist_OutputMessage" />
+  <wsdl:portType name="IUserCreateAccountCode">
+    <wsdl:operation name="AddUserToConfirmationDictionary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionary" message="tns:IUserCreateAccountCode_AddUserToConfirmationDictionary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionaryResponse" message="tns:IUserCreateAccountCode_AddUserToConfirmationDictionary_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UserNameAlreadyExist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserDataChecker/UserNameAlreadyExist" message="tns:IUserDataChecker_UserNameAlreadyExist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserDataChecker/UserNameAlreadyExistResponse" message="tns:IUserDataChecker_UserNameAlreadyExist_OutputMessage" />
+    <wsdl:operation name="CheckCodeEntered">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/CheckCodeEntered" message="tns:IUserCreateAccountCode_CheckCodeEntered_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/CheckCodeEnteredResponse" message="tns:IUserCreateAccountCode_CheckCodeEntered_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResendCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/ResendCode" message="tns:IUserCreateAccountCode_ResendCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/ResendCodeResponse" message="tns:IUserCreateAccountCode_ResendCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TakeUserOutOfDictionary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionary" message="tns:IUserCreateAccountCode_TakeUserOutOfDictionary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionaryResponse" message="tns:IUserCreateAccountCode_TakeUserOutOfDictionary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyUserDictionaryAreActive">
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActive" message="tns:IUserCreateAccountCode_VerifyUserDictionaryAreActive_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActiveResponse" message="tns:IUserCreateAccountCode_VerifyUserDictionaryAreActive_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatForTeams">
@@ -562,9 +602,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConsultUserInformation/ConsultUserByUserName" message="tns:IConsultUserInformation_ConsultUserByUserName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConsultUserInformation/ConsultUserByUserNameResponse" message="tns:IConsultUserInformation_ConsultUserByUserName_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPlayersInfo">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConsultUserInformation/GetPlayersInfo" message="tns:IConsultUserInformation_GetPlayersInfo_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConsultUserInformation/GetPlayersInfoResponse" message="tns:IConsultUserInformation_GetPlayersInfo_OutputMessage" />
+    <wsdl:operation name="GetPlayersInformation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConsultUserInformation/GetPlayersInformation" message="tns:IConsultUserInformation_GetPlayersInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConsultUserInformation/GetPlayersInformationResponse" message="tns:IConsultUserInformation_GetPlayersInformation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="INotifyUserAvailability">
@@ -626,6 +666,12 @@
     <wsdl:operation name="ResponseRequestAction">
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseRequestAction" message="tns:IFriendManagerActions_ResponseRequestAction_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseRequestActionResponse" message="tns:IFriendManagerActions_ResponseRequestAction_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IValidateUserExistance">
+    <wsdl:operation name="UserAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExist" message="tns:IValidateUserExistance_UserAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExistResponse" message="tns:IValidateUserExistance_UserAlreadyExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyActions">
@@ -765,7 +811,6 @@
   <wsdl:portType name="IHeartBeat">
     <wsdl:operation name="Heartbeat">
       <wsdl:input wsaw:Action="http://tempuri.org/IHeartBeat/Heartbeat" message="tns:IHeartBeat_Heartbeat_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IHeartBeat/HeartbeatResponse" message="tns:IHeartBeat_Heartbeat_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
@@ -843,11 +888,11 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IUserDataChecker" type="tns:IUserDataChecker">
-    <wsp:PolicyReference URI="#NetTcpBinding_IUserDataChecker_policy" />
+  <wsdl:binding name="NetTcpBinding_IUserCreateAccountCode" type="tns:IUserCreateAccountCode">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUserCreateAccountCode_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="EmailAlreadyExist">
-      <soap12:operation soapAction="http://tempuri.org/IUserDataChecker/EmailAlreadyExist" style="document" />
+    <wsdl:operation name="AddUserToConfirmationDictionary">
+      <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionary" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -855,8 +900,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UserNameAlreadyExist">
-      <soap12:operation soapAction="http://tempuri.org/IUserDataChecker/UserNameAlreadyExist" style="document" />
+    <wsdl:operation name="CheckCodeEntered">
+      <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/CheckCodeEntered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResendCode">
+      <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/ResendCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TakeUserOutOfDictionary">
+      <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyUserDictionaryAreActive">
+      <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActive" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -975,8 +1047,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPlayersInfo">
-      <soap12:operation soapAction="http://tempuri.org/IConsultUserInformation/GetPlayersInfo" style="document" />
+    <wsdl:operation name="GetPlayersInformation">
+      <soap12:operation soapAction="http://tempuri.org/IConsultUserInformation/GetPlayersInformation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1106,6 +1178,19 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseRequestAction">
       <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/ResponseRequestAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IValidateUserExistance" type="tns:IValidateUserExistance">
+    <wsp:PolicyReference URI="#NetTcpBinding_IValidateUserExistance_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UserAlreadyExist">
+      <soap12:operation soapAction="http://tempuri.org/IValidateUserExistance/UserAlreadyExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1401,9 +1486,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
@@ -1425,7 +1507,7 @@
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IUserDataChecker" binding="tns:NetTcpBinding_IUserDataChecker">
+    <wsdl:port name="NetTcpBinding_IUserCreateAccountCode" binding="tns:NetTcpBinding_IUserCreateAccountCode">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
@@ -1462,6 +1544,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IFriendManagerActions" binding="tns:NetTcpBinding_IFriendManagerActions">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IValidateUserExistance" binding="tns:NetTcpBinding_IValidateUserExistance">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

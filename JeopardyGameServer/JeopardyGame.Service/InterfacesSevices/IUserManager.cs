@@ -22,15 +22,7 @@ namespace JeopardyGame.Service.InterfacesServices
             GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId);
       
 
-            [DataContract]
-            public class PlayerInfo
-            {
-                [DataMember]
-                public string Name { get; set; }
-
-                [DataMember]
-                public long Points { get; set; }
-        }
+          
 
     }
 

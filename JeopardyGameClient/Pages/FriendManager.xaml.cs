@@ -196,10 +196,11 @@ namespace JeopardyGame.Pages
             selectedLabel.FontSize = 40;
             selectedLabel.Foreground = new SolidColorBrush(Colors.LightGray);
         }
-
+        
         public void ReportUser(int idPlayer)
         {
-            var result = friendActionsProxy.BanUser(idPlayer);
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            var result = friendActionsProxy.BanUser(idPlayer, userSingleton.IdUser);
             if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 new InformationMessageDialogWindow("EXITO", "Ha sido reportado", Application.Current.MainWindow);

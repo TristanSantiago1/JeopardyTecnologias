@@ -9,13 +9,10 @@ using System.Threading.Tasks;
 namespace JeopardyGame.Service.InterfacesSevices
 {
     [ServiceContract]
-    internal interface IUserDataChecker
+    internal interface IValidateUserExistance
     {
         [OperationContract]
-        GenericClass<int> EmailAlreadyExist(String email);
-
-        [OperationContract]
-        GenericClass<int> UserNameAlreadyExist(String userName);
-
+        GenericClass<int> UserAlreadyExist(UserPOJO newUser);
     }
+
 }

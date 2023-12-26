@@ -29,7 +29,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished);
         
         [OperationContract(IsOneWay = true)]
-        void FinishGame(int roomCode, int idUserLeader, List<PlayerInGameDataContract> playerInGame);
+        void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame);
 
         [OperationContract(IsOneWay = true)]
         void ConfirmBet(int roomCode, int idUser);

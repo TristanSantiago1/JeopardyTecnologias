@@ -14,6 +14,8 @@ namespace JeopardyGame.Exceptions
 
         private static readonly int _SUCCESFULL_EVENT = -100;
         private static readonly int _UNSUCCESFULL_EVENT = -99;
+        private static readonly int _EMAIL_ALREADY_EXIST = -98;
+        private static readonly int _USERNAME_ALREADY_EXIST = -97;
         private static readonly int _NULL_PARAEMETER = -200;
         private static readonly int _ARGUMENT_NULL = -210;
         private static readonly int _ARGUMENT_OUT_OF_RANGE_EXCEPTION = -211;
@@ -62,6 +64,10 @@ namespace JeopardyGame.Exceptions
         public static int SMTP_EXCEPTION => _SMTP_EXCEPTION;
 
         public static int UNKOWN_EXCEPTION_OCURRED => _UNKOWN_EXCEPTION_OCURRED;
+
+        public static int EMAIL_ALREADY_EXIST => _EMAIL_ALREADY_EXIST;
+
+        public static int USERNAME_ALREADY_EXIST => _USERNAME_ALREADY_EXIST;
     }
 
 }

@@ -1,10 +1,13 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.DataDictionaries;
 using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.ServiceModel;
+using static JeopardyGame.Service.DataDictionaries.ChatsDictionary;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -20,30 +23,50 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
+                RegistryNewHistoricalOfMessages(roomCode, idAdmin);
+                RegistryNewChatCallBack(idAdmin, roomCode, OperationContext.Current);
+                resultToReturn.ObjectSaved = true;
+                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
-
-            HistoricalOfAllMessages messagesHistorical = new HistoricalOfAllMessages();
-            messagesHistorical.idAdmin = idAdmin; 
-            ChatsDictionary.RegisterNewChatInDictionary(roomCode, messagesHistorical);   
-            SpecificChannelCallBackChat channelChat = new SpecificChannelCallBackChat();
-            channelChat.idUser = idAdmin;
-            channelChat.communicationChannelChat = OperationContext.Current;
-            ChannelsCallBackInActiveChats activeChannelsCallBackChat = new ChannelsCallBackInActiveChats();
-            activeChannelsCallBackChat.idAdmin = idAdmin;
-            activeChannelsCallBackChat.listOfChannelsCallBack.Add(channelChat);
-            ChatsDictionary.RegisterNewChannelCallbackChat(roomCode,activeChannelsCallBackChat);
-            resultToReturn.ObjectSaved = true;
-            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }           
             return resultToReturn;
         }
+
+        private void RegistryNewHistoricalOfMessages(int roomCode, int idAdmin)
+        {
+            HistoricalOfAllMessages messagesHistorical = new HistoricalOfAllMessages();
+            messagesHistorical.idAdmin = idAdmin;
+            ChatsDictionary.RegisterNewChatInDictionary(roomCode, messagesHistorical);
+        }
+
+        private void RegistryNewChatCallBack(int idAdmin, int roomCode, OperationContext context)
+        {
+            SpecificChannelCallBackChat specificChannelChat = new SpecificChannelCallBackChat();
+            specificChannelChat.idUser = idAdmin;
+            specificChannelChat.communicationChannelChat = context;
+            ChannelsCallBackInActiveChats activeChannelsCallBackChat = new ChannelsCallBackInActiveChats();
+            activeChannelsCallBackChat.idAdmin = idAdmin;
+            activeChannelsCallBackChat.listOfChannelsCallBack.Add(specificChannelChat);
+            ChatsDictionary.RegisterNewChannelCallbackChat(roomCode, activeChannelsCallBackChat);
+        }
+
         public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
            GenericClass<List<MessageChat>> resultToReturn = new GenericClass<List<MessageChat>>();
@@ -67,14 +90,25 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
+
         public void DeleteChat(int roomCode, int idUser)
         {
             HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
@@ -109,11 +143,18 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -124,6 +165,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);   
             }         
         }
+
         public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
         {
             try
@@ -152,41 +194,57 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
+
         private void NotifyUser(int roomCode, MessageChat messageToSend, bool success, int idSender)
         {
-            try
+            if (success)
             {
-                if (success)
+                var chatChannel = ChatsDictionary.GetChannelCallBackChat(roomCode);
+                foreach (var item in chatChannel.listOfChannelsCallBack)
                 {
-                    var chatChannel = ChatsDictionary.GetChannelCallBackChat(roomCode);
-                    foreach (var item in chatChannel.listOfChannelsCallBack)
+                    var channel = item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>();
+                    if (item.idUser != idSender)
                     {
-                        var channel = item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>();
-                        if (item.idUser != idSender)
+                        try
                         {
                             GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
                             resultToReturn.ObjectSaved = messageToSend;
                             resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                             channel.ReceiveMessage(resultToReturn);
                         }
+                        catch (CommunicationObjectFaultedException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+            }           
         }
+
     }
 }

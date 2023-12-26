@@ -783,9 +783,70 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IUserManager.PlayerInfo", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Service.InterfacesServices")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfArrayOfPlayerInfoxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
     [System.SerializableAttribute()]
-    public partial class IUserManagerPlayerInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GenericClassOfArrayOfPlayerInfoxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodeEventField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private JeopardyGame.ServidorServiciosJeopardy.PlayerInfo[] ObjectSavedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CodeEvent {
+            get {
+                return this.CodeEventField;
+            }
+            set {
+                if ((this.CodeEventField.Equals(value) != true)) {
+                    this.CodeEventField = value;
+                    this.RaisePropertyChanged("CodeEvent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public JeopardyGame.ServidorServiciosJeopardy.PlayerInfo[] ObjectSaved {
+            get {
+                return this.ObjectSavedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
+                    this.ObjectSavedField = value;
+                    this.RaisePropertyChanged("ObjectSaved");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerInfo", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class PlayerInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -1995,17 +2056,17 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailSenderManager/SentEmailConfirmationToCreateAccount", ReplyAction="http://tempuri.org/IEmailSenderManager/SentEmailConfirmationToCreateAccountRespon" +
             "se")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailConfirmationToCreateAccount(string email, string subject, string bodyMessage);
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailConfirmationToCreateAccount(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailSenderManager/SentEmailConfirmationToCreateAccount", ReplyAction="http://tempuri.org/IEmailSenderManager/SentEmailConfirmationToCreateAccountRespon" +
             "se")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailConfirmationToCreateAccountAsync(string email, string subject, string bodyMessage);
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailConfirmationToCreateAccountAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGame", ReplyAction="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGameResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailInvitingToGame(string email, string subject, string bodyMessage);
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailInvitingToGame(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGame", ReplyAction="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGameResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailInvitingToGameAsync(string email, string subject, string bodyMessage);
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailInvitingToGameAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2035,81 +2096,119 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 base(binding, remoteAddress) {
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailConfirmationToCreateAccount(string email, string subject, string bodyMessage) {
-            return base.Channel.SentEmailConfirmationToCreateAccount(email, subject, bodyMessage);
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailConfirmationToCreateAccount(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage) {
+            return base.Channel.SentEmailConfirmationToCreateAccount(user, subject, bodyMessage);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailConfirmationToCreateAccountAsync(string email, string subject, string bodyMessage) {
-            return base.Channel.SentEmailConfirmationToCreateAccountAsync(email, subject, bodyMessage);
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailConfirmationToCreateAccountAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage) {
+            return base.Channel.SentEmailConfirmationToCreateAccountAsync(user, subject, bodyMessage);
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailInvitingToGame(string email, string subject, string bodyMessage) {
-            return base.Channel.SentEmailInvitingToGame(email, subject, bodyMessage);
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SentEmailInvitingToGame(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage) {
+            return base.Channel.SentEmailInvitingToGame(user, subject, bodyMessage);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailInvitingToGameAsync(string email, string subject, string bodyMessage) {
-            return base.Channel.SentEmailInvitingToGameAsync(email, subject, bodyMessage);
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SentEmailInvitingToGameAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user, string subject, string bodyMessage) {
+            return base.Channel.SentEmailInvitingToGameAsync(user, subject, bodyMessage);
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserDataChecker")]
-    public interface IUserDataChecker {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserCreateAccountCode", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCodeCallback))]
+    public interface IUserCreateAccountCode {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserDataChecker/EmailAlreadyExist", ReplyAction="http://tempuri.org/IUserDataChecker/EmailAlreadyExistResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint EmailAlreadyExist(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionary", ReplyAction="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionaryResponse" +
+            "")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint AddUserToConfirmationDictionary(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserDataChecker/EmailAlreadyExist", ReplyAction="http://tempuri.org/IUserDataChecker/EmailAlreadyExistResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> EmailAlreadyExistAsync(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionary", ReplyAction="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionaryResponse" +
+            "")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> AddUserToConfirmationDictionaryAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserDataChecker/UserNameAlreadyExist", ReplyAction="http://tempuri.org/IUserDataChecker/UserNameAlreadyExistResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UserNameAlreadyExist(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/CheckCodeEntered", ReplyAction="http://tempuri.org/IUserCreateAccountCode/CheckCodeEnteredResponse")]
+        int CheckCodeEntered(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser, string codeEntered);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserDataChecker/UserNameAlreadyExist", ReplyAction="http://tempuri.org/IUserDataChecker/UserNameAlreadyExistResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UserNameAlreadyExistAsync(string userName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/CheckCodeEntered", ReplyAction="http://tempuri.org/IUserCreateAccountCode/CheckCodeEnteredResponse")]
+        System.Threading.Tasks.Task<int> CheckCodeEnteredAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser, string codeEntered);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/ResendCode", ReplyAction="http://tempuri.org/IUserCreateAccountCode/ResendCodeResponse")]
+        int ResendCode(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/ResendCode", ReplyAction="http://tempuri.org/IUserCreateAccountCode/ResendCodeResponse")]
+        System.Threading.Tasks.Task<int> ResendCodeAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionary", ReplyAction="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionaryResponse")]
+        void TakeUserOutOfDictionary(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionary", ReplyAction="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionaryResponse")]
+        System.Threading.Tasks.Task TakeUserOutOfDictionaryAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserDataCheckerChannel : JeopardyGame.ServidorServiciosJeopardy.IUserDataChecker, System.ServiceModel.IClientChannel {
+    public interface IUserCreateAccountCodeCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActive", ReplyAction="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActiveResponse")]
+        void VerifyUserDictionaryAreActive();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IUserCreateAccountCodeChannel : JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserDataCheckerClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IUserDataChecker>, JeopardyGame.ServidorServiciosJeopardy.IUserDataChecker {
+    public partial class UserCreateAccountCodeClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode>, JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode {
         
-        public UserDataCheckerClient() {
+        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public UserDataCheckerClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public UserDataCheckerClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public UserDataCheckerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public UserDataCheckerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint EmailAlreadyExist(string email) {
-            return base.Channel.EmailAlreadyExist(email);
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint AddUserToConfirmationDictionary(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser) {
+            return base.Channel.AddUserToConfirmationDictionary(newUser);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> EmailAlreadyExistAsync(string email) {
-            return base.Channel.EmailAlreadyExistAsync(email);
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> AddUserToConfirmationDictionaryAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser) {
+            return base.Channel.AddUserToConfirmationDictionaryAsync(newUser);
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UserNameAlreadyExist(string userName) {
-            return base.Channel.UserNameAlreadyExist(userName);
+        public int CheckCodeEntered(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser, string codeEntered) {
+            return base.Channel.CheckCodeEntered(newUser, codeEntered);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UserNameAlreadyExistAsync(string userName) {
-            return base.Channel.UserNameAlreadyExistAsync(userName);
+        public System.Threading.Tasks.Task<int> CheckCodeEnteredAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser, string codeEntered) {
+            return base.Channel.CheckCodeEnteredAsync(newUser, codeEntered);
+        }
+        
+        public int ResendCode(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.ResendCode(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> ResendCodeAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.ResendCodeAsync(user);
+        }
+        
+        public void TakeUserOutOfDictionary(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            base.Channel.TakeUserOutOfDictionary(user);
+        }
+        
+        public System.Threading.Tasks.Task TakeUserOutOfDictionaryAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.TakeUserOutOfDictionaryAsync(user);
         }
     }
     
@@ -2305,11 +2404,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultUserInformation/ConsultUserByUserName", ReplyAction="http://tempuri.org/IConsultUserInformation/ConsultUserByUserNameResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4> ConsultUserByUserNameAsync(string userName);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultUserInformation/GetPlayersInfo", ReplyAction="http://tempuri.org/IConsultUserInformation/GetPlayersInfoResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultUserInformation/GetPlayersInformation", ReplyAction="http://tempuri.org/IConsultUserInformation/GetPlayersInformationResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInfoxY0a3WX4 GetPlayersInformation(int idUserConsulting);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultUserInformation/GetPlayersInfo", ReplyAction="http://tempuri.org/IConsultUserInformation/GetPlayersInfoResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[]> GetPlayersInfoAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConsultUserInformation/GetPlayersInformation", ReplyAction="http://tempuri.org/IConsultUserInformation/GetPlayersInformationResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInfoxY0a3WX4> GetPlayersInformationAsync(int idUserConsulting);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2379,12 +2478,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.ConsultUserByUserNameAsync(userName);
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[] GetPlayersInfo() {
-            return base.Channel.GetPlayersInfo();
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInfoxY0a3WX4 GetPlayersInformation(int idUserConsulting) {
+            return base.Channel.GetPlayersInformation(idUserConsulting);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.IUserManagerPlayerInfo[]> GetPlayersInfoAsync() {
-            return base.Channel.GetPlayersInfoAsync();
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInfoxY0a3WX4> GetPlayersInformationAsync(int idUserConsulting) {
+            return base.Channel.GetPlayersInformationAsync(idUserConsulting);
         }
     }
     
@@ -2530,10 +2629,10 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         System.Threading.Tasks.Task ReportPlayerAsync(int idUser, string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/BanUser", ReplyAction="http://tempuri.org/IFriendManagerActions/BanUserResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayer);
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayerBanned, int idUserBanning);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/BanUser", ReplyAction="http://tempuri.org/IFriendManagerActions/BanUserResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayer);
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayerBanned, int idUserBanning);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/EliminateUserFromFriends")]
         void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate);
@@ -2625,12 +2724,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.ReportPlayerAsync(idUser, userName);
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayer) {
-            return base.Channel.BanUser(idPlayer);
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayerBanned, int idUserBanning) {
+            return base.Channel.BanUser(idPlayerBanned, idUserBanning);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayer) {
-            return base.Channel.BanUserAsync(idPlayer);
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayerBanned, int idUserBanning) {
+            return base.Channel.BanUserAsync(idPlayerBanned, idUserBanning);
         }
         
         public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate) {
@@ -2663,6 +2762,53 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task DeclineFriendRequestAsync(int idPlayerDeclining, int idUserRequesting) {
             return base.Channel.DeclineFriendRequestAsync(idPlayerDeclining, idUserRequesting);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IValidateUserExistance")]
+    public interface IValidateUserExistance {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExist", ReplyAction="http://tempuri.org/IValidateUserExistance/UserAlreadyExistResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UserAlreadyExist(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExist", ReplyAction="http://tempuri.org/IValidateUserExistance/UserAlreadyExistResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UserAlreadyExistAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IValidateUserExistanceChannel : JeopardyGame.ServidorServiciosJeopardy.IValidateUserExistance, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ValidateUserExistanceClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IValidateUserExistance>, JeopardyGame.ServidorServiciosJeopardy.IValidateUserExistance {
+        
+        public ValidateUserExistanceClient() {
+        }
+        
+        public ValidateUserExistanceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ValidateUserExistanceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ValidateUserExistanceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ValidateUserExistanceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UserAlreadyExist(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser) {
+            return base.Channel.UserAlreadyExist(newUser);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UserAlreadyExistAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser) {
+            return base.Channel.UserAlreadyExistAsync(newUser);
         }
     }
     
@@ -3008,10 +3154,10 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishGame")]
-        void FinishGame(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        void FinishGame(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishGame")]
-        System.Threading.Tasks.Task FinishGameAsync(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        System.Threading.Tasks.Task FinishGameAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmBet")]
         void ConfirmBet(int roomCode, int idUser);
@@ -3125,12 +3271,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.FinishRoundAsync(roomCode, playerInGame, roundFinished);
         }
         
-        public void FinishGame(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
-            base.Channel.FinishGame(roomCode, idUserLeader, playerInGame);
+        public void FinishGame(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
+            base.Channel.FinishGame(roomCode, playerInGame);
         }
         
-        public System.Threading.Tasks.Task FinishGameAsync(int roomCode, int idUserLeader, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
-            return base.Channel.FinishGameAsync(roomCode, idUserLeader, playerInGame);
+        public System.Threading.Tasks.Task FinishGameAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
+            return base.Channel.FinishGameAsync(roomCode, playerInGame);
         }
         
         public void ConfirmBet(int roomCode, int idUser) {
@@ -3154,10 +3300,10 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IHeartBeat")]
     public interface IHeartBeat {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHeartBeat/Heartbeat", ReplyAction="http://tempuri.org/IHeartBeat/HeartbeatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IHeartBeat/Heartbeat")]
         void Heartbeat();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHeartBeat/Heartbeat", ReplyAction="http://tempuri.org/IHeartBeat/HeartbeatResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IHeartBeat/Heartbeat")]
         System.Threading.Tasks.Task HeartbeatAsync();
     }
     

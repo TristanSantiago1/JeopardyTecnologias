@@ -41,6 +41,21 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             return activeChats;
         }
+
+        public class HistoricalOfAllMessages
+        {
+            public int idAdmin { get; set; }
+            public List<MessageChat> listOfMessages { get; set; }
+
+            public HistoricalOfAllMessages()
+            {
+                listOfMessages = new List<MessageChat>();
+            }
+        }
+
+
+
+
         private static Dictionary<int, ChannelsCallBackInActiveChats> channelsCallBackDictionary = new Dictionary<int, ChannelsCallBackInActiveChats>();
 
         public static void RegisterNewChannelCallbackChat(int roomCode, ChannelsCallBackInActiveChats newChannel)
@@ -69,16 +84,8 @@ namespace JeopardyGame.Service.DataDictionaries
             }
         }
     }
-    public class HistoricalOfAllMessages
-    {
-        public int idAdmin { get; set; }
-        public List<MessageChat> listOfMessages { get; set; }
 
-        public HistoricalOfAllMessages()
-        {
-            listOfMessages = new List<MessageChat>();
-        }
-    }
+
     public class ChannelsCallBackInActiveChats
     {
         public int idAdmin { get; set; }
@@ -89,6 +96,7 @@ namespace JeopardyGame.Service.DataDictionaries
             listOfChannelsCallBack = new List<SpecificChannelCallBackChat>();
         }
     }
+
     public class SpecificChannelCallBackChat
     {
         public int idUser { get; set; }

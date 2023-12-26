@@ -28,6 +28,7 @@ namespace JeopardyGame.Pages
         private const int MINIMUN_PASSWORD_LENGTH = 10;
         private const int MAXIMUM_PASSWORD_LENGTH = 30;
         private Window dialogMessage;
+        
 
         public UserRegister()
         {
@@ -142,16 +143,15 @@ namespace JeopardyGame.Pages
         {
             try
             {
+                UserPOJO userToSave = new UserPOJO();
+                userToSave.Name = txbNameCreateAccount.Text.Trim();
+                userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
+                userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
+                userToSave.Password = psbPasswordCreateAccount.Password.Trim();
                 if (CheckEmptyFields() == ALLOWED_VALUES &&
                     CheckEmailAddressFormat() == ALLOWED_VALUES &&
-                    CheckUserNameExistence(txbUserNameCreateAccount.Text.Trim()) == ALLOWED_VALUES &&
-                    CheckEmailAddressExistence(txbEmailCreateAccount.Text.Trim()) == ALLOWED_VALUES)
-                {
-                    UserPOJO userToSave = new UserPOJO();
-                    userToSave.Name = txbNameCreateAccount.Text.Trim();
-                    userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
-                    userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
-                    userToSave.Password = psbPasswordCreateAccount.Password.Trim();
+                    CheckUserNameAndEmailExistence(userToSave) == ALLOWED_VALUES)
+                {                    
                     GoToCodeConfirmationWindow(userToSave);
                 }
             }
@@ -305,14 +305,13 @@ namespace JeopardyGame.Pages
             }
             return answer;
         }
-        private int CheckUserNameExistence(String userName)
+        private int CheckUserNameAndEmailExistence(UserPOJO userToVerify)
         {
             try
             {
-                UserDataCheckerClient dataCheckerProxy = new UserDataCheckerClient();
-                GenericClassOfint userIsNew = dataCheckerProxy.UserNameAlreadyExist(userName);
+                ValidateUserExistanceClient dataCheckerProxy = new ();
+                GenericClassOfint userIsNew = dataCheckerProxy.UserAlreadyExist(userToVerify);
                 dataCheckerProxy.Close();
-
                 if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
                     if (userIsNew.ObjectSaved == ALLOWED_VALUES)
@@ -321,7 +320,11 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        if (userIsNew.ObjectSaved == DISALLOWED_VALUES)
+                        if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
+                        {
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                        }                        
+                        else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
                         }
@@ -355,54 +358,6 @@ namespace JeopardyGame.Pages
             return DISALLOWED_VALUES;
         }
 
-        private int CheckEmailAddressExistence(String email)
-        {
-            try
-            {
-                UserDataCheckerClient dataCheckerProxy = new UserDataCheckerClient();
-                GenericClassOfint emailIsNew = dataCheckerProxy.EmailAlreadyExist(email);
-                dataCheckerProxy.Close();
-                if (emailIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || emailIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
-                {
-                    if (emailIsNew.ObjectSaved == ALLOWED_VALUES)
-                    {
-                        return ALLOWED_VALUES;
-                    }
-                    else
-                    {
-                        if (emailIsNew.ObjectSaved == DISALLOWED_VALUES)
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
-                        }
-                        else
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
-                        }
-                        return DISALLOWED_VALUES;
-                    }
-                }
-                else
-                {
-                    return DISALLOWED_VALUES;
-                }
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
-            }
-            return DISALLOWED_VALUES;
-        }
 
         private void HighLightBrokenRule(Label missingRule)
         {
@@ -461,10 +416,35 @@ namespace JeopardyGame.Pages
 
         private void GoToCodeConfirmationWindow(UserPOJO userToSave)
         {
-            CodeConfirmation codeWindow = new CodeConfirmation(txbEmailCreateAccount.Text.Trim(), userToSave);
-            this.NavigationService.Navigate(codeWindow);
+            CodeConfirmation codeConfirmation = new CodeConfirmation(txbEmailCreateAccount.Text.Trim(), userToSave);
+            this.NavigationService.Navigate(codeConfirmation);
             NavigationService.RemoveBackEntry();
         }
 
+        private void BeginHeartBeat()
+        {
+            var heartbeatClient = new HeartBeatClient();
+            try
+            {
+                var heartbeatTimer = new System.Threading.Timer(state => { heartbeatClient.Heartbeat(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
+        }
+
+ 
     }
 }

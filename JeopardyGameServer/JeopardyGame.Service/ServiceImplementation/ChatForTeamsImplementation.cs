@@ -3,6 +3,9 @@ using JeopardyGame.Data;
 using JeopardyGame.Service.DataDictionaries;
 using JeopardyGame.Service.InterfacesSevices;
 using System.ServiceModel;
+using JeopardyGame.Service.ChannelsAdministrator;
+using System;
+using System.Data.Entity;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -13,14 +16,32 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void RegisterForTeamChat(int idUser)
         {
-            if (idUser != NULL_INT_VALUE)
+            try
             {
-                var savedChannelOfTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                if (savedChannelOfTeamChat == null)
+                if (idUser != NULL_INT_VALUE)
                 {
-                    var newChannelForTeamChat = OperationContext.Current;
-                    TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannelForTeamChat);
+                    var savedChannelOfTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
+                    if (savedChannelOfTeamChat == null)
+                    {
+                        var newChannelForTeamChat = OperationContext.Current;
+                        TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannelForTeamChat);
+                    }
                 }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -32,12 +53,29 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             else
             {
-                MessageChat newMessageInTeamChat = new MessageChat();
-                newMessageInTeamChat.IdUser = idUser;
-                newMessageInTeamChat.UserName = userName;
-                newMessageInTeamChat.MessageToSend = messageToSend;
-                NotifyUserOfNewMessage(idTeamMate, newMessageInTeamChat, true);
-
+                try
+                {
+                    MessageChat newMessageInTeamChat = new MessageChat();
+                    newMessageInTeamChat.IdUser = idUser;
+                    newMessageInTeamChat.UserName = userName;
+                    newMessageInTeamChat.MessageToSend = messageToSend;
+                    NotifyUserOfNewMessage(idTeamMate, newMessageInTeamChat, true);
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
@@ -48,10 +86,28 @@ namespace JeopardyGame.Service.ServiceImplementation
                 var savedChannelForMessage = TeamChats.GetChannelCallBackTeamChatUser(idTeamMate);
                 if (savedChannelForMessage != null)
                 {
-                    GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
-                    resultToReturn.ObjectSaved = messageToSend;
-                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                    savedChannelForMessage.GetCallbackChannel<IIChatForTeamsCallBack>().ReceiveMessageTeamChat(resultToReturn);
+                    try
+                    {
+                        GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
+                        resultToReturn.ObjectSaved = messageToSend;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        savedChannelForMessage.GetCallbackChannel<IIChatForTeamsCallBack>().ReceiveMessageTeamChat(resultToReturn);
+                    }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(idTeamMate, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(idTeamMate, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(idTeamMate, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
                 }
             }
         }
@@ -61,8 +117,8 @@ namespace JeopardyGame.Service.ServiceImplementation
             if (idUser != NULL_INT_VALUE)
             {
                 var channelForUnregisterTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                if (channelForUnregisterTeamChat != null)
-                {
+                if (channelForUnregisterTeamChat != null)                {
+
                     TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUser);
                 }
             }

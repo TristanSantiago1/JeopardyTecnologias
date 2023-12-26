@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -23,46 +24,94 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<int> responseServer = new GenericClass<int>();
             if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                GenericClassServer<bool> isPasswordValid = LoginOperations.VerifyPassword(newUserValidate.Password, userConsulted.ObjectSaved.Password);
-                if (isPasswordValid.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || isPasswordValid.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+                try
                 {
-                    if (isPasswordValid.ObjectSaved)
+                    GenericClassServer<bool> isPasswordValid = LoginOperations.VerifyPassword(newUserValidate.Password, userConsulted.ObjectSaved.Password);
+                    if (isPasswordValid.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || isPasswordValid.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                     {
-                        responseServer.ObjectSaved = SUCCESFULL_EVENT;
-                        responseServer.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        if (isPasswordValid.ObjectSaved)
+                        {
+                            responseServer.ObjectSaved = SUCCESFULL_EVENT;
+                            responseServer.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
 
+                        }
+                        else
+                        {
+                            responseServer.ObjectSaved = UNSUCCESFULL_EVENT;
+                            responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
                     }
                     else
                     {
-                        responseServer.ObjectSaved = UNSUCCESFULL_EVENT;
-                        responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        responseServer.CodeEvent = isPasswordValid.CodeEvent;
                     }
                 }
-                else
+                catch (CommunicationObjectFaultedException ex)
                 {
-                    responseServer.CodeEvent = isPasswordValid.CodeEvent;
+                    responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(userConsulted.ObjectSaved.IdUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(userConsulted.ObjectSaved.IdUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(userConsulted.ObjectSaved.IdUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
             else
             {
                 responseServer.CodeEvent = userConsulted.CodeEvent;
-            }
+            }            
             return responseServer;
         }
 
         public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
         {
-            if (idUser != DEFAULT_INT_VALUE)
+            try
             {
-                var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUser);
-                if (savedChannel == null)
+                if (idUser != DEFAULT_INT_VALUE)
                 {
-                    return ExceptionDictionary.SUCCESFULL_EVENT;
+                    var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUser);
+                    if (savedChannel == null)
+                    {
+                        return ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        var isNotActive = ChannelAdministrator.VerifyUserIsStillActive(idUser);
+                        if (isNotActive == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            ChannelAdministrator.KickUserFromDictionaries(idUser);
+                        }
+                        return isNotActive;
+                    }
                 }
-                else
-                {
-                    return ChannelAdministrator.VerifyUserIsStillActive(idUser);
-                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                return ExceptionDictionary.UNSUCCESFULL_EVENT;
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                return ExceptionDictionary.UNSUCCESFULL_EVENT;
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             return ExceptionDictionary.NULL_PARAEMETER;
         }

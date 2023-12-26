@@ -137,7 +137,14 @@ namespace JeopardyGame.Pages
         private void SendEmailForInvitationToGame(string email, string subject, string body)
         {
             EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
-            GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(email, subject, body);
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            UserPOJO user = new UserPOJO()
+            {
+                IdUser = userSingleton.IdUser,
+                UserName = userSingleton.UserName,
+                EmailAddress = email,
+            };
+            GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(user, subject, body);
             if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 ExceptionHandler.HandleException(sentEmailResult.CodeEvent, String.Empty);

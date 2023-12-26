@@ -4,6 +4,10 @@ using JeopardyGame.Service.InterfacesServices;
 using JeopardyGame.Service.InterpretersEntityPojo;
 using System.Collections.Generic;
 using JeopardyGame.Data.DataAccess;
+using JeopardyGame.Service.ChannelsAdministrator;
+using System.Data.Entity;
+using System.ServiceModel;
+using System;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -18,54 +22,97 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user)
         {
             GenericClass<List<FriendBasicInformation>> resultToReturn = new GenericClass<List<FriendBasicInformation>>();
-            if (user == null)
+            try
             {
-                return NullParametersHandler.HandleNullParametersService(resultToReturn);
-            }            
-            User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
-            GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
-            if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                GenericClassServer<List<Friend>> playerFriendsRequests = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsulted.ObjectSaved);
-                if (playerFriendsRequests.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (user == null)
                 {
-                    resultToReturn = GatherFriendsByCondition(playerFriendsRequests.ObjectSaved, null, playerConsulted.ObjectSaved, 1);              
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                User userConsulted = UserInterpreter.FromUserPojoToUserEntity(user);
+                GenericClassServer<Player> playerConsulted = UserManagerDataOperation.GetPlayerByIdUser(userConsulted.IdUser);
+                if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    GenericClassServer<List<Friend>> playerFriendsRequests = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsulted.ObjectSaved);
+                    if (playerFriendsRequests.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        resultToReturn = GatherFriendsByCondition(playerFriendsRequests.ObjectSaved, null, playerConsulted.ObjectSaved, 1);
+                    }
+                    else
+                    {
+                        resultToReturn.CodeEvent = playerFriendsRequests.CodeEvent;
+                    }
                 }
                 else
                 {
-                    resultToReturn.CodeEvent = playerFriendsRequests.CodeEvent;
+                    resultToReturn.CodeEvent = playerConsulted.CodeEvent;
                 }
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = playerConsulted.CodeEvent; 
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
-        }              
+        }     
+        
         public GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user)
         {
             GenericClass<List<FriendBasicInformation>> resultToReturn = new GenericClass<List<FriendBasicInformation>>();
-            if (user == null)
+            try
             {
-                return NullParametersHandler.HandleNullParametersService(resultToReturn);
-            }            
-            User userConsultedForUserFriends = UserInterpreter.FromUserPojoToUserEntity(user);
-            GenericClassServer<Player> playerConsultedForFriends = UserManagerDataOperation.GetPlayerByIdUser(userConsultedForUserFriends.IdUser);
-            if (playerConsultedForFriends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                GenericClassServer<List<Friend>> friendsOfPlayer = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsultedForFriends.ObjectSaved);
-                if (friendsOfPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (user == null)
                 {
-                    resultToReturn = GatherFriendsByCondition(friendsOfPlayer.ObjectSaved, null, playerConsultedForFriends.ObjectSaved, 2);                  
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                else 
+                User userConsultedForUserFriends = UserInterpreter.FromUserPojoToUserEntity(user);
+                GenericClassServer<Player> playerConsultedForFriends = UserManagerDataOperation.GetPlayerByIdUser(userConsultedForUserFriends.IdUser);
+                if (playerConsultedForFriends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    resultToReturn.CodeEvent = friendsOfPlayer.CodeEvent;
+                    GenericClassServer<List<Friend>> friendsOfPlayer = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerConsultedForFriends.ObjectSaved);
+                    if (friendsOfPlayer.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        resultToReturn = GatherFriendsByCondition(friendsOfPlayer.ObjectSaved, null, playerConsultedForFriends.ObjectSaved, 2);
+                    }
+                    else
+                    {
+                        resultToReturn.CodeEvent = friendsOfPlayer.CodeEvent;
+                    }
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = playerConsultedForFriends.CodeEvent;
                 }
             }
-            else
-            { 
-                resultToReturn.CodeEvent = playerConsultedForFriends.CodeEvent;
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -73,27 +120,49 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user)
         {
             GenericClass<List<FriendBasicInformation>> resultToReturn = new GenericClass<List<FriendBasicInformation>>();
-            if (user == null) 
-            { 
-                return NullParametersHandler.HandleNullParametersService(resultToReturn); 
-            }                
-            User userConsultedForNotFriends = UserInterpreter.FromUserPojoToUserEntity(user);
-            GenericClassServer<Player> playerConsultedByIdUser = UserManagerDataOperation.GetPlayerByIdUser(userConsultedForNotFriends.IdUser);
-            if (playerConsultedByIdUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
+
+            try
             {
-                GenericClassServer<List<Player>> playersNotFriends = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerConsultedByIdUser.ObjectSaved);
-                if (playersNotFriends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (user == null)
                 {
-                    resultToReturn = GatherFriendsByCondition(null, playersNotFriends.ObjectSaved, playerConsultedByIdUser.ObjectSaved, 3);    
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                else 
-                { 
-                    resultToReturn.CodeEvent = playersNotFriends.CodeEvent; 
+                User userConsultedForNotFriends = UserInterpreter.FromUserPojoToUserEntity(user);
+                GenericClassServer<Player> playerConsultedByIdUser = UserManagerDataOperation.GetPlayerByIdUser(userConsultedForNotFriends.IdUser);
+                if (playerConsultedByIdUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    GenericClassServer<List<Player>> playersNotFriends = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerConsultedByIdUser.ObjectSaved);
+                    if (playersNotFriends.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        resultToReturn = GatherFriendsByCondition(null, playersNotFriends.ObjectSaved, playerConsultedByIdUser.ObjectSaved, 3);
+                    }
+                    else
+                    {
+                        resultToReturn.CodeEvent = playersNotFriends.CodeEvent;
+                    }
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = playerConsultedByIdUser.CodeEvent;
                 }
             }
-            else 
+            catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = playerConsultedByIdUser.CodeEvent;
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }

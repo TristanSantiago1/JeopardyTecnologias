@@ -10,6 +10,7 @@ using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.Helpers;
+using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -22,40 +23,57 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> SaveUser(UserPOJO userPojoNew)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
-            if (userPojoNew == null)
-            { 
-                return NullParametersHandler.HandleNullParametersService(resultToReturn);
-            }            
-            userPojoNew.IdUser = DEFAULT_INT_VALUE;
-            User newUser = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
-            GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(newUser);
-            if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                PlayerPOJO playerToSave = new PlayerPOJO();
-                playerToSave.IdPlayer = DEFAULT_INT_VALUE;
-                playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
-                playerToSave.NoReports = DEFAULT_INT_VALUE;
-                playerToSave.IdActualAvatar = DEFAULT_INT_VALUE;
-                playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
-                playerToSave.IdState = NOT_BANNED_STATE;
-                int isPlayerSavedSuccessfully = SavePlayer(playerToSave);
-                if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (userPojoNew == null)
                 {
-                    resultToReturn.ObjectSaved = userSaved.ObjectSaved.IdUser;
-                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                userPojoNew.IdUser = DEFAULT_INT_VALUE;
+                User newUser = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
+                GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(newUser);
+                if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    PlayerPOJO playerToSave = new PlayerPOJO();
+                    playerToSave.IdPlayer = DEFAULT_INT_VALUE;
+                    playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
+                    playerToSave.NoReports = DEFAULT_INT_VALUE;
+                    playerToSave.IdActualAvatar = DEFAULT_INT_VALUE;
+                    playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
+                    playerToSave.IdState = NOT_BANNED_STATE;
+                    int isPlayerSavedSuccessfully = SavePlayer(playerToSave);
+                    if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        resultToReturn.ObjectSaved = userSaved.ObjectSaved.IdUser;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
+                        resultToReturn.CodeEvent = isPlayerSavedSuccessfully;
+                    }
                 }
                 else
                 {
-                    UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
-                    resultToReturn.CodeEvent = isPlayerSavedSuccessfully;
+                    resultToReturn.CodeEvent = userSaved.CodeEvent;
                 }
             }
-            else 
-            { 
-                resultToReturn.CodeEvent = userSaved.CodeEvent; 
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            return resultToReturn;
-                                 
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;                                 
         }
         
         private int SavePlayer(PlayerPOJO newPlayer)
@@ -91,19 +109,37 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
-            if(string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName)) 
+            try
             {
-                return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                if (string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName))
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                var updateInformation = UserManagerDataOperation.UpdateUserInformation(editedName, originalName);
+                if (updateInformation.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.ObjectSaved = updateInformation.ObjectSaved;
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = updateInformation.CodeEvent;
+                }
             }
-            var updateInformation = UserManagerDataOperation.UpdateUserInformation(editedName, originalName);
-            if (updateInformation.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.ObjectSaved = updateInformation.ObjectSaved;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            else
+            catch (TimeoutException ex)
             {
-                resultToReturn.CodeEvent = updateInformation.CodeEvent;
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -112,15 +148,39 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
-            var updatePhoto = UserManagerDataOperation.UpdatePhotoPlayer(idPlayer, imageId);
-            if (updatePhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                var updatePhoto = UserManagerDataOperation.UpdatePhotoPlayer(idPlayer, imageId);
+                if (updatePhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = updatePhoto.CodeEvent;
+                }
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = updatePhoto.CodeEvent;
+                ConsultInformationImplementation consultInformation = new();
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ConsultInformationImplementation consultInformation = new();
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ConsultInformationImplementation consultInformation = new();
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }

@@ -21,7 +21,7 @@ namespace JeopardyGame.Service.InterfacesServices
         void ReportPlayer(int idUser, String userName);
 
         [OperationContract]
-        GenericClass<int> BanUser(int idPlayer);
+        GenericClass<int> BanUser(int idPlayerBanned, int idUserBanning);
 
         [OperationContract(IsOneWay = true)]
         void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate);

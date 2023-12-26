@@ -1,11 +1,14 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.DataDictionaries;
 using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.ServiceModel;
+using System.ServiceModel.Configuration;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -20,104 +23,153 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int TEAM_LEFT_SIDE = 1;
         private readonly int TEAM_RIGTH_SIDE = 2;
         private readonly int MAX_PLAYERS = 4;
+        private static Object lockObject = new Object();
+
         public GenericClass<int> CreateNewLobby(int roomCode, int idUser)
         {
-            GenericClass<int> resultToReturn = new GenericClass<int>();
-            if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE) 
+            lock (lockObject)
             {
-                return NullParametersHandler.HandleNullParametersService(resultToReturn); 
-            }
-            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            if (lobby == null)
-            {
-                ConsultInformationImplementation consultInformation = new();
-                GenericClass<UserPOJO> userConsulted = consultInformation.ConsultUserById(idUser);
-                if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                GenericClass<int> resultToReturn = new GenericClass<int>();
+                try
                 {
-                    GenericClass<PlayerPOJO> playerConsultedByIdUser = consultInformation.ConsultPlayerByIdUser(idUser);
-                    if (playerConsultedByIdUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE)
                     {
-                        PlayerOnLobbyList leaderOfTheGame = new PlayerOnLobbyList();
-                        leaderOfTheGame.idUser = idUser;
-                        leaderOfTheGame.idPlayer = playerConsultedByIdUser.ObjectSaved.IdPlayer;
-                        leaderOfTheGame.userName = userConsulted.ObjectSaved.UserName;
-                        leaderOfTheGame.numberOfPlayerInLobby = LEADER_POSITION_IN_LOBBY;
-                        leaderOfTheGame.sideTeam = TEAM_LEFT_SIDE;
-                        leaderOfTheGame.lobbyCommunicationChannelCallback = OperationContext.Current;
-                        Lobby newLobby = new Lobby();
-                        newLobby.idAdmin = idUser;
-                        newLobby.listOfPlayerInLobby.Add(leaderOfTheGame);
-                        GameLobbiesDictionary.RegisterNewLobby(roomCode, newLobby);                        
-                        resultToReturn.ObjectSaved = SUCCESFUL;
-                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;                        
+                        return NullParametersHandler.HandleNullParametersService(resultToReturn);
                     }
-                    else 
-                    { 
-                        resultToReturn.CodeEvent = playerConsultedByIdUser.CodeEvent; 
+                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    if (lobby == null)
+                    {
+                        ConsultInformationImplementation consultInformation = new();
+                        GenericClass<UserPOJO> userConsulted = consultInformation.ConsultUserById(idUser);
+                        if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            GenericClass<PlayerPOJO> playerConsultedByIdUser = consultInformation.ConsultPlayerByIdUser(idUser);
+                            if (playerConsultedByIdUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                PlayerOnLobbyList leaderOfTheGame = new PlayerOnLobbyList();
+                                leaderOfTheGame.idUser = idUser;
+                                leaderOfTheGame.idPlayer = playerConsultedByIdUser.ObjectSaved.IdPlayer;
+                                leaderOfTheGame.userName = userConsulted.ObjectSaved.UserName;
+                                leaderOfTheGame.numberOfPlayerInLobby = LEADER_POSITION_IN_LOBBY;
+                                leaderOfTheGame.sideTeam = TEAM_LEFT_SIDE;
+                                leaderOfTheGame.lobbyCommunicationChannelCallback = OperationContext.Current;
+                                Lobby newLobby = new Lobby();
+                                newLobby.idAdmin = idUser;
+                                newLobby.listOfPlayerInLobby.Add(leaderOfTheGame);
+                                GameLobbiesDictionary.RegisterNewLobby(roomCode, newLobby);
+                                resultToReturn.ObjectSaved = SUCCESFUL;
+                                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            }
+                            else
+                            {
+                                resultToReturn.CodeEvent = playerConsultedByIdUser.CodeEvent;
+                            }
+                        }
+                        else
+                        {
+                            resultToReturn.CodeEvent = userConsulted.CodeEvent;
+                        }
+                    }
+                    else
+                    {
+                        resultToReturn.ObjectSaved = ROOMCODE_ALREADY_EXIST;
+                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                return resultToReturn;
+            }            
+        }
+        
+
+        public GenericClass<int> JoinIntoLobby(int roomCode, int idUser)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            try
+            {
+                if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE)
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                if (lobby != null)
+                {
+                    if (lobby.listOfPlayerInLobby.Count < MAX_PLAYERS)
+                    {
+                        ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                        GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
+                        if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
+                            if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
+                                playerJoining.idUser = idUser;
+                                playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
+                                playerJoining.userName = userPojo.ObjectSaved.UserName;
+                                playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
+                                playerJoining.sideTeam = TEAM_LEFT_SIDE;
+                                playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
+                                lobby.listOfPlayerInLobby.Add(playerJoining);
+                                resultToReturn.ObjectSaved = SUCCESFUL;
+                                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            }
+                            else
+                            {
+                                resultToReturn.CodeEvent = playerPojo.CodeEvent;
+                            }
+                        }
+                        else
+                        {
+                            resultToReturn.CodeEvent = userPojo.CodeEvent;
+                        }
+                    }
+                    else
+                    {
+                        resultToReturn.ObjectSaved = ROOMCODE_IS_FULL;
+                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     }
                 }
                 else
-                { 
-                    resultToReturn.CodeEvent = userConsulted.CodeEvent;
-                }
-            }
-            else 
-            { 
-                resultToReturn.ObjectSaved = ROOMCODE_ALREADY_EXIST; 
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT; 
-            }
-            return resultToReturn;
-        } 
-        public GenericClass<int> JoinIntoLobby(int roomCode, int idUser)
-        {            
-            GenericClass<int> resultToReturn = new GenericClass<int>();
-            if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE) 
-            { 
-                return NullParametersHandler.HandleNullParametersService(resultToReturn);
-            }
-            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            if (lobby != null)
-            {
-                if (lobby.listOfPlayerInLobby.Count < MAX_PLAYERS)
                 {
-                    ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-                    GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
-                    if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
-                    {
-                        GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
-                        if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                        {
-                            PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
-                            playerJoining.idUser = idUser;
-                            playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
-                            playerJoining.userName = userPojo.ObjectSaved.UserName;
-                            playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
-                            playerJoining.sideTeam = TEAM_LEFT_SIDE;
-                            playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
-                            lobby.listOfPlayerInLobby.Add(playerJoining);
-                            resultToReturn.ObjectSaved = SUCCESFUL;
-                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                        }
-                        else 
-                        {
-                            resultToReturn.CodeEvent = playerPojo.CodeEvent; 
-                        }
-                    }
-                    else 
-                    { 
-                        resultToReturn.CodeEvent = userPojo.CodeEvent;
-                    }
+                    resultToReturn.ObjectSaved = ROOMCODE_DOES_NOT_EXIST;
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 }
-                else 
-                { 
-                    resultToReturn.ObjectSaved = ROOMCODE_IS_FULL; 
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT; 
-                }             
             }
-            else 
+            catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.ObjectSaved = ROOMCODE_DOES_NOT_EXIST;
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }  
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -130,90 +182,155 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void NotifyPlayerInLobby(int roomCode, int idUser)
         {
-            if (roomCode != NULL_INT_VALUE || idUser != NULL_INT_VALUE)
+            try
             {
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
+                if (roomCode != NULL_INT_VALUE || idUser != NULL_INT_VALUE)
                 {
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    if (lobby != null)
                     {
-                        if (item.idUser == idUser)
+                        foreach (var item in lobby.listOfPlayerInLobby)
                         {
-                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUser, lobby);
-                            break;
+                            if (item.idUser == idUser)
+                            {
+                                NotifyPlayerJoiningOrLeavingLobby(roomCode, idUser, lobby);
+                                break;
+                            }
                         }
                     }
                 }
             }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }            
         }
 
         public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting)
         {
             GenericClass<List<PlayerInLobby>> resultToReturn = new GenericClass<List<PlayerInLobby>>();
-            if (roomCode != NULL_INT_VALUE && idUserRequesting != NULL_INT_VALUE)
-            {               
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
+            try
+            {
+                if (roomCode != NULL_INT_VALUE && idUserRequesting != NULL_INT_VALUE)
                 {
-                    List <PlayerInLobby> playerInLobbies = new List <PlayerInLobby>();
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    if (lobby != null)
                     {
-                        PlayerInLobby playerIn = new();
-                        playerIn.IdUser = item.idUser;
-                        playerIn.IdPlayer = item.idPlayer;
-                        playerIn.UserName = item.userName;
-                        playerIn.NumberOfPlayerInLobby = item.numberOfPlayerInLobby;
-                        playerIn.SideOfTeam = item.sideTeam;
-                        playerInLobbies.Add(playerIn);                        
+                        List<PlayerInLobby> playerInLobbies = new List<PlayerInLobby>();
+                        foreach (var item in lobby.listOfPlayerInLobby)
+                        {
+                            PlayerInLobby playerIn = new();
+                            playerIn.IdUser = item.idUser;
+                            playerIn.IdPlayer = item.idPlayer;
+                            playerIn.UserName = item.userName;
+                            playerIn.NumberOfPlayerInLobby = item.numberOfPlayerInLobby;
+                            playerIn.SideOfTeam = item.sideTeam;
+                            playerInLobbies.Add(playerIn);
+                        }
+                        resultToReturn.ObjectSaved = playerInLobbies;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                     }
-                    resultToReturn.ObjectSaved = playerInLobbies;
-                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;                    
+                    else
+                    {
+                        resultToReturn.ObjectSaved = null;
+                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
                 }
-                else 
-                { 
-                    resultToReturn.ObjectSaved = null; 
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT; 
+                else
+                {
+                    resultToReturn = NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
             }
-            else 
-            { 
-                resultToReturn = NullParametersHandler.HandleNullParametersService(resultToReturn);
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserRequesting, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserRequesting, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserRequesting, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }            
             return resultToReturn;
         }
-        public void LeaveLobby(int roomCode, int idUser)
-        {            
-            if (roomCode != NULL_INT_VALUE && idUser != NULL_INT_VALUE && idUser != 0)
+
+        public void LeaveLobby(int roomCode, int idUserLeaving)
+        {
+            try
             {
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
+                if (roomCode != NULL_INT_VALUE && idUserLeaving != NULL_INT_VALUE && idUserLeaving != NULL_INT_VALUE)
                 {
-                    int idPlayer;
-                    int numberOfPlayerInLobby;
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    if (lobby != null)
                     {
-                        if (item.idUser == idUser)
+                        var playerLeaving = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserLeaving);                       
+                        if (playerLeaving != null)
                         {
-                            idPlayer = item.idPlayer;
-                            numberOfPlayerInLobby = item.numberOfPlayerInLobby;
-                            lobby.listOfPlayerInLobby.Remove(item);
-                            RearrangePositions(lobby, item.numberOfPlayerInLobby);
-                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUser, lobby);
-                            ChatsDictionary.GetChannelCallBackChat(roomCode).listOfChannelsCallBack.RemoveAll(pl => pl.idUser == idUser);                            
-                            break;
-                        }
-                    }                                                                       
+                            lobby.listOfPlayerInLobby.Remove(playerLeaving);
+                            RearrangePositions(lobby, playerLeaving.numberOfPlayerInLobby);
+                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserLeaving, lobby);
+                            RemovePlayerFromChatDictionary(roomCode, playerLeaving);                          
+                        }                        
+                    }
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
+
+        private void RemovePlayerFromChatDictionary(int roomCode, PlayerOnLobbyList playerLeaving)
+        {
+            ChannelsCallBackInActiveChats channelsCallBack= ChatsDictionary.GetChannelCallBackChat(roomCode);
+            if (channelsCallBack != null)
+            {
+                var channelToDelete = channelsCallBack.listOfChannelsCallBack.FirstOrDefault(channel => channel.idUser == playerLeaving.idUser);
+                if (channelToDelete != null)
+                {
+                    channelsCallBack.listOfChannelsCallBack.Remove(channelToDelete);
                 }
             }           
         }
+
         private void NotifyPlayerJoiningOrLeavingLobby(int roomCode, int idUser, Lobby lobby)
         {
-            GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
-            try
+            GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);           
+            if (playersLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                if (playersLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                foreach (var item in lobby.listOfPlayerInLobby)
                 {
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    try
                     {
                         var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
                         if (channel != null && idUser != item.idUser)
@@ -221,17 +338,25 @@ namespace JeopardyGame.Service.ServiceImplementation
                             channel.UpdateJoinedPlayerResponse(playersLobby);
                         }
                     }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+            }         
         }   
+
         public void DissolveLobby(int roomCode, int idUser)
         {
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
@@ -252,18 +377,26 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
         } 
+
         private void NotifyClosingLobby(Lobby lobby)
         {
-            try
+            foreach (var item in lobby.listOfPlayerInLobby)
             {
-                foreach (var item in lobby.listOfPlayerInLobby)
+                try
                 {
                     var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
                     if (channel != null && item.numberOfPlayerInLobby != LEADER_POSITION_IN_LOBBY)
@@ -271,33 +404,59 @@ namespace JeopardyGame.Service.ServiceImplementation
                         channel.DissolvingLobby();
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }                   
+            }                       
+        }
+
+        public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
+        {
+            try
             {
+                if (roomCode != NULL_INT_VALUE && idUser != NULL_INT_VALUE)
+                {
+                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    if (lobby != null)
+                    {
+                        if (lobby.listOfPlayerInLobby.Count == MAX_PLAYERS && wannaTeam)
+                        {
+                            AssignTeamSide(lobby);
+                        }
+                        else
+                        {
+                            DissolveTeamsSides(lobby);
+                        }
+                        NotifyPlayersAboutTeams(lobby, idUser, wannaTeam);
+                    }
+                }
+            }            
+            catch (CommunicationObjectFaultedException ex)
+                {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
-        }
-        public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
-        {
-            if (roomCode != NULL_INT_VALUE && idUser != NULL_INT_VALUE)
-            {
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
-                {                    
-                    if(lobby.listOfPlayerInLobby.Count == MAX_PLAYERS && wannaTeam)
-                    {
-                        AssignTeamSide(lobby);
-                    }
-                    else
-                    {
-                        DissolveTeamsSides(lobby);
-                    }
-                    NotifyPlayersAboutTeams(lobby, idUser, wannaTeam);
-                }
+            catch (CommunicationException ex)
+                {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -315,6 +474,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
             }
         }
+
         private void DissolveTeamsSides(Lobby lobby)
         {
             foreach (var item in lobby.listOfPlayerInLobby)
@@ -322,51 +482,79 @@ namespace JeopardyGame.Service.ServiceImplementation
                 item.sideTeam = TEAM_LEFT_SIDE;
             }
         }
+
         private void NotifyPlayersAboutTeams(Lobby lobby, int idUserNotifying, bool wannaTeam)
-        {
-            try
+        {            
+            foreach (var item in lobby.listOfPlayerInLobby)
             {
-                foreach (var item in lobby.listOfPlayerInLobby)
+                try
                 {
                     if (item.idUser != idUserNotifying)
                     {
                         item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().MakeTeamsResponse(wannaTeam);
                     }
                 }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+          
         }
+
         public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
         {
             if (roomCode != NULL_INT_VALUE && idUserToChangeTeam != NULL_INT_VALUE && newSideTeam != NULL_INT_VALUE)
             {
                 var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
+                try
                 {
-                    var player = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserToChangeTeam);                    
-                    if (player != null)
+                    if (lobby != null)
                     {
-                        player.sideTeam = newSideTeam;
-                        NotifyPlayerChangedOfSide(roomCode, idUserToChangeTeam, lobby);                            
-                    }                    
+                        var player = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserToChangeTeam);
+                        if (player != null)
+                        {
+                            player.sideTeam = newSideTeam;
+                            NotifyPlayerChangedOfSide(roomCode, idUserToChangeTeam, lobby);
+                        }
+                    }
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
         }
         private void NotifyPlayerChangedOfSide(int roomCode, int idUser, Lobby lobby)
         {
-            GenericClass<List<PlayerInLobby>> playersInLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
-            try
+            GenericClass<List<PlayerInLobby>> playersInLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);            
+            if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                foreach (var item in lobby.listOfPlayerInLobby)
                 {
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    try
                     {
                         var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
                         if (channel != null && lobby.idAdmin != item.idUser)
@@ -374,54 +562,90 @@ namespace JeopardyGame.Service.ServiceImplementation
                             channel.UpdateTeamSide(playersInLobby);
                         }
                     }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+            }            
         }
 
         public void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate)
-        {
-            try
+        {            
+            if (roomCode != NULL_INT_VALUE && idUserToEliminate != NULL_INT_VALUE)
             {
-                if (roomCode != NULL_INT_VALUE && idUserToEliminate != NULL_INT_VALUE)
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                try
                 {
-                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                     if (lobby != null)
                     {
-                        foreach (var item in lobby.listOfPlayerInLobby)
+                        PlayerOnLobbyList playerEjected = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserToEliminate);
+                        if (playerEjected != null)
                         {
-                            if (item.idUser == idUserToEliminate)
-                            {
-                                lobby.listOfPlayerInLobby.Remove(item);
-                                RearrangePositions(lobby, item.numberOfPlayerInLobby);
-                                NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserToEliminate, lobby);
-                                item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().UpdateJoinedPlayerResponse(GetAllCurrentPlayerInLobby(roomCode, idUserToEliminate));
-                                break;
-                            }
+                            lobby.listOfPlayerInLobby.Remove(playerEjected);
+                            RearrangePositions(lobby, playerEjected.numberOfPlayerInLobby);
+                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserToEliminate, lobby);
+                            NotifyPlayerBeingExpelled(playerEjected, roomCode, idUserToEliminate);
                         }
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+            }         
         }
+
         private void RearrangePositions(Lobby lobby, int eliminatedPosition)
         {
             lobby.listOfPlayerInLobby.Where(item => item.numberOfPlayerInLobby > eliminatedPosition).ToList().ForEach(item => item.numberOfPlayerInLobby--);
         }
+
+        private void NotifyPlayerBeingExpelled(PlayerOnLobbyList playerEjected, int roomCode, int idUserToEliminate)
+        {
+            try
+            {
+                playerEjected.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().UpdateJoinedPlayerResponse(GetAllCurrentPlayerInLobby(roomCode, idUserToEliminate));
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
+
         public void SelectQuestionsForGame(int roomCode)
         {
             QuestionsManagerImplementation questionsManagerImplementation = new();
@@ -435,49 +659,69 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void NotifyQuestionsReady(int roomCode, int codeEvent)
         {
-            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            try
+            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);            
+            if (lobby != null)
             {
-                if (lobby != null)
-                {
-                    var playerLeader = lobby.listOfPlayerInLobby.Find(player => player.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                var playerLeader = lobby.listOfPlayerInLobby.Find(player => player.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                try
+                {                    
                     if (playerLeader != null)
                     {
                         playerLeader.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().NotifyQuestionsAreReady(codeEvent);
                     }
                 }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(playerLeader.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(playerLeader.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(playerLeader.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
-            catch (CommunicationObjectFaultedException ex)
+            else
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+
+            }            
         }
+
         public void StartGame(int roomCode)
         {
             var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            var questions = QuestionsForLobbyDictionary.GetSpecificSetOfQuestionsForLobby(roomCode);
-            try
-            {
-                if (lobby != null && questions != null)
+            var questions = QuestionsForLobbyDictionary.GetSpecificSetOfQuestionsForLobby(roomCode);           
+            if (lobby != null && questions != null)
+            {                
+                foreach (var item in lobby.listOfPlayerInLobby)
                 {
-                    foreach (var item in lobby.listOfPlayerInLobby)
+                    try
                     {
                         item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().NotifyGameWillStart(questions.ObjectSaved);
                     }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+                
+            }           
         }
     }
 }

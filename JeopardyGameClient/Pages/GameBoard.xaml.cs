@@ -666,8 +666,7 @@ namespace JeopardyGame.Pages
             SetPlayerInPositionSpots(playersBorders, playerInGame);         
             if(idLeader != 0)
             {
-                gameActionsClientProxy.FinishGame(roomCode, idLeader, playerInGame);
-                ResponseFinishGame();
+                gameActionsClientProxy.FinishGame(roomCode, playerInGame);
             }            
         }
 

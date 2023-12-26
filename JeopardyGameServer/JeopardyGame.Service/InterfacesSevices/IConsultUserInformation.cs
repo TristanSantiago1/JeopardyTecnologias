@@ -23,6 +23,6 @@ namespace JeopardyGame.Service.InterfacesServices
         [OperationContract]
         GenericClass<UserPOJO> ConsultUserByUserName(String userName);
         [OperationContract]
-        List<PlayerInfo> GetPlayersInfo();
+        GenericClass<List<PlayerInfo>> GetPlayersInformation(int idUserConsulting);
     }
 }

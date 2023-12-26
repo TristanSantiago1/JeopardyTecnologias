@@ -10,7 +10,7 @@ namespace JeopardyGame.Service.InterfacesSevices
     [ServiceContract]
     public interface IHeartBeat
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Heartbeat();
     }
 }

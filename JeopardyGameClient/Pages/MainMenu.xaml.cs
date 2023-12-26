@@ -133,17 +133,20 @@ namespace JeopardyGame.Pages
             try
             {
                 ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
-                var playersInfo = consultInformationProxy.GetPlayersInfo();
-
-                foreach (var playerInfo in playersInfo)
+                UserSingleton userSingleton = UserSingleton.GetMainUser();
+                var playersInfo = consultInformationProxy.GetPlayersInformation(userSingleton.IdUser);
+                if (playersInfo.CodeEvent ==  ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    string playerName = playerInfo.Name;
-                    long score = playerInfo.Points;
+                    foreach (var playerInfo in playersInfo.ObjectSaved)
+                    {
+                        string playerName = playerInfo.Name;
+                        long score = playerInfo.Points;
 
-                    ListBoxItem item = new ListBoxItem();
-                    item.Content = $"{playerName}: {score}";
-                    lstWinners.Items.Add(item);
-                }
+                        ListBoxItem item = new ListBoxItem();
+                        item.Content = $"{playerName}: {score}";
+                        lstWinners.Items.Add(item);
+                    }
+                }              
             }
             catch (EndpointNotFoundException ex)
             {

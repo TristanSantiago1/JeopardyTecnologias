@@ -192,6 +192,14 @@ namespace JeopardyGame.Data
         public int IdFourthAnswer { get; set; }
     }
 
+    
+    public class PlayerInfo
+    {
+        public string Name { get; set; }
+
+        public long Points { get; set; }      
+    }
+
 
 }
 

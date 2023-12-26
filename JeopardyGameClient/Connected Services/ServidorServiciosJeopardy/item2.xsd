@@ -232,6 +232,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfFriendBasicInformation" nillable="true" type="tns:ArrayOfFriendBasicInformation" />
+  <xs:complexType name="GenericClassOfArrayOfPlayerInfoxY0a3WX4">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericClassOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfPlayerInfo" Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeEvent" type="xs:int" />
+      <xs:element minOccurs="0" name="ObjectSaved" nillable="true" type="tns:ArrayOfPlayerInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericClassOfArrayOfPlayerInfoxY0a3WX4" nillable="true" type="tns:GenericClassOfArrayOfPlayerInfoxY0a3WX4" />
+  <xs:complexType name="ArrayOfPlayerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerInfo" nillable="true" type="tns:PlayerInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayerInfo" nillable="true" type="tns:ArrayOfPlayerInfo" />
+  <xs:complexType name="PlayerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Points" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlayerInfo" nillable="true" type="tns:PlayerInfo" />
   <xs:complexType name="GenericClassOfArrayOfPlayerInLobbyxY0a3WX4">
     <xs:annotation>
       <xs:appinfo>

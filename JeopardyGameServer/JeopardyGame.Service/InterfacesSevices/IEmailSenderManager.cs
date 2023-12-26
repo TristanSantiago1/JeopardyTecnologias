@@ -12,9 +12,9 @@ namespace JeopardyGame.Service.InterfacesSevices
     internal interface IEmailSenderManager
     {
         [OperationContract]
-        GenericClass<int> SentEmailConfirmationToCreateAccount(String email, String subject, String bodyMessage);
+        GenericClass<int> SentEmailConfirmationToCreateAccount(UserPOJO user, String subject, String bodyMessage);
 
         [OperationContract]
-        GenericClass<int> SentEmailInvitingToGame(String email, String subject, String bodyMessage);
+        GenericClass<int> SentEmailInvitingToGame(UserPOJO user, String subject, String bodyMessage);
     }
 }
