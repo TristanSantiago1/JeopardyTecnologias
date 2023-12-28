@@ -24,6 +24,7 @@
                     <Image x:Name="imageProfile" Height="271" VerticalAlignment="Top" HorizontalAlignment="Left" Width="307" Stretch="UniformToFill" Margin="8,8,0,0"/>
                 </Border>
                 <Label FontSize="30" Style="{StaticResource labelStyleSimple}" Content="Avatar" Margin="208,193,0,0" Height="43" Width="211"/>
+                <Label x:Name="lblEmailWarning" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}" Content="{x:Static p:Resources.lblEmptyField}" HorizontalAlignment="Left" Margin="710,543,0,0" VerticalAlignment="Top" Width="348" Height="25"/>
             </Grid>
 
             <StackPanel Height="auto" Margin="698,306,169,348" >

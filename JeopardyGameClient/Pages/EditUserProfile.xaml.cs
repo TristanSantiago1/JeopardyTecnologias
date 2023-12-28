@@ -1,5 +1,6 @@
 ﻿using JeopardyGame.DialogWindows;
 using JeopardyGame.Helpers;
+using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +34,8 @@ namespace JeopardyGame.Pages
         private Window dialogMessage;
         String imageResource = "";
         private Dictionary<string, int> imageIdMappings;
+        private const int DISALLOWED_VALUES = 0;
+        private const int ALLOWED_VALUES = 1;
 
         public EditUserProfile()
         {
@@ -147,7 +151,7 @@ namespace JeopardyGame.Pages
 
             if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                var playerWrapper = playerInfo.ObjectSaved; 
+                var playerWrapper = playerInfo.ObjectSaved;
 
                 if (playerWrapper != null && playerWrapper is PlayerPOJO)
                 {
@@ -190,7 +194,7 @@ namespace JeopardyGame.Pages
 
         private void ClickViewAvatarList(object sender, MouseButtonEventArgs e)
         {
-            brdAvatarList.Visibility= Visibility.Visible;
+            brdAvatarList.Visibility = Visibility.Visible;
             imgViewAvartarList.Visibility = Visibility.Hidden;
         }
 
@@ -202,28 +206,145 @@ namespace JeopardyGame.Pages
 
         private void ClickSaveNewEmail(object sender, MouseButtonEventArgs e)
         {
-
+            try
+            {
+                if (CheckEmailAddressFormat() == ALLOWED_VALUES &&
+                        CheckUserNameAndEmailExistence(userToSave) == ALLOWED_VALUES)
+                {
+                    GoToCodeConfirmationWindow(userToSave);
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
-
         private void ClickSaveNewName(object sender, MouseButtonEventArgs e)
         {
-            UserManagerClient useManagerProxy = new UserManagerClient();
-            String nameEdited = txbEditName.Text;
-            String originalName = UserSingleton.GetMainUser().Name;
-            var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
-            if (result != null)
+            try
             {
-                UserSingleton.GetMainUser().UpdateNameData(nameEdited);
-                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
-                MainMenu mainMenuPage = new MainMenu();
-                this.NavigationService.Navigate(mainMenuPage);
-                NavigationService.RemoveBackEntry();
+                UserManagerClient useManagerProxy = new UserManagerClient();
+                String nameEdited = txbEditName.Text;
+                String originalName = UserSingleton.GetMainUser().Name;
+                var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
+                if (result != null)
+                {
+                    UserSingleton.GetMainUser().UpdateNameData(nameEdited);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
+                    MainMenu mainMenuPage = new MainMenu();
+                    this.NavigationService.Navigate(mainMenuPage);
+                    NavigationService.RemoveBackEntry();
+                }
+                else
+                {
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+                }
+                useManagerProxy.Close();
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
+        }
+        private int CheckEmailAddressFormat()
+        {
+            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            int answer;
+            String email = txbEditEmail.Text.Trim();
+            if (!regexExpression.IsMatch(email))
+            {
+                lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
+                lblEmailWarning.Visibility = Visibility.Visible;
+                answer = DISALLOWED_VALUES;
             }
             else
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+                lblEmailWarning.Content = string.Empty;
+                lblEmailWarning.Visibility = Visibility.Collapsed;
+                answer = ALLOWED_VALUES;
             }
-            useManagerProxy.Close();
+            return answer;
+        }
+        private int CheckUserNameAndEmailExistence(UserPOJO userToVerify)
+        {
+            try
+            {
+                ValidateUserExistanceClient dataCheckerProxy = new();
+                GenericClassOfint userIsNew = dataCheckerProxy.UserAlreadyExist(userToVerify);
+                dataCheckerProxy.Close();
+                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+                {
+                    if (userIsNew.ObjectSaved == ALLOWED_VALUES)
+                    {
+                        return ALLOWED_VALUES;
+                    }
+                    else
+                    {
+                        if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
+                        {
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                        }
+                        else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
+                        {
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                        }
+                        else
+                        {
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                        }
+                        return DISALLOWED_VALUES;
+                    }
+                }
+                else
+                {
+                    return DISALLOWED_VALUES;
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
+            return DISALLOWED_VALUES;
+        }
+        private void GoToCodeConfirmationWindow(UserPOJO userToSave)
+        {
+            CodeConfirmation codeConfirmation = new CodeConfirmation(txbEditEmail.Text.Trim(), userToSave);
+            this.NavigationService.Navigate(codeConfirmation);
+            NavigationService.RemoveBackEntry();
         }
     }
 }
