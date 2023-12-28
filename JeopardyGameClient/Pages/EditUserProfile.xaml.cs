@@ -49,7 +49,6 @@ namespace JeopardyGame.Pages
         public static void DisplayUserInfo(TextBox txbEditName, TextBox txbEditUserName, TextBox txbEditEmail)
         {
             txbEditUserName.IsReadOnly = true;
-            txbEditEmail.IsReadOnly = true;
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             txbEditName.Text = userSingleton.Name;
             txbEditUserName.Text = userSingleton.UserName;
@@ -208,10 +207,26 @@ namespace JeopardyGame.Pages
         {
             try
             {
+                UserManagerClient useManagerProxy = new UserManagerClient();
+                int idUser = UserSingleton.GetMainUser().IdUser;
+                string email = txbEditEmail.Text.Trim();
                 if (CheckEmailAddressFormat() == ALLOWED_VALUES &&
-                        CheckUserNameAndEmailExistence(userToSave) == ALLOWED_VALUES)
+                        CheckEmailExistence(email) == ALLOWED_VALUES)
                 {
-                    GoToCodeConfirmationWindow(userToSave);
+                    var result = useManagerProxy.UpdateEmailUser(idUser, email);
+                    if (result != null)
+                    {
+                        UserSingleton.GetMainUser().UpdateEmailData(email);
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
+                        MainMenu mainMenuPage = new MainMenu();
+                        this.NavigationService.Navigate(mainMenuPage);
+                        NavigationService.RemoveBackEntry();
+                    }
+                    else
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+                    }
+                    useManagerProxy.Close();
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -288,12 +303,12 @@ namespace JeopardyGame.Pages
             }
             return answer;
         }
-        private int CheckUserNameAndEmailExistence(UserPOJO userToVerify)
+        private int CheckEmailExistence(string email)
         {
             try
             {
                 ValidateUserExistanceClient dataCheckerProxy = new();
-                GenericClassOfint userIsNew = dataCheckerProxy.UserAlreadyExist(userToVerify);
+                GenericClassOfint userIsNew = dataCheckerProxy.EmailAlreadyExist(email);
                 dataCheckerProxy.Close();
                 if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
@@ -340,11 +355,6 @@ namespace JeopardyGame.Pages
             }
             return DISALLOWED_VALUES;
         }
-        private void GoToCodeConfirmationWindow(UserPOJO userToSave)
-        {
-            CodeConfirmation codeConfirmation = new CodeConfirmation(txbEditEmail.Text.Trim(), userToSave);
-            this.NavigationService.Navigate(codeConfirmation);
-            NavigationService.RemoveBackEntry();
-        }
+        
     }
 }

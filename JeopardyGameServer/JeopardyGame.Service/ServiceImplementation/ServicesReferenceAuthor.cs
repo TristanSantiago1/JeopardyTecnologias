@@ -16,7 +16,12 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             return ((IUserManager)UserManager).SaveUser(userPojoNew);
         }
-       
+
+        public GenericClass<int> UpdateEmailUser(int idUser, string email)
+        {
+            return ((IUserManager)UserManager).UpdateEmailUser(idUser, email);  
+        }
+
         public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
         {
             return ((IUserManager)UserManager).UpdatePlayerPhoto(idPlayer, imageId);
@@ -62,6 +67,11 @@ namespace JeopardyGame.Service.ServiceImplementation
     public partial class ServicesReferenceAuthor : IValidateUserExistance
     {
         ValidateUserExistenceImplementation validate = new ValidateUserExistenceImplementation();
+
+        public GenericClass<int> EmailAlreadyExist(string email)
+        {
+            return ((IValidateUserExistance)validate).EmailAlreadyExist(email);
+        }
 
         public GenericClass<int> UserAlreadyExist(UserPOJO newUser)
         {

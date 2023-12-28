@@ -68,5 +68,9 @@ namespace JeopardyGame
         {
             this.IdCurrentAvatar = newPhoto;
         }
+        public void UpdateEmailData(string newEmail)
+        {
+            this.Email = newEmail;
+        }
     }
 }

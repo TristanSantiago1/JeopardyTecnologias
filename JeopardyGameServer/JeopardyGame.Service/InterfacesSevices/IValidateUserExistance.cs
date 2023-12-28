@@ -13,6 +13,8 @@ namespace JeopardyGame.Service.InterfacesSevices
     {
         [OperationContract]
         GenericClass<int> UserAlreadyExist(UserPOJO newUser);
+        [OperationContract]
+        GenericClass<int> EmailAlreadyExist(String email);
     }
 
 }

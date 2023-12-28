@@ -357,8 +357,6 @@ namespace JeopardyGame.Pages
             }
             return DISALLOWED_VALUES;
         }
-
-
         private void HighLightBrokenRule(Label missingRule)
         {
             missingRule.Foreground = Brushes.Red;
