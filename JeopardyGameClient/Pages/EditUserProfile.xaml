@@ -11,41 +11,59 @@
     <Viewbox Stretch="Fill">
 
         <Grid Height="770">
-            <StackPanel Height="auto" Margin="698,104,229,501" >
+            <StackPanel Height="auto" Margin="698,186,169,469" >
                 <Label x:Name="lblNameDescripCreateAcc" Content = "{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="568">
-                    <TextBox x:Name="txbEditName" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="552" Margin="8,0,0,0" />
+                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="642" Height="54">
+                    <TextBox x:Name="txbEditName" Style="{StaticResource TextFieldAddUser}" FontSize="25"  Width="572" Margin="8,1,0,0" Height="51" VerticalAlignment="Top" />
                 </Border>
             </StackPanel>
 
             <Grid Grid.Column="0">
-                <Border BorderThickness="10" HorizontalAlignment="Left" Height="288" Margin="208,183,0,0" VerticalAlignment="Top" Width="325" BorderBrush="#592C75" Background ="Transparent"/>
-                <Image x:Name="imageProfile" Height="267" Margin="219,194,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="304" Stretch="UniformToFill"/>
-                <ListBox x:Name="lxtImageSelector" d:ItemsSource="{d:SampleData ItemCount=7}" Margin="208,489,0,0" SelectionChanged="SelectImage" Background="{x:Null}" Foreground="#592C75" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left" Width="325" />
+                <Border BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10"  HorizontalAlignment="Left" Height="288" Margin="208,0,0,0" VerticalAlignment="Center" Width="325"  Background ="Transparent">
+                    <Image x:Name="imageProfile" Height="271" VerticalAlignment="Top" HorizontalAlignment="Left" Width="307" Stretch="UniformToFill" Margin="8,8,0,0"/>
+                </Border>
+                <Label FontSize="30" Style="{StaticResource labelStyleSimple}" Content="Avatar" Margin="208,193,0,0" Height="43" Width="211"/>
             </Grid>
 
-            <StackPanel Height="auto" Margin="698,269,229,336" >
+            <StackPanel Height="auto" Margin="698,306,169,348" >
                 <Label x:Name="lblUserNameDescripCreateAcc" Content = "{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="582">
-                    <TextBox x:Name="txbEditUserName" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="562" Margin="8,0,0,0"/>
+                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="645" Height="54">
+                    <TextBox x:Name="txbEditUserName" Style="{StaticResource TextFieldAddUser}" FontSize="25"  Width="574" Margin="8,1,0,0" Height="51" VerticalAlignment="Top"/>
                 </Border>
             </StackPanel>
 
-            <StackPanel Height="auto" Margin="698,434,229,171" >
+            <StackPanel Height="auto" Margin="698,430,169,218" >
                 <Label x:Name="lblEmailDescripCreateAcc" Content = "{x:Static p:Resources.lblEmailDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="587">
-                    <TextBox x:Name="txbEditEmail" Style="{StaticResource TextFieldAddUser}" FontSize="40"  Width="567" HorizontalAlignment="Center" />
+                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="642" Height="54">
+                    <TextBox x:Name="txbEditEmail" Style="{StaticResource TextFieldAddUser}" FontSize="25"  Width="577" Margin="8,1,0,0" VerticalAlignment="Top" Height="50" />
                 </Border>
             </StackPanel>
-            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="776,661,522,62">
+            <Border Background="Transparent" BorderBrush="SteelBlue" BorderThickness="4" CornerRadius="5" Margin="263,580,1035,144">
                 <Button x:Name="btnSaveChanges" FontSize="20" Content = "Guardar" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="CLickButtonSaveChanges" />
             </Border>
-            <Border Background="Transparent" BorderBrush="Purple" BorderThickness="4" CornerRadius="5" Margin="1069,661,229,62">
-                <Button x:Name="bttCancellAction" Content="{x:Static p:Resources.bttCancellAction}" FontSize="20" FontStretch="Expanded" Style="{StaticResource ButtonCancellationStyle}" Click="CLickButtonCancelChanges" />
+            <Image  Source="{StaticResource SaveIcon}" Margin="1274,249,172,476" MouseDown="ClickSaveNewName"/>
+            <Image x:Name="imgViewAvartarList" HorizontalAlignment="Left" Height="30" Width="57" Margin="509,530,0,0" VerticalAlignment="Top" Source="{StaticResource BackArrowIcon}" RenderTransformOrigin="0.5,0.5" MouseDown="ClickViewAvatarList" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="270"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Border x:Name="brdAvatarList" Margin="208,537,0,148"  Visibility="Hidden" Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="5" HorizontalAlignment="Left" Width="326">
+                <StackPanel  Background="Black" >
+                    <Image x:Name="imgCloseAvatarList" Width="20" Height="20" HorizontalAlignment="Right" Source="{StaticResource CirculeCrossIcon}" MouseDown="ClickCloseAvatarList"/>
+                    <ListBox x:Name="lxtImageSelector" d:ItemsSource="{d:SampleData ItemCount=7}" SelectionChanged="SelectImage" Background="{x:Null}" Foreground="#592C75" FontSize="20" Height="65" Width="325" />
+                </StackPanel>
             </Border>
+            <Image  Source="{StaticResource SaveIcon}" Margin="1274,494,172,231" MouseDown="ClickSaveNewEmail"/>
+
+
         </Grid>
     </Viewbox>
 </Page>

@@ -55,16 +55,12 @@ namespace JeopardyGame.Pages
         private void CLickButtonSaveChanges(object sender, RoutedEventArgs e)
         {
             try {
-                String nameEdited = txbEditName.Text;
-                String originalName = UserSingleton.GetMainUser().Name;
                 UserManagerClient useManagerProxy = new UserManagerClient();
-                var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
                 int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-
                 imageIdMappings.TryGetValue(imageResource, out int imageId);
                 var resultPhoto = useManagerProxy.UpdatePlayerPhoto(idPlayer, imageId);
 
-                if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (resultPhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
                     MainMenu mainMenu = new MainMenu();
@@ -190,5 +186,42 @@ namespace JeopardyGame.Pages
             };
         }
 
+        private void ClickViewAvatarList(object sender, MouseButtonEventArgs e)
+        {
+            brdAvatarList.Visibility= Visibility.Visible;
+            imgViewAvartarList.Visibility = Visibility.Hidden;
+        }
+
+        private void ClickCloseAvatarList(object sender, MouseButtonEventArgs e)
+        {
+            brdAvatarList.Visibility = Visibility.Hidden;
+            imgViewAvartarList.Visibility = Visibility.Visible;
+        }
+
+        private void ClickSaveNewEmail(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void ClickSaveNewName(object sender, MouseButtonEventArgs e)
+        {
+            UserManagerClient useManagerProxy = new UserManagerClient();
+            String nameEdited = txbEditName.Text;
+            String originalName = UserSingleton.GetMainUser().Name;
+            var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
+
+            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
+            }
+            else
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateInformation, Application.Current.MainWindow);
+            }
+            useManagerProxy.Close();
+        }
     }
 }

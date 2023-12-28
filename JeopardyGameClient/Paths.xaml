@@ -29,6 +29,7 @@
     <ImageSource x:Key="WinnerCrownIcon" >/Images/winnerIcon.png</ImageSource>
     <ImageSource x:Key="EditPencilIcon" >/Images/EditIcon.png</ImageSource>
     <ImageSource x:Key="BlackBricksBackGroundIcon" >/Images/BackGround.jpg</ImageSource>
+    <ImageSource x:Key="SaveIcon">/Images/saveIcon.png</ImageSource>
 
 
     <ImageSource x:Key="HostPedro" >/Images/HostImages/PedroPresenta.png</ImageSource>

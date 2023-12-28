@@ -98,8 +98,8 @@ namespace JeopardyGame.Pages
 
         private void ClickUserProfile(object sender, MouseButtonEventArgs e)
         {
-            ProfileDataConsult profileInformation = new ProfileDataConsult();
-            this.NavigationService.Navigate(profileInformation);
+            ProfileDataConsult profileConsultPage = new ProfileDataConsult();
+            this.NavigationService.Navigate(profileConsultPage);
             NavigationService.RemoveBackEntry();
         }
 
