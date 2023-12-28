@@ -518,6 +518,8 @@ namespace JeopardyGame.Properties {
                 return ResourceManager.GetString("lblEnglishEU", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error entering lobby, try again later.
         /// </summary>
         public static string lblErrorEnter {
@@ -588,6 +590,8 @@ namespace JeopardyGame.Properties {
                 return ResourceManager.GetString("lblLiveChat", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sorry, you are already logged in with these credentials..
         /// </summary>
         public static string lblLogInExist {
@@ -847,6 +851,8 @@ namespace JeopardyGame.Properties {
                 return ResourceManager.GetString("lblSpanishMexico", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sorry, the action has timed out, please try again later..
         /// </summary>
         public static string lblTimeExpired {
@@ -910,13 +916,6 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Wrong code.
-        /// </summary>
-        public static string lblWrongRoomCode {
-            get {
-                return ResourceManager.GetString("lblWrongRoomCode", resourceCulture);
-                }
-        }
         ///   Busca una cadena traducida similar a Sorry, it was not possible to establish communication with the server at the moment, please try again later.
         /// </summary>
         public static string lblWithoutConection {
@@ -931,6 +930,15 @@ namespace JeopardyGame.Properties {
         public static string lblWithoutFriends {
             get {
                 return ResourceManager.GetString("lblWithoutFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Wrong code.
+        /// </summary>
+        public static string lblWrongRoomCode {
+            get {
+                return ResourceManager.GetString("lblWrongRoomCode", resourceCulture);
             }
         }
         
@@ -967,6 +975,24 @@ namespace JeopardyGame.Properties {
         public static string LeaveGameConfirmation {
             get {
                 return ResourceManager.GetString("LeaveGameConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The LObby is full.
+        /// </summary>
+        public static string LobbyIsFull {
+            get {
+                return ResourceManager.GetString("LobbyIsFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The lobbbyDoes not exist.
+        /// </summary>
+        public static string LobbyNotExist {
+            get {
+                return ResourceManager.GetString("LobbyNotExist", resourceCulture);
             }
         }
         

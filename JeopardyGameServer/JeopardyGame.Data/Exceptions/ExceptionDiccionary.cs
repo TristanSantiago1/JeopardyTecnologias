@@ -25,6 +25,7 @@ namespace JeopardyGame.Data.Exceptions
         private static readonly int _INVALID_OPERATION = -220;
         private static readonly int _NO_DB_CONECTION = -300;
         private static readonly int _SAVE_CHANGES_ERROR = -310;
+        private static readonly int _ENTITY_VALIDATION = -311;
         private static readonly int _SQL_ERROR = -350;
         private static readonly int _ENTITY_ERROR = -360;
         private static readonly int _SMTP_EXCEPTION = -400;
@@ -69,6 +70,8 @@ namespace JeopardyGame.Data.Exceptions
         public static int EMAIL_ALREADY_EXIST => _EMAIL_ALREADY_EXIST;
 
         public static int USERNAME_ALREADY_EXIST => _USERNAME_ALREADY_EXIST;
+
+        public static int ENTITY_VALIDATION => _ENTITY_VALIDATION;
     }
     
 

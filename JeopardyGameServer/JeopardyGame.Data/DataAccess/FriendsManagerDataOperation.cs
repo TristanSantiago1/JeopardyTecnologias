@@ -81,7 +81,7 @@ namespace JeopardyGame.Data.DataAccess
                             }
                         }
                         idsFriends.Add(player.IdPlayer);
-                        var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer)).Take(20).ToList();
+                        var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer) && playerDataBase.State_idState != 3).Take(20).ToList();
                         resultOfOperation.ObjectSaved = playersNotFriends;
                                                    
                             resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;

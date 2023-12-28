@@ -113,11 +113,11 @@ namespace JeopardyGame.Cards
 
         private void SetAvatarImage()
         {
-            avatarPlayer1.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberOne.IdAvatar), UriKind.Absolute));            
+            avatarPlayer1.Source = new BitmapImage(new Uri(GetSpecificResource.GetAvatarImage(playerOfCardNumberOne.IdAvatar), UriKind.Absolute));            
             avatarPlayer1.Height = double.NaN;
             avatarPlayer1.Width = 70;
             avatarPlayer1.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
-            avatarPlayer2.Source = new BitmapImage(new Uri(GetHostImage.GetAvatarImage(playerOfCardNumberTwo.IdAvatar), UriKind.Absolute));            
+            avatarPlayer2.Source = new BitmapImage(new Uri(GetSpecificResource.GetAvatarImage(playerOfCardNumberTwo.IdAvatar), UriKind.Absolute));            
             avatarPlayer2.Height = double.NaN;
             avatarPlayer2.Width = 70;
             avatarPlayer2.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;

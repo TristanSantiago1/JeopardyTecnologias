@@ -55,17 +55,17 @@ namespace JeopardyGame.Service.ServiceImplementation
                 catch (CommunicationObjectFaultedException ex)
                 {
                     successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
                     successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 return successCriteria;
             }

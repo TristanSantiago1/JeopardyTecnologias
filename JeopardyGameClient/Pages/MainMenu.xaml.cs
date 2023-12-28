@@ -117,7 +117,7 @@ namespace JeopardyGame.Pages
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
             codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             codeWindow.Show();
-            enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this));
+            enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this), false);
             codeWindow.contentFrame.NavigationService.Navigate(codePage);
         }
 

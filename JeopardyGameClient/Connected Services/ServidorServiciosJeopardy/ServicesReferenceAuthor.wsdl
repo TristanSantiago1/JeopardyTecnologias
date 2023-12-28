@@ -112,6 +112,22 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyCodeAuthentication_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGuestPlayerManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IHeartBeat_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -493,6 +509,21 @@
   <wsdl:message name="IGameActions_ResponseShowLastQuestion_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseShowLastQuestion" />
   </wsdl:message>
+  <wsdl:message name="ILobbyCodeAuthentication_VerifyRoomCodeExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyRoomCodeExist" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyCodeAuthentication_VerifyRoomCodeExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyRoomCodeExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGuestPlayerManager_CreateUserForGuest_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserForGuest" />
+  </wsdl:message>
+  <wsdl:message name="IGuestPlayerManager_CreateUserForGuest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateUserForGuestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGuestPlayerManager_DeleteGuest_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGuest" />
+  </wsdl:message>
   <wsdl:message name="IHeartBeat_Heartbeat_InputMessage">
     <wsdl:part name="parameters" element="tns:Heartbeat" />
   </wsdl:message>
@@ -806,6 +837,21 @@
     </wsdl:operation>
     <wsdl:operation name="ResponseShowLastQuestion">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion" message="tns:IGameActions_ResponseShowLastQuestion_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyCodeAuthentication">
+    <wsdl:operation name="VerifyRoomCodeExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExist" message="tns:ILobbyCodeAuthentication_VerifyRoomCodeExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExistResponse" message="tns:ILobbyCodeAuthentication_VerifyRoomCodeExist_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGuestPlayerManager">
+    <wsdl:operation name="CreateUserForGuest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuestPlayerManager/CreateUserForGuest" message="tns:IGuestPlayerManager_CreateUserForGuest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGuestPlayerManager/CreateUserForGuestResponse" message="tns:IGuestPlayerManager_CreateUserForGuest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuestPlayerManager/DeleteGuest" message="tns:IGuestPlayerManager_DeleteGuest_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IHeartBeat">
@@ -1478,6 +1524,38 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyCodeAuthentication" type="tns:ILobbyCodeAuthentication">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyCodeAuthentication_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="VerifyRoomCodeExist">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGuestPlayerManager" type="tns:IGuestPlayerManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGuestPlayerManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateUserForGuest">
+      <soap12:operation soapAction="http://tempuri.org/IGuestPlayerManager/CreateUserForGuest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuest">
+      <soap12:operation soapAction="http://tempuri.org/IGuestPlayerManager/DeleteGuest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IHeartBeat" type="tns:IHeartBeat">
     <wsp:PolicyReference URI="#NetTcpBinding_IHeartBeat_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -1568,6 +1646,18 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGameActions" binding="tns:NetTcpBinding_IGameActions">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyCodeAuthentication" binding="tns:NetTcpBinding_ILobbyCodeAuthentication">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGuestPlayerManager" binding="tns:NetTcpBinding_IGuestPlayerManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

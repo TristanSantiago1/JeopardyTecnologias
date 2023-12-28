@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -61,6 +62,11 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch(DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -380,19 +386,33 @@ namespace JeopardyGame.Data.DataAccess
                 try
                 {
                     using (var contextBD = new JeopardyDBContainer())
-                    {
+                    {                        
                         var userConsulted = contextBD.Users.Find(idUser);
                         if (userConsulted != null)
                         {
+                            var playerToDelete = contextBD.Players.FirstOrDefault(player => player.User.IdUser == userConsulted.IdUser);
+                            if (playerToDelete != null)
+                            {
+                                contextBD.Players.Remove(playerToDelete);
+                            }
                             contextBD.Users.Remove(userConsulted);
+                            contextBD.SaveChanges();
                         }
                     }
+                }
+                catch (DbUpdateException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (EntityException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (SqlException ex)
                 {
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
-                catch (EntityException ex)
+                catch (DbEntityValidationException ex)
                 {
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }

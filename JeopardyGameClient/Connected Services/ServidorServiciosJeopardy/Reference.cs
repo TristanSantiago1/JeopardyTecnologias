@@ -3297,6 +3297,114 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ILobbyCodeAuthentication")]
+    public interface ILobbyCodeAuthentication {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExist", ReplyAction="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExistResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint VerifyRoomCodeExist(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExist", ReplyAction="http://tempuri.org/ILobbyCodeAuthentication/VerifyRoomCodeExistResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> VerifyRoomCodeExistAsync(int roomCode, int idUser);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyCodeAuthenticationChannel : JeopardyGame.ServidorServiciosJeopardy.ILobbyCodeAuthentication, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyCodeAuthenticationClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.ILobbyCodeAuthentication>, JeopardyGame.ServidorServiciosJeopardy.ILobbyCodeAuthentication {
+        
+        public LobbyCodeAuthenticationClient() {
+        }
+        
+        public LobbyCodeAuthenticationClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LobbyCodeAuthenticationClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyCodeAuthenticationClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyCodeAuthenticationClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint VerifyRoomCodeExist(int roomCode, int idUser) {
+            return base.Channel.VerifyRoomCodeExist(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> VerifyRoomCodeExistAsync(int roomCode, int idUser) {
+            return base.Channel.VerifyRoomCodeExistAsync(roomCode, idUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IGuestPlayerManager")]
+    public interface IGuestPlayerManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuestPlayerManager/CreateUserForGuest", ReplyAction="http://tempuri.org/IGuestPlayerManager/CreateUserForGuestResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4 CreateUserForGuest();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuestPlayerManager/CreateUserForGuest", ReplyAction="http://tempuri.org/IGuestPlayerManager/CreateUserForGuestResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4> CreateUserForGuestAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGuestPlayerManager/DeleteGuest")]
+        void DeleteGuest(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGuestPlayerManager/DeleteGuest")]
+        System.Threading.Tasks.Task DeleteGuestAsync(int idUser);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGuestPlayerManagerChannel : JeopardyGame.ServidorServiciosJeopardy.IGuestPlayerManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GuestPlayerManagerClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IGuestPlayerManager>, JeopardyGame.ServidorServiciosJeopardy.IGuestPlayerManager {
+        
+        public GuestPlayerManagerClient() {
+        }
+        
+        public GuestPlayerManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public GuestPlayerManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GuestPlayerManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GuestPlayerManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4 CreateUserForGuest() {
+            return base.Channel.CreateUserForGuest();
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4> CreateUserForGuestAsync() {
+            return base.Channel.CreateUserForGuestAsync();
+        }
+        
+        public void DeleteGuest(int idUser) {
+            base.Channel.DeleteGuest(idUser);
+        }
+        
+        public System.Threading.Tasks.Task DeleteGuestAsync(int idUser) {
+            return base.Channel.DeleteGuestAsync(idUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IHeartBeat")]
     public interface IHeartBeat {
         

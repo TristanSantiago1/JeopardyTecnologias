@@ -110,7 +110,7 @@
     <Compile Include="Cards\GameCategoryCard.cs" />
     <Compile Include="Cards\GamePlayerCard.cs" />
     <Compile Include="Cards\GamePointsCard.cs" />
-    <Compile Include="Helpers\GetHostImage.cs" />
+    <Compile Include="Helpers\GetSpecificResource.cs" />
     <Compile Include="Pages\ActiveFriends.xaml.cs">
       <DependentUpon>ActiveFriends.xaml</DependentUpon>
     </Compile>

@@ -71,6 +71,7 @@
     <Compile Include="InterfacesSevices\IEmailSenderManager.cs" />
     <Compile Include="InterfacesSevices\IFriendlyManagerActions.cs" />
     <Compile Include="InterfacesSevices\IGameActions.cs" />
+    <Compile Include="InterfacesSevices\IGuestPlayerManager.cs" />
     <Compile Include="InterfacesSevices\IHeartBeat.cs" />
     <Compile Include="InterfacesSevices\ILobbyActions.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
@@ -88,9 +89,11 @@
     <Compile Include="ServiceImplementation\EmailSenderManagerImplementation.cs" />
     <Compile Include="ServiceImplementation\FriendManagerActionsImplementation.cs" />
     <Compile Include="ServiceImplementation\GameActionsImplementation.cs" />
+    <Compile Include="ServiceImplementation\GuestPlayerManagerImplementation.cs" />
     <Compile Include="ServiceImplementation\HeartBeatImplementation.cs" />
     <Compile Include="ServiceImplementation\LiveChatImplementation.cs" />
     <Compile Include="ServiceImplementation\LobbyActionsImplementation.cs" />
+    <Compile Include="ServiceImplementation\LobbyCodeAuthentication.cs" />
     <Compile Include="ServiceImplementation\LoginVerificationImplementation.cs" />
     <Compile Include="ServiceImplementation\NotifyUserAvailabilityImplementation .cs" />
     <Compile Include="Helpers\QuestionsManagerImplementation.cs" />

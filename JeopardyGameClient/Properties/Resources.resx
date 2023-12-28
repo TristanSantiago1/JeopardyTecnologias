@@ -513,4 +513,10 @@
   <data name="WrongCode" xml:space="preserve">
     <value>The code is wrong</value>
   </data>
+  <data name="LobbyIsFull" xml:space="preserve">
+    <value>The LObby is full</value>
+  </data>
+  <data name="LobbyNotExist" xml:space="preserve">
+    <value>The lobbbyDoes not exist</value>
+  </data>
 </root>

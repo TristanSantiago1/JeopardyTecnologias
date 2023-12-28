@@ -879,6 +879,40 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="VerifyRoomCodeExist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roomCode" type="xs:int" />
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRoomCodeExistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="VerifyRoomCodeExistResult" nillable="true" type="q51:GenericClassOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUserForGuest">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateUserForGuestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="CreateUserForGuestResult" nillable="true" type="q52:GenericClassOfUserPOJOxY0a3WX4" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteGuest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Heartbeat">
     <xs:complexType>
       <xs:sequence />

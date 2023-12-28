@@ -15,9 +15,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     internal class LobbyActionsImplementation : ILobbyActions
     {
         private readonly int NULL_INT_VALUE = 0;
-        private readonly int ROOMCODE_IS_FULL = -2;
-        private readonly int ROOMCODE_ALREADY_EXIST = -1;
-        private readonly int ROOMCODE_DOES_NOT_EXIST= 0;        
+        private readonly int ROOMCODE_ALREADY_EXIST = -1;      
         private readonly int SUCCESFUL = 1;
         private readonly int LEADER_POSITION_IN_LOBBY = 1;
         private readonly int TEAM_LEFT_SIDE = 1;
@@ -86,13 +84,13 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 return resultToReturn;
             }            
@@ -108,50 +106,34 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                if (lobby != null)
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);               
+                ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
+                if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    if (lobby.listOfPlayerInLobby.Count < MAX_PLAYERS)
+                    GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
+                    if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-                        GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
-                        if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                        {
-                            GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
-                            if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                            {
-                                PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
-                                playerJoining.idUser = idUser;
-                                playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
-                                playerJoining.userName = userPojo.ObjectSaved.UserName;
-                                playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
-                                playerJoining.sideTeam = TEAM_LEFT_SIDE;
-                                playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
-                                lobby.listOfPlayerInLobby.Add(playerJoining);
-                                resultToReturn.ObjectSaved = SUCCESFUL;
-                                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                            }
-                            else
-                            {
-                                resultToReturn.CodeEvent = playerPojo.CodeEvent;
-                            }
-                        }
-                        else
-                        {
-                            resultToReturn.CodeEvent = userPojo.CodeEvent;
-                        }
+                        PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
+                        playerJoining.idUser = idUser;
+                        playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
+                        playerJoining.userName = userPojo.ObjectSaved.UserName;
+                        playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
+                        playerJoining.sideTeam = TEAM_LEFT_SIDE;
+                        playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
+                        lobby.listOfPlayerInLobby.Add(playerJoining);
+                        resultToReturn.ObjectSaved = SUCCESFUL;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                     }
                     else
                     {
-                        resultToReturn.ObjectSaved = ROOMCODE_IS_FULL;
-                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultToReturn.CodeEvent = playerPojo.CodeEvent;
                     }
                 }
                 else
                 {
-                    resultToReturn.ObjectSaved = ROOMCODE_DOES_NOT_EXIST;
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                }
+                    resultToReturn.CodeEvent = userPojo.CodeEvent;
+                }                               
             }
             catch (CommunicationObjectFaultedException ex)
             {
@@ -163,13 +145,13 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }  
             catch (CommunicationException ex)
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -208,12 +190,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (TimeoutException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }            
         }
 
@@ -262,13 +244,13 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUserRequesting, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUserRequesting, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }            
             return resultToReturn;
         }
@@ -301,12 +283,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (TimeoutException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -346,12 +328,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     catch (TimeoutException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                 }
             }         
@@ -383,12 +365,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (TimeoutException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         } 
 
@@ -412,12 +394,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 catch (TimeoutException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }                   
             }                       
         }
@@ -451,12 +433,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (TimeoutException ex)
                 {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
                 {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -502,12 +484,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 catch (TimeoutException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
           
@@ -538,12 +520,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 catch (TimeoutException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
         }
@@ -570,12 +552,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     catch (TimeoutException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                 }
             }            
@@ -608,12 +590,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 catch (TimeoutException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(lobby.idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }         
         }
@@ -637,12 +619,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (TimeoutException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -678,12 +660,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 catch (TimeoutException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(playerLeader.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(playerLeader.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
             else
@@ -712,12 +694,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     catch (TimeoutException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                 }
                 

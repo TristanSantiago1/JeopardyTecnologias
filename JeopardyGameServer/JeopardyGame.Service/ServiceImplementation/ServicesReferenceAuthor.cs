@@ -57,6 +57,31 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
+    public partial class ServicesReferenceAuthor : IGuestPlayerManager
+    {
+        GuestPlayerManagerImplementation guestPlayerManager = new();
+
+        public GenericClass<UserPOJO> CreateUserForGuest()
+        {
+            return ((IGuestPlayerManager)guestPlayerManager).CreateUserForGuest();
+        }
+
+        public void DeleteGuest(int idUser)
+        {
+            ((IGuestPlayerManager)guestPlayerManager).DeleteGuest(idUser);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : ILobbyCodeAuthentication
+    {
+        LobbyCodeAuthentication codeAuthentication = new();
+
+        public GenericClass<int> VerifyRoomCodeExist(int roomCode, int idUser)
+        {
+            return ((ILobbyCodeAuthentication)codeAuthentication).VerifyRoomCodeExist(roomCode, idUser);
+        }
+    }
+
 
 
     public partial class ServicesReferenceAuthor : IValidateUserExistance

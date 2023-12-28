@@ -8,6 +8,7 @@ using JeopardyGame.Data.Exceptions;
 using System.Data.SqlClient;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 
 namespace JeopardyGame.Data.Exceptions
 {
@@ -56,6 +57,11 @@ namespace JeopardyGame.Data.Exceptions
             if(exception is RankException)
             {
                 resultException.CodeEvent = ExceptionDictionary.RANK_EXCEPTION;
+                return resultException;
+            }
+            if(exception is DbEntityValidationException)
+            {
+                resultException.CodeEvent = ExceptionDictionary.ENTITY_VALIDATION;
                 return resultException;
             }
             if (exception is Exception)

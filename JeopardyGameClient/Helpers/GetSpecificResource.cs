@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace JeopardyGame.Helpers
 {
-    public static class GetHostImage
+    public static class GetSpecificResource
     {
         public static string GetHosImage(int idHost)
         {
@@ -36,7 +36,17 @@ namespace JeopardyGame.Helpers
             };
         }
 
+    
+
+        public static int GetGuestId()
+        {
+            Random generateAleatory = new Random();
+            return generateAleatory.Next(999999, 9999999);
+        }
+
     }
+
+
 
     public static class GetParentOfGraphicInterfaceComponent
     {

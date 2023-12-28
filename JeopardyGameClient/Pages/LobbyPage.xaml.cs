@@ -32,13 +32,13 @@ namespace JeopardyGame.Pages
         private bool isAdminOfLobby;
         private InstanceContext context;
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
-        private UserSingleton userSingleton = UserSingleton.GetMainUser();
+        private UserSingleton userSingleton;
         private LobbyActionsClient lobbyActionsProxy;
         private Window dialogMessage;
 
         public LobbyPage()
         {
-            InitializeComponent();
+            InitializeComponent();            
             isAdminOfLobby = true;
             PrepareWindow();
             PrepareChatAndFriendList();            
@@ -61,7 +61,14 @@ namespace JeopardyGame.Pages
 
         private void PrepareChatAndFriendList()
         {
-            activeUsersInstance = LogInUser.ActiveFriendsInstance;
+            if(userSingleton.IdState != 3)
+            {
+                activeUsersInstance = LogInUser.ActiveFriendsInstance;
+            }
+            else
+            {
+                activeUsersInstance = new ActiveFriends();
+            }            
             liveChatInstance = new LiveChat();
             liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
             activeUsersInstance.StartPage(this);
@@ -69,6 +76,7 @@ namespace JeopardyGame.Pages
 
         private void PrepareWindow()
         {
+            userSingleton = UserSingleton.GetMainUser();
             context = new InstanceContext(this);
             lobbyActionsProxy = new LobbyActionsClient(context);
             if (isAdminOfLobby)
@@ -419,12 +427,42 @@ namespace JeopardyGame.Pages
 
         private void CloseWindow()
         {
-            MainMenu mainMenu = new MainMenu();
-            this.NavigationService.Navigate(mainMenu);
-            NavigationService.RemoveBackEntry();
+            if (userSingleton.IdState != 3)
+            {
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
+            }
+            else
+            {
+                DeleteSingleton();
+                PrincipalPage principalPage = new PrincipalPage();
+                this.NavigationService.Navigate(principalPage);
+                NavigationService.RemoveBackEntry();
+            }            
         }
 
-
+        private void DeleteSingleton()
+        {
+            try
+            {
+                GuestPlayerManagerClient guestPlayerManagerProxy = new();
+                guestPlayerManagerProxy.DeleteGuest(userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            UserSingleton.CleanSingleton();
+        }
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {

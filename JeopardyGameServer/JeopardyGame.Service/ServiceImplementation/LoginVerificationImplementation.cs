@@ -50,19 +50,19 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(userConsulted.ObjectSaved.IdUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
                     responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(userConsulted.ObjectSaved.IdUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(userConsulted.ObjectSaved.IdUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                    ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
             else
@@ -98,19 +98,19 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             catch (TimeoutException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             catch (CommunicationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             return ExceptionDictionary.NULL_PARAEMETER;

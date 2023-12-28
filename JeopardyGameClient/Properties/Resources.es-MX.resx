@@ -291,7 +291,7 @@ EU</value>
   </data>
   <data name="lblLiveChat" xml:space="preserve">
     <value>Chat en vivo</value>
-  </data> 
+  </data>
   <data name="lblLogInExist" xml:space="preserve">
     <value>Lo sentimos, ya cuenta con una sesión iniciada con estas credenciales</value>
   </data>
@@ -511,5 +511,11 @@ Mexico</value>
   </data>
   <data name="WrongCode" xml:space="preserve">
     <value>El codigo ingresado no es correcto, verificalo o intentalo de nuevo.</value>
+  </data>
+  <data name="LobbyIsFull" xml:space="preserve">
+    <value>El lobby al que estas intentando acceder esta lleno, intenta con otro.</value>
+  </data>
+  <data name="LobbyNotExist" xml:space="preserve">
+    <value> El codigo ingresado no corresponde a ningun lobby activo, verifiquelo e intentelo de nuevo.</value>
   </data>
 </root>

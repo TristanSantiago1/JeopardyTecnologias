@@ -48,6 +48,7 @@ namespace JeopardyGame.Service.InterfacesServices
 
     }
 
+
     [ServiceContract]
     public interface ILobbyActionsCallback
     {
@@ -71,6 +72,11 @@ namespace JeopardyGame.Service.InterfacesServices
 
     }
 
-  
+    [ServiceContract]
+    public interface ILobbyCodeAuthentication
+    {
+        [OperationContract]
+        GenericClass<int> VerifyRoomCodeExist(int roomCode, int idUser);
+    }
 
 }

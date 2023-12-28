@@ -244,7 +244,7 @@ namespace JeopardyGame.Pages
             wrpBoardOfCards.Visibility = Visibility.Hidden;
             stpTurnLigth.Visibility = Visibility.Hidden;
             grdPresentation.Visibility = Visibility.Visible;
-            string hostPath = GetHostImage.GetHosImage(1);
+            string hostPath = GetSpecificResource.GetHosImage(1);
             imgHostImage.Source = new BitmapImage(new Uri(hostPath, UriKind.Absolute));
             string hostName = System.IO.Path.GetFileNameWithoutExtension(hostPath);
             txbHostMessage.Text = Properties.Resources.HostRound1Presentation.Replace("*", hostName);  
@@ -720,6 +720,60 @@ namespace JeopardyGame.Pages
                 }
             }
         }
+        
+        private void StartTimer()
+        {
+            txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
+            timeLeft = 15;
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
+            if (timeLeft <= 0)
+            {
+                if (currentRound != ROUND_THREE)
+                {
+                    if (grdAnswerChoices.IsVisible)
+                    {
+                        ChooseWrongAnswer();
+                    }
+                }
+            }
+            else
+            {
+                timeLeft--;
+            }
+        }
+
+        private void ChooseWrongAnswer()
+        {
+            if (currentTurn == yourTurn)
+            {
+                Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(btt => !btt.Content.Equals(answerToCurrentQuestion.EnglishAnswerDescription));
+                if (currentRound != ROUND_THREE)
+                {
+                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerButton.Content)).IdAnswer;
+                    gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);
+                }
+                else
+                {
+                    bool isCorrect = false;
+                    answerButton.BorderBrush = new SolidColorBrush(Colors.Blue);
+                    bttFirstAnswer.IsEnabled = false;
+                    bttSecondAnswer.IsEnabled = false;
+                    bttThridAnswer.IsEnabled = false;
+                    bttFourAnswer.IsEnabled = false;
+                    txbAdvicement.Visibility = Visibility.Visible;
+                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerButton.Content)).IdAnswer;
+                    gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
+                }
+            }
+        }
 
         private void ClickLeaveGame(object sender, MouseButtonEventArgs e)
         {
@@ -803,77 +857,54 @@ namespace JeopardyGame.Pages
         private void  CloseWindow()
         {
             dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
-            MainMenu mainMenu = new MainMenu();
-            this.NavigationService.Navigate(mainMenu);
-            NavigationService.RemoveBackEntry();
-        }
 
-
-        private void StartTimer()
-        {
-            txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
-            timeLeft = 15;
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
-            if (timeLeft <= 0)
+            if (userSingleton.IdState != 3)
             {
-                if(currentRound != ROUND_THREE)
-                {
-                    if (grdAnswerChoices.IsVisible)
-                    {
-                        ChooseWrongAnswer();
-                    }
-                }  
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
             }
             else
             {
-                timeLeft--;
+                DeleteSingleton();
+                PrincipalPage principalPage = new PrincipalPage();
+                this.NavigationService.Navigate(principalPage);
+                NavigationService.RemoveBackEntry();
             }
         }
 
-
-        private void ChooseWrongAnswer()
+        private void DeleteSingleton()
         {
-            if (currentTurn == yourTurn)
+            try
             {
-                Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(btt => !btt.Content.Equals(answerToCurrentQuestion.EnglishAnswerDescription));
-                if (currentRound != ROUND_THREE)
-                {                                       
-                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerButton.Content)).IdAnswer;
-                    gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);                  
-                }
-                else
-                {
-                    bool isCorrect = false;
-                    answerButton.BorderBrush = new SolidColorBrush(Colors.Blue);
-                    bttFirstAnswer.IsEnabled = false;
-                    bttSecondAnswer.IsEnabled = false;
-                    bttThridAnswer.IsEnabled = false;
-                    bttFourAnswer.IsEnabled = false;
-                    txbAdvicement.Visibility = Visibility.Visible;
-                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerButton.Content)).IdAnswer;
-                    gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
-                }
+                GuestPlayerManagerClient guestPlayerManagerProxy = new();
+                guestPlayerManagerProxy.DeleteGuest(userSingleton.IdUser);
             }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            UserSingleton.CleanSingleton();
         }
+
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
-            frmChat.Content = teamChat;
             grdChat.Visibility = Visibility.Visible;
         }
         public void CloseLiveChat()
         {
-            frmChat.Content = null;
             grdChat.Visibility = Visibility.Collapsed;
         }
+
         public void ReceiveMessageTeamChat(GenericClassOfMessageChatxY0a3WX4 message)
         {
             ((IChatForTeamsCallback)teamChat).ReceiveMessageTeamChat(message);
