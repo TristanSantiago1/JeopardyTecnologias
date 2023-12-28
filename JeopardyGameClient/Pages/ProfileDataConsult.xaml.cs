@@ -28,7 +28,6 @@ namespace JeopardyGame.Pages
             ImagenInit();
             DisplayUserInfo(lblNameEditAccount, lblUserNameEditAccount, lblAddresEditAccount);
         }
-
         public static void DisplayUserInfo(Label lblNameEditAccount, Label lblUserNameEditAccount, Label lblAddressEditAccount)
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();

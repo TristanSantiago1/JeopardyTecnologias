@@ -54,17 +54,19 @@ namespace JeopardyGame.Pages
 
         private void CLickButtonSaveChanges(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 UserManagerClient useManagerProxy = new UserManagerClient();
                 int idPlayer = UserSingleton.GetMainUser().IdPlayer;
                 imageIdMappings.TryGetValue(imageResource, out int imageId);
                 var resultPhoto = useManagerProxy.UpdatePlayerPhoto(idPlayer, imageId);
 
-                if (resultPhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (resultPhoto != null)
                 {
+                    UserSingleton.GetMainUser().UpdateAvatarData(imageId);
                     dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
-                    MainMenu mainMenu = new MainMenu();
-                    this.NavigationService.Navigate(mainMenu);
+                    MainMenu mainMenuPage = new MainMenu();
+                    this.NavigationService.Navigate(mainMenuPage);
                     NavigationService.RemoveBackEntry();
                 }
                 else
@@ -209,12 +211,12 @@ namespace JeopardyGame.Pages
             String nameEdited = txbEditName.Text;
             String originalName = UserSingleton.GetMainUser().Name;
             var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
-
-            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (result != null)
             {
+                UserSingleton.GetMainUser().UpdateNameData(nameEdited);
                 dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateInformation, Application.Current.MainWindow);
-                MainMenu mainMenu = new MainMenu();
-                this.NavigationService.Navigate(mainMenu);
+                MainMenu mainMenuPage = new MainMenu();
+                this.NavigationService.Navigate(mainMenuPage);
                 NavigationService.RemoveBackEntry();
             }
             else
