@@ -55,9 +55,6 @@ namespace JeopardyGame.Pages
             UserCreateAccountCodeClient userCreateAccount = new(context);
             userCreateAccount.AddUserToConfirmationDictionary(userToSave);            
         }
-
-       
-
         private void StartTimer()
         {
             leftTime = 30;
