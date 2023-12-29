@@ -291,7 +291,7 @@ EU</value>
   </data>
   <data name="lblLiveChat" xml:space="preserve">
     <value>Chat en vivo</value>
-  </data> 
+  </data>
   <data name="lblLogInExist" xml:space="preserve">
     <value>Lo sentimos, ya cuenta con una sesión iniciada con estas credenciales</value>
   </data>
@@ -511,5 +511,11 @@ Mexico</value>
   </data>
   <data name="WrongCode" xml:space="preserve">
     <value>El codigo ingresado no es correcto, verificalo o intentalo de nuevo.</value>
+  </data>
+  <data name="btnSaveAvatarChanges" xml:space="preserve">
+    <value>Guardar avatar</value>
+  </data>
+  <data name="lblPasswordEditedProfile" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
 </root>

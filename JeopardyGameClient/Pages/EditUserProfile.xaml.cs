@@ -55,7 +55,7 @@ namespace JeopardyGame.Pages
             txbEditEmail.Text = userSingleton.Email;
         }
 
-        private void CLickButtonSaveChanges(object sender, RoutedEventArgs e)
+        private void CLickButtonSaveAvatarChanges(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -92,14 +92,6 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
-            }
-        }
-
-        private void CLickButtonCancelChanges(object sender, RoutedEventArgs e)
-        {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Application.Current.MainWindow).CloseWindow)
-            {
-                CloseWindow();
             }
         }
 
@@ -355,6 +347,10 @@ namespace JeopardyGame.Pages
             }
             return DISALLOWED_VALUES;
         }
-        
+
+        private void ClickBackToMaminMenu(object sender, MouseButtonEventArgs e)
+        {
+            CloseWindow();
+        }
     }
 }

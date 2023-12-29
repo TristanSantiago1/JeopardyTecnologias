@@ -513,4 +513,10 @@
   <data name="WrongCode" xml:space="preserve">
     <value>The code is wrong</value>
   </data>
+  <data name="btnSaveAvatarChanges" xml:space="preserve">
+    <value>Save avatar</value>
+  </data>
+  <data name="lblPasswordEditedProfile" xml:space="preserve">
+    <value>Password</value>
+  </data>
 </root>
