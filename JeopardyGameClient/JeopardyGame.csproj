@@ -496,5 +496,9 @@
   <ItemGroup>
     <Resource Include="Images\saveIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\blueButton.png" />
+    <Resource Include="Images\redButton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
