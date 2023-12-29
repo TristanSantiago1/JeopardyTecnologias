@@ -250,6 +250,7 @@ namespace JeopardyGame.Pages
 
         private void GoToMainMenu()
         {
+            BeginHeartBeat();
             MainMenu mainMenuPage = new MainMenu();
             this.NavigationService.Navigate(mainMenuPage);
             NavigationService.RemoveBackEntry();

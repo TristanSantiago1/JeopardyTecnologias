@@ -4,6 +4,9 @@ namespace JeopardyGame
 {
     public partial class App : Application
     {
+        private static bool isEnglish = false;
+
+        public static bool IsEnglish { get => isEnglish; set => isEnglish = value; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -21,6 +24,14 @@ namespace JeopardyGame
 
         public static void ChangeLanguage (string language)
         {
+            if (language.Equals("en-EU"))
+            {
+                IsEnglish = true;
+            }
+            else
+            {
+                IsEnglish = false;
+            }
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
         }
 

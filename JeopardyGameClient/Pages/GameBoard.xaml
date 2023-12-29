@@ -27,29 +27,29 @@
                     <TextBlock x:Name="txbQuestion" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
                 </Border>
                 <Label Content="a)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="332"/>
-                <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="ClickSelectAnswer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="303" Canvas.Left="205" Canvas.Top="322" >
+                <Button x:Name="bttFirstAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold" 
+                    FontSize="15" Click="ClickSelectAnswer" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="303" Canvas.Left="205" Canvas.Top="322" >
                     <Button.Background>
                         <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <Label Content="b)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="152" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.607,0.479"/>
                 <Button x:Name="bttSecondAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                     FontSize="25" Click="ClickSelectAnswer" Height="70" Width="302" Canvas.Left="203" Canvas.Top="442" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                     FontSize="15" Click="ClickSelectAnswer" Height="70" Width="302" Canvas.Left="203" Canvas.Top="442" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
                         <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <Label Content="c)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="327" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Button x:Name="bttThridAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                     FontSize="25" Click="ClickSelectAnswer" Height="70" Width="303" Canvas.Left="610" Canvas.Top="322" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                     FontSize="15" Click="ClickSelectAnswer" Height="70" Width="303" Canvas.Left="610" Canvas.Top="322" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
                         <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>
                 </Button>
                 <Label Content="d)" FontSize="30" Foreground="Black" FontWeight="Bold" Canvas.Left="565" Canvas.Top="452" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="2.26,2.645"/>
                 <Button x:Name="bttFourAnswer" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
-                    FontSize="25" Click="ClickSelectAnswer" Height="70" Width="302" Canvas.Left="616" Canvas.Top="437" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    FontSize="15" Click="ClickSelectAnswer" Height="70" Width="302" Canvas.Left="616" Canvas.Top="437" HorizontalAlignment="Left" VerticalAlignment="Top" >
                     <Button.Background>
                         <ImageBrush ImageSource="{StaticResource ButtonAnswerLayerIcon}"/>
                     </Button.Background>

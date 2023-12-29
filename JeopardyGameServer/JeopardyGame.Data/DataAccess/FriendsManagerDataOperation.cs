@@ -221,22 +221,30 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    Friend newRelationShip = new Friend();
-                    newRelationShip.IdFriendState = NULL_INT_VALUE;
-                    newRelationShip.Player_IdPlayer = idPlayerSender;
-                    newRelationShip.PlayerFriend_IdPlayer = idPlayerCatcher;
-                    newRelationShip.IdFriendState = FRIEND_STATUS_NEW;
-                    contextBD.Friends.Add(newRelationShip);
-                    int resultEvent = contextBD.SaveChanges();
-                    resultOfOperation.ObjectSaved = resultEvent;
-                    if (resultEvent != NULL_INT_VALUE)
-                    {                        
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    bool doesFriendExist = contextBD.Friends.Any(friend => (friend.Player_IdPlayer == idPlayerSender && friend.PlayerFriend_IdPlayer == idPlayerCatcher) || (friend.Player_IdPlayer == idPlayerSender && friend.PlayerFriend_IdPlayer == idPlayerSender));
+                    if (!doesFriendExist)
+                    {
+                        Friend newRelationShip = new Friend();
+                        newRelationShip.IdFriendState = NULL_INT_VALUE;
+                        newRelationShip.Player_IdPlayer = idPlayerSender;
+                        newRelationShip.PlayerFriend_IdPlayer = idPlayerCatcher;
+                        newRelationShip.IdFriendState = FRIEND_STATUS_NEW;
+                        contextBD.Friends.Add(newRelationShip);
+                        int resultEvent = contextBD.SaveChanges();
+                        resultOfOperation.ObjectSaved = resultEvent;
+                        if (resultEvent != NULL_INT_VALUE)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
                     }
                     else
                     {
                         resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    }                                  
+                    }                                                      
                 }
             }
             catch (DbUpdateException ex)
@@ -261,6 +269,7 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
+
         public static GenericClassServer<int> BannerUser(int idPlayer)
         {
             GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();

@@ -220,7 +220,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
         {
-            lock (this)
+            lock (lockObject)
             {
                 ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
                 var userConsulted = consultInformation.ConsultUserByIdPlayer(idPlayerDeclining);

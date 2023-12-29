@@ -5,6 +5,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows;
@@ -228,7 +229,7 @@ namespace JeopardyGame.Pages
         {
             foreach (var category in categoriesOfGame)
             {
-                GameCategoryCard categoryCard = new(category.EnglishCategoryDescription);
+                GameCategoryCard categoryCard = new(GetSpecificResource.GetEnglishOrSpanishDescription(category.EnglishCategoryDescription, category.SpanishCategoryDescription));
                 wrpBoardOfCards.Children.Add(categoryCard);
                 var questionsOfCategory = questionsOfRound.Where(quest => quest.SpecificQuestionDetails.IdCategoryBelong == category.IdCategory).ToList();
                 foreach (var questionCard in questionsOfCategory)
@@ -250,13 +251,13 @@ namespace JeopardyGame.Pages
             txbHostMessage.Text = Properties.Resources.HostRound1Presentation.Replace("*", hostName);  
             await Task.Delay(7000);
             string categoriesPresentation = Properties.Resources.HostCategoriesPresentation;
-            categoriesPresentation = categoriesPresentation.Replace("1", categoriesOfGameRound1[0].EnglishCategoryDescription);
-            categoriesPresentation = categoriesPresentation.Replace("2", categoriesOfGameRound1[1].EnglishCategoryDescription);
-            categoriesPresentation = categoriesPresentation.Replace("3", categoriesOfGameRound1[2].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("1", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound1[0].EnglishCategoryDescription, categoriesOfGameRound1[0].SpanishCategoryDescription));
+            categoriesPresentation = categoriesPresentation.Replace("2", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound1[1].EnglishCategoryDescription, categoriesOfGameRound1[1].SpanishCategoryDescription));
+            categoriesPresentation = categoriesPresentation.Replace("3", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound1[2].EnglishCategoryDescription, categoriesOfGameRound1[2].SpanishCategoryDescription));
             categoriesPresentation = categoriesPresentation.Replace("\\n", Environment.NewLine);
             categoriesPresentation = categoriesPresentation.Replace("*", ROUND_ONE.ToString());
             txbHostMessage.Text = categoriesPresentation;
-            await Task.Delay(7000);
+            await Task.Delay(6000);
             wrpBoardOfCards.Visibility = Visibility.Visible;
             stpTurnLigth.Visibility = Visibility.Visible;
             grdPresentation.Visibility = Visibility.Collapsed;                     
@@ -271,13 +272,13 @@ namespace JeopardyGame.Pages
             txbHostMessage.Text = Properties.Resources.HostRoun2Presentation;
             await Task.Delay(3000);
             string categoriesPresentation = Properties.Resources.HostCategoriesPresentation;
-            categoriesPresentation = categoriesPresentation.Replace("1", categoriesOfGameRound2[0].EnglishCategoryDescription);
-            categoriesPresentation = categoriesPresentation.Replace("2", categoriesOfGameRound2[1].EnglishCategoryDescription);
-            categoriesPresentation = categoriesPresentation.Replace("3", categoriesOfGameRound2[2].EnglishCategoryDescription);
+            categoriesPresentation = categoriesPresentation.Replace("1", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound2[0].EnglishCategoryDescription, categoriesOfGameRound2[0].SpanishCategoryDescription));
+            categoriesPresentation = categoriesPresentation.Replace("2", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound2[1].EnglishCategoryDescription, categoriesOfGameRound2[1].SpanishCategoryDescription));
+            categoriesPresentation = categoriesPresentation.Replace("3", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound2[2].EnglishCategoryDescription, categoriesOfGameRound2[2].SpanishCategoryDescription));
             categoriesPresentation = categoriesPresentation.Replace("\\n", Environment.NewLine);
             categoriesPresentation = categoriesPresentation.Replace("*", ROUND_TWO.ToString());
             txbHostMessage.Text = categoriesPresentation; 
-            await Task.Delay(7000);
+            await Task.Delay(5000);
             wrpBoardOfCards.Visibility = Visibility.Visible;
             stpTurnLigth.Visibility = Visibility.Visible;
             grdPresentation.Visibility = Visibility.Collapsed;
@@ -290,7 +291,7 @@ namespace JeopardyGame.Pages
             stpTurnLigth.Visibility = Visibility.Hidden;
             grdPresentation.Visibility = Visibility.Visible;
             txbHostMessage.Text = Properties.Resources.HostRound3Presentation;
-            await Task.Delay(5000);
+            await Task.Delay(4000);
             grdBet.Visibility = Visibility.Visible;
             grdPresentation.Visibility = Visibility.Collapsed;
             List<Border> playersBorders = stpPlayers.Children.OfType<Border>().ToList();
@@ -376,13 +377,13 @@ namespace JeopardyGame.Pages
             grdAnswerChoices.Visibility = Visibility.Visible;
             grdBet.Visibility = Visibility.Collapsed;
             grTimer.Visibility = Visibility.Visible;
-            txbQuestion.Text = questionBeingAsked.EnglishQuestionDescription;
+            txbQuestion.Text =  GetSpecificResource.GetEnglishOrSpanishDescription(questionBeingAsked.EnglishQuestionDescription, questionBeingAsked.SpanishQuestionDescription);
             answersOfQuestionBeingAsked = new List<AnswerPOJO>() { finalQuestion.RightAnswer, finalQuestion.WrongOptionOne, finalQuestion.WrongOptionTwo, finalQuestion.WrongOptionThree }.OrderBy(order => Guid.NewGuid()).ToList();
             answerToCurrentQuestion = answersOfQuestionBeingAsked.Where(answer => answer.IdAnswer == finalQuestion.SpecificQuestionDetails.IdAnswerOfQuestion).FirstOrDefault();
-            bttFirstAnswer.Content = answersOfQuestionBeingAsked[0].EnglishAnswerDescription;
-            bttSecondAnswer.Content = answersOfQuestionBeingAsked[1].EnglishAnswerDescription;
-            bttThridAnswer.Content = answersOfQuestionBeingAsked[2].EnglishAnswerDescription;
-            bttFourAnswer.Content = answersOfQuestionBeingAsked[3].EnglishAnswerDescription;
+            bttFirstAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[0].EnglishAnswerDescription, answersOfQuestionBeingAsked[0].SpanishAnswerDescription);
+            bttSecondAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[1].EnglishAnswerDescription, answersOfQuestionBeingAsked[1].SpanishAnswerDescription);
+            bttThridAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[2].EnglishAnswerDescription, answersOfQuestionBeingAsked[2].SpanishAnswerDescription);
+            bttFourAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[3].EnglishAnswerDescription, answersOfQuestionBeingAsked[3].SpanishAnswerDescription);
             CurrentQuestionToShowContract currentQuestionToShow = new CurrentQuestionToShowContract()
             {
                 IdQuestion = questionBeingAsked.IdQuestion,
@@ -418,14 +419,18 @@ namespace JeopardyGame.Pages
             questionBeingAsked = questionCard.SpecificQuestionDetails;
             grdAnswerChoices.Visibility = Visibility.Visible;
             grTimer.Visibility = Visibility.Visible;
-            txbQuestion.Text = questionCard.SpecificQuestionDetails.EnglishQuestionDescription;
+            txbQuestion.Text = GetSpecificResource.GetEnglishOrSpanishDescription(questionCard.SpecificQuestionDetails.EnglishQuestionDescription, questionCard.SpecificQuestionDetails.SpanishQuestionDescription);
             List<AnswerPOJO> answersForThisQuestion = new List<AnswerPOJO>() { questionCard.RightAnswer, questionCard.WrongOptionOne, questionCard.WrongOptionTwo, questionCard.WrongOptionThree };
             answersOfQuestionBeingAsked = answersForThisQuestion.ToList();
             answerToCurrentQuestion = answersForThisQuestion.FirstOrDefault(ans => ans.IdAnswer == questionBeingAsked.IdAnswerOfQuestion);
-            bttFirstAnswer.Content = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFirstAnswer).EnglishAnswerDescription;
-            bttSecondAnswer.Content = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdSecondAnswer).EnglishAnswerDescription;
-            bttThridAnswer.Content = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdThirdAnswer).EnglishAnswerDescription;
-            bttFourAnswer.Content = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFourthAnswer).EnglishAnswerDescription;
+            var answerbtt1 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFirstAnswer);
+            bttFirstAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt1.EnglishAnswerDescription, answerbtt1.SpanishAnswerDescription);
+            var answerbtt2 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdSecondAnswer);
+            bttSecondAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt2.EnglishAnswerDescription, answerbtt2.SpanishAnswerDescription); ;
+            var answerbtt3 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdThirdAnswer);
+            bttThridAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt3.EnglishAnswerDescription, answerbtt3.SpanishAnswerDescription); ;
+            var answerbtt4 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFourthAnswer);
+            bttFourAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt4.EnglishAnswerDescription, answerbtt4.SpanishAnswerDescription); ;
             StartTimer();
         }
 
@@ -436,13 +441,13 @@ namespace JeopardyGame.Pages
                 var answerCardChoose = (Button)sender;               
                 if (currentRound != ROUND_THREE)
                 {
-                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerCardChoose.Content)).IdAnswer;
+                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription,anw.SpanishAnswerDescription).Equals(answerCardChoose.Content)).IdAnswer;
                     gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);                
                 }
                 else
                 {
                     bool isCorrect;
-                    if (answerToCurrentQuestion.EnglishAnswerDescription.Equals(answerCardChoose.Content))
+                    if (GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription).Equals(answerCardChoose.Content))
                     {
                         isCorrect = true;
                     }
@@ -456,7 +461,7 @@ namespace JeopardyGame.Pages
                     bttThridAnswer.IsEnabled = false;
                     bttFourAnswer.IsEnabled = false;
                     txbAdvicement.Visibility = Visibility.Visible;
-                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerCardChoose.Content)).IdAnswer;
+                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content)).IdAnswer;
                     gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
                 }
             }            
@@ -466,7 +471,9 @@ namespace JeopardyGame.Pages
         {
             timer.Stop();
             bool isCorrect;
-            if (answerToCurrentQuestion.EnglishAnswerDescription.Equals(answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected).EnglishAnswerDescription))
+            string descriptionOfCurrentQuestion = GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription);
+            var answerSelected = answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected);
+            if (descriptionOfCurrentQuestion.Equals(GetSpecificResource.GetEnglishOrSpanishDescription(answerSelected.EnglishAnswerDescription, answerSelected.SpanishAnswerDescription)))
             {
                 isCorrect = true;
             }
@@ -484,8 +491,9 @@ namespace JeopardyGame.Pages
         {
             grdAnswerChoices.Visibility = Visibility.Hidden;
             cnvResultOfAwnser.Visibility = Visibility.Visible;
-            txbQuestionResult.Text = questionBeingAsked.EnglishQuestionDescription;
-            txbStringAnswerChoose.Text = answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected).EnglishAnswerDescription;
+            txbQuestionResult.Text = GetSpecificResource.GetEnglishOrSpanishDescription( questionBeingAsked.EnglishQuestionDescription, questionBeingAsked.SpanishQuestionDescription);
+            var answerSelected = answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected);
+            txbStringAnswerChoose.Text = GetSpecificResource.GetEnglishOrSpanishDescription(answerSelected.EnglishAnswerDescription, answerSelected.SpanishAnswerDescription);
             if (isCorrect)
             {
                 imgAnswerResult.Source = new BitmapImage(new Uri(App.Current.Resources["RightAnswerIcon"].ToString(), UriKind.Absolute));
@@ -724,7 +732,7 @@ namespace JeopardyGame.Pages
         private void StartTimer()
         {
             txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
-            timeLeft = 15;
+            timeLeft = 10;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -754,10 +762,11 @@ namespace JeopardyGame.Pages
         {
             if (currentTurn == yourTurn)
             {
-                Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(btt => !btt.Content.Equals(answerToCurrentQuestion.EnglishAnswerDescription));
+                string descriptionAnswerToQuestion = GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription);
+                Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(btt => !btt.Content.Equals(descriptionAnswerToQuestion));
                 if (currentRound != ROUND_THREE)
                 {
-                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerButton.Content)).IdAnswer;
+                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription,anw.SpanishAnswerDescription).Equals(answerButton.Content)).IdAnswer;
                     gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);
                 }
                 else
@@ -769,7 +778,7 @@ namespace JeopardyGame.Pages
                     bttThridAnswer.IsEnabled = false;
                     bttFourAnswer.IsEnabled = false;
                     txbAdvicement.Visibility = Visibility.Visible;
-                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => anw.EnglishAnswerDescription.Equals(answerButton.Content)).IdAnswer;
+                    int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content)).IdAnswer;
                     gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
                 }
             }

@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows;
+using JeopardyGame.ServidorServiciosJeopardy;
+using Microsoft.Win32;
+using System.Windows.Controls;
+using System.Globalization;
 
 namespace JeopardyGame.Helpers
 {
@@ -42,6 +46,27 @@ namespace JeopardyGame.Helpers
         {
             Random generateAleatory = new Random();
             return generateAleatory.Next(999999, 9999999);
+        }
+
+        public static string GetEnglishOrSpanishDescription(string englisDescription, string spanishDescription)
+        {
+            if (spanishDescription is null)
+            {
+                return englisDescription;
+            }
+            if (englisDescription is null)
+            {
+                return spanishDescription;
+            }
+            bool isEnglish = App.IsEnglish;
+            if (isEnglish)
+            {
+                return englisDescription;
+            }
+            else
+            {
+                return spanishDescription;
+            }
         }
 
     }

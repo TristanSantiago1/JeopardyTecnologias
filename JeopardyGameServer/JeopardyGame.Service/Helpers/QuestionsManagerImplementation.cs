@@ -54,7 +54,8 @@ namespace JeopardyGame.Service.ServiceImplementation
             var idHosts = GameDataOperation.GetHostIds();
             if (idHosts.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                int idHost = idHosts.ObjectSaved.OrderBy(h => new Guid()).First();
+                Random random = new Random();
+                int idHost = idHosts.ObjectSaved.OrderBy(h => random.Next()).First();
                 return idHost;
             }
             return idHosts.CodeEvent;
@@ -118,10 +119,14 @@ namespace JeopardyGame.Service.ServiceImplementation
                             SpanishQuestionDescription = question.SpanishQuestionDescription,
                             EnglishQuestionDescription = question.EnglishQuestionDescription,
                             IdAnswerOfQuestion = question.Awnser.IdAwnser,
-                            IdCategoryBelong = question.CategoryIdCategory,
+                            IdCategoryBelong = question.CategoryIdCategory,                            
                             ValueWorth = (int)question.ValueWorth
-                        } 
+                        }                        
                     };
+                    if(questionCard.NumberOfRound == ROUND_TWO)
+                    {
+                        questionCard.SpecificQuestionDetails.ValueWorth = 2 * ((int)(question.ValueWorth));
+                    }
                     questionCardInformation.Add(questionCard);
                     iterator++;
                 }                               

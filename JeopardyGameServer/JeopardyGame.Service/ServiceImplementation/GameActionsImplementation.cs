@@ -546,9 +546,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
         public void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame)
-        {
-            QuestionsManagerImplementation managerImplementation = new QuestionsManagerImplementation();
-            managerImplementation.RegistryGamePlayers(roomCode, playerInGame);
+        {           
             var playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
             try
             {

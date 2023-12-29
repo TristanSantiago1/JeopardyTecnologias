@@ -546,8 +546,49 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
 
         }
-            
-        
+
+        public static void DeleteAllGuestUsers()
+        {            
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    var usersConsulted = contextBD.Users.Where(user => user.Name.Equals("")).ToList();
+                    if (usersConsulted != null)
+                    {
+                        List<Player> playerGuests = new List<Player>();
+                        foreach (User user in usersConsulted)
+                        {
+                            var playerToDelete = contextBD.Players.FirstOrDefault(pla => pla.User_IdUser == user.IdUser);
+                            playerGuests.Add(playerToDelete);
+                        }                        
+                        if (playerGuests.Count != 0)
+                        {
+                            contextBD.Players.RemoveRange(playerGuests);
+                        }
+                        contextBD.Users.RemoveRange(usersConsulted);
+                        contextBD.SaveChanges();
+                    }
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }            
+        }
+
     }
 
  }

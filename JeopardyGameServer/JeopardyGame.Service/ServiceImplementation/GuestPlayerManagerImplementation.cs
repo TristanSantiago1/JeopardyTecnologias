@@ -16,7 +16,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         private readonly string GUEST_EMAIL = "guest@email";
         private readonly string GUEST_PASSWORD = "123456789";
-        private readonly string GUEST_NAME = "JustGuest";
+        private readonly string GUEST_NAME = "";
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int GUEST_STATE = 3;
 

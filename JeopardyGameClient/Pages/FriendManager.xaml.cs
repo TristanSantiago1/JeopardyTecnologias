@@ -226,11 +226,14 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendBasicInformation newFriend = new FriendBasicInformation();
-            newFriend.IdUser = idUserFriendToEliminate;
-            newFriend.UserName = userName;            
-            newFriend.IdStatusAvailability = NOT_STATUS;
-            otherPeople.Add(newFriend);
+            if(!otherPeople.Any(pla => pla.UserName.Equals(userName)))
+            {
+                FriendBasicInformation newFriend = new FriendBasicInformation();
+                newFriend.IdUser = idUserFriendToEliminate;
+                newFriend.UserName = userName;
+                newFriend.IdStatusAvailability = NOT_STATUS;
+                otherPeople.Add(newFriend);
+            }            
             SetCards();
         }
 
@@ -261,11 +264,14 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendBasicInformation newFriend = new FriendBasicInformation();
-            newFriend.IdUser = idUserRequesting;
-            newFriend.UserName = userName;
-            newFriend.IdStatusAvailability = NOT_STATUS;
-            friends.Add(newFriend);
+            if(!friends.Any(pla => pla.IdUser == idUserRequesting))
+            {
+                FriendBasicInformation newFriend = new FriendBasicInformation();
+                newFriend.IdUser = idUserRequesting;
+                newFriend.UserName = userName;
+                newFriend.IdStatusAvailability = NOT_STATUS;
+                friends.Add(newFriend);
+            }            
             SetCards();
         }
 
@@ -281,11 +287,14 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendBasicInformation newFriend = new FriendBasicInformation();
-            newFriend.IdUser = idUserRequesting;
-            newFriend.UserName = userName;
-            newFriend.IdStatusAvailability = NOT_STATUS;
-            otherPeople.Add(newFriend);
+            if (!otherPeople.Any(pla => pla.IdUser == idUserRequesting))
+            {
+                FriendBasicInformation newFriend = new FriendBasicInformation();
+                newFriend.IdUser = idUserRequesting;
+                newFriend.UserName = userName;
+                newFriend.IdStatusAvailability = NOT_STATUS;
+                otherPeople.Add(newFriend);
+            }
             SetCards();
         }
 
@@ -323,11 +332,14 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendBasicInformation newFriend = new FriendBasicInformation();
-            newFriend.IdUser = idUserOperation;
-            newFriend.UserName = userName;
-            newFriend.IdStatusAvailability = NOT_STATUS;
-            addToList.Add(newFriend);
+            if(!addToList.Any(pla => pla.IdUser == idUserOperation))
+            {
+                FriendBasicInformation newFriend = new FriendBasicInformation();
+                newFriend.IdUser = idUserOperation;
+                newFriend.UserName = userName;
+                newFriend.IdStatusAvailability = NOT_STATUS;
+                addToList.Add(newFriend);
+            }            
         }
 
         public void ResponseEliminationFromFriends(int idPlayerWhoEliminatedYou)
@@ -342,11 +354,14 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            FriendBasicInformation newFriend = new FriendBasicInformation();
-            newFriend.IdUser = idPlayerWhoEliminatedYou;
-            newFriend.UserName = userName;
-            newFriend.IdStatusAvailability = NOT_STATUS;
-            otherPeople.Add(newFriend);
+            if (!otherPeople.Any(pla => pla.IdUser == idPlayerWhoEliminatedYou))
+            {
+                FriendBasicInformation newFriend = new FriendBasicInformation();
+                newFriend.IdUser = idPlayerWhoEliminatedYou;
+                newFriend.UserName = userName;
+                newFriend.IdStatusAvailability = NOT_STATUS;
+                otherPeople.Add(newFriend);
+            }            
             SetCards();
         }
 
@@ -396,6 +411,7 @@ namespace JeopardyGame.Pages
 
         private void StartTimer()
         {
+            leftTime = 5;   
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -414,9 +430,11 @@ namespace JeopardyGame.Pages
                 timer.Stop();
             }
         }
+
         private void OverSearchBar(object sender, MouseEventArgs e)
         {
             txbUserToSearch.Text = string.Empty;
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Data.Exceptions;
+﻿using JeopardyGame.Data.DataAccess;
+using JeopardyGame.Data.Exceptions;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Security;
@@ -11,6 +12,7 @@ namespace JeopardyGame.Host.Connection
         {
             try
             {
+                UserManagerDataOperation.DeleteAllGuestUsers();
                 using (ServiceHost host = new ServiceHost(typeof(JeopardyGame.Service.ServiceImplementation.ServicesReferenceAuthor)))
                 {
                     host.Open();
@@ -43,5 +45,6 @@ namespace JeopardyGame.Host.Connection
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
             }         
         }
+
     }
 }
