@@ -161,6 +161,12 @@
   <wsdl:message name="IUserManager_UpdatePlayerPhoto_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerPhotoResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_UpdateEmailUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmailUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdateEmailUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmailUserResponse" />
+  </wsdl:message>
   <wsdl:message name="ILogInVerification_ValidateCredentials_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateCredentials" />
   </wsdl:message>
@@ -359,6 +365,12 @@
   <wsdl:message name="IValidateUserExistance_UserAlreadyExist_OutputMessage">
     <wsdl:part name="parameters" element="tns:UserAlreadyExistResponse" />
   </wsdl:message>
+  <wsdl:message name="IValidateUserExistance_EmailAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmailAlreadyExist" />
+  </wsdl:message>
+  <wsdl:message name="IValidateUserExistance_EmailAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmailAlreadyExistResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyActions_CreateNewLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateNewLobby" />
   </wsdl:message>
@@ -540,6 +552,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto" message="tns:IUserManager_UpdatePlayerPhoto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse" message="tns:IUserManager_UpdatePlayerPhoto_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateEmailUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateEmailUser" message="tns:IUserManager_UpdateEmailUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateEmailUserResponse" message="tns:IUserManager_UpdateEmailUser_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILogInVerification">
     <wsdl:operation name="ValidateCredentials">
@@ -703,6 +719,10 @@
     <wsdl:operation name="UserAlreadyExist">
       <wsdl:input wsaw:Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExist" message="tns:IValidateUserExistance_UserAlreadyExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExistResponse" message="tns:IValidateUserExistance_UserAlreadyExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmailAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IValidateUserExistance/EmailAlreadyExist" message="tns:IValidateUserExistance_EmailAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IValidateUserExistance/EmailAlreadyExistResponse" message="tns:IValidateUserExistance_EmailAlreadyExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyActions">
@@ -882,6 +902,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePlayerPhoto">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdatePlayerPhoto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmailUser">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateEmailUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1237,6 +1266,15 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="UserAlreadyExist">
       <soap12:operation soapAction="http://tempuri.org/IValidateUserExistance/UserAlreadyExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmailAlreadyExist">
+      <soap12:operation soapAction="http://tempuri.org/IValidateUserExistance/EmailAlreadyExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

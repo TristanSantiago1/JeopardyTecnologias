@@ -124,6 +124,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Save avatar.
+        /// </summary>
+        public static string btnSaveAvatarChanges {
+            get {
+                return ResourceManager.GetString("btnSaveAvatarChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Save.
         /// </summary>
         public static string btnSaveChanges {
@@ -741,6 +750,15 @@ namespace JeopardyGame.Properties {
         public static string lblPasswordDescripCreateAcc {
             get {
                 return ResourceManager.GetString("lblPasswordDescripCreateAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Password.
+        /// </summary>
+        public static string lblPasswordEditedProfile {
+            get {
+                return ResourceManager.GetString("lblPasswordEditedProfile", resourceCulture);
             }
         }
         

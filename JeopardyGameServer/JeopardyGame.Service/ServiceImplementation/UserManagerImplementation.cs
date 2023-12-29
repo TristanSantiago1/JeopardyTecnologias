@@ -11,6 +11,7 @@ using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.Helpers;
 using System.ServiceModel;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -181,6 +182,46 @@ namespace JeopardyGame.Service.ServiceImplementation
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+
+        public GenericClass<int> UpdateEmailUser(int idUser, string email)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            try
+            {
+                var updatePhoto = UserManagerDataOperation.UpdateEmailUser(idUser,email);
+                if (updatePhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = updatePhoto.CodeEvent;
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ConsultInformationImplementation consultInformation = new();
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserById(idUser).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ConsultInformationImplementation consultInformation = new();
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserById(idUser).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ConsultInformationImplementation consultInformation = new();
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserById(idUser).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }

@@ -69,7 +69,6 @@ namespace JeopardyGame.Pages
             currentUserSingleton.proxyForAvailability = null;
             UserSingleton.CleanSingleton();
         }
-        
         private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
         {
             if (LanguajeComboBox.SelectedItem != null)
@@ -79,31 +78,52 @@ namespace JeopardyGame.Pages
                 App.ChangeLanguage(selectedLanguage);
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
-                key.Close();                
+                key.Close();
                 if (selectedLanguage == "es-MX")
                 {
-                    bttEnterGame.Content = Properties.Resources.bttEnterGame;
-                    bttFriends.Content = Properties.Resources.bttFriends;
-                    bttNewGame.Content = Properties.Resources.bttNewGame;
-                    lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
-                }else if(selectedLanguage == "en")
+                    UpdateInterfaceForSpanish();
+                }
+                else if (selectedLanguage == "en")
                 {
-                    bttEnterGame.Content = Properties.Resources.bttEnterGame;
-                    bttFriends.Content = Properties.Resources.bttFriends;
-                    bttNewGame.Content = Properties.Resources.bttNewGame;
-                    lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
+                    UpdateInterfaceForEnglish();
                 }
             }
-        }       
-
-        private void ClickUserProfile(object sender, MouseButtonEventArgs e)
-        {
-            ProfileDataConsult profileInformation = new ProfileDataConsult();
-            this.NavigationService.Navigate(profileInformation);
-            NavigationService.RemoveBackEntry();
         }
 
+        private void UpdateInterfaceForSpanish()
+        {
+            if (bttEnterGame != null)
+                bttEnterGame.Content = Properties.Resources.bttEnterGame;
 
+            if (bttFriends != null)
+                bttFriends.Content = Properties.Resources.bttFriends;
+
+            if (bttNewGame != null)
+                bttNewGame.Content = Properties.Resources.bttNewGame;
+
+            if (lblProfileInformation != null)
+                lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
+        }
+        private void UpdateInterfaceForEnglish()
+        {
+            if (bttEnterGame != null)
+                bttEnterGame.Content = Properties.Resources.bttEnterGame;
+
+            if (bttFriends != null)
+                bttFriends.Content = Properties.Resources.bttFriends;
+
+            if (bttNewGame != null)
+                bttNewGame.Content = Properties.Resources.bttNewGame;
+
+            if (lblProfileInformation != null)
+                lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
+        }
+        private void ClickUserProfile(object sender, MouseButtonEventArgs e)
+        {
+            ProfileDataConsult profileConsultPage = new ProfileDataConsult();
+            this.NavigationService.Navigate(profileConsultPage);
+            NavigationService.RemoveBackEntry();
+        }
         private void CLickButtonNewGame(object sender, RoutedEventArgs e)
         {
             LobbyPage lobbyGamePage = new LobbyPage();
@@ -111,7 +131,6 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
 
         }
-
         private void CLickButtonEnterGame(object sender, RoutedEventArgs e)
         {
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();

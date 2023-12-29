@@ -20,9 +20,8 @@ namespace JeopardyGame.Service.InterfacesServices
 
             [OperationContract]
             GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId);
-      
-
-          
+            [OperationContract]
+            GenericClass<int> UpdateEmailUser(int idUser, string email);
 
     }
 

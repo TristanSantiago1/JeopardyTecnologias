@@ -1933,6 +1933,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdatePlayerPhotoAsync(int idPlayer, int imageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateEmailUser", ReplyAction="http://tempuri.org/IUserManager/UpdateEmailUserResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateEmailUser(int idUser, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateEmailUser", ReplyAction="http://tempuri.org/IUserManager/UpdateEmailUserResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateEmailUserAsync(int idUser, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1984,6 +1990,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdatePlayerPhotoAsync(int idPlayer, int imageId) {
             return base.Channel.UpdatePlayerPhotoAsync(idPlayer, imageId);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateEmailUser(int idUser, string email) {
+            return base.Channel.UpdateEmailUser(idUser, email);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateEmailUserAsync(int idUser, string email) {
+            return base.Channel.UpdateEmailUserAsync(idUser, email);
         }
     }
     
@@ -2774,6 +2788,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExist", ReplyAction="http://tempuri.org/IValidateUserExistance/UserAlreadyExistResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UserAlreadyExistAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IValidateUserExistance/EmailAlreadyExist", ReplyAction="http://tempuri.org/IValidateUserExistance/EmailAlreadyExistResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint EmailAlreadyExist(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IValidateUserExistance/EmailAlreadyExist", ReplyAction="http://tempuri.org/IValidateUserExistance/EmailAlreadyExistResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> EmailAlreadyExistAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2809,6 +2829,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UserAlreadyExistAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser) {
             return base.Channel.UserAlreadyExistAsync(newUser);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint EmailAlreadyExist(string email) {
+            return base.Channel.EmailAlreadyExist(email);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> EmailAlreadyExistAsync(string email) {
+            return base.Channel.EmailAlreadyExistAsync(email);
         }
     }
     

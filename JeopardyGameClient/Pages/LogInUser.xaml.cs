@@ -37,6 +37,7 @@ namespace JeopardyGame.Pages
 
         public LogInUser()
         {
+
             InitializeComponent();
             PrepareLogInWindow();
             txbUserNameLogIn.MaxLength = 15;
@@ -215,23 +216,43 @@ namespace JeopardyGame.Pages
                 RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
                 key.SetValue("SelectedLanguage", selectedLanguage);
                 key.Close();
-                if (selectedLanguage == "es-MX")
-                {
-                    lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
-                    lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
-                    btnEnter.Content = Properties.Resources.btnEnter;
-                    btnRegistrer.Content = Properties.Resources.btnRegistrer;
-                }
-                if (selectedLanguage == "en")
-                {
-                    lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
-                    lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
-                    btnEnter.Content = Properties.Resources.btnEnter;
-                    btnRegistrer.Content = Properties.Resources.btnRegistrer;
-                }
+                UpdateInterfaceResources(selectedLanguage);
             }
         }
+        private void UpdateInterfaceResources(string selectedLanguage)
+        {
+            switch (selectedLanguage)
+            {
+                case "es-MX":
+                    if (lblUserNameLogIn != null)
+                        lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
 
+                    if (lblPasswordLogIn != null)
+                        lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
+
+                    if (btnEnter != null)
+                        btnEnter.Content = Properties.Resources.btnEnter;
+
+                    if (btnRegistrer != null)
+                        btnRegistrer.Content = Properties.Resources.btnRegistrer;
+                    break;
+
+                case "en-EU":
+                default:
+                    if (lblUserNameLogIn != null)
+                        lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
+
+                    if (lblPasswordLogIn != null)
+                        lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
+
+                    if (btnEnter != null)
+                        btnEnter.Content = Properties.Resources.btnEnter;
+
+                    if (btnRegistrer != null)
+                        btnRegistrer.Content = Properties.Resources.btnRegistrer;
+                    break;
+            }
+        }
         private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer, NotifyUserAvailabilityClient connectionAvailabilityProxy)
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();

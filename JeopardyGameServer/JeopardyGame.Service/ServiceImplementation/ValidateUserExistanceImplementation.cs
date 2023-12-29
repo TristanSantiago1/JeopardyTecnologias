@@ -72,7 +72,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
 
-        private GenericClass<int> EmailAlreadyExist(String email)
+        public GenericClass<int> EmailAlreadyExist(String email)
         {
             GenericClass<int> resultToReturn = new();
             if (string.IsNullOrEmpty(email))

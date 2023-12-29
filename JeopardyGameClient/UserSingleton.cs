@@ -60,6 +60,17 @@ namespace JeopardyGame
         {
             instanceOfUserSingleton = null;
         }
-
+        public void UpdateNameData(string newName)
+        {
+            this.Name = newName;
+        }
+        public void UpdateAvatarData (int newPhoto)
+        {
+            this.IdCurrentAvatar = newPhoto;
+        }
+        public void UpdateEmailData(string newEmail)
+        {
+            this.Email = newEmail;
+        }
     }
 }

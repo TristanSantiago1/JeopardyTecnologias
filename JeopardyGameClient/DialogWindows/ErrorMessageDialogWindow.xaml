@@ -6,22 +6,35 @@
         xmlns:local="clr-namespace:JeopardyGame.DialogWindows"
         xmlns:p="clr-namespace:JeopardyGame.Properties"
         mc:Ignorable="d"
-        Title="Error"  Height="300" Width="600" ResizeMode="NoResize">
-    <Viewbox>
-        <Grid Background="White" Height="188">
+        Title="Error"   Height="244" Width="488" ResizeMode="NoResize">
 
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="140" Width="400" >
-                <!-- Contenido de la pantalla de error -->
-                <StackPanel Margin="85,11,10,0" >
-                    <TextBlock x:Name="txbErrorTitle" FontSize="24" FontWeight="Bold" Width="212"/>
-                    <TextBlock x:Name="txbErrorMessage"  TextWrapping="Wrap" Width="270" Height="58"/>
-                </StackPanel>
-                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Width="68" Margin="166,109,166,8"  >
-                    <Button x:Name="bttErrorWindow" Content="{x:Static p:Resources.bttAccept}" FontStretch="Expanded" Click="ClickAcceptButton"
-         Style="{StaticResource ButtonConfirmationStyle}" Background="Red" Margin="8,-2,-21,-4" />
+    <Viewbox Margin="0,1,0,0">
+        <Grid Background="Black" Height="255" Width="550" >
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Height="140" Width="400" Grid.ColumnSpan="2" Margin="75,0,0,0" >
+                <Border Style="{StaticResource BlueBorderStyle}" Margin ="-11,-45,-39,-48" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                </Border>
+                <TextBlock x:Name="txbErrorTitle" Text="Hola"  FontSize="24" FontWeight="Bold" Margin="86,0,58,112" Foreground="White"/>
+                <TextBlock x:Name="txbErrorMessage"  FontSize="16" Text="Hola adios" Foreground="White" TextWrapping="Wrap" Width="240" HorizontalAlignment="Left" Margin="86,37,0,57"/>
+
+
+                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Margin="154,114,126,-30" RenderTransformOrigin="-0.746,1.484" >
+                    <Button x:Name="bttErrorWindow" FontWeight="Bold" Foreground="White" Content="{x:Static p:Resources.bttAccept}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" FontStretch="Expanded" 
+                        Click="ClickAcceptButton" Margin="5,-2,5,12">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/blueButton.png"/>
+                        </Button.Background>
+                    </Button>
                 </Border>
             </Grid>
-            <Image HorizontalAlignment="Left" Height="80" Margin="17,0,0,0" VerticalAlignment="Center" Width="81" Source="{StaticResource ErrorIcon}"/>
+            <Image HorizontalAlignment="Left" Height="118" Margin="20,0,0,0" VerticalAlignment="Center" Width="119" Source="{StaticResource  WarningIcon}"/>
         </Grid>
     </Viewbox>
 </Window>

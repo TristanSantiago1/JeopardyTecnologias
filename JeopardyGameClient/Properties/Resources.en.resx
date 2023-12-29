@@ -518,4 +518,10 @@ Mexico</value>
   <data name="LobbyNotExist" xml:space="preserve">
     <value>The entered code doesn´t correspond to any active lobby, please check it and try it again </value>
   </data>
+  <data name="btnSaveAvatarChanges" xml:space="preserve">
+    <value>Save avatar</value>
+  </data>
+  <data name="lblPasswordEditedProfile" xml:space="preserve">
+    <value>Password</value>
+  </data>
 </root>

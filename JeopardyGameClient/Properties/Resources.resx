@@ -518,5 +518,11 @@
   </data>
   <data name="LobbyNotExist" xml:space="preserve">
     <value>The lobbbyDoes not exist</value>
+ </data>
+  <data name="btnSaveAvatarChanges" xml:space="preserve">
+    <value>Save avatar</value>
+  </data>
+  <data name="lblPasswordEditedProfile" xml:space="preserve">
+    <value>Password</value>
   </data>
 </root>
