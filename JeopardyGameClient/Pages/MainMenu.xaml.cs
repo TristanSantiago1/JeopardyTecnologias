@@ -20,7 +20,8 @@ namespace JeopardyGame.Pages
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
     public partial class MainMenu : Page
-    { 
+    {
+        private Window dialogMessage;
 
         public MainMenu()
         {            
@@ -169,20 +170,21 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblTimeException);
             }
         }
-
+        private void HandleException(Exception ex, string errorMessage)
+        {
+            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
     }
 }

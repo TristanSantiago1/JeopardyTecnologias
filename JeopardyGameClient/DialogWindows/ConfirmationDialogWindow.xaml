@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:JeopardyGame.DialogWindows"   
         xmlns:p="clr-namespace:JeopardyGame.Properties"
         mc:Ignorable="d"
-        Title="Confirmation" Height="244" Width="488" ResizeMode="NoResize"
+        Title="Confirmation" Height="330" Width="631"  ResizeMode="NoResize"
         Background="Black">
 
     <Viewbox Margin="0,1,0,0">
@@ -23,17 +23,17 @@
                     </Border.RenderTransform>
                 </Border>
                 <TextBlock x:Name="txbErrorTitle" Text="Hola"  FontSize="24" FontWeight="Bold" Margin="86,0,58,112" Foreground="White"/>
-                <TextBlock x:Name="txbErrorMessage"  FontSize="16" Text="Hola adios" Foreground="White" TextWrapping="Wrap" Width="240" HorizontalAlignment="Left" Margin="86,37,0,57"/>
+                <TextBlock x:Name="txbErrorMessage"  FontSize="16" Text="Hola adios" Foreground="White" TextWrapping="Wrap" Width="304" HorizontalAlignment="Left" Margin="86,37,0,23"/>
 
-                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Margin="95,122,186,-38" RenderTransformOrigin="-0.746,1.484" >
+                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Margin="86,122,163,-38" RenderTransformOrigin="-0.746,1.484" >
                     <Button x:Name="bttErrorWindow" FontWeight="Bold" Foreground="White" Content="{x:Static p:Resources.bttAccept}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" FontStretch="Expanded" 
                         Click="ClickAccept" Margin="5,-2,5,12">
                         <Button.Background>
-                        <ImageBrush ImageSource="/Images/blueButton.png"/>
+                            <ImageBrush ImageSource="/Images/blueButton.png"/>
                         </Button.Background>
                     </Button>
                 </Border>
-                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Margin="234,122,58,-24" >
+                <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Margin="258,122,10,-24" >
                     <Button x:Name="bttErrrWindow" FontWeight="Bold" Foreground="White" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Content="{x:Static p:Resources.bttCancellAction}" FontStretch="Expanded" 
                        Margin="1,-2,-1,-2" Click="ClickCancel" >
                         <Button.Background>

@@ -51,23 +51,21 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
+                    RefreshWindow();
                     dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblTimeException);
             }
         }
 
@@ -87,6 +85,15 @@ namespace JeopardyGame.Pages
                 NavigationService.RemoveBackEntry();
             }
         }
-    
+        private void HandleException(Exception ex, string errorMessage)
+        {
+            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            RefreshWindow();
+            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+        private void RefreshWindow()
+        {
+            tbxCode.Text = string.Empty;
+        }
     }
 }
