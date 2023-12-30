@@ -13,6 +13,7 @@ using System.Collections.Generic;
 
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
+using System.Web.UI.WebControls;
 
 namespace JeopardyGame.Pages
 {
@@ -21,13 +22,34 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class MainMenu : Page
     { 
-
         public MainMenu()
-        {            
-           
+        {      
             InitializeComponent();
             PrepareMainMenuWindow();
             LoadPlayersData();
+            NotifyItIsAvailable();
+        }
+
+        private void NotifyItIsAvailable()
+        {
+            try
+            {
+                UserSingleton userSingleton = UserSingleton.GetMainUser();
+                AvailabilityUserManagmentClient availabilityUserProxy = new();
+                availabilityUserProxy.PlayerIsAvailable(userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void PrepareMainMenuWindow()
@@ -51,24 +73,42 @@ namespace JeopardyGame.Pages
        
         private void ClickSingOut(object sender, MouseButtonEventArgs e)
         {
-            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).CloseWindow)
+            try
             {
-                CleanGlobalParameters();
-                LogInUser logInPage = new LogInUser();
-                this.NavigationService.Navigate(logInPage);
-                NavigationService.RemoveBackEntry();
+                if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).CloseWindow)
+                {
+                    CheckUserLivingUnsubscribeClient checkUserLivingClient = new();
+                    checkUserLivingClient.UnsubscribeFromICheckUserLiving(UserSingleton.GetUserPojoSingelton());
+                    CleanGlobalParameters();
+                    LogInUser logInPage = new LogInUser();
+                    this.NavigationService.Navigate(logInPage);
+                    NavigationService.RemoveBackEntry();
+                }
             }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            
         }
 
         private void CleanGlobalParameters()
         {
             FriendList.CleanDictionary();
             UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
-            NotifyUserIsNotAvailableClient userAvailabilityProxy = new();
+            AvailabilityUserManagmentClient userAvailabilityProxy = new();
             userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
-            currentUserSingleton.proxyForAvailability = null;
             UserSingleton.CleanSingleton();
         }
+
         private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
         {
             if (LanguajeComboBox.SelectedItem != null)
@@ -118,12 +158,14 @@ namespace JeopardyGame.Pages
             if (lblProfileInformation != null)
                 lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
         }
+
         private void ClickUserProfile(object sender, MouseButtonEventArgs e)
         {
             ProfileDataConsult profileConsultPage = new ProfileDataConsult();
             this.NavigationService.Navigate(profileConsultPage);
             NavigationService.RemoveBackEntry();
         }
+
         private void CLickButtonNewGame(object sender, RoutedEventArgs e)
         {
             LobbyPage lobbyGamePage = new LobbyPage();
@@ -183,6 +225,7 @@ namespace JeopardyGame.Pages
                 new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
             }
         }
+
 
     }
 }

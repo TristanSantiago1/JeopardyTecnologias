@@ -12,12 +12,11 @@ namespace JeopardyGame.Service.DataDictionaries
     public  class EmailConfirmationDictionary
     {
         private static Dictionary<String, UserPOJO> emailConfirmationDictionary = new Dictionary<String, UserPOJO>();
-        public static void RegisterNewUserToConfirm(String code, UserPOJO newUserToConfirm, OperationContext context)
+        public static void RegisterNewUserToConfirm(String code, UserPOJO newUserToConfirm)
         {
             if (!emailConfirmationDictionary.ContainsKey(code) && !emailConfirmationDictionary.Values.Any(user => user.UserName == newUserToConfirm.UserName))
             {
                 emailConfirmationDictionary.Add(code, newUserToConfirm);
-                callBackNewUsers.Add(code, context);
             }
         }
         public static UserPOJO GetSpecificUserToConfirm(string code)
@@ -37,7 +36,6 @@ namespace JeopardyGame.Service.DataDictionaries
             if (emailConfirmationDictionary.ContainsKey(code))
             {
                 emailConfirmationDictionary.Remove(code);
-                callBackNewUsers.Remove(code);
             }
         }
 
@@ -49,23 +47,7 @@ namespace JeopardyGame.Service.DataDictionaries
 
 
 
-        private static Dictionary<String, OperationContext> callBackNewUsers = new Dictionary<String, OperationContext>();
-      
-        public static OperationContext GetSpecificCallBacknNewUser(string code)
-        {
-            foreach (var item in callBackNewUsers)
-            {
-                if (item.Key == code)
-                {
-                    return item.Value;
-                }
-            }
-            return null;
-        }
-        public static Dictionary<string, OperationContext> GetCallBackList()
-        {
-            return callBackNewUsers;
-        }
+       
 
     }
 }

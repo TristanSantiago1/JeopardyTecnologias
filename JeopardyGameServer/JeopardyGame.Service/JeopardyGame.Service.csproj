@@ -62,10 +62,12 @@
     <Compile Include="DataDictionaries\EmailConfirmationDictionary.cs" />
     <Compile Include="DataDictionaries\GameLobbiesDictionary.cs" />
     <Compile Include="DataDictionaries\FriendManagerDictionary.cs" />
+    <Compile Include="DataDictionaries\LivingClients.cs" />
     <Compile Include="DataDictionaries\QuestionsForLobbyDictionary.cs" />
     <Compile Include="DataDictionaries\TeamChats.cs" />
     <Compile Include="Helpers\EmailSender.cs" />
     <Compile Include="InterfacesSevices\IChatForTeams.cs" />
+    <Compile Include="InterfacesSevices\ICheckUserLiving.cs" />
     <Compile Include="InterfacesSevices\IConsultFriends.cs" />
     <Compile Include="InterfacesSevices\IConsultUserInformation.cs" />
     <Compile Include="InterfacesSevices\IEmailSenderManager.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="ServiceImplementation\GameActionsImplementation.cs" />
     <Compile Include="ServiceImplementation\GuestPlayerManagerImplementation.cs" />
     <Compile Include="ServiceImplementation\HeartBeatImplementation.cs" />
+    <Compile Include="ServiceImplementation\CheckUserLivingImplementation.cs" />
     <Compile Include="ServiceImplementation\LiveChatImplementation.cs" />
     <Compile Include="ServiceImplementation\LobbyActionsImplementation.cs" />
     <Compile Include="ServiceImplementation\LobbyCodeAuthentication.cs" />

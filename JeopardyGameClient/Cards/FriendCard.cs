@@ -17,7 +17,7 @@ namespace JeopardyGame.Helpers
         private Button bttInviteFriend;
         public event EventHandler InviteButtonClicked;
 
-        public FriendCard(String userName, bool state, String textInvite) 
+        public FriendCard(String userName, int state, String textInvite) 
         {
             SetCardStyle();
             InitializeComponents();
@@ -60,18 +60,25 @@ namespace JeopardyGame.Helpers
             lblFriendName.Content = userName;
         }
 
-        private void SetEllipseStyle(bool state)
+        private void SetEllipseStyle(int state)
         {
             ellConnectionStatus.Height = 20;
             ellConnectionStatus.Width = 20;
             ellConnectionStatus.Margin = new Thickness(0, 5, 10, 5);  
-            if (state)
+            if (state == 1)
             {
                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Green);
             }
-            else
+            else if(state == 0)
             {
                  ellConnectionStatus.Fill = new SolidColorBrush(Colors.Gray);
+            }else if(state == 2)
+            {
+                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Blue);
+            }
+            else
+            {
+                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Yellow);
             }
         }
 
@@ -85,16 +92,16 @@ namespace JeopardyGame.Helpers
         }
 
         private void SetButtonStyle(string textInvite)
-        {            
+        {   
             bttInviteFriend.Height = 30;
             bttInviteFriend.Width = 60;
-            bttInviteFriend.Margin = new Thickness(0);  
-            bttInviteFriend.HorizontalAlignment = HorizontalAlignment.Center;  
+            bttInviteFriend.Margin = new Thickness(0);
+            bttInviteFriend.HorizontalAlignment = HorizontalAlignment.Center;
             bttInviteFriend.FontSize = 15;
-            bttInviteFriend.Foreground = new SolidColorBrush(Colors.White); 
+            bttInviteFriend.Foreground = new SolidColorBrush(Colors.White);
             bttInviteFriend.Background = new SolidColorBrush(Colors.Transparent);
             bttInviteFriend.BorderBrush = new SolidColorBrush(Colors.Transparent);
-            bttInviteFriend.Content = textInvite;            
+            bttInviteFriend.Content = textInvite;
             brdButton.CornerRadius = new CornerRadius(15);
             brdButton.BorderBrush = new SolidColorBrush(Colors.Blue);
             brdButton.Background = new SolidColorBrush(Colors.CadetBlue);
@@ -103,8 +110,9 @@ namespace JeopardyGame.Helpers
             brdButton.Height = 30;
             brdButton.Width = 60;
             brdButton.Child = bttInviteFriend;
-
+            
         }
+
         private void ClickInviteFriend(object sender, RoutedEventArgs e)
         {
             InviteButtonClicked?.Invoke(this, EventArgs.Empty);

@@ -30,13 +30,35 @@ namespace JeopardyGame.Pages
     {
         private const int AVAILABLE_STATUS = 1;
         private LobbyPage lobbyPage;
+        private NotifyUserAvailabilityClient userAvailabilityProxy;
         public event EventHandler InviteButtonClicked;
         public const int NULL_INT_VALUE = 0;
         private Window dialogMessage;
 
-        public ActiveFriends()
+        public ActiveFriends(int idUser)
         {
-            InitializeComponent();                                   
+            try
+            {
+                InitializeComponent();
+                InstanceContext context = new InstanceContext(this);
+                userAvailabilityProxy = new(context);
+                userAvailabilityProxy.SubscribeToAvailabityCallBackChannel(idUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+            }
         }
 
         public void StartPage(LobbyPage lobby)
@@ -104,9 +126,8 @@ namespace JeopardyGame.Pages
             if (friendList != null)
             {               
                 foreach (var item in friendList)
-                {
-                    bool state = item.Value.IdStatusOfAvailability == AVAILABLE_STATUS;
-                    FriendCard friendCard = new FriendCard(item.Value.Name, state, Properties.Resources.bttInvite);
+                {                    
+                    FriendCard friendCard = new FriendCard(item.Value.Name, item.Value.IdStatusOfAvailability, Properties.Resources.bttInvite);
                     friendCard.InviteButtonClicked += (sender, e) =>
                     {
                         string friendEmail = item.Value.EmailAddress;

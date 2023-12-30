@@ -27,9 +27,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ObjectSaved = ALLOWED_VALUES
                 };
                 try
-                {
-                    UserCreateAccountCodeImplementation userCreateAccountCode = new UserCreateAccountCodeImplementation();
-                    userCreateAccountCode.VerifyUsersInDictionary();
+                {                    
+                    VerifyUsersInDictionary();
                     if (newUser == null)
                     {
                         return NullParametersHandler.HandleNullParametersService(successCriteria);
@@ -71,7 +70,46 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
+        private void VerifyUsersInDictionary()
+        {
+            var callBackChannels = LivingClients.GetLivingClientsList().ToList();
+            foreach (var item in callBackChannels)
+            {
+                try
+                {
+                    bool isActive = item.Value.GetCallbackChannel<ICheckUserLivingCallBack>().IsClientActive();
+                    if (!isActive)
+                    {
+                        EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                        LivingClients.CheckCallBacks();
+                    }
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    LivingClients.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    LivingClients.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    LivingClients.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+            }
+        }
 
+        private string GetRoomCodeFromDictionary(string userName)
+        {
+            string roomCode = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(us => us.Value.UserName.Equals(userName)).Key;
+            return roomCode;                      
+        }
         public GenericClass<int> EmailAlreadyExist(String email)
         {
             GenericClass<int> resultToReturn = new();
@@ -125,7 +163,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-    
 
     }
 }

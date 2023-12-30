@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using JeopardyGame.Service.DataDictionaries;
+using System.Data.Entity;
+using System.Xml.Linq;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -72,23 +75,23 @@ namespace JeopardyGame.Service.ServiceImplementation
             return responseServer;
         }
 
-        public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
+        public int ValidateThereIsOnlyOneAActiveAccount(string userName)
         {
             try
             {
-                if (idUser != DEFAULT_INT_VALUE)
+                if (!string.IsNullOrEmpty(userName))
                 {
-                    var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUser);
+                    var savedChannel = LivingClients.GetClient(userName);
                     if (savedChannel == null)
                     {
                         return ExceptionDictionary.SUCCESFULL_EVENT;
                     }
                     else
                     {
-                        var isNotActive = ChannelAdministrator.VerifyUserIsStillActive(idUser);
+                        var isNotActive = ChannelAdministrator.VerifyUserIsStillActive(userName);
                         if (isNotActive == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            ChannelAdministrator.KickUserFromDictionaries(idUser);
+                            ChannelAdministrator.KickUserFromDictionaries(GetIdClient(userName));
                         }
                         return isNotActive;
                     }
@@ -97,23 +100,30 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (CommunicationObjectFaultedException ex)
             {
                 
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(GetIdClient(userName), ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             catch (TimeoutException ex)
             {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(GetIdClient(userName), ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             catch (CommunicationException ex)
             {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ChannelAdministrator.HandleCommunicationIssue(GetIdClient(userName), ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 return ExceptionDictionary.UNSUCCESFULL_EVENT;
             }
             return ExceptionDictionary.NULL_PARAEMETER;
+        }
+
+        private int GetIdClient(string userName)
+        {
+            ConsultInformationImplementation consultInformationImplementation = new();
+            int idUser = consultInformationImplementation.ConsultUserByUserName(userName).ObjectSaved.IdUser;
+            return idUser;
         }
 
 

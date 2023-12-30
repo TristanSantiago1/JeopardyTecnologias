@@ -1913,6 +1913,108 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ICheckUserLiving", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.ICheckUserLivingCallback))]
+    public interface ICheckUserLiving {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving", ReplyAction="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLivingResponse")]
+        int SubscribeToICheckUserLiving(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving", ReplyAction="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLivingResponse")]
+        System.Threading.Tasks.Task<int> SubscribeToICheckUserLivingAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICheckUserLivingCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckUserLiving/IsClientActive", ReplyAction="http://tempuri.org/ICheckUserLiving/IsClientActiveResponse")]
+        bool IsClientActive();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICheckUserLivingChannel : JeopardyGame.ServidorServiciosJeopardy.ICheckUserLiving, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CheckUserLivingClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.ICheckUserLiving>, JeopardyGame.ServidorServiciosJeopardy.ICheckUserLiving {
+        
+        public CheckUserLivingClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public CheckUserLivingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public CheckUserLivingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CheckUserLivingClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CheckUserLivingClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public int SubscribeToICheckUserLiving(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.SubscribeToICheckUserLiving(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> SubscribeToICheckUserLivingAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.SubscribeToICheckUserLivingAsync(user);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe")]
+    public interface ICheckUserLivingUnsubscribe {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving")]
+        void UnsubscribeFromICheckUserLiving(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving")]
+        System.Threading.Tasks.Task UnsubscribeFromICheckUserLivingAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICheckUserLivingUnsubscribeChannel : JeopardyGame.ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CheckUserLivingUnsubscribeClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe>, JeopardyGame.ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe {
+        
+        public CheckUserLivingUnsubscribeClient() {
+        }
+        
+        public CheckUserLivingUnsubscribeClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CheckUserLivingUnsubscribeClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CheckUserLivingUnsubscribeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CheckUserLivingUnsubscribeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void UnsubscribeFromICheckUserLiving(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            base.Channel.UnsubscribeFromICheckUserLiving(user);
+        }
+        
+        public System.Threading.Tasks.Task UnsubscribeFromICheckUserLivingAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.UnsubscribeFromICheckUserLivingAsync(user);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserManager")]
     public interface IUserManager {
         
@@ -2013,11 +2115,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILogInVerification/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/ILogInVerification/ValidateThereIsOnlyOneAActiveAccountRespons" +
             "e")]
-        int ValidateThereIsOnlyOneAActiveAccount(int idUser);
+        int ValidateThereIsOnlyOneAActiveAccount(string userName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILogInVerification/ValidateThereIsOnlyOneAActiveAccount", ReplyAction="http://tempuri.org/ILogInVerification/ValidateThereIsOnlyOneAActiveAccountRespons" +
             "e")]
-        System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser);
+        System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2055,12 +2157,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.ValidateCredentialsAsync(newUserValidate);
         }
         
-        public int ValidateThereIsOnlyOneAActiveAccount(int idUser) {
-            return base.Channel.ValidateThereIsOnlyOneAActiveAccount(idUser);
+        public int ValidateThereIsOnlyOneAActiveAccount(string userName) {
+            return base.Channel.ValidateThereIsOnlyOneAActiveAccount(userName);
         }
         
-        public System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(int idUser) {
-            return base.Channel.ValidateThereIsOnlyOneAActiveAccountAsync(idUser);
+        public System.Threading.Tasks.Task<int> ValidateThereIsOnlyOneAActiveAccountAsync(string userName) {
+            return base.Channel.ValidateThereIsOnlyOneAActiveAccountAsync(userName);
         }
     }
     
@@ -2128,7 +2230,7 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserCreateAccountCode", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCodeCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IUserCreateAccountCode")]
     public interface IUserCreateAccountCode {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionary", ReplyAction="http://tempuri.org/IUserCreateAccountCode/AddUserToConfirmationDictionaryResponse" +
@@ -2159,38 +2261,30 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserCreateAccountCodeCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActive", ReplyAction="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActiveResponse")]
-        void VerifyUserDictionaryAreActive();
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IUserCreateAccountCodeChannel : JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserCreateAccountCodeClient : System.ServiceModel.DuplexClientBase<JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode>, JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode {
+    public partial class UserCreateAccountCodeClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode>, JeopardyGame.ServidorServiciosJeopardy.IUserCreateAccountCode {
         
-        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
+        public UserCreateAccountCodeClient() {
         }
         
-        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
+        public UserCreateAccountCodeClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
         }
         
-        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public UserCreateAccountCodeClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public UserCreateAccountCodeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public UserCreateAccountCodeClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
+        public UserCreateAccountCodeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
         public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint AddUserToConfirmationDictionary(JeopardyGame.ServidorServiciosJeopardy.UserPOJO newUser) {
@@ -2505,11 +2599,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.INotifyUserAvailability", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.INotifyUserAvailabilityCallback))]
     public interface INotifyUserAvailability {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
-        void PlayerIsAvailable(int idNewActiveUser);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel")]
+        void SubscribeToAvailabityCallBackChannel(int idNewActiveUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable")]
-        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel")]
+        System.Threading.Tasks.Task SubscribeToAvailabityCallBackChannelAsync(int idNewActiveUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2517,9 +2611,6 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability", ReplyAction="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailabilityResponse")]
         void ResponseOfPlayerAvailability(int status, int idFriend);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailability", ReplyAction="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailabilityResponse")]
-        void VerifyPlayerAvailability();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2550,57 +2641,71 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
+        public void SubscribeToAvailabityCallBackChannel(int idNewActiveUser) {
+            base.Channel.SubscribeToAvailabityCallBackChannel(idNewActiveUser);
+        }
+        
+        public System.Threading.Tasks.Task SubscribeToAvailabityCallBackChannelAsync(int idNewActiveUser) {
+            return base.Channel.SubscribeToAvailabityCallBackChannelAsync(idNewActiveUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IAvailabilityUserManagment")]
+    public interface IAvailabilityUserManagment {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsAvailable")]
+        void PlayerIsAvailable(int idNewActiveUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsAvailable")]
+        System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsPlaying")]
+        void PlayerIsPlaying(int idUserPlaying);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsPlaying")]
+        System.Threading.Tasks.Task PlayerIsPlayingAsync(int idUserPlaying);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsNotAvailable")]
+        void PlayerIsNotAvailable(int idUserDisconnecting);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsNotAvailable")]
+        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUserDisconnecting);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IAvailabilityUserManagmentChannel : JeopardyGame.ServidorServiciosJeopardy.IAvailabilityUserManagment, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AvailabilityUserManagmentClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IAvailabilityUserManagment>, JeopardyGame.ServidorServiciosJeopardy.IAvailabilityUserManagment {
+        
+        public AvailabilityUserManagmentClient() {
+        }
+        
+        public AvailabilityUserManagmentClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public AvailabilityUserManagmentClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AvailabilityUserManagmentClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public AvailabilityUserManagmentClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
         public void PlayerIsAvailable(int idNewActiveUser) {
             base.Channel.PlayerIsAvailable(idNewActiveUser);
         }
         
         public System.Threading.Tasks.Task PlayerIsAvailableAsync(int idNewActiveUser) {
             return base.Channel.PlayerIsAvailableAsync(idNewActiveUser);
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.INotifyUserIsNotAvailable")]
-    public interface INotifyUserIsNotAvailable {
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsPlaying")]
-        void PlayerIsPlaying(int idUserPlaying);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsPlaying")]
-        System.Threading.Tasks.Task PlayerIsPlayingAsync(int idUserPlaying);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsNotAvailable")]
-        void PlayerIsNotAvailable(int idUserDisconnecting);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsNotAvailable")]
-        System.Threading.Tasks.Task PlayerIsNotAvailableAsync(int idUserDisconnecting);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface INotifyUserIsNotAvailableChannel : JeopardyGame.ServidorServiciosJeopardy.INotifyUserIsNotAvailable, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class NotifyUserIsNotAvailableClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.INotifyUserIsNotAvailable>, JeopardyGame.ServidorServiciosJeopardy.INotifyUserIsNotAvailable {
-        
-        public NotifyUserIsNotAvailableClient() {
-        }
-        
-        public NotifyUserIsNotAvailableClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public NotifyUserIsNotAvailableClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public NotifyUserIsNotAvailableClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public NotifyUserIsNotAvailableClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
         }
         
         public void PlayerIsPlaying(int idUserPlaying) {

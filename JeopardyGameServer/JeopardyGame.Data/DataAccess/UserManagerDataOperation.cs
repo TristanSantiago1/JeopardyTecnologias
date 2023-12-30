@@ -589,6 +589,48 @@ namespace JeopardyGame.Data.DataAccess
             }            
         }
 
+        public static GenericClassServer<int> UpdateEmailUser(int idUser, string email)
+        {
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    var user = contextBD.Users.FirstOrDefault(p => p.IdUser == idUser);
+                    if (user != null)
+                    {
+                        user.EmailAddress = email;
+                        int resultOfEvent = contextBD.SaveChanges();
+                        if (resultOfEvent == 0)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
+                        resultOfOperation.ObjectSaved = OPERATION_DONE;
+                    }
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultOfOperation;
+        }
+
     }
 
  }

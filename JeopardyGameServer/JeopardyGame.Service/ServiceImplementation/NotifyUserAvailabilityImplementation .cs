@@ -9,48 +9,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     partial class NotifyUserAvailabilityImplementation : INotifyUserAvailability
     {
-        private readonly int NULL_INT_VALUE = 0;
-        private readonly int AVAILABLE_STATUS = 1;
-      
-        public void PlayerIsAvailable(int idNewActiveUser)
-        {
-            try
-            {
-                if (idNewActiveUser != NULL_INT_VALUE)
-                {
-                    var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
-                    if (savedChannel == null)
-                    {
-                        var newChannel = OperationContext.Current;
-                        ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
-                        NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
-                    }
-                    else
-                    {
-                        //Channel ya existe
-                    }
-                }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-        }  
-
-
-
-        //FALTA METODO PARA NOTIFICAR CUANDO ENTRE A APRTIDA
+        
         public void NotifyFriends(int idUser, int status)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
@@ -89,16 +48,77 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                 }
             }          
-        }   
+        }
+
+        public void SubscribeToAvailabityCallBackChannel(int idNewActiveUser)
+        {
+            try
+            {
+                var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
+                if (savedChannel == null)
+                {
+                    var newChannel = OperationContext.Current;
+                    ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
+                }
+            }            
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
 
     }
 
 
-    public class NotifyUserIsNotAvailableImplementation : INotifyUserIsNotAvailable
+    public class NotifyUserIsNotAvailableImplementation : IAvailabilityUserManagment
     {
         private readonly int NULL_INT_VALUE = 0;
+        private readonly int AVAILABLE_STATUS = 1;
         private readonly int UNAVAILABLE_STATUS = 0;
         private readonly int PLAYING_STATUS = 2;
+
+        public void PlayerIsAvailable(int idNewActiveUser)
+        {
+            try
+            {
+                if (idNewActiveUser != NULL_INT_VALUE)
+                {                    
+                    NotifyUserAvailabilityImplementation notifyUserAvailability = new();
+                    notifyUserAvailability.NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
+                }
+                else
+                {
+                    //Channel ya existe
+                }
+                
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
 
         public void PlayerIsNotAvailable(int idUserDisconnecting)
         {
@@ -139,7 +159,37 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void PlayerIsPlaying(int idUserPlaying)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (idUserPlaying != NULL_INT_VALUE)
+                {
+                    var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserPlaying);
+                    if (channel != null)
+                    {                        
+                        NotifyUserAvailabilityImplementation notifyUserAvailability = new();
+                        notifyUserAvailability.NotifyFriends(idUserPlaying, PLAYING_STATUS);
+                    }
+                    else
+                    {
+                        // channel no existe
+                    }
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserPlaying, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserPlaying, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserPlaying, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
 

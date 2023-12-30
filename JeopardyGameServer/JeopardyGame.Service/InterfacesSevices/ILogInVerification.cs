@@ -15,7 +15,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         GenericClass<int> ValidateCredentials(UserValidate newUserValidate);
 
         [OperationContract]
-        int ValidateThereIsOnlyOneAActiveAccount(int idUser);
+        int ValidateThereIsOnlyOneAActiveAccount(string userName);
 
     }
 

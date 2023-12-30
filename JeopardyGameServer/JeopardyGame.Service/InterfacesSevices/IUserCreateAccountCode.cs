@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.InterfacesSevices
 {
-    [ServiceContract (CallbackContract = typeof(IUserCreateAccountCodeCallBack))]
+    [ServiceContract]
     internal interface IUserCreateAccountCode
     {
 
@@ -23,12 +23,6 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract]
         void TakeUserOutOfDictionary(UserPOJO user);
-    }
+    }  
 
-    [ServiceContract]
-    internal interface IUserCreateAccountCodeCallBack
-    {
-        [OperationContract]
-        void VerifyUserDictionaryAreActive();
-    }
 }

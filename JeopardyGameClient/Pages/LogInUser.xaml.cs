@@ -27,13 +27,12 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para LogInUser.xaml
     /// </summary>
-    public partial class LogInUser : System.Windows.Controls.Page, INotifyUserAvailabilityCallback
+    public partial class LogInUser : System.Windows.Controls.Page, ICheckUserLivingCallback
     {
-        private static ActiveFriends activeFriendsInstance = new ActiveFriends();
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
+        private UserSingleton userSingleton;
         private Window dialogMessage;
-        public static ActiveFriends ActiveFriendsInstance { get => activeFriendsInstance; set => activeFriendsInstance = value; }
 
         public LogInUser()
         {
@@ -69,7 +68,6 @@ namespace JeopardyGame.Pages
                 UserValidate userValidate = new UserValidate();
                 userValidate.UserName = txbUserNameLogIn.Text;
                 userValidate.Password = pssPasswordLogIn.Password;
-                UserSingleton mainUser = UserSingleton.GetMainUser();
                 try
                 {
                     LogInVerificationClient logInVerificationProxy = new LogInVerificationClient();
@@ -81,7 +79,7 @@ namespace JeopardyGame.Pages
                         {
                             ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
                             var userConsulted = consultInformationProxy.ConsultUserByUserName(userValidate.UserName);
-                            var isAlreadyConnected = logInVerificationProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.IdUser);
+                            var isAlreadyConnected = logInVerificationProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.UserName);
                             logInVerificationProxy.Close();
                             if(isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
                             {
@@ -95,8 +93,11 @@ namespace JeopardyGame.Pages
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow);
-                        }
-                        
+                        }                        
+                    }
+                    else if(result.ObjectSaved == WRONG_CREDENTIALS)
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -159,11 +160,19 @@ namespace JeopardyGame.Pages
                         if (currentPlayer.ObjectSaved.NoReports >= 3)
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
+                            UserSingleton.CleanSingleton();
                             return;
                         }
-                        InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved, ObtainCallBackChannel());
-                        NotifyAvailability();
-                        GoToMainMenu();
+                        InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved);
+                        if (SubscribeToLivingChannel(currentUser.ObjectSaved) == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            GoToMainMenu();
+                        }
+                        else
+                        {
+                            UserSingleton.CleanSingleton();
+                            return;
+                        }
                     }
                     else
                     {
@@ -192,18 +201,26 @@ namespace JeopardyGame.Pages
             }
         }
 
-
-        private NotifyUserAvailabilityClient ObtainCallBackChannel()
+        private int SubscribeToLivingChannel(UserPOJO user)
         {
-            InstanceContext context = new InstanceContext(this);
-            NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(context);
-            return proxyChannelCallback;
-        }
-
-        private void NotifyAvailability()
-        {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser);
+            try
+            {
+                InstanceContext context = new(this);
+                CheckUserLivingClient checkUserLivingClient = new(context);
+                return checkUserLivingClient.SubscribeToICheckUserLiving(user);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                throw ex;
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                throw ex;
+            }
+            catch (TimeoutException ex)
+            {
+                throw ex;
+            }
         }
 
         private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
@@ -253,25 +270,13 @@ namespace JeopardyGame.Pages
                     break;
             }
         }
-        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer, NotifyUserAvailabilityClient connectionAvailabilityProxy)
+        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            userSingleton.IdUser = currentUser.IdUser;
-            userSingleton.Name = currentUser.Name;
-            userSingleton.UserName = currentUser.UserName;
-            userSingleton.Email = currentUser.EmailAddress;
-            userSingleton.Password = currentUser.Password;
-            userSingleton.IdPlayer = currenPlayer.IdPlayer;
-            userSingleton.GeneralPoints = currenPlayer.GeneralPoints;
-            userSingleton.NoReports = currenPlayer.NoReports;
-            userSingleton.IdState = currenPlayer.IdState;
-            userSingleton.IdCurrentAvatar = currenPlayer.IdActualAvatar;
-            userSingleton.proxyForAvailability = connectionAvailabilityProxy;
+            userSingleton = UserSingleton.GetMainUser(currentUser, currenPlayer);
         }
 
         private void GoToMainMenu()
         {
-            BeginHeartBeat();
             MainMenu mainMenuPage = new MainMenu();
             this.NavigationService.Navigate(mainMenuPage);
             NavigationService.RemoveBackEntry();
@@ -309,38 +314,11 @@ namespace JeopardyGame.Pages
             }            
         }
 
-        public void ResponseOfPlayerAvailability(int status, int idFriend)
-        {
-            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);         
-        }
+       
 
-        private void BeginHeartBeat()
+        public bool IsClientActive()
         {
-            var heartbeatClient = new HeartBeatClient();
-            try
-            {
-                var heartbeatTimer = new System.Threading.Timer(state => { heartbeatClient.Heartbeat(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
-            }
-        }
-
-        public void VerifyPlayerAvailability()
-        {
-            ((INotifyUserAvailabilityCallback)activeFriendsInstance).VerifyPlayerAvailability();
+            return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
     }
 }

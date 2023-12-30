@@ -26,17 +26,15 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para CodeConfirmation.xaml
     /// </summary>
-    public partial class CodeConfirmation : Page, INotifyUserAvailabilityCallback, IUserCreateAccountCodeCallback
+    public partial class CodeConfirmation : Page, ICheckUserLivingCallback
     {
-        private static ActiveFriends activeFriendsInstance = new ActiveFriends();
+        private UserSingleton userSingleton = UserSingleton.GetMainUser();
         public const int NULL_INT_VALUE = 0;
         private DispatcherTimer timer;
         private int leftTime;
         private String currentEmail;
         private UserPOJO userToSave;
         private Window dialogMessage;
-        InstanceContext context;
-        public static ActiveFriends ActiveFriendsInstance { get => activeFriendsInstance; set => activeFriendsInstance = value; }
 
 
         public CodeConfirmation(String emailToConfirm, UserPOJO user)
@@ -44,17 +42,45 @@ namespace JeopardyGame.Pages
             this.userToSave = user;
             this.currentEmail = emailToConfirm;
             InitializeComponent();
-            SubscribeToCallBack();
+            RegistryWithTheDictionary();
             SentEmail();
             StartTimer();
         }    
 
-        private void SubscribeToCallBack()
+        private void RegistryWithTheDictionary()
         {
-            context = new InstanceContext(this);
-            UserCreateAccountCodeClient userCreateAccount = new(context);
-            userCreateAccount.AddUserToConfirmationDictionary(userToSave);            
+            try
+            {
+                UserCreateAccountCodeClient userCreateAccount = new();
+                userCreateAccount.AddUserToConfirmationDictionary(userToSave);
+                InstanceContext instanceContext = new InstanceContext(this);
+                CheckUserLivingClient checkUserLivingClient = new(instanceContext);
+                var success = checkUserLivingClient.SubscribeToICheckUserLiving(userToSave);
+                if (success != ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+            }
         }
+
         private void StartTimer()
         {
             leftTime = 30;
@@ -112,7 +138,7 @@ namespace JeopardyGame.Pages
         {
             try
             {                
-                UserCreateAccountCodeClient userCreateAccount = new(context);
+                UserCreateAccountCodeClient userCreateAccount = new();
                 if (userCreateAccount.CheckCodeEntered(userToSave, txbCodeCreateAcc.Text.ToString().Trim()) == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     PrepareUserToBeSaved();
@@ -165,8 +191,10 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                UserCreateAccountCodeClient userCreateAccount = new(context);
+                UserCreateAccountCodeClient userCreateAccount = new();
                 userCreateAccount.TakeUserOutOfDictionary(userToSave);
+                CheckUserLivingUnsubscribeClient checkUserLivingClient = new();
+                checkUserLivingClient.UnsubscribeFromICheckUserLiving(userToSave);
             }
             catch (EndpointNotFoundException ex)
             {
@@ -180,6 +208,7 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            UserSingleton.CleanSingleton();
             UserRegister userToRegister = new UserRegister();
             this.NavigationService.Navigate(userToRegister);
             userToRegister.LoadFields(userToSave);
@@ -192,7 +221,7 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
-                    UserCreateAccountCodeClient userCreateAccount = new(context);
+                    UserCreateAccountCodeClient userCreateAccount = new();
                     userCreateAccount.ResendCode(userToSave);
                     SentEmail();
                     StartTimer();
@@ -235,21 +264,9 @@ namespace JeopardyGame.Pages
                     var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
                     if (playerSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        UserSingleton userSingleton = UserSingleton.GetMainUser();
-                        userSingleton.IdUser = userSaved.ObjectSaved.IdUser;
-                        userSingleton.Name = userSaved.ObjectSaved.Name;
-                        userSingleton.UserName = userSaved.ObjectSaved.UserName;
-                        userSingleton.Email = userSaved.ObjectSaved.EmailAddress;
-                        userSingleton.Password = userSaved.ObjectSaved.Password;
-                        userSingleton.IdPlayer = playerSaved.ObjectSaved.IdPlayer;
-                        userSingleton.GeneralPoints = playerSaved.ObjectSaved.GeneralPoints;
-                        userSingleton.NoReports = playerSaved.ObjectSaved.NoReports;
-                        userSingleton.IdState = playerSaved.ObjectSaved.IdState;
-                        userSingleton.IdCurrentAvatar = playerSaved.ObjectSaved.IdActualAvatar;
-                        InstanceContext context = new InstanceContext(this);
-                        NotifyUserAvailabilityClient proxyChannelCallback = new NotifyUserAvailabilityClient(context);
-                        userSingleton.proxyForAvailability = proxyChannelCallback;
-                        userSingleton.proxyForAvailability.PlayerIsAvailable(userSingleton.IdUser);
+                        userSingleton = UserSingleton.GetMainUser(userSaved.ObjectSaved, playerSaved.ObjectSaved);
+                        AvailabilityUserManagmentClient availabilityUserManagment = new AvailabilityUserManagmentClient();
+                        availabilityUserManagment.PlayerIsAvailable(userSingleton.IdUser);
                     }
                     else
                     {
@@ -278,21 +295,10 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public void ResponseOfPlayerAvailability(int status, int idFriend)
+        public bool IsClientActive()
         {
-            ((INotifyUserAvailabilityCallback)ActiveFriendsInstance).ResponseOfPlayerAvailability(status, idFriend);
+            return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
-
-        public void VerifyPlayerAvailability()
-        {
-            ((INotifyUserAvailabilityCallback)activeFriendsInstance).VerifyPlayerAvailability();
-        }
-
-        public void VerifyUserDictionaryAreActive()
-        {
-            
-        }
-
     }
 
 }

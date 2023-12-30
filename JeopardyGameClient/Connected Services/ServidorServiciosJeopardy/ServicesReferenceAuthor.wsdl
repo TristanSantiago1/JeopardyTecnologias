@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicesReferenceAuthor" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_ICheckUserLiving_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ICheckUserLivingUnsubscribe_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IUserManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -64,7 +80,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_INotifyUserIsNotAvailable_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IAvailabilityUserManagment_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -143,6 +159,21 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ICheckUserLiving_SubscribeToICheckUserLiving_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToICheckUserLiving" />
+  </wsdl:message>
+  <wsdl:message name="ICheckUserLiving_SubscribeToICheckUserLiving_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToICheckUserLivingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckUserLiving_IsClientActive_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:IsClientActive" />
+  </wsdl:message>
+  <wsdl:message name="ICheckUserLiving_IsClientActive_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:IsClientActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckUserLivingUnsubscribe_UnsubscribeFromICheckUserLiving_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnsubscribeFromICheckUserLiving" />
+  </wsdl:message>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveUser" />
   </wsdl:message>
@@ -215,12 +246,6 @@
   <wsdl:message name="IUserCreateAccountCode_TakeUserOutOfDictionary_OutputMessage">
     <wsdl:part name="parameters" element="tns:TakeUserOutOfDictionaryResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserCreateAccountCode_VerifyUserDictionaryAreActive_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyUserDictionaryAreActive" />
-  </wsdl:message>
-  <wsdl:message name="IUserCreateAccountCode_VerifyUserDictionaryAreActive_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyUserDictionaryAreActiveResponse" />
-  </wsdl:message>
   <wsdl:message name="IChatForTeams_SendMessageTeam_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessageTeam" />
   </wsdl:message>
@@ -290,8 +315,8 @@
   <wsdl:message name="IConsultUserInformation_GetPlayersInformation_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersInformationResponse" />
   </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_PlayerIsAvailable_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlayerIsAvailable" />
+  <wsdl:message name="INotifyUserAvailability_SubscribeToAvailabityCallBackChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToAvailabityCallBackChannel" />
   </wsdl:message>
   <wsdl:message name="INotifyUserAvailability_ResponseOfPlayerAvailability_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailability" />
@@ -299,16 +324,13 @@
   <wsdl:message name="INotifyUserAvailability_ResponseOfPlayerAvailability_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailabilityResponse" />
   </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_VerifyPlayerAvailability_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyPlayerAvailability" />
+  <wsdl:message name="IAvailabilityUserManagment_PlayerIsAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlayerIsAvailable" />
   </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_VerifyPlayerAvailability_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:VerifyPlayerAvailabilityResponse" />
-  </wsdl:message>
-  <wsdl:message name="INotifyUserIsNotAvailable_PlayerIsPlaying_InputMessage">
+  <wsdl:message name="IAvailabilityUserManagment_PlayerIsPlaying_InputMessage">
     <wsdl:part name="parameters" element="tns:PlayerIsPlaying" />
   </wsdl:message>
-  <wsdl:message name="INotifyUserIsNotAvailable_PlayerIsNotAvailable_InputMessage">
+  <wsdl:message name="IAvailabilityUserManagment_PlayerIsNotAvailable_InputMessage">
     <wsdl:part name="parameters" element="tns:PlayerIsNotAvailable" />
   </wsdl:message>
   <wsdl:message name="IFriendManagerActions_RegisterFriendManagerUser_InputMessage">
@@ -539,6 +561,21 @@
   <wsdl:message name="IHeartBeat_Heartbeat_InputMessage">
     <wsdl:part name="parameters" element="tns:Heartbeat" />
   </wsdl:message>
+  <wsdl:portType name="ICheckUserLiving">
+    <wsdl:operation name="SubscribeToICheckUserLiving">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving" message="tns:ICheckUserLiving_SubscribeToICheckUserLiving_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLivingResponse" message="tns:ICheckUserLiving_SubscribeToICheckUserLiving_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsClientActive">
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLiving/IsClientActive" message="tns:ICheckUserLiving_IsClientActive_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLiving/IsClientActiveResponse" message="tns:ICheckUserLiving_IsClientActive_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICheckUserLivingUnsubscribe">
+    <wsdl:operation name="UnsubscribeFromICheckUserLiving">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving" message="tns:ICheckUserLivingUnsubscribe_UnsubscribeFromICheckUserLiving_InputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="SaveUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/SaveUser" message="tns:IUserManager_SaveUser_InputMessage" />
@@ -593,10 +630,6 @@
     <wsdl:operation name="TakeUserOutOfDictionary">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionary" message="tns:IUserCreateAccountCode_TakeUserOutOfDictionary_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionaryResponse" message="tns:IUserCreateAccountCode_TakeUserOutOfDictionary_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="VerifyUserDictionaryAreActive">
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActive" message="tns:IUserCreateAccountCode_VerifyUserDictionaryAreActive_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActiveResponse" message="tns:IUserCreateAccountCode_VerifyUserDictionaryAreActive_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatForTeams">
@@ -655,24 +688,23 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="INotifyUserAvailability">
-    <wsdl:operation name="PlayerIsAvailable">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable" message="tns:INotifyUserAvailability_PlayerIsAvailable_InputMessage" />
+    <wsdl:operation name="SubscribeToAvailabityCallBackChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel" message="tns:INotifyUserAvailability_SubscribeToAvailabityCallBackChannel_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ResponseOfPlayerAvailability">
       <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability" message="tns:INotifyUserAvailability_ResponseOfPlayerAvailability_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailabilityResponse" message="tns:INotifyUserAvailability_ResponseOfPlayerAvailability_InputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="VerifyPlayerAvailability">
-      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailability" message="tns:INotifyUserAvailability_VerifyPlayerAvailability_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailabilityResponse" message="tns:INotifyUserAvailability_VerifyPlayerAvailability_InputCallbackMessage" />
-    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="INotifyUserIsNotAvailable">
+  <wsdl:portType name="IAvailabilityUserManagment">
+    <wsdl:operation name="PlayerIsAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsAvailable" message="tns:IAvailabilityUserManagment_PlayerIsAvailable_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="PlayerIsPlaying">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsPlaying" message="tns:INotifyUserIsNotAvailable_PlayerIsPlaying_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsPlaying" message="tns:IAvailabilityUserManagment_PlayerIsPlaying_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PlayerIsNotAvailable">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsNotAvailable" message="tns:INotifyUserIsNotAvailable_PlayerIsNotAvailable_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsNotAvailable" message="tns:IAvailabilityUserManagment_PlayerIsNotAvailable_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IFriendManagerActions">
@@ -879,6 +911,38 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IHeartBeat/Heartbeat" message="tns:IHeartBeat_Heartbeat_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_ICheckUserLiving" type="tns:ICheckUserLiving">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICheckUserLiving_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SubscribeToICheckUserLiving">
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsClientActive">
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLiving/IsClientActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICheckUserLivingUnsubscribe" type="tns:ICheckUserLivingUnsubscribe">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICheckUserLivingUnsubscribe_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UnsubscribeFromICheckUserLiving">
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IUserManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -995,15 +1059,6 @@
     </wsdl:operation>
     <wsdl:operation name="TakeUserOutOfDictionary">
       <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionary" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="VerifyUserDictionaryAreActive">
-      <soap12:operation soapAction="http://tempuri.org/IUserCreateAccountCode/VerifyUserDictionaryAreActive" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1135,8 +1190,8 @@
   <wsdl:binding name="NetTcpBinding_INotifyUserAvailability" type="tns:INotifyUserAvailability">
     <wsp:PolicyReference URI="#NetTcpBinding_INotifyUserAvailability_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="PlayerIsAvailable">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/PlayerIsAvailable" style="document" />
+    <wsdl:operation name="SubscribeToAvailabityCallBackChannel">
+      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1150,27 +1205,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="VerifyPlayerAvailability">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/VerifyPlayerAvailability" style="document" />
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IAvailabilityUserManagment" type="tns:IAvailabilityUserManagment">
+    <wsp:PolicyReference URI="#NetTcpBinding_IAvailabilityUserManagment_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="PlayerIsAvailable">
+      <soap12:operation soapAction="http://tempuri.org/IAvailabilityUserManagment/PlayerIsAvailable" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_INotifyUserIsNotAvailable" type="tns:INotifyUserIsNotAvailable">
-    <wsp:PolicyReference URI="#NetTcpBinding_INotifyUserIsNotAvailable_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="PlayerIsPlaying">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsPlaying" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IAvailabilityUserManagment/PlayerIsPlaying" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="PlayerIsNotAvailable">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserIsNotAvailable/PlayerIsNotAvailable" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IAvailabilityUserManagment/PlayerIsNotAvailable" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1605,6 +1657,18 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
+    <wsdl:port name="NetTcpBinding_ICheckUserLiving" binding="tns:NetTcpBinding_ICheckUserLiving">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ICheckUserLivingUnsubscribe" binding="tns:NetTcpBinding_ICheckUserLivingUnsubscribe">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
@@ -1653,7 +1717,7 @@
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_INotifyUserIsNotAvailable" binding="tns:NetTcpBinding_INotifyUserIsNotAvailable">
+    <wsdl:port name="NetTcpBinding_IAvailabilityUserManagment" binding="tns:NetTcpBinding_IAvailabilityUserManagment">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

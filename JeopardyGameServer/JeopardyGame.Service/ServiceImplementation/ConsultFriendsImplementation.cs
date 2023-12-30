@@ -8,6 +8,7 @@ using JeopardyGame.Service.ChannelsAdministrator;
 using System.Data.Entity;
 using System.ServiceModel;
 using System;
+using JeopardyGame.Service.DataDictionaries;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -15,7 +16,9 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         private readonly int NOT_STATUS = 0;
         private readonly int ACTIVE = 1;
-        private readonly int INACTIVE = 2;
+        private readonly int PLAYING = 2;
+        private readonly int Banned = 3;
+        private readonly int INACTIVE = 0;
         private readonly int THERE_IS_A_REQUEST = 1;
         private readonly int THEY_ARE_FRIENDS = 2;        
 
@@ -285,12 +288,28 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ConsultInformationImplementation consultInformationOfFriends = new ConsultInformationImplementation();
             var userPOJO = consultInformationOfFriends.ConsultUserByIdPlayer(idFriend);
+            if (userPOJO.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {
+                var channelSavedForFriendStatus = LivingClients.GetClient(userPOJO.ObjectSaved.UserName);
+                if (channelSavedForFriendStatus != null)
+                {
+                    return PLAYING;
+                }
+            }
             if (userPOJO.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
             {
                 var channelSavedForFriendStatus = ActiveUsersDictionary.GetChannelCallBackActiveUser(userPOJO.ObjectSaved.IdUser);
                 if (channelSavedForFriendStatus != null)
                 {
                     return ACTIVE;
+                }
+            }            
+            var playerPojo = consultInformationOfFriends.ConsultPlayerById(idFriend);
+            if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            {                
+                if (playerPojo.ObjectSaved.NoReports == 3)
+                {
+                    return Banned;
                 }
             }
             return INACTIVE;

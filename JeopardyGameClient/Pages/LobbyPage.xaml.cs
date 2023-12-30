@@ -20,7 +20,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para LobbyPage.xaml
     /// </summary>
-    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback
+    public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback, INotifyUserAvailabilityCallback
     {
         private static ActiveFriends activeUsersInstance;
         private static LiveChat liveChatInstance;
@@ -57,22 +57,7 @@ namespace JeopardyGame.Pages
             isAdminOfLobby = false;
             PrepareWindow();
             PrepareChatAndFriendList();            
-        }
-
-        private void PrepareChatAndFriendList()
-        {
-            if(userSingleton.IdState != 3)
-            {
-                activeUsersInstance = LogInUser.ActiveFriendsInstance;
-            }
-            else
-            {
-                activeUsersInstance = new ActiveFriends();
-            }            
-            liveChatInstance = new LiveChat();
-            liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
-            activeUsersInstance.StartPage(this);
-        }
+        }       
 
         private void PrepareWindow()
         {
@@ -112,6 +97,16 @@ namespace JeopardyGame.Pages
             }
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
+        }
+
+        private void PrepareChatAndFriendList()
+        {
+            activeUsersInstance = new ActiveFriends(userSingleton.IdUser);
+            liveChatInstance = new LiveChat();
+            liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
+            activeUsersInstance.StartPage(this);
+            AvailabilityUserManagmentClient availabilityUserProxy = new();
+            availabilityUserProxy.PlayerIsPlaying(userSingleton.IdUser);
         }
 
         private void SetPlayerInLabels()
@@ -488,7 +483,10 @@ namespace JeopardyGame.Pages
             frmActiveFriendsAndChat.Content = null; 
             grdActiveUser.Visibility = Visibility.Collapsed;
         }
-
+        public void ResponseOfPlayerAvailability(int status, int idFriend)
+        {
+            ((INotifyUserAvailabilityCallback)activeUsersInstance).ResponseOfPlayerAvailability(status, idFriend);
+        }
 
 
         public void NotifyQuestionsAreReady(int codeEvent)
@@ -559,8 +557,7 @@ namespace JeopardyGame.Pages
             GameBoard game = new GameBoard(questionsForGame, roomCode, idLeader);
             this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
-        }
-
+        }     
 
         public static class GameCodeContainer
         {

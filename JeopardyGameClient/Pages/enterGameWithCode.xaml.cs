@@ -25,11 +25,12 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para enterGameWithCode.xaml
     /// </summary>
-    public partial class enterGameWithCode : Page
+    public partial class enterGameWithCode : Page, ICheckUserLivingCallback
     {
         private Window mainMenu;
         private Window dialogMessage;
         UserSingleton userSingleton = UserSingleton.GetMainUser();
+        private UserPOJO userForGuest;
         int idUser = -1;
         private readonly int ROOMCODE_IS_FULL = -1;
         private readonly int ROOMCODE_DOES_NOT_EXIST = 0;
@@ -63,6 +64,7 @@ namespace JeopardyGame.Pages
                             if (idUser == -1)
                             {
                                 success = GetPlayerAndUserInformation();
+                                success = SubscribeToLivingChannel();
                             }
                             if (success)
                             {
@@ -111,6 +113,7 @@ namespace JeopardyGame.Pages
                 var userGuest = guestPlayerManagerProxy.CreateUserForGuest();
                 if (userGuest.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
+                    userForGuest = userGuest.ObjectSaved;
                     ConsultUserInformationClient consultUserInformationProxy = new();                    
                     var playerGuest = consultUserInformationProxy.ConsultPlayerByIdUser(userGuest.ObjectSaved.IdUser);
                     if (playerGuest.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
@@ -139,7 +142,37 @@ namespace JeopardyGame.Pages
             return isPlayerGuestActive;
         }
 
-       
+        private bool SubscribeToLivingChannel()
+        {
+            try
+            {
+                InstanceContext context = new(this);
+                CheckUserLivingClient checkUserLivingClient = new(context);
+                int success = checkUserLivingClient.SubscribeToICheckUserLiving(userForGuest);
+                if(success == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                throw ex;
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                throw ex;
+            }
+            catch (TimeoutException ex)
+            {
+                throw ex;
+            }
+        }
+
+
         private void GotoLobbyPage(int enteredCode)
         {
             Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
@@ -152,8 +185,9 @@ namespace JeopardyGame.Pages
 
         private void ClickClose(object sender, MouseButtonEventArgs e)
         {
+            int GUST_STATE = 3;
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            if (userSingleton.proxyForAvailability == null)
+            if (userSingleton.IdState == GUST_STATE)
             {
                 UserRegister userRegister = new UserRegister();
                 this.NavigationService.Navigate(userRegister);
@@ -166,6 +200,10 @@ namespace JeopardyGame.Pages
                 NavigationService.RemoveBackEntry();
             }
         }
-    
+
+        public bool IsClientActive()
+        {
+            return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
+        }
     }
 }

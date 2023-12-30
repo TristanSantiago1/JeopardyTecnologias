@@ -7,6 +7,25 @@ using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
+    public partial class ServicesReferenceAuthor : ICheckUserLiving
+    {
+        CheckUserLivingImplementation checkUserLivingImplementation = new();
+
+        public int SubscribeToICheckUserLiving(UserPOJO user)
+        {
+            return ((ICheckUserLiving)checkUserLivingImplementation).SubscribeToICheckUserLiving(user);
+        }
+    }
+    public partial class ServicesReferenceAuthor : ICheckUserLivingUnsubscribe
+    {
+        CheckUserLivingUnsubscribeImplementation livingUnsubscribeImplementation = new();
+
+        public void UnsubscribeFromICheckUserLiving(UserPOJO user)
+        {
+            ((ICheckUserLivingUnsubscribe)this.livingUnsubscribeImplementation).UnsubscribeFromICheckUserLiving(user);
+        }
+    }
+
     public partial  class ServicesReferenceAuthor: IUserManager
     {
         UserManagerImplementation UserManager = new UserManagerImplementation();
@@ -56,9 +75,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((ILogInVerification)verificationImplementation).ValidateCredentials(newUserValidate);
         }
 
-        public int ValidateThereIsOnlyOneAActiveAccount(int idUser)
+        public int ValidateThereIsOnlyOneAActiveAccount(string userName)
         {
-            return ((ILogInVerification)verificationImplementation).ValidateThereIsOnlyOneAActiveAccount(idUser);
+            return ((ILogInVerification)verificationImplementation).ValidateThereIsOnlyOneAActiveAccount(userName);
         }
     }
 
@@ -152,18 +171,23 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
-    public partial class ServicesReferenceAuthor : INotifyUserIsNotAvailable
+    public partial class ServicesReferenceAuthor : IAvailabilityUserManagment
     {
         NotifyUserIsNotAvailableImplementation notifyUserIsNotAvailable = new();
 
+        public void PlayerIsAvailable(int idNewActiveUser)
+        {
+            ((IAvailabilityUserManagment)notifyUserIsNotAvailable).PlayerIsAvailable(idNewActiveUser);
+        }
+
         public void PlayerIsNotAvailable(int idUserDisconnecting)
         {
-            ((INotifyUserIsNotAvailable)notifyUserIsNotAvailable).PlayerIsNotAvailable(idUserDisconnecting);
+            ((IAvailabilityUserManagment)notifyUserIsNotAvailable).PlayerIsNotAvailable(idUserDisconnecting);
         }
 
         public void PlayerIsPlaying(int idUserPlaying)
         {
-            ((INotifyUserIsNotAvailable)notifyUserIsNotAvailable).PlayerIsPlaying(idUserPlaying);
+            ((IAvailabilityUserManagment)notifyUserIsNotAvailable).PlayerIsPlaying(idUserPlaying);
         }
     }
 
@@ -279,11 +303,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((ILobbyActions)LobbyActions).NotifyPlayerInLobby(roomCode, idUser);
         }
 
-        public void PlayerIsAvailable(int idNewActiveUser)
-        {
-            ((INotifyUserAvailability)NotifyUserAvailability).PlayerIsAvailable(idNewActiveUser);
-        }
-
         public void RegisterForTeamChat(int idUser)
         {
             ((IChatForTeams)TeamChat).RegisterForTeamChat(idUser);
@@ -323,6 +342,12 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ((ILobbyActions)LobbyActions).StartGame(roomCode);
         }
+
+        public void SubscribeToAvailabityCallBackChannel(int idNewActiveUser)
+        {
+            ((INotifyUserAvailability)NotifyUserAvailability).SubscribeToAvailabityCallBackChannel(idNewActiveUser);
+        }
+
         public void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar)
         {
             ((IGameActions)GameActions).SubscribeToGameCallBack(roomCode, idUserSubscribing, idAvatar);

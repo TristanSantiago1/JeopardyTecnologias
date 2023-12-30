@@ -34,7 +34,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 };
                 try
                 {                   
-                    AddUserToDictionary(newUser, OperationContext.Current);
+                    AddUserToDictionary(newUser);
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
@@ -56,7 +56,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
        
 
-        private void AddUserToDictionary(UserPOJO newUser, OperationContext context)
+        private void AddUserToDictionary(UserPOJO newUser)
         {
             Random randomNumber = new Random();
             int fourDigitsAleatoryNumber =  randomNumber.Next(1000, 9999);
@@ -67,11 +67,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             Console.WriteLine(code);
             if(codeAlreadyExist == null)
             {
-                EmailConfirmationDictionary.RegisterNewUserToConfirm(code, newUser, context);       
+                EmailConfirmationDictionary.RegisterNewUserToConfirm(code, newUser);       
             }
             else
             {
-                AddUserToDictionary(newUser, context);
+                AddUserToDictionary(newUser);
             }
         }
 
@@ -126,7 +126,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 if (!string.IsNullOrEmpty(code))
                 {                    
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(code);
-                    AddUserToDictionary(user, OperationContext.Current);
+                    AddUserToDictionary(user);
                     successCriteria = ExceptionDictionary.SUCCESFULL_EVENT;
                 }
                 else
@@ -179,32 +179,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public void VerifyUsersInDictionary()
-        {
-            var callBackChannels = EmailConfirmationDictionary.GetCallBackList().ToList();
-            foreach (var item in callBackChannels)
-            {
-                try
-                {
-                    item.Value.GetCallbackChannel<IUserCreateAccountCodeCallBack>().VerifyUserDictionaryAreActive();
-                }
-                catch (CommunicationObjectFaultedException ex)
-                {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(item.Key);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (TimeoutException ex)
-                {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(item.Key);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (CommunicationException ex)
-                {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(item.Key);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-            }
-        }
+
 
 
     }
