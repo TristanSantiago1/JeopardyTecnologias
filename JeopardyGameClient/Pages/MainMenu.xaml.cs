@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 using System.Web.UI.WebControls;
+using Button = System.Windows.Controls.Button;
 
 namespace JeopardyGame.Pages
 {
@@ -172,7 +173,7 @@ namespace JeopardyGame.Pages
 
         private void SelectLanguage(object sender, RoutedEventArgs e)
         {
-            System.Windows.Controls.Button selectedButton = sender as Button;
+            Button selectedButton = sender as Button;
             string selectedLanguage = selectedButton.Tag.ToString();
 
             App.ChangeLanguage(selectedLanguage);

@@ -28,7 +28,6 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
-        private const int AVAILABLE_STATUS = 1;
         private LobbyPage lobbyPage;
         private NotifyUserAvailabilityClient userAvailabilityProxy;
         public event EventHandler InviteButtonClicked;

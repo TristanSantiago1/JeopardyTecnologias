@@ -293,12 +293,6 @@ namespace JeopardyGame.Pages
             return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
 
-        public void VerifyPlayerAvailability()
-        {
-            ((INotifyUserAvailabilityCallback)activeFriendsInstance).VerifyPlayerAvailability();
-        }
-
-
         private void CleanFields()
         {
             txbCodeCreateAcc.Text = string.Empty;

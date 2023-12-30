@@ -63,7 +63,7 @@ namespace JeopardyGame.Pages
                             bool success = true;
                             if (idUser == -1)
                             {
-                                success = GetPlayerAndUserInformation();
+                                success = GetPlayerAndUserInformation(enteredCode);
                                 success = SubscribeToLivingChannel();
                             }
                             if (success)
@@ -104,7 +104,7 @@ namespace JeopardyGame.Pages
             }         
         }
 
-        private bool GetPlayerAndUserInformation()
+        private bool GetPlayerAndUserInformation(int enteredCode)
         {
             bool isPlayerGuestActive = false;
             try
