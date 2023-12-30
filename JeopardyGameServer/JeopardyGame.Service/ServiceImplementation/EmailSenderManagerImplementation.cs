@@ -18,10 +18,6 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     internal class EmailSenderManagerImplementation : IEmailSenderManager
     {
-        private readonly int SUCCESFULL_EVENT = 1;
-        private readonly int UNSUCCESFULL_EVENT = 0; 
-
-
 
         public GenericClass<int> SentEmailConfirmationToCreateAccount(UserPOJO user, String subject, String bodyMessage)
         {
@@ -33,24 +29,24 @@ namespace JeopardyGame.Service.ServiceImplementation
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
                 string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
-                int emailSend = UNSUCCESFULL_EVENT;
+                int emailSend = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 if (!string.IsNullOrEmpty(code))
                 {
                     emailSend = EmailSender.SentEmailConfirmationToCreateAccount(user.EmailAddress, subject, code+ " "+bodyMessage);
                     if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        resultToReturn.ObjectSaved = SUCCESFULL_EVENT;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                         resultToReturn.ObjectSaved = emailSend;
                     }
                     else
                     {
-                        resultToReturn.ObjectSaved = UNSUCCESFULL_EVENT;
+                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                         resultToReturn.ObjectSaved = emailSend;
                     }
                 }
                 else
                 {
-                    resultToReturn.ObjectSaved = UNSUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     resultToReturn.ObjectSaved = emailSend;
                 }
             }
@@ -89,12 +85,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 int emailSend = EmailSender.SentEmailConfirmationToCreateAccount(user.EmailAddress, subject, bodyMessage);
                 if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    resultToReturn.ObjectSaved = SUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = ExceptionDictionary.SUCCESFULL_EVENT;
                     resultToReturn.ObjectSaved = emailSend;
                 }
                 else
                 {
-                    resultToReturn.ObjectSaved = UNSUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     resultToReturn.ObjectSaved = emailSend;
                 }
             }

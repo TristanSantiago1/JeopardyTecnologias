@@ -303,6 +303,7 @@ namespace JeopardyGame.Pages
             CleanFields();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
+
         private void ReturnPage()
         {
             UserRegister userRegistrerPage = new UserRegister();

@@ -15,28 +15,26 @@ namespace JeopardyGame.Data.DataAccess
         private static readonly int NULL_INT_VALUE = 0;
         private static readonly int VALUE_EXIST = 0;
         private static readonly int VALUE_NOT_EXIST = 1;
-        public static GenericClassServer<bool> VerifyPassword(string password, string hashedPassword)
+        public static GenericClassServer<bool> VerifyPassword(string passwordEntered, string hashedPassword)
         {
             GenericClassServer<bool> resultOfOperation = new GenericClassServer<bool>();
-            if (password.Length == NULL_INT_VALUE || hashedPassword.Length == NULL_INT_VALUE)
+            if (passwordEntered.Length == NULL_INT_VALUE || hashedPassword.Length == NULL_INT_VALUE)
             {
                 return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
             }
             try
             {
-                byte[] hashBytes = Convert.FromBase64String(hashedPassword);// CMABIAR NOMBRE DE HASHBYTES a algo mas entendible
-                byte[] hash = HasherPassword(password, hashBytes);
-                resultOfOperation.ObjectSaved = true;
-                resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                for (int index = 0; index < 20; index++)
+                if (passwordEntered.Equals(hashedPassword))
                 {
-                    if (hashBytes[index + 16] != hash[index])
-                    {
-                        resultOfOperation.ObjectSaved = false;
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                        break;
-                    }
+                    resultOfOperation.ObjectSaved = true;
+                    resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
                 }
+                else
+                {
+                    resultOfOperation.ObjectSaved = false;
+                    resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                }
+                
             }
             catch (FormatException ex)
             {
@@ -54,24 +52,6 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
-        }
-
-        private static byte[] HasherPassword(string password, byte[] hashBytes)
-        {
-            try
-            {
-                byte[] salt = new byte[16];
-                Array.Copy(hashBytes, 0, salt, 0, 16);
-                var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-                byte[] hash = passBaseKeyDerFun2.GetBytes(20);
-                return hash;
-            }
-            catch (RankException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                byte[] hash = new byte[2];
-                return hash;
-            }
         }
 
         public static GenericClassServer<int> ValidateIfEmailExist(String email)

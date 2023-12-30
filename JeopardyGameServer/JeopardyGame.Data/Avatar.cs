@@ -22,7 +22,6 @@ namespace JeopardyGame.Data
     
         public int IdAvatar { get; set; }
         public string AvatarName { get; set; }
-        public byte[] imageAvatar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AvatarPlayer> AvatarPlayers { get; set; }

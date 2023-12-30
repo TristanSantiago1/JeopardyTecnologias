@@ -48,8 +48,8 @@ namespace JeopardyGame.Pages
             if (CheckEmptyFields())
             {
                 UserValidate userValidate = new UserValidate();
-                userValidate.UserName = txbUserNameLogIn.Text;
-                userValidate.Password = pssPasswordLogIn.Password;
+                userValidate.UserName = txbUserNameLogIn.Text.Trim();
+                userValidate.Password = EncryptionClass.EncryptPassword(pssPasswordLogIn.Password.Trim());
                 try
                 {
                     LogInVerificationClient logInVerificationProxy = new LogInVerificationClient();

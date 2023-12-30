@@ -11,15 +11,12 @@ namespace JeopardyGame.Helpers
     { 
         public static string EncryptPassword(string password)
         {
-            byte[] salt; //Extra character for each password
-            new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-            var passBaseKeyDerFun2 = new Rfc2898DeriveBytes(password, salt, 10000, HashAlgorithmName.SHA256);
-            byte[] hash = passBaseKeyDerFun2.GetBytes(20);
-            byte[] hashBytes = new byte[36];
-            Array.Copy(salt, 0, hashBytes, 0, 16);
-            Array.Copy(hash, 0, hashBytes, 16, 20);
-            string hashedPassword = Convert.ToBase64String(hashBytes);
-            return hashedPassword;
+            using(SHA256 sha256 = SHA256.Create())
+            {
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                string hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                return hashedPassword;
+            }
         }
 
     }
