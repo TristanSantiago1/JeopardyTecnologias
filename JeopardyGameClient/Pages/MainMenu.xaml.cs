@@ -21,11 +21,12 @@ namespace JeopardyGame.Pages
     /// Lógica de interacción para MainMenu.xaml
     /// </summary>
     public partial class MainMenu : Page
-    { 
+    {
+        private Window dialogMessage;
+
         public MainMenu()
         {      
             InitializeComponent();
-            PrepareMainMenuWindow();
             LoadPlayersData();
             NotifyItIsAvailable();
         }
@@ -52,25 +53,6 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void PrepareMainMenuWindow()
-        {
-            RegistryKey keyLanguage = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
-            if (keyLanguage != null)
-            {
-                string selectedLanguage = keyLanguage.GetValue("SelectedLanguage") as string;
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedLanguage);
-
-                foreach (ComboBoxItem item in LanguajeComboBox.Items)
-                {
-                    if (item.Tag.ToString() == selectedLanguage)
-                    {
-                        LanguajeComboBox.SelectedItem = item;
-                        break;
-                    }
-                }
-            }
-        }
-       
         private void ClickSingOut(object sender, MouseButtonEventArgs e)
         {
             try
@@ -108,57 +90,6 @@ namespace JeopardyGame.Pages
             userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
             UserSingleton.CleanSingleton();
         }
-
-        private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
-        {
-            if (LanguajeComboBox.SelectedItem != null)
-            {
-                ComboBoxItem selectedItem = (ComboBoxItem)LanguajeComboBox.SelectedItem;
-                string selectedLanguage = selectedItem.Tag.ToString();
-                App.ChangeLanguage(selectedLanguage);
-                RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
-                key.SetValue("SelectedLanguage", selectedLanguage);
-                key.Close();
-                if (selectedLanguage == "es-MX")
-                {
-                    UpdateInterfaceForSpanish();
-                }
-                else if (selectedLanguage == "en")
-                {
-                    UpdateInterfaceForEnglish();
-                }
-            }
-        }
-
-        private void UpdateInterfaceForSpanish()
-        {
-            if (bttEnterGame != null)
-                bttEnterGame.Content = Properties.Resources.bttEnterGame;
-
-            if (bttFriends != null)
-                bttFriends.Content = Properties.Resources.bttFriends;
-
-            if (bttNewGame != null)
-                bttNewGame.Content = Properties.Resources.bttNewGame;
-
-            if (lblProfileInformation != null)
-                lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
-        }
-        private void UpdateInterfaceForEnglish()
-        {
-            if (bttEnterGame != null)
-                bttEnterGame.Content = Properties.Resources.bttEnterGame;
-
-            if (bttFriends != null)
-                bttFriends.Content = Properties.Resources.bttFriends;
-
-            if (bttNewGame != null)
-                bttNewGame.Content = Properties.Resources.bttNewGame;
-
-            if (lblProfileInformation != null)
-                lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
-        }
-
         private void ClickUserProfile(object sender, MouseButtonEventArgs e)
         {
             ProfileDataConsult profileConsultPage = new ProfileDataConsult();
@@ -211,21 +142,82 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+        }
+        private void HandleException(Exception ex, string errorMessage)
+        {
+            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+        private void LanguageButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (LanguageOptions.Visibility == Visibility.Visible)
+            {
+                LanguageOptions.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LanguageOptions.Visibility = Visibility.Visible;
             }
         }
 
+        private void SelectLanguage(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button selectedButton = sender as Button;
+            string selectedLanguage = selectedButton.Tag.ToString();
 
+            App.ChangeLanguage(selectedLanguage);
+            RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
+            key.SetValue("SelectedLanguage", selectedLanguage);
+            key.Close();
+            UpdateInterfaceResources(selectedLanguage);
+
+            LanguageButton.Content = selectedButton.Content;
+
+            LanguageOptions.Visibility = Visibility.Collapsed;
+        }
+        private void UpdateInterfaceResources(string selectedLanguage)
+        {
+            switch (selectedLanguage)
+            {
+                case "es-MX":
+                    if (bttEnterGame != null)
+                        bttEnterGame.Content = Properties.Resources.bttEnterGame;
+
+                    if (bttFriends != null)
+                        bttFriends.Content = Properties.Resources.bttFriends;
+
+                    if (bttNewGame != null)
+                        bttNewGame.Content = Properties.Resources.bttNewGame;
+
+                    if (lblProfileInformation != null)
+                        lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
+                    break;
+
+                case "en-EU":
+                default:
+                    if(bttEnterGame != null)
+                         bttEnterGame.Content = Properties.Resources.bttEnterGame;
+
+                    if (bttFriends != null)
+                        bttFriends.Content = Properties.Resources.bttFriends;
+
+                    if (bttNewGame != null)
+                        bttNewGame.Content = Properties.Resources.bttNewGame;
+
+                    if (lblProfileInformation != null)
+                        lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
+                    break;
+            }
+        }
     }
 }

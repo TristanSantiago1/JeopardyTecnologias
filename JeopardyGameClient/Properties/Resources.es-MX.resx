@@ -405,7 +405,7 @@ Mexico</value>
     <value>Ingresa un codigo valido</value>
   </data>
   <data name="lblWithoutConection" xml:space="preserve">
-    <value>Lo sentimos, por el momento no fue posible establecer comunicación con el servidor, intente nuevamente más tarde</value>
+    <value>Lo sentimos, ha ocurrido un problema al intentar iniciar sesión, parece que hay un problema de conexión en este momento. Por favor, verifica tu conexión a internet y vuelve a intentarlo más tarde.</value>
   </data>
   <data name="lblWithoutFriends" xml:space="preserve">
     <value>Lo sentimos, por el momento no pudimos recuperar la lista de amigos, intenta más tarde.</value>
@@ -474,7 +474,7 @@ Mexico</value>
     <value>Hubo un problema al guardar al usuario, intentalo de nuevo.</value>
   </data>
   <data name="txbErrorTitle" xml:space="preserve">
-    <value>ERROR</value>
+    <value>¡Ups!</value>
   </data>
   <data name="txbInfoBanner" xml:space="preserve">
     <value>Notificación baneo</value>
@@ -523,5 +523,38 @@ Mexico</value>
   </data>
   <data name="lblPasswordEditedProfile" xml:space="preserve">
     <value>Contraseña</value>
+  </data>
+  <data name="lblComunicationException" xml:space="preserve">
+    <value>Se ha producido un problema en la comunicación con nuestros servidores. Parece que hay un error en la conexión en este momento. Por favor, revisa tu conexión a internet y vuelve a intentarlo en unos momentos. Si el problema persiste, contáctanos para recibir asistencia adicional.</value>
+  </data>
+  <data name="lblEndPointNotFound" xml:space="preserve">
+    <value>Parece que estamos experimentando problemas para conectarnos al servidor en este momento. Por favor, verifica tu conexión a internet y asegúrate de que los servidores del juego estén disponibles. Intenta iniciar sesión nuevamente en unos minutos.</value>
+  </data>
+  <data name="lblTimeException" xml:space="preserve">
+    <value>Lo siento, la operación ha tardado más de lo esperado en completarse. Esto puede deberse a problemas temporales en nuestra red o a una alta demanda en nuestros servidores. Por favor, verifica tu conexión a internet y vuelve a intentarlo. Si el problema persiste, te recomendamos intentarlo más tarde.</value>
+  </data>
+  <data name="lblUpdateAvatar" xml:space="preserve">
+    <value>El avatar a sido actualizado correctamente.</value>
+  </data>
+  <data name="lblUpdateEmail" xml:space="preserve">
+    <value>El email asociado a la cuenta ha sido actualizado correctamente.</value>
+  </data>
+  <data name="lblUpdateName" xml:space="preserve">
+    <value>El nombre de tu usuario ha sido actualizado correctamente.</value>
+  </data>
+  <data name="lblWrongEmailRepited" xml:space="preserve">
+    <value>No ha sido posible actualizar el email asociado a la cuenta porque ya existe, por favor intenta con otro correo.</value>
+  </data>
+  <data name="lblWrongUpdateAvatar" xml:space="preserve">
+    <value>No ha sido posible realizar la actualización del avatar seleccionado, por favor intente más tarde.</value>
+  </data>
+  <data name="lblWrongUpdateEmail" xml:space="preserve">
+    <value>No ha sido posible actualizar el email asociado a la cuenta, por favor intenta nuevamente más tarde.</value>
+  </data>
+  <data name="lblWrongUpdateName" xml:space="preserve">
+    <value>No fue posible actualizar el nombre de tu usuario, por favor intenta más tarde.</value>
+  </data>
+  <data name="txbConfirmationCancelSaveUser" xml:space="preserve">
+    <value>¿Estás seguro de cancelar el registro de tu cuenta en Jeopardy?</value>
   </data>
 </root>

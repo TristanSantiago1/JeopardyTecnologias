@@ -21,6 +21,7 @@ using JeopardyGame.Exceptions;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 using Window = System.Windows.Window;
+using Button = System.Windows.Controls.Button;
 
 namespace JeopardyGame.Pages
 {
@@ -38,27 +39,8 @@ namespace JeopardyGame.Pages
         {
 
             InitializeComponent();
-            PrepareLogInWindow();
             txbUserNameLogIn.MaxLength = 15;
             pssPasswordLogIn.MaxLength = 30;
-        }
-
-        private void PrepareLogInWindow()
-        {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\JeopardyGame");
-            if (key != null)
-            {
-                string selectedLanguage = key.GetValue("SelectedLanguage") as string;
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(selectedLanguage);
-                foreach (ComboBoxItem item in LanguajeComboBox.Items)
-                {
-                    if (item.Tag.ToString() == selectedLanguage)
-                    {
-                        LanguajeComboBox.SelectedItem = item;
-                        break;
-                    }
-                }
-            }
         }
 
         private void ClickDoLogIn(object sender, RoutedEventArgs e)
@@ -71,49 +53,49 @@ namespace JeopardyGame.Pages
                 try
                 {
                     LogInVerificationClient logInVerificationProxy = new LogInVerificationClient();
-                    var result = logInVerificationProxy.ValidateCredentials(userValidate);                    
+                    var result = logInVerificationProxy.ValidateCredentials(userValidate);
                     if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || result.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                     {
-                        
+
                         if (result.ObjectSaved == RIGTH_CREDENTIALS)
                         {
                             ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
                             var userConsulted = consultInformationProxy.ConsultUserByUserName(userValidate.UserName);
                             var isAlreadyConnected = logInVerificationProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.UserName);
                             logInVerificationProxy.Close();
-                            if(isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
+                            if (isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
                             {
                                 DoLogin(userValidate.UserName);
                             }
                             else if (isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
                             {
+                                CleanFields();
                                 dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
                             }
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
+                            CleanFields();
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow);
                         }                        
                     }
                     else if(result.ObjectSaved == WRONG_CREDENTIALS)
                     {
                         dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
+                        
                     }
                 }
                 catch (EndpointNotFoundException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    HandleException(ex, Properties.Resources.lblEndPointNotFound);
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    HandleException(ex, Properties.Resources.lblComunicationException);
                 }
                 catch (TimeoutException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                    HandleException(ex, Properties.Resources.lblTimeException);
                 }
             }
         }
@@ -128,7 +110,7 @@ namespace JeopardyGame.Pages
                 answer = false;
             }
             else
-            {                
+            {
                 LblWrongUserName.Visibility = Visibility.Collapsed;
             }
 
@@ -139,7 +121,7 @@ namespace JeopardyGame.Pages
                 answer = false;
             }
             else
-            {                
+            {
                 lblPasswordWrong.Visibility = Visibility.Collapsed;
             }
             return answer;
@@ -176,28 +158,27 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
+                        CleanFields();
                         dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
                     }
                 }
                 else
                 {
+                    CleanFields();
                     dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblTimeException);
             }
         }
 
@@ -223,19 +204,6 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void ClickSelectLanguage(object sender, SelectionChangedEventArgs e)
-        {
-            if (LanguajeComboBox.SelectedItem != null)
-            {
-                ComboBoxItem selectedItem = (ComboBoxItem)LanguajeComboBox.SelectedItem;
-                string selectedLanguage = selectedItem.Tag.ToString();
-                App.ChangeLanguage(selectedLanguage);
-                RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
-                key.SetValue("SelectedLanguage", selectedLanguage);
-                key.Close();
-                UpdateInterfaceResources(selectedLanguage);
-            }
-        }
         private void UpdateInterfaceResources(string selectedLanguage)
         {
             switch (selectedLanguage)
@@ -299,7 +267,7 @@ namespace JeopardyGame.Pages
         private void ClickSeePassword(object sender, MouseButtonEventArgs e)
         {
             lblViewPassword.Content = pssPasswordLogIn.Password.ToString();
-            pssPasswordLogIn.Visibility = Visibility.Collapsed;         
+            pssPasswordLogIn.Visibility = Visibility.Collapsed;
             lblViewPassword.Visibility = Visibility.Visible;
         }
 
@@ -311,7 +279,7 @@ namespace JeopardyGame.Pages
                 pssPasswordLogIn.PasswordChar = '*';
                 pssPasswordLogIn.Password = (string)lblViewPassword.Content;
                 lblViewPassword.Visibility = Visibility.Collapsed;
-            }            
+            }
         }
 
        
@@ -320,8 +288,49 @@ namespace JeopardyGame.Pages
         {
             return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
+        private void CleanFields()
+        {
+            txbUserNameLogIn.Text = string.Empty;
+            pssPasswordLogIn.Password = string.Empty;
+        }
+        private void HandleException(Exception ex, string errorMessage)
+        {
+            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            CleanFields();
+            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+
+        private void LanguageButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (LanguageOptions.Visibility == Visibility.Visible)
+            {
+                LanguageOptions.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                LanguageOptions.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void SelectLanguage(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Controls.Button selectedButton = sender as Button;
+            string selectedLanguage = selectedButton.Tag.ToString();
+
+            App.ChangeLanguage(selectedLanguage);
+            RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
+            key.SetValue("SelectedLanguage", selectedLanguage);
+            key.Close();
+            UpdateInterfaceResources(selectedLanguage);
+
+            LanguageButton.Content = selectedButton.Content;
+
+            LanguageOptions.Visibility = Visibility.Collapsed;
+        }
+
     }
 }
-    
+
+
 
 

@@ -466,6 +466,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a There has been a problem communicating with our servers. There seems to be a connection error at the moment. Please check your internet connection and try again in a few moments..
+        /// </summary>
+        public static string lblComunicationException {
+            get {
+                return ResourceManager.GetString("lblComunicationException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Edit.
         /// </summary>
         public static string lblEditUserInformation {
@@ -507,6 +516,15 @@ namespace JeopardyGame.Properties {
         public static string lblEmptyField {
             get {
                 return ResourceManager.GetString("lblEmptyField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a It appears we are experiencing issues connecting to the server at the moment. Please check your internet connection. Try signing in again in a few minutes..
+        /// </summary>
+        public static string lblEndPointNotFound {
+            get {
+                return ResourceManager.GetString("lblEndPointNotFound", resourceCulture);
             }
         }
         
@@ -871,6 +889,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sorry, the operation took longer than expected to complete. This may be due to temporary issues on our network or high demand on our servers. Please check your internet connection and try again. .
+        /// </summary>
+        public static string lblTimeException {
+            get {
+                return ResourceManager.GetString("lblTimeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sorry, the action has timed out, please try again later..
         /// </summary>
         public static string lblTimeExpired {
@@ -880,11 +907,38 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The avatar has been updated correctly..
+        /// </summary>
+        public static string lblUpdateAvatar {
+            get {
+                return ResourceManager.GetString("lblUpdateAvatar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The email associated with the account has been updated correctly..
+        /// </summary>
+        public static string lblUpdateEmail {
+            get {
+                return ResourceManager.GetString("lblUpdateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User changes have been saved.
         /// </summary>
         public static string lblUpdateInformation {
             get {
                 return ResourceManager.GetString("lblUpdateInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your username has been updated correctly..
+        /// </summary>
+        public static string lblUpdateName {
+            get {
+                return ResourceManager.GetString("lblUpdateName", resourceCulture);
             }
         }
         
@@ -934,7 +988,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sorry, it was not possible to establish communication with the server at the moment, please try again later.
+        ///   Busca una cadena traducida similar a Sorry, there was a problem trying to log in, there seems to be a connection issue at the moment. Please check your internet connection and try again later..
         /// </summary>
         public static string lblWithoutConection {
             get {
@@ -952,6 +1006,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a It has not been possible to update the email associated with the account because it already exists, please try another email..
+        /// </summary>
+        public static string lblWrongEmailRepited {
+            get {
+                return ResourceManager.GetString("lblWrongEmailRepited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Wrong code.
         /// </summary>
         public static string lblWrongRoomCode {
@@ -961,11 +1024,38 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a It was not possible to update the selected avatar, please try again later..
+        /// </summary>
+        public static string lblWrongUpdateAvatar {
+            get {
+                return ResourceManager.GetString("lblWrongUpdateAvatar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a It was not possible to update the email associated with the account, please try again later..
+        /// </summary>
+        public static string lblWrongUpdateEmail {
+            get {
+                return ResourceManager.GetString("lblWrongUpdateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Could not update user information.
         /// </summary>
         public static string lblWrongUpdateInformation {
             get {
                 return ResourceManager.GetString("lblWrongUpdateInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your username could not be updated, please try again later..
+        /// </summary>
+        public static string lblWrongUpdateName {
+            get {
+                return ResourceManager.GetString("lblWrongUpdateName", resourceCulture);
             }
         }
         
@@ -1159,6 +1249,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure about deregistering your Jeopardy account?.
+        /// </summary>
+        public static string txbConfirmationCancelSaveUser {
+            get {
+                return ResourceManager.GetString("txbConfirmationCancelSaveUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a A problem has ocurred while saving the user, try again..
         /// </summary>
         public static string txbErrorMessageRegisterUser {
@@ -1168,7 +1267,7 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ERROR.
+        ///   Busca una cadena traducida similar a Oops!.
         /// </summary>
         public static string txbErrorTitle {
             get {

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:JeopardyGame.DialogWindows"
         xmlns:p="clr-namespace:JeopardyGame.Properties"
         mc:Ignorable="d"
-        Title="Information" Height="244" Width="488" ResizeMode="NoResize"
+        Title="Information"  Height="330" Width="631" ResizeMode="NoResize"
         Background="Black">
     <Viewbox Margin="0,1,0,0">
         <Grid Background="Black" Height="244" Width="523" >
@@ -25,8 +25,8 @@
                         </TransformGroup>
                     </Border.RenderTransform>
                 </Border>
-                <TextBlock x:Name="txbErrorTitle" Text="Hola"  FontSize="24" FontWeight="Bold" Margin="86,0,58,112" Foreground="White"/>
-                <TextBlock x:Name="txbErrorMessage"  FontSize="16" Text="Hola adios" Foreground="White" TextWrapping="Wrap" Width="240" HorizontalAlignment="Left" Margin="86,37,0,57"/>
+                <TextBlock x:Name="txbErrorTitle" Text="Hola"  FontSize="24" FontWeight="Bold" Margin="86,-13,58,125" Foreground="White"/>
+                <TextBlock x:Name="txbErrorMessage"  FontSize="16" Text="Hola adios" Foreground="White" TextWrapping="Wrap" Width="304" HorizontalAlignment="Left" Margin="86,24,0,31"/>
 
 
                 <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="2" CornerRadius="1" Margin="154,114,126,-30" RenderTransformOrigin="-0.746,1.484" >

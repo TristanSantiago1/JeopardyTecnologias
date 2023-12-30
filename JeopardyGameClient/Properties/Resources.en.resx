@@ -405,7 +405,7 @@ Mexico</value>
     <value>Enter a valid roomCode</value>
   </data>
   <data name="lblWithoutConection" xml:space="preserve">
-    <value>Sorry, it was not possible to establish communication with the server at the moment, please try again later</value>
+    <value>Sorry, there was a problem trying to log in, there seems to be a connection issue at the moment. Please check your internet connection and try again later.</value>
   </data>
   <data name="lblWithoutFriends" xml:space="preserve">
     <value>Sorry, we couldn't recover your friends list at the moment, try again later.</value>
@@ -474,7 +474,7 @@ Mexico</value>
     <value>A problem has ocurred while saving the user, try again.</value>
   </data>
   <data name="txbErrorTitle" xml:space="preserve">
-    <value>Error</value>
+    <value>Oops!</value>
   </data>
   <data name="txbInfoBanner" xml:space="preserve">
     <value>Ban notification</value>
@@ -523,5 +523,38 @@ Mexico</value>
   </data>
   <data name="lblPasswordEditedProfile" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="lblComunicationException" xml:space="preserve">
+    <value>There has been a problem communicating with our servers. There seems to be a connection error at the moment. Please check your internet connection and try again in a few moments.</value>
+  </data>
+  <data name="lblEndPointNotFound" xml:space="preserve">
+    <value>It appears we are experiencing issues connecting to the server at the moment. Please check your internet connection. Try signing in again in a few minutes.</value>
+  </data>
+  <data name="lblTimeException" xml:space="preserve">
+    <value>Sorry, the operation took longer than expected to complete. This may be due to temporary issues on our network or high demand on our servers. Please check your internet connection and try again. </value>
+  </data>
+  <data name="lblUpdateAvatar" xml:space="preserve">
+    <value>The avatar has been updated correctly.</value>
+  </data>
+  <data name="lblUpdateEmail" xml:space="preserve">
+    <value>The email associated with the account has been updated correctly.</value>
+  </data>
+  <data name="lblUpdateName" xml:space="preserve">
+    <value>Your username has been updated correctly.</value>
+  </data>
+  <data name="lblWrongEmailRepited" xml:space="preserve">
+    <value>It has not been possible to update the email associated with the account because it already exists, please try another email.</value>
+  </data>
+  <data name="lblWrongUpdateAvatar" xml:space="preserve">
+    <value>It was not possible to update the selected avatar, please try again later.</value>
+  </data>
+  <data name="lblWrongUpdateEmail" xml:space="preserve">
+    <value>It was not possible to update the email associated with the account, please try again later.</value>
+  </data>
+  <data name="lblWrongUpdateName" xml:space="preserve">
+    <value>Your username could not be updated, please try again later.</value>
+  </data>
+  <data name="txbConfirmationCancelSaveUser" xml:space="preserve">
+    <value>Are you sure about deregistering your Jeopardy account?</value>
   </data>
 </root>
