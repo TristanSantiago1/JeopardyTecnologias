@@ -20,10 +20,7 @@
             </Border>
             <Label x:Name ="LblWrongUserName" Style="{StaticResource labelWarning}" Margin="422,424,0,0" Width="513" Height="31"/>
             <Label x:Name="lblPasswordWrong" Style="{StaticResource labelWarning}" Margin="422,587,0,0" Width="513" Height="28"/>
-            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="ClickSelectLanguage">
-                <ComboBoxItem Content="{x:Static p:Resources.lblEnglish}" Tag="en-EU" IsSelected="True"/>
-                <ComboBoxItem Content="{x:Static p:Resources.lblSpanish}" Tag="es-MX"/>
-            </ComboBox>
+
             <Image Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" Margin="38,38,1275,670" />
             <Image HorizontalAlignment="Center" Height="269" Stretch="Fill"
                 Width="540" VerticalAlignment="Top" 
@@ -52,6 +49,12 @@
             <Label x:Name="lblViewPassword" HorizontalAlignment="Left" Margin="422,531,0,176" Width="443" Height="44" FontSize="27" 
                     BorderBrush="Transparent" Background="Transparent" Foreground="Purple" Visibility="Collapsed"/>
 
+
+           <Button  FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" x:Name="LanguageButton" Content="{x:Static p:Resources.lblEnglish}" Click="LanguageButtonClick" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120"/>
+            <StackPanel x:Name="LanguageOptions" Orientation="Vertical" Visibility="Collapsed" HorizontalAlignment="Left" Margin="1138,57,0,0" VerticalAlignment="Top" Width="120">
+                <Button FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Content="{x:Static p:Resources.lblEnglish}" Click="SelectLanguage" Tag="en-EU"/>
+                <Button FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Content="{x:Static p:Resources.lblSpanish}" Click="SelectLanguage" Tag="es-MX"/>
+            </StackPanel>
         </Grid>
     </Viewbox>
 </Page>

@@ -17,10 +17,11 @@
             <Image HorizontalAlignment="Left" Height="36" Margin="50,38,0,0" VerticalAlignment="Top" Width="33" Source="{StaticResource BackArrowIcon}" MouseDown="ClickSingOut" RenderTransformOrigin="0.491,2.068" />
             <Image HorizontalAlignment="Left" Height="73" Margin="1008,16,0,0" VerticalAlignment="Top" Width="82" Source="{StaticResource UserProfileIcon}" MouseDown="ClickUserProfile" RenderTransformOrigin="0.491,2.068" />
 
-            <ComboBox x:Name="LanguajeComboBox" HorizontalAlignment="Left" Margin="856,53,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.279,-1.495" SelectionChanged="ClickSelectLanguage">
-                <ComboBoxItem Content="{x:Static p:Resources.lblEnglish}" Tag="en-EU" IsSelected="True"/>
-                <ComboBoxItem Content="{x:Static p:Resources.lblSpanish}" Tag="es-MX"/>
-            </ComboBox>
+            <Button  FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" x:Name="LanguageButton" Content="{x:Static p:Resources.lblEnglish}" Click="LanguageButtonClick" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120"/>
+            <StackPanel x:Name="LanguageOptions" Orientation="Vertical" Visibility="Collapsed" HorizontalAlignment="Left" Margin="1138,57,0,0" VerticalAlignment="Top" Width="120">
+                <Button FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Content="{x:Static p:Resources.lblEnglish}" Click="SelectLanguage" Tag="en-EU"/>
+                <Button FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Content="{x:Static p:Resources.lblSpanish}" Click="SelectLanguage" Tag="es-MX"/>
+            </StackPanel>
 
             <Label x:Name="lblProfileInformation"  Content= "{x:Static p:Resources.lblProfileInformation}"  MouseDown="ClickUserProfile" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="1015,94,0,0" VerticalAlignment="Top"/>
             <Button x:Name="bttNewGame" Content = "{x:Static p:Resources.bttNewGame}" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Foreground="White" FontWeight="Bold"
@@ -43,15 +44,15 @@
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>
             </Button>
-            <Border Margin="707,178,79,74" CornerRadius="16" Background="#7F592C75">
+            <Border Margin="800,193,84,59" CornerRadius="16" Background="#7F592C75">
                 <Border Margin="30,107,30,20" CornerRadius="16" Background="#592C75" Opacity="0.5">
                     <ListBox x:Name="lstWinners" FontWeight="Bold" HorizontalAlignment="Center" Height="336" BorderThickness="0" FontSize="20" Foreground="White" Background="Transparent" VerticalAlignment="Center" Width="276"  />
                 </Border>
 
             </Border>
-            <Label x:Name="lblWinnerList" Content = "{x:Static p:Resources.lblWinnerList}" Foreground="White" FontWeight="Bold" FontSize="30" HorizontalAlignment="Left" Margin="749,216,0,0" VerticalAlignment="Top" Width="272"/>
+            <Label x:Name="lblWinnerList" Content = "{x:Static p:Resources.lblWinnerList}" Foreground="White" FontWeight="Bold" FontSize="30" HorizontalAlignment="Left" Margin="888,221,0,0" VerticalAlignment="Top" Width="272"/>
             <Image HorizontalAlignment="Left" Height="38" 
-                Width="31" Margin="715,224,0,0" VerticalAlignment="Top" 
+                Width="31" Margin="852,229,0,0" VerticalAlignment="Top" 
                 Source="{StaticResource WinnerCrownIcon}" RenderTransformOrigin="-3.173,0.485"/>
         </Grid>
 
