@@ -11,13 +11,21 @@
     <Viewbox>
         <Grid Height="751" Width="1285" >
 
-            <Image HorizontalAlignment="Center" Height="437" Stretch="Fill"
-                Width="763" VerticalAlignment="Top" 
+            <Image HorizontalAlignment="Center" Height="367" Stretch="Fill"
+                Width="643" VerticalAlignment="Top" 
                 Source="{StaticResource LogoJeopardyIcon}" Margin="0,90,0,0" RenderTransformOrigin="0.5,0.5">
 
             </Image>
-            <Button x:Name="bttPlayer" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.bttPlayer}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="ClickButtonLogin" Margin="441,550,451,139" />
-            <Button x:Name="bttPlayer_Copiar" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.btnInvite}" FontStretch="Expanded" Style="{StaticResource ButtonConfirmationStyle}" Click="ClickGetInAsIGuest" Margin="441,642,451,47" />
+            <Button x:Name="bttPlayer" FontStyle="Normal" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}"  FontSize="33" Content = "{x:Static p:Resources.bttPlayer}" FontStretch="Expanded" Click="ClickButtonLogin" Margin="480,497,481,165" Foreground="White" FontWeight="Bold">
+            <Button.Background>
+                <ImageBrush ImageSource="/Images/purpleBtn.png"/>
+            </Button.Background>
+            </Button>
+            <Button x:Name="bttPlayer_Copiar" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.btnInvite}" FontStretch="Expanded" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Click="ClickGetInAsIGuest" Margin="480,608,479,54" Foreground="White" FontWeight="Bold">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/blueBtn.png"/>
+                </Button.Background>
+            </Button>
         </Grid>
     </Viewbox>
 </Page>
