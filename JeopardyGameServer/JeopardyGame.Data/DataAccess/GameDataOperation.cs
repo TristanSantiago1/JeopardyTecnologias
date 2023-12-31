@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -69,6 +70,11 @@ namespace JeopardyGame.Data.DataAccess
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }        
 
@@ -117,6 +123,11 @@ namespace JeopardyGame.Data.DataAccess
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }
 
@@ -153,6 +164,11 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -221,6 +237,11 @@ namespace JeopardyGame.Data.DataAccess
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }
 
@@ -260,6 +281,11 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -316,6 +342,11 @@ namespace JeopardyGame.Data.DataAccess
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }
 
@@ -363,6 +394,11 @@ namespace JeopardyGame.Data.DataAccess
                 resultOfOperation = ExceptionDictionary.SQL_ERROR;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionDictionary.SAVE_CHANGES_ERROR;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultOfOperation;
         }
 
@@ -395,6 +431,11 @@ namespace JeopardyGame.Data.DataAccess
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);

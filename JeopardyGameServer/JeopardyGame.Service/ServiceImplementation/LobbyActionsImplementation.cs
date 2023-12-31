@@ -268,6 +268,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         if (playerLeaving != null)
                         {
                             lobby.listOfPlayerInLobby.Remove(playerLeaving);
+                            ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserLeaving);
                             RearrangePositions(lobby, playerLeaving.numberOfPlayerInLobby);
                             NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserLeaving, lobby);
                             RemovePlayerFromChatDictionary(roomCode, playerLeaving);                          
@@ -350,6 +351,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     if (Leader != null)
                     {
                         NotifyClosingLobby(lobby);
+                        ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUser);
                         GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
                         QuestionsForLobbyDictionary.RemoveSetOFQuestionsFromDictionary(roomCode);
                         ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);

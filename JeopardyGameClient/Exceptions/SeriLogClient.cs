@@ -14,9 +14,7 @@ namespace JeopardyGame.Exceptions
 {
     internal class SeriLogClient
     {
-        private static readonly string logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
-        private readonly String pathTris = "C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameClient\\Exceptions\\Logs";
-        private readonly String pathDodonaji = "C:\\Users\\dnava\\source\\repos\\JeopardyProject\\JeopardyGameTecnologias\\JeopardyProject\\JeopardyGameClient\\Logs\\";
+        
         private readonly String absolutePath;
 
         public SeriLogClient()
@@ -24,13 +22,13 @@ namespace JeopardyGame.Exceptions
             String pathPC;
             if (GetMachineId().Equals("6479_A753_1090_3048."))
             {
-                pathPC = pathTris;
+                pathPC = Properties.ExceptionsPaths.PathTris;
             }
             else
             {
-                pathPC = pathDodonaji;
+                pathPC = Properties.ExceptionsPaths.PathDodonaji;
             }
-            absolutePath = Path.Combine(pathPC, logFileName);
+            absolutePath = Path.Combine(pathPC, string.Format(Properties.ExceptionsPaths.logFileName, DateTime.Now.ToString(Properties.ExceptionsPaths.DateFormat)));
             ConfigureLogger(absolutePath);
         }
 
@@ -63,17 +61,17 @@ namespace JeopardyGame.Exceptions
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.ExceptionsPaths.logFileName);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.ExceptionsPaths.logFileName);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.ExceptionsPaths.logFileName);
             }
             return Guid.NewGuid().ToString();
         }

@@ -14,25 +14,22 @@ namespace JeopardyGame.Data.Exceptions
 {
     public class SeriLogConfig
     {
-        private static readonly string logFileName = $"logFile_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.txt";
-        private readonly String pathTris = "C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\Logs\\";
-        private readonly String pathDodonaji = "C:\\Users\\dnava\\source\\repos\\JeopardyProject\\JeopardyGameTecnologias\\JeopardyProject\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\logs\\";
         private readonly String absolutePath; 
         public SeriLogConfig() 
         {
-            String pathPC;
-            if (GetMachineId().Equals("6479_A753_1090_3048."))
+            string pathPC;
+            if (GetMachineId().Equals(Properties.Paths.TrisPCId))
             {
-                pathPC = pathTris;
+                pathPC = (Properties.Paths.PathTris);
             }
             else
             {
-                pathPC = pathDodonaji;
+                pathPC = (Properties.Paths.PathDodonaji);
             }
-            absolutePath = Path.Combine(pathPC, logFileName);
+            absolutePath = Path.Combine(pathPC, string.Format(Properties.Paths.logFileName, DateTime.Now.ToString(Properties.Paths.DateFromat)));
             ConfigureLogger(absolutePath);
         }
-        public static void ConfigureLogger(String relativePath)
+        public static void ConfigureLogger(string relativePath)
         {
             Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File(relativePath, rollingInterval: RollingInterval.Day).CreateLogger();
         }
@@ -47,11 +44,11 @@ namespace JeopardyGame.Data.Exceptions
         {
             try
             {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(Properties.Paths.SelectPC);
                 ManagementObjectCollection drives = searcher.Get();
                 foreach (ManagementBaseObject drive in drives)
                 {
-                    string serialNumber = drive["SerialNumber"]?.ToString();
+                    string serialNumber = drive[Properties.Paths.CharacteristicToConsider]?.ToString();
                     if (!string.IsNullOrEmpty(serialNumber))
                     {                       
                         return serialNumber;
@@ -61,27 +58,27 @@ namespace JeopardyGame.Data.Exceptions
             catch (SecurityException ex)
             {
                 ExceptionHandler.LogException(ex,ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (UnauthorizedAccessException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (ManagementException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (NullReferenceException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (Exception ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                ConfigureLogger(logFileName);
+                ConfigureLogger(Properties.Paths.logFileName);
             }
             return Guid.NewGuid().ToString();
         }
