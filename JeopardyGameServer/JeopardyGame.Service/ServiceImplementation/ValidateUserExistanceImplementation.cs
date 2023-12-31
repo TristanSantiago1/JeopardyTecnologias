@@ -66,6 +66,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
                 return successCriteria;
             }
         }
@@ -97,6 +102,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
+                {
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    LivingClients.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
                 {
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
                     LivingClients.CheckCallBacks();

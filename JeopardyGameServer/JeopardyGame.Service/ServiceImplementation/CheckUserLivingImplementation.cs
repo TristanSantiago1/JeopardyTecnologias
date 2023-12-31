@@ -45,6 +45,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return ExceptionDictionary.UNSUCCESFULL_EVENT;
         }
 

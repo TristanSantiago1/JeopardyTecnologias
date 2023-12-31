@@ -74,6 +74,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;                                 
         }
         
@@ -142,6 +147,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
 
@@ -183,6 +193,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
 
@@ -222,6 +237,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(consultInformation.ConsultUserById(idUser).ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
                 ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }

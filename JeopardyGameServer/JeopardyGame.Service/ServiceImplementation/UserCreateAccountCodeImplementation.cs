@@ -51,6 +51,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
                 return successCriteria;
             }
         }
@@ -110,6 +115,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return successCriteria;
         }
 
@@ -149,6 +159,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return successCriteria;
         }
 
@@ -174,6 +189,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }

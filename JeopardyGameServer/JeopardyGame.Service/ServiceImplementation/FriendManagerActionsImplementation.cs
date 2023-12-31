@@ -52,6 +52,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
 
@@ -74,6 +80,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -132,6 +143,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
     }
@@ -177,6 +194,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    var idUserBanning = consultInformation.ConsultUserByIdPlayer(idPlayerDeleting).ObjectSaved.IdUser;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }            
         }
 
@@ -207,6 +230,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserToEliminate, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -257,6 +285,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    var idUserBanning = consultInformation.ConsultUserByIdPlayer(idPlayerDeclining).ObjectSaved.IdUser;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
@@ -294,6 +328,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
+                {
+                    var idUserBanning = consultInformation.ConsultUserByIdPlayer(idPLayerRequesting).ObjectSaved.IdUser;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
                 {
                     var idUserBanning = consultInformation.ConsultUserByIdPlayer(idPLayerRequesting).ObjectSaved.IdUser;
                     ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
@@ -341,6 +381,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    var idUserBanning = consultInformation.ConsultUserByIdPlayer(idPlayerAccepting).ObjectSaved.IdUser;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserBanning, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }         
         }
 
@@ -367,6 +413,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserToRespond, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUserToRespond, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);

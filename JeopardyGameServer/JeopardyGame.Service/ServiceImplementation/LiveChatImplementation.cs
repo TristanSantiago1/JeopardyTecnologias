@@ -45,7 +45,13 @@ namespace JeopardyGame.Service.ServiceImplementation
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }           
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idAdmin, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
 
@@ -106,6 +112,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
 
@@ -152,6 +164,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -207,6 +224,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void NotifyUser(int roomCode, MessageChat messageToSend, bool success, int idSender)
@@ -237,6 +259,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                             ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                         }
                         catch (CommunicationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (InvalidOperationException ex)
                         {
                             ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                             ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);

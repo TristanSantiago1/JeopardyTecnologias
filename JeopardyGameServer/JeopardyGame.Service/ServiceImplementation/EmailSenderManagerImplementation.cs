@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using JeopardyGame.Service.ChannelsAdministrator;
 using System.ServiceModel;
 using JeopardyGame.Service.DataDictionaries;
+using System.Data.Entity;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -68,6 +69,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             return resultToReturn;
         }
 
@@ -107,6 +114,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);

@@ -58,6 +58,10 @@ namespace JeopardyGame.Service.ChannelsAdministrator
                 {
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch(InvalidOperationException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
             return ExceptionDictionary.SUCCESFULL_EVENT;
         }

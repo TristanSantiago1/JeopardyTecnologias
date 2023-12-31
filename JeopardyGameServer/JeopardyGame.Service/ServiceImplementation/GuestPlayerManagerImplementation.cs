@@ -1,6 +1,7 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.InterfacesSevices;
 using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
@@ -72,6 +73,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);

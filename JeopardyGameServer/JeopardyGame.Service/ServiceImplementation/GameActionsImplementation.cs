@@ -86,6 +86,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(idUserSubscribing, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserSubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }            
         }
 
@@ -109,6 +114,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -145,7 +155,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     {
                         ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    }                    
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
                 }
             }
         }
@@ -213,6 +228,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(idUserSelecting, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserSelecting, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
@@ -238,6 +258,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -278,6 +303,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }      
         }
 
@@ -307,6 +337,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(idUserSelecting, ChannelAdministrator.GAME_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUserSelecting, ChannelAdministrator.GAME_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void NotifyPlayerSomeOneChooseAQuestion(List<PlayerPlayingInGame> playersPlayingGame, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
@@ -331,6 +366,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -372,6 +412,10 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void NotifyPrepareNewRound(List<PlayerPlayingInGame> playersPlaying, int newRound)
@@ -396,6 +440,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (InvalidOperationException ex)
                     {
                         ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -451,6 +500,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void NotifyPlayersBetsAreReady(List<PlayerPlayingInGame> playersPlaying)
@@ -472,6 +526,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
                 {
                     ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
@@ -516,6 +575,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         private void NotifyPlayersWinner(List<PlayerPlayingInGame> playersPlaying)
@@ -542,6 +606,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }            
         }
 
@@ -563,6 +632,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
@@ -593,14 +666,18 @@ namespace JeopardyGame.Service.ServiceImplementation
                         ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
+                    catch (InvalidOperationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(playerPlaying.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
 
                 }
             }
         }
 
         private void CleanDictionariesAfterGame(int roomCode)
-        {
-            
+        {            
             QuestionsForLobbyDictionary.RemoveSetOFQuestionsFromDictionary(roomCode);
             GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
             ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
