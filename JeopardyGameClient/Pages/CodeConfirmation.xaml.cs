@@ -130,7 +130,11 @@ namespace JeopardyGame.Pages
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
-            }           
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }  
 
         private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
@@ -174,6 +178,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void PrepareUserToBeSaved()
@@ -204,6 +212,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
             UserSingleton.CleanSingleton();
             UserRegister userToRegister = new UserRegister();
             this.NavigationService.Navigate(userToRegister);
@@ -233,6 +245,10 @@ namespace JeopardyGame.Pages
                 catch (TimeoutException ex)
                 {
                     HandleException(ex, Properties.Resources.lblTimeException);
+                }
+                catch (CommunicationException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblWithoutConection);
                 }
             }            
         }
@@ -286,21 +302,20 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         public bool IsClientActive()
         {
             return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
-
-        private void CleanFields()
-        {
-            txbCodeCreateAcc.Text = string.Empty;
-        }
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            CleanFields();
+            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 

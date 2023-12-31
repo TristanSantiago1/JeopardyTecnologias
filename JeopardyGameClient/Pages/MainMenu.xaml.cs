@@ -52,6 +52,10 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void ClickSingOut(object sender, MouseButtonEventArgs e)
@@ -80,7 +84,10 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void CleanGlobalParameters()
@@ -153,10 +160,15 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
         private void LanguageButtonClick(object sender, RoutedEventArgs e)
@@ -219,6 +231,12 @@ namespace JeopardyGame.Pages
                         lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
                     break;
             }
+        }
+        private void ReturnPage()
+        {
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
+            NavigationService.RemoveBackEntry();
         }
     }
 }

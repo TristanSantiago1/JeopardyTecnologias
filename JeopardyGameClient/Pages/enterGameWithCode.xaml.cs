@@ -96,7 +96,10 @@ namespace JeopardyGame.Pages
                     ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
                 }
-                   
+                catch (CommunicationException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblWithoutConection);
+                }
             }
             else
             {
@@ -131,7 +134,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    RefreshWindow();
+                    ReturnPage();
                     dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
                 }
             }
@@ -146,6 +149,10 @@ namespace JeopardyGame.Pages
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
             }
             return isPlayerGuestActive;
         }
@@ -168,16 +175,21 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                throw ex;
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                throw ex;
+                HandleException(ex, Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                throw ex;
+                HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            return false;
         }
 
 
@@ -216,12 +228,14 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            RefreshWindow();
+            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
-        private void RefreshWindow()
+        private void ReturnPage()
         {
-            tbxCode.Text = string.Empty;
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
+            NavigationService.RemoveBackEntry();
         }
     }
 }

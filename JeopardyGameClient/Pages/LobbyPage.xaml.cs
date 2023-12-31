@@ -210,6 +210,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void ClickEliminatePlayerFromLobby(object sender, MouseButtonEventArgs e)
@@ -453,6 +457,10 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
             UserSingleton.CleanSingleton();
         }
 
@@ -563,7 +571,14 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+        private void ReturnPage()
+        {
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
+            NavigationService.RemoveBackEntry();
         }
     }
 }

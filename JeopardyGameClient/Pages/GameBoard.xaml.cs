@@ -89,6 +89,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         public void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, PlayerInGameDataContract[] playerInGame)
@@ -112,6 +116,10 @@ namespace JeopardyGame.Pages
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
             }
         }
 
@@ -807,6 +815,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         public void ReceiveNotificationSomeOneLeft(int isYourTurn, PlayerInGameDataContract[] playerInGame)
@@ -838,6 +850,10 @@ namespace JeopardyGame.Pages
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
             }
         }
 
@@ -889,6 +905,10 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
             UserSingleton.CleanSingleton();
         }
 
@@ -909,9 +929,15 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
-
+        private void ReturnPage()
+        {
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
+            NavigationService.RemoveBackEntry();
+        }
 
     }
 }

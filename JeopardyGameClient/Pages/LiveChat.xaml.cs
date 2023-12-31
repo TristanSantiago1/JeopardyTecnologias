@@ -56,6 +56,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         public void StartPage(bool rol, int room, LobbyPage lobby)
@@ -114,6 +118,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
@@ -152,6 +160,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
@@ -176,11 +188,21 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+        private void ReturnPage()
+        {
+            MainMenu mainMenuPage = new MainMenu();
+            this.NavigationService.Navigate(mainMenuPage);
+            NavigationService.RemoveBackEntry();
         }
     }
 }

@@ -97,6 +97,10 @@ namespace JeopardyGame.Pages
                 {
                     HandleException(ex, Properties.Resources.lblTimeException);
                 }
+                catch (CommunicationException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblWithoutConection);
+                }
             }
         }
 
@@ -179,6 +183,10 @@ namespace JeopardyGame.Pages
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
             }
         }
 

@@ -91,6 +91,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void CloseWindow()
@@ -232,6 +236,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
         private void ClickSaveNewName(object sender, MouseButtonEventArgs e)
         {
@@ -266,6 +274,10 @@ namespace JeopardyGame.Pages
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
             }
         }
         private int CheckEmailAddressFormat()
@@ -336,6 +348,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
             }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
             return DISALLOWED_VALUES;
         }
 
@@ -352,8 +368,14 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            RefreshWindow();    
+            ReturnPage();    
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+        private void ReturnPage()
+        {
+            MainMenu mainMenuPage = new MainMenu();
+            this.NavigationService.Navigate(mainMenuPage);
+            NavigationService.RemoveBackEntry();
         }
     }
 }
