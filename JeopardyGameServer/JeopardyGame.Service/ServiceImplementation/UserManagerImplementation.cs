@@ -12,6 +12,7 @@ using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.Helpers;
 using System.ServiceModel;
 using static System.Net.Mime.MediaTypeNames;
+using JeopardyGame.Service.DataDictionaries;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -21,7 +22,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int NOT_BANNED_STATE = 1;
        
 
-        public GenericClass<int> SaveUser(UserPOJO userPojoNew)
+        public GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
             try
@@ -47,6 +48,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     {
                         resultToReturn.ObjectSaved = userSaved.ObjectSaved.IdUser;
                         resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(codeEntered);
                     }
                     else
                     {

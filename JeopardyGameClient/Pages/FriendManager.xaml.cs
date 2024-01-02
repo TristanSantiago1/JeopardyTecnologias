@@ -1,4 +1,5 @@
 ﻿using JeopardyGame.DialogWindows;
+using JeopardyGame.Exceptions;
 using JeopardyGame.Helpers;
 using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
@@ -40,67 +41,98 @@ namespace JeopardyGame.Pages
         FriendManagerActionsClient friendActionsProxy;
         private InstanceContext context;
         private Window dialogMessage;
+        private UserSingleton userSingleton;
 
         public FriendManager()
         {
             InitializeComponent();
-            PrepareWindow();
+            Loaded += LoadedPrepareWindow;
         }
 
-        private void PrepareWindow()
+        private void LoadedPrepareWindow(object sender, RoutedEventArgs e)
         {
             context = new InstanceContext(this);
             friendActionsProxy = new FriendManagerActionsClient(context);
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            userSingleton = UserSingleton.GetMainUser();
             friendActionsProxy.RegisterFriendManagerUser(userSingleton.IdUser);
             GetAllTables();
             SetCards();
         }
 
+
         private void GetAllTables()
         {
-            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            var userConsulted = consultInformationProxy.ConsultUserById(userSingleton.IdUser);
-            if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
-                var friendsConsulted = friendManagerProxy.GetUserFriends(userConsulted.ObjectSaved);
-                if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                UserSingleton userSingleton = UserSingleton.GetMainUser();
+                if (userSingleton != null)
                 {
-                    var friendRequestsConsulted = friendManagerProxy.GetUserFriendRequests(userConsulted.ObjectSaved);
-                    if (friendRequestsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    UserPOJO userConsulted = new UserPOJO()
                     {
-                        var otherPeopleConsulted = friendManagerProxy.GetUsersNotFriends(userConsulted.ObjectSaved);
-                        if (otherPeopleConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        IdUser = userSingleton.IdUser,
+                        EmailAddress = userSingleton.Email,
+                        Name = userSingleton.Name,
+                        Password = userSingleton.Password,
+                        UserName = userSingleton.Name,
+                    };
+                    ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
+                    var friendsConsulted = friendManagerProxy.GetUserFriends(userConsulted);
+                    if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        var friendRequestsConsulted = friendManagerProxy.GetUserFriendRequests(userConsulted);
+                        if (friendRequestsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            friends = friendsConsulted.ObjectSaved.ToList();
-                            friendRequests = friendRequestsConsulted.ObjectSaved.ToList();
-                            otherPeople = otherPeopleConsulted.ObjectSaved.ToList();
+                            var otherPeopleConsulted = friendManagerProxy.GetUsersNotFriends(userConsulted);
+                            if (otherPeopleConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                            {
+                                friends = friendsConsulted.ObjectSaved.ToList();
+                                friendRequests = friendRequestsConsulted.ObjectSaved.ToList();
+                                otherPeople = otherPeopleConsulted.ObjectSaved.ToList();
+                            }
+                            else
+                            {
+                                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                            }
                         }
                         else
                         {
-                            ExceptionHandler.HandleException(otherPeopleConsulted.CodeEvent, string.Empty);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                            ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
                         }
                     }
                     else
                     {
-                        ExceptionHandler.HandleException(friendRequestsConsulted.CodeEvent, string.Empty);
-                    }                   
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
+                        ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                    }
+                    friendManagerProxy.Close();
                 }
                 else
                 {
-                    ExceptionHandler.HandleException(friendsConsulted.CodeEvent, string.Empty);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
                 }
-                friendManagerProxy.Close();
-                consultInformationProxy.Close();
             }
-            else
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(userConsulted.CodeEvent, "Mensaje");
-                MainMenu mainMenu = new MainMenu();
-                this.NavigationService.Navigate(mainMenu);
-                NavigationService.RemoveBackEntry();
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
             }
         }
 
@@ -198,109 +230,198 @@ namespace JeopardyGame.Pages
         }
         
         public void ReportUser(int idPlayer)
-        {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            var result = friendActionsProxy.BanUser(idPlayer, userSingleton.IdUser);
-            if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+        {      
+            try
             {
-                new InformationMessageDialogWindow("EXITO", "Ha sido reportado", Application.Current.MainWindow);
-            }                                                                                                   //INTERNAZIONALIZAR ESTO
-            else
+                var result = friendActionsProxy.BanUser(idPlayer, userSingleton.IdUser);
+                if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {                    
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblSuccesReportedUser, Application.Current.MainWindow);
+                }                                                                                                 
+                else
+                {
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToReportAUser, Application.Current.MainWindow);
+                }
+            }
+            catch (EndpointNotFoundException ex)
             {
-                ExceptionHandler.HandleException(result.CodeEvent, "Mensaje");
-                new ErrorMessageDialogWindow("ERROR", "No se ha reportado", Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblComunicationException);
             }
         }
 
         public void EliminateFriend(int idUserFriendToEliminate)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            friendActionsProxy.EliminateUserFromFriends(userSingleton.IdPlayer, idUserFriendToEliminate);
-            String userName = String.Empty;
-            foreach (var item in friends)
+            try
             {
-                if (item.IdUser == idUserFriendToEliminate)
+                friendActionsProxy.EliminateUserFromFriends(userSingleton.IdPlayer, idUserFriendToEliminate);
+                String userName = String.Empty;
+                foreach (var item in friends)
                 {
-                    friends.Remove(item);
-                    userName = item.UserName;
-                    break;
+                    if (item.IdUser == idUserFriendToEliminate)
+                    {
+                        friends.Remove(item);
+                        userName = item.UserName;
+                        break;
+                    }
                 }
+                if (!otherPeople.Any(pla => pla.UserName.Equals(userName)))
+                {
+                    FriendBasicInformation newFriend = new FriendBasicInformation();
+                    newFriend.IdUser = idUserFriendToEliminate;
+                    newFriend.UserName = userName;
+                    newFriend.IdStatusAvailability = NOT_STATUS;
+                    otherPeople.Add(newFriend);
+                }
+                SetCards();
             }
-            if(!otherPeople.Any(pla => pla.UserName.Equals(userName)))
+            catch (EndpointNotFoundException ex)
             {
-                FriendBasicInformation newFriend = new FriendBasicInformation();
-                newFriend.IdUser = idUserFriendToEliminate;
-                newFriend.UserName = userName;
-                newFriend.IdStatusAvailability = NOT_STATUS;
-                otherPeople.Add(newFriend);
-            }            
-            SetCards();
+                HandleException(ex, Properties.Resources.lblFailToEliminateFriend + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToEliminateFriend + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToEliminateFriend + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToEliminateFriend + " : " + Properties.Resources.lblComunicationException);
+            }
         }
 
         public void SentFriendRequest(int idUserRequested)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            friendActionsProxy.SendFriendRequest(userSingleton.IdPlayer, idUserRequested);
-            foreach (var item in otherPeople)
+            try
             {
-                if (item.IdUser == idUserRequested)
+                friendActionsProxy.SendFriendRequest(userSingleton.IdPlayer, idUserRequested);
+                foreach (var item in otherPeople)
                 {
-                    otherPeople.Remove(item);
-                    break;
+                    if (item.IdUser == idUserRequested)
+                    {
+                        otherPeople.Remove(item);
+                        break;
+                    }
                 }
+                SetCards();
             }
-            SetCards();
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToSentTheFriendRequest + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToSentTheFriendRequest + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToSentTheFriendRequest + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToSentTheFriendRequest + " : " + Properties.Resources.lblComunicationException);
+            }
         }
 
         public void AcceptFriendRequest(int idUserRequesting, String userName)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            friendActionsProxy.AcceptFriendRequest(userSingleton.IdPlayer, idUserRequesting);
-            foreach (var item in friendRequests)
+            try
             {
-                if (item.IdUser == idUserRequesting)
+                friendActionsProxy.AcceptFriendRequest(userSingleton.IdPlayer, idUserRequesting);
+                foreach (var item in friendRequests)
                 {
-                    friendRequests.Remove(item);
-                    break;
+                    if (item.IdUser == idUserRequesting)
+                    {
+                        friendRequests.Remove(item);
+                        break;
+                    }
                 }
+                if (!friends.Any(pla => pla.IdUser == idUserRequesting))
+                {
+                    FriendBasicInformation newFriend = new FriendBasicInformation();
+                    newFriend.IdUser = idUserRequesting;
+                    newFriend.UserName = userName;
+                    newFriend.IdStatusAvailability = NOT_STATUS;
+                    friends.Add(newFriend);
+                }
+                SetCards();
             }
-            if(!friends.Any(pla => pla.IdUser == idUserRequesting))
+            catch (EndpointNotFoundException ex)
             {
-                FriendBasicInformation newFriend = new FriendBasicInformation();
-                newFriend.IdUser = idUserRequesting;
-                newFriend.UserName = userName;
-                newFriend.IdStatusAvailability = NOT_STATUS;
-                friends.Add(newFriend);
-            }            
-            SetCards();
+                HandleException(ex, Properties.Resources.lblFailToAccepInvitation + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToAccepInvitation + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToAccepInvitation + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToAccepInvitation + " : " + Properties.Resources.lblComunicationException);
+            }
         }
 
         public void DeclineFriendRequest(int idUserRequesting, String userName)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            friendActionsProxy.DeclineFriendRequest(userSingleton.IdPlayer, idUserRequesting);
-            foreach (var item in friendRequests)
+            try
             {
-                if (item.IdUser == idUserRequesting)
+                friendActionsProxy.DeclineFriendRequest(userSingleton.IdPlayer, idUserRequesting);
+                foreach (var item in friendRequests)
                 {
-                    friendRequests.Remove(item);
-                    break;
+                    if (item.IdUser == idUserRequesting)
+                    {
+                        friendRequests.Remove(item);
+                        break;
+                    }
                 }
+                if (!otherPeople.Any(pla => pla.IdUser == idUserRequesting))
+                {
+                    FriendBasicInformation newFriend = new FriendBasicInformation();
+                    newFriend.IdUser = idUserRequesting;
+                    newFriend.UserName = userName;
+                    newFriend.IdStatusAvailability = NOT_STATUS;
+                    otherPeople.Add(newFriend);
+                }
+                SetCards();
             }
-            if (!otherPeople.Any(pla => pla.IdUser == idUserRequesting))
+            catch (EndpointNotFoundException ex)
             {
-                FriendBasicInformation newFriend = new FriendBasicInformation();
-                newFriend.IdUser = idUserRequesting;
-                newFriend.UserName = userName;
-                newFriend.IdStatusAvailability = NOT_STATUS;
-                otherPeople.Add(newFriend);
+                HandleException(ex, Properties.Resources.lblFailToDeclineRequest + " : " + Properties.Resources.lblEndPointNotFound);
             }
-            SetCards();
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToDeclineRequest + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToDeclineRequest + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToDeclineRequest + " : " + Properties.Resources.lblComunicationException);
+            }
         }
 
         public void ResponseReported(int numReports)
         {
-            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInfoMessgSuccRegUser, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow);
+            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow);
         }
 
         public void ResponseRequestAction(int idUser, int requestStatus, string userName)
@@ -363,16 +484,7 @@ namespace JeopardyGame.Pages
                 otherPeople.Add(newFriend);
             }            
             SetCards();
-        }
-
-        private void ClickBackToMenu(object sender, MouseButtonEventArgs e)
-        {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            friendActionsProxy.UnregisterFriendManagerUser(userSingleton.IdUser);
-            MainMenu mainMenu = new MainMenu();
-            this.NavigationService.Navigate(mainMenu);
-            NavigationService.RemoveBackEntry();
-        }
+        }             
 
         private void ClickSearchPlayerButton(object sender, RoutedEventArgs e)
         {
@@ -434,6 +546,40 @@ namespace JeopardyGame.Pages
         private void OverSearchBar(object sender, MouseEventArgs e)
         {
             txbUserToSearch.Text = string.Empty;
+        }
+
+        private void HandleException(Exception ex, string errorMessage)
+        {
+            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+
+        private void ClickBackToMenu(object sender, MouseButtonEventArgs e)
+        {
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            try
+            {
+                friendActionsProxy.UnregisterFriendManagerUser(userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            MainMenu mainMenu = new MainMenu();
+            this.NavigationService.Navigate(mainMenu);
+            NavigationService.RemoveBackEntry();
         }
 
     }

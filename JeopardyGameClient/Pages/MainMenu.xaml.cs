@@ -60,34 +60,10 @@ namespace JeopardyGame.Pages
 
         private void ClickSingOut(object sender, MouseButtonEventArgs e)
         {
-            try
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).CloseWindow)
             {
-                if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).CloseWindow)
-                {
-                    CheckUserLivingUnsubscribeClient checkUserLivingClient = new();
-                    checkUserLivingClient.UnsubscribeFromICheckUserLiving(UserSingleton.GetUserPojoSingelton());
-                    CleanGlobalParameters();
-                    LogInUser logInPage = new LogInUser();
-                    this.NavigationService.Navigate(logInPage);
-                    NavigationService.RemoveBackEntry();
-                }
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
-            }
+                ReturnPage();
+            }          
         }
 
         private void CleanGlobalParameters()
@@ -98,6 +74,7 @@ namespace JeopardyGame.Pages
             userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
             UserSingleton.CleanSingleton();
         }
+
         private void ClickUserProfile(object sender, MouseButtonEventArgs e)
         {
             ProfileDataConsult profileConsultPage = new ProfileDataConsult();
@@ -165,12 +142,14 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
         }
+
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            ReturnPage();
         }
+
         private void LanguageButtonClick(object sender, RoutedEventArgs e)
         {
             if (LanguageOptions.Visibility == Visibility.Visible)
@@ -198,6 +177,7 @@ namespace JeopardyGame.Pages
 
             LanguageOptions.Visibility = Visibility.Collapsed;
         }
+
         private void UpdateInterfaceResources(string selectedLanguage)
         {
             switch (selectedLanguage)
@@ -232,11 +212,36 @@ namespace JeopardyGame.Pages
                     break;
             }
         }
+
         private void ReturnPage()
         {
-            LogInUser logInUserPage = new LogInUser();
-            this.NavigationService.Navigate(logInUserPage);
+            try
+            {                
+                CheckUserLivingUnsubscribeClient checkUserLivingClient = new();
+                checkUserLivingClient.UnsubscribeFromICheckUserLiving(UserSingleton.GetUserPojoSingelton());             
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            CleanGlobalParameters();
+            LogInUser logInPage = new LogInUser();
+            this.NavigationService.Navigate(logInPage);
             NavigationService.RemoveBackEntry();
         }
+
+
     }
 }

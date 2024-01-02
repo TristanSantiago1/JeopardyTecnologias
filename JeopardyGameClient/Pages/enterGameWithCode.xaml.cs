@@ -27,7 +27,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class enterGameWithCode : Page, ICheckUserLivingCallback
     {
-        private Window mainMenu;
+        private Window windowBehind;
         private Window dialogMessage;
         UserSingleton userSingleton = UserSingleton.GetMainUser();
         private UserPOJO userForGuest;
@@ -36,10 +36,10 @@ namespace JeopardyGame.Pages
         private readonly int ROOMCODE_DOES_NOT_EXIST = 0;
         private readonly int SUCCESFUL = 1;
 
-        public enterGameWithCode(Window mainMenu, bool isGuest)
+        public enterGameWithCode(Window previousWindow, bool isGuest)
         {
             InitializeComponent();
-            this.mainMenu = mainMenu;
+            this.windowBehind = previousWindow;
             tbxCode.MaxLength = 10;
             if (!isGuest)
             {                
@@ -83,22 +83,23 @@ namespace JeopardyGame.Pages
                 }
                 catch (EndpointNotFoundException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    HandleException(ex,  Properties.Resources.lblEndPointNotFound);
+                    Window.GetWindow(this).Close(); 
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    HandleException(ex, Properties.Resources.lblComunicationException);
+                    Window.GetWindow(this).Close();
                 }
                 catch (TimeoutException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                    HandleException(ex, Properties.Resources.lblTimeException);
+                    Window.GetWindow(this).Close();
                 }
                 catch (CommunicationException ex)
                 {
                     HandleException(ex, Properties.Resources.lblWithoutConection);
+                    Window.GetWindow(this).Close();
                 }
             }
             else
@@ -129,30 +130,34 @@ namespace JeopardyGame.Pages
                     gameWindow.Show();
                     LobbyPage lobbyPage = new LobbyPage(enteredCode);
                     gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
-                    mainMenu.Close();
+                    windowBehind.Close();
                     Window.GetWindow(this).Close();
                 }
                 else
                 {
-                    ReturnPage();
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToCreateGuestUser, Application.Current.MainWindow);
+                    Window.GetWindow(this).Close();
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound + " : " + Properties.Resources.lblFailToCreateGuestUser);
+                Window.GetWindow(this).Close();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                HandleException(ex, Properties.Resources.lblComunicationException + " : " + Properties.Resources.lblFailToCreateGuestUser);
+                Window.GetWindow(this).Close();
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                HandleException(ex, Properties.Resources.lblTimeException + " : " + Properties.Resources.lblFailToCreateGuestUser);
+                Window.GetWindow(this).Close();
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                HandleException(ex, Properties.Resources.lblWithoutConection + " : " + Properties.Resources.lblFailToCreateGuestUser);
+                Window.GetWindow(this).Close();
             }
             return isPlayerGuestActive;
         }
@@ -170,24 +175,26 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
+                    Window.GetWindow(this).Close();
                     return false;
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound + " : " + Properties.Resources.lblFailRegistryToCallBack);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                HandleException(ex, Properties.Resources.lblComunicationException + " : " + Properties.Resources.lblFailRegistryToCallBack);
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                HandleException(ex, Properties.Resources.lblTimeException + " : " + Properties.Resources.lblFailRegistryToCallBack);
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                HandleException(ex, Properties.Resources.lblWithoutConection + " : " + Properties.Resources.lblFailRegistryToCallBack);
             }
             return false;
         }
@@ -199,43 +206,26 @@ namespace JeopardyGame.Pages
             gameWindow.Show();
             LobbyPage lobbyPage = new LobbyPage(enteredCode);
             gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
-            mainMenu.Close();
+            windowBehind.Close();
             Window.GetWindow(this).Close();
         }
 
         private void ClickClose(object sender, MouseButtonEventArgs e)
         {
-            int GUST_STATE = 3;
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
-            if (userSingleton.IdState == GUST_STATE)
-            {
-                UserRegister userRegister = new UserRegister();
-                this.NavigationService.Navigate(userRegister);
-                NavigationService.RemoveBackEntry();
-            }
-            else
-            {
-                MainMenu mainMenu = new MainMenu();
-                this.NavigationService.Navigate(mainMenu);
-                NavigationService.RemoveBackEntry();
-            }
+            Window.GetWindow(this).Close();
         }
 
         public bool IsClientActive()
         {
             return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
+
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
-        private void ReturnPage()
-        {
-            LogInUser logInUserPage = new LogInUser();
-            this.NavigationService.Navigate(logInUserPage);
-            NavigationService.RemoveBackEntry();
-        }
+
+
     }
 }

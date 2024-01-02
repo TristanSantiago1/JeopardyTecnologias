@@ -32,20 +32,25 @@ namespace JeopardyGame.Pages
         public const int NULL_INT_VALUE = 0;
         private DispatcherTimer timer;
         private int leftTime;
-        private String currentEmail;
+        private String password;
         private UserPOJO userToSave;
         private Window dialogMessage;
 
 
-        public CodeConfirmation(String emailToConfirm, UserPOJO user)
+        public CodeConfirmation(UserPOJO user)
         {
             this.userToSave = user;
-            this.currentEmail = emailToConfirm;
-            InitializeComponent();
+            password = user.Password;
+            InitializeComponent();            
+            Loaded += LoadedPrepareWindow;
+        }    
+
+        private void LoadedPrepareWindow(object sender, RoutedEventArgs e)
+        {
             RegistryWithTheDictionary();
             SentEmail();
             StartTimer();
-        }    
+        }
 
         private void RegistryWithTheDictionary()
         {
@@ -58,25 +63,28 @@ namespace JeopardyGame.Pages
                 var success = checkUserLivingClient.SubscribeToICheckUserLiving(userToSave);
                 if (success != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
+                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack,Application.Current.MainWindow);
                     ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
                 ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblComunicationException);
                 ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
             catch (TimeoutException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblTimeExpired, Application.Current.MainWindow);
+                HandleException(ex, Properties.Resources.lblTimeException);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
                 ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
         }
@@ -109,10 +117,10 @@ namespace JeopardyGame.Pages
             {
                 EmailSenderManagerClient emailSender = new EmailSenderManagerClient();
                 GenericClassOfint sentEmailSucc = emailSender.SentEmailConfirmationToCreateAccount(
-                    userToSave, Properties.Resources.EmailSubjectCode, Properties.Resources.EmailCodeDescrip);
+                                  userToSave, Properties.Resources.EmailSubjectCode, Properties.Resources.EmailCodeDescrip);
                 if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    ReturnPage();
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
                 }
                 if (sentEmailSucc.ObjectSaved == NULL_INT_VALUE)
                 {
@@ -146,7 +154,7 @@ namespace JeopardyGame.Pages
                 {
                     PrepareUserToBeSaved();
                     UserManagerClient userManagerProxy = new UserManagerClient();
-                    GenericClassOfint userSaved = userManagerProxy.SaveUser(userToSave);
+                    GenericClassOfint userSaved = userManagerProxy.SaveUser(userToSave, txbCodeCreateAcc.Text.ToString().Trim());
                     if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
                         SetSingleton();
@@ -158,7 +166,8 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow);
+                        userToSave.Password = this.password;
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow);                        
                     }
                 }
                 else
@@ -202,19 +211,19 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             UserSingleton.CleanSingleton();
             UserRegister userToRegister = new UserRegister();
@@ -230,25 +239,35 @@ namespace JeopardyGame.Pages
                 try
                 {
                     UserCreateAccountCodeClient userCreateAccount = new();
-                    userCreateAccount.ResendCode(userToSave);
-                    SentEmail();
-                    StartTimer();
+                    if(userCreateAccount.ResendCode(userToSave) == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        SentEmail();
+                        StartTimer();
+                    }
+                    else
+                    {
+                       dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
+                    }
                 }
                 catch (EndpointNotFoundException ex)
                 {
                     HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
                     HandleException(ex, Properties.Resources.lblComunicationException);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
                 catch (TimeoutException ex)
                 {
                     HandleException(ex, Properties.Resources.lblTimeException);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
                 catch (CommunicationException ex)
                 {
                     HandleException(ex, Properties.Resources.lblWithoutConection);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
             }            
         }
@@ -282,29 +301,33 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailConsultingTheBD, Application.Current.MainWindow);
                     }
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailConsultingTheBD, Application.Current.MainWindow);
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                HandleException(ex, Properties.Resources.lblUserRegisteredButFailToconnect);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                HandleException(ex, Properties.Resources.lblUserRegisteredButFailToconnect);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                HandleException(ex, Properties.Resources.lblUserRegisteredButFailToconnect);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                HandleException(ex, Properties.Resources.lblUserRegisteredButFailToconnect);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
         }
 
@@ -312,18 +335,13 @@ namespace JeopardyGame.Pages
         {
             return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
+
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 
-        private void ReturnPage()
-        {
-            UserRegister userRegistrerPage = new UserRegister();
-            this.NavigationService.Navigate(userRegistrerPage);
-            NavigationService.RemoveBackEntry();
-        }
+       
     }
 }

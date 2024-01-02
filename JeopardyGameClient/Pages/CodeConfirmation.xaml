@@ -28,8 +28,8 @@
             </Border>
             <TextBlock HorizontalAlignment="Left" Margin="207,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
                        Height="131" Width="923" Foreground="White" FontSize="35" Text="{x:Static p:Resources.txbCodeInstructions}"/>
-            <TextBlock x:Name="txbWrongCode" HorizontalAlignment="Left" Margin="325,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Collapsed"
-                        Height="58" Width="401" Foreground="red" FontSize="15" Text="{x:Static p:Resources.txbCodeInstructions}"/>
+            <TextBlock x:Name="txbWrongCode" HorizontalAlignment="Left" Margin="325,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Hidden"
+                        Height="58" Width="401" Foreground="red" FontSize="15" Text="{x:Static p:Resources.WrongCode}"/>
             <Label x:Name="lblResentCode" FontSize="25" Foreground="DeepSkyBlue" Margin="737,494,280,235" MouseDown="ClickResentCode" Content="{x:Static p:Resources.lblResentCode}" />
         </Grid>
     </Viewbox>

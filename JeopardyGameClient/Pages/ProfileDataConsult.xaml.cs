@@ -26,15 +26,15 @@ namespace JeopardyGame.Pages
             InitializeComponent();
             InitializeImageMappings();
             ImagenInit();
-            DisplayUserInfo(lblNameEditAccount, lblUserNameEditAccount, lblAddresEditAccount);
+            DisplayUserInfo();
         }
-        public static void DisplayUserInfo(Label lblNameEditAccount, Label lblUserNameEditAccount, Label lblAddressEditAccount)
+
+        public  void DisplayUserInfo()
         {
             UserSingleton userSingleton = UserSingleton.GetMainUser();
             lblUserNameEditAccount.Content = userSingleton.UserName;
             lblNameEditAccount.Content = userSingleton.Name;
-            lblAddressEditAccount.Content = userSingleton.Email;
-
+            lblAddresEditAccount.Content = userSingleton.Email;
         }
 
         private void ClickEditUserInformation(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -53,15 +53,15 @@ namespace JeopardyGame.Pages
         private void InitializeImageMappings()
         {
             imageIdMappings = new Dictionary<string, int>
-        {
-            { "Alacran", 1 },
-            { "AvatarCarro", 2 },
-            { "BatMan", 3 },
-            {"Caballo",4 },
-            {"IronMan",5 },
-            {"RealMadrid",6 },
-            {"SpiterMan",7 }
-        };
+            {
+                { "Alacran", 1 },
+                { "AvatarCarro", 2 },
+                { "BatMan", 3 },
+                {"Caballo",4 },
+                {"IronMan",5 },
+                {"RealMadrid",6 },
+                {"SpiterMan",7 }
+            };
         }
         private void ImagenInit()
         {
@@ -71,13 +71,13 @@ namespace JeopardyGame.Pages
             var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
             consultInformationProxy.Close();
 
-            if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (playerInfo != null && playerInfo.CodeEvent == Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 var playerWrapper = playerInfo.ObjectSaved;
 
                 if (playerWrapper != null && playerWrapper is PlayerPOJO)
                 {
-                    var player = (PlayerPOJO)playerWrapper;//Porque no sacas el id de la imagen del Singleton???
+                    var player = (PlayerPOJO)playerWrapper;
 
                     int imageId = player.IdActualAvatar;
 

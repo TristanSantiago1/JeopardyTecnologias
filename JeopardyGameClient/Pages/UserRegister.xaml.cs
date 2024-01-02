@@ -140,38 +140,18 @@ namespace JeopardyGame.Pages
 
 
         private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                UserPOJO userToSave = new UserPOJO();
-                userToSave.Name = txbNameCreateAccount.Text.Trim();
-                userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
-                userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
-                userToSave.Password = psbPasswordCreateAccount.Password.Trim();
-                if (CheckEmptyFields() == ALLOWED_VALUES &&
-                    CheckEmailAddressFormat() == ALLOWED_VALUES &&
-                    CheckUserNameAndEmailExistence(userToSave) == ALLOWED_VALUES)
-                {                    
-                    GoToCodeConfirmationWindow(userToSave);
-                }
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                HandleException(ex, Properties.Resources.lblComunicationException);
-
-            }
-            catch (TimeoutException ex)
-            {
-                HandleException(ex, Properties.Resources.lblTimeException);
-            }
-            catch (CommunicationException ex)
-            {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
-            }
+        {           
+            UserPOJO userToSave = new UserPOJO();
+            userToSave.Name = txbNameCreateAccount.Text.Trim();
+            userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
+            userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
+            userToSave.Password = psbPasswordCreateAccount.Password.Trim();
+            if (CheckEmptyFields() == ALLOWED_VALUES &&
+                CheckEmailAddressFormat() == ALLOWED_VALUES &&
+                CheckUserNameAndEmailExistence(userToSave) == ALLOWED_VALUES)
+            {                    
+                GoToCodeConfirmationWindow(userToSave);
+            }       
         }
 
         private int CheckEmptyFields() 
@@ -306,6 +286,7 @@ namespace JeopardyGame.Pages
             }
             return answer;
         }
+
         private int CheckUserNameAndEmailExistence(UserPOJO userToVerify)
         {
             try
@@ -338,6 +319,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
                     return DISALLOWED_VALUES;
                 }
             }
@@ -360,6 +342,7 @@ namespace JeopardyGame.Pages
             }
             return DISALLOWED_VALUES;
         }
+
         private void HighLightBrokenRule(Label missingRule)
         {
             missingRule.Foreground = Brushes.Red;
@@ -417,14 +400,14 @@ namespace JeopardyGame.Pages
 
         private void GoToCodeConfirmationWindow(UserPOJO userToSave)
         {
-            CodeConfirmation codeConfirmation = new CodeConfirmation(txbEmailCreateAccount.Text.Trim(), userToSave);
+            CodeConfirmation codeConfirmation = new CodeConfirmation( userToSave);
             this.NavigationService.Navigate(codeConfirmation);
             NavigationService.RemoveBackEntry();
         }
+
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            GoToLogInWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 

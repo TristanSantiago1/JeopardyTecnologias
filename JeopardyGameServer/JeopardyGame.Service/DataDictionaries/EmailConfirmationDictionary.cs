@@ -33,10 +33,13 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RemoveRegistryOfUserFromDictionary(string code)
         {
-            if (emailConfirmationDictionary.ContainsKey(code))
+            if (string.IsNullOrEmpty(code))
             {
-                emailConfirmationDictionary.Remove(code);
-            }
+                if (emailConfirmationDictionary.ContainsKey(code))
+                {
+                    emailConfirmationDictionary.Remove(code);
+                }
+            }            
         }
 
         public static Dictionary<string, UserPOJO> GetUserToVerifyList()

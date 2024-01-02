@@ -93,7 +93,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 if (userToVerifyList != null && userToVerifyList.UserName.Equals(newUser.UserName))
                 {
                     successCriteria = ExceptionDictionary.SUCCESFULL_EVENT;
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(codeEntered);
                 }
                 else
                 {

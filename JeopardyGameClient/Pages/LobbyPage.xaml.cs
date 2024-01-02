@@ -13,6 +13,7 @@ using Label = System.Windows.Controls.Label;
 using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace JeopardyGame.Pages
@@ -22,8 +23,8 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback, INotifyUserAvailabilityCallback
     {
-        private static ActiveFriends activeUsersInstance;
-        private static LiveChat liveChatInstance;
+        private static ActiveFriends activeUsersInstance = null;
+        private static LiveChat liveChatInstance = null;
         private const int NULL_INT_VALUE = 0;
         private const int TEAM_LEFT_SIDE = 1;
         private const int TEMA_RIGHT_SIDE = 2;
@@ -39,15 +40,14 @@ namespace JeopardyGame.Pages
         public LobbyPage()
         {
             InitializeComponent();            
-            isAdminOfLobby = true;
-            PrepareWindow();
-            PrepareChatAndFriendList();            
-            Loaded += LoadedAskForQuestions;
+            isAdminOfLobby = true;                       
+            Loaded += LoadedPrepareWindowAdmin;
         }
 
-        private void LoadedAskForQuestions(object sender, RoutedEventArgs e)
+        private void LoadedPrepareWindowAdmin(object sender, RoutedEventArgs e)
         {
             lobbyActionsProxy.SelectQuestionsForGameAsync(roomCode);
+            PrepareWindow();
         }
 
         public LobbyPage(int roomCode)
@@ -55,9 +55,13 @@ namespace JeopardyGame.Pages
             InitializeComponent();
             this.roomCode = roomCode;
             isAdminOfLobby = false;
-            PrepareWindow();
-            PrepareChatAndFriendList();            
+            Loaded += LoadedPrepareWindowPlayer;
         }       
+
+        private void LoadedPrepareWindowPlayer(object sender, RoutedEventArgs e)
+        {
+            PrepareWindow();
+        }
 
         private void PrepareWindow()
         {
@@ -66,13 +70,52 @@ namespace JeopardyGame.Pages
             lobbyActionsProxy = new LobbyActionsClient(context);
             if (isAdminOfLobby)
             {
+                CreateNewlobby();  
+            }
+            else
+            {
+                JoinLobby();
+            }
+            GetPlayers();
+            lblAleatoryCode.Content = roomCode;
+            SetPlayerInLabels();
+        }
+
+        private void CreateNewlobby()
+        {
+            try
+            {
                 generateAleatory = new Random();
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
-                lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
+                var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
+                if(newLobby.CodeEvent != Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
+                }
                 GameCodeContainer.RoomCode = roomCode;
             }
-            else
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+            }
+        }
+
+        private void JoinLobby()
+        {
+            try
             {
                 GenericClassOfint successful = lobbyActionsProxy.JoinIntoLobby(roomCode, userSingleton.IdUser);
                 if (successful.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
@@ -81,32 +124,58 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogMessage =  new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.ErrorJoiningLobby, Window.GetWindow(this));
-                    return;
+                    HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
                 }
                 chbTeamUp.IsEnabled = false;
             }
-            var playersInLobby = lobbyActionsProxy.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser);
-            if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            catch (EndpointNotFoundException ex)
             {
-                currentPlayerInLobby = playersInLobby.ObjectSaved.ToList();
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
             }
-            else
+            catch (CommunicationObjectFaultedException ex)
             {
-                return;
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
             }
-            lblAleatoryCode.Content = roomCode;
-            SetPlayerInLabels();
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
 
-        private void PrepareChatAndFriendList()
+        private void GetPlayers()
         {
-            activeUsersInstance = new ActiveFriends(userSingleton.IdUser);
-            liveChatInstance = new LiveChat();
-            liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
-            activeUsersInstance.StartPage(this);
-            AvailabilityUserManagmentClient availabilityUserProxy = new();
-            availabilityUserProxy.PlayerIsPlaying(userSingleton.IdUser);
+            try
+            {
+                var playersInLobby = lobbyActionsProxy.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser);
+                if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    currentPlayerInLobby = playersInLobby.ObjectSaved.ToList();
+                }
+                else
+                {
+                    HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void SetPlayerInLabels()
@@ -226,7 +295,26 @@ namespace JeopardyGame.Pages
                     var userChanged = EliminateUserFromLobby(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        lobbyActionsProxy.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);
+                        try
+                        {
+                            lobbyActionsProxy.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);
+                        }
+                        catch (EndpointNotFoundException ex)
+                        {
+                            HandleException(ex, Properties.Resources.lblFailToEliminatePlayerFromLobby + " : " + Properties.Resources.lblEndPointNotFound);
+                        }
+                        catch (CommunicationObjectFaultedException ex)
+                        {
+                            HandleException(ex, Properties.Resources.lblFailToEliminatePlayerFromLobby + " : " + Properties.Resources.lblComunicationException);
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            HandleException(ex, Properties.Resources.lblFailToEliminatePlayerFromLobby + " : " + Properties.Resources.lblTimeException);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            HandleException(ex, Properties.Resources.lblFailToEliminatePlayerFromLobby + " : " + Properties.Resources.lblWithoutConection);
+                        }
                     }
                 }
             }
@@ -267,16 +355,43 @@ namespace JeopardyGame.Pages
         {
             if (isAdminOfLobby)
             {
-                if (currentPlayerInLobby.Count == 4)
+                try
                 {
-                    DoOrUndoTeams(true);
-                    SetPlayerInLabels();
-                    lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, true);
+                    if (currentPlayerInLobby.Count == 4)
+                    {
+                        DoOrUndoTeams(true);
+                        SetPlayerInLabels();
+                        lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, true);
+                    }
+                    else
+                    {
+                        chbTeamUp.IsChecked = false;
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.MustBe4Players, Window.GetWindow(this));
+                    }
                 }
-                else
+                catch (EndpointNotFoundException ex)
                 {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle,Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
                     chbTeamUp.IsChecked = false;
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.MustBe4Players, Window.GetWindow(this));
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this));
+                    chbTeamUp.IsChecked = false;
+                }
+                catch (TimeoutException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this));
+                    chbTeamUp.IsChecked = false;
+                }
+                catch (CommunicationException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this));
+                    chbTeamUp.IsChecked = false;
                 }
             }
         }
@@ -285,9 +400,40 @@ namespace JeopardyGame.Pages
         {
             if (isAdminOfLobby)
             {
-                DoOrUndoTeams(false);
-                SetPlayerInLabels();
-                lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, false);
+                try
+                {
+                    DoOrUndoTeams(false);
+                    SetPlayerInLabels();
+                    lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, false);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                    DoOrUndoTeams(true);
+                    SetPlayerInLabels();
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this));
+                    DoOrUndoTeams(true);
+                    SetPlayerInLabels();
+                }
+                catch (TimeoutException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this));
+                    DoOrUndoTeams(true);
+                    SetPlayerInLabels();
+                }
+                catch (CommunicationException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this));
+                    DoOrUndoTeams(true);
+                    SetPlayerInLabels();
+                }
             }
         }
 
@@ -338,9 +484,36 @@ namespace JeopardyGame.Pages
                 {
                     PlayerInLobby userChanged = ChangeSideOfPlayer(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
-                    {
+                    {                        
+                        try
+                        {
+                            lobbyActionsProxy.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);
+                        }
+                        catch (EndpointNotFoundException ex)
+                        {
+                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                            ChangeSideOfPlayer(userName);
+                        }
+                        catch (CommunicationObjectFaultedException ex)
+                        {
+                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this));
+                            ChangeSideOfPlayer(userName);
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this));
+                            ChangeSideOfPlayer(userName);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this));
+                            ChangeSideOfPlayer(userName);
+                        }
                         SetPlayerInLabels();
-                        lobbyActionsProxy.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);                        
                     }
                 }
             }
@@ -391,36 +564,41 @@ namespace JeopardyGame.Pages
                 SetPlayerInLabels();
             }
         }
-        
 
-       
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
         {
             if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Window.GetWindow(this)).CloseWindow)
             {
-                ClosingLobby();
+                try
+                {
+                    if (isAdminOfLobby)
+                    {
+                        lobbyActionsProxy.DissolveLobby(roomCode, userSingleton.IdUser);
+                    }
+                    else
+                    {
+                        lobbyActionsProxy.LeaveLobby(roomCode, userSingleton.IdUser);
+                    }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);                    
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                }
+                catch (TimeoutException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                }
+                catch (CommunicationException ex)
+                {
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                }
+                CloseWindow();
             }
         }
-
-        private void ClosingLobby()
-        {
-            if (isAdminOfLobby)
-            {
-                lobbyActionsProxy.DissolveLobby(roomCode, userSingleton.IdUser);
-            }
-            else
-            {
-                lobbyActionsProxy.LeaveLobby(roomCode, userSingleton.IdUser);
-            }
-            CloseWindow();
-        }
-
-        public void DissolvingLobby()
-        {
-            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this));
-            CloseWindow();
-        }
-
         private void CloseWindow()
         {
             if (userSingleton.IdState != 3)
@@ -435,8 +613,14 @@ namespace JeopardyGame.Pages
                 PrincipalPage principalPage = new PrincipalPage();
                 this.NavigationService.Navigate(principalPage);
                 NavigationService.RemoveBackEntry();
-            }            
+            }
         }
+
+        public void DissolvingLobby()
+        {
+            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this));
+            CloseWindow();
+        }      
 
         private void DeleteSingleton()
         {
@@ -466,6 +650,11 @@ namespace JeopardyGame.Pages
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
+            if (liveChatInstance == null)
+            {
+                liveChatInstance = new LiveChat();
+                liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
+            }
             frmActiveFriendsAndChat.Content = liveChatInstance;            
             grdActiveUser.Visibility = Visibility.Visible;
         }
@@ -480,6 +669,36 @@ namespace JeopardyGame.Pages
         }
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
+            if(activeUsersInstance == null)
+            {
+                activeUsersInstance = new ActiveFriends(userSingleton.IdUser);
+                activeUsersInstance.StartPage(this);
+                AvailabilityUserManagmentClient availabilityUserProxy = new();
+                try
+                {
+                    availabilityUserProxy.PlayerIsPlaying(userSingleton.IdUser);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                }
+            }
             frmActiveFriendsAndChat.Content = activeUsersInstance;
             grdActiveUser.Visibility = Visibility.Visible;
         }  
@@ -536,33 +755,35 @@ namespace JeopardyGame.Pages
             {
                 lobbyActionsProxy.StartGame(roomCode);
             }
-            catch (FaultException ex)
+            catch (EndpointNotFoundException ex)
             {
-
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
             }
-            catch (CommunicationException)
+            catch (CommunicationObjectFaultedException ex)
             {
-                context = new InstanceContext(this);
-                lobbyActionsProxy = new LobbyActionsClient(context);
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblWithoutConection);
             }
         }
 
         public void NotifyGameWillStart(QuestionCardInformation[] questionsForGame)
-        {            
-            GoToGameBoard(questionsForGame.ToList());            
-        }
-
-        private void GoToGameBoard(List<QuestionCardInformation> questionsForGame)
         {
             int idLeader = 0;
             if (isAdminOfLobby)
             {
                 idLeader = userSingleton.IdUser;
             }
-            GameBoard game = new GameBoard(questionsForGame, roomCode, idLeader);
+            GameBoard game = new GameBoard(questionsForGame.ToList(), roomCode, idLeader);
             this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
-        }     
+        }    
 
         public static class GameCodeContainer
         {
@@ -571,11 +792,12 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            ReturnPage();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            ReturnToLogin();
         }
-        private void ReturnPage()
+        private void ReturnToLogin()
         {
+            UserSingleton.CleanSingleton();
             LogInUser logInUserPage = new LogInUser();
             this.NavigationService.Navigate(logInUserPage);
             NavigationService.RemoveBackEntry();

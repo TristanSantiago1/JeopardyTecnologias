@@ -103,7 +103,6 @@
     <Compile Include="Exceptions\ExceptionHandlerForLogs.cs" />
     <Compile Include="Exceptions\SeriLogClient.cs" />
     <Compile Include="Helpers\EncryptationClass.cs" />
-    <Compile Include="Helpers\Exceptions.cs" />
     <Compile Include="Cards\FriendCard.cs" />
     <Compile Include="Cards\FriendCardManagementWindow.cs" />
     <Compile Include="Helpers\FriendListDictionary.cs" />

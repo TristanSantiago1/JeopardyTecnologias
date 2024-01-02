@@ -37,29 +37,10 @@ namespace JeopardyGame.Pages
         private Window dialogMessage;
 
         public LiveChat()
-        {
-            try
-            {
-                InitializeComponent();
-                InstanceContext context = new InstanceContext(this);
-                liveChatProxy = new LiveChatClient(context);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                HandleException(ex, Properties.Resources.lblComunicationException);
-            }
-            catch (TimeoutException ex)
-            {
-                HandleException(ex, Properties.Resources.lblTimeException);
-            }
-            catch (CommunicationException ex)
-            {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
-            }
+        {            
+            InitializeComponent();
+            InstanceContext context = new InstanceContext(this);
+            liveChatProxy = new LiveChatClient(context);          
         }
 
         public void StartPage(bool rol, int room, LobbyPage lobby)
@@ -72,56 +53,57 @@ namespace JeopardyGame.Pages
 
         private void PrepareWindow()
         {
-            userSingleton = UserSingleton.GetMainUser();
-            if (isAdmin)
+            try
             {
-                liveChatProxy.CreateChatForLobby(roomCode,userSingleton.IdUser);
-            }
-            else
-            {
-                var serverResponse = liveChatProxy.GetAllMessages(roomCode, userSingleton.IdUser);
-                if (serverResponse.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                userSingleton = UserSingleton.GetMainUser();
+                if (isAdmin)
                 {
-                    messagesInChats = serverResponse.ObjectSaved.ToList();
-                    LoadChat();
-                }                
+                    liveChatProxy.CreateChatForLobby(roomCode, userSingleton.IdUser);
+                }
+                else
+                {
+                    var serverResponse = liveChatProxy.GetAllMessages(roomCode, userSingleton.IdUser);
+                    if (serverResponse.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        messagesInChats = serverResponse.ObjectSaved.ToList();
+                        LoadChat();
+                    }
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
             }
         }
 
         public void LoadChat()
         {
-            try { 
             stpChat.Children.Clear();
-                foreach (var item in messagesInChats)
+            foreach (var item in messagesInChats)
+            {
+                ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.MessageToSend);
+                if (item.IdUser == userSingleton.IdUser)
                 {
-                    ChatMessageCard chatMessageCard = new ChatMessageCard(item.UserName, item.MessageToSend);
-                    if (item.IdUser == userSingleton.IdUser)
-                    {
-                        chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
-                    }
-                    else
-                    {
-                        chatMessageCard.HorizontalAlignment = HorizontalAlignment.Left;
-                    }
-                    stpChat.Children.Add(chatMessageCard);
+                    chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
                 }
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                HandleException(ex, Properties.Resources.lblComunicationException);
-            }
-            catch (TimeoutException ex)
-            {
-                HandleException(ex, Properties.Resources.lblTimeException);
-            }
-            catch (CommunicationException ex)
-            {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
-            }
+                else
+                {
+                    chatMessageCard.HorizontalAlignment = HorizontalAlignment.Left;
+                }
+                stpChat.Children.Add(chatMessageCard);
+            }          
         }
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
@@ -150,19 +132,23 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
         }
 
@@ -173,36 +159,35 @@ namespace JeopardyGame.Pages
                 if (message.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     messagesInChats.Add(message.ObjectSaved);
-                    LoadChat();
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
+            LoadChat();
         }
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
-        private void ReturnPage()
-        {
-            MainMenu mainMenuPage = new MainMenu();
-            this.NavigationService.Navigate(mainMenuPage);
-            NavigationService.RemoveBackEntry();
-        }
+
     }
 }

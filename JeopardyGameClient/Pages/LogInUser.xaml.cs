@@ -37,7 +37,6 @@ namespace JeopardyGame.Pages
 
         public LogInUser()
         {
-
             InitializeComponent();
             txbUserNameLogIn.MaxLength = 15;
             pssPasswordLogIn.MaxLength = 30;
@@ -69,13 +68,11 @@ namespace JeopardyGame.Pages
                             }
                             else if (isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
                             {
-                                CleanFields();
                                 dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
                             }
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
-                            CleanFields();
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow);
                         }                        
                     }
@@ -156,20 +153,19 @@ namespace JeopardyGame.Pages
                         }
                         else
                         {
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
                             UserSingleton.CleanSingleton();
                             return;
                         }
                     }
                     else
                     {
-                        CleanFields();
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
                     }
                 }
                 else
                 {
-                    CleanFields();
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -246,6 +242,7 @@ namespace JeopardyGame.Pages
                     break;
             }
         }
+
         private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer)
         {
             userSingleton = UserSingleton.GetMainUser(currentUser, currenPlayer);
@@ -296,15 +293,10 @@ namespace JeopardyGame.Pages
         {
             return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
         }
-        private void CleanFields()
-        {
-            txbUserNameLogIn.Text = string.Empty;
-            pssPasswordLogIn.Password = string.Empty;
-        }
+     
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            CleanFields();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 

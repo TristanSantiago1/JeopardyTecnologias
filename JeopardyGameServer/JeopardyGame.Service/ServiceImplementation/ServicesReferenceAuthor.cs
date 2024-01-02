@@ -30,10 +30,9 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         UserManagerImplementation UserManager = new UserManagerImplementation();
 
-       
-        public GenericClass<int> SaveUser(UserPOJO userPojoNew)
+        public GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered)
         {
-            return ((IUserManager)UserManager).SaveUser(userPojoNew);
+            return ((IUserManager)UserManager).SaveUser(userPojoNew, codeEntered);
         }
 
         public GenericClass<int> UpdateEmailUser(int idUser, string email)

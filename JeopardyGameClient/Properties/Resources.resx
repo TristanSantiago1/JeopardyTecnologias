@@ -518,7 +518,7 @@
   </data>
   <data name="LobbyNotExist" xml:space="preserve">
     <value>The lobbbyDoes not exist</value>
- </data>
+  </data>
   <data name="btnSaveAvatarChanges" xml:space="preserve">
     <value>Save avatar</value>
   </data>
@@ -557,5 +557,74 @@
   </data>
   <data name="txbConfirmationCancelSaveUser" xml:space="preserve">
     <value>Are you sure about deregistering your Jeopardy account?</value>
+  </data>
+  <data name="lblFailConsultingTheBD" xml:space="preserve">
+    <value>FailCOnsultinbd</value>
+  </data>
+  <data name="lblFailRegistryToCallBack" xml:space="preserve">
+    <value>Not posisble to registry</value>
+  </data>
+  <data name="lblFailToAccepInvitation" xml:space="preserve">
+    <value>Problem while acceptiin request</value>
+  </data>
+  <data name="lblFailToChangeRound" xml:space="preserve">
+    <value>Next round issue</value>
+  </data>
+  <data name="lblFailToChooseAnswer" xml:space="preserve">
+    <value>answerProblem</value>
+  </data>
+  <data name="lblFailToChoseQuestion" xml:space="preserve">
+    <value>plbelme choosing</value>
+  </data>
+  <data name="lblFailToCreateGuestUser" xml:space="preserve">
+    <value>There was problem</value>
+  </data>
+  <data name="lblFailToDeclineRequest" xml:space="preserve">
+    <value>Problem while declinig</value>
+  </data>
+  <data name="lblFailToDoTheLogin" xml:space="preserve">
+    <value>login issue</value>
+  </data>
+  <data name="lblFailToEliminateFriend" xml:space="preserve">
+    <value>No eliminated</value>
+  </data>
+  <data name="lblFailToEliminatePlayerFromLobby" xml:space="preserve">
+    <value>FailTo elimnate</value>
+  </data>
+  <data name="lblFailToFinishTheMatch" xml:space="preserve">
+    <value>End f match </value>
+  </data>
+  <data name="lblFailToMakeBet" xml:space="preserve">
+    <value>problem betting</value>
+  </data>
+  <data name="lblFailToManageTeams" xml:space="preserve">
+    <value>Problem</value>
+  </data>
+  <data name="lblFailToNotifyYourFriends" xml:space="preserve">
+    <value>failto notifyFriend</value>
+  </data>
+  <data name="lblFailToRecoverFriends" xml:space="preserve">
+    <value>Fail to recover friends</value>
+  </data>
+  <data name="lblFailToReportAUser" xml:space="preserve">
+    <value>no reported</value>
+  </data>
+  <data name="lblFailToSentTheFriendRequest" xml:space="preserve">
+    <value>ProblemSendidng</value>
+  </data>
+  <data name="lblFailToStartGame" xml:space="preserve">
+    <value>Problem Starting the game</value>
+  </data>
+  <data name="lblFailtToEnterTheLobby" xml:space="preserve">
+    <value>Fail to enter the lobby</value>
+  </data>
+  <data name="lblSuccesReportedUser" xml:space="preserve">
+    <value>reported</value>
+  </data>
+  <data name="lblUserRegisteredButFailToconnect" xml:space="preserve">
+    <value>Fail to recover data</value>
+  </data>
+  <data name="txbFailToSendOrReciveAMessage" xml:space="preserve">
+    <value>no message</value>
   </data>
 </root>

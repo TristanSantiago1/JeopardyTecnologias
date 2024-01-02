@@ -13,7 +13,7 @@ namespace JeopardyGame.Service.InterfacesServices
         public interface IUserManager
         {
             [OperationContract]
-            GenericClass<int> SaveUser(UserPOJO userPojoNew);
+            GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered);
 
             [OperationContract]
             GenericClass<int> UpdateUserInformation(String editedName, String originalName);

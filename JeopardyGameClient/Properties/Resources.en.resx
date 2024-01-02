@@ -432,7 +432,7 @@ Mexico</value>
     <value>Careful, You've been reported, Now you have :</value>
   </data>
   <data name="MessageSQLException" xml:space="preserve">
-    <value>A issue has ocurred while connecting to de data base, please, try it later.</value>
+    <value>A issue has ocurred while connecting to de data base to recover the information, please, try it later.</value>
   </data>
   <data name="MoreThan1Player" xml:space="preserve">
     <value>Don't you have friends?, Invite someone, ther must be at least 2 players to play.</value>
@@ -471,7 +471,7 @@ Mexico</value>
     <value>Ha code has been sent to your email account, please check it out and enter the code.</value>
   </data>
   <data name="txbErrorMessageRegisterUser" xml:space="preserve">
-    <value>A problem has ocurred while saving the user, try again.</value>
+    <value>A problem has ocurred while saving the user, try again or try it later.</value>
   </data>
   <data name="txbErrorTitle" xml:space="preserve">
     <value>Oops!</value>
@@ -556,5 +556,74 @@ Mexico</value>
   </data>
   <data name="txbConfirmationCancelSaveUser" xml:space="preserve">
     <value>Are you sure about deregistering your Jeopardy account?</value>
+  </data>
+  <data name="lblFailConsultingTheBD|" xml:space="preserve">
+    <value>There was a problem while consulting the data base, pelase refresh the page and try it again or tyr it later.</value>
+  </data>
+  <data name="lblFailRegistryToCallBack" xml:space="preserve">
+    <value>It was not posisble to register in the server´s dictionaries, check your internet connection and try it again, or give it a shot later.</value>
+  </data>
+  <data name="lblFailToAccepInvitation" xml:space="preserve">
+    <value>There was a problem while accepting the friend request, try it later.</value>
+  </data>
+  <data name="lblFailToChangeRound" xml:space="preserve">
+    <value>There was a network problem while loading the next round, sorry, you'll be redirected to the login.</value>
+  </data>
+  <data name="lblFailToChooseAnswer" xml:space="preserve">
+    <value>There was a network problem while choosing the answer, sorry, you'll be redirected to the login.</value>
+  </data>
+  <data name="lblFailToChoseQuestion" xml:space="preserve">
+    <value>There wa a network problem while choosing the question, sorry, you´ll be redirected to the login.</value>
+  </data>
+  <data name="lblFailToCreateGuestUser" xml:space="preserve">
+    <value>There was a problem creating the Guest User, the window will close try it again or later.</value>
+  </data>
+  <data name="lblFailToDeclineRequest" xml:space="preserve">
+    <value>There was a problem while delcinig the friend request, try it later.</value>
+  </data>
+  <data name="lblFailToDoTheLogin" xml:space="preserve">
+    <value>There was a problem while doing the Login process, please try it again or later.</value>
+  </data>
+  <data name="lblFailToEliminateFriend" xml:space="preserve">
+    <value>There wasa problem eliminated the user from your friends, try it later.</value>
+  </data>
+  <data name="lblFailToEliminatePlayerFromLobby" xml:space="preserve">
+    <value>There was a network issue while eliminating the player form the lobby, whil be redirected to the lobby.</value>
+  </data>
+  <data name="lblFailToFinishTheMatch" xml:space="preserve">
+    <value>There was a network problem while notifying the players about the end of the match, sosry, you´ll be redirected to the login.</value>
+  </data>
+  <data name="lblFailToMakeBet" xml:space="preserve">
+    <value>There was a network issue while doing the bet, sorry, you´ll be redirected to the login.</value>
+  </data>
+  <data name="lblFailToManageTeams" xml:space="preserve">
+    <value>There was a network problem while managing the teams. Try it again or refresh the page.</value>
+  </data>
+  <data name="lblFailToNotifyYourFriends" xml:space="preserve">
+    <value>There was a problema while notifying your friends about your status, No need to recharge the page.</value>
+  </data>
+  <data name="lblFailToRecoverFriends" xml:space="preserve">
+    <value>There was a problem while recovering your friends from the server, you´ll be redirected to the main menu, trye it later.</value>
+  </data>
+  <data name="lblFailToReportAUser" xml:space="preserve">
+    <value>It was not posisble to report the user, please try it again or later.</value>
+  </data>
+  <data name="lblFailToSentTheFriendRequest" xml:space="preserve">
+    <value>There was a problem sending the friend request, try it again later.</value>
+  </data>
+  <data name="lblFailToStartGame" xml:space="preserve">
+    <value>There was a network problem while starting the game, you´ll be redirected to the login.</value>
+  </data>
+  <data name="lblFailtToEnterTheLobby" xml:space="preserve">
+    <value>There was a problem entering the lobby, you'll be redirectec to the login.</value>
+  </data>
+  <data name="lblSuccesReportedUser" xml:space="preserve">
+    <value>The player has been reported succesfully.</value>
+  </data>
+  <data name="lblUserRegisteredButFailToconnect" xml:space="preserve">
+    <value>The user has been registered correctly but there was an error recovering the data, pleas do Login</value>
+  </data>
+  <data name="txbFailToSendOrReciveAMessage" xml:space="preserve">
+    <value>Could Send/revice a message. refresh the lobby or try it later.</value>
   </data>
 </root>

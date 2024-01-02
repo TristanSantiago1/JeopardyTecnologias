@@ -152,10 +152,6 @@ namespace JeopardyGame.Pages
             SetFriend();
         }
 
-        public void VerifyPlayerAvailability()
-        {
-        }
-        
         private void SendEmailForInvitationToGame(string email, string subject, string body)
         {
             EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
@@ -166,28 +162,41 @@ namespace JeopardyGame.Pages
                 UserName = userSingleton.UserName,
                 EmailAddress = email,
             };
-            GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(user, subject, body);
-            if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                ExceptionHandler.HandleException(sentEmailResult.CodeEvent, String.Empty);
-                dialogMessage =  new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(user, subject, body);
+                if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                }
+                if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+                {
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+
+                }
             }
-            if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+            catch (EndpointNotFoundException ex)
             {
-                dialogMessage =  new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
-                
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+
         }
-        private void GoToLogInWindow()
-        {
-            LogInUser logInPage = new LogInUser();
-            this.NavigationService.Navigate(logInPage);
-            NavigationService.RemoveBackEntry();
-        }
+
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            GoToLogInWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 

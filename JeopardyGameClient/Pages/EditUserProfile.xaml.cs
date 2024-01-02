@@ -39,14 +39,20 @@ namespace JeopardyGame.Pages
 
         public EditUserProfile()
         {
-            InitializeComponent();
+            InitializeComponent();            
+            Loaded += LoadedPreparedWindow;
+        }
+
+        private void LoadedPreparedWindow(object sender, RoutedEventArgs e)
+        {
             InitializeImageMappings();
             ImagenInitialization();
             ReadResource();
-            DisplayUserInfo(txbEditName, txbEditUserName, txbEditEmail);
+            DisplayUserInfo();
+           
         }
 
-        public static void DisplayUserInfo(TextBox txbEditName, TextBox txbEditUserName, TextBox txbEditEmail)
+        public  void DisplayUserInfo()
         {
             txbEditUserName.IsReadOnly = true;
             UserSingleton userSingleton = UserSingleton.GetMainUser();
@@ -81,27 +87,20 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblTimeException);
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
             }
-        }
-
-        private void CloseWindow()
-        {
-            MainMenu mainMenuPage = new MainMenu();
-            this.NavigationService.Navigate(mainMenuPage);
-            NavigationService.RemoveBackEntry();
         }
 
         private void SelectImage(object sender, SelectionChangedEventArgs e)
@@ -226,19 +225,19 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                HandleException(ex, Properties.Resources.lblWrongUpdateEmail + " : " + Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                HandleException(ex, Properties.Resources.lblWrongUpdateEmail + " : " + Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                HandleException(ex, Properties.Resources.lblWrongUpdateEmail + " : " + Properties.Resources.lblTimeException);
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                HandleException(ex, Properties.Resources.lblWrongUpdateEmail + " : " + Properties.Resources.lblWithoutConection);
             }
         }
         private void ClickSaveNewName(object sender, MouseButtonEventArgs e)
@@ -265,19 +264,19 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                HandleException(ex, Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblEndPointNotFound);
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                HandleException(ex, Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblComunicationException);
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                HandleException(ex, Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblTimeException);
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                HandleException(ex,Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblWithoutConection);
             }
         }
         private int CheckEmailAddressFormat()
@@ -336,46 +335,48 @@ namespace JeopardyGame.Pages
                     return DISALLOWED_VALUES;
                 }
             }
-            catch (EndpointNotFoundException ex)
+            catch (EndpointNotFoundException)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                throw new EndpointNotFoundException();
             }
-            catch (CommunicationObjectFaultedException ex)
+            catch (CommunicationObjectFaultedException)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                throw new CommunicationException();
             }
-            catch (TimeoutException ex)
+            catch (TimeoutException)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                throw new TimeoutException();
             }
-            catch (CommunicationException ex)
+            catch (CommunicationException)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                throw new CommunicationException();
             }
-            return DISALLOWED_VALUES;
         }
 
         private void ClickBackToMaminMenu(object sender, MouseButtonEventArgs e)
         {
             CloseWindow();
         }
+        private void CloseWindow()
+        {
+            MainMenu mainMenuPage = new MainMenu();
+            this.NavigationService.Navigate(mainMenuPage);
+            NavigationService.RemoveBackEntry();
+        }
+
         private void RefreshWindow()
         {
             EditUserProfile editUserProfilePage = new EditUserProfile();
             this.NavigationService.Navigate(editUserProfilePage);
             NavigationService.RemoveBackEntry();
         }
+
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            ReturnPage();    
+            RefreshWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
-        private void ReturnPage()
-        {
-            MainMenu mainMenuPage = new MainMenu();
-            this.NavigationService.Navigate(mainMenuPage);
-            NavigationService.RemoveBackEntry();
-        }
+    
     }
 }

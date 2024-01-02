@@ -38,6 +38,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" minOccurs="0" name="userPojoNew" nillable="true" type="q3:UserPOJO" />
+        <xs:element minOccurs="0" name="codeEntered" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
