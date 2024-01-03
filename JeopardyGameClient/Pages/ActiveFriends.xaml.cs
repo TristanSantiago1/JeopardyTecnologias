@@ -29,8 +29,6 @@ namespace JeopardyGame.Pages
     public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
         private LobbyPage lobbyPage;
-        private NotifyUserAvailabilityClient userAvailabilityProxy;
-        public event EventHandler InviteButtonClicked;
         public const int NULL_INT_VALUE = 0;
         private Window dialogMessage;
 
@@ -40,7 +38,7 @@ namespace JeopardyGame.Pages
             {
                 InitializeComponent();
                 InstanceContext context = new InstanceContext(this);
-                userAvailabilityProxy = new(context);
+                NotifyUserAvailabilityClient userAvailabilityProxy = new(context);
                 userAvailabilityProxy.SubscribeToAvailabityCallBackChannel(idUser);
             }
             catch (EndpointNotFoundException ex)
@@ -66,6 +64,32 @@ namespace JeopardyGame.Pages
             lobbyPage = lobby;
             GetFriend();
             SetFriend();
+        }
+
+        public void RenewFriendCallBackChannel(int idUser)
+        {
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                NotifyUserAvailabilityClient userAvailabilityProxy = new(context);
+                userAvailabilityProxy.RenewNotifyAvailabityCallBack(idUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void ClickCloseListFriends(object sender, MouseButtonEventArgs e)

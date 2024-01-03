@@ -14,11 +14,15 @@ namespace JeopardyGame.Service.InterfacesServices
         [OperationContract]
         GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager);
 
-        [OperationContract(IsOneWay = true)]
-        void UnregisterFriendManagerUser(int idUserFriendManager);
+        [OperationContract]
+        int RenewFriendManagerUserCallBack(int idUserFriendManager);
+    }
 
+    [ServiceContract]
+    public interface IFriendManagerActionOperations
+    {
         [OperationContract(IsOneWay = true)]
-        void ReportPlayer(int idUser, String userName);
+        void UnregisterFriendManagerUser(int idUserFriendManager);     
 
         [OperationContract]
         GenericClass<int> BanUser(int idPlayerBanned, int idUserBanning);
@@ -34,8 +38,11 @@ namespace JeopardyGame.Service.InterfacesServices
 
         [OperationContract(IsOneWay = true)]
         void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting);
-    }
 
+        [OperationContract(IsOneWay = true)]
+        void NotifyUserAboutNewPlayer(int idNewPlayer, string userName);
+
+    }
 
     [ServiceContract]
     public interface IFriendManagerActionsCallBack
@@ -48,6 +55,9 @@ namespace JeopardyGame.Service.InterfacesServices
 
         [OperationContract]
         void ResponseRequestAction(int idUser, int requestStatus, String userName);
+
+        [OperationContract]
+        void ResponseNewPlayerJusJoin(int idUser, string userName);
     }
 
 }

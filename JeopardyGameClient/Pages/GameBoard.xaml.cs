@@ -51,9 +51,7 @@ namespace JeopardyGame.Pages
         private QuestionPOJO questionBeingAsked;
         private AnswerPOJO answerToCurrentQuestion;
         private List<AnswerPOJO> answersOfQuestionBeingAsked;
-        private DispatcherTimer timer;
-        private GameActionsClient gameActionsClientProxy;
-        private InstanceContext context;
+        private DispatcherTimer timer;   
         private readonly UserSingleton userSingleton = UserSingleton.GetMainUser();
         private Window dialogMessage;
         private static TeamChat teamChat;
@@ -73,8 +71,8 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                context = new InstanceContext(this);
-                gameActionsClientProxy = new GameActionsClient(context);
+                InstanceContext context = new InstanceContext(this);
+                GameActionsClient gameActionsClientProxy = new GameActionsClient(context);
                 gameActionsClientProxy.SubscribeToGameCallBack(roomCode, userSingleton.IdUser, userSingleton.IdCurrentAvatar);
             }
             catch (EndpointNotFoundException ex)
@@ -347,6 +345,7 @@ namespace JeopardyGame.Pages
                     var currentPointsOfPlayer = playersBorders.FirstOrDefault(pla => pla.Name.Equals(nameOfBorder));
                     if (pointsBet <= ((GameTeamCard)currentPointsOfPlayer).GetPoints() || pointsBet >= 0)
                     {
+                        GameActionsOperationsClient gameActionsClientProxy = new();
                         gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
                         txbPointsToBet.IsEnabled = false;
                         bttConfirmBet.IsEnabled = false;
@@ -359,6 +358,10 @@ namespace JeopardyGame.Pages
                     {
                         try
                         {
+                            GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                            gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
+                            GameActionsOperationsClient gameActionsClientProxy = new();
                             gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
                             txbPointsToBet.IsEnabled = false;
                             bttConfirmBet.IsEnabled = false;
@@ -431,6 +434,10 @@ namespace JeopardyGame.Pages
                 };
                 try
                 {
+                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
+                    GameActionsOperationsClient gameActionsClientProxy = new();
                     gameActionsClientProxy.ChooseQuestionOfBoard(roomCode, userSingleton.IdUser, question.NumberOfRound, currentQuestionToShow);
                 }
                 catch (EndpointNotFoundException ex)
@@ -481,8 +488,13 @@ namespace JeopardyGame.Pages
                 var answerCardChoose = (Button)sender;
                 try
                 {
+
+                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
                     if (currentRound != ROUND_THREE)
                     {
+                        GameActionsOperationsClient gameActionsClientProxy = new();
                         int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content)).IdAnswer;
                         gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);
                     }
@@ -497,6 +509,7 @@ namespace JeopardyGame.Pages
                         {
                             isCorrect = false;
                         }
+                        GameActionsOperationsClient gameActionsClientProxy = new();
                         answerCardChoose.BorderBrush = new SolidColorBrush(Colors.Blue);
                         bttFirstAnswer.IsEnabled = false;
                         bttSecondAnswer.IsEnabled = false;
@@ -640,6 +653,10 @@ namespace JeopardyGame.Pages
                 {
                     try
                     {
+                        GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                        gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
+                        GameActionsOperationsClient gameActionsClientProxy = new();
                         gameActionsClientProxy.FinishRound(roomCode, playersInGame.ToArray(), currentRound);
 
                     }
@@ -755,6 +772,10 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
+                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
+                    GameActionsOperationsClient gameActionsClientProxy = new();
                     gameActionsClientProxy.FinishGame(roomCode, playerInGame);
                 }
                 catch (EndpointNotFoundException ex)
@@ -871,13 +892,18 @@ namespace JeopardyGame.Pages
                 Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(btt => !btt.Content.Equals(descriptionAnswerToQuestion));
                 try
                 {
+                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
                     if (currentRound != ROUND_THREE)
                     {
+                        GameActionsOperationsClient gameActionsClientProxy = new();
                         int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content)).IdAnswer;
                         gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);
                     }
                     else
                     {
+                        GameActionsOperationsClient gameActionsClientProxy = new();
                         bool isCorrect = false;
                         answerButton.BorderBrush = new SolidColorBrush(Colors.Blue);
                         bttFirstAnswer.IsEnabled = false;
@@ -923,6 +949,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
+                GameActionsOperationsClient gameActionsClientProxy = new();
                 gameActionsClientProxy.UnSubscribeFromGameCallBack(roomCode, userSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
@@ -1038,8 +1065,10 @@ namespace JeopardyGame.Pages
 
         private void ClickOpenChat(object sender, MouseButtonEventArgs e)
         {
+            teamChat.RenewCallBackChannel();
             grdChat.Visibility = Visibility.Visible;
         }
+
         public void CloseLiveChat()
         {
             grdChat.Visibility = Visibility.Collapsed;

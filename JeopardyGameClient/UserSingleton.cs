@@ -42,7 +42,6 @@ namespace JeopardyGame
             NoReports = playerSingleton.NoReports;
             IdCurrentAvatar = playerSingleton.IdActualAvatar;
             IdState = playerSingleton.IdState;
-            BeginHeartBeat();
         }
 
         public static UserPOJO GetUserPojoSingelton()
@@ -68,6 +67,7 @@ namespace JeopardyGame
             if (instanceOfUserSingleton == null)
             {
                 instanceOfUserSingleton = new UserSingleton();
+                BeginHeartBeat();
             }
             return instanceOfUserSingleton;
         }
@@ -78,6 +78,7 @@ namespace JeopardyGame
             if (instanceOfUserSingleton == null)
             {
                 instanceOfUserSingleton = new UserSingleton(userSingleton, playerSingleton);
+                BeginHeartBeat();
             }
             return instanceOfUserSingleton;
         }

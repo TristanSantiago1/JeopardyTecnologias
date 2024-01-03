@@ -1526,67 +1526,6 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfArrayOfMessageChatxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
-    [System.SerializableAttribute()]
-    public partial class GenericClassOfArrayOfMessageChatxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CodeEventField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private JeopardyGame.ServidorServiciosJeopardy.MessageChat[] ObjectSavedField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CodeEvent {
-            get {
-                return this.CodeEventField;
-            }
-            set {
-                if ((this.CodeEventField.Equals(value) != true)) {
-                    this.CodeEventField = value;
-                    this.RaisePropertyChanged("CodeEvent");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public JeopardyGame.ServidorServiciosJeopardy.MessageChat[] ObjectSaved {
-            get {
-                return this.ObjectSavedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
-                    this.ObjectSavedField = value;
-                    this.RaisePropertyChanged("ObjectSaved");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfboolean", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
     [System.SerializableAttribute()]
     public partial class GenericClassOfboolean : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1648,27 +1587,18 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CurrentQuestionToShowContract", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericClassOfArrayOfMessageChatxY0a3WX4", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
     [System.SerializableAttribute()]
-    public partial class CurrentQuestionToShowContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class GenericClassOfArrayOfMessageChatxY0a3WX4 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdFirstAnswerField;
+        private int CodeEventField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdFourthAnswerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdQuestionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdSecondAnswerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdThirdAnswerField;
+        private JeopardyGame.ServidorServiciosJeopardy.MessageChat[] ObjectSavedField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1681,66 +1611,27 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdFirstAnswer {
+        public int CodeEvent {
             get {
-                return this.IdFirstAnswerField;
+                return this.CodeEventField;
             }
             set {
-                if ((this.IdFirstAnswerField.Equals(value) != true)) {
-                    this.IdFirstAnswerField = value;
-                    this.RaisePropertyChanged("IdFirstAnswer");
+                if ((this.CodeEventField.Equals(value) != true)) {
+                    this.CodeEventField = value;
+                    this.RaisePropertyChanged("CodeEvent");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdFourthAnswer {
+        public JeopardyGame.ServidorServiciosJeopardy.MessageChat[] ObjectSaved {
             get {
-                return this.IdFourthAnswerField;
+                return this.ObjectSavedField;
             }
             set {
-                if ((this.IdFourthAnswerField.Equals(value) != true)) {
-                    this.IdFourthAnswerField = value;
-                    this.RaisePropertyChanged("IdFourthAnswer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdQuestion {
-            get {
-                return this.IdQuestionField;
-            }
-            set {
-                if ((this.IdQuestionField.Equals(value) != true)) {
-                    this.IdQuestionField = value;
-                    this.RaisePropertyChanged("IdQuestion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdSecondAnswer {
-            get {
-                return this.IdSecondAnswerField;
-            }
-            set {
-                if ((this.IdSecondAnswerField.Equals(value) != true)) {
-                    this.IdSecondAnswerField = value;
-                    this.RaisePropertyChanged("IdSecondAnswer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdThirdAnswer {
-            get {
-                return this.IdThirdAnswerField;
-            }
-            set {
-                if ((this.IdThirdAnswerField.Equals(value) != true)) {
-                    this.IdThirdAnswerField = value;
-                    this.RaisePropertyChanged("IdThirdAnswer");
+                if ((object.ReferenceEquals(this.ObjectSavedField, value) != true)) {
+                    this.ObjectSavedField = value;
+                    this.RaisePropertyChanged("ObjectSaved");
                 }
             }
         }
@@ -1912,6 +1803,115 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CurrentQuestionToShowContract", Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data")]
+    [System.SerializableAttribute()]
+    public partial class CurrentQuestionToShowContract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdFirstAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdFourthAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdQuestionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdSecondAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdThirdAnswerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdFirstAnswer {
+            get {
+                return this.IdFirstAnswerField;
+            }
+            set {
+                if ((this.IdFirstAnswerField.Equals(value) != true)) {
+                    this.IdFirstAnswerField = value;
+                    this.RaisePropertyChanged("IdFirstAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdFourthAnswer {
+            get {
+                return this.IdFourthAnswerField;
+            }
+            set {
+                if ((this.IdFourthAnswerField.Equals(value) != true)) {
+                    this.IdFourthAnswerField = value;
+                    this.RaisePropertyChanged("IdFourthAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdQuestion {
+            get {
+                return this.IdQuestionField;
+            }
+            set {
+                if ((this.IdQuestionField.Equals(value) != true)) {
+                    this.IdQuestionField = value;
+                    this.RaisePropertyChanged("IdQuestion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdSecondAnswer {
+            get {
+                return this.IdSecondAnswerField;
+            }
+            set {
+                if ((this.IdSecondAnswerField.Equals(value) != true)) {
+                    this.IdSecondAnswerField = value;
+                    this.RaisePropertyChanged("IdSecondAnswer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdThirdAnswer {
+            get {
+                return this.IdThirdAnswerField;
+            }
+            set {
+                if ((this.IdThirdAnswerField.Equals(value) != true)) {
+                    this.IdThirdAnswerField = value;
+                    this.RaisePropertyChanged("IdThirdAnswer");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ICheckUserLiving", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.ICheckUserLivingCallback))]
     public interface ICheckUserLiving {
@@ -1921,6 +1921,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving", ReplyAction="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLivingResponse")]
         System.Threading.Tasks.Task<int> SubscribeToICheckUserLivingAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckUserLiving/RenewLivingCallBack", ReplyAction="http://tempuri.org/ICheckUserLiving/RenewLivingCallBackResponse")]
+        int RenewLivingCallBack(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICheckUserLiving/RenewLivingCallBack", ReplyAction="http://tempuri.org/ICheckUserLiving/RenewLivingCallBackResponse")]
+        System.Threading.Tasks.Task<int> RenewLivingCallBackAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1964,6 +1970,206 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<int> SubscribeToICheckUserLivingAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
             return base.Channel.SubscribeToICheckUserLivingAsync(user);
+        }
+        
+        public int RenewLivingCallBack(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.RenewLivingCallBack(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> RenewLivingCallBackAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO user) {
+            return base.Channel.RenewLivingCallBackAsync(user);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IChatForTeamsOperations")]
+    public interface IChatForTeamsOperations {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeamsOperations/SendMessageTeam")]
+        void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeamsOperations/SendMessageTeam")]
+        System.Threading.Tasks.Task SendMessageTeamAsync(int idUser, int idTeamMate, string userName, string messageToSend);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeamsOperations/UnregisterFromTeamChat")]
+        void UnregisterFromTeamChat(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeamsOperations/UnregisterFromTeamChat")]
+        System.Threading.Tasks.Task UnregisterFromTeamChatAsync(int idUser);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatForTeamsOperationsChannel : JeopardyGame.ServidorServiciosJeopardy.IChatForTeamsOperations, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChatForTeamsOperationsClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IChatForTeamsOperations>, JeopardyGame.ServidorServiciosJeopardy.IChatForTeamsOperations {
+        
+        public ChatForTeamsOperationsClient() {
+        }
+        
+        public ChatForTeamsOperationsClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ChatForTeamsOperationsClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatForTeamsOperationsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatForTeamsOperationsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend) {
+            base.Channel.SendMessageTeam(idUser, idTeamMate, userName, messageToSend);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageTeamAsync(int idUser, int idTeamMate, string userName, string messageToSend) {
+            return base.Channel.SendMessageTeamAsync(idUser, idTeamMate, userName, messageToSend);
+        }
+        
+        public void UnregisterFromTeamChat(int idUser) {
+            base.Channel.UnregisterFromTeamChat(idUser);
+        }
+        
+        public System.Threading.Tasks.Task UnregisterFromTeamChatAsync(int idUser) {
+            return base.Channel.UnregisterFromTeamChatAsync(idUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IFriendManagerActionOperations")]
+    public interface IFriendManagerActionOperations {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/UnregisterFriendManagerUser")]
+        void UnregisterFriendManagerUser(int idUserFriendManager);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/UnregisterFriendManagerUser")]
+        System.Threading.Tasks.Task UnregisterFriendManagerUserAsync(int idUserFriendManager);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActionOperations/BanUser", ReplyAction="http://tempuri.org/IFriendManagerActionOperations/BanUserResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayerBanned, int idUserBanning);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActionOperations/BanUser", ReplyAction="http://tempuri.org/IFriendManagerActionOperations/BanUserResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayerBanned, int idUserBanning);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/EliminateUserFromFriends")]
+        void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/EliminateUserFromFriends")]
+        System.Threading.Tasks.Task EliminateUserFromFriendsAsync(int idPlayerDeleting, int idUserToEliminate);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/SendFriendRequest")]
+        void SendFriendRequest(int idPLayerRequesting, int idUserRequested);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/SendFriendRequest")]
+        System.Threading.Tasks.Task SendFriendRequestAsync(int idPLayerRequesting, int idUserRequested);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/AcceptFriendRequest")]
+        void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/AcceptFriendRequest")]
+        System.Threading.Tasks.Task AcceptFriendRequestAsync(int idPlayerAccepting, int idUserRequesting);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/DeclineFriendRequest")]
+        void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/DeclineFriendRequest")]
+        System.Threading.Tasks.Task DeclineFriendRequestAsync(int idPlayerDeclining, int idUserRequesting);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/NotifyUserAboutNewPlayer")]
+        void NotifyUserAboutNewPlayer(int idNewPlayer, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActionOperations/NotifyUserAboutNewPlayer")]
+        System.Threading.Tasks.Task NotifyUserAboutNewPlayerAsync(int idNewPlayer, string userName);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IFriendManagerActionOperationsChannel : JeopardyGame.ServidorServiciosJeopardy.IFriendManagerActionOperations, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class FriendManagerActionOperationsClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IFriendManagerActionOperations>, JeopardyGame.ServidorServiciosJeopardy.IFriendManagerActionOperations {
+        
+        public FriendManagerActionOperationsClient() {
+        }
+        
+        public FriendManagerActionOperationsClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public FriendManagerActionOperationsClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public FriendManagerActionOperationsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public FriendManagerActionOperationsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void UnregisterFriendManagerUser(int idUserFriendManager) {
+            base.Channel.UnregisterFriendManagerUser(idUserFriendManager);
+        }
+        
+        public System.Threading.Tasks.Task UnregisterFriendManagerUserAsync(int idUserFriendManager) {
+            return base.Channel.UnregisterFriendManagerUserAsync(idUserFriendManager);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayerBanned, int idUserBanning) {
+            return base.Channel.BanUser(idPlayerBanned, idUserBanning);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayerBanned, int idUserBanning) {
+            return base.Channel.BanUserAsync(idPlayerBanned, idUserBanning);
+        }
+        
+        public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate) {
+            base.Channel.EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
+        }
+        
+        public System.Threading.Tasks.Task EliminateUserFromFriendsAsync(int idPlayerDeleting, int idUserToEliminate) {
+            return base.Channel.EliminateUserFromFriendsAsync(idPlayerDeleting, idUserToEliminate);
+        }
+        
+        public void SendFriendRequest(int idPLayerRequesting, int idUserRequested) {
+            base.Channel.SendFriendRequest(idPLayerRequesting, idUserRequested);
+        }
+        
+        public System.Threading.Tasks.Task SendFriendRequestAsync(int idPLayerRequesting, int idUserRequested) {
+            return base.Channel.SendFriendRequestAsync(idPLayerRequesting, idUserRequested);
+        }
+        
+        public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting) {
+            base.Channel.AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
+        }
+        
+        public System.Threading.Tasks.Task AcceptFriendRequestAsync(int idPlayerAccepting, int idUserRequesting) {
+            return base.Channel.AcceptFriendRequestAsync(idPlayerAccepting, idUserRequesting);
+        }
+        
+        public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting) {
+            base.Channel.DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
+        }
+        
+        public System.Threading.Tasks.Task DeclineFriendRequestAsync(int idPlayerDeclining, int idUserRequesting) {
+            return base.Channel.DeclineFriendRequestAsync(idPlayerDeclining, idUserRequesting);
+        }
+        
+        public void NotifyUserAboutNewPlayer(int idNewPlayer, string userName) {
+            base.Channel.NotifyUserAboutNewPlayer(idNewPlayer, userName);
+        }
+        
+        public System.Threading.Tasks.Task NotifyUserAboutNewPlayerAsync(int idNewPlayer, string userName) {
+            return base.Channel.NotifyUserAboutNewPlayerAsync(idNewPlayer, userName);
         }
     }
     
@@ -2324,23 +2530,17 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IChatForTeams", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.IChatForTeamsCallback))]
     public interface IChatForTeams {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/SendMessageTeam")]
-        void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/SendMessageTeam")]
-        System.Threading.Tasks.Task SendMessageTeamAsync(int idUser, int idTeamMate, string userName, string messageToSend);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat")]
-        void UnregisterFromTeamChat(int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/UnregisterFromTeamChat")]
-        System.Threading.Tasks.Task UnregisterFromTeamChatAsync(int idUser);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat")]
         void RegisterForTeamChat(int idUser);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat")]
         System.Threading.Tasks.Task RegisterForTeamChatAsync(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/RenewTeamChatCallBack", ReplyAction="http://tempuri.org/IChatForTeams/RenewTeamChatCallBackResponse")]
+        int RenewTeamChatCallBack(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatForTeams/RenewTeamChatCallBack", ReplyAction="http://tempuri.org/IChatForTeams/RenewTeamChatCallBackResponse")]
+        System.Threading.Tasks.Task<int> RenewTeamChatCallBackAsync(int idUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2378,28 +2578,20 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend) {
-            base.Channel.SendMessageTeam(idUser, idTeamMate, userName, messageToSend);
-        }
-        
-        public System.Threading.Tasks.Task SendMessageTeamAsync(int idUser, int idTeamMate, string userName, string messageToSend) {
-            return base.Channel.SendMessageTeamAsync(idUser, idTeamMate, userName, messageToSend);
-        }
-        
-        public void UnregisterFromTeamChat(int idUser) {
-            base.Channel.UnregisterFromTeamChat(idUser);
-        }
-        
-        public System.Threading.Tasks.Task UnregisterFromTeamChatAsync(int idUser) {
-            return base.Channel.UnregisterFromTeamChatAsync(idUser);
-        }
-        
         public void RegisterForTeamChat(int idUser) {
             base.Channel.RegisterForTeamChat(idUser);
         }
         
         public System.Threading.Tasks.Task RegisterForTeamChatAsync(int idUser) {
             return base.Channel.RegisterForTeamChatAsync(idUser);
+        }
+        
+        public int RenewTeamChatCallBack(int idUser) {
+            return base.Channel.RenewTeamChatCallBack(idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> RenewTeamChatCallBackAsync(int idUser) {
+            return base.Channel.RenewTeamChatCallBackAsync(idUser);
         }
     }
     
@@ -2604,6 +2796,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel")]
         System.Threading.Tasks.Task SubscribeToAvailabityCallBackChannelAsync(int idNewActiveUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/RenewNotifyAvailabityCallBack")]
+        void RenewNotifyAvailabityCallBack(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifyUserAvailability/RenewNotifyAvailabityCallBack")]
+        System.Threading.Tasks.Task RenewNotifyAvailabityCallBackAsync(int idUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2647,6 +2845,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task SubscribeToAvailabityCallBackChannelAsync(int idNewActiveUser) {
             return base.Channel.SubscribeToAvailabityCallBackChannelAsync(idNewActiveUser);
+        }
+        
+        public void RenewNotifyAvailabityCallBack(int idUser) {
+            base.Channel.RenewNotifyAvailabityCallBack(idUser);
+        }
+        
+        public System.Threading.Tasks.Task RenewNotifyAvailabityCallBackAsync(int idUser) {
+            return base.Channel.RenewNotifyAvailabityCallBackAsync(idUser);
         }
     }
     
@@ -2735,47 +2941,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/RegisterFriendManagerUser", ReplyAction="http://tempuri.org/IFriendManagerActions/RegisterFriendManagerUserResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> RegisterFriendManagerUserAsync(int idUserFriendManager);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/UnregisterFriendManagerUser")]
-        void UnregisterFriendManagerUser(int idUserFriendManager);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBack", ReplyAction="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBackResponse")]
+        int RenewFriendManagerUserCallBack(int idUserFriendManager);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/UnregisterFriendManagerUser")]
-        System.Threading.Tasks.Task UnregisterFriendManagerUserAsync(int idUserFriendManager);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/ReportPlayer")]
-        void ReportPlayer(int idUser, string userName);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/ReportPlayer")]
-        System.Threading.Tasks.Task ReportPlayerAsync(int idUser, string userName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/BanUser", ReplyAction="http://tempuri.org/IFriendManagerActions/BanUserResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayerBanned, int idUserBanning);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/BanUser", ReplyAction="http://tempuri.org/IFriendManagerActions/BanUserResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayerBanned, int idUserBanning);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/EliminateUserFromFriends")]
-        void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/EliminateUserFromFriends")]
-        System.Threading.Tasks.Task EliminateUserFromFriendsAsync(int idPlayerDeleting, int idUserToEliminate);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/SendFriendRequest")]
-        void SendFriendRequest(int idPLayerRequesting, int idUserRequested);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/SendFriendRequest")]
-        System.Threading.Tasks.Task SendFriendRequestAsync(int idPLayerRequesting, int idUserRequested);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/AcceptFriendRequest")]
-        void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/AcceptFriendRequest")]
-        System.Threading.Tasks.Task AcceptFriendRequestAsync(int idPlayerAccepting, int idUserRequesting);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/DeclineFriendRequest")]
-        void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IFriendManagerActions/DeclineFriendRequest")]
-        System.Threading.Tasks.Task DeclineFriendRequestAsync(int idPlayerDeclining, int idUserRequesting);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBack", ReplyAction="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBackResponse")]
+        System.Threading.Tasks.Task<int> RenewFriendManagerUserCallBackAsync(int idUserFriendManager);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2789,6 +2959,9 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/ResponseRequestAction", ReplyAction="http://tempuri.org/IFriendManagerActions/ResponseRequestActionResponse")]
         void ResponseRequestAction(int idUser, int requestStatus, string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendManagerActions/ResponseNewPlayerJusJoin", ReplyAction="http://tempuri.org/IFriendManagerActions/ResponseNewPlayerJusJoinResponse")]
+        void ResponseNewPlayerJusJoin(int idUser, string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2827,60 +3000,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.RegisterFriendManagerUserAsync(idUserFriendManager);
         }
         
-        public void UnregisterFriendManagerUser(int idUserFriendManager) {
-            base.Channel.UnregisterFriendManagerUser(idUserFriendManager);
+        public int RenewFriendManagerUserCallBack(int idUserFriendManager) {
+            return base.Channel.RenewFriendManagerUserCallBack(idUserFriendManager);
         }
         
-        public System.Threading.Tasks.Task UnregisterFriendManagerUserAsync(int idUserFriendManager) {
-            return base.Channel.UnregisterFriendManagerUserAsync(idUserFriendManager);
-        }
-        
-        public void ReportPlayer(int idUser, string userName) {
-            base.Channel.ReportPlayer(idUser, userName);
-        }
-        
-        public System.Threading.Tasks.Task ReportPlayerAsync(int idUser, string userName) {
-            return base.Channel.ReportPlayerAsync(idUser, userName);
-        }
-        
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint BanUser(int idPlayerBanned, int idUserBanning) {
-            return base.Channel.BanUser(idPlayerBanned, idUserBanning);
-        }
-        
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> BanUserAsync(int idPlayerBanned, int idUserBanning) {
-            return base.Channel.BanUserAsync(idPlayerBanned, idUserBanning);
-        }
-        
-        public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate) {
-            base.Channel.EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
-        }
-        
-        public System.Threading.Tasks.Task EliminateUserFromFriendsAsync(int idPlayerDeleting, int idUserToEliminate) {
-            return base.Channel.EliminateUserFromFriendsAsync(idPlayerDeleting, idUserToEliminate);
-        }
-        
-        public void SendFriendRequest(int idPLayerRequesting, int idUserRequested) {
-            base.Channel.SendFriendRequest(idPLayerRequesting, idUserRequested);
-        }
-        
-        public System.Threading.Tasks.Task SendFriendRequestAsync(int idPLayerRequesting, int idUserRequested) {
-            return base.Channel.SendFriendRequestAsync(idPLayerRequesting, idUserRequested);
-        }
-        
-        public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting) {
-            base.Channel.AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
-        }
-        
-        public System.Threading.Tasks.Task AcceptFriendRequestAsync(int idPlayerAccepting, int idUserRequesting) {
-            return base.Channel.AcceptFriendRequestAsync(idPlayerAccepting, idUserRequesting);
-        }
-        
-        public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting) {
-            base.Channel.DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
-        }
-        
-        public System.Threading.Tasks.Task DeclineFriendRequestAsync(int idPlayerDeclining, int idUserRequesting) {
-            return base.Channel.DeclineFriendRequestAsync(idPlayerDeclining, idUserRequesting);
+        public System.Threading.Tasks.Task<int> RenewFriendManagerUserCallBackAsync(int idUserFriendManager) {
+            return base.Channel.RenewFriendManagerUserCallBackAsync(idUserFriendManager);
         }
     }
     
@@ -2955,65 +3080,17 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/CreateNewLobby", ReplyAction="http://tempuri.org/ILobbyActions/CreateNewLobbyResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> CreateNewLobbyAsync(int roomCode, int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobby", ReplyAction="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobbyResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobby", ReplyAction="http://tempuri.org/ILobbyActions/GetAllCurrentPlayerInLobbyResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4> GetAllCurrentPlayerInLobbyAsync(int roomCode, int idUserRequesting);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/DissolveLobby")]
-        void DissolveLobby(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/DissolveLobby")]
-        System.Threading.Tasks.Task DissolveLobbyAsync(int roomCode, int idUser);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/JoinIntoLobby", ReplyAction="http://tempuri.org/ILobbyActions/JoinIntoLobbyResponse")]
         JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint JoinIntoLobby(int roomCode, int idUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/JoinIntoLobby", ReplyAction="http://tempuri.org/ILobbyActions/JoinIntoLobbyResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> JoinIntoLobbyAsync(int roomCode, int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/NotifyPlayerInLobby")]
-        void NotifyPlayerInLobby(int roomCode, int idUser);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/RenewLobbyCallBack", ReplyAction="http://tempuri.org/ILobbyActions/RenewLobbyCallBackResponse")]
+        int RenewLobbyCallBack(int roomCode, int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/NotifyPlayerInLobby")]
-        System.Threading.Tasks.Task NotifyPlayerInLobbyAsync(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/LeaveLobby")]
-        void LeaveLobby(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/LeaveLobby")]
-        System.Threading.Tasks.Task LeaveLobbyAsync(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/ChangePlayerSide")]
-        void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/ChangePlayerSide")]
-        System.Threading.Tasks.Task ChangePlayerSideAsync(int roomCode, int idUserToChangeTeam, int newSideTeam);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/EliminatePlayerFromMatch")]
-        void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/EliminatePlayerFromMatch")]
-        System.Threading.Tasks.Task EliminatePlayerFromMatchAsync(int roomCode, int idUserToEliminate);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/MakeTeams")]
-        void MakeTeams(int roomCode, int idUser, bool wannaTeam);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/MakeTeams")]
-        System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/SelectQuestionsForGame")]
-        void SelectQuestionsForGame(int roomCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/SelectQuestionsForGame")]
-        System.Threading.Tasks.Task SelectQuestionsForGameAsync(int roomCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/StartGame")]
-        void StartGame(int roomCode);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActions/StartGame")]
-        System.Threading.Tasks.Task StartGameAsync(int roomCode);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActions/RenewLobbyCallBack", ReplyAction="http://tempuri.org/ILobbyActions/RenewLobbyCallBackResponse")]
+        System.Threading.Tasks.Task<int> RenewLobbyCallBackAsync(int roomCode, int idUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3074,6 +3151,109 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.CreateNewLobbyAsync(roomCode, idUser);
         }
         
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint JoinIntoLobby(int roomCode, int idUser) {
+            return base.Channel.JoinIntoLobby(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> JoinIntoLobbyAsync(int roomCode, int idUser) {
+            return base.Channel.JoinIntoLobbyAsync(roomCode, idUser);
+        }
+        
+        public int RenewLobbyCallBack(int roomCode, int idUser) {
+            return base.Channel.RenewLobbyCallBack(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> RenewLobbyCallBackAsync(int roomCode, int idUser) {
+            return base.Channel.RenewLobbyCallBackAsync(roomCode, idUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ILobbyActionsOperation")]
+    public interface ILobbyActionsOperation {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobby", ReplyAction="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobbyResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobby", ReplyAction="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobbyResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4> GetAllCurrentPlayerInLobbyAsync(int roomCode, int idUserRequesting);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/DissolveLobby")]
+        void DissolveLobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/DissolveLobby")]
+        System.Threading.Tasks.Task DissolveLobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/NotifyPlayerInLobby")]
+        void NotifyPlayerInLobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/NotifyPlayerInLobby")]
+        System.Threading.Tasks.Task NotifyPlayerInLobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/LeaveLobby")]
+        void LeaveLobby(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/LeaveLobby")]
+        System.Threading.Tasks.Task LeaveLobbyAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/ChangePlayerSide")]
+        void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/ChangePlayerSide")]
+        System.Threading.Tasks.Task ChangePlayerSideAsync(int roomCode, int idUserToChangeTeam, int newSideTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/EliminatePlayerFromMatch")]
+        void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/EliminatePlayerFromMatch")]
+        System.Threading.Tasks.Task EliminatePlayerFromMatchAsync(int roomCode, int idUserToEliminate);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/MakeTeams")]
+        void MakeTeams(int roomCode, int idUser, bool wannaTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/MakeTeams")]
+        System.Threading.Tasks.Task MakeTeamsAsync(int roomCode, int idUser, bool wannaTeam);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/SelectQuestionsForGame")]
+        void SelectQuestionsForGame(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/SelectQuestionsForGame")]
+        System.Threading.Tasks.Task SelectQuestionsForGameAsync(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/StartGame")]
+        void StartGame(int roomCode);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyActionsOperation/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(int roomCode);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILobbyActionsOperationChannel : JeopardyGame.ServidorServiciosJeopardy.ILobbyActionsOperation, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LobbyActionsOperationClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.ILobbyActionsOperation>, JeopardyGame.ServidorServiciosJeopardy.ILobbyActionsOperation {
+        
+        public LobbyActionsOperationClient() {
+        }
+        
+        public LobbyActionsOperationClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LobbyActionsOperationClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyActionsOperationClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LobbyActionsOperationClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
         public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting) {
             return base.Channel.GetAllCurrentPlayerInLobby(roomCode, idUserRequesting);
         }
@@ -3088,14 +3268,6 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task DissolveLobbyAsync(int roomCode, int idUser) {
             return base.Channel.DissolveLobbyAsync(roomCode, idUser);
-        }
-        
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint JoinIntoLobby(int roomCode, int idUser) {
-            return base.Channel.JoinIntoLobby(roomCode, idUser);
-        }
-        
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> JoinIntoLobbyAsync(int roomCode, int idUser) {
-            return base.Channel.JoinIntoLobbyAsync(roomCode, idUser);
         }
         
         public void NotifyPlayerInLobby(int roomCode, int idUser) {
@@ -3159,11 +3331,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ILiveChat", CallbackContract=typeof(JeopardyGame.ServidorServiciosJeopardy.ILiveChatCallback))]
     public interface ILiveChat {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/SendMessage")]
-        void SendMessage(int idUser, int roomCode, string userName, string messageToSend);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/CreateChatForLobby", ReplyAction="http://tempuri.org/ILiveChat/CreateChatForLobbyResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean CreateChatForLobby(int roomCode, int idAdmin);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(int idUser, int roomCode, string userName, string messageToSend);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/CreateChatForLobby", ReplyAction="http://tempuri.org/ILiveChat/CreateChatForLobbyResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean> CreateChatForLobbyAsync(int roomCode, int idAdmin);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/GetAllMessages", ReplyAction="http://tempuri.org/ILiveChat/GetAllMessagesResponse")]
         JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4 GetAllMessages(int roomCode, int idUser);
@@ -3171,17 +3343,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/GetAllMessages", ReplyAction="http://tempuri.org/ILiveChat/GetAllMessagesResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4> GetAllMessagesAsync(int roomCode, int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/DeleteChat")]
-        void DeleteChat(int roomCode, int idUser);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/RenewLiveChatCallBack", ReplyAction="http://tempuri.org/ILiveChat/RenewLiveChatCallBackResponse")]
+        int RenewLiveChatCallBack(int roomCode, int idUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChat/DeleteChat")]
-        System.Threading.Tasks.Task DeleteChatAsync(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/CreateChatForLobby", ReplyAction="http://tempuri.org/ILiveChat/CreateChatForLobbyResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean CreateChatForLobby(int roomCode, int idAdmin);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/CreateChatForLobby", ReplyAction="http://tempuri.org/ILiveChat/CreateChatForLobbyResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean> CreateChatForLobbyAsync(int roomCode, int idAdmin);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILiveChat/RenewLiveChatCallBack", ReplyAction="http://tempuri.org/ILiveChat/RenewLiveChatCallBackResponse")]
+        System.Threading.Tasks.Task<int> RenewLiveChatCallBackAsync(int roomCode, int idUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3219,12 +3385,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void SendMessage(int idUser, int roomCode, string userName, string messageToSend) {
-            base.Channel.SendMessage(idUser, roomCode, userName, messageToSend);
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean CreateChatForLobby(int roomCode, int idAdmin) {
+            return base.Channel.CreateChatForLobby(roomCode, idAdmin);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(int idUser, int roomCode, string userName, string messageToSend) {
-            return base.Channel.SendMessageAsync(idUser, roomCode, userName, messageToSend);
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean> CreateChatForLobbyAsync(int roomCode, int idAdmin) {
+            return base.Channel.CreateChatForLobbyAsync(roomCode, idAdmin);
         }
         
         public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfArrayOfMessageChatxY0a3WX4 GetAllMessages(int roomCode, int idUser) {
@@ -3235,20 +3401,73 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.GetAllMessagesAsync(roomCode, idUser);
         }
         
+        public int RenewLiveChatCallBack(int roomCode, int idUser) {
+            return base.Channel.RenewLiveChatCallBack(roomCode, idUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> RenewLiveChatCallBackAsync(int roomCode, int idUser) {
+            return base.Channel.RenewLiveChatCallBackAsync(roomCode, idUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.ILiveChatOperations")]
+    public interface ILiveChatOperations {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChatOperations/SendMessage")]
+        void SendMessage(int idUser, int roomCode, string userName, string messageToSend);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChatOperations/SendMessage")]
+        System.Threading.Tasks.Task SendMessageAsync(int idUser, int roomCode, string userName, string messageToSend);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChatOperations/DeleteChat")]
+        void DeleteChat(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILiveChatOperations/DeleteChat")]
+        System.Threading.Tasks.Task DeleteChatAsync(int roomCode, int idUser);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ILiveChatOperationsChannel : JeopardyGame.ServidorServiciosJeopardy.ILiveChatOperations, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class LiveChatOperationsClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.ILiveChatOperations>, JeopardyGame.ServidorServiciosJeopardy.ILiveChatOperations {
+        
+        public LiveChatOperationsClient() {
+        }
+        
+        public LiveChatOperationsClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public LiveChatOperationsClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LiveChatOperationsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public LiveChatOperationsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void SendMessage(int idUser, int roomCode, string userName, string messageToSend) {
+            base.Channel.SendMessage(idUser, roomCode, userName, messageToSend);
+        }
+        
+        public System.Threading.Tasks.Task SendMessageAsync(int idUser, int roomCode, string userName, string messageToSend) {
+            return base.Channel.SendMessageAsync(idUser, roomCode, userName, messageToSend);
+        }
+        
         public void DeleteChat(int roomCode, int idUser) {
             base.Channel.DeleteChat(roomCode, idUser);
         }
         
         public System.Threading.Tasks.Task DeleteChatAsync(int roomCode, int idUser) {
             return base.Channel.DeleteChatAsync(roomCode, idUser);
-        }
-        
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean CreateChatForLobby(int roomCode, int idAdmin) {
-            return base.Channel.CreateChatForLobby(roomCode, idAdmin);
-        }
-        
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfboolean> CreateChatForLobbyAsync(int roomCode, int idAdmin) {
-            return base.Channel.CreateChatForLobbyAsync(roomCode, idAdmin);
         }
     }
     
@@ -3262,47 +3481,11 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/SubscribeToGameCallBack")]
         System.Threading.Tasks.Task SubscribeToGameCallBackAsync(int roomCode, int idUserSubscribing, int idAvatar);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/UnSubscribeFromGameCallBack")]
-        void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameActions/RenewGameCallBack", ReplyAction="http://tempuri.org/IGameActions/RenewGameCallBackResponse")]
+        int RenewGameCallBack(int roomCode, int idIUser);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/UnSubscribeFromGameCallBack")]
-        System.Threading.Tasks.Task UnSubscribeFromGameCallBackAsync(int roomCode, int idUserUnsubscribing);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseQuestionOfBoard")]
-        void ChooseQuestionOfBoard(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseQuestionOfBoard")]
-        System.Threading.Tasks.Task ChooseQuestionOfBoardAsync(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseAnswer")]
-        void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ChooseAnswer")]
-        System.Threading.Tasks.Task ChooseAnswerAsync(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishRound")]
-        void FinishRound(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishRound")]
-        System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishGame")]
-        void FinishGame(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/FinishGame")]
-        System.Threading.Tasks.Task FinishGameAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmBet")]
-        void ConfirmBet(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmBet")]
-        System.Threading.Tasks.Task ConfirmBetAsync(int roomCode, int idUser);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmLastQuestionAnswer")]
-        void ConfirmLastQuestionAnswer(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ConfirmLastQuestionAnswer")]
-        System.Threading.Tasks.Task ConfirmLastQuestionAnswerAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameActions/RenewGameCallBack", ReplyAction="http://tempuri.org/IGameActions/RenewGameCallBackResponse")]
+        System.Threading.Tasks.Task<int> RenewGameCallBackAsync(int roomCode, int idIUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3370,6 +3553,89 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task SubscribeToGameCallBackAsync(int roomCode, int idUserSubscribing, int idAvatar) {
             return base.Channel.SubscribeToGameCallBackAsync(roomCode, idUserSubscribing, idAvatar);
+        }
+        
+        public int RenewGameCallBack(int roomCode, int idIUser) {
+            return base.Channel.RenewGameCallBack(roomCode, idIUser);
+        }
+        
+        public System.Threading.Tasks.Task<int> RenewGameCallBackAsync(int roomCode, int idIUser) {
+            return base.Channel.RenewGameCallBackAsync(roomCode, idIUser);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServidorServiciosJeopardy.IGameActionsOperations")]
+    public interface IGameActionsOperations {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/UnSubscribeFromGameCallBack")]
+        void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/UnSubscribeFromGameCallBack")]
+        System.Threading.Tasks.Task UnSubscribeFromGameCallBackAsync(int roomCode, int idUserUnsubscribing);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ChooseQuestionOfBoard")]
+        void ChooseQuestionOfBoard(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ChooseQuestionOfBoard")]
+        System.Threading.Tasks.Task ChooseQuestionOfBoardAsync(int roomCode, int idUserSelecting, int currentRound, JeopardyGame.ServidorServiciosJeopardy.CurrentQuestionToShowContract questionToShow);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ChooseAnswer")]
+        void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ChooseAnswer")]
+        System.Threading.Tasks.Task ChooseAnswerAsync(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishRound")]
+        void FinishRound(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishRound")]
+        System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishGame")]
+        void FinishGame(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishGame")]
+        System.Threading.Tasks.Task FinishGameAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ConfirmBet")]
+        void ConfirmBet(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ConfirmBet")]
+        System.Threading.Tasks.Task ConfirmBetAsync(int roomCode, int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ConfirmLastQuestionAnswer")]
+        void ConfirmLastQuestionAnswer(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ConfirmLastQuestionAnswer")]
+        System.Threading.Tasks.Task ConfirmLastQuestionAnswerAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameActionsOperationsChannel : JeopardyGame.ServidorServiciosJeopardy.IGameActionsOperations, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameActionsOperationsClient : System.ServiceModel.ClientBase<JeopardyGame.ServidorServiciosJeopardy.IGameActionsOperations>, JeopardyGame.ServidorServiciosJeopardy.IGameActionsOperations {
+        
+        public GameActionsOperationsClient() {
+        }
+        
+        public GameActionsOperationsClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public GameActionsOperationsClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameActionsOperationsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameActionsOperationsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
         }
         
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing) {

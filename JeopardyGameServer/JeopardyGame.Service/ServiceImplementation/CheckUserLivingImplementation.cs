@@ -14,6 +14,47 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public class CheckUserLivingImplementation : ICheckUserLiving
     {
+        public int RenewLivingCallBack(UserPOJO user)
+        {
+            int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+            try
+            {
+                if (user == null)
+                {
+                    return resultToReturn = ExceptionDictionary.NULL_PARAEMETER;
+                }
+                OperationContext context = OperationContext.Current;
+                LivingClients.RenewLivingCallBack(user.UserName, context);
+                resultToReturn =  ExceptionDictionary.SUCCESFULL_EVENT;
+                
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+
         public int SubscribeToICheckUserLiving(UserPOJO user)
         {
             try

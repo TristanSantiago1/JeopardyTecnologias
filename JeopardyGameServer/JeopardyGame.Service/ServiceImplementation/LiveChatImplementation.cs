@@ -121,18 +121,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public void DeleteChat(int roomCode, int idUser)
-        {
-            HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
-            if (roomCode != NULL_INT_VALUE && messagesHistorical != null && messagesHistorical.idAdmin == idUser)
-            {
-                ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
-                DeleteChannelRegistries(roomCode);
-            }
-        }
+       
 
         private void RegisterNewChannelInChatChannelStorage(int roomCode, int idUser)
         {
+
             try
             {
                 SpecificChannelCallBackChat channelForChat = new SpecificChannelCallBackChat();
@@ -175,12 +168,64 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
+        public int RenewLiveChatCallBack(int roomCode, int idUser)
+        {
+            int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+            try
+            {
+                if (roomCode != 0 && idUser != 0)
+                {
+                    ChatsDictionary.RenewLiveChatCallBack(roomCode, idUser, OperationContext.Current);
+                    resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+    }
+
+
+    public partial class LiveChatOperationsImplementation : ILiveChatOperations
+    {
+
+        private readonly int NULL_INT_VALUE = 0;
+
+
+        public void DeleteChat(int roomCode, int idUser)
+        {
+            HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
+            if (roomCode != NULL_INT_VALUE && messagesHistorical != null && messagesHistorical.idAdmin == idUser)
+            {
+                ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
+                DeleteChannelRegistries(roomCode);
+            }
+        }
+
         private void DeleteChannelRegistries(int roomCode)
-        {          
+        {
             if (roomCode != NULL_INT_VALUE)
             {
-                ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);   
-            }         
+                ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
+            }
         }
 
         public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
@@ -270,8 +315,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                         }
                     }
                 }
-            }           
+            }
         }
-
     }
+
 }

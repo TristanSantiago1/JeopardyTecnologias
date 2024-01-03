@@ -10,16 +10,22 @@ namespace JeopardyGame.Service.InterfacesSevices
 {
     [ServiceContract(CallbackContract = typeof(IIChatForTeamsCallBack))]
     public interface IChatForTeams
+    {       
+        [OperationContract(IsOneWay = true)]
+        void RegisterForTeamChat(int idUser);
+
+        [OperationContract]
+        int RenewTeamChatCallBack(int idUser);
+    }
+
+    [ServiceContract]
+    public interface IChatForTeamsOperations
     {
         [OperationContract(IsOneWay = true)]
         void SendMessageTeam(int idUser, int idTeamMate, String userName, String messageToSend);
 
         [OperationContract(IsOneWay = true)]
         void UnregisterFromTeamChat(int idUser);
-
-        [OperationContract(IsOneWay = true)]
-        void RegisterForTeamChat(int idUser);
-
     }
 
     [ServiceContract]

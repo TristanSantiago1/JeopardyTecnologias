@@ -13,29 +13,47 @@ namespace JeopardyGame.Service.DataDictionaries
         private static Dictionary<int, Lobby> activeLobbiesDictionary = new Dictionary<int, Lobby>();
         public static void RegisterNewLobby(int roomCode, Lobby newLobby)
         {
-            if (!activeLobbiesDictionary.ContainsKey(roomCode))
+            if (roomCode != 0 && newLobby != null && !activeLobbiesDictionary.ContainsKey(roomCode))
             {
                 activeLobbiesDictionary.Add(roomCode, newLobby);
             }
         }
+
         public static Lobby GetSpecificActiveLobby(int roomCode)
         {
-            foreach (var item in activeLobbiesDictionary)
+            if (roomCode != 0)
             {
-                if (item.Key == roomCode)
+                foreach (var item in activeLobbiesDictionary)
                 {
-                    return item.Value;
+                    if (item.Key == roomCode)
+                    {
+                        return item.Value;
+                    }
                 }
             }
             return null;
         }
+
         public static void RemoveRegistryOfLobbyFromDictionary(int roomCode)
         {
-            if (activeLobbiesDictionary.ContainsKey(roomCode))
+            if (roomCode != 0 && activeLobbiesDictionary.ContainsKey(roomCode))
             {
                 activeLobbiesDictionary.Remove(roomCode);
             }
         }
+
+        public static void RenewLobbyCalBack(int roomCode, int idUser, OperationContext channel)
+        {
+            if(roomCode != 0 && idUser != 0 && channel != null && activeLobbiesDictionary.ContainsKey(roomCode))
+            {
+                var lobby = activeLobbiesDictionary[roomCode];
+                if (lobby != null && lobby.listOfPlayerInLobby.Any(pla => pla.idUser == idUser))
+                {
+                    lobby.listOfPlayerInLobby.FirstOrDefault(pla => pla.idUser == idUser).lobbyCommunicationChannelCallback = channel;
+                }
+            }
+        }
+
         public static Dictionary<int, Lobby> GetActiveLobbiesList()
         {
             return activeLobbiesDictionary;

@@ -56,6 +56,38 @@ namespace JeopardyGame.Service.ServiceImplementation
             }          
         }
 
+        public void RenewNotifyAvailabityCallBack(int idUser)
+        {
+            try
+            {
+                if (idUser != 0)
+                {
+                    var newChannel = OperationContext.Current;
+                    ActiveUsersDictionary.RenewAvailabityCallBack(idUser, newChannel);
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
+
         public void SubscribeToAvailabityCallBackChannel(int idNewActiveUser)
         {
             try

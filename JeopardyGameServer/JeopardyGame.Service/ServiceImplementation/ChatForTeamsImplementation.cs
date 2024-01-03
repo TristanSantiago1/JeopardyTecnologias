@@ -50,6 +50,55 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
+        public int RenewTeamChatCallBack(int idUser)
+        {
+            int resultToReturn;
+            try
+            {
+                if (idUser != NULL_INT_VALUE)
+                {
+                    var newChannelForTeamChat = OperationContext.Current;
+                    TeamChats.RenewTeamChatCallBack(idUser, newChannelForTeamChat);
+                    resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;                    
+                }
+                else
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+    }
+
+    public partial class TeamChatForTeamsOperationsImplemtation : IChatForTeamsOperations
+    {
+
+        private readonly int NULL_INT_VALUE = 0;
+
         public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend)
         {
             if (idUser <= NULL_INT_VALUE || idTeamMate <= NULL_INT_VALUE || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(messageToSend))
@@ -132,12 +181,13 @@ namespace JeopardyGame.Service.ServiceImplementation
             if (idUser != NULL_INT_VALUE)
             {
                 var channelForUnregisterTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                if (channelForUnregisterTeamChat != null)                {
+                if (channelForUnregisterTeamChat != null)
+                {
 
                     TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUser);
                 }
             }
         }
-
     }
+
 }

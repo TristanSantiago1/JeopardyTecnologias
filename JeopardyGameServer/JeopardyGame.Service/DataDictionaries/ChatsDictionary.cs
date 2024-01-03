@@ -14,29 +14,34 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RegisterNewChatInDictionary(int roomCode, HistoricalOfAllMessages newChat)
         {
-            if (!activeChats.ContainsKey(roomCode))
+            if (roomCode != 0 && newChat != null && !activeChats.ContainsKey(roomCode))
             {
                 activeChats.Add(roomCode, newChat);
             }
         }
         public static HistoricalOfAllMessages GetActiveChat(int roomCode)
         {
-            foreach (var item in activeChats)
+            if (roomCode != 0) 
             {
-                if (item.Key == roomCode)
+                foreach (var item in activeChats)
                 {
-                    return item.Value;
+                    if (item.Key == roomCode)
+                    {
+                        return item.Value;
+                    }
                 }
             }
             return null;
         }
         public static void RemoveRegistryOfActiveChatFromDictionary(int roomCode)
-        {
-            if (activeChats.ContainsKey(roomCode))
+        {            
+            if (roomCode != 0 && activeChats.ContainsKey(roomCode))
             {
                 activeChats.Remove(roomCode);
             }
         }
+
+
         public static  Dictionary<int, HistoricalOfAllMessages> GetActiveChatList()
         {
             return activeChats;
@@ -60,28 +65,43 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RegisterNewChannelCallbackChat(int roomCode, ChannelsCallBackInActiveChats newChannel)
         {
-            if (!channelsCallBackDictionary.ContainsKey(roomCode))
+            if (roomCode != 0 && newChannel != null && !channelsCallBackDictionary.ContainsKey(roomCode))
             {
                 channelsCallBackDictionary.Add(roomCode, newChannel);
             }
         }
         public static ChannelsCallBackInActiveChats GetChannelCallBackChat(int roomCode)
         {
-            foreach (var item in channelsCallBackDictionary)
+            if (roomCode != 0)
             {
-                if (item.Key == roomCode)
+                foreach (var item in channelsCallBackDictionary)
                 {
-                    return item.Value;
+                    if (item.Key == roomCode)
+                    {
+                        return item.Value;
+                    }
                 }
             }
             return null;
         }
         public static void RemoveRegistryOfChannelCallBakcChatFromDictionary(int roomCode)
         {
-            if (channelsCallBackDictionary.ContainsKey(roomCode))
+            if (roomCode != 0 && channelsCallBackDictionary.ContainsKey(roomCode))
             {
                 channelsCallBackDictionary.Remove(roomCode);
             }
+        }
+
+        public static void RenewLiveChatCallBack(int roomCode, int idUser, OperationContext channel)
+        {
+            if (roomCode != 0 && idUser != 0 && channel != null && channelsCallBackDictionary.ContainsKey(roomCode))
+            {
+                var listChannels = channelsCallBackDictionary[roomCode];
+                if(listChannels != null && listChannels.listOfChannelsCallBack.Any(pl => pl.idUser == idUser))
+                {
+                    listChannels.listOfChannelsCallBack.FirstOrDefault(pl => pl.idUser == idUser).communicationChannelChat = channel;
+                }
+            }      
         }
     }
 

@@ -26,7 +26,6 @@ namespace JeopardyGame.Pages
     public partial class TeamChat : Page, IChatForTeamsCallback
     {
         private static UserSingleton userSingleton;
-        private static ChatForTeamsClient chatForTeamProxy;
         private int idTeamMate;
         private GameBoard gameBoard;
         private Window dialogMessage;
@@ -37,12 +36,38 @@ namespace JeopardyGame.Pages
             this.gameBoard = game;
             this.idTeamMate = idTeam;
             InstanceContext context = new InstanceContext(this);
-            chatForTeamProxy = new ChatForTeamsClient(context);
+            ChatForTeamsClient chatForTeamProxy = new ChatForTeamsClient(context);
             userSingleton = UserSingleton.GetMainUser();
-            RegisterForCallBack();
+            RegisterForCallBack(chatForTeamProxy);
         }   
 
-        private void RegisterForCallBack()
+        public void RenewCallBackChannel()
+        {
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                ChatForTeamsClient chatForTeamProxy = new ChatForTeamsClient(context);
+                chatForTeamProxy.RenewTeamChatCallBack(userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
+            }
+        }
+
+        private void RegisterForCallBack(ChatForTeamsClient chatForTeamProxy)
         {
             try
             {
@@ -79,6 +104,7 @@ namespace JeopardyGame.Pages
                 string message = txbMessageToSend.Text;
                 if (!string.IsNullOrEmpty(message))
                 {
+                    ChatForTeamsOperationsClient chatForTeamProxy = new();
                     chatForTeamProxy.SendMessageTeam(userSingleton.IdUser, idTeamMate, userSingleton.UserName, message);
                     ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, message);
                     chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;

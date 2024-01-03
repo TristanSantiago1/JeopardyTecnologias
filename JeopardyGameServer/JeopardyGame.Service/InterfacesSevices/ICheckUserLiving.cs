@@ -14,6 +14,9 @@ namespace JeopardyGame.Service.InterfacesSevices
         [OperationContract]
         int SubscribeToICheckUserLiving(UserPOJO user);
 
+        [OperationContract]
+        int RenewLivingCallBack(UserPOJO user);
+
     }
 
     [ServiceContract]

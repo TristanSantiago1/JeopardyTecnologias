@@ -148,7 +148,12 @@ namespace JeopardyGame.Pages
         private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
         {
             try
-            {                
+            {
+
+                InstanceContext instanceContext = new InstanceContext(this);
+                CheckUserLivingClient checkUserLivingClient = new(instanceContext);
+                var success = checkUserLivingClient.RenewLivingCallBack(userToSave);
+
                 UserCreateAccountCodeClient userCreateAccount = new();
                 if (userCreateAccount.CheckCodeEntered(userToSave, txbCodeCreateAcc.Text.ToString().Trim()) == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -158,6 +163,7 @@ namespace JeopardyGame.Pages
                     if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
                         SetSingleton();
+                        NotifyUserABoutNewPlayer();
                         dialogMessage = new InformationMessageDialogWindow(
                             Properties.Resources.txbInformationTitle,Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow);                        
                         MainMenu mainMenu = new MainMenu();
@@ -200,6 +206,31 @@ namespace JeopardyGame.Pages
             userToSave.IdUser = NULL_INT_VALUE;
         }
 
+        private void NotifyUserABoutNewPlayer()
+        {
+            try
+            {
+                FriendManagerActionOperationsClient managerActionOperationsProxy = new();
+                managerActionOperationsProxy.NotifyUserAboutNewPlayer(userSingleton.IdUser, userSingleton.UserName);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+        }
+
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
             try
@@ -238,6 +269,10 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
+                    InstanceContext instanceContext = new InstanceContext(this);
+                    CheckUserLivingClient checkUserLivingClient = new(instanceContext);
+                    var success = checkUserLivingClient.RenewLivingCallBack(userToSave);
+
                     UserCreateAccountCodeClient userCreateAccount = new();
                     if(userCreateAccount.ResendCode(userToSave) == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
@@ -287,7 +322,7 @@ namespace JeopardyGame.Pages
         private void SetSingleton()
         {
             try
-            {
+            {                
                 ConsultUserInformationClient consultInformationClient = new ConsultUserInformationClient();
                 var userSaved = consultInformationClient.ConsultUserByUserName(userToSave.UserName);
                 if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
@@ -295,6 +330,7 @@ namespace JeopardyGame.Pages
                     var playerSaved = consultInformationClient.ConsultPlayerByIdUser(userSaved.ObjectSaved.IdUser);
                     if (playerSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
+                        UserSingleton.CleanSingleton();
                         userSingleton = UserSingleton.GetMainUser(userSaved.ObjectSaved, playerSaved.ObjectSaved);
                         AvailabilityUserManagmentClient availabilityUserManagment = new AvailabilityUserManagmentClient();
                         availabilityUserManagment.PlayerIsAvailable(userSingleton.IdUser);

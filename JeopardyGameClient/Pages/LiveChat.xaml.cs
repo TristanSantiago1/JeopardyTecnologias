@@ -32,15 +32,12 @@ namespace JeopardyGame.Pages
         private static int roomCode;
         private static UserSingleton userSingleton;
         private static List<MessageChat> messagesInChats = new List<MessageChat>();
-        private static LiveChatClient liveChatProxy;
         private static LobbyPage lobbyPage;
         private Window dialogMessage;
 
         public LiveChat()
         {            
-            InitializeComponent();
-            InstanceContext context = new InstanceContext(this);
-            liveChatProxy = new LiveChatClient(context);          
+            InitializeComponent();                     
         }
 
         public void StartPage(bool rol, int room, LobbyPage lobby)
@@ -51,8 +48,35 @@ namespace JeopardyGame.Pages
             PrepareWindow();
         }
 
+        public void RenewLiveChatCallBack()
+        {
+            try
+            {
+                LiveChatClient liveChatCallBackProxy = new LiveChatClient(new InstanceContext(this));
+                liveChatCallBackProxy.RenewLiveChatCallBack(roomCode, userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
+            }
+        }
+
         private void PrepareWindow()
         {
+            InstanceContext context = new InstanceContext(this);
+            LiveChatClient liveChatProxy = new LiveChatClient(context);
             try
             {
                 userSingleton = UserSingleton.GetMainUser();
@@ -118,6 +142,7 @@ namespace JeopardyGame.Pages
                 string message = txbMessageToSend.Text;
                 if (!string.IsNullOrEmpty(message))
                 {
+                    LiveChatOperationsClient liveChatProxy = new();
                     liveChatProxy.SendMessage(userSingleton.IdUser, roomCode, userSingleton.UserName, message);
                     MessageChat messageChat = new MessageChat();
                     messageChat.IdUser = userSingleton.IdUser;

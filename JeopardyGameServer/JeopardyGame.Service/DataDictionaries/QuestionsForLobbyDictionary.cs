@@ -14,25 +14,29 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RegisterNewSetOfQuestionsInDictionary(int roomCode, GenericClass<List<QuestionCardInformation>> questionsSelected)
         {
-            if (!questionsForLobby.ContainsKey(roomCode))
+            if (roomCode != 0 && questionsSelected != null && !questionsForLobby.ContainsKey(roomCode))
             {
                 questionsForLobby.Add(roomCode, questionsSelected);
             }
         }
+
         public static GenericClass<List<QuestionCardInformation>> GetSpecificSetOfQuestionsForLobby(int roomCode)
         {
-            foreach (var item in questionsForLobby)
+            if (roomCode != 0)
             {
-                if (item.Key == roomCode)
+                foreach (var item in questionsForLobby)
                 {
-                    return item.Value;
+                    if (item.Key == roomCode)
+                    {
+                        return item.Value;
+                    }
                 }
             }
             return null;
         }
         public static void RemoveSetOFQuestionsFromDictionary(int roomCode)
         {
-            if (questionsForLobby.ContainsKey(roomCode))
+            if (roomCode != 0 && questionsForLobby.ContainsKey(roomCode))
             {
                 questionsForLobby.Remove(roomCode);
             }

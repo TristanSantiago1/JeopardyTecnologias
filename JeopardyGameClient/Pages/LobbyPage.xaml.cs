@@ -31,23 +31,22 @@ namespace JeopardyGame.Pages
         private Random generateAleatory;
         private int roomCode;
         private bool isAdminOfLobby;
-        private InstanceContext context;
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton;
-        private LobbyActionsClient lobbyActionsProxy;
         private Window dialogMessage;
 
         public LobbyPage()
         {
             InitializeComponent();            
-            isAdminOfLobby = true;                       
+            isAdminOfLobby = true;            
             Loaded += LoadedPrepareWindowAdmin;
         }
 
         private void LoadedPrepareWindowAdmin(object sender, RoutedEventArgs e)
-        {
-            lobbyActionsProxy.SelectQuestionsForGameAsync(roomCode);
+        {            
             PrepareWindow();
+            LobbyActionsOperationClient lobbyActionsProxy = new();
+            lobbyActionsProxy.SelectQuestionsForGameAsync(roomCode);
         }
 
         public LobbyPage(int roomCode)
@@ -66,22 +65,22 @@ namespace JeopardyGame.Pages
         private void PrepareWindow()
         {
             userSingleton = UserSingleton.GetMainUser();
-            context = new InstanceContext(this);
-            lobbyActionsProxy = new LobbyActionsClient(context);
+            InstanceContext context = new InstanceContext(this);
+            LobbyActionsClient lobbyActionsProxy = new LobbyActionsClient(context);
             if (isAdminOfLobby)
             {
-                CreateNewlobby();  
+                CreateNewlobby(lobbyActionsProxy);  
             }
             else
             {
-                JoinLobby();
+                JoinLobby(lobbyActionsProxy);
             }
             GetPlayers();
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
         }
 
-        private void CreateNewlobby()
+        private void CreateNewlobby(LobbyActionsClient lobbyActionsProxy)
         {
             try
             {
@@ -113,14 +112,15 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void JoinLobby()
+        private void JoinLobby(LobbyActionsClient lobbyActionsProxy)
         {
             try
             {
                 GenericClassOfint successful = lobbyActionsProxy.JoinIntoLobby(roomCode, userSingleton.IdUser);
                 if (successful.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    lobbyActionsProxy.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);
+                    LobbyActionsOperationClient lobbyActionsOperationProxy = new();
+                    lobbyActionsOperationProxy.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);
                 }
                 else
                 {
@@ -150,6 +150,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
+                LobbyActionsOperationClient lobbyActionsProxy = new();
                 var playersInLobby = lobbyActionsProxy.GetAllCurrentPlayerInLobby(roomCode, userSingleton.IdUser);
                 if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -297,6 +298,10 @@ namespace JeopardyGame.Pages
                     {
                         try
                         {
+                            LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
+                            lobbyActionsCallBackProxy.RenewLobbyCallBack(roomCode, userSingleton.IdUser);
+
+                            LobbyActionsOperationClient lobbyActionsProxy = new();
                             lobbyActionsProxy.EliminatePlayerFromMatch(roomCode, userChanged.IdUser);
                         }
                         catch (EndpointNotFoundException ex)
@@ -357,10 +362,14 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
+                    LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
+                    lobbyActionsCallBackProxy.RenewLobbyCallBack(roomCode, userSingleton.IdUser);
+
                     if (currentPlayerInLobby.Count == 4)
                     {
                         DoOrUndoTeams(true);
-                        SetPlayerInLabels();
+                        SetPlayerInLabels(); 
+                        LobbyActionsOperationClient lobbyActionsProxy = new();
                         lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, true);
                     }
                     else
@@ -402,8 +411,12 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
+                    LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
+                    lobbyActionsCallBackProxy.RenewLobbyCallBack(roomCode, userSingleton.IdUser);
+
                     DoOrUndoTeams(false);
                     SetPlayerInLabels();
+                    LobbyActionsOperationClient lobbyActionsProxy = new();
                     lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, false);
                 }
                 catch (EndpointNotFoundException ex)
@@ -487,6 +500,10 @@ namespace JeopardyGame.Pages
                     {                        
                         try
                         {
+                            LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
+                            lobbyActionsCallBackProxy.RenewLobbyCallBack(roomCode, userSingleton.IdUser);
+
+                            LobbyActionsOperationClient lobbyActionsProxy = new();
                             lobbyActionsProxy.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);
                         }
                         catch (EndpointNotFoundException ex)
@@ -571,6 +588,7 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
+                    LobbyActionsOperationClient lobbyActionsProxy = new();
                     if (isAdminOfLobby)
                     {
                         lobbyActionsProxy.DissolveLobby(roomCode, userSingleton.IdUser);
@@ -655,6 +673,7 @@ namespace JeopardyGame.Pages
                 liveChatInstance = new LiveChat();
                 liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
             }
+            liveChatInstance.RenewLiveChatCallBack();
             frmActiveFriendsAndChat.Content = liveChatInstance;            
             grdActiveUser.Visibility = Visibility.Visible;
         }
@@ -699,9 +718,11 @@ namespace JeopardyGame.Pages
                     dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
                 }
             }
+            activeUsersInstance.RenewFriendCallBackChannel(userSingleton.IdUser);
             frmActiveFriendsAndChat.Content = activeUsersInstance;
             grdActiveUser.Visibility = Visibility.Visible;
         }  
+
         public void CloseFriendList()
         {
             frmActiveFriendsAndChat.Content = null; 
@@ -753,6 +774,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
+                LobbyActionsOperationClient lobbyActionsProxy = new();
                 lobbyActionsProxy.StartGame(roomCode);
             }
             catch (EndpointNotFoundException ex)

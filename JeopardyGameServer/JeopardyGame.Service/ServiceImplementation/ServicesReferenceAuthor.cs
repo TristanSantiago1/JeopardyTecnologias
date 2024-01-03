@@ -11,6 +11,11 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         CheckUserLivingImplementation checkUserLivingImplementation = new();
 
+        public int RenewLivingCallBack(UserPOJO user)
+        {
+            return ((ICheckUserLiving)checkUserLivingImplementation).RenewLivingCallBack(user);
+        }
+
         public int SubscribeToICheckUserLiving(UserPOJO user)
         {
             return ((ICheckUserLiving)checkUserLivingImplementation).SubscribeToICheckUserLiving(user);
@@ -191,7 +196,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     }
 
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class ServicesReferenceAuthor : INotifyUserAvailability, IFriendManagerActions, ILobbyActions, ILiveChat, IGameActions, IChatForTeams ,IUserCreateAccountCode
+    public partial class ServicesReferenceAuthor : INotifyUserAvailability, IFriendManagerActions, ILobbyActions, ILiveChat, IGameActions, IChatForTeams
     {
         NotifyUserAvailabilityImplementation NotifyUserAvailability = new NotifyUserAvailabilityImplementation();
         FriendManagerActionsImplementation NotifyFriendlyActions = new FriendManagerActionsImplementation();
@@ -200,106 +205,25 @@ namespace JeopardyGame.Service.ServiceImplementation
         GameActionsImplementation GameActions = new GameActionsImplementation();
         ChatForTeamsImplementation TeamChat = new ChatForTeamsImplementation();
         UserCreateAccountCodeImplementation userDataCheckerImplementation = new UserCreateAccountCodeImplementation();
-        public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
-        {
-            ((IFriendManagerActions)NotifyFriendlyActions).AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
-        }
 
-        public GenericClass<int> AddUserToConfirmationDictionary(UserPOJO newUser)
-        {
-            return ((IUserCreateAccountCode)userDataCheckerImplementation).AddUserToConfirmationDictionary(newUser);
-        }
-
-        public GenericClass<int> BanUser(int idPlayerBanned, int idUserBanning)
-        {
-            return ((IFriendManagerActions)NotifyFriendlyActions).BanUser(idPlayerBanned, idUserBanning);
-        }
-
-        public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
-        {
-            ((ILobbyActions)LobbyActions).ChangePlayerSide(roomCode, idUserToChangeTeam, newSideTeam);
-        }
-
-        public int CheckCodeEntered(UserPOJO newUser, string codeEntered)
-        {
-            return ((IUserCreateAccountCode)userDataCheckerImplementation).CheckCodeEntered(newUser, codeEntered);
-        }
-
-        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn)
-        {
-            ((IGameActions)GameActions).ChooseAnswer(roomCode, idUserSelecting, answerSelected, pointsWorth, currentTurn);
-        }
-        public void ChooseQuestionOfBoard(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
-        {
-            ((IGameActions)GameActions).ChooseQuestionOfBoard(roomCode, idUserSelecting, currentRound, questionToShow);
-        }
-        public void ConfirmBet(int roomCode, int idUser)
-        {
-            ((IGameActions)GameActions).ConfirmBet(roomCode, idUser);
-        }
-        public void ConfirmLastQuestionAnswer(int roomCode, PlayerInGameDataContract playerAnswering, int points, bool isCorrect)
-        {
-            ((IGameActions)GameActions).ConfirmLastQuestionAnswer(roomCode, playerAnswering, points, isCorrect);
-        }
         public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
         {
             return ((ILiveChat)LiveChat).CreateChatForLobby(roomCode, idAdmin);
         }
+
         public GenericClass<int> CreateNewLobby(int roomCode, int idUser)
         {
             return ((ILobbyActions)LobbyActions).CreateNewLobby(roomCode, idUser);
         }
-        public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
-        {
-            ((IFriendManagerActions)NotifyFriendlyActions).DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
-        }
-        public void DeleteChat(int roomCode, int idUser)
-        {
-            ((ILiveChat)LiveChat).DeleteChat(roomCode, idUser);
-        }
-        public void DissolveLobby(int roomCode, int idUser)
-        {
-            ((ILobbyActions)LobbyActions).DissolveLobby(roomCode, idUser);
-        }
-        public void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate)
-        {
-            ((ILobbyActions)LobbyActions).EliminatePlayerFromMatch(roomCode, idUserToEliminate);
-        }
-        public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
-        {
-            ((IFriendManagerActions)NotifyFriendlyActions).EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
-        }
-        public void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame)
-        {
-            ((IGameActions)GameActions).FinishGame(roomCode, playerInGame);
-        }
-        public void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished)
-        {
-            ((IGameActions)GameActions).FinishRound(roomCode, playerInGame, roundFinished);
-        }
-        public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting)
-        {
-            return ((ILobbyActions)LobbyActions).GetAllCurrentPlayerInLobby(roomCode, idUserRequesting);
-        }
+
         public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
             return ((ILiveChat)LiveChat).GetAllMessages(roomCode, idUser);
         }
+
         public GenericClass<int> JoinIntoLobby(int roomCode, int idUser)
         {
             return ((ILobbyActions)LobbyActions).JoinIntoLobby(roomCode, idUser);
-        }
-        public void LeaveLobby(int roomCode, int idUser)
-        {
-            ((ILobbyActions)LobbyActions).LeaveLobby(roomCode, idUser);
-        }
-        public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
-        {
-            ((ILobbyActions)LobbyActions).MakeTeams(roomCode, idUser, wannaTeam);
-        }
-        public void NotifyPlayerInLobby(int roomCode, int idUser)
-        {
-            ((ILobbyActions)LobbyActions).NotifyPlayerInLobby(roomCode, idUser);
         }
 
         public void RegisterForTeamChat(int idUser)
@@ -311,35 +235,35 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             return ((IFriendManagerActions)NotifyFriendlyActions).RegisterFriendManagerUser(idUserFriendManager);
         }
-        public void ReportPlayer(int idUser, string userName)
+
+        public int RenewFriendManagerUserCallBack(int idUserFriendManager)
         {
-            ((IFriendManagerActions)NotifyFriendlyActions).ReportPlayer(idUser, userName);
+            return ((IFriendManagerActions)NotifyFriendlyActions).RenewFriendManagerUserCallBack(idUserFriendManager);
         }
 
-        public int ResendCode(UserPOJO user)
+        public int RenewGameCallBack(int roomCode, int idIUser)
         {
-            return ((IUserCreateAccountCode)userDataCheckerImplementation).ResendCode(user);
+            return ((IGameActions)GameActions).RenewGameCallBack(roomCode, idIUser);
         }
 
-        public void SelectQuestionsForGame(int roomCode)
+        public int RenewLiveChatCallBack(int roomCode, int idUser)
         {
-            ((ILobbyActions)LobbyActions).SelectQuestionsForGame(roomCode);
+            return ((ILiveChat)LiveChat).RenewLiveChatCallBack(roomCode, idUser);
         }
-        public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
+
+        public int RenewLobbyCallBack(int roomCode, int idUser)
         {
-            ((IFriendManagerActions)NotifyFriendlyActions).SendFriendRequest(idPLayerRequesting, idUserRequested);
+            return ((ILobbyActions)LobbyActions).RenewLobbyCallBack(roomCode, idUser);
         }
-        public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
+
+        public void RenewNotifyAvailabityCallBack(int idUser)
         {
-            ((ILiveChat)LiveChat).SendMessage(idUser, roomCode, userName, messageToSend);
+            ((INotifyUserAvailability)NotifyUserAvailability).RenewNotifyAvailabityCallBack(idUser);
         }
-        public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend)
+
+        public int RenewTeamChatCallBack(int idUser)
         {
-            ((IChatForTeams)TeamChat).SendMessageTeam(idUser, idTeamMate, userName, messageToSend);
-        }
-        public void StartGame(int roomCode)
-        {
-            ((ILobbyActions)LobbyActions).StartGame(roomCode);
+            return ((IChatForTeams)TeamChat).RenewTeamChatCallBack(idUser);
         }
 
         public void SubscribeToAvailabityCallBackChannel(int idNewActiveUser)
@@ -351,23 +275,190 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             ((IGameActions)GameActions).SubscribeToGameCallBack(roomCode, idUserSubscribing, idAvatar);
         }
+    }
+
+    public partial class ServicesReferenceAuthor : IUserCreateAccountCode
+    {
+        UserCreateAccountCodeImplementation createAccountCodeImplementation = new();
+
+        public GenericClass<int> AddUserToConfirmationDictionary(UserPOJO newUser)
+        {
+            return ((IUserCreateAccountCode)userDataCheckerImplementation).AddUserToConfirmationDictionary(newUser);
+        }
+
+        public int CheckCodeEntered(UserPOJO newUser, string codeEntered)
+        {
+            return ((IUserCreateAccountCode)userDataCheckerImplementation).CheckCodeEntered(newUser, codeEntered);
+        }
+
+        public int ResendCode(UserPOJO user)
+        {
+            return ((IUserCreateAccountCode)userDataCheckerImplementation).ResendCode(user);
+        }
 
         public void TakeUserOutOfDictionary(UserPOJO user)
         {
             ((IUserCreateAccountCode)userDataCheckerImplementation).TakeUserOutOfDictionary(user);
         }
+    }
+
+    public partial class ServicesReferenceAuthor : IFriendManagerActionOperations
+    {
+        FriendManagerActionsOperationImplementation friendManagerActionsOperationImplementation = new();
+
+        public void AcceptFriendRequest(int idPlayerAccepting, int idUserRequesting)
+        {
+            ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).AcceptFriendRequest(idPlayerAccepting, idUserRequesting);
+        }
+
+        public GenericClass<int> BanUser(int idPlayerBanned, int idUserBanning)
+        {
+            return ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).BanUser(idPlayerBanned, idUserBanning);
+        }
+
+        public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)
+        {
+            ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).DeclineFriendRequest(idPlayerDeclining, idUserRequesting);
+        }
+
+        public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
+        {
+            ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).EliminateUserFromFriends(idPlayerDeleting, idUserToEliminate);
+        }
+
+        public void NotifyUserAboutNewPlayer(int idNewPlayer, string userName)
+        {
+            ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).NotifyUserAboutNewPlayer(idNewPlayer, userName);
+        }
+
+        public void SendFriendRequest(int idPLayerRequesting, int idUserRequested)
+        {
+            ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).SendFriendRequest(idPLayerRequesting, idUserRequested);
+        }
 
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
-            ((IFriendManagerActions)NotifyFriendlyActions).UnregisterFriendManagerUser(idUserFriendManager);
+            ((IFriendManagerActionOperations)friendManagerActionsOperationImplementation).UnregisterFriendManagerUser(idUserFriendManager);
         }
-        public void UnregisterFromTeamChat(int idUser)
+    }
+
+    public partial class ServicesReferenceAuthor : ILobbyActionsOperation
+    {
+        ILobbyActionsOperationImplementation lobbyActionsOperationImplementation = new();
+
+        public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
         {
-            ((IChatForTeams)TeamChat).UnregisterFromTeamChat(idUser);
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).ChangePlayerSide(roomCode, idUserToChangeTeam, newSideTeam);
         }
+
+        public void DissolveLobby(int roomCode, int idUser)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).DissolveLobby(roomCode, idUser);
+        }
+
+        public void EliminatePlayerFromMatch(int roomCode, int idUserToEliminate)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).EliminatePlayerFromMatch(roomCode, idUserToEliminate);
+        }
+
+        public GenericClass<List<PlayerInLobby>> GetAllCurrentPlayerInLobby(int roomCode, int idUserRequesting)
+        {
+            return ((ILobbyActionsOperation)lobbyActionsOperationImplementation).GetAllCurrentPlayerInLobby(roomCode, idUserRequesting);
+        }
+
+        public void LeaveLobby(int roomCode, int idUser)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).LeaveLobby(roomCode, idUser);
+        }
+
+        public void MakeTeams(int roomCode, int idUser, bool wannaTeam)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).MakeTeams(roomCode, idUser, wannaTeam);
+        }
+
+        public void NotifyPlayerInLobby(int roomCode, int idUser)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).NotifyPlayerInLobby(roomCode, idUser);
+        }
+
+        public void SelectQuestionsForGame(int roomCode)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).SelectQuestionsForGame(roomCode);
+        }
+
+        public void StartGame(int roomCode)
+        {
+            ((ILobbyActionsOperation)lobbyActionsOperationImplementation).StartGame(roomCode);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : IGameActionsOperations
+    {
+        IGameActionsOperationsImplementation gameActionsOperationsImplementation = new();
+
+        public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn)
+        {
+            ((IGameActionsOperations)gameActionsOperationsImplementation).ChooseAnswer(roomCode, idUserSelecting, answerSelected, pointsWorth, currentTurn);
+        }
+
+        public void ChooseQuestionOfBoard(int roomCode, int idUserSelecting, int currentRound, CurrentQuestionToShowContract questionToShow)
+        {
+            ((IGameActionsOperations)gameActionsOperationsImplementation).ChooseQuestionOfBoard(roomCode, idUserSelecting, currentRound, questionToShow);
+        }
+
+        public void ConfirmBet(int roomCode, int idUser)
+        {
+            ((IGameActionsOperations)gameActionsOperationsImplementation).ConfirmBet(roomCode, idUser);
+        }
+
+        public void ConfirmLastQuestionAnswer(int roomCode, PlayerInGameDataContract playerAnswering, int points, bool isCorrect)
+        {
+            ((IGameActionsOperations)gameActionsOperationsImplementation).ConfirmLastQuestionAnswer(roomCode, playerAnswering, points, isCorrect);
+        }
+
+        public void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame)
+        {
+            ((IGameActionsOperations)gameActionsOperationsImplementation).FinishGame(roomCode, playerInGame);
+        }
+
+        public void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished)
+        {
+            ((IGameActionsOperations)gameActionsOperationsImplementation).FinishRound(roomCode, playerInGame, roundFinished);
+        }
+
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
-            ((IGameActions)GameActions).UnSubscribeFromGameCallBack(roomCode, idUserUnsubscribing);
+            ((IGameActionsOperations)gameActionsOperationsImplementation).UnSubscribeFromGameCallBack(roomCode, idUserUnsubscribing);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : IChatForTeamsOperations
+    {
+        TeamChatForTeamsOperationsImplemtation chatForTeamsImplementation = new();
+
+        public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend)
+        {
+            ((IChatForTeamsOperations)chatForTeamsImplementation).SendMessageTeam(idUser, idTeamMate, userName, messageToSend);
+        }
+
+        public void UnregisterFromTeamChat(int idUser)
+        {
+            ((IChatForTeamsOperations)chatForTeamsImplementation).UnregisterFromTeamChat(idUser);
+        }
+    }
+
+    public partial class ServicesReferenceAuthor : ILiveChatOperations
+    {
+        LiveChatOperationsImplementation liveChatOperationsImplementation = new();
+
+        public void DeleteChat(int roomCode, int idUser)
+        {
+            ((ILiveChatOperations)liveChatOperationsImplementation).DeleteChat(roomCode, idUser);
+        }
+
+        public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
+        {
+            ((ILiveChatOperations)liveChatOperationsImplementation).SendMessage(idUser, roomCode, userName, messageToSend);
         }
     }
 

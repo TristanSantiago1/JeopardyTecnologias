@@ -15,29 +15,47 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RegisterNewClientInDictionary(string userName, OperationContext channel)
         {
-            if (!livingClients.ContainsKey(userName))
+            if (!string.IsNullOrEmpty(userName) && channel != null && !livingClients.ContainsKey(userName))
             {
                 livingClients.Add(userName, channel);
             }
         }
+
         public static OperationContext GetClient(string userName)
         {
-            foreach (var item in livingClients)
+            if (!string.IsNullOrEmpty(userName))
             {
-                if (item.Key == userName)
+                foreach (var item in livingClients)
                 {
-                    return item.Value;
+                    if (item.Key == userName)
+                    {
+                        return item.Value;
+                    }
                 }
             }
             return null;
         }
+
         public static void RemoveClientFromDictionary(string userName)
         {
-            if (livingClients.ContainsKey(userName))
+            if (!string.IsNullOrEmpty(userName) && livingClients.ContainsKey(userName))
             {
                 livingClients.Remove(userName);
             }
         }
+
+        public static void RenewLivingCallBack(string userName, OperationContext channel)
+        {
+            if (!string.IsNullOrEmpty(userName) && channel != null && livingClients.ContainsKey(userName))
+            {
+                livingClients[userName] = channel;
+            }
+            else
+            {
+                RegisterNewClientInDictionary(userName, channel);
+            }
+        }
+
         public static Dictionary<string, OperationContext> GetLivingClientsList()
         {
             return livingClients;

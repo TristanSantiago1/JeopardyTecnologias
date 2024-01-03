@@ -16,6 +16,13 @@ namespace JeopardyGame.Service.InterfacesSevices
         [OperationContract(IsOneWay = true)]
         void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar);
 
+        [OperationContract]
+        int RenewGameCallBack(int roomCode, int idIUser);
+    }
+
+    [ServiceContract]
+      public interface IGameActionsOperations
+    {
         [OperationContract(IsOneWay = true)]
         void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing);
 
@@ -27,7 +34,7 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract(IsOneWay = true)]
         void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished);
-        
+
         [OperationContract(IsOneWay = true)]
         void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame);
 
@@ -36,8 +43,7 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract(IsOneWay = true)]
         void ConfirmLastQuestionAnswer(int roomCode, PlayerInGameDataContract playerAnswering, int points, bool isCorrect);
-
-    }
+    } 
 
 
     [ServiceContract]

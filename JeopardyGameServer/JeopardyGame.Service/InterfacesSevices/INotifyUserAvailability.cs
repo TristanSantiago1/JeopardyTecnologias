@@ -13,6 +13,8 @@ namespace JeopardyGame.Service.InterfacesServices
     {
         [OperationContract(IsOneWay = true)]
         void SubscribeToAvailabityCallBackChannel(int idNewActiveUser);
+        [OperationContract(IsOneWay = true)]
+        void RenewNotifyAvailabityCallBack(int idUser);
     }
 
     [ServiceContract]

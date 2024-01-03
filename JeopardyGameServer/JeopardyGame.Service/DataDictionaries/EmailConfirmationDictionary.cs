@@ -21,11 +21,13 @@ namespace JeopardyGame.Service.DataDictionaries
         }
         public static UserPOJO GetSpecificUserToConfirm(string code)
         {
-            foreach (var item in emailConfirmationDictionary)
-            {
-                if (item.Key == code)
+            if (!string.IsNullOrEmpty(code)) { 
+                foreach (var item in emailConfirmationDictionary)
                 {
-                    return item.Value;
+                    if (item.Key == code)
+                    {
+                        return item.Value;
+                    }
                 }
             }
             return null;
@@ -33,7 +35,7 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RemoveRegistryOfUserFromDictionary(string code)
         {
-            if (string.IsNullOrEmpty(code))
+            if (!string.IsNullOrEmpty(code))
             {
                 if (emailConfirmationDictionary.ContainsKey(code))
                 {

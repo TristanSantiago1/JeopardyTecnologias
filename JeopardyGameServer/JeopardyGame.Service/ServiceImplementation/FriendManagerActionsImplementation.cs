@@ -4,6 +4,7 @@ using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.InterfacesServices;
 using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
@@ -13,9 +14,6 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int NULL_INT_VALUE = 0;
         private readonly int CHANNEL_ALREADY_EXIST = -1;
         private readonly int CHANNEL_SAVED = 1;
-        private readonly int DECLINE_FRIEND_REQUEST = 0;
-        private readonly int SEND_FRIEND_REQUEST = 1;
-        private readonly int ACCEPT_FRIEND_REQUEST = 2;
 
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
@@ -61,6 +59,50 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
+        public int RenewFriendManagerUserCallBack(int idUserFriendManager)
+        {
+            int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+            try
+            {
+                if (idUserFriendManager == NULL_INT_VALUE)
+                {
+                    return resultToReturn;
+                }                
+                var newCallBackChannel = OperationContext.Current;
+                FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
+                resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;                
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+
+    }
+
+    partial class FriendManagerActionsOperationImplementation : IFriendManagerActionOperations
+    {
+
+        private readonly int NULL_INT_VALUE = 0;
+        private readonly int DECLINE_FRIEND_REQUEST = 0;
+        private readonly int SEND_FRIEND_REQUEST = 1;
+        private readonly int ACCEPT_FRIEND_REQUEST = 2;
+
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
             try
@@ -90,30 +132,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
-    }
-
-    partial class FriendManagerActionsImplementation : IFriendManagerActions
-    {
-        public void ReportPlayer(int idUser, string userName)
-        {
-            //ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-            //var playerConsulted = consultInformation.ConsultPlayerById(idUser);          
-            //if (playerConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerConsulted.ObjectSaved.NoReports < 2)
-            //{
-            //    playerConsulted.ObjectSaved.NoReports++;
-            //    var result = UserManagerDataOperation.UpdatePlayer(playerConsulted.ObjectSaved.IdPlayer);
-            //    var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUser);
-            //    if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT &&  channelSaved != null)
-            //    {
-            //        channelSaved.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseReported(playerConsulted.ObjectSaved.NoReports);
-            //    }                
-            //}
-            //else
-            //{
-            //    //logica para baennar
-            //}
-        }
-
 
         public GenericClass<int> BanUser(int idPlayerBanned, int idUserBanning)
         {
@@ -151,11 +169,58 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         }
+
+        public void NotifyUserAboutNewPlayer(int idNewUser, string userName)
+        {
+            if(idNewUser != 0 && !string.IsNullOrEmpty(userName))
+            {
+                var players = FriendManagerDictionary.GetActiveFriendsList();
+                if (players != null)
+                {
+                    NotifyPlayersAboutNewPlayer(idNewUser, userName, players);
+                }
+            }
+        }
+
+        private void NotifyPlayersAboutNewPlayer(int idNewPlayer, string userName, Dictionary<int, OperationContext> contexts)
+        {
+            foreach (var item in contexts)
+            {
+                try
+                {
+                    if (item.Value != null)
+                    {
+                        item.Value.GetCallbackChannel<IFriendManagerActionsCallBack>().ResponseNewPlayerJusJoin(idNewPlayer, userName);
+                    }
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+            }
+        }           
+           
     }
 
 
 
-    partial class FriendManagerActionsImplementation : IFriendManagerActions
+    partial class FriendManagerActionsOperationImplementation : IFriendManagerActionOperations
     {
         private static object lockObject = new object();
 
@@ -243,7 +308,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         
     }
 
-    partial class FriendManagerActionsImplementation : IFriendManagerActions
+    partial class FriendManagerActionsOperationImplementation : IFriendManagerActionOperations
     {
 
         public void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting)

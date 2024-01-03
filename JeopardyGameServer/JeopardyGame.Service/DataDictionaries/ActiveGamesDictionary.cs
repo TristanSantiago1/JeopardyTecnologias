@@ -13,29 +13,50 @@ namespace JeopardyGame.Service.DataDictionaries
         private static Dictionary<int, List<PlayerPlayingInGame>> gamesBeenPlayingDictionary = new Dictionary<int, List<PlayerPlayingInGame>>();
         public static void RegisterNewGameIndDictionary(int roomCode, List<PlayerPlayingInGame> newActiveGame)
         {
-
-            if (!gamesBeenPlayingDictionary.ContainsKey(roomCode))
-            {
-                gamesBeenPlayingDictionary.Add(roomCode, newActiveGame);
-            }
-        }
-        public static List<PlayerPlayingInGame> GetSpecificActiveGame(int roomCode)
-        {
-            foreach (var item in gamesBeenPlayingDictionary)
-            {
-                if (item.Key == roomCode)
+            if (roomCode != 0 && newActiveGame != null) 
+            { 
+                if (!gamesBeenPlayingDictionary.ContainsKey(roomCode))
                 {
-                    return item.Value;
+                    gamesBeenPlayingDictionary.Add(roomCode, newActiveGame);
                 }
             }
+        }
+
+        public static List<PlayerPlayingInGame> GetSpecificActiveGame(int roomCode)
+        {
+            if (roomCode != 0)
+            {
+                foreach (var item in gamesBeenPlayingDictionary)
+                {
+                    if (item.Key == roomCode)
+                    {
+                        return item.Value;
+                    }
+                }
+            }            
             return null;
         }
 
         public static void RemoveRegistryOfGameFromDictionary(int roomCode)
         {
-            if (gamesBeenPlayingDictionary.ContainsKey(roomCode))
+            if (roomCode != 0) 
             {
-                gamesBeenPlayingDictionary.Remove(roomCode);
+                if (gamesBeenPlayingDictionary.ContainsKey(roomCode))
+                {
+                    gamesBeenPlayingDictionary.Remove(roomCode);
+                }
+            }
+        }
+
+        public static void RenewGameCallBack(int roomCode, int idUser, OperationContext channel)
+        {
+            if (roomCode != 0 && idUser != 0 && channel != null && gamesBeenPlayingDictionary.ContainsKey(roomCode))
+            {
+                var listOfPlayer = gamesBeenPlayingDictionary[roomCode];
+                if(listOfPlayer.Any(pl => pl.IdUser == idUser))
+                {
+                    listOfPlayer.FirstOrDefault(pl => pl.IdUser == idUser).gameCallbackChannel = channel;
+                }
             }
         }
 
@@ -46,16 +67,19 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RearrangeTurnsForTeams(int roomCode)
         {
-            foreach (var item in gamesBeenPlayingDictionary)
+            if (roomCode != 0)
             {
-                if (item.Key == roomCode)
+                foreach (var item in gamesBeenPlayingDictionary)
                 {
-                    var team1 = item.Value.Where(pl => pl.SideTeam == 1).ToList();
-                    var team2 = item.Value.Where(pl => pl.SideTeam == 2).ToList();
-                    team1[0].TurnOfPlayer = 1;
-                    team1[1].TurnOfPlayer = 3;
-                    team2[0].TurnOfPlayer = 2;
-                    team2[1].TurnOfPlayer = 4;
+                    if (item.Key == roomCode)
+                    {
+                        var team1 = item.Value.Where(pl => pl.SideTeam == 1).ToList();
+                        var team2 = item.Value.Where(pl => pl.SideTeam == 2).ToList();
+                        team1[0].TurnOfPlayer = 1;
+                        team1[1].TurnOfPlayer = 3;
+                        team2[0].TurnOfPlayer = 2;
+                        team2[1].TurnOfPlayer = 4;
+                    }
                 }
             }
         }

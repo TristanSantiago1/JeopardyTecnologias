@@ -326,6 +326,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="QuestionPOJO" nillable="true" type="tns:QuestionPOJO" />
+  <xs:complexType name="GenericClassOfboolean">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="GenericClassOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodeEvent" type="xs:int" />
+      <xs:element minOccurs="0" name="ObjectSaved" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericClassOfboolean" nillable="true" type="tns:GenericClassOfboolean" />
   <xs:complexType name="GenericClassOfArrayOfMessageChatxY0a3WX4">
     <xs:annotation>
       <xs:appinfo>
@@ -346,30 +360,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfMessageChat" nillable="true" type="tns:ArrayOfMessageChat" />
-  <xs:complexType name="GenericClassOfboolean">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="GenericClassOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="boolean" Namespace="http://www.w3.org/2001/XMLSchema" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CodeEvent" type="xs:int" />
-      <xs:element minOccurs="0" name="ObjectSaved" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GenericClassOfboolean" nillable="true" type="tns:GenericClassOfboolean" />
-  <xs:complexType name="CurrentQuestionToShowContract">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="IdFirstAnswer" type="xs:int" />
-      <xs:element minOccurs="0" name="IdFourthAnswer" type="xs:int" />
-      <xs:element minOccurs="0" name="IdQuestion" type="xs:int" />
-      <xs:element minOccurs="0" name="IdSecondAnswer" type="xs:int" />
-      <xs:element minOccurs="0" name="IdThirdAnswer" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CurrentQuestionToShowContract" nillable="true" type="tns:CurrentQuestionToShowContract" />
   <xs:complexType name="ArrayOfPlayerInGameDataContract">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerInGameDataContract" nillable="true" type="tns:PlayerInGameDataContract" />
@@ -389,4 +379,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PlayerInGameDataContract" nillable="true" type="tns:PlayerInGameDataContract" />
+  <xs:complexType name="CurrentQuestionToShowContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdFirstAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdFourthAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdQuestion" type="xs:int" />
+      <xs:element minOccurs="0" name="IdSecondAnswer" type="xs:int" />
+      <xs:element minOccurs="0" name="IdThirdAnswer" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrentQuestionToShowContract" nillable="true" type="tns:CurrentQuestionToShowContract" />
 </xs:schema>
