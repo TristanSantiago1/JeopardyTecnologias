@@ -16,6 +16,9 @@ namespace JeopardyGame.Helpers
         private Ellipse ellConnectionStatus;
         private Button bttInviteFriend;
         public event EventHandler InviteButtonClicked;
+        private readonly int AVAILABLE_STATUS = 1;
+        private readonly int UNAVAILABLE_STATUS = 0;
+        private readonly int PLAYING_STATUS = 2;
 
         public FriendCard(String userName, int state, String textInvite) 
         {
@@ -65,14 +68,14 @@ namespace JeopardyGame.Helpers
             ellConnectionStatus.Height = 20;
             ellConnectionStatus.Width = 20;
             ellConnectionStatus.Margin = new Thickness(0, 5, 10, 5);  
-            if (state == 1)
+            if (state == AVAILABLE_STATUS)
             {
                ellConnectionStatus.Fill = new SolidColorBrush(Colors.Green);
             }
-            else if(state == 0)
+            else if(state == UNAVAILABLE_STATUS)
             {
                  ellConnectionStatus.Fill = new SolidColorBrush(Colors.Gray);
-            }else if(state == 2)
+            }else if(state == PLAYING_STATUS)
             {
                 ellConnectionStatus.Fill = new SolidColorBrush(Colors.Blue);
             }

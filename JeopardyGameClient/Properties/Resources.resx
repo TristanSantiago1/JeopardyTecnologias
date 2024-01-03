@@ -627,4 +627,10 @@
   <data name="txbFailToSendOrReciveAMessage" xml:space="preserve">
     <value>no message</value>
   </data>
+  <data name="lblFailToSavePoinstAfterGame" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblGuestEndOfGame" xml:space="preserve">
+    <value>no points</value>
+  </data>
 </root>

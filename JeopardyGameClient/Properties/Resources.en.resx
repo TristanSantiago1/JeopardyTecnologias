@@ -208,7 +208,7 @@
     <value>The game has been cancelled</value>
   </data>
   <data name="GameFinished" xml:space="preserve">
-    <value>The game has ended.</value>
+    <value>The game has ended, the points had been saved succesfully.</value>
   </data>
   <data name="GenericEmailIssue" xml:space="preserve">
     <value>There was a problem sending the email.</value>
@@ -625,5 +625,11 @@ Mexico</value>
   </data>
   <data name="txbFailToSendOrReciveAMessage" xml:space="preserve">
     <value>Could Send/revice a message. refresh the lobby or try it later.</value>
+  </data>
+  <data name="lblFailToSavePoinstAfterGame" xml:space="preserve">
+    <value>There was a an issue while saving some points, there migth be points thata weren´t saved, we're so sorry.</value>
+  </data>
+  <data name="lblGuestEndOfGame" xml:space="preserve">
+    <value>You are a Guest so you can´t accumulate points, in order to save your progress, create a acount, thanks for playing.</value>
   </data>
 </root>

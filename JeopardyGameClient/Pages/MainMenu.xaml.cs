@@ -28,8 +28,8 @@ namespace JeopardyGame.Pages
         public MainMenu()
         {      
             InitializeComponent();
-            LoadPlayersData();
             NotifyItIsAvailable();
+            LoadPlayersData();
         }
 
         private void NotifyItIsAvailable()
@@ -54,7 +54,7 @@ namespace JeopardyGame.Pages
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
@@ -215,10 +215,19 @@ namespace JeopardyGame.Pages
 
         private void ReturnPage()
         {
+            NotifyFriendsIamLeaving();
+            CleanGlobalParameters();
+            LogInUser logInPage = new LogInUser();
+            this.NavigationService.Navigate(logInPage);
+            NavigationService.RemoveBackEntry();
+        }
+
+        private void NotifyFriendsIamLeaving()
+        {
             try
-            {                
+            {
                 CheckUserLivingUnsubscribeClient checkUserLivingClient = new();
-                checkUserLivingClient.UnsubscribeFromICheckUserLiving(UserSingleton.GetUserPojoSingelton());             
+                checkUserLivingClient.UnsubscribeFromICheckUserLiving(UserSingleton.GetUserPojoSingelton());
             }
             catch (EndpointNotFoundException ex)
             {
@@ -236,10 +245,6 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
-            CleanGlobalParameters();
-            LogInUser logInPage = new LogInUser();
-            this.NavigationService.Navigate(logInPage);
-            NavigationService.RemoveBackEntry();
         }
 
 

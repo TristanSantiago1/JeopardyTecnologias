@@ -139,12 +139,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {                    
                     NotifyUserAvailabilityImplementation notifyUserAvailability = new();
                     notifyUserAvailability.NotifyFriends(idNewActiveUser, AVAILABLE_STATUS);
-                }
-                else
-                {
-                    //Channel ya existe
-                }
-                
+                }                
             }
             catch (CommunicationObjectFaultedException ex)
             {
@@ -174,17 +169,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 if (idUserDisconnecting != NULL_INT_VALUE)
                 {
-                    var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserDisconnecting);
-                    if (channel != null)
-                    {
-                        ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
-                        NotifyUserAvailabilityImplementation notifyUserAvailability = new();
-                        notifyUserAvailability.NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);
-                    }
-                    else
-                    {
-                        // channel no existe
-                    }
+                    ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserDisconnecting);
+                    NotifyUserAvailabilityImplementation notifyUserAvailability = new();
+                    notifyUserAvailability.NotifyFriends(idUserDisconnecting, UNAVAILABLE_STATUS);                    
                 }
             }
             catch (CommunicationObjectFaultedException ex)
@@ -215,17 +202,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             try
             {
                 if (idUserPlaying != NULL_INT_VALUE)
-                {
-                    var channel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idUserPlaying);
-                    if (channel != null)
-                    {                        
-                        NotifyUserAvailabilityImplementation notifyUserAvailability = new();
-                        notifyUserAvailability.NotifyFriends(idUserPlaying, PLAYING_STATUS);
-                    }
-                    else
-                    {
-                        // channel no existe
-                    }
+                {                      
+                    NotifyUserAvailabilityImplementation notifyUserAvailability = new();
+                    notifyUserAvailability.NotifyFriends(idUserPlaying, PLAYING_STATUS);                    
                 }
             }
             catch (CommunicationObjectFaultedException ex)

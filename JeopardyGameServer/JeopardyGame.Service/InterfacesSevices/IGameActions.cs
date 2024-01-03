@@ -36,9 +36,6 @@ namespace JeopardyGame.Service.InterfacesSevices
         void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished);
 
         [OperationContract(IsOneWay = true)]
-        void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame);
-
-        [OperationContract(IsOneWay = true)]
         void ConfirmBet(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
@@ -68,11 +65,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void ResponseBeginRound(int isYourTurn, int roundToStart, List<PlayerInGameDataContract> playerInGam);
 
         [OperationContract(IsOneWay = true)]
-        void ResponseShowWinner(List<PlayerInGameDataContract> playerInGame);
-
-
-        [OperationContract(IsOneWay = true)]
-        void ResponseFinishGame();
+        void ResponseShowWinner(List<PlayerInGameDataContract> playerInGame, int poinstWereSaved);
 
         [OperationContract(IsOneWay = true)]
         void ResponseShowLastQuestion();

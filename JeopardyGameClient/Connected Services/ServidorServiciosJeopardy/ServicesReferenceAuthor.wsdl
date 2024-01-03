@@ -601,9 +601,6 @@
   <wsdl:message name="IGameActions_ResponseShowWinner_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseShowWinner" />
   </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseFinishGame_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseFinishGame" />
-  </wsdl:message>
   <wsdl:message name="IGameActions_ResponseShowLastQuestion_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ResponseShowLastQuestion" />
   </wsdl:message>
@@ -618,9 +615,6 @@
   </wsdl:message>
   <wsdl:message name="IGameActionsOperations_FinishRound_InputMessage">
     <wsdl:part name="parameters" element="tns:FinishRound" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_FinishGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:FinishGame" />
   </wsdl:message>
   <wsdl:message name="IGameActionsOperations_ConfirmBet_InputMessage">
     <wsdl:part name="parameters" element="tns:ConfirmBet" />
@@ -987,9 +981,6 @@
     <wsdl:operation name="ResponseShowWinner">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowWinner" message="tns:IGameActions_ResponseShowWinner_OutputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ResponseFinishGame">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseFinishGame" message="tns:IGameActions_ResponseFinishGame_OutputCallbackMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ResponseShowLastQuestion">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion" message="tns:IGameActions_ResponseShowLastQuestion_OutputCallbackMessage" />
     </wsdl:operation>
@@ -1006,9 +997,6 @@
     </wsdl:operation>
     <wsdl:operation name="FinishRound">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/FinishRound" message="tns:IGameActionsOperations_FinishRound_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="FinishGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/FinishGame" message="tns:IGameActionsOperations_FinishGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ConfirmBet">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/ConfirmBet" message="tns:IGameActionsOperations_ConfirmBet_InputMessage" />
@@ -1770,12 +1758,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ResponseFinishGame">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseFinishGame" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="ResponseShowLastQuestion">
       <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseShowLastQuestion" style="document" />
       <wsdl:output>
@@ -1806,12 +1788,6 @@
     </wsdl:operation>
     <wsdl:operation name="FinishRound">
       <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/FinishRound" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="FinishGame">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/FinishGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

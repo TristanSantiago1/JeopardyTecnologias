@@ -26,7 +26,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para ActiveFriends.xaml
     /// </summary>
-    public partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
+    public  partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
     {
         private LobbyPage lobbyPage;
         public const int NULL_INT_VALUE = 0;
@@ -173,7 +173,14 @@ namespace JeopardyGame.Pages
             {
                 FriendList.ChangeStatusOfFriend(idFriend, status);
             }
-            SetFriend();
+            if (Dispatcher.CheckAccess())
+            {
+                SetFriend();
+            }
+            else
+            {
+                Dispatcher.Invoke(() => SetFriend());
+            }
         }
 
         private void SendEmailForInvitationToGame(string email, string subject, string body)
@@ -189,15 +196,19 @@ namespace JeopardyGame.Pages
             try
             {
                 GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(user, subject, body);
-                if (sentEmailResult.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+                if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
                 }
-                if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+                else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
 
+                    }
                 }
+               
             }
             catch (EndpointNotFoundException ex)
             {

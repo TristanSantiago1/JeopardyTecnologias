@@ -23,8 +23,8 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LobbyPage : Page, ILobbyActionsCallback, ILiveChatCallback, INotifyUserAvailabilityCallback
     {
-        private static ActiveFriends activeUsersInstance = null;
-        private static LiveChat liveChatInstance = null;
+        private ActiveFriends activeUsersInstance = null;
+        private LiveChat liveChatInstance = null;
         private const int NULL_INT_VALUE = 0;
         private const int TEAM_LEFT_SIDE = 1;
         private const int TEMA_RIGHT_SIDE = 2;
@@ -78,6 +78,7 @@ namespace JeopardyGame.Pages
             GetPlayers();
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
+            NotifyFriendsIamPlaying();
         }
 
         private void CreateNewlobby(LobbyActionsClient lobbyActionsProxy)
@@ -680,7 +681,7 @@ namespace JeopardyGame.Pages
         public void CloseLiveChat()
         {
             frmActiveFriendsAndChat.Content = null;
-            grdActiveUser.Visibility = Visibility.Collapsed;
+            grdActiveUser.Visibility = Visibility.Hidden;
         }
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
@@ -691,42 +692,46 @@ namespace JeopardyGame.Pages
             if(activeUsersInstance == null)
             {
                 activeUsersInstance = new ActiveFriends(userSingleton.IdUser);
-                activeUsersInstance.StartPage(this);
-                AvailabilityUserManagmentClient availabilityUserProxy = new();
-                try
-                {
-                    availabilityUserProxy.PlayerIsPlaying(userSingleton.IdUser);
-                }
-                catch (EndpointNotFoundException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
-                }
-                catch (CommunicationObjectFaultedException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
-                }
-                catch (TimeoutException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
-                }
-                catch (CommunicationException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
-                }
+                activeUsersInstance.StartPage(this);                
             }
             activeUsersInstance.RenewFriendCallBackChannel(userSingleton.IdUser);
             frmActiveFriendsAndChat.Content = activeUsersInstance;
             grdActiveUser.Visibility = Visibility.Visible;
         }  
 
+        private void NotifyFriendsIamPlaying()
+        {
+            try
+            {
+                AvailabilityUserManagmentClient availabilityUserProxy = new();
+                availabilityUserProxy.PlayerIsPlaying(userSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+            }
+        }
+
         public void CloseFriendList()
         {
             frmActiveFriendsAndChat.Content = null; 
-            grdActiveUser.Visibility = Visibility.Collapsed;
+            grdActiveUser.Visibility = Visibility.Hidden;
         }
         public void ResponseOfPlayerAvailability(int status, int idFriend)
         {

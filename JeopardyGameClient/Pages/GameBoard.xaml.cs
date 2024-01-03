@@ -752,14 +752,12 @@ namespace JeopardyGame.Pages
                     currentRound = roundToStart;
                     PrepareLastRound();
                     break;
-                case 4:
-                    ResponseFinishGame();
-                    break;
             }
         }
 
-        public void ResponseShowWinner(PlayerInGameDataContract[] playerInGame)
+        public void ResponseShowWinner(PlayerInGameDataContract[] playerInGame, int arePointsSaved)
         {
+            currentRound = 4;
             playersInGame = playerInGame.ToList();
             CreatePlayersScoresBoards();
             playerInGame.OrderBy(pl => pl.CurrentPointsOfRound);
@@ -767,34 +765,22 @@ namespace JeopardyGame.Pages
             grTimer.Visibility = Visibility.Hidden;
             grWinnerPanel.Visibility = Visibility.Visible;
             List<Border> playersBorders = stpPlayers.Children.OfType<Border>().ToList();
-            SetPlayerInPositionSpots(playersBorders, playerInGame);         
-            if(idLeader != 0)
+            SetPlayerInPositionSpots(playersBorders, playerInGame);  
+            if(userSingleton.IdState != 3)
             {
-                try
+                if (arePointsSaved == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-
-                    GameActionsOperationsClient gameActionsClientProxy = new();
-                    gameActionsClientProxy.FinishGame(roomCode, playerInGame);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
                 }
-                catch (EndpointNotFoundException ex)
+                else
                 {
-                    HandleException(ex, Properties.Resources.lblFailToFinishTheMatch + " : " + Properties.Resources.lblEndPointNotFound);
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this));
                 }
-                catch (CommunicationObjectFaultedException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblFailToFinishTheMatch + " : " + Properties.Resources.lblComunicationException);
-                }
-                catch (TimeoutException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblFailToFinishTheMatch + " : " + Properties.Resources.lblTimeException);
-                }
-                catch (CommunicationException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblFailToFinishTheMatch + " : " + Properties.Resources.lblWithoutConection);
-                }
-            }            
+            }
+            else
+            {
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this));
+            }
         }
 
         private  void SetPlayerInPositionSpots(List<Border> playerBorder, PlayerInGameDataContract[] playerInGame)
@@ -936,14 +922,33 @@ namespace JeopardyGame.Pages
 
         private void ClickLeaveGame(object sender, MouseButtonEventArgs e)
         {
+            if(currentRound == 4)
+            {
+                CloseWindow();
+            }
             if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.LeaveGameConfirmation, Window.GetWindow(this)).CloseWindow)
             {
                 NotifyLeavingGame();
+                CloseWindow();
+            }
+        }
+        private void CloseWindow()
+        {
+            if (userSingleton.IdState != 3)
+            {
                 MainMenu mainMenu = new MainMenu();
                 this.NavigationService.Navigate(mainMenu);
                 NavigationService.RemoveBackEntry();
             }
+            else
+            {
+                DeleteSingleton();
+                PrincipalPage principalPage = new PrincipalPage();
+                this.NavigationService.Navigate(principalPage);
+                NavigationService.RemoveBackEntry();
+            }
         }
+
 
         private void NotifyLeavingGame()
         {
@@ -1006,36 +1011,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public void ResponseFinishGame()
-        {
-            CloseWindowAsync();
-        }
-
-        private async Task CloseWindowAsync()
-        {
-            await Task.Delay(10000);
-            CloseWindow();
-        }
-
-        private void  CloseWindow()
-        {
-            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
-
-            if (userSingleton.IdState != 3)
-            {
-                MainMenu mainMenu = new MainMenu();
-                this.NavigationService.Navigate(mainMenu);
-                NavigationService.RemoveBackEntry();
-            }
-            else
-            {
-                DeleteSingleton();
-                PrincipalPage principalPage = new PrincipalPage();
-                this.NavigationService.Navigate(principalPage);
-                NavigationService.RemoveBackEntry();
-            }
-        }
-
+ 
         private void DeleteSingleton()
         {
             try

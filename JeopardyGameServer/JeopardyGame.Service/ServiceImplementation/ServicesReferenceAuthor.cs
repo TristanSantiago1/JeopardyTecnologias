@@ -416,11 +416,6 @@ namespace JeopardyGame.Service.ServiceImplementation
             ((IGameActionsOperations)gameActionsOperationsImplementation).ConfirmLastQuestionAnswer(roomCode, playerAnswering, points, isCorrect);
         }
 
-        public void FinishGame(int roomCode, List<PlayerInGameDataContract> playerInGame)
-        {
-            ((IGameActionsOperations)gameActionsOperationsImplementation).FinishGame(roomCode, playerInGame);
-        }
-
         public void FinishRound(int roomCode, List<PlayerInGameDataContract> playerInGame, int roundFinished)
         {
             ((IGameActionsOperations)gameActionsOperationsImplementation).FinishRound(roomCode, playerInGame, roundFinished);

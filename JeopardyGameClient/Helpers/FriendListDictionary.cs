@@ -50,10 +50,8 @@ namespace JeopardyGame.Helpers
         {
             if (friendOfUserList.ContainsKey(idUser))
             {
-                var friendEntry = friendOfUserList[idUser];
-                friendEntry.IdStatusOfAvailability = idStatus;
+                friendOfUserList[idUser].IdStatusOfAvailability = idStatus;
             }
-
         }
 
         public static void CleanDictionary()

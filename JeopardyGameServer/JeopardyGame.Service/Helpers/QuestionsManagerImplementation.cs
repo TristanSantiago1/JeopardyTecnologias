@@ -6,6 +6,7 @@ using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static JeopardyGame.Service.DataDictionaries.ActiveGamesDictionary;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -180,7 +181,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public int RegistryGamePlayers(int roomCode, List<PlayerInGameDataContract> playerInGames)
+        public int RegistryGamePlayers(int roomCode, List<PlayerPlayingInGame> playerInGames)
         {            
             int result = ExceptionDictionary.SUCCESFULL_EVENT;
             var gameConsulted = GameDataOperation.GetGameByRoomCode(roomCode);
@@ -190,8 +191,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     GamePlayer gamePlayer = new()
                     {
-                        PointsInGame = player.CurrentPointsOfRound,
-                        PlaceInGame = (short)player.FinalPosition,
+                        PointsInGame = player.FinalPoints,
+                        PlaceInGame = (short)player.NumberOfPlayerInGame,
                         Player_IdPlayer = player.IdPlayer,
                         Game_RoomCode = roomCode,
                         Game = gameConsulted.ObjectSaved,
@@ -200,17 +201,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     if (isSaved != ExceptionDictionary.SUCCESFULL_EVENT)
                     {
                         result = isSaved;
-                        break;
                     }
-                }
-                if (result != ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    
-                }
+                }               
             }
             else
             {
-                // hacerAlgo
                 result = gameConsulted.CodeEvent;
             }
             return result;

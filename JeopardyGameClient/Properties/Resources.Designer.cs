@@ -718,6 +718,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ..
+        /// </summary>
+        public static string lblFailToSavePoinstAfterGame {
+            get {
+                return ResourceManager.GetString("lblFailToSavePoinstAfterGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ProblemSendidng.
         /// </summary>
         public static string lblFailToSentTheFriendRequest {
@@ -759,6 +768,15 @@ namespace JeopardyGame.Properties {
         public static string lblGameLanguaje {
             get {
                 return ResourceManager.GetString("lblGameLanguaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no points.
+        /// </summary>
+        public static string lblGuestEndOfGame {
+            get {
+                return ResourceManager.GetString("lblGuestEndOfGame", resourceCulture);
             }
         }
         

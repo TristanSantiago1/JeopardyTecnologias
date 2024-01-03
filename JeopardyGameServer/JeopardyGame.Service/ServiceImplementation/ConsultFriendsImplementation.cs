@@ -308,20 +308,20 @@ namespace JeopardyGame.Service.ServiceImplementation
             var userPOJO = consultInformationOfFriends.ConsultUserByIdPlayer(idFriend);
             if (userPOJO.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                var channelSavedForFriendStatus = LivingClients.GetClient(userPOJO.ObjectSaved.UserName);
+                var channelSavedForFriendStatus = ActiveUsersDictionary.GetChannelCallBackActiveUser(userPOJO.ObjectSaved.IdUser);
                 if (channelSavedForFriendStatus != null)
                 {
                     return PLAYING;
                 }
             }
-            if (userPOJO.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT) 
+            if (userPOJO.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                var channelSavedForFriendStatus = ActiveUsersDictionary.GetChannelCallBackActiveUser(userPOJO.ObjectSaved.IdUser);
+                var channelSavedForFriendStatus = LivingClients.GetClient(userPOJO.ObjectSaved.UserName);
                 if (channelSavedForFriendStatus != null)
                 {
                     return ACTIVE;
                 }
-            }            
+            }                        
             var playerPojo = consultInformationOfFriends.ConsultPlayerById(idFriend);
             if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {                

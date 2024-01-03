@@ -3510,10 +3510,7 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         void ResponseBeginRound(int isYourTurn, int roundToStart, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGam);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseShowWinner")]
-        void ResponseShowWinner(JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseFinishGame")]
-        void ResponseFinishGame();
+        void ResponseShowWinner(JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int poinstWereSaved);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion")]
         void ResponseShowLastQuestion();
@@ -3592,12 +3589,6 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishRound")]
         System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishGame")]
-        void FinishGame(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/FinishGame")]
-        System.Threading.Tasks.Task FinishGameAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameActionsOperations/ConfirmBet")]
         void ConfirmBet(int roomCode, int idUser);
         
@@ -3668,14 +3659,6 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task FinishRoundAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame, int roundFinished) {
             return base.Channel.FinishRoundAsync(roomCode, playerInGame, roundFinished);
-        }
-        
-        public void FinishGame(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
-            base.Channel.FinishGame(roomCode, playerInGame);
-        }
-        
-        public System.Threading.Tasks.Task FinishGameAsync(int roomCode, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame) {
-            return base.Channel.FinishGameAsync(roomCode, playerInGame);
         }
         
         public void ConfirmBet(int roomCode, int idUser) {

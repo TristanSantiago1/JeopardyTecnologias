@@ -4,7 +4,7 @@ namespace JeopardyGame
 {
     public partial class App : Application
     {
-        private static bool isEnglish = false;
+        private static bool isEnglish = true;
 
         public static bool IsEnglish { get => isEnglish; set => isEnglish = value; }
 
