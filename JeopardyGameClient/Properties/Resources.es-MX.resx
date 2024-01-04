@@ -650,4 +650,7 @@ Mexico</value>
   <data name="lblWrongFormat" xml:space="preserve">
     <value>El formato del correo electrónico no es válido. Por favor, ingresa uno válido.</value>
   </data>
+  <data name="lblEmailExistInBD" xml:space="preserve">
+    <value>El correo se encuentra asociado a un perfil ¡Hazlo tu amigo!</value>
+  </data>
 </root>

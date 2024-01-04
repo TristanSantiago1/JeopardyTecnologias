@@ -502,6 +502,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The email is associated with a profile. Make it your friend!.
+        /// </summary>
+        public static string lblEmailExistInBD {
+            get {
+                return ResourceManager.GetString("lblEmailExistInBD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Email.
         /// </summary>
         public static string lblEmailInformation {

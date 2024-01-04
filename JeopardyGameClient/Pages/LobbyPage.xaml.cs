@@ -850,7 +850,7 @@ namespace JeopardyGame.Pages
 
             if (CheckEmailExistence(email) == DISALLOWED_VALUES)
             {
-                LblWrongEmail.Content = "El correo electrónico ya existe en la base de datos.";
+                LblWrongEmail.Content = Properties.Resources.lblEmailExistInBD;
                 LblWrongEmail.Visibility = Visibility.Visible;
                 return;
             }

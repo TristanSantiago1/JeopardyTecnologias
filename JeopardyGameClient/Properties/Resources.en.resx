@@ -650,4 +650,7 @@ Mexico</value>
   <data name="lblWrongFormat" xml:space="preserve">
     <value>The email format is not valid. Please enter a valid one.</value>
   </data>
+  <data name="lblEmailExistInBD" xml:space="preserve">
+    <value>The email is associated with a profile. Make it your friend!</value>
+  </data>
 </root>
