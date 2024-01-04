@@ -16,5 +16,7 @@ namespace JeopardyGame.Service.InterfacesSevices
 
         [OperationContract]
         GenericClass<int> SentEmailInvitingToGame(UserPOJO user, String subject, String bodyMessage);
+        [OperationContract]
+        GenericClass<int> SentEmailForInvitation(String email, String subject, String bodyMessage);
     }
 }

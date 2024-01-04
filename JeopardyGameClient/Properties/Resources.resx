@@ -639,4 +639,16 @@
   <data name="lblFinishGameBecauseOfTeamLeft" xml:space="preserve">
     <value>.</value>
   </data>
+  <data name="lblSendInvitation" xml:space="preserve">
+    <value>Invite a new friend to Jeopardy!</value>
+  </data>
+  <data name="lblSenEmail" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="lblWrongEmail" xml:space="preserve">
+    <value>The email field is empty. Please enter a valid one.</value>
+  </data>
+  <data name="lblWrongFormat" xml:space="preserve">
+    <value>The email format is not valid. Please enter a valid one.</value>
+  </data>
 </root>

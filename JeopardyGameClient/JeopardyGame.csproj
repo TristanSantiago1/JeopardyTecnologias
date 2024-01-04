@@ -149,9 +149,6 @@
     <Compile Include="Pages\PrincipalPage.xaml.cs">
       <DependentUpon>PrincipalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SendEmail.xaml.cs">
-      <DependentUpon>SendEmail.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\TeamChat.xaml.cs">
       <DependentUpon>TeamChat.xaml</DependentUpon>
     </Compile>
@@ -184,9 +181,6 @@
     <Compile Include="UserSingleton.cs" />
     <Compile Include="Views\BannerWindow.xaml.cs">
       <DependentUpon>BannerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EmailInvitation.xaml.cs">
-      <DependentUpon>EmailInvitation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EnterWithGameCode.xaml.cs">
       <DependentUpon>EnterWithGameCode.xaml</DependentUpon>
@@ -267,10 +261,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SendEmail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\TeamChat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -284,10 +274,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BannerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\EmailInvitation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -525,6 +511,9 @@
   <ItemGroup>
     <Resource Include="Images\informationIcon.png" />
     <Resource Include="Images\warningIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sendEmail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

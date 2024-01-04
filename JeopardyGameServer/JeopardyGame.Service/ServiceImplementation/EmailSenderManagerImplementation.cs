@@ -78,6 +78,52 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
+        public GenericClass<int> SentEmailForInvitation(string email, string subject, string bodyMessage)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+
+            try
+            {
+                if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(bodyMessage))
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+
+                int emailSend = EmailSender.SentEmailConfirmationToCreateAccount(email, subject, bodyMessage);
+
+                if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = emailSend;
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = emailSend;
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
 
         public GenericClass<int> SentEmailInvitingToGame(UserPOJO user, string subject, string bodyMessage)
         {

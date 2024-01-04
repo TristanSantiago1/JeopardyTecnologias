@@ -64,6 +64,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailConfirmationToCreateAccount(user, subject, bodyMessage);
         }
 
+        public GenericClass<int> SentEmailForInvitation(string email, string subject, string bodyMessage)
+        {
+            return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailForInvitation(email, subject, bodyMessage);
+        }
+
         public GenericClass<int> SentEmailInvitingToGame(UserPOJO user, string subject, string bodyMessage)
         {
             return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailInvitingToGame(user, subject, bodyMessage);
