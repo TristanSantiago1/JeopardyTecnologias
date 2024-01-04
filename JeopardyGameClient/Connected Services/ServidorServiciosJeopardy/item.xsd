@@ -145,8 +145,8 @@
   <xs:element name="UpdateUserInformation">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="idUser" type="xs:int" />
         <xs:element minOccurs="0" name="editedName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="originalName" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

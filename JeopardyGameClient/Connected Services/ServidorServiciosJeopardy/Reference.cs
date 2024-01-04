@@ -2231,10 +2231,10 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SaveUserAsync(JeopardyGame.ServidorServiciosJeopardy.UserPOJO userPojoNew, string codeEntered);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
-        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateUserInformation(string editedName, string originalName);
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateUserInformation(int idUser, string editedName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdateUserInformation", ReplyAction="http://tempuri.org/IUserManager/UpdateUserInformationResponse")]
-        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName);
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(int idUser, string editedName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePlayerPhoto", ReplyAction="http://tempuri.org/IUserManager/UpdatePlayerPhotoResponse")]
         JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdatePlayerPhoto(int idPlayer, int imageId);
@@ -2284,12 +2284,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
             return base.Channel.SaveUserAsync(userPojoNew, codeEntered);
         }
         
-        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateUserInformation(string editedName, string originalName) {
-            return base.Channel.UpdateUserInformation(editedName, originalName);
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdateUserInformation(int idUser, string editedName) {
+            return base.Channel.UpdateUserInformation(idUser, editedName);
         }
         
-        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(string editedName, string originalName) {
-            return base.Channel.UpdateUserInformationAsync(editedName, originalName);
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdateUserInformationAsync(int idUser, string editedName) {
+            return base.Channel.UpdateUserInformationAsync(idUser, editedName);
         }
         
         public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint UpdatePlayerPhoto(int idPlayer, int imageId) {
