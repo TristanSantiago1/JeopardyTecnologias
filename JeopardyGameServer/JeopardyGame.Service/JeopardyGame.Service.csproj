@@ -63,6 +63,7 @@
     <Compile Include="DataDictionaries\GameLobbiesDictionary.cs" />
     <Compile Include="DataDictionaries\FriendManagerDictionary.cs" />
     <Compile Include="DataDictionaries\LivingClients.cs" />
+    <Compile Include="DataDictionaries\PasswordChangeCodeDictionary.cs" />
     <Compile Include="DataDictionaries\QuestionsForLobbyDictionary.cs" />
     <Compile Include="DataDictionaries\TeamChats.cs" />
     <Compile Include="Helpers\EmailSender.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="InterfacesSevices\IHeartBeat.cs" />
     <Compile Include="InterfacesSevices\ILobbyActions.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
+    <Compile Include="InterfacesSevices\IRecoverPassword.cs" />
     <Compile Include="InterfacesSevices\IValidateUserExistance.cs" />
     <Compile Include="InterfacesSevices\IUserCreateAccountCode.cs" />
     <Compile Include="InterfacesSevices\IUserManager.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="ServiceImplementation\LoginVerificationImplementation.cs" />
     <Compile Include="ServiceImplementation\NotifyUserAvailabilityImplementation .cs" />
     <Compile Include="Helpers\QuestionsManagerImplementation.cs" />
+    <Compile Include="ServiceImplementation\RecoverPasswordImplementation.cs" />
     <Compile Include="ServiceImplementation\ServicesReferenceAuthor.cs" />
     <Compile Include="ServiceImplementation\UserCreateAccountCodeImplementation.cs" />
     <Compile Include="ServiceImplementation\UserManagerImplementation.cs" />

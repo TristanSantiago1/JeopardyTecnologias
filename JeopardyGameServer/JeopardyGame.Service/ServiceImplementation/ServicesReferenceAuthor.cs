@@ -195,6 +195,26 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
+    public partial class ServicesReferenceAuthor : IRecoverPassword
+    {
+        RecoverPasswordImplementation recoverPasswordImplementation = new();
+
+        public int CreateCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
+        {
+            return ((IRecoverPassword)recoverPasswordImplementation).CreateCodeToRecoverPassWord(userName, emailTitle, emailBody);
+        }
+
+        public int ResendCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
+        {
+            return ((IRecoverPassword)recoverPasswordImplementation).ResendCodeToRecoverPassWord(userName, emailTitle, emailBody);
+        }
+
+        public int VerifyCodeToRecoverPassword(string userName, string code)
+        {
+            return ((IRecoverPassword)recoverPasswordImplementation).VerifyCodeToRecoverPassword(userName, code);
+        }
+    }
+
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class ServicesReferenceAuthor : INotifyUserAvailability, IFriendManagerActions, ILobbyActions, ILiveChat, IGameActions, IChatForTeams
     {

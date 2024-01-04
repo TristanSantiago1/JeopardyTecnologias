@@ -146,6 +146,9 @@
     <Compile Include="DialogWindows\InformationMessageDialogWindow.xaml.cs">
       <DependentUpon>InformationMessageDialogWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PasswordRecovery.xaml.cs">
+      <DependentUpon>PasswordRecovery.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PrincipalPage.xaml.cs">
       <DependentUpon>PrincipalPage.xaml</DependentUpon>
     </Compile>
@@ -250,6 +253,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DialogWindows\InformationMessageDialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PasswordRecovery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
