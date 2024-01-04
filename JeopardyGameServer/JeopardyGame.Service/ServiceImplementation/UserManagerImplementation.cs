@@ -118,16 +118,16 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
 
-        public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
+        public GenericClass<int> UpdateUserInformation(int idUser, string editedName)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
             try
             {
-                if (string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName))
+                if (string.IsNullOrEmpty(editedName))
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                var updateInformation = UserManagerDataOperation.UpdateUserInformation(editedName, originalName);
+                var updateInformation = UserManagerDataOperation.UpdateUserInformation(idUser, editedName);
                 if (updateInformation.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     resultToReturn.ObjectSaved = updateInformation.ObjectSaved;

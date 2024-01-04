@@ -34,6 +34,7 @@
     <ImageSource x:Key="RedButton">/Images/redButton.png</ImageSource>
     <ImageSource x:Key="WarningIcon">/Images/warningIcon.png</ImageSource>
     <ImageSource x:Key="NewInformationIcon">/Images/informationIcon.png</ImageSource>
+    <ImageSource x:Key="SendEmail">/Images/sendEmail.png</ImageSource>
 
     <ImageSource x:Key="HostPedro" >/Images/HostImages/PedroPresenta.png</ImageSource>
     <ImageSource x:Key="HostCR7" >/Images/HostImages/CristianoRonaldo.png</ImageSource>

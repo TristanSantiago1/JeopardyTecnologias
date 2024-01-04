@@ -16,7 +16,7 @@ namespace JeopardyGame.Service.InterfacesServices
             GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered);
 
             [OperationContract]
-            GenericClass<int> UpdateUserInformation(String editedName, String originalName);
+            GenericClass<int> UpdateUserInformation(int idUser, String editedName);
 
             [OperationContract]
             GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId);

@@ -14,7 +14,8 @@ using MouseEventArgs = System.Windows.Input.MouseEventArgs;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-
+using JeopardyGame.ReGexs;
+using System.Text.RegularExpressions;
 
 namespace JeopardyGame.Pages
 {
@@ -34,16 +35,18 @@ namespace JeopardyGame.Pages
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton;
         private Window dialogMessage;
+        private const int DISALLOWED_VALUES = 0;
+        private const int ALLOWED_VALUES = 1;
 
         public LobbyPage()
         {
-            InitializeComponent();            
-            isAdminOfLobby = true;            
+            InitializeComponent();
+            isAdminOfLobby = true;
             Loaded += LoadedPrepareWindowAdmin;
         }
 
         private void LoadedPrepareWindowAdmin(object sender, RoutedEventArgs e)
-        {            
+        {
             PrepareWindow();
             LobbyActionsOperationClient lobbyActionsProxy = new();
             lobbyActionsProxy.SelectQuestionsForGameAsync(roomCode);
@@ -55,7 +58,7 @@ namespace JeopardyGame.Pages
             this.roomCode = roomCode;
             isAdminOfLobby = false;
             Loaded += LoadedPrepareWindowPlayer;
-        }       
+        }
 
         private void LoadedPrepareWindowPlayer(object sender, RoutedEventArgs e)
         {
@@ -69,7 +72,7 @@ namespace JeopardyGame.Pages
             LobbyActionsClient lobbyActionsProxy = new LobbyActionsClient(context);
             if (isAdminOfLobby)
             {
-                CreateNewlobby(lobbyActionsProxy);  
+                CreateNewlobby(lobbyActionsProxy);
             }
             else
             {
@@ -89,7 +92,7 @@ namespace JeopardyGame.Pages
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
-                if(newLobby.CodeEvent != Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
+                if (newLobby.CodeEvent != Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
                 }
@@ -369,7 +372,7 @@ namespace JeopardyGame.Pages
                     if (currentPlayerInLobby.Count == 4)
                     {
                         DoOrUndoTeams(true);
-                        SetPlayerInLabels(); 
+                        SetPlayerInLabels();
                         LobbyActionsOperationClient lobbyActionsProxy = new();
                         lobbyActionsProxy.MakeTeams(roomCode, userSingleton.IdUser, true);
                     }
@@ -382,7 +385,7 @@ namespace JeopardyGame.Pages
                 catch (EndpointNotFoundException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle,Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
                     chbTeamUp.IsChecked = false;
                 }
                 catch (CommunicationObjectFaultedException ex)
@@ -460,7 +463,7 @@ namespace JeopardyGame.Pages
         private void DoOrUndoTeams(bool teamUp)
         {
             if (teamUp)
-            {                
+            {
                 currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
                 {
                     if (pla.NumberOfPlayerInLobby <= TEMA_RIGHT_SIDE)
@@ -478,7 +481,7 @@ namespace JeopardyGame.Pages
             {
                 currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
                 {
-                    pla.SideOfTeam = TEAM_LEFT_SIDE; 
+                    pla.SideOfTeam = TEAM_LEFT_SIDE;
                     return pla;
                 }).ToList();
             }
@@ -487,7 +490,7 @@ namespace JeopardyGame.Pages
                 chbTeamUp.IsChecked = teamUp;
             }
         }
-    
+
 
         private void ClickChangeTeamSide(object sender, MouseButtonEventArgs e)
         {
@@ -498,7 +501,7 @@ namespace JeopardyGame.Pages
                 {
                     PlayerInLobby userChanged = ChangeSideOfPlayer(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
-                    {                        
+                    {
                         try
                         {
                             LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
@@ -601,7 +604,7 @@ namespace JeopardyGame.Pages
                 }
                 catch (EndpointNotFoundException ex)
                 {
-                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);                    
+                    Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
@@ -639,7 +642,7 @@ namespace JeopardyGame.Pages
         {
             dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this));
             CloseWindow();
-        }      
+        }
 
         private void DeleteSingleton()
         {
@@ -675,7 +678,7 @@ namespace JeopardyGame.Pages
                 liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
             }
             liveChatInstance.RenewLiveChatCallBack();
-            frmActiveFriendsAndChat.Content = liveChatInstance;            
+            frmActiveFriendsAndChat.Content = liveChatInstance;
             grdActiveUser.Visibility = Visibility.Visible;
         }
         public void CloseLiveChat()
@@ -689,15 +692,15 @@ namespace JeopardyGame.Pages
         }
         private void ClickListFriends(object sender, MouseButtonEventArgs e)
         {
-            if(activeUsersInstance == null)
+            if (activeUsersInstance == null)
             {
                 activeUsersInstance = new ActiveFriends(userSingleton.IdUser);
-                activeUsersInstance.StartPage(this);                
+                activeUsersInstance.StartPage(this);
             }
             activeUsersInstance.RenewFriendCallBackChannel(userSingleton.IdUser);
             frmActiveFriendsAndChat.Content = activeUsersInstance;
             grdActiveUser.Visibility = Visibility.Visible;
-        }  
+        }
 
         private void NotifyFriendsIamPlaying()
         {
@@ -730,7 +733,7 @@ namespace JeopardyGame.Pages
 
         public void CloseFriendList()
         {
-            frmActiveFriendsAndChat.Content = null; 
+            frmActiveFriendsAndChat.Content = null;
             grdActiveUser.Visibility = Visibility.Hidden;
         }
         public void ResponseOfPlayerAvailability(int status, int idFriend)
@@ -754,7 +757,7 @@ namespace JeopardyGame.Pages
 
         private void ClickStartGame(object sender, RoutedEventArgs e)
         {
-            if ((bool) chbTeamUp.IsChecked)
+            if ((bool)chbTeamUp.IsChecked)
             {
                 if (currentPlayerInLobby.Where(pl => pl.SideOfTeam == TEAM_LEFT_SIDE).ToList().Count == currentPlayerInLobby.Where(pl => pl.SideOfTeam == TEMA_RIGHT_SIDE).ToList().Count)
                 {
@@ -765,7 +768,7 @@ namespace JeopardyGame.Pages
                     dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources._2PlayerByTeam, Window.GetWindow(this));
                 }
             }
-            else if(currentPlayerInLobby.Count > 1)
+            else if (currentPlayerInLobby.Count > 1)
             {
                 CallMethodToStartGame();
             }
@@ -805,7 +808,7 @@ namespace JeopardyGame.Pages
             GameBoard game = new GameBoard(questionsForGame.ToList(), roomCode);
             this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
-        }    
+        }
 
         public static class GameCodeContainer
         {
@@ -824,5 +827,123 @@ namespace JeopardyGame.Pages
             this.NavigationService.Navigate(logInUserPage);
             NavigationService.RemoveBackEntry();
         }
+
+        private void ClickSendEmailForInvitation(object sender, MouseButtonEventArgs e)
+        {
+            string email = txbSendEmail.Text;
+            int roomCode = GameCodeContainer.RoomCode;
+            string subject = Properties.Resources.txbTitleEmailInvitation;
+            string bodyWithCode = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
+            
+            if (string.IsNullOrEmpty(email))
+            {
+                LblWrongEmail.Content = Properties.Resources.lblWrongEmail;
+                LblWrongEmail.Visibility = Visibility.Visible;
+                return;
+            }
+            if (!IsValidEmail(email))
+            {
+                LblWrongEmail.Content = Properties.Resources.lblWrongFormat;
+                LblWrongEmail.Visibility = Visibility.Visible;
+                return;
+            }
+
+            if (CheckEmailExistence(email) == DISALLOWED_VALUES)
+            {
+                LblWrongEmail.Content = Properties.Resources.lblEmailExistInBD;
+                LblWrongEmail.Visibility = Visibility.Visible;
+                return;
+            }
+            LblWrongEmail.Visibility = Visibility.Collapsed;
+
+            EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
+
+            try
+            {
+
+                GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailForInvitation(email, subject, bodyWithCode);
+
+                if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                }
+                else
+                {
+                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                    }
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+        }
+        private bool IsValidEmail(string email)
+        {
+            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            return regexExpression.IsMatch(email);
+        }
+        private int CheckEmailExistence(string email)
+        {
+            try
+            {
+                ValidateUserExistanceClient dataCheckerProxy = new();
+                GenericClassOfint userIsNew = dataCheckerProxy.EmailAlreadyExist(email);
+                dataCheckerProxy.Close();
+                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+                {
+                    if (userIsNew.ObjectSaved == ALLOWED_VALUES)
+                    {
+                        return ALLOWED_VALUES;
+                    }
+                    else
+                    {
+                        return DISALLOWED_VALUES;
+                    }
+                }
+                else
+                {
+                    return DISALLOWED_VALUES;
+                }
+            }
+            catch (EndpointNotFoundException)
+            {
+                throw new EndpointNotFoundException();
+            }
+            catch (CommunicationObjectFaultedException)
+            {
+                throw new CommunicationException();
+            }
+            catch (TimeoutException)
+            {
+                throw new TimeoutException();
+            }
+            catch (CommunicationException)
+            {
+                throw new CommunicationException();
+            }
+        }
+        private void RefreshWindow()
+        {
+            EditUserProfile editUserProfilePage = new EditUserProfile();
+            this.NavigationService.Navigate(editUserProfilePage);
+            NavigationService.RemoveBackEntry();
+        }
+
     }
 }

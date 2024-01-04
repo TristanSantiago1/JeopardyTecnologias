@@ -500,10 +500,10 @@ namespace JeopardyGame.Data.DataAccess
             }
             return resultOfOperation;
         }
-        public static GenericClassServer<int> UpdateUserInformation(string editedName, string originalName)
+        public static GenericClassServer<int> UpdateUserInformation(int idUser, string editedName)
         {
             GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
-            if (string.IsNullOrEmpty(editedName) || string.IsNullOrEmpty(originalName))
+            if (string.IsNullOrEmpty(editedName))
             {
                 return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
             }
@@ -511,7 +511,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var userToUpdate = contextBD.Users.FirstOrDefault(u => u.Name == originalName);
+                    var userToUpdate = contextBD.Users.FirstOrDefault(u =>u.IdUser == idUser);
                     if (userToUpdate != null)
                     {
                         userToUpdate.Name = editedName;

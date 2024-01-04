@@ -246,8 +246,8 @@ namespace JeopardyGame.Pages
             {
                 UserManagerClient useManagerProxy = new UserManagerClient();
                 String nameEdited = txbEditName.Text;
-                String originalName = UserSingleton.GetMainUser().Name;
-                var result = useManagerProxy.UpdateUserInformation(nameEdited, originalName);
+                int idUser = UserSingleton.GetMainUser().IdUser;
+                var result = useManagerProxy.UpdateUserInformation(idUser, nameEdited);
                 if (result != null)
                 {
                     UserSingleton.GetMainUser().UpdateNameData(nameEdited);

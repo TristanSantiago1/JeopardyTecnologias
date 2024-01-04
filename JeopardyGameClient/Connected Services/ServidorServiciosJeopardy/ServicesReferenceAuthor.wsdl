@@ -298,6 +298,12 @@
   <wsdl:message name="IEmailSenderManager_SentEmailInvitingToGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:SentEmailInvitingToGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IEmailSenderManager_SentEmailForInvitation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SentEmailForInvitation" />
+  </wsdl:message>
+  <wsdl:message name="IEmailSenderManager_SentEmailForInvitation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SentEmailForInvitationResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserCreateAccountCode_AddUserToConfirmationDictionary_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUserToConfirmationDictionary" />
   </wsdl:message>
@@ -727,6 +733,10 @@
     <wsdl:operation name="SentEmailInvitingToGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGame" message="tns:IEmailSenderManager_SentEmailInvitingToGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGameResponse" message="tns:IEmailSenderManager_SentEmailInvitingToGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SentEmailForInvitation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IEmailSenderManager/SentEmailForInvitation" message="tns:IEmailSenderManager_SentEmailForInvitation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IEmailSenderManager/SentEmailForInvitationResponse" message="tns:IEmailSenderManager_SentEmailForInvitation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserCreateAccountCode">
@@ -1207,6 +1217,15 @@
     </wsdl:operation>
     <wsdl:operation name="SentEmailInvitingToGame">
       <soap12:operation soapAction="http://tempuri.org/IEmailSenderManager/SentEmailInvitingToGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SentEmailForInvitation">
+      <soap12:operation soapAction="http://tempuri.org/IEmailSenderManager/SentEmailForInvitation" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

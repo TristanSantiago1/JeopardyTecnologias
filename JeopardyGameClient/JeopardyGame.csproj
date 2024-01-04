@@ -519,5 +519,8 @@
     <Resource Include="Images\informationIcon.png" />
     <Resource Include="Images\warningIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sendEmail.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

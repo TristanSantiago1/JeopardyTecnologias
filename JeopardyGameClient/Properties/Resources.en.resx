@@ -638,4 +638,19 @@ Mexico</value>
   <data name="lblFinishGameBecauseOfTeamLeft" xml:space="preserve">
     <value>A memeber of a team have left a team, there can be unpair teams so the match will ve cancelled, you will be redirected to the menu.</value>
   </data>
+  <data name="lblSendInvitation" xml:space="preserve">
+    <value>Invite a new friend to Jeopardy!</value>
+  </data>
+  <data name="lblSenEmail" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="lblWrongEmail" xml:space="preserve">
+    <value>The email field is empty. Please enter a valid one.</value>
+  </data>
+  <data name="lblWrongFormat" xml:space="preserve">
+    <value>The email format is not valid. Please enter a valid one.</value>
+  </data>
+  <data name="lblEmailExistInBD" xml:space="preserve">
+    <value>The email is associated with a profile. Make it your friend!</value>
+  </data>
 </root>

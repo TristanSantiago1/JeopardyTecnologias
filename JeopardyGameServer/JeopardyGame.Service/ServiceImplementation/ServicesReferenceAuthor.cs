@@ -49,10 +49,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             return ((IUserManager)UserManager).UpdatePlayerPhoto(idPlayer, imageId);
         }
-        public GenericClass<int> UpdateUserInformation(string editedName, string originalName)
+        public GenericClass<int> UpdateUserInformation(int idUser, string editedName)
         {
-            return ((IUserManager)UserManager).UpdateUserInformation(editedName, originalName);
-        }       
+            return ((IUserManager)UserManager).UpdateUserInformation(idUser, editedName);
+        }
+
     }
 
     public partial class ServicesReferenceAuthor : IEmailSenderManager
@@ -62,6 +63,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> SentEmailConfirmationToCreateAccount(UserPOJO user, string subject, string bodyMessage)
         {
             return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailConfirmationToCreateAccount(user, subject, bodyMessage);
+        }
+
+        public GenericClass<int> SentEmailForInvitation(string email, string subject, string bodyMessage)
+        {
+            return ((IEmailSenderManager)emailSenderManagerImplementation).SentEmailForInvitation(email, subject, bodyMessage);
         }
 
         public GenericClass<int> SentEmailInvitingToGame(UserPOJO user, string subject, string bodyMessage)
