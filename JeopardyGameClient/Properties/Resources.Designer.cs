@@ -754,6 +754,24 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ..
+        /// </summary>
+        public static string lblFinishGameBecauseJustOnePlayer {
+            get {
+                return ResourceManager.GetString("lblFinishGameBecauseJustOnePlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ..
+        /// </summary>
+        public static string lblFinishGameBecauseOfTeamLeft {
+            get {
+                return ResourceManager.GetString("lblFinishGameBecauseOfTeamLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, the game has been canceled.
         /// </summary>
         public static string lblGameCancel {

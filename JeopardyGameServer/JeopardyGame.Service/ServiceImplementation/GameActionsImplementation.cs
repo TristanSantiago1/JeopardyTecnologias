@@ -162,46 +162,53 @@ namespace JeopardyGame.Service.ServiceImplementation
     public partial class IGameActionsOperationsImplementation : IGameActionsOperations
     {
         private const int ERROR = 0;
+        private const int NULL_INT_VALUE = 0;
         private const int ROUND_ONE = 1;
         private const int ROUND_TWO = 2;
         private const int ROUND_THREE = 3;
-        private const int GAME_FINISHED = 4;
         private const int FIRST_TURN = 1;
+        private static Object objectLock = new();
 
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
-            var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            if (activeGame != null)
+            lock (objectLock)
             {
-                var playerLeaving = activeGame.Where(player => player.IdUser == idUserUnsubscribing).FirstOrDefault();
-                if (playerLeaving != null)
+                if (roomCode != NULL_INT_VALUE && idUserUnsubscribing != 0)
                 {
-                    try
+                    var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                    if (activeGame != null)
                     {
-                        int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
-                        activeGame.Remove(playerLeaving);
-                        ReArrangeTurns(activeGame, turnLeaving);
-                        NotifySomePlayerLeaveTheGame(activeGame);
-                    }
-                    catch (CommunicationObjectFaultedException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        var playerLeaving = activeGame.Where(player => player.IdUser == idUserUnsubscribing).FirstOrDefault();
+                        if (playerLeaving != null)
+                        {
+                            try
+                            {
+                                int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
+                                activeGame.Remove(playerLeaving);
+                                ReArrangeTurns(activeGame, turnLeaving);
+                                NotifySomePlayerLeaveTheGame(activeGame);
+                            }
+                            catch (CommunicationObjectFaultedException ex)
+                            {
+                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            }
+                            catch (TimeoutException ex)
+                            {
+                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            }
+                            catch (CommunicationException ex)
+                            {
+                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            }
+                            catch (InvalidOperationException ex)
+                            {
+                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            }
+                        }
                     }
                 }
             }
@@ -515,64 +522,76 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void ConfirmBet(int roomCode, int idUser)
         {
-            List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-            playersPlaying.FirstOrDefault(pla => pla.IdUser == idUser).DidBet = true;
-            try
+            lock (objectLock)
             {
-                if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet == true).ToList().Count)
+                if (roomCode != NULL_INT_VALUE && idUser != NULL_INT_VALUE)
                 {
-                    NotifyPlayersBetsAreReady(playersPlaying);
+                    List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                    if (playersPlaying != null)
+                    {
+                        playersPlaying.FirstOrDefault(pla => pla.IdUser == idUser).DidBet = true;
+                        try
+                        {
+                            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet == true).ToList().Count)
+                            {
+                                NotifyPlayersBetsAreReady(playersPlaying);
+                            }
+                        }
+                        catch (CommunicationObjectFaultedException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                    }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
 
         private void NotifyPlayersBetsAreReady(List<PlayerPlayingInGame> playersPlaying)
         {
-            foreach (PlayerPlayingInGame player in playersPlaying)
+            lock (objectLock)
             {
-                try
+                foreach (PlayerPlayingInGame player in playersPlaying)
                 {
-                    player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowLastQuestion();
-                }
-                catch (CommunicationObjectFaultedException ex)
-                {
-                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (TimeoutException ex)
-                {
-                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (CommunicationException ex)
-                {
-                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (InvalidOperationException ex)
-                {
-                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    try
+                    {
+                        player.gameCallbackChannel.GetCallbackChannel<IGameActionsCallBack>().ResponseShowLastQuestion();
+                    }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
                 }
             }
         }
@@ -580,61 +599,64 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void ConfirmLastQuestionAnswer(int roomCode, PlayerInGameDataContract playerAnswering, int points, bool isCorrect)
         {
-            if (roomCode !=  0 && playerAnswering != null)
+            lock (objectLock)
             {
-                List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                if (playersPlaying != null)
+                if (roomCode != 0 && playerAnswering != null)
                 {
-                    PlayerPlayingInGame specificPlayer = playersPlaying.FirstOrDefault(pla => pla.IdUser == playerAnswering.IdUser);
-                    if (specificPlayer != null)
+                    List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+                    if (playersPlaying != null)
                     {
-                        //si alguiens e sale durante la ultima regunta, quitarlo del diccionario y verificar playerAwnserin = null
-                        specificPlayer.DidAnswerLastQuestion = true;
-                        try
+                        PlayerPlayingInGame specificPlayer = playersPlaying.FirstOrDefault(pla => pla.IdUser == playerAnswering.IdUser);
+                        if (specificPlayer != null)
                         {
-                            if (isCorrect)
+                            //si alguiens e sale durante la ultima regunta, quitarlo del diccionario y verificar playerAwnserin = null
+                            specificPlayer.DidAnswerLastQuestion = true;
+                            try
                             {
-                                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+                                if (isCorrect)
+                                {
+                                    specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+                                }
+                                else
+                                {
+                                    specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+                                }
+                                if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion == true).ToList().Count)
+                                {
+                                    QuestionsManagerImplementation questionsManager = new();
+                                    int arePointsSaved = questionsManager.RegistryGamePlayers(roomCode, playersPlaying);
+                                    NotifyPlayersWinner(playersPlaying, arePointsSaved);
+                                    CleanDictionariesAfterGame(roomCode);
+                                }
                             }
-                            else
+                            catch (CommunicationObjectFaultedException ex)
                             {
-                                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                             }
-                            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion == true).ToList().Count)
+                            catch (TimeoutException ex)
                             {
-                                QuestionsManagerImplementation questionsManager = new();
-                                int arePointsSaved = questionsManager.RegistryGamePlayers(roomCode, playersPlaying);
-                                NotifyPlayersWinner(playersPlaying, arePointsSaved);
+                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            }
+                            catch (CommunicationException ex)
+                            {
+                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            }
+                            catch (InvalidOperationException ex)
+                            {
+                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
+                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                             }
                         }
-                        catch (CommunicationObjectFaultedException ex)
+                        else
                         {
-                            ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (TimeoutException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (InvalidOperationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            NotifyPlayersWinner(playersPlaying, ExceptionDictionary.UNKOWN_EXCEPTION_OCURRED);
                         }
                     }
-                    else
-                    {
-                        NotifyPlayersWinner(playersPlaying, ExceptionDictionary.UNKOWN_EXCEPTION_OCURRED);
-                    }                   
                 }
-            }
-            CleanDictionariesAfterGame(roomCode);
+            }            
         }
 
         private void NotifyPlayersWinner(List<PlayerPlayingInGame> playersPlaying, int arePointsSaved)
@@ -676,15 +698,18 @@ namespace JeopardyGame.Service.ServiceImplementation
             ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
             ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
             var gameToFinish = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-           foreach (var item in gameToFinish)
-           {
-                ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(item.IdUser);
-                if ((gameToFinish != null && gameToFinish.Any(pl => pl.SideTeam == 2)))
+            if (gameToFinish != null)
+            {
+                foreach (var item in gameToFinish)
                 {
-                    TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(item.IdUser);
+                    ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(item.IdUser);
+                    if ((gameToFinish != null && gameToFinish.Any(pl => pl.SideTeam == 2)))
+                    {
+                        TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(item.IdUser);
+                    }
                 }
+                ActiveGamesDictionary.RemoveRegistryOfGameFromDictionary(roomCode);
             }
-            ActiveGamesDictionary.RemoveRegistryOfGameFromDictionary(roomCode);
         }
 
         public static List<PlayerInGameDataContract> GetPlayerInGameDataContractList(List<PlayerPlayingInGame> playersPlaying)

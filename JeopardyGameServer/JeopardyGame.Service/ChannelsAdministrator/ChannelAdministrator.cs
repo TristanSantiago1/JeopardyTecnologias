@@ -108,14 +108,18 @@ namespace JeopardyGame.Service.ChannelsAdministrator
             { 
                 var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
                 int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Any(pl => pl.idUser == idUserCausingException)).Key;
-                ILobbyActionsOperationImplementation lobbyActions = new();  
-                if(idUserCausingException == GameLobbiesDictionary.GetSpecificActiveLobby(roomCode).idAdmin)
+                ILobbyActionsOperationImplementation lobbyActions = new();
+                var lobbyFailed = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                if (lobbyFailed != null)
                 {
-                    lobbyActions.DissolveLobby(roomCode, idUserCausingException);
-                }
-                else
-                {
-                    lobbyActions.LeaveLobby(roomCode, idUserCausingException);
+                    if (lobbyFailed.idAdmin == idUserCausingException)
+                    {
+                        lobbyActions.DissolveLobby(roomCode, idUserCausingException);
+                    }
+                    else
+                    {
+                        lobbyActions.LeaveLobby(roomCode, idUserCausingException);
+                    }
                 }
                 int isUserDisconnected = VerifyUserIsStillActive(GetUserNameClient(idUserCausingException));
                 if (isUserDisconnected == ExceptionDictionary.SUCCESFULL_EVENT)

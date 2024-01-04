@@ -36,10 +36,16 @@ namespace JeopardyGame.Pages
         private void ClickGetInAsIGuest(object sender, RoutedEventArgs e)
         {
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
+            codeWindow.Owner = Window.GetWindow(this);
             codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             codeWindow.Show();
             enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this), true);
             codeWindow.contentFrame.NavigationService.Navigate(codePage);
+        }
+
+        public  void ClosePrincipalWindow()
+        {
+            Window.GetWindow(this).Close();
         }
     }
 }

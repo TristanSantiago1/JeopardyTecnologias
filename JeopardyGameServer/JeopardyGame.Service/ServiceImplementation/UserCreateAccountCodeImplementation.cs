@@ -168,37 +168,37 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void TakeUserOutOfDictionary(UserPOJO user)
         {
-            try
+            lock (lockObject)
             {
-                if (user != null)
+                try
                 {
-                    string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
-                    if (!string.IsNullOrEmpty(code))
+                    if (user != null)
                     {
-                        EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(code);
+                        string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
+                        if (!string.IsNullOrEmpty(code))
+                        {
+                            EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(code);
+                        }
                     }
-                }                
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
-
-
-
 
     }
 }

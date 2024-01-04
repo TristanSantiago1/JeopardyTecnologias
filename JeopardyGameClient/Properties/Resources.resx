@@ -633,4 +633,10 @@
   <data name="lblGuestEndOfGame" xml:space="preserve">
     <value>no points</value>
   </data>
+  <data name="lblFinishGameBecauseJustOnePlayer" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblFinishGameBecauseOfTeamLeft" xml:space="preserve">
+    <value>.</value>
+  </data>
 </root>

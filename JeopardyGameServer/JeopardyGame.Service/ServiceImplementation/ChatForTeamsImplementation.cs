@@ -13,82 +13,89 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
 
         private readonly int NULL_INT_VALUE = 0;
+        private static Object objectLock = new();
 
         public void RegisterForTeamChat(int idUser)
         {
-            try
+            lock (objectLock)
             {
-                if (idUser != NULL_INT_VALUE)
+                try
                 {
-                    var savedChannelOfTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                    if (savedChannelOfTeamChat == null)
+                    if (idUser != NULL_INT_VALUE)
                     {
-                        var newChannelForTeamChat = OperationContext.Current;
-                        TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannelForTeamChat);
+                        var savedChannelOfTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
+                        if (savedChannelOfTeamChat == null)
+                        {
+                            var newChannelForTeamChat = OperationContext.Current;
+                            TeamChats.RegisterNewTeamChatUserInDictionary(idUser, newChannelForTeamChat);
+                        }
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
         public int RenewTeamChatCallBack(int idUser)
         {
             int resultToReturn;
-            try
+            lock (objectLock)
             {
-                if (idUser != NULL_INT_VALUE)
+                try
                 {
-                    var newChannelForTeamChat = OperationContext.Current;
-                    TeamChats.RenewTeamChatCallBack(idUser, newChannelForTeamChat);
-                    resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;                    
+                    if (idUser != NULL_INT_VALUE)
+                    {
+                        var newChannelForTeamChat = OperationContext.Current;
+                        TeamChats.RenewTeamChatCallBack(idUser, newChannelForTeamChat);
+                        resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
                 }
-                else
+                catch (CommunicationObjectFaultedException ex)
                 {
                     resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (TimeoutException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.TEAM_CHAT_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
             return resultToReturn;
         }
@@ -178,13 +185,16 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void UnregisterFromTeamChat(int idUser)
         {
-            if (idUser != NULL_INT_VALUE)
+            lock (new Object())
             {
-                var channelForUnregisterTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
-                if (channelForUnregisterTeamChat != null)
+                if (idUser != NULL_INT_VALUE)
                 {
+                    var channelForUnregisterTeamChat = TeamChats.GetChannelCallBackTeamChatUser(idUser);
+                    if (channelForUnregisterTeamChat != null)
+                    {
 
-                    TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUser);
+                        TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUser);
+                    }
                 }
             }
         }

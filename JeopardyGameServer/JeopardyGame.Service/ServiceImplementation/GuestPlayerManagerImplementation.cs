@@ -7,6 +7,7 @@ using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,72 +16,76 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     internal class GuestPlayerManagerImplementation : IGuestPlayerManager
     {
-        private readonly string GUEST_EMAIL = "guest@email";
-        private readonly string GUEST_PASSWORD = "123456789";
-        private readonly string GUEST_NAME = "";
+        private readonly string GUEST_EMAIL = Properties.Resources.GuestMail;
+        private readonly string GUEST_PASSWORD = Properties.Resources.GuestPassword;
+        private readonly string GUEST_NAME = Properties.Resources.GuestName;
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int GUEST_STATE = 3;
+        private static Object objectLock = new object();
 
         public GenericClass<UserPOJO> CreateUserForGuest()
-        {
+        {            
             GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
-            try
+            lock (objectLock)
             {
-                User guestUser = new User()
+                try
                 {
-                    IdUser = DEFAULT_INT_VALUE,
-                    EmailAddress = GUEST_EMAIL,
-                    Name = GUEST_NAME,
-                    UserName = GetGuestUserName(),
-                    Password = GUEST_PASSWORD                   
-                };
-                GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(guestUser);
-                if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    PlayerPOJO playerToSave = new PlayerPOJO();
-                    playerToSave.IdPlayer = DEFAULT_INT_VALUE;
-                    playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
-                    playerToSave.NoReports = DEFAULT_INT_VALUE;
-                    playerToSave.IdActualAvatar = DEFAULT_INT_VALUE;
-                    playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
-                    playerToSave.IdState = GUEST_STATE;
-                    UserManagerImplementation userManager = new();
-                    int isPlayerSavedSuccessfully = userManager.SavePlayer(playerToSave);
-                    if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                    User guestUser = new User()
                     {
-                        resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userSaved.ObjectSaved);
-                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        IdUser = DEFAULT_INT_VALUE,
+                        EmailAddress = GUEST_EMAIL,
+                        Name = GUEST_NAME,
+                        UserName = GetGuestUserName(),
+                        Password = GUEST_PASSWORD
+                    };
+                    GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(guestUser);
+                    if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        PlayerPOJO playerToSave = new PlayerPOJO();
+                        playerToSave.IdPlayer = DEFAULT_INT_VALUE;
+                        playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
+                        playerToSave.NoReports = DEFAULT_INT_VALUE;
+                        playerToSave.IdActualAvatar = DEFAULT_INT_VALUE;
+                        playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
+                        playerToSave.IdState = GUEST_STATE;
+                        UserManagerImplementation userManager = new();
+                        int isPlayerSavedSuccessfully = userManager.SavePlayer(playerToSave);
+                        if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userSaved.ObjectSaved);
+                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
+                            resultToReturn.CodeEvent = isPlayerSavedSuccessfully;
+                        }
                     }
                     else
                     {
-                        UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
-                        resultToReturn.CodeEvent = isPlayerSavedSuccessfully;
+                        resultToReturn.CodeEvent = userSaved.CodeEvent;
                     }
                 }
-                else
+                catch (CommunicationObjectFaultedException ex)
                 {
-                    resultToReturn.CodeEvent = userSaved.CodeEvent;
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (TimeoutException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
             return resultToReturn;
         }
@@ -97,35 +102,71 @@ namespace JeopardyGame.Service.ServiceImplementation
             int aleatoryNumber = generateAleatory.Next(1, 27);
             return aleatoryNumber switch
             {
-                1 => "Wachiturro",
-                2 => "Papikra",
-                3 => "TigerWoods",
-                4 => "1",
-                5 => "NoobMaster",
-                6 => "JustNoob",
-                7 => "JustMaster",
-                8 => "Just",
-                9 => "ShadowRunner",
-                10 => "PhoenixKnight",
-                11 => "InfernoWar",
-                12 => "QuantumGamer",
-                13 => "MysticSeeker",
-                14 => "CyberNinja",
-                15 => "GalaxyEx",
-                16 => "EternalRogue",
-                17 => "ThunderSpec",
-                18 => "NebulaStriker",
-                19 => "Elemental",
-                20 => "Starlight",
-                21 => "Celestial",
-                22 => "Quantum",
-                23 => "MidnightVoy",
-                24 => "SolarSorcerer",
-                25 => "LunarAssassin",
-                26 => "NovaVortex",
-                27 => "Blizzard",
-                _ => "NoBody",
+                1 => Properties.Resources.Wachiturro,
+                2 => Properties.Resources.Papikra,
+                3 => Properties.Resources.TigerWoods,
+                4 => Properties.Resources._1,
+                5 => Properties.Resources.JustNoob,
+                6 => Properties.Resources.JustMaster,
+                7 => Properties.Resources.NoobMaster,
+                8 => Properties.Resources.Just,
+                9 => Properties.Resources.ShadowRunner,
+                10 => Properties.Resources.PhoenixKnight,
+                11 => Properties.Resources.InfernoWar,
+                12 => Properties.Resources.QuantumGamer,
+                13 => Properties.Resources.Quantum,
+                14 => Properties.Resources.MysticSeeker,
+                15 => Properties.Resources.CyberNinja,
+                16 => Properties.Resources.GalaxyEx,
+                17 => Properties.Resources.Elemental,
+                18 => Properties.Resources.Starlight,
+                19 => Properties.Resources.Celestial,
+                20 => Properties.Resources.MidnightVoy,
+                21 => Properties.Resources.SolarSorcerer,
+                22 => Properties.Resources.LunarAssassin,
+                23 => Properties.Resources.NovaVortex,
+                24 => Properties.Resources.Blizzard,
+                25 => Properties.Resources.NoBody,
+                26 => Properties.Resources.ThunderSpec,
+                27 => Properties.Resources.EternalRogue,
+                _ => Properties.Resources.Wachiturro,
             };
+        }
+
+        public static bool IsUserNameInBlackList(string userName)
+        {
+            List<string> listOfGuestUserNames = new List<string>
+            {
+                Properties.Resources.Wachiturro,
+                Properties.Resources.Papikra,
+                Properties.Resources.TigerWoods,
+                Properties.Resources._1,
+                Properties.Resources.JustNoob,
+                Properties.Resources.JustMaster,
+                Properties.Resources.NoobMaster,
+                Properties.Resources.Just,
+                Properties.Resources.ShadowRunner,
+                Properties.Resources.PhoenixKnight,
+                Properties.Resources.InfernoWar,
+                Properties.Resources.QuantumGamer,
+                Properties.Resources.Quantum,
+                Properties.Resources.MysticSeeker,
+                Properties.Resources.CyberNinja,
+                Properties.Resources.GalaxyEx,
+                Properties.Resources.Elemental,
+                Properties.Resources.Starlight,
+                Properties.Resources.Celestial,
+                Properties.Resources.MidnightVoy,
+                Properties.Resources.SolarSorcerer,
+                Properties.Resources.LunarAssassin,
+                Properties.Resources.NovaVortex,
+                Properties.Resources.Blizzard,
+                Properties.Resources.NoBody,
+                Properties.Resources.ThunderSpec,
+                Properties.Resources.EternalRogue
+            };
+            return listOfGuestUserNames.Any(name => name.Equals(userName));
+
         }
     }
 }

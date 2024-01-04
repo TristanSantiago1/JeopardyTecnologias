@@ -14,47 +14,51 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int NULL_INT_VALUE = 0;
         private readonly int CHANNEL_ALREADY_EXIST = -1;
         private readonly int CHANNEL_SAVED = 1;
+        private static Object objectLock = new();
 
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
-            try
+            lock (objectLock)
             {
-                if (idUserFriendManager == NULL_INT_VALUE)
+                try
                 {
-                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                    if (idUserFriendManager == NULL_INT_VALUE)
+                    {
+                        return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                    }
+                    var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
+                    if (channelSaved == null)
+                    {
+                        var newCallBackChannel = OperationContext.Current;
+                        FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
+                        resultToReturn.ObjectSaved = CHANNEL_SAVED;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultToReturn.ObjectSaved = CHANNEL_ALREADY_EXIST;
+                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
                 }
-                var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
-                if (channelSaved == null)
+                catch (CommunicationObjectFaultedException ex)
                 {
-                    var newCallBackChannel = OperationContext.Current;
-                    FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
-                    resultToReturn.ObjectSaved = CHANNEL_SAVED;
-                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                }
-                else
-                {
-                    resultToReturn.ObjectSaved = CHANNEL_ALREADY_EXIST;
                     resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
             return resultToReturn;
         }
@@ -62,33 +66,36 @@ namespace JeopardyGame.Service.ServiceImplementation
         public int RenewFriendManagerUserCallBack(int idUserFriendManager)
         {
             int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-            try
+            lock (objectLock)
             {
-                if (idUserFriendManager == NULL_INT_VALUE)
+                try
                 {
-                    return resultToReturn;
-                }                
-                var newCallBackChannel = OperationContext.Current;
-                FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
-                resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;                
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    if (idUserFriendManager == NULL_INT_VALUE)
+                    {
+                        return resultToReturn;
+                    }
+                    var newCallBackChannel = OperationContext.Current;
+                    FriendManagerDictionary.RegisterNewFriendUserInDictionary(idUserFriendManager, newCallBackChannel);
+                    resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
             return resultToReturn;
         }
@@ -102,34 +109,38 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int DECLINE_FRIEND_REQUEST = 0;
         private readonly int SEND_FRIEND_REQUEST = 1;
         private readonly int ACCEPT_FRIEND_REQUEST = 2;
+        private static Object objectLock = new();
 
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
-            try
+            lock (objectLock)
             {
-                if (idUserFriendManager != NULL_INT_VALUE)
+                try
                 {
-                    var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
-                    if (channelSaved != null)
+                    if (idUserFriendManager != NULL_INT_VALUE)
                     {
-                        FriendManagerDictionary.RemoveRegistryOfFriendFromDictionary(idUserFriendManager);
+                        var channelSaved = FriendManagerDictionary.GetChannelFriendUser(idUserFriendManager);
+                        if (channelSaved != null)
+                        {
+                            FriendManagerDictionary.RemoveRegistryOfFriendFromDictionary(idUserFriendManager);
+                        }
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserFriendManager, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 

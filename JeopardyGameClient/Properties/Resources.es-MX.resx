@@ -632,4 +632,10 @@ Mexico</value>
   <data name="lblGuestEndOfGame" xml:space="preserve">
     <value>Por se un invitado no se pueden guardar tus puntos, si queires guardarlos, crea una cuenta, gracias por jugar :)</value>
   </data>
+  <data name="lblFinishGameBecauseJustOnePlayer" xml:space="preserve">
+    <value>Un miembro de la partida ha salido, solo quedas tu por lo que se cancelara la partida, seras redirigido al menu.</value>
+  </data>
+  <data name="lblFinishGameBecauseOfTeamLeft" xml:space="preserve">
+    <value>Un miembro de un equipo ha dejado la partida, no puede haber equipos disparejos por lo que se cancelara la partida, sera redirijido al menu.</value>
+  </data>
 </root>

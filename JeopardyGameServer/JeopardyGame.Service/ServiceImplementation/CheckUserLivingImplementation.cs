@@ -14,84 +14,93 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public class CheckUserLivingImplementation : ICheckUserLiving
     {
+        private static Object objectLock = new();
+
         public int RenewLivingCallBack(UserPOJO user)
         {
             int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-            try
-            {
-                if (user == null)
+            lock (objectLock)
+            {                
+                try
                 {
-                    return resultToReturn = ExceptionDictionary.NULL_PARAEMETER;
+                    if (user == null)
+                    {
+                        return resultToReturn = ExceptionDictionary.NULL_PARAEMETER;
+                    }
+                    OperationContext context = OperationContext.Current;
+                    LivingClients.RenewLivingCallBack(user.UserName, context);
+                    resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
+
                 }
-                OperationContext context = OperationContext.Current;
-                LivingClients.RenewLivingCallBack(user.UserName, context);
-                resultToReturn =  ExceptionDictionary.SUCCESFULL_EVENT;
-                
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
             return resultToReturn;
         }
 
         public int SubscribeToICheckUserLiving(UserPOJO user)
         {
-            try
+            int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+            lock (objectLock)
             {
-                if (user == null)
+                try
                 {
-                    return ExceptionDictionary.NULL_PARAEMETER;
+                    if (user == null)
+                    {
+                        return ExceptionDictionary.NULL_PARAEMETER;
+                    }
+                    var client = LivingClients.GetClient(user.UserName);
+                    if (client == null)
+                    {
+                        OperationContext context = OperationContext.Current;
+                        LivingClients.RegisterNewClientInDictionary(user.UserName, context);
+                        resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
+                    }
                 }
-                var client = LivingClients.GetClient(user.UserName);
-                if (client == null)
+                catch (CommunicationObjectFaultedException ex)
                 {
-                    OperationContext context = OperationContext.Current;
-                    LivingClients.RegisterNewClientInDictionary(user.UserName, context);
-                    return ExceptionDictionary.SUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            return ExceptionDictionary.UNSUCCESFULL_EVENT;
+            return resultToReturn;
         }
 
     
@@ -99,14 +108,18 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public class CheckUserLivingUnsubscribeImplementation : ICheckUserLivingUnsubscribe
     {
+        private static Object objectLock;
         public void UnsubscribeFromICheckUserLiving(UserPOJO user)
         {
-            if (user != null)
+            lock (objectLock)
             {
-                var client = LivingClients.GetClient(user.UserName);
-                if (client != null)
+                if (user != null)
                 {
-                    LivingClients.RemoveClientFromDictionary(user.UserName);
+                    var client = LivingClients.GetClient(user.UserName);
+                    if (client != null)
+                    {
+                        LivingClients.RemoveClientFromDictionary(user.UserName);
+                    }
                 }
             }
         }        

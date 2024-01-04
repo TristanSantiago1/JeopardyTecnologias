@@ -45,6 +45,13 @@ namespace JeopardyGame.Service.ServiceImplementation
                         successCriteria.ObjectSaved = ExceptionDictionary.USERNAME_ALREADY_EXIST;
                         return successCriteria;
                     }
+                    bool isSavedUserName = GuestPlayerManagerImplementation.IsUserNameInBlackList(newUser.UserName);
+                    if (isSavedUserName)
+                    {
+                        successCriteria.ObjectSaved = ExceptionDictionary.USERNAME_ALREADY_EXIST;
+                        successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        return successCriteria;
+                    }
                     successCriteria = CheckDictionary(newUser);
                     if (successCriteria.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
                     {

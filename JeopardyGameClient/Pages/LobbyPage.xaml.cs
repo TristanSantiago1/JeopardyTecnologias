@@ -802,12 +802,7 @@ namespace JeopardyGame.Pages
 
         public void NotifyGameWillStart(QuestionCardInformation[] questionsForGame)
         {
-            int idLeader = 0;
-            if (isAdminOfLobby)
-            {
-                idLeader = userSingleton.IdUser;
-            }
-            GameBoard game = new GameBoard(questionsForGame.ToList(), roomCode, idLeader);
+            GameBoard game = new GameBoard(questionsForGame.ToList(), roomCode);
             this.NavigationService.Navigate(game);
             NavigationService.RemoveBackEntry();
         }    

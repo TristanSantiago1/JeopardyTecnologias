@@ -10,7 +10,9 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     partial class NotifyUserAvailabilityImplementation : INotifyUserAvailability
     {
-        
+        private static Object lockObject = new Object();
+
+
         public void NotifyFriends(int idUser, int status)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
@@ -58,66 +60,72 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void RenewNotifyAvailabityCallBack(int idUser)
         {
-            try
+            lock (lockObject)
             {
-                if (idUser != 0)
+                try
                 {
-                    var newChannel = OperationContext.Current;
-                    ActiveUsersDictionary.RenewAvailabityCallBack(idUser, newChannel);
+                    if (idUser != 0)
+                    {
+                        var newChannel = OperationContext.Current;
+                        ActiveUsersDictionary.RenewAvailabityCallBack(idUser, newChannel);
+                    }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
         public void SubscribeToAvailabityCallBackChannel(int idNewActiveUser)
         {
-            try
+            lock (lockObject)
             {
-                var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
-                if (savedChannel == null)
+                try
                 {
-                    var newChannel = OperationContext.Current;
-                    ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
+                    var savedChannel = ActiveUsersDictionary.GetChannelCallBackActiveUser(idNewActiveUser);
+                    if (savedChannel == null)
+                    {
+                        var newChannel = OperationContext.Current;
+                        ActiveUsersDictionary.RegisterNewActiveUserInDictionary(idNewActiveUser, newChannel);
+                    }
                 }
-            }            
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idNewActiveUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 

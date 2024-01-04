@@ -33,7 +33,6 @@ namespace JeopardyGame.Pages
         private bool itsTeamGame;
         private readonly int roomCode;
         private int pointsBet;
-        private readonly int idLeader;
         private List<PlayerInGameDataContract> team1;
         private List<PlayerInGameDataContract> team2;
         private string team1Name;
@@ -57,12 +56,11 @@ namespace JeopardyGame.Pages
         private static TeamChat teamChat;
 
 
-        public GameBoard(List<QuestionCardInformation> questions, int roomCode, int idLeader)
+        public GameBoard(List<QuestionCardInformation> questions, int roomCode)
         {
             InitializeComponent();
             currentQuestions = questions; 
-            this.roomCode = roomCode;       
-            this.idLeader = idLeader;
+            this.roomCode = roomCode;    
             Loaded += LoadedSubscribeCallBackChannel;
         }
         
@@ -343,7 +341,7 @@ namespace JeopardyGame.Pages
                         nameOfBorder = team2Name;
                     }
                     var currentPointsOfPlayer = playersBorders.FirstOrDefault(pla => pla.Name.Equals(nameOfBorder));
-                    if (pointsBet <= ((GameTeamCard)currentPointsOfPlayer).GetPoints() || pointsBet >= 0)
+                    if (pointsBet <= ((GameTeamCard)currentPointsOfPlayer).GetPoints() || pointsBet == 0)
                     {
                         GameActionsOperationsClient gameActionsClientProxy = new();
                         gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
@@ -354,7 +352,7 @@ namespace JeopardyGame.Pages
                 else
                 {
                     var currentPointsOfPlayer = playersBorders.Find(pl => pl.Name.Equals("_" + userSingleton.IdUser.ToString()));
-                    if (pointsBet <= ((GamePlayerCard)currentPointsOfPlayer).GetPoints() || pointsBet >= 0)
+                    if (pointsBet <= ((GamePlayerCard)currentPointsOfPlayer).GetPoints() || pointsBet == 0)
                     {
                         try
                         {
@@ -770,16 +768,16 @@ namespace JeopardyGame.Pages
             {
                 if (arePointsSaved == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.GameFinished, Window.GetWindow(this));
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.GameFinished, Window.GetWindow(this));
                 }
                 else
                 {
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this));
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this));
                 }
             }
             else
             {
-                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this));
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblGuestEndOfGame, Window.GetWindow(this));
             }
         }
 
@@ -926,11 +924,12 @@ namespace JeopardyGame.Pages
             {
                 CloseWindow();
             }
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.LeaveGameConfirmation, Window.GetWindow(this)).CloseWindow)
+            else if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.LeaveGameConfirmation, Window.GetWindow(this)).CloseWindow)
             {
                 NotifyLeavingGame();
                 CloseWindow();
             }
+            
         }
         private void CloseWindow()
         {
@@ -981,6 +980,14 @@ namespace JeopardyGame.Pages
             {
                 if (playerInGame.Count() == 1 || itsTeamGame)
                 {
+                    if (itsTeamGame)
+                    {
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseOfTeamLeft, Window.GetWindow(this));
+                    }
+                    else
+                    {
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseJustOnePlayer, Window.GetWindow(this));
+                    }
                     CloseWindow();
                     return;
                 }

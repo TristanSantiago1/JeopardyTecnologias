@@ -20,68 +20,72 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int NOT_BANNED_STATE = 1;
-       
+        private static Object lockObject = new Object();
+
 
         public GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered)
         {
-            GenericClass<int> resultToReturn = new GenericClass<int>();
-            try
+            lock (lockObject)
             {
-                if (userPojoNew == null)
+                GenericClass<int> resultToReturn = new GenericClass<int>();
+                try
                 {
-                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
-                }
-                userPojoNew.IdUser = DEFAULT_INT_VALUE;
-                User newUser = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
-                GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(newUser);
-                if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    PlayerPOJO playerToSave = new PlayerPOJO();
-                    playerToSave.IdPlayer = DEFAULT_INT_VALUE;
-                    playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
-                    playerToSave.NoReports = DEFAULT_INT_VALUE;
-                    playerToSave.IdActualAvatar = DEFAULT_INT_VALUE;
-                    playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
-                    playerToSave.IdState = NOT_BANNED_STATE;
-                    int isPlayerSavedSuccessfully = SavePlayer(playerToSave);
-                    if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if (userPojoNew == null)
                     {
-                        resultToReturn.ObjectSaved = userSaved.ObjectSaved.IdUser;
-                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                        EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(codeEntered);
+                        return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                    }
+                    userPojoNew.IdUser = DEFAULT_INT_VALUE;
+                    User newUser = InterpretersEntityPojo.UserInterpreter.FromUserPojoToUserEntity(userPojoNew);
+                    GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(newUser);
+                    if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        PlayerPOJO playerToSave = new PlayerPOJO();
+                        playerToSave.IdPlayer = DEFAULT_INT_VALUE;
+                        playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
+                        playerToSave.NoReports = DEFAULT_INT_VALUE;
+                        playerToSave.IdActualAvatar = DEFAULT_INT_VALUE;
+                        playerToSave.IdUser = userSaved.ObjectSaved.IdUser;
+                        playerToSave.IdState = NOT_BANNED_STATE;
+                        int isPlayerSavedSuccessfully = SavePlayer(playerToSave);
+                        if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            resultToReturn.ObjectSaved = userSaved.ObjectSaved.IdUser;
+                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(codeEntered);
+                        }
+                        else
+                        {
+                            UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
+                            resultToReturn.CodeEvent = isPlayerSavedSuccessfully;
+                        }
                     }
                     else
                     {
-                        UserManagerDataOperation.DeleteUserById(userSaved.ObjectSaved.IdUser);
-                        resultToReturn.CodeEvent = isPlayerSavedSuccessfully;
+                        resultToReturn.CodeEvent = userSaved.CodeEvent;
                     }
                 }
-                else
+                catch (CommunicationObjectFaultedException ex)
                 {
-                    resultToReturn.CodeEvent = userSaved.CodeEvent;
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            return resultToReturn;                                 
+                catch (TimeoutException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                return resultToReturn;
+            }                                 
         }
         
         public int SavePlayer(PlayerPOJO newPlayer)

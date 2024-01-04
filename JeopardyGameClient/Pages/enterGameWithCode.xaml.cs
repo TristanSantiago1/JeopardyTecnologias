@@ -126,12 +126,12 @@ namespace JeopardyGame.Pages
                         UserSingleton.GetMainUser(userGuest.ObjectSaved, playerGuest.ObjectSaved);
                         isPlayerGuestActive = true;
                     }
-                    Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
-                    gameWindow.Show();
-                    LobbyPage lobbyPage = new LobbyPage(enteredCode);
-                    gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
-                    windowBehind.Close();
-                    Window.GetWindow(this).Close();
+                    //Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
+                    //gameWindow.Show();
+                    //LobbyPage lobbyPage = new LobbyPage(enteredCode);
+                    //gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
+                    //windowBehind.ClosePrincipalWindow();
+                    //Window.GetWindow(this).Close();
                 }
                 else
                 {
@@ -202,10 +202,10 @@ namespace JeopardyGame.Pages
 
         private void GotoLobbyPage(int enteredCode)
         {
-            Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
-            gameWindow.Show();
+            Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();            
             LobbyPage lobbyPage = new LobbyPage(enteredCode);
-            gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
+            gameWindow.Show();
+            gameWindow.contentFrame.Navigate(lobbyPage);
             windowBehind.Close();
             Window.GetWindow(this).Close();
         }

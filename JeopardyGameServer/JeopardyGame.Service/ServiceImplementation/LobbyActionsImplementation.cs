@@ -103,67 +103,70 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public GenericClass<int> JoinIntoLobby(int roomCode, int idUser)
         {
-            GenericClass<int> resultToReturn = new GenericClass<int>();
-            try
+            lock (lockObject)
             {
-                if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE)
+                GenericClass<int> resultToReturn = new GenericClass<int>();
+                try
                 {
-                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
-                }
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);               
-                ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-                GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
-                if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
-                    if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if (roomCode == NULL_INT_VALUE || idUser == NULL_INT_VALUE)
                     {
-                        PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
-                        playerJoining.idUser = idUser;
-                        playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
-                        playerJoining.userName = userPojo.ObjectSaved.UserName;
-                        playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
-                        playerJoining.sideTeam = TEAM_LEFT_SIDE;
-                        playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
-                        lobby.listOfPlayerInLobby.Add(playerJoining);
-                        resultToReturn.ObjectSaved = SUCCESFUL;
-                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                    }
+                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
+                    GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
+                    if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
+                        if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
+                            playerJoining.idUser = idUser;
+                            playerJoining.idPlayer = playerPojo.ObjectSaved.IdPlayer;
+                            playerJoining.userName = userPojo.ObjectSaved.UserName;
+                            playerJoining.numberOfPlayerInLobby = GetPositionOfPlayer(lobby);
+                            playerJoining.sideTeam = TEAM_LEFT_SIDE;
+                            playerJoining.lobbyCommunicationChannelCallback = OperationContext.Current;
+                            lobby.listOfPlayerInLobby.Add(playerJoining);
+                            resultToReturn.ObjectSaved = SUCCESFUL;
+                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultToReturn.CodeEvent = playerPojo.CodeEvent;
+                        }
                     }
                     else
                     {
-                        resultToReturn.CodeEvent = playerPojo.CodeEvent;
+                        resultToReturn.CodeEvent = userPojo.CodeEvent;
                     }
                 }
-                else
+                catch (CommunicationObjectFaultedException ex)
                 {
-                    resultToReturn.CodeEvent = userPojo.CodeEvent;
-                }                               
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                return resultToReturn;
             }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }  
-            catch (CommunicationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            return resultToReturn;
         }
 
         private int GetPositionOfPlayer(Lobby lobby)
@@ -218,6 +221,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int TEAM_LEFT_SIDE = 1;
         private readonly int TEAM_RIGTH_SIDE = 2;
         private readonly int MAX_PLAYERS = 4;
+        private static Object lockObject = new Object();
 
         public void NotifyPlayerInLobby(int roomCode, int idUser)
         {
@@ -325,44 +329,47 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void LeaveLobby(int roomCode, int idUserLeaving)
         {
-            try
+            lock (lockObject)
             {
-                if (roomCode != NULL_INT_VALUE && idUserLeaving != NULL_INT_VALUE && idUserLeaving != NULL_INT_VALUE)
+                try
                 {
-                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                    if (lobby != null)
+                    if (roomCode != NULL_INT_VALUE && idUserLeaving != NULL_INT_VALUE && idUserLeaving != NULL_INT_VALUE)
                     {
-                        var playerLeaving = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserLeaving);
-                        if (playerLeaving != null)
+                        var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                        if (lobby != null)
                         {
-                            lobby.listOfPlayerInLobby.Remove(playerLeaving);
-                            ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserLeaving);
-                            RearrangePositions(lobby, playerLeaving.numberOfPlayerInLobby);
-                            NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserLeaving, lobby);
-                            RemovePlayerFromChatDictionary(roomCode, playerLeaving);
+                            var playerLeaving = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserLeaving);
+                            if (playerLeaving != null)
+                            {
+                                lobby.listOfPlayerInLobby.Remove(playerLeaving);
+                                ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUserLeaving);
+                                RearrangePositions(lobby, playerLeaving.numberOfPlayerInLobby);
+                                NotifyPlayerJoiningOrLeavingLobby(roomCode, idUserLeaving, lobby);
+                                RemovePlayerFromChatDictionary(roomCode, playerLeaving);
+                            }
                         }
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUserLeaving, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
@@ -420,42 +427,45 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void DissolveLobby(int roomCode, int idUser)
         {
-            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            try
+            lock (lockObject)
             {
-                if (lobby != null)
+                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                try
                 {
-                    var Leader = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUser && pl.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
-                    if (Leader != null)
+                    if (lobby != null)
                     {
-                        NotifyClosingLobby(lobby);
-                        ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUser);
-                        GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
-                        QuestionsForLobbyDictionary.RemoveSetOFQuestionsFromDictionary(roomCode);
-                        ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
-                        ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
+                        var Leader = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUser && pl.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                        if (Leader != null)
+                        {
+                            NotifyClosingLobby(lobby);
+                            ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(idUser);
+                            GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
+                            QuestionsForLobbyDictionary.RemoveSetOFQuestionsFromDictionary(roomCode);
+                            ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
+                            ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
+                        }
                     }
                 }
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (InvalidOperationException ex)
-            {
-                ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 

@@ -185,22 +185,25 @@ namespace JeopardyGame.Service.ServiceImplementation
         {            
             int result = ExceptionDictionary.SUCCESFULL_EVENT;
             var gameConsulted = GameDataOperation.GetGameByRoomCode(roomCode);
-            if (gameConsulted.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+            if (gameConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 foreach (var player in playerInGames)
                 {
-                    GamePlayer gamePlayer = new()
+                    if (!GuestPlayerManagerImplementation.IsUserNameInBlackList(player.UserName))
                     {
-                        PointsInGame = player.FinalPoints,
-                        PlaceInGame = (short)player.NumberOfPlayerInGame,
-                        Player_IdPlayer = player.IdPlayer,
-                        Game_RoomCode = roomCode,
-                        Game = gameConsulted.ObjectSaved,
-                    };
-                    int isSaved = GameDataOperation.SaveGamePlayerInDataBase(gamePlayer);
-                    if (isSaved != ExceptionDictionary.SUCCESFULL_EVENT)
-                    {
-                        result = isSaved;
+                        GamePlayer gamePlayer = new()
+                        {
+                            PointsInGame = player.FinalPoints,
+                            PlaceInGame = (short)player.NumberOfPlayerInGame,
+                            Player_IdPlayer = player.IdPlayer,
+                            Game_RoomCode = roomCode,
+                            Game = gameConsulted.ObjectSaved,
+                        };
+                        int isSaved = GameDataOperation.SaveGamePlayerInDataBase(gamePlayer);
+                        if (isSaved != ExceptionDictionary.SUCCESFULL_EVENT)
+                        {
+                            result = isSaved;
+                        }
                     }
                 }               
             }
@@ -210,6 +213,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return result;
         }
+
     }
 }
     

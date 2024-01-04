@@ -632,4 +632,10 @@ Mexico</value>
   <data name="lblGuestEndOfGame" xml:space="preserve">
     <value>You are a Guest so you can´t accumulate points, in order to save your progress, create a acount, thanks for playing.</value>
   </data>
+  <data name="lblFinishGameBecauseJustOnePlayer" xml:space="preserve">
+    <value>A player have left the game, so you are the only one online, therefore the match will be cancelled, you will be redirected to the menu.</value>
+  </data>
+  <data name="lblFinishGameBecauseOfTeamLeft" xml:space="preserve">
+    <value>A memeber of a team have left a team, there can be unpair teams so the match will ve cancelled, you will be redirected to the menu.</value>
+  </data>
 </root>
