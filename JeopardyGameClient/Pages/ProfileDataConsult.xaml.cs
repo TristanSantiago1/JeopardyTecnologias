@@ -12,6 +12,9 @@ using System.Linq;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 using System.Windows;
+using System.ServiceModel;
+using JeopardyGame.DialogWindows;
+using JeopardyGame.Exceptions;
 
 namespace JeopardyGame.Pages
 {
@@ -20,6 +23,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class ProfileDataConsult : Page
     {
+        private Window dialogMessage;
         private Dictionary<string, int> imageIdMappings;
         public ProfileDataConsult()
         {
@@ -65,40 +69,71 @@ namespace JeopardyGame.Pages
         }
         private void ImagenInit()
         {
-            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
-
-            var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
-            consultInformationProxy.Close();
-
-            if (playerInfo != null && playerInfo.CodeEvent == Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
+            try
             {
-                var playerWrapper = playerInfo.ObjectSaved;
+                int idPlayer = UserSingleton.GetMainUser().IdPlayer;
+                ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
 
-                if (playerWrapper != null && playerWrapper is PlayerPOJO)
+                var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
+                consultInformationProxy.Close();
+
+                if (playerInfo != null && playerInfo.CodeEvent == Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var player = (PlayerPOJO)playerWrapper;
+                    var playerWrapper = playerInfo.ObjectSaved;
 
-                    int imageId = player.IdActualAvatar;
-
-                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
-
-                    if (!string.IsNullOrEmpty(imageName))
+                    if (playerWrapper != null && playerWrapper is PlayerPOJO)
                     {
-                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+                        var player = (PlayerPOJO)playerWrapper;
 
-                        BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                            bmp.GetHbitmap(),
-                            IntPtr.Zero,
-                            Int32Rect.Empty,
-                            BitmapSizeOptions.FromEmptyOptions()
-                        );
+                        int imageId = player.IdActualAvatar;
 
-                        imageProfile.Source = bmpImage;
+                        string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+
+                        if (!string.IsNullOrEmpty(imageName))
+                        {
+                            Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+
+                            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                                bmp.GetHbitmap(),
+                                IntPtr.Zero,
+                                Int32Rect.Empty,
+                                BitmapSizeOptions.FromEmptyOptions()
+                            );
+
+                            imageProfile.Source = bmpImage;
+                        }
                     }
                 }
             }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
 
+        }
+        private void HandleException(Exception ex, string errorMessage)
+        {
+            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            RefreshWindow();
+            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+        }
+        private void RefreshWindow()
+        {
+            EditUserProfile editUserProfilePage = new EditUserProfile();
+            this.NavigationService.Navigate(editUserProfilePage);
+            NavigationService.RemoveBackEntry();
         }
     }
 }
