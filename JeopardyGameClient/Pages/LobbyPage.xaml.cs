@@ -108,10 +108,7 @@ namespace JeopardyGame.Pages
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
-                if (newLobby.CodeEvent != Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
-                }
+               
                 GameCodeContainer.RoomCode = roomCode;
             }
             catch (EndpointNotFoundException ex)
@@ -141,10 +138,6 @@ namespace JeopardyGame.Pages
                 {
                     LobbyActionsOperationClient lobbyActionsOperationProxy = new();
                     lobbyActionsOperationProxy.NotifyPlayerInLobby(roomCode, userSingleton.IdUser);
-                }
-                else
-                {
-                    HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
                 }
                 chbTeamUp.IsEnabled = false;
             }
@@ -176,10 +169,7 @@ namespace JeopardyGame.Pages
                 {
                     currentPlayerInLobby = playersInLobby.ObjectSaved.ToList();
                 }
-                else
-                {
-                    HandleException(new Exception(), Properties.Resources.lblFailtToEnterTheLobby);
-                }
+                
             }
             catch (EndpointNotFoundException ex)
             {
@@ -836,12 +826,28 @@ namespace JeopardyGame.Pages
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
             ReturnToLogin();
         }
+
         private void ReturnToLogin()
         {
-            UserSingleton.CleanSingleton();
-            LogInUser logInUserPage = new LogInUser();
-            this.NavigationService.Navigate(logInUserPage);
-            NavigationService.RemoveBackEntry();
+            try
+            {
+
+                UserSingleton.CleanSingleton();
+                MainMenu mainMenu = new MainMenu();
+                this.NavigationService.Navigate(mainMenu);
+                NavigationService.RemoveBackEntry();
+
+                //LogInUser logInUserPage = new LogInUser();
+                //if(this.NavigationService.Navigate(logInUserPage) != null)
+                //{
+                //    this.NavigationService.Navigate(logInUserPage);
+                //    NavigationService.RemoveBackEntry();
+                //}
+                 
+            }catch (NullReferenceException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
     }

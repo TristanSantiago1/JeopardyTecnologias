@@ -4,15 +4,18 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace JeopardyGame
 {
+
     public class UserSingleton : ICheckUserLivingCallback
     {
         private static UserSingleton instanceOfUserSingleton;
@@ -28,6 +31,7 @@ namespace JeopardyGame
         public int NoReports { get; set; }
         public int IdCurrentAvatar { get; set; }
         public int IdState { get; set; }
+        private Window dialogMessage;
 
         private UserSingleton() { }
         private UserSingleton(UserPOJO userSingleton, PlayerPOJO playerSingleton) 
@@ -108,7 +112,8 @@ namespace JeopardyGame
         }
 
         private static void BeginHeartBeat()
-        {            
+        {
+           
             try
             {
                 var heartbeatClient = new HeartBeatClient();
@@ -130,13 +135,27 @@ namespace JeopardyGame
             catch (CommunicationException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                if(ex.InnerException is SocketException socketException)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
             }
         }
 
         private static void StopHeartBeat()
         {
-            heartbeatTimer?.Change(Timeout.Infinite, Timeout.Infinite);
-            heartbeatTimer?.Dispose();
+            try
+            {
+                if (heartbeatTimer != null)
+                {
+                    heartbeatTimer?.Change(Timeout.Infinite, Timeout.Infinite);
+                    heartbeatTimer?.Dispose();
+
+                }
+            }catch(ObjectDisposedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
 
