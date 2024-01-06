@@ -1294,6 +1294,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The name field is empty. Please enter a valid one..
+        /// </summary>
+        public static string lblWrongName {
+            get {
+                return ResourceManager.GetString("lblWrongName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Wrong code.
         /// </summary>
         public static string lblWrongRoomCode {
@@ -1515,6 +1524,15 @@ namespace JeopardyGame.Properties {
         public static string ThereIsAnActiveSession {
             get {
                 return ResourceManager.GetString("ThereIsAnActiveSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure do you want to cancel the game? we are gonna miss you!.
+        /// </summary>
+        public static string txbCancel {
+            get {
+                return ResourceManager.GetString("txbCancel", resourceCulture);
             }
         }
         

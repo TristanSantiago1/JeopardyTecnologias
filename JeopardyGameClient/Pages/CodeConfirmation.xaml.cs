@@ -35,7 +35,7 @@ namespace JeopardyGame.Pages
         private String password;
         private UserPOJO userToSave;
         private Window dialogMessage;
-
+        private bool isTimerExpired = false;
 
         public CodeConfirmation(UserPOJO user)
         {
@@ -108,6 +108,8 @@ namespace JeopardyGame.Pages
             else
             {
                 timer.Stop();
+                isTimerExpired = true;
+                UpdateLabelStyle();
             }
         }
 
@@ -377,7 +379,19 @@ namespace JeopardyGame.Pages
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
+        private void UpdateLabelStyle()
+        {
+            if (isTimerExpired)
+            {
+                lblResentCode.FontWeight = FontWeights.Bold;
+                lblResentCode.Foreground = Brushes.Red;
+            }
+            else
+            {
+                lblResentCode.FontWeight = FontWeights.Normal; 
+                lblResentCode.Foreground = Brushes.DeepSkyBlue;
+            }
+        }
 
-       
     }
 }

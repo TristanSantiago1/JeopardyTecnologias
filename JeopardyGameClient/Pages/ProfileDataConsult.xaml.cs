@@ -131,8 +131,8 @@ namespace JeopardyGame.Pages
         }
         private void RefreshWindow()
         {
-            EditUserProfile editUserProfilePage = new EditUserProfile();
-            this.NavigationService.Navigate(editUserProfilePage);
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
             NavigationService.RemoveBackEntry();
         }
     }

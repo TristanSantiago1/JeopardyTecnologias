@@ -365,7 +365,7 @@ EU</value>
     <value>Solicitudes</value>
   </data>
   <data name="lblResentCode" xml:space="preserve">
-    <value>Reenviar Codigo en : </value>
+    <value>Reenviar Codigo: </value>
   </data>
   <data name="lblSecondsAbrevation" xml:space="preserve">
     <value>Seg</value>
@@ -652,5 +652,11 @@ Mexico</value>
   </data>
   <data name="lblEmailExistInBD" xml:space="preserve">
     <value>El correo se encuentra asociado a un perfil ¡Hazlo tu amigo!</value>
+  </data>
+  <data name="lblWrongName" xml:space="preserve">
+    <value>El campo de nombre está vacío. Por favor, ingresa unoválido.</value>
+  </data>
+  <data name="txbCancel" xml:space="preserve">
+    <value>¿Estás seguro de cancelar el juego? ¡te vamos a extrañar!</value>
   </data>
 </root>

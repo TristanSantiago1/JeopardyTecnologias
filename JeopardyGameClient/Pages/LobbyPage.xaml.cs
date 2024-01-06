@@ -588,7 +588,7 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
         {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbWarningMessCloseWin, Window.GetWindow(this)).CloseWindow)
+            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbCancel, Window.GetWindow(this)).CloseWindow)
             {
                 try
                 {
@@ -825,123 +825,6 @@ namespace JeopardyGame.Pages
             UserSingleton.CleanSingleton();
             LogInUser logInUserPage = new LogInUser();
             this.NavigationService.Navigate(logInUserPage);
-            NavigationService.RemoveBackEntry();
-        }
-
-        private void ClickSendEmailForInvitation(object sender, MouseButtonEventArgs e)
-        {
-            string email = txbSendEmail.Text;
-            int roomCode = GameCodeContainer.RoomCode;
-            string subject = Properties.Resources.txbTitleEmailInvitation;
-            string bodyWithCode = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
-            
-            if (string.IsNullOrEmpty(email))
-            {
-                LblWrongEmail.Content = Properties.Resources.lblWrongEmail;
-                LblWrongEmail.Visibility = Visibility.Visible;
-                return;
-            }
-            if (!IsValidEmail(email))
-            {
-                LblWrongEmail.Content = Properties.Resources.lblWrongFormat;
-                LblWrongEmail.Visibility = Visibility.Visible;
-                return;
-            }
-
-            if (CheckEmailExistence(email) == DISALLOWED_VALUES)
-            {
-                LblWrongEmail.Content = Properties.Resources.lblEmailExistInBD;
-                LblWrongEmail.Visibility = Visibility.Visible;
-                return;
-            }
-            LblWrongEmail.Visibility = Visibility.Collapsed;
-
-            EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
-
-            try
-            {
-
-                GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailForInvitation(email, subject, bodyWithCode);
-
-                if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
-                }
-                else
-                {
-                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
-                    {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
-                    }
-                }
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                HandleException(ex, Properties.Resources.lblComunicationException);
-            }
-            catch (TimeoutException ex)
-            {
-                HandleException(ex, Properties.Resources.lblTimeException);
-            }
-            catch (CommunicationException ex)
-            {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
-            }
-        }
-        private bool IsValidEmail(string email)
-        {
-            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-            return regexExpression.IsMatch(email);
-        }
-        private int CheckEmailExistence(string email)
-        {
-            try
-            {
-                ValidateUserExistanceClient dataCheckerProxy = new();
-                GenericClassOfint userIsNew = dataCheckerProxy.EmailAlreadyExist(email);
-                dataCheckerProxy.Close();
-                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
-                {
-                    if (userIsNew.ObjectSaved == ALLOWED_VALUES)
-                    {
-                        return ALLOWED_VALUES;
-                    }
-                    else
-                    {
-                        return DISALLOWED_VALUES;
-                    }
-                }
-                else
-                {
-                    return DISALLOWED_VALUES;
-                }
-            }
-            catch (EndpointNotFoundException)
-            {
-                throw new EndpointNotFoundException();
-            }
-            catch (CommunicationObjectFaultedException)
-            {
-                throw new CommunicationException();
-            }
-            catch (TimeoutException)
-            {
-                throw new TimeoutException();
-            }
-            catch (CommunicationException)
-            {
-                throw new CommunicationException();
-            }
-        }
-        private void RefreshWindow()
-        {
-            EditUserProfile editUserProfilePage = new EditUserProfile();
-            this.NavigationService.Navigate(editUserProfilePage);
             NavigationService.RemoveBackEntry();
         }
 

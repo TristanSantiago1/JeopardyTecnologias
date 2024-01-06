@@ -20,6 +20,8 @@ using System.Windows.Shapes;
 using static JeopardyGame.Pages.LobbyPage;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using JeopardyGame.Exceptions;
+using JeopardyGame.ReGexs;
+using System.Text.RegularExpressions;
 
 namespace JeopardyGame.Pages
 {
@@ -31,7 +33,9 @@ namespace JeopardyGame.Pages
         private LobbyPage lobbyPage;
         public const int NULL_INT_VALUE = 0;
         private Window dialogMessage;
-
+        private const int DISALLOWED_VALUES = 0;
+        private const int ALLOWED_VALUES = 1;
+        
         public ActiveFriends(int idUser)
         {
             try
@@ -40,6 +44,7 @@ namespace JeopardyGame.Pages
                 InstanceContext context = new InstanceContext(this);
                 NotifyUserAvailabilityClient userAvailabilityProxy = new(context);
                 userAvailabilityProxy.SubscribeToAvailabityCallBackChannel(idUser);
+                txbSendEmail.MaxLength = 50;
             }
             catch (EndpointNotFoundException ex)
             {
@@ -232,9 +237,128 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            ReturnToLogin();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 
+        private void ClickSendEmailForInvitation(object sender, MouseButtonEventArgs e)
+        {
+            string email = txbSendEmail.Text;
+            int roomCode = GameCodeContainer.RoomCode;
+            string subject = Properties.Resources.txbTitleEmailInvitation;
+            string bodyWithCode = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
+            txbSendEmail.Text = string.Empty;
+
+            if (string.IsNullOrEmpty(email))
+            {
+                LblWrongEmail.Content = Properties.Resources.lblWrongEmail;
+                LblWrongEmail.Visibility = Visibility.Visible;
+                return;
+            }
+            if (!IsValidEmail(email))
+            {
+                LblWrongEmail.Content = Properties.Resources.lblWrongFormat;
+                LblWrongEmail.Visibility = Visibility.Visible;
+                return;
+            }
+
+            if (CheckEmailExistence(email) == DISALLOWED_VALUES)
+            {
+                LblWrongEmail.Content = Properties.Resources.lblEmailExistInBD;
+                LblWrongEmail.Visibility = Visibility.Visible;
+                return;
+            }
+            LblWrongEmail.Visibility = Visibility.Collapsed;
+
+            EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
+
+            try
+            {
+
+                GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailForInvitation(email, subject, bodyWithCode);
+
+                if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                }
+                else
+                {
+                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                    }
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+        }
+        private bool IsValidEmail(string email)
+        {
+            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            return regexExpression.IsMatch(email);
+        }
+        private int CheckEmailExistence(string email)
+        {
+            try
+            {
+                ValidateUserExistanceClient dataCheckerProxy = new();
+                GenericClassOfint userIsNew = dataCheckerProxy.EmailAlreadyExist(email);
+                dataCheckerProxy.Close();
+                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
+                {
+                    if (userIsNew.ObjectSaved == ALLOWED_VALUES)
+                    {
+                        return ALLOWED_VALUES;
+                    }
+                    else
+                    {
+                        return DISALLOWED_VALUES;
+                    }
+                }
+                else
+                {
+                    return DISALLOWED_VALUES;
+                }
+            }
+            catch (EndpointNotFoundException)
+            {
+                throw new EndpointNotFoundException();
+            }
+            catch (CommunicationObjectFaultedException)
+            {
+                throw new CommunicationException();
+            }
+            catch (TimeoutException)
+            {
+                throw new TimeoutException();
+            }
+            catch (CommunicationException)
+            {
+                throw new CommunicationException();
+            }
+        }
+        private void ReturnToLogin()
+        {
+            UserSingleton.CleanSingleton();
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
+            NavigationService.RemoveBackEntry();
+        }
     }
 
 }

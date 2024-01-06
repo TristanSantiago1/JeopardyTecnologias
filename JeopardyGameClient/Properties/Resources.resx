@@ -654,4 +654,10 @@
   <data name="lblEmailExistInBD" xml:space="preserve">
     <value>The email is associated with a profile. Make it your friend!</value>
   </data>
+  <data name="lblWrongName" xml:space="preserve">
+    <value>The name field is empty. Please enter a valid one.</value>
+  </data>
+  <data name="txbCancel" xml:space="preserve">
+    <value>Are you sure do you want to cancel the game? we are gonna miss you!</value>
+  </data>
 </root>

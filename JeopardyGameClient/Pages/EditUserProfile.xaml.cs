@@ -135,40 +135,57 @@ namespace JeopardyGame.Pages
 
         private void ImagenInitialization()
         {
+            try { 
             int idPlayer = UserSingleton.GetMainUser().IdPlayer;
             ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
 
             var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
             consultInformationProxy.Close();
 
-            if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {
-                var playerWrapper = playerInfo.ObjectSaved;
-
-                if (playerWrapper != null && playerWrapper is PlayerPOJO)
+                if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    var player = (PlayerPOJO)playerWrapper; 
+                    var playerWrapper = playerInfo.ObjectSaved;
 
-                    int imageId = player.IdActualAvatar;
-
-                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
-
-                    if (!string.IsNullOrEmpty(imageName))
+                    if (playerWrapper != null && playerWrapper is PlayerPOJO)
                     {
-                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+                        var player = (PlayerPOJO)playerWrapper;
 
-                        BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                            bmp.GetHbitmap(),
-                            IntPtr.Zero,
-                            Int32Rect.Empty,
-                            BitmapSizeOptions.FromEmptyOptions()
-                        );
+                        int imageId = player.IdActualAvatar;
 
-                        imageProfile.Source = bmpImage;
+                        string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+
+                        if (!string.IsNullOrEmpty(imageName))
+                        {
+                            Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+
+                            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                                bmp.GetHbitmap(),
+                                IntPtr.Zero,
+                                Int32Rect.Empty,
+                                BitmapSizeOptions.FromEmptyOptions()
+                            );
+
+                            imageProfile.Source = bmpImage;
+                        }
                     }
                 }
             }
-
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
         }
         private void InitializeImageMappings()
         {
@@ -203,8 +220,30 @@ namespace JeopardyGame.Pages
                 UserManagerClient useManagerProxy = new UserManagerClient();
                 int idUser = UserSingleton.GetMainUser().IdUser;
                 string email = txbEditEmail.Text.Trim();
+
+                if (string.IsNullOrEmpty(email))
+                {
+                    LblWrongEmail.Content = Properties.Resources.lblWrongEmail;
+                    LblWrongEmail.Visibility = Visibility.Visible;
+                    return;
+                }
+                if (!IsValidEmail(email))
+                {
+                    LblWrongEmail.Content = Properties.Resources.lblWrongFormat;
+                    LblWrongEmail.Visibility = Visibility.Visible;
+                    return;
+                }
+                if (CheckEmailExistence(email) == DISALLOWED_VALUES)
+                {
+                    LblWrongEmail.Content = Properties.Resources.lblEmailExistInBD;
+                    LblWrongEmail.Visibility = Visibility.Visible;
+                    return;
+                }
+
+                LblWrongEmail.Visibility = Visibility.Collapsed;
+
                 if (CheckEmailAddressFormat() == ALLOWED_VALUES &&
-                        CheckEmailExistence(email) == ALLOWED_VALUES)
+                    CheckEmailExistence(email) == ALLOWED_VALUES)
                 {
                     var result = useManagerProxy.UpdateEmailUser(idUser, email);
                     if (result != null)
@@ -247,6 +286,14 @@ namespace JeopardyGame.Pages
                 UserManagerClient useManagerProxy = new UserManagerClient();
                 String nameEdited = txbEditName.Text;
                 int idUser = UserSingleton.GetMainUser().IdUser;
+                if (string.IsNullOrEmpty(nameEdited))
+                {
+                    LblWrongName.Content = Properties.Resources.lblWrongName; 
+                    LblWrongName.Visibility = Visibility.Visible;
+                    return;
+                }
+                LblWrongName.Visibility = Visibility.Collapsed;
+
                 var result = useManagerProxy.UpdateUserInformation(idUser, nameEdited);
                 if (result != null)
                 {
@@ -377,6 +424,12 @@ namespace JeopardyGame.Pages
             RefreshWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
-    
+        private bool IsValidEmail(string email)
+        {
+            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            return regexExpression.IsMatch(email);
+        }
+
     }
 }
