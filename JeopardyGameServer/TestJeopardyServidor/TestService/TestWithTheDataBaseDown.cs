@@ -20,7 +20,6 @@ namespace TestJeopardyServidor.TestService
     [CollectionDefinition("DatabaseCollection")]
     public class DatabaseCollection : ICollectionFixture<TestFixtureFoDbDown>
     {
-        // Esta clase no necesita contenido, solo sirve como marcador para XUnit
     }
 
     [Collection("DatabaseCollection")]
