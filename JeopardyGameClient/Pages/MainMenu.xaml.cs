@@ -71,7 +71,27 @@ namespace JeopardyGame.Pages
             FriendList.CleanDictionary();
             UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
             AvailabilityUserManagmentClient userAvailabilityProxy = new();
-            userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
+            try
+            {
+                userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
             UserSingleton.CleanSingleton();
         }
 
@@ -147,7 +167,7 @@ namespace JeopardyGame.Pages
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
-            ReturnPage();
+            
         }
 
         private void LanguageButtonClick(object sender, RoutedEventArgs e)

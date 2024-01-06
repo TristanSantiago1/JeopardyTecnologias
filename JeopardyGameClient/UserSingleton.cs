@@ -108,10 +108,10 @@ namespace JeopardyGame
         }
 
         private static void BeginHeartBeat()
-        {
-            var heartbeatClient = new HeartBeatClient();
+        {            
             try
             {
+                var heartbeatClient = new HeartBeatClient();
                 heartbeatTimer = new System.Threading.Timer(state => { heartbeatClient.Heartbeat(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
             }
             catch (EndpointNotFoundException ex)
