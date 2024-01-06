@@ -33,7 +33,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 int emailSend = ExceptionDictionary.UNSUCCESFULL_EVENT;
                 if (!string.IsNullOrEmpty(code))
                 {
-                    emailSend = EmailSender.SentEmailConfirmationToCreateAccount(user.EmailAddress, subject, code+ " "+bodyMessage);
+                    emailSend = EmailSender.SentEmail(user.EmailAddress, subject, code+ " "+bodyMessage);
                     if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
                         resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -89,7 +89,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
 
-                int emailSend = EmailSender.SentEmailConfirmationToCreateAccount(email, subject, bodyMessage);
+                int emailSend = EmailSender.SentEmail(email, subject, bodyMessage);
 
                 if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -135,7 +135,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                int emailSend = EmailSender.SentEmailConfirmationToCreateAccount(user.EmailAddress, subject, bodyMessage);
+                int emailSend = EmailSender.SentEmail(user.EmailAddress, subject, bodyMessage);
                 if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     resultToReturn.ObjectSaved = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -174,6 +174,56 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-       
+        public GenericClass<int> SentEmailToRecoverPassword(UserPOJO user, String subject, String bodyMessage)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>();
+            try
+            {
+                if (string.IsNullOrEmpty(user.EmailAddress) || string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(bodyMessage))
+                {
+                    return NullParametersHandler.HandleNullParametersService(resultToReturn);
+                }
+                int emailSend = ExceptionDictionary.UNSUCCESFULL_EVENT;                
+                emailSend = EmailSender.SentEmail(user.EmailAddress, subject, bodyMessage);
+                if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = emailSend;
+                }
+                else
+                {
+                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.ObjectSaved = emailSend;
+                }               
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ChannelAdministrator.HandleCommunicationIssue(user.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+
+
+
     }
 }

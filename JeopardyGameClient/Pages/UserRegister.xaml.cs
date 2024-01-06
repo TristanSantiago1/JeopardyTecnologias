@@ -382,7 +382,6 @@ namespace JeopardyGame.Pages
             }            
         }
 
-
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
             if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbConfirmationCancelSaveUser, Application.Current.MainWindow).CloseWindow)

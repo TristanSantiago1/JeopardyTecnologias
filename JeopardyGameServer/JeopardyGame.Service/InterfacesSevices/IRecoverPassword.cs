@@ -14,7 +14,5 @@ namespace JeopardyGame.Service.InterfacesSevices
         int CreateCodeToRecoverPassWord(string userName, string emailTitle, string emailBody);
         [OperationContract]
         int VerifyCodeToRecoverPassword(string userName, string code);
-        [OperationContract]
-        int ResendCodeToRecoverPassWord(string userName, string emailTitle, string emailBody);
     }
 }

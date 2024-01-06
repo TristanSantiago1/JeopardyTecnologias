@@ -60,6 +60,7 @@ namespace JeopardyGame.Pages
             Loaded += LoadedPrepareWindowPlayer;
         }
 
+
         private void LoadedPrepareWindowPlayer(object sender, RoutedEventArgs e)
         {
             PrepareWindow();
@@ -79,9 +80,24 @@ namespace JeopardyGame.Pages
                 JoinLobby(lobbyActionsProxy);
             }
             GetPlayers();
+            PrepareChatAndFriends();
             lblAleatoryCode.Content = roomCode;
             SetPlayerInLabels();
             NotifyFriendsIamPlaying();
+        }
+
+        private void PrepareChatAndFriends()
+        {
+            if (liveChatInstance == null)
+            {
+                liveChatInstance = new LiveChat();
+                liveChatInstance.StartPage(isAdminOfLobby, roomCode, this);
+            }
+            if (activeUsersInstance == null)
+            {
+                activeUsersInstance = new ActiveFriends(userSingleton.IdUser);
+                activeUsersInstance.StartPage(this);
+            }
         }
 
         private void CreateNewlobby(LobbyActionsClient lobbyActionsProxy)

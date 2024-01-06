@@ -108,7 +108,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public class CheckUserLivingUnsubscribeImplementation : ICheckUserLivingUnsubscribe
     {
-        private static Object objectLock;
+        private static Object objectLock = new();
         public void UnsubscribeFromICheckUserLiving(UserPOJO user)
         {
             lock (objectLock)

@@ -17,15 +17,16 @@
 
             </Image>
             <Button x:Name="bttPlayer" FontStyle="Normal" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}"  FontSize="33" Content = "{x:Static p:Resources.bttPlayer}" FontStretch="Expanded" Click="ClickButtonLogin" Margin="480,497,481,165" Foreground="White" FontWeight="Bold">
-            <Button.Background>
-                <ImageBrush ImageSource="/Images/purpleBtn.png"/>
-            </Button.Background>
+                <Button.Background>
+                    <ImageBrush ImageSource="/Images/purpleBtn.png"/>
+                </Button.Background>
             </Button>
             <Button x:Name="bttPlayer_Copiar" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.btnInvite}" FontStretch="Expanded" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Click="ClickGetInAsIGuest" Margin="480,608,479,54" Foreground="White" FontWeight="Bold">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>
             </Button>
+            <Label Content="{x:Static p:Resources.lblRecoverPassword}" Foreground="#FF6F9CF7" HorizontalAlignment="Left" Margin="571,698,0,0" FontSize="15" VerticalAlignment="Top" OpacityMask="#FF3DB1E2" BorderBrush="#FF408BDE" MouseDown="ClickGoToRecoverPassword"/>
         </Grid>
     </Viewbox>
 </Page>

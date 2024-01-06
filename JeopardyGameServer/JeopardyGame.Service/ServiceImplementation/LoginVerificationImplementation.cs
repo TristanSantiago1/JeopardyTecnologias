@@ -17,7 +17,6 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     internal class LoginVerificationImplementation : ILogInVerification
     {
-        private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int SUCCESFULL_EVENT = 1;
         private readonly int UNSUCCESFULL_EVENT = 0;
 

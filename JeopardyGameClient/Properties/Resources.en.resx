@@ -211,7 +211,7 @@
     <value>The game has ended, the points had been saved succesfully.</value>
   </data>
   <data name="GenericEmailIssue" xml:space="preserve">
-    <value>There was a problem sending the email.</value>
+    <value>There was a problem sending the email, try it again, or later.</value>
   </data>
   <data name="HostCategoriesPresentation" xml:space="preserve">
     <value>The categories for the round number * are: \n 1 \n 2 \n 3 \n  Let´s Begin</value>
@@ -658,5 +658,56 @@ Mexico</value>
   </data>
   <data name="txbCancel" xml:space="preserve">
     <value>Are you sure do you want to cancel the game? we are gonna miss you!</value>
+  </data>
+  <data name="bttConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="lblAlreadyExistACodeToChangePassword" xml:space="preserve">
+    <value>There is already an active code associated with the account you are trying to change the password, Verify your email or try it later.</value>
+  </data>
+  <data name="lblEmailCodePassWordSendSuccesfully" xml:space="preserve">
+    <value>The email with your code to recover your passwrd had been succeslly sent to the email address associated with the account of the username entered, check it out.</value>
+  </data>
+  <data name="lblFailToConenctBD" xml:space="preserve">
+    <value>There was a problem connecting the data base please try it again or later.</value>
+  </data>
+  <data name="lblFailToUpdatePassword" xml:space="preserve">
+    <value>There was a problem upating the password.</value>
+  </data>
+  <data name="lblFailToVerifyTheCode" xml:space="preserve">
+    <value>There was a problem while verifying the code , ple try it again or later.</value>
+  </data>
+  <data name="lblPassWordUpdatedCorrectly" xml:space="preserve">
+    <value>The password was updated correctly.</value>
+  </data>
+  <data name="lblUserNameDoesNotExist" xml:space="preserve">
+    <value>There is not a account associated to the username you entered, pelase check it again.</value>
+  </data>
+  <data name="lblWrongCodeEntered" xml:space="preserve">
+    <value>The code you entered is wrong, please check it and try it again.</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>is your code to recover your password, remember i will only works for 5 minutes.</value>
+  </data>
+  <data name="lblRecoverPassword" xml:space="preserve">
+    <value>Recover Password</value>
+  </data>
+  <data name="lblCodePasswordDictionariesErased" xml:space="preserve">
+    <value>There was a problem with server, it's neccesary to resend the code, please do the process again,</value>
+  </data>
+  <data name="lblThereIsnoCodeFoThisUser" xml:space="preserve">
+    <value>There isn't any active code for the userName entered, confirm the userName to recive an active code. </value>
+  </data>
+  <data name="lblRigthCodePassword" xml:space="preserve">
+    <value>The code you entered is correct, now entered your new password, remeber it has to achive the segurity rules.</value>
+  </data>
+  <data name="lblRules" xml:space="preserve">
+    <value>Rules</value>
+  </data>
+  <data name="bttResend" xml:space="preserve">
+    <value>Reenviar</value>
+  </data>
+  <data name="lblLeaveLobby" xml:space="preserve">
+    <value>Are you sure you want to leave the lobby of the match?</value>
   </data>
 </root>

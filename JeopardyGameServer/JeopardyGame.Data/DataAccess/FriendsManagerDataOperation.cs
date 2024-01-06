@@ -71,11 +71,11 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var friendsOfUser = ConsultFriendsOfPlayer(player).ObjectSaved;
+                    var friendsOfUser = ConsultFriendsOfPlayer(player);
                     List<int> idsFriends = new List<int>();
-                    if(friendsOfUser != null)
+                    if(friendsOfUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        foreach (var friend in friendsOfUser)
+                        foreach (var friend in friendsOfUser.ObjectSaved)
                         {
                             if (friend.Player_IdPlayer == player.IdPlayer)
                             {
@@ -96,7 +96,7 @@ namespace JeopardyGame.Data.DataAccess
                     else
                     {
                         resultOfOperation.ObjectSaved = null;
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = friendsOfUser.CodeEvent;
                     }                    
                 }
             }
@@ -135,12 +135,19 @@ namespace JeopardyGame.Data.DataAccess
                 using (var contextBD = new JeopardyDBContainer())
                 {
                     var friendshipToDelete = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
-                    contextBD.Friends.Remove(friendshipToDelete);
-                    int resultEvent = contextBD.SaveChanges();
-                    resultOfOperation.ObjectSaved = resultEvent;
-                    if (resultEvent != NULL_INT_VALUE)
+                    if (friendshipToDelete != null)
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        contextBD.Friends.Remove(friendshipToDelete);
+                        int resultEvent = contextBD.SaveChanges();
+                        resultOfOperation.ObjectSaved = resultEvent;
+                        if (resultEvent != NULL_INT_VALUE)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
                     }
                     else
                     {
@@ -189,13 +196,20 @@ namespace JeopardyGame.Data.DataAccess
                 {
                     var friendshipToChange = new Friend();
                     friendshipToChange = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
-                    friendshipToChange.IdFriendState = FRIEND_STATUS_ACCCEPT_REQUEST;
-                    contextBD.Entry(friendshipToChange).State = EntityState.Modified;
-                    int resultEvent = contextBD.SaveChanges();
-                    resultOfOperation.ObjectSaved = resultEvent;
-                    if (resultEvent != NULL_INT_VALUE)
-                    {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                    if (friendshipToChange != null) 
+                    { 
+                        friendshipToChange.IdFriendState = FRIEND_STATUS_ACCCEPT_REQUEST;
+                        contextBD.Entry(friendshipToChange).State = EntityState.Modified;
+                        int resultEvent = contextBD.SaveChanges();
+                        resultOfOperation.ObjectSaved = resultEvent;
+                        if (resultEvent != NULL_INT_VALUE)
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        }
                     }
                     else
                     {
@@ -242,7 +256,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    bool doesFriendExist = contextBD.Friends.Any(friend => (friend.Player_IdPlayer == idPlayerSender && friend.PlayerFriend_IdPlayer == idPlayerCatcher) || (friend.Player_IdPlayer == idPlayerSender && friend.PlayerFriend_IdPlayer == idPlayerSender));
+                    bool doesFriendExist = contextBD.Friends.Any(friend => (friend.Player_IdPlayer == idPlayerSender && friend.PlayerFriend_IdPlayer == idPlayerCatcher) || (friend.Player_IdPlayer == idPlayerCatcher && friend.PlayerFriend_IdPlayer == idPlayerSender));
                     if (!doesFriendExist)
                     {
                         Friend newRelationShip = new Friend();
@@ -299,7 +313,10 @@ namespace JeopardyGame.Data.DataAccess
         public static GenericClassServer<int> BannerUser(int idPlayer)
         {
             GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
-            
+            if (idPlayer == NULL_INT_VALUE)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
             try
             {
                 using (var contextBD = new JeopardyDBContainer())
@@ -320,7 +337,10 @@ namespace JeopardyGame.Data.DataAccess
                             resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
-                    
+                    else
+                    {
+                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    }
                 }
             }
             catch (DbUpdateException ex)
