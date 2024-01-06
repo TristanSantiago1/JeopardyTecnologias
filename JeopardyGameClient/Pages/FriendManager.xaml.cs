@@ -6,6 +6,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection;
 using System.ServiceModel;
 using System.Windows;
@@ -50,11 +51,38 @@ namespace JeopardyGame.Pages
         private void LoadedPrepareWindow(object sender, RoutedEventArgs e)
         {
             userSingleton = UserSingleton.GetMainUser();
-            InstanceContext context = new InstanceContext(this);
-            FriendManagerActionsClient friendActionsProxy = new FriendManagerActionsClient(context);            
-            friendActionsProxy.RegisterFriendManagerUser(userSingleton.IdUser);
-            GetAllTables();
-            SetCards();
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                FriendManagerActionsClient friendActionsProxy = new FriendManagerActionsClient(context);
+                friendActionsProxy.RegisterFriendManagerUser(userSingleton.IdUser);
+                GetAllTables();
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
         }
 
 

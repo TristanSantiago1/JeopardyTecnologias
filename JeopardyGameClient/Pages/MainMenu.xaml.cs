@@ -29,7 +29,7 @@ namespace JeopardyGame.Pages
         {      
             InitializeComponent();
             NotifyItIsAvailable();
-            LoadPlayersData();
+            this.Loaded += LoadPlayersData;
         }
 
         private void NotifyItIsAvailable()
@@ -125,7 +125,7 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        private void LoadPlayersData()
+        private void LoadPlayersData(object sender, RoutedEventArgs e)
         {
             try
             {

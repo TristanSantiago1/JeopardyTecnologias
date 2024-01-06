@@ -13,7 +13,14 @@ namespace JeopardyGame.Exceptions
         {
             string logMessage = $"[{DateTime.Now}] Type: {category}\n Exception: {exception.Message} \nStackTrace: {exception.StackTrace}\n";
             SeriLogClient logConfig = new SeriLogClient();
-            File.AppendAllText(logConfig.getPath(), logMessage);
+            try
+            {
+                File.AppendAllText(logConfig.getPath(), logMessage);
+            }
+            catch (IOException)
+            {
+
+            }
         }
 
     }

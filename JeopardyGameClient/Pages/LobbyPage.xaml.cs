@@ -16,6 +16,7 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using JeopardyGame.ReGexs;
 using System.Text.RegularExpressions;
+using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
@@ -69,21 +70,47 @@ namespace JeopardyGame.Pages
         private void PrepareWindow()
         {
             userSingleton = UserSingleton.GetMainUser();
-            InstanceContext context = new InstanceContext(this);
-            LobbyActionsClient lobbyActionsProxy = new LobbyActionsClient(context);
-            if (isAdminOfLobby)
+            try
             {
-                CreateNewlobby(lobbyActionsProxy);
+                InstanceContext context = new InstanceContext(this);
+
+                LobbyActionsClient lobbyActionsProxy = new LobbyActionsClient(context);
+
+                if (isAdminOfLobby)
+                {
+                    CreateNewlobby(lobbyActionsProxy);
+                }
+                else
+                {
+                    JoinLobby(lobbyActionsProxy);
+                }
+                GetPlayers();
+                PrepareChatAndFriends();
+                lblAleatoryCode.Content = roomCode;
+                SetPlayerInLabels();
+                NotifyFriendsIamPlaying();
             }
-            else
+            catch (SocketException ex)
             {
-                JoinLobby(lobbyActionsProxy);
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
             }
-            GetPlayers();
-            PrepareChatAndFriends();
-            lblAleatoryCode.Content = roomCode;
-            SetPlayerInLabels();
-            NotifyFriendsIamPlaying();
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+            }
+
         }
 
         private void PrepareChatAndFriends()
@@ -113,19 +140,19 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
+                throw new EndpointNotFoundException();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
+                throw new CommunicationObjectFaultedException();
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+                throw new TimeoutException();
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+                throw new CommunicationException();
             }
         }
 
@@ -143,19 +170,19 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
+                throw new EndpointNotFoundException();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
+                throw new CommunicationObjectFaultedException();
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+                throw new TimeoutException();
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+                throw new CommunicationException();
             }
         }
 
@@ -173,19 +200,19 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
+                throw new EndpointNotFoundException();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblComunicationException);
+                throw new CommunicationObjectFaultedException();
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblTimeException);
+                throw new TimeoutException();
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblWithoutConection);
+                throw new CommunicationException();
             }
         }
 
@@ -829,25 +856,11 @@ namespace JeopardyGame.Pages
 
         private void ReturnToLogin()
         {
-            try
-            {
+            UserSingleton.CleanSingleton();
+            LogInUser logInUserPage = new LogInUser();
+            this.NavigationService.Navigate(logInUserPage);
+            NavigationService.RemoveBackEntry();
 
-                UserSingleton.CleanSingleton();
-                MainMenu mainMenu = new MainMenu();
-                this.NavigationService.Navigate(mainMenu);
-                NavigationService.RemoveBackEntry();
-
-                //LogInUser logInUserPage = new LogInUser();
-                //if(this.NavigationService.Navigate(logInUserPage) != null)
-                //{
-                //    this.NavigationService.Navigate(logInUserPage);
-                //    NavigationService.RemoveBackEntry();
-                //}
-                 
-            }catch (NullReferenceException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
         }
 
     }

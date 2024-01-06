@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -117,12 +118,74 @@ namespace JeopardyGame
             try
             {
                 var heartbeatClient = new HeartBeatClient();
-                heartbeatTimer = new System.Threading.Timer(state => { heartbeatClient.Heartbeat(); }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
+                heartbeatTimer = new System.Threading.Timer(state => {
+                    try
+                    {
+                        heartbeatClient.Heartbeat();
+                    }
+                    catch (SecurityNegotiationException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                    }
+
+                    catch (AddressAccessDeniedException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                    }
+                    catch (ProtocolException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                    }
+                    catch (SocketException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                    }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        if (ex.InnerException is SocketException socketException)
+                        {
+                            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                    }
+                    }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
+            }
+            catch (SecurityNegotiationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (AddressAccessDeniedException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (ProtocolException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SocketException ex) 
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);                
             }
             catch (EndpointNotFoundException ex)
             {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);                
             }
             catch (CommunicationObjectFaultedException ex)
             {
