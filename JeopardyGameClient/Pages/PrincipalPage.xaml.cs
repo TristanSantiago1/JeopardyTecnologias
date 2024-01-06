@@ -47,5 +47,12 @@ namespace JeopardyGame.Pages
         {
             Window.GetWindow(this).Close();
         }
+
+        private void ClickGoToRecoverPassword(object sender, MouseButtonEventArgs e)
+        {
+            PasswordRecovery passwordRecovery = new PasswordRecovery();
+            this.NavigationService.Navigate(passwordRecovery);
+            NavigationService.RemoveBackEntry();
+        }
     }
 }

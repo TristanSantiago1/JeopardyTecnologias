@@ -45,6 +45,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             return ((IUserManager)UserManager).UpdateEmailUser(idUser, email);  
         }
 
+        public GenericClass<int> UpdatePasswordUser(string userName, string password)
+        {
+            return ((IUserManager)UserManager).UpdatePasswordUser(userName, password);
+        }
+
         public GenericClass<int> UpdatePlayerPhoto(int idPlayer, int imageId)
         {
             return ((IUserManager)UserManager).UpdatePlayerPhoto(idPlayer, imageId);
@@ -208,11 +213,6 @@ namespace JeopardyGame.Service.ServiceImplementation
         public int CreateCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
         {
             return ((IRecoverPassword)recoverPasswordImplementation).CreateCodeToRecoverPassWord(userName, emailTitle, emailBody);
-        }
-
-        public int ResendCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
-        {
-            return ((IRecoverPassword)recoverPasswordImplementation).ResendCodeToRecoverPassWord(userName, emailTitle, emailBody);
         }
 
         public int VerifyCodeToRecoverPassword(string userName, string code)

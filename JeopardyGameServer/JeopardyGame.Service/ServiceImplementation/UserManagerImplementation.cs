@@ -13,6 +13,7 @@ using JeopardyGame.Service.Helpers;
 using System.ServiceModel;
 using static System.Net.Mime.MediaTypeNames;
 using JeopardyGame.Service.DataDictionaries;
+using System.Data.Entity;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -247,6 +248,46 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (InvalidOperationException ex)
             {
                 resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
+
+        public GenericClass<int> UpdatePasswordUser(string userName, string password)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>()
+            {
+                CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT,
+              
+            };
+            try
+            {
+                var updatePhoto = UserManagerDataOperation.UpdatePasswordUser(userName, password);
+                if (updatePhoto.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                    resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                }
+                else
+                {
+                    resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                    resultToReturn.CodeEvent = updatePhoto.CodeEvent;
+                }
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+               ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;

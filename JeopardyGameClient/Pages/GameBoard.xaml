@@ -87,11 +87,11 @@
                 <Border x:Name="brdFirstPlaceSpot" Visibility="Hidden" Height="328" Margin="89,77,904,3" BorderBrush="Black" Width="100" Background="AliceBlue">
                     <Label Content="1" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold" />
                 </Border>
-                <Border x:Name="brdFirstPlace" Visibility="Visible" BorderBrush="Black" BorderThickness="1" Margin="10,15,821,333" Background="black" Height="60" Width="262"/>
+                <Border x:Name="brdFirstPlace" Visibility="Visible" BorderBrush="Black" BorderThickness="1" Margin="10,15,821,333" Background="black" Height="auto" Width="auto"/>
                 <Border x:Name="brdSecondPlaceSpot" Visibility="Hidden" HorizontalAlignment="Left" Height="250" Margin="337,165,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100" Background="AliceBlue">
                     <Label Content="2" HorizontalAlignment="Left" Margin="29,18,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold"/>
                 </Border>
-                <Border x:Name="brdSecondPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="247,105,584,243" Background="black" Height="60" Width="262"/>
+                <Border x:Name="brdSecondPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="247,105,584,243" Background="black" Height="auto" Width="auto"/>
                 <Border x:Name="brdtThirdPlaceSpot" Visibility="Hidden" HorizontalAlignment="Left" Height="165" Margin="623,251,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100" Background="AliceBlue">
                     <Label Content="3" HorizontalAlignment="Left" Margin="27,15,0,75" FontSize="60" FontWeight="ExtraBold" Width="49"/>
                 </Border>
@@ -125,7 +125,7 @@
                 <Frame x:Name="frmChat" />
             </Grid>
             <Image x:Name="imgChatIcon" Source="{StaticResource ButtonChatIcon}" Margin="1009,569,11,11" Visibility="Hidden" MouseDown="ClickOpenChat"/>
-          
+
 
         </Grid>
     </Viewbox>

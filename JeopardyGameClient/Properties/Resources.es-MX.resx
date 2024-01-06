@@ -211,7 +211,7 @@
     <value>La partida ha terminado y se han guardado los puntos correctamente.</value>
   </data>
   <data name="GenericEmailIssue" xml:space="preserve">
-    <value>Hubo un problema al enviar el correo.</value>
+    <value>Hubo un problema al enviar el correo, itnetalo d enuevo o mas tarde.</value>
   </data>
   <data name="HostCategoriesPresentation" xml:space="preserve">
     <value>Las categoria para la ronda numero * son: \n 1 \n 2 \n 3  \n  Comencemos.</value>
@@ -652,5 +652,56 @@ Mexico</value>
   </data>
   <data name="lblEmailExistInBD" xml:space="preserve">
     <value>El correo se encuentra asociado a un perfil ¡Hazlo tu amigo!</value>
+  </data>
+  <data name="bttConfirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="lblAlreadyExistACodeToChangePassword" xml:space="preserve">
+    <value>Ya existe un codigo de verificacion activo par ala cuenta que estan intentando cambiar la contraseña, revisa tu email o intentalo mas tarde.</value>
+  </data>
+  <data name="lblEmailCodePassWordSendSuccesfully" xml:space="preserve">
+    <value>Se ha enviado correctamente el codigo de recuepración de la contraseña a el correo asociado a la cuenta del nombre de ususario ingresado, revisalo.</value>
+  </data>
+  <data name="lblFailToConenctBD" xml:space="preserve">
+    <value>Hubo un problema al conectarse a la base de datos, intentalo de nuevo o mas tarde.</value>
+  </data>
+  <data name="lblFailToUpdatePassword" xml:space="preserve">
+    <value>Hubo un problema al actulizar la contraseña.</value>
+  </data>
+  <data name="lblFailToVerifyTheCode" xml:space="preserve">
+    <value>Hubo un rpoblema al verificar el codigo, por favor reintentalo o intentalo mas tarde</value>
+  </data>
+  <data name="lblPassWordUpdatedCorrectly" xml:space="preserve">
+    <value>La contraseña se actualizo correctamente.</value>
+  </data>
+  <data name="lblUserNameDoesNotExist" xml:space="preserve">
+    <value>No existe una cuenta registra asociada al nombre de usuario que se ingreso, verificaloe  e intentalo de neuvo.</value>
+  </data>
+  <data name="lblWrongCodeEntered" xml:space="preserve">
+    <value>El codigo que has ingresadoe s incorrecto, por favor verificalo y intentalo de neuvo.</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>es tu codigo para recuperar tu contraseña, recuerda te este dejara de servir en 5 minutos.</value>
+  </data>
+  <data name="lblRecoverPassword" xml:space="preserve">
+    <value>Recuperar Contraseña</value>
+  </data>
+  <data name="lblCodePasswordDictionariesErased" xml:space="preserve">
+    <value>Hubo un problema con el servidor, es necesario reenviar el codigo, por favore realiza de nuevo el proceso.</value>
+  </data>
+  <data name="lblThereIsnoCodeFoThisUser" xml:space="preserve">
+    <value>No hay un codigo activo actualmente para el ususario ingresado, confimre en nombre d eusuario primero para recibir un codigo activo.</value>
+  </data>
+  <data name="lblRigthCodePassword" xml:space="preserve">
+    <value>El codigo ingresado es correcto, ahora ingresa tu nueva contraseña, recuerda que debe de cumplir la reglas de seguridad.</value>
+  </data>
+  <data name="lblRules" xml:space="preserve">
+    <value>Reglas</value>
+  </data>
+  <data name="bttResend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="lblLeaveLobby" xml:space="preserve">
+    <value>¿Estas seguro que desean abandonar el lobby de la partida?</value>
   </data>
 </root>

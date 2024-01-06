@@ -23,6 +23,9 @@ namespace JeopardyGame.Service.InterfacesServices
             [OperationContract]
             GenericClass<int> UpdateEmailUser(int idUser, string email);
 
+            [OperationContract]
+            GenericClass<int> UpdatePasswordUser(string userName, string password);
+
     }
 
  

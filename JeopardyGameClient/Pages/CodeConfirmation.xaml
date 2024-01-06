@@ -30,7 +30,10 @@
                        Height="131" Width="923" Foreground="White" FontSize="35" Text="{x:Static p:Resources.txbCodeInstructions}"/>
             <TextBlock x:Name="txbWrongCode" HorizontalAlignment="Left" Margin="325,548,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Visibility="Hidden"
                         Height="58" Width="401" Foreground="red" FontSize="15" Text="{x:Static p:Resources.WrongCode}"/>
-            <Label x:Name="lblResentCode" FontSize="25" Foreground="DeepSkyBlue" Margin="737,494,280,235" MouseDown="ClickResentCode" Content="{x:Static p:Resources.lblResentCode}" />
+            <Label x:Name="lblResentCode" FontSize="25" Foreground="DeepSkyBlue" Margin="737,494,280,235" Content="{x:Static p:Resources.lblResentCode}" />
+            <Border Margin="1054,402,100,321" CornerRadius="12" Background="CadetBlue">
+                <Button x:Name="bttResendCode"  Background="Transparent" Content="{x:Static p:Resources.bttResend}" FontSize="20" Height="47" VerticalAlignment="Top" Click="ClickResendCode"/>
+            </Border>
         </Grid>
     </Viewbox>
 </Page>

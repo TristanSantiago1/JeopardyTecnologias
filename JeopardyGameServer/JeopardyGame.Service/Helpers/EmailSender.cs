@@ -13,7 +13,7 @@ namespace JeopardyGame.Service.Helpers
     public static class EmailSender
     {
 
-        public static  int SentEmailConfirmationToCreateAccount(String email, String subject, String bodyMessage)
+        public static  int SentEmail(String email, String subject, String bodyMessage)
         {
             int resultToReturn;
             GenericClassServer<int> result = new GenericClassServer<int>();

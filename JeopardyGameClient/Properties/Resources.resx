@@ -654,4 +654,55 @@
   <data name="lblEmailExistInBD" xml:space="preserve">
     <value>The email is associated with a profile. Make it your friend!</value>
   </data>
+  <data name="bttConfirm" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblAlreadyExistACodeToChangePassword" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblEmailCodePassWordSendSuccesfully" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblFailToConenctBD" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblFailToUpdatePassword" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblFailToVerifyTheCode" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblPassWordUpdatedCorrectly" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblUserNameDoesNotExist" xml:space="preserve">
+    <value>Ther userName dont exist</value>
+  </data>
+  <data name="lblWrongCodeEntered" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="RecoverPasswordMessage" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblRecoverPassword" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblCodePasswordDictionariesErased" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblThereIsnoCodeFoThisUser" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblRigthCodePassword" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="lblRules" xml:space="preserve">
+    <value>rules</value>
+  </data>
+  <data name="bttResend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="lblLeaveLobby" xml:space="preserve">
+    <value>.</value>
+  </data>
 </root>

@@ -23,40 +23,16 @@ namespace JeopardyGame.Data.DataAccess
             {
                 return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
             }
-            try
+            if (passwordEntered.Equals(hashedPassword))
             {
-                if (passwordEntered.Equals(hashedPassword))
-                {
-                    resultOfOperation.ObjectSaved = true;
-                    resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                }
-                else
-                {
-                    resultOfOperation.ObjectSaved = false;
-                    resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                }
-                
+                resultOfOperation.ObjectSaved = true;
+                resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
             }
-            catch (FormatException ex)
+            else
             {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (ArgumentNullException ex)
-            {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (RankException ex)
-            {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (DbEntityValidationException ex)
-            {
-                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
+                resultOfOperation.ObjectSaved = false;
+                resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+            }       
             return resultOfOperation;
         }
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
@@ -51,6 +52,11 @@ namespace JeopardyGame.Data.DataAccess
                 }
             }
             catch (UpdateException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex.GetBaseException(), ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbUpdateException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
                 ExceptionHandler.LogException(ex.GetBaseException(), ExceptionDictionary.FATAL_EXCEPTION);
@@ -245,7 +251,7 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
-        private static GenericClassServer<Question> GetFinalQuestions()
+        public static GenericClassServer<Question> GetFinalQuestions()
         {
             GenericClassServer<Question> resultOfOperation = new GenericClassServer<Question>();           
             try
@@ -352,7 +358,7 @@ namespace JeopardyGame.Data.DataAccess
 
         public static int SaveGamePlayerInDataBase(GamePlayer gamePlayers)
         {
-            int resultOfOperation;
+            int resultOfOperation = ExceptionDictionary.UNSUCCESFULL_EVENT;
             if (gamePlayers == null)
             {
                 return ExceptionDictionary.NULL_PARAEMETER;
@@ -366,7 +372,6 @@ namespace JeopardyGame.Data.DataAccess
                     int resultOfEvent = contextBD.SaveChanges();
                     if (resultOfEvent > 0)
                     {                        
-
                         resultOfOperation = UpdatePlayersPoints(gamePlayers);
                     }
                     else
@@ -379,6 +384,11 @@ namespace JeopardyGame.Data.DataAccess
             {
                 resultOfOperation = ExceptionDictionary.SAVE_CHANGES_ERROR;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbUpdateException ex)
+            {
+                resultOfOperation =ExceptionDictionary.SAVE_CHANGES_ERROR;
+                ExceptionHandler.LogException(ex.GetBaseException(), ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
@@ -403,7 +413,7 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
-        private static int UpdatePlayersPoints(GamePlayer gamePlayers)
+        public static int UpdatePlayersPoints(GamePlayer gamePlayers)
         {
             int resultOfOperation = ExceptionDictionary.UNSUCCESFULL_EVENT;
             if (gamePlayers == null)
@@ -417,15 +427,22 @@ namespace JeopardyGame.Data.DataAccess
                     var playerToUpdate = contextBD.Players.FirstOrDefault(pl => pl.IdPlayer == gamePlayers.Player_IdPlayer);
                     if(playerToUpdate != null)
                     {
-                        playerToUpdate.GeneralPoints += gamePlayers.PointsInGame;
-                        int resultOfEvent = contextBD.SaveChanges();
-                        if (resultOfEvent > 0)
+                        if (gamePlayers.PointsInGame > 0)
                         {
-                            resultOfOperation = ExceptionDictionary.SUCCESFULL_EVENT;
+                            playerToUpdate.GeneralPoints += gamePlayers.PointsInGame;
+                            int resultOfEvent = contextBD.SaveChanges();
+                            if (resultOfEvent > 0)
+                            {
+                                resultOfOperation = ExceptionDictionary.SUCCESFULL_EVENT;
+                            }
+                            else
+                            {
+                                resultOfOperation = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            }
                         }
                         else
                         {
-                            resultOfOperation = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            resultOfOperation = ExceptionDictionary.SUCCESFULL_EVENT;
                         }
                     }                    
                 }
@@ -434,6 +451,11 @@ namespace JeopardyGame.Data.DataAccess
             {
                 resultOfOperation = ExceptionDictionary.SAVE_CHANGES_ERROR;
                 ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbUpdateException ex)
+            {
+                resultOfOperation = ExceptionDictionary.SAVE_CHANGES_ERROR;
+                ExceptionHandler.LogException(ex.GetBaseException(), ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {

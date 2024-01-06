@@ -184,6 +184,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRecoverPassword_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IHeartBeat_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -273,6 +281,12 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_UpdateEmailUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateEmailUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdatePasswordUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UpdatePasswordUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordUserResponse" />
   </wsdl:message>
   <wsdl:message name="ILogInVerification_ValidateCredentials_InputMessage">
     <wsdl:part name="parameters" element="tns:ValidateCredentials" />
@@ -643,6 +657,18 @@
   <wsdl:message name="IGuestPlayerManager_DeleteGuest_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteGuest" />
   </wsdl:message>
+  <wsdl:message name="IRecoverPassword_CreateCodeToRecoverPassWord_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCodeToRecoverPassWord" />
+  </wsdl:message>
+  <wsdl:message name="IRecoverPassword_CreateCodeToRecoverPassWord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCodeToRecoverPassWordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecoverPassword_VerifyCodeToRecoverPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyCodeToRecoverPassword" />
+  </wsdl:message>
+  <wsdl:message name="IRecoverPassword_VerifyCodeToRecoverPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyCodeToRecoverPasswordResponse" />
+  </wsdl:message>
   <wsdl:message name="IHeartBeat_Heartbeat_InputMessage">
     <wsdl:part name="parameters" element="tns:Heartbeat" />
   </wsdl:message>
@@ -713,6 +739,10 @@
     <wsdl:operation name="UpdateEmailUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdateEmailUser" message="tns:IUserManager_UpdateEmailUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdateEmailUserResponse" message="tns:IUserManager_UpdateEmailUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePasswordUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UpdatePasswordUser" message="tns:IUserManager_UpdatePasswordUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UpdatePasswordUserResponse" message="tns:IUserManager_UpdatePasswordUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILogInVerification">
@@ -1030,6 +1060,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGuestPlayerManager/DeleteGuest" message="tns:IGuestPlayerManager_DeleteGuest_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IRecoverPassword">
+    <wsdl:operation name="CreateCodeToRecoverPassWord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecoverPassword/CreateCodeToRecoverPassWord" message="tns:IRecoverPassword_CreateCodeToRecoverPassWord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecoverPassword/CreateCodeToRecoverPassWordResponse" message="tns:IRecoverPassword_CreateCodeToRecoverPassWord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyCodeToRecoverPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecoverPassword/VerifyCodeToRecoverPassword" message="tns:IRecoverPassword_VerifyCodeToRecoverPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecoverPassword/VerifyCodeToRecoverPasswordResponse" message="tns:IRecoverPassword_VerifyCodeToRecoverPassword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IHeartBeat">
     <wsdl:operation name="Heartbeat">
       <wsdl:input wsaw:Action="http://tempuri.org/IHeartBeat/Heartbeat" message="tns:IHeartBeat_Heartbeat_InputMessage" />
@@ -1173,6 +1213,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateEmailUser">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdateEmailUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePasswordUser">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UpdatePasswordUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1856,6 +1905,28 @@
       </wsdl:input>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRecoverPassword" type="tns:IRecoverPassword">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRecoverPassword_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateCodeToRecoverPassWord">
+      <soap12:operation soapAction="http://tempuri.org/IRecoverPassword/CreateCodeToRecoverPassWord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyCodeToRecoverPassword">
+      <soap12:operation soapAction="http://tempuri.org/IRecoverPassword/VerifyCodeToRecoverPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IHeartBeat" type="tns:IHeartBeat">
     <wsp:PolicyReference URI="#NetTcpBinding_IHeartBeat_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -2000,6 +2071,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGuestPlayerManager" binding="tns:NetTcpBinding_IGuestPlayerManager">
+      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRecoverPassword" binding="tns:NetTcpBinding_IRecoverPassword">
       <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>

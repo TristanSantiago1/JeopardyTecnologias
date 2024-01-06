@@ -95,6 +95,7 @@ namespace JeopardyGame.Pages
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += TickTimerResendCode;
+            bttResendCode.IsEnabled = false;
             timer.Start();
         }
 
@@ -104,9 +105,13 @@ namespace JeopardyGame.Pages
             {
                 leftTime--;
                 lblResentCode.Content = Properties.Resources.lblResentCode + " " + leftTime;
+                lblResentCode.Foreground = new SolidColorBrush(Colors.IndianRed);                
             }
             else
             {
+                lblResentCode.Content = Properties.Resources.lblResentCode + " " + leftTime;
+                lblResentCode.Foreground = new SolidColorBrush(Colors.ForestGreen);
+                bttResendCode.IsEnabled = true;
                 timer.Stop();
             }
         }
@@ -199,6 +204,50 @@ namespace JeopardyGame.Pages
             }
         }
 
+        private void ClickResendCode(object sender, RoutedEventArgs e)
+        {
+            if (leftTime == NULL_INT_VALUE)
+            {
+                try
+                {
+                    InstanceContext instanceContext = new InstanceContext(this);
+                    CheckUserLivingClient checkUserLivingClient = new(instanceContext);
+                    var success = checkUserLivingClient.RenewLivingCallBack(userToSave);
+
+                    UserCreateAccountCodeClient userCreateAccount = new();
+                    if (userCreateAccount.ResendCode(userToSave) == ExceptionDictionary.SUCCESFULL_EVENT)
+                    {
+                        SentEmail();
+                        StartTimer();
+                    }
+                    else
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
+                    }
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblComunicationException);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+                }
+                catch (TimeoutException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblTimeException);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+                }
+                catch (CommunicationException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblWithoutConection);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+                }
+            }
+        }
+
         private void PrepareUserToBeSaved()
         {
             String encryptedPassword = EncryptionClass.EncryptPassword(userToSave.Password.ToString().Trim());
@@ -230,6 +279,8 @@ namespace JeopardyGame.Pages
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
         }
+
+
 
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
@@ -263,50 +314,7 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        private void ClickResentCode(object sender, MouseButtonEventArgs e)
-        {
-            if (leftTime == NULL_INT_VALUE)
-            {
-                try
-                {
-                    InstanceContext instanceContext = new InstanceContext(this);
-                    CheckUserLivingClient checkUserLivingClient = new(instanceContext);
-                    var success = checkUserLivingClient.RenewLivingCallBack(userToSave);
-
-                    UserCreateAccountCodeClient userCreateAccount = new();
-                    if(userCreateAccount.ResendCode(userToSave) == ExceptionDictionary.SUCCESFULL_EVENT)
-                    {
-                        SentEmail();
-                        StartTimer();
-                    }
-                    else
-                    {
-                       dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
-                    }
-                }
-                catch (EndpointNotFoundException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblEndPointNotFound);
-                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
-                }
-                catch (CommunicationObjectFaultedException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblComunicationException);
-                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
-                }
-                catch (TimeoutException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblTimeException);
-                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
-                }
-                catch (CommunicationException ex)
-                {
-                    HandleException(ex, Properties.Resources.lblWithoutConection);
-                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
-                }
-            }            
-        }
-
+ 
         private void EntryCodeCharValidator(object sender, TextChangedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Length == 6)

@@ -491,6 +491,20 @@
     <Resource Include="Images\LeaveGameImage.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\saveIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\blueButton.png" />
+    <Resource Include="Images\redButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\informationIcon.png" />
+    <Resource Include="Images\warningIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sendEmail.png" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServidorServiciosJeopardy\" />
   </ItemGroup>
   <ItemGroup>
@@ -507,20 +521,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\saveIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\blueButton.png" />
-    <Resource Include="Images\redButton.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\informationIcon.png" />
-    <Resource Include="Images\warningIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\sendEmail.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

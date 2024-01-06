@@ -28,11 +28,11 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class LiveChat : Page, ILiveChatCallback
     {
-        private static bool isAdmin;
-        private static int roomCode;
-        private static UserSingleton userSingleton;
-        private static List<MessageChat> messagesInChats = new List<MessageChat>();
-        private static LobbyPage lobbyPage;
+        private  bool isAdmin;
+        private  int roomCode;
+        private  UserSingleton userSingleton;
+        private  List<MessageChat> messagesInChats = new List<MessageChat>();
+        private  LobbyPage lobbyPage;
         private Window dialogMessage;
 
         public LiveChat()

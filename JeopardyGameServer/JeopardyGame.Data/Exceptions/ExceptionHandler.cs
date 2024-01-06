@@ -16,7 +16,11 @@ namespace JeopardyGame.Data.Exceptions
     {
         public static void LogException(Exception exception, String Category)
         {
-            string logMessage = $"[{DateTime.Now}] Type: {Category}\n Exception: {exception.Message} \nStackTrace: {exception.StackTrace}\n";
+            if(exception.InnerException != null)
+            {
+                exception = exception.InnerException;
+            }
+            string logMessage = $"[{DateTime.Now}] Type: {Category}\n Exception: {exception.Data + "\n"+ exception.Message} \nStackTrace: {exception.StackTrace}\n";
             SeriLogConfig logConfig = new SeriLogConfig();  
             File.AppendAllText(logConfig.getPath(), logMessage);
         }
