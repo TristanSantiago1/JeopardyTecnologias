@@ -21,8 +21,15 @@ namespace JeopardyGame.Data.Exceptions
                 exception = exception.InnerException;
             }
             string logMessage = $"[{DateTime.Now}] Type: {Category}\n Exception: {exception.Data + "\n"+ exception.Message} \nStackTrace: {exception.StackTrace}\n";
-            SeriLogConfig logConfig = new SeriLogConfig();  
-            File.AppendAllText(logConfig.getPath(), logMessage);
+            SeriLogConfig logConfig = new SeriLogConfig();
+            try
+            {
+                File.AppendAllText(logConfig.getPath(), logMessage);
+            }
+            catch (IOException)
+            {
+
+            }
         }
 
         public static GenericClassServer<T> HandleExceptionDataAccesLevel<T>(GenericClassServer<T> resultException, Exception exception)

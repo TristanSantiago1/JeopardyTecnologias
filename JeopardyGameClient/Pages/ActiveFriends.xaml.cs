@@ -237,7 +237,6 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            ReturnToLogin();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
         }
 
@@ -352,13 +351,7 @@ namespace JeopardyGame.Pages
                 throw new CommunicationException();
             }
         }
-        private void ReturnToLogin()
-        {
-            UserSingleton.CleanSingleton();
-            LogInUser logInUserPage = new LogInUser();
-            this.NavigationService.Navigate(logInUserPage);
-            NavigationService.RemoveBackEntry();
-        }
+      
     }
 
 }
