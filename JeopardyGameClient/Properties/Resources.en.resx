@@ -710,4 +710,7 @@ Mexico</value>
   <data name="lblLeaveLobby" xml:space="preserve">
     <value>Are you sure you want to leave the lobby of the match?</value>
   </data>
+  <data name="txbGameFinish" xml:space="preserve">
+    <value>Game over!</value>
+  </data>
 </root>

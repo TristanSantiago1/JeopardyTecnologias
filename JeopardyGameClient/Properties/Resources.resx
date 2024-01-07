@@ -711,4 +711,7 @@
   <data name="lblLeaveLobby" xml:space="preserve">
     <value>.</value>
   </data>
+  <data name="txbGameFinish" xml:space="preserve">
+    <value>Game over!</value>
+  </data>
 </root>

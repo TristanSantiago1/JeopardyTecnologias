@@ -1735,6 +1735,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Game over!.
+        /// </summary>
+        public static string txbGameFinish {
+            get {
+                return ResourceManager.GetString("txbGameFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ban notification.
         /// </summary>
         public static string txbInfoBanner {

@@ -793,7 +793,7 @@ namespace JeopardyGame.Pages
             {
                 if (arePointsSaved == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.GameFinished, Window.GetWindow(this));
+                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbGameFinish, Properties.Resources.GameFinished, Window.GetWindow(this));
                 }
                 else
                 {
