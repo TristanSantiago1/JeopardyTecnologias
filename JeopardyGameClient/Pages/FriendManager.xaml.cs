@@ -160,6 +160,11 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblComunicationException);
                 ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+            }
         }
 
         private void SetCards()
@@ -289,6 +294,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblComunicationException);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         public void EliminateFriend(int idUserFriendToEliminate)
@@ -336,6 +345,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailToEliminateFriend + " : " + Properties.Resources.lblComunicationException);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         public void SentFriendRequest(int idUserRequested)
@@ -369,6 +382,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblFailToSentTheFriendRequest + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblEndPointNotFound);
             }
         }
 
@@ -415,6 +432,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailToAccepInvitation + " : " + Properties.Resources.lblComunicationException);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         public void DeclineFriendRequest(int idUserRequesting, String userName)
@@ -459,6 +480,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblFailToDeclineRequest + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToReportAUser + " : " + Properties.Resources.lblEndPointNotFound);
             }
         }
 
@@ -618,6 +643,10 @@ namespace JeopardyGame.Pages
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SocketException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }

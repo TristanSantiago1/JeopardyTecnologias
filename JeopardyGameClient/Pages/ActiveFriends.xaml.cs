@@ -22,6 +22,7 @@ using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using JeopardyGame.Exceptions;
 using JeopardyGame.ReGexs;
 using System.Text.RegularExpressions;
+using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
@@ -62,6 +63,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+            }
         }
 
         public void StartPage(LobbyPage lobby)
@@ -94,6 +99,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby + " : " + Properties.Resources.lblEndPointNotFound);
             }
         }
 
@@ -144,6 +153,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
             }
         }
 
@@ -231,7 +244,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
-
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+            }
         }
 
         private void HandleException(Exception ex, string errorMessage)
@@ -305,6 +321,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+            }
         }
         private bool IsValidEmail(string email)
         {
@@ -350,6 +370,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException)
             {
                 throw new CommunicationException();
+            }
+            catch (SocketException ex)
+            {
+                throw new SocketException();
             }
         }
         private void ReturnToLogin()

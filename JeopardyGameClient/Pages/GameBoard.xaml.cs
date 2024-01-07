@@ -5,6 +5,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Reflection.Emit;
 using System.ServiceModel;
 using System.Threading.Tasks;
@@ -89,6 +90,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         public void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, PlayerInGameDataContract[] playerInGame)
@@ -116,6 +121,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
             }
         }
 
@@ -380,6 +389,10 @@ namespace JeopardyGame.Pages
                         {
                             HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblWithoutConection);
                         }
+                        catch (SocketException ex)
+                        {
+                            HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
+                        }
                     }
                 }
             }                  
@@ -453,6 +466,10 @@ namespace JeopardyGame.Pages
                 catch (CommunicationException ex)
                 {
                     HandleException(ex, Properties.Resources.lblFailToChoseQuestion + " : " + Properties.Resources.lblWithoutConection);
+                }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
                 }
             }            
         }
@@ -533,6 +550,10 @@ namespace JeopardyGame.Pages
                 catch (CommunicationException ex)
                 {
                     HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblWithoutConection);
+                }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
                 }
             }            
         }
@@ -673,6 +694,10 @@ namespace JeopardyGame.Pages
                     catch (CommunicationException ex)
                     {
                         HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblWithoutConection);
+                    }
+                    catch (SocketException ex)
+                    {
+                        HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
                     }
                 }                
             }           
@@ -915,6 +940,10 @@ namespace JeopardyGame.Pages
                 {
                     HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblWithoutConection);
                 }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
+                }
             }
         }
 
@@ -972,6 +1001,10 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);  
             }
+            catch (SocketException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
         public void ReceiveNotificationSomeOneLeft(int isYourTurn, PlayerInGameDataContract[] playerInGame)
@@ -1016,6 +1049,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
         }
 
  
@@ -1041,6 +1078,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             UserSingleton.CleanSingleton();
         }

@@ -4,6 +4,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,6 +102,11 @@ namespace JeopardyGame.Pages
                     HandleException(ex, Properties.Resources.lblWithoutConection);
                     Window.GetWindow(this).Close();
                 }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblWithoutConection);
+                    Window.GetWindow(this).Close();
+                }
             }
             else
             {
@@ -159,6 +165,11 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblWithoutConection + " : " + Properties.Resources.lblFailToCreateGuestUser);
                 Window.GetWindow(this).Close();
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+                Window.GetWindow(this).Close();
+            }
             return isPlayerGuestActive;
         }
 
@@ -193,6 +204,10 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblTimeException + " : " + Properties.Resources.lblFailRegistryToCallBack);
             }
             catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection + " : " + Properties.Resources.lblFailRegistryToCallBack);
+            }
+            catch (SocketException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection + " : " + Properties.Resources.lblFailRegistryToCallBack);
             }

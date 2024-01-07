@@ -15,6 +15,7 @@ using System.Windows;
 using System.ServiceModel;
 using JeopardyGame.DialogWindows;
 using JeopardyGame.Exceptions;
+using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
@@ -121,7 +122,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
-
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.GenericEmailIssue);
+            }
         }
         private void HandleException(Exception ex, string errorMessage)
         {

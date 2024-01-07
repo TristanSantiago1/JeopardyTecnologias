@@ -6,6 +6,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -184,6 +185,10 @@ namespace JeopardyGame.Pages
                 {
                     HandleException(ex, Properties.Resources.GenericEmailIssue + " " + Properties.Resources.lblWithoutConection);
                 }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.GenericEmailIssue + " " + Properties.Resources.lblEndPointNotFound);
+                }
             }
         }
 
@@ -239,6 +244,10 @@ namespace JeopardyGame.Pages
                 {
                     HandleException(ex, Properties.Resources.lblFailToVerifyTheCode + " " + Properties.Resources.lblWithoutConection);
                 }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.GenericEmailIssue + " " + Properties.Resources.lblEndPointNotFound);
+                }
             }
         }
 
@@ -293,6 +302,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblFailToUpdatePassword + " " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.GenericEmailIssue + " " + Properties.Resources.lblEndPointNotFound);
             }
         }
 

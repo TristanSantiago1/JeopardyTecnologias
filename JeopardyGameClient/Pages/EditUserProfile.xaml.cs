@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
@@ -101,6 +102,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void SelectImage(object sender, SelectionChangedEventArgs e)
@@ -185,6 +190,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar);
             }
         }
         private void InitializeImageMappings()
@@ -278,6 +287,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWrongUpdateEmail + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
         private void ClickSaveNewName(object sender, MouseButtonEventArgs e)
         {
@@ -324,6 +337,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex,Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
             }
         }
         private int CheckEmailAddressFormat()
@@ -397,6 +414,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException)
             {
                 throw new CommunicationException();
+            }
+            catch (SocketException ex)
+            {
+                throw new SocketException();
             }
         }
 
