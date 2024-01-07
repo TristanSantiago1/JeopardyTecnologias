@@ -17,7 +17,8 @@ namespace TestJeopardyServidor.TestService
     {
 
         public TestFixturesForDbUp()
-        {           
+        {
+            JeopardyGame.Host.Connection.OpenConnection.GetConectionString();
         }
 
         public void Dispose()
@@ -26,11 +27,12 @@ namespace TestJeopardyServidor.TestService
             {
                 try
                 {
-                    contextBD.Database.ExecuteSqlCommand("DELETE FROM [Jeopardy].[dbo].[GamePlayers] WHERE PlaceInGame = 10;");
-                    contextBD.Database.ExecuteSqlCommand("DELETE FROM [Jeopardy].[dbo].[Games] WHERE RoomCode = 22222;");
-                    contextBD.Database.ExecuteSqlCommand("DELETE FROM [Jeopardy].[dbo].[Players] WHERE State_idState >= 3;");
-                    contextBD.Database.ExecuteSqlCommand("DELETE FROM [Jeopardy].[dbo].[Users] WHERE name = '';");
-                    contextBD.Database.ExecuteSqlCommand("DELETE FROM [Jeopardy].[dbo].[States] WHERE IdState > 3;");
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteGamePlayers);
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteGames00000);
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteGames22222);
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeletePlayers);
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteUsers);
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteStates);
                 }
                 catch (UpdateException ex)
                 {

@@ -1,7 +1,6 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Data.Exceptions;
-using JeopardyGame.Service.ServiceImplementation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +24,7 @@ namespace TestJeopardyServidor.TestService
         {
             Game game = new Game()
             {
-                RoomCode = 22222,
+                RoomCode = 00000,
                 Host_IdHost = 2
             };
             var succes = GameDataOperation.SaveNewGameInDataBase(game);

@@ -31,6 +31,7 @@ namespace JeopardyGame.Data
         public virtual DbSet<Baneo> Baneos { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Friend> Friends { get; set; }
+        public virtual DbSet<FriendsState> FriendsStates { get; set; }
         public virtual DbSet<GamePlayer> GamePlayers { get; set; }
         public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Host> Hosts { get; set; }
@@ -39,6 +40,5 @@ namespace JeopardyGame.Data
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<FriendsState> FriendsStates { get; set; }
     }
 }

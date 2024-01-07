@@ -14,11 +14,19 @@ namespace JeopardyGame.Data
     
     public partial class Awnser
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Awnser()
+        {
+            this.Questions = new HashSet<Question>();
+        }
+    
         public int IdAwnser { get; set; }
         public string SpanishAwnserDescription { get; set; }
         public string EnglichAwnserDescription { get; set; }
         public int CategoryIdCategory { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Question> Questions { get; set; }
         public virtual Category Category { get; set; }
     }
 }

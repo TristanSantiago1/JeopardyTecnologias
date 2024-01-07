@@ -20,8 +20,9 @@ namespace JeopardyGame.Data
         public string RigthAwnser { get; set; }
         public Nullable<int> ValueWorth { get; set; }
         public int CategoryIdCategory { get; set; }
+        public int Awnser_IdAwnser { get; set; }
     
-        public virtual Category Category { get; set; }
         public virtual Awnser Awnser { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

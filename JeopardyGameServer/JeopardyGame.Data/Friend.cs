@@ -19,8 +19,8 @@ namespace JeopardyGame.Data
         public int PlayerFriend_IdPlayer { get; set; }
         public int IdFriendState { get; set; }
     
+        public virtual FriendsState FriendsState { get; set; }
         public virtual Player Player { get; set; }
         public virtual Player Player1 { get; set; }
-        public virtual FriendsState FriendsState { get; set; }
     }
 }

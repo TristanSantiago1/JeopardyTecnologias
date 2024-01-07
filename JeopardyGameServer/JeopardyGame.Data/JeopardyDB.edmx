@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JeopardyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JeopardyBD.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AvatarPlayers">
           <Key>
             <PropertyRef Name="IdAvatarPlayer" />
@@ -304,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="JeopardyModelStoreContainer">
+        <EntityContainer Name="JeopardyBDStoreContainer">
           <EntitySet Name="AvatarPlayers" EntityType="Self.AvatarPlayers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Avatars" EntityType="Self.Avatars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Awnsers" EntityType="Self.Awnsers" Schema="dbo" store:Type="Tables" />
@@ -377,10 +377,11 @@
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="JeopardyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="JeopardyBD" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AvatarPlayer">
           <Key>
             <PropertyRef Name="IdAvatarPlayer" />
@@ -406,8 +407,9 @@
           <Property Name="IdAwnser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SpanishAwnserDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EnglichAwnserDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="JeopardyModel.CategoryAwnser" FromRole="Awnser" ToRole="Category" />
           <Property Name="CategoryIdCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_AwnserQuestion" FromRole="Awnsers" ToRole="Questions" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoryAwnser" FromRole="Awnsers" ToRole="Categories" />
         </EntityType>
         <EntityType Name="Baneo">
           <Key>
@@ -426,6 +428,8 @@
           <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SpanishCategoryDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EnglishCategoryDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Awnsers" Relationship="Self.FK_CategoryAwnser" FromRole="Categories" ToRole="Awnsers" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_CategoryQuestion" FromRole="Categories" ToRole="Questions" />
         </EntityType>
         <EntityType Name="Friend">
           <Key>
@@ -434,10 +438,18 @@
           <Property Name="IdFrineds" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Player_IdPlayer" Type="Int32" Nullable="false" />
           <Property Name="PlayerFriend_IdPlayer" Type="Int32" Nullable="false" />
+          <Property Name="IdFriendState" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FriendsState" Relationship="Self.FK_FriendState" FromRole="Friends" ToRole="FriendsStates" />
           <NavigationProperty Name="Player" Relationship="Self.FK_PlayerFriends" FromRole="Friends" ToRole="Players" />
           <NavigationProperty Name="Player1" Relationship="Self.FK_PlayerFriends1" FromRole="Friends" ToRole="Players" />
-          <Property Name="IdFriendState" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FriendsState" Relationship="JeopardyModel.FK_FriendState" FromRole="Friend" ToRole="FriendsState" />
+        </EntityType>
+        <EntityType Name="FriendsState">
+          <Key>
+            <PropertyRef Name="IdFriendState" />
+          </Key>
+          <Property Name="IdFriendState" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Friends" Relationship="Self.FK_FriendState" FromRole="FriendsStates" ToRole="Friends" />
         </EntityType>
         <EntityType Name="GamePlayer">
           <Key>
@@ -495,9 +507,10 @@
           <Property Name="EnglishQuestionDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RigthAwnser" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ValueWorth" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="JeopardyModel.CategoryQuestion" FromRole="Question" ToRole="Category" />
           <Property Name="CategoryIdCategory" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Awnser" Relationship="JeopardyModel.AwnserQuestion" FromRole="Question" ToRole="Awnser" />
+          <Property Name="Awnser_IdAwnser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Awnser" Relationship="Self.FK_AwnserQuestion" FromRole="Questions" ToRole="Awnsers" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoryQuestion" FromRole="Questions" ToRole="Categories" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -552,6 +565,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AwnserQuestion">
+          <End Role="Awnsers" Type="Self.Awnser" Multiplicity="1" />
+          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Awnsers">
+              <PropertyRef Name="IdAwnser" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="Awnser_IdAwnser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryAwnser">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Awnsers" Type="Self.Awnser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Awnsers">
+              <PropertyRef Name="CategoryIdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PlayerBaneo">
           <End Role="Players" Type="Self.Player" Multiplicity="1" />
           <End Role="Baneos" Type="Self.Baneo" Multiplicity="*" />
@@ -561,6 +598,30 @@
             </Principal>
             <Dependent Role="Baneos">
               <PropertyRef Name="Player_IdPlayer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryQuestion">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="CategoryIdCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FriendState">
+          <End Role="FriendsStates" Type="Self.FriendsState" Multiplicity="1" />
+          <End Role="Friends" Type="Self.Friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FriendsStates">
+              <PropertyRef Name="IdFriendState" />
+            </Principal>
+            <Dependent Role="Friends">
+              <PropertyRef Name="IdFriendState" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -655,6 +716,7 @@
           <EntitySet Name="Baneos" EntityType="Self.Baneo" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Friends" EntityType="Self.Friend" />
+          <EntitySet Name="FriendsStates" EntityType="Self.FriendsState" />
           <EntitySet Name="GamePlayers" EntityType="Self.GamePlayer" />
           <EntitySet Name="Games" EntityType="Self.Game" />
           <EntitySet Name="Hosts" EntityType="Self.Host" />
@@ -671,9 +733,25 @@
             <End Role="Players" EntitySet="Players" />
             <End Role="AvatarPlayers" EntitySet="AvatarPlayers" />
           </AssociationSet>
+          <AssociationSet Name="FK_AwnserQuestion" Association="Self.FK_AwnserQuestion">
+            <End Role="Awnsers" EntitySet="Awnsers" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryAwnser" Association="Self.FK_CategoryAwnser">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Awnsers" EntitySet="Awnsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_PlayerBaneo" Association="Self.FK_PlayerBaneo">
             <End Role="Players" EntitySet="Players" />
             <End Role="Baneos" EntitySet="Baneos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryQuestion" Association="Self.FK_CategoryQuestion">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FriendState" Association="Self.FK_FriendState">
+            <End Role="FriendsStates" EntitySet="FriendsStates" />
+            <End Role="Friends" EntitySet="Friends" />
           </AssociationSet>
           <AssociationSet Name="FK_PlayerFriends" Association="Self.FK_PlayerFriends">
             <End Role="Players" EntitySet="Players" />
@@ -703,233 +781,162 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Players" EntitySet="Players" />
           </AssociationSet>
-          <EntitySet Name="FriendsStates" EntityType="JeopardyModel.FriendsState" />
-          <AssociationSet Name="FK_FriendState" Association="JeopardyModel.FK_FriendState">
-            <End Role="FriendsState" EntitySet="FriendsStates" />
-            <End Role="Friend" EntitySet="Friends" />
-          </AssociationSet>
-          <AssociationSet Name="CategoryAwnser" Association="JeopardyModel.CategoryAwnser">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Awnser" EntitySet="Awnsers" />
-          </AssociationSet>
-          <AssociationSet Name="CategoryQuestion" Association="JeopardyModel.CategoryQuestion">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Question" EntitySet="Questions" />
-          </AssociationSet>
-          <AssociationSet Name="AwnserQuestion" Association="JeopardyModel.AwnserQuestion">
-            <End Role="Awnser" EntitySet="Awnsers" />
-            <End Role="Question" EntitySet="Questions" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="FriendsState">
-          <Key>
-            <PropertyRef Name="IdFriendState" />
-          </Key>
-          <Property Name="IdFriendState" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateDescription" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Friends" Relationship="JeopardyModel.FK_FriendState" FromRole="FriendsState" ToRole="Friend" />
-        </EntityType>
-        <Association Name="FK_FriendState">
-          <End Type="JeopardyModel.FriendsState" Role="FriendsState" Multiplicity="1" />
-          <End Type="JeopardyModel.Friend" Role="Friend" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="FriendsState">
-              <PropertyRef Name="IdFriendState" />
-            </Principal>
-            <Dependent Role="Friend">
-              <PropertyRef Name="IdFriendState" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CategoryAwnser">
-          <End Type="JeopardyModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="JeopardyModel.Awnser" Role="Awnser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="IdCategory" />
-            </Principal>
-            <Dependent Role="Awnser">
-              <PropertyRef Name="CategoryIdCategory" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CategoryQuestion">
-          <End Type="JeopardyModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="JeopardyModel.Question" Role="Question" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="IdCategory" />
-            </Principal>
-            <Dependent Role="Question">
-              <PropertyRef Name="CategoryIdCategory" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AwnserQuestion">
-          <End Type="JeopardyModel.Awnser" Role="Awnser" Multiplicity="1" />
-          <End Type="JeopardyModel.Question" Role="Question" Multiplicity="0..1" />
-        </Association>
-        </Schema>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="JeopardyModelStoreContainer" CdmEntityContainer="JeopardyDBContainer">
-    <EntitySetMapping Name="AvatarPlayers">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.AvatarPlayer)">
-        <MappingFragment StoreEntitySet="AvatarPlayers">
-          <ScalarProperty Name="IdAvatarPlayer" ColumnName="IdAvatarPlayer" />
-          <ScalarProperty Name="Avatar_IdAvatar" ColumnName="Avatar_IdAvatar" />
-          <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Avatars">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Avatar)">
-        <MappingFragment StoreEntitySet="Avatars">
-          <ScalarProperty Name="IdAvatar" ColumnName="IdAvatar" />
-          <ScalarProperty Name="AvatarName" ColumnName="AvatarName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Awnsers">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Awnser)">
-        <MappingFragment StoreEntitySet="Awnsers">
-          <ScalarProperty Name="IdAwnser" ColumnName="IdAwnser" />
-          <ScalarProperty Name="SpanishAwnserDescription" ColumnName="SpanishAwnserDescription" />
-          <ScalarProperty Name="EnglichAwnserDescription" ColumnName="EnglichAwnserDescription" />
-          <ScalarProperty Name="CategoryIdCategory" ColumnName="CategoryIdCategory" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Baneos">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Baneo)">
-        <MappingFragment StoreEntitySet="Baneos">
-          <ScalarProperty Name="IdBaneo" ColumnName="IdBaneo" />
-          <ScalarProperty Name="BanTimeBegin" ColumnName="BanTimeBegin" />
-          <ScalarProperty Name="BanTimeFinish" ColumnName="BanTimeFinish" />
-          <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Category)">
-        <MappingFragment StoreEntitySet="Categories">
-          <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
-          <ScalarProperty Name="SpanishCategoryDescription" ColumnName="SpanishCategoryDescription" />
-          <ScalarProperty Name="EnglishCategoryDescription" ColumnName="EnglishCategoryDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Friends">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Friend)">
-        <MappingFragment StoreEntitySet="Friends">
-          <ScalarProperty Name="IdFrineds" ColumnName="IdFrineds" />
-          <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
-          <ScalarProperty Name="PlayerFriend_IdPlayer" ColumnName="PlayerFriend_IdPlayer" />
-          <ScalarProperty Name="IdFriendState" ColumnName="IdFriendState" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="GamePlayers">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.GamePlayer)">
-        <MappingFragment StoreEntitySet="GamePlayers">
-          <ScalarProperty Name="IdGamePlayer" ColumnName="IdGamePlayer" />
-          <ScalarProperty Name="PointsInGame" ColumnName="PointsInGame" />
-          <ScalarProperty Name="PlaceInGame" ColumnName="PlaceInGame" />
-          <ScalarProperty Name="Game_RoomCode" ColumnName="Game_RoomCode" />
-          <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Games">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Game)">
-        <MappingFragment StoreEntitySet="Games">
-          <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
-          <ScalarProperty Name="Host_IdHost" ColumnName="Host_IdHost" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Hosts">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Host)">
-        <MappingFragment StoreEntitySet="Hosts">
-          <ScalarProperty Name="IdHost" ColumnName="IdHost" />
-          <ScalarProperty Name="HostName" ColumnName="HostName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Players">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Player)">
-        <MappingFragment StoreEntitySet="Players">
-          <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
-          <ScalarProperty Name="GeneralPoints" ColumnName="GeneralPoints" />
-          <ScalarProperty Name="NoReports" ColumnName="NoReports" />
-          <ScalarProperty Name="State_idState" ColumnName="State_idState" />
-          <ScalarProperty Name="IdAvatarActual" ColumnName="IdAvatarActual" />
-          <ScalarProperty Name="User_IdUser" ColumnName="User_IdUser" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Questions">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.Question)">
-        <MappingFragment StoreEntitySet="Questions">
-          <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
-          <ScalarProperty Name="SpanishQuestionDescription" ColumnName="SpanishQuestionDescription" />
-          <ScalarProperty Name="EnglishQuestionDescription" ColumnName="EnglishQuestionDescription" />
-          <ScalarProperty Name="RigthAwnser" ColumnName="RigthAwnser" />
-          <ScalarProperty Name="ValueWorth" ColumnName="ValueWorth" />
-          <ScalarProperty Name="CategoryIdCategory" ColumnName="CategoryIdCategory" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="States">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.State)">
-        <MappingFragment StoreEntitySet="States">
-          <ScalarProperty Name="IdState" ColumnName="IdState" />
-          <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.sysdiagram)">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.User)">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FriendsStates">
-      <EntityTypeMapping TypeName="IsTypeOf(JeopardyModel.FriendsState)">
-        <MappingFragment StoreEntitySet="FriendsStates">
-          <ScalarProperty Name="IdFriendState" ColumnName="IdFriendState" />
-          <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="AwnserQuestion" TypeName="JeopardyModel.AwnserQuestion" StoreEntitySet="Questions">
-      <EndProperty Name="Awnser">
-        <ScalarProperty Name="IdAwnser" ColumnName="Awnser_IdAwnser" />
-      </EndProperty>
-      <EndProperty Name="Question">
-        <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JeopardyBDStoreContainer" CdmEntityContainer="JeopardyDBContainer">
+          <EntitySetMapping Name="AvatarPlayers">
+            <EntityTypeMapping TypeName="JeopardyBD.AvatarPlayer">
+              <MappingFragment StoreEntitySet="AvatarPlayers">
+                <ScalarProperty Name="IdAvatarPlayer" ColumnName="IdAvatarPlayer" />
+                <ScalarProperty Name="Avatar_IdAvatar" ColumnName="Avatar_IdAvatar" />
+                <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Avatars">
+            <EntityTypeMapping TypeName="JeopardyBD.Avatar">
+              <MappingFragment StoreEntitySet="Avatars">
+                <ScalarProperty Name="IdAvatar" ColumnName="IdAvatar" />
+                <ScalarProperty Name="AvatarName" ColumnName="AvatarName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Awnsers">
+            <EntityTypeMapping TypeName="JeopardyBD.Awnser">
+              <MappingFragment StoreEntitySet="Awnsers">
+                <ScalarProperty Name="IdAwnser" ColumnName="IdAwnser" />
+                <ScalarProperty Name="SpanishAwnserDescription" ColumnName="SpanishAwnserDescription" />
+                <ScalarProperty Name="EnglichAwnserDescription" ColumnName="EnglichAwnserDescription" />
+                <ScalarProperty Name="CategoryIdCategory" ColumnName="CategoryIdCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Baneos">
+            <EntityTypeMapping TypeName="JeopardyBD.Baneo">
+              <MappingFragment StoreEntitySet="Baneos">
+                <ScalarProperty Name="IdBaneo" ColumnName="IdBaneo" />
+                <ScalarProperty Name="BanTimeBegin" ColumnName="BanTimeBegin" />
+                <ScalarProperty Name="BanTimeFinish" ColumnName="BanTimeFinish" />
+                <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="JeopardyBD.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="SpanishCategoryDescription" ColumnName="SpanishCategoryDescription" />
+                <ScalarProperty Name="EnglishCategoryDescription" ColumnName="EnglishCategoryDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Friends">
+            <EntityTypeMapping TypeName="JeopardyBD.Friend">
+              <MappingFragment StoreEntitySet="Friends">
+                <ScalarProperty Name="IdFrineds" ColumnName="IdFrineds" />
+                <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
+                <ScalarProperty Name="PlayerFriend_IdPlayer" ColumnName="PlayerFriend_IdPlayer" />
+                <ScalarProperty Name="IdFriendState" ColumnName="IdFriendState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FriendsStates">
+            <EntityTypeMapping TypeName="JeopardyBD.FriendsState">
+              <MappingFragment StoreEntitySet="FriendsStates">
+                <ScalarProperty Name="IdFriendState" ColumnName="IdFriendState" />
+                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GamePlayers">
+            <EntityTypeMapping TypeName="JeopardyBD.GamePlayer">
+              <MappingFragment StoreEntitySet="GamePlayers">
+                <ScalarProperty Name="IdGamePlayer" ColumnName="IdGamePlayer" />
+                <ScalarProperty Name="PointsInGame" ColumnName="PointsInGame" />
+                <ScalarProperty Name="PlaceInGame" ColumnName="PlaceInGame" />
+                <ScalarProperty Name="Game_RoomCode" ColumnName="Game_RoomCode" />
+                <ScalarProperty Name="Player_IdPlayer" ColumnName="Player_IdPlayer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="JeopardyBD.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="RoomCode" ColumnName="RoomCode" />
+                <ScalarProperty Name="Host_IdHost" ColumnName="Host_IdHost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hosts">
+            <EntityTypeMapping TypeName="JeopardyBD.Host">
+              <MappingFragment StoreEntitySet="Hosts">
+                <ScalarProperty Name="IdHost" ColumnName="IdHost" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="JeopardyBD.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="IdPlayer" ColumnName="IdPlayer" />
+                <ScalarProperty Name="GeneralPoints" ColumnName="GeneralPoints" />
+                <ScalarProperty Name="NoReports" ColumnName="NoReports" />
+                <ScalarProperty Name="State_idState" ColumnName="State_idState" />
+                <ScalarProperty Name="IdAvatarActual" ColumnName="IdAvatarActual" />
+                <ScalarProperty Name="User_IdUser" ColumnName="User_IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="JeopardyBD.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+                <ScalarProperty Name="SpanishQuestionDescription" ColumnName="SpanishQuestionDescription" />
+                <ScalarProperty Name="EnglishQuestionDescription" ColumnName="EnglishQuestionDescription" />
+                <ScalarProperty Name="RigthAwnser" ColumnName="RigthAwnser" />
+                <ScalarProperty Name="ValueWorth" ColumnName="ValueWorth" />
+                <ScalarProperty Name="CategoryIdCategory" ColumnName="CategoryIdCategory" />
+                <ScalarProperty Name="Awnser_IdAwnser" ColumnName="Awnser_IdAwnser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="JeopardyBD.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="IdState" ColumnName="IdState" />
+                <ScalarProperty Name="StateDescription" ColumnName="StateDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="JeopardyBD.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="JeopardyBD.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -943,8 +950,8 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

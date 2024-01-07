@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JeopardyGame.Data.Properties {
+namespace JeopardyGame.Host.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace JeopardyGame.Data.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Paths {
+    public class StringResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Paths() {
+        internal StringResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace JeopardyGame.Data.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JeopardyGame.Data.Properties.Paths", typeof(Paths).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("JeopardyGame.Host.Properties.StringResources", typeof(StringResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,74 +61,47 @@ namespace JeopardyGame.Data.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SerialNumber.
+        ///   Looks up a localized string similar to connectionStrings.
         /// </summary>
-        public static string CharacteristicToConsider {
+        public static string ConfigSection {
             get {
-                return ResourceManager.GetString("CharacteristicToConsider", resourceCulture);
+                return ResourceManager.GetString("ConfigSection", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to metadata=res://*/JeopardyDB.csdl|res://*/JeopardyDB.ssdl|res://*/JeopardyDB.msl;provider=System.Data.SqlClient;provider connection string=&amp;quot;data source=.\SQLEXPRESS;initial catalog=Jeopardy;persist security info=True;user id=JeopardyUser;password=Jeopardy;encrypt=False;context connection=False;MultipleActiveResultSets=True;App=EntityFramework&amp;quot;.
+        ///   Looks up a localized string similar to JeopardyDBContainer.
         /// </summary>
-        public static string ConnectionString {
+        public static string DBName {
             get {
-                return ResourceManager.GetString("ConnectionString", resourceCulture);
+                return ResourceManager.GetString("DBName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to yyyyMMdd_HHmmss.
+        ///   Looks up a localized string similar to JEOPARDY_DB_CONNECTION_STRING.
         /// </summary>
-        public static string DateFromat {
+        public static string EnviromentVariable {
             get {
-                return ResourceManager.GetString("DateFromat", resourceCulture);
+                return ResourceManager.GetString("EnviromentVariable", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to logFile_{0}.txt.
+        ///   Looks up a localized string similar to SERVER IS NOT RUNNING.
         /// </summary>
-        public static string logFileName {
+        public static string ServerFail {
             get {
-                return ResourceManager.GetString("logFileName", resourceCulture);
+                return ResourceManager.GetString("ServerFail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\\Users\\dnava\\source\\repos\\JeopardyProject\\JeopardyGameTecnologias\\JeopardyProject\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\logs\\.
+        ///   Looks up a localized string similar to Server is running.
         /// </summary>
-        public static string PathDodonaji {
+        public static string ServerUp {
             get {
-                return ResourceManager.GetString("PathDodonaji", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to C:\\Users\\wachi\\OneDrive\\Documentos\\GitHub\\JeopardyTecnologias\\JeopardyGameServer\\JeopardyGame.Data\\Exceptions\\Logs\\.
-        /// </summary>
-        public static string PathTris {
-            get {
-                return ResourceManager.GetString("PathTris", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM Win32_DiskDrive.
-        /// </summary>
-        public static string SelectPC {
-            get {
-                return ResourceManager.GetString("SelectPC", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 6479_A753_1090_3048..
-        /// </summary>
-        public static string TrisPCId {
-            get {
-                return ResourceManager.GetString("TrisPCId", resourceCulture);
+                return ResourceManager.GetString("ServerUp", resourceCulture);
             }
         }
     }

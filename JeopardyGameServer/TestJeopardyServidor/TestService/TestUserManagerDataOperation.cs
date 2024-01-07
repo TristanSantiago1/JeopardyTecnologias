@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using JeopardyGame.Data;
 using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Data.Exceptions;
-using JeopardyGame.Service.ServiceImplementation;
 using Xunit;
 
 namespace TestJeopardyServidor.TestService

@@ -1,75 +1,87 @@
 ﻿using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Data.Exceptions;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.Configuration;
 using System.Data.SqlTypes;
+using System.IO;
+using System.Reflection;
 using System.ServiceModel;
 using System.ServiceModel.Security;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace JeopardyGame.Host.Connection
 {
     public class OpenConnection
     {
-        private static int tries = 0;
-        private static  int LIMIT = 5;
-
         static void Main(string[] args)        
        {
             try
-            {
-                if (tries <= LIMIT) 
+            {                   
+                GetConectionString();
+                UserManagerDataOperation.DeleteAllGuestUsers();
+                using (ServiceHost host = new ServiceHost(typeof(Service.ServiceImplementation.ServicesReferenceAuthor)))
                 {
-                    UserManagerDataOperation.DeleteAllGuestUsers();
-                    using (ServiceHost host = new ServiceHost(typeof(Service.ServiceImplementation.ServicesReferenceAuthor)))
-                    {
-                        host.Open();
-                        Console.WriteLine("Server is running");
-                        Console.ReadLine();
-                        tries = 0;
-                    }
-                }
+                    host.Open();
+                    Console.WriteLine(Properties.StringResources.ServerUp);
+                    Console.ReadLine();
+                }                
             }
             catch (SecurityNegotiationException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
-                tries++;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }
             catch (InvalidOperationException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
-                tries++ ;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }
             catch (AddressAlreadyInUseException ex)
             {
                 ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.ERROR);
-                tries++ ;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }
             catch (ProtocolException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
-                tries++ ;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
-                tries++ ;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }
             catch (CommunicationException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
-                tries++ ;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }
             catch (SystemException ex)
             {
                 ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
-                tries++ ;
-                Main(args);
+                Console.WriteLine(Properties.StringResources.ServerFail);
+                Console.ReadLine();
             }           
+        }
+
+        public static void GetConectionString()
+        {
+            string conectionString = Environment.GetEnvironmentVariable(Properties.StringResources.EnviromentVariable);
+            var configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var conectionStringSection = configuration.ConnectionStrings.ConnectionStrings[Properties.StringResources.DBName];
+            if (conectionStringSection != null)
+            {
+                conectionStringSection.ConnectionString = conectionString;
+                configuration.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(Properties.StringResources.ConfigSection);
+            }            
         }
 
 

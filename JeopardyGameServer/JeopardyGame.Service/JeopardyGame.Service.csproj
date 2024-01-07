@@ -114,12 +114,6 @@
     <Compile Include="ServiceImplementation\ValidateUserExistanceImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JeopardyGame.Data\JeopardyGame.Data.csproj">
-      <Project>{91db8aa4-d049-4bb5-a296-236db8ed2d04}</Project>
-      <Name>JeopardyGame.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -128,6 +122,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JeopardyGame.Data\JeopardyGame.Data.csproj">
+      <Project>{91db8aa4-d049-4bb5-a296-236db8ed2d04}</Project>
+      <Name>JeopardyGame.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
