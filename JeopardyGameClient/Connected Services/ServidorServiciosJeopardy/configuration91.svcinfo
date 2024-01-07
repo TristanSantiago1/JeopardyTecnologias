@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="XciIZa3qD7j4qxQ9yHIOSm/tEp3pgUi6SYSVbLmV2S4=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="7EMmwfWwcgQjFKN3On1hbqMs98ypSBY7zyM4zrPNMdI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ICheckUserLiving">
       <properties>
@@ -103,7 +103,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -221,7 +221,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -339,7 +339,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -457,7 +457,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -575,7 +575,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -693,7 +693,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -811,7 +811,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -929,7 +929,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1047,7 +1047,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1165,7 +1165,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1283,7 +1283,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1401,7 +1401,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1519,7 +1519,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1637,7 +1637,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1755,7 +1755,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1873,7 +1873,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -1991,7 +1991,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2109,7 +2109,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2227,7 +2227,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2345,7 +2345,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2463,7 +2463,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2581,7 +2581,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2699,7 +2699,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2817,7 +2817,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2935,7 +2935,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Colección)</serializedValue>
+          <serializedValue>(Collection)</serializedValue>
         </property>
         <property path="/security/transport/sslProtocols" isComplexType="false" isExplicitlyDefined="true" clrType="System.Security.Authentication.SslProtocols, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>None</serializedValue>
@@ -2953,10 +2953,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_ICheckUserLiving" contract="ServidorServiciosJeopardy.ICheckUserLiving" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLiving">
+    <endpoint name="NetTcpBinding_ICheckUserLiving" contract="ServidorServiciosJeopardy.ICheckUserLiving" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLiving">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3038,10 +3038,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IChatForTeamsOperations" contract="ServidorServiciosJeopardy.IChatForTeamsOperations" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeamsOperations">
+    <endpoint name="NetTcpBinding_IChatForTeamsOperations" contract="ServidorServiciosJeopardy.IChatForTeamsOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeamsOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3123,10 +3123,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IFriendManagerActionOperations" contract="ServidorServiciosJeopardy.IFriendManagerActionOperations" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerActionOperations">
+    <endpoint name="NetTcpBinding_IFriendManagerActionOperations" contract="ServidorServiciosJeopardy.IFriendManagerActionOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerActionOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3208,10 +3208,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ICheckUserLivingUnsubscribe" contract="ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLivingUnsubscribe">
+    <endpoint name="NetTcpBinding_ICheckUserLivingUnsubscribe" contract="ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLivingUnsubscribe">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3293,10 +3293,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IUserManager" contract="ServidorServiciosJeopardy.IUserManager" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserManager">
+    <endpoint name="NetTcpBinding_IUserManager" contract="ServidorServiciosJeopardy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3378,10 +3378,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILogInVerification" contract="ServidorServiciosJeopardy.ILogInVerification" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILogInVerification">
+    <endpoint name="NetTcpBinding_ILogInVerification" contract="ServidorServiciosJeopardy.ILogInVerification" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILogInVerification">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3463,10 +3463,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IEmailSenderManager" contract="ServidorServiciosJeopardy.IEmailSenderManager" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IEmailSenderManager">
+    <endpoint name="NetTcpBinding_IEmailSenderManager" contract="ServidorServiciosJeopardy.IEmailSenderManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IEmailSenderManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3548,10 +3548,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IUserCreateAccountCode" contract="ServidorServiciosJeopardy.IUserCreateAccountCode" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserCreateAccountCode">
+    <endpoint name="NetTcpBinding_IUserCreateAccountCode" contract="ServidorServiciosJeopardy.IUserCreateAccountCode" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserCreateAccountCode">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3633,10 +3633,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IChatForTeams" contract="ServidorServiciosJeopardy.IChatForTeams" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Sevice" bindingConfiguration="NetTcpBinding_IChatForTeams">
+    <endpoint name="NetTcpBinding_IChatForTeams" contract="ServidorServiciosJeopardy.IChatForTeams" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeams">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Sevice</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3718,10 +3718,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConsultFriends" contract="ServidorServiciosJeopardy.IConsultFriends" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultFriends">
+    <endpoint name="NetTcpBinding_IConsultFriends" contract="ServidorServiciosJeopardy.IConsultFriends" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultFriends">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3803,10 +3803,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConsultUserInformation" contract="ServidorServiciosJeopardy.IConsultUserInformation" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultUserInformation">
+    <endpoint name="NetTcpBinding_IConsultUserInformation" contract="ServidorServiciosJeopardy.IConsultUserInformation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultUserInformation">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3888,10 +3888,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_INotifyUserAvailability" contract="ServidorServiciosJeopardy.INotifyUserAvailability" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyUserAvailability">
+    <endpoint name="NetTcpBinding_INotifyUserAvailability" contract="ServidorServiciosJeopardy.INotifyUserAvailability" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyUserAvailability">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -3973,10 +3973,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IAvailabilityUserManagment" contract="ServidorServiciosJeopardy.IAvailabilityUserManagment" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IAvailabilityUserManagment">
+    <endpoint name="NetTcpBinding_IAvailabilityUserManagment" contract="ServidorServiciosJeopardy.IAvailabilityUserManagment" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IAvailabilityUserManagment">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4058,10 +4058,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IFriendManagerActions" contract="ServidorServiciosJeopardy.IFriendManagerActions" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerActions">
+    <endpoint name="NetTcpBinding_IFriendManagerActions" contract="ServidorServiciosJeopardy.IFriendManagerActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerActions">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4143,10 +4143,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IValidateUserExistance" contract="ServidorServiciosJeopardy.IValidateUserExistance" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IValidateUserExistance">
+    <endpoint name="NetTcpBinding_IValidateUserExistance" contract="ServidorServiciosJeopardy.IValidateUserExistance" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IValidateUserExistance">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4228,10 +4228,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyActions" contract="ServidorServiciosJeopardy.ILobbyActions" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyActions">
+    <endpoint name="NetTcpBinding_ILobbyActions" contract="ServidorServiciosJeopardy.ILobbyActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyActions">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4313,10 +4313,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyActionsOperation" contract="ServidorServiciosJeopardy.ILobbyActionsOperation" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyActionsOperation">
+    <endpoint name="NetTcpBinding_ILobbyActionsOperation" contract="ServidorServiciosJeopardy.ILobbyActionsOperation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyActionsOperation">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4398,10 +4398,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILiveChat" contract="ServidorServiciosJeopardy.ILiveChat" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChat">
+    <endpoint name="NetTcpBinding_ILiveChat" contract="ServidorServiciosJeopardy.ILiveChat" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChat">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4483,10 +4483,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILiveChatOperations" contract="ServidorServiciosJeopardy.ILiveChatOperations" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChatOperations">
+    <endpoint name="NetTcpBinding_ILiveChatOperations" contract="ServidorServiciosJeopardy.ILiveChatOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChatOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4568,10 +4568,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameActions" contract="ServidorServiciosJeopardy.IGameActions" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameActions">
+    <endpoint name="NetTcpBinding_IGameActions" contract="ServidorServiciosJeopardy.IGameActions" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameActions">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4653,10 +4653,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameActionsOperations" contract="ServidorServiciosJeopardy.IGameActionsOperations" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameActionsOperations">
+    <endpoint name="NetTcpBinding_IGameActionsOperations" contract="ServidorServiciosJeopardy.IGameActionsOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameActionsOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4738,10 +4738,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyCodeAuthentication" contract="ServidorServiciosJeopardy.ILobbyCodeAuthentication" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyCodeAuthentication">
+    <endpoint name="NetTcpBinding_ILobbyCodeAuthentication" contract="ServidorServiciosJeopardy.ILobbyCodeAuthentication" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyCodeAuthentication">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4823,10 +4823,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGuestPlayerManager" contract="ServidorServiciosJeopardy.IGuestPlayerManager" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGuestPlayerManager">
+    <endpoint name="NetTcpBinding_IGuestPlayerManager" contract="ServidorServiciosJeopardy.IGuestPlayerManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGuestPlayerManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4908,10 +4908,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IRecoverPassword" contract="ServidorServiciosJeopardy.IRecoverPassword" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IRecoverPassword">
+    <endpoint name="NetTcpBinding_IRecoverPassword" contract="ServidorServiciosJeopardy.IRecoverPassword" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IRecoverPassword">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -4993,10 +4993,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IHeartBeat" contract="ServidorServiciosJeopardy.IHeartBeat" bindingType="netTcpBinding" address="net.tcp://192.168.173.1:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IHeartBeat">
+    <endpoint name="NetTcpBinding_IHeartBeat" contract="ServidorServiciosJeopardy.IHeartBeat" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IHeartBeat">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://192.168.173.1:8081/JeopardyGame.Service</serializedValue>
+          <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

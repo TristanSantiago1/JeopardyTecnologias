@@ -205,7 +205,7 @@ namespace JeopardyGame.Pages
         {
             EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
             UserSingleton userSingleton = UserSingleton.GetMainUser();
-            UserPOJO user = new UserPOJO()
+            UserPojo user = new UserPojo()
             {
                 IdUser = userSingleton.IdUser,
                 UserName = userSingleton.UserName,

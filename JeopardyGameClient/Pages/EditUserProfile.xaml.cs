@@ -151,9 +151,9 @@ namespace JeopardyGame.Pages
                 {
                     var playerWrapper = playerInfo.ObjectSaved;
 
-                    if (playerWrapper != null && playerWrapper is PlayerPOJO)
+                    if (playerWrapper != null && playerWrapper is PlayerPojo)
                     {
-                        var player = (PlayerPOJO)playerWrapper;
+                        var player = (PlayerPojo)playerWrapper;
 
                         int imageId = player.IdActualAvatar;
 

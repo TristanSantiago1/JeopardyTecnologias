@@ -138,19 +138,19 @@ namespace JeopardyGame.Pages
                
                 GameCodeContainer.RoomCode = roomCode;
             }
-            catch (EndpointNotFoundException ex)
+            catch (EndpointNotFoundException)
             {
                 throw new EndpointNotFoundException();
             }
-            catch (CommunicationObjectFaultedException ex)
+            catch (CommunicationObjectFaultedException)
             {
                 throw new CommunicationObjectFaultedException();
             }
-            catch (TimeoutException ex)
+            catch (TimeoutException)
             {
                 throw new TimeoutException();
             }
-            catch (CommunicationException ex)
+            catch (CommunicationException)
             {
                 throw new CommunicationException();
             }
@@ -168,19 +168,19 @@ namespace JeopardyGame.Pages
                 }
                 chbTeamUp.IsEnabled = false;
             }
-            catch (EndpointNotFoundException ex)
+            catch (EndpointNotFoundException)
             {
                 throw new EndpointNotFoundException();
             }
-            catch (CommunicationObjectFaultedException ex)
+            catch (CommunicationObjectFaultedException)
             {
                 throw new CommunicationObjectFaultedException();
             }
-            catch (TimeoutException ex)
+            catch (TimeoutException)
             {
                 throw new TimeoutException();
             }
-            catch (CommunicationException ex)
+            catch (CommunicationException)
             {
                 throw new CommunicationException();
             }
@@ -198,19 +198,19 @@ namespace JeopardyGame.Pages
                 }
                 
             }
-            catch (EndpointNotFoundException ex)
+            catch (EndpointNotFoundException)
             {
                 throw new EndpointNotFoundException();
             }
-            catch (CommunicationObjectFaultedException ex)
+            catch (CommunicationObjectFaultedException)
             {
                 throw new CommunicationObjectFaultedException();
             }
-            catch (TimeoutException ex)
+            catch (TimeoutException)
             {
                 throw new TimeoutException();
             }
-            catch (CommunicationException ex)
+            catch (CommunicationException)
             {
                 throw new CommunicationException();
             }

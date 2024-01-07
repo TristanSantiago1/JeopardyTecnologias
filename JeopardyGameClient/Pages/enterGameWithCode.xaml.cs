@@ -31,7 +31,7 @@ namespace JeopardyGame.Pages
         private Window windowBehind;
         private Window dialogMessage;
         UserSingleton userSingleton = UserSingleton.GetMainUser();
-        private UserPOJO userForGuest;
+        private UserPojo userForGuest;
         int idUser = -1;
         private readonly int ROOMCODE_IS_FULL = -1;
         private readonly int ROOMCODE_DOES_NOT_EXIST = 0;

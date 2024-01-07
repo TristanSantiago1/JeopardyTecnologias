@@ -41,7 +41,7 @@ namespace JeopardyGame.Pages
             psbPasswordCreateAccount.MaxLength = 30;
         }
 
-        public void LoadFields(UserPOJO user)
+        public void LoadFields(UserPojo user)
         {
             ListBoxRules.Clear();
             PrepareWindow();            
@@ -142,7 +142,7 @@ namespace JeopardyGame.Pages
 
         private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
         {           
-            UserPOJO userToSave = new UserPOJO();
+            UserPojo userToSave = new UserPojo();
             userToSave.Name = txbNameCreateAccount.Text.Trim();
             userToSave.UserName = txbUserNameCreateAccount.Text.Trim();
             userToSave.EmailAddress = txbEmailCreateAccount.Text.Trim();
@@ -288,7 +288,7 @@ namespace JeopardyGame.Pages
             return answer;
         }
 
-        private int CheckUserNameAndEmailExistence(UserPOJO userToVerify)
+        private int CheckUserNameAndEmailExistence(UserPojo userToVerify)
         {
             try
             {
@@ -402,7 +402,7 @@ namespace JeopardyGame.Pages
             NavigationService.RemoveBackEntry();
         }
 
-        private void GoToCodeConfirmationWindow(UserPOJO userToSave)
+        private void GoToCodeConfirmationWindow(UserPojo userToSave)
         {
             CodeConfirmation codeConfirmation = new CodeConfirmation( userToSave);
             this.NavigationService.Navigate(codeConfirmation);

@@ -42,15 +42,15 @@ namespace JeopardyGame.Pages
         private List<QuestionCardInformation> questionsRoundOne;
         private List<QuestionCardInformation> questionsRoundTwo;
         private QuestionCardInformation finalQuestion;
-        private List<CategoryPOJO> categoriesOfGameRound1 = new List<CategoryPOJO>();
-        private List<CategoryPOJO> categoriesOfGameRound2 = new List<CategoryPOJO>();
+        private List<CategoryPojo> categoriesOfGameRound1 = new List<CategoryPojo>();
+        private List<CategoryPojo> categoriesOfGameRound2 = new List<CategoryPojo>();
         private List<PlayerInGameDataContract> playersInGame;        
         private int yourTurn;
         private int currentTurn;
         private int currentRound;
-        private QuestionPOJO questionBeingAsked;
-        private AnswerPOJO answerToCurrentQuestion;
-        private List<AnswerPOJO> answersOfQuestionBeingAsked;
+        private QuestionPojo questionBeingAsked;
+        private AnswerPojo answerToCurrentQuestion;
+        private List<AnswerPojo> answersOfQuestionBeingAsked;
         private DispatcherTimer timer;   
         private readonly UserSingleton userSingleton = UserSingleton.GetMainUser();
         private Window dialogMessage;
@@ -169,7 +169,7 @@ namespace JeopardyGame.Pages
             GetUniqueCategories(categoriesRound2, categoriesOfGameRound2);
         }
 
-        private void GetUniqueCategories(List<CategoryPOJO> categoriesRepeatedList, List<CategoryPOJO> uniqueCategoryList)
+        private void GetUniqueCategories(List<CategoryPojo> categoriesRepeatedList, List<CategoryPojo> uniqueCategoryList)
         {
             foreach (var categoryToProve in categoriesRepeatedList)
             {
@@ -232,7 +232,7 @@ namespace JeopardyGame.Pages
             BeginHostPresentationLastRound(); 
         }
 
-        private void SetInformationInCards(List<CategoryPOJO> categoriesOfGame, List<QuestionCardInformation> questionsOfRound)
+        private void SetInformationInCards(List<CategoryPojo> categoriesOfGame, List<QuestionCardInformation> questionsOfRound)
         {
             foreach (var category in categoriesOfGame)
             {
@@ -413,7 +413,7 @@ namespace JeopardyGame.Pages
             grdBet.Visibility = Visibility.Collapsed;
             grTimer.Visibility = Visibility.Visible;
             txbQuestion.Text =  GetSpecificResource.GetEnglishOrSpanishDescription(questionBeingAsked.EnglishQuestionDescription, questionBeingAsked.SpanishQuestionDescription);
-            answersOfQuestionBeingAsked = new List<AnswerPOJO>() { finalQuestion.RightAnswer, finalQuestion.WrongOptionOne, finalQuestion.WrongOptionTwo, finalQuestion.WrongOptionThree }.OrderBy(order => Guid.NewGuid()).ToList();
+            answersOfQuestionBeingAsked = new List<AnswerPojo>() { finalQuestion.RightAnswer, finalQuestion.WrongOptionOne, finalQuestion.WrongOptionTwo, finalQuestion.WrongOptionThree }.OrderBy(order => Guid.NewGuid()).ToList();
             answerToCurrentQuestion = answersOfQuestionBeingAsked.Where(answer => answer.IdAnswer == finalQuestion.SpecificQuestionDetails.IdAnswerOfQuestion).FirstOrDefault();
             bttFirstAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[0].EnglishAnswerDescription, answersOfQuestionBeingAsked[0].SpanishAnswerDescription);
             bttSecondAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[1].EnglishAnswerDescription, answersOfQuestionBeingAsked[1].SpanishAnswerDescription);
@@ -434,7 +434,7 @@ namespace JeopardyGame.Pages
         {            
             if (yourTurn == currentTurn)
             {               
-                var answersQuestionsAsked = new List<AnswerPOJO>() { question.RightAnswer, question.WrongOptionOne, question.WrongOptionTwo, question.WrongOptionThree }.OrderBy(order => Guid.NewGuid()).ToList();
+                var answersQuestionsAsked = new List<AnswerPojo>() { question.RightAnswer, question.WrongOptionOne, question.WrongOptionTwo, question.WrongOptionThree }.OrderBy(order => Guid.NewGuid()).ToList();
                 CurrentQuestionToShowContract currentQuestionToShow = new CurrentQuestionToShowContract()
                 {
                     IdQuestion = question.SpecificQuestionDetails.IdQuestion,
@@ -482,7 +482,7 @@ namespace JeopardyGame.Pages
             grdAnswerChoices.Visibility = Visibility.Visible;
             grTimer.Visibility = Visibility.Visible;
             txbQuestion.Text = GetSpecificResource.GetEnglishOrSpanishDescription(questionCard.SpecificQuestionDetails.EnglishQuestionDescription, questionCard.SpecificQuestionDetails.SpanishQuestionDescription);
-            List<AnswerPOJO> answersForThisQuestion = new List<AnswerPOJO>() { questionCard.RightAnswer, questionCard.WrongOptionOne, questionCard.WrongOptionTwo, questionCard.WrongOptionThree };
+            List<AnswerPojo> answersForThisQuestion = new List<AnswerPojo>() { questionCard.RightAnswer, questionCard.WrongOptionOne, questionCard.WrongOptionTwo, questionCard.WrongOptionThree };
             answersOfQuestionBeingAsked = answersForThisQuestion.ToList();
             answerToCurrentQuestion = answersForThisQuestion.FirstOrDefault(ans => ans.IdAnswer == questionBeingAsked.IdAnswerOfQuestion);
             var answerbtt1 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFirstAnswer);
@@ -783,7 +783,7 @@ namespace JeopardyGame.Pages
             currentRound = 4;
             playersInGame = playerInGame.ToList();
             CreatePlayersScoresBoards();
-            playerInGame.OrderBy(pl => pl.CurrentPointsOfRound);
+            playerInGame.OrderByDescending(pl => pl.CurrentPointsOfRound);
             grdAnswerChoices.Visibility = Visibility.Hidden;
             grTimer.Visibility = Visibility.Hidden;
             grWinnerPanel.Visibility = Visibility.Visible;
@@ -962,6 +962,10 @@ namespace JeopardyGame.Pages
         }
         private void CloseWindow()
         {
+            if(timer != null)
+            {
+                timer.Stop();
+            }
             if (userSingleton.IdState != 3)
             {
                 MainMenu mainMenu = new MainMenu();
@@ -1091,6 +1095,7 @@ namespace JeopardyGame.Pages
         {
             teamChat.RenewCallBackChannel();
             grdChat.Visibility = Visibility.Visible;
+            frmChat.Content = teamChat;
         }
 
         public void CloseLiveChat()

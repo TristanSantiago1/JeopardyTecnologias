@@ -34,5 +34,23 @@ namespace JeopardyGame.Service.DataDictionaries
                 timers.Remove(userName);
             }
         }
+
+        public static bool DoesPassWordCodeContaisKey(string userName)
+        {
+            return passwordsCodes.ContainsKey(userName);
+        }
+
+        public static string GetSpecificCode(string userName)
+        {
+            if (!string.IsNullOrEmpty(userName) && passwordsCodes.ContainsKey(userName))
+            {
+                return passwordsCodes[userName];
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
     }
 }

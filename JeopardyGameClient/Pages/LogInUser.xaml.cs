@@ -195,7 +195,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private int SubscribeToLivingChannel(UserPOJO user)
+        private int SubscribeToLivingChannel(UserPojo user)
         {
             try
             {
@@ -252,7 +252,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void InstanceSingleton(UserPOJO currentUser, PlayerPOJO currenPlayer)
+        private void InstanceSingleton(UserPojo currentUser, PlayerPojo currenPlayer)
         {
             userSingleton = UserSingleton.GetMainUser(currentUser, currenPlayer);
         }

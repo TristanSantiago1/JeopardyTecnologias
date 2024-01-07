@@ -35,7 +35,7 @@ namespace JeopardyGame
         private Window dialogMessage;
 
         private UserSingleton() { }
-        private UserSingleton(UserPOJO userSingleton, PlayerPOJO playerSingleton) 
+        private UserSingleton(UserPojo userSingleton, PlayerPojo playerSingleton) 
         {
             IdUser = userSingleton.IdUser;
             Name = userSingleton.Name;
@@ -49,11 +49,11 @@ namespace JeopardyGame
             IdState = playerSingleton.IdState;
         }
 
-        public static UserPOJO GetUserPojoSingelton()
+        public static UserPojo GetUserPojoSingelton()
         {            
             if(instanceOfUserSingleton != null)
             {
-                UserPOJO userPOJO = new UserPOJO()
+                UserPojo userPOJO = new UserPojo()
                 {
                     IdUser = instanceOfUserSingleton.IdUser,
                     Name = instanceOfUserSingleton.Name,
@@ -77,7 +77,7 @@ namespace JeopardyGame
             return instanceOfUserSingleton;
         }
 
-        public static UserSingleton GetMainUser(UserPOJO userSingleton, PlayerPOJO playerSingleton)
+        public static UserSingleton GetMainUser(UserPojo userSingleton, PlayerPojo playerSingleton)
         {
             isActive = true;
             if (instanceOfUserSingleton == null)

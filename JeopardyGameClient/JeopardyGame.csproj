@@ -371,10 +371,10 @@
     <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfPlayerPOJOxY0a3WX4.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfPlayerPojoxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPOJOxY0a3WX4.datasource">
+    <None Include="Connected Services\ServidorServiciosJeopardy\JeopardyGame.ServidorServiciosJeopardy.GenericClassOfUserPojoxY0a3WX4.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServidorServiciosJeopardy\ServicesReferenceAuthor.wsdl" />

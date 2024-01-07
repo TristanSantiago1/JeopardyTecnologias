@@ -27,7 +27,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         var userConsulted = consultInformation.ConsultUserByUserName(userName);
                         if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            if (!PasswordChangeCodeDictionary.passwordsCodes.ContainsKey(userName))
+                            if (!PasswordChangeCodeDictionary.DoesPassWordCodeContaisKey(userName))
                             {
                                 EmailSenderManagerImplementation emailSenderManager = new();
                                 string code = GenerateCodeForPassword();
@@ -85,9 +85,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                     var userConsulted = consultInformation.ConsultUserByUserName(userName);
                     if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        if (PasswordChangeCodeDictionary.passwordsCodes.ContainsKey(userName))
+                        if (PasswordChangeCodeDictionary.DoesPassWordCodeContaisKey(userName))
                         {
-                            if (PasswordChangeCodeDictionary.passwordsCodes[userName].Equals(code))
+                            if (PasswordChangeCodeDictionary.GetSpecificCode(userName).Equals(code))
                             {
                                 resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
                                 PasswordChangeCodeDictionary.RemoveTimerRegistry(userName);

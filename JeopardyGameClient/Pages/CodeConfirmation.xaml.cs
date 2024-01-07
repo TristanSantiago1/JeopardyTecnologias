@@ -34,11 +34,11 @@ namespace JeopardyGame.Pages
         private DispatcherTimer timer;
         private int leftTime;
         private String password;
-        private UserPOJO userToSave;
+        private UserPojo userToSave;
         private Window dialogMessage;
         private bool isTimerExpired = false;
 
-        public CodeConfirmation(UserPOJO user)
+        public CodeConfirmation(UserPojo user)
         {
             this.userToSave = user;
             password = user.Password;
@@ -311,6 +311,10 @@ namespace JeopardyGame.Pages
         {
             try
             {
+                if (timer != null)
+                {
+                    timer.Stop();
+                }
                 UserCreateAccountCodeClient userCreateAccount = new();
                 userCreateAccount.TakeUserOutOfDictionary(userToSave);
                 CheckUserLivingUnsubscribeClient checkUserLivingClient = new();

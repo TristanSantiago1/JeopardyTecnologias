@@ -645,7 +645,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<List<PlayerInLobby>> playersInLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
             if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                foreach (var item in lobby.listOfPlayerInLobby.Where(pla =>lobby.idAdmin != pla.idUser && pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>() != null)
+                foreach (var item in lobby.listOfPlayerInLobby.Where(pla =>lobby.idAdmin != pla.idUser && pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>() != null))
                 {
                     try
                     {

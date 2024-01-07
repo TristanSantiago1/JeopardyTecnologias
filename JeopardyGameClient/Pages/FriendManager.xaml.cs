@@ -93,7 +93,7 @@ namespace JeopardyGame.Pages
                 UserSingleton userSingleton = UserSingleton.GetMainUser();
                 if (userSingleton != null)
                 {
-                    UserPOJO userConsulted = new UserPOJO()
+                    UserPojo userConsulted = new UserPojo()
                     {
                         IdUser = userSingleton.IdUser,
                         EmailAddress = userSingleton.Email,

@@ -460,6 +460,11 @@ namespace JeopardyGame.Pages
 
         private void GoToPrincipalWindow()
         {
+            if(timer != null)
+            {
+
+                timer.Stop();
+            }
             PrincipalPage principalPage = new();
             this.NavigationService.Navigate(principalPage);
             NavigationService.RemoveBackEntry();
