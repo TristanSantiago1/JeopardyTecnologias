@@ -625,7 +625,7 @@ namespace JeopardyGame.Data.DataAccess
                 using (var contextBD = new JeopardyDBContainer())
                 {
                     var usersConsulted = contextBD.Users.Where(user => user.Name.Equals("")).ToList();
-                    if (usersConsulted != null)
+                    if (usersConsulted.Count > 0)
                     {
                         List<Player> playerGuests = new List<Player>();
                         foreach (User user in usersConsulted)

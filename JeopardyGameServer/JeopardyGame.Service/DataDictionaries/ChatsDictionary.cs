@@ -97,9 +97,13 @@ namespace JeopardyGame.Service.DataDictionaries
             if (roomCode != 0 && idUser != 0 && channel != null && channelsCallBackDictionary.ContainsKey(roomCode))
             {
                 var listChannels = channelsCallBackDictionary[roomCode];
-                if(listChannels != null && listChannels.listOfChannelsCallBack.Any(pl => pl.idUser == idUser))
+                if(listChannels != null && listChannels.listOfChannelsCallBack.Exists(pl => pl.idUser == idUser))
                 {
-                    listChannels.listOfChannelsCallBack.FirstOrDefault(pl => pl.idUser == idUser).communicationChannelChat = channel;
+                    var chatOfPlayer = listChannels.listOfChannelsCallBack.Find(pl => pl.idUser == idUser);
+                    if(chatOfPlayer != null)
+                    {
+                        chatOfPlayer.communicationChannelChat = channel;
+                    }
                 }
             }      
         }

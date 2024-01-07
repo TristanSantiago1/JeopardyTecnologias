@@ -6,6 +6,7 @@ using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.ServiceModel;
 using static JeopardyGame.Service.DataDictionaries.ChatsDictionary;
 
@@ -297,39 +298,36 @@ namespace JeopardyGame.Service.ServiceImplementation
             if (success)
             {
                 var chatChannel = ChatsDictionary.GetChannelCallBackChat(roomCode);
-                foreach (var item in chatChannel.listOfChannelsCallBack)
+                foreach (var item in chatChannel.listOfChannelsCallBack.Where(chat => chat.idUser != idSender))
                 {
-                    var channel = item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>();
-                    if (item.idUser != idSender && channel != null)
+                    try
                     {
-                        try
-                        {
-                            GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
-                            resultToReturn.ObjectSaved = messageToSend;
-                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
-                            channel.ReceiveMessage(resultToReturn);
-                        }
-                        catch (CommunicationObjectFaultedException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (TimeoutException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (InvalidOperationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
+                        GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
+                        resultToReturn.ObjectSaved = messageToSend;
+                        resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>().ReceiveMessage(resultToReturn);
                     }
+                    catch (CommunicationObjectFaultedException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                    
                 }
             }
         }

@@ -12,10 +12,10 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface ICheckUserLiving
     {
         [OperationContract]
-        int SubscribeToICheckUserLiving(UserPOJO user);
+        int SubscribeToICheckUserLiving(UserPojo user);
 
         [OperationContract]
-        int RenewLivingCallBack(UserPOJO user);
+        int RenewLivingCallBack(UserPojo user);
 
     }
 
@@ -24,7 +24,7 @@ namespace JeopardyGame.Service.InterfacesSevices
     {
 
         [OperationContract(IsOneWay = true)]
-        void UnsubscribeFromICheckUserLiving(UserPOJO user);
+        void UnsubscribeFromICheckUserLiving(UserPojo user);
     }
 
     [ServiceContract]

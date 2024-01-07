@@ -15,8 +15,8 @@ namespace JeopardyGame.Data
     [KnownType(typeof(GenericClass<int>))]
     [KnownType(typeof(GenericClass<FriendBasicInformation>))]
     [KnownType(typeof(GenericClass<PlayerInLobby>))]
-    [KnownType(typeof(GenericClass<UserPOJO>))]
-    [KnownType(typeof(GenericClass<PlayerPOJO>))]
+    [KnownType(typeof(GenericClass<UserPojo>))]
+    [KnownType(typeof(GenericClass<PlayerPojo>))]
     [KnownType(typeof(GenericClass<UserValidate>))]
     [KnownType(typeof(GenericClass<AvatarPojo>))]
     [KnownType(typeof(GenericClass<AvatarChoice>))]
@@ -72,7 +72,7 @@ namespace JeopardyGame.Data
     }
 
 
-    public class UserPOJO
+    public class UserPojo
     {
         public int IdUser { get; set; }
         public String UserName { get; set; }
@@ -80,7 +80,7 @@ namespace JeopardyGame.Data
         public String EmailAddress { get; set; }
         public String Password { get; set; }
     }
-    public class PlayerPOJO
+    public class PlayerPojo
     {
         public int IdPlayer { get; set; }
         public int GeneralPoints { get; set; }
@@ -115,22 +115,22 @@ namespace JeopardyGame.Data
         [DataMember]
         public int IdQuestionCard { get; set; }
         [DataMember]
-        public CategoryPOJO CategoryOfQuestion { get; set; }
+        public CategoryPojo CategoryOfQuestion { get; set; }
         [DataMember]
-        public QuestionPOJO SpecificQuestionDetails{ get; set; }
+        public QuestionPojo SpecificQuestionDetails{ get; set; }
         [DataMember]
-        public AnswerPOJO RightAnswer { get; set; }
+        public AnswerPojo RightAnswer { get; set; }
         [DataMember]
-        public AnswerPOJO WrongOptionOne { get; set; }
+        public AnswerPojo WrongOptionOne { get; set; }
         [DataMember]
-        public AnswerPOJO WrongOptionTwo { get; set; }
+        public AnswerPojo WrongOptionTwo { get; set; }
         [DataMember]
-        public AnswerPOJO WrongOptionThree { get; set; }
+        public AnswerPojo WrongOptionThree { get; set; }
         [DataMember]
         public int NumberOfRound { get; set; }        
     }
 
-    public class QuestionPOJO
+    public class QuestionPojo
     {
         public int IdQuestion { get; set; }
         public string SpanishQuestionDescription { get; set; }
@@ -140,7 +140,7 @@ namespace JeopardyGame.Data
         public int ValueWorth { get; set; }
     }
 
-    public class AnswerPOJO
+    public class AnswerPojo
     {
         public int IdAnswer { get; set; }
         public string SpanishAnswerDescription { get; set; }
@@ -148,7 +148,7 @@ namespace JeopardyGame.Data
         public int IdCategory { get; set; }
     }
 
-    public class CategoryPOJO
+    public class CategoryPojo
     {
         public int IdCategory { get; set; }
         public string SpanishCategoryDescription { get; set; }

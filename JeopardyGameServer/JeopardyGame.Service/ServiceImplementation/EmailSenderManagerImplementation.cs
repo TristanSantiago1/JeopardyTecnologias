@@ -20,7 +20,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     internal class EmailSenderManagerImplementation : IEmailSenderManager
     {
 
-        public GenericClass<int> SentEmailConfirmationToCreateAccount(UserPOJO user, String subject, String bodyMessage)
+        public GenericClass<int> SentEmailConfirmationToCreateAccount(UserPojo user, String subject, String bodyMessage)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
             try
@@ -88,9 +88,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-
                 int emailSend = EmailSender.SentEmail(email, subject, bodyMessage);
-
                 if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -125,7 +123,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public GenericClass<int> SentEmailInvitingToGame(UserPOJO user, string subject, string bodyMessage)
+        public GenericClass<int> SentEmailInvitingToGame(UserPojo user, string subject, string bodyMessage)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
 
@@ -174,7 +172,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public GenericClass<int> SentEmailToRecoverPassword(UserPOJO user, String subject, String bodyMessage)
+        public GenericClass<int> SentEmailToRecoverPassword(UserPojo user, String subject, String bodyMessage)
         {
             GenericClass<int> resultToReturn = new GenericClass<int>();
             try
@@ -182,9 +180,8 @@ namespace JeopardyGame.Service.ServiceImplementation
                 if (string.IsNullOrEmpty(user.EmailAddress) || string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(bodyMessage))
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
-                }
-                int emailSend = ExceptionDictionary.UNSUCCESFULL_EVENT;                
-                emailSend = EmailSender.SentEmail(user.EmailAddress, subject, bodyMessage);
+                }               
+                int emailSend = EmailSender.SentEmail(user.EmailAddress, subject, bodyMessage);
                 if (emailSend == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;

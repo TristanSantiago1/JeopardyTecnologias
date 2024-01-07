@@ -14,9 +14,9 @@ namespace JeopardyGame.Service.ServiceImplementation
     public partial class ConsultInformationImplementation : IConsultUserInformation
     {
         private readonly int NULL_INT_VALUE = 0;
-        public GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer)
+        public GenericClass<PlayerPojo> ConsultPlayerById(int idPlayer)
         {
-            GenericClass<PlayerPOJO> resultToReturn = new GenericClass<PlayerPOJO>();
+            GenericClass<PlayerPojo> resultToReturn = new GenericClass<PlayerPojo>();
             try
             {
                 if (idPlayer == NULL_INT_VALUE)
@@ -59,9 +59,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser)
+        public GenericClass<PlayerPojo> ConsultPlayerByIdUser(int idUser)
         {
-            GenericClass<PlayerPOJO> resultToReturn = new GenericClass<PlayerPOJO>();
+            GenericClass<PlayerPojo> resultToReturn = new GenericClass<PlayerPojo>();
             try
             {
                 if (idUser == NULL_INT_VALUE)
@@ -99,9 +99,9 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public GenericClass<UserPOJO> ConsultUserById(int idUser)
+        public GenericClass<UserPojo> ConsultUserById(int idUser)
         {
-            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            GenericClass<UserPojo> resultToReturn = new GenericClass<UserPojo>();
             try
             {
                 if (idUser == NULL_INT_VALUE)
@@ -139,16 +139,16 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer)
+        public GenericClass<UserPojo> ConsultUserByIdPlayer(int idPlayer)
         {
-            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            GenericClass<UserPojo> resultToReturn = new GenericClass<UserPojo>();
             try
             {
                 if (idPlayer == NULL_INT_VALUE)
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                PlayerPOJO player = ConsultPlayerById(idPlayer).ObjectSaved;
+                PlayerPojo player = ConsultPlayerById(idPlayer).ObjectSaved;
                 GenericClassServer<User> userConsultedByIdPlayer = Data.DataAccess.UserManagerDataOperation.GetUserById(player.IdUser);
                 resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userConsultedByIdPlayer.ObjectSaved);
                 resultToReturn.CodeEvent = userConsultedByIdPlayer.CodeEvent;
@@ -182,9 +182,9 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
 
-        public GenericClass<UserPOJO> ConsultUserByUserName(string userName)
+        public GenericClass<UserPojo> ConsultUserByUserName(string userName)
         {
-            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            GenericClass<UserPojo> resultToReturn = new GenericClass<UserPojo>();
             try
             {            
                 if (string.IsNullOrEmpty(userName))

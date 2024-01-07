@@ -36,10 +36,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                     if (lobby == null)
                     {
                         ConsultInformationImplementation consultInformation = new();
-                        GenericClass<UserPOJO> userConsulted = consultInformation.ConsultUserById(idUser);
+                        GenericClass<UserPojo> userConsulted = consultInformation.ConsultUserById(idUser);
                         if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            GenericClass<PlayerPOJO> playerConsultedByIdUser = consultInformation.ConsultPlayerByIdUser(idUser);
+                            GenericClass<PlayerPojo> playerConsultedByIdUser = consultInformation.ConsultPlayerByIdUser(idUser);
                             if (playerConsultedByIdUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                             {
                                 PlayerOnLobbyList leaderOfTheGame = new PlayerOnLobbyList();
@@ -114,10 +114,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                     var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                     ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
-                    GenericClass<UserPOJO> userPojo = consultInformation.ConsultUserById(idUser);
+                    GenericClass<UserPojo> userPojo = consultInformation.ConsultUserById(idUser);
                     if (userPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        GenericClass<PlayerPOJO> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
+                        GenericClass<PlayerPojo> playerPojo = consultInformation.ConsultPlayerByIdUser(idUser);
                         if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
                             PlayerOnLobbyList playerJoining = new PlayerOnLobbyList();
@@ -395,8 +395,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     try
                     {
-                        var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();                        
-                        channel.UpdateJoinedPlayerResponse(playersLobby);                        
+                        item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().UpdateJoinedPlayerResponse(playersLobby);                                                                   
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {
@@ -646,15 +645,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<List<PlayerInLobby>> playersInLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
             if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                foreach (var item in lobby.listOfPlayerInLobby.Where(pla =>lobby.idAdmin != pla.idUser))
+                foreach (var item in lobby.listOfPlayerInLobby.Where(pla =>lobby.idAdmin != pla.idUser && pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>() != null)
                 {
                     try
                     {
-                        var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
-                        if (channel != null)
-                        {
-                            channel.UpdateTeamSide(playersInLobby);
-                        }
+                        item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>().UpdateTeamSide(playersInLobby);                        
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {

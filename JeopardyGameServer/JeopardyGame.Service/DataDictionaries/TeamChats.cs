@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.DataDictionaries
 {
-    public class TeamChats
+    public static class TeamChats
     {
         
         private static Dictionary<int, OperationContext> teamChatUser = new Dictionary<int, OperationContext>();

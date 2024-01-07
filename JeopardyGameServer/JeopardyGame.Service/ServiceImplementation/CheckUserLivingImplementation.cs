@@ -16,7 +16,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         private static readonly Object objectLock = new();
 
-        public int RenewLivingCallBack(UserPOJO user)
+        public int RenewLivingCallBack(UserPojo user)
         {
             int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
             lock (objectLock)
@@ -60,7 +60,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public int SubscribeToICheckUserLiving(UserPOJO user)
+        public int SubscribeToICheckUserLiving(UserPojo user)
         {
             int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
             lock (objectLock)
@@ -108,8 +108,8 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public class CheckUserLivingUnsubscribeImplementation : ICheckUserLivingUnsubscribe
     {
-        private static Object objectLock = new();
-        public void UnsubscribeFromICheckUserLiving(UserPOJO user)
+        private static readonly Object objectLock = new();
+        public void UnsubscribeFromICheckUserLiving(UserPojo user)
         {
             lock (objectLock)
             {

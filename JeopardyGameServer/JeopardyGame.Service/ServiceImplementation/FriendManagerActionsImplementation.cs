@@ -467,7 +467,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
 
 
-        private void NotifyResponseRequestAction(int idUserToRespond, UserPOJO userConsulted, int actionEvent)
+        private void NotifyResponseRequestAction(int idUserToRespond, UserPojo userConsulted, int actionEvent)
         {
             try
             {

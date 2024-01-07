@@ -13,15 +13,15 @@ namespace JeopardyGame.Service.InterfacesServices
     public interface IConsultUserInformation
     {
         [OperationContract]
-        GenericClass<UserPOJO> ConsultUserById(int idUser);
+        GenericClass<UserPojo> ConsultUserById(int idUser);
         [OperationContract]
-        GenericClass<UserPOJO> ConsultUserByIdPlayer(int idPlayer);
+        GenericClass<UserPojo> ConsultUserByIdPlayer(int idPlayer);
         [OperationContract]
-        GenericClass<PlayerPOJO> ConsultPlayerById(int idPlayer);
+        GenericClass<PlayerPojo> ConsultPlayerById(int idPlayer);
         [OperationContract]
-        GenericClass<PlayerPOJO> ConsultPlayerByIdUser(int idUser);
+        GenericClass<PlayerPojo> ConsultPlayerByIdUser(int idUser);
         [OperationContract]
-        GenericClass<UserPOJO> ConsultUserByUserName(String userName);
+        GenericClass<UserPojo> ConsultUserByUserName(String userName);
         [OperationContract]
         GenericClass<List<PlayerInfo>> GetPlayersInformation(int idUserConsulting);
     }

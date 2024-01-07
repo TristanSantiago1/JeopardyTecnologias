@@ -26,9 +26,9 @@ namespace JeopardyGame.Data.Exceptions
             {
                 File.AppendAllText(logConfig.getPath(), logMessage);
             }
-            catch (IOException)
+            catch (IOException ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -75,7 +75,7 @@ namespace JeopardyGame.Data.Exceptions
                 resultException.CodeEvent = ExceptionDictionary.ENTITY_VALIDATION;
                 return resultException;
             }
-            if (exception is Exception)
+            if (exception != null)
             {
                 resultException.CodeEvent = ExceptionDictionary.UNKOWN_EXCEPTION_OCURRED;
                 return resultException;

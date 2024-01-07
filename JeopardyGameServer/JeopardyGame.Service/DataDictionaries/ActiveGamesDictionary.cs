@@ -13,12 +13,9 @@ namespace JeopardyGame.Service.DataDictionaries
         private static Dictionary<int, List<PlayerPlayingInGame>> gamesBeenPlayingDictionary = new Dictionary<int, List<PlayerPlayingInGame>>();
         public static void RegisterNewGameIndDictionary(int roomCode, List<PlayerPlayingInGame> newActiveGame)
         {
-            if (roomCode != 0 && newActiveGame != null) 
-            { 
-                if (!gamesBeenPlayingDictionary.ContainsKey(roomCode))
-                {
-                    gamesBeenPlayingDictionary.Add(roomCode, newActiveGame);
-                }
+            if (roomCode != 0 && newActiveGame != null && !gamesBeenPlayingDictionary.ContainsKey(roomCode)) 
+            {                
+                gamesBeenPlayingDictionary.Add(roomCode, newActiveGame);               
             }
         }
 
@@ -39,12 +36,9 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RemoveRegistryOfGameFromDictionary(int roomCode)
         {
-            if (roomCode != 0) 
+            if (roomCode != 0 && gamesBeenPlayingDictionary.ContainsKey(roomCode)) 
             {
-                if (gamesBeenPlayingDictionary.ContainsKey(roomCode))
-                {
-                    gamesBeenPlayingDictionary.Remove(roomCode);
-                }
+                gamesBeenPlayingDictionary.Remove(roomCode);                
             }
         }
 
@@ -53,9 +47,13 @@ namespace JeopardyGame.Service.DataDictionaries
             if (roomCode != 0 && idUser != 0 && channel != null && gamesBeenPlayingDictionary.ContainsKey(roomCode))
             {
                 var listOfPlayer = gamesBeenPlayingDictionary[roomCode];
-                if(listOfPlayer.Any(pl => pl.IdUser == idUser))
+                if(listOfPlayer.Exists(pl => pl.IdUser == idUser))
                 {
-                    listOfPlayer.FirstOrDefault(pl => pl.IdUser == idUser).gameCallbackChannel = channel;
+                    var player = listOfPlayer.Find(pl => pl.IdUser == idUser);
+                    if(player != null)
+                    {
+                        player.gameCallbackChannel = channel;
+                    }
                 }
             }
         }

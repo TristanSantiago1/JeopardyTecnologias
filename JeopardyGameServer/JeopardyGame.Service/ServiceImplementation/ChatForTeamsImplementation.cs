@@ -105,7 +105,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
 
         private readonly int NULL_INT_VALUE = 0;
-
+        private static readonly Object objectLock = new();
         public void SendMessageTeam(int idUser, int idTeamMate, string userName, string messageToSend)
         {
             if (idUser <= NULL_INT_VALUE || idTeamMate <= NULL_INT_VALUE || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(messageToSend))
@@ -185,7 +185,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void UnregisterFromTeamChat(int idUser)
         {
-            lock (new Object())
+            lock (objectLock)
             {
                 if (idUser != NULL_INT_VALUE)
                 {

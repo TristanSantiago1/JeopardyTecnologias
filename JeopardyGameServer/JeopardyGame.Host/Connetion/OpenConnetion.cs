@@ -12,10 +12,10 @@ using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace JeopardyGame.Host.Connection
 {
-    public class OpenConnection
+    public static class OpenConnection
     {
         static void Main(string[] args)        
-       {
+        {
             try
             {                   
                 GetConectionString();
@@ -41,7 +41,7 @@ namespace JeopardyGame.Host.Connection
             }
             catch (AddressAlreadyInUseException ex)
             {
-                ExceptionHandler.LogException(ex.InnerException, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }

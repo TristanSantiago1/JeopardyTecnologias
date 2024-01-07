@@ -12,7 +12,7 @@ namespace JeopardyGame.Service.InterfacesSevices
     internal interface IValidateUserExistance
     {
         [OperationContract]
-        GenericClass<int> UserAlreadyExist(UserPOJO newUser);
+        GenericClass<int> UserAlreadyExist(UserPojo newUser);
         [OperationContract]
         GenericClass<int> EmailAlreadyExist(String email);
     }

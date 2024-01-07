@@ -24,7 +24,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private static readonly Object lockObject = new Object();
 
 
-        public GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered)
+        public GenericClass<int> SaveUser(UserPojo userPojoNew, string codeEntered)
         {
             lock (lockObject)
             {
@@ -40,7 +40,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(newUser);
                     if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        PlayerPOJO playerToSave = new PlayerPOJO();
+                        PlayerPojo playerToSave = new PlayerPojo();
                         playerToSave.IdPlayer = DEFAULT_INT_VALUE;
                         playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
                         playerToSave.NoReports = DEFAULT_INT_VALUE;
@@ -89,7 +89,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }                                 
         }
         
-        public int SavePlayer(PlayerPOJO newPlayer)
+        public int SavePlayer(PlayerPojo newPlayer)
         {
             int responseOfOperation = DEFAULT_INT_VALUE;
             if (newPlayer == null)

@@ -194,8 +194,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var friendshipToChange = new Friend();
-                    friendshipToChange = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
+                    var friendshipToChange = contextBD.Friends.FirstOrDefault(friendRegistry => (friendRegistry.Player_IdPlayer == idPlayerFriend1 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend2) || (friendRegistry.Player_IdPlayer == idPlayerFriend2 && friendRegistry.PlayerFriend_IdPlayer == idPlayerFriend1));
                     if (friendshipToChange != null) 
                     { 
                         friendshipToChange.IdFriendState = FRIEND_STATUS_ACCCEPT_REQUEST;

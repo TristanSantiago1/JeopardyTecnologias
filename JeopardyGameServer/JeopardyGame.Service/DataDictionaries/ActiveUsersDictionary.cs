@@ -35,12 +35,9 @@ namespace JeopardyGame.Service
 
         public static void RemoveRegistryOfActiveUserFromDictionary(int idUser)
         {
-            if (idUser != 0)
+            if (idUser != 0 && activeUsers.ContainsKey(idUser))
             {
-                if (activeUsers.ContainsKey(idUser))
-                {
-                    activeUsers.Remove(idUser);
-                }
+                activeUsers.Remove(idUser);                
             }
         }
 

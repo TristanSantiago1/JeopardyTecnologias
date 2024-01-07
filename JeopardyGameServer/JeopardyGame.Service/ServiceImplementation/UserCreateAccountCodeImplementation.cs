@@ -23,7 +23,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
 
 
-        public GenericClass<int> AddUserToConfirmationDictionary(UserPOJO newUser)
+        public GenericClass<int> AddUserToConfirmationDictionary(UserPojo newUser)
         {
             lock (lockObject)
             {
@@ -61,7 +61,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
        
 
-        private void AddUserToDictionary(UserPOJO newUser)
+        private void AddUserToDictionary(UserPojo newUser)
         {
             Random randomNumber = new Random();
             int fourDigitsAleatoryNumber =  randomNumber.Next(1000, 9999);
@@ -80,7 +80,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public int CheckCodeEntered(UserPOJO newUser, string codeEntered)
+        public int CheckCodeEntered(UserPojo newUser, string codeEntered)
         {
             int successCriteria;
             try
@@ -122,7 +122,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return successCriteria;
         }
 
-        public int ResendCode(UserPOJO user)
+        public int ResendCode(UserPojo user)
         {
             int successCriteria;
             try
@@ -166,7 +166,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return successCriteria;
         }
 
-        public void TakeUserOutOfDictionary(UserPOJO user)
+        public void TakeUserOutOfDictionary(UserPojo user)
         {
             lock (lockObject)
             {

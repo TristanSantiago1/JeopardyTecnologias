@@ -17,7 +17,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ALLOWED_VALUES = 1;
         private static readonly Object lockObject = new Object();
 
-        public GenericClass<int> UserAlreadyExist(UserPOJO newUser)
+        public GenericClass<int> UserAlreadyExist(UserPojo newUser)
         {
             lock (lockObject)
             {
@@ -154,7 +154,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        private GenericClass<int> CheckDictionary(UserPOJO userToVerify)
+        private GenericClass<int> CheckDictionary(UserPojo userToVerify)
         {
             GenericClass<int> resultToReturn = new()
             {

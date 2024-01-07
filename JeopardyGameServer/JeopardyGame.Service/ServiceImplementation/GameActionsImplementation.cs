@@ -188,22 +188,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                                 ReArrangeTurns(activeGame, playerLeaving.TurnOfPlayer);
                                 NotifySomePlayerLeaveTheGame(activeGame);
                             }
-                        }
-                        catch (CommunicationObjectFaultedException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (TimeoutException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
+                        }                        
                         catch (InvalidOperationException ex)
                         {
                             ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
@@ -436,7 +421,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 switch (roundFinished)
                 {
                     case ROUND_ONE:
-                        var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                         newRound = ROUND_TWO;
                         break;
                     case ROUND_TWO:

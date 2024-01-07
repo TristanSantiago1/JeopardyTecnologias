@@ -9,13 +9,13 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
 {
     public static class QuestionsInterpreter
     {
-        public static QuestionPOJO FromQuestionToQuestionPOJO(Question question)
+        public static QuestionPojo FromQuestionToQuestionPOJO(Question question)
         {
             if (question == null)
             {
                 return null;
             }
-            QuestionPOJO questionPOJO = new()
+            QuestionPojo questionPOJO = new()
             {
                 IdQuestion = question.IdQuestion,
                 SpanishQuestionDescription = question.SpanishQuestionDescription,
@@ -26,13 +26,13 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             return questionPOJO;
         }
 
-        public static AnswerPOJO FromAnswerToAnswerPOJO(Awnser awnser)
+        public static AnswerPojo FromAnswerToAnswerPOJO(Awnser awnser)
         {
             if (awnser == null)
             {
                 return null;
             }
-            AnswerPOJO answerPojo = new()
+            AnswerPojo answerPojo = new()
             {
                 IdAnswer = awnser.IdAwnser,
                 SpanishAnswerDescription = awnser.SpanishAwnserDescription,
@@ -42,13 +42,13 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             return answerPojo;
         }
 
-        public static CategoryPOJO FromCategoryToCategoryPOJO(Category category) 
+        public static CategoryPojo FromCategoryToCategoryPOJO(Category category) 
         {
             if (category == null)
             {
                 return null;
             }
-            CategoryPOJO categoryPOJO = new()
+            CategoryPojo categoryPOJO = new()
             {
                 IdCategory = category.IdCategory,
                 SpanishCategoryDescription = category.SpanishCategoryDescription,

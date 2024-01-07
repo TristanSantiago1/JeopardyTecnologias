@@ -23,9 +23,9 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int GUEST_STATE = 3;
         private static readonly Object objectLock = new object();
 
-        public GenericClass<UserPOJO> CreateUserForGuest()
+        public GenericClass<UserPojo> CreateUserForGuest()
         {            
-            GenericClass<UserPOJO> resultToReturn = new GenericClass<UserPOJO>();
+            GenericClass<UserPojo> resultToReturn = new GenericClass<UserPojo>();
             lock (objectLock)
             {
                 try
@@ -41,7 +41,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(guestUser);
                     if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
-                        PlayerPOJO playerToSave = new PlayerPOJO();
+                        PlayerPojo playerToSave = new PlayerPojo();
                         playerToSave.IdPlayer = DEFAULT_INT_VALUE;
                         playerToSave.GeneralPoints = DEFAULT_INT_VALUE;
                         playerToSave.NoReports = DEFAULT_INT_VALUE;

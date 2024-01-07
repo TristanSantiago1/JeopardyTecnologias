@@ -13,16 +13,16 @@ namespace JeopardyGame.Service.InterfacesSevices
     {
 
         [OperationContract]
-        GenericClass<int> AddUserToConfirmationDictionary(UserPOJO newUser);
+        GenericClass<int> AddUserToConfirmationDictionary(UserPojo newUser);
 
         [OperationContract]
-        int CheckCodeEntered(UserPOJO newUser, string codeEntered);
+        int CheckCodeEntered(UserPojo newUser, string codeEntered);
 
         [OperationContract]
-        int ResendCode(UserPOJO user);
+        int ResendCode(UserPojo user);
 
         [OperationContract]
-        void TakeUserOutOfDictionary(UserPOJO user);
+        void TakeUserOutOfDictionary(UserPojo user);
     }  
 
 }

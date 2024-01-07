@@ -23,7 +23,11 @@ namespace JeopardyGame.Service.ServiceImplementation
         public GenericClass<int> ValidateCredentials(UserValidate newUserValidate)
         {
             var userConsulted = UserManagerDataOperation.GetUserByUserName(newUserValidate.UserName);
-            GenericClass<int> responseServer = new GenericClass<int>();
+            GenericClass<int> responseServer = new GenericClass<int>()
+            {
+                ObjectSaved = UNSUCCESFULL_EVENT,
+                CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT
+             };
             if (userConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
                 try
@@ -36,11 +40,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                             responseServer.ObjectSaved = SUCCESFULL_EVENT;
                             responseServer.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
 
-                        }
-                        else
-                        {
-                            responseServer.ObjectSaved = UNSUCCESFULL_EVENT;
-                            responseServer.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
                     else

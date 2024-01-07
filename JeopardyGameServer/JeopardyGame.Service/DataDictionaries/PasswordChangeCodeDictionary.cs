@@ -5,7 +5,7 @@ namespace JeopardyGame.Service.DataDictionaries
 {
     public  static class PasswordChangeCodeDictionary
     {
-        public static Dictionary<string, string> passwordsCodes = new Dictionary<string, string>();
+        private static Dictionary<string, string> passwordsCodes = new Dictionary<string, string>();
         private static Dictionary<string, Timer> timers = new Dictionary<string, Timer>();
 
         public static void AddTimerRegistry(string userName, string code)

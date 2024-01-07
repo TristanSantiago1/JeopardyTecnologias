@@ -112,7 +112,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
             try
             { 
                 var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
-                int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Any(pl => pl.idUser == idUserCausingException)).Key;
+                int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Exists(pl => pl.idUser == idUserCausingException)).Key;
                 LobbyActionsOperationImplementation lobbyActions = new();
                 var lobbyFailed = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                 if (lobbyFailed != null)
@@ -141,7 +141,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         private static void HandleGameCommunicationException(int idUserCausingException)
         {
             var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
-            int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Any(pl => pl.idUser == idUserCausingException)).Key;
+            int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Exists(pl => pl.idUser == idUserCausingException)).Key;
             GameActionsOperationsImplementation gameActions = new ();
             gameActions.UnSubscribeFromGameCallBack(roomCode, idUserCausingException);
             HandleLobbyCommunicationException(idUserCausingException);
@@ -189,7 +189,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
             notifyUser.PlayerIsNotAvailable(idUserCausingException);
             var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
             friendsManager.UnregisterFriendManagerUser(idUserCausingException);
-            int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Any(pl => pl.idUser == idUserCausingException)).Key;             
+            int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Exists(pl => pl.idUser == idUserCausingException)).Key;             
             if(roomCode != 0)
             {                
                 var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);

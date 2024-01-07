@@ -14,16 +14,16 @@
         {
           "ruleId": "S101",
           "level": "warning",
-          "message": "Rename class 'CategoryPOJO' to match pascal case naming rules, consider using 'CategoryPojo'.",
+          "message": "Rename class 'UserPOJO' to match pascal case naming rules, consider using 'UserPojo'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 151,
+                  "startLine": 75,
                   "startColumn": 18,
-                  "endLine": 151,
-                  "endColumn": 30
+                  "endLine": 75,
+                  "endColumn": 26
                 }
               }
             }
@@ -35,16 +35,16 @@
         {
           "ruleId": "S101",
           "level": "warning",
-          "message": "Rename class 'UserPOJO' to match pascal case naming rules, consider using 'UserPojo'.",
+          "message": "Rename class 'CategoryPOJO' to match pascal case naming rules, consider using 'CategoryPojo'.",
           "locations": [
             {
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
                 "region": {
-                  "startLine": 75,
+                  "startLine": 151,
                   "startColumn": 18,
-                  "endLine": 75,
-                  "endColumn": 26
+                  "endLine": 151,
+                  "endColumn": 30
                 }
               }
             }

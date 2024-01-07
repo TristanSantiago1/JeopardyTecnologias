@@ -12,7 +12,7 @@ namespace JeopardyGame.Service.InterfacesSevices
     internal interface IGuestPlayerManager
     {
         [OperationContract]
-        GenericClass<UserPOJO> CreateUserForGuest();
+        GenericClass<UserPojo> CreateUserForGuest();
 
         [OperationContract (IsOneWay = true)]
         void DeleteGuest(int idUser);

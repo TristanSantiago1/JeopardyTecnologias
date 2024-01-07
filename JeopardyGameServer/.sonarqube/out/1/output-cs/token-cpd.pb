@@ -1,4 +1,4 @@
-Íõ
+˜ù
 ìC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ChannelsAdministrator\ChannelAdministrator.cs
 	namespace 	
 JeopardyGame
@@ -242,1096 +242,1134 @@
 idUserCausingExceptionEE8 N
 ,EEN O
 intEEP S
-ServiceTypeEET _
+serviceTypeEET _
 )EE_ `
-{FF 	
-switchGG 
-(GG 
-ServiceTypeGG 
-)GG  
-{HH 
-caseII #
-_AVAILABILITY_EXCEPTIONII ,
-:II, -4
-(HandleAvailabilityCommunicationExceptionJJ <
-(JJ< ="
-idUserCausingExceptionJJ= S
-)JJS T
-;JJT U
-breakKK 
-;KK 
-caseLL %
-_FRIEND_MANAGER_EXCEPTIONLL .
-:LL. /5
-)HandleFriendManagerCommunicationExceptionMM =
-(MM= >"
-idUserCausingExceptionMM> T
-)MMT U
-;MMU V
-breakNN 
-;NN 
-caseOO 
-_LOBBY_EXCEPTIONOO %
-:OO% &-
-!HandleLobbyCommunicationExceptionPP 5
-(PP5 6"
-idUserCausingExceptionPP6 L
-)PPL M
-;PPM N
-breakQQ 
-;QQ 
-caseRR 
-_GAME_EXCEPTIONRR $
-:RR$ %,
- HandleGameCommunicationExceptionSS 4
-(SS4 5"
-idUserCausingExceptionSS5 K
-)SSK L
-;SSL M
-breakTT 
-;TT 
-caseUU  
-_TEAM_CHAT_EXCEPTIONUU )
-:UU) *0
-$HandleTeamChatCommunicationExceptionVV 8
+{FF 	
+ifHH 
+(HH "
+idUserCausingExceptionHH &
+!=HH' )
+$numHH* +
+&&HH, .
+serviceTypeHH/ :
+!=HH; =
+$numHH> ?
+)HH? @
+{II 
+switchJJ 
+(JJ 
+serviceTypeJJ #
+)JJ# $
+{KK 
+caseLL #
+_AVAILABILITY_EXCEPTIONLL 0
+:LL0 14
+(HandleAvailabilityCommunicationExceptionMM @
+(MM@ A"
+idUserCausingExceptionMMA W
+)MMW X
+;MMX Y
+breakNN 
+;NN 
+caseOO %
+_FRIEND_MANAGER_EXCEPTIONOO 2
+:OO2 35
+)HandleFriendManagerCommunicationExceptionPP A
+(PPA B"
+idUserCausingExceptionPPB X
+)PPX Y
+;PPY Z
+breakQQ 
+;QQ 
+caseRR 
+_LOBBY_EXCEPTIONRR )
+:RR) *-
+!HandleLobbyCommunicationExceptionSS 9
+(SS9 :"
+idUserCausingExceptionSS: P
+)SSP Q
+;SSQ R
+breakTT 
+;TT 
+caseUU 
+_GAME_EXCEPTIONUU (
+:UU( ),
+ HandleGameCommunicationExceptionVV 8
 (VV8 9"
 idUserCausingExceptionVV9 O
 )VVO P
 ;VVP Q
-breakWW 
-;WW 
-caseXX ,
- _GENERIC_COMMUNICATION_EXCEPTIONXX 5
-:XX5 6.
-"HandleGeneriCommunicationExceptionYY 6
-(YY6 7"
-idUserCausingExceptionYY7 M
-)YYM N
-;YYN O
-breakZZ 
-;ZZ 
-}[[ 
-}\\ 	
-private^^ 
-static^^ 
-void^^ 5
-)HandleFriendManagerCommunicationException^^ E
-(^^E F
-int^^F I"
-idUserCausingException^^J `
-)^^` a
-{__ 	7
-+FriendManagerActionsOperationImplementation`` 7 
-friendManagerActions``8 L
-=``M N
-new``O R
-(``S T
-)``T U
-;``U V 
-friendManagerActionsaa  
-.aa  !'
-UnregisterFriendManagerUseraa! <
-(aa< ="
-idUserCausingExceptionaa= S
-)aaS T
-;aaT U
-intbb 
-isUserDisconnectedbb "
-=bb# $#
-VerifyUserIsStillActivebb% <
-(bb< =
-GetUserNameClientbb= N
-(bbN O"
-idUserCausingExceptionbbO e
-)bbe f
-)bbf g
-;bbg h
-ifcc 
-(cc 
-isUserDisconnectedcc "
-==cc# %
-ExceptionDictionarycc& 9
-.cc9 :
-SUCCESFULL_EVENTcc: J
-)ccJ K
-{dd $
-KickUserFromDictionariesee (
-(ee( )"
-idUserCausingExceptionee) ?
-)ee? @
-;ee@ A
-}ff 
-}gg 	
-privateii 
-staticii 
-voidii -
-!HandleLobbyCommunicationExceptionii =
-(ii= >
-intii> A"
-idUserCausingExceptioniiB X
-)iiX Y
-{jj 	
-trykk 
-{ll 
-varmm 
-	lobbyListmm 
-=mm !
-GameLobbiesDictionarymm  5
-.mm5 6 
-GetActiveLobbiesListmm6 J
-(mmJ K
-)mmK L
-;mmL M
-intnn 
-roomCodenn 
-=nn 
-	lobbyListnn (
-.nn( )
-FirstOrDefaultnn) 7
-(nn7 8
-entrynn8 =
-=>nn> @
-entrynnA F
-.nnF G
-ValuennG L
-.nnL M
-listOfPlayerInLobbynnM `
-.nn` a
-Anynna d
-(nnd e
-plnne g
-=>nnh j
-plnnk m
-.nnm n
-idUsernnn t
-==nnu w#
-idUserCausingException	nnx é
+breakWW 
+;WW 
+caseXX  
+_TEAM_CHAT_EXCEPTIONXX -
+:XX- .0
+$HandleTeamChatCommunicationExceptionYY <
+(YY< ="
+idUserCausingExceptionYY= S
+)YYS T
+;YYT U
+breakZZ 
+;ZZ 
+case[[ ,
+ _GENERIC_COMMUNICATION_EXCEPTION[[ 9
+:[[9 :.
+"HandleGeneriCommunicationException\\ :
+(\\: ;"
+idUserCausingException\\; Q
+)\\Q R
+;\\R S
+break]] 
+;]] 
+}^^ 
+}__ 
+}aa 	
+privatecc 
+staticcc 
+voidcc 5
+)HandleFriendManagerCommunicationExceptioncc E
+(ccE F
+intccF I"
+idUserCausingExceptionccJ `
+)cc` a
+{dd 	7
++FriendManagerActionsOperationImplementationee 7 
+friendManagerActionsee8 L
+=eeM N
+neweeO R
+(eeS T
+)eeT U
+;eeU V 
+friendManagerActionsff  
+.ff  !'
+UnregisterFriendManagerUserff! <
+(ff< ="
+idUserCausingExceptionff= S
+)ffS T
+;ffT U
+intgg 
+isUserDisconnectedgg "
+=gg# $#
+VerifyUserIsStillActivegg% <
+(gg< =
+GetUserNameClientgg= N
+(ggN O"
+idUserCausingExceptionggO e
+)gge f
+)ggf g
+;ggg h
+ifhh 
+(hh 
+isUserDisconnectedhh "
+==hh# %
+ExceptionDictionaryhh& 9
+.hh9 :
+SUCCESFULL_EVENThh: J
+)hhJ K
+{ii $
+KickUserFromDictionariesjj (
+(jj( )"
+idUserCausingExceptionjj) ?
+)jj? @
+;jj@ A
+}kk 
+}ll 	
+privatenn 
+staticnn 
+voidnn -
+!HandleLobbyCommunicationExceptionnn =
+(nn= >
+intnn> A"
+idUserCausingExceptionnnB X
+)nnX Y
+{oo 	
+trypp 
+{qq 
+varrr 
+	lobbyListrr 
+=rr !
+GameLobbiesDictionaryrr  5
+.rr5 6 
+GetActiveLobbiesListrr6 J
+(rrJ K
+)rrK L
+;rrL M
+intss 
+roomCodess 
+=ss 
+	lobbyListss (
+.ss( )
+FirstOrDefaultss) 7
+(ss7 8
+entryss8 =
+=>ss> @
+entryssA F
+.ssF G
+ValuessG L
+.ssL M
+listOfPlayerInLobbyssM `
+.ss` a
+Anyssa d
+(ssd e
+plsse g
+=>ssh j
+plssk m
+.ssm n
+idUserssn t
+==ssu w#
+idUserCausingException	ssx é
 )
-nné è
+ssé è
 )
-nnè ê
+ssè ê
 .
-nnê ë
+ssê ë
 Key
-nnë î
+ssë î
 ;
-nnî ï0
-$ILobbyActionsOperationImplementationoo 4
-lobbyActionsoo5 A
-=ooB C
-newooD G
-(ooG H
-)ooH I
-;ooI J
-varpp 
-lobbyFailedpp 
-=pp  !!
-GameLobbiesDictionarypp" 7
-.pp7 8"
-GetSpecificActiveLobbypp8 N
-(ppN O
-roomCodeppO W
-)ppW X
-;ppX Y
-ifqq 
-(qq 
-lobbyFailedqq 
-!=qq  "
-nullqq# '
-)qq' (
-{rr 
-ifss 
-(ss 
-lobbyFailedss #
-.ss# $
-idAdminss$ +
-==ss, ."
-idUserCausingExceptionss/ E
-)ssE F
-{tt 
-lobbyActionsuu $
-.uu$ %
-DissolveLobbyuu% 2
-(uu2 3
-roomCodeuu3 ;
-,uu; <"
-idUserCausingExceptionuu= S
-)uuS T
-;uuT U
-}vv 
-elseww 
-{xx 
-lobbyActionsyy $
-.yy$ %
+ssî ï/
+#LobbyActionsOperationImplementationtt 3
+lobbyActionstt4 @
+=ttA B
+newttC F
+(ttF G
+)ttG H
+;ttH I
+varuu 
+lobbyFaileduu 
+=uu  !!
+GameLobbiesDictionaryuu" 7
+.uu7 8"
+GetSpecificActiveLobbyuu8 N
+(uuN O
+roomCodeuuO W
+)uuW X
+;uuX Y
+ifvv 
+(vv 
+lobbyFailedvv 
+!=vv  "
+nullvv# '
+)vv' (
+{ww 
+ifxx 
+(xx 
+lobbyFailedxx #
+.xx# $
+idAdminxx$ +
+==xx, ."
+idUserCausingExceptionxx/ E
+)xxE F
+{yy 
+lobbyActionszz $
+.zz$ %
+DissolveLobbyzz% 2
+(zz2 3
+roomCodezz3 ;
+,zz; <"
+idUserCausingExceptionzz= S
+)zzS T
+;zzT U
+}{{ 
+else|| 
+{}} 
+lobbyActions~~ $
+.~~$ %
 
-LeaveLobbyyy% /
-(yy/ 0
-roomCodeyy0 8
-,yy8 9"
-idUserCausingExceptionyy: P
-)yyP Q
-;yyQ R
-}zz 
-}{{ 
-int|| 
-isUserDisconnected|| &
-=||' (#
-VerifyUserIsStillActive||) @
-(||@ A
-GetUserNameClient||A R
-(||R S"
-idUserCausingException||S i
-)||i j
-)||j k
-;||k l
-if}} 
-(}} 
-isUserDisconnected}} &
-==}}' )
-ExceptionDictionary}}* =
-.}}= >
-SUCCESFULL_EVENT}}> N
-)}}N O
-{~~ $
-KickUserFromDictionaries ,
-(, -"
-idUserCausingException- C
-)C D
-;D E
+LeaveLobby~~% /
+(~~/ 0
+roomCode~~0 8
+,~~8 9"
+idUserCausingException~~: P
+)~~P Q
+;~~Q R
+} 
 }
-ÄÄ 
-}
-ÅÅ 
-catch
-ÇÇ 
-(
-ÇÇ "
-KeyNotFoundException
-ÇÇ &
-ex
-ÇÇ' )
-)
-ÇÇ) *
-{
-ÉÉ 
-ExceptionHandler
-ÑÑ  
-.
-ÑÑ  !
-LogException
-ÑÑ! -
-(
-ÑÑ- .
-ex
-ÑÑ. 0
-,
-ÑÑ0 1!
-ExceptionDictionary
-ÑÑ2 E
-.
-ÑÑE F
-ERROR
-ÑÑF K
-)
-ÑÑK L
-;
-ÑÑL M
-}
-ÖÖ 
-}
-ÜÜ 	
-private
-àà 
-static
-àà 
-void
-àà .
- HandleGameCommunicationException
-àà <
-(
-àà< =
+ÄÄ 
 int
-àà= @$
+ÅÅ  
+isUserDisconnected
+ÅÅ &
+=
+ÅÅ' (%
+VerifyUserIsStillActive
+ÅÅ) @
+(
+ÅÅ@ A
+GetUserNameClient
+ÅÅA R
+(
+ÅÅR S$
 idUserCausingException
-ààA W
+ÅÅS i
 )
-ààW X
-{
-ââ 	
-var
-ää 
-	lobbyList
-ää 
-=
-ää #
-GameLobbiesDictionary
-ää 1
-.
-ää1 2"
-GetActiveLobbiesList
-ää2 F
-(
-ääF G
+ÅÅi j
 )
-ääG H
+ÅÅj k
 ;
-ääH I
-int
-ãã 
-roomCode
-ãã 
-=
-ãã 
-	lobbyList
-ãã $
-.
-ãã$ %
-FirstOrDefault
-ãã% 3
+ÅÅk l
+if
+ÇÇ 
 (
-ãã3 4
-entry
-ãã4 9
-=>
-ãã: <
-entry
-ãã= B
-.
-ããB C
-Value
-ããC H
-.
-ããH I!
-listOfPlayerInLobby
-ããI \
-.
-ãã\ ]
-Any
-ãã] `
-(
-ãã` a
-pl
-ããa c
-=>
-ããd f
-pl
-ããg i
-.
-ããi j
-idUser
-ããj p
+ÇÇ  
+isUserDisconnected
+ÇÇ &
 ==
-ããq s%
-idUserCausingExceptionããt ä
-)ããä ã
-)ããã å
-.ããå ç
-Keyããç ê
-;ããê ë2
-$IGameActionsOperationsImplementation
-åå 0
-gameActions
-åå1 <
-=
-åå= >
-new
-åå? B
-(
-ååC D
-)
-ååD E
-;
-ååE F
-gameActions
-çç 
+ÇÇ' )!
+ExceptionDictionary
+ÇÇ* =
 .
-çç )
-UnSubscribeFromGameCallBack
-çç 3
-(
-çç3 4
-roomCode
-çç4 <
-,
-çç< =$
-idUserCausingException
-çç> T
+ÇÇ= >
+SUCCESFULL_EVENT
+ÇÇ> N
 )
-ççT U
-;
-ççU V/
-!HandleLobbyCommunicationException
-éé -
-(
-éé- .$
-idUserCausingException
-éé. D
-)
-ééD E
-;
-ééE F
-}
-èè 	
-private
-ëë 
-static
-ëë 
-void
-ëë 6
-(HandleAvailabilityCommunicationException
-ëë D
-(
-ëëD E
-int
-ëëE H$
-idUserCausingException
-ëëI _
-)
-ëë_ `
+ÇÇN O
 {
-íí 	4
-&NotifyUserIsNotAvailableImplementation
-ìì 2
-
-notifyUser
-ìì3 =
-=
-ìì> ?
-new
-ìì@ C
+ÉÉ &
+KickUserFromDictionaries
+ÑÑ ,
 (
-ììC D
+ÑÑ, -$
+idUserCausingException
+ÑÑ- C
+)
+ÑÑC D
+;
+ÑÑD E
+}
+ÖÖ 
+}
+ÜÜ 
+catch
+áá 
+(
+áá "
+KeyNotFoundException
+áá &
+ex
+áá' )
+)
+áá) *
+{
+àà 
+ExceptionHandler
+ââ  
+.
+ââ  !
+LogException
+ââ! -
+(
+ââ- .
+ex
+ââ. 0
+,
+ââ0 1!
+ExceptionDictionary
+ââ2 E
+.
+ââE F
+ERROR
+ââF K
+)
+ââK L
+;
+ââL M
+}
+ää 
+}
+ãã 	
+private
+çç 
+static
+çç 
+void
+çç .
+ HandleGameCommunicationException
+çç <
+(
+çç< =
+int
+çç= @$
+idUserCausingException
+ççA W
+)
+ççW X
+{
+éé 	
+var
+èè 
+	lobbyList
+èè 
+=
+èè #
+GameLobbiesDictionary
+èè 1
+.
+èè1 2"
+GetActiveLobbiesList
+èè2 F
+(
+èèF G
+)
+èèG H
+;
+èèH I
+int
+êê 
+roomCode
+êê 
+=
+êê 
+	lobbyList
+êê $
+.
+êê$ %
+FirstOrDefault
+êê% 3
+(
+êê3 4
+entry
+êê4 9
+=>
+êê: <
+entry
+êê= B
+.
+êêB C
+Value
+êêC H
+.
+êêH I!
+listOfPlayerInLobby
+êêI \
+.
+êê\ ]
+Any
+êê] `
+(
+êê` a
+pl
+êêa c
+=>
+êêd f
+pl
+êêg i
+.
+êêi j
+idUser
+êêj p
+==
+êêq s%
+idUserCausingExceptionêêt ä
+)êêä ã
+)êêã å
+.êêå ç
+Keyêêç ê
+;êêê ë1
+#GameActionsOperationsImplementation
+ëë /
+gameActions
+ëë0 ;
+=
+ëë< =
+new
+ëë> A
+(
+ëëB C
+)
+ëëC D
+;
+ëëD E
+gameActions
+íí 
+.
+íí )
+UnSubscribeFromGameCallBack
+íí 3
+(
+íí3 4
+roomCode
+íí4 <
+,
+íí< =$
+idUserCausingException
+íí> T
+)
+ííT U
+;
+ííU V/
+!HandleLobbyCommunicationException
+ìì -
+(
+ìì- .$
+idUserCausingException
+ìì. D
 )
 ììD E
 ;
-ììE F
-
-notifyUser
-îî 
-.
-îî "
-PlayerIsNotAvailable
-îî +
-(
-îî+ ,$
-idUserCausingException
-îî, B
-)
-îîB C
-;
-îîC D
-int
-ïï  
-isUserDisconnected
-ïï "
-=
-ïï# $%
-VerifyUserIsStillActive
-ïï% <
-(
-ïï< =
-GetUserNameClient
-ïï= N
-(
-ïïN O$
-idUserCausingException
-ïïO e
-)
-ïïe f
-)
-ïïf g
-;
-ïïg h
-if
-ññ 
-(
-ññ  
-isUserDisconnected
-ññ "
-==
-ññ# %!
-ExceptionDictionary
-ññ& 9
-.
-ññ9 :
-SUCCESFULL_EVENT
-ññ: J
-)
-ññJ K
-{
-óó &
-KickUserFromDictionaries
-òò (
-(
-òò( )$
-idUserCausingException
-òò) ?
-)
-òò? @
-;
-òò@ A
+ììE F
 }
-ôô 
-}
-öö 	
+îî 	
 private
-úú 
+ññ 
 static
-úú 
+ññ 
 void
-úú 2
-$HandleTeamChatCommunicationException
-úú @
+ññ 6
+(HandleAvailabilityCommunicationException
+ññ D
 (
-úú@ A
+ññD E
 int
-úúA D$
+ññE H$
 idUserCausingException
-úúE [
+ññI _
 )
-úú[ \
+ññ_ `
 {
-ùù 	
-	TeamChats
-ûû 
-.
-ûû 8
-*RemoveRegistryOfTeamChatUserFromDictionary
-ûû @
-(
-ûû@ A$
-idUserCausingException
-ûûA W
-)
-ûûW X
-;
-ûûX Y
-int
-üü  
-isUserDisconnected
-üü "
-=
-üü# $%
-VerifyUserIsStillActive
-üü% <
-(
-üü< =
-GetUserNameClient
-üü= N
-(
-üüN O$
-idUserCausingException
-üüO e
-)
-üüe f
-)
-üüf g
-;
-üüg h
-if
-†† 
-(
-††  
-isUserDisconnected
-†† "
-==
-††# %!
-ExceptionDictionary
-††& 9
-.
-††9 :
-SUCCESFULL_EVENT
-††: J
-)
-††J K
-{
-°° &
-KickUserFromDictionaries
-¢¢ (
-(
-¢¢( )$
-idUserCausingException
-¢¢) ?
-)
-¢¢? @
-;
-¢¢@ A
-}
-££ 
-}
-§§ 	
-private
-¶¶ 
-static
-¶¶ 
-void
-¶¶ 0
-"HandleGeneriCommunicationException
-¶¶ >
-(
-¶¶> ?
-int
-¶¶? B$
-idUserCausingException
-¶¶C Y
-)
-¶¶Y Z
-{
-ßß 	
-int
-®®  
-isUserDisconnected
-®® "
-=
-®®# $%
-VerifyUserIsStillActive
-®®% <
-(
-®®< =
-GetUserNameClient
-®®= N
-(
-®®N O$
-idUserCausingException
-®®O e
-)
-®®e f
-)
-®®f g
-;
-®®g h
-if
-©© 
-(
-©©  
-isUserDisconnected
-©© "
-==
-©©# %!
-ExceptionDictionary
-©©& 9
-.
-©©9 :
-SUCCESFULL_EVENT
-©©: J
-)
-©©J K
-{
-™™ &
-KickUserFromDictionaries
-´´ (
-(
-´´( )$
-idUserCausingException
-´´) ?
-)
-´´? @
-;
-´´@ A
-}
-¨¨ 
-}
-≠≠ 	
-public
-∞∞ 
-static
-∞∞ 
-void
-∞∞ &
-KickUserFromDictionaries
-∞∞ 3
-(
-∞∞3 4
-int
-∞∞4 7$
-idUserCausingException
-∞∞8 N
-)
-∞∞N O
-{
-±± 	4
+óó 	4
 &NotifyUserIsNotAvailableImplementation
-≤≤ 2
+òò 2
 
 notifyUser
-≤≤3 =
+òò3 =
 =
-≤≤> ?
+òò> ?
 new
-≤≤@ C
+òò@ C
 (
-≤≤C D
+òòC D
 )
-≤≤D E
+òòD E
 ;
-≤≤E F2
-$IGameActionsOperationsImplementation
-≥≥ 0
-gameActions
-≥≥1 <
-=
-≥≥= >
-new
-≥≥? B
-(
-≥≥C D
-)
-≥≥D E
-;
-≥≥E F9
-+FriendManagerActionsOperationImplementation
-¥¥ 7
-friendsManager
-¥¥8 F
-=
-¥¥G H
-new
-¥¥I L
-(
-¥¥L M
-)
-¥¥M N
-;
-¥¥N O2
-$ILobbyActionsOperationImplementation
-µµ 0
-lobbyActions
-µµ1 =
-=
-µµ> ?
-new
-µµ@ C
-(
-µµC D
-)
-µµD E
-;
-µµE F
-LivingClients
-∑∑ 
-.
-∑∑ (
-RemoveClientFromDictionary
-∑∑ 4
-(
-∑∑4 5
-GetUserNameClient
-∑∑5 F
-(
-∑∑F G$
-idUserCausingException
-∑∑G ]
-)
-∑∑] ^
-)
-∑∑^ _
-;
-∑∑_ `
+òòE F
 
 notifyUser
-∏∏ 
+ôô 
 .
-∏∏ "
+ôô "
 PlayerIsNotAvailable
-∏∏ +
+ôô +
 (
-∏∏+ ,$
+ôô+ ,$
 idUserCausingException
-∏∏, B
+ôô, B
 )
-∏∏B C
+ôôB C
 ;
-∏∏C D
-var
-ππ 
-	lobbyList
-ππ 
-=
-ππ #
-GameLobbiesDictionary
-ππ 1
-.
-ππ1 2"
-GetActiveLobbiesList
-ππ2 F
-(
-ππF G
-)
-ππG H
-;
-ππH I
-friendsManager
-∫∫ 
-.
-∫∫ )
-UnregisterFriendManagerUser
-∫∫ 6
-(
-∫∫6 7$
-idUserCausingException
-∫∫7 M
-)
-∫∫M N
-;
-∫∫N O
+ôôC D
 int
-ªª 
-roomCode
-ªª 
+öö  
+isUserDisconnected
+öö "
 =
-ªª 
-	lobbyList
-ªª $
-.
-ªª$ %
-FirstOrDefault
-ªª% 3
+öö# $%
+VerifyUserIsStillActive
+öö% <
 (
-ªª3 4
-entry
-ªª4 9
-=>
-ªª: <
-entry
-ªª= B
-.
-ªªB C
-Value
-ªªC H
-.
-ªªH I!
-listOfPlayerInLobby
-ªªI \
-.
-ªª\ ]
-Any
-ªª] `
+öö< =
+GetUserNameClient
+öö= N
 (
-ªª` a
-pl
-ªªa c
-=>
-ªªd f
-pl
-ªªg i
-.
-ªªi j
-idUser
-ªªj p
-==
-ªªq s%
-idUserCausingExceptionªªt ä
-)ªªä ã
-)ªªã å
-.ªªå ç
-Keyªªç ê
-;ªªê ë
-if
-ºº 
-(
-ºº 
-roomCode
-ºº 
-!=
-ºº 
-$num
-ºº 
+ööN O$
+idUserCausingException
+ööO e
 )
-ºº 
+ööe f
+)
+ööf g
+;
+öög h
+if
+õõ 
+(
+õõ  
+isUserDisconnected
+õõ "
+==
+õõ# %!
+ExceptionDictionary
+õõ& 9
+.
+õõ9 :
+SUCCESFULL_EVENT
+õõ: J
+)
+õõJ K
 {
-ΩΩ 
+úú &
+KickUserFromDictionaries
+ùù (
+(
+ùù( )$
+idUserCausingException
+ùù) ?
+)
+ùù? @
+;
+ùù@ A
+}
+ûû 
+}
+üü 	
+private
+°° 
+static
+°° 
+void
+°° 2
+$HandleTeamChatCommunicationException
+°° @
+(
+°°@ A
+int
+°°A D$
+idUserCausingException
+°°E [
+)
+°°[ \
+{
+¢¢ 	
+	TeamChats
+££ 
+.
+££ 8
+*RemoveRegistryOfTeamChatUserFromDictionary
+££ @
+(
+££@ A$
+idUserCausingException
+££A W
+)
+££W X
+;
+££X Y
+int
+§§  
+isUserDisconnected
+§§ "
+=
+§§# $%
+VerifyUserIsStillActive
+§§% <
+(
+§§< =
+GetUserNameClient
+§§= N
+(
+§§N O$
+idUserCausingException
+§§O e
+)
+§§e f
+)
+§§f g
+;
+§§g h
+if
+•• 
+(
+••  
+isUserDisconnected
+•• "
+==
+••# %!
+ExceptionDictionary
+••& 9
+.
+••9 :
+SUCCESFULL_EVENT
+••: J
+)
+••J K
+{
+¶¶ &
+KickUserFromDictionaries
+ßß (
+(
+ßß( )$
+idUserCausingException
+ßß) ?
+)
+ßß? @
+;
+ßß@ A
+}
+®® 
+}
+©© 	
+private
+´´ 
+static
+´´ 
+void
+´´ 0
+"HandleGeneriCommunicationException
+´´ >
+(
+´´> ?
+int
+´´? B$
+idUserCausingException
+´´C Y
+)
+´´Y Z
+{
+¨¨ 	
+int
+≠≠  
+isUserDisconnected
+≠≠ "
+=
+≠≠# $%
+VerifyUserIsStillActive
+≠≠% <
+(
+≠≠< =
+GetUserNameClient
+≠≠= N
+(
+≠≠N O$
+idUserCausingException
+≠≠O e
+)
+≠≠e f
+)
+≠≠f g
+;
+≠≠g h
+if
+ÆÆ 
+(
+ÆÆ  
+isUserDisconnected
+ÆÆ "
+==
+ÆÆ# %!
+ExceptionDictionary
+ÆÆ& 9
+.
+ÆÆ9 :
+SUCCESFULL_EVENT
+ÆÆ: J
+)
+ÆÆJ K
+{
+ØØ &
+KickUserFromDictionaries
+∞∞ (
+(
+∞∞( )$
+idUserCausingException
+∞∞) ?
+)
+∞∞? @
+;
+∞∞@ A
+}
+±± 
+}
+≤≤ 	
+public
+µµ 
+static
+µµ 
+void
+µµ &
+KickUserFromDictionaries
+µµ 3
+(
+µµ3 4
+int
+µµ4 7$
+idUserCausingException
+µµ8 N
+)
+µµN O
+{
+∂∂ 	4
+&NotifyUserIsNotAvailableImplementation
+∑∑ 2
+
+notifyUser
+∑∑3 =
+=
+∑∑> ?
+new
+∑∑@ C
+(
+∑∑C D
+)
+∑∑D E
+;
+∑∑E F1
+#GameActionsOperationsImplementation
+∏∏ /
+gameActions
+∏∏0 ;
+=
+∏∏< =
+new
+∏∏> A
+(
+∏∏B C
+)
+∏∏C D
+;
+∏∏D E9
++FriendManagerActionsOperationImplementation
+ππ 7
+friendsManager
+ππ8 F
+=
+ππG H
+new
+ππI L
+(
+ππL M
+)
+ππM N
+;
+ππN O1
+#LobbyActionsOperationImplementation
+∫∫ /
+lobbyActions
+∫∫0 <
+=
+∫∫= >
+new
+∫∫? B
+(
+∫∫B C
+)
+∫∫C D
+;
+∫∫D E
+LivingClients
+ºº 
+.
+ºº (
+RemoveClientFromDictionary
+ºº 4
+(
+ºº4 5
+GetUserNameClient
+ºº5 F
+(
+ººF G$
+idUserCausingException
+ººG ]
+)
+ºº] ^
+)
+ºº^ _
+;
+ºº_ `
+
+notifyUser
+ΩΩ 
+.
+ΩΩ "
+PlayerIsNotAvailable
+ΩΩ +
+(
+ΩΩ+ ,$
+idUserCausingException
+ΩΩ, B
+)
+ΩΩB C
+;
+ΩΩC D
 var
-ææ 
-lobby
-ææ 
+ææ 
+	lobbyList
+ææ 
 =
 ææ #
 GameLobbiesDictionary
 ææ 1
 .
-ææ1 2$
-GetSpecificActiveLobby
-ææ2 H
+ææ1 2"
+GetActiveLobbiesList
+ææ2 F
 (
-ææH I
-roomCode
-ææI Q
+ææF G
 )
-ææQ R
+ææG H
 ;
-ææR S
-if
-øø 
-(
-øø 
-lobby
-øø 
-!=
-øø 
-null
-øø !
-)
-øø! "
-{
-¿¿ 
-if
-¡¡ 
-(
-¡¡ 
-lobby
-¡¡ 
+ææH I
+friendsManager
+øø 
 .
-¡¡ 
-idAdmin
-¡¡ %
+øø )
+UnregisterFriendManagerUser
+øø 6
+(
+øø6 7$
+idUserCausingException
+øø7 M
+)
+øøM N
+;
+øøN O
+int
+¿¿ 
+roomCode
+¿¿ 
+=
+¿¿ 
+	lobbyList
+¿¿ $
+.
+¿¿$ %
+FirstOrDefault
+¿¿% 3
+(
+¿¿3 4
+entry
+¿¿4 9
+=>
+¿¿: <
+entry
+¿¿= B
+.
+¿¿B C
+Value
+¿¿C H
+.
+¿¿H I!
+listOfPlayerInLobby
+¿¿I \
+.
+¿¿\ ]
+Any
+¿¿] `
+(
+¿¿` a
+pl
+¿¿a c
+=>
+¿¿d f
+pl
+¿¿g i
+.
+¿¿i j
+idUser
+¿¿j p
 ==
-¡¡& ($
-idUserCausingException
-¡¡) ?
-)
-¡¡? @
-{
-¬¬ 
-lobbyActions
-√√ $
-.
-√√$ %
-DissolveLobby
-√√% 2
+¿¿q s%
+idUserCausingException¿¿t ä
+)¿¿ä ã
+)¿¿ã å
+.¿¿å ç
+Key¿¿ç ê
+;¿¿ê ë
+if
+¡¡ 
 (
-√√2 3
+¡¡ 
 roomCode
-√√3 ;
-,
-√√; <$
-idUserCausingException
-√√= S
+¡¡ 
+!=
+¡¡ 
+$num
+¡¡ 
 )
-√√S T
-;
-√√T U
-}
-ƒƒ 
-else
-≈≈ 
+¡¡ 
 {
-∆∆ 
-lobbyActions
-«« $
+¬¬ 
+var
+√√ 
+lobby
+√√ 
+=
+√√ #
+GameLobbiesDictionary
+√√ 1
 .
-««$ %
+√√1 2$
+GetSpecificActiveLobby
+√√2 H
+(
+√√H I
+roomCode
+√√I Q
+)
+√√Q R
+;
+√√R S
+if
+ƒƒ 
+(
+ƒƒ 
+lobby
+ƒƒ 
+!=
+ƒƒ 
+null
+ƒƒ !
+)
+ƒƒ! "
+{
+≈≈ 
+if
+∆∆ 
+(
+∆∆ 
+lobby
+∆∆ 
+.
+∆∆ 
+idAdmin
+∆∆ %
+==
+∆∆& ($
+idUserCausingException
+∆∆) ?
+)
+∆∆? @
+{
+«« 
+lobbyActions
+»» $
+.
+»»$ %
+DissolveLobby
+»»% 2
+(
+»»2 3
+roomCode
+»»3 ;
+,
+»»; <$
+idUserCausingException
+»»= S
+)
+»»S T
+;
+»»T U
+}
+…… 
+else
+   
+{
+ÀÀ 
+lobbyActions
+ÃÃ $
+.
+ÃÃ$ %
 
 LeaveLobby
-««% /
+ÃÃ% /
 (
-««/ 0
+ÃÃ/ 0
 roomCode
-««0 8
+ÃÃ0 8
 ,
-««8 9$
+ÃÃ8 9$
 idUserCausingException
-««: P
+ÃÃ: P
 )
-««P Q
+ÃÃP Q
 ;
-««Q R
+ÃÃQ R
 }
-»» 
+ÕÕ 
 gameActions
-…… 
+ŒŒ 
 .
-……  )
+ŒŒ  )
 UnSubscribeFromGameCallBack
-……  ;
+ŒŒ  ;
 (
-……; <
+ŒŒ; <
 roomCode
-……< D
+ŒŒ< D
 ,
-……D E$
+ŒŒD E$
 idUserCausingException
-……F \
+ŒŒF \
 )
-……\ ]
+ŒŒ\ ]
 ;
-……] ^
+ŒŒ] ^
 }
-   
+œœ 
 }
-ÀÀ 
+–– 
 }
-ÃÃ 	
+—— 	
 private
-ŒŒ 
+”” 
 static
-ŒŒ 
+”” 
 string
-ŒŒ 
+”” 
 GetUserNameClient
-ŒŒ /
+”” /
 (
-ŒŒ/ 0
+””/ 0
 int
-ŒŒ0 3
+””0 3
 idUser
-ŒŒ4 :
+””4 :
 )
-ŒŒ: ;
+””: ;
 {
-œœ 	.
+‘‘ 	.
  ConsultInformationImplementation
-–– ,.
+’’ ,.
  consultInformationImplementation
-––- M
+’’- M
 =
-––N O
+’’N O
 new
-––P S
+’’P S
 (
-––S T
+’’S T
 )
-––T U
+’’T U
 ;
-––U V
+’’U V
 string
-—— 
+÷÷ 
 user
-—— 
+÷÷ 
 =
-—— .
+÷÷ .
  consultInformationImplementation
-—— :
+÷÷ :
 .
-——: ;
+÷÷: ;
 ConsultUserById
-——; J
+÷÷; J
 (
-——J K
+÷÷J K
 idUser
-——K Q
+÷÷K Q
 )
-——Q R
+÷÷Q R
 .
-——R S
+÷÷R S
 ObjectSaved
-——S ^
+÷÷S ^
 .
-——^ _
+÷÷^ _
 UserName
-——_ g
+÷÷_ g
 ;
-——g h
+÷÷g h
 return
-““ 
+◊◊ 
 user
-““ 
+◊◊ 
 ;
-““ 
+◊◊ 
 }
-”” 	
+ÿÿ 	
 }
-‘‘ 
-}’’ ±G
+ŸŸ 
+}⁄⁄ ±G
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\DataDictionaries\ActiveGamesDictionary.cs
 	namespace		 	
 JeopardyGame		
@@ -4496,7 +4534,7 @@ Dictionary::  
 ;<<  
 }== 	
 }>> 
-}?? ˚/
+}?? Ä;
 |C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\Helpers\EmailSender.cs
 	namespace 	
 JeopardyGame
@@ -4529,81 +4567,82 @@ Dictionary::  
 { 	
 int 
 resultToReturn 
-; 
-GenericClassServer 
-< 
-int "
->" #
-result$ *
-=+ ,
-new- 0
-GenericClassServer1 C
-<C D
-intD G
->G H
-(H I
-)I J
-;J K
-if 
-( 
-string 
-. 
-IsNullOrEmpty $
-($ %
-email% *
-)* +
-||, .
-string/ 5
-.5 6
-IsNullOrEmpty6 C
-(C D
-subjectD K
-)K L
-||M O
-stringP V
-.V W
-IsNullOrEmptyW d
-(d e
-bodyMessagee p
-)p q
-)q r
-{ 
-return 
-ExceptionDictionary *
-.* +
-NULL_PARAEMETER+ :
-;: ;
-} 
-var 
+; 
+if 
+( 
+string 
+. 
+IsNullOrEmpty $
+($ %
+email% *
+)* +
+||, .
+string/ 5
+.5 6
+IsNullOrEmpty6 C
+(C D
+subjectD K
+)K L
+||M O
+stringP V
+.V W
+IsNullOrEmptyW d
+(d e
+bodyMessagee p
+)p q
+)q r
+{ 
+return 
+ExceptionDictionary *
+.* +
+NULL_PARAEMETER+ :
+;: ;
+} 
+var 
 
-smtpClient 
-= 
-new  
+smtpClient 
+= 
+new  
 
-SmtpClient! +
-(+ ,
-$str, <
-,< =
-$num> A
-)A B
-{ 
-	EnableSsl 
-= 
-true  
-,  !!
-UseDefaultCredentials %
-=& '
-false( -
-,- .
-Credentials 
-= 
-new !
-NetworkCredential" 3
-(3 4
-$str4 L
-,L M
-$strN c
-)c d
+SmtpClient! +
+(+ ,
+
+Properties, 6
+.6 7
+	Resources7 @
+.@ A
+	smptGmailA J
+,J K
+$numL O
+)O P
+{ 
+	EnableSsl 
+= 
+true  
+,  !!
+UseDefaultCredentials %
+=& '
+false( -
+,- .
+Credentials 
+= 
+new !
+NetworkCredential" 3
+(3 4
+
+Properties4 >
+.> ?
+	Resources? H
+.H I
+JeopardyEmailI V
+,V W
+
+PropertiesX b
+.b c
+	Resourcesc l
+.l m
+JeopardyPasswordm }
+)} ~
 } 
 ; 
 try 
@@ -4620,42 +4659,51 @@ smtpClient!! )
 MailMessage!!< G
 (!!G H
 from!!H L
-:!!L M
-$str!!N f
-,!!f g
-to!!h j
-:!!j k
-email!!l q
-,!!q r
-subject!!s z
-,!!z {
-bodyMessage	!!| á
+:!!L M
+
+Properties!!N X
+.!!X Y
+	Resources!!Y b
+.!!b c
+JeopardyEmail!!c p
+,!!p q
+to!!r t
+:!!t u
+email!!v {
+,!!{ |
+subject	!!} Ñ
+,
+!!Ñ Ö
+bodyMessage
+!!Ü ë
 )
-!!á à
+!!ë í
 )
-!!à â
+!!í ì
 ;
-!!â ä
+!!ì î
 if"" 
 ("" 
 success"" 
 !="" 
 null"" #
 )""# $
-{## 
-return$$ 
-ExceptionDictionary$$ .
-.$$. /
-SUCCESFULL_EVENT$$/ ?
-;$$? @
+{## 
+resultToReturn$$ "
+=$$# $
+ExceptionDictionary$$% 8
+.$$8 9
+SUCCESFULL_EVENT$$9 I
+;$$I J
 }&& 
 else'' 
-{(( 
-return)) 
-ExceptionDictionary)) .
-.)). /
-UNSUCCESFULL_EVENT))/ A
-;))A B
+{(( 
+resultToReturn)) "
+=))# $
+ExceptionDictionary))% 8
+.))8 9
+UNSUCCESFULL_EVENT))9 K
+;))K L
 }++ 
 },, 
 catch-- 
@@ -4663,131 +4711,156 @@ smtpClient!! )
 ArgumentNullException-- (
 ex--) +
 )--+ ,
-{.. 
-resultToReturn// 
-=//  
-ExceptionHandler//! 1
-.//1 2)
-HandleExceptionDataAccesLevel//2 O
-(//O P
-result//P V
-,//V W
-ex//X Z
-)//Z [
-.//[ \
-	CodeEvent//\ e
-;//e f
-ExceptionHandler00  
-.00  !
-LogException00! -
-(00- .
-ex00. 0
-,000 1
-ExceptionDictionary002 E
-.00E F
-FATAL_EXCEPTION00F U
-)00U V
-;00V W
-}11 
-catch22 
-(22 '
-ArgumentOutOfRangeException22 .
-ex22/ 1
-)221 2
-{33 
-resultToReturn44 
-=44  
-ExceptionHandler44! 1
-.441 2)
-HandleExceptionDataAccesLevel442 O
-(44O P
-result44P V
-,44V W
-ex44X Z
-)44Z [
-.44[ \
-	CodeEvent44\ e
-;44e f
-ExceptionHandler55  
-.55  !
-LogException55! -
-(55- .
-ex55. 0
-,550 1
-ExceptionDictionary552 E
-.55E F
-FATAL_EXCEPTION55F U
-)55U V
-;55V W
-}66 
-catch77 
-(77 
-FormatException77 "
-ex77# %
-)77% &
-{88 
-resultToReturn99 
-=99  
-ExceptionHandler99! 1
-.991 2)
-HandleExceptionDataAccesLevel992 O
-(99O P
-result99P V
-,99V W
-ex99X Z
-)99Z [
-.99[ \
-	CodeEvent99\ e
-;99e f
-ExceptionHandler::  
-.::  !
-LogException::! -
-(::- .
-ex::. 0
-,::0 1
-ExceptionDictionary::2 E
-.::E F
-FATAL_EXCEPTION::F U
-)::U V
-;::V W
-};; 
-catch<< 
-(<< 
-ArgumentException<< $
-ex<<% '
-)<<' (
-{== 
-resultToReturn>> 
-=>>  
-ExceptionHandler>>! 1
-.>>1 2)
-HandleExceptionDataAccesLevel>>2 O
-(>>O P
-result>>P V
-,>>V W
-ex>>X Z
-)>>Z [
-.>>[ \
-	CodeEvent>>\ e
-;>>e f
-ExceptionHandler??  
-.??  !
-LogException??! -
-(??- .
-ex??. 0
-,??0 1
-ExceptionDictionary??2 E
-.??E F
-FATAL_EXCEPTION??F U
-)??U V
-;??V W
-}@@ 
-catchAA 
-(AA 
-SmtpExceptionAA  
-exAA! #
-)AA# $
-{BB 
+{.. 
+GenericClassServer00 "
+<00" #
+int00# &
+>00& '
+result00( .
+=00/ 0
+new001 4
+GenericClassServer005 G
+<00G H
+int00H K
+>00K L
+(00L M
+)00M N
+;00N O
+resultToReturn11 
+=11  
+ExceptionHandler11! 1
+.111 2)
+HandleExceptionDataAccesLevel112 O
+(11O P
+result11P V
+,11V W
+ex11X Z
+)11Z [
+.11[ \
+	CodeEvent11\ e
+;11e f
+ExceptionHandler22  
+.22  !
+LogException22! -
+(22- .
+ex22. 0
+,220 1
+ExceptionDictionary222 E
+.22E F
+FATAL_EXCEPTION22F U
+)22U V
+;22V W
+}33 
+catch44 
+(44 '
+ArgumentOutOfRangeException44 .
+ex44/ 1
+)441 2
+{55 
+GenericClassServer66 "
+<66" #
+int66# &
+>66& '
+result66( .
+=66/ 0
+new661 4
+GenericClassServer665 G
+<66G H
+int66H K
+>66K L
+(66L M
+)66M N
+;66N O
+resultToReturn77 
+=77  
+ExceptionHandler77! 1
+.771 2)
+HandleExceptionDataAccesLevel772 O
+(77O P
+result77P V
+,77V W
+ex77X Z
+)77Z [
+.77[ \
+	CodeEvent77\ e
+;77e f
+ExceptionHandler88  
+.88  !
+LogException88! -
+(88- .
+ex88. 0
+,880 1
+ExceptionDictionary882 E
+.88E F
+FATAL_EXCEPTION88F U
+)88U V
+;88V W
+}99 
+catch:: 
+(:: 
+FormatException:: "
+ex::# %
+)::% &
+{;; 
+GenericClassServer<< "
+<<<" #
+int<<# &
+><<& '
+result<<( .
+=<</ 0
+new<<1 4
+GenericClassServer<<5 G
+<<<G H
+int<<H K
+><<K L
+(<<L M
+)<<M N
+;<<N O
+resultToReturn== 
+===  
+ExceptionHandler==! 1
+.==1 2)
+HandleExceptionDataAccesLevel==2 O
+(==O P
+result==P V
+,==V W
+ex==X Z
+)==Z [
+.==[ \
+	CodeEvent==\ e
+;==e f
+ExceptionHandler>>  
+.>>  !
+LogException>>! -
+(>>- .
+ex>>. 0
+,>>0 1
+ExceptionDictionary>>2 E
+.>>E F
+FATAL_EXCEPTION>>F U
+)>>U V
+;>>V W
+}?? 
+catch@@ 
+(@@ 
+ArgumentException@@ $
+ex@@% '
+)@@' (
+{AA 
+GenericClassServerBB "
+<BB" #
+intBB# &
+>BB& '
+resultBB( .
+=BB/ 0
+newBB1 4
+GenericClassServerBB5 G
+<BBG H
+intBBH K
+>BBK L
+(BBL M
+)BBM N
+;BBN O
 resultToReturnCC 
 =CC  
 ExceptionHandlerCC! 1
@@ -4812,13 +4885,58 @@ smtpClient!! )
 FATAL_EXCEPTIONDDF U
 )DDU V
 ;DDV W
-}EE 
-returnFF 
-resultToReturnFF !
-;FF! "
-}GG 	
-}II 
-}JJ Û
+}EE 
+catchFF 
+(FF 
+SmtpExceptionFF  
+exFF! #
+)FF# $
+{GG 
+GenericClassServerHH "
+<HH" #
+intHH# &
+>HH& '
+resultHH( .
+=HH/ 0
+newHH1 4
+GenericClassServerHH5 G
+<HHG H
+intHHH K
+>HHK L
+(HHL M
+)HHM N
+;HHN O
+resultToReturnII 
+=II  
+ExceptionHandlerII! 1
+.II1 2)
+HandleExceptionDataAccesLevelII2 O
+(IIO P
+resultIIP V
+,IIV W
+exIIX Z
+)IIZ [
+.II[ \
+	CodeEventII\ e
+;IIe f
+ExceptionHandlerJJ  
+.JJ  !
+LogExceptionJJ! -
+(JJ- .
+exJJ. 0
+,JJ0 1
+ExceptionDictionaryJJ2 E
+.JJE F
+FATAL_EXCEPTIONJJF U
+)JJU V
+;JJV W
+}KK 
+returnLL 
+resultToReturnLL !
+;LL! "
+}MM 	
+}OO 
+}PP Û
 àC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\IChatForTeams.cs
 	namespace		 	
 JeopardyGame		
@@ -5545,7 +5663,7 @@ numReports33" ,
 )<<A B
 ;<<B C
 }== 
-}?? ê9
+}?? è9
 áC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\IGameActions.cs
 	namespace
 
@@ -5613,10 +5731,10 @@ numReports33" ,
 int !
 roomCode" *
 ,* +
-int, /
-idIUser0 7
-)7 8
-;8 9
+int, /
+idUser0 6
+)6 7
+;7 8
 } 
 [ 
 ServiceContract 
@@ -6019,7 +6137,7 @@ IHeartBeat 
 ) 
 ; 
 } 
-} ê7
+} ó7
 àC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\ILobbyActions.cs
 	namespace
 
@@ -6181,10 +6299,10 @@ LeaveLobby(( 
 int(( 
 roomCode(( $
 ,(($ %
-int((& )
-idUser((* 0
-)((0 1
-;((1 2
+int((& )
+idUserLeaving((* 7
+)((7 8
+;((8 9
 [** 	
 OperationContract**	 
 (** 
@@ -7772,7 +7890,7 @@ ComVisible 
 ($$ 
 $str$$ (
 )$$( )
-]$$) *ÿî
+]$$) *Óî
 ôC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\ChatForTeamsImplementation.cs
 	namespace
 
@@ -7808,15 +7926,16 @@ ComVisible 
 $num. /
 ;/ 0
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-objectLock (
-=) *
-new+ .
-(. /
-)/ 0
-;0 1
+objectLock' 1
+=2 3
+new4 7
+(7 8
+)8 9
+;9 :
 public 
 void 
 RegisterForTeamChat '
@@ -9043,7 +9162,7 @@ idTeamMate
 »» 	
 }
 …… 
-}ÀÀ Á≥
+}ÀÀ ù≥
 õC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\ConsultFriendsImplementation.cs
 	namespace 	
 JeopardyGame
@@ -10625,14 +10744,10 @@ NOT_STATUS '
 ÀÀI J$
 listOfNotPlayerFriends
 ÀÀJ `
-,
-ÀÀ` a
-playerConsulted
-ÀÀb q
 )
-ÀÀq r
+ÀÀ` a
 ;
-ÀÀr s
+ÀÀa b
 break
 ÃÃ 
 ;
@@ -10987,13 +11102,15 @@ NOT_STATUS
 else
 ÏÏ 
 {
-ÌÌ 
-return
-ÓÓ 
+ÌÌ '
+basicInformationOfFriends
+ÓÓ 1
+=
+ÓÓ2 3
 null
-ÓÓ #
+ÓÓ4 8
 ;
-ÓÓ# $
+ÓÓ8 9
 }
 ÔÔ 
 }
@@ -11381,13 +11498,15 @@ NOT_STATUS
 else
 ëë 
 {
-íí 
-return
-ìì 
+íí &
+friendsOfUserInformation
+ìì 0
+=
+ìì1 2
 null
-ìì #
+ìì3 7
 ;
-ìì# $
+ìì7 8
 }
 îî 
 }
@@ -11426,14 +11545,8 @@ NOT_STATUS
 ôôL M#
 listOfFriendsRegistry
 ôôN c
-,
-ôôc d
-Player
-ôôe k
-playerConsulted
-ôôl {
 )
-ôô{ |
+ôôc d
 {
 öö 	.
  ConsultInformationImplementation
@@ -11650,13 +11763,15 @@ NOT_STATUS
 else
 ©© 
 {
-™™ 
-return
-´´ 
+™™ ,
+ListUsersNotFriendsInformation
+´´ 2
+=
+´´3 4
 null
-´´ 
+´´5 9
 ;
-´´  
+´´9 :
 }
 ¨¨ 
 }
@@ -11670,290 +11785,282 @@ NOT_STATUS
 }
 ØØ 	
 private
-±± 
+≤≤ 
 int
-±± 
+≤≤ 
 GetFriendStatus
-±± #
+≤≤ #
 (
-±±# $
+≤≤# $
 int
-±±$ '
+≤≤$ '
 idFriend
-±±( 0
+≤≤( 0
 )
-±±0 1
+≤≤0 1
 {
-≤≤ 	.
+≥≥ 	.
  ConsultInformationImplementation
-≥≥ ,)
+¥¥ ,)
 consultInformationOfFriends
-≥≥- H
+¥¥- H
 =
-≥≥I J
+¥¥I J
 new
-≥≥K N.
+¥¥K N.
  ConsultInformationImplementation
-≥≥O o
+¥¥O o
 (
-≥≥o p
+¥¥o p
 )
-≥≥p q
+¥¥p q
 ;
-≥≥q r
+¥¥q r
 var
-¥¥ 
-userPOJO
-¥¥ 
-=
-¥¥ )
-consultInformationOfFriends
-¥¥ 6
-.
-¥¥6 7#
-ConsultUserByIdPlayer
-¥¥7 L
-(
-¥¥L M
-idFriend
-¥¥M U
-)
-¥¥U V
-;
-¥¥V W
-if
-µµ 
-(
-µµ 
+µµ 
 userPOJO
 µµ 
-.
-µµ 
-	CodeEvent
-µµ "
-==
-µµ# %!
-ExceptionDictionary
-µµ& 9
-.
-µµ9 :
-SUCCESFULL_EVENT
-µµ: J
-)
-µµJ K
-{
-∂∂ 
-var
-∑∑ )
-channelSavedForFriendStatus
-∑∑ /
 =
-∑∑0 1#
-ActiveUsersDictionary
-∑∑2 G
-.
-∑∑G H*
-GetChannelCallBackActiveUser
-∑∑H d
-(
-∑∑d e
-userPOJO
-∑∑e m
-.
-∑∑m n
-ObjectSaved
-∑∑n y
-.
-∑∑y z
-IdUser∑∑z Ä
-)∑∑Ä Å
-;∑∑Å Ç
-if
-∏∏ 
-(
-∏∏ )
-channelSavedForFriendStatus
-∏∏ /
-!=
-∏∏0 2
-null
-∏∏3 7
-)
-∏∏7 8
-{
-ππ 
-return
-∫∫ 
-PLAYING
-∫∫ "
-;
-∫∫" #
-}
-ªª 
-}
-ºº 
-if
-ΩΩ 
-(
-ΩΩ 
-userPOJO
-ΩΩ 
-.
-ΩΩ 
-	CodeEvent
-ΩΩ "
-==
-ΩΩ# %!
-ExceptionDictionary
-ΩΩ& 9
-.
-ΩΩ9 :
-SUCCESFULL_EVENT
-ΩΩ: J
-)
-ΩΩJ K
-{
-ææ 
-var
-øø )
-channelSavedForFriendStatus
-øø /
-=
-øø0 1
-LivingClients
-øø2 ?
-.
-øø? @
-	GetClient
-øø@ I
-(
-øøI J
-userPOJO
-øøJ R
-.
-øøR S
-ObjectSaved
-øøS ^
-.
-øø^ _
-UserName
-øø_ g
-)
-øøg h
-;
-øøh i
-if
-¿¿ 
-(
-¿¿ )
-channelSavedForFriendStatus
-¿¿ /
-!=
-¿¿0 2
-null
-¿¿3 7
-)
-¿¿7 8
-{
-¡¡ 
-return
-¬¬ 
-ACTIVE
-¬¬ !
-;
-¬¬! "
-}
-√√ 
-}
-ƒƒ 
-var
-≈≈ 
-
-playerPojo
-≈≈ 
-=
-≈≈ )
+µµ )
 consultInformationOfFriends
-≈≈ 8
+µµ 6
 .
-≈≈8 9
-ConsultPlayerById
-≈≈9 J
+µµ6 7#
+ConsultUserByIdPlayer
+µµ7 L
 (
-≈≈J K
+µµL M
 idFriend
-≈≈K S
+µµM U
 )
-≈≈S T
+µµU V
 ;
-≈≈T U
+µµV W
 if
-∆∆ 
+∂∂ 
 (
-∆∆ 
+∂∂ 
+userPOJO
+∂∂ 
+.
+∂∂ 
+	CodeEvent
+∂∂ "
+==
+∂∂# %!
+ExceptionDictionary
+∂∂& 9
+.
+∂∂9 :
+SUCCESFULL_EVENT
+∂∂: J
+)
+∂∂J K
+{
+∑∑ 
+var
+∏∏ )
+channelSavedForFriendStatus
+∏∏ /
+=
+∏∏0 1#
+ActiveUsersDictionary
+∏∏2 G
+.
+∏∏G H*
+GetChannelCallBackActiveUser
+∏∏H d
+(
+∏∏d e
+userPOJO
+∏∏e m
+.
+∏∏m n
+ObjectSaved
+∏∏n y
+.
+∏∏y z
+IdUser∏∏z Ä
+)∏∏Ä Å
+;∏∏Å Ç
+if
+ππ 
+(
+ππ )
+channelSavedForFriendStatus
+ππ /
+!=
+ππ0 2
+null
+ππ3 7
+)
+ππ7 8
+{
+∫∫ 
+return
+ªª 
+PLAYING
+ªª "
+;
+ªª" #
+}
+ºº 
+}
+ΩΩ 
+if
+ææ 
+(
+ææ 
+userPOJO
+ææ 
+.
+ææ 
+	CodeEvent
+ææ "
+==
+ææ# %!
+ExceptionDictionary
+ææ& 9
+.
+ææ9 :
+SUCCESFULL_EVENT
+ææ: J
+)
+ææJ K
+{
+øø 
+var
+¿¿ )
+channelSavedForFriendStatus
+¿¿ /
+=
+¿¿0 1
+LivingClients
+¿¿2 ?
+.
+¿¿? @
+	GetClient
+¿¿@ I
+(
+¿¿I J
+userPOJO
+¿¿J R
+.
+¿¿R S
+ObjectSaved
+¿¿S ^
+.
+¿¿^ _
+UserName
+¿¿_ g
+)
+¿¿g h
+;
+¿¿h i
+if
+¡¡ 
+(
+¡¡ )
+channelSavedForFriendStatus
+¡¡ /
+!=
+¡¡0 2
+null
+¡¡3 7
+)
+¡¡7 8
+{
+¬¬ 
+return
+√√ 
+ACTIVE
+√√ !
+;
+√√! "
+}
+ƒƒ 
+}
+≈≈ 
+var
+∆∆ 
 
 playerPojo
 ∆∆ 
+=
+∆∆ )
+consultInformationOfFriends
+∆∆ 8
 .
-∆∆ 
-	CodeEvent
-∆∆ $
-==
-∆∆% '!
-ExceptionDictionary
-∆∆( ;
-.
-∆∆; <
-SUCCESFULL_EVENT
-∆∆< L
-)
-∆∆L M
-{
-«« 
-if
-»» 
+∆∆8 9
+ConsultPlayerById
+∆∆9 J
 (
-»» 
+∆∆J K
+idFriend
+∆∆K S
+)
+∆∆S T
+;
+∆∆T U
+if
+«« 
+(
+«« 
 
 playerPojo
-»» 
+«« 
 .
-»» 
-ObjectSaved
-»» *
-.
-»»* +
-	NoReports
-»»+ 4
+«« 
+	CodeEvent
+«« $
 ==
-»»5 7
+««% '!
+ExceptionDictionary
+««( ;
+.
+««; <
+SUCCESFULL_EVENT
+««< L
+&&
+««M O
+
+playerPojo
+««P Z
+.
+««Z [
+ObjectSaved
+««[ f
+.
+««f g
+	NoReports
+««g p
+==
+««q s
 $num
-»»8 9
+««t u
 )
-»»9 :
+««u v
 {
-…… 
+»» 
 return
-   
+…… 
 Banned
-   !
+…… 
 ;
-  ! "
+…… 
 }
-ÀÀ 
-}
-ÃÃ 
+   
 return
-ÕÕ 
+ÀÀ 
 INACTIVE
-ÕÕ 
+ÀÀ 
 ;
-ÕÕ 
+ÀÀ 
 }
-ŒŒ 	
+ÃÃ 	
 }
-–– 
-}““ ›Ö
+ŒŒ 
+}–– ›Ö
 üC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\ConsultInformationImplementation.cs
 	namespace 	
 JeopardyGame
@@ -16011,7 +16118,7 @@ $SentEmailConfirmationToCreateAccount! E
 ‡‡ 	
 }
 ‰‰ 
-}ÂÂ ◊ƒ
+}ÂÂ °≈
 °C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\FriendManagerActionsImplementation.cs
 	namespace
 
@@ -16062,15 +16169,16 @@ $SentEmailConfirmationToCreateAccount! E
 $num- .
 ;. /
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-objectLock (
-=) *
-new+ .
-(. /
-)/ 0
-;0 1
+objectLock' 1
+=2 3
+new4 7
+(7 8
+)8 9
+;9 :
 public 
 GenericClass 
 < 
@@ -16517,15 +16625,16 @@ objectLockEE 
 $numoo5 6
 ;oo6 7
 privatepp 
-staticpp 
-Objectpp 
+staticpp 
+readonlypp 
+Objectpp  &
 
-objectLockpp (
-=pp) *
-newpp+ .
-(pp. /
-)pp/ 0
-;pp0 1
+objectLockpp' 1
+=pp2 3
+newpp4 7
+(pp7 8
+)pp8 9
+;pp9 :
 publicrr 
 voidrr '
 UnregisterFriendManagerUserrr /
@@ -17150,47 +17259,47 @@ banerUsers
 (
 ∏∏, -
 int
-∏∏- 0
-	idNewUser
-∏∏1 :
+∏∏- 0
+idNewPlayer
+∏∏1 <
 ,
-∏∏: ;
+∏∏< =
 string
-∏∏< B
+∏∏> D
 userName
-∏∏C K
+∏∏E M
 )
-∏∏K L
+∏∏M N
 {
 ππ 	
 if
 ∫∫ 
 (
-∫∫ 
-	idNewUser
-∫∫ 
+∫∫ 
+idNewPlayer
+∫∫ 
 !=
-∫∫ 
+∫∫ 
 $num
-∫∫ 
+∫∫ 
 &&
-∫∫  
+∫∫  "
 !
-∫∫! "
+∫∫# $
 string
-∫∫" (
+∫∫$ *
 .
-∫∫( )
+∫∫* +
 IsNullOrEmpty
-∫∫) 6
+∫∫+ 8
 (
-∫∫6 7
+∫∫8 9
 userName
-∫∫7 ?
+∫∫9 A
 )
-∫∫? @
+∫∫A B
 )
-∫∫@ A
+∫∫B C
 {
 ªª 
 var
@@ -17228,21 +17337,21 @@ banerUsers
 NotifyPlayersAboutNewPlayer
 øø /
 (
-øø/ 0
-	idNewUser
-øø0 9
+øø/ 0
+idNewPlayer
+øø0 ;
 ,
-øø9 :
+øø; <
 userName
-øø; C
+øø= E
 ,
-øøC D
+øøE F
 players
-øøE L
+øøG N
 )
-øøL M
+øøN O
 ;
-øøM N
+øøO P
 }
 ¿¿ 
 }
@@ -17632,24 +17741,26 @@ Dictionary
 private
 ÏÏ 
 static
-ÏÏ 
-object
-ÏÏ 
+ÏÏ 
+readonly
+ÏÏ 
+Object
+ÏÏ  &
 
 lockObject
-ÏÏ (
+ÏÏ' 1
 =
-ÏÏ) *
+ÏÏ2 3
 new
-ÏÏ+ .
-object
-ÏÏ/ 5
+ÏÏ4 7
+Object
+ÏÏ8 >
 (
-ÏÏ5 6
+ÏÏ> ?
 )
-ÏÏ6 7
+ÏÏ? @
 ;
-ÏÏ7 8
+ÏÏ@ A
 public
 ÓÓ 
 void
@@ -20566,999 +20677,985 @@ lockObject
 ıı 	
 }
 ¯¯ 
-}˘˘ ÜÇ
+}˘˘ ¿»
 òC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\GameActionsImplementation.cs
-	namespace 	
-JeopardyGame
+	namespace 	
+JeopardyGame
  
-. 
-Service 
-. !
-ServiceImplementation 4
-{ 
-public 
+. 
+Service 
+. !
+ServiceImplementation 4
+{ 
+public 
 
-partial 
-class %
-GameActionsImplementation 2
-:3 4
-IGameActions5 A
-{ 
-private 
-static 
-object 
+partial 
+class %
+GameActionsImplementation 2
+:3 4
+IGameActions5 A
+{ 
+private 
+static 
+readonly 
+object  &
 
-lockObject (
-=) *
-new+ .
-object/ 5
-(5 6
-)6 7
-;7 8
-public 
-int 
-RenewGameCallBack $
-($ %
-int% (
-roomCode) 1
-,1 2
-int3 6
-idUser7 =
-)= >
-{ 	
-int 
-resultToReturn 
-=  
-ExceptionDictionary! 4
-.4 5
-UNSUCCESFULL_EVENT5 G
-;G H
-lock 
-( 
+lockObject' 1
+=2 3
+new4 7
+object8 >
+(> ?
+)? @
+;@ A
+public 
+int 
+RenewGameCallBack $
+($ %
+int% (
+roomCode) 1
+,1 2
+int3 6
+idUser7 =
+)= >
+{ 	
+int 
+resultToReturn 
+=  
+ExceptionDictionary! 4
+.4 5
+UNSUCCESFULL_EVENT5 G
+;G H
+lock 
+( 
 
-lockObject 
-) 
-{ 
-try 
-{ 
-if 
-( 
-roomCode 
-!=  "
-$num# $
-&&% '
-idUser( .
-!=/ 1
-$num2 3
-)3 4
-{ !
-ActiveGamesDictionary -
-.- .
-RenewGameCallBack. ?
-(? @
-roomCode@ H
-,H I
-idUserJ P
-,P Q
-OperationContextR b
-.b c
-Currentc j
-)j k
-;k l
-resultToReturn &
-=' (
-ExceptionDictionary) <
-.< =
-SUCCESFULL_EVENT= M
-;M N
-} 
-} 
-catch   
-(   /
-#CommunicationObjectFaultedException   :
-ex  ; =
-)  = >
-{!!  
-ChannelAdministrator"" (
-.""( )$
-HandleCommunicationIssue"") A
-(""A B
-idUser""B H
-,""H I 
-ChannelAdministrator""J ^
-.""^ _
-GAME_EXCEPTION""_ m
-)""m n
-;""n o
-ExceptionHandler## $
-.##$ %
-LogException##% 1
-(##1 2
-ex##2 4
-,##4 5
-ExceptionDictionary##6 I
-.##I J
-FATAL_EXCEPTION##J Y
-)##Y Z
-;##Z [
-}$$ 
-catch%% 
-(%% 
-TimeoutException%% '
-ex%%( *
-)%%* +
-{&&  
-ChannelAdministrator'' (
-.''( )$
-HandleCommunicationIssue'') A
-(''A B
-idUser''B H
-,''H I 
-ChannelAdministrator''J ^
-.''^ _
-GAME_EXCEPTION''_ m
-)''m n
-;''n o
-ExceptionHandler(( $
-.(($ %
-LogException((% 1
-(((1 2
-ex((2 4
-,((4 5
-ExceptionDictionary((6 I
-.((I J
-FATAL_EXCEPTION((J Y
-)((Y Z
-;((Z [
-})) 
-catch** 
-(** "
-CommunicationException** -
-ex**. 0
-)**0 1
-{++  
-ChannelAdministrator,, (
-.,,( )$
-HandleCommunicationIssue,,) A
-(,,A B
-idUser,,B H
-,,,H I 
-ChannelAdministrator,,J ^
-.,,^ _
-GAME_EXCEPTION,,_ m
-),,m n
-;,,n o
-ExceptionHandler-- $
-.--$ %
-LogException--% 1
-(--1 2
-ex--2 4
-,--4 5
-ExceptionDictionary--6 I
-.--I J
-FATAL_EXCEPTION--J Y
-)--Y Z
-;--Z [
-}.. 
-catch// 
-(// %
-InvalidOperationException// 0
-ex//1 3
-)//3 4
-{00  
-ChannelAdministrator11 (
-.11( )$
-HandleCommunicationIssue11) A
-(11A B
-idUser11B H
-,11H I 
-ChannelAdministrator11J ^
-.11^ _
-GAME_EXCEPTION11_ m
-)11m n
-;11n o
-ExceptionHandler22 $
-.22$ %
-LogException22% 1
-(221 2
-ex222 4
-,224 5
-ExceptionDictionary226 I
-.22I J
-FATAL_EXCEPTION22J Y
-)22Y Z
-;22Z [
-}33 
-}44 
-return55 
-resultToReturn55 !
-;55! "
-}66 	
-public88 
-void88 #
-SubscribeToGameCallBack88 +
-(88+ ,
-int88, /
-roomCode880 8
-,888 9
-int88: =
-idUserSubscribing88> O
-,88O P
-int88Q T
-idAvatar88U ]
-)88] ^
-{99 	
-lock:: 
-(:: 
+lockObject 
+) 
+{ 
+try 
+{ 
+if 
+( 
+roomCode 
+!=  "
+$num# $
+&&% '
+idUser( .
+!=/ 1
+$num2 3
+)3 4
+{ !
+ActiveGamesDictionary -
+.- .
+RenewGameCallBack. ?
+(? @
+roomCode@ H
+,H I
+idUserJ P
+,P Q
+OperationContextR b
+.b c
+Currentc j
+)j k
+;k l
+resultToReturn &
+=' (
+ExceptionDictionary) <
+.< =
+SUCCESFULL_EVENT= M
+;M N
+} 
+}   
+catch!! 
+(!! /
+#CommunicationObjectFaultedException!! :
+ex!!; =
+)!!= >
+{""  
+ChannelAdministrator## (
+.##( )$
+HandleCommunicationIssue##) A
+(##A B
+idUser##B H
+,##H I 
+ChannelAdministrator##J ^
+.##^ _
+GAME_EXCEPTION##_ m
+)##m n
+;##n o
+ExceptionHandler$$ $
+.$$$ %
+LogException$$% 1
+($$1 2
+ex$$2 4
+,$$4 5
+ExceptionDictionary$$6 I
+.$$I J
+FATAL_EXCEPTION$$J Y
+)$$Y Z
+;$$Z [
+}%% 
+catch&& 
+(&& 
+TimeoutException&& '
+ex&&( *
+)&&* +
+{''  
+ChannelAdministrator(( (
+.((( )$
+HandleCommunicationIssue(() A
+(((A B
+idUser((B H
+,((H I 
+ChannelAdministrator((J ^
+.((^ _
+GAME_EXCEPTION((_ m
+)((m n
+;((n o
+ExceptionHandler)) $
+.))$ %
+LogException))% 1
+())1 2
+ex))2 4
+,))4 5
+ExceptionDictionary))6 I
+.))I J
+FATAL_EXCEPTION))J Y
+)))Y Z
+;))Z [
+}** 
+catch++ 
+(++ "
+CommunicationException++ -
+ex++. 0
+)++0 1
+{,,  
+ChannelAdministrator-- (
+.--( )$
+HandleCommunicationIssue--) A
+(--A B
+idUser--B H
+,--H I 
+ChannelAdministrator--J ^
+.--^ _
+GAME_EXCEPTION--_ m
+)--m n
+;--n o
+ExceptionHandler.. $
+...$ %
+LogException..% 1
+(..1 2
+ex..2 4
+,..4 5
+ExceptionDictionary..6 I
+...I J
+FATAL_EXCEPTION..J Y
+)..Y Z
+;..Z [
+}// 
+catch00 
+(00 %
+InvalidOperationException00 0
+ex001 3
+)003 4
+{11  
+ChannelAdministrator22 (
+.22( )$
+HandleCommunicationIssue22) A
+(22A B
+idUser22B H
+,22H I 
+ChannelAdministrator22J ^
+.22^ _
+GAME_EXCEPTION22_ m
+)22m n
+;22n o
+ExceptionHandler33 $
+.33$ %
+LogException33% 1
+(331 2
+ex332 4
+,334 5
+ExceptionDictionary336 I
+.33I J
+FATAL_EXCEPTION33J Y
+)33Y Z
+;33Z [
+}44 
+}55 
+return66 
+resultToReturn66 !
+;66! "
+}77 	
+public99 
+void99 #
+SubscribeToGameCallBack99 +
+(99+ ,
+int99, /
+roomCode990 8
+,998 9
+int99: =
+idUserSubscribing99> O
+,99O P
+int99Q T
+idAvatar99U ]
+)99] ^
+{:: 	
+lock;; 
+(;; 
 
-lockObject:: 
-):: 
-{;; 
-var<< 
-lobbyOfGame<< 
-=<<  !!
-GameLobbiesDictionary<<" 7
-.<<7 8"
-GetSpecificActiveLobby<<8 N
-(<<N O
-roomCode<<O W
-)<<W X
-;<<X Y
-var== $
-playerOnLobbySubscribing== ,
-===- .
-lobbyOfGame==/ :
-.==: ;
-listOfPlayerInLobby==; N
-.==N O
-FirstOrDefault==O ]
-(==] ^
-u==^ _
-=>==` b
-u==c d
-.==d e
-idUser==e k
-====l n
-idUserSubscribing	==o Ä
-)
-==Ä Å
-;
-==Å Ç
-try>> 
-{>> 
-if?? 
-(?? $
-playerOnLobbySubscribing?? 0
-!=??1 3
-null??4 8
-)??8 9
-{@@ 
-PlayerPlayingInGameAA +
-playerJoiningGameAA, =
-=AA> ?
-newAA@ C
-(AAC D
-)AAD E
-{BB 
-IdUserCC "
-=CC# $
-idUserSubscribingCC% 6
-,CC6 7
-IdPlayerDD $
-=DD% &$
-playerOnLobbySubscribingDD' ?
-.DD? @
-idPlayerDD@ H
-,DDH I
-UserNameEE $
+lockObject;; 
+);; 
+{<< 
+var== 
+lobbyOfGame== 
+===  !!
+GameLobbiesDictionary==" 7
+.==7 8"
+GetSpecificActiveLobby==8 N
+(==N O
+roomCode==O W
+)==W X
+;==X Y
+var>> $
+playerOnLobbySubscribing>> ,
+=>>- .
+lobbyOfGame>>/ :
+.>>: ;
+listOfPlayerInLobby>>; N
+.>>N O
+Find>>O S
+(>>S T
+u>>T U
+=>>>V X
+u>>Y Z
+.>>Z [
+idUser>>[ a
+==>>b d
+idUserSubscribing>>e v
+)>>v w
+;>>w x
+try?? 
+{?? 
+if@@ 
+(@@ $
+playerOnLobbySubscribing@@ 0
+!=@@1 3
+null@@4 8
+)@@8 9
+{AA 
+PlayerPlayingInGameBB +
+playerJoiningGameBB, =
+=BB> ?
+newBB@ C
+(BBC D
+)BBD E
+{CC 
+IdUserDD "
+=DD# $
+idUserSubscribingDD% 6
+,DD6 7
+IdPlayerEE $
 =EE% &$
 playerOnLobbySubscribingEE' ?
 .EE? @
-userNameEE@ H
-,EEH I 
-NumberOfPlayerInGameFF 0
-=FF1 2$
-playerOnLobbySubscribingFF3 K
-.FFK L!
-numberOfPlayerInLobbyFFL a
-,FFa b
-SideTeamGG $
-=GG% &$
-playerOnLobbySubscribingGG' ?
-.GG? @
-sideTeamGG@ H
-,GGH I
-TurnOfPlayerHH (
-=HH) *$
-playerOnLobbySubscribingHH+ C
-.HHC D!
-numberOfPlayerInLobbyHHD Y
-,HHY Z
-DidBetII "
-=II# $
-falseII% *
-,II* +!
-DidAnswerLastQuestionJJ 1
-=JJ2 3
-falseJJ4 9
-,JJ9 :
-FinalPointsKK '
-=KK( )
-$numKK* +
-,KK+ ,
-IdAvatarLL $
-=LL% &
-idAvatarLL' /
-,LL/ 0
-gameCallbackChannelMM /
-=MM0 1
-OperationContextMM2 B
-.MMB C
-CurrentMMC J
-}NN 
-;NN 
-ifPP 
-(PP !
-ActiveGamesDictionaryPP 1
-.PP1 2!
-GetSpecificActiveGamePP2 G
-(PPG H
-roomCodePPH P
-)PPP Q
-==PPR T
-nullPPU Y
-)PPY Z
-{QQ 
-ListRR  
-<RR  !
-PlayerPlayingInGameRR! 4
->RR4 5
-playersPlayingRR6 D
-=RRE F
-newRRG J
-(RRJ K
-)RRK L
-{SS 
-playerJoiningGameTT  1
-}UU 
-;UU !
-ActiveGamesDictionaryVV 1
-.VV1 2(
-RegisterNewGameIndDictionaryVV2 N
-(VVN O
-roomCodeVVO W
-,VVW X
-playersPlayingVVY g
-)VVg h
-;VVh i
-}WW 
-elseXX 
-{YY 
-varZZ 
-activeCurrentGameZZ  1
-=ZZ2 3!
-ActiveGamesDictionaryZZ4 I
-.ZZI J!
-GetSpecificActiveGameZZJ _
-(ZZ_ `
-roomCodeZZ` h
-)ZZh i
-;ZZi j
-activeCurrentGame[[ -
-.[[- .
-Add[[. 1
-([[1 2
-playerJoiningGame[[2 C
-)[[C D
-;[[D E
-}\\ 
-var]] 
-activeGameStatus]] ,
-=]]- .!
-ActiveGamesDictionary]]/ D
-.]]D E!
-GetSpecificActiveGame]]E Z
-(]]Z [
-roomCode]][ c
-)]]c d
-;]]d e
-if^^ 
-(^^ 
+idPlayerEE@ H
+,EEH I
+UserNameFF $
+=FF% &$
+playerOnLobbySubscribingFF' ?
+.FF? @
+userNameFF@ H
+,FFH I 
+NumberOfPlayerInGameGG 0
+=GG1 2$
+playerOnLobbySubscribingGG3 K
+.GGK L!
+numberOfPlayerInLobbyGGL a
+,GGa b
+SideTeamHH $
+=HH% &$
+playerOnLobbySubscribingHH' ?
+.HH? @
+sideTeamHH@ H
+,HHH I
+TurnOfPlayerII (
+=II) *$
+playerOnLobbySubscribingII+ C
+.IIC D!
+numberOfPlayerInLobbyIID Y
+,IIY Z
+DidBetJJ "
+=JJ# $
+falseJJ% *
+,JJ* +!
+DidAnswerLastQuestionKK 1
+=KK2 3
+falseKK4 9
+,KK9 :
+FinalPointsLL '
+=LL( )
+$numLL* +
+,LL+ ,
+IdAvatarMM $
+=MM% &
+idAvatarMM' /
+,MM/ 0
+gameCallbackChannelNN /
+=NN0 1
+OperationContextNN2 B
+.NNB C
+CurrentNNC J
+}OO 
+;OO 
+ifQQ 
+(QQ !
+ActiveGamesDictionaryQQ 1
+.QQ1 2!
+GetSpecificActiveGameQQ2 G
+(QQG H
+roomCodeQQH P
+)QQP Q
+==QQR T
+nullQQU Y
+)QQY Z
+{RR 
+ListSS  
+<SS  !
+PlayerPlayingInGameSS! 4
+>SS4 5
+playersPlayingSS6 D
+=SSE F
+newSSG J
+(SSJ K
+)SSK L
+{TT 
+playerJoiningGameUU  1
+}VV 
+;VV !
+ActiveGamesDictionaryWW 1
+.WW1 2(
+RegisterNewGameIndDictionaryWW2 N
+(WWN O
+roomCodeWWO W
+,WWW X
+playersPlayingWWY g
+)WWg h
+;WWh i
+}XX 
+elseYY 
+{ZZ 
+var[[ 
+activeCurrentGame[[  1
+=[[2 3!
+ActiveGamesDictionary[[4 I
+.[[I J!
+GetSpecificActiveGame[[J _
+([[_ `
+roomCode[[` h
+)[[h i
+;[[i j
+activeCurrentGame\\ -
+.\\- .
+Add\\. 1
+(\\1 2
+playerJoiningGame\\2 C
+)\\C D
+;\\D E
+}]] 
+var^^ 
 activeGameStatus^^ ,
-.^^, -
-Count^^- 2
-==^^3 5
-$num^^6 7
-&&^^8 :
-activeGameStatus^^; K
-.^^K L
-Any^^L O
-(^^O P
-pl^^P R
-=>^^S U
-pl^^V X
-.^^X Y
-SideTeam^^Y a
-==^^b d
-$num^^e f
-)^^f g
-)^^g h
-{__ !
-ActiveGamesDictionary`` 1
-.``1 2"
-RearrangeTurnsForTeams``2 H
-(``H I
-roomCode``I Q
-)``Q R
-;``R S
-}aa 
-varbb 
-playersPlayinStatusbb /
-=bb0 1!
-ActiveGamesDictionarybb2 G
-.bbG H!
-GetSpecificActiveGamebbH ]
-(bb] ^
-roomCodebb^ f
-)bbf g
-;bbg h
-ifcc 
-(cc 
-lobbyOfGamecc '
-.cc' (
-listOfPlayerInLobbycc( ;
-.cc; <
-Countcc< A
-==ccB D
-playersPlayinStatusccE X
-.ccX Y
-CountccY ^
-)cc^ _
-{dd "
-NotifyEveryBodyIsReadyee 2
-(ee2 3
-playersPlayinStatusee3 F
-)eeF G
-;eeG H
-}ff 
-}gg 
-}hh 
-catchii 
-(ii /
-#CommunicationObjectFaultedExceptionii :
-exii; =
-)ii= >
-{jj  
-ChannelAdministratorkk (
-.kk( )$
-HandleCommunicationIssuekk) A
-(kkA B
-idUserSubscribingkkB S
-,kkS T 
-ChannelAdministratorkkU i
-.kki j
-GAME_EXCEPTIONkkj x
-)kkx y
-;kky z
-ExceptionHandlerll $
-.ll$ %
-LogExceptionll% 1
-(ll1 2
-exll2 4
-,ll4 5
-ExceptionDictionaryll6 I
-.llI J
-FATAL_EXCEPTIONllJ Y
-)llY Z
-;llZ [
-}mm 
-catchnn 
-(nn 
-TimeoutExceptionnn '
-exnn( *
-)nn* +
-{oo  
-ChannelAdministratorpp (
-.pp( )$
-HandleCommunicationIssuepp) A
-(ppA B
-idUserSubscribingppB S
-,ppS T 
-ChannelAdministratorppU i
-.ppi j
-GAME_EXCEPTIONppj x
-)ppx y
-;ppy z
-ExceptionHandlerqq $
-.qq$ %
-LogExceptionqq% 1
-(qq1 2
-exqq2 4
-,qq4 5
-ExceptionDictionaryqq6 I
-.qqI J
-FATAL_EXCEPTIONqqJ Y
-)qqY Z
-;qqZ [
-}rr 
-catchss 
-(ss "
-CommunicationExceptionss -
-exss. 0
-)ss0 1
-{tt  
-ChannelAdministratoruu (
-.uu( )$
-HandleCommunicationIssueuu) A
-(uuA B
-idUserSubscribinguuB S
-,uuS T 
-ChannelAdministratoruuU i
-.uui j
-GAME_EXCEPTIONuuj x
-)uux y
-;uuy z
-ExceptionHandlervv $
-.vv$ %
-LogExceptionvv% 1
-(vv1 2
-exvv2 4
-,vv4 5
-ExceptionDictionaryvv6 I
-.vvI J
-FATAL_EXCEPTIONvvJ Y
-)vvY Z
-;vvZ [
-}ww 
-catchxx 
-(xx %
-InvalidOperationExceptionxx 0
-exxx1 3
-)xx3 4
-{yy  
-ChannelAdministratorzz (
-.zz( )$
-HandleCommunicationIssuezz) A
-(zzA B
-idUserSubscribingzzB S
-,zzS T 
-ChannelAdministratorzzU i
-.zzi j
-GAME_EXCEPTIONzzj x
-)zzx y
-;zzy z
-ExceptionHandler{{ $
-.{{$ %
-LogException{{% 1
-({{1 2
-ex{{2 4
-,{{4 5
-ExceptionDictionary{{6 I
-.{{I J
-FATAL_EXCEPTION{{J Y
-){{Y Z
-;{{Z [
-}|| 
-}}} 
-}~~ 	
+=^^- .!
+ActiveGamesDictionary^^/ D
+.^^D E!
+GetSpecificActiveGame^^E Z
+(^^Z [
+roomCode^^[ c
+)^^c d
+;^^d e
+if__ 
+(__ 
+activeGameStatus__ ,
+.__, -
+Count__- 2
+==__3 5
+$num__6 7
+&&__8 :
+activeGameStatus__; K
+.__K L
+Exists__L R
+(__R S
+pl__S U
+=>__V X
+pl__Y [
+.__[ \
+SideTeam__\ d
+==__e g
+$num__h i
+)__i j
+)__j k
+{`` !
+ActiveGamesDictionaryaa 1
+.aa1 2"
+RearrangeTurnsForTeamsaa2 H
+(aaH I
+roomCodeaaI Q
+)aaQ R
+;aaR S
+}bb 
+varcc 
+playersPlayinStatuscc /
+=cc0 1!
+ActiveGamesDictionarycc2 G
+.ccG H!
+GetSpecificActiveGameccH ]
+(cc] ^
+roomCodecc^ f
+)ccf g
+;ccg h
+ifdd 
+(dd 
+lobbyOfGamedd '
+.dd' (
+listOfPlayerInLobbydd( ;
+.dd; <
+Countdd< A
+==ddB D
+playersPlayinStatusddE X
+.ddX Y
+CountddY ^
+)dd^ _
+{ee "
+NotifyEveryBodyIsReadyff 2
+(ff2 3
+playersPlayinStatusff3 F
+)ffF G
+;ffG H
+}gg 
+}hh 
+}ii 
+catchjj 
+(jj /
+#CommunicationObjectFaultedExceptionjj :
+exjj; =
+)jj= >
+{kk  
+ChannelAdministratorll (
+.ll( )$
+HandleCommunicationIssuell) A
+(llA B
+idUserSubscribingllB S
+,llS T 
+ChannelAdministratorllU i
+.lli j
+GAME_EXCEPTIONllj x
+)llx y
+;lly z
+ExceptionHandlermm $
+.mm$ %
+LogExceptionmm% 1
+(mm1 2
+exmm2 4
+,mm4 5
+ExceptionDictionarymm6 I
+.mmI J
+FATAL_EXCEPTIONmmJ Y
+)mmY Z
+;mmZ [
+}nn 
+catchoo 
+(oo 
+TimeoutExceptionoo '
+exoo( *
+)oo* +
+{pp  
+ChannelAdministratorqq (
+.qq( )$
+HandleCommunicationIssueqq) A
+(qqA B
+idUserSubscribingqqB S
+,qqS T 
+ChannelAdministratorqqU i
+.qqi j
+GAME_EXCEPTIONqqj x
+)qqx y
+;qqy z
+ExceptionHandlerrr $
+.rr$ %
+LogExceptionrr% 1
+(rr1 2
+exrr2 4
+,rr4 5
+ExceptionDictionaryrr6 I
+.rrI J
+FATAL_EXCEPTIONrrJ Y
+)rrY Z
+;rrZ [
+}ss 
+catchtt 
+(tt "
+CommunicationExceptiontt -
+extt. 0
+)tt0 1
+{uu  
+ChannelAdministratorvv (
+.vv( )$
+HandleCommunicationIssuevv) A
+(vvA B
+idUserSubscribingvvB S
+,vvS T 
+ChannelAdministratorvvU i
+.vvi j
+GAME_EXCEPTIONvvj x
+)vvx y
+;vvy z
+ExceptionHandlerww $
+.ww$ %
+LogExceptionww% 1
+(ww1 2
+exww2 4
+,ww4 5
+ExceptionDictionaryww6 I
+.wwI J
+FATAL_EXCEPTIONwwJ Y
+)wwY Z
+;wwZ [
+}xx 
+catchyy 
+(yy %
+InvalidOperationExceptionyy 0
+exyy1 3
+)yy3 4
+{zz  
+ChannelAdministrator{{ (
+.{{( )$
+HandleCommunicationIssue{{) A
+({{A B
+idUserSubscribing{{B S
+,{{S T 
+ChannelAdministrator{{U i
+.{{i j
+GAME_EXCEPTION{{j x
+){{x y
+;{{y z
+ExceptionHandler|| $
+.||$ %
+LogException||% 1
+(||1 2
+ex||2 4
+,||4 5
+ExceptionDictionary||6 I
+.||I J
+FATAL_EXCEPTION||J Y
+)||Y Z
+;||Z [
+}}} 
+}~~ 
+} 	
 private
-ÄÄ 
+ÅÅ 
 void
-ÄÄ $
+ÅÅ $
 NotifyEveryBodyIsReady
-ÄÄ +
+ÅÅ +
 (
-ÄÄ+ ,
+ÅÅ+ ,
 List
-ÄÄ, 0
+ÅÅ, 0
 <
-ÄÄ0 1!
+ÅÅ0 1!
 PlayerPlayingInGame
-ÄÄ1 D
+ÅÅ1 D
 >
-ÄÄD E
+ÅÅD E
 playersPlaying
-ÄÄF T
+ÅÅF T
 )
-ÄÄT U
+ÅÅT U
 {
-ÅÅ 	
+ÇÇ 	
 List
-ÇÇ 
+ÉÉ 
 <
-ÇÇ &
+ÉÉ &
 PlayerInGameDataContract
-ÇÇ )
+ÉÉ )
 >
-ÇÇ) *
+ÉÉ) *
 playersInGame
-ÇÇ+ 8
+ÉÉ+ 8
 =
-ÇÇ9 :2
-$IGameActionsOperationsImplementation
-ÇÇ; _
+ÉÉ9 :1
+#GameActionsOperationsImplementation
+ÉÉ; ^
 .
-ÇÇ_ `-
+ÉÉ^ _-
 GetPlayerInGameDataContractList
-ÇÇ` 
-(ÇÇ Ä
-playersPlayingÇÇÄ é
-)ÇÇé è
-;ÇÇè ê
+ÉÉ_ ~
+(
+ÉÉ~ 
+playersPlayingÉÉ ç
+)ÉÉç é
+;ÉÉé è
 foreach
-ÉÉ 
+ÑÑ 
 (
-ÉÉ 
+ÑÑ 
 var
-ÉÉ 
+ÑÑ 
 player
-ÉÉ 
+ÑÑ 
 in
-ÉÉ  "
+ÑÑ  "
 playersPlaying
-ÉÉ# 1
+ÑÑ# 1
 )
-ÉÉ1 2
+ÑÑ1 2
 {
-ÑÑ 
+ÖÖ 
 try
-ÖÖ 
+ÜÜ 
 {
-ÜÜ 
+áá 
 player
-áá 
+àà 
 .
-áá !
+àà !
 gameCallbackChannel
-áá .
+àà .
 .
-áá. / 
+àà. / 
 GetCallbackChannel
-áá/ A
+àà/ A
 <
-ááA B"
+ààA B"
 IGameActionsCallBack
-ááB V
+ààB V
 >
-ááV W
+ààV W
 (
-ááW X
+ààW X
 )
-ááX Y
+ààX Y
 .
-ááY Z3
+ààY Z3
 %ReceiveNotificationEverybodyIsPlaying
-ááZ 
-(áá Ä
-trueááÄ Ñ
-,ááÑ Ö
-playerááÜ å
-.ááå ç
-TurnOfPlayerááç ô
-,ááô ö
-playersInGameááõ ®
-)áá® ©
-;áá© ™
+ààZ 
+(àà Ä
+trueààÄ Ñ
+,ààÑ Ö
+playerààÜ å
+.ààå ç
+TurnOfPlayerààç ô
+,ààô ö
+playersInGameààõ ®
+)àà® ©
+;àà© ™
 }
-àà 
+ââ 
 catch
-ââ 
+ää 
 (
-ââ 1
+ää 1
 #CommunicationObjectFaultedException
-ââ :
+ää :
 ex
-ââ; =
+ää; =
 )
-ââ= >
+ää= >
 {
-ää "
+ãã "
 ChannelAdministrator
-ãã (
+åå (
 .
-ãã( )&
+åå( )&
 HandleCommunicationIssue
-ãã) A
+åå) A
 (
-ããA B
+ååA B
 player
-ããB H
+ååB H
 .
-ããH I
+ååH I
 IdUser
-ããI O
+ååI O
 ,
-ããO P"
+ååO P"
 ChannelAdministrator
-ããQ e
+ååQ e
 .
-ããe f
+ååe f
 GAME_EXCEPTION
-ããf t
+ååf t
 )
-ããt u
+ååt u
 ;
-ããu v
+ååu v
 ExceptionHandler
-åå $
+çç $
 .
-åå$ %
+çç$ %
 LogException
-åå% 1
+çç% 1
 (
-åå1 2
+çç1 2
 ex
-åå2 4
+çç2 4
 ,
-åå4 5!
+çç4 5!
 ExceptionDictionary
-åå6 I
+çç6 I
 .
-ååI J
+ççI J
 FATAL_EXCEPTION
-ååJ Y
+ççJ Y
 )
-ååY Z
+ççY Z
 ;
-ååZ [
+ççZ [
 }
-çç 
+éé 
 catch
-éé 
+èè 
 (
-éé 
+èè 
 TimeoutException
-éé '
+èè '
 ex
-éé( *
+èè( *
 )
-éé* +
+èè* +
 {
-èè "
+êê "
 ChannelAdministrator
-êê (
+ëë (
 .
-êê( )&
+ëë( )&
 HandleCommunicationIssue
-êê) A
+ëë) A
 (
-êêA B
+ëëA B
 player
-êêB H
+ëëB H
 .
-êêH I
+ëëH I
 IdUser
-êêI O
+ëëI O
 ,
-êêO P"
+ëëO P"
 ChannelAdministrator
-êêQ e
+ëëQ e
 .
-êêe f
+ëëe f
 GAME_EXCEPTION
-êêf t
+ëëf t
 )
-êêt u
+ëët u
 ;
-êêu v
+ëëu v
 ExceptionHandler
-ëë $
+íí $
 .
-ëë$ %
+íí$ %
 LogException
-ëë% 1
+íí% 1
 (
-ëë1 2
+íí1 2
 ex
-ëë2 4
+íí2 4
 ,
-ëë4 5!
+íí4 5!
 ExceptionDictionary
-ëë6 I
+íí6 I
 .
-ëëI J
+ííI J
 FATAL_EXCEPTION
-ëëJ Y
+ííJ Y
 )
-ëëY Z
+ííY Z
 ;
-ëëZ [
+ííZ [
 }
-íí 
+ìì 
 catch
-ìì 
+îî 
 (
-ìì $
+îî $
 CommunicationException
-ìì -
+îî -
 ex
-ìì. 0
+îî. 0
 )
-ìì0 1
+îî0 1
 {
-îî "
+ïï "
 ChannelAdministrator
-ïï (
+ññ (
 .
-ïï( )&
+ññ( )&
 HandleCommunicationIssue
-ïï) A
+ññ) A
 (
-ïïA B
+ññA B
 player
-ïïB H
+ññB H
 .
-ïïH I
+ññH I
 IdUser
-ïïI O
+ññI O
 ,
-ïïO P"
+ññO P"
 ChannelAdministrator
-ïïQ e
+ññQ e
 .
-ïïe f
+ññe f
 GAME_EXCEPTION
-ïïf t
+ññf t
 )
-ïït u
+ññt u
 ;
-ïïu v
+ññu v
 ExceptionHandler
-ññ $
+óó $
 .
-ññ$ %
+óó$ %
 LogException
-ññ% 1
+óó% 1
 (
-ññ1 2
+óó1 2
 ex
-ññ2 4
+óó2 4
 ,
-ññ4 5!
+óó4 5!
 ExceptionDictionary
-ññ6 I
+óó6 I
 .
-ññI J
+óóI J
 FATAL_EXCEPTION
-ññJ Y
+óóJ Y
 )
-ññY Z
+óóY Z
 ;
-ññZ [
+óóZ [
 }
-óó 
+òò 
 catch
-òò 
+ôô 
 (
-òò '
+ôô '
 InvalidOperationException
-òò 0
+ôô 0
 ex
-òò1 3
+ôô1 3
 )
-òò3 4
+ôô3 4
 {
-ôô "
+öö "
 ChannelAdministrator
-öö (
+õõ (
 .
-öö( )&
+õõ( )&
 HandleCommunicationIssue
-öö) A
+õõ) A
 (
-ööA B
+õõA B
 player
-ööB H
+õõB H
 .
-ööH I
+õõH I
 IdUser
-ööI O
+õõI O
 ,
-ööO P"
+õõO P"
 ChannelAdministrator
-ööQ e
+õõQ e
 .
-ööe f
+õõe f
 GAME_EXCEPTION
-ööf t
+õõf t
 )
-ööt u
+õõt u
 ;
-ööu v
+õõu v
 ExceptionHandler
-õõ $
+úú $
 .
-õõ$ %
+úú$ %
 LogException
-õõ% 1
+úú% 1
 (
-õõ1 2
+úú1 2
 ex
-õõ2 4
+úú2 4
 ,
-õõ4 5!
+úú4 5!
 ExceptionDictionary
-õõ6 I
+úú6 I
 .
-õõI J
+úúI J
 FATAL_EXCEPTION
-õõJ Y
+úúJ Y
 )
-õõY Z
+úúY Z
 ;
-õõZ [
+úúZ [
 }
-úú 
+ùù 
 }
-ùù 
+ûû 
 }
-ûû 	
+üü 	
 }
-†† 
+°° 
 public
-¢¢ 
+££ 
 
 partial
-¢¢ 
+££ 
 class
-¢¢ 2
-$IGameActionsOperationsImplementation
-¢¢ =
+££ 1
+#GameActionsOperationsImplementation
+££ <
 :
-¢¢> ?$
+££= >$
 IGameActionsOperations
-¢¢@ V
+££? U
 {
-££ 
-private
-§§ 
-const
-§§ 
-int
-§§ 
-ERROR
-§§ 
-=
-§§  !
-$num
-§§" #
-;
-§§# $
+§§ 
 private
 •• 
 const
 •• 
 int
-•• 
-NULL_INT_VALUE
-•• (
+•• 
+ERROR
+•• 
 =
-••) *
+••  !
 $num
-••+ ,
+••" #
 ;
-••, -
+••# $
 private
 ¶¶ 
 const
 ¶¶ 
 int
-¶¶ 
-	ROUND_ONE
-¶¶ #
+¶¶ 
+NULL_INT_VALUE
+¶¶ (
 =
-¶¶$ %
+¶¶) *
 $num
-¶¶& '
+¶¶+ ,
 ;
-¶¶' (
+¶¶, -
 private
 ßß 
 const
 ßß 
 int
 ßß 
-	ROUND_TWO
+	ROUND_ONE
 ßß #
 =
 ßß$ %
@@ -21571,234 +21668,207 @@ $IGameActionsOperationsImplementation
 const
 ®® 
 int
-®® 
-ROUND_THREE
-®® %
+®® 
+	ROUND_TWO
+®® #
 =
-®®& '
+®®$ %
 $num
-®®( )
+®®& '
 ;
-®®) *
+®®' (
 private
 ©© 
 const
 ©© 
 int
-©© 
+©© 
+ROUND_THREE
+©© %
+=
+©©& '
+$num
+©©( )
+;
+©©) *
+private
+™™ 
+const
+™™ 
+int
+™™ 
 
 FIRST_TURN
-©© $
+™™ $
 =
-©©% &
+™™% &
 $num
-©©' (
+™™' (
 ;
-©©( )
+™™( )
 private
-™™ 
+´´ 
 static
-™™ 
+´´ 
+readonly
+´´ 
 Object
-™™ 
+´´  &
 
 objectLock
-™™ (
+´´' 1
 =
-™™) *
+´´2 3
 new
-™™+ .
+´´4 7
 (
-™™. /
+´´7 8
 )
-™™/ 0
+´´8 9
 ;
-™™0 1
+´´9 :
 public
-¨¨ 
+≠≠ 
 void
-¨¨ )
+≠≠ )
 UnSubscribeFromGameCallBack
-¨¨ /
+≠≠ /
 (
-¨¨/ 0
+≠≠/ 0
 int
-¨¨0 3
+≠≠0 3
 roomCode
-¨¨4 <
+≠≠4 <
 ,
-¨¨< =
+≠≠< =
 int
-¨¨> A!
+≠≠> A!
 idUserUnsubscribing
-¨¨B U
+≠≠B U
 )
-¨¨U V
+≠≠U V
 {
-≠≠ 	
+ÆÆ 	
 lock
-ÆÆ 
+ØØ 
 (
-ÆÆ 
+ØØ 
 
 objectLock
-ÆÆ 
+ØØ 
 )
-ÆÆ 
+ØØ 
 {
-ØØ 
+∞∞ 
 if
-∞∞ 
+±± 
 (
-∞∞ 
+±± 
 roomCode
-∞∞ 
+±± 
 !=
-∞∞ 
+±± 
 NULL_INT_VALUE
-∞∞  .
+±±  .
 &&
-∞∞/ 1!
+±±/ 1!
 idUserUnsubscribing
-∞∞2 E
+±±2 E
 !=
-∞∞F H
+±±F H
 $num
-∞∞I J
+±±I J
 )
-∞∞J K
+±±J K
 {
-±± 
+≤≤ 
 var
-≤≤ 
+≥≥ 
 
 activeGame
-≤≤ "
+≥≥ "
 =
-≤≤# $#
+≥≥# $#
 ActiveGamesDictionary
-≤≤% :
+≥≥% :
 .
-≤≤: ;#
+≥≥: ;#
 GetSpecificActiveGame
-≤≤; P
+≥≥; P
 (
-≤≤P Q
+≥≥P Q
 roomCode
-≤≤Q Y
+≥≥Q Y
 )
-≤≤Y Z
+≥≥Y Z
 ;
-≤≤Z [
+≥≥Z [
 if
-≥≥ 
+¥¥ 
 (
-≥≥ 
+¥¥ 
 
 activeGame
-≥≥ "
+¥¥ "
 !=
-≥≥# %
+¥¥# %
 null
-≥≥& *
+¥¥& *
 )
-≥≥* +
+¥¥* +
 {
-¥¥ 
-var
-µµ 
-playerLeaving
-µµ )
-=
-µµ* +
-
-activeGame
-µµ, 6
-.
-µµ6 7
-Where
-µµ7 <
-(
-µµ< =
-player
-µµ= C
-=>
-µµD F
-player
-µµG M
-.
-µµM N
-IdUser
-µµN T
-==
-µµU W!
-idUserUnsubscribing
-µµX k
-)
-µµk l
-.
-µµl m
-FirstOrDefault
-µµm {
-(
-µµ{ |
-)
-µµ| }
-;
-µµ} ~
-if
-∂∂ 
-(
-∂∂ 
-playerLeaving
-∂∂ )
-!=
-∂∂* ,
-null
-∂∂- 1
-)
-∂∂1 2
+µµ 
+try
+∂∂ 
 {
 ∑∑ 
-try
-∏∏ 
-{
-ππ 
-int
-∫∫  #
-turnLeaving
-∫∫$ /
+var
+∏∏ 
+playerLeaving
+∏∏  -
 =
-∫∫0 1
+∏∏. /
 
 activeGame
-∫∫2 <
+∏∏0 :
 .
-∫∫< =
-FirstOrDefault
-∫∫= K
+∏∏: ;
+Find
+∏∏; ?
 (
-∫∫K L
+∏∏? @
 player
-∫∫L R
+∏∏@ F
 =>
-∫∫S U
+∏∏G I
 player
-∫∫V \
+∏∏J P
 .
-∫∫\ ]
+∏∏P Q
 IdUser
-∫∫] c
+∏∏Q W
 ==
-∫∫d f!
+∏∏X Z!
 idUserUnsubscribing
-∫∫g z
+∏∏[ n
 )
-∫∫z {
-.
-∫∫{ |
-TurnOfPlayer∫∫| à
-;∫∫à â
+∏∏n o
+;
+∏∏o p
+if
+ππ 
+(
+ππ 
+playerLeaving
+ππ ,
+!=
+ππ- /
+null
+ππ0 4
+)
+ππ4 5
+{
+∫∫ 
 
 activeGame
 ªª  *
@@ -21822,13 +21892,17 @@ activeGame
 activeGame
 ºº/ 9
 ,
-ºº9 :
-turnLeaving
-ºº; F
+ºº9 :
+playerLeaving
+ºº; H
+.
+ººH I
+TurnOfPlayer
+ººI U
 )
-ººF G
+ººU V
 ;
-ººG H*
+ººV W*
 NotifySomePlayerLeaveTheGame
 ΩΩ  <
 (
@@ -21841,2585 +21915,2570 @@ activeGame
 ;
 ΩΩH I
 }
-ææ 
+ææ 
+}
+øø 
 catch
-øø !
+¿¿ 
 (
-øø" #1
+¿¿ 1
 #CommunicationObjectFaultedException
-øø# F
+¿¿ B
 ex
-øøG I
+¿¿C E
 )
-øøI J
+¿¿E F
 {
-¿¿ "
+¡¡ "
 ChannelAdministrator
-¡¡  4
+¬¬ 0
 .
-¡¡4 5&
+¬¬0 1&
 HandleCommunicationIssue
-¡¡5 M
+¬¬1 I
 (
-¡¡M N!
+¬¬I J!
 idUserUnsubscribing
-¡¡N a
+¬¬J ]
 ,
-¡¡a b"
+¬¬] ^"
 ChannelAdministrator
-¡¡c w
+¬¬_ s
 .
-¡¡w x
-GAME_EXCEPTION¡¡x Ü
-)¡¡Ü á
-;¡¡á à
+¬¬s t
+GAME_EXCEPTION¬¬t Ç
+)¬¬Ç É
+;¬¬É Ñ
 ExceptionHandler
-¬¬  0
+√√ ,
 .
-¬¬0 1
+√√, -
 LogException
-¬¬1 =
+√√- 9
 (
-¬¬= >
+√√9 :
 ex
-¬¬> @
+√√: <
 ,
-¬¬@ A!
+√√< =!
 ExceptionDictionary
-¬¬B U
+√√> Q
 .
-¬¬U V
+√√Q R
 FATAL_EXCEPTION
-¬¬V e
+√√R a
 )
-¬¬e f
+√√a b
 ;
-¬¬f g
+√√b c
 }
-√√ 
+ƒƒ 
 catch
-ƒƒ !
+≈≈ 
 (
-ƒƒ" #
+≈≈ 
 TimeoutException
-ƒƒ# 3
+≈≈ /
 ex
-ƒƒ4 6
+≈≈0 2
 )
-ƒƒ6 7
+≈≈2 3
 {
-≈≈ "
+∆∆ "
 ChannelAdministrator
-∆∆  4
+«« 0
 .
-∆∆4 5&
+««0 1&
 HandleCommunicationIssue
-∆∆5 M
+««1 I
 (
-∆∆M N!
+««I J!
 idUserUnsubscribing
-∆∆N a
+««J ]
 ,
-∆∆a b"
+««] ^"
 ChannelAdministrator
-∆∆c w
+««_ s
 .
-∆∆w x
-GAME_EXCEPTION∆∆x Ü
-)∆∆Ü á
-;∆∆á à
+««s t
+GAME_EXCEPTION««t Ç
+)««Ç É
+;««É Ñ
 ExceptionHandler
-««  0
+»» ,
 .
-««0 1
+»», -
 LogException
-««1 =
+»»- 9
 (
-««= >
+»»9 :
 ex
-««> @
+»»: <
 ,
-««@ A!
+»»< =!
 ExceptionDictionary
-««B U
+»»> Q
 .
-««U V
+»»Q R
 FATAL_EXCEPTION
-««V e
+»»R a
 )
-««e f
+»»a b
 ;
-««f g
+»»b c
 }
-»» 
+…… 
 catch
-…… !
+   
 (
-……" #$
+   $
 CommunicationException
-……# 9
+   5
 ex
-……: <
+  6 8
 )
-……< =
+  8 9
 {
-   "
+ÀÀ "
 ChannelAdministrator
-ÀÀ  4
+ÃÃ 0
 .
-ÀÀ4 5&
+ÃÃ0 1&
 HandleCommunicationIssue
-ÀÀ5 M
+ÃÃ1 I
 (
-ÀÀM N!
+ÃÃI J!
 idUserUnsubscribing
-ÀÀN a
+ÃÃJ ]
 ,
-ÀÀa b"
+ÃÃ] ^"
 ChannelAdministrator
-ÀÀc w
+ÃÃ_ s
 .
-ÀÀw x
-GAME_EXCEPTIONÀÀx Ü
-)ÀÀÜ á
-;ÀÀá à
+ÃÃs t
+GAME_EXCEPTIONÃÃt Ç
+)ÃÃÇ É
+;ÃÃÉ Ñ
 ExceptionHandler
-ÃÃ  0
+ÕÕ ,
 .
-ÃÃ0 1
+ÕÕ, -
 LogException
-ÃÃ1 =
+ÕÕ- 9
 (
-ÃÃ= >
+ÕÕ9 :
 ex
-ÃÃ> @
+ÕÕ: <
 ,
-ÃÃ@ A!
+ÕÕ< =!
 ExceptionDictionary
-ÃÃB U
+ÕÕ> Q
 .
-ÃÃU V
+ÕÕQ R
 FATAL_EXCEPTION
-ÃÃV e
+ÕÕR a
 )
-ÃÃe f
+ÕÕa b
 ;
-ÃÃf g
+ÕÕb c
 }
-ÕÕ 
+ŒŒ 
 catch
-ŒŒ !
+œœ 
 (
-ŒŒ" #'
+œœ '
 InvalidOperationException
-ŒŒ# <
+œœ 8
 ex
-ŒŒ= ?
+œœ9 ;
 )
-ŒŒ? @
+œœ; <
 {
-œœ "
+–– "
 ChannelAdministrator
-––  4
+—— 0
 .
-––4 5&
+——0 1&
 HandleCommunicationIssue
-––5 M
+——1 I
 (
-––M N!
+——I J!
 idUserUnsubscribing
-––N a
+——J ]
 ,
-––a b"
+——] ^"
 ChannelAdministrator
-––c w
+——_ s
 .
-––w x
-GAME_EXCEPTION––x Ü
-)––Ü á
-;––á à
+——s t
+GAME_EXCEPTION——t Ç
+)——Ç É
+;——É Ñ
 ExceptionHandler
-——  0
+““ ,
 .
-——0 1
+““, -
 LogException
-——1 =
+““- 9
 (
-——= >
+““9 :
 ex
-——> @
+““: <
 ,
-——@ A!
+““< =!
 ExceptionDictionary
-——B U
+““> Q
 .
-——U V
+““Q R
 FATAL_EXCEPTION
-——V e
+““R a
 )
-——e f
+““a b
 ;
-——f g
-}
-““ 
+““b c
 }
 ”” 
 }
-‘‘ 
+’’ 
 }
-’’ 
+÷÷ 
 }
-÷÷ 
+◊◊ 
 }
-◊◊ 	
+ÿÿ 	
 private
-ŸŸ 
+⁄⁄ 
 void
-ŸŸ 
+⁄⁄ 
 ReArrangeTurns
-ŸŸ #
+⁄⁄ #
 (
-ŸŸ# $
+⁄⁄# $
 List
-ŸŸ$ (
+⁄⁄$ (
 <
-ŸŸ( )!
+⁄⁄( )!
 PlayerPlayingInGame
-ŸŸ) <
+⁄⁄) <
 >
-ŸŸ< =)
+⁄⁄< =)
 playersPlayingInCurrentGame
-ŸŸ> Y
+⁄⁄> Y
 ,
-ŸŸY Z
+⁄⁄Y Z
 int
-ŸŸ[ ^
+⁄⁄[ ^
 turnLeaving
-ŸŸ_ j
+⁄⁄_ j
 )
-ŸŸj k
+⁄⁄j k
 {
-⁄⁄ 	)
+€€ 	)
 playersPlayingInCurrentGame
-€€ '
+‹‹ '
 .
-€€' (
+‹‹' (
 Where
-€€( -
+‹‹( -
 (
-€€- .
+‹‹- .
 item
-€€. 2
+‹‹. 2
 =>
-€€3 5
+‹‹3 5
 item
-€€6 :
+‹‹6 :
 .
-€€: ;
+‹‹: ;
 TurnOfPlayer
-€€; G
+‹‹; G
 >
-€€H I
+‹‹H I
 turnLeaving
-€€J U
+‹‹J U
 )
-€€U V
+‹‹U V
 .
-€€V W
+‹‹V W
 ToList
-€€W ]
+‹‹W ]
 (
-€€] ^
+‹‹] ^
 )
-€€^ _
+‹‹^ _
 .
-€€_ `
+‹‹_ `
 ForEach
-€€` g
+‹‹` g
 (
-€€g h
+‹‹g h
 item
-€€h l
+‹‹h l
 =>
-€€m o
+‹‹m o
 item
-€€p t
+‹‹p t
 .
-€€t u
-TurnOfPlayer€€u Å
---€€Å É
-)€€É Ñ
-;€€Ñ Ö
+‹‹t u
+TurnOfPlayer‹‹u Å
+--‹‹Å É
+)‹‹É Ñ
+;‹‹Ñ Ö
 }
-‹‹ 	
+›› 	
 private
-ﬁﬁ 
+ﬂﬂ 
 void
-ﬁﬁ *
+ﬂﬂ *
 NotifySomePlayerLeaveTheGame
-ﬁﬁ 1
+ﬂﬂ 1
 (
-ﬁﬁ1 2
+ﬂﬂ1 2
 List
-ﬁﬁ2 6
+ﬂﬂ2 6
 <
-ﬁﬁ6 7!
+ﬂﬂ6 7!
 PlayerPlayingInGame
-ﬁﬁ7 J
+ﬂﬂ7 J
 >
-ﬁﬁJ K
+ﬂﬂJ K
 playersPlaying
-ﬁﬁL Z
+ﬂﬂL Z
 )
-ﬁﬁZ [
+ﬂﬂZ [
 {
-ﬂﬂ 	
+‡‡ 	
 List
-‡‡ 
+·· 
 <
-‡‡ &
+·· &
 PlayerInGameDataContract
-‡‡ )
+·· )
 >
-‡‡) *"
+··) *"
 playersInCurrentGame
-‡‡+ ?
+··+ ?
 =
-‡‡@ A-
+··@ A-
 GetPlayerInGameDataContractList
-‡‡B a
+··B a
 (
-‡‡a b
+··a b
 playersPlaying
-‡‡b p
+··b p
 )
-‡‡p q
+··p q
 .
-‡‡q r
+··q r
 ToList
-‡‡r x
+··r x
 (
-‡‡x y
+··x y
 )
-‡‡y z
+··y z
 ;
-‡‡z {
+··z {
 foreach
-·· 
+‚‚ 
 (
-·· 
+‚‚ 
 var
-·· 
+‚‚ 
 player
-·· 
+‚‚ 
 in
-··  "
+‚‚  "
 playersPlaying
-··# 1
+‚‚# 1
 )
-··1 2
+‚‚1 2
 {
-‚‚ 
+„„ 
 try
-„„ 
+‰‰ 
 {
-‰‰ 
+ÂÂ 
 player
-ÂÂ 
+ÊÊ 
 .
-ÂÂ !
+ÊÊ !
 gameCallbackChannel
-ÂÂ .
+ÊÊ .
 .
-ÂÂ. / 
+ÊÊ. / 
 GetCallbackChannel
-ÂÂ/ A
+ÊÊ/ A
 <
-ÂÂA B"
+ÊÊA B"
 IGameActionsCallBack
-ÂÂB V
+ÊÊB V
 >
-ÂÂV W
+ÊÊV W
 (
-ÂÂW X
+ÊÊW X
 )
-ÂÂX Y
+ÊÊX Y
 .
-ÂÂY Z,
+ÊÊY Z,
 ReceiveNotificationSomeOneLeft
-ÂÂZ x
+ÊÊZ x
 (
-ÂÂx y
+ÊÊx y
 player
-ÂÂy 
-.ÂÂ Ä
-TurnOfPlayerÂÂÄ å
-,ÂÂå ç$
-playersInCurrentGameÂÂé ¢
-)ÂÂ¢ £
-;ÂÂ£ §
+ÊÊy 
+.ÊÊ Ä
+TurnOfPlayerÊÊÄ å
+,ÊÊå ç$
+playersInCurrentGameÊÊé ¢
+)ÊÊ¢ £
+;ÊÊ£ §
 }
-ÊÊ 
+ÁÁ 
 catch
-ÁÁ 
+ËË 
 (
-ÁÁ 1
+ËË 1
 #CommunicationObjectFaultedException
-ÁÁ :
+ËË :
 ex
-ÁÁ; =
+ËË; =
 )
-ÁÁ= >
+ËË= >
 {
-ËË "
+ÈÈ "
 ChannelAdministrator
-ÈÈ (
+ÍÍ (
 .
-ÈÈ( )&
+ÍÍ( )&
 HandleCommunicationIssue
-ÈÈ) A
+ÍÍ) A
 (
-ÈÈA B
+ÍÍA B
 player
-ÈÈB H
+ÍÍB H
 .
-ÈÈH I
+ÍÍH I
 IdUser
-ÈÈI O
+ÍÍI O
 ,
-ÈÈO P"
+ÍÍO P"
 ChannelAdministrator
-ÈÈQ e
+ÍÍQ e
 .
-ÈÈe f
+ÍÍe f
 GAME_EXCEPTION
-ÈÈf t
+ÍÍf t
 )
-ÈÈt u
+ÍÍt u
 ;
-ÈÈu v
+ÍÍu v
 ExceptionHandler
-ÍÍ $
+ÎÎ $
 .
-ÍÍ$ %
+ÎÎ$ %
 LogException
-ÍÍ% 1
+ÎÎ% 1
 (
-ÍÍ1 2
+ÎÎ1 2
 ex
-ÍÍ2 4
+ÎÎ2 4
 ,
-ÍÍ4 5!
+ÎÎ4 5!
 ExceptionDictionary
-ÍÍ6 I
+ÎÎ6 I
 .
-ÍÍI J
+ÎÎI J
 FATAL_EXCEPTION
-ÍÍJ Y
+ÎÎJ Y
 )
-ÍÍY Z
+ÎÎY Z
 ;
-ÍÍZ [
+ÎÎZ [
 }
-ÎÎ 
+ÏÏ 
 catch
-ÏÏ 
+ÌÌ 
 (
-ÏÏ 
+ÌÌ 
 TimeoutException
-ÏÏ '
+ÌÌ '
 ex
-ÏÏ( *
+ÌÌ( *
 )
-ÏÏ* +
+ÌÌ* +
 {
-ÌÌ "
+ÓÓ "
 ChannelAdministrator
-ÓÓ (
+ÔÔ (
 .
-ÓÓ( )&
+ÔÔ( )&
 HandleCommunicationIssue
-ÓÓ) A
+ÔÔ) A
 (
-ÓÓA B
+ÔÔA B
 player
-ÓÓB H
+ÔÔB H
 .
-ÓÓH I
+ÔÔH I
 IdUser
-ÓÓI O
+ÔÔI O
 ,
-ÓÓO P"
+ÔÔO P"
 ChannelAdministrator
-ÓÓQ e
+ÔÔQ e
 .
-ÓÓe f
+ÔÔe f
 GAME_EXCEPTION
-ÓÓf t
+ÔÔf t
 )
-ÓÓt u
+ÔÔt u
 ;
-ÓÓu v
+ÔÔu v
 ExceptionHandler
-ÔÔ $
+ $
 .
-ÔÔ$ %
+$ %
 LogException
-ÔÔ% 1
+% 1
 (
-ÔÔ1 2
+1 2
 ex
-ÔÔ2 4
+2 4
 ,
-ÔÔ4 5!
+4 5!
 ExceptionDictionary
-ÔÔ6 I
+6 I
 .
-ÔÔI J
+I J
 FATAL_EXCEPTION
-ÔÔJ Y
+J Y
 )
-ÔÔY Z
+Y Z
 ;
-ÔÔZ [
+Z [
 }
- 
+ÒÒ 
 catch
-ÒÒ 
+ÚÚ 
 (
-ÒÒ $
+ÚÚ $
 CommunicationException
-ÒÒ -
+ÚÚ -
 ex
-ÒÒ. 0
+ÚÚ. 0
 )
-ÒÒ0 1
+ÚÚ0 1
 {
-ÚÚ "
+ÛÛ "
 ChannelAdministrator
-ÛÛ (
+ÙÙ (
 .
-ÛÛ( )&
+ÙÙ( )&
 HandleCommunicationIssue
-ÛÛ) A
+ÙÙ) A
 (
-ÛÛA B
+ÙÙA B
 player
-ÛÛB H
+ÙÙB H
 .
-ÛÛH I
+ÙÙH I
 IdUser
-ÛÛI O
+ÙÙI O
 ,
-ÛÛO P"
+ÙÙO P"
 ChannelAdministrator
-ÛÛQ e
+ÙÙQ e
 .
-ÛÛe f
+ÙÙe f
 GAME_EXCEPTION
-ÛÛf t
+ÙÙf t
 )
-ÛÛt u
+ÙÙt u
 ;
-ÛÛu v
+ÙÙu v
 ExceptionHandler
-ÙÙ $
+ıı $
 .
-ÙÙ$ %
+ıı$ %
 LogException
-ÙÙ% 1
+ıı% 1
 (
-ÙÙ1 2
+ıı1 2
 ex
-ÙÙ2 4
+ıı2 4
 ,
-ÙÙ4 5!
+ıı4 5!
 ExceptionDictionary
-ÙÙ6 I
+ıı6 I
 .
-ÙÙI J
+ııI J
 FATAL_EXCEPTION
-ÙÙJ Y
+ııJ Y
 )
-ÙÙY Z
+ııY Z
 ;
-ÙÙZ [
+ııZ [
 }
-ıı 
+ˆˆ 
 catch
-ˆˆ 
+˜˜ 
 (
-ˆˆ '
+˜˜ '
 InvalidOperationException
-ˆˆ 0
+˜˜ 0
 ex
-ˆˆ1 3
+˜˜1 3
 )
-ˆˆ3 4
+˜˜3 4
 {
-˜˜ "
+¯¯ "
 ChannelAdministrator
-¯¯ (
+˘˘ (
 .
-¯¯( )&
+˘˘( )&
 HandleCommunicationIssue
-¯¯) A
+˘˘) A
 (
-¯¯A B
+˘˘A B
 player
-¯¯B H
+˘˘B H
 .
-¯¯H I
+˘˘H I
 IdUser
-¯¯I O
+˘˘I O
 ,
-¯¯O P"
+˘˘O P"
 ChannelAdministrator
-¯¯Q e
+˘˘Q e
 .
-¯¯e f
+˘˘e f
 GAME_EXCEPTION
-¯¯f t
+˘˘f t
 )
-¯¯t u
+˘˘t u
 ;
-¯¯u v
+˘˘u v
 ExceptionHandler
-˘˘ $
+˙˙ $
 .
-˘˘$ %
+˙˙$ %
 LogException
-˘˘% 1
+˙˙% 1
 (
-˘˘1 2
+˙˙1 2
 ex
-˘˘2 4
+˙˙2 4
 ,
-˘˘4 5!
+˙˙4 5!
 ExceptionDictionary
-˘˘6 I
+˙˙6 I
 .
-˘˘I J
+˙˙I J
 FATAL_EXCEPTION
-˘˘J Y
+˙˙J Y
 )
-˘˘Y Z
+˙˙Y Z
 ;
-˘˘Z [
+˙˙Z [
 }
-˙˙ 
+˚˚ 
 }
-˚˚ 
+¸¸ 
 }
-˝˝ 	
+˛˛ 	
 public
-ˇˇ 
+ÄÄ 
 void
-ˇˇ 
+ÄÄ 
 ChooseAnswer
-ˇˇ  
+ÄÄ  
 (
-ˇˇ  !
+ÄÄ  !
 int
-ˇˇ! $
+ÄÄ! $
 roomCode
-ˇˇ% -
+ÄÄ% -
 ,
-ˇˇ- .
+ÄÄ- .
 int
-ˇˇ/ 2
+ÄÄ/ 2
 idUserSelecting
-ˇˇ3 B
+ÄÄ3 B
 ,
-ˇˇB C
+ÄÄB C
 int
-ˇˇD G
+ÄÄD G
 answerSelected
-ˇˇH V
+ÄÄH V
 ,
-ˇˇV W
+ÄÄV W
 int
-ˇˇX [
+ÄÄX [
 pointsWorth
-ˇˇ\ g
+ÄÄ\ g
 ,
-ˇˇg h
+ÄÄg h
 int
-ˇˇi l
+ÄÄi l
 currentTurn
-ˇˇm x
+ÄÄm x
 )
-ˇˇx y
+ÄÄx y
 {
-ÄÄ 	
+ÅÅ 	
 var
-ÅÅ 
+ÇÇ 
 playersPlaying
-ÅÅ 
+ÇÇ 
 =
-ÅÅ  #
+ÇÇ  #
 ActiveGamesDictionary
-ÅÅ! 6
+ÇÇ! 6
 .
-ÅÅ6 7#
+ÇÇ6 7#
 GetSpecificActiveGame
-ÅÅ7 L
+ÇÇ7 L
 (
-ÅÅL M
+ÇÇL M
 roomCode
-ÅÅM U
+ÇÇM U
 )
-ÅÅU V
+ÇÇU V
 ;
-ÅÅV W
+ÇÇV W
 if
-ÇÇ 
+ÉÉ 
 (
-ÇÇ 
+ÉÉ 
 playersPlaying
-ÇÇ 
+ÉÉ 
 !=
-ÇÇ !
+ÉÉ !
 null
-ÇÇ" &
+ÉÉ" &
 )
-ÇÇ& '
+ÉÉ& '
 {
-ÉÉ 
+ÑÑ 
 try
-ÑÑ 
+ÖÖ 
 {
-ÖÖ )
+ÜÜ )
 NotifySomeOneSelectAnAnswer
-ÜÜ /
+áá /
 (
-ÜÜ/ 0
+áá/ 0
 playersPlaying
-ÜÜ0 >
+áá0 >
 ,
-ÜÜ> ?
+áá> ?
 idUserSelecting
-ÜÜ@ O
+áá@ O
 ,
-ÜÜO P
+ááO P
 answerSelected
-ÜÜQ _
+ááQ _
 ,
-ÜÜ_ `
+áá_ `
 pointsWorth
-ÜÜa l
+ááa l
 )
-ÜÜl m
+áál m
 ;
-ÜÜm n#
+áám n#
 NotifyPlayerAboutTurn
-áá )
+àà )
 (
-áá) *
+àà) *
 playersPlaying
-áá* 8
+àà* 8
 ,
-áá8 9
+àà8 9
 currentTurn
-áá: E
+àà: E
 )
-ááE F
+ààE F
 ;
-ááF G
+ààF G
 }
-àà 
+ââ 
 catch
-ââ 
+ää 
 (
-ââ 1
+ää 1
 #CommunicationObjectFaultedException
-ââ :
+ää :
 ex
-ââ; =
+ää; =
 )
-ââ= >
+ää= >
 {
-ää "
+ãã "
 ChannelAdministrator
-ãã (
+åå (
 .
-ãã( )&
+åå( )&
 HandleCommunicationIssue
-ãã) A
+åå) A
 (
-ããA B
+ååA B
 idUserSelecting
-ããB Q
+ååB Q
 ,
-ããQ R"
+ååQ R"
 ChannelAdministrator
-ããS g
+ååS g
 .
-ããg h
+ååg h
 GAME_EXCEPTION
-ããh v
+ååh v
 )
-ããv w
+ååv w
 ;
-ããw x
+ååw x
 ExceptionHandler
-åå $
+çç $
 .
-åå$ %
+çç$ %
 LogException
-åå% 1
+çç% 1
 (
-åå1 2
+çç1 2
 ex
-åå2 4
+çç2 4
 ,
-åå4 5!
+çç4 5!
 ExceptionDictionary
-åå6 I
+çç6 I
 .
-ååI J
+ççI J
 FATAL_EXCEPTION
-ååJ Y
+ççJ Y
 )
-ååY Z
+ççY Z
 ;
-ååZ [
+ççZ [
 }
-çç 
+éé 
 catch
-éé 
+èè 
 (
-éé 
+èè 
 TimeoutException
-éé '
+èè '
 ex
-éé( *
+èè( *
 )
-éé* +
+èè* +
 {
-èè "
+êê "
 ChannelAdministrator
-êê (
+ëë (
 .
-êê( )&
+ëë( )&
 HandleCommunicationIssue
-êê) A
+ëë) A
 (
-êêA B
+ëëA B
 idUserSelecting
-êêB Q
+ëëB Q
 ,
-êêQ R"
+ëëQ R"
 ChannelAdministrator
-êêS g
+ëëS g
 .
-êêg h
+ëëg h
 GAME_EXCEPTION
-êêh v
+ëëh v
 )
-êêv w
+ëëv w
 ;
-êêw x
+ëëw x
 ExceptionHandler
-ëë $
+íí $
 .
-ëë$ %
+íí$ %
 LogException
-ëë% 1
+íí% 1
 (
-ëë1 2
+íí1 2
 ex
-ëë2 4
+íí2 4
 ,
-ëë4 5!
+íí4 5!
 ExceptionDictionary
-ëë6 I
+íí6 I
 .
-ëëI J
+ííI J
 FATAL_EXCEPTION
-ëëJ Y
+ííJ Y
 )
-ëëY Z
+ííY Z
 ;
-ëëZ [
+ííZ [
 }
-íí 
+ìì 
 catch
-ìì 
+îî 
 (
-ìì $
+îî $
 CommunicationException
-ìì -
+îî -
 ex
-ìì. 0
+îî. 0
 )
-ìì0 1
+îî0 1
 {
-îî "
+ïï "
 ChannelAdministrator
-ïï (
+ññ (
 .
-ïï( )&
+ññ( )&
 HandleCommunicationIssue
-ïï) A
+ññ) A
 (
-ïïA B
+ññA B
 idUserSelecting
-ïïB Q
+ññB Q
 ,
-ïïQ R"
+ññQ R"
 ChannelAdministrator
-ïïS g
+ññS g
 .
-ïïg h
+ññg h
 GAME_EXCEPTION
-ïïh v
+ññh v
 )
-ïïv w
+ññv w
 ;
-ïïw x
+ññw x
 ExceptionHandler
-ññ $
+óó $
 .
-ññ$ %
+óó$ %
 LogException
-ññ% 1
+óó% 1
 (
-ññ1 2
+óó1 2
 ex
-ññ2 4
+óó2 4
 ,
-ññ4 5!
+óó4 5!
 ExceptionDictionary
-ññ6 I
+óó6 I
 .
-ññI J
+óóI J
 FATAL_EXCEPTION
-ññJ Y
+óóJ Y
 )
-ññY Z
+óóY Z
 ;
-ññZ [
+óóZ [
 }
-óó 
+òò 
 catch
-òò 
+ôô 
 (
-òò '
+ôô '
 InvalidOperationException
-òò 0
+ôô 0
 ex
-òò1 3
+ôô1 3
 )
-òò3 4
+ôô3 4
 {
-ôô "
+öö "
 ChannelAdministrator
-öö (
+õõ (
 .
-öö( )&
+õõ( )&
 HandleCommunicationIssue
-öö) A
+õõ) A
 (
-ööA B
+õõA B
 idUserSelecting
-ööB Q
+õõB Q
 ,
-ööQ R"
+õõQ R"
 ChannelAdministrator
-ööS g
+õõS g
 .
-öög h
+õõg h
 GAME_EXCEPTION
-ööh v
+õõh v
 )
-ööv w
+õõv w
 ;
-ööw x
+õõw x
 ExceptionHandler
-õõ $
+úú $
 .
-õõ$ %
+úú$ %
 LogException
-õõ% 1
+úú% 1
 (
-õõ1 2
+úú1 2
 ex
-õõ2 4
+úú2 4
 ,
-õõ4 5!
+úú4 5!
 ExceptionDictionary
-õõ6 I
+úú6 I
 .
-õõI J
+úúI J
 FATAL_EXCEPTION
-õõJ Y
+úúJ Y
 )
-õõY Z
+úúY Z
 ;
-õõZ [
+úúZ [
 }
-úú 
+ùù 
 }
-ùù 
+ûû 
 }
-ûû 	
+üü 	
 private
-†† 
+°° 
 void
-†† )
+°° )
 NotifySomeOneSelectAnAnswer
-†† 0
+°° 0
 (
-††0 1
+°°0 1
 List
-††1 5
+°°1 5
 <
-††5 6!
+°°5 6!
 PlayerPlayingInGame
-††6 I
+°°6 I
 >
-††I J
+°°I J
 playersPlaying
-††K Y
+°°K Y
 ,
-††Y Z
+°°Y Z
 int
-††[ ^
+°°[ ^
 idUserSelecting
-††_ n
+°°_ n
 ,
-††n o
+°°n o
 int
-††p s
-answerSelected††t Ç
-,††Ç É
-int††Ñ á
-pointsWorth††à ì
-)††ì î
+°°p s
+answerSelected°°t Ç
+,°°Ç É
+int°°Ñ á
+pointsWorth°°à ì
+)°°ì î
 {
-°° 	
+¢¢ 	
 foreach
-¢¢ 
+££ 
 (
-¢¢ 
+££ 
 var
-¢¢ 
+££ 
 playerPlaying
-¢¢ &
+££ &
 in
-¢¢' )
+££' )
 playersPlaying
-¢¢* 8
+££* 8
 )
-¢¢8 9
+££8 9
 {
-££ 
+§§ 
 try
-§§ 
+•• 
 {
-•• 
+¶¶ 
 if
-¶¶ 
+ßß 
 (
-¶¶ 
+ßß 
 playerPlaying
-¶¶ %
+ßß %
 .
-¶¶% &!
+ßß% &!
 gameCallbackChannel
-¶¶& 9
+ßß& 9
 !=
-¶¶: <
+ßß: <
 null
-¶¶= A
+ßß= A
 )
-¶¶A B
+ßßA B
 {
-ßß 
+®® 
 playerPlaying
-®® %
+©© %
 .
-®®% &!
+©©% &!
 gameCallbackChannel
-®®& 9
+©©& 9
 .
-®®9 : 
+©©9 : 
 GetCallbackChannel
-®®: L
+©©: L
 <
-®®L M"
+©©L M"
 IGameActionsCallBack
-®®M a
+©©M a
 >
-®®a b
+©©a b
 (
-®®b c
+©©b c
 )
-®®c d
+©©c d
 .
-®®d e,
-ResponseSomeOneChooseAnAnswer®®e Ç
-(®®Ç É
-answerSelected®®É ë
-,®®ë í
-idUserSelecting®®ì ¢
-,®®¢ £
-pointsWorth®®§ Ø
-)®®Ø ∞
-;®®∞ ±
+©©d e,
+ResponseSomeOneChooseAnAnswer©©e Ç
+(©©Ç É
+answerSelected©©É ë
+,©©ë í
+idUserSelecting©©ì ¢
+,©©¢ £
+pointsWorth©©§ Ø
+)©©Ø ∞
+;©©∞ ±
 }
-©© 
+™™ 
 }
-™™ 
+´´ 
 catch
-´´ 
+¨¨ 
 (
-´´ 1
+¨¨ 1
 #CommunicationObjectFaultedException
-´´ :
+¨¨ :
 ex
-´´; =
+¨¨; =
 )
-´´= >
+¨¨= >
 {
-¨¨ "
+≠≠ "
 ChannelAdministrator
-≠≠ (
+ÆÆ (
 .
-≠≠( )&
+ÆÆ( )&
 HandleCommunicationIssue
-≠≠) A
+ÆÆ) A
 (
-≠≠A B
+ÆÆA B
 playerPlaying
-≠≠B O
+ÆÆB O
 .
-≠≠O P
+ÆÆO P
 IdUser
-≠≠P V
+ÆÆP V
 ,
-≠≠V W"
+ÆÆV W"
 ChannelAdministrator
-≠≠X l
+ÆÆX l
 .
-≠≠l m
+ÆÆl m
 GAME_EXCEPTION
-≠≠m {
+ÆÆm {
 )
-≠≠{ |
+ÆÆ{ |
 ;
-≠≠| }
+ÆÆ| }
 ExceptionHandler
-ÆÆ $
+ØØ $
 .
-ÆÆ$ %
+ØØ$ %
 LogException
-ÆÆ% 1
+ØØ% 1
 (
-ÆÆ1 2
+ØØ1 2
 ex
-ÆÆ2 4
+ØØ2 4
 ,
-ÆÆ4 5!
+ØØ4 5!
 ExceptionDictionary
-ÆÆ6 I
+ØØ6 I
 .
-ÆÆI J
+ØØI J
 FATAL_EXCEPTION
-ÆÆJ Y
+ØØJ Y
 )
-ÆÆY Z
+ØØY Z
 ;
-ÆÆZ [
+ØØZ [
 }
-ØØ 
+∞∞ 
 catch
-∞∞ 
+±± 
 (
-∞∞ 
+±± 
 TimeoutException
-∞∞ '
+±± '
 ex
-∞∞( *
+±±( *
 )
-∞∞* +
+±±* +
 {
-±± "
+≤≤ "
 ChannelAdministrator
-≤≤ (
+≥≥ (
 .
-≤≤( )&
+≥≥( )&
 HandleCommunicationIssue
-≤≤) A
+≥≥) A
 (
-≤≤A B
+≥≥A B
 playerPlaying
-≤≤B O
+≥≥B O
 .
-≤≤O P
+≥≥O P
 IdUser
-≤≤P V
+≥≥P V
 ,
-≤≤V W"
+≥≥V W"
 ChannelAdministrator
-≤≤X l
+≥≥X l
 .
-≤≤l m
+≥≥l m
 GAME_EXCEPTION
-≤≤m {
+≥≥m {
 )
-≤≤{ |
+≥≥{ |
 ;
-≤≤| }
+≥≥| }
 ExceptionHandler
-≥≥ $
+¥¥ $
 .
-≥≥$ %
+¥¥$ %
 LogException
-≥≥% 1
+¥¥% 1
 (
-≥≥1 2
+¥¥1 2
 ex
-≥≥2 4
+¥¥2 4
 ,
-≥≥4 5!
+¥¥4 5!
 ExceptionDictionary
-≥≥6 I
+¥¥6 I
 .
-≥≥I J
+¥¥I J
 FATAL_EXCEPTION
-≥≥J Y
+¥¥J Y
 )
-≥≥Y Z
+¥¥Y Z
 ;
-≥≥Z [
+¥¥Z [
 }
-¥¥ 
+µµ 
 catch
-µµ 
+∂∂ 
 (
-µµ $
+∂∂ $
 CommunicationException
-µµ -
+∂∂ -
 ex
-µµ. 0
+∂∂. 0
 )
-µµ0 1
+∂∂0 1
 {
-∂∂ "
+∑∑ "
 ChannelAdministrator
-∑∑ (
+∏∏ (
 .
-∑∑( )&
+∏∏( )&
 HandleCommunicationIssue
-∑∑) A
+∏∏) A
 (
-∑∑A B
+∏∏A B
 playerPlaying
-∑∑B O
+∏∏B O
 .
-∑∑O P
+∏∏O P
 IdUser
-∑∑P V
+∏∏P V
 ,
-∑∑V W"
+∏∏V W"
 ChannelAdministrator
-∑∑X l
+∏∏X l
 .
-∑∑l m
+∏∏l m
 GAME_EXCEPTION
-∑∑m {
+∏∏m {
 )
-∑∑{ |
+∏∏{ |
 ;
-∑∑| }
+∏∏| }
 ExceptionHandler
-∏∏ $
+ππ $
 .
-∏∏$ %
+ππ$ %
 LogException
-∏∏% 1
+ππ% 1
 (
-∏∏1 2
+ππ1 2
 ex
-∏∏2 4
+ππ2 4
 ,
-∏∏4 5!
+ππ4 5!
 ExceptionDictionary
-∏∏6 I
+ππ6 I
 .
-∏∏I J
+ππI J
 FATAL_EXCEPTION
-∏∏J Y
+ππJ Y
 )
-∏∏Y Z
+ππY Z
 ;
-∏∏Z [
+ππZ [
 }
-ππ 
+∫∫ 
 catch
-∫∫ 
+ªª 
 (
-∫∫ '
+ªª '
 InvalidOperationException
-∫∫ 0
+ªª 0
 ex
-∫∫1 3
+ªª1 3
 )
-∫∫3 4
+ªª3 4
 {
-ªª "
+ºº "
 ChannelAdministrator
-ºº (
+ΩΩ (
 .
-ºº( )&
+ΩΩ( )&
 HandleCommunicationIssue
-ºº) A
+ΩΩ) A
 (
-ººA B
+ΩΩA B
 playerPlaying
-ººB O
+ΩΩB O
 .
-ººO P
+ΩΩO P
 IdUser
-ººP V
+ΩΩP V
 ,
-ººV W"
+ΩΩV W"
 ChannelAdministrator
-ººX l
+ΩΩX l
 .
-ººl m
+ΩΩl m
 GAME_EXCEPTION
-ººm {
+ΩΩm {
 )
-ºº{ |
+ΩΩ{ |
 ;
-ºº| }
+ΩΩ| }
 ExceptionHandler
-ΩΩ $
+ææ $
 .
-ΩΩ$ %
+ææ$ %
 LogException
-ΩΩ% 1
+ææ% 1
 (
-ΩΩ1 2
+ææ1 2
 ex
-ΩΩ2 4
+ææ2 4
 ,
-ΩΩ4 5!
+ææ4 5!
 ExceptionDictionary
-ΩΩ6 I
+ææ6 I
 .
-ΩΩI J
+ææI J
 FATAL_EXCEPTION
-ΩΩJ Y
+ææJ Y
 )
-ΩΩY Z
+ææY Z
 ;
-ΩΩZ [
+ææZ [
 }
-ææ 
+øø 
 }
-øø 
+¿¿ 
 }
-¿¿ 	
+¡¡ 	
 private
-¬¬ 
+√√ 
 void
-¬¬ #
+√√ #
 NotifyPlayerAboutTurn
-¬¬ *
+√√ *
 (
-¬¬* +
+√√* +
 List
-¬¬+ /
+√√+ /
 <
-¬¬/ 0!
+√√/ 0!
 PlayerPlayingInGame
-¬¬0 C
+√√0 C
 >
-¬¬C D
+√√C D
 playersPlaying
-¬¬E S
+√√E S
 ,
-¬¬S T
+√√S T
 int
-¬¬U X
+√√U X
 turnJustPassed
-¬¬Y g
+√√Y g
 )
-¬¬g h
+√√g h
 {
-√√ 	
+ƒƒ 	
 int
-ƒƒ 
+≈≈ 
 
 playerTurn
-ƒƒ 
+≈≈ 
 ;
-ƒƒ 
+≈≈ 
 if
-≈≈ 
+∆∆ 
 (
-≈≈ 
+∆∆ 
 playersPlaying
-≈≈ 
+∆∆ 
 .
-≈≈ 
+∆∆ 
 Count
-≈≈ $
+∆∆ $
 ==
-≈≈% '
+∆∆% '
 turnJustPassed
-≈≈( 6
+∆∆( 6
 )
-≈≈6 7
+∆∆6 7
 {
-∆∆ 
+«« 
 
 playerTurn
-«« 
+»» 
 =
-«« 
+»» 
 
 FIRST_TURN
-«« '
+»» '
 ;
-««' (
+»»' (
 }
-»» 
+…… 
 else
-…… 
+   
 {
-   
+ÀÀ 
 turnJustPassed
-ÀÀ 
+ÃÃ 
 ++
-ÀÀ  
+ÃÃ  
 ;
-ÀÀ  !
+ÃÃ  !
 
 playerTurn
-ÃÃ 
+ÕÕ 
 =
-ÃÃ 
+ÕÕ 
 turnJustPassed
-ÃÃ +
+ÕÕ +
 ;
-ÃÃ+ ,
+ÕÕ+ ,
 }
-ÕÕ 
+ŒŒ 
 foreach
-ŒŒ 
+œœ 
 (
-ŒŒ 
+œœ 
 var
-ŒŒ 
+œœ 
 playerPlaying
-ŒŒ &
+œœ &
 in
-ŒŒ' )
+œœ' )
 playersPlaying
-ŒŒ* 8
+œœ* 8
 )
-ŒŒ8 9
+œœ8 9
 {
-œœ 
+–– 
 try
-–– 
+—— 
 {
-—— 
+““ 
 playerPlaying
-““ !
+”” !
 .
-““! "!
+””! "!
 gameCallbackChannel
-““" 5
+””" 5
 .
-““5 6 
+””5 6 
 GetCallbackChannel
-““6 H
+””6 H
 <
-““H I"
+””H I"
 IGameActionsCallBack
-““I ]
+””I ]
 >
-““] ^
+””] ^
 (
-““^ _
+””^ _
 )
-““_ `
+””_ `
 .
-““` a*
+””` a*
 ReceiveNotificationAboutTurn
-““a }
+””a }
 (
-““} ~
+””} ~
 
-playerTurn““~ à
-)““à â
-;““â ä
+playerTurn””~ à
+)””à â
+;””â ä
 }
-”” 
+‘‘ 
 catch
-‘‘ 
+’’ 
 (
-‘‘ 1
+’’ 1
 #CommunicationObjectFaultedException
-‘‘ :
+’’ :
 ex
-‘‘; =
+’’; =
 )
-‘‘= >
+’’= >
 {
-’’ "
+÷÷ "
 ChannelAdministrator
-÷÷ (
+◊◊ (
 .
-÷÷( )&
+◊◊( )&
 HandleCommunicationIssue
-÷÷) A
+◊◊) A
 (
-÷÷A B
+◊◊A B
 playerPlaying
-÷÷B O
+◊◊B O
 .
-÷÷O P
+◊◊O P
 IdUser
-÷÷P V
+◊◊P V
 ,
-÷÷V W"
+◊◊V W"
 ChannelAdministrator
-÷÷X l
+◊◊X l
 .
-÷÷l m
+◊◊l m
 GAME_EXCEPTION
-÷÷m {
+◊◊m {
 )
-÷÷{ |
+◊◊{ |
 ;
-÷÷| }
+◊◊| }
 ExceptionHandler
-◊◊ $
+ÿÿ $
 .
-◊◊$ %
+ÿÿ$ %
 LogException
-◊◊% 1
+ÿÿ% 1
 (
-◊◊1 2
+ÿÿ1 2
 ex
-◊◊2 4
+ÿÿ2 4
 ,
-◊◊4 5!
+ÿÿ4 5!
 ExceptionDictionary
-◊◊6 I
+ÿÿ6 I
 .
-◊◊I J
+ÿÿI J
 FATAL_EXCEPTION
-◊◊J Y
+ÿÿJ Y
 )
-◊◊Y Z
+ÿÿY Z
 ;
-◊◊Z [
+ÿÿZ [
 }
-ÿÿ 
+ŸŸ 
 catch
-ŸŸ 
+⁄⁄ 
 (
-ŸŸ 
+⁄⁄ 
 TimeoutException
-ŸŸ '
+⁄⁄ '
 ex
-ŸŸ( *
+⁄⁄( *
 )
-ŸŸ* +
+⁄⁄* +
 {
-⁄⁄ "
+€€ "
 ChannelAdministrator
-€€ (
+‹‹ (
 .
-€€( )&
+‹‹( )&
 HandleCommunicationIssue
-€€) A
+‹‹) A
 (
-€€A B
+‹‹A B
 playerPlaying
-€€B O
+‹‹B O
 .
-€€O P
+‹‹O P
 IdUser
-€€P V
+‹‹P V
 ,
-€€V W"
+‹‹V W"
 ChannelAdministrator
-€€X l
+‹‹X l
 .
-€€l m
+‹‹l m
 GAME_EXCEPTION
-€€m {
+‹‹m {
 )
-€€{ |
+‹‹{ |
 ;
-€€| }
+‹‹| }
 ExceptionHandler
-‹‹ $
+›› $
 .
-‹‹$ %
+››$ %
 LogException
-‹‹% 1
+››% 1
 (
-‹‹1 2
+››1 2
 ex
-‹‹2 4
+››2 4
 ,
-‹‹4 5!
+››4 5!
 ExceptionDictionary
-‹‹6 I
+››6 I
 .
-‹‹I J
+››I J
 FATAL_EXCEPTION
-‹‹J Y
+››J Y
 )
-‹‹Y Z
+››Y Z
 ;
-‹‹Z [
+››Z [
 }
-›› 
+ﬁﬁ 
 catch
-ﬁﬁ 
+ﬂﬂ 
 (
-ﬁﬁ $
+ﬂﬂ $
 CommunicationException
-ﬁﬁ -
+ﬂﬂ -
 ex
-ﬁﬁ. 0
+ﬂﬂ. 0
 )
-ﬁﬁ0 1
+ﬂﬂ0 1
 {
-ﬂﬂ "
+‡‡ "
 ChannelAdministrator
-‡‡ (
+·· (
 .
-‡‡( )&
+··( )&
 HandleCommunicationIssue
-‡‡) A
+··) A
 (
-‡‡A B
+··A B
 playerPlaying
-‡‡B O
+··B O
 .
-‡‡O P
+··O P
 IdUser
-‡‡P V
+··P V
 ,
-‡‡V W"
+··V W"
 ChannelAdministrator
-‡‡X l
+··X l
 .
-‡‡l m
+··l m
 GAME_EXCEPTION
-‡‡m {
+··m {
 )
-‡‡{ |
+··{ |
 ;
-‡‡| }
+··| }
 ExceptionHandler
-·· $
+‚‚ $
 .
-··$ %
+‚‚$ %
 LogException
-··% 1
+‚‚% 1
 (
-··1 2
+‚‚1 2
 ex
-··2 4
+‚‚2 4
 ,
-··4 5!
+‚‚4 5!
 ExceptionDictionary
-··6 I
+‚‚6 I
 .
-··I J
+‚‚I J
 FATAL_EXCEPTION
-··J Y
+‚‚J Y
 )
-··Y Z
+‚‚Y Z
 ;
-··Z [
+‚‚Z [
 }
-‚‚ 
+„„ 
 catch
-„„ 
+‰‰ 
 (
-„„ '
+‰‰ '
 InvalidOperationException
-„„ 0
+‰‰ 0
 ex
-„„1 3
+‰‰1 3
 )
-„„3 4
+‰‰3 4
 {
-‰‰ "
+ÂÂ "
 ChannelAdministrator
-ÂÂ (
+ÊÊ (
 .
-ÂÂ( )&
+ÊÊ( )&
 HandleCommunicationIssue
-ÂÂ) A
+ÊÊ) A
 (
-ÂÂA B
+ÊÊA B
 playerPlaying
-ÂÂB O
+ÊÊB O
 .
-ÂÂO P
+ÊÊO P
 IdUser
-ÂÂP V
+ÊÊP V
 ,
-ÂÂV W"
+ÊÊV W"
 ChannelAdministrator
-ÂÂX l
+ÊÊX l
 .
-ÂÂl m
+ÊÊl m
 GAME_EXCEPTION
-ÂÂm {
+ÊÊm {
 )
-ÂÂ{ |
+ÊÊ{ |
 ;
-ÂÂ| }
+ÊÊ| }
 ExceptionHandler
-ÊÊ $
+ÁÁ $
 .
-ÊÊ$ %
+ÁÁ$ %
 LogException
-ÊÊ% 1
+ÁÁ% 1
 (
-ÊÊ1 2
+ÁÁ1 2
 ex
-ÊÊ2 4
+ÁÁ2 4
 ,
-ÊÊ4 5!
+ÁÁ4 5!
 ExceptionDictionary
-ÊÊ6 I
+ÁÁ6 I
 .
-ÊÊI J
+ÁÁI J
 FATAL_EXCEPTION
-ÊÊJ Y
+ÁÁJ Y
 )
-ÊÊY Z
+ÁÁY Z
 ;
-ÊÊZ [
+ÁÁZ [
 }
-ÁÁ 
+ËË 
 }
-ËË 
+ÈÈ 
 }
-ÈÈ 	
+ÍÍ 	
 public
-ÎÎ 
+ÏÏ 
 void
-ÎÎ #
+ÏÏ #
 ChooseQuestionOfBoard
-ÎÎ )
+ÏÏ )
 (
-ÎÎ) *
+ÏÏ) *
 int
-ÎÎ* -
+ÏÏ* -
 roomCode
-ÎÎ. 6
+ÏÏ. 6
 ,
-ÎÎ6 7
+ÏÏ6 7
 int
-ÎÎ8 ;
+ÏÏ8 ;
 idUserSelecting
-ÎÎ< K
+ÏÏ< K
 ,
-ÎÎK L
+ÏÏK L
 int
-ÎÎM P
+ÏÏM P
 currentRound
-ÎÎQ ]
+ÏÏQ ]
 ,
-ÎÎ] ^+
+ÏÏ] ^+
 CurrentQuestionToShowContract
-ÎÎ_ |
-questionToShowÎÎ} ã
-)ÎÎã å
+ÏÏ_ |
+questionToShowÏÏ} ã
+)ÏÏã å
 {
-ÏÏ 	
+ÌÌ 	
 var
-ÌÌ 
+ÓÓ 
 activeCurrentGame
-ÌÌ !
+ÓÓ !
 =
-ÌÌ" ##
+ÓÓ" ##
 ActiveGamesDictionary
-ÌÌ$ 9
+ÓÓ$ 9
 .
-ÌÌ9 :#
+ÓÓ9 :#
 GetSpecificActiveGame
-ÌÌ: O
+ÓÓ: O
 (
-ÌÌO P
+ÓÓO P
 roomCode
-ÌÌP X
+ÓÓP X
 )
-ÌÌX Y
+ÓÓX Y
 ;
-ÌÌY Z
+ÓÓY Z
 try
-ÓÓ 
+ÔÔ 
 {
-ÔÔ 
+ 
 if
- 
+ÒÒ 
 (
- 
+ÒÒ 
 activeCurrentGame
- %
+ÒÒ %
 !=
-& (
+ÒÒ& (
 null
-) -
+ÒÒ) -
 )
-- .
+ÒÒ- .
 {
-ÒÒ 
+ÚÚ 
 var
-ÚÚ 
+ÛÛ 
 playersPlaying
-ÚÚ &
+ÛÛ &
 =
-ÚÚ' (#
+ÛÛ' (#
 GetSpecificActiveGame
-ÚÚ) >
+ÛÛ) >
 (
-ÚÚ> ?
+ÛÛ> ?
 roomCode
-ÚÚ? G
+ÛÛ? G
 )
-ÚÚG H
+ÛÛG H
 ;
-ÚÚH I0
+ÛÛH I0
 "NotifyPlayerSomeOneChooseAQuestion
-ÛÛ 6
+ÙÙ 6
 (
-ÛÛ6 7
+ÙÙ6 7
 playersPlaying
-ÛÛ7 E
+ÙÙ7 E
 ,
-ÛÛE F
+ÙÙE F
 idUserSelecting
-ÛÛG V
+ÙÙG V
 ,
-ÛÛV W
+ÙÙV W
 currentRound
-ÛÛX d
+ÙÙX d
 ,
-ÛÛd e
+ÙÙd e
 questionToShow
-ÛÛf t
+ÙÙf t
 )
-ÛÛt u
+ÙÙt u
 ;
-ÛÛu v
+ÙÙu v
 }
-ÙÙ 
+ıı 
 }
-ıı 
+ˆˆ 
 catch
-ˆˆ 
+˜˜ 
 (
-ˆˆ 1
+˜˜ 1
 #CommunicationObjectFaultedException
-ˆˆ 6
+˜˜ 6
 ex
-ˆˆ7 9
+˜˜7 9
 )
-ˆˆ9 :
+˜˜9 :
 {
-˜˜ "
+¯¯ "
 ChannelAdministrator
-¯¯ $
+˘˘ $
 .
-¯¯$ %&
+˘˘$ %&
 HandleCommunicationIssue
-¯¯% =
+˘˘% =
 (
-¯¯= >
+˘˘= >
 idUserSelecting
-¯¯> M
+˘˘> M
 ,
-¯¯M N"
+˘˘M N"
 ChannelAdministrator
-¯¯O c
+˘˘O c
 .
-¯¯c d
+˘˘c d
 GAME_EXCEPTION
-¯¯d r
+˘˘d r
 )
-¯¯r s
+˘˘r s
 ;
-¯¯s t
+˘˘s t
 ExceptionHandler
-˘˘  
+˙˙  
 .
-˘˘  !
+˙˙  !
 LogException
-˘˘! -
+˙˙! -
 (
-˘˘- .
+˙˙- .
 ex
-˘˘. 0
+˙˙. 0
 ,
-˘˘0 1!
+˙˙0 1!
 ExceptionDictionary
-˘˘2 E
+˙˙2 E
 .
-˘˘E F
+˙˙E F
 FATAL_EXCEPTION
-˘˘F U
+˙˙F U
 )
-˘˘U V
+˙˙U V
 ;
-˘˘V W
+˙˙V W
 }
-˙˙ 
+˚˚ 
 catch
-˚˚ 
+¸¸ 
 (
-˚˚ 
+¸¸ 
 TimeoutException
-˚˚ #
+¸¸ #
 ex
-˚˚$ &
+¸¸$ &
 )
-˚˚& '
+¸¸& '
 {
-¸¸ "
+˝˝ "
 ChannelAdministrator
-˝˝ $
+˛˛ $
 .
-˝˝$ %&
+˛˛$ %&
 HandleCommunicationIssue
-˝˝% =
+˛˛% =
 (
-˝˝= >
+˛˛= >
 idUserSelecting
-˝˝> M
+˛˛> M
 ,
-˝˝M N"
+˛˛M N"
 ChannelAdministrator
-˝˝O c
+˛˛O c
 .
-˝˝c d
+˛˛c d
 GAME_EXCEPTION
-˝˝d r
+˛˛d r
 )
-˝˝r s
+˛˛r s
 ;
-˝˝s t
+˛˛s t
 ExceptionHandler
-˛˛  
+ˇˇ  
 .
-˛˛  !
+ˇˇ  !
 LogException
-˛˛! -
+ˇˇ! -
 (
-˛˛- .
+ˇˇ- .
 ex
-˛˛. 0
+ˇˇ. 0
 ,
-˛˛0 1!
+ˇˇ0 1!
 ExceptionDictionary
-˛˛2 E
+ˇˇ2 E
 .
-˛˛E F
+ˇˇE F
 FATAL_EXCEPTION
-˛˛F U
+ˇˇF U
 )
-˛˛U V
+ˇˇU V
 ;
-˛˛V W
+ˇˇV W
 }
-ˇˇ 
+ÄÄ 
 catch
-ÄÄ 
+ÅÅ 
 (
-ÄÄ $
+ÅÅ $
 CommunicationException
-ÄÄ )
+ÅÅ )
 ex
-ÄÄ* ,
+ÅÅ* ,
 )
-ÄÄ, -
+ÅÅ, -
 {
-ÅÅ "
+ÇÇ "
 ChannelAdministrator
-ÇÇ $
+ÉÉ $
 .
-ÇÇ$ %&
+ÉÉ$ %&
 HandleCommunicationIssue
-ÇÇ% =
+ÉÉ% =
 (
-ÇÇ= >
+ÉÉ= >
 idUserSelecting
-ÇÇ> M
+ÉÉ> M
 ,
-ÇÇM N"
+ÉÉM N"
 ChannelAdministrator
-ÇÇO c
+ÉÉO c
 .
-ÇÇc d
+ÉÉc d
 GAME_EXCEPTION
-ÇÇd r
+ÉÉd r
 )
-ÇÇr s
+ÉÉr s
 ;
-ÇÇs t
+ÉÉs t
 ExceptionHandler
-ÉÉ  
+ÑÑ  
 .
-ÉÉ  !
+ÑÑ  !
 LogException
-ÉÉ! -
+ÑÑ! -
 (
-ÉÉ- .
+ÑÑ- .
 ex
-ÉÉ. 0
+ÑÑ. 0
 ,
-ÉÉ0 1!
+ÑÑ0 1!
 ExceptionDictionary
-ÉÉ2 E
+ÑÑ2 E
 .
-ÉÉE F
+ÑÑE F
 FATAL_EXCEPTION
-ÉÉF U
+ÑÑF U
 )
-ÉÉU V
+ÑÑU V
 ;
-ÉÉV W
+ÑÑV W
 }
-ÑÑ 
+ÖÖ 
 catch
-ÖÖ 
+ÜÜ 
 (
-ÖÖ '
+ÜÜ '
 InvalidOperationException
-ÖÖ ,
+ÜÜ ,
 ex
-ÖÖ- /
+ÜÜ- /
 )
-ÖÖ/ 0
+ÜÜ/ 0
 {
-ÜÜ "
+áá "
 ChannelAdministrator
-áá $
+àà $
 .
-áá$ %&
+àà$ %&
 HandleCommunicationIssue
-áá% =
+àà% =
 (
-áá= >
+àà= >
 idUserSelecting
-áá> M
+àà> M
 ,
-ááM N"
+ààM N"
 ChannelAdministrator
-ááO c
+ààO c
 .
-áác d
+ààc d
 GAME_EXCEPTION
-áád r
+ààd r
 )
-áár s
+ààr s
 ;
-áás t
+ààs t
 ExceptionHandler
-àà  
+ââ  
 .
-àà  !
+ââ  !
 LogException
-àà! -
+ââ! -
 (
-àà- .
+ââ- .
 ex
-àà. 0
+ââ. 0
 ,
-àà0 1!
+ââ0 1!
 ExceptionDictionary
-àà2 E
+ââ2 E
 .
-ààE F
+ââE F
 FATAL_EXCEPTION
-ààF U
+ââF U
 )
-ààU V
+ââU V
 ;
-ààV W
+ââV W
 }
-ââ 
+ää 
 }
-ää 	
+ãã 	
 private
-åå 
+çç 
 void
-åå 0
+çç 0
 "NotifyPlayerSomeOneChooseAQuestion
-åå 7
+çç 7
 (
-åå7 8
+çç7 8
 List
-åå8 <
+çç8 <
 <
-åå< =!
+çç< =!
 PlayerPlayingInGame
-åå= P
+çç= P
 >
-ååP Q 
+ççP Q 
 playersPlayingGame
-ååR d
+ççR d
 ,
-ååd e
+ççd e
 int
-ååf i
+ççf i
 idUserSelecting
-ååj y
+ççj y
 ,
-ååy z
+ççy z
 int
-åå{ ~
-currentRoundåå ã
-,ååã å-
-CurrentQuestionToShowContractååç ™
-questionToShowåå´ π
-)ååπ ∫
+çç{ ~
+currentRoundçç ã
+,ççã å-
+CurrentQuestionToShowContractççç ™
+questionToShowçç´ π
+)ççπ ∫
 {
-çç 	
+éé 	
 foreach
-éé 
+èè 
 (
-éé 
+èè 
 var
-éé 
+èè 
 playerPlaying
-éé &
+èè &
 in
-éé' ) 
+èè' ) 
 playersPlayingGame
-éé* <
+èè* <
 )
-éé< =
+èè< =
 {
-èè 
+êê 
 try
-êê 
+ëë 
 {
-ëë 
+íí 
 if
-íí 
+ìì 
 (
-íí 
+ìì 
 playerPlaying
-íí %
+ìì %
 .
-íí% &!
+ìì% &!
 gameCallbackChannel
-íí& 9
+ìì& 9
 !=
-íí: <
+ìì: <
 null
-íí= A
+ìì= A
 )
-ííA B
+ììA B
 {
-ìì 
+îî 
 playerPlaying
-îî %
+ïï %
 .
-îî% &!
+ïï% &!
 gameCallbackChannel
-îî& 9
+ïï& 9
 .
-îî9 : 
+ïï9 : 
 GetCallbackChannel
-îî: L
+ïï: L
 <
-îîL M"
+ïïL M"
 IGameActionsCallBack
-îîM a
+ïïM a
 >
-îîa b
+ïïa b
 (
-îîb c
+ïïb c
 )
-îîc d
+ïïc d
 .
-îîd e-
-ResponseSomeOneSelectAQuestionîîe É
-(îîÉ Ñ
-questionToShowîîÑ í
-,îîí ì
-currentRoundîîî †
-,îî† °
-idUserSelectingîî¢ ±
-)îî± ≤
-;îî≤ ≥
+ïïd e-
+ResponseSomeOneSelectAQuestionïïe É
+(ïïÉ Ñ
+questionToShowïïÑ í
+,ïïí ì
+currentRoundïïî †
+,ïï† °
+idUserSelectingïï¢ ±
+)ïï± ≤
+;ïï≤ ≥
 }
-ïï 
+ññ 
 }
-ññ 
+óó 
 catch
-óó 
+òò 
 (
-óó 1
+òò 1
 #CommunicationObjectFaultedException
-óó :
+òò :
 ex
-óó; =
+òò; =
 )
-óó= >
+òò= >
 {
-òò "
+ôô "
 ChannelAdministrator
-ôô (
+öö (
 .
-ôô( )&
+öö( )&
 HandleCommunicationIssue
-ôô) A
+öö) A
 (
-ôôA B
+ööA B
 playerPlaying
-ôôB O
+ööB O
 .
-ôôO P
+ööO P
 IdUser
-ôôP V
+ööP V
 ,
-ôôV W"
+ööV W"
 ChannelAdministrator
-ôôX l
+ööX l
 .
-ôôl m
+ööl m
 GAME_EXCEPTION
-ôôm {
+ööm {
 )
-ôô{ |
+öö{ |
 ;
-ôô| }
+öö| }
 ExceptionHandler
-öö $
+õõ $
 .
-öö$ %
+õõ$ %
 LogException
-öö% 1
+õõ% 1
 (
-öö1 2
+õõ1 2
 ex
-öö2 4
+õõ2 4
 ,
-öö4 5!
+õõ4 5!
 ExceptionDictionary
-öö6 I
+õõ6 I
 .
-ööI J
+õõI J
 FATAL_EXCEPTION
-ööJ Y
+õõJ Y
 )
-ööY Z
+õõY Z
 ;
-ööZ [
+õõZ [
 }
-õõ 
+úú 
 catch
-úú 
+ùù 
 (
-úú 
+ùù 
 TimeoutException
-úú '
+ùù '
 ex
-úú( *
+ùù( *
 )
-úú* +
+ùù* +
 {
-ùù "
+ûû "
 ChannelAdministrator
-ûû (
+üü (
 .
-ûû( )&
+üü( )&
 HandleCommunicationIssue
-ûû) A
+üü) A
 (
-ûûA B
+üüA B
 playerPlaying
-ûûB O
+üüB O
 .
-ûûO P
+üüO P
 IdUser
-ûûP V
+üüP V
 ,
-ûûV W"
+üüV W"
 ChannelAdministrator
-ûûX l
+üüX l
 .
-ûûl m
+üül m
 GAME_EXCEPTION
-ûûm {
+üüm {
 )
-ûû{ |
+üü{ |
 ;
-ûû| }
+üü| }
 ExceptionHandler
-üü $
+†† $
 .
-üü$ %
+††$ %
 LogException
-üü% 1
+††% 1
 (
-üü1 2
+††1 2
 ex
-üü2 4
+††2 4
 ,
-üü4 5!
+††4 5!
 ExceptionDictionary
-üü6 I
+††6 I
 .
-üüI J
+††I J
 FATAL_EXCEPTION
-üüJ Y
+††J Y
 )
-üüY Z
+††Y Z
 ;
-üüZ [
+††Z [
 }
-†† 
+°° 
 catch
-°° 
+¢¢ 
 (
-°° $
+¢¢ $
 CommunicationException
-°° -
+¢¢ -
 ex
-°°. 0
+¢¢. 0
 )
-°°0 1
+¢¢0 1
 {
-¢¢ "
+££ "
 ChannelAdministrator
-££ (
+§§ (
 .
-££( )&
+§§( )&
 HandleCommunicationIssue
-££) A
+§§) A
 (
-££A B
+§§A B
 playerPlaying
-££B O
+§§B O
 .
-££O P
+§§O P
 IdUser
-££P V
+§§P V
 ,
-££V W"
+§§V W"
 ChannelAdministrator
-££X l
+§§X l
 .
-££l m
+§§l m
 GAME_EXCEPTION
-££m {
+§§m {
 )
-££{ |
+§§{ |
 ;
-££| }
+§§| }
 ExceptionHandler
-§§ $
+•• $
 .
-§§$ %
+••$ %
 LogException
-§§% 1
+••% 1
 (
-§§1 2
+••1 2
 ex
-§§2 4
+••2 4
 ,
-§§4 5!
+••4 5!
 ExceptionDictionary
-§§6 I
+••6 I
 .
-§§I J
+••I J
 FATAL_EXCEPTION
-§§J Y
+••J Y
 )
-§§Y Z
+••Y Z
 ;
-§§Z [
+••Z [
 }
-•• 
+¶¶ 
 catch
-¶¶ 
+ßß 
 (
-¶¶ '
+ßß '
 InvalidOperationException
-¶¶ 0
+ßß 0
 ex
-¶¶1 3
+ßß1 3
 )
-¶¶3 4
+ßß3 4
 {
-ßß "
+®® "
 ChannelAdministrator
-®® (
+©© (
 .
-®®( )&
+©©( )&
 HandleCommunicationIssue
-®®) A
+©©) A
 (
-®®A B
+©©A B
 playerPlaying
-®®B O
+©©B O
 .
-®®O P
+©©O P
 IdUser
-®®P V
+©©P V
 ,
-®®V W"
+©©V W"
 ChannelAdministrator
-®®X l
+©©X l
 .
-®®l m
+©©l m
 GAME_EXCEPTION
-®®m {
+©©m {
 )
-®®{ |
+©©{ |
 ;
-®®| }
+©©| }
 ExceptionHandler
-©© $
+™™ $
 .
-©©$ %
+™™$ %
 LogException
-©©% 1
+™™% 1
 (
-©©1 2
+™™1 2
 ex
-©©2 4
+™™2 4
 ,
-©©4 5!
+™™4 5!
 ExceptionDictionary
-©©6 I
+™™6 I
 .
-©©I J
+™™I J
 FATAL_EXCEPTION
-©©J Y
+™™J Y
 )
-©©Y Z
+™™Y Z
 ;
-©©Z [
+™™Z [
 }
-™™ 
+´´ 
 }
-´´ 
+¨¨ 
 }
-¨¨ 	
+≠≠ 	
 public
-ÆÆ 
+ØØ 
 void
-ÆÆ 
+ØØ 
 FinishRound
-ÆÆ 
+ØØ 
 (
-ÆÆ  
+ØØ  
 int
-ÆÆ  #
+ØØ  #
 roomCode
-ÆÆ$ ,
+ØØ$ ,
 ,
-ÆÆ, -
+ØØ, -
 List
-ÆÆ. 2
+ØØ. 2
 <
-ÆÆ2 3&
+ØØ2 3&
 PlayerInGameDataContract
-ÆÆ3 K
+ØØ3 K
 >
-ÆÆK L
+ØØK L
 playerInGame
-ÆÆM Y
+ØØM Y
 ,
-ÆÆY Z
+ØØY Z
 int
-ÆÆ[ ^
+ØØ[ ^
 roundFinished
-ÆÆ_ l
+ØØ_ l
 )
-ÆÆl m
+ØØl m
 {
-ØØ 	
+∞∞ 	
 int
-∞∞ 
+±± 
 newRound
-∞∞ 
+±± 
 =
-∞∞ 
+±± 
 ERROR
-∞∞  
+±±  
 ;
-∞∞  !
+±±  !
 try
-±± 
+≤≤ 
 {
-≤≤ 
+≥≥ 
 switch
-≥≥ 
+¥¥ 
 (
-≥≥ 
+¥¥ 
 roundFinished
-≥≥ %
+¥¥ %
 )
-≥≥% &
+¥¥% &
 {
-¥¥ 
+µµ 
 case
-µµ 
+∂∂ 
 	ROUND_ONE
-µµ "
+∂∂ "
 :
-µµ" #
+∂∂" #
 var
-∂∂ 
+∑∑ 
 
 activeGame
-∂∂ &
+∑∑ &
 =
-∂∂' (#
+∑∑' (#
 ActiveGamesDictionary
-∂∂) >
+∑∑) >
 .
-∂∂> ?#
+∑∑> ?#
 GetSpecificActiveGame
-∂∂? T
+∑∑? T
 (
-∂∂T U
+∑∑T U
 roomCode
-∂∂U ]
+∑∑U ]
 )
-∂∂] ^
+∑∑] ^
 ;
-∂∂^ _!
-AssignTurnsByPoints
-∑∑ +
-(
-∑∑+ ,
-playerInGame
-∑∑, 8
-,
-∑∑8 9
-
-activeGame
-∑∑: D
-)
-∑∑D E
-;
-∑∑E F
+∑∑^ _
 newRound
 ∏∏  
 =
@@ -25000,2390 +25059,1785 @@ activeGame
 }
 ÛÛ 
 }
-ıı 	
-private
-˜˜ 
-void
-˜˜ !
-AssignTurnsByPoints
-˜˜ (
-(
-˜˜( )
-List
-˜˜) -
-<
-˜˜- .&
-PlayerInGameDataContract
-˜˜. F
->
-˜˜F G
-playerInGame
-˜˜H T
-,
-˜˜T U
-List
-˜˜V Z
-<
-˜˜Z [!
-PlayerPlayingInGame
-˜˜[ n
->
-˜˜n o
-playersPlaying
-˜˜p ~
-)
-˜˜~ 
-{
-¯¯ 	
-var
-˘˘ 
-sortedPlayers
-˘˘ 
-=
-˘˘ 
-playerInGame
-˘˘  ,
-.
-˘˘, -
-OrderBy
-˘˘- 4
-(
-˘˘4 5
-player
-˘˘5 ;
-=>
-˘˘< >
-player
-˘˘? E
-.
-˘˘E F"
-CurrentPointsOfRound
-˘˘F Z
-)
-˘˘Z [
-.
-˘˘[ \
-ToList
-˘˘\ b
-(
-˘˘b c
-)
-˘˘c d
-;
-˘˘d e
-int
-˙˙ 
-turn
-˙˙ 
-=
-˙˙ 
-
-FIRST_TURN
-˙˙ !
-;
-˙˙! "
-foreach
-˚˚ 
-(
-˚˚ 
-var
-˚˚ 
-player
-˚˚ 
-in
-˚˚  "
-sortedPlayers
-˚˚# 0
-)
-˚˚0 1
-{
-¸¸ 
-var
-˝˝  
-playerChangingTurn
-˝˝ &
-=
-˝˝' (
-playersPlaying
-˝˝) 7
-.
-˝˝7 8
-FirstOrDefault
-˝˝8 F
-(
-˝˝F G
-p
-˝˝G H
-=>
-˝˝I K
-p
-˝˝L M
-.
-˝˝M N
-IdUser
-˝˝N T
-==
-˝˝U W
-player
-˝˝X ^
-.
-˝˝^ _
-IdUser
-˝˝_ e
-)
-˝˝e f
-;
-˝˝f g
-if
-˛˛ 
-(
-˛˛  
-playerChangingTurn
-˛˛ &
-!=
-˛˛' )
-null
-˛˛* .
-)
-˛˛. /
-{
-ˇˇ  
-playerChangingTurn
-ÄÄ &
-.
-ÄÄ& '
-TurnOfPlayer
-ÄÄ' 3
-=
-ÄÄ4 5
-turn
-ÄÄ6 :
-;
-ÄÄ: ;
-turn
-ÅÅ 
-++
-ÅÅ 
-;
-ÅÅ 
-}
-ÇÇ 
-else
-ÉÉ 
-{
-ÑÑ "
-ChannelAdministrator
-ÖÖ (
-.
-ÖÖ( )&
-HandleCommunicationIssue
-ÖÖ) A
-(
-ÖÖA B
-player
-ÖÖB H
-.
-ÖÖH I
-IdUser
-ÖÖI O
-,
-ÖÖO P"
-ChannelAdministrator
-ÖÖQ e
-.
-ÖÖe f
-GAME_EXCEPTION
-ÖÖf t
-)
-ÖÖt u
-;
-ÖÖu v
-}
-ÜÜ 
-}
-áá 
-}
-àà 	
+ıı 	
 public
-ãã 
+¯¯ 
 void
-ãã 
+¯¯ 
 
 ConfirmBet
-ãã 
+¯¯ 
 (
-ãã 
+¯¯ 
 int
-ãã "
+¯¯ "
 roomCode
-ãã# +
+¯¯# +
 ,
-ãã+ ,
+¯¯+ ,
 int
-ãã- 0
+¯¯- 0
 idUser
-ãã1 7
+¯¯1 7
 )
-ãã7 8
+¯¯7 8
 {
-åå 	
+˘˘ 	
 lock
-çç 
+˙˙ 
 (
-çç 
+˙˙ 
 
 objectLock
-çç 
+˙˙ 
 )
-çç 
+˙˙ 
 {
-éé 
+˚˚ 
 if
-èè 
+¸¸ 
 (
-èè 
+¸¸ 
 roomCode
-èè 
+¸¸ 
 !=
-èè 
+¸¸ 
 NULL_INT_VALUE
-èè  .
+¸¸  .
 &&
-èè/ 1
+¸¸/ 1
 idUser
-èè2 8
+¸¸2 8
 !=
-èè9 ;
+¸¸9 ;
 NULL_INT_VALUE
-èè< J
+¸¸< J
 )
-èèJ K
+¸¸J K
 {
-êê 
+˝˝ 
 List
-ëë 
+˛˛ 
 <
-ëë !
+˛˛ !
 PlayerPlayingInGame
-ëë ,
+˛˛ ,
 >
-ëë, -
+˛˛, -
 playersPlaying
-ëë. <
+˛˛. <
 =
-ëë= >#
+˛˛= >#
 ActiveGamesDictionary
-ëë? T
+˛˛? T
 .
-ëëT U#
+˛˛T U#
 GetSpecificActiveGame
-ëëU j
+˛˛U j
 (
-ëëj k
+˛˛j k
 roomCode
-ëëk s
+˛˛k s
 )
-ëës t
+˛˛s t
 ;
-ëët u
+˛˛t u
 if
-íí 
+ˇˇ 
 (
-íí 
+ˇˇ 
 playersPlaying
-íí &
+ˇˇ &
 !=
-íí' )
+ˇˇ' )
 null
-íí* .
+ˇˇ* .
 )
-íí. /
+ˇˇ. /
 {
-ìì 
-playersPlaying
-îî &
-.
-îî& '
-FirstOrDefault
-îî' 5
-(
-îî5 6
-pla
-îî6 9
-=>
-îî: <
-pla
-îî= @
-.
-îî@ A
-IdUser
-îîA G
-==
-îîH J
-idUser
-îîK Q
-)
-îîQ R
-.
-îîR S
-DidBet
-îîS Y
+ÄÄ 
+var
+ÅÅ 
+playerBetting
+ÅÅ )
 =
-îîZ [
-true
-îî\ `
-;
-îî` a
-try
-ïï 
-{
-ññ 
-if
-óó 
-(
-óó  
+ÅÅ* +
 playersPlaying
-óó  .
+ÅÅ, :
 .
-óó. /
-Count
-óó/ 4
-==
-óó5 7
-playersPlaying
-óó8 F
-.
-óóF G
-Where
-óóG L
+ÅÅ: ;
+Find
+ÅÅ; ?
 (
-óóL M
+ÅÅ? @
 pla
-óóM P
+ÅÅ@ C
 =>
-óóQ S
+ÅÅD F
 pla
-óóT W
+ÅÅG J
 .
-óóW X
-DidBet
-óóX ^
+ÅÅJ K
+IdUser
+ÅÅK Q
 ==
-óó_ a
+ÅÅR T
+idUser
+ÅÅU [
+)
+ÅÅ[ \
+;
+ÅÅ\ ]
+if
+ÇÇ 
+(
+ÇÇ 
+playerBetting
+ÇÇ (
+!=
+ÇÇ) +
+null
+ÇÇ, 0
+)
+ÇÇ0 1
+{
+ÉÉ 
+playerBetting
+ÑÑ )
+.
+ÑÑ) *
+DidBet
+ÑÑ* 0
+=
+ÑÑ1 2
 true
-óób f
-)
-óóf g
-.
-óóg h
-ToList
-óóh n
+ÑÑ3 7
+;
+ÑÑ7 8
+}
+ÖÖ 
+if
+ÜÜ 
 (
-óón o
-)
-óóo p
-.
-óóp q
-Count
-óóq v
-)
-óóv w
-{
-òò '
-NotifyPlayersBetsAreReady
-ôô  9
-(
-ôô9 :
+ÜÜ 
 playersPlaying
-ôô: H
-)
-ôôH I
-;
-ôôI J
-}
-öö 
-}
-õõ 
-catch
-úú 
+ÜÜ *
+.
+ÜÜ* +
+Count
+ÜÜ+ 0
+==
+ÜÜ1 3
+playersPlaying
+ÜÜ4 B
+.
+ÜÜB C
+Where
+ÜÜC H
 (
-úú 1
+ÜÜH I
+pla
+ÜÜI L
+=>
+ÜÜM O
+pla
+ÜÜP S
+.
+ÜÜS T
+DidBet
+ÜÜT Z
+)
+ÜÜZ [
+.
+ÜÜ[ \
+ToList
+ÜÜ\ b
+(
+ÜÜb c
+)
+ÜÜc d
+.
+ÜÜd e
+Count
+ÜÜe j
+)
+ÜÜj k
+{
+áá '
+NotifyPlayersBetsAreReady
+àà 5
+(
+àà5 6
+playersPlaying
+àà6 D
+)
+ààD E
+;
+ààE F
+}
+ââ 
+}
+ää 
+}
+ãã 
+}
+åå 
+}
+çç 	
+private
+èè 
+void
+èè '
+NotifyPlayersBetsAreReady
+èè .
+(
+èè. /
+List
+èè/ 3
+<
+èè3 4!
+PlayerPlayingInGame
+èè4 G
+>
+èèG H
+playersPlaying
+èèI W
+)
+èèW X
+{
+êê 	
+lock
+ëë 
+(
+ëë 
+
+objectLock
+ëë 
+)
+ëë 
+{
+íí 
+foreach
+ìì 
+(
+ìì !
+PlayerPlayingInGame
+ìì ,
+player
+ìì- 3
+in
+ìì4 6
+playersPlaying
+ìì7 E
+)
+ììE F
+{
+îî 
+try
+ïï 
+{
+ññ 
+player
+óó 
+.
+óó !
+gameCallbackChannel
+óó 2
+.
+óó2 3 
+GetCallbackChannel
+óó3 E
+<
+óóE F"
+IGameActionsCallBack
+óóF Z
+>
+óóZ [
+(
+óó[ \
+)
+óó\ ]
+.
+óó] ^&
+ResponseShowLastQuestion
+óó^ v
+(
+óóv w
+)
+óów x
+;
+óóx y
+}
+òò 
+catch
+ôô 
+(
+ôô 1
 #CommunicationObjectFaultedException
-úú B
+ôô >
 ex
-úúC E
+ôô? A
 )
-úúE F
+ôôA B
 {
-ùù "
+öö "
 ChannelAdministrator
-ûû 0
+õõ ,
 .
-ûû0 1&
+õõ, -&
 HandleCommunicationIssue
-ûû1 I
+õõ- E
 (
-ûûI J
-idUser
-ûûJ P
+õõE F
+player
+õõF L
+.
+õõL M
+IdUser
+õõM S
 ,
-ûûP Q"
+õõS T"
 ChannelAdministrator
-ûûR f
+õõU i
 .
-ûûf g
+õõi j
 GAME_EXCEPTION
-ûûg u
+õõj x
 )
-ûûu v
+õõx y
 ;
-ûûv w
+õõy z
 ExceptionHandler
-üü ,
+úú (
 .
-üü, -
+úú( )
 LogException
-üü- 9
+úú) 5
 (
-üü9 :
+úú5 6
 ex
-üü: <
+úú6 8
 ,
-üü< =!
+úú8 9!
 ExceptionDictionary
-üü> Q
+úú: M
 .
-üüQ R
+úúM N
 FATAL_EXCEPTION
-üüR a
+úúN ]
 )
-üüa b
+úú] ^
 ;
-üüb c
+úú^ _
 }
-†† 
+ùù 
 catch
-°° 
+ûû 
 (
-°° 
+ûû 
 TimeoutException
-°° /
+ûû +
 ex
-°°0 2
+ûû, .
 )
-°°2 3
+ûû. /
 {
-¢¢ "
+üü "
 ChannelAdministrator
-££ 0
+†† ,
 .
-££0 1&
+††, -&
 HandleCommunicationIssue
-££1 I
+††- E
 (
-££I J
-idUser
-££J P
+††E F
+player
+††F L
+.
+††L M
+IdUser
+††M S
 ,
-££P Q"
+††S T"
 ChannelAdministrator
-££R f
+††U i
 .
-££f g
+††i j
 GAME_EXCEPTION
-££g u
+††j x
 )
-££u v
+††x y
 ;
-££v w
+††y z
 ExceptionHandler
-§§ ,
+°° (
 .
-§§, -
+°°( )
 LogException
-§§- 9
+°°) 5
 (
-§§9 :
+°°5 6
 ex
-§§: <
+°°6 8
 ,
-§§< =!
+°°8 9!
 ExceptionDictionary
-§§> Q
+°°: M
 .
-§§Q R
+°°M N
 FATAL_EXCEPTION
-§§R a
+°°N ]
 )
-§§a b
+°°] ^
 ;
-§§b c
+°°^ _
 }
-•• 
+¢¢ 
 catch
-¶¶ 
+££ 
 (
-¶¶ $
+££ $
 CommunicationException
-¶¶ 5
+££ 1
+ex
+££2 4
+)
+££4 5
+{
+§§ "
+ChannelAdministrator
+•• ,
+.
+••, -&
+HandleCommunicationIssue
+••- E
+(
+••E F
+player
+••F L
+.
+••L M
+IdUser
+••M S
+,
+••S T"
+ChannelAdministrator
+••U i
+.
+••i j
+GAME_EXCEPTION
+••j x
+)
+••x y
+;
+••y z
+ExceptionHandler
+¶¶ (
+.
+¶¶( )
+LogException
+¶¶) 5
+(
+¶¶5 6
 ex
 ¶¶6 8
-)
-¶¶8 9
-{
-ßß "
-ChannelAdministrator
-®® 0
-.
-®®0 1&
-HandleCommunicationIssue
-®®1 I
-(
-®®I J
-idUser
-®®J P
 ,
-®®P Q"
-ChannelAdministrator
-®®R f
-.
-®®f g
-GAME_EXCEPTION
-®®g u
-)
-®®u v
-;
-®®v w
-ExceptionHandler
-©© ,
-.
-©©, -
-LogException
-©©- 9
-(
-©©9 :
-ex
-©©: <
-,
-©©< =!
+¶¶8 9!
 ExceptionDictionary
-©©> Q
+¶¶: M
 .
-©©Q R
+¶¶M N
 FATAL_EXCEPTION
-©©R a
+¶¶N ]
 )
-©©a b
+¶¶] ^
 ;
-©©b c
+¶¶^ _
 }
-™™ 
+ßß 
 catch
-´´ 
+®® 
 (
-´´ '
+®® '
 InvalidOperationException
-´´ 8
+®® 4
 ex
-´´9 ;
+®®5 7
 )
-´´; <
+®®7 8
 {
-¨¨ "
+©© "
 ChannelAdministrator
-≠≠ 0
+™™ ,
 .
-≠≠0 1&
+™™, -&
 HandleCommunicationIssue
-≠≠1 I
+™™- E
 (
-≠≠I J
-idUser
-≠≠J P
+™™E F
+player
+™™F L
+.
+™™L M
+IdUser
+™™M S
 ,
-≠≠P Q"
+™™S T"
 ChannelAdministrator
-≠≠R f
+™™U i
 .
-≠≠f g
+™™i j
 GAME_EXCEPTION
-≠≠g u
+™™j x
 )
-≠≠u v
+™™x y
 ;
-≠≠v w
+™™y z
 ExceptionHandler
-ÆÆ ,
+´´ (
 .
-ÆÆ, -
+´´( )
 LogException
-ÆÆ- 9
+´´) 5
 (
-ÆÆ9 :
+´´5 6
 ex
-ÆÆ: <
+´´6 8
 ,
-ÆÆ< =!
+´´8 9!
 ExceptionDictionary
-ÆÆ> Q
+´´: M
 .
-ÆÆQ R
+´´M N
 FATAL_EXCEPTION
-ÆÆR a
+´´N ]
 )
-ÆÆa b
+´´] ^
 ;
-ÆÆb c
+´´^ _
 }
-ØØ 
+¨¨ 
 }
-∞∞ 
+≠≠ 
 }
-±± 
+ÆÆ 
 }
-≤≤ 
-}
-≥≥ 	
-private
-µµ 
+ØØ 	
+public
+≤≤ 
 void
-µµ '
-NotifyPlayersBetsAreReady
-µµ .
+≤≤ '
+ConfirmLastQuestionAnswer
+≤≤ -
 (
-µµ. /
-List
-µµ/ 3
-<
-µµ3 4!
-PlayerPlayingInGame
-µµ4 G
->
-µµG H
-playersPlaying
-µµI W
-)
-µµW X
+≤≤- .
+int
+≤≤. 1
+roomCode
+≤≤2 :
+,
+≤≤: ;&
+PlayerInGameDataContract
+≤≤< T
+playerAnswering
+≤≤U d
+,
+≤≤d e
+int
+≤≤f i
+points
+≤≤j p
+,
+≤≤p q
+bool
+≤≤r v
+	isCorrect≤≤w Ä
+)≤≤Ä Å
 {
-∂∂ 	
+≥≥ 	
 lock
-∑∑ 
+¥¥ 
 (
-∑∑ 
+¥¥ 
 
 objectLock
-∑∑ 
+¥¥ 
 )
-∑∑ 
+¥¥ 
 {
-∏∏ 
-foreach
-ππ 
+µµ 
+if
+∂∂ 
 (
-ππ !
-PlayerPlayingInGame
-ππ ,
-player
-ππ- 3
-in
-ππ4 6
-playersPlaying
-ππ7 E
+∂∂ 
+roomCode
+∂∂ 
+!=
+∂∂ 
+$num
+∂∂  !
+&&
+∂∂" $
+playerAnswering
+∂∂% 4
+!=
+∂∂5 7
+null
+∂∂8 <
 )
-ππE F
+∂∂< =
 {
-∫∫ 
-try
-ªª 
-{
-ºº 
-player
-ΩΩ 
-.
-ΩΩ !
-gameCallbackChannel
-ΩΩ 2
-.
-ΩΩ2 3 
-GetCallbackChannel
-ΩΩ3 E
+∑∑ 
+List
+∏∏ 
 <
-ΩΩE F"
-IGameActionsCallBack
-ΩΩF Z
+∏∏ !
+PlayerPlayingInGame
+∏∏ ,
 >
-ΩΩZ [
-(
-ΩΩ[ \
-)
-ΩΩ\ ]
+∏∏, -
+playersPlaying
+∏∏. <
+=
+∏∏= >#
+ActiveGamesDictionary
+∏∏? T
 .
-ΩΩ] ^&
-ResponseShowLastQuestion
-ΩΩ^ v
+∏∏T U#
+GetSpecificActiveGame
+∏∏U j
 (
-ΩΩv w
+∏∏j k
+roomCode
+∏∏k s
 )
-ΩΩw x
+∏∏s t
 ;
-ΩΩx y
-}
-ææ 
-catch
-øø 
+∏∏t u
+if
+ππ 
 (
-øø 1
-#CommunicationObjectFaultedException
-øø >
-ex
-øø? A
+ππ 
+playersPlaying
+ππ &
+!=
+ππ' )
+null
+ππ* .
 )
-øøA B
+ππ. /
 {
-¿¿ "
-ChannelAdministrator
-¡¡ ,
+∫∫ !
+PlayerPlayingInGame
+ªª +
+specificPlayer
+ªª, :
+=
+ªª; <
+playersPlaying
+ªª= K
 .
-¡¡, -&
-HandleCommunicationIssue
-¡¡- E
+ªªK L
+Find
+ªªL P
 (
-¡¡E F
-player
-¡¡F L
+ªªP Q
+pla
+ªªQ T
+=>
+ªªU W
+pla
+ªªX [
 .
-¡¡L M
+ªª[ \
 IdUser
-¡¡M S
-,
-¡¡S T"
-ChannelAdministrator
-¡¡U i
+ªª\ b
+==
+ªªc e
+playerAnswering
+ªªf u
 .
-¡¡i j
-GAME_EXCEPTION
-¡¡j x
+ªªu v
+IdUser
+ªªv |
 )
-¡¡x y
+ªª| }
 ;
-¡¡y z
-ExceptionHandler
-¬¬ (
-.
-¬¬( )
-LogException
-¬¬) 5
+ªª} ~
+if
+ºº 
 (
-¬¬5 6
-ex
-¬¬6 8
-,
-¬¬8 9!
-ExceptionDictionary
-¬¬: M
-.
-¬¬M N
-FATAL_EXCEPTION
-¬¬N ]
+ºº 
+specificPlayer
+ºº *
+!=
+ºº+ -
+null
+ºº. 2
 )
-¬¬] ^
-;
-¬¬^ _
-}
-√√ 
-catch
-ƒƒ 
-(
-ƒƒ 
-TimeoutException
-ƒƒ +
-ex
-ƒƒ, .
-)
-ƒƒ. /
+ºº2 3
 {
-≈≈ "
-ChannelAdministrator
-∆∆ ,
-.
-∆∆, -&
-HandleCommunicationIssue
-∆∆- E
+ΩΩ ,
+UpdatePlayerLastQuestionStatus
+ææ :
 (
-∆∆E F
-player
-∆∆F L
-.
-∆∆L M
-IdUser
-∆∆M S
+ææ: ;
+specificPlayer
+ææ; I
 ,
-∆∆S T"
-ChannelAdministrator
-∆∆U i
-.
-∆∆i j
-GAME_EXCEPTION
-∆∆j x
+ææI J
+	isCorrect
+ææK T
+,
+ææT U
+playerAnswering
+ææV e
+,
+ææe f
+points
+ææg m
 )
-∆∆x y
+ææm n
 ;
-∆∆y z
-ExceptionHandler
-«« (
-.
-««( )
-LogException
-««) 5
+ææn o'
+CheckAndProcessEndOfRound
+øø 5
 (
-««5 6
-ex
-««6 8
+øø5 6
+playersPlaying
+øø6 D
 ,
-««8 9!
-ExceptionDictionary
-««: M
-.
-««M N
-FATAL_EXCEPTION
-««N ]
+øøD E
+roomCode
+øøF N
 )
-««] ^
+øøN O
 ;
-««^ _
+øøO P
 }
-»» 
-catch
-…… 
-(
-…… $
-CommunicationException
-…… 1
-ex
-……2 4
-)
-……4 5
+¿¿ 
+else
+¡¡ 
 {
-   "
-ChannelAdministrator
-ÀÀ ,
-.
-ÀÀ, -&
-HandleCommunicationIssue
-ÀÀ- E
+¬¬ !
+NotifyPlayersWinner
+√√ /
 (
-ÀÀE F
-player
-ÀÀF L
-.
-ÀÀL M
-IdUser
-ÀÀM S
+√√/ 0
+playersPlaying
+√√0 >
 ,
-ÀÀS T"
-ChannelAdministrator
-ÀÀU i
-.
-ÀÀi j
-GAME_EXCEPTION
-ÀÀj x
-)
-ÀÀx y
-;
-ÀÀy z
-ExceptionHandler
-ÃÃ (
-.
-ÃÃ( )
-LogException
-ÃÃ) 5
-(
-ÃÃ5 6
-ex
-ÃÃ6 8
-,
-ÃÃ8 9!
+√√> ?!
 ExceptionDictionary
-ÃÃ: M
+√√@ S
 .
-ÃÃM N
-FATAL_EXCEPTION
-ÃÃN ]
+√√S T&
+UNKOWN_EXCEPTION_OCURRED
+√√T l
 )
-ÃÃ] ^
+√√l m
 ;
-ÃÃ^ _
+√√m n
 }
-ÕÕ 
-catch
-ŒŒ 
+ƒƒ 
+}
+≈≈ 
+}
+∆∆ 
+}
+«« 
+}
+»» 	
+private
+   
+void
+   ,
+UpdatePlayerLastQuestionStatus
+   3
 (
-ŒŒ '
-InvalidOperationException
-ŒŒ 4
-ex
-ŒŒ5 7
-)
-ŒŒ7 8
+  3 4!
+PlayerPlayingInGame
+  4 G
+specificPlayer
+  H V
+,
+  V W
+bool
+  X \
+	isCorrect
+  ] f
+,
+  f g'
+PlayerInGameDataContract  h Ä
+playerAnswering  Å ê
+,  ê ë
+int  í ï
+points  ñ ú
+)  ú ù
 {
-œœ "
-ChannelAdministrator
-–– ,
+ÀÀ 	
+specificPlayer
+ÃÃ 
 .
-––, -&
-HandleCommunicationIssue
-––- E
-(
-––E F
-player
-––F L
-.
-––L M
-IdUser
-––M S
-,
-––S T"
-ChannelAdministrator
-––U i
-.
-––i j
-GAME_EXCEPTION
-––j x
-)
-––x y
+ÃÃ #
+DidAnswerLastQuestion
+ÃÃ 0
+=
+ÃÃ1 2
+true
+ÃÃ3 7
 ;
-––y z
-ExceptionHandler
-—— (
-.
-——( )
-LogException
-——) 5
+ÃÃ7 8
+if
+ÕÕ 
 (
-——5 6
-ex
-——6 8
-,
-——8 9!
-ExceptionDictionary
-——: M
-.
-——M N
-FATAL_EXCEPTION
-——N ]
+ÕÕ 
+	isCorrect
+ÕÕ 
 )
-——] ^
+ÕÕ 
+{
+ŒŒ 
+specificPlayer
+œœ 
+.
+œœ 
+FinalPoints
+œœ *
+=
+œœ+ ,
+playerAnswering
+œœ- <
+.
+œœ< ="
+CurrentPointsOfRound
+œœ= Q
++=
+œœR T
+points
+œœU [
 ;
-——^ _
+œœ[ \
 }
-““ 
-}
-”” 
+–– 
+else
+—— 
+{
+““ 
+specificPlayer
+”” 
+.
+”” 
+FinalPoints
+”” *
+=
+””+ ,
+playerAnswering
+””- <
+.
+””< ="
+CurrentPointsOfRound
+””= Q
+-=
+””R T
+points
+””U [
+;
+””[ \
 }
 ‘‘ 
 }
-’’ 	
-public
-ÿÿ 
+÷÷ 	
+private
+ÿÿ 
 void
-ÿÿ '
-ConfirmLastQuestionAnswer
-ÿÿ -
+ÿÿ '
+CheckAndProcessEndOfRound
+ÿÿ .
 (
-ÿÿ- .
-int
-ÿÿ. 1
-roomCode
-ÿÿ2 :
-,
-ÿÿ: ;&
-PlayerInGameDataContract
-ÿÿ< T
-playerAnswering
-ÿÿU d
-,
-ÿÿd e
-int
-ÿÿf i
-points
-ÿÿj p
-,
-ÿÿp q
-bool
-ÿÿr v
-	isCorrectÿÿw Ä
-)ÿÿÄ Å
-{
-ŸŸ 	
-lock
-⁄⁄ 
-(
-⁄⁄ 
-
-objectLock
-⁄⁄ 
-)
-⁄⁄ 
-{
-€€ 
-if
-‹‹ 
-(
-‹‹ 
-roomCode
-‹‹ 
-!=
-‹‹ 
-$num
-‹‹  !
-&&
-‹‹" $
-playerAnswering
-‹‹% 4
-!=
-‹‹5 7
-null
-‹‹8 <
-)
-‹‹< =
-{
-›› 
+ÿÿ. /
 List
-ﬁﬁ 
+ÿÿ/ 3
 <
-ﬁﬁ !
+ÿÿ3 4!
 PlayerPlayingInGame
-ﬁﬁ ,
+ÿÿ4 G
 >
-ﬁﬁ, -
+ÿÿG H
 playersPlaying
-ﬁﬁ. <
-=
-ﬁﬁ= >#
-ActiveGamesDictionary
-ﬁﬁ? T
-.
-ﬁﬁT U#
-GetSpecificActiveGame
-ﬁﬁU j
-(
-ﬁﬁj k
+ÿÿI W
+,
+ÿÿW X
+int
+ÿÿY \
 roomCode
-ﬁﬁk s
+ÿÿ] e
 )
-ﬁﬁs t
-;
-ﬁﬁt u
+ÿÿe f
+{
+ŸŸ 	
 if
-ﬂﬂ 
+⁄⁄ 
 (
-ﬂﬂ 
+⁄⁄ 
 playersPlaying
-ﬂﬂ &
-!=
-ﬂﬂ' )
-null
-ﬂﬂ* .
-)
-ﬂﬂ. /
-{
-‡‡ !
-PlayerPlayingInGame
-·· +
-specificPlayer
-··, :
-=
-··; <
-playersPlaying
-··= K
+⁄⁄ 
 .
-··K L
-FirstOrDefault
-··L Z
-(
-··Z [
-pla
-··[ ^
-=>
-··_ a
-pla
-··b e
-.
-··e f
-IdUser
-··f l
-==
-··m o
-playerAnswering
-··p 
-.·· Ä
-IdUser··Ä Ü
-)··Ü á
-;··á à
-if
-‚‚ 
-(
-‚‚ 
-specificPlayer
-‚‚ *
-!=
-‚‚+ -
-null
-‚‚. 2
-)
-‚‚2 3
-{
-„„ 
-specificPlayer
-ÂÂ *
-.
-ÂÂ* +#
-DidAnswerLastQuestion
-ÂÂ+ @
-=
-ÂÂA B
-true
-ÂÂC G
-;
-ÂÂG H
-try
-ÊÊ 
-{
-ÁÁ 
-if
-ËË  "
-(
-ËË# $
-	isCorrect
-ËË$ -
-)
-ËË- .
-{
-ÈÈ  !
-specificPlayer
-ÍÍ$ 2
-.
-ÍÍ2 3
-FinalPoints
-ÍÍ3 >
-=
-ÍÍ? @
-playerAnswering
-ÍÍA P
-.
-ÍÍP Q"
-CurrentPointsOfRound
-ÍÍQ e
-+=
-ÍÍf h
-points
-ÍÍi o
-;
-ÍÍo p
-}
-ÎÎ  !
-else
-ÏÏ  $
-{
-ÌÌ  !
-specificPlayer
-ÓÓ$ 2
-.
-ÓÓ2 3
-FinalPoints
-ÓÓ3 >
-=
-ÓÓ? @
-playerAnswering
-ÓÓA P
-.
-ÓÓP Q"
-CurrentPointsOfRound
-ÓÓQ e
--=
-ÓÓf h
-points
-ÓÓi o
-;
-ÓÓo p
-}
-ÔÔ  !
-if
-  "
-(
-# $
-playersPlaying
-$ 2
-.
-2 3
+⁄⁄ 
 Count
-3 8
+⁄⁄ $
 ==
-9 ;
+⁄⁄% '
 playersPlaying
-< J
+⁄⁄( 6
 .
-J K
+⁄⁄6 7
 Where
-K P
+⁄⁄7 <
 (
-P Q
+⁄⁄< =
 pla
-Q T
+⁄⁄= @
 =>
-U W
+⁄⁄A C
 pla
-X [
+⁄⁄D G
 .
-[ \#
+⁄⁄G H#
 DidAnswerLastQuestion
-\ q
-==
-r t
-true
-u y
+⁄⁄H ]
 )
-y z
+⁄⁄] ^
 .
-z {
-ToList{ Å
-(Å Ç
-)Ç É
-.É Ñ
-CountÑ â
-)â ä
+⁄⁄^ _
+ToList
+⁄⁄_ e
+(
+⁄⁄e f
+)
+⁄⁄f g
+.
+⁄⁄g h
+Count
+⁄⁄h m
+)
+⁄⁄m n
 {
-ÒÒ  !,
+€€ ,
 QuestionsManagerImplementation
-ÚÚ$ B
+‹‹ .
 questionsManager
-ÚÚC S
+‹‹/ ?
 =
-ÚÚT U
+‹‹@ A
 new
-ÚÚV Y
+‹‹B E
 (
-ÚÚY Z
+‹‹E F
 )
-ÚÚZ [
+‹‹F G
 ;
-ÚÚ[ \
+‹‹G H
 int
-ÛÛ$ '
+›› 
 arePointsSaved
-ÛÛ( 6
+›› "
 =
-ÛÛ7 8
+››# $
 questionsManager
-ÛÛ9 I
+››% 5
 .
-ÛÛI J!
+››5 6!
 RegistryGamePlayers
-ÛÛJ ]
+››6 I
 (
-ÛÛ] ^
+››I J
 roomCode
-ÛÛ^ f
+››J R
 ,
-ÛÛf g
+››R S
 playersPlaying
-ÛÛh v
+››T b
 )
-ÛÛv w
+››b c
 ;
-ÛÛw x!
+››c d!
 NotifyPlayersWinner
-ÙÙ$ 7
+ﬁﬁ #
 (
-ÙÙ7 8
+ﬁﬁ# $
 playersPlaying
-ÙÙ8 F
+ﬁﬁ$ 2
 ,
-ÙÙF G
+ﬁﬁ2 3
 arePointsSaved
-ÙÙH V
+ﬁﬁ4 B
 )
-ÙÙV W
+ﬁﬁB C
 ;
-ÙÙW X(
+ﬁﬁC D(
 CleanDictionariesAfterGame
-ıı$ >
+ﬂﬂ *
 (
-ıı> ?
+ﬂﬂ* +
 roomCode
-ıı? G
+ﬂﬂ+ 3
 )
-ııG H
+ﬂﬂ3 4
 ;
-ııH I
+ﬂﬂ4 5
 }
-ˆˆ  !
+‡‡ 
 }
-˜˜ 
-catch
-¯¯ !
-(
-¯¯" #1
-#CommunicationObjectFaultedException
-¯¯# F
-ex
-¯¯G I
-)
-¯¯I J
-{
-˘˘ "
-ChannelAdministrator
-˙˙  4
-.
-˙˙4 5&
-HandleCommunicationIssue
-˙˙5 M
-(
-˙˙M N
-playerAnswering
-˙˙N ]
-.
-˙˙] ^
-IdUser
-˙˙^ d
-,
-˙˙d e"
-ChannelAdministrator
-˙˙f z
-.
-˙˙z {
-GAME_EXCEPTION˙˙{ â
-)˙˙â ä
-;˙˙ä ã
-ExceptionHandler
-˚˚  0
-.
-˚˚0 1
-LogException
-˚˚1 =
-(
-˚˚= >
-ex
-˚˚> @
-,
-˚˚@ A!
-ExceptionDictionary
-˚˚B U
-.
-˚˚U V
-FATAL_EXCEPTION
-˚˚V e
-)
-˚˚e f
-;
-˚˚f g
-}
-¸¸ 
-catch
-˝˝ !
-(
-˝˝" #
-TimeoutException
-˝˝# 3
-ex
-˝˝4 6
-)
-˝˝6 7
-{
-˛˛ "
-ChannelAdministrator
-ˇˇ  4
-.
-ˇˇ4 5&
-HandleCommunicationIssue
-ˇˇ5 M
-(
-ˇˇM N
-playerAnswering
-ˇˇN ]
-.
-ˇˇ] ^
-IdUser
-ˇˇ^ d
-,
-ˇˇd e"
-ChannelAdministrator
-ˇˇf z
-.
-ˇˇz {
-GAME_EXCEPTIONˇˇ{ â
-)ˇˇâ ä
-;ˇˇä ã
-ExceptionHandler
-ÄÄ  0
-.
-ÄÄ0 1
-LogException
-ÄÄ1 =
-(
-ÄÄ= >
-ex
-ÄÄ> @
-,
-ÄÄ@ A!
-ExceptionDictionary
-ÄÄB U
-.
-ÄÄU V
-FATAL_EXCEPTION
-ÄÄV e
-)
-ÄÄe f
-;
-ÄÄf g
-}
-ÅÅ 
-catch
-ÇÇ !
-(
-ÇÇ" #$
-CommunicationException
-ÇÇ# 9
-ex
-ÇÇ: <
-)
-ÇÇ< =
-{
-ÉÉ "
-ChannelAdministrator
-ÑÑ  4
-.
-ÑÑ4 5&
-HandleCommunicationIssue
-ÑÑ5 M
-(
-ÑÑM N
-playerAnswering
-ÑÑN ]
-.
-ÑÑ] ^
-IdUser
-ÑÑ^ d
-,
-ÑÑd e"
-ChannelAdministrator
-ÑÑf z
-.
-ÑÑz {
-GAME_EXCEPTIONÑÑ{ â
-)ÑÑâ ä
-;ÑÑä ã
-ExceptionHandler
-ÖÖ  0
-.
-ÖÖ0 1
-LogException
-ÖÖ1 =
-(
-ÖÖ= >
-ex
-ÖÖ> @
-,
-ÖÖ@ A!
-ExceptionDictionary
-ÖÖB U
-.
-ÖÖU V
-FATAL_EXCEPTION
-ÖÖV e
-)
-ÖÖe f
-;
-ÖÖf g
-}
-ÜÜ 
-catch
-áá !
-(
-áá" #'
-InvalidOperationException
-áá# <
-ex
-áá= ?
-)
-áá? @
-{
-àà "
-ChannelAdministrator
-ââ  4
-.
-ââ4 5&
-HandleCommunicationIssue
-ââ5 M
-(
-ââM N
-playerAnswering
-ââN ]
-.
-ââ] ^
-IdUser
-ââ^ d
-,
-ââd e"
-ChannelAdministrator
-ââf z
-.
-ââz {
-GAME_EXCEPTIONââ{ â
-)âââ ä
-;ââä ã
-ExceptionHandler
-ää  0
-.
-ää0 1
-LogException
-ää1 =
-(
-ää= >
-ex
-ää> @
-,
-ää@ A!
-ExceptionDictionary
-ääB U
-.
-ääU V
-FATAL_EXCEPTION
-ääV e
-)
-ääe f
-;
-ääf g
-}
-ãã 
-}
-åå 
-else
-çç 
-{
-éé !
-NotifyPlayersWinner
-èè /
-(
-èè/ 0
-playersPlaying
-èè0 >
-,
-èè> ?!
-ExceptionDictionary
-èè@ S
-.
-èèS T&
-UNKOWN_EXCEPTION_OCURRED
-èèT l
-)
-èèl m
-;
-èèm n
-}
-êê 
-}
-ëë 
-}
-íí 
-}
-ìì 
-}
-îî 	
+·· 	
 private
-ññ 
+„„ 
 void
-ññ !
+„„ !
 NotifyPlayersWinner
-ññ (
+„„ (
 (
-ññ( )
+„„( )
 List
-ññ) -
+„„) -
 <
-ññ- .!
+„„- .!
 PlayerPlayingInGame
-ññ. A
+„„. A
 >
-ññA B
+„„A B
 playersPlaying
-ññC Q
+„„C Q
 ,
-ññQ R
+„„Q R
 int
-ññS V
+„„S V
 arePointsSaved
-ññW e
+„„W e
 )
-ññe f
+„„e f
 {
-óó 	
+‰‰ 	
 List
-òò 
+ÂÂ 
 <
-òò &
+ÂÂ &
 PlayerInGameDataContract
-òò )
+ÂÂ )
 >
-òò) *
+ÂÂ) *
 playersInGame
-òò+ 8
+ÂÂ+ 8
 =
-òò9 :-
+ÂÂ9 :-
 GetPlayerInGameDataContractList
-òò; Z
+ÂÂ; Z
 (
-òòZ [
+ÂÂZ [
 playersPlaying
-òò[ i
+ÂÂ[ i
 )
-òòi j
+ÂÂi j
 ;
-òòj k
+ÂÂj k
 foreach
-ôô 
+ÊÊ 
 (
-ôô !
+ÊÊ !
 PlayerPlayingInGame
-ôô (
+ÊÊ (
 player
-ôô) /
+ÊÊ) /
 in
-ôô0 2
+ÊÊ0 2
 playersPlaying
-ôô3 A
+ÊÊ3 A
 )
-ôôA B
+ÊÊA B
 {
-öö 
+ÁÁ 
 try
-õõ 
+ËË 
 {
-úú 
+ÈÈ 
 player
-ùù 
+ÍÍ 
 .
-ùù !
+ÍÍ !
 gameCallbackChannel
-ùù .
+ÍÍ .
 .
-ùù. / 
+ÍÍ. / 
 GetCallbackChannel
-ùù/ A
+ÍÍ/ A
 <
-ùùA B"
+ÍÍA B"
 IGameActionsCallBack
-ùùB V
+ÍÍB V
 >
-ùùV W
+ÍÍV W
 (
-ùùW X
+ÍÍW X
 )
-ùùX Y
+ÍÍX Y
 .
-ùùY Z 
+ÍÍY Z 
 ResponseShowWinner
-ùùZ l
+ÍÍZ l
 (
-ùùl m
+ÍÍl m
 playersInGame
-ùùm z
+ÍÍm z
 ,
-ùùz {
-arePointsSavedùù| ä
-)ùùä ã
-;ùùã å
+ÍÍz {
+arePointsSavedÍÍ| ä
+)ÍÍä ã
+;ÍÍã å
 }
-ûû 
+ÎÎ 
 catch
-üü 
+ÏÏ 
 (
-üü 1
+ÏÏ 1
 #CommunicationObjectFaultedException
-üü :
+ÏÏ :
 ex
-üü; =
+ÏÏ; =
 )
-üü= >
+ÏÏ= >
 {
-†† "
+ÌÌ "
 ChannelAdministrator
-°° (
+ÓÓ (
 .
-°°( )&
+ÓÓ( )&
 HandleCommunicationIssue
-°°) A
+ÓÓ) A
 (
-°°A B
+ÓÓA B
 player
-°°B H
+ÓÓB H
 .
-°°H I
+ÓÓH I
 IdUser
-°°I O
+ÓÓI O
 ,
-°°O P"
+ÓÓO P"
 ChannelAdministrator
-°°Q e
+ÓÓQ e
 .
-°°e f
+ÓÓe f
 GAME_EXCEPTION
-°°f t
+ÓÓf t
 )
-°°t u
+ÓÓt u
 ;
-°°u v
+ÓÓu v
 ExceptionHandler
-¢¢ $
+ÔÔ $
 .
-¢¢$ %
+ÔÔ$ %
 LogException
-¢¢% 1
+ÔÔ% 1
 (
-¢¢1 2
+ÔÔ1 2
 ex
-¢¢2 4
+ÔÔ2 4
 .
-¢¢4 5
+ÔÔ4 5
 InnerException
-¢¢5 C
+ÔÔ5 C
 ,
-¢¢C D!
+ÔÔC D!
 ExceptionDictionary
-¢¢E X
+ÔÔE X
 .
-¢¢X Y
+ÔÔX Y
 FATAL_EXCEPTION
-¢¢Y h
+ÔÔY h
 )
-¢¢h i
+ÔÔh i
 ;
-¢¢i j
+ÔÔi j
 }
-££ 
+ 
 catch
-§§ 
+ÒÒ 
 (
-§§ 
+ÒÒ 
 TimeoutException
-§§ '
+ÒÒ '
 ex
-§§( *
+ÒÒ( *
 )
-§§* +
+ÒÒ* +
 {
-•• "
+ÚÚ "
 ChannelAdministrator
-¶¶ (
+ÛÛ (
 .
-¶¶( )&
+ÛÛ( )&
 HandleCommunicationIssue
-¶¶) A
+ÛÛ) A
 (
-¶¶A B
+ÛÛA B
 player
-¶¶B H
+ÛÛB H
 .
-¶¶H I
+ÛÛH I
 IdUser
-¶¶I O
+ÛÛI O
 ,
-¶¶O P"
+ÛÛO P"
 ChannelAdministrator
-¶¶Q e
+ÛÛQ e
 .
-¶¶e f
+ÛÛe f
 GAME_EXCEPTION
-¶¶f t
+ÛÛf t
 )
-¶¶t u
+ÛÛt u
 ;
-¶¶u v
+ÛÛu v
 ExceptionHandler
-ßß $
+ÙÙ $
 .
-ßß$ %
+ÙÙ$ %
 LogException
-ßß% 1
+ÙÙ% 1
 (
-ßß1 2
+ÙÙ1 2
 ex
-ßß2 4
+ÙÙ2 4
 ,
-ßß4 5!
+ÙÙ4 5!
 ExceptionDictionary
-ßß6 I
+ÙÙ6 I
 .
-ßßI J
+ÙÙI J
 FATAL_EXCEPTION
-ßßJ Y
+ÙÙJ Y
 )
-ßßY Z
+ÙÙY Z
 ;
-ßßZ [
+ÙÙZ [
 }
-®® 
+ıı 
 catch
-©© 
+ˆˆ 
 (
-©© $
+ˆˆ $
 CommunicationException
-©© -
+ˆˆ -
 ex
-©©. 0
+ˆˆ. 0
 )
-©©0 1
+ˆˆ0 1
 {
-™™ "
+˜˜ "
 ChannelAdministrator
-´´ (
+¯¯ (
 .
-´´( )&
+¯¯( )&
 HandleCommunicationIssue
-´´) A
+¯¯) A
 (
-´´A B
+¯¯A B
 player
-´´B H
+¯¯B H
 .
-´´H I
+¯¯H I
 IdUser
-´´I O
+¯¯I O
 ,
-´´O P"
+¯¯O P"
 ChannelAdministrator
-´´Q e
+¯¯Q e
 .
-´´e f
+¯¯e f
 GAME_EXCEPTION
-´´f t
+¯¯f t
 )
-´´t u
+¯¯t u
 ;
-´´u v
+¯¯u v
 ExceptionHandler
-¨¨ $
+˘˘ $
 .
-¨¨$ %
+˘˘$ %
 LogException
-¨¨% 1
+˘˘% 1
 (
-¨¨1 2
+˘˘1 2
 ex
-¨¨2 4
+˘˘2 4
 ,
-¨¨4 5!
+˘˘4 5!
 ExceptionDictionary
-¨¨6 I
+˘˘6 I
 .
-¨¨I J
+˘˘I J
 FATAL_EXCEPTION
-¨¨J Y
+˘˘J Y
 )
-¨¨Y Z
+˘˘Y Z
 ;
-¨¨Z [
+˘˘Z [
 }
-≠≠ 
+˙˙ 
 catch
-ÆÆ 
+˚˚ 
 (
-ÆÆ '
+˚˚ '
 InvalidOperationException
-ÆÆ 0
+˚˚ 0
 ex
-ÆÆ1 3
+˚˚1 3
 )
-ÆÆ3 4
+˚˚3 4
 {
-ØØ "
+¸¸ "
 ChannelAdministrator
-∞∞ (
+˝˝ (
 .
-∞∞( )&
+˝˝( )&
 HandleCommunicationIssue
-∞∞) A
+˝˝) A
 (
-∞∞A B
+˝˝A B
 player
-∞∞B H
+˝˝B H
 .
-∞∞H I
+˝˝H I
 IdUser
-∞∞I O
+˝˝I O
 ,
-∞∞O P"
+˝˝O P"
 ChannelAdministrator
-∞∞Q e
+˝˝Q e
 .
-∞∞e f
+˝˝e f
 GAME_EXCEPTION
-∞∞f t
+˝˝f t
 )
-∞∞t u
+˝˝t u
 ;
-∞∞u v
+˝˝u v
 ExceptionHandler
-±± $
+˛˛ $
 .
-±±$ %
+˛˛$ %
 LogException
-±±% 1
+˛˛% 1
 (
-±±1 2
+˛˛1 2
 ex
-±±2 4
+˛˛2 4
 ,
-±±4 5!
+˛˛4 5!
 ExceptionDictionary
-±±6 I
+˛˛6 I
 .
-±±I J
+˛˛I J
 FATAL_EXCEPTION
-±±J Y
+˛˛J Y
 )
-±±Y Z
+˛˛Y Z
 ;
-±±Z [
+˛˛Z [
 }
-≤≤ 
+ˇˇ 
 }
-≥≥ 
+ÄÄ 
 }
-¥¥ 	
+ÅÅ 	
 private
-∂∂ 
+ÉÉ 
 void
-∂∂ (
+ÉÉ (
 CleanDictionariesAfterGame
-∂∂ /
+ÉÉ /
 (
-∂∂/ 0
+ÉÉ/ 0
 int
-∂∂0 3
+ÉÉ0 3
 roomCode
-∂∂4 <
+ÉÉ4 <
 )
-∂∂< =
+ÉÉ< =
 {
-∑∑ 	)
+ÑÑ 	)
 QuestionsForLobbyDictionary
-∏∏ '
+ÖÖ '
 .
-∏∏' (0
+ÖÖ' (0
 "RemoveSetOFQuestionsFromDictionary
-∏∏( J
+ÖÖ( J
 (
-∏∏J K
+ÖÖJ K
 roomCode
-∏∏K S
+ÖÖK S
 )
-∏∏S T
+ÖÖS T
 ;
-∏∏T U#
+ÖÖT U#
 GameLobbiesDictionary
-ππ !
+ÜÜ !
 .
-ππ! "1
+ÜÜ! "1
 #RemoveRegistryOfLobbyFromDictionary
-ππ" E
+ÜÜ" E
 (
-ππE F
+ÜÜE F
 roomCode
-ππF N
+ÜÜF N
 )
-ππN O
+ÜÜN O
 ;
-ππO P
+ÜÜO P
 ChatsDictionary
-∫∫ 
+áá 
 .
-∫∫ 6
+áá 6
 (RemoveRegistryOfActiveChatFromDictionary
-∫∫ D
+áá D
 (
-∫∫D E
+ááD E
 roomCode
-∫∫E M
+ááE M
 )
-∫∫M N
+ááM N
 ;
-∫∫N O
+ááN O
 ChatsDictionary
-ªª 
+àà 
 .
-ªª ?
+àà ?
 1RemoveRegistryOfChannelCallBakcChatFromDictionary
-ªª M
+àà M
 (
-ªªM N
+ààM N
 roomCode
-ªªN V
+ààN V
 )
-ªªV W
+ààV W
 ;
-ªªW X
+ààW X
 var
-ºº 
+ââ 
 gameToFinish
-ºº 
+ââ 
 =
-ºº #
+ââ #
 ActiveGamesDictionary
-ºº 4
+ââ 4
 .
-ºº4 5#
+ââ4 5#
 GetSpecificActiveGame
-ºº5 J
+ââ5 J
 (
-ººJ K
+ââJ K
 roomCode
-ººK S
+ââK S
 )
-ººS T
+ââS T
 ;
-ººT U
+ââT U
 if
-ΩΩ 
+ää 
 (
-ΩΩ 
+ää 
 gameToFinish
-ΩΩ 
+ää 
 !=
-ΩΩ 
+ää 
 null
-ΩΩ  $
+ää  $
 )
-ΩΩ$ %
+ää$ %
 {
-ææ 
+ãã 
 foreach
-øø 
+åå 
 (
-øø 
+åå 
 var
-øø 
+åå 
 item
-øø !
+åå !
 in
-øø" $
+åå" $
 gameToFinish
-øø% 1
+åå% 1
 )
-øø1 2
+åå1 2
 {
-¿¿ #
+çç #
 ActiveUsersDictionary
-¡¡ )
+éé )
 .
-¡¡) *6
+éé) *6
 (RemoveRegistryOfActiveUserFromDictionary
-¡¡* R
+éé* R
 (
-¡¡R S
+ééR S
 item
-¡¡S W
+ééS W
 .
-¡¡W X
+ééW X
 IdUser
-¡¡X ^
+ééX ^
 )
-¡¡^ _
+éé^ _
 ;
-¡¡_ `
-if
-¬¬ 
-(
-¬¬ 
-(
-¬¬ 
-gameToFinish
-¬¬ %
-!=
-¬¬& (
-null
-¬¬) -
-&&
-¬¬. 0
-gameToFinish
-¬¬1 =
-.
-¬¬= >
-Any
-¬¬> A
-(
-¬¬A B
-pl
-¬¬B D
-=>
-¬¬E G
-pl
-¬¬H J
-.
-¬¬J K
-SideTeam
-¬¬K S
-==
-¬¬T V
-$num
-¬¬W X
-)
-¬¬X Y
-)
-¬¬Y Z
-)
-¬¬Z [
-{
-√√ 
+éé_ `
 	TeamChats
-ƒƒ !
+èè 
 .
-ƒƒ! "8
+èè 8
 *RemoveRegistryOfTeamChatUserFromDictionary
-ƒƒ" L
+èè H
 (
-ƒƒL M
+èèH I
 item
-ƒƒM Q
+èèI M
 .
-ƒƒQ R
+èèM N
 IdUser
-ƒƒR X
+èèN T
 )
-ƒƒX Y
+èèT U
 ;
-ƒƒY Z
+èèU V
 }
-≈≈ 
-}
-∆∆ #
+êê #
 ActiveGamesDictionary
-«« %
+ëë %
 .
-««% &0
+ëë% &0
 "RemoveRegistryOfGameFromDictionary
-««& H
+ëë& H
 (
-««H I
+ëëH I
 roomCode
-««I Q
+ëëI Q
 )
-««Q R
+ëëQ R
 ;
-««R S
+ëëR S
 }
-»» 
+íí 
 }
-…… 	
+ìì 	
 public
-ÀÀ 
+ïï 
 static
-ÀÀ 
+ïï 
 List
-ÀÀ 
+ïï 
 <
-ÀÀ &
+ïï &
 PlayerInGameDataContract
-ÀÀ 3
+ïï 3
 >
-ÀÀ3 4-
+ïï3 4-
 GetPlayerInGameDataContractList
-ÀÀ5 T
+ïï5 T
 (
-ÀÀT U
+ïïT U
 List
-ÀÀU Y
+ïïU Y
 <
-ÀÀY Z!
+ïïY Z!
 PlayerPlayingInGame
-ÀÀZ m
+ïïZ m
 >
-ÀÀm n
+ïïm n
 playersPlaying
-ÀÀo }
+ïïo }
 )
-ÀÀ} ~
+ïï} ~
 {
-ÃÃ 	
+ññ 	
 List
-ÕÕ 
+óó 
 <
-ÕÕ &
+óó &
 PlayerInGameDataContract
-ÕÕ )
+óó )
 >
-ÕÕ) *
+óó) *
 playersInGame
-ÕÕ+ 8
+óó+ 8
 =
-ÕÕ9 :
+óó9 :
 new
-ÕÕ; >
+óó; >
 (
-ÕÕ> ?
+óó> ?
 )
-ÕÕ? @
+óó? @
 ;
-ÕÕ@ A
+óó@ A
 foreach
-ŒŒ 
+òò 
 (
-ŒŒ 
+òò 
 var
-ŒŒ 
+òò 
 playing
-ŒŒ  
+òò  
 in
-ŒŒ! #
+òò! #
 playersPlaying
-ŒŒ$ 2
+òò$ 2
 )
-ŒŒ2 3
+òò2 3
 {
-œœ &
+ôô &
 PlayerInGameDataContract
-–– (
+öö (
 playerInGame
-––) 5
+öö) 5
 =
-––6 7
+öö6 7
 new
-––8 ;&
+öö8 ;&
 PlayerInGameDataContract
-––< T
+öö< T
 (
-––T U
+ööT U
 )
-––U V
+ööU V
 {
-—— 
+õõ 
 IdUser
-““ 
+úú 
 =
-““ 
+úú 
 playing
-““ $
+úú $
 .
-““$ %
+úú$ %
 IdUser
-““% +
+úú% +
 ,
-““+ ,
+úú+ ,
 IdPlayer
-”” 
+ùù 
 =
-”” 
+ùù 
 playing
-”” &
+ùù &
 .
-””& '
+ùù& '
 IdPlayer
-””' /
+ùù' /
 ,
-””/ 0
+ùù/ 0
 SideTeam
-‘‘ 
+ûû 
 =
-‘‘ 
+ûû 
 playing
-‘‘ &
+ûû &
 .
-‘‘& '
+ûû& '
 SideTeam
-‘‘' /
+ûû' /
 ,
-‘‘/ 0
+ûû/ 0
 TurnOfPlayer
-’’  
+üü  
 =
-’’! "
+üü! "
 playing
-’’# *
+üü# *
 .
-’’* +
+üü* +
 TurnOfPlayer
-’’+ 7
+üü+ 7
 ,
-’’7 8
+üü7 8
 UserName
-÷÷ 
+†† 
 =
-÷÷ 
+†† 
 playing
-÷÷ &
+†† &
 .
-÷÷& '
+††& '
 UserName
-÷÷' /
+††' /
 ,
-÷÷/ 0"
+††/ 0"
 CurrentPointsOfRound
-◊◊ (
+°° (
 =
-◊◊) *
+°°) *
 playing
-◊◊+ 2
+°°+ 2
 .
-◊◊2 3
+°°2 3
 FinalPoints
-◊◊3 >
+°°3 >
 ,
-◊◊> ?
+°°> ?
 FinalPosition
-ÿÿ !
+¢¢ !
 =
-ÿÿ" #
+¢¢" #
 playing
-ÿÿ$ +
+¢¢$ +
 .
-ÿÿ+ ,
+¢¢+ ,
 FinalPoints
-ÿÿ, 7
+¢¢, 7
 ,
-ÿÿ7 8
+¢¢7 8
 IdAvatar
-ŸŸ 
+££ 
 =
-ŸŸ 
+££ 
 playing
-ŸŸ &
+££ &
 .
-ŸŸ& '
+££& '
 IdAvatar
-ŸŸ' /
+££' /
 ,
-ŸŸ/ 0
+££/ 0
 }
-⁄⁄ 
+§§ 
 ;
-⁄⁄ 
+§§ 
 playersInGame
-€€ 
+•• 
 .
-€€ 
+•• 
 Add
-€€ !
+•• !
 (
-€€! "
+••! "
 playerInGame
-€€" .
+••" .
 )
-€€. /
+••. /
 ;
-€€/ 0
+••/ 0
 }
-‹‹ 
+¶¶ 
 return
-›› 
+ßß 
 playersInGame
-››  
+ßß  
 ;
-››  !
+ßß  !
 }
-ﬁﬁ 	
+®® 	
 }
-‡‡ 
-}·· »à
+™™ 
+}´´ ‡á
 üC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\GuestPlayerManagerImplementation.cs
 	namespace 	
 JeopardyGame
@@ -27451,16 +26905,17 @@ Properties- 7
 $num+ ,
 ;, -
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-objectLock (
-=) *
-new+ .
-object/ 5
-(5 6
-)6 7
-;7 8
+objectLock' 1
+=2 3
+new4 7
+object8 >
+(> ?
+)? @
+;@ A
 public 
 GenericClass 
 < 
@@ -28549,31 +28004,17 @@ Properties
 listOfGuestUserNames
 ®® '
 .
-®®' (
-Any
-®®( +
+®®' (
+Contains
+®®( 0
 (
-®®+ ,
-name
-®®, 0
-=>
-®®1 3
-name
-®®4 8
-.
-®®8 9
-Equals
-®®9 ?
-(
-®®? @
+®®0 1
 userName
-®®@ H
+®®1 9
 )
-®®H I
-)
-®®I J
+®®9 :
 ;
-®®J K
+®®: ;
 }
 ™™ 	
 }
@@ -28690,7 +28131,7 @@ IHeartBeat3 =
 } 
 }   	
 }!! 
-}"" ¬R
+}"" ÿR
 úC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\CheckUserLivingImplementation.cs
 	namespace 	
 JeopardyGame
@@ -28708,15 +28149,16 @@ IHeartBeat3 =
 ICheckUserLiving1 A
 { 
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-objectLock (
-=) *
-new+ .
-(. /
-)/ 0
-;0 1
+objectLock' 1
+=2 3
+new4 7
+(7 8
+)8 9
+;9 :
 public 
 int 
 RenewLivingCallBack &
@@ -29215,7 +28657,7 @@ objectLockrr 
 }|| 
 }}} 	
 }~~ 
-} Úê
+} Øì
 ïC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LiveChatImplementation.cs
 	namespace 	
 JeopardyGame
@@ -29241,15 +28683,16 @@ objectLockrr 
 $num. /
 ;/ 0
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-objectLock (
-=) *
-new+ .
-(. /
-)/ 0
-;0 1
+objectLock' 1
+=2 3
+new4 7
+(7 8
+)8 9
+;9 :
 public 
 GenericClass 
 < 
@@ -29612,9 +29055,10 @@ objectLock 
 )RRV W
 {SS 	
 lockTT 
-(TT 
-thisTT 
-)TT 
+(TT 
+
+objectLockTT 
+)TT 
 {UU 
 GenericClassVV 
 <VV 
@@ -30673,1158 +30117,1188 @@ objectLock
 $num
 ﬁﬁ. /
 ;
-ﬁﬁ/ 0
+ﬁﬁ/ 0
+private
+‡‡ 
+static
+‡‡ 
+readonly
+‡‡ 
+Object
+‡‡  &
+
+objectLock
+‡‡' 1
+=
+‡‡2 3
+new
+‡‡4 7
+(
+‡‡7 8
+)
+‡‡8 9
+;
+‡‡9 :
 public
-·· 
+‚‚ 
 void
-·· 
+‚‚ 
 
 DeleteChat
-·· 
+‚‚ 
 (
-·· 
+‚‚ 
 int
-·· "
+‚‚ "
 roomCode
-··# +
+‚‚# +
 ,
-··+ ,
+‚‚+ ,
 int
-··- 0
+‚‚- 0
 idUser
-··1 7
+‚‚1 7
 )
-··7 8
+‚‚7 8
 {
-‚‚ 	
+„„ 	
 lock
-„„ 
+‰‰ 
 (
-„„ 
-this
-„„ 
+‰‰ 
+
+objectLock
+‰‰ 
 )
-„„ 
+‰‰ 
 {
-‰‰ %
+ÂÂ %
 HistoricalOfAllMessages
-ÂÂ ' 
+ÊÊ ' 
 messagesHistorical
-ÂÂ( :
+ÊÊ( :
 =
-ÂÂ; <
+ÊÊ; <
 ChatsDictionary
-ÂÂ= L
+ÊÊ= L
 .
-ÂÂL M
+ÊÊL M
 GetActiveChat
-ÂÂM Z
+ÊÊM Z
 (
-ÂÂZ [
+ÊÊZ [
 roomCode
-ÂÂ[ c
+ÊÊ[ c
 )
-ÂÂc d
+ÊÊc d
 ;
-ÂÂd e
+ÊÊd e
 if
-ÊÊ 
+ÁÁ 
 (
-ÊÊ 
+ÁÁ 
 roomCode
-ÊÊ 
+ÁÁ 
 !=
-ÊÊ 
+ÁÁ 
 NULL_INT_VALUE
-ÊÊ  .
+ÁÁ  .
 &&
-ÊÊ/ 1 
+ÁÁ/ 1 
 messagesHistorical
-ÊÊ2 D
+ÁÁ2 D
 !=
-ÊÊE G
+ÁÁE G
 null
-ÊÊH L
+ÁÁH L
 &&
-ÊÊM O 
+ÁÁM O 
 messagesHistorical
-ÊÊP b
+ÁÁP b
 .
-ÊÊb c
+ÁÁb c
 idAdmin
-ÊÊc j
+ÁÁc j
 ==
-ÊÊk m
+ÁÁk m
 idUser
-ÊÊn t
+ÁÁn t
 )
-ÊÊt u
+ÁÁt u
 {
-ÁÁ 
+ËË 
 ChatsDictionary
-ËË #
+ÈÈ #
 .
-ËË# $6
+ÈÈ# $6
 (RemoveRegistryOfActiveChatFromDictionary
-ËË$ L
+ÈÈ$ L
 (
-ËËL M
+ÈÈL M
 roomCode
-ËËM U
+ÈÈM U
 )
-ËËU V
+ÈÈU V
 ;
-ËËV W%
+ÈÈV W%
 DeleteChannelRegistries
-ÈÈ +
+ÍÍ +
 (
-ÈÈ+ ,
+ÍÍ+ ,
 roomCode
-ÈÈ, 4
+ÍÍ, 4
 )
-ÈÈ4 5
+ÍÍ4 5
 ;
-ÈÈ5 6
+ÍÍ5 6
 }
-ÍÍ 
+ÎÎ 
 }
-ÎÎ 
+ÏÏ 
 }
-ÏÏ 	
+ÌÌ 	
 private
-ÓÓ 
+ÔÔ 
 void
-ÓÓ %
+ÔÔ %
 DeleteChannelRegistries
-ÓÓ ,
+ÔÔ ,
 (
-ÓÓ, -
+ÔÔ, -
 int
-ÓÓ- 0
+ÔÔ- 0
 roomCode
-ÓÓ1 9
+ÔÔ1 9
 )
-ÓÓ9 :
+ÔÔ9 :
 {
-ÔÔ 	
+ 	
 if
- 
+ÒÒ 
 (
- 
+ÒÒ 
 roomCode
- 
+ÒÒ 
 !=
- 
+ÒÒ 
 NULL_INT_VALUE
- *
+ÒÒ *
 )
-* +
+ÒÒ* +
 {
-ÒÒ 
+ÚÚ 
 ChatsDictionary
-ÚÚ 
+ÛÛ 
 .
-ÚÚ  ?
+ÛÛ  ?
 1RemoveRegistryOfChannelCallBakcChatFromDictionary
-ÚÚ  Q
+ÛÛ  Q
 (
-ÚÚQ R
+ÛÛQ R
 roomCode
-ÚÚR Z
+ÛÛR Z
 )
-ÚÚZ [
+ÛÛZ [
 ;
-ÚÚ[ \
+ÛÛ[ \
 }
-ÛÛ 
+ÙÙ 
 }
-ÙÙ 	
+ıı 	
 public
-ˆˆ 
+˜˜ 
 void
-ˆˆ 
+˜˜ 
 SendMessage
-ˆˆ 
+˜˜ 
 (
-ˆˆ  
+˜˜  
 int
-ˆˆ  #
+˜˜  #
 idUser
-ˆˆ$ *
+˜˜$ *
 ,
-ˆˆ* +
+˜˜* +
 int
-ˆˆ, /
+˜˜, /
 roomCode
-ˆˆ0 8
+˜˜0 8
 ,
-ˆˆ8 9
+˜˜8 9
 string
-ˆˆ: @
+˜˜: @
 userName
-ˆˆA I
+˜˜A I
 ,
-ˆˆI J
+˜˜I J
 string
-ˆˆK Q
+˜˜K Q
 messageToSend
-ˆˆR _
+˜˜R _
 )
-ˆˆ_ `
+˜˜_ `
 {
-˜˜ 	
+¯¯ 	
 try
-¯¯ 
+˘˘ 
 {
-˘˘ 
+˙˙ 
 if
-˙˙ 
+˚˚ 
 (
-˙˙ 
+˚˚ 
 idUser
-˙˙ 
+˚˚ 
 <=
-˙˙ 
+˚˚ 
 NULL_INT_VALUE
-˙˙ ,
+˚˚ ,
 ||
-˙˙- /
+˚˚- /
 roomCode
-˙˙0 8
+˚˚0 8
 <=
-˙˙9 ;
+˚˚9 ;
 NULL_INT_VALUE
-˙˙< J
+˚˚< J
 ||
-˙˙K M
+˚˚K M
 string
-˙˙N T
+˚˚N T
 .
-˙˙T U
+˚˚T U
 IsNullOrEmpty
-˙˙U b
+˚˚U b
 (
-˙˙b c
+˚˚b c
 userName
-˙˙c k
+˚˚c k
 )
-˙˙k l
+˚˚k l
 ||
-˙˙m o
+˚˚m o
 string
-˙˙p v
+˚˚p v
 .
-˙˙v w
-IsNullOrEmpty˙˙w Ñ
-(˙˙Ñ Ö
-messageToSend˙˙Ö í
-)˙˙í ì
-)˙˙ì î
+˚˚v w
+IsNullOrEmpty˚˚w Ñ
+(˚˚Ñ Ö
+messageToSend˚˚Ö í
+)˚˚í ì
+)˚˚ì î
 {
-˚˚ 
+¸¸ 
 
 NotifyUser
-¸¸ 
+˝˝ 
 (
-¸¸ 
+˝˝ 
 roomCode
-¸¸ '
+˝˝ '
 ,
-¸¸' (
+˝˝' (
 new
-¸¸) ,
+˝˝) ,
 MessageChat
-¸¸- 8
+˝˝- 8
 (
-¸¸8 9
+˝˝8 9
 )
-¸¸9 :
+˝˝9 :
 ,
-¸¸: ;
+˝˝: ;
 false
-¸¸< A
+˝˝< A
 ,
-¸¸A B
+˝˝A B
 idUser
-¸¸C I
+˝˝C I
 )
-¸¸I J
+˝˝I J
 ;
-¸¸J K
+˝˝J K
 }
-˝˝ 
+˛˛ 
 else
-˛˛ 
+ˇˇ 
 {
-ˇˇ %
+ÄÄ %
 HistoricalOfAllMessages
-ÄÄ + 
+ÅÅ + 
 messagesHistorical
-ÄÄ, >
+ÅÅ, >
 =
-ÄÄ? @
+ÅÅ? @
 ChatsDictionary
-ÄÄA P
+ÅÅA P
 .
-ÄÄP Q
+ÅÅP Q
 GetActiveChat
-ÄÄQ ^
+ÅÅQ ^
 (
-ÄÄ^ _
+ÅÅ^ _
 roomCode
-ÄÄ_ g
+ÅÅ_ g
 )
-ÄÄg h
+ÅÅg h
 ;
-ÄÄh i
+ÅÅh i
 if
-ÅÅ 
+ÇÇ 
 (
-ÅÅ  
+ÇÇ  
 messagesHistorical
-ÅÅ *
+ÇÇ *
 !=
-ÅÅ+ -
+ÇÇ+ -
 null
-ÅÅ. 2
+ÇÇ. 2
 )
-ÅÅ2 3
+ÇÇ2 3
 {
-ÇÇ 
+ÉÉ 
 MessageChat
-ÉÉ #
+ÑÑ #
 messageInTheChat
-ÉÉ$ 4
+ÑÑ$ 4
 =
-ÉÉ5 6
+ÑÑ5 6
 new
-ÉÉ7 :
+ÑÑ7 :
 MessageChat
-ÉÉ; F
+ÑÑ; F
 (
-ÉÉF G
+ÑÑF G
 )
-ÉÉG H
+ÑÑG H
 ;
-ÉÉH I
-messageInTheChat
-ÑÑ (
-.
-ÑÑ( )
-IdUser
-ÑÑ) /
-=
-ÑÑ0 1
-idUser
-ÑÑ2 8
-;
-ÑÑ8 9
+ÑÑH I
 messageInTheChat
 ÖÖ (
 .
-ÖÖ( )
-UserName
-ÖÖ) 1
+ÖÖ( )
+IdUser
+ÖÖ) /
 =
-ÖÖ2 3
-userName
-ÖÖ4 <
+ÖÖ0 1
+idUser
+ÖÖ2 8
 ;
-ÖÖ< =
+ÖÖ8 9
 messageInTheChat
 ÜÜ (
 .
-ÜÜ( )
+ÜÜ( )
+UserName
+ÜÜ) 1
+=
+ÜÜ2 3
+userName
+ÜÜ4 <
+;
+ÜÜ< =
+messageInTheChat
+áá (
+.
+áá( )
 MessageToSend
-ÜÜ) 6
+áá) 6
 =
-ÜÜ7 8
+áá7 8
 messageToSend
-ÜÜ9 F
+áá9 F
 ;
-ÜÜF G 
+ááF G 
 messagesHistorical
-áá *
+àà *
 .
-áá* +
+àà* +
 listOfMessages
-áá+ 9
+àà+ 9
 .
-áá9 :
+àà9 :
 Add
-áá: =
+àà: =
 (
-áá= >
+àà= >
 messageInTheChat
-áá> N
+àà> N
 )
-ááN O
+ààN O
 ;
-ááO P
+ààO P
 
 NotifyUser
-àà "
+ââ "
 (
-àà" #
+ââ" #
 roomCode
-àà# +
+ââ# +
 ,
-àà+ ,
+ââ+ ,
 messageInTheChat
-àà- =
+ââ- =
 ,
-àà= >
+ââ= >
 true
-àà? C
+ââ? C
 ,
-ààC D
+ââC D
 idUser
-ààE K
+ââE K
 )
-ààK L
+ââK L
 ;
-ààL M
+ââL M
 }
-ââ 
+ää 
 else
-ää 
+ãã 
 {
-ãã 
+åå 
 
 NotifyUser
-åå "
+çç "
 (
-åå" #
+çç" #
 roomCode
-åå# +
+çç# +
 ,
-åå+ ,
+çç+ ,
 new
-åå- 0
+çç- 0
 MessageChat
-åå1 <
+çç1 <
 (
-åå< =
+çç< =
 )
-åå= >
+çç= >
 ,
-åå> ?
+çç> ?
 false
-åå@ E
+çç@ E
 ,
-ååE F
+ççE F
 idUser
-ååG M
+ççG M
 )
-ååM N
+ççM N
 ;
-ååN O
+ççN O
 }
-çç 
+éé 
 }
-éé 
+èè 
 }
-èè 
+êê 
 catch
-êê 
+ëë 
 (
-êê 1
+ëë 1
 #CommunicationObjectFaultedException
-êê 6
+ëë 6
 ex
-êê7 9
+ëë7 9
 )
-êê9 :
+ëë9 :
 {
-ëë "
+íí "
 ChannelAdministrator
-íí $
+ìì $
 .
-íí$ %&
+ìì$ %&
 HandleCommunicationIssue
-íí% =
+ìì% =
 (
-íí= >
+ìì= >
 idUser
-íí> D
+ìì> D
 ,
-ííD E"
+ììD E"
 ChannelAdministrator
-ííF Z
+ììF Z
 .
-ííZ [
+ììZ [
 LOBBY_EXCEPTION
-íí[ j
+ìì[ j
 )
-ííj k
+ììj k
 ;
-íík l
+ììk l
 ExceptionHandler
-ìì  
+îî  
 .
-ìì  !
+îî  !
 LogException
-ìì! -
+îî! -
 (
-ìì- .
+îî- .
 ex
-ìì. 0
+îî. 0
 ,
-ìì0 1!
+îî0 1!
 ExceptionDictionary
-ìì2 E
+îî2 E
 .
-ììE F
+îîE F
 FATAL_EXCEPTION
-ììF U
+îîF U
 )
-ììU V
+îîU V
 ;
-ììV W
+îîV W
 }
-îî 
+ïï 
 catch
-ïï 
+ññ 
 (
-ïï 
+ññ 
 TimeoutException
-ïï #
+ññ #
 ex
-ïï$ &
+ññ$ &
 )
-ïï& '
+ññ& '
 {
-ññ "
+óó "
 ChannelAdministrator
-óó $
+òò $
 .
-óó$ %&
+òò$ %&
 HandleCommunicationIssue
-óó% =
+òò% =
 (
-óó= >
+òò= >
 idUser
-óó> D
+òò> D
 ,
-óóD E"
+òòD E"
 ChannelAdministrator
-óóF Z
+òòF Z
 .
-óóZ [
+òòZ [
 LOBBY_EXCEPTION
-óó[ j
+òò[ j
 )
-óój k
+òòj k
 ;
-óók l
+òòk l
 ExceptionHandler
-òò  
+ôô  
 .
-òò  !
+ôô  !
 LogException
-òò! -
+ôô! -
 (
-òò- .
+ôô- .
 ex
-òò. 0
+ôô. 0
 ,
-òò0 1!
+ôô0 1!
 ExceptionDictionary
-òò2 E
+ôô2 E
 .
-òòE F
+ôôE F
 FATAL_EXCEPTION
-òòF U
+ôôF U
 )
-òòU V
+ôôU V
 ;
-òòV W
+ôôV W
 }
-ôô 
+öö 
 catch
-öö 
+õõ 
 (
-öö $
+õõ $
 CommunicationException
-öö )
+õõ )
 ex
-öö* ,
+õõ* ,
 )
-öö, -
+õõ, -
 {
-õõ "
+úú "
 ChannelAdministrator
-úú $
+ùù $
 .
-úú$ %&
+ùù$ %&
 HandleCommunicationIssue
-úú% =
+ùù% =
 (
-úú= >
+ùù= >
 idUser
-úú> D
+ùù> D
 ,
-úúD E"
+ùùD E"
 ChannelAdministrator
-úúF Z
+ùùF Z
 .
-úúZ [
+ùùZ [
 LOBBY_EXCEPTION
-úú[ j
+ùù[ j
 )
-úúj k
+ùùj k
 ;
-úúk l
+ùùk l
 ExceptionHandler
-ùù  
+ûû  
 .
-ùù  !
+ûû  !
 LogException
-ùù! -
+ûû! -
 (
-ùù- .
+ûû- .
 ex
-ùù. 0
+ûû. 0
 ,
-ùù0 1!
+ûû0 1!
 ExceptionDictionary
-ùù2 E
+ûû2 E
 .
-ùùE F
+ûûE F
 FATAL_EXCEPTION
-ùùF U
+ûûF U
 )
-ùùU V
+ûûU V
 ;
-ùùV W
+ûûV W
 }
-ûû 
+üü 
 catch
-üü 
+†† 
 (
-üü '
+†† '
 InvalidOperationException
-üü ,
+†† ,
 ex
-üü- /
+††- /
 )
-üü/ 0
+††/ 0
 {
-†† "
+°° "
 ChannelAdministrator
-°° $
+¢¢ $
 .
-°°$ %&
+¢¢$ %&
 HandleCommunicationIssue
-°°% =
+¢¢% =
 (
-°°= >
+¢¢= >
 idUser
-°°> D
+¢¢> D
 ,
-°°D E"
+¢¢D E"
 ChannelAdministrator
-°°F Z
+¢¢F Z
 .
-°°Z [
+¢¢Z [
 LOBBY_EXCEPTION
-°°[ j
+¢¢[ j
 )
-°°j k
+¢¢j k
 ;
-°°k l
+¢¢k l
 ExceptionHandler
-¢¢  
+££  
 .
-¢¢  !
+££  !
 LogException
-¢¢! -
+££! -
 (
-¢¢- .
+££- .
 ex
-¢¢. 0
+££. 0
 ,
-¢¢0 1!
+££0 1!
 ExceptionDictionary
-¢¢2 E
+££2 E
 .
-¢¢E F
+££E F
 FATAL_EXCEPTION
-¢¢F U
+££F U
 )
-¢¢U V
+££U V
 ;
-¢¢V W
+££V W
 }
-££ 
+§§ 
 }
-§§ 	
+•• 	
 private
-¶¶ 
+ßß 
 void
-¶¶ 
+ßß 
 
 NotifyUser
-¶¶ 
+ßß 
 (
-¶¶  
+ßß  
 int
-¶¶  #
+ßß  #
 roomCode
-¶¶$ ,
+ßß$ ,
 ,
-¶¶, -
+ßß, -
 MessageChat
-¶¶. 9
+ßß. 9
 messageToSend
-¶¶: G
+ßß: G
 ,
-¶¶G H
+ßßG H
 bool
-¶¶I M
+ßßI M
 success
-¶¶N U
+ßßN U
 ,
-¶¶U V
+ßßU V
 int
-¶¶W Z
+ßßW Z
 idSender
-¶¶[ c
+ßß[ c
 )
-¶¶c d
+ßßc d
 {
-ßß 	
+®® 	
 if
-®® 
+©© 
 (
-®® 
+©© 
 success
-®® 
+©© 
 )
-®® 
+©© 
 {
-©© 
+™™ 
 var
-™™ 
+´´ 
 chatChannel
-™™ 
+´´ 
 =
-™™  !
+´´  !
 ChatsDictionary
-™™" 1
+´´" 1
 .
-™™1 2$
+´´1 2$
 GetChannelCallBackChat
-™™2 H
+´´2 H
 (
-™™H I
+´´H I
 roomCode
-™™I Q
+´´I Q
 )
-™™Q R
+´´Q R
 ;
-™™R S
+´´R S
 foreach
-´´ 
+¨¨ 
 (
-´´ 
+¨¨ 
 var
-´´ 
+¨¨ 
 item
-´´ !
+¨¨ !
 in
-´´" $
+¨¨" $
 chatChannel
-´´% 0
+¨¨% 0
 .
-´´0 1$
+¨¨0 1$
 listOfChannelsCallBack
-´´1 G
+¨¨1 G
 )
-´´G H
+¨¨G H
 {
-¨¨ 
+≠≠ 
 var
-≠≠ 
+ÆÆ 
 channel
-≠≠ 
+ÆÆ 
 =
-≠≠  !
+ÆÆ  !
 item
-≠≠" &
+ÆÆ" &
 .
-≠≠& '&
+ÆÆ& '&
 communicationChannelChat
-≠≠' ?
+ÆÆ' ?
 .
-≠≠? @ 
+ÆÆ? @ 
 GetCallbackChannel
-≠≠@ R
+ÆÆ@ R
 <
-≠≠R S
+ÆÆR S
 ILiveChatCallBack
-≠≠S d
+ÆÆS d
 >
-≠≠d e
+ÆÆd e
 (
-≠≠e f
+ÆÆe f
 )
-≠≠f g
+ÆÆf g
 ;
-≠≠g h
+ÆÆg h
 if
-ÆÆ 
+ØØ 
 (
-ÆÆ 
+ØØ 
 item
-ÆÆ 
+ØØ 
 .
-ÆÆ 
+ØØ 
 idUser
-ÆÆ #
+ØØ #
 !=
-ÆÆ$ &
+ØØ$ &
 idSender
-ÆÆ' /
+ØØ' /
+&&
+ØØ0 2
+channel
+ØØ3 :
+!=
+ØØ; =
+null
+ØØ> B
 )
-ÆÆ/ 0
+ØØB C
 {
-ØØ 
+∞∞ 
 try
-∞∞ 
+±± 
 {
-±± 
+≤≤ 
 GenericClass
-≤≤ (
+≥≥ (
 <
-≤≤( )
+≥≥( )
 MessageChat
-≤≤) 4
+≥≥) 4
 >
-≤≤4 5
+≥≥4 5
 resultToReturn
-≤≤6 D
+≥≥6 D
 =
-≤≤E F
+≥≥E F
 new
-≤≤G J
+≥≥G J
 GenericClass
-≤≤K W
+≥≥K W
 <
-≤≤W X
+≥≥W X
 MessageChat
-≤≤X c
+≥≥X c
 >
-≤≤c d
+≥≥c d
 (
-≤≤d e
+≥≥d e
 )
-≤≤e f
+≥≥e f
 ;
-≤≤f g
-resultToReturn
-≥≥ *
-.
-≥≥* +
-ObjectSaved
-≥≥+ 6
-=
-≥≥7 8
-messageToSend
-≥≥9 F
-;
-≥≥F G
+≥≥f g
 resultToReturn
 ¥¥ *
 .
-¥¥* +
-	CodeEvent
-¥¥+ 4
+¥¥* +
+ObjectSaved
+¥¥+ 6
 =
-¥¥5 6!
-ExceptionDictionary
-¥¥7 J
-.
-¥¥J K
-SUCCESFULL_EVENT
-¥¥K [
+¥¥7 8
+messageToSend
+¥¥9 F
 ;
-¥¥[ \
-channel
-µµ #
-.
-µµ# $
-ReceiveMessage
-µµ$ 2
-(
-µµ2 3
+¥¥F G
 resultToReturn
-µµ3 A
-)
-µµA B
+µµ *
+.
+µµ* +
+	CodeEvent
+µµ+ 4
+=
+µµ5 6!
+ExceptionDictionary
+µµ7 J
+.
+µµJ K
+SUCCESFULL_EVENT
+µµK [
 ;
-µµB C
-}
-∂∂ 
-catch
-∑∑ 
+µµ[ \
+channel
+∂∂ #
+.
+∂∂# $
+ReceiveMessage
+∂∂$ 2
 (
-∑∑ 1
+∂∂2 3
+resultToReturn
+∂∂3 A
+)
+∂∂A B
+;
+∂∂B C
+}
+∑∑ 
+catch
+∏∏ 
+(
+∏∏ 1
 #CommunicationObjectFaultedException
-∑∑ B
+∏∏ B
 ex
-∑∑C E
+∏∏C E
 )
-∑∑E F
+∏∏E F
 {
-∏∏ "
+ππ "
 ChannelAdministrator
-ππ 0
+∫∫ 0
 .
-ππ0 1&
+∫∫0 1&
 HandleCommunicationIssue
-ππ1 I
+∫∫1 I
 (
-ππI J
+∫∫I J
 item
-ππJ N
+∫∫J N
 .
-ππN O
+∫∫N O
 idUser
-ππO U
+∫∫O U
 ,
-ππU V"
+∫∫U V"
 ChannelAdministrator
-ππW k
+∫∫W k
 .
-ππk l
+∫∫k l
 LOBBY_EXCEPTION
-ππl {
+∫∫l {
 )
-ππ{ |
+∫∫{ |
 ;
-ππ| }
+∫∫| }
 ExceptionHandler
-∫∫ ,
+ªª ,
 .
-∫∫, -
+ªª, -
 LogException
-∫∫- 9
+ªª- 9
 (
-∫∫9 :
+ªª9 :
 ex
-∫∫: <
+ªª: <
 ,
-∫∫< =!
+ªª< =!
 ExceptionDictionary
-∫∫> Q
+ªª> Q
 .
-∫∫Q R
+ªªQ R
 FATAL_EXCEPTION
-∫∫R a
+ªªR a
 )
-∫∫a b
+ªªa b
 ;
-∫∫b c
+ªªb c
 }
-ªª 
+ºº 
 catch
-ºº 
+ΩΩ 
 (
-ºº 
+ΩΩ 
 TimeoutException
-ºº /
+ΩΩ /
 ex
-ºº0 2
+ΩΩ0 2
 )
-ºº2 3
+ΩΩ2 3
 {
-ΩΩ "
+ææ "
 ChannelAdministrator
-ææ 0
+øø 0
 .
-ææ0 1&
+øø0 1&
 HandleCommunicationIssue
-ææ1 I
+øø1 I
 (
-ææI J
+øøI J
 item
-ææJ N
+øøJ N
 .
-ææN O
+øøN O
 idUser
-ææO U
+øøO U
 ,
-ææU V"
+øøU V"
 ChannelAdministrator
-ææW k
+øøW k
 .
-ææk l
+øøk l
 LOBBY_EXCEPTION
-ææl {
+øøl {
 )
-ææ{ |
+øø{ |
 ;
-ææ| }
+øø| }
 ExceptionHandler
-øø ,
+¿¿ ,
 .
-øø, -
+¿¿, -
 LogException
-øø- 9
+¿¿- 9
 (
-øø9 :
+¿¿9 :
 ex
-øø: <
+¿¿: <
 ,
-øø< =!
+¿¿< =!
 ExceptionDictionary
-øø> Q
+¿¿> Q
 .
-øøQ R
+¿¿Q R
 FATAL_EXCEPTION
-øøR a
+¿¿R a
 )
-øøa b
+¿¿a b
 ;
-øøb c
+¿¿b c
 }
-¿¿ 
+¡¡ 
 catch
-¡¡ 
+¬¬ 
 (
-¡¡ $
+¬¬ $
 CommunicationException
-¡¡ 5
+¬¬ 5
 ex
-¡¡6 8
+¬¬6 8
 )
-¡¡8 9
+¬¬8 9
 {
-¬¬ "
+√√ "
 ChannelAdministrator
-√√ 0
+ƒƒ 0
 .
-√√0 1&
+ƒƒ0 1&
 HandleCommunicationIssue
-√√1 I
+ƒƒ1 I
 (
-√√I J
+ƒƒI J
 item
-√√J N
+ƒƒJ N
 .
-√√N O
+ƒƒN O
 idUser
-√√O U
+ƒƒO U
 ,
-√√U V"
+ƒƒU V"
 ChannelAdministrator
-√√W k
+ƒƒW k
 .
-√√k l
+ƒƒk l
 LOBBY_EXCEPTION
-√√l {
+ƒƒl {
 )
-√√{ |
+ƒƒ{ |
 ;
-√√| }
+ƒƒ| }
 ExceptionHandler
-ƒƒ ,
+≈≈ ,
 .
-ƒƒ, -
+≈≈, -
 LogException
-ƒƒ- 9
+≈≈- 9
 (
-ƒƒ9 :
+≈≈9 :
 ex
-ƒƒ: <
+≈≈: <
 ,
-ƒƒ< =!
+≈≈< =!
 ExceptionDictionary
-ƒƒ> Q
+≈≈> Q
 .
-ƒƒQ R
+≈≈Q R
 FATAL_EXCEPTION
-ƒƒR a
+≈≈R a
 )
-ƒƒa b
+≈≈a b
 ;
-ƒƒb c
+≈≈b c
 }
-≈≈ 
+∆∆ 
 catch
-∆∆ 
+«« 
 (
-∆∆ '
+«« '
 InvalidOperationException
-∆∆ 8
+«« 8
 ex
-∆∆9 ;
+««9 ;
 )
-∆∆; <
+««; <
 {
-«« "
+»» "
 ChannelAdministrator
-»» 0
+…… 0
 .
-»»0 1&
+……0 1&
 HandleCommunicationIssue
-»»1 I
+……1 I
 (
-»»I J
+……I J
 item
-»»J N
+……J N
 .
-»»N O
+……N O
 idUser
-»»O U
+……O U
 ,
-»»U V"
+……U V"
 ChannelAdministrator
-»»W k
+……W k
 .
-»»k l
+……k l
 LOBBY_EXCEPTION
-»»l {
+……l {
 )
-»»{ |
+……{ |
 ;
-»»| }
+……| }
 ExceptionHandler
-…… ,
+   ,
 .
-……, -
+  , -
 LogException
-……- 9
+  - 9
 (
-……9 :
+  9 :
 ex
-……: <
+  : <
 ,
-……< =!
+  < =!
 ExceptionDictionary
-……> Q
+  > Q
 .
-……Q R
+  Q R
 FATAL_EXCEPTION
-……R a
+  R a
 )
-……a b
+  a b
 ;
-……b c
+  b c
 }
-   
+ÀÀ 
 }
-ÀÀ 
+ÃÃ 
 }
-ÃÃ 
+ÕÕ 
 }
-ÕÕ 
+ŒŒ 
 }
-ŒŒ 	
+œœ 	
 }
-œœ 
-}—— ÖÊ
+–– 
+}““ ÕÈ
 ôC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LobbyActionsImplementation.cs
 	namespace 	
 JeopardyGame
@@ -31877,16 +31351,17 @@ NotifyUser
 $num. /
 ;/ 0
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-lockObject (
-=) *
-new+ .
-Object/ 5
-(5 6
-)6 7
-;7 8
+lockObject' 1
+=2 3
+new4 7
+Object8 >
+(> ?
+)? @
+;@ A
 public 
 GenericClass 
 < 
@@ -33317,13 +32792,13 @@ lockObject
 partial
 ÿÿ 
 class
-ÿÿ 2
-$ILobbyActionsOperationImplementation
-ÿÿ =
+ÿÿ 1
+#LobbyActionsOperationImplementation
+ÿÿ <
 :
-ÿÿ> ?$
+ÿÿ= >$
 ILobbyActionsOperation
-ÿÿ@ V
+ÿÿ? U
 {
 ŸŸ 
 private
@@ -33399,24 +32874,26 @@ $ILobbyActionsOperationImplementation
 private
 ‡‡ 
 static
-‡‡ 
+‡‡ 
+readonly
+‡‡ 
 Object
-‡‡ 
+‡‡  &
 
 lockObject
-‡‡ (
+‡‡' 1
 =
-‡‡) *
+‡‡2 3
 new
-‡‡+ .
+‡‡4 7
 Object
-‡‡/ 5
+‡‡8 >
 (
-‡‡5 6
+‡‡> ?
 )
-‡‡6 7
+‡‡? @
 ;
-‡‡7 8
+‡‡@ A
 public
 ‚‚ 
 void
@@ -34607,29 +34084,29 @@ lockObject
 listOfPlayerInLobby
 ’’6 I
 .
-’’I J
-FirstOrDefault
-’’J X
+’’I J
+Find
+’’J N
 (
-’’X Y
+’’N O
 pl
-’’Y [
+’’O Q
 =>
-’’\ ^
+’’R T
 pl
-’’_ a
+’’U W
 .
-’’a b
+’’W X
 idUser
-’’b h
+’’X ^
 ==
-’’i k
+’’_ a
 idUserLeaving
-’’l y
+’’b o
 )
-’’y z
+’’o p
 ;
-’’z {
+’’p q
 if
 ÷÷ 
 (
@@ -35039,28 +34516,30 @@ lockObject
 listOfChannelsCallBack
 ˝˝7 M
 .
-˝˝M N
-FirstOrDefault
-˝˝N \
+˝˝M N
+Find
+˝˝N R
 (
-˝˝\ ]
+˝˝R S
 channel
-˝˝] d
+˝˝S Z
 =>
-˝˝e g
+˝˝[ ]
 channel
-˝˝h o
+˝˝^ e
 .
-˝˝o p
+˝˝e f
 idUser
-˝˝p v
+˝˝f l
 ==
-˝˝w y
-playerLeaving˝˝z á
-.˝˝á à
-idUser˝˝à é
-)˝˝é è
-;˝˝è ê
+˝˝m o
+playerLeaving
+˝˝p }
+.
+˝˝} ~
+idUser˝˝~ Ñ
+)˝˝Ñ Ö
+;˝˝Ö Ü
 if
 ˛˛ 
 (
@@ -35197,8 +34676,40 @@ lockObject
 ää* +!
 listOfPlayerInLobby
 ää+ >
-)
-ää> ?
+.
+ää> ?
+Where
+ää? D
+(
+ääD E
+pla
+ääE H
+=>
+ääI K
+pla
+ääL O
+.
+ääO P/
+!lobbyCommunicationChannelCallback
+ääP q
+.
+ääq r!
+GetCallbackChanneläär Ñ
+<ääÑ Ö%
+ILobbyActionsCallbackääÖ ö
+>ääö õ
+(ääõ ú
+)ääú ù
+!=ääû †
+nullää° •
+&&ää¶ ®
+plaää© ¨
+.ää¨ ≠
+idUserää≠ ≥
+!=ää¥ ∂
+idUserää∑ Ω
+)ääΩ æ
+)ääæ ø
 {
 ãã 
 try
@@ -35232,4619 +34743,4616 @@ lockObject
 )
 ééw x
 ;
-ééx y
-if
-èè 
-(
-èè 
+ééx y
 channel
-èè #
-!=
-èè$ &
-null
-èè' +
-&&
-èè, .
-idUser
-èè/ 5
-!=
-èè6 8
-item
-èè9 =
+èè 
 .
-èè= >
-idUser
-èè> D
-)
-èèD E
-{
-êê 
-channel
-ëë #
-.
-ëë# $(
+èè  (
 UpdateJoinedPlayerResponse
-ëë$ >
+èè  :
 (
-ëë> ?
+èè: ;
 playersLobby
-ëë? K
+èè; G
 )
-ëëK L
+èèG H
 ;
-ëëL M
+èèH I
 }
-íí 
-}
-ìì 
+êê 
 catch
-îî 
+ëë 
 (
-îî 1
+ëë 1
 #CommunicationObjectFaultedException
-îî >
+ëë >
 ex
-îî? A
+ëë? A
 )
-îîA B
+ëëA B
 {
-ïï "
+íí "
 ChannelAdministrator
-ññ ,
+ìì ,
 .
-ññ, -&
+ìì, -&
 HandleCommunicationIssue
-ññ- E
+ìì- E
 (
-ññE F
+ììE F
 item
-ññF J
+ììF J
 .
-ññJ K
+ììJ K
 idUser
-ññK Q
+ììK Q
 ,
-ññQ R"
+ììQ R"
 ChannelAdministrator
-ññS g
+ììS g
 .
-ññg h
+ììg h
 LOBBY_EXCEPTION
-ññh w
+ììh w
 )
-ññw x
+ììw x
 ;
-ññx y
+ììx y
 ExceptionHandler
-óó (
+îî (
 .
-óó( )
+îî( )
 LogException
-óó) 5
+îî) 5
 (
-óó5 6
+îî5 6
 ex
-óó6 8
+îî6 8
 ,
-óó8 9!
+îî8 9!
 ExceptionDictionary
-óó: M
+îî: M
 .
-óóM N
+îîM N
 FATAL_EXCEPTION
-óóN ]
+îîN ]
 )
-óó] ^
+îî] ^
 ;
-óó^ _
+îî^ _
 }
-òò 
+ïï 
 catch
-ôô 
+ññ 
 (
-ôô 
+ññ 
 TimeoutException
-ôô +
+ññ +
 ex
-ôô, .
+ññ, .
 )
-ôô. /
+ññ. /
 {
-öö "
+óó "
 ChannelAdministrator
-õõ ,
+òò ,
 .
-õõ, -&
+òò, -&
 HandleCommunicationIssue
-õõ- E
+òò- E
 (
-õõE F
+òòE F
 item
-õõF J
+òòF J
 .
-õõJ K
+òòJ K
 idUser
-õõK Q
+òòK Q
 ,
-õõQ R"
+òòQ R"
 ChannelAdministrator
-õõS g
+òòS g
 .
-õõg h
+òòg h
 LOBBY_EXCEPTION
-õõh w
+òòh w
 )
-õõw x
+òòw x
 ;
-õõx y
+òòx y
 ExceptionHandler
-úú (
+ôô (
 .
-úú( )
+ôô( )
 LogException
-úú) 5
+ôô) 5
 (
-úú5 6
+ôô5 6
 ex
-úú6 8
+ôô6 8
 ,
-úú8 9!
+ôô8 9!
 ExceptionDictionary
-úú: M
+ôô: M
 .
-úúM N
+ôôM N
 FATAL_EXCEPTION
-úúN ]
+ôôN ]
 )
-úú] ^
+ôô] ^
 ;
-úú^ _
+ôô^ _
 }
-ùù 
+öö 
 catch
-ûû 
+õõ 
 (
-ûû $
+õõ $
 CommunicationException
-ûû 1
+õõ 1
 ex
-ûû2 4
+õõ2 4
 )
-ûû4 5
+õõ4 5
 {
-üü "
+úú "
 ChannelAdministrator
-†† ,
+ùù ,
 .
-††, -&
+ùù, -&
 HandleCommunicationIssue
-††- E
+ùù- E
 (
-††E F
+ùùE F
 item
-††F J
+ùùF J
 .
-††J K
+ùùJ K
 idUser
-††K Q
+ùùK Q
 ,
-††Q R"
+ùùQ R"
 ChannelAdministrator
-††S g
+ùùS g
 .
-††g h
+ùùg h
 LOBBY_EXCEPTION
-††h w
+ùùh w
 )
-††w x
+ùùw x
 ;
-††x y
+ùùx y
 ExceptionHandler
-°° (
+ûû (
 .
-°°( )
+ûû( )
 LogException
-°°) 5
+ûû) 5
 (
-°°5 6
+ûû5 6
 ex
-°°6 8
+ûû6 8
 ,
-°°8 9!
+ûû8 9!
 ExceptionDictionary
-°°: M
+ûû: M
 .
-°°M N
+ûûM N
 FATAL_EXCEPTION
-°°N ]
+ûûN ]
 )
-°°] ^
+ûû] ^
 ;
-°°^ _
+ûû^ _
 }
-¢¢ 
+üü 
 catch
-££ 
+†† 
 (
-££ '
+†† '
 InvalidOperationException
-££ 4
+†† 4
 ex
-££5 7
+††5 7
 )
-££7 8
+††7 8
 {
-§§ "
+°° "
 ChannelAdministrator
-•• ,
+¢¢ ,
 .
-••, -&
+¢¢, -&
 HandleCommunicationIssue
-••- E
+¢¢- E
 (
-••E F
+¢¢E F
 item
-••F J
+¢¢F J
 .
-••J K
+¢¢J K
 idUser
-••K Q
+¢¢K Q
 ,
-••Q R"
+¢¢Q R"
 ChannelAdministrator
-••S g
+¢¢S g
 .
-••g h
+¢¢g h
 LOBBY_EXCEPTION
-••h w
+¢¢h w
 )
-••w x
+¢¢w x
 ;
-••x y
+¢¢x y
 ExceptionHandler
-¶¶ (
+££ (
 .
-¶¶( )
+££( )
 LogException
-¶¶) 5
+££) 5
 (
-¶¶5 6
+££5 6
 ex
-¶¶6 8
+££6 8
 ,
-¶¶8 9!
+££8 9!
 ExceptionDictionary
-¶¶: M
+££: M
 .
-¶¶M N
+££M N
 FATAL_EXCEPTION
-¶¶N ]
+££N ]
 )
-¶¶] ^
+££] ^
 ;
-¶¶^ _
+££^ _
 }
-ßß 
+§§ 
 }
-®® 
+•• 
 }
-©© 
+¶¶ 
 }
-™™ 	
+ßß 	
 public
-¨¨ 
+©© 
 void
-¨¨ 
+©© 
 DissolveLobby
-¨¨ !
+©© !
 (
-¨¨! "
+©©! "
 int
-¨¨" %
+©©" %
 roomCode
-¨¨& .
+©©& .
 ,
-¨¨. /
+©©. /
 int
-¨¨0 3
+©©0 3
 idUser
-¨¨4 :
+©©4 :
 )
-¨¨: ;
+©©: ;
 {
-≠≠ 	
+™™ 	
 lock
-ÆÆ 
+´´ 
 (
-ÆÆ 
+´´ 
 
 lockObject
-ÆÆ 
+´´ 
 )
-ÆÆ 
+´´ 
 {
-ØØ 
+¨¨ 
 var
-∞∞ 
+≠≠ 
 lobby
-∞∞ 
+≠≠ 
 =
-∞∞ #
+≠≠ #
 GameLobbiesDictionary
-∞∞ 1
+≠≠ 1
 .
-∞∞1 2$
+≠≠1 2$
 GetSpecificActiveLobby
-∞∞2 H
+≠≠2 H
 (
-∞∞H I
+≠≠H I
 roomCode
-∞∞I Q
+≠≠I Q
 )
-∞∞Q R
+≠≠Q R
 ;
-∞∞R S
+≠≠R S
 try
-±± 
+ÆÆ 
 {
-≤≤ 
+ØØ 
 if
-≥≥ 
+∞∞ 
 (
-≥≥ 
+∞∞ 
 lobby
-≥≥ 
+∞∞ 
 !=
-≥≥  
+∞∞  
 null
-≥≥! %
+∞∞! %
 )
-≥≥% &
+∞∞% &
 {
-¥¥ 
+±± 
 var
-µµ 
+≤≤ 
 Leader
-µµ "
+≤≤ "
 =
-µµ# $
+≤≤# $
 lobby
-µµ% *
+≤≤% *
 .
-µµ* +!
+≤≤* +!
 listOfPlayerInLobby
-µµ+ >
+≤≤+ >
 .
-µµ> ?
-FirstOrDefault
-µµ? M
+≤≤> ?
+Find
+≤≤? C
 (
-µµM N
+≤≤C D
 pl
-µµN P
+≤≤D F
 =>
-µµQ S
+≤≤G I
 pl
-µµT V
+≤≤J L
 .
-µµV W
+≤≤L M
 idUser
-µµW ]
+≤≤M S
 ==
-µµ^ `
+≤≤T V
 idUser
-µµa g
+≤≤W ]
 &&
-µµh j
+≤≤^ `
 pl
-µµk m
+≤≤a c
 .
-µµm n$
-numberOfPlayerInLobbyµµn É
-==µµÑ Ü(
-LEADER_POSITION_IN_LOBBYµµá ü
-)µµü †
-;µµ† °
+≤≤c d#
+numberOfPlayerInLobby
+≤≤d y
+==
+≤≤z |'
+LEADER_POSITION_IN_LOBBY≤≤} ï
+)≤≤ï ñ
+;≤≤ñ ó
 if
-∂∂ 
+≥≥ 
 (
-∂∂ 
+≥≥ 
 Leader
-∂∂ "
+≥≥ "
 !=
-∂∂# %
+≥≥# %
 null
-∂∂& *
+≥≥& *
 )
-∂∂* +
+≥≥* +
 {
-∑∑  
+¥¥  
 NotifyClosingLobby
-∏∏ .
+µµ .
 (
-∏∏. /
+µµ. /
 lobby
-∏∏/ 4
+µµ/ 4
 )
-∏∏4 5
+µµ4 5
 ;
-∏∏5 6#
+µµ5 6#
 ActiveUsersDictionary
-ππ 1
+∂∂ 1
 .
-ππ1 26
+∂∂1 26
 (RemoveRegistryOfActiveUserFromDictionary
-ππ2 Z
+∂∂2 Z
 (
-ππZ [
+∂∂Z [
 idUser
-ππ[ a
+∂∂[ a
 )
-ππa b
+∂∂a b
 ;
-ππb c#
+∂∂b c#
 GameLobbiesDictionary
-∫∫ 1
+∑∑ 1
 .
-∫∫1 21
+∑∑1 21
 #RemoveRegistryOfLobbyFromDictionary
-∫∫2 U
+∑∑2 U
 (
-∫∫U V
+∑∑U V
 roomCode
-∫∫V ^
+∑∑V ^
 )
-∫∫^ _
+∑∑^ _
 ;
-∫∫_ `)
+∑∑_ `)
 QuestionsForLobbyDictionary
-ªª 7
+∏∏ 7
 .
-ªª7 80
+∏∏7 80
 "RemoveSetOFQuestionsFromDictionary
-ªª8 Z
+∏∏8 Z
 (
-ªªZ [
+∏∏Z [
 roomCode
-ªª[ c
+∏∏[ c
 )
-ªªc d
+∏∏c d
 ;
-ªªd e
+∏∏d e
 ChatsDictionary
-ºº +
+ππ +
 .
-ºº+ ,6
+ππ+ ,6
 (RemoveRegistryOfActiveChatFromDictionary
-ºº, T
+ππ, T
 (
-ººT U
+ππT U
 roomCode
-ººU ]
+ππU ]
 )
-ºº] ^
+ππ] ^
 ;
-ºº^ _
+ππ^ _
 ChatsDictionary
-ΩΩ +
+∫∫ +
 .
-ΩΩ+ ,?
+∫∫+ ,?
 1RemoveRegistryOfChannelCallBakcChatFromDictionary
-ΩΩ, ]
+∫∫, ]
 (
-ΩΩ] ^
+∫∫] ^
 roomCode
-ΩΩ^ f
+∫∫^ f
 )
-ΩΩf g
+∫∫f g
 ;
-ΩΩg h
+∫∫g h
 }
-ææ 
+ªª 
 }
-øø 
+ºº 
 }
-¿¿ 
+ΩΩ 
 catch
-¡¡ 
+ææ 
 (
-¡¡ 1
+ææ 1
 #CommunicationObjectFaultedException
-¡¡ :
+ææ :
 ex
-¡¡; =
+ææ; =
 )
-¡¡= >
+ææ= >
 {
-¬¬ "
+øø "
 ChannelAdministrator
-√√ (
+¿¿ (
 .
-√√( )&
+¿¿( )&
 HandleCommunicationIssue
-√√) A
+¿¿) A
 (
-√√A B
+¿¿A B
 idUser
-√√B H
+¿¿B H
 ,
-√√H I"
+¿¿H I"
 ChannelAdministrator
-√√J ^
+¿¿J ^
 .
-√√^ _
+¿¿^ _
 LOBBY_EXCEPTION
-√√_ n
+¿¿_ n
 )
-√√n o
+¿¿n o
 ;
-√√o p
+¿¿o p
 ExceptionHandler
-ƒƒ $
+¡¡ $
 .
-ƒƒ$ %
+¡¡$ %
 LogException
-ƒƒ% 1
+¡¡% 1
 (
-ƒƒ1 2
+¡¡1 2
 ex
-ƒƒ2 4
+¡¡2 4
 ,
-ƒƒ4 5!
+¡¡4 5!
 ExceptionDictionary
-ƒƒ6 I
+¡¡6 I
 .
-ƒƒI J
+¡¡I J
 FATAL_EXCEPTION
-ƒƒJ Y
+¡¡J Y
 )
-ƒƒY Z
+¡¡Y Z
 ;
-ƒƒZ [
+¡¡Z [
 }
-≈≈ 
+¬¬ 
 catch
-∆∆ 
+√√ 
 (
-∆∆ 
+√√ 
 TimeoutException
-∆∆ '
+√√ '
 ex
-∆∆( *
+√√( *
 )
-∆∆* +
+√√* +
 {
-«« "
+ƒƒ "
 ChannelAdministrator
-»» (
+≈≈ (
 .
-»»( )&
+≈≈( )&
 HandleCommunicationIssue
-»») A
+≈≈) A
 (
-»»A B
+≈≈A B
 idUser
-»»B H
+≈≈B H
 ,
-»»H I"
+≈≈H I"
 ChannelAdministrator
-»»J ^
+≈≈J ^
 .
-»»^ _
+≈≈^ _
 LOBBY_EXCEPTION
-»»_ n
+≈≈_ n
 )
-»»n o
+≈≈n o
 ;
-»»o p
+≈≈o p
 ExceptionHandler
-…… $
+∆∆ $
 .
-……$ %
+∆∆$ %
 LogException
-……% 1
+∆∆% 1
 (
-……1 2
+∆∆1 2
 ex
-……2 4
+∆∆2 4
 ,
-……4 5!
+∆∆4 5!
 ExceptionDictionary
-……6 I
+∆∆6 I
 .
-……I J
+∆∆I J
 FATAL_EXCEPTION
-……J Y
+∆∆J Y
 )
-……Y Z
+∆∆Y Z
 ;
-……Z [
+∆∆Z [
 }
-   
+«« 
 catch
-ÀÀ 
+»» 
 (
-ÀÀ $
+»» $
 CommunicationException
-ÀÀ -
+»» -
 ex
-ÀÀ. 0
+»». 0
 )
-ÀÀ0 1
+»»0 1
 {
-ÃÃ "
+…… "
 ChannelAdministrator
-ÕÕ (
+   (
 .
-ÕÕ( )&
+  ( )&
 HandleCommunicationIssue
-ÕÕ) A
+  ) A
 (
-ÕÕA B
+  A B
 idUser
-ÕÕB H
+  B H
 ,
-ÕÕH I"
+  H I"
 ChannelAdministrator
-ÕÕJ ^
+  J ^
 .
-ÕÕ^ _
+  ^ _
 LOBBY_EXCEPTION
-ÕÕ_ n
+  _ n
 )
-ÕÕn o
+  n o
 ;
-ÕÕo p
+  o p
 ExceptionHandler
-ŒŒ $
+ÀÀ $
 .
-ŒŒ$ %
+ÀÀ$ %
 LogException
-ŒŒ% 1
+ÀÀ% 1
 (
-ŒŒ1 2
+ÀÀ1 2
 ex
-ŒŒ2 4
+ÀÀ2 4
 ,
-ŒŒ4 5!
+ÀÀ4 5!
 ExceptionDictionary
-ŒŒ6 I
+ÀÀ6 I
 .
-ŒŒI J
+ÀÀI J
 FATAL_EXCEPTION
-ŒŒJ Y
+ÀÀJ Y
 )
-ŒŒY Z
+ÀÀY Z
 ;
-ŒŒZ [
+ÀÀZ [
 }
-œœ 
+ÃÃ 
 catch
-–– 
+ÕÕ 
 (
-–– '
+ÕÕ '
 InvalidOperationException
-–– 0
+ÕÕ 0
 ex
-––1 3
+ÕÕ1 3
 )
-––3 4
+ÕÕ3 4
 {
-—— "
+ŒŒ "
 ChannelAdministrator
-““ (
+œœ (
 .
-““( )&
+œœ( )&
 HandleCommunicationIssue
-““) A
+œœ) A
 (
-““A B
+œœA B
 idUser
-““B H
+œœB H
 ,
-““H I"
+œœH I"
 ChannelAdministrator
-““J ^
+œœJ ^
 .
-““^ _
+œœ^ _
 LOBBY_EXCEPTION
-““_ n
+œœ_ n
 )
-““n o
+œœn o
 ;
-““o p
+œœo p
 ExceptionHandler
-”” $
+–– $
 .
-””$ %
+––$ %
 LogException
-””% 1
+––% 1
 (
-””1 2
+––1 2
 ex
-””2 4
+––2 4
 ,
-””4 5!
+––4 5!
 ExceptionDictionary
-””6 I
+––6 I
 .
-””I J
+––I J
 FATAL_EXCEPTION
-””J Y
+––J Y
 )
-””Y Z
+––Y Z
 ;
-””Z [
+––Z [
 }
-‘‘ 
+—— 
 }
-’’ 
+““ 
 }
-÷÷ 	
+”” 	
 private
-ÿÿ 
+’’ 
 void
-ÿÿ  
+’’  
 NotifyClosingLobby
-ÿÿ '
+’’ '
 (
-ÿÿ' (
+’’' (
 Lobby
-ÿÿ( -
+’’( -
 lobby
-ÿÿ. 3
+’’. 3
 )
-ÿÿ3 4
+’’3 4
 {
-ŸŸ 	
+÷÷ 	
 foreach
-⁄⁄ 
+◊◊ 
 (
-⁄⁄ 
+◊◊ 
 var
-⁄⁄ 
+◊◊ 
 item
-⁄⁄ 
+◊◊ 
 in
-⁄⁄  
+◊◊  
 lobby
-⁄⁄! &
+◊◊! &
 .
-⁄⁄& '!
+◊◊& '!
 listOfPlayerInLobby
-⁄⁄' :
+◊◊' :
 )
-⁄⁄: ;
+◊◊: ;
 {
-€€ 
+ÿÿ 
 try
-‹‹ 
+ŸŸ 
 {
-›› 
+⁄⁄ 
 var
-ﬁﬁ 
+€€ 
+channel
+€€ 
+=
+€€  !
+item
+€€" &
+.
+€€& '/
+!lobbyCommunicationChannelCallback
+€€' H
+.
+€€H I 
+GetCallbackChannel
+€€I [
+<
+€€[ \#
+ILobbyActionsCallback
+€€\ q
+>
+€€q r
+(
+€€r s
+)
+€€s t
+;
+€€t u
+if
+‹‹ 
+(
+‹‹ 
+channel
+‹‹ 
+!=
+‹‹  "
+null
+‹‹# '
+&&
+‹‹( *
+item
+‹‹+ /
+.
+‹‹/ 0#
+numberOfPlayerInLobby
+‹‹0 E
+!=
+‹‹F H&
+LEADER_POSITION_IN_LOBBY
+‹‹I a
+)
+‹‹a b
+{
+›› 
 channel
 ﬁﬁ 
-=
-ﬁﬁ  !
-item
-ﬁﬁ" &
 .
-ﬁﬁ& '/
-!lobbyCommunicationChannelCallback
-ﬁﬁ' H
-.
-ﬁﬁH I 
-GetCallbackChannel
-ﬁﬁI [
-<
-ﬁﬁ[ \#
-ILobbyActionsCallback
-ﬁﬁ\ q
->
-ﬁﬁq r
-(
-ﬁﬁr s
-)
-ﬁﬁs t
-;
-ﬁﬁt u
-if
-ﬂﬂ 
-(
-ﬂﬂ 
-channel
-ﬂﬂ 
-!=
-ﬂﬂ  "
-null
-ﬂﬂ# '
-&&
-ﬂﬂ( *
-item
-ﬂﬂ+ /
-.
-ﬂﬂ/ 0#
-numberOfPlayerInLobby
-ﬂﬂ0 E
-!=
-ﬂﬂF H&
-LEADER_POSITION_IN_LOBBY
-ﬂﬂI a
-)
-ﬂﬂa b
-{
-‡‡ 
-channel
-·· 
-.
-··  
+ﬁﬁ  
 DissolvingLobby
-··  /
+ﬁﬁ  /
 (
-··/ 0
+ﬁﬁ/ 0
 )
-··0 1
+ﬁﬁ0 1
 ;
-··1 2
+ﬁﬁ1 2
 }
-‚‚ 
+ﬂﬂ 
 }
-„„ 
+‡‡ 
 catch
-‰‰ 
+·· 
 (
-‰‰ 1
+·· 1
 #CommunicationObjectFaultedException
-‰‰ :
+·· :
 ex
-‰‰; =
+··; =
 )
-‰‰= >
+··= >
 {
-ÂÂ "
+‚‚ "
 ChannelAdministrator
-ÊÊ (
+„„ (
 .
-ÊÊ( )&
+„„( )&
 HandleCommunicationIssue
-ÊÊ) A
+„„) A
 (
-ÊÊA B
+„„A B
 item
-ÊÊB F
+„„B F
 .
-ÊÊF G
+„„F G
 idUser
-ÊÊG M
+„„G M
 ,
-ÊÊM N"
+„„M N"
 ChannelAdministrator
-ÊÊO c
+„„O c
 .
-ÊÊc d
+„„c d
 LOBBY_EXCEPTION
-ÊÊd s
+„„d s
 )
-ÊÊs t
+„„s t
 ;
-ÊÊt u
+„„t u
 ExceptionHandler
-ÁÁ $
+‰‰ $
 .
-ÁÁ$ %
+‰‰$ %
 LogException
-ÁÁ% 1
+‰‰% 1
 (
-ÁÁ1 2
+‰‰1 2
 ex
-ÁÁ2 4
+‰‰2 4
 ,
-ÁÁ4 5!
+‰‰4 5!
 ExceptionDictionary
-ÁÁ6 I
+‰‰6 I
 .
-ÁÁI J
+‰‰I J
 FATAL_EXCEPTION
-ÁÁJ Y
+‰‰J Y
 )
-ÁÁY Z
+‰‰Y Z
 ;
-ÁÁZ [
+‰‰Z [
 }
-ËË 
+ÂÂ 
 catch
-ÈÈ 
+ÊÊ 
 (
-ÈÈ 
+ÊÊ 
 TimeoutException
-ÈÈ '
+ÊÊ '
 ex
-ÈÈ( *
+ÊÊ( *
 )
-ÈÈ* +
+ÊÊ* +
 {
-ÍÍ "
+ÁÁ "
 ChannelAdministrator
-ÎÎ (
+ËË (
 .
-ÎÎ( )&
+ËË( )&
 HandleCommunicationIssue
-ÎÎ) A
+ËË) A
 (
-ÎÎA B
+ËËA B
 item
-ÎÎB F
+ËËB F
 .
-ÎÎF G
+ËËF G
 idUser
-ÎÎG M
+ËËG M
 ,
-ÎÎM N"
+ËËM N"
 ChannelAdministrator
-ÎÎO c
+ËËO c
 .
-ÎÎc d
+ËËc d
 LOBBY_EXCEPTION
-ÎÎd s
+ËËd s
 )
-ÎÎs t
+ËËs t
 ;
-ÎÎt u
+ËËt u
 ExceptionHandler
-ÏÏ $
+ÈÈ $
 .
-ÏÏ$ %
+ÈÈ$ %
 LogException
-ÏÏ% 1
+ÈÈ% 1
 (
-ÏÏ1 2
+ÈÈ1 2
 ex
-ÏÏ2 4
+ÈÈ2 4
 ,
-ÏÏ4 5!
+ÈÈ4 5!
 ExceptionDictionary
-ÏÏ6 I
+ÈÈ6 I
 .
-ÏÏI J
+ÈÈI J
 FATAL_EXCEPTION
-ÏÏJ Y
+ÈÈJ Y
 )
-ÏÏY Z
+ÈÈY Z
 ;
-ÏÏZ [
+ÈÈZ [
 }
-ÌÌ 
+ÍÍ 
 catch
-ÓÓ 
+ÎÎ 
 (
-ÓÓ $
+ÎÎ $
 CommunicationException
-ÓÓ -
+ÎÎ -
 ex
-ÓÓ. 0
+ÎÎ. 0
 )
-ÓÓ0 1
+ÎÎ0 1
 {
-ÔÔ "
+ÏÏ "
 ChannelAdministrator
- (
+ÌÌ (
 .
-( )&
+ÌÌ( )&
 HandleCommunicationIssue
-) A
+ÌÌ) A
 (
-A B
+ÌÌA B
 item
-B F
+ÌÌB F
 .
-F G
+ÌÌF G
 idUser
-G M
+ÌÌG M
 ,
-M N"
+ÌÌM N"
 ChannelAdministrator
-O c
+ÌÌO c
 .
-c d
+ÌÌc d
 LOBBY_EXCEPTION
-d s
+ÌÌd s
 )
-s t
+ÌÌs t
 ;
-t u
+ÌÌt u
 ExceptionHandler
-ÒÒ $
+ÓÓ $
 .
-ÒÒ$ %
+ÓÓ$ %
 LogException
-ÒÒ% 1
+ÓÓ% 1
 (
-ÒÒ1 2
+ÓÓ1 2
 ex
-ÒÒ2 4
+ÓÓ2 4
 ,
-ÒÒ4 5!
+ÓÓ4 5!
 ExceptionDictionary
-ÒÒ6 I
+ÓÓ6 I
 .
-ÒÒI J
+ÓÓI J
 FATAL_EXCEPTION
-ÒÒJ Y
+ÓÓJ Y
 )
-ÒÒY Z
+ÓÓY Z
 ;
-ÒÒZ [
+ÓÓZ [
 }
-ÚÚ 
+ÔÔ 
 catch
-ÛÛ 
+ 
 (
-ÛÛ '
+ '
 InvalidOperationException
-ÛÛ 0
+ 0
 ex
-ÛÛ1 3
+1 3
 )
-ÛÛ3 4
+3 4
 {
-ÙÙ "
+ÒÒ "
 ChannelAdministrator
-ıı (
+ÚÚ (
 .
-ıı( )&
+ÚÚ( )&
 HandleCommunicationIssue
-ıı) A
+ÚÚ) A
 (
-ııA B
+ÚÚA B
 item
-ııB F
+ÚÚB F
 .
-ııF G
+ÚÚF G
 idUser
-ııG M
+ÚÚG M
 ,
-ııM N"
+ÚÚM N"
 ChannelAdministrator
-ııO c
+ÚÚO c
 .
-ııc d
+ÚÚc d
 LOBBY_EXCEPTION
-ııd s
+ÚÚd s
 )
-ııs t
+ÚÚs t
 ;
-ııt u
+ÚÚt u
 ExceptionHandler
-ˆˆ $
+ÛÛ $
 .
-ˆˆ$ %
+ÛÛ$ %
 LogException
-ˆˆ% 1
+ÛÛ% 1
 (
-ˆˆ1 2
+ÛÛ1 2
 ex
-ˆˆ2 4
+ÛÛ2 4
 ,
-ˆˆ4 5!
+ÛÛ4 5!
 ExceptionDictionary
-ˆˆ6 I
+ÛÛ6 I
 .
-ˆˆI J
+ÛÛI J
 FATAL_EXCEPTION
-ˆˆJ Y
+ÛÛJ Y
 )
-ˆˆY Z
+ÛÛY Z
 ;
-ˆˆZ [
+ÛÛZ [
 }
-˜˜ 
+ÙÙ 
 }
-¯¯ 
+ıı 
 }
-˘˘ 	
+ˆˆ 	
 public
-˚˚ 
+¯¯ 
 void
-˚˚ 
+¯¯ 
 	MakeTeams
-˚˚ 
+¯¯ 
 (
-˚˚ 
+¯¯ 
 int
-˚˚ !
+¯¯ !
 roomCode
-˚˚" *
+¯¯" *
 ,
-˚˚* +
+¯¯* +
 int
-˚˚, /
+¯¯, /
 idUser
-˚˚0 6
+¯¯0 6
 ,
-˚˚6 7
+¯¯6 7
 bool
-˚˚8 <
+¯¯8 <
 	wannaTeam
-˚˚= F
+¯¯= F
 )
-˚˚F G
+¯¯F G
 {
-¸¸ 	
+˘˘ 	
 try
-˝˝ 
+˙˙ 
 {
-˛˛ 
+˚˚ 
 if
-ˇˇ 
+¸¸ 
 (
-ˇˇ 
+¸¸ 
 roomCode
-ˇˇ 
+¸¸ 
 !=
-ˇˇ 
+¸¸ 
 NULL_INT_VALUE
-ˇˇ  .
+¸¸  .
 &&
-ˇˇ/ 1
+¸¸/ 1
 idUser
-ˇˇ2 8
+¸¸2 8
 !=
-ˇˇ9 ;
+¸¸9 ;
 NULL_INT_VALUE
-ˇˇ< J
+¸¸< J
 )
-ˇˇJ K
+¸¸J K
 {
-ÄÄ 
+˝˝ 
 var
-ÅÅ 
+˛˛ 
 lobby
-ÅÅ 
+˛˛ 
 =
-ÅÅ #
+˛˛ #
 GameLobbiesDictionary
-ÅÅ  5
+˛˛  5
 .
-ÅÅ5 6$
+˛˛5 6$
 GetSpecificActiveLobby
-ÅÅ6 L
+˛˛6 L
 (
-ÅÅL M
+˛˛L M
 roomCode
-ÅÅM U
+˛˛M U
 )
-ÅÅU V
+˛˛U V
 ;
-ÅÅV W
+˛˛V W
 if
-ÇÇ 
+ˇˇ 
 (
-ÇÇ 
+ˇˇ 
 lobby
-ÇÇ 
+ˇˇ 
 !=
-ÇÇ  
+ˇˇ  
 null
-ÇÇ! %
+ˇˇ! %
 )
-ÇÇ% &
+ˇˇ% &
 {
-ÉÉ 
+ÄÄ 
 if
-ÑÑ 
+ÅÅ 
 (
-ÑÑ 
+ÅÅ 
 lobby
-ÑÑ !
+ÅÅ !
 .
-ÑÑ! "!
+ÅÅ! "!
 listOfPlayerInLobby
-ÑÑ" 5
+ÅÅ" 5
 .
-ÑÑ5 6
+ÅÅ5 6
 Count
-ÑÑ6 ;
+ÅÅ6 ;
 ==
-ÑÑ< >
+ÅÅ< >
 MAX_PLAYERS
-ÑÑ? J
+ÅÅ? J
 &&
-ÑÑK M
+ÅÅK M
 	wannaTeam
-ÑÑN W
+ÅÅN W
 )
-ÑÑW X
+ÅÅW X
 {
-ÖÖ 
+ÇÇ 
 AssignTeamSide
-ÜÜ *
+ÉÉ *
 (
-ÜÜ* +
+ÉÉ* +
 lobby
-ÜÜ+ 0
+ÉÉ+ 0
 )
-ÜÜ0 1
+ÉÉ0 1
 ;
-ÜÜ1 2
+ÉÉ1 2
 }
-áá 
+ÑÑ 
 else
-àà 
+ÖÖ 
 {
-ââ  
+ÜÜ  
 DissolveTeamsSides
-ää .
+áá .
 (
-ää. /
+áá. /
 lobby
-ää/ 4
+áá/ 4
 )
-ää4 5
+áá4 5
 ;
-ää5 6
+áá5 6
 }
-ãã %
+àà %
 NotifyPlayersAboutTeams
-åå /
+ââ /
 (
-åå/ 0
+ââ/ 0
 lobby
-åå0 5
+ââ0 5
 ,
-åå5 6
+ââ5 6
 idUser
-åå7 =
+ââ7 =
 ,
-åå= >
+ââ= >
 	wannaTeam
-åå? H
+ââ? H
 )
-ååH I
+ââH I
 ;
-ååI J
+ââI J
 }
-çç 
+ää 
 }
-éé 
+ãã 
 }
-èè 
+åå 
 catch
-êê 
+çç 
 (
-êê 1
+çç 1
 #CommunicationObjectFaultedException
-êê 6
+çç 6
 ex
-êê7 9
+çç7 9
 )
-êê9 :
+çç9 :
 {
-ëë "
+éé "
 ChannelAdministrator
-íí $
+èè $
 .
-íí$ %&
+èè$ %&
 HandleCommunicationIssue
-íí% =
+èè% =
 (
-íí= >
+èè= >
 idUser
-íí> D
+èè> D
 ,
-ííD E"
+èèD E"
 ChannelAdministrator
-ííF Z
+èèF Z
 .
-ííZ [
+èèZ [
 LOBBY_EXCEPTION
-íí[ j
+èè[ j
 )
-ííj k
+èèj k
 ;
-íík l
+èèk l
 ExceptionHandler
-ìì  
+êê  
 .
-ìì  !
+êê  !
 LogException
-ìì! -
+êê! -
 (
-ìì- .
+êê- .
 ex
-ìì. 0
+êê. 0
 ,
-ìì0 1!
+êê0 1!
 ExceptionDictionary
-ìì2 E
+êê2 E
 .
-ììE F
+êêE F
 FATAL_EXCEPTION
-ììF U
+êêF U
 )
-ììU V
+êêU V
 ;
-ììV W
+êêV W
 }
-îî 
+ëë 
 catch
-ïï 
+íí 
 (
-ïï 
+íí 
 TimeoutException
-ïï #
+íí #
 ex
-ïï$ &
+íí$ &
 )
-ïï& '
+íí& '
 {
-ññ "
+ìì "
 ChannelAdministrator
-óó $
+îî $
 .
-óó$ %&
+îî$ %&
 HandleCommunicationIssue
-óó% =
+îî% =
 (
-óó= >
+îî= >
 idUser
-óó> D
+îî> D
 ,
-óóD E"
+îîD E"
 ChannelAdministrator
-óóF Z
+îîF Z
 .
-óóZ [
+îîZ [
 LOBBY_EXCEPTION
-óó[ j
+îî[ j
 )
-óój k
+îîj k
 ;
-óók l
+îîk l
 ExceptionHandler
-òò  
+ïï  
 .
-òò  !
+ïï  !
 LogException
-òò! -
+ïï! -
 (
-òò- .
+ïï- .
 ex
-òò. 0
+ïï. 0
 ,
-òò0 1!
+ïï0 1!
 ExceptionDictionary
-òò2 E
+ïï2 E
 .
-òòE F
+ïïE F
 FATAL_EXCEPTION
-òòF U
+ïïF U
 )
-òòU V
+ïïU V
 ;
-òòV W
+ïïV W
 }
-ôô 
+ññ 
 catch
-öö 
+óó 
 (
-öö $
+óó $
 CommunicationException
-öö )
+óó )
 ex
-öö* ,
+óó* ,
 )
-öö, -
+óó, -
 {
-õõ "
+òò "
 ChannelAdministrator
-úú $
+ôô $
 .
-úú$ %&
+ôô$ %&
 HandleCommunicationIssue
-úú% =
+ôô% =
 (
-úú= >
+ôô= >
 idUser
-úú> D
+ôô> D
 ,
-úúD E"
+ôôD E"
 ChannelAdministrator
-úúF Z
+ôôF Z
 .
-úúZ [
+ôôZ [
 LOBBY_EXCEPTION
-úú[ j
+ôô[ j
 )
-úúj k
+ôôj k
 ;
-úúk l
+ôôk l
 ExceptionHandler
-ùù  
+öö  
 .
-ùù  !
+öö  !
 LogException
-ùù! -
+öö! -
 (
-ùù- .
+öö- .
 ex
-ùù. 0
+öö. 0
 ,
-ùù0 1!
+öö0 1!
 ExceptionDictionary
-ùù2 E
+öö2 E
 .
-ùùE F
+ööE F
 FATAL_EXCEPTION
-ùùF U
+ööF U
 )
-ùùU V
+ööU V
 ;
-ùùV W
+ööV W
 }
-ûû 
+õõ 
 catch
-üü 
+úú 
 (
-üü '
+úú '
 InvalidOperationException
-üü ,
+úú ,
 ex
-üü- /
+úú- /
 )
-üü/ 0
+úú/ 0
 {
-†† "
+ùù "
 ChannelAdministrator
-°° $
+ûû $
 .
-°°$ %&
+ûû$ %&
 HandleCommunicationIssue
-°°% =
+ûû% =
 (
-°°= >
+ûû= >
 idUser
-°°> D
+ûû> D
 ,
-°°D E"
+ûûD E"
 ChannelAdministrator
-°°F Z
+ûûF Z
 .
-°°Z [
+ûûZ [
 LOBBY_EXCEPTION
-°°[ j
+ûû[ j
 )
-°°j k
+ûûj k
 ;
-°°k l
+ûûk l
 ExceptionHandler
-¢¢  
+üü  
 .
-¢¢  !
+üü  !
 LogException
-¢¢! -
+üü! -
 (
-¢¢- .
+üü- .
 ex
-¢¢. 0
+üü. 0
 ,
-¢¢0 1!
+üü0 1!
 ExceptionDictionary
-¢¢2 E
+üü2 E
 .
-¢¢E F
+üüE F
 FATAL_EXCEPTION
-¢¢F U
+üüF U
 )
-¢¢U V
+üüU V
 ;
-¢¢V W
+üüV W
 }
-££ 
+†† 
 }
+°° 	
+private
+££ 
+void
+££ 
+AssignTeamSide
+££ #
+(
+££# $
+Lobby
+££$ )
+lobby
+££* /
+)
+££/ 0
+{
 §§ 	
-private
-¶¶ 
-void
-¶¶ 
-AssignTeamSide
-¶¶ #
-(
-¶¶# $
-Lobby
-¶¶$ )
-lobby
-¶¶* /
-)
-¶¶/ 0
-{
-ßß 	
 foreach
-®® 
+•• 
 (
-®® 
+•• 
 var
-®® 
+•• 
 item
-®® 
+•• 
 in
-®®  
+••  
 lobby
-®®! &
+••! &
 .
-®®& '!
+••& '!
 listOfPlayerInLobby
-®®' :
+••' :
 )
-®®: ;
+••: ;
 {
-©© 
+¶¶ 
 if
-™™ 
+ßß 
 (
-™™ 
+ßß 
 item
-™™ 
+ßß 
 .
-™™ #
+ßß #
 numberOfPlayerInLobby
-™™ .
+ßß .
 <=
-™™/ 1
+ßß/ 1
 $num
-™™2 3
+ßß2 3
 )
-™™3 4
+ßß3 4
 {
-´´ 
+®® 
 item
-¨¨ 
+©© 
 .
-¨¨ 
+©© 
 sideTeam
-¨¨ !
+©© !
 =
-¨¨" #
+©©" #
 TEAM_LEFT_SIDE
-¨¨$ 2
+©©$ 2
 ;
-¨¨2 3
+©©2 3
 }
-≠≠ 
+™™ 
 else
-ÆÆ 
+´´ 
 {
-ØØ 
+¨¨ 
 item
-∞∞ 
+≠≠ 
 .
-∞∞ 
+≠≠ 
 sideTeam
-∞∞ !
+≠≠ !
 =
-∞∞" #
+≠≠" #
 TEAM_RIGTH_SIDE
-∞∞$ 3
+≠≠$ 3
 ;
-∞∞3 4
+≠≠3 4
 }
-±± 
+ÆÆ 
 }
-≤≤ 
+ØØ 
 }
-≥≥ 	
+∞∞ 	
 private
-µµ 
+≤≤ 
 void
-µµ  
+≤≤  
 DissolveTeamsSides
-µµ '
+≤≤ '
 (
-µµ' (
+≤≤' (
 Lobby
-µµ( -
+≤≤( -
 lobby
-µµ. 3
+≤≤. 3
 )
-µµ3 4
+≤≤3 4
 {
-∂∂ 	
+≥≥ 	
 foreach
-∑∑ 
+¥¥ 
 (
-∑∑ 
+¥¥ 
 var
-∑∑ 
+¥¥ 
 item
-∑∑ 
+¥¥ 
 in
-∑∑  
+¥¥  
 lobby
-∑∑! &
+¥¥! &
 .
-∑∑& '!
+¥¥& '!
 listOfPlayerInLobby
-∑∑' :
+¥¥' :
 )
-∑∑: ;
+¥¥: ;
 {
-∏∏ 
+µµ 
 item
-ππ 
+∂∂ 
 .
-ππ 
+∂∂ 
 sideTeam
-ππ 
+∂∂ 
 =
-ππ 
+∂∂ 
 TEAM_LEFT_SIDE
-ππ  .
+∂∂  .
 ;
-ππ. /
+∂∂. /
 }
-∫∫ 
+∑∑ 
 }
-ªª 	
+∏∏ 	
 private
-ΩΩ 
+∫∫ 
 void
-ΩΩ %
+∫∫ %
 NotifyPlayersAboutTeams
-ΩΩ ,
+∫∫ ,
 (
-ΩΩ, -
+∫∫, -
 Lobby
-ΩΩ- 2
+∫∫- 2
 lobby
-ΩΩ3 8
+∫∫3 8
 ,
-ΩΩ8 9
+∫∫8 9
 int
-ΩΩ: =
+∫∫: =
 idUserNotifying
-ΩΩ> M
+∫∫> M
 ,
-ΩΩM N
+∫∫M N
 bool
-ΩΩO S
+∫∫O S
 	wannaTeam
-ΩΩT ]
+∫∫T ]
 )
-ΩΩ] ^
+∫∫] ^
 {
-ææ 	
+ªª 	
 foreach
-øø 
+ºº 
 (
-øø 
+ºº 
 var
-øø 
+ºº 
 item
-øø 
+ºº 
 in
-øø  
+ºº  
 lobby
-øø! &
+ºº! &
 .
-øø& '!
+ºº& '!
 listOfPlayerInLobby
-øø' :
+ºº' :
 )
-øø: ;
+ºº: ;
 {
-¿¿ 
+ΩΩ 
 try
-¡¡ 
+ææ 
 {
-¬¬ 
+øø 
 if
-√√ 
+¿¿ 
 (
-√√ 
+¿¿ 
 item
-√√ 
+¿¿ 
 .
-√√ 
+¿¿ 
 idUser
-√√ #
+¿¿ #
 !=
-√√$ &
+¿¿$ &
 idUserNotifying
-√√' 6
+¿¿' 6
 )
-√√6 7
+¿¿6 7
 {
-ƒƒ 
+¡¡ 
 item
-≈≈ 
+¬¬ 
 .
-≈≈ /
+¬¬ /
 !lobbyCommunicationChannelCallback
-≈≈ >
+¬¬ >
 .
-≈≈> ? 
+¬¬> ? 
 GetCallbackChannel
-≈≈? Q
+¬¬? Q
 <
-≈≈Q R#
+¬¬Q R#
 ILobbyActionsCallback
-≈≈R g
+¬¬R g
 >
-≈≈g h
+¬¬g h
 (
-≈≈h i
+¬¬h i
 )
-≈≈i j
+¬¬i j
 .
-≈≈j k
+¬¬j k
 MakeTeamsResponse
-≈≈k |
+¬¬k |
 (
-≈≈| }
-	wannaTeam≈≈} Ü
-)≈≈Ü á
-;≈≈á à
+¬¬| }
+	wannaTeam¬¬} Ü
+)¬¬Ü á
+;¬¬á à
 }
-∆∆ 
+√√ 
 }
-«« 
+ƒƒ 
 catch
-»» 
+≈≈ 
 (
-»» 1
+≈≈ 1
 #CommunicationObjectFaultedException
-»» :
+≈≈ :
 ex
-»»; =
+≈≈; =
 )
-»»= >
+≈≈= >
 {
-…… "
+∆∆ "
 ChannelAdministrator
-   (
+«« (
 .
-  ( )&
+««( )&
 HandleCommunicationIssue
-  ) A
+««) A
 (
-  A B
+««A B
 item
-  B F
+««B F
 .
-  F G
+««F G
 idUser
-  G M
+««G M
 ,
-  M N"
+««M N"
 ChannelAdministrator
-  O c
+««O c
 .
-  c d
+««c d
 LOBBY_EXCEPTION
-  d s
+««d s
 )
-  s t
+««s t
 ;
-  t u
+««t u
 ExceptionHandler
-ÀÀ $
+»» $
 .
-ÀÀ$ %
+»»$ %
 LogException
-ÀÀ% 1
+»»% 1
 (
-ÀÀ1 2
+»»1 2
 ex
-ÀÀ2 4
+»»2 4
 ,
-ÀÀ4 5!
+»»4 5!
 ExceptionDictionary
-ÀÀ6 I
+»»6 I
 .
-ÀÀI J
+»»I J
 FATAL_EXCEPTION
-ÀÀJ Y
+»»J Y
 )
-ÀÀY Z
+»»Y Z
 ;
-ÀÀZ [
+»»Z [
 }
-ÃÃ 
+…… 
 catch
-ÕÕ 
+   
 (
-ÕÕ 
+   
 TimeoutException
-ÕÕ '
+   '
 ex
-ÕÕ( *
+  ( *
 )
-ÕÕ* +
+  * +
 {
-ŒŒ "
+ÀÀ "
 ChannelAdministrator
-œœ (
+ÃÃ (
 .
-œœ( )&
+ÃÃ( )&
 HandleCommunicationIssue
-œœ) A
+ÃÃ) A
 (
-œœA B
+ÃÃA B
 item
-œœB F
+ÃÃB F
 .
-œœF G
+ÃÃF G
 idUser
-œœG M
+ÃÃG M
 ,
-œœM N"
+ÃÃM N"
 ChannelAdministrator
-œœO c
+ÃÃO c
 .
-œœc d
+ÃÃc d
 LOBBY_EXCEPTION
-œœd s
+ÃÃd s
 )
-œœs t
+ÃÃs t
 ;
-œœt u
+ÃÃt u
 ExceptionHandler
-–– $
+ÕÕ $
 .
-––$ %
+ÕÕ$ %
 LogException
-––% 1
+ÕÕ% 1
 (
-––1 2
+ÕÕ1 2
 ex
-––2 4
+ÕÕ2 4
 ,
-––4 5!
+ÕÕ4 5!
 ExceptionDictionary
-––6 I
+ÕÕ6 I
 .
-––I J
+ÕÕI J
 FATAL_EXCEPTION
-––J Y
+ÕÕJ Y
 )
-––Y Z
+ÕÕY Z
 ;
-––Z [
+ÕÕZ [
 }
-—— 
+ŒŒ 
 catch
-““ 
+œœ 
 (
-““ $
+œœ $
 CommunicationException
-““ -
+œœ -
 ex
-““. 0
+œœ. 0
 )
-““0 1
+œœ0 1
 {
-”” "
+–– "
 ChannelAdministrator
-‘‘ (
+—— (
 .
-‘‘( )&
+——( )&
 HandleCommunicationIssue
-‘‘) A
+——) A
 (
-‘‘A B
+——A B
 item
-‘‘B F
+——B F
 .
-‘‘F G
+——F G
 idUser
-‘‘G M
+——G M
 ,
-‘‘M N"
+——M N"
 ChannelAdministrator
-‘‘O c
+——O c
 .
-‘‘c d
+——c d
 LOBBY_EXCEPTION
-‘‘d s
+——d s
 )
-‘‘s t
+——s t
 ;
-‘‘t u
+——t u
 ExceptionHandler
-’’ $
+““ $
 .
-’’$ %
+““$ %
 LogException
-’’% 1
+““% 1
 (
-’’1 2
+““1 2
 ex
-’’2 4
+““2 4
 ,
-’’4 5!
+““4 5!
 ExceptionDictionary
-’’6 I
+““6 I
 .
-’’I J
+““I J
 FATAL_EXCEPTION
-’’J Y
+““J Y
 )
-’’Y Z
+““Y Z
 ;
-’’Z [
+““Z [
 }
-÷÷ 
+”” 
 catch
-◊◊ 
+‘‘ 
 (
-◊◊ '
+‘‘ '
 InvalidOperationException
-◊◊ 0
+‘‘ 0
 ex
-◊◊1 3
+‘‘1 3
 )
-◊◊3 4
+‘‘3 4
 {
-ÿÿ "
+’’ "
 ChannelAdministrator
-ŸŸ (
+÷÷ (
 .
-ŸŸ( )&
+÷÷( )&
 HandleCommunicationIssue
-ŸŸ) A
+÷÷) A
 (
-ŸŸA B
+÷÷A B
 item
-ŸŸB F
+÷÷B F
 .
-ŸŸF G
+÷÷F G
 idUser
-ŸŸG M
+÷÷G M
 ,
-ŸŸM N"
+÷÷M N"
 ChannelAdministrator
-ŸŸO c
+÷÷O c
 .
-ŸŸc d
+÷÷c d
 LOBBY_EXCEPTION
-ŸŸd s
+÷÷d s
 )
-ŸŸs t
+÷÷s t
 ;
-ŸŸt u
+÷÷t u
 ExceptionHandler
-⁄⁄ $
+◊◊ $
 .
-⁄⁄$ %
+◊◊$ %
 LogException
-⁄⁄% 1
+◊◊% 1
 (
-⁄⁄1 2
+◊◊1 2
 ex
-⁄⁄2 4
+◊◊2 4
 ,
-⁄⁄4 5!
+◊◊4 5!
 ExceptionDictionary
-⁄⁄6 I
+◊◊6 I
 .
-⁄⁄I J
+◊◊I J
 FATAL_EXCEPTION
-⁄⁄J Y
+◊◊J Y
 )
-⁄⁄Y Z
+◊◊Y Z
 ;
-⁄⁄Z [
+◊◊Z [
 }
-€€ 
+ÿÿ 
 }
-‹‹ 
+ŸŸ 
 }
-ﬁﬁ 	
+€€ 	
 public
-‡‡ 
+›› 
 void
-‡‡ 
+›› 
 ChangePlayerSide
-‡‡ $
+›› $
 (
-‡‡$ %
+››$ %
 int
-‡‡% (
+››% (
 roomCode
-‡‡) 1
+››) 1
 ,
-‡‡1 2
+››1 2
 int
-‡‡3 6 
+››3 6 
 idUserToChangeTeam
-‡‡7 I
+››7 I
 ,
-‡‡I J
+››I J
 int
-‡‡K N
+››K N
 newSideTeam
-‡‡O Z
+››O Z
 )
-‡‡Z [
+››Z [
 {
-·· 	
+ﬁﬁ 	
 if
-‚‚ 
+ﬂﬂ 
 (
-‚‚ 
+ﬂﬂ 
 roomCode
-‚‚ 
+ﬂﬂ 
 !=
-‚‚ 
+ﬂﬂ 
 NULL_INT_VALUE
-‚‚ *
+ﬂﬂ *
 &&
-‚‚+ - 
+ﬂﬂ+ - 
 idUserToChangeTeam
-‚‚. @
+ﬂﬂ. @
 !=
-‚‚A C
+ﬂﬂA C
 NULL_INT_VALUE
-‚‚D R
+ﬂﬂD R
 &&
-‚‚S U
+ﬂﬂS U
 newSideTeam
-‚‚V a
+ﬂﬂV a
 !=
-‚‚b d
+ﬂﬂb d
 NULL_INT_VALUE
-‚‚e s
+ﬂﬂe s
 )
-‚‚s t
+ﬂﬂs t
 {
-„„ 
+‡‡ 
 var
-‰‰ 
+·· 
 lobby
-‰‰ 
+·· 
 =
-‰‰ #
+·· #
 GameLobbiesDictionary
-‰‰ 1
+·· 1
 .
-‰‰1 2$
+··1 2$
 GetSpecificActiveLobby
-‰‰2 H
+··2 H
 (
-‰‰H I
+··H I
 roomCode
-‰‰I Q
+··I Q
 )
-‰‰Q R
+··Q R
 ;
-‰‰R S
+··R S
 try
-ÂÂ 
+‚‚ 
 {
-ÊÊ 
+„„ 
 if
-ÁÁ 
+‰‰ 
 (
-ÁÁ 
+‰‰ 
 lobby
-ÁÁ 
+‰‰ 
 !=
-ÁÁ  
+‰‰  
 null
-ÁÁ! %
+‰‰! %
 )
-ÁÁ% &
+‰‰% &
 {
-ËË 
+ÂÂ 
 var
-ÈÈ 
+ÊÊ 
+player
+ÊÊ "
+=
+ÊÊ# $
+lobby
+ÊÊ% *
+.
+ÊÊ* +!
+listOfPlayerInLobby
+ÊÊ+ >
+.
+ÊÊ> ?
+Find
+ÊÊ? C
+(
+ÊÊC D
+pl
+ÊÊD F
+=>
+ÊÊG I
+pl
+ÊÊJ L
+.
+ÊÊL M
+idUser
+ÊÊM S
+==
+ÊÊT V 
+idUserToChangeTeam
+ÊÊW i
+)
+ÊÊi j
+;
+ÊÊj k
+if
+ÁÁ 
+(
+ÁÁ 
+player
+ÁÁ "
+!=
+ÁÁ# %
+null
+ÁÁ& *
+)
+ÁÁ* +
+{
+ËË 
 player
 ÈÈ "
-=
-ÈÈ# $
-lobby
-ÈÈ% *
 .
-ÈÈ* +!
-listOfPlayerInLobby
-ÈÈ+ >
-.
-ÈÈ> ?
-FirstOrDefault
-ÈÈ? M
-(
-ÈÈM N
-pl
-ÈÈN P
-=>
-ÈÈQ S
-pl
-ÈÈT V
-.
-ÈÈV W
-idUser
-ÈÈW ]
-==
-ÈÈ^ ` 
-idUserToChangeTeam
-ÈÈa s
-)
-ÈÈs t
-;
-ÈÈt u
-if
-ÍÍ 
-(
-ÍÍ 
-player
-ÍÍ "
-!=
-ÍÍ# %
-null
-ÍÍ& *
-)
-ÍÍ* +
-{
-ÎÎ 
-player
-ÏÏ "
-.
-ÏÏ" #
+ÈÈ" #
 sideTeam
-ÏÏ# +
+ÈÈ# +
 =
-ÏÏ, -
+ÈÈ, -
 newSideTeam
-ÏÏ. 9
+ÈÈ. 9
 ;
-ÏÏ9 :'
+ÈÈ9 :'
 NotifyPlayerChangedOfSide
-ÌÌ 5
+ÍÍ 5
 (
-ÌÌ5 6
+ÍÍ5 6
 roomCode
-ÌÌ6 >
+ÍÍ6 >
 ,
-ÌÌ> ? 
+ÍÍ> ? 
 idUserToChangeTeam
-ÌÌ@ R
+ÍÍ@ R
 ,
-ÌÌR S
+ÍÍR S
 lobby
-ÌÌT Y
+ÍÍT Y
 )
-ÌÌY Z
+ÍÍY Z
 ;
-ÌÌZ [
+ÍÍZ [
 }
-ÓÓ 
+ÎÎ 
 }
-ÔÔ 
+ÏÏ 
 }
- 
+ÌÌ 
 catch
-ÒÒ 
+ÓÓ 
 (
-ÒÒ 1
+ÓÓ 1
 #CommunicationObjectFaultedException
-ÒÒ :
+ÓÓ :
 ex
-ÒÒ; =
+ÓÓ; =
 )
-ÒÒ= >
+ÓÓ= >
 {
-ÚÚ "
+ÔÔ "
 ChannelAdministrator
-ÛÛ (
+ (
 .
-ÛÛ( )&
+( )&
 HandleCommunicationIssue
-ÛÛ) A
+) A
 (
-ÛÛA B
+A B
 lobby
-ÛÛB G
+B G
 .
-ÛÛG H
+G H
 idAdmin
-ÛÛH O
+H O
 ,
-ÛÛO P"
+O P"
 ChannelAdministrator
-ÛÛQ e
+Q e
 .
-ÛÛe f
+e f
 LOBBY_EXCEPTION
-ÛÛf u
+f u
 )
-ÛÛu v
+u v
 ;
-ÛÛv w
+v w
 ExceptionHandler
-ÙÙ $
+ÒÒ $
 .
-ÙÙ$ %
+ÒÒ$ %
 LogException
-ÙÙ% 1
+ÒÒ% 1
 (
-ÙÙ1 2
+ÒÒ1 2
 ex
-ÙÙ2 4
+ÒÒ2 4
 ,
-ÙÙ4 5!
+ÒÒ4 5!
 ExceptionDictionary
-ÙÙ6 I
+ÒÒ6 I
 .
-ÙÙI J
+ÒÒI J
 FATAL_EXCEPTION
-ÙÙJ Y
+ÒÒJ Y
 )
-ÙÙY Z
+ÒÒY Z
 ;
-ÙÙZ [
+ÒÒZ [
 }
-ıı 
+ÚÚ 
 catch
-ˆˆ 
+ÛÛ 
 (
-ˆˆ 
+ÛÛ 
 TimeoutException
-ˆˆ '
+ÛÛ '
 ex
-ˆˆ( *
+ÛÛ( *
 )
-ˆˆ* +
+ÛÛ* +
 {
-˜˜ "
+ÙÙ "
 ChannelAdministrator
-¯¯ (
+ıı (
 .
-¯¯( )&
+ıı( )&
 HandleCommunicationIssue
-¯¯) A
+ıı) A
 (
-¯¯A B
+ııA B
 lobby
-¯¯B G
+ııB G
 .
-¯¯G H
+ııG H
 idAdmin
-¯¯H O
+ııH O
 ,
-¯¯O P"
+ııO P"
 ChannelAdministrator
-¯¯Q e
+ııQ e
 .
-¯¯e f
+ııe f
 LOBBY_EXCEPTION
-¯¯f u
+ııf u
 )
-¯¯u v
+ııu v
 ;
-¯¯v w
+ııv w
 ExceptionHandler
-˘˘ $
+ˆˆ $
 .
-˘˘$ %
+ˆˆ$ %
 LogException
-˘˘% 1
+ˆˆ% 1
 (
-˘˘1 2
+ˆˆ1 2
 ex
-˘˘2 4
+ˆˆ2 4
 ,
-˘˘4 5!
+ˆˆ4 5!
 ExceptionDictionary
-˘˘6 I
+ˆˆ6 I
 .
-˘˘I J
+ˆˆI J
 FATAL_EXCEPTION
-˘˘J Y
+ˆˆJ Y
 )
-˘˘Y Z
+ˆˆY Z
 ;
-˘˘Z [
+ˆˆZ [
 }
-˙˙ 
+˜˜ 
 catch
-˚˚ 
+¯¯ 
 (
-˚˚ $
+¯¯ $
 CommunicationException
-˚˚ -
+¯¯ -
 ex
-˚˚. 0
+¯¯. 0
 )
-˚˚0 1
+¯¯0 1
 {
-¸¸ "
+˘˘ "
 ChannelAdministrator
-˝˝ (
+˙˙ (
 .
-˝˝( )&
+˙˙( )&
 HandleCommunicationIssue
-˝˝) A
+˙˙) A
 (
-˝˝A B
+˙˙A B
 lobby
-˝˝B G
+˙˙B G
 .
-˝˝G H
+˙˙G H
 idAdmin
-˝˝H O
+˙˙H O
 ,
-˝˝O P"
+˙˙O P"
 ChannelAdministrator
-˝˝Q e
+˙˙Q e
 .
-˝˝e f
+˙˙e f
 LOBBY_EXCEPTION
-˝˝f u
+˙˙f u
 )
-˝˝u v
+˙˙u v
 ;
-˝˝v w
+˙˙v w
 ExceptionHandler
-˛˛ $
+˚˚ $
 .
-˛˛$ %
+˚˚$ %
 LogException
-˛˛% 1
+˚˚% 1
 (
-˛˛1 2
+˚˚1 2
 ex
-˛˛2 4
+˚˚2 4
 ,
-˛˛4 5!
+˚˚4 5!
 ExceptionDictionary
-˛˛6 I
+˚˚6 I
 .
-˛˛I J
+˚˚I J
 FATAL_EXCEPTION
-˛˛J Y
+˚˚J Y
 )
-˛˛Y Z
+˚˚Y Z
 ;
-˛˛Z [
+˚˚Z [
 }
-ˇˇ 
+¸¸ 
 catch
-ÄÄ 
+˝˝ 
 (
-ÄÄ '
+˝˝ '
 InvalidOperationException
-ÄÄ 0
+˝˝ 0
 ex
-ÄÄ1 3
+˝˝1 3
 )
-ÄÄ3 4
+˝˝3 4
 {
-ÅÅ "
+˛˛ "
 ChannelAdministrator
-ÇÇ (
+ˇˇ (
 .
-ÇÇ( )&
+ˇˇ( )&
 HandleCommunicationIssue
-ÇÇ) A
+ˇˇ) A
 (
-ÇÇA B
+ˇˇA B
 lobby
-ÇÇB G
+ˇˇB G
 .
-ÇÇG H
+ˇˇG H
 idAdmin
-ÇÇH O
+ˇˇH O
 ,
-ÇÇO P"
+ˇˇO P"
 ChannelAdministrator
-ÇÇQ e
+ˇˇQ e
 .
-ÇÇe f
+ˇˇe f
 LOBBY_EXCEPTION
-ÇÇf u
+ˇˇf u
 )
-ÇÇu v
+ˇˇu v
 ;
-ÇÇv w
+ˇˇv w
 ExceptionHandler
-ÉÉ $
+ÄÄ $
 .
-ÉÉ$ %
+ÄÄ$ %
 LogException
-ÉÉ% 1
+ÄÄ% 1
 (
-ÉÉ1 2
+ÄÄ1 2
 ex
-ÉÉ2 4
+ÄÄ2 4
 ,
-ÉÉ4 5!
+ÄÄ4 5!
 ExceptionDictionary
-ÉÉ6 I
+ÄÄ6 I
 .
-ÉÉI J
+ÄÄI J
 FATAL_EXCEPTION
-ÉÉJ Y
+ÄÄJ Y
 )
-ÉÉY Z
+ÄÄY Z
 ;
-ÉÉZ [
+ÄÄZ [
 }
-ÑÑ 
+ÅÅ 
 }
-ÖÖ 
+ÇÇ 
 }
-ÜÜ 	
+ÉÉ 	
 private
-áá 
+ÑÑ 
 void
-áá '
+ÑÑ '
 NotifyPlayerChangedOfSide
-áá .
+ÑÑ .
 (
-áá. /
+ÑÑ. /
 int
-áá/ 2
+ÑÑ/ 2
 roomCode
-áá3 ;
+ÑÑ3 ;
 ,
-áá; <
+ÑÑ; <
 int
-áá= @
+ÑÑ= @
 idUser
-ááA G
+ÑÑA G
 ,
-ááG H
+ÑÑG H
 Lobby
-ááI N
+ÑÑI N
 lobby
-ááO T
+ÑÑO T
 )
-ááT U
+ÑÑT U
 {
-àà 	
+ÖÖ 	
 GenericClass
-ââ 
+ÜÜ 
 <
-ââ 
+ÜÜ 
 List
-ââ 
+ÜÜ 
 <
-ââ 
+ÜÜ 
 PlayerInLobby
-ââ +
+ÜÜ +
 >
-ââ+ ,
+ÜÜ+ ,
 >
-ââ, -
+ÜÜ, -
 playersInLobby
-ââ. <
+ÜÜ. <
 =
-ââ= >(
+ÜÜ= >(
 GetAllCurrentPlayerInLobby
-ââ? Y
+ÜÜ? Y
 (
-ââY Z
+ÜÜY Z
 roomCode
-ââZ b
+ÜÜZ b
 ,
-ââb c
+ÜÜb c
 idUser
-ââd j
+ÜÜd j
 )
-ââj k
+ÜÜj k
 ;
-ââk l
+ÜÜk l
 if
-ää 
+áá 
 (
-ää 
+áá 
 playersInLobby
-ää 
+áá 
 .
-ää 
+áá 
 	CodeEvent
-ää (
+áá (
 ==
-ää) +!
+áá) +!
 ExceptionDictionary
-ää, ?
+áá, ?
 .
-ää? @
+áá? @
 SUCCESFULL_EVENT
-ää@ P
+áá@ P
 )
-ääP Q
+ááP Q
 {
-ãã 
+àà 
 foreach
-åå 
+ââ 
 (
-åå 
+ââ 
 var
-åå 
+ââ 
 item
-åå !
+ââ !
 in
-åå" $
+ââ" $
 lobby
-åå% *
+ââ% *
 .
-åå* +!
+ââ* +!
 listOfPlayerInLobby
-åå+ >
+ââ+ >
+.
+ââ> ?
+Where
+ââ? D
+(
+ââD E
+pla
+ââE H
+=>
+ââI K
+lobby
+ââK P
+.
+ââP Q
+idAdmin
+ââQ X
+!=
+ââY [
+pla
+ââ\ _
+.
+ââ_ `
+idUser
+ââ` f
 )
-åå> ?
+ââf g
+)
+ââg h
 {
-çç 
+ää 
 try
-éé 
+ãã 
 {
-èè 
+åå 
 var
-êê 
+çç 
+channel
+çç #
+=
+çç$ %
+item
+çç& *
+.
+çç* +/
+!lobbyCommunicationChannelCallback
+çç+ L
+.
+ççL M 
+GetCallbackChannel
+ççM _
+<
+çç_ `#
+ILobbyActionsCallback
+çç` u
+>
+ççu v
+(
+ççv w
+)
+ççw x
+;
+ççx y
+if
+éé 
+(
+éé 
+channel
+éé #
+!=
+éé$ &
+null
+éé' +
+)
+éé+ ,
+{
+èè 
 channel
 êê #
-=
-êê$ %
-item
-êê& *
 .
-êê* +/
-!lobbyCommunicationChannelCallback
-êê+ L
-.
-êêL M 
-GetCallbackChannel
-êêM _
-<
-êê_ `#
-ILobbyActionsCallback
-êê` u
->
-êêu v
-(
-êêv w
-)
-êêw x
-;
-êêx y
-if
-ëë 
-(
-ëë 
-channel
-ëë #
-!=
-ëë$ &
-null
-ëë' +
-&&
-ëë, .
-lobby
-ëë/ 4
-.
-ëë4 5
-idAdmin
-ëë5 <
-!=
-ëë= ?
-item
-ëë@ D
-.
-ëëD E
-idUser
-ëëE K
-)
-ëëK L
-{
-íí 
-channel
-ìì #
-.
-ìì# $
+êê# $
 UpdateTeamSide
-ìì$ 2
+êê$ 2
 (
-ìì2 3
+êê2 3
 playersInLobby
-ìì3 A
+êê3 A
+)
+êêA B
+;
+êêB C
+}
+ëë 
+}
+íí 
+catch
+ìì 
+(
+ìì 1
+#CommunicationObjectFaultedException
+ìì >
+ex
+ìì? A
 )
 ììA B
-;
-ììB C
-}
-îî 
-}
-ïï 
-catch
-ññ 
-(
-ññ 1
-#CommunicationObjectFaultedException
-ññ >
-ex
-ññ? A
-)
-ññA B
 {
-óó "
+îî "
 ChannelAdministrator
-òò ,
+ïï ,
 .
-òò, -&
+ïï, -&
 HandleCommunicationIssue
-òò- E
+ïï- E
 (
-òòE F
+ïïE F
 item
-òòF J
+ïïF J
 .
-òòJ K
+ïïJ K
 idUser
-òòK Q
+ïïK Q
 ,
-òòQ R"
+ïïQ R"
 ChannelAdministrator
-òòS g
+ïïS g
 .
-òòg h
+ïïg h
 LOBBY_EXCEPTION
-òòh w
+ïïh w
 )
-òòw x
+ïïw x
 ;
-òòx y
+ïïx y
 ExceptionHandler
-ôô (
+ññ (
 .
-ôô( )
+ññ( )
 LogException
-ôô) 5
+ññ) 5
 (
-ôô5 6
+ññ5 6
 ex
-ôô6 8
+ññ6 8
 ,
-ôô8 9!
+ññ8 9!
 ExceptionDictionary
-ôô: M
+ññ: M
 .
-ôôM N
+ññM N
 FATAL_EXCEPTION
-ôôN ]
+ññN ]
 )
-ôô] ^
+ññ] ^
 ;
-ôô^ _
+ññ^ _
 }
-öö 
+óó 
 catch
-õõ 
+òò 
 (
-õõ 
+òò 
 TimeoutException
-õõ +
+òò +
 ex
-õõ, .
+òò, .
 )
-õõ. /
+òò. /
 {
-úú "
+ôô "
 ChannelAdministrator
-ùù ,
+öö ,
 .
-ùù, -&
+öö, -&
 HandleCommunicationIssue
-ùù- E
+öö- E
 (
-ùùE F
+ööE F
 item
-ùùF J
+ööF J
 .
-ùùJ K
+ööJ K
 idUser
-ùùK Q
+ööK Q
 ,
-ùùQ R"
+ööQ R"
 ChannelAdministrator
-ùùS g
+ööS g
 .
-ùùg h
+öög h
 LOBBY_EXCEPTION
-ùùh w
+ööh w
 )
-ùùw x
+ööw x
 ;
-ùùx y
+ööx y
 ExceptionHandler
-ûû (
+õõ (
 .
-ûû( )
+õõ( )
 LogException
-ûû) 5
+õõ) 5
 (
-ûû5 6
+õõ5 6
 ex
-ûû6 8
+õõ6 8
 ,
-ûû8 9!
+õõ8 9!
 ExceptionDictionary
-ûû: M
+õõ: M
 .
-ûûM N
+õõM N
 FATAL_EXCEPTION
-ûûN ]
+õõN ]
 )
-ûû] ^
+õõ] ^
 ;
-ûû^ _
+õõ^ _
 }
-üü 
+úú 
 catch
-†† 
+ùù 
 (
-†† $
+ùù $
 CommunicationException
-†† 1
+ùù 1
 ex
-††2 4
+ùù2 4
 )
-††4 5
+ùù4 5
 {
-°° "
+ûû "
 ChannelAdministrator
-¢¢ ,
+üü ,
 .
-¢¢, -&
+üü, -&
 HandleCommunicationIssue
-¢¢- E
+üü- E
 (
-¢¢E F
+üüE F
 item
-¢¢F J
+üüF J
 .
-¢¢J K
+üüJ K
 idUser
-¢¢K Q
+üüK Q
 ,
-¢¢Q R"
+üüQ R"
 ChannelAdministrator
-¢¢S g
+üüS g
 .
-¢¢g h
+üüg h
 LOBBY_EXCEPTION
-¢¢h w
+üüh w
 )
-¢¢w x
+üüw x
 ;
-¢¢x y
+üüx y
 ExceptionHandler
-££ (
+†† (
 .
-££( )
+††( )
 LogException
-££) 5
+††) 5
 (
-££5 6
+††5 6
 ex
-££6 8
+††6 8
 ,
-££8 9!
+††8 9!
 ExceptionDictionary
-££: M
+††: M
 .
-££M N
+††M N
 FATAL_EXCEPTION
-££N ]
+††N ]
 )
-££] ^
+††] ^
 ;
-££^ _
+††^ _
 }
-§§ 
+°° 
 catch
-•• 
+¢¢ 
 (
-•• '
+¢¢ '
 InvalidOperationException
-•• 4
+¢¢ 4
 ex
-••5 7
+¢¢5 7
 )
-••7 8
+¢¢7 8
 {
-¶¶ "
+££ "
 ChannelAdministrator
-ßß ,
+§§ ,
 .
-ßß, -&
+§§, -&
 HandleCommunicationIssue
-ßß- E
+§§- E
 (
-ßßE F
+§§E F
 item
-ßßF J
+§§F J
 .
-ßßJ K
+§§J K
 idUser
-ßßK Q
+§§K Q
 ,
-ßßQ R"
+§§Q R"
 ChannelAdministrator
-ßßS g
+§§S g
 .
-ßßg h
+§§g h
 LOBBY_EXCEPTION
-ßßh w
+§§h w
 )
-ßßw x
+§§w x
 ;
-ßßx y
+§§x y
 ExceptionHandler
-®® (
+•• (
 .
-®®( )
+••( )
 LogException
-®®) 5
+••) 5
 (
-®®5 6
+••5 6
 ex
-®®6 8
+••6 8
 ,
-®®8 9!
+••8 9!
 ExceptionDictionary
-®®: M
+••: M
 .
-®®M N
+••M N
 FATAL_EXCEPTION
-®®N ]
+••N ]
 )
-®®] ^
+••] ^
 ;
-®®^ _
+••^ _
 }
-©© 
+¶¶ 
 }
-™™ 
+ßß 
 }
-´´ 
+®® 
 }
-¨¨ 	
+©© 	
 public
-ÆÆ 
+´´ 
 void
-ÆÆ &
+´´ &
 EliminatePlayerFromMatch
-ÆÆ ,
+´´ ,
 (
-ÆÆ, -
+´´, -
 int
-ÆÆ- 0
+´´- 0
 roomCode
-ÆÆ1 9
+´´1 9
 ,
-ÆÆ9 :
+´´9 :
 int
-ÆÆ; >
+´´; >
 idUserToEliminate
-ÆÆ? P
+´´? P
 )
-ÆÆP Q
+´´P Q
 {
-ØØ 	
+¨¨ 	
 if
-∞∞ 
+≠≠ 
 (
-∞∞ 
+≠≠ 
 roomCode
-∞∞ 
+≠≠ 
 !=
-∞∞ 
+≠≠ 
 NULL_INT_VALUE
-∞∞ *
+≠≠ *
 &&
-∞∞+ -
+≠≠+ -
 idUserToEliminate
-∞∞. ?
+≠≠. ?
 !=
-∞∞@ B
+≠≠@ B
 NULL_INT_VALUE
-∞∞C Q
+≠≠C Q
 )
-∞∞Q R
+≠≠Q R
 {
-±± 
+ÆÆ 
 var
-≤≤ 
+ØØ 
 lobby
-≤≤ 
+ØØ 
 =
-≤≤ #
+ØØ #
 GameLobbiesDictionary
-≤≤ 1
+ØØ 1
 .
-≤≤1 2$
+ØØ1 2$
 GetSpecificActiveLobby
-≤≤2 H
+ØØ2 H
 (
-≤≤H I
+ØØH I
 roomCode
-≤≤I Q
+ØØI Q
 )
-≤≤Q R
+ØØQ R
 ;
-≤≤R S
+ØØR S
 try
-≥≥ 
+∞∞ 
 {
-¥¥ 
+±± 
 if
-µµ 
+≤≤ 
 (
-µµ 
+≤≤ 
 lobby
-µµ 
+≤≤ 
 !=
-µµ  
+≤≤  
 null
-µµ! %
+≤≤! %
 )
-µµ% &
+≤≤% &
 {
-∂∂ 
+≥≥ 
 PlayerOnLobbyList
-∑∑ )
+¥¥ )
 playerEjected
-∑∑* 7
+¥¥* 7
 =
-∑∑8 9
+¥¥8 9
 lobby
-∑∑: ?
+¥¥: ?
 .
-∑∑? @!
+¥¥? @!
 listOfPlayerInLobby
-∑∑@ S
+¥¥@ S
 .
-∑∑S T
-FirstOrDefault
-∑∑T b
-(
-∑∑b c
-pl
-∑∑c e
-=>
-∑∑f h
-pl
-∑∑i k
-.
-∑∑k l
-idUser
-∑∑l r
-==
-∑∑s u 
-idUserToEliminate∑∑v á
-)∑∑á à
-;∑∑à â
-if
-∏∏ 
-(
-∏∏ 
-playerEjected
-∏∏ )
-!=
-∏∏* ,
-null
-∏∏- 1
-)
-∏∏1 2
-{
-ππ 
-lobby
-∫∫ !
-.
-∫∫! "!
-listOfPlayerInLobby
-∫∫" 5
-.
-∫∫5 6
-Remove
-∫∫6 <
-(
-∫∫< =
-playerEjected
-∫∫= J
-)
-∫∫J K
-;
-∫∫K L 
-RearrangePositions
-ªª .
-(
-ªª. /
-lobby
-ªª/ 4
-,
-ªª4 5
-playerEjected
-ªª6 C
-.
-ªªC D#
-numberOfPlayerInLobby
-ªªD Y
-)
-ªªY Z
-;
-ªªZ [/
-!NotifyPlayerJoiningOrLeavingLobby
-ºº =
-(
-ºº= >
-roomCode
-ºº> F
-,
-ººF G
-idUserToEliminate
-ººH Y
-,
-ººY Z
-lobby
-ºº[ `
-)
-ºº` a
-;
-ººa b'
-NotifyPlayerBeingExpelled
-ΩΩ 5
-(
-ΩΩ5 6
-playerEjected
-ΩΩ6 C
-,
-ΩΩC D
-roomCode
-ΩΩE M
-,
-ΩΩM N
-idUserToEliminate
-ΩΩO `
-)
-ΩΩ` a
-;
-ΩΩa b
-}
-ææ 
-}
-øø 
-}
-¿¿ 
-catch
-¡¡ 
-(
-¡¡ 1
-#CommunicationObjectFaultedException
-¡¡ :
-ex
-¡¡; =
-)
-¡¡= >
-{
-¬¬ "
-ChannelAdministrator
-√√ (
-.
-√√( )&
-HandleCommunicationIssue
-√√) A
-(
-√√A B
-lobby
-√√B G
-.
-√√G H
-idAdmin
-√√H O
-,
-√√O P"
-ChannelAdministrator
-√√Q e
-.
-√√e f
-LOBBY_EXCEPTION
-√√f u
-)
-√√u v
-;
-√√v w
-ExceptionHandler
-ƒƒ $
-.
-ƒƒ$ %
-LogException
-ƒƒ% 1
-(
-ƒƒ1 2
-ex
-ƒƒ2 4
-,
-ƒƒ4 5!
-ExceptionDictionary
-ƒƒ6 I
-.
-ƒƒI J
-FATAL_EXCEPTION
-ƒƒJ Y
-)
-ƒƒY Z
-;
-ƒƒZ [
-}
-≈≈ 
-catch
-∆∆ 
-(
-∆∆ 
-TimeoutException
-∆∆ '
-ex
-∆∆( *
-)
-∆∆* +
-{
-«« "
-ChannelAdministrator
-»» (
-.
-»»( )&
-HandleCommunicationIssue
-»») A
-(
-»»A B
-lobby
-»»B G
-.
-»»G H
-idAdmin
-»»H O
-,
-»»O P"
-ChannelAdministrator
-»»Q e
-.
-»»e f
-LOBBY_EXCEPTION
-»»f u
-)
-»»u v
-;
-»»v w
-ExceptionHandler
-…… $
-.
-……$ %
-LogException
-……% 1
-(
-……1 2
-ex
-……2 4
-,
-……4 5!
-ExceptionDictionary
-……6 I
-.
-……I J
-FATAL_EXCEPTION
-……J Y
-)
-……Y Z
-;
-……Z [
-}
-   
-catch
-ÀÀ 
-(
-ÀÀ $
-CommunicationException
-ÀÀ -
-ex
-ÀÀ. 0
-)
-ÀÀ0 1
-{
-ÃÃ "
-ChannelAdministrator
-ÕÕ (
-.
-ÕÕ( )&
-HandleCommunicationIssue
-ÕÕ) A
-(
-ÕÕA B
-lobby
-ÕÕB G
-.
-ÕÕG H
-idAdmin
-ÕÕH O
-,
-ÕÕO P"
-ChannelAdministrator
-ÕÕQ e
-.
-ÕÕe f
-LOBBY_EXCEPTION
-ÕÕf u
-)
-ÕÕu v
-;
-ÕÕv w
-ExceptionHandler
-ŒŒ $
-.
-ŒŒ$ %
-LogException
-ŒŒ% 1
-(
-ŒŒ1 2
-ex
-ŒŒ2 4
-,
-ŒŒ4 5!
-ExceptionDictionary
-ŒŒ6 I
-.
-ŒŒI J
-FATAL_EXCEPTION
-ŒŒJ Y
-)
-ŒŒY Z
-;
-ŒŒZ [
-}
-œœ 
-catch
-–– 
-(
-–– '
-InvalidOperationException
-–– 0
-ex
-––1 3
-)
-––3 4
-{
-—— "
-ChannelAdministrator
-““ (
-.
-““( )&
-HandleCommunicationIssue
-““) A
-(
-““A B
-lobby
-““B G
-.
-““G H
-idAdmin
-““H O
-,
-““O P"
-ChannelAdministrator
-““Q e
-.
-““e f
-LOBBY_EXCEPTION
-““f u
-)
-““u v
-;
-““v w
-ExceptionHandler
-”” $
-.
-””$ %
-LogException
-””% 1
-(
-””1 2
-ex
-””2 4
-,
-””4 5!
-ExceptionDictionary
-””6 I
-.
-””I J
-FATAL_EXCEPTION
-””J Y
-)
-””Y Z
-;
-””Z [
-}
-‘‘ 
-}
-’’ 
-}
-÷÷ 	
-private
-ÿÿ 
-void
-ÿÿ  
-RearrangePositions
-ÿÿ '
-(
-ÿÿ' (
-Lobby
-ÿÿ( -
-lobby
-ÿÿ. 3
-,
-ÿÿ3 4
-int
-ÿÿ5 8 
-eliminatedPosition
-ÿÿ9 K
-)
-ÿÿK L
-{
-ŸŸ 	
-lobby
-⁄⁄ 
-.
-⁄⁄ !
-listOfPlayerInLobby
-⁄⁄ %
-.
-⁄⁄% &
-Where
-⁄⁄& +
-(
-⁄⁄+ ,
-item
-⁄⁄, 0
-=>
-⁄⁄1 3
-item
-⁄⁄4 8
-.
-⁄⁄8 9#
-numberOfPlayerInLobby
-⁄⁄9 N
->
-⁄⁄O P 
-eliminatedPosition
-⁄⁄Q c
-)
-⁄⁄c d
-.
-⁄⁄d e
-ToList
-⁄⁄e k
-(
-⁄⁄k l
-)
-⁄⁄l m
-.
-⁄⁄m n
-ForEach
-⁄⁄n u
-(
-⁄⁄u v
-item
-⁄⁄v z
-=>
-⁄⁄{ }
-item⁄⁄~ Ç
-.⁄⁄Ç É%
-numberOfPlayerInLobby⁄⁄É ò
---⁄⁄ò ö
-)⁄⁄ö õ
-;⁄⁄õ ú
-}
-€€ 	
-private
-›› 
-void
-›› '
-NotifyPlayerBeingExpelled
-›› .
-(
-››. /
-PlayerOnLobbyList
-››/ @
-playerEjected
-››A N
-,
-››N O
-int
-››P S
-roomCode
-››T \
-,
-››\ ]
-int
-››^ a
-idUserToEliminate
-››b s
-)
-››s t
-{
-ﬁﬁ 	
-try
-ﬂﬂ 
-{
-‡‡ 
-playerEjected
-·· 
-.
-·· /
-!lobbyCommunicationChannelCallback
-·· ?
-.
-··? @ 
-GetCallbackChannel
-··@ R
-<
-··R S#
-ILobbyActionsCallback
-··S h
->
-··h i
-(
-··i j
-)
-··j k
-.
-··k l)
-UpdateJoinedPlayerResponse··l Ü
-(··Ü á*
-GetAllCurrentPlayerInLobby··á °
-(··° ¢
-roomCode··¢ ™
-,··™ ´!
-idUserToEliminate··¨ Ω
-)··Ω æ
-)··æ ø
-;··ø ¿
-}
-‚‚ 
-catch
-„„ 
-(
-„„ 1
-#CommunicationObjectFaultedException
-„„ 6
-ex
-„„7 9
-)
-„„9 :
-{
-‰‰ "
-ChannelAdministrator
-ÂÂ $
-.
-ÂÂ$ %&
-HandleCommunicationIssue
-ÂÂ% =
-(
-ÂÂ= >
-idUserToEliminate
-ÂÂ> O
-,
-ÂÂO P"
-ChannelAdministrator
-ÂÂQ e
-.
-ÂÂe f
-LOBBY_EXCEPTION
-ÂÂf u
-)
-ÂÂu v
-;
-ÂÂv w
-ExceptionHandler
-ÊÊ  
-.
-ÊÊ  !
-LogException
-ÊÊ! -
-(
-ÊÊ- .
-ex
-ÊÊ. 0
-,
-ÊÊ0 1!
-ExceptionDictionary
-ÊÊ2 E
-.
-ÊÊE F
-FATAL_EXCEPTION
-ÊÊF U
-)
-ÊÊU V
-;
-ÊÊV W
-}
-ÁÁ 
-catch
-ËË 
-(
-ËË 
-TimeoutException
-ËË #
-ex
-ËË$ &
-)
-ËË& '
-{
-ÈÈ "
-ChannelAdministrator
-ÍÍ $
-.
-ÍÍ$ %&
-HandleCommunicationIssue
-ÍÍ% =
-(
-ÍÍ= >
-idUserToEliminate
-ÍÍ> O
-,
-ÍÍO P"
-ChannelAdministrator
-ÍÍQ e
-.
-ÍÍe f
-LOBBY_EXCEPTION
-ÍÍf u
-)
-ÍÍu v
-;
-ÍÍv w
-ExceptionHandler
-ÎÎ  
-.
-ÎÎ  !
-LogException
-ÎÎ! -
-(
-ÎÎ- .
-ex
-ÎÎ. 0
-,
-ÎÎ0 1!
-ExceptionDictionary
-ÎÎ2 E
-.
-ÎÎE F
-FATAL_EXCEPTION
-ÎÎF U
-)
-ÎÎU V
-;
-ÎÎV W
-}
-ÏÏ 
-catch
-ÌÌ 
-(
-ÌÌ $
-CommunicationException
-ÌÌ )
-ex
-ÌÌ* ,
-)
-ÌÌ, -
-{
-ÓÓ "
-ChannelAdministrator
-ÔÔ $
-.
-ÔÔ$ %&
-HandleCommunicationIssue
-ÔÔ% =
-(
-ÔÔ= >
-idUserToEliminate
-ÔÔ> O
-,
-ÔÔO P"
-ChannelAdministrator
-ÔÔQ e
-.
-ÔÔe f
-LOBBY_EXCEPTION
-ÔÔf u
-)
-ÔÔu v
-;
-ÔÔv w
-ExceptionHandler
-  
-.
-  !
-LogException
-! -
-(
-- .
-ex
-. 0
-,
-0 1!
-ExceptionDictionary
-2 E
-.
-E F
-FATAL_EXCEPTION
-F U
-)
-U V
-;
-V W
-}
-ÒÒ 
-catch
-ÚÚ 
-(
-ÚÚ '
-InvalidOperationException
-ÚÚ ,
-ex
-ÚÚ- /
-)
-ÚÚ/ 0
-{
-ÛÛ "
-ChannelAdministrator
-ÙÙ $
-.
-ÙÙ$ %&
-HandleCommunicationIssue
-ÙÙ% =
-(
-ÙÙ= >
-idUserToEliminate
-ÙÙ> O
-,
-ÙÙO P"
-ChannelAdministrator
-ÙÙQ e
-.
-ÙÙe f
-LOBBY_EXCEPTION
-ÙÙf u
-)
-ÙÙu v
-;
-ÙÙv w
-ExceptionHandler
-ıı  
-.
-ıı  !
-LogException
-ıı! -
-(
-ıı- .
-ex
-ıı. 0
-,
-ıı0 1!
-ExceptionDictionary
-ıı2 E
-.
-ııE F
-FATAL_EXCEPTION
-ııF U
-)
-ııU V
-;
-ııV W
-}
-ˆˆ 
-}
-˜˜ 	
-public
-˘˘ 
-void
-˘˘ $
-SelectQuestionsForGame
-˘˘ *
-(
-˘˘* +
-int
-˘˘+ .
-roomCode
-˘˘/ 7
-)
-˘˘7 8
-{
-˙˙ 	,
-QuestionsManagerImplementation
-˚˚ *,
-questionsManagerImplementation
-˚˚+ I
-=
-˚˚J K
-new
-˚˚L O
-(
-˚˚O P
-)
-˚˚P Q
-;
-˚˚Q R
-var
-¸¸ 
-	questions
-¸¸ 
-=
-¸¸ ,
-questionsManagerImplementation
-¸¸ :
-.
-¸¸: ;!
-GetQuestionForBoard
-¸¸; N
-(
-¸¸N O
-roomCode
-¸¸O W
-)
-¸¸W X
-;
-¸¸X Y
-if
-˝˝ 
-(
-˝˝ 
-	questions
-˝˝ 
-.
-˝˝ 
-	CodeEvent
-˝˝ #
-==
-˝˝$ &!
-ExceptionDictionary
-˝˝' :
-.
-˝˝: ;
-SUCCESFULL_EVENT
-˝˝; K
-)
-˝˝K L
-{
-˛˛ )
-QuestionsForLobbyDictionary
-ˇˇ +
-.
-ˇˇ+ ,3
-%RegisterNewSetOfQuestionsInDictionary
-ˇˇ, Q
-(
-ˇˇQ R
-roomCode
-ˇˇR Z
-,
-ˇˇZ [
-	questions
-ˇˇ\ e
-)
-ˇˇe f
-;
-ˇˇf g
-}
-ÄÄ "
-NotifyQuestionsReady
-ÅÅ  
-(
-ÅÅ  !
-roomCode
-ÅÅ! )
-,
-ÅÅ) *
-	questions
-ÅÅ+ 4
-.
-ÅÅ4 5
-	CodeEvent
-ÅÅ5 >
-)
-ÅÅ> ?
-;
-ÅÅ? @
-}
-ÇÇ 	
-private
-ÑÑ 
-void
-ÑÑ "
-NotifyQuestionsReady
-ÑÑ )
-(
-ÑÑ) *
-int
-ÑÑ* -
-roomCode
-ÑÑ. 6
-,
-ÑÑ6 7
-int
-ÑÑ8 ;
-	codeEvent
-ÑÑ< E
-)
-ÑÑE F
-{
-ÖÖ 	
-var
-ÜÜ 
-lobby
-ÜÜ 
-=
-ÜÜ #
-GameLobbiesDictionary
-ÜÜ -
-.
-ÜÜ- .$
-GetSpecificActiveLobby
-ÜÜ. D
-(
-ÜÜD E
-roomCode
-ÜÜE M
-)
-ÜÜM N
-;
-ÜÜN O
-if
-áá 
-(
-áá 
-lobby
-áá 
-!=
-áá 
-null
-áá 
-)
-áá 
-{
-àà 
-var
-ââ 
-playerLeader
-ââ  
-=
-ââ! "
-lobby
-ââ# (
-.
-ââ( )!
-listOfPlayerInLobby
-ââ) <
-.
-ââ< =
+¥¥S T
 Find
-ââ= A
+¥¥T X
 (
-ââA B
-player
-ââB H
+¥¥X Y
+pl
+¥¥Y [
 =>
-ââI K
-player
-ââL R
+¥¥\ ^
+pl
+¥¥_ a
 .
-ââR S#
-numberOfPlayerInLobby
-ââS h
+¥¥a b
+idUser
+¥¥b h
 ==
-ââi k'
-LEADER_POSITION_IN_LOBBYââl Ñ
-)ââÑ Ö
-;ââÖ Ü
-try
-ää 
-{
-ãã 
+¥¥i k
+idUserToEliminate
+¥¥l }
+)
+¥¥} ~
+;
+¥¥~ 
 if
-åå 
+µµ 
 (
-åå 
-playerLeader
-åå $
+µµ 
+playerEjected
+µµ )
 !=
-åå% '
+µµ* ,
 null
-åå( ,
+µµ- 1
 )
-åå, -
+µµ1 2
 {
-çç 
-playerLeader
-éé $
-.
-éé$ %/
-!lobbyCommunicationChannelCallback
-éé% F
-.
-ééF G 
-GetCallbackChannel
-ééG Y
-<
-ééY Z#
-ILobbyActionsCallback
-ééZ o
->
-ééo p
-(
-éép q
-)
-ééq r
-.
-éér s&
-NotifyQuestionsAreReadyéés ä
-(ééä ã
-	codeEventééã î
-)ééî ï
-;ééï ñ
-}
-èè 
-}
-êê 
-catch
-ëë 
-(
-ëë 1
-#CommunicationObjectFaultedException
-ëë :
-ex
-ëë; =
-)
-ëë= >
-{
-íí "
-ChannelAdministrator
-ìì (
-.
-ìì( )&
-HandleCommunicationIssue
-ìì) A
-(
-ììA B
-playerLeader
-ììB N
-.
-ììN O
-idUser
-ììO U
-,
-ììU V"
-ChannelAdministrator
-ììW k
-.
-ììk l
-LOBBY_EXCEPTION
-ììl {
-)
-ìì{ |
-;
-ìì| }
-ExceptionHandler
-îî $
-.
-îî$ %
-LogException
-îî% 1
-(
-îî1 2
-ex
-îî2 4
-,
-îî4 5!
-ExceptionDictionary
-îî6 I
-.
-îîI J
-FATAL_EXCEPTION
-îîJ Y
-)
-îîY Z
-;
-îîZ [
-}
-ïï 
-catch
-ññ 
-(
-ññ 
-TimeoutException
-ññ '
-ex
-ññ( *
-)
-ññ* +
-{
-óó "
-ChannelAdministrator
-òò (
-.
-òò( )&
-HandleCommunicationIssue
-òò) A
-(
-òòA B
-playerLeader
-òòB N
-.
-òòN O
-idUser
-òòO U
-,
-òòU V"
-ChannelAdministrator
-òòW k
-.
-òòk l
-LOBBY_EXCEPTION
-òòl {
-)
-òò{ |
-;
-òò| }
-ExceptionHandler
-ôô $
-.
-ôô$ %
-LogException
-ôô% 1
-(
-ôô1 2
-ex
-ôô2 4
-,
-ôô4 5!
-ExceptionDictionary
-ôô6 I
-.
-ôôI J
-FATAL_EXCEPTION
-ôôJ Y
-)
-ôôY Z
-;
-ôôZ [
-}
-öö 
-catch
-õõ 
-(
-õõ $
-CommunicationException
-õõ -
-ex
-õõ. 0
-)
-õõ0 1
-{
-úú "
-ChannelAdministrator
-ùù (
-.
-ùù( )&
-HandleCommunicationIssue
-ùù) A
-(
-ùùA B
-playerLeader
-ùùB N
-.
-ùùN O
-idUser
-ùùO U
-,
-ùùU V"
-ChannelAdministrator
-ùùW k
-.
-ùùk l
-LOBBY_EXCEPTION
-ùùl {
-)
-ùù{ |
-;
-ùù| }
-ExceptionHandler
-ûû $
-.
-ûû$ %
-LogException
-ûû% 1
-(
-ûû1 2
-ex
-ûû2 4
-,
-ûû4 5!
-ExceptionDictionary
-ûû6 I
-.
-ûûI J
-FATAL_EXCEPTION
-ûûJ Y
-)
-ûûY Z
-;
-ûûZ [
-}
-üü 
-catch
-†† 
-(
-†† '
-InvalidOperationException
-†† 0
-ex
-††1 3
-)
-††3 4
-{
-°° "
-ChannelAdministrator
-¢¢ (
-.
-¢¢( )&
-HandleCommunicationIssue
-¢¢) A
-(
-¢¢A B
-playerLeader
-¢¢B N
-.
-¢¢N O
-idUser
-¢¢O U
-,
-¢¢U V"
-ChannelAdministrator
-¢¢W k
-.
-¢¢k l
-LOBBY_EXCEPTION
-¢¢l {
-)
-¢¢{ |
-;
-¢¢| }
-ExceptionHandler
-££ $
-.
-££$ %
-LogException
-££% 1
-(
-££1 2
-ex
-££2 4
-,
-££4 5!
-ExceptionDictionary
-££6 I
-.
-££I J
-FATAL_EXCEPTION
-££J Y
-)
-££Y Z
-;
-££Z [
-}
-§§ 
-}
-•• 
-else
-¶¶ 
-{
-ßß 
-}
-©© 
-}
-™™ 	
-public
-¨¨ 
-void
-¨¨ 
-	StartGame
-¨¨ 
-(
-¨¨ 
-int
-¨¨ !
-roomCode
-¨¨" *
-)
-¨¨* +
-{
-≠≠ 	
-var
-ÆÆ 
+∂∂ 
 lobby
-ÆÆ 
-=
-ÆÆ #
-GameLobbiesDictionary
-ÆÆ -
+∑∑ !
 .
-ÆÆ- .$
-GetSpecificActiveLobby
-ÆÆ. D
-(
-ÆÆD E
-roomCode
-ÆÆE M
-)
-ÆÆM N
-;
-ÆÆN O
-var
-ØØ 
-	questions
-ØØ 
-=
-ØØ )
-QuestionsForLobbyDictionary
-ØØ 7
-.
-ØØ7 8/
-!GetSpecificSetOfQuestionsForLobby
-ØØ8 Y
-(
-ØØY Z
-roomCode
-ØØZ b
-)
-ØØb c
-;
-ØØc d
-if
-∞∞ 
-(
-∞∞ 
-lobby
-∞∞ 
-!=
-∞∞ 
-null
-∞∞ 
-&&
-∞∞  
-	questions
-∞∞! *
-!=
-∞∞+ -
-null
-∞∞. 2
-)
-∞∞2 3
-{
-±± 
-foreach
-≤≤ 
-(
-≤≤ 
-var
-≤≤ 
-item
-≤≤ !
-in
-≤≤" $
-lobby
-≤≤% *
-.
-≤≤* +!
+∑∑! "!
 listOfPlayerInLobby
-≤≤+ >
-)
-≤≤> ?
-{
-≥≥ 
-try
-¥¥ 
-{
-µµ 
-item
-∂∂ 
+∑∑" 5
 .
-∂∂ /
-!lobbyCommunicationChannelCallback
-∂∂ >
-.
-∂∂> ? 
-GetCallbackChannel
-∂∂? Q
-<
-∂∂Q R#
-ILobbyActionsCallback
-∂∂R g
->
-∂∂g h
+∑∑5 6
+Remove
+∑∑6 <
 (
-∂∂h i
+∑∑< =
+playerEjected
+∑∑= J
 )
-∂∂i j
-.
-∂∂j k!
-NotifyGameWillStart
-∂∂k ~
+∑∑J K
+;
+∑∑K L 
+RearrangePositions
+∏∏ .
 (
-∂∂~ 
-	questions∂∂ à
-.∂∂à â
-ObjectSaved∂∂â î
-)∂∂î ï
-;∂∂ï ñ
+∏∏. /
+lobby
+∏∏/ 4
+,
+∏∏4 5
+playerEjected
+∏∏6 C
+.
+∏∏C D#
+numberOfPlayerInLobby
+∏∏D Y
+)
+∏∏Y Z
+;
+∏∏Z [/
+!NotifyPlayerJoiningOrLeavingLobby
+ππ =
+(
+ππ= >
+roomCode
+ππ> F
+,
+ππF G
+idUserToEliminate
+ππH Y
+,
+ππY Z
+lobby
+ππ[ `
+)
+ππ` a
+;
+ππa b'
+NotifyPlayerBeingExpelled
+∫∫ 5
+(
+∫∫5 6
+playerEjected
+∫∫6 C
+,
+∫∫C D
+roomCode
+∫∫E M
+,
+∫∫M N
+idUserToEliminate
+∫∫O `
+)
+∫∫` a
+;
+∫∫a b
 }
-∑∑ 
+ªª 
+}
+ºº 
+}
+ΩΩ 
 catch
-∏∏ 
+ææ 
 (
-∏∏ 1
+ææ 1
 #CommunicationObjectFaultedException
-∏∏ >
+ææ :
 ex
-∏∏? A
+ææ; =
 )
-∏∏A B
+ææ= >
 {
-ππ "
+øø "
 ChannelAdministrator
-∫∫ ,
+¿¿ (
 .
-∫∫, -&
+¿¿( )&
 HandleCommunicationIssue
-∫∫- E
+¿¿) A
 (
-∫∫E F
-item
-∫∫F J
+¿¿A B
+lobby
+¿¿B G
 .
-∫∫J K
-idUser
-∫∫K Q
+¿¿G H
+idAdmin
+¿¿H O
 ,
-∫∫Q R"
+¿¿O P"
 ChannelAdministrator
-∫∫S g
+¿¿Q e
 .
-∫∫g h
+¿¿e f
 LOBBY_EXCEPTION
-∫∫h w
+¿¿f u
 )
-∫∫w x
+¿¿u v
 ;
-∫∫x y
+¿¿v w
 ExceptionHandler
-ªª (
+¡¡ $
 .
-ªª( )
+¡¡$ %
 LogException
-ªª) 5
+¡¡% 1
 (
-ªª5 6
+¡¡1 2
 ex
-ªª6 8
+¡¡2 4
 ,
-ªª8 9!
+¡¡4 5!
 ExceptionDictionary
-ªª: M
+¡¡6 I
 .
-ªªM N
+¡¡I J
 FATAL_EXCEPTION
-ªªN ]
+¡¡J Y
 )
-ªª] ^
+¡¡Y Z
 ;
-ªª^ _
+¡¡Z [
 }
-ºº 
+¬¬ 
 catch
-ΩΩ 
+√√ 
 (
-ΩΩ 
+√√ 
 TimeoutException
-ΩΩ +
+√√ '
 ex
-ΩΩ, .
+√√( *
 )
-ΩΩ. /
+√√* +
 {
-ææ "
+ƒƒ "
 ChannelAdministrator
-øø ,
+≈≈ (
 .
-øø, -&
+≈≈( )&
 HandleCommunicationIssue
-øø- E
+≈≈) A
 (
-øøE F
-item
-øøF J
+≈≈A B
+lobby
+≈≈B G
 .
-øøJ K
-idUser
-øøK Q
+≈≈G H
+idAdmin
+≈≈H O
 ,
-øøQ R"
+≈≈O P"
 ChannelAdministrator
-øøS g
+≈≈Q e
 .
-øøg h
+≈≈e f
 LOBBY_EXCEPTION
-øøh w
+≈≈f u
 )
-øøw x
+≈≈u v
 ;
-øøx y
+≈≈v w
 ExceptionHandler
-¿¿ (
+∆∆ $
 .
-¿¿( )
+∆∆$ %
 LogException
-¿¿) 5
+∆∆% 1
 (
-¿¿5 6
+∆∆1 2
 ex
-¿¿6 8
+∆∆2 4
 ,
-¿¿8 9!
+∆∆4 5!
 ExceptionDictionary
-¿¿: M
+∆∆6 I
 .
-¿¿M N
+∆∆I J
 FATAL_EXCEPTION
-¿¿N ]
+∆∆J Y
 )
-¿¿] ^
+∆∆Y Z
 ;
-¿¿^ _
+∆∆Z [
 }
-¡¡ 
+«« 
 catch
-¬¬ 
+»» 
 (
-¬¬ $
+»» $
 CommunicationException
-¬¬ 1
+»» -
 ex
-¬¬2 4
+»». 0
 )
-¬¬4 5
+»»0 1
 {
-√√ "
+…… "
 ChannelAdministrator
-ƒƒ ,
+   (
 .
-ƒƒ, -&
+  ( )&
 HandleCommunicationIssue
-ƒƒ- E
+  ) A
 (
-ƒƒE F
-item
-ƒƒF J
+  A B
+lobby
+  B G
 .
-ƒƒJ K
-idUser
-ƒƒK Q
+  G H
+idAdmin
+  H O
 ,
-ƒƒQ R"
+  O P"
 ChannelAdministrator
-ƒƒS g
+  Q e
 .
-ƒƒg h
+  e f
 LOBBY_EXCEPTION
-ƒƒh w
+  f u
 )
-ƒƒw x
+  u v
 ;
-ƒƒx y
+  v w
 ExceptionHandler
-≈≈ (
+ÀÀ $
 .
-≈≈( )
+ÀÀ$ %
 LogException
-≈≈) 5
+ÀÀ% 1
 (
-≈≈5 6
+ÀÀ1 2
 ex
-≈≈6 8
+ÀÀ2 4
 ,
-≈≈8 9!
+ÀÀ4 5!
 ExceptionDictionary
-≈≈: M
+ÀÀ6 I
 .
-≈≈M N
+ÀÀI J
 FATAL_EXCEPTION
-≈≈N ]
+ÀÀJ Y
 )
-≈≈] ^
+ÀÀY Z
 ;
-≈≈^ _
+ÀÀZ [
 }
-∆∆ 
+ÃÃ 
 catch
-«« 
+ÕÕ 
 (
-«« '
+ÕÕ '
 InvalidOperationException
-«« 4
+ÕÕ 0
 ex
-««5 7
+ÕÕ1 3
 )
-««7 8
+ÕÕ3 4
 {
-»» "
+ŒŒ "
 ChannelAdministrator
-…… ,
+œœ (
 .
-……, -&
+œœ( )&
 HandleCommunicationIssue
-……- E
+œœ) A
 (
-……E F
-item
-……F J
+œœA B
+lobby
+œœB G
 .
-……J K
-idUser
-……K Q
+œœG H
+idAdmin
+œœH O
 ,
-……Q R"
+œœO P"
 ChannelAdministrator
-……S g
+œœQ e
 .
-……g h
+œœe f
 LOBBY_EXCEPTION
-……h w
+œœf u
 )
-……w x
+œœu v
 ;
-……x y
+œœv w
 ExceptionHandler
-   (
+–– $
 .
-  ( )
+––$ %
 LogException
-  ) 5
+––% 1
 (
-  5 6
+––1 2
 ex
-  6 8
+––2 4
 ,
-  8 9!
+––4 5!
 ExceptionDictionary
-  : M
+––6 I
 .
-  M N
+––I J
 FATAL_EXCEPTION
-  N ]
+––J Y
 )
-  ] ^
+––Y Z
 ;
-  ^ _
+––Z [
 }
-ÀÀ 
+—— 
 }
-ÃÃ 
+““ 
 }
-ŒŒ 
+”” 	
+private
+’’ 
+void
+’’  
+RearrangePositions
+’’ '
+(
+’’' (
+Lobby
+’’( -
+lobby
+’’. 3
+,
+’’3 4
+int
+’’5 8 
+eliminatedPosition
+’’9 K
+)
+’’K L
+{
+÷÷ 	
+lobby
+◊◊ 
+.
+◊◊ !
+listOfPlayerInLobby
+◊◊ %
+.
+◊◊% &
+Where
+◊◊& +
+(
+◊◊+ ,
+item
+◊◊, 0
+=>
+◊◊1 3
+item
+◊◊4 8
+.
+◊◊8 9#
+numberOfPlayerInLobby
+◊◊9 N
+>
+◊◊O P 
+eliminatedPosition
+◊◊Q c
+)
+◊◊c d
+.
+◊◊d e
+ToList
+◊◊e k
+(
+◊◊k l
+)
+◊◊l m
+.
+◊◊m n
+ForEach
+◊◊n u
+(
+◊◊u v
+item
+◊◊v z
+=>
+◊◊{ }
+item◊◊~ Ç
+.◊◊Ç É%
+numberOfPlayerInLobby◊◊É ò
+--◊◊ò ö
+)◊◊ö õ
+;◊◊õ ú
 }
-œœ 	
+ÿÿ 	
+private
+⁄⁄ 
+void
+⁄⁄ '
+NotifyPlayerBeingExpelled
+⁄⁄ .
+(
+⁄⁄. /
+PlayerOnLobbyList
+⁄⁄/ @
+playerEjected
+⁄⁄A N
+,
+⁄⁄N O
+int
+⁄⁄P S
+roomCode
+⁄⁄T \
+,
+⁄⁄\ ]
+int
+⁄⁄^ a
+idUserToEliminate
+⁄⁄b s
+)
+⁄⁄s t
+{
+€€ 	
+try
+‹‹ 
+{
+›› 
+playerEjected
+ﬁﬁ 
+.
+ﬁﬁ /
+!lobbyCommunicationChannelCallback
+ﬁﬁ ?
+.
+ﬁﬁ? @ 
+GetCallbackChannel
+ﬁﬁ@ R
+<
+ﬁﬁR S#
+ILobbyActionsCallback
+ﬁﬁS h
+>
+ﬁﬁh i
+(
+ﬁﬁi j
+)
+ﬁﬁj k
+.
+ﬁﬁk l)
+UpdateJoinedPlayerResponseﬁﬁl Ü
+(ﬁﬁÜ á*
+GetAllCurrentPlayerInLobbyﬁﬁá °
+(ﬁﬁ° ¢
+roomCodeﬁﬁ¢ ™
+,ﬁﬁ™ ´!
+idUserToEliminateﬁﬁ¨ Ω
+)ﬁﬁΩ æ
+)ﬁﬁæ ø
+;ﬁﬁø ¿
 }
-—— 
-}““ ≈8
+ﬂﬂ 
+catch
+‡‡ 
+(
+‡‡ 1
+#CommunicationObjectFaultedException
+‡‡ 6
+ex
+‡‡7 9
+)
+‡‡9 :
+{
+·· "
+ChannelAdministrator
+‚‚ $
+.
+‚‚$ %&
+HandleCommunicationIssue
+‚‚% =
+(
+‚‚= >
+idUserToEliminate
+‚‚> O
+,
+‚‚O P"
+ChannelAdministrator
+‚‚Q e
+.
+‚‚e f
+LOBBY_EXCEPTION
+‚‚f u
+)
+‚‚u v
+;
+‚‚v w
+ExceptionHandler
+„„  
+.
+„„  !
+LogException
+„„! -
+(
+„„- .
+ex
+„„. 0
+,
+„„0 1!
+ExceptionDictionary
+„„2 E
+.
+„„E F
+FATAL_EXCEPTION
+„„F U
+)
+„„U V
+;
+„„V W
+}
+‰‰ 
+catch
+ÂÂ 
+(
+ÂÂ 
+TimeoutException
+ÂÂ #
+ex
+ÂÂ$ &
+)
+ÂÂ& '
+{
+ÊÊ "
+ChannelAdministrator
+ÁÁ $
+.
+ÁÁ$ %&
+HandleCommunicationIssue
+ÁÁ% =
+(
+ÁÁ= >
+idUserToEliminate
+ÁÁ> O
+,
+ÁÁO P"
+ChannelAdministrator
+ÁÁQ e
+.
+ÁÁe f
+LOBBY_EXCEPTION
+ÁÁf u
+)
+ÁÁu v
+;
+ÁÁv w
+ExceptionHandler
+ËË  
+.
+ËË  !
+LogException
+ËË! -
+(
+ËË- .
+ex
+ËË. 0
+,
+ËË0 1!
+ExceptionDictionary
+ËË2 E
+.
+ËËE F
+FATAL_EXCEPTION
+ËËF U
+)
+ËËU V
+;
+ËËV W
+}
+ÈÈ 
+catch
+ÍÍ 
+(
+ÍÍ $
+CommunicationException
+ÍÍ )
+ex
+ÍÍ* ,
+)
+ÍÍ, -
+{
+ÎÎ "
+ChannelAdministrator
+ÏÏ $
+.
+ÏÏ$ %&
+HandleCommunicationIssue
+ÏÏ% =
+(
+ÏÏ= >
+idUserToEliminate
+ÏÏ> O
+,
+ÏÏO P"
+ChannelAdministrator
+ÏÏQ e
+.
+ÏÏe f
+LOBBY_EXCEPTION
+ÏÏf u
+)
+ÏÏu v
+;
+ÏÏv w
+ExceptionHandler
+ÌÌ  
+.
+ÌÌ  !
+LogException
+ÌÌ! -
+(
+ÌÌ- .
+ex
+ÌÌ. 0
+,
+ÌÌ0 1!
+ExceptionDictionary
+ÌÌ2 E
+.
+ÌÌE F
+FATAL_EXCEPTION
+ÌÌF U
+)
+ÌÌU V
+;
+ÌÌV W
+}
+ÓÓ 
+catch
+ÔÔ 
+(
+ÔÔ '
+InvalidOperationException
+ÔÔ ,
+ex
+ÔÔ- /
+)
+ÔÔ/ 0
+{
+ "
+ChannelAdministrator
+ÒÒ $
+.
+ÒÒ$ %&
+HandleCommunicationIssue
+ÒÒ% =
+(
+ÒÒ= >
+idUserToEliminate
+ÒÒ> O
+,
+ÒÒO P"
+ChannelAdministrator
+ÒÒQ e
+.
+ÒÒe f
+LOBBY_EXCEPTION
+ÒÒf u
+)
+ÒÒu v
+;
+ÒÒv w
+ExceptionHandler
+ÚÚ  
+.
+ÚÚ  !
+LogException
+ÚÚ! -
+(
+ÚÚ- .
+ex
+ÚÚ. 0
+,
+ÚÚ0 1!
+ExceptionDictionary
+ÚÚ2 E
+.
+ÚÚE F
+FATAL_EXCEPTION
+ÚÚF U
+)
+ÚÚU V
+;
+ÚÚV W
+}
+ÛÛ 
+}
+ÙÙ 	
+public
+ˆˆ 
+void
+ˆˆ $
+SelectQuestionsForGame
+ˆˆ *
+(
+ˆˆ* +
+int
+ˆˆ+ .
+roomCode
+ˆˆ/ 7
+)
+ˆˆ7 8
+{
+˜˜ 	,
+QuestionsManagerImplementation
+¯¯ *,
+questionsManagerImplementation
+¯¯+ I
+=
+¯¯J K
+new
+¯¯L O
+(
+¯¯O P
+)
+¯¯P Q
+;
+¯¯Q R
+var
+˘˘ 
+	questions
+˘˘ 
+=
+˘˘ ,
+questionsManagerImplementation
+˘˘ :
+.
+˘˘: ;!
+GetQuestionForBoard
+˘˘; N
+(
+˘˘N O
+roomCode
+˘˘O W
+)
+˘˘W X
+;
+˘˘X Y
+if
+˙˙ 
+(
+˙˙ 
+	questions
+˙˙ 
+.
+˙˙ 
+	CodeEvent
+˙˙ #
+==
+˙˙$ &!
+ExceptionDictionary
+˙˙' :
+.
+˙˙: ;
+SUCCESFULL_EVENT
+˙˙; K
+)
+˙˙K L
+{
+˚˚ )
+QuestionsForLobbyDictionary
+¸¸ +
+.
+¸¸+ ,3
+%RegisterNewSetOfQuestionsInDictionary
+¸¸, Q
+(
+¸¸Q R
+roomCode
+¸¸R Z
+,
+¸¸Z [
+	questions
+¸¸\ e
+)
+¸¸e f
+;
+¸¸f g
+}
+˝˝ "
+NotifyQuestionsReady
+˛˛  
+(
+˛˛  !
+roomCode
+˛˛! )
+,
+˛˛) *
+	questions
+˛˛+ 4
+.
+˛˛4 5
+	CodeEvent
+˛˛5 >
+)
+˛˛> ?
+;
+˛˛? @
+}
+ˇˇ 	
+private
+ÅÅ 
+void
+ÅÅ "
+NotifyQuestionsReady
+ÅÅ )
+(
+ÅÅ) *
+int
+ÅÅ* -
+roomCode
+ÅÅ. 6
+,
+ÅÅ6 7
+int
+ÅÅ8 ;
+	codeEvent
+ÅÅ< E
+)
+ÅÅE F
+{
+ÇÇ 	
+var
+ÉÉ 
+lobby
+ÉÉ 
+=
+ÉÉ #
+GameLobbiesDictionary
+ÉÉ -
+.
+ÉÉ- .$
+GetSpecificActiveLobby
+ÉÉ. D
+(
+ÉÉD E
+roomCode
+ÉÉE M
+)
+ÉÉM N
+;
+ÉÉN O
+if
+ÑÑ 
+(
+ÑÑ 
+lobby
+ÑÑ 
+!=
+ÑÑ 
+null
+ÑÑ 
+)
+ÑÑ 
+{
+ÖÖ 
+var
+ÜÜ 
+playerLeader
+ÜÜ  
+=
+ÜÜ! "
+lobby
+ÜÜ# (
+.
+ÜÜ( )!
+listOfPlayerInLobby
+ÜÜ) <
+.
+ÜÜ< =
+Find
+ÜÜ= A
+(
+ÜÜA B
+player
+ÜÜB H
+=>
+ÜÜI K
+player
+ÜÜL R
+.
+ÜÜR S#
+numberOfPlayerInLobby
+ÜÜS h
+==
+ÜÜi k'
+LEADER_POSITION_IN_LOBBYÜÜl Ñ
+)ÜÜÑ Ö
+;ÜÜÖ Ü
+try
+áá 
+{
+àà 
+if
+ââ 
+(
+ââ 
+playerLeader
+ââ $
+!=
+ââ% '
+null
+ââ( ,
+)
+ââ, -
+{
+ää 
+playerLeader
+ãã $
+.
+ãã$ %/
+!lobbyCommunicationChannelCallback
+ãã% F
+.
+ããF G 
+GetCallbackChannel
+ããG Y
+<
+ããY Z#
+ILobbyActionsCallback
+ããZ o
+>
+ãão p
+(
+ããp q
+)
+ããq r
+.
+ããr s&
+NotifyQuestionsAreReadyããs ä
+(ããä ã
+	codeEventããã î
+)ããî ï
+;ããï ñ
+}
+åå 
+}
+çç 
+catch
+éé 
+(
+éé 1
+#CommunicationObjectFaultedException
+éé :
+ex
+éé; =
+)
+éé= >
+{
+èè "
+ChannelAdministrator
+êê (
+.
+êê( )&
+HandleCommunicationIssue
+êê) A
+(
+êêA B
+playerLeader
+êêB N
+.
+êêN O
+idUser
+êêO U
+,
+êêU V"
+ChannelAdministrator
+êêW k
+.
+êêk l
+LOBBY_EXCEPTION
+êêl {
+)
+êê{ |
+;
+êê| }
+ExceptionHandler
+ëë $
+.
+ëë$ %
+LogException
+ëë% 1
+(
+ëë1 2
+ex
+ëë2 4
+,
+ëë4 5!
+ExceptionDictionary
+ëë6 I
+.
+ëëI J
+FATAL_EXCEPTION
+ëëJ Y
+)
+ëëY Z
+;
+ëëZ [
+}
+íí 
+catch
+ìì 
+(
+ìì 
+TimeoutException
+ìì '
+ex
+ìì( *
+)
+ìì* +
+{
+îî "
+ChannelAdministrator
+ïï (
+.
+ïï( )&
+HandleCommunicationIssue
+ïï) A
+(
+ïïA B
+playerLeader
+ïïB N
+.
+ïïN O
+idUser
+ïïO U
+,
+ïïU V"
+ChannelAdministrator
+ïïW k
+.
+ïïk l
+LOBBY_EXCEPTION
+ïïl {
+)
+ïï{ |
+;
+ïï| }
+ExceptionHandler
+ññ $
+.
+ññ$ %
+LogException
+ññ% 1
+(
+ññ1 2
+ex
+ññ2 4
+,
+ññ4 5!
+ExceptionDictionary
+ññ6 I
+.
+ññI J
+FATAL_EXCEPTION
+ññJ Y
+)
+ññY Z
+;
+ññZ [
+}
+óó 
+catch
+òò 
+(
+òò $
+CommunicationException
+òò -
+ex
+òò. 0
+)
+òò0 1
+{
+ôô "
+ChannelAdministrator
+öö (
+.
+öö( )&
+HandleCommunicationIssue
+öö) A
+(
+ööA B
+playerLeader
+ööB N
+.
+ööN O
+idUser
+ööO U
+,
+ööU V"
+ChannelAdministrator
+ööW k
+.
+öök l
+LOBBY_EXCEPTION
+ööl {
+)
+öö{ |
+;
+öö| }
+ExceptionHandler
+õõ $
+.
+õõ$ %
+LogException
+õõ% 1
+(
+õõ1 2
+ex
+õõ2 4
+,
+õõ4 5!
+ExceptionDictionary
+õõ6 I
+.
+õõI J
+FATAL_EXCEPTION
+õõJ Y
+)
+õõY Z
+;
+õõZ [
+}
+úú 
+catch
+ùù 
+(
+ùù '
+InvalidOperationException
+ùù 0
+ex
+ùù1 3
+)
+ùù3 4
+{
+ûû "
+ChannelAdministrator
+üü (
+.
+üü( )&
+HandleCommunicationIssue
+üü) A
+(
+üüA B
+playerLeader
+üüB N
+.
+üüN O
+idUser
+üüO U
+,
+üüU V"
+ChannelAdministrator
+üüW k
+.
+üük l
+LOBBY_EXCEPTION
+üül {
+)
+üü{ |
+;
+üü| }
+ExceptionHandler
+†† $
+.
+††$ %
+LogException
+††% 1
+(
+††1 2
+ex
+††2 4
+,
+††4 5!
+ExceptionDictionary
+††6 I
+.
+††I J
+FATAL_EXCEPTION
+††J Y
+)
+††Y Z
+;
+††Z [
+}
+°° 
+}
+¢¢ 
+else
+££ 
+{
+§§ $
+SelectQuestionsForGame
+•• &
+(
+••& '
+roomCode
+••' /
+)
+••/ 0
+;
+••0 1
+}
+¶¶ 
+}
+ßß 	
+public
+©© 
+void
+©© 
+	StartGame
+©© 
+(
+©© 
+int
+©© !
+roomCode
+©©" *
+)
+©©* +
+{
+™™ 	
+var
+´´ 
+lobby
+´´ 
+=
+´´ #
+GameLobbiesDictionary
+´´ -
+.
+´´- .$
+GetSpecificActiveLobby
+´´. D
+(
+´´D E
+roomCode
+´´E M
+)
+´´M N
+;
+´´N O
+var
+¨¨ 
+	questions
+¨¨ 
+=
+¨¨ )
+QuestionsForLobbyDictionary
+¨¨ 7
+.
+¨¨7 8/
+!GetSpecificSetOfQuestionsForLobby
+¨¨8 Y
+(
+¨¨Y Z
+roomCode
+¨¨Z b
+)
+¨¨b c
+;
+¨¨c d
+if
+≠≠ 
+(
+≠≠ 
+lobby
+≠≠ 
+!=
+≠≠ 
+null
+≠≠ 
+&&
+≠≠  
+	questions
+≠≠! *
+!=
+≠≠+ -
+null
+≠≠. 2
+)
+≠≠2 3
+{
+ÆÆ 
+foreach
+ØØ 
+(
+ØØ 
+var
+ØØ 
+item
+ØØ !
+in
+ØØ" $
+lobby
+ØØ% *
+.
+ØØ* +!
+listOfPlayerInLobby
+ØØ+ >
+)
+ØØ> ?
+{
+∞∞ 
+try
+±± 
+{
+≤≤ 
+item
+≥≥ 
+.
+≥≥ /
+!lobbyCommunicationChannelCallback
+≥≥ >
+.
+≥≥> ? 
+GetCallbackChannel
+≥≥? Q
+<
+≥≥Q R#
+ILobbyActionsCallback
+≥≥R g
+>
+≥≥g h
+(
+≥≥h i
+)
+≥≥i j
+.
+≥≥j k!
+NotifyGameWillStart
+≥≥k ~
+(
+≥≥~ 
+	questions≥≥ à
+.≥≥à â
+ObjectSaved≥≥â î
+)≥≥î ï
+;≥≥ï ñ
+}
+¥¥ 
+catch
+µµ 
+(
+µµ 1
+#CommunicationObjectFaultedException
+µµ >
+ex
+µµ? A
+)
+µµA B
+{
+∂∂ "
+ChannelAdministrator
+∑∑ ,
+.
+∑∑, -&
+HandleCommunicationIssue
+∑∑- E
+(
+∑∑E F
+item
+∑∑F J
+.
+∑∑J K
+idUser
+∑∑K Q
+,
+∑∑Q R"
+ChannelAdministrator
+∑∑S g
+.
+∑∑g h
+LOBBY_EXCEPTION
+∑∑h w
+)
+∑∑w x
+;
+∑∑x y
+ExceptionHandler
+∏∏ (
+.
+∏∏( )
+LogException
+∏∏) 5
+(
+∏∏5 6
+ex
+∏∏6 8
+,
+∏∏8 9!
+ExceptionDictionary
+∏∏: M
+.
+∏∏M N
+FATAL_EXCEPTION
+∏∏N ]
+)
+∏∏] ^
+;
+∏∏^ _
+}
+ππ 
+catch
+∫∫ 
+(
+∫∫ 
+TimeoutException
+∫∫ +
+ex
+∫∫, .
+)
+∫∫. /
+{
+ªª "
+ChannelAdministrator
+ºº ,
+.
+ºº, -&
+HandleCommunicationIssue
+ºº- E
+(
+ººE F
+item
+ººF J
+.
+ººJ K
+idUser
+ººK Q
+,
+ººQ R"
+ChannelAdministrator
+ººS g
+.
+ººg h
+LOBBY_EXCEPTION
+ººh w
+)
+ººw x
+;
+ººx y
+ExceptionHandler
+ΩΩ (
+.
+ΩΩ( )
+LogException
+ΩΩ) 5
+(
+ΩΩ5 6
+ex
+ΩΩ6 8
+,
+ΩΩ8 9!
+ExceptionDictionary
+ΩΩ: M
+.
+ΩΩM N
+FATAL_EXCEPTION
+ΩΩN ]
+)
+ΩΩ] ^
+;
+ΩΩ^ _
+}
+ææ 
+catch
+øø 
+(
+øø $
+CommunicationException
+øø 1
+ex
+øø2 4
+)
+øø4 5
+{
+¿¿ "
+ChannelAdministrator
+¡¡ ,
+.
+¡¡, -&
+HandleCommunicationIssue
+¡¡- E
+(
+¡¡E F
+item
+¡¡F J
+.
+¡¡J K
+idUser
+¡¡K Q
+,
+¡¡Q R"
+ChannelAdministrator
+¡¡S g
+.
+¡¡g h
+LOBBY_EXCEPTION
+¡¡h w
+)
+¡¡w x
+;
+¡¡x y
+ExceptionHandler
+¬¬ (
+.
+¬¬( )
+LogException
+¬¬) 5
+(
+¬¬5 6
+ex
+¬¬6 8
+,
+¬¬8 9!
+ExceptionDictionary
+¬¬: M
+.
+¬¬M N
+FATAL_EXCEPTION
+¬¬N ]
+)
+¬¬] ^
+;
+¬¬^ _
+}
+√√ 
+catch
+ƒƒ 
+(
+ƒƒ '
+InvalidOperationException
+ƒƒ 4
+ex
+ƒƒ5 7
+)
+ƒƒ7 8
+{
+≈≈ "
+ChannelAdministrator
+∆∆ ,
+.
+∆∆, -&
+HandleCommunicationIssue
+∆∆- E
+(
+∆∆E F
+item
+∆∆F J
+.
+∆∆J K
+idUser
+∆∆K Q
+,
+∆∆Q R"
+ChannelAdministrator
+∆∆S g
+.
+∆∆g h
+LOBBY_EXCEPTION
+∆∆h w
+)
+∆∆w x
+;
+∆∆x y
+ExceptionHandler
+«« (
+.
+««( )
+LogException
+««) 5
+(
+««5 6
+ex
+««6 8
+,
+««8 9!
+ExceptionDictionary
+««: M
+.
+««M N
+FATAL_EXCEPTION
+««N ]
+)
+««] ^
+;
+««^ _
+}
+»» 
+}
+…… 
+}
+ÀÀ 
+}
+ÃÃ 	
+}
+ŒŒ 
+}œœ €8
 ñC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LobbyCodeAuthentication.cs
 	namespace 	
 JeopardyGame
@@ -39897,16 +39405,17 @@ lockObject
 $num+ ,
 ;, -
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-lockObject (
-=) *
-new+ .
-Object/ 5
-(5 6
-)6 7
-;7 8
+lockObject' 1
+=2 3
+new4 7
+Object8 >
+(> ?
+)? @
+;@ A
 public 
 GenericClass 
 < 
@@ -40889,402 +40398,398 @@ $ValidateThereIsOnlyOneAActiveAccountSS 7
 ää 	
 }
 éé 
-}èè ∞º
+}èè ë≈
 §C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\NotifyUserAvailabilityImplementation .cs
-	namespace		 	
-JeopardyGame		
+	namespace 	
+JeopardyGame
  
-.		 
-Service		 
-.		 !
-ServiceImplementation		 4
-{
-
- 
-partial 
-class 0
-$NotifyUserAvailabilityImplementation 6
-:7 8#
-INotifyUserAvailability9 P
-{ 
-private 
-static 
-Object 
+. 
+Service 
+. !
+ServiceImplementation 4
+{ 
+partial 
+class 0
+$NotifyUserAvailabilityImplementation 6
+:7 8#
+INotifyUserAvailability9 P
+{ 
+private 
+static 
+readonly 
+Object  &
 
-lockObject (
-=) *
-new+ .
-Object/ 5
-(5 6
-)6 7
-;7 8
-public 
-void 
-NotifyFriends !
-(! "
-int" %
-idUser& ,
-,, -
-int. 1
-status2 8
-)8 9
-{ 	,
- ConsultInformationImplementation ,
-consultInformation- ?
-=@ A
-newB E,
- ConsultInformationImplementationF f
-(f g
-)g h
-;h i(
-ConsultFriendsImplementation ((
-friendsManagerImplementation) E
-=F G
-newH K(
-ConsultFriendsImplementationL h
-(h i
-)i j
-;j k
-var 
-userConsulted 
-= 
-consultInformation  2
-.2 3
-ConsultUserById3 B
-(B C
-idUserC I
-)I J
-;J K
-if 
-( 
+lockObject' 1
+=2 3
+new4 7
+Object8 >
+(> ?
+)? @
+;@ A
+private 
+const 
+int 
+
+NULL_VALUE $
+=% &
+$num' (
+;( )
+public 
+void 
+NotifyFriends !
+(! "
+int" %
+idUser& ,
+,, -
+int. 1
+status2 8
+)8 9
+{ 	,
+ ConsultInformationImplementation ,
+consultInformation- ?
+=@ A
+newB E,
+ ConsultInformationImplementationF f
+(f g
+)g h
+;h i
+var 
 userConsulted 
-. 
-	CodeEvent '
-==( *
-ExceptionDictionary+ >
-.> ?
-SUCCESFULL_EVENT? O
-)O P
-{ 
-var 
-friendsNewUser "
-=# $(
-friendsManagerImplementation% A
-.A B
-GetUserFriendsB P
-(P Q
-userConsultedQ ^
-.^ _
-ObjectSaved_ j
-)j k
-;k l
-if 
-( 
-friendsNewUser "
-." #
-	CodeEvent# ,
-==- /
-ExceptionDictionary0 C
-.C D
-SUCCESFULL_EVENTD T
-)T U
-{ 
-foreach 
-( 
-var  
-friend! '
-in( *
-friendsNewUser+ 9
-.9 :
-ObjectSaved: E
-)E F
-{ 
-try 
-{ 
-var 
-channelSaved  ,
-=- .!
-ActiveUsersDictionary/ D
-.D E(
-GetChannelCallBackActiveUserE a
-(a b
-friendb h
-.h i
-IdUseri o
-)o p
-;p q
-if 
-(  
-channelSaved  ,
-!=- /
-null0 4
-)4 5
-{   
-channelSaved!!  ,
-.!!, -
-GetCallbackChannel!!- ?
-<!!? @+
-INotifyUserAvailabilityCallBack!!@ _
->!!_ `
-(!!` a
-)!!a b
-.!!b c(
-ResponseOfPlayerAvailability!!c 
-(	!! Ä
-status
-!!Ä Ü
+= 
+consultInformation  2
+.2 3
+ConsultUserById3 B
+(B C
+idUserC I
+)I J
+;J K
+if 
+( 
+userConsulted 
+. 
+	CodeEvent '
+==( *
+ExceptionDictionary+ >
+.> ?
+SUCCESFULL_EVENT? O
+)O P
+{ (
+ConsultFriendsImplementation ,(
+friendsManagerImplementation- I
+=J K
+newL O(
+ConsultFriendsImplementationP l
+(l m
+)m n
+;n o
+var 
+friendsNewUser "
+=# $(
+friendsManagerImplementation% A
+.A B
+GetUserFriendsB P
+(P Q
+userConsultedQ ^
+.^ _
+ObjectSaved_ j
+)j k
+;k l
+if 
+( 
+friendsNewUser "
+." #
+	CodeEvent# ,
+==- /
+ExceptionDictionary0 C
+.C D
+SUCCESFULL_EVENTD T
+)T U
+{  
+NotifyFriendCallBack (
+(( )
+friendsNewUser) 7
+.7 8
+ObjectSaved8 C
+,C D
+idUserE K
+,K L
+statusM S
+)S T
+;T U
+} 
+} 
+} 	
+private!! 
+void!!  
+NotifyFriendCallBack!! )
+(!!) *
+List!!* .
+<!!. /"
+FriendBasicInformation!!/ E
+>!!E F
+friendsNewUser!!G U
+,!!U V
+int!!W Z
+idUser!![ a
+,!!a b
+int!!c f
+status!!g m
+)!!m n
+{"" 	
+if## 
+(## 
+friendsNewUser## 
+.## 
+Count## #
+!=##$ &
+
+NULL_VALUE##' 1
+||##2 4
+idUser##5 ;
+!=##< >
+
+NULL_VALUE##? I
+||##J L
+status##M S
+!=##T V
+
+NULL_VALUE##W a
+)##a b
+{$$ 
+foreach%% 
+(%% 
+var%% 
+friend%% #
+in%%$ &
+friendsNewUser%%' 5
+)%%5 6
+{&& 
+try'' 
+{(( 
+var)) 
+channelSaved)) (
+=))) *!
+ActiveUsersDictionary))+ @
+.))@ A(
+GetChannelCallBackActiveUser))A ]
+())] ^
+friend))^ d
+.))d e
+IdUser))e k
+)))k l
+;))l m
+if** 
+(** 
+channelSaved** (
+!=**) +
+null**, 0
+)**0 1
+{++ 
+channelSaved,, (
+.,,( )
+GetCallbackChannel,,) ;
+<,,; <+
+INotifyUserAvailabilityCallBack,,< [
+>,,[ \
+(,,\ ]
+),,] ^
+.,,^ _(
+ResponseOfPlayerAvailability,,_ {
+(,,{ |
+status	,,| Ç
 ,
-!!Ü á
+,,Ç É
 idUser
-!!à é
+,,Ñ ä
 )
-!!é è
+,,ä ã
 ;
-!!è ê
-}"" 
-}## 
-catch$$ 
-($$ /
-#CommunicationObjectFaultedException$$ B
-ex$$C E
-)$$E F
-{%%  
-ChannelAdministrator&& 0
-.&&0 1$
-HandleCommunicationIssue&&1 I
-(&&I J
-friend&&J P
-.&&P Q
-IdUser&&Q W
-,&&W X 
-ChannelAdministrator&&Y m
-.&&m n#
-AVAILABILITY_EXCEPTION	&&n Ñ
+,,ã å
+}-- 
+}.. 
+catch// 
+(// /
+#CommunicationObjectFaultedException// >
+ex//? A
+)//A B
+{00  
+ChannelAdministrator11 ,
+.11, -$
+HandleCommunicationIssue11- E
+(11E F
+friend11F L
+.11L M
+IdUser11M S
+,11S T 
+ChannelAdministrator11U i
+.11i j#
+AVAILABILITY_EXCEPTION	11j Ä
 )
-&&Ñ Ö
+11Ä Å
 ;
-&&Ö Ü
-ExceptionHandler'' ,
-.'', -
-LogException''- 9
-(''9 :
-ex'': <
-,''< =
-ExceptionDictionary''> Q
-.''Q R
-FATAL_EXCEPTION''R a
-)''a b
-;''b c
-}(( 
-catch)) 
-()) 
-TimeoutException)) /
-ex))0 2
-)))2 3
-{**  
-ChannelAdministrator++ 0
-.++0 1$
-HandleCommunicationIssue++1 I
-(++I J
-friend++J P
-.++P Q
-IdUser++Q W
-,++W X 
-ChannelAdministrator++Y m
-.++m n#
-AVAILABILITY_EXCEPTION	++n Ñ
+11Å Ç
+ExceptionHandler22 (
+.22( )
+LogException22) 5
+(225 6
+ex226 8
+,228 9
+ExceptionDictionary22: M
+.22M N
+FATAL_EXCEPTION22N ]
+)22] ^
+;22^ _
+}33 
+catch44 
+(44 
+TimeoutException44 +
+ex44, .
+)44. /
+{55  
+ChannelAdministrator66 ,
+.66, -$
+HandleCommunicationIssue66- E
+(66E F
+friend66F L
+.66L M
+IdUser66M S
+,66S T 
+ChannelAdministrator66U i
+.66i j#
+AVAILABILITY_EXCEPTION	66j Ä
 )
-++Ñ Ö
+66Ä Å
 ;
-++Ö Ü
-ExceptionHandler,, ,
-.,,, -
-LogException,,- 9
-(,,9 :
-ex,,: <
-,,,< =
-ExceptionDictionary,,> Q
-.,,Q R
-FATAL_EXCEPTION,,R a
-),,a b
-;,,b c
-}-- 
-catch.. 
-(.. "
-CommunicationException.. 5
-ex..6 8
-)..8 9
-{//  
-ChannelAdministrator00 0
-.000 1$
-HandleCommunicationIssue001 I
-(00I J
-friend00J P
-.00P Q
-IdUser00Q W
-,00W X 
-ChannelAdministrator00Y m
-.00m n#
-AVAILABILITY_EXCEPTION	00n Ñ
+66Å Ç
+ExceptionHandler77 (
+.77( )
+LogException77) 5
+(775 6
+ex776 8
+,778 9
+ExceptionDictionary77: M
+.77M N
+FATAL_EXCEPTION77N ]
+)77] ^
+;77^ _
+}88 
+catch99 
+(99 "
+CommunicationException99 1
+ex992 4
+)994 5
+{::  
+ChannelAdministrator;; ,
+.;;, -$
+HandleCommunicationIssue;;- E
+(;;E F
+friend;;F L
+.;;L M
+IdUser;;M S
+,;;S T 
+ChannelAdministrator;;U i
+.;;i j#
+AVAILABILITY_EXCEPTION	;;j Ä
 )
-00Ñ Ö
+;;Ä Å
 ;
-00Ö Ü
-ExceptionHandler11 ,
-.11, -
-LogException11- 9
-(119 :
-ex11: <
-,11< =
-ExceptionDictionary11> Q
-.11Q R
-FATAL_EXCEPTION11R a
-)11a b
-;11b c
-}22 
-catch33 
-(33 %
-InvalidOperationException33 8
-ex339 ;
-)33; <
-{44  
-ChannelAdministrator55 0
-.550 1$
-HandleCommunicationIssue551 I
-(55I J
-friend55J P
-.55P Q
-IdUser55Q W
-,55W X 
-ChannelAdministrator55Y m
-.55m n#
-AVAILABILITY_EXCEPTION	55n Ñ
+;;Å Ç
+ExceptionHandler<< (
+.<<( )
+LogException<<) 5
+(<<5 6
+ex<<6 8
+,<<8 9
+ExceptionDictionary<<: M
+.<<M N
+FATAL_EXCEPTION<<N ]
+)<<] ^
+;<<^ _
+}== 
+catch>> 
+(>> %
+InvalidOperationException>> 4
+ex>>5 7
+)>>7 8
+{??  
+ChannelAdministrator@@ ,
+.@@, -$
+HandleCommunicationIssue@@- E
+(@@E F
+friend@@F L
+.@@L M
+IdUser@@M S
+,@@S T 
+ChannelAdministrator@@U i
+.@@i j#
+AVAILABILITY_EXCEPTION	@@j Ä
 )
-55Ñ Ö
+@@Ä Å
 ;
-55Ö Ü
-ExceptionHandler66 ,
-.66, -
-LogException66- 9
-(669 :
-ex66: <
-,66< =
-ExceptionDictionary66> Q
-.66Q R
-FATAL_EXCEPTION66R a
-)66a b
-;66b c
-}77 
-}88 
-}99 
-}:: 
-};; 	
-public== 
-void== )
-RenewNotifyAvailabityCallBack== 1
-(==1 2
-int==2 5
-idUser==6 <
-)==< =
-{>> 	
-lock?? 
-(?? 
+@@Å Ç
+ExceptionHandlerAA (
+.AA( )
+LogExceptionAA) 5
+(AA5 6
+exAA6 8
+,AA8 9
+ExceptionDictionaryAA: M
+.AAM N
+FATAL_EXCEPTIONAAN ]
+)AA] ^
+;AA^ _
+}BB 
+}CC 
+}DD 
+}EE 	
+publicGG 
+voidGG )
+RenewNotifyAvailabityCallBackGG 1
+(GG1 2
+intGG2 5
+idUserGG6 <
+)GG< =
+{HH 	
+lockII 
+(II 
 
-lockObject?? 
-)?? 
-{@@ 
-tryAA 
-{BB 
-ifCC 
-(CC 
-idUserCC 
-!=CC !
-$numCC" #
-)CC# $
-{DD 
-varEE 
+lockObjectII 
+)II 
+{JJ 
+tryKK 
+{LL 
+ifMM 
+(MM 
+idUserMM 
+!=MM !
+$numMM" #
+)MM# $
+{NN 
+varOO 
 
-newChannelEE &
-=EE' (
-OperationContextEE) 9
-.EE9 :
-CurrentEE: A
-;EEA B!
-ActiveUsersDictionaryFF -
-.FF- .#
-RenewAvailabityCallBackFF. E
-(FFE F
-idUserFFF L
-,FFL M
+newChannelOO &
+=OO' (
+OperationContextOO) 9
+.OO9 :
+CurrentOO: A
+;OOA B!
+ActiveUsersDictionaryPP -
+.PP- .#
+RenewAvailabityCallBackPP. E
+(PPE F
+idUserPPF L
+,PPL M
 
-newChannelFFN X
-)FFX Y
-;FFY Z
-}GG 
-}HH 
-catchII 
-(II /
-#CommunicationObjectFaultedExceptionII :
-exII; =
-)II= >
-{JJ  
-ChannelAdministratorKK (
-.KK( )$
-HandleCommunicationIssueKK) A
-(KKA B
-idUserKKB H
-,KKH I 
-ChannelAdministratorKKJ ^
-.KK^ _"
-AVAILABILITY_EXCEPTIONKK_ u
-)KKu v
-;KKv w
-ExceptionHandlerLL $
-.LL$ %
-LogExceptionLL% 1
-(LL1 2
-exLL2 4
-,LL4 5
-ExceptionDictionaryLL6 I
-.LLI J
-FATAL_EXCEPTIONLLJ Y
-)LLY Z
-;LLZ [
-}MM 
-catchNN 
-(NN 
-TimeoutExceptionNN '
-exNN( *
-)NN* +
-{OO  
-ChannelAdministratorPP (
-.PP( )$
-HandleCommunicationIssuePP) A
-(PPA B
-idUserPPB H
-,PPH I 
-ChannelAdministratorPPJ ^
-.PP^ _"
-AVAILABILITY_EXCEPTIONPP_ u
-)PPu v
-;PPv w
-ExceptionHandlerQQ $
-.QQ$ %
-LogExceptionQQ% 1
-(QQ1 2
-exQQ2 4
-,QQ4 5
-ExceptionDictionaryQQ6 I
-.QQI J
-FATAL_EXCEPTIONQQJ Y
-)QQY Z
-;QQZ [
+newChannelPPN X
+)PPX Y
+;PPY Z
+}QQ 
 }RR 
 catchSS 
-(SS "
-CommunicationExceptionSS -
-exSS. 0
-)SS0 1
+(SS /
+#CommunicationObjectFaultedExceptionSS :
+exSS; =
+)SS= >
 {TT  
 ChannelAdministratorUU (
 .UU( )$
@@ -41310,10 +40815,10 @@ newChannelFFN X
 ;VVZ [
 }WW 
 catchXX 
-(XX %
-InvalidOperationExceptionXX 0
-exXX1 3
-)XX3 4
+(XX 
+TimeoutExceptionXX '
+exXX( *
+)XX* +
 {YY  
 ChannelAdministratorZZ (
 .ZZ( )$
@@ -41337,125 +40842,125 @@ newChannelFFN X
 FATAL_EXCEPTION[[J Y
 )[[Y Z
 ;[[Z [
-}\\ 
-}]] 
-}^^ 	
-public`` 
-void`` 0
-$SubscribeToAvailabityCallBackChannel`` 8
-(``8 9
-int``9 <
-idNewActiveUser``= L
-)``L M
-{aa 	
-lockbb 
-(bb 
+}\\ 
+catch]] 
+(]] "
+CommunicationException]] -
+ex]]. 0
+)]]0 1
+{^^  
+ChannelAdministrator__ (
+.__( )$
+HandleCommunicationIssue__) A
+(__A B
+idUser__B H
+,__H I 
+ChannelAdministrator__J ^
+.__^ _"
+AVAILABILITY_EXCEPTION___ u
+)__u v
+;__v w
+ExceptionHandler`` $
+.``$ %
+LogException``% 1
+(``1 2
+ex``2 4
+,``4 5
+ExceptionDictionary``6 I
+.``I J
+FATAL_EXCEPTION``J Y
+)``Y Z
+;``Z [
+}aa 
+catchbb 
+(bb %
+InvalidOperationExceptionbb 0
+exbb1 3
+)bb3 4
+{cc  
+ChannelAdministratordd (
+.dd( )$
+HandleCommunicationIssuedd) A
+(ddA B
+idUserddB H
+,ddH I 
+ChannelAdministratorddJ ^
+.dd^ _"
+AVAILABILITY_EXCEPTIONdd_ u
+)ddu v
+;ddv w
+ExceptionHandleree $
+.ee$ %
+LogExceptionee% 1
+(ee1 2
+exee2 4
+,ee4 5
+ExceptionDictionaryee6 I
+.eeI J
+FATAL_EXCEPTIONeeJ Y
+)eeY Z
+;eeZ [
+}ff 
+}gg 
+}hh 	
+publicjj 
+voidjj 0
+$SubscribeToAvailabityCallBackChanneljj 8
+(jj8 9
+intjj9 <
+idNewActiveUserjj= L
+)jjL M
+{kk 	
+lockll 
+(ll 
 
-lockObjectbb 
-)bb 
-{cc 
-trydd 
-{ee 
-varff 
-savedChannelff $
-=ff% &!
-ActiveUsersDictionaryff' <
-.ff< =(
-GetChannelCallBackActiveUserff= Y
-(ffY Z
-idNewActiveUserffZ i
-)ffi j
-;ffj k
-ifgg 
-(gg 
-savedChannelgg $
-==gg% '
-nullgg( ,
-)gg, -
-{hh 
-varii 
+lockObjectll 
+)ll 
+{mm 
+trynn 
+{oo 
+varpp 
+savedChannelpp $
+=pp% &!
+ActiveUsersDictionarypp' <
+.pp< =(
+GetChannelCallBackActiveUserpp= Y
+(ppY Z
+idNewActiveUserppZ i
+)ppi j
+;ppj k
+ifqq 
+(qq 
+savedChannelqq $
+==qq% '
+nullqq( ,
+)qq, -
+{rr 
+varss 
 
-newChannelii &
-=ii' (
-OperationContextii) 9
-.ii9 :
-Currentii: A
-;iiA B!
-ActiveUsersDictionaryjj -
-.jj- .-
-!RegisterNewActiveUserInDictionaryjj. O
-(jjO P
-idNewActiveUserjjP _
-,jj_ `
+newChannelss &
+=ss' (
+OperationContextss) 9
+.ss9 :
+Currentss: A
+;ssA B!
+ActiveUsersDictionarytt -
+.tt- .-
+!RegisterNewActiveUserInDictionarytt. O
+(ttO P
+idNewActiveUserttP _
+,tt_ `
 
-newChanneljja k
-)jjk l
-;jjl m
-}kk 
-}ll 
-catchmm 
-(mm /
-#CommunicationObjectFaultedExceptionmm :
-exmm; =
-)mm= >
-{nn  
-ChannelAdministratoroo (
-.oo( )$
-HandleCommunicationIssueoo) A
-(ooA B
-idNewActiveUserooB Q
-,ooQ R 
-ChannelAdministratorooS g
-.oog h"
-AVAILABILITY_EXCEPTIONooh ~
-)oo~ 
-;	oo Ä
-ExceptionHandlerpp $
-.pp$ %
-LogExceptionpp% 1
-(pp1 2
-expp2 4
-,pp4 5
-ExceptionDictionarypp6 I
-.ppI J
-FATAL_EXCEPTIONppJ Y
-)ppY Z
-;ppZ [
-}qq 
-catchrr 
-(rr 
-TimeoutExceptionrr '
-exrr( *
-)rr* +
-{ss  
-ChannelAdministratortt (
-.tt( )$
-HandleCommunicationIssuett) A
-(ttA B
-idNewActiveUserttB Q
-,ttQ R 
-ChannelAdministratorttS g
-.ttg h"
-AVAILABILITY_EXCEPTIONtth ~
-)tt~ 
-;	tt Ä
-ExceptionHandleruu $
-.uu$ %
-LogExceptionuu% 1
-(uu1 2
-exuu2 4
-,uu4 5
-ExceptionDictionaryuu6 I
-.uuI J
-FATAL_EXCEPTIONuuJ Y
-)uuY Z
-;uuZ [
+newChanneltta k
+)ttk l
+;ttl m
+}uu 
 }vv 
 catchww 
-(ww "
-CommunicationExceptionww -
-exww. 0
-)ww0 1
+(ww /
+#CommunicationObjectFaultedExceptionww :
+exww; =
+)ww= >
 {xx  
 ChannelAdministratoryy (
 .yy( )$
@@ -41481,10 +40986,10 @@ newChanneljja k
 ;zzZ [
 }{{ 
 catch|| 
-(|| %
-InvalidOperationException|| 0
-ex||1 3
-)||3 4
+(|| 
+TimeoutException|| '
+ex||( *
+)||* +
 {}}  
 ChannelAdministrator~~ (
 .~~( )$
@@ -41509,278 +41014,276 @@ newChanneljja k
 )Y Z
 ;Z [
 }
-ÄÄ 
+ÄÄ 
+catch
+ÅÅ 
+(
+ÅÅ $
+CommunicationException
+ÅÅ -
+ex
+ÅÅ. 0
+)
+ÅÅ0 1
+{
+ÇÇ "
+ChannelAdministrator
+ÉÉ (
+.
+ÉÉ( )&
+HandleCommunicationIssue
+ÉÉ) A
+(
+ÉÉA B
+idNewActiveUser
+ÉÉB Q
+,
+ÉÉQ R"
+ChannelAdministrator
+ÉÉS g
+.
+ÉÉg h$
+AVAILABILITY_EXCEPTION
+ÉÉh ~
+)
+ÉÉ~ 
+;ÉÉ Ä
+ExceptionHandler
+ÑÑ $
+.
+ÑÑ$ %
+LogException
+ÑÑ% 1
+(
+ÑÑ1 2
+ex
+ÑÑ2 4
+,
+ÑÑ4 5!
+ExceptionDictionary
+ÑÑ6 I
+.
+ÑÑI J
+FATAL_EXCEPTION
+ÑÑJ Y
+)
+ÑÑY Z
+;
+ÑÑZ [
 }
-ÅÅ 
+ÖÖ 
+catch
+ÜÜ 
+(
+ÜÜ '
+InvalidOperationException
+ÜÜ 0
+ex
+ÜÜ1 3
+)
+ÜÜ3 4
+{
+áá "
+ChannelAdministrator
+àà (
+.
+àà( )&
+HandleCommunicationIssue
+àà) A
+(
+ààA B
+idNewActiveUser
+ààB Q
+,
+ààQ R"
+ChannelAdministrator
+ààS g
+.
+ààg h$
+AVAILABILITY_EXCEPTION
+ààh ~
+)
+àà~ 
+;àà Ä
+ExceptionHandler
+ââ $
+.
+ââ$ %
+LogException
+ââ% 1
+(
+ââ1 2
+ex
+ââ2 4
+,
+ââ4 5!
+ExceptionDictionary
+ââ6 I
+.
+ââI J
+FATAL_EXCEPTION
+ââJ Y
+)
+ââY Z
+;
+ââZ [
 }
-ÇÇ 	
+ää 
 }
-ÑÑ 
+ãã 
+}
+åå 	
+}
+éé 
 public
-áá 
+ëë 
 
 class
-áá 4
+ëë 4
 &NotifyUserIsNotAvailableImplementation
-áá 7
+ëë 7
 :
-áá8 9(
+ëë8 9(
 IAvailabilityUserManagment
-áá: T
+ëë: T
 {
-àà 
+íí 
 private
-ââ 
+ìì 
 readonly
-ââ 
+ìì 
 int
-ââ 
+ìì 
 NULL_INT_VALUE
-ââ +
+ìì +
 =
-ââ, -
+ìì, -
 $num
-ââ. /
+ìì. /
 ;
-ââ/ 0
+ìì/ 0
 private
-ää 
+îî 
 readonly
-ää 
+îî 
 int
-ää 
+îî 
 AVAILABLE_STATUS
-ää -
+îî -
 =
-ää. /
+îî. /
 $num
-ää0 1
+îî0 1
 ;
-ää1 2
+îî1 2
 private
-ãã 
+ïï 
 readonly
-ãã 
+ïï 
 int
-ãã  
+ïï  
 UNAVAILABLE_STATUS
-ãã /
+ïï /
 =
-ãã0 1
+ïï0 1
 $num
-ãã2 3
+ïï2 3
 ;
-ãã3 4
+ïï3 4
 private
-åå 
+ññ 
 readonly
-åå 
+ññ 
 int
-åå 
+ññ 
 PLAYING_STATUS
-åå +
+ññ +
 =
-åå, -
+ññ, -
 $num
-åå. /
+ññ. /
 ;
-åå/ 0
+ññ/ 0
 public
-éé 
+òò 
 void
-éé 
+òò 
 PlayerIsAvailable
-éé %
+òò %
 (
-éé% &
+òò% &
 int
-éé& )
+òò& )
 idNewActiveUser
-éé* 9
-)
-éé9 :
-{
-èè 	
-try
-êê 
-{
-ëë 
-if
-íí 
-(
-íí 
-idNewActiveUser
-íí #
-!=
-íí$ &
-NULL_INT_VALUE
-íí' 5
-)
-íí5 6
-{
-ìì 2
-$NotifyUserAvailabilityImplementation
-îî 8$
-notifyUserAvailability
-îî9 O
-=
-îîP Q
-new
-îîR U
-(
-îîU V
-)
-îîV W
-;
-îîW X$
-notifyUserAvailability
-ïï *
-.
-ïï* +
-NotifyFriends
-ïï+ 8
-(
-ïï8 9
-idNewActiveUser
-ïï9 H
-,
-ïïH I
-AVAILABLE_STATUS
-ïïJ Z
-)
-ïïZ [
-;
-ïï[ \
-}
-ññ 
-}
-óó 
-catch
-òò 
-(
-òò 1
-#CommunicationObjectFaultedException
-òò 6
-ex
-òò7 9
+òò* 9
 )
 òò9 :
 {
-ôô "
-ChannelAdministrator
-öö $
-.
-öö$ %&
-HandleCommunicationIssue
-öö% =
-(
-öö= >
-idNewActiveUser
-öö> M
-,
-ööM N"
-ChannelAdministrator
-ööO c
-.
-ööc d$
-AVAILABILITY_EXCEPTION
-ööd z
-)
-ööz {
-;
-öö{ |
-ExceptionHandler
-õõ  
-.
-õõ  !
-LogException
-õõ! -
-(
-õõ- .
-ex
-õõ. 0
-,
-õõ0 1!
-ExceptionDictionary
-õõ2 E
-.
-õõE F
-FATAL_EXCEPTION
-õõF U
-)
-õõU V
-;
-õõV W
-}
-úú 
-catch
-ùù 
-(
-ùù 
-TimeoutException
-ùù #
-ex
-ùù$ &
-)
-ùù& '
+ôô 	
+try
+öö 
 {
-ûû "
-ChannelAdministrator
-üü $
-.
-üü$ %&
-HandleCommunicationIssue
-üü% =
+õõ 
+if
+úú 
 (
-üü= >
+úú 
 idNewActiveUser
-üü> M
-,
-üüM N"
-ChannelAdministrator
-üüO c
-.
-üüc d$
-AVAILABILITY_EXCEPTION
-üüd z
+úú #
+!=
+úú$ &
+NULL_INT_VALUE
+úú' 5
 )
-üüz {
-;
-üü{ |
-ExceptionHandler
-††  
-.
-††  !
-LogException
-††! -
+úú5 6
+{
+ùù 2
+$NotifyUserAvailabilityImplementation
+ûû 8$
+notifyUserAvailability
+ûû9 O
+=
+ûûP Q
+new
+ûûR U
 (
-††- .
-ex
-††. 0
-,
-††0 1!
-ExceptionDictionary
-††2 E
-.
-††E F
-FATAL_EXCEPTION
-††F U
+ûûU V
 )
-††U V
+ûûV W
 ;
-††V W
+ûûW X$
+notifyUserAvailability
+üü *
+.
+üü* +
+NotifyFriends
+üü+ 8
+(
+üü8 9
+idNewActiveUser
+üü9 H
+,
+üüH I
+AVAILABLE_STATUS
+üüJ Z
+)
+üüZ [
+;
+üü[ \
+}
+†† 
 }
 °° 
 catch
 ¢¢ 
 (
-¢¢ $
-CommunicationException
-¢¢ )
+¢¢ 1
+#CommunicationObjectFaultedException
+¢¢ 6
 ex
-¢¢* ,
+¢¢7 9
 )
-¢¢, -
+¢¢9 :
 {
 ££ "
 ChannelAdministrator
@@ -41832,13 +41335,13 @@ $NotifyUserAvailabilityImplementation
 catch
 ßß 
 (
-ßß '
-InvalidOperationException
-ßß ,
+ßß 
+TimeoutException
+ßß #
 ex
-ßß- /
+ßß$ &
 )
-ßß/ 0
+ßß& '
 {
 ®® "
 ChannelAdministrator
@@ -41886,215 +41389,219 @@ $NotifyUserAvailabilityImplementation
 ;
 ™™V W
 }
-´´ 
-}
-¨¨ 	
-public
-ÆÆ 
-void
-ÆÆ "
-PlayerIsNotAvailable
-ÆÆ (
-(
-ÆÆ( )
-int
-ÆÆ) ,!
-idUserDisconnecting
-ÆÆ- @
-)
-ÆÆ@ A
-{
-ØØ 	
-try
-∞∞ 
-{
-±± 
-if
-≤≤ 
-(
-≤≤ !
-idUserDisconnecting
-≤≤ '
-!=
-≤≤( *
-NULL_INT_VALUE
-≤≤+ 9
-)
-≤≤9 :
-{
-≥≥ #
-ActiveUsersDictionary
-¥¥ )
-.
-¥¥) *6
-(RemoveRegistryOfActiveUserFromDictionary
-¥¥* R
-(
-¥¥R S!
-idUserDisconnecting
-¥¥S f
-)
-¥¥f g
-;
-¥¥g h2
-$NotifyUserAvailabilityImplementation
-µµ 8$
-notifyUserAvailability
-µµ9 O
-=
-µµP Q
-new
-µµR U
-(
-µµU V
-)
-µµV W
-;
-µµW X$
-notifyUserAvailability
-∂∂ *
-.
-∂∂* +
-NotifyFriends
-∂∂+ 8
-(
-∂∂8 9!
-idUserDisconnecting
-∂∂9 L
-,
-∂∂L M 
-UNAVAILABLE_STATUS
-∂∂N `
-)
-∂∂` a
-;
-∂∂a b
-}
-∑∑ 
-}
-∏∏ 
+´´ 
 catch
-ππ 
+¨¨ 
 (
-ππ 1
-#CommunicationObjectFaultedException
-ππ 6
+¨¨ $
+CommunicationException
+¨¨ )
 ex
-ππ7 9
+¨¨* ,
 )
-ππ9 :
+¨¨, -
 {
-∫∫ "
+≠≠ "
 ChannelAdministrator
-ªª $
+ÆÆ $
 .
-ªª$ %&
+ÆÆ$ %&
 HandleCommunicationIssue
-ªª% =
+ÆÆ% =
 (
-ªª= >!
-idUserDisconnecting
-ªª> Q
+ÆÆ= >
+idNewActiveUser
+ÆÆ> M
 ,
-ªªQ R"
+ÆÆM N"
 ChannelAdministrator
-ªªS g
+ÆÆO c
 .
-ªªg h$
+ÆÆc d$
 AVAILABILITY_EXCEPTION
-ªªh ~
+ÆÆd z
 )
-ªª~ 
-;ªª Ä
-ExceptionHandler
-ºº  
-.
-ºº  !
-LogException
-ºº! -
-(
-ºº- .
-ex
-ºº. 0
-,
-ºº0 1!
-ExceptionDictionary
-ºº2 E
-.
-ººE F
-FATAL_EXCEPTION
-ººF U
-)
-ººU V
+ÆÆz {
 ;
-ººV W
+ÆÆ{ |
+ExceptionHandler
+ØØ  
+.
+ØØ  !
+LogException
+ØØ! -
+(
+ØØ- .
+ex
+ØØ. 0
+,
+ØØ0 1!
+ExceptionDictionary
+ØØ2 E
+.
+ØØE F
+FATAL_EXCEPTION
+ØØF U
+)
+ØØU V
+;
+ØØV W
 }
-ΩΩ 
+∞∞ 
 catch
-ææ 
+±± 
 (
-ææ 
-TimeoutException
-ææ #
+±± '
+InvalidOperationException
+±± ,
 ex
-ææ$ &
+±±- /
 )
-ææ& '
+±±/ 0
 {
-øø "
+≤≤ "
 ChannelAdministrator
-¿¿ $
+≥≥ $
 .
-¿¿$ %&
+≥≥$ %&
 HandleCommunicationIssue
-¿¿% =
+≥≥% =
 (
-¿¿= >!
-idUserDisconnecting
-¿¿> Q
+≥≥= >
+idNewActiveUser
+≥≥> M
 ,
-¿¿Q R"
+≥≥M N"
 ChannelAdministrator
-¿¿S g
+≥≥O c
 .
-¿¿g h'
-FRIEND_MANAGER_EXCEPTION¿¿h Ä
-)¿¿Ä Å
-;¿¿Å Ç
-ExceptionHandler
-¡¡  
-.
-¡¡  !
-LogException
-¡¡! -
-(
-¡¡- .
-ex
-¡¡. 0
-,
-¡¡0 1!
-ExceptionDictionary
-¡¡2 E
-.
-¡¡E F
-FATAL_EXCEPTION
-¡¡F U
+≥≥c d$
+AVAILABILITY_EXCEPTION
+≥≥d z
 )
-¡¡U V
+≥≥z {
 ;
-¡¡V W
+≥≥{ |
+ExceptionHandler
+¥¥  
+.
+¥¥  !
+LogException
+¥¥! -
+(
+¥¥- .
+ex
+¥¥. 0
+,
+¥¥0 1!
+ExceptionDictionary
+¥¥2 E
+.
+¥¥E F
+FATAL_EXCEPTION
+¥¥F U
+)
+¥¥U V
+;
+¥¥V W
+}
+µµ 
+}
+∂∂ 	
+public
+∏∏ 
+void
+∏∏ "
+PlayerIsNotAvailable
+∏∏ (
+(
+∏∏( )
+int
+∏∏) ,!
+idUserDisconnecting
+∏∏- @
+)
+∏∏@ A
+{
+ππ 	
+try
+∫∫ 
+{
+ªª 
+if
+ºº 
+(
+ºº !
+idUserDisconnecting
+ºº '
+!=
+ºº( *
+NULL_INT_VALUE
+ºº+ 9
+)
+ºº9 :
+{
+ΩΩ #
+ActiveUsersDictionary
+ææ )
+.
+ææ) *6
+(RemoveRegistryOfActiveUserFromDictionary
+ææ* R
+(
+ææR S!
+idUserDisconnecting
+ææS f
+)
+ææf g
+;
+ææg h2
+$NotifyUserAvailabilityImplementation
+øø 8$
+notifyUserAvailability
+øø9 O
+=
+øøP Q
+new
+øøR U
+(
+øøU V
+)
+øøV W
+;
+øøW X$
+notifyUserAvailability
+¿¿ *
+.
+¿¿* +
+NotifyFriends
+¿¿+ 8
+(
+¿¿8 9!
+idUserDisconnecting
+¿¿9 L
+,
+¿¿L M 
+UNAVAILABLE_STATUS
+¿¿N `
+)
+¿¿` a
+;
+¿¿a b
+}
+¡¡ 
 }
 ¬¬ 
 catch
 √√ 
 (
-√√ $
-CommunicationException
-√√ )
+√√ 1
+#CommunicationObjectFaultedException
+√√ 6
 ex
-√√* ,
+√√7 9
 )
-√√, -
+√√9 :
 {
 ƒƒ "
 ChannelAdministrator
@@ -42145,13 +41652,13 @@ $NotifyUserAvailabilityImplementation
 catch
 »» 
 (
-»» '
-InvalidOperationException
-»» ,
+»» 
+TimeoutException
+»» #
 ex
-»»- /
+»»$ &
 )
-»»/ 0
+»»& '
 {
 …… "
 ChannelAdministrator
@@ -42169,12 +41676,10 @@ $NotifyUserAvailabilityImplementation
 ChannelAdministrator
   S g
 .
-  g h$
-AVAILABILITY_EXCEPTION
-  h ~
-)
-  ~ 
-;   Ä
+  g h'
+FRIEND_MANAGER_EXCEPTION  h Ä
+)  Ä Å
+;  Å Ç
 ExceptionHandler
 ÀÀ  
 .
@@ -42198,205 +41703,203 @@ $NotifyUserAvailabilityImplementation
 ;
 ÀÀV W
 }
-ÃÃ 
-}
-ÕÕ 	
-public
-–– 
-void
-–– 
-PlayerIsPlaying
-–– #
-(
-––# $
-int
-––$ '
-idUserPlaying
-––( 5
-)
-––5 6
-{
-—— 	
-try
-““ 
-{
-”” 
-if
-‘‘ 
-(
-‘‘ 
-idUserPlaying
-‘‘ !
-!=
-‘‘" $
-NULL_INT_VALUE
-‘‘% 3
-)
-‘‘3 4
-{
-’’ 2
-$NotifyUserAvailabilityImplementation
-÷÷ 8$
-notifyUserAvailability
-÷÷9 O
-=
-÷÷P Q
-new
-÷÷R U
-(
-÷÷U V
-)
-÷÷V W
-;
-÷÷W X$
-notifyUserAvailability
-◊◊ *
-.
-◊◊* +
-NotifyFriends
-◊◊+ 8
-(
-◊◊8 9
-idUserPlaying
-◊◊9 F
-,
-◊◊F G
-PLAYING_STATUS
-◊◊H V
-)
-◊◊V W
-;
-◊◊W X
-}
-ÿÿ 
-}
-ŸŸ 
+ÃÃ 
 catch
-⁄⁄ 
+ÕÕ 
 (
-⁄⁄ 1
-#CommunicationObjectFaultedException
-⁄⁄ 6
+ÕÕ $
+CommunicationException
+ÕÕ )
 ex
-⁄⁄7 9
+ÕÕ* ,
 )
-⁄⁄9 :
+ÕÕ, -
 {
-€€ "
+ŒŒ "
 ChannelAdministrator
-‹‹ $
+œœ $
 .
-‹‹$ %&
+œœ$ %&
 HandleCommunicationIssue
-‹‹% =
+œœ% =
 (
-‹‹= >
-idUserPlaying
-‹‹> K
+œœ= >!
+idUserDisconnecting
+œœ> Q
 ,
-‹‹K L"
+œœQ R"
 ChannelAdministrator
-‹‹M a
+œœS g
 .
-‹‹a b$
+œœg h$
 AVAILABILITY_EXCEPTION
-‹‹b x
+œœh ~
 )
-‹‹x y
-;
-‹‹y z
+œœ~ 
+;œœ Ä
 ExceptionHandler
-››  
+––  
 .
-››  !
+––  !
 LogException
-››! -
+––! -
 (
-››- .
+––- .
 ex
-››. 0
+––. 0
 ,
-››0 1!
+––0 1!
 ExceptionDictionary
-››2 E
+––2 E
 .
-››E F
+––E F
 FATAL_EXCEPTION
-››F U
+––F U
 )
-››U V
+––U V
 ;
-››V W
+––V W
 }
-ﬁﬁ 
+—— 
 catch
-ﬂﬂ 
+““ 
 (
-ﬂﬂ 
-TimeoutException
-ﬂﬂ #
+““ '
+InvalidOperationException
+““ ,
 ex
-ﬂﬂ$ &
+““- /
 )
-ﬂﬂ& '
+““/ 0
 {
-‡‡ "
+”” "
 ChannelAdministrator
-·· $
+‘‘ $
 .
-··$ %&
+‘‘$ %&
 HandleCommunicationIssue
-··% =
+‘‘% =
 (
-··= >
-idUserPlaying
-··> K
+‘‘= >!
+idUserDisconnecting
+‘‘> Q
 ,
-··K L"
+‘‘Q R"
 ChannelAdministrator
-··M a
+‘‘S g
 .
-··a b&
-FRIEND_MANAGER_EXCEPTION
-··b z
+‘‘g h$
+AVAILABILITY_EXCEPTION
+‘‘h ~
 )
-··z {
-;
-··{ |
+‘‘~ 
+;‘‘ Ä
 ExceptionHandler
-‚‚  
+’’  
 .
-‚‚  !
+’’  !
 LogException
-‚‚! -
+’’! -
 (
-‚‚- .
+’’- .
 ex
-‚‚. 0
+’’. 0
 ,
-‚‚0 1!
+’’0 1!
 ExceptionDictionary
-‚‚2 E
+’’2 E
 .
-‚‚E F
+’’E F
 FATAL_EXCEPTION
-‚‚F U
+’’F U
 )
-‚‚U V
+’’U V
 ;
-‚‚V W
+’’V W
+}
+÷÷ 
+}
+◊◊ 	
+public
+⁄⁄ 
+void
+⁄⁄ 
+PlayerIsPlaying
+⁄⁄ #
+(
+⁄⁄# $
+int
+⁄⁄$ '
+idUserPlaying
+⁄⁄( 5
+)
+⁄⁄5 6
+{
+€€ 	
+try
+‹‹ 
+{
+›› 
+if
+ﬁﬁ 
+(
+ﬁﬁ 
+idUserPlaying
+ﬁﬁ !
+!=
+ﬁﬁ" $
+NULL_INT_VALUE
+ﬁﬁ% 3
+)
+ﬁﬁ3 4
+{
+ﬂﬂ 2
+$NotifyUserAvailabilityImplementation
+‡‡ 8$
+notifyUserAvailability
+‡‡9 O
+=
+‡‡P Q
+new
+‡‡R U
+(
+‡‡U V
+)
+‡‡V W
+;
+‡‡W X$
+notifyUserAvailability
+·· *
+.
+··* +
+NotifyFriends
+··+ 8
+(
+··8 9
+idUserPlaying
+··9 F
+,
+··F G
+PLAYING_STATUS
+··H V
+)
+··V W
+;
+··W X
+}
+‚‚ 
 }
 „„ 
 catch
 ‰‰ 
 (
-‰‰ $
-CommunicationException
-‰‰ )
+‰‰ 1
+#CommunicationObjectFaultedException
+‰‰ 6
 ex
-‰‰* ,
+‰‰7 9
 )
-‰‰, -
+‰‰9 :
 {
 ÂÂ "
 ChannelAdministrator
@@ -42448,13 +41951,13 @@ $NotifyUserAvailabilityImplementation
 catch
 ÈÈ 
 (
-ÈÈ '
-InvalidOperationException
-ÈÈ ,
+ÈÈ 
+TimeoutException
+ÈÈ #
 ex
-ÈÈ- /
+ÈÈ$ &
 )
-ÈÈ/ 0
+ÈÈ& '
 {
 ÍÍ "
 ChannelAdministrator
@@ -42472,13 +41975,13 @@ $NotifyUserAvailabilityImplementation
 ChannelAdministrator
 ÎÎM a
 .
-ÎÎa b$
-AVAILABILITY_EXCEPTION
-ÎÎb x
+ÎÎa b&
+FRIEND_MANAGER_EXCEPTION
+ÎÎb z
 )
-ÎÎx y
+ÎÎz {
 ;
-ÎÎy z
+ÎÎ{ |
 ExceptionHandler
 ÏÏ  
 .
@@ -42502,12 +42005,128 @@ $NotifyUserAvailabilityImplementation
 ;
 ÏÏV W
 }
-ÌÌ 
+ÌÌ 
+catch
+ÓÓ 
+(
+ÓÓ $
+CommunicationException
+ÓÓ )
+ex
+ÓÓ* ,
+)
+ÓÓ, -
+{
+ÔÔ "
+ChannelAdministrator
+ $
+.
+$ %&
+HandleCommunicationIssue
+% =
+(
+= >
+idUserPlaying
+> K
+,
+K L"
+ChannelAdministrator
+M a
+.
+a b$
+AVAILABILITY_EXCEPTION
+b x
+)
+x y
+;
+y z
+ExceptionHandler
+ÒÒ  
+.
+ÒÒ  !
+LogException
+ÒÒ! -
+(
+ÒÒ- .
+ex
+ÒÒ. 0
+,
+ÒÒ0 1!
+ExceptionDictionary
+ÒÒ2 E
+.
+ÒÒE F
+FATAL_EXCEPTION
+ÒÒF U
+)
+ÒÒU V
+;
+ÒÒV W
 }
-ÓÓ 	
+ÚÚ 
+catch
+ÛÛ 
+(
+ÛÛ '
+InvalidOperationException
+ÛÛ ,
+ex
+ÛÛ- /
+)
+ÛÛ/ 0
+{
+ÙÙ "
+ChannelAdministrator
+ıı $
+.
+ıı$ %&
+HandleCommunicationIssue
+ıı% =
+(
+ıı= >
+idUserPlaying
+ıı> K
+,
+ııK L"
+ChannelAdministrator
+ııM a
+.
+ııa b$
+AVAILABILITY_EXCEPTION
+ııb x
+)
+ııx y
+;
+ııy z
+ExceptionHandler
+ˆˆ  
+.
+ˆˆ  !
+LogException
+ˆˆ! -
+(
+ˆˆ- .
+ex
+ˆˆ. 0
+,
+ˆˆ0 1!
+ExceptionDictionary
+ˆˆ2 E
+.
+ˆˆE F
+FATAL_EXCEPTION
+ˆˆF U
+)
+ˆˆU V
+;
+ˆˆV W
 }
-ÒÒ 
-}ÛÛ Á∞
+˜˜ 
+}
+¯¯ 	
+}
+˚˚ 
+}˝˝ ≈Ø
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\Helpers\QuestionsManagerImplementation.cs
 	namespace 	
 JeopardyGame
@@ -43209,7 +42828,7 @@ ValueWorth
 áá' 3
 .
 áá3 4
-Where
+First
 áá4 9
 (
 áá9 :
@@ -43229,16 +42848,8 @@ ValueWorth
 ááe u
 )
 ááu v
-.
-ááv w
-First
-ááw |
-(
-áá| }
-)
-áá} ~
 ;
-áá~ %
+ááv w%
 QuestionCardInformation
 àà #!
 specialQuestionCard
@@ -43620,18 +43231,16 @@ answerPool
 ££Y Z
 answersOfQuestion
 ££Z k
-.
-££k l
-First
-££l q
-(
-££q r
+[
+££k l
+$num
+££l m
+]
+££m n
 )
-££r s
-)
-££s t
+££n o
 ;
-££t u
+££o p
 answersOfQuestion
 §§ !
 .
@@ -43642,18 +43251,16 @@ answerPool
 §§( )
 answersOfQuestion
 §§) :
-.
-§§: ;
-First
-§§; @
-(
-§§@ A
+[
+§§: ;
+$num
+§§; <
+]
+§§< =
 )
-§§A B
-)
-§§B C
+§§= >
 ;
-§§C D
+§§> ?
 questionCard
 •• 
 .
@@ -43672,18 +43279,16 @@ answerPool
 ••Y Z
 answersOfQuestion
 ••Z k
-.
-••k l
-First
-••l q
-(
-••q r
+[
+••k l
+$num
+••l m
+]
+••m n
 )
-••r s
-)
-••s t
+••n o
 ;
-••t u
+••o p
 answersOfQuestion
 ¶¶ !
 .
@@ -43694,18 +43299,16 @@ answerPool
 ¶¶( )
 answersOfQuestion
 ¶¶) :
-.
-¶¶: ;
-First
-¶¶; @
-(
-¶¶@ A
+[
+¶¶: ;
+$num
+¶¶; <
+]
+¶¶< =
 )
-¶¶A B
-)
-¶¶B C
+¶¶= >
 ;
-¶¶C D
+¶¶> ?
 questionCard
 ßß 
 .
@@ -43724,18 +43327,16 @@ answerPool
 ßß[ \
 answersOfQuestion
 ßß\ m
-.
-ßßm n
-First
-ßßn s
-(
-ßßs t
+[
+ßßm n
+$num
+ßßn o
+]
+ßßo p
 )
-ßßt u
-)
-ßßu v
+ßßp q
 ;
-ßßv w
+ßßq r
 }
 ®® 
 return
@@ -44089,7 +43690,7 @@ gamePlayer
 ◊◊ 	
 }
 ŸŸ 
-}⁄⁄ ò[
+}⁄⁄ ∂[
 úC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\RecoverPasswordImplementation.cs
 	namespace 	
 JeopardyGame
@@ -44108,16 +43709,17 @@ gamePlayer
 IRecoverPassword9 I
 { 
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-objectLock (
-=) *
-new+ .
-object/ 5
-(5 6
-)6 7
-;7 8
+objectLock' 1
+=2 3
+new4 7
+object8 >
+(> ?
+)? @
+;@ A
 public 
 int '
 CreateCodeToRecoverPassWord .
@@ -44129,9 +43731,9 @@ objectLock (
 
 emailTitleG Q
 ,Q R
-stringS Y
-emailZ _
-)_ `
+stringS Y
+	emailBodyZ c
+)c d
 { 	
 int 
 resultToReturn 
@@ -44237,13 +43839,13 @@ emailTitle	""v Ä
 $str
 ""â å
 +
-""ç é
-email
-""è î
+""ç é
+	emailBody
+""è ò
 )
-""î ï
+""ò ô
 ;
-""ï ñ
+""ô ö
 if##  "
 (### $
 succes##$ *
@@ -44757,7 +44359,7 @@ emailTitle	""v Ä
 ää 	
 }
 åå 
-}èè ûß
+}èè úß
 ñC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\ServicesReferenceAuthor.cs
 	namespace 	
 JeopardyGame
@@ -47818,21 +47420,21 @@ ResendCode
 ILobbyActionsOperation
 ÛÛ3 I
 {
-ÙÙ 2
-$ILobbyActionsOperationImplementation
-ıı ,1
+ÙÙ 1
+#LobbyActionsOperationImplementation
+ıı +1
 #lobbyActionsOperationImplementation
-ıı- P
+ıı, O
 =
-ııQ R
+ııP Q
 new
-ııS V
+ııR U
 (
-ııV W
+ııU V
 )
-ııW X
+ııV W
 ;
-ııX Y
+ııW X
 public
 ˜˜ 
 void
@@ -48326,21 +47928,21 @@ LeaveLobby
 IGameActionsOperations
 ••3 I
 {
-¶¶ 2
-$IGameActionsOperationsImplementation
-ßß ,1
+¶¶ 1
+#GameActionsOperationsImplementation
+ßß +1
 #gameActionsOperationsImplementation
-ßß- P
+ßß, O
 =
-ßßQ R
+ßßP Q
 new
-ßßS V
+ßßR U
 (
-ßßV W
+ßßU V
 )
-ßßW X
+ßßV W
 ;
-ßßX Y
+ßßW X
 public
 ©© 
 void
@@ -49092,7 +48694,7 @@ IHeartBeat
 ÏÏ 	
 }
 ÌÌ 
-}ÓÓ …Ö
+}ÓÓ ÛÖ
 ¢C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\UserCreateAccountCodeImplementation.cs
 	namespace 	
 JeopardyGame
@@ -49116,15 +48718,17 @@ IHeartBeat
 $num+ ,
 ;, -
 private 
-Object 
+static 
+readonly 
+Object  &
 
-lockObject !
-=" #
-new$ '
-Object( .
-(. /
-)/ 0
-;0 1
+lockObject( 2
+=3 4
+new5 8
+Object9 ?
+(? @
+)@ A
+;A B
 public 
 GenericClass 
 < 
@@ -50229,7 +49833,7 @@ lockObject
 …… 	
 }
 ÀÀ 
-}ÃÃ ™Ù
+}ÃÃ ¿Ù
 òC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\UserManagerImplementation.cs
 	namespace 	
 JeopardyGame
@@ -50262,16 +49866,17 @@ lockObject
 $num0 1
 ;1 2
 private 
-static 
-Object 
+static 
+readonly 
+Object  &
 
-lockObject (
-=) *
-new+ .
-Object/ 5
-(5 6
-)6 7
-;7 8
+lockObject' 1
+=2 3
+new4 7
+Object8 >
+(> ?
+)? @
+;@ A
 public 
 GenericClass 
 < 
@@ -52555,7 +52160,7 @@ editedName
 ¶¶ 	
 }
 ßß 
-}®® “ë
+}®® ¸ë
 ¢C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\ValidateUserExistanceImplementation.cs
 	namespace 	
 JeopardyGame
@@ -52579,15 +52184,17 @@ editedName
 $num+ ,
 ;, -
 private 
-Object 
+static 
+readonly 
+Object  &
 
-lockObject !
-=" #
-new$ '
-Object( .
-(. /
-)/ 0
-;0 1
+lockObject' 1
+=2 3
+new4 7
+Object8 >
+(> ?
+)? @
+;@ A
 public 
 GenericClass 
 < 

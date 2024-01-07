@@ -13,13 +13,13 @@ namespace JeopardyGame.Service.InterfacesServices
     public interface IConsultFriends
     {
         [OperationContract]
-        GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPOJO user);
+        GenericClass<List<FriendBasicInformation>> GetUserFriends(UserPojo user);
 
         [OperationContract]
-        GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPOJO user);
+        GenericClass<List<FriendBasicInformation>> GetUserFriendRequests(UserPojo user);
 
         [OperationContract]
-        GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPOJO user);
+        GenericClass<List<FriendBasicInformation>> GetUsersNotFriends(UserPojo user);
 
     }
 
