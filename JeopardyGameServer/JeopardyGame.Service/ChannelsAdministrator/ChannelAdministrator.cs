@@ -66,29 +66,34 @@ namespace JeopardyGame.Service.ChannelsAdministrator
             return ExceptionDictionary.SUCCESFULL_EVENT;
         }
 
-        public static void HandleCommunicationIssue(int idUserCausingException, int ServiceType)
+        public static void HandleCommunicationIssue(int idUserCausingException, int serviceType)
         {
-            switch (ServiceType)
+
+            if (idUserCausingException != 0 && serviceType != 0)
             {
-                case _AVAILABILITY_EXCEPTION:
-                    HandleAvailabilityCommunicationException(idUserCausingException);
-                    break;
-                case _FRIEND_MANAGER_EXCEPTION:
-                    HandleFriendManagerCommunicationException(idUserCausingException);
-                    break;
-                case _LOBBY_EXCEPTION:
-                    HandleLobbyCommunicationException(idUserCausingException);
-                    break;
-                case _GAME_EXCEPTION:
-                    HandleGameCommunicationException(idUserCausingException);
-                    break;
-                case _TEAM_CHAT_EXCEPTION:
-                    HandleTeamChatCommunicationException(idUserCausingException);
-                    break;
-                case _GENERIC_COMMUNICATION_EXCEPTION:
-                    HandleGeneriCommunicationException(idUserCausingException);
-                    break;
+                switch (serviceType)
+                {
+                    case _AVAILABILITY_EXCEPTION:
+                        HandleAvailabilityCommunicationException(idUserCausingException);
+                        break;
+                    case _FRIEND_MANAGER_EXCEPTION:
+                        HandleFriendManagerCommunicationException(idUserCausingException);
+                        break;
+                    case _LOBBY_EXCEPTION:
+                        HandleLobbyCommunicationException(idUserCausingException);
+                        break;
+                    case _GAME_EXCEPTION:
+                        HandleGameCommunicationException(idUserCausingException);
+                        break;
+                    case _TEAM_CHAT_EXCEPTION:
+                        HandleTeamChatCommunicationException(idUserCausingException);
+                        break;
+                    case _GENERIC_COMMUNICATION_EXCEPTION:
+                        HandleGeneriCommunicationException(idUserCausingException);
+                        break;
+                }
             }
+            
         }
 
         private static void HandleFriendManagerCommunicationException(int idUserCausingException)
@@ -108,7 +113,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
             { 
                 var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
                 int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Any(pl => pl.idUser == idUserCausingException)).Key;
-                ILobbyActionsOperationImplementation lobbyActions = new();
+                LobbyActionsOperationImplementation lobbyActions = new();
                 var lobbyFailed = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                 if (lobbyFailed != null)
                 {
@@ -137,7 +142,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         {
             var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
             int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Any(pl => pl.idUser == idUserCausingException)).Key;
-            IGameActionsOperationsImplementation gameActions = new ();
+            GameActionsOperationsImplementation gameActions = new ();
             gameActions.UnSubscribeFromGameCallBack(roomCode, idUserCausingException);
             HandleLobbyCommunicationException(idUserCausingException);
         }
@@ -176,9 +181,9 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         public static void KickUserFromDictionaries(int idUserCausingException)
         {  
             NotifyUserIsNotAvailableImplementation notifyUser = new();
-            IGameActionsOperationsImplementation gameActions = new ();
+            GameActionsOperationsImplementation gameActions = new ();
             FriendManagerActionsOperationImplementation friendsManager = new();
-            ILobbyActionsOperationImplementation lobbyActions = new();
+            LobbyActionsOperationImplementation lobbyActions = new();
 
             LivingClients.RemoveClientFromDictionary(GetUserNameClient(idUserCausingException));
             notifyUser.PlayerIsNotAvailable(idUserCausingException);

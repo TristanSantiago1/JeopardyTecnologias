@@ -200,7 +200,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     friendsListToReturn.ObjectSaved = GetListOfFriendsOfUser(listOfPlayerFriends, playerConsulted);
                     break;
                 case 3:
-                    friendsListToReturn.ObjectSaved = GetListOfNotFriends(listOfNotPlayerFriends, playerConsulted);
+                    friendsListToReturn.ObjectSaved = GetListOfNotFriends(listOfNotPlayerFriends);
                     break;
             }
             if (friendsListToReturn.ObjectSaved != null)
@@ -235,7 +235,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                     else
                     {
-                        return null;
+                        basicInformationOfFriends = null;
                     }
                 }
             }
@@ -272,13 +272,13 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                     else
                     {
-                        return null;
+                        friendsOfUserInformation = null;
                     }
                 }
             }
             return friendsOfUserInformation;
         }
-        private List<FriendBasicInformation> GetListOfNotFriends(List<Player> listOfFriendsRegistry, Player playerConsulted)
+        private List<FriendBasicInformation> GetListOfNotFriends(List<Player> listOfFriendsRegistry)
         {
             ConsultInformationImplementation consultInformation = new ConsultInformationImplementation();
             List<FriendBasicInformation> ListUsersNotFriendsInformation = new List<FriendBasicInformation>();
@@ -296,11 +296,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
                 else
                 {
-                    return null;
+                    ListUsersNotFriendsInformation = null;
                 }
             }
             return ListUsersNotFriendsInformation;
         }
+
 
         private int GetFriendStatus(int idFriend)
         {
@@ -323,12 +324,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
             }                        
             var playerPojo = consultInformationOfFriends.ConsultPlayerById(idFriend);
-            if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-            {                
-                if (playerPojo.ObjectSaved.NoReports == 3)
-                {
-                    return Banned;
-                }
+            if (playerPojo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerPojo.ObjectSaved.NoReports == 3)
+            {    
+                return Banned;
             }
             return INACTIVE;
         }

@@ -117,106 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="1" xml:space="preserve">
-    <value>1</value>
+  <data name="TableAnswer" xml:space="preserve">
+    <value>Awnser</value>
   </data>
-  <data name="Blizzard" xml:space="preserve">
-    <value>Blizzard</value>
+  <data name="TableCategory" xml:space="preserve">
+    <value>Category</value>
   </data>
-  <data name="Celestial" xml:space="preserve">
-    <value>Celestial</value>
-  </data>
-  <data name="CyberNinja" xml:space="preserve">
-    <value>CyberNinja</value>
-  </data>
-  <data name="Elemental" xml:space="preserve">
-    <value>Elemental</value>
-  </data>
-  <data name="EternalRogue" xml:space="preserve">
-    <value>EternalRogue</value>
-  </data>
-  <data name="GalaxyEx" xml:space="preserve">
-    <value>GalaxyEx</value>
-  </data>
-  <data name="GuestMail" xml:space="preserve">
-    <value>guest@email</value>
-  </data>
-  <data name="GuestName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="GuestPassword" xml:space="preserve">
-    <value>123456789</value>
-  </data>
-  <data name="InfernoWar" xml:space="preserve">
-    <value>InfernoWar</value>
-  </data>
-  <data name="JeopardyEmail" xml:space="preserve">
-    <value>jeopardy.tec@Gmail.com</value>
-  </data>
-  <data name="JeopardyPassword" xml:space="preserve">
-    <value>lqen ymkw itqt rrmn</value>
-  </data>
-  <data name="Just" xml:space="preserve">
-    <value>Just</value>
-  </data>
-  <data name="JustMaster" xml:space="preserve">
-    <value>JustMaster</value>
-  </data>
-  <data name="JustNoob" xml:space="preserve">
-    <value>JustNoob</value>
-  </data>
-  <data name="LunarAssassin" xml:space="preserve">
-    <value>LunarAssassin</value>
-  </data>
-  <data name="MidnightVoy" xml:space="preserve">
-    <value>MidnightVoy</value>
-  </data>
-  <data name="MysticSeeker" xml:space="preserve">
-    <value>MysticSeeker</value>
-  </data>
-  <data name="NebulaStriker" xml:space="preserve">
-    <value>NebulaStriker</value>
-  </data>
-  <data name="NoBody" xml:space="preserve">
-    <value>NoBody</value>
-  </data>
-  <data name="NoobMaster" xml:space="preserve">
-    <value>NoobMaster</value>
-  </data>
-  <data name="NovaVortex" xml:space="preserve">
-    <value>NovaVortex</value>
-  </data>
-  <data name="Papikra" xml:space="preserve">
-    <value>Papikra</value>
-  </data>
-  <data name="PhoenixKnight" xml:space="preserve">
-    <value>PhoenixKnight</value>
-  </data>
-  <data name="Quantum" xml:space="preserve">
-    <value>Quantum</value>
-  </data>
-  <data name="QuantumGamer" xml:space="preserve">
-    <value>QuantumGamer</value>
-  </data>
-  <data name="ShadowRunner" xml:space="preserve">
-    <value>ShadowRunner</value>
-  </data>
-  <data name="smptGmail" xml:space="preserve">
-    <value>smtp.Gmail.com</value>
-  </data>
-  <data name="SolarSorcerer" xml:space="preserve">
-    <value>SolarSorcerer</value>
-  </data>
-  <data name="Starlight" xml:space="preserve">
-    <value>Starlight</value>
-  </data>
-  <data name="ThunderSpec" xml:space="preserve">
-    <value>ThunderSpec</value>
-  </data>
-  <data name="TigerWoods" xml:space="preserve">
-    <value>TigerWoods</value>
-  </data>
-  <data name="Wachiturro" xml:space="preserve">
-    <value>Wachiturro</value>
+  <data name="TableHost" xml:space="preserve">
+    <value>Host</value>
   </data>
 </root>

@@ -14,7 +14,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     public partial class LiveChatImplementation : ILiveChat
     {
         private readonly int NULL_INT_VALUE = 0;
-        private static Object objectLock = new();
+        private static readonly Object objectLock = new();
 
 
         public GenericClass<bool> CreateChatForLobby(int roomCode, int idAdmin)
@@ -81,7 +81,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public GenericClass<List<MessageChat>> GetAllMessages(int roomCode, int idUser)
         {
-            lock (this)
+            lock (objectLock)
             {
                 GenericClass<List<MessageChat>> resultToReturn = new GenericClass<List<MessageChat>>();
                 try
@@ -221,10 +221,11 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private readonly int NULL_INT_VALUE = 0;
 
+        private static readonly Object objectLock = new();
 
         public void DeleteChat(int roomCode, int idUser)
         {
-            lock (this)
+            lock (objectLock)
             {
                 HistoricalOfAllMessages messagesHistorical = ChatsDictionary.GetActiveChat(roomCode);
                 if (roomCode != NULL_INT_VALUE && messagesHistorical != null && messagesHistorical.idAdmin == idUser)
@@ -299,7 +300,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 foreach (var item in chatChannel.listOfChannelsCallBack)
                 {
                     var channel = item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>();
-                    if (item.idUser != idSender)
+                    if (item.idUser != idSender && channel != null)
                     {
                         try
                         {

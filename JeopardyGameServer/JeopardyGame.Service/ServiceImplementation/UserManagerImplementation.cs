@@ -21,7 +21,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int NOT_BANNED_STATE = 1;
-        private static Object lockObject = new Object();
+        private static readonly Object lockObject = new Object();
 
 
         public GenericClass<int> SaveUser(UserPOJO userPojoNew, string codeEntered)

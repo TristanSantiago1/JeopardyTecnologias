@@ -1,5 +1,11 @@
-x
-oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\Class1.csutf-8ä
-ÄC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\Properties\AssemblyInfo.csutf-8é
-ÑC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestUserManager.csutf-8Æ
+ä
+ÄC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\Properties\AssemblyInfo.csutf-8í
+ÜC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\Properties\BdActions.Designer.csutf-8í
+àC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestFixtureFoDbDown.csutf-8í
+àC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestFixturesForDbUp.csutf-8ù
+ìC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestFriendManagerDataOperation.csutf-8î
+äC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestGameDataOperation.csutf-8í
+àC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestLoginOperations.csutf-8õ
+ëC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestUserManagerDataOperation.csutf-8ñ
+åC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\TestService\TestWithTheDataBaseDown.csutf-8Æ
 ¢C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\TestJeopardyServidor\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.csutf-8

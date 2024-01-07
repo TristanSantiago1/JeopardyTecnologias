@@ -12,9 +12,9 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class RecoverPasswordImplementation : IRecoverPassword
     {
-        private static Object objectLock = new object();
+        private static readonly Object objectLock = new object();
 
-        public int CreateCodeToRecoverPassWord(string userName, string emailTitle, string email)
+        public int CreateCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
         {
             int resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
             lock (objectLock)
@@ -31,7 +31,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             {
                                 EmailSenderManagerImplementation emailSenderManager = new();
                                 string code = GenerateCodeForPassword();
-                                var succes = emailSenderManager.SentEmailToRecoverPassword(userConsulted.ObjectSaved, emailTitle, code + " " + email);
+                                var succes = emailSenderManager.SentEmailToRecoverPassword(userConsulted.ObjectSaved, emailTitle, code + " " + emailBody);
                                 if (succes.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                                 {
                                     PasswordChangeCodeDictionary.AddTimerRegistry(userName, code);

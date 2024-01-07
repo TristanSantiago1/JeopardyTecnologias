@@ -19,7 +19,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     internal class UserCreateAccountCodeImplementation : IUserCreateAccountCode
     {
         private const int ALLOWED_VALUES = 1;
-        private Object lockObject = new Object();
+        private static readonly Object  lockObject = new Object();
 
 
 

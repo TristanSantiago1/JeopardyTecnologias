@@ -14,7 +14,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int NULL_INT_VALUE = 0;
         private readonly int CHANNEL_ALREADY_EXIST = -1;
         private readonly int CHANNEL_SAVED = 1;
-        private static Object objectLock = new();
+        private static readonly Object objectLock = new();
 
         public GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager)
         {
@@ -109,7 +109,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int DECLINE_FRIEND_REQUEST = 0;
         private readonly int SEND_FRIEND_REQUEST = 1;
         private readonly int ACCEPT_FRIEND_REQUEST = 2;
-        private static Object objectLock = new();
+        private static readonly Object objectLock = new();
 
         public void UnregisterFriendManagerUser(int idUserFriendManager)
         {
@@ -181,14 +181,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        public void NotifyUserAboutNewPlayer(int idNewUser, string userName)
+        public void NotifyUserAboutNewPlayer(int idNewPlayer, string userName)
         {
-            if(idNewUser != 0 && !string.IsNullOrEmpty(userName))
+            if(idNewPlayer != 0 && !string.IsNullOrEmpty(userName))
             {
                 var players = FriendManagerDictionary.GetActiveFriendsList();
                 if (players != null)
                 {
-                    NotifyPlayersAboutNewPlayer(idNewUser, userName, players);
+                    NotifyPlayersAboutNewPlayer(idNewPlayer, userName, players);
                 }
             }
         }
@@ -233,7 +233,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     partial class FriendManagerActionsOperationImplementation : IFriendManagerActionOperations
     {
-        private static object lockObject = new object();
+        private static readonly Object lockObject = new Object();
 
         public void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate)
         {

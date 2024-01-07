@@ -19,7 +19,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int SUCCESFUL = 1;
         private readonly int LEADER_POSITION_IN_LOBBY = 1;
         private readonly int TEAM_LEFT_SIDE = 1;
-        private static Object lockObject = new Object();
+        private static readonly Object lockObject = new Object();
 
         public GenericClass<int> CreateNewLobby(int roomCode, int idUser)
         {
@@ -213,7 +213,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
-    public partial class ILobbyActionsOperationImplementation : ILobbyActionsOperation
+    public partial class LobbyActionsOperationImplementation : ILobbyActionsOperation
     {
 
         private readonly int NULL_INT_VALUE = 0;
@@ -221,7 +221,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int TEAM_LEFT_SIDE = 1;
         private readonly int TEAM_RIGTH_SIDE = 2;
         private readonly int MAX_PLAYERS = 4;
-        private static Object lockObject = new Object();
+        private static readonly Object lockObject = new Object();
 
         public void NotifyPlayerInLobby(int roomCode, int idUser)
         {
@@ -338,7 +338,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                         if (lobby != null)
                         {
-                            var playerLeaving = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserLeaving);
+                            var playerLeaving = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUserLeaving);
                             if (playerLeaving != null)
                             {
                                 lobby.listOfPlayerInLobby.Remove(playerLeaving);
@@ -378,7 +378,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             ChannelsCallBackInActiveChats channelsCallBack = ChatsDictionary.GetChannelCallBackChat(roomCode);
             if (channelsCallBack != null)
             {
-                var channelToDelete = channelsCallBack.listOfChannelsCallBack.FirstOrDefault(channel => channel.idUser == playerLeaving.idUser);
+                var channelToDelete = channelsCallBack.listOfChannelsCallBack.Find(channel => channel.idUser == playerLeaving.idUser);
                 if (channelToDelete != null)
                 {
                     channelsCallBack.listOfChannelsCallBack.Remove(channelToDelete);
@@ -391,15 +391,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
             if (playersLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                foreach (var item in lobby.listOfPlayerInLobby)
+                foreach (var item in lobby.listOfPlayerInLobby.Where(pla => pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>() != null && pla.idUser != idUser))
                 {
                     try
                     {
-                        var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
-                        if (channel != null && idUser != item.idUser)
-                        {
-                            channel.UpdateJoinedPlayerResponse(playersLobby);
-                        }
+                        var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();                        
+                        channel.UpdateJoinedPlayerResponse(playersLobby);                        
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {
@@ -434,7 +431,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     if (lobby != null)
                     {
-                        var Leader = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUser && pl.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                        var Leader = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUser && pl.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
                         if (Leader != null)
                         {
                             NotifyClosingLobby(lobby);
@@ -614,7 +611,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     if (lobby != null)
                     {
-                        var player = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserToChangeTeam);
+                        var player = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUserToChangeTeam);
                         if (player != null)
                         {
                             player.sideTeam = newSideTeam;
@@ -649,12 +646,12 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<List<PlayerInLobby>> playersInLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
             if (playersInLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                foreach (var item in lobby.listOfPlayerInLobby)
+                foreach (var item in lobby.listOfPlayerInLobby.Where(pla =>lobby.idAdmin != pla.idUser))
                 {
                     try
                     {
                         var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyActionsCallback>();
-                        if (channel != null && lobby.idAdmin != item.idUser)
+                        if (channel != null)
                         {
                             channel.UpdateTeamSide(playersInLobby);
                         }
@@ -692,7 +689,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     if (lobby != null)
                     {
-                        PlayerOnLobbyList playerEjected = lobby.listOfPlayerInLobby.FirstOrDefault(pl => pl.idUser == idUserToEliminate);
+                        PlayerOnLobbyList playerEjected = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUserToEliminate);
                         if (playerEjected != null)
                         {
                             lobby.listOfPlayerInLobby.Remove(playerEjected);
@@ -805,7 +802,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             else
             {
-
+                SelectQuestionsForGame(roomCode);
             }
         }
 

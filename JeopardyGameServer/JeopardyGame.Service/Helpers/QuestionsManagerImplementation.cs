@@ -132,7 +132,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                     iterator++;
                 }                               
             }
-            Question specialQuestion = questionPool.Where(question => question.CategoryIdCategory == SPECIAL_CATEGORY).First();
+            Question specialQuestion = questionPool.First(question => question.CategoryIdCategory == SPECIAL_CATEGORY);
             QuestionCardInformation specialQuestionCard = new QuestionCardInformation()
             {
                 IdQuestionCard = ID_LAST_QUESTION,
@@ -160,11 +160,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                 questionCard.RightAnswer = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.Find(
                     answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
                 answersOfQuestion.Remove(answersOfQuestion.Find(answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
-                questionCard.WrongOptionOne = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.First());
-                answersOfQuestion.Remove(answersOfQuestion.First());
-                questionCard.WrongOptionTwo = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.First());
-                answersOfQuestion.Remove(answersOfQuestion.First());
-                questionCard.WrongOptionThree = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.First());
+                questionCard.WrongOptionOne = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion[0]);
+                answersOfQuestion.Remove(answersOfQuestion[0]);
+                questionCard.WrongOptionTwo = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion[0]);
+                answersOfQuestion.Remove(answersOfQuestion[0]);
+                questionCard.WrongOptionThree = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion[0]);
             }            
             return questionCardInformation;
         }

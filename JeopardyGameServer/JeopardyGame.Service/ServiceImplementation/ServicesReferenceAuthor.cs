@@ -370,7 +370,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public partial class ServicesReferenceAuthor : ILobbyActionsOperation
     {
-        ILobbyActionsOperationImplementation lobbyActionsOperationImplementation = new();
+        LobbyActionsOperationImplementation lobbyActionsOperationImplementation = new();
 
         public void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam)
         {
@@ -420,7 +420,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     public partial class ServicesReferenceAuthor : IGameActionsOperations
     {
-        IGameActionsOperationsImplementation gameActionsOperationsImplementation = new();
+        GameActionsOperationsImplementation gameActionsOperationsImplementation = new();
 
         public void ChooseAnswer(int roomCode, int idUserSelecting, int answerSelected, int pointsWorth, int currentTurn)
         {

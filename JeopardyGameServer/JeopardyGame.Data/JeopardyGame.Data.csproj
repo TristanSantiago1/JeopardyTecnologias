@@ -134,6 +134,11 @@
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\BdTableNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BdTableNames.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Paths.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -179,6 +184,10 @@
     <Folder Include="Exceptions\Logs\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\BdTableNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BdTableNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Paths.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Paths.Designer.cs</LastGenOutput>

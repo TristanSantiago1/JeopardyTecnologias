@@ -6,51 +6,12 @@
       "tool": {
         "name": "Compilador de Microsoft (R) Visual C#",
         "version": "4.8.0.0",
-        "fileVersion": "4.8.0-1.23377.4 (692d17e9)",
+        "fileVersion": "4.8.0-7.23572.1 (7b75981c)",
         "semanticVersion": "4.8.0",
         "language": "es-MX"
       },
       "results": [
-        {
-          "ruleId": "S2699",
-          "level": "warning",
-          "message": "Add at least one assertion to this test case.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/TestJeopardyServidor/TestService/TestUserManager.cs",
-                "region": {
-                  "startLine": 23,
-                  "startColumn": 21,
-                  "endLine": 23,
-                  "endColumn": 37
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        }
-      ],
-      "rules": {
-        "S2699": {
-          "id": "S2699",
-          "shortDescription": "Tests should include assertions",
-          "fullDescription": "The rule targets test methods that lack an assertion and consist solely of an action and, optionally, a setup.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2699",
-          "properties": {
-            "category": "Blocker Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        }
-      }
+      ]
     }
   ]
 }

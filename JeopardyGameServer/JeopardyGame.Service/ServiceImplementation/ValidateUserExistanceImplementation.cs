@@ -15,7 +15,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     internal class ValidateUserExistenceImplementation : IValidateUserExistance
     {
         private const int ALLOWED_VALUES = 1;
-        private Object lockObject = new Object();
+        private static readonly Object lockObject = new Object();
 
         public GenericClass<int> UserAlreadyExist(UserPOJO newUser)
         {

@@ -21,7 +21,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly string GUEST_NAME = Properties.Resources.GuestName;
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int GUEST_STATE = 3;
-        private static Object objectLock = new object();
+        private static readonly Object objectLock = new object();
 
         public GenericClass<UserPOJO> CreateUserForGuest()
         {            
@@ -165,7 +165,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 Properties.Resources.ThunderSpec,
                 Properties.Resources.EternalRogue
             };
-            return listOfGuestUserNames.Any(name => name.Equals(userName));
+            return listOfGuestUserNames.Contains(userName);
 
         }
     }

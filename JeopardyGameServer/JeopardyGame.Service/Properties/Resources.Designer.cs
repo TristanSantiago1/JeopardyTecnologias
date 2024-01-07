@@ -160,6 +160,24 @@ namespace JeopardyGame.Service.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to jeopardy.tec@Gmail.com.
+        /// </summary>
+        public static string JeopardyEmail {
+            get {
+                return ResourceManager.GetString("JeopardyEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to lqen ymkw itqt rrmn.
+        /// </summary>
+        public static string JeopardyPassword {
+            get {
+                return ResourceManager.GetString("JeopardyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Just.
         /// </summary>
         public static string Just {
@@ -291,6 +309,15 @@ namespace JeopardyGame.Service.Properties {
         public static string ShadowRunner {
             get {
                 return ResourceManager.GetString("ShadowRunner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to smtp.Gmail.com.
+        /// </summary>
+        public static string smptGmail {
+            get {
+                return ResourceManager.GetString("smptGmail", resourceCulture);
             }
         }
         

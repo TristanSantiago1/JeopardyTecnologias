@@ -14,7 +14,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public class CheckUserLivingImplementation : ICheckUserLiving
     {
-        private static Object objectLock = new();
+        private static readonly Object objectLock = new();
 
         public int RenewLivingCallBack(UserPOJO user)
         {

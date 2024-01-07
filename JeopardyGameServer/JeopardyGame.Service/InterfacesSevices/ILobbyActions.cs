@@ -37,7 +37,7 @@ namespace JeopardyGame.Service.InterfacesServices
         void NotifyPlayerInLobby(int roomCode, int idUser);
 
         [OperationContract(IsOneWay = true)]
-        void LeaveLobby(int roomCode, int idUser);
+        void LeaveLobby(int roomCode, int idUserLeaving);
 
         [OperationContract(IsOneWay = true)]
         void ChangePlayerSide(int roomCode, int idUserToChangeTeam, int newSideTeam);

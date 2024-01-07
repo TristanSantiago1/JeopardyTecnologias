@@ -17,7 +17,7 @@ namespace JeopardyGame.Service.InterfacesSevices
         void SubscribeToGameCallBack(int roomCode, int idUserSubscribing, int idAvatar);
 
         [OperationContract]
-        int RenewGameCallBack(int roomCode, int idIUser);
+        int RenewGameCallBack(int roomCode, int idUser);
     }
 
     [ServiceContract]

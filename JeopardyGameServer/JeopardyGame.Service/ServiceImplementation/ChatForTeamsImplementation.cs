@@ -13,7 +13,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
 
         private readonly int NULL_INT_VALUE = 0;
-        private static Object objectLock = new();
+        private static readonly Object objectLock = new();
 
         public void RegisterForTeamChat(int idUser)
         {

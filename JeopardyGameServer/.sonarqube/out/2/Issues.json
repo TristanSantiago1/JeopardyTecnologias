@@ -6,7 +6,7 @@
       "tool": {
         "name": "Compilador de Microsoft (R) Visual C#",
         "version": "4.8.0.0",
-        "fileVersion": "4.8.0-1.23377.4 (692d17e9)",
+        "fileVersion": "4.8.0-7.23572.1 (7b75981c)",
         "semanticVersion": "4.8.0",
         "language": "es-MX"
       },
@@ -20,9 +20,9 @@
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Host/Connetion/OpenConnetion.cs",
                 "region": {
-                  "startLine": 8,
+                  "startLine": 15,
                   "startColumn": 18,
-                  "endLine": 8,
+                  "endLine": 15,
                   "endColumn": 32
                 }
               }

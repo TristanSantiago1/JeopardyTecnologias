@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.ServiceModel;
 using static JeopardyGame.Service.DataDictionaries.ActiveGamesDictionary;
 
@@ -14,7 +15,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 {
     public partial class GameActionsImplementation : IGameActions
     {
-        private static object lockObject = new object();
+        private static readonly object lockObject = new object();
 
         public int RenewGameCallBack(int roomCode, int idUser)
         {
@@ -58,7 +59,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             lock (lockObject)
             {
                 var lobbyOfGame = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                var playerOnLobbySubscribing = lobbyOfGame.listOfPlayerInLobby.FirstOrDefault(u => u.idUser == idUserSubscribing);
+                var playerOnLobbySubscribing = lobbyOfGame.listOfPlayerInLobby.Find(u => u.idUser == idUserSubscribing);
                 try { 
                     if (playerOnLobbySubscribing != null)
                     {
@@ -91,7 +92,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             activeCurrentGame.Add(playerJoiningGame);
                         }                   
                         var activeGameStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                        if (activeGameStatus.Count == 4 && activeGameStatus.Any(pl => pl.SideTeam == 2))
+                        if (activeGameStatus.Count == 4 && activeGameStatus.Exists(pl => pl.SideTeam == 2))
                         {
                             ActiveGamesDictionary.RearrangeTurnsForTeams(roomCode);
                         }
@@ -127,7 +128,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void NotifyEveryBodyIsReady(List<PlayerPlayingInGame> playersPlaying)
         {
-            List<PlayerInGameDataContract> playersInGame = IGameActionsOperationsImplementation.GetPlayerInGameDataContractList(playersPlaying);
+            List<PlayerInGameDataContract> playersInGame = GameActionsOperationsImplementation.GetPlayerInGameDataContractList(playersPlaying);
             foreach (var player in playersPlaying)
             {
                 try
@@ -159,7 +160,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
     }
 
-    public partial class IGameActionsOperationsImplementation : IGameActionsOperations
+    public partial class GameActionsOperationsImplementation : IGameActionsOperations
     {
         private const int ERROR = 0;
         private const int NULL_INT_VALUE = 0;
@@ -167,7 +168,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ROUND_TWO = 2;
         private const int ROUND_THREE = 3;
         private const int FIRST_TURN = 1;
-        private static Object objectLock = new();
+        private static readonly Object objectLock = new();
 
         public void UnSubscribeFromGameCallBack(int roomCode, int idUserUnsubscribing)
         {
@@ -178,37 +179,37 @@ namespace JeopardyGame.Service.ServiceImplementation
                     var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                     if (activeGame != null)
                     {
-                        var playerLeaving = activeGame.Where(player => player.IdUser == idUserUnsubscribing).FirstOrDefault();
-                        if (playerLeaving != null)
+                        try
                         {
-                            try
-                            {
-                                int turnLeaving = activeGame.FirstOrDefault(player => player.IdUser == idUserUnsubscribing).TurnOfPlayer;
+                            var playerLeaving = activeGame.Find(player => player.IdUser == idUserUnsubscribing);
+                            if(playerLeaving != null)
+                            { 
                                 activeGame.Remove(playerLeaving);
-                                ReArrangeTurns(activeGame, turnLeaving);
+                                ReArrangeTurns(activeGame, playerLeaving.TurnOfPlayer);
                                 NotifySomePlayerLeaveTheGame(activeGame);
                             }
-                            catch (CommunicationObjectFaultedException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
-                            catch (TimeoutException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
-                            catch (CommunicationException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
-                            catch (InvalidOperationException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
                         }
+                        catch (CommunicationObjectFaultedException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(idUserUnsubscribing, ChannelAdministrator.GAME_EXCEPTION);
+                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                        }
+                        
                     }
                 }
             }
@@ -436,7 +437,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     case ROUND_ONE:
                         var activeGame = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                        AssignTurnsByPoints(playerInGame, activeGame);
                         newRound = ROUND_TWO;
                         break;
                     case ROUND_TWO:
@@ -500,25 +500,6 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         }
 
-        private void AssignTurnsByPoints(List<PlayerInGameDataContract> playerInGame, List<PlayerPlayingInGame> playersPlaying)
-        {
-            var sortedPlayers = playerInGame.OrderBy(player => player.CurrentPointsOfRound).ToList();
-            int turn = FIRST_TURN;
-            foreach (var player in sortedPlayers)
-            {
-                var playerChangingTurn = playersPlaying.FirstOrDefault(p => p.IdUser == player.IdUser);
-                if (playerChangingTurn != null)
-                {
-                    playerChangingTurn.TurnOfPlayer = turn;
-                    turn++;
-                }
-                else
-                {
-                    ChannelAdministrator.HandleCommunicationIssue(player.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                }
-            }
-        }
-
 
         public void ConfirmBet(int roomCode, int idUser)
         {
@@ -529,34 +510,15 @@ namespace JeopardyGame.Service.ServiceImplementation
                     List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                     if (playersPlaying != null)
                     {
-                        playersPlaying.FirstOrDefault(pla => pla.IdUser == idUser).DidBet = true;
-                        try
+                        var playerBetting = playersPlaying.Find(pla => pla.IdUser == idUser);
+                        if(playerBetting != null)
                         {
-                            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet == true).ToList().Count)
-                            {
-                                NotifyPlayersBetsAreReady(playersPlaying);
-                            }
-                        }
-                        catch (CommunicationObjectFaultedException ex)
+                            playerBetting.DidBet = true;
+                        }                        
+                        if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidBet).ToList().Count)
                         {
-                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (TimeoutException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                        catch (InvalidOperationException ex)
-                        {
-                            ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GAME_EXCEPTION);
-                            ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
+                            NotifyPlayersBetsAreReady(playersPlaying);
+                        }                       
                     }
                 }
             }
@@ -606,49 +568,11 @@ namespace JeopardyGame.Service.ServiceImplementation
                     List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                     if (playersPlaying != null)
                     {
-                        PlayerPlayingInGame specificPlayer = playersPlaying.FirstOrDefault(pla => pla.IdUser == playerAnswering.IdUser);
+                        PlayerPlayingInGame specificPlayer = playersPlaying.Find(pla => pla.IdUser == playerAnswering.IdUser);
                         if (specificPlayer != null)
                         {
-                            //si alguiens e sale durante la ultima regunta, quitarlo del diccionario y verificar playerAwnserin = null
-                            specificPlayer.DidAnswerLastQuestion = true;
-                            try
-                            {
-                                if (isCorrect)
-                                {
-                                    specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
-                                }
-                                else
-                                {
-                                    specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
-                                }
-                                if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion == true).ToList().Count)
-                                {
-                                    QuestionsManagerImplementation questionsManager = new();
-                                    int arePointsSaved = questionsManager.RegistryGamePlayers(roomCode, playersPlaying);
-                                    NotifyPlayersWinner(playersPlaying, arePointsSaved);
-                                    CleanDictionariesAfterGame(roomCode);
-                                }
-                            }
-                            catch (CommunicationObjectFaultedException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
-                            catch (TimeoutException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
-                            catch (CommunicationException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
-                            catch (InvalidOperationException ex)
-                            {
-                                ChannelAdministrator.HandleCommunicationIssue(playerAnswering.IdUser, ChannelAdministrator.GAME_EXCEPTION);
-                                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                            }
+                            UpdatePlayerLastQuestionStatus(specificPlayer, isCorrect, playerAnswering, points);
+                            CheckAndProcessEndOfRound(playersPlaying, roomCode);
                         }
                         else
                         {
@@ -657,6 +581,31 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                 }
             }            
+        }
+
+        private void UpdatePlayerLastQuestionStatus(PlayerPlayingInGame specificPlayer, bool isCorrect, PlayerInGameDataContract playerAnswering, int points)
+        {
+            specificPlayer.DidAnswerLastQuestion = true;
+            if (isCorrect)
+            {
+                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+            }
+            else
+            {
+                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+            }
+            
+        }
+
+        private void CheckAndProcessEndOfRound(List<PlayerPlayingInGame> playersPlaying, int roomCode)
+        {
+            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion).ToList().Count)
+            {
+                QuestionsManagerImplementation questionsManager = new();
+                int arePointsSaved = questionsManager.RegistryGamePlayers(roomCode, playersPlaying);
+                NotifyPlayersWinner(playersPlaying, arePointsSaved);
+                CleanDictionariesAfterGame(roomCode);
+            }
         }
 
         private void NotifyPlayersWinner(List<PlayerPlayingInGame> playersPlaying, int arePointsSaved)
@@ -703,10 +652,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 foreach (var item in gameToFinish)
                 {
                     ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(item.IdUser);
-                    if ((gameToFinish != null && gameToFinish.Any(pl => pl.SideTeam == 2)))
-                    {
-                        TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(item.IdUser);
-                    }
+                    TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(item.IdUser);                    
                 }
                 ActiveGamesDictionary.RemoveRegistryOfGameFromDictionary(roomCode);
             }

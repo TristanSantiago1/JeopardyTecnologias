@@ -19,7 +19,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int ROOMCODE_DOES_NOT_EXIST = 0;
         private readonly int SUCCESFUL = 1;
         private readonly int MAX_PLAYERS = 4;
-        private static Object lockObject = new Object();
+        private static readonly Object lockObject = new Object();
 
 
         public GenericClass<int> VerifyRoomCodeExist(int roomCode, int idUser)

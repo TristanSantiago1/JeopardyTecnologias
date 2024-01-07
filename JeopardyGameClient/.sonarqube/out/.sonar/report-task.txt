@@ -1,6 +1,0 @@
-projectKey=Jeopardy-Cliente-V3
-serverUrl=http://localhost:9000
-serverVersion=10.3.0.82913
-dashboardUrl=http://localhost:9000/dashboard?id=Jeopardy-Cliente-V3
-ceTaskId=AYv81Et-eONkMUFjXuFY
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYv81Et-eONkMUFjXuFY
