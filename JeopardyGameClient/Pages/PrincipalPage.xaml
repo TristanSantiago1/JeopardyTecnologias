@@ -21,12 +21,17 @@
                     <ImageBrush ImageSource="/Images/purpleBtn.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="bttPlayer_Copiar" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.btnInvite}" FontStretch="Expanded" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Click="ClickGetInAsIGuest" Margin="480,608,479,54" Foreground="White" FontWeight="Bold">
+            <Button x:Name="bttGuest" FontStyle="Normal" FontSize="33" Content = "{x:Static p:Resources.btnInvite}" FontStretch="Expanded" BorderBrush="{x:Null}" Style="{StaticResource NoHoverStyle}" Click="ClickGetInAsIGuest" Margin="480,608,479,54" Foreground="White" FontWeight="Bold">
                 <Button.Background>
                     <ImageBrush ImageSource="/Images/blueBtn.png"/>
                 </Button.Background>
             </Button>
-            <Label Content="{x:Static p:Resources.lblRecoverPassword}" Foreground="#FF6F9CF7" HorizontalAlignment="Left" Margin="571,698,0,0" FontSize="15" VerticalAlignment="Top" OpacityMask="#FF3DB1E2" BorderBrush="#FF408BDE" MouseDown="ClickGoToRecoverPassword"/>
+            <Label x:Name="lblRecoverPassword" Content="{x:Static p:Resources.lblRecoverPassword}" Foreground="#FF6F9CF7" HorizontalAlignment="Left" Margin="571,698,0,0" FontSize="15" VerticalAlignment="Top" OpacityMask="#FF3DB1E2" BorderBrush="#FF408BDE" MouseDown="ClickGoToRecoverPassword"/>
+            <Button  FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" x:Name="LanguageButton" Content="{x:Static p:Resources.lblEnglish}" Click="LanguageButtonClick" HorizontalAlignment="Left" Margin="1138,27,0,0" VerticalAlignment="Top" Width="120"/>
+            <StackPanel x:Name="LanguageOptions" Orientation="Vertical" Visibility="Collapsed" HorizontalAlignment="Left" Margin="1138,57,0,0" VerticalAlignment="Top" Width="120">
+                <Button FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Content="{x:Static p:Resources.lblEnglish}" Click="SelectLanguage" Tag="en-EU"/>
+                <Button FontSize="18" Background="Transparent" Foreground="White" FontWeight="Bold" BorderBrush="Transparent" Content="{x:Static p:Resources.lblSpanish}" Click="SelectLanguage" Tag="es-MX"/>
+            </StackPanel>
         </Grid>
     </Viewbox>
 </Page>

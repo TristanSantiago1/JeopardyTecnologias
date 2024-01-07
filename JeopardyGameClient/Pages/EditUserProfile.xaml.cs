@@ -371,7 +371,7 @@ namespace JeopardyGame.Pages
                         }
                         else
                         {
-                            RefreshWindow();
+                            CloseWindow();
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow);
                         }
                         return DISALLOWED_VALUES;
@@ -421,8 +421,8 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            RefreshWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            CloseWindow();  
         }
         private bool IsValidEmail(string email)
         {
