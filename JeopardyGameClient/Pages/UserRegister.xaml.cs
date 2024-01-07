@@ -5,6 +5,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using JeopardyGame.Views;
 using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -339,6 +340,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection); 
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             return DISALLOWED_VALUES;
         }

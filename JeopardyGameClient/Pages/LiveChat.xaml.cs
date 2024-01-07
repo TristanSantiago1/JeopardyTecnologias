@@ -4,6 +4,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void PrepareWindow()
@@ -107,6 +112,10 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblTimeException);
             }
             catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
             {
                 HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
             }
@@ -175,6 +184,11 @@ namespace JeopardyGame.Pages
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
+            catch (SocketException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
+            }
         }
 
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
@@ -202,6 +216,11 @@ namespace JeopardyGame.Pages
                 messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
             }
             catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });
+            }
+            catch (SocketException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 messagesInChats.Add(new MessageChat() { IdUser = 0, MessageToSend = Properties.Resources.txbFailToSendOrReciveAMessage, UserName = Properties.Resources.txbErrorTitle });

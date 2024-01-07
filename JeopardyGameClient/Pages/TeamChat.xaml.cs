@@ -5,6 +5,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.GenericEmailIssue + " " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         private void RegisterForCallBack(ChatForTeamsClient chatForTeamProxy)
@@ -89,7 +94,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblFailRegistryToCallBack + " : " + Properties.Resources.lblWithoutConection);
             }
-
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.GenericEmailIssue + " " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
@@ -132,6 +140,11 @@ namespace JeopardyGame.Pages
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 stpChat.Children.Add(new ChatMessageCard(Properties.Resources.txbErrorTitle, Properties.Resources.txbFailToSendOrReciveAMessage));
             }
+            catch (SocketException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                stpChat.Children.Add(new ChatMessageCard(Properties.Resources.txbErrorTitle, Properties.Resources.txbFailToSendOrReciveAMessage));
+            }
         }
 
         public void ReceiveMessageTeamChat(GenericClassOfMessageChatxY0a3WX4 message)
@@ -161,6 +174,11 @@ namespace JeopardyGame.Pages
                 stpChat.Children.Add(new ChatMessageCard(Properties.Resources.txbErrorTitle, Properties.Resources.txbFailToSendOrReciveAMessage));
             }
             catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                stpChat.Children.Add(new ChatMessageCard(Properties.Resources.txbErrorTitle, Properties.Resources.txbFailToSendOrReciveAMessage));
+            }
+            catch (SocketException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 stpChat.Children.Add(new ChatMessageCard(Properties.Resources.txbErrorTitle, Properties.Resources.txbFailToSendOrReciveAMessage));

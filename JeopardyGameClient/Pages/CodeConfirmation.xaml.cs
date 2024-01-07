@@ -4,6 +4,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
 using System.Text;
@@ -87,6 +88,11 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblWithoutConection);
                 ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+            }
         }
 
         private void StartTimer()
@@ -150,6 +156,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+            }
         }  
 
         private void ClickButtonSaveUser(object sender, RoutedEventArgs e)
@@ -204,6 +214,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+            }
         }
 
         private void ClickResendCode(object sender, RoutedEventArgs e)
@@ -247,6 +261,11 @@ namespace JeopardyGame.Pages
                     HandleException(ex, Properties.Resources.lblWithoutConection);
                     ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
+                    ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+                }
             }
         }
 
@@ -280,6 +299,10 @@ namespace JeopardyGame.Pages
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
+            catch (SocketException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
         }
 
 
@@ -306,6 +329,10 @@ namespace JeopardyGame.Pages
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+            }
+            catch (SocketException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             }
@@ -371,6 +398,11 @@ namespace JeopardyGame.Pages
                 ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
             }
             catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblUserRegisteredButFailToconnect);
+                ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
+            }
+            catch (SocketException ex)
             {
                 HandleException(ex, Properties.Resources.lblUserRegisteredButFailToconnect);
                 ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());

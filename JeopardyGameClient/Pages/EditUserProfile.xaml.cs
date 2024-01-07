@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
@@ -101,6 +102,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
 
         private void SelectImage(object sender, SelectionChangedEventArgs e)
@@ -185,6 +190,10 @@ namespace JeopardyGame.Pages
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar);
             }
         }
         private void InitializeImageMappings()
@@ -278,6 +287,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex, Properties.Resources.lblWrongUpdateEmail + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
         private void ClickSaveNewName(object sender, MouseButtonEventArgs e)
         {
@@ -325,6 +338,10 @@ namespace JeopardyGame.Pages
             {
                 HandleException(ex,Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblWithoutConection);
             }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWrongUpdateAvatar + " : " + Properties.Resources.lblWithoutConection);
+            }
         }
         private int CheckEmailAddressFormat()
         {
@@ -371,7 +388,7 @@ namespace JeopardyGame.Pages
                         }
                         else
                         {
-                            RefreshWindow();
+                            CloseWindow();
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow);
                         }
                         return DISALLOWED_VALUES;
@@ -398,6 +415,10 @@ namespace JeopardyGame.Pages
             {
                 throw new CommunicationException();
             }
+            catch (SocketException ex)
+            {
+                throw new SocketException();
+            }
         }
 
         private void ClickBackToMaminMenu(object sender, MouseButtonEventArgs e)
@@ -421,8 +442,8 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            RefreshWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            CloseWindow();  
         }
         private bool IsValidEmail(string email)
         {

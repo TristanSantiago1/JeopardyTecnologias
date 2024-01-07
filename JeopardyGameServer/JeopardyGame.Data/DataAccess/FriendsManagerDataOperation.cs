@@ -320,10 +320,11 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
+                    var player = contextBD.Players.FirstOrDefault(p => p.User_IdUser == idPlayer);
 
                     if (player != null)
                     {
+
                         player.NoReports++;
                         int resultEvent = contextBD.SaveChanges();
                         resultOfOperation.ObjectSaved = resultEvent; 
