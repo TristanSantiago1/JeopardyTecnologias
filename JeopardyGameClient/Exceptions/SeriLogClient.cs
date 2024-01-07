@@ -20,7 +20,7 @@ namespace JeopardyGame.Exceptions
         public SeriLogClient()
         {
             String pathPC;
-            if (GetMachineId().Equals("6479_A753_1090_3048."))
+            if (GetMachineId().Equals(Properties.ExceptionsPaths.TrisPCId))
             {
                 pathPC = Properties.ExceptionsPaths.PathTris;
             }
@@ -47,11 +47,11 @@ namespace JeopardyGame.Exceptions
         {
             try
             {
-                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(Properties.ExceptionsPaths.SelectPC);
                 ManagementObjectCollection drives = searcher.Get();
                 foreach (ManagementBaseObject drive in drives)
                 {
-                    string serialNumber = drive["SerialNumber"]?.ToString();
+                    string serialNumber = drive[Properties.ExceptionsPaths.CharacteristicToConsider]?.ToString();
                     if (!string.IsNullOrEmpty(serialNumber))
                     {
                         return serialNumber;

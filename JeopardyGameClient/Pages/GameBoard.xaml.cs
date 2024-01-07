@@ -54,7 +54,7 @@ namespace JeopardyGame.Pages
         private DispatcherTimer timer;   
         private readonly UserSingleton userSingleton = UserSingleton.GetMainUser();
         private Window dialogMessage;
-        private static TeamChat teamChat;
+        private TeamChat teamChat;
 
 
         public GameBoard(List<QuestionCardInformation> questions, int roomCode)
@@ -135,19 +135,22 @@ namespace JeopardyGame.Pages
             CreatePlayersScoresBoards();
             if (IsLoaded)
             {
-                BeginHostPresentation();
+                BeginHostPresentationAsync();
             }
             if (itsTeamGame)
             {
-                var player = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);              
-                teamChat = new TeamChat(this, playersInGame.FirstOrDefault(pla => pla.SideTeam == player.SideTeam && pla.IdUser != userSingleton.IdUser).IdUser);
+                var player = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);
+                var playerTeam = playersInGame.Find(pla => pla.SideTeam == player.SideTeam && pla.IdUser != userSingleton.IdUser);
+                if (playerTeam != null) {
+                    teamChat = new TeamChat(this, playerTeam.IdUser);
+                }
             }
             PrepareRoundOne();
         }
 
         private void VerifyThereAreTeams()
         {
-            if (playersInGame.Any(pla => pla.SideTeam == 2))
+            if (playersInGame.Exists(pla => pla.SideTeam == 2))
             {
                 itsTeamGame = true;
                 imgChatIcon.Visibility = Visibility.Visible;
@@ -247,7 +250,7 @@ namespace JeopardyGame.Pages
             }
         }      
 
-        private async void BeginHostPresentation()
+        private async void BeginHostPresentationAsync()
         {            
             wrpBoardOfCards.Visibility = Visibility.Hidden;
             stpTurnLigth.Visibility = Visibility.Hidden;
@@ -255,8 +258,15 @@ namespace JeopardyGame.Pages
             string hostPath = GetSpecificResource.GetHosImage(1);
             imgHostImage.Source = new BitmapImage(new Uri(hostPath, UriKind.Absolute));
             string hostName = System.IO.Path.GetFileNameWithoutExtension(hostPath);
-            txbHostMessage.Text = Properties.Resources.HostRound1Presentation.Replace("*", hostName);  
-            await Task.Delay(7000);
+            txbHostMessage.Text = Properties.Resources.HostRound1Presentation.Replace("*", hostName);
+            await ShowPresentationOneAsync();
+            wrpBoardOfCards.Visibility = Visibility.Visible;
+            stpTurnLigth.Visibility = Visibility.Visible;
+            grdPresentation.Visibility = Visibility.Collapsed;                     
+        }
+
+        private async Task ShowPresentationOneAsync()
+        {
             string categoriesPresentation = Properties.Resources.HostCategoriesPresentation;
             categoriesPresentation = categoriesPresentation.Replace("1", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound1[0].EnglishCategoryDescription, categoriesOfGameRound1[0].SpanishCategoryDescription));
             categoriesPresentation = categoriesPresentation.Replace("2", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound1[1].EnglishCategoryDescription, categoriesOfGameRound1[1].SpanishCategoryDescription));
@@ -265,9 +275,6 @@ namespace JeopardyGame.Pages
             categoriesPresentation = categoriesPresentation.Replace("*", ROUND_ONE.ToString());
             txbHostMessage.Text = categoriesPresentation;
             await Task.Delay(6000);
-            wrpBoardOfCards.Visibility = Visibility.Visible;
-            stpTurnLigth.Visibility = Visibility.Visible;
-            grdPresentation.Visibility = Visibility.Collapsed;                     
         }
 
         private async void BeginHostPresentationSecondRound()
@@ -277,35 +284,35 @@ namespace JeopardyGame.Pages
             stpTurnLigth.Visibility = Visibility.Hidden;
             grdPresentation.Visibility = Visibility.Visible;           
             txbHostMessage.Text = Properties.Resources.HostRoun2Presentation;
-            await Task.Delay(3000);
+            await ShowPresentationTwoAsync();            
+            wrpBoardOfCards.Visibility = Visibility.Visible;
+            stpTurnLigth.Visibility = Visibility.Visible;
+            grdPresentation.Visibility = Visibility.Collapsed;
+        }
+
+        private async Task ShowPresentationTwoAsync()
+        {
             string categoriesPresentation = Properties.Resources.HostCategoriesPresentation;
             categoriesPresentation = categoriesPresentation.Replace("1", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound2[0].EnglishCategoryDescription, categoriesOfGameRound2[0].SpanishCategoryDescription));
             categoriesPresentation = categoriesPresentation.Replace("2", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound2[1].EnglishCategoryDescription, categoriesOfGameRound2[1].SpanishCategoryDescription));
             categoriesPresentation = categoriesPresentation.Replace("3", GetSpecificResource.GetEnglishOrSpanishDescription(categoriesOfGameRound2[2].EnglishCategoryDescription, categoriesOfGameRound2[2].SpanishCategoryDescription));
             categoriesPresentation = categoriesPresentation.Replace("\\n", Environment.NewLine);
             categoriesPresentation = categoriesPresentation.Replace("*", ROUND_TWO.ToString());
-            txbHostMessage.Text = categoriesPresentation; 
+            txbHostMessage.Text = categoriesPresentation;
             await Task.Delay(5000);
-            wrpBoardOfCards.Visibility = Visibility.Visible;
-            stpTurnLigth.Visibility = Visibility.Visible;
-            grdPresentation.Visibility = Visibility.Collapsed;
         }
 
         private async void BeginHostPresentationLastRound()
         {
-            grTimer.Visibility = Visibility.Hidden;
-            wrpBoardOfCards.Visibility = Visibility.Hidden;
-            stpTurnLigth.Visibility = Visibility.Hidden;
-            grdPresentation.Visibility = Visibility.Visible;
-            txbHostMessage.Text = Properties.Resources.HostRound3Presentation;
-            await Task.Delay(4000);
+           await ShowPresentationThreeAsync();
             grdBet.Visibility = Visibility.Visible;
             grdPresentation.Visibility = Visibility.Collapsed;
             List<Border> playersBorders = stpPlayers.Children.OfType<Border>().ToList();
             if (itsTeamGame)
             {
                 string nameOfBorder;
-                if (playersInGame.FirstOrDefault(pl => pl.IdUser == userSingleton.IdUser).SideTeam == 1)
+                var playerInGame = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);
+                if (playerInGame != null && playerInGame.SideTeam == 1)
                 {
                     nameOfBorder = team1Name;
                 }
@@ -323,12 +330,22 @@ namespace JeopardyGame.Pages
             else
             {
                 GamePlayerCard currentPointsOfPlayer = (GamePlayerCard)playersBorders.Find(pl => pl.Name.Equals("_" + userSingleton.IdUser.ToString()));
-                if (currentPointsOfPlayer.GetPoints() < 0)
+                if (currentPointsOfPlayer != null && currentPointsOfPlayer.GetPoints() < 0)
                 {
                     txbPointsToBet.Text = "0";
                     txbPointsToBet.IsEnabled = false;
                 }
             }                      
+        }
+
+        private async Task ShowPresentationThreeAsync()
+        {
+            grTimer.Visibility = Visibility.Hidden;
+            wrpBoardOfCards.Visibility = Visibility.Hidden;
+            stpTurnLigth.Visibility = Visibility.Hidden;
+            grdPresentation.Visibility = Visibility.Visible;
+            txbHostMessage.Text = Properties.Resources.HostRound3Presentation;
+            await Task.Delay(4000);
         }
 
         private void ClickConfirmBet(object sender, RoutedEventArgs e)
@@ -341,61 +358,64 @@ namespace JeopardyGame.Pages
                 if (itsTeamGame)
                 {
                     string nameOfBorder;
-                    if (playersInGame.FirstOrDefault(pl => pl.IdUser == userSingleton.IdUser).SideTeam == 1)
+                    var playerInGameSide = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);
+                    if (playerInGameSide != null && playerInGameSide.SideTeam == 1)
                     {
                         nameOfBorder = team1Name;
                     }
-                    else
+                    else 
                     {
                         nameOfBorder = team2Name;
                     }
-                    var currentPointsOfPlayer = playersBorders.FirstOrDefault(pla => pla.Name.Equals(nameOfBorder));
+                    var currentPointsOfPlayer = playersBorders.Find(pla => pla.Name.Equals(nameOfBorder));
                     if (pointsBet <= ((GameTeamCard)currentPointsOfPlayer).GetPoints() || pointsBet == 0)
                     {
-                        GameActionsOperationsClient gameActionsClientProxy = new();
-                        gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
-                        txbPointsToBet.IsEnabled = false;
-                        bttConfirmBet.IsEnabled = false;
+                        ConfirmBet();
                     }
                 }
                 else
                 {
                     var currentPointsOfPlayer = playersBorders.Find(pl => pl.Name.Equals("_" + userSingleton.IdUser.ToString()));
-                    if (pointsBet <= ((GamePlayerCard)currentPointsOfPlayer).GetPoints() || pointsBet == 0)
+                    if (currentPointsOfPlayer!= null && pointsBet <= ((GamePlayerCard)currentPointsOfPlayer).GetPoints() || pointsBet == 0)
                     {
-                        try
-                        {
-                            GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                            gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-
-                            GameActionsOperationsClient gameActionsClientProxy = new();
-                            gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
-                            txbPointsToBet.IsEnabled = false;
-                            bttConfirmBet.IsEnabled = false;
-                        }
-                        catch (EndpointNotFoundException ex)
-                        {
-                            HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblEndPointNotFound);
-                        }
-                        catch (CommunicationObjectFaultedException ex)
-                        {
-                            HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblComunicationException);
-                        }
-                        catch (TimeoutException ex)
-                        {
-                            HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblTimeException);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblWithoutConection);
-                        }
-                        catch (SocketException ex)
-                        {
-                            HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
-                        }
+                        ConfirmBet();
                     }
                 }
             }                  
+        }
+
+        private void ConfirmBet()
+        {
+            try
+            {
+                GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
+
+                GameActionsOperationsClient gameActionsClientProxy = new();
+                gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
+                txbPointsToBet.IsEnabled = false;
+                bttConfirmBet.IsEnabled = false;
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToMakeBet + " : " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
+            }
         }
 
         private void EntryBetPoints(object sender, TextCompositionEventArgs e)
@@ -414,19 +434,11 @@ namespace JeopardyGame.Pages
             grTimer.Visibility = Visibility.Visible;
             txbQuestion.Text =  GetSpecificResource.GetEnglishOrSpanishDescription(questionBeingAsked.EnglishQuestionDescription, questionBeingAsked.SpanishQuestionDescription);
             answersOfQuestionBeingAsked = new List<AnswerPojo>() { finalQuestion.RightAnswer, finalQuestion.WrongOptionOne, finalQuestion.WrongOptionTwo, finalQuestion.WrongOptionThree }.OrderBy(order => Guid.NewGuid()).ToList();
-            answerToCurrentQuestion = answersOfQuestionBeingAsked.Where(answer => answer.IdAnswer == finalQuestion.SpecificQuestionDetails.IdAnswerOfQuestion).FirstOrDefault();
+            answerToCurrentQuestion = answersOfQuestionBeingAsked.Find(answer => answer.IdAnswer == finalQuestion.SpecificQuestionDetails.IdAnswerOfQuestion);
             bttFirstAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[0].EnglishAnswerDescription, answersOfQuestionBeingAsked[0].SpanishAnswerDescription);
             bttSecondAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[1].EnglishAnswerDescription, answersOfQuestionBeingAsked[1].SpanishAnswerDescription);
             bttThridAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[2].EnglishAnswerDescription, answersOfQuestionBeingAsked[2].SpanishAnswerDescription);
             bttFourAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answersOfQuestionBeingAsked[3].EnglishAnswerDescription, answersOfQuestionBeingAsked[3].SpanishAnswerDescription);
-            CurrentQuestionToShowContract currentQuestionToShow = new CurrentQuestionToShowContract()
-            {
-                IdQuestion = questionBeingAsked.IdQuestion,
-                IdFirstAnswer = answersOfQuestionBeingAsked[0].IdAnswer,
-                IdSecondAnswer = answersOfQuestionBeingAsked[1].IdAnswer,
-                IdThirdAnswer = answersOfQuestionBeingAsked[2].IdAnswer,
-                IdFourthAnswer = answersOfQuestionBeingAsked[3].IdAnswer,
-            };
             StartTimer();
         } 
 
@@ -477,22 +489,25 @@ namespace JeopardyGame.Pages
         public void ResponseSomeOneSelectAQuestion(CurrentQuestionToShowContract questionToShow, int currentRound, int idUser)
         {
             this.currentRound = currentRound;
-            QuestionCardInformation questionCard = currentQuestions.FirstOrDefault(quest => quest.SpecificQuestionDetails.IdQuestion == questionToShow.IdQuestion);
-            questionBeingAsked = questionCard.SpecificQuestionDetails;
+            QuestionCardInformation questionCard = currentQuestions.Find(quest => quest.SpecificQuestionDetails.IdQuestion == questionToShow.IdQuestion);
+            if (questionCard != null)
+            {
+                questionBeingAsked = questionCard.SpecificQuestionDetails;
+            }
             grdAnswerChoices.Visibility = Visibility.Visible;
             grTimer.Visibility = Visibility.Visible;
             txbQuestion.Text = GetSpecificResource.GetEnglishOrSpanishDescription(questionCard.SpecificQuestionDetails.EnglishQuestionDescription, questionCard.SpecificQuestionDetails.SpanishQuestionDescription);
             List<AnswerPojo> answersForThisQuestion = new List<AnswerPojo>() { questionCard.RightAnswer, questionCard.WrongOptionOne, questionCard.WrongOptionTwo, questionCard.WrongOptionThree };
             answersOfQuestionBeingAsked = answersForThisQuestion.ToList();
-            answerToCurrentQuestion = answersForThisQuestion.FirstOrDefault(ans => ans.IdAnswer == questionBeingAsked.IdAnswerOfQuestion);
+            answerToCurrentQuestion = answersForThisQuestion.Find(ans => ans.IdAnswer == questionBeingAsked.IdAnswerOfQuestion);
             var answerbtt1 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFirstAnswer);
             bttFirstAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt1.EnglishAnswerDescription, answerbtt1.SpanishAnswerDescription);
             var answerbtt2 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdSecondAnswer);
-            bttSecondAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt2.EnglishAnswerDescription, answerbtt2.SpanishAnswerDescription); ;
+            bttSecondAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt2.EnglishAnswerDescription, answerbtt2.SpanishAnswerDescription); 
             var answerbtt3 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdThirdAnswer);
-            bttThridAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt3.EnglishAnswerDescription, answerbtt3.SpanishAnswerDescription); ;
+            bttThridAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt3.EnglishAnswerDescription, answerbtt3.SpanishAnswerDescription); 
             var answerbtt4 = answersForThisQuestion.Find(answer => answer.IdAnswer == questionToShow.IdFourthAnswer);
-            bttFourAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt4.EnglishAnswerDescription, answerbtt4.SpanishAnswerDescription); ;
+            bttFourAnswer.Content = GetSpecificResource.GetEnglishOrSpanishDescription(answerbtt4.EnglishAnswerDescription, answerbtt4.SpanishAnswerDescription); 
             StartTimer();
         }
 
@@ -503,36 +518,15 @@ namespace JeopardyGame.Pages
                 var answerCardChoose = (Button)sender;
                 try
                 {
-
                     GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
                     gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-
                     if (currentRound != ROUND_THREE)
                     {
-                        GameActionsOperationsClient gameActionsClientProxy = new();
-                        int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content)).IdAnswer;
-                        gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);
+                        ConfirmAnswer(answerCardChoose);
                     }
                     else
                     {
-                        bool isCorrect;
-                        if (GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription).Equals(answerCardChoose.Content))
-                        {
-                            isCorrect = true;
-                        }
-                        else
-                        {
-                            isCorrect = false;
-                        }
-                        GameActionsOperationsClient gameActionsClientProxy = new();
-                        answerCardChoose.BorderBrush = new SolidColorBrush(Colors.Blue);
-                        bttFirstAnswer.IsEnabled = false;
-                        bttSecondAnswer.IsEnabled = false;
-                        bttThridAnswer.IsEnabled = false;
-                        bttFourAnswer.IsEnabled = false;
-                        txbAdvicement.Visibility = Visibility.Visible;
-                        int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content)).IdAnswer;
-                        gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
+                        ConfirmLastQuestionAnswer(answerCardChoose);
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -558,6 +552,85 @@ namespace JeopardyGame.Pages
             }            
         }
 
+        private void ConfirmAnswer(Button answerCardChoose)
+        {           
+            GameActionsOperationsClient gameActionsClientProxy = new();
+            var answerSelected = answersOfQuestionBeingAsked.Find(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content));
+            if(answerSelected != null)
+            {
+                try
+                {
+                    gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, answerSelected.IdAnswer, questionBeingAsked.ValueWorth, yourTurn);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblEndPointNotFound);
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblComunicationException);
+                }
+                catch (TimeoutException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblTimeException);
+                }
+                catch (CommunicationException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblWithoutConection);
+                }
+                catch (SocketException ex)
+                {
+                    HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
+                }
+            }
+            
+        }
+
+        private void ConfirmLastQuestionAnswer(Button answerCardChoose)
+        {
+            bool isCorrect;
+            if (GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription).Equals(answerCardChoose.Content))
+            {
+                isCorrect = true;
+            }
+            else
+            {
+                isCorrect = false;
+            }
+            GameActionsOperationsClient gameActionsClientProxy = new();
+            answerCardChoose.BorderBrush = new SolidColorBrush(Colors.Blue);
+            bttFirstAnswer.IsEnabled = false;
+            bttSecondAnswer.IsEnabled = false;
+            bttThridAnswer.IsEnabled = false;
+            bttFourAnswer.IsEnabled = false;
+            txbAdvicement.Visibility = Visibility.Visible;
+            try
+            {
+                gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToChooseAnswer + " : " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
+            }
+            
+        }
+
         public void ResponseSomeOneChooseAnAnswer(int idAnswerSelected, int idUserAnswering, int pointsWorth)
         {
             timer.Stop();
@@ -573,12 +646,14 @@ namespace JeopardyGame.Pages
                 isCorrect = false;
             }
             ShowResultOfAnswer(isCorrect, idAnswerSelected, pointsWorth.ToString());
-            SumOrRestPoints(isCorrect, pointsWorth, idUserAnswering);
+            SumOrRestPoints(isCorrect, pointsWorth, idUserAnswering);            
             HideQuestion();
             AssureThereAreQuestions();
+            cnvResultOfAwnser.Visibility = Visibility.Hidden;
+            grTimer.Visibility = Visibility.Hidden;
         }
 
-        private async void ShowResultOfAnswer(bool isCorrect, int idAnswerSelected, string points)
+        private async Task ShowResultOfAnswer(bool isCorrect, int idAnswerSelected, string points)
         {
             grdAnswerChoices.Visibility = Visibility.Hidden;
             cnvResultOfAwnser.Visibility = Visibility.Visible;
@@ -598,7 +673,7 @@ namespace JeopardyGame.Pages
             await Task.Delay(2000);
         }
 
-        private async void SumOrRestPoints(bool isCorrect, int points, int idUser)
+        private void SumOrRestPoints(bool isCorrect, int points, int idUser)
         {
             var playerChoosing = playersInGame.Find(player => player.IdUser == idUser);
             GameTeamCard specificTeam = null;
@@ -619,9 +694,8 @@ namespace JeopardyGame.Pages
             {
                 playerChoosing.CurrentPointsOfRound += points;
                 if (itsTeamGame)
-                {                   
-                    int sum = specificTeam.GetPoints();
-                    specificTeam.UpdatePoints(sum += points);
+                {                     
+                    specificTeam.UpdatePoints(points += specificTeam.GetPoints());
                     playersInGame.Where(pl => pl.SideTeam == playerChoosing.SideTeam).ToList().ForEach(pl => pl.CurrentPointsOfRound = specificTeam.GetPoints());
                 }
             }
@@ -630,54 +704,42 @@ namespace JeopardyGame.Pages
                 playerChoosing.CurrentPointsOfRound -= points;
                 if (itsTeamGame)
                 {
-                    int sum = specificTeam.GetPoints();
-                    specificTeam.UpdatePoints(sum -= points);
+                    specificTeam.UpdatePoints(points -= specificTeam.GetPoints());
                     playersInGame.Where(pl => pl.SideTeam == playerChoosing.SideTeam).ToList().ForEach(pl => pl.CurrentPointsOfRound = specificTeam.GetPoints());
                 }
             }
             if (!itsTeamGame)
             {
                 GamePlayerCard specificPlayer = (GamePlayerCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals("_" + playerChoosing.IdUser.ToString()));
-                specificPlayer.UpdatePoints(playerChoosing.CurrentPointsOfRound);
+                if (specificPlayer != null)
+                {
+                    specificPlayer.UpdatePoints(playerChoosing.CurrentPointsOfRound);
+                }
             }
-            await Task.Delay(5000);
-            cnvResultOfAwnser.Visibility = Visibility.Hidden;
-            grTimer.Visibility = Visibility.Hidden;
         }
 
 
         private void HideQuestion()
         {
-            wrpBoardOfCards.Children.OfType<Border>().FirstOrDefault(card => card.Name.Equals("_"+questionBeingAsked.IdQuestion.ToString())).IsEnabled = false;
+            var cardToHide = wrpBoardOfCards.Children.OfType<Border>().FirstOrDefault(card => card.Name.Equals("_" + questionBeingAsked.IdQuestion.ToString()));
+            if (cardToHide != null)
+            {
+                cardToHide.IsEnabled = false;
+            }
         }
 
-        private async void AssureThereAreQuestions()
+        private void AssureThereAreQuestions()
         {
-            await Task.Delay(5000);
-            int count = 0;
             if (currentTurn == yourTurn)
             {
-                foreach (Border card in wrpBoardOfCards.Children.OfType<Border>())
-                {
-                    if (card.IsEnabled)
-                    {
-                        count++;
-                    }
-                    if (count == 4)
-                    {
-                        break;
-                    }
-                }
-                if (count <= 3)
+                if (wrpBoardOfCards.Children.OfType<Border>().Where(card => card.IsEnabled).Count() <= 3)
                 {
                     try
                     {
                         GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
                         gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-
                         GameActionsOperationsClient gameActionsClientProxy = new();
                         gameActionsClientProxy.FinishRound(roomCode, playersInGame.ToArray(), currentRound);
-
                     }
                     catch (EndpointNotFoundException ex)
                     {
@@ -699,7 +761,7 @@ namespace JeopardyGame.Pages
                     {
                         HandleException(ex, Properties.Resources.lblFailToStartGame + " : " + Properties.Resources.lblEndPointNotFound);
                     }
-                }                
+                }             
             }           
         }
 
@@ -711,51 +773,66 @@ namespace JeopardyGame.Pages
 
         private void ShowIfItsYourTurn()
         {
-            var userTurn = playersInGame.FirstOrDefault(pla => pla.TurnOfPlayer == currentTurn);            
+            var userTurn = playersInGame.Find(pla => pla.TurnOfPlayer == currentTurn);            
             List<Border> specificPlayer = stpPlayers.Children.OfType<Border>().ToList();
-            if (itsTeamGame)
+            if (itsTeamGame && userTurn != null)
             {
-                string nameOfBorder;
-                if (userTurn.SideTeam == 1)
-                {
-                    nameOfBorder = team1Name;
-                }
-                else
-                {
-                    nameOfBorder = team2Name;
-                }                
-                foreach (Border card in specificPlayer)
-                {
-                    GameTeamCard playerCard = card as GameTeamCard;
-                    if (playerCard.Name.Equals(nameOfBorder))
-                    {
-                        playerCard.MakeBorderSpecial();
-                    }
-                    else
-                    {
-                        playerCard.MakeBoredNormal();
-                    }
-                }
+                ResaltTeamPlayersBorder(specificPlayer, userTurn);
             }
             else
             {
-                foreach (Border card in specificPlayer)
+                ResaltSinglePlayerBorder(specificPlayer, userTurn);
+            }                       
+        }
+
+        private void ResaltSinglePlayerBorder(List<Border> specificPlayer, PlayerInGameDataContract userTurn)
+        {
+            foreach (Border card in specificPlayer)
+            {
+                GamePlayerCard playerCard = card as GamePlayerCard;
+                if (playerCard.Name.Equals("_" + userTurn.IdUser))
                 {
-                    GamePlayerCard playerCard = card as GamePlayerCard;
-                    if (playerCard.Name.Equals("_" + userTurn.IdUser))
-                    {
-                        playerCard.MakeBorderSpecial();
-                    }
-                    else
-                    {
-                        playerCard.MakeBoredNormal();
-                    }
+                    playerCard.MakeBorderSpecial();
                 }
-            }            
+                else
+                {
+                    playerCard.MakeBoredNormal();
+                }
+            }
+            ChangeColorOfTrunLigth();
+        }
+
+        private void ResaltTeamPlayersBorder(List<Border> specificPlayer, PlayerInGameDataContract userTurn)
+        {
+            string nameOfBorder;
+            if (userTurn.SideTeam == 1)
+            {
+                nameOfBorder = team1Name;
+            }
+            else
+            {
+                nameOfBorder = team2Name;
+            }
+            foreach (Border card in specificPlayer)
+            {
+                GameTeamCard playerCard = card as GameTeamCard;
+                if (playerCard.Name.Equals(nameOfBorder))
+                {
+                    playerCard.MakeBorderSpecial();
+                }
+                else
+                {
+                    playerCard.MakeBoredNormal();
+                }
+            }
+        }
+
+        private void ChangeColorOfTrunLigth()
+        {
             if (yourTurn == currentTurn)
-            {                
+            {
                 ellYourTurn.Fill = Brushes.Green;
-            }           
+            }
             else
             {
                 ellYourTurn.Fill = Brushes.Gray;
@@ -778,20 +855,20 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public void ResponseShowWinner(PlayerInGameDataContract[] playerInGame, int arePointsSaved)
+        public void ResponseShowWinner(PlayerInGameDataContract[] playerInGame, int pointsWereSaved)
         {
             currentRound = 4;
             playersInGame = playerInGame.ToList();
             CreatePlayersScoresBoards();
-            playerInGame.OrderByDescending(pl => pl.CurrentPointsOfRound);
+            List<PlayerInGameDataContract> playersOredered = playerInGame.OrderByDescending(pl => pl.CurrentPointsOfRound).ToList();
             grdAnswerChoices.Visibility = Visibility.Hidden;
             grTimer.Visibility = Visibility.Hidden;
             grWinnerPanel.Visibility = Visibility.Visible;
             List<Border> playersBorders = stpPlayers.Children.OfType<Border>().ToList();
-            SetPlayerInPositionSpots(playersBorders, playerInGame);  
+            SetPlayerInPositionSpots(playersBorders, playersOredered);  
             if(userSingleton.IdState != 3)
             {
-                if (arePointsSaved == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (pointsWereSaved == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbGameFinish, Properties.Resources.GameFinished, Window.GetWindow(this));
                 }
@@ -806,39 +883,44 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private  void SetPlayerInPositionSpots(List<Border> playerBorder, PlayerInGameDataContract[] playerInGame)
+        private  void SetPlayerInPositionSpots(List<Border> playerBorder, List<PlayerInGameDataContract> playerInGame)
         {            
             List<Border> pillarRectangles = new List<Border>() { brdFirstPlaceSpot, brdSecondPlaceSpot, brdtThirdPlaceSpot, brdForthPlacePlaceSpot}; 
             List<Border> borderPositions = new List<Border>() { brdFirstPlace, brdSecondPlace, brdThirdPlace, brdForthPlace};
             if (itsTeamGame)
             {
-                var borderTeam1 = playerBorder.FirstOrDefault(pla => pla.Name.Equals(team1Name));
-                var borderTeam2 = playerBorder.FirstOrDefault(pla => pla.Name.Equals(team2Name));
-                if (playerInGame.FirstOrDefault(pl => pl.SideTeam == 1).CurrentPointsOfRound >= playerInGame.FirstOrDefault(pl => pl.SideTeam == 2).CurrentPointsOfRound)
+                var borderTeam1 = playerBorder.Find(pla => pla.Name.Equals(team1Name));
+                var borderTeam2 = playerBorder.Find(pla => pla.Name.Equals(team2Name));
+                var playersTeam1 = playerInGame.Find(pl => pl.SideTeam == 1);
+                var playerTeam2 = playerInGame.Find(pl => pl.SideTeam == 2);
+                if (playersTeam1 != null && playerTeam2 != null && borderTeam1 != null && borderTeam2 != null)
                 {
-                    borderTeam1.Margin = borderPositions[0].Margin;
-                    borderTeam2.Margin = borderPositions[1].Margin;
-                    pillarRectangles[0].Background = borderTeam1.Background;
-                    pillarRectangles[1].Background = borderTeam2.Background;
+                    if (playersTeam1.CurrentPointsOfRound >= playerTeam2.CurrentPointsOfRound)
+                    {
+                        borderTeam1.Margin = borderPositions[0].Margin;
+                        borderTeam2.Margin = borderPositions[1].Margin;
+                        pillarRectangles[0].Background = borderTeam1.Background;
+                        pillarRectangles[1].Background = borderTeam2.Background;
+                    }
+                    else
+                    {
+                        borderTeam1.Margin = borderPositions[1].Margin;
+                        borderTeam2.Margin = borderPositions[0].Margin;
+                        pillarRectangles[1].Background = borderTeam1.Background;
+                        pillarRectangles[0].Background = borderTeam2.Background;
+                    }
+                    borderTeam1.Width = double.NaN;
+                    borderTeam1.Height = double.NaN;
+                    borderTeam2.Width = double.NaN;
+                    borderTeam2.Height = double.NaN;
+                    stpPlayers.Children.Clear();
+                    int indexBorder0 = grWinnerPanel.Children.IndexOf(borderPositions[0]);
+                    int indexBorder1 = grWinnerPanel.Children.IndexOf(borderPositions[1]);
+                    grWinnerPanel.Children.RemoveAt(indexBorder0);
+                    grWinnerPanel.Children.RemoveAt(indexBorder1);
+                    grWinnerPanel.Children.Insert(indexBorder0, borderTeam1);
+                    grWinnerPanel.Children.Insert(indexBorder1, borderTeam2);
                 }
-                else
-                {
-                    borderTeam1.Margin = borderPositions[1].Margin;
-                    borderTeam2.Margin = borderPositions[0].Margin;
-                    pillarRectangles[1].Background = borderTeam1.Background;
-                    pillarRectangles[0].Background = borderTeam2.Background;
-                }
-                borderTeam1.Width = double.NaN;
-                borderTeam1.Height = double.NaN;
-                borderTeam2.Width = double.NaN;
-                borderTeam2.Height = double.NaN;
-                stpPlayers.Children.Clear();
-                int indexBorder0 = grWinnerPanel.Children.IndexOf(borderPositions[0]);
-                int indexBorder1 = grWinnerPanel.Children.IndexOf(borderPositions[1]);
-                grWinnerPanel.Children.RemoveAt(indexBorder0);
-                grWinnerPanel.Children.RemoveAt(indexBorder1);
-                grWinnerPanel.Children.Insert(indexBorder0, borderTeam1);
-                grWinnerPanel.Children.Insert(indexBorder1, borderTeam2);
             }
             else
             {
@@ -847,12 +929,15 @@ namespace JeopardyGame.Pages
                     pillarRectangles[i].Visibility = Visibility.Visible;
                     int index = grWinnerPanel.Children.IndexOf(borderPositions[i]);
                     Border borderCopy;
-                    borderCopy = playerBorder.FirstOrDefault(pla => pla.Name.Equals("_" + playerInGame[i].IdUser.ToString()));
-                    stpPlayers.Children.Remove(borderCopy);
-                    borderCopy.Margin = borderPositions[i].Margin;
-                    grWinnerPanel.Children.RemoveAt(index);
-                    grWinnerPanel.Children.Insert(index, borderCopy);
-                    pillarRectangles[i].Background = borderCopy.Background;
+                    borderCopy = playerBorder.Find(pla => pla.Name.Equals("_" + playerInGame[i].IdUser.ToString()));
+                    if (borderCopy != null)
+                    {
+                        stpPlayers.Children.Remove(borderCopy);
+                        borderCopy.Margin = borderPositions[i].Margin;
+                        grWinnerPanel.Children.RemoveAt(index);
+                        grWinnerPanel.Children.Insert(index, borderCopy);
+                        pillarRectangles[i].Background = borderCopy.Background;
+                    }
                 }
             }
         }
@@ -879,12 +964,9 @@ namespace JeopardyGame.Pages
             txbTimer.Text = timeLeft.ToString() + secondsAbbreviation;
             if (timeLeft <= 0)
             {
-                if (currentRound != ROUND_THREE)
+                if (currentRound != ROUND_THREE && grdAnswerChoices.IsVisible)
                 {
-                    if (grdAnswerChoices.IsVisible)
-                    {
-                        ChooseWrongAnswer();
-                    }
+                    ChooseWrongAnswer();
                 }
             }
             else
@@ -907,8 +989,11 @@ namespace JeopardyGame.Pages
                     if (currentRound != ROUND_THREE)
                     {
                         GameActionsOperationsClient gameActionsClientProxy = new();
-                        int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content)).IdAnswer;
-                        gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, idAnswerSelected, questionBeingAsked.ValueWorth, yourTurn);
+                        var answerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content));
+                        if (answerSelected != null)
+                        {
+                            gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, answerSelected.IdAnswer, questionBeingAsked.ValueWorth, yourTurn);
+                        }
                     }
                     else
                     {
@@ -920,8 +1005,7 @@ namespace JeopardyGame.Pages
                         bttThridAnswer.IsEnabled = false;
                         bttFourAnswer.IsEnabled = false;
                         txbAdvicement.Visibility = Visibility.Visible;
-                        int idAnswerSelected = answersOfQuestionBeingAsked.FirstOrDefault(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content)).IdAnswer;
-                        gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.FirstOrDefault(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
+                        gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.Find(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
                     }
                 }
                 catch (EndpointNotFoundException ex)

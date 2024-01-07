@@ -141,38 +141,29 @@ namespace JeopardyGame.Pages
         private void ImagenInitialization()
         {
             try { 
-            int idPlayer = UserSingleton.GetMainUser().IdPlayer;
-            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
+                int idPlayer = UserSingleton.GetMainUser().IdPlayer;
+                ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
 
-            var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
-            consultInformationProxy.Close();
+                var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
+                consultInformationProxy.Close();
 
-                if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved is PlayerPojo)
                 {
-                    var playerWrapper = playerInfo.ObjectSaved;
-
-                    if (playerWrapper != null && playerWrapper is PlayerPojo)
+                    int imageId = playerInfo.ObjectSaved.IdActualAvatar;
+                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+                    if (!string.IsNullOrEmpty(imageName))
                     {
-                        var player = (PlayerPojo)playerWrapper;
+                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
 
-                        int imageId = player.IdActualAvatar;
+                        BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                            bmp.GetHbitmap(),
+                            IntPtr.Zero,
+                            Int32Rect.Empty,
+                            BitmapSizeOptions.FromEmptyOptions()
+                        );
 
-                        string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
-
-                        if (!string.IsNullOrEmpty(imageName))
-                        {
-                            Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
-
-                            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                                bmp.GetHbitmap(),
-                                IntPtr.Zero,
-                                Int32Rect.Empty,
-                                BitmapSizeOptions.FromEmptyOptions()
-                            );
-
-                            imageProfile.Source = bmpImage;
-                        }
-                    }
+                        imageProfile.Source = bmpImage;
+                    }                    
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -370,32 +361,25 @@ namespace JeopardyGame.Pages
                 ValidateUserExistanceClient dataCheckerProxy = new();
                 GenericClassOfint userIsNew = dataCheckerProxy.EmailAlreadyExist(email);
                 dataCheckerProxy.Close();
-                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
-                {
-                    if (userIsNew.ObjectSaved == ALLOWED_VALUES)
-                    {
-                        return ALLOWED_VALUES;
-                    }
-                    else
-                    {
-                        if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
-                        }
-                        else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
-                        }
-                        else
-                        {
-                            CloseWindow();
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow);
-                        }
-                        return DISALLOWED_VALUES;
-                    }
+                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT || userIsNew.ObjectSaved == ALLOWED_VALUES)
+                {                    
+                        return ALLOWED_VALUES;                   
                 }
                 else
                 {
+                    if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                    }
+                    else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                    }
+                    else
+                    {
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow);
+                        CloseWindow();
+                    }
                     return DISALLOWED_VALUES;
                 }
             }
@@ -415,7 +399,7 @@ namespace JeopardyGame.Pages
             {
                 throw new CommunicationException();
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {
                 throw new SocketException();
             }

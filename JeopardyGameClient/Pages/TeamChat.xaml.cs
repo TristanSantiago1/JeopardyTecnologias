@@ -26,7 +26,7 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class TeamChat : Page, IChatForTeamsCallback
     {
-        private static UserSingleton userSingleton;
+        private static UserSingleton userSingleton = UserSingleton.GetMainUser();
         private int idTeamMate;
         private GameBoard gameBoard;
         private Window dialogMessage;
@@ -38,7 +38,6 @@ namespace JeopardyGame.Pages
             this.idTeamMate = idTeam;
             InstanceContext context = new InstanceContext(this);
             ChatForTeamsClient chatForTeamProxy = new ChatForTeamsClient(context);
-            userSingleton = UserSingleton.GetMainUser();
             RegisterForCallBack(chatForTeamProxy);
         }   
 

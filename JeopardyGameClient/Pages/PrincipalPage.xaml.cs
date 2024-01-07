@@ -58,44 +58,20 @@ namespace JeopardyGame.Pages
 
         private void LanguageButtonClick(object sender, RoutedEventArgs e)
         {
-            if (LanguageOptions.Visibility == Visibility.Visible)
-            {
-                LanguageOptions.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                LanguageOptions.Visibility = Visibility.Visible;
-            }
+            LanguageOptions.Visibility = Visibility.Visible;
         }
-        private void UpdateInterfaceResources(string selectedLanguage)
+        private void UpdateInterfaceResources()
         {
-            switch (selectedLanguage)
-            {
-                case "es-MX":
-                    if (bttPlayer != null)
-                        bttPlayer.Content = Properties.Resources.bttPlayer;
+            if (bttPlayer != null)
+                bttPlayer.Content = Properties.Resources.bttPlayer;
 
-                    if (bttGuest != null)
-                        bttGuest.Content = Properties.Resources.btnInvite;
+            if (bttGuest != null)
+                bttGuest.Content = Properties.Resources.btnInvite;
 
-                    if (lblRecoverPassword != null)
-                        lblRecoverPassword.Content = Properties.Resources.lblRecoverPassword;
-                    
-                    break;
-
-                case "en-EU":
-                default:
-                    if (bttPlayer != null)
-                        bttPlayer.Content = Properties.Resources.bttPlayer;
-
-                    if (bttGuest != null)
-                        bttGuest.Content = Properties.Resources.btnInvite;
-
-                    if (lblRecoverPassword != null)
-                        lblRecoverPassword.Content = Properties.Resources.lblRecoverPassword;
-                    break;
-            }
+            if (lblRecoverPassword != null)
+                lblRecoverPassword.Content = Properties.Resources.lblRecoverPassword;
         }
+
         private void SelectLanguage(object sender, RoutedEventArgs e)
         {
             System.Windows.Controls.Button selectedButton = sender as Button;
@@ -105,7 +81,7 @@ namespace JeopardyGame.Pages
             RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
             key.SetValue("SelectedLanguage", selectedLanguage);
             key.Close();
-            UpdateInterfaceResources(selectedLanguage);
+            UpdateInterfaceResources();
 
             LanguageButton.Content = selectedButton.Content;
 

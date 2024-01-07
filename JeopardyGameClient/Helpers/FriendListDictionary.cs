@@ -14,7 +14,7 @@ namespace JeopardyGame.Helpers
         public int IdStatusOfAvailability { get; set; }
     }
 
-    public partial class FriendList
+    public static partial class FriendList
     {
         private static Dictionary<int, FriendAvailabilityInformation> friendOfUserList = new Dictionary<int, FriendAvailabilityInformation>();
 

@@ -64,7 +64,7 @@ namespace JeopardyGame.Pages
                 var success = checkUserLivingClient.SubscribeToICheckUserLiving(userToSave);
                 if (success != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack,Application.Current.MainWindow);
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack,Application.Current.MainWindow);
                     ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
             }
@@ -166,11 +166,6 @@ namespace JeopardyGame.Pages
         {
             try
             {
-
-                InstanceContext instanceContext = new InstanceContext(this);
-                CheckUserLivingClient checkUserLivingClient = new(instanceContext);
-                var success = checkUserLivingClient.RenewLivingCallBack(userToSave);
-
                 UserCreateAccountCodeClient userCreateAccount = new();
                 if (userCreateAccount.CheckCodeEntered(userToSave, txbCodeCreateAcc.Text.ToString().Trim()) == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -226,10 +221,6 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
-                    InstanceContext instanceContext = new InstanceContext(this);
-                    CheckUserLivingClient checkUserLivingClient = new(instanceContext);
-                    var success = checkUserLivingClient.RenewLivingCallBack(userToSave);
-
                     UserCreateAccountCodeClient userCreateAccount = new();
                     if (userCreateAccount.ResendCode(userToSave) == ExceptionDictionary.SUCCESFULL_EVENT)
                     {

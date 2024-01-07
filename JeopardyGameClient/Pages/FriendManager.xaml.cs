@@ -61,27 +61,27 @@ namespace JeopardyGame.Pages
             catch (SocketException ex)
             {
                 HandleException(ex, Properties.Resources.lblEndPointNotFound);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                HandleException(ex, Properties.Resources.lblEndPointNotFound); 
+                GotoMenu();
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 HandleException(ex, Properties.Resources.lblComunicationException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblComunicationException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
         }
 
@@ -90,7 +90,6 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                UserSingleton userSingleton = UserSingleton.GetMainUser();
                 if (userSingleton != null)
                 {
                     UserPojo userConsulted = new UserPojo()
@@ -117,53 +116,53 @@ namespace JeopardyGame.Pages
                             }
                             else
                             {
-                                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-                                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
+                                GotoMenu();
                             }
                         }
                         else
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-                            ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
+                            GotoMenu();
                         }
                     }
                     else
                     {
                         dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
-                        ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                        GotoMenu();
                     }
                     friendManagerProxy.Close();
                 }
                 else
                 {
                     dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-                    ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                    GotoMenu();
                 }
             }
             catch (EndpointNotFoundException ex)
             {
                 HandleException(ex, Properties.Resources.lblEndPointNotFound);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 HandleException(ex, Properties.Resources.lblComunicationException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (TimeoutException ex)
             {
                 HandleException(ex, Properties.Resources.lblTimeException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (CommunicationException ex)
             {
                 HandleException(ex, Properties.Resources.lblComunicationException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
             catch (SocketException ex)
             {
                 HandleException(ex, Properties.Resources.lblComunicationException);
-                ClickBackToMenu(imgGoBackToMenu, new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left));
+                GotoMenu();
             }
         }
 
@@ -214,11 +213,7 @@ namespace JeopardyGame.Pages
             typeUserConsult = MY_FRIENDS;
             textLeftButton = Properties.Resources.bttReport;
             textRightButton = Properties.Resources.bttEliminate;
-            SelectLabel(lblMyFriends);
-            if (friends == null)
-            {
-                GetAllTables();
-            }
+            SelectLabel(lblMyFriends);            
             SetCards();
         }
 
@@ -228,10 +223,6 @@ namespace JeopardyGame.Pages
             textLeftButton = Properties.Resources.bttAcceptFriendRequest;
             textRightButton = Properties.Resources.bttDeclineFriendRequest;
             SelectLabel(lblRequests);
-            if (friendRequests == null)
-            {
-                GetAllTables();
-            }
             SetCards();
         }
 
@@ -241,10 +232,6 @@ namespace JeopardyGame.Pages
             textLeftButton = Properties.Resources.bttAddFriend;
             textRightButton = Properties.Resources.bttReport;
             SelectLabel(lblMorePeople);
-            if (otherPeople == null)
-            {
-                GetAllTables();
-            }
             SetCards();
         }
 
@@ -319,7 +306,7 @@ namespace JeopardyGame.Pages
                         break;
                     }
                 }
-                if (!otherPeople.Any(pla => pla.UserName.Equals(userName)))
+                if (!otherPeople.Exists(pla => pla.UserName.Equals(userName)))
                 {
                     FriendBasicInformation newFriend = new FriendBasicInformation();
                     newFriend.IdUser = idUserFriendToEliminate;
@@ -360,7 +347,7 @@ namespace JeopardyGame.Pages
 
                 FriendManagerActionOperationsClient friendActionsProxy = new();
                 friendActionsProxy.SendFriendRequest(userSingleton.IdPlayer, idUserRequested);
-                FriendBasicInformation item = otherPeople.FirstOrDefault(pla => pla.IdUser == idUserRequested);
+                FriendBasicInformation item = otherPeople.Find(pla => pla.IdUser == idUserRequested);
                 if (item.IdUser == idUserRequested)
                 {
                     otherPeople.Remove(item);
@@ -406,7 +393,7 @@ namespace JeopardyGame.Pages
                         break;
                     }
                 }
-                if (!friends.Any(pla => pla.IdUser == idUserRequesting))
+                if (!friends.Exists(pla => pla.IdUser == idUserRequesting))
                 {
                     FriendBasicInformation newFriend = new FriendBasicInformation();
                     newFriend.IdUser = idUserRequesting;
@@ -455,7 +442,7 @@ namespace JeopardyGame.Pages
                         break;
                     }
                 }
-                if (!otherPeople.Any(pla => pla.IdUser == idUserRequesting))
+                if (!otherPeople.Exists(pla => pla.IdUser == idUserRequesting))
                 {
                     FriendBasicInformation newFriend = new FriendBasicInformation();
                     newFriend.IdUser = idUserRequesting;
@@ -521,7 +508,7 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            if(!addToList.Any(pla => pla.IdUser == idUserOperation))
+            if(!addToList.Exists(pla => pla.IdUser == idUserOperation))
             {
                 FriendBasicInformation newFriend = new FriendBasicInformation();
                 newFriend.IdUser = idUserOperation;
@@ -531,22 +518,22 @@ namespace JeopardyGame.Pages
             }            
         }
 
-        public void ResponseEliminationFromFriends(int idPlayerWhoEliminatedYou)
+        public void ResponseEliminationFromFriends(int IdUser)
         {
             String userName = String.Empty;
             foreach (var item in friends)
             {
-                if (item.IdUser == idPlayerWhoEliminatedYou)
+                if (item.IdUser == IdUser)
                 {
                     friends.Remove(item);
                     userName = item.UserName;
                     break;
                 }
             }
-            if (!otherPeople.Any(pla => pla.IdUser == idPlayerWhoEliminatedYou))
+            if (!otherPeople.Exists(pla => pla.IdUser == IdUser))
             {
                 FriendBasicInformation newFriend = new FriendBasicInformation();
-                newFriend.IdUser = idPlayerWhoEliminatedYou;
+                newFriend.IdUser = IdUser;
                 newFriend.UserName = userName;
                 newFriend.IdStatusAvailability = NOT_STATUS;
                 otherPeople.Add(newFriend);
@@ -624,7 +611,11 @@ namespace JeopardyGame.Pages
 
         private void ClickBackToMenu(object sender, MouseButtonEventArgs e)
         {
-            UserSingleton userSingleton = UserSingleton.GetMainUser();
+            GotoMenu();
+        }
+
+        private void GotoMenu()
+        {
             try
             {
                 FriendManagerActionOperationsClient friendActionsProxy = new();
@@ -657,13 +648,10 @@ namespace JeopardyGame.Pages
 
         public void ResponseNewPlayerJusJoin(int idUser, string userName)
         {
-            if(idUser != 0 && !string.IsNullOrEmpty(userName)) 
+            if(idUser != 0 && !string.IsNullOrEmpty(userName) && !otherPeople.Exists(pl => pl.IdUser == idUser)) 
             {
-                if(!otherPeople.Any(pl => pl.IdUser == idUser))
-                {
-                    otherPeople.Add(new FriendBasicInformation (){IdUser = idUser, EmailAddress = string.Empty, UserName = userName, IdStatusAvailability = 1 });
-                    SetCards();
-                }
+                otherPeople.Add(new FriendBasicInformation (){IdUser = idUser, EmailAddress = string.Empty, UserName = userName, IdStatusAvailability = 1 });
+                SetCards();                
             }
         }
 

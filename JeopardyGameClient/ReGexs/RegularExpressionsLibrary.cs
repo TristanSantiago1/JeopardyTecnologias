@@ -16,14 +16,12 @@ namespace JeopardyGame.ReGexs
         private static readonly string _EMAIL_ALLOW_CHAR = "^[a-zA-Z0-9@,._=]{1,90}$";
 
 
-        private Dictionary<string, Regex> validationTextBoxRegexes = new Dictionary<string, Regex>
+        public Dictionary<string, Regex> ValidationTextBoxRegexes { get; set; } = new Dictionary<string, Regex>
         {
             { "txbNameCreateAcc", new Regex(_NAME_RULES_CHAR) },
             { "txbUserNameCreateAcc", new Regex(_USERNAME_RULES_CHAR) },
-            {"txbEmailCreateAcc", new Regex(_EMAIL_ALLOW_CHAR) }
+            { "txbEmailCreateAcc", new Regex(_EMAIL_ALLOW_CHAR) }
         };
-
-        public Dictionary<string, Regex> ValidationTextBoxRegexes { get => validationTextBoxRegexes; set => validationTextBoxRegexes = value; }
 
         public String GetAt_LEAST_TWO_NUMBER()
         {

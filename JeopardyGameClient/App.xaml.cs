@@ -4,13 +4,12 @@ namespace JeopardyGame
 {
     public partial class App : Application
     {
-        private static bool isEnglish = true;
-
-        public static bool IsEnglish { get => isEnglish; set => isEnglish = value; }
+        public static bool IsEnglish { get ; set ; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            IsEnglish = true;
             Views.PrincipalWindow mainWindow = new Views.PrincipalWindow();
             mainWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             this.MainWindow = mainWindow;

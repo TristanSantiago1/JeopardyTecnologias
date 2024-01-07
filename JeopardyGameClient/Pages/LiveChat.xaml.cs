@@ -141,7 +141,7 @@ namespace JeopardyGame.Pages
 
         private void ClickCloseChat(object sender, MouseButtonEventArgs e)
         {
-            lobbyPage.CloseLiveChat();
+            lobbyPage.CloseSubFrameOfChatAndFriends();
         }
 
         private void ClickSendMessage(object sender, MouseButtonEventArgs e)

@@ -32,7 +32,6 @@ namespace JeopardyGame
         public int NoReports { get; set; }
         public int IdCurrentAvatar { get; set; }
         public int IdState { get; set; }
-        private Window dialogMessage;
 
         private UserSingleton() { }
         private UserSingleton(UserPojo userSingleton, PlayerPojo playerSingleton) 
@@ -162,7 +161,7 @@ namespace JeopardyGame
                         ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                         if (ex.InnerException is SocketException socketException)
                         {
-                            ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                            ExceptionHandlerForLogs.LogException(socketException, ExceptionDictionary.FATAL_EXCEPTION);
                         }
                     }
                     }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
@@ -200,7 +199,7 @@ namespace JeopardyGame
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 if(ex.InnerException is SocketException socketException)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandlerForLogs.LogException(socketException, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
         }
@@ -209,12 +208,8 @@ namespace JeopardyGame
         {
             try
             {
-                if (heartbeatTimer != null)
-                {
-                    heartbeatTimer?.Change(Timeout.Infinite, Timeout.Infinite);
-                    heartbeatTimer?.Dispose();
-
-                }
+                heartbeatTimer?.Change(Timeout.Infinite, Timeout.Infinite);
+                heartbeatTimer?.Dispose();
             }catch(ObjectDisposedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);

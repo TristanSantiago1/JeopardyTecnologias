@@ -36,8 +36,6 @@ namespace JeopardyGame.Pages
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton;
         private Window dialogMessage;
-        private const int DISALLOWED_VALUES = 0;
-        private const int ALLOWED_VALUES = 1;
 
         public LobbyPage()
         {
@@ -135,7 +133,10 @@ namespace JeopardyGame.Pages
                 int aleatoryNumber = generateAleatory.Next(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
-               
+                if(newLobby.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    throw new CommunicationException();
+                }
                 GameCodeContainer.RoomCode = roomCode;
             }
             catch (EndpointNotFoundException)
@@ -285,7 +286,7 @@ namespace JeopardyGame.Pages
                 if (playersInTheLobby.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     currentPlayerInLobby = playersInTheLobby.ObjectSaved.ToList();
-                    if (currentPlayerInLobby.Any(pla => pla.IdPlayer == userSingleton.IdPlayer))
+                    if (currentPlayerInLobby.Exists(pla => pla.IdPlayer == userSingleton.IdPlayer))
                     {
                         SetPlayerInLabels();
                         if ((bool)chbTeamUp.IsChecked)
@@ -295,7 +296,7 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblEliminateFromLobby, Window.GetWindow(this));
+                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblEliminateFromLobby, Window.GetWindow(this));
                         CloseWindow();
                     }
                 }
@@ -328,7 +329,7 @@ namespace JeopardyGame.Pages
             if (isAdminOfLobby)
             {
                 string userName = GetUserNameFromLabelByImage(sender);
-                if (userName != null)
+                if (!string.IsNullOrEmpty(userName))
                 {
                     var userChanged = EliminateUserFromLobby(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
@@ -371,25 +372,16 @@ namespace JeopardyGame.Pages
             {
                 currentPlayerInLobby.Remove(item);
                 playerInLobby = item;
-                break;
             }
             return playerInLobby;
         }
 
         private String GetUserNameFromLabelByImage(object sender)
         {
-            String userName = null;
             Image imgChosen = (Image)sender;
             StackPanel stcChosen = GetParentOfGraphicInterfaceComponent.FindParent<StackPanel>(imgChosen);
-            foreach (var item in stcChosen.Children)
-            {
-                if (item is Label)
-                {
-                    Label label = item as Label;
-                    userName = label.Content.ToString();
-                }
-            }
-            return userName;
+            Label label = stcChosen.Children.OfType<Label>().FirstOrDefault();
+            return label?.Content?.ToString();
         }
 
 
@@ -535,41 +527,46 @@ namespace JeopardyGame.Pages
                     PlayerInLobby userChanged = ChangeSideOfPlayer(userName);
                     if (userChanged.IdUser != NULL_INT_VALUE)
                     {
-                        try
-                        {
-                            LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
-                            lobbyActionsCallBackProxy.RenewLobbyCallBack(roomCode, userSingleton.IdUser);
-
-                            LobbyActionsOperationClient lobbyActionsProxy = new();
-                            lobbyActionsProxy.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);
-                        }
-                        catch (EndpointNotFoundException ex)
-                        {
-                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
-                            ChangeSideOfPlayer(userName);
-                        }
-                        catch (CommunicationObjectFaultedException ex)
-                        {
-                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this));
-                            ChangeSideOfPlayer(userName);
-                        }
-                        catch (TimeoutException ex)
-                        {
-                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this));
-                            ChangeSideOfPlayer(userName);
-                        }
-                        catch (CommunicationException ex)
-                        {
-                            Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this));
-                            ChangeSideOfPlayer(userName);
-                        }
+                        ChangePlayerTeam(userChanged);
                         SetPlayerInLabels();
                     }
                 }
+            }
+        }
+
+        private void ChangePlayerTeam(PlayerInLobby userChanged)
+        {
+            try
+            {
+                LobbyActionsClient lobbyActionsCallBackProxy = new LobbyActionsClient(new InstanceContext(this));
+                lobbyActionsCallBackProxy.RenewLobbyCallBack(roomCode, userSingleton.IdUser);
+
+                LobbyActionsOperationClient lobbyActionsProxy = new();
+                lobbyActionsProxy.ChangePlayerSide(roomCode, userChanged.IdUser, userChanged.SideOfTeam);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this));
+                ChangeSideOfPlayer(userChanged.UserName);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this));
+                ChangeSideOfPlayer(userChanged.UserName);
+            }
+            catch (TimeoutException ex)
+            {
+                Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this));
+                ChangeSideOfPlayer(userChanged.UserName);
+            }
+            catch (CommunicationException ex)
+            {
+                Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this));
+                ChangeSideOfPlayer(userChanged.UserName);
             }
         }
 
@@ -596,18 +593,10 @@ namespace JeopardyGame.Pages
 
         private String GetUserNameFromLabelByBorder(object sender)
         {
-            String userName = null;
             Border brdChosen = (Border)sender;
             StackPanel stcChosen = (StackPanel)brdChosen.Child;
-            foreach (var item in stcChosen.Children)
-            {
-                if (item is Label)
-                {
-                    Label label = item as Label;
-                    userName = label.Content.ToString();
-                }
-            }
-            return userName;
+            Label label = stcChosen.Children.OfType<Label>().FirstOrDefault();
+            return label?.Content?.ToString();
         }
 
         public void UpdateTeamSide(GenericClassOfArrayOfPlayerInLobbyxY0a3WX4 playersInTheLobby)
@@ -714,11 +703,7 @@ namespace JeopardyGame.Pages
             frmActiveFriendsAndChat.Content = liveChatInstance;
             grdActiveUser.Visibility = Visibility.Visible;
         }
-        public void CloseLiveChat()
-        {
-            frmActiveFriendsAndChat.Content = null;
-            grdActiveUser.Visibility = Visibility.Hidden;
-        }
+       
         public void ReceiveMessage(GenericClassOfMessageChatxY0a3WX4 message)
         {
             ((ILiveChatCallback)liveChatInstance).ReceiveMessage(message);
@@ -764,7 +749,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public void CloseFriendList()
+        public void CloseSubFrameOfChatAndFriends()
         {
             frmActiveFriendsAndChat.Content = null;
             grdActiveUser.Visibility = Visibility.Hidden;

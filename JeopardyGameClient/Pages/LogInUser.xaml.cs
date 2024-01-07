@@ -59,28 +59,20 @@ namespace JeopardyGame.Pages
 
                         if (result.ObjectSaved == RIGTH_CREDENTIALS)
                         {
-                            ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
-                            var userConsulted = consultInformationProxy.ConsultUserByUserName(userValidate.UserName);
-                            var isAlreadyConnected = logInVerificationProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.UserName);
-                            logInVerificationProxy.Close();
-                            if (isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
-                            {
-                                DoLogin(userValidate.UserName);
-                            }
-                            else if (isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
-                            {
-                                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
-                            }
+                            ValidateOnlyOneUser(userValidate);
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow);
-                        }                        
+                        }
+                        else
+                        {
+                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblComunicationException, Application.Current.MainWindow);
+                        }
                     }
-                    else if(result.ObjectSaved == WRONG_CREDENTIALS)
+                    else 
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
-                        
+                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);                        
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -103,6 +95,46 @@ namespace JeopardyGame.Pages
                 {
                     HandleException(ex, Properties.Resources.lblEndPointNotFound);
                 }
+            }
+        }
+
+        private void ValidateOnlyOneUser(UserValidate userValidate)
+        {
+            try
+            {
+                LogInVerificationClient logInVerificationProxy = new LogInVerificationClient();
+                ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
+                var userConsulted = consultInformationProxy.ConsultUserByUserName(userValidate.UserName);
+                var isAlreadyConnected = logInVerificationProxy.ValidateThereIsOnlyOneAActiveAccount(userConsulted.ObjectSaved.UserName);
+                logInVerificationProxy.Close();
+                if (isAlreadyConnected == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    DoLogin(userValidate.UserName);
+                }
+                else if (isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
         }
 
@@ -149,18 +181,16 @@ namespace JeopardyGame.Pages
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
                             UserSingleton.CleanSingleton();
-                            return;
                         }
-                        InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved);
-                        if (SubscribeToLivingChannel(currentUser.ObjectSaved) == ExceptionDictionary.SUCCESFULL_EVENT)
+                        else if (SubscribeToLivingChannel(currentUser.ObjectSaved) == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
+                            InstanceSingleton(currentUser.ObjectSaved, currentPlayer.ObjectSaved);
                             GoToMainMenu();
                         }
                         else
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
                             UserSingleton.CleanSingleton();
-                            return;
                         }
                     }
                     else
@@ -175,23 +205,28 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ExceptionHandlerForLogs.LogException(ex,ExceptionDictionary.ERROR); 
+                throw new EndpointNotFoundException();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                HandleException(ex, Properties.Resources.lblComunicationException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new CommunicationObjectFaultedException();
             }
             catch (TimeoutException ex)
             {
-                HandleException(ex, Properties.Resources.lblTimeException);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new TimeoutException();
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new CommunicationException();
             }
             catch (SocketException ex)
             {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new SocketException();
             }
         }
 
@@ -205,52 +240,30 @@ namespace JeopardyGame.Pages
             }
             catch (EndpointNotFoundException ex)
             {
-                throw ex;
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new EndpointNotFoundException();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                throw ex;
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new CommunicationObjectFaultedException();
             }
             catch (TimeoutException ex)
             {
-                throw ex;
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new TimeoutException();
             }
-        }
-
-        private void UpdateInterfaceResources(string selectedLanguage)
-        {
-            switch (selectedLanguage)
+            catch (CommunicationException ex)
             {
-                case "es-MX":
-                    if (lblUserNameLogIn != null)
-                        lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
-
-                    if (lblPasswordLogIn != null)
-                        lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
-
-                    if (btnEnter != null)
-                        btnEnter.Content = Properties.Resources.btnEnter;
-
-                    if (btnRegistrer != null)
-                        btnRegistrer.Content = Properties.Resources.btnRegistrer;
-                    break;
-
-                case "en-EU":
-                default:
-                    if (lblUserNameLogIn != null)
-                        lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
-
-                    if (lblPasswordLogIn != null)
-                        lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
-
-                    if (btnEnter != null)
-                        btnEnter.Content = Properties.Resources.btnEnter;
-
-                    if (btnRegistrer != null)
-                        btnRegistrer.Content = Properties.Resources.btnRegistrer;
-                    break;
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new CommunicationException();
             }
-        }
+            catch (SocketException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                throw new SocketException();
+            }
+        }  
 
         private void InstanceSingleton(UserPojo currentUser, PlayerPojo currenPlayer)
         {
@@ -311,14 +324,7 @@ namespace JeopardyGame.Pages
 
         private void LanguageButtonClick(object sender, RoutedEventArgs e)
         {
-            if (LanguageOptions.Visibility == Visibility.Visible)
-            {
-                LanguageOptions.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                LanguageOptions.Visibility = Visibility.Visible;
-            }
+            LanguageOptions.Visibility = Visibility.Visible;
         }
 
         private void SelectLanguage(object sender, RoutedEventArgs e)
@@ -330,11 +336,24 @@ namespace JeopardyGame.Pages
             RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
             key.SetValue("SelectedLanguage", selectedLanguage);
             key.Close();
-            UpdateInterfaceResources(selectedLanguage);
-
+            UpdateInterfaceResources();
             LanguageButton.Content = selectedButton.Content;
-
             LanguageOptions.Visibility = Visibility.Collapsed;
+        }
+
+        private void UpdateInterfaceResources()
+        {
+            if (lblUserNameLogIn != null)
+                lblUserNameLogIn.Content = Properties.Resources.lblUserNameLogIn;
+
+            if (lblPasswordLogIn != null)
+                lblPasswordLogIn.Content = Properties.Resources.lblPasswordLogIn;
+
+            if (btnEnter != null)
+                btnEnter.Content = Properties.Resources.btnEnter;
+
+            if (btnRegistrer != null)
+                btnRegistrer.Content = Properties.Resources.btnRegistrer;
         }
 
     }

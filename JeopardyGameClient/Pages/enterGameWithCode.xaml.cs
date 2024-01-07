@@ -61,13 +61,7 @@ namespace JeopardyGame.Pages
                     {
                         if(isRoomActive.ObjectSaved == SUCCESFUL)
                         {
-                            bool success = true;
-                            if (idUser == -1)
-                            {
-                                success = GetPlayerAndUserInformation(enteredCode);
-                                success = SubscribeToLivingChannel();
-                            }
-                            if (success)
+                            if (AssurePlayer(enteredCode))
                             {
                                 GotoLobbyPage(enteredCode);
                             }
@@ -76,7 +70,7 @@ namespace JeopardyGame.Pages
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyIsFull, Application.Current.MainWindow);
                         }
-                        else if((isRoomActive.ObjectSaved == ROOMCODE_DOES_NOT_EXIST))
+                        else 
                         {
                             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyNotExist, Application.Current.MainWindow);
                         }
@@ -114,7 +108,21 @@ namespace JeopardyGame.Pages
             }         
         }
 
-        private bool GetPlayerAndUserInformation(int enteredCode)
+        private bool AssurePlayer(int enteredCode)
+        {
+            bool success = true;
+            if (idUser == -1)
+            {
+                if (!GetPlayerAndUserInformation())
+                {
+                    return false;
+                }
+                success = SubscribeToLivingChannel();
+            }
+            return success;
+        }
+
+        private bool GetPlayerAndUserInformation()
         {
             bool isPlayerGuestActive = false;
             try
@@ -132,12 +140,6 @@ namespace JeopardyGame.Pages
                         UserSingleton.GetMainUser(userGuest.ObjectSaved, playerGuest.ObjectSaved);
                         isPlayerGuestActive = true;
                     }
-                    //Views.PrincipalWindow gameWindow = new Views.PrincipalWindow();
-                    //gameWindow.Show();
-                    //LobbyPage lobbyPage = new LobbyPage(enteredCode);
-                    //gameWindow.contentFrame.NavigationService.Navigate(lobbyPage);
-                    //windowBehind.ClosePrincipalWindow();
-                    //Window.GetWindow(this).Close();
                 }
                 else
                 {

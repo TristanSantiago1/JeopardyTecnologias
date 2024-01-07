@@ -303,18 +303,7 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
-                        }                        
-                        else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
-                        }
-                        else
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
-                        }
+                        ShowSpecificUserMessage(userIsNew.ObjectSaved);
                         return DISALLOWED_VALUES;
                     }
                 }
@@ -346,6 +335,22 @@ namespace JeopardyGame.Pages
                 HandleException(ex, Properties.Resources.lblEndPointNotFound);
             }
             return DISALLOWED_VALUES;
+        }
+
+        private void ShowSpecificUserMessage(int unsucces)
+        {
+            if (unsucces == ExceptionDictionary.EMAIL_ALREADY_EXIST)
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+            }
+            else if (unsucces == ExceptionDictionary.USERNAME_ALREADY_EXIST)
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+            }
+            else
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+            }
         }
 
         private void HighLightBrokenRule(Label missingRule)

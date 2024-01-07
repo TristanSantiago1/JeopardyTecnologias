@@ -74,36 +74,26 @@ namespace JeopardyGame.Pages
             {
                 int idPlayer = UserSingleton.GetMainUser().IdPlayer;
                 ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
-
                 var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
                 consultInformationProxy.Close();
-
-                if (playerInfo != null && playerInfo.CodeEvent == Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
+                if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved is PlayerPojo)
                 {
-                    var playerWrapper = playerInfo.ObjectSaved;
-
-                    if (playerWrapper != null && playerWrapper is PlayerPojo)
+                    int imageId = playerInfo.ObjectSaved.IdActualAvatar;
+                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+                    if (!string.IsNullOrEmpty(imageName))
                     {
-                        var player = (PlayerPojo)playerWrapper;
+                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
 
-                        int imageId = player.IdActualAvatar;
+                        BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
+                            bmp.GetHbitmap(),
+                            IntPtr.Zero,
+                            Int32Rect.Empty,
+                            BitmapSizeOptions.FromEmptyOptions()
+                        );
 
-                        string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
-
-                        if (!string.IsNullOrEmpty(imageName))
-                        {
-                            Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
-
-                            BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                                bmp.GetHbitmap(),
-                                IntPtr.Zero,
-                                Int32Rect.Empty,
-                                BitmapSizeOptions.FromEmptyOptions()
-                            );
-
-                            imageProfile.Source = bmpImage;
-                        }
+                        imageProfile.Source = bmpImage;
                     }
+                    
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -130,14 +120,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            //RefreshWindow();
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
-        }
-        private void RefreshWindow()
-        {
-            LogInUser logInUserPage = new LogInUser();
-            this.NavigationService.Navigate(logInUserPage);
-            NavigationService.RemoveBackEntry();
         }
     }
 }

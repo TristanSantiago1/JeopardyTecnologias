@@ -144,20 +144,7 @@ namespace JeopardyGame.Pages
                     int succes = recoverPasswordProxy.CreateCodeToRecoverPassWord(txbUserName.Text, Properties.Resources.EmailSubjectCode, Properties.Resources.RecoverPasswordMessage);
                     if(succes == ExceptionDictionary.SUCCESFULL_EVENT || ExceptionDictionary.USERNAME_ALREADY_EXIST == succes)
                     {
-                        currentUserName = txbUserName.Text.Trim();
-                        bttConfirmCode.IsEnabled = true;
-                        bttConfirmUserName.IsEnabled = false;
-                        txbUserName.IsEnabled = false;
-                        bttSaveUser.IsEnabled = false;
-                        StartTimer();
-                        if (succes == ExceptionDictionary.USERNAME_ALREADY_EXIST)
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblAlreadyExistACodeToChangePassword, Window.GetWindow(this));
-                        }
-                        else
-                        {
-                            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblEmailCodePassWordSendSuccesfully, Window.GetWindow(this));
-                        }
+                        ConfirmCodeAlreadyExist(succes);
                     }
                     else if(succes == ExceptionDictionary.NULL_PARAEMETER)
                     {
@@ -192,6 +179,24 @@ namespace JeopardyGame.Pages
             }
         }
 
+        private void ConfirmCodeAlreadyExist(int succes)
+        {
+            currentUserName = txbUserName.Text.Trim();
+            bttConfirmCode.IsEnabled = true;
+            bttConfirmUserName.IsEnabled = false;
+            txbUserName.IsEnabled = false;
+            bttSaveUser.IsEnabled = false;
+            StartTimer();
+            if (succes == ExceptionDictionary.USERNAME_ALREADY_EXIST)
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblAlreadyExistACodeToChangePassword, Window.GetWindow(this));
+            }
+            else
+            {
+                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblEmailCodePassWordSendSuccesfully, Window.GetWindow(this));
+            }
+        }
+
         private void CLickConfirmCode(object sender, RoutedEventArgs e)
         {
             if (CheckEmptyFields(lblCodeNamWarning, txbCode) == ALLOWED_VALUES)
@@ -210,21 +215,9 @@ namespace JeopardyGame.Pages
                         dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblRigthCodePassword, Window.GetWindow(this));
 
                     }
-                    else if (succes == ExceptionDictionary.NULL_PARAEMETER)
-                    {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this));
-                    }
-                    else if (succes == ExceptionDictionary.ARGUMENT_NULL)
-                    {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblThereIsnoCodeFoThisUser, Window.GetWindow(this));
-                    }
-                    else if (succes == ExceptionDictionary.INVALID_OPERATION)
-                    {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongCodeEntered, Window.GetWindow(this));
-                    }                    
                     else
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToVerifyTheCode, Window.GetWindow(this));
+                        ShowSpecificCodeMessage(succes);
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -251,6 +244,26 @@ namespace JeopardyGame.Pages
             }
         }
 
+        private void ShowSpecificCodeMessage(int succes)
+        {
+            if (succes == ExceptionDictionary.NULL_PARAEMETER)
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this));
+            }
+            else if (succes == ExceptionDictionary.ARGUMENT_NULL)
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblThereIsnoCodeFoThisUser, Window.GetWindow(this));
+            }
+            else if (succes == ExceptionDictionary.INVALID_OPERATION)
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongCodeEntered, Window.GetWindow(this));
+            }
+            else
+            {
+                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToVerifyTheCode, Window.GetWindow(this));
+            }
+        }
+
         private void ClickButtonConfirmNewPassword(object sender, RoutedEventArgs e)
         {
             try { 
@@ -274,11 +287,7 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        if (imgViewPasswordRules.Visibility == Visibility.Visible) 
-                        {
-                            brdPasswordRules.Visibility = Visibility.Visible;
-                            imgViewPasswordRules.Visibility = Visibility.Hidden;
-                        }
+                        ShowPasswordRules();
                     }
                 }
                 else
@@ -388,9 +397,16 @@ namespace JeopardyGame.Pages
 
         private void ClickViewPasswordRules(object sender, MouseButtonEventArgs e)
         {
-            brdPasswordRules.Visibility = Visibility.Visible;
-            imgViewPasswordRules.Visibility = Visibility.Hidden;
+            ShowPasswordRules();
+        }
 
+        private void ShowPasswordRules()
+        {
+            if (imgViewPasswordRules.Visibility == Visibility.Visible)
+            {
+                brdPasswordRules.Visibility = Visibility.Visible;
+                imgViewPasswordRules.Visibility = Visibility.Hidden;
+            }
         }
         private void ClickClosePasswordRules(object sender, MouseButtonEventArgs e)
         {

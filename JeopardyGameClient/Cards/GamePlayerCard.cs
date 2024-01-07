@@ -9,7 +9,7 @@ namespace JeopardyGame.Helpers
 {
     public class GamePlayerCard : Border
     {
-        private PlayerInGameDataContract playerOfCard;
+        private readonly PlayerInGameDataContract playerOfCard;
         private TextBlock userName;
         private TextBlock points;
         private Image avatar;

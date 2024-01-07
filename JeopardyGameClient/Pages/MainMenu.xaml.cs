@@ -185,14 +185,7 @@ namespace JeopardyGame.Pages
 
         private void LanguageButtonClick(object sender, RoutedEventArgs e)
         {
-            if (LanguageOptions.Visibility == Visibility.Visible)
-            {
-                LanguageOptions.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                LanguageOptions.Visibility = Visibility.Visible;
-            }
+            LanguageOptions.Visibility = Visibility.Visible;
         }
 
         private void SelectLanguage(object sender, RoutedEventArgs e)
@@ -204,46 +197,26 @@ namespace JeopardyGame.Pages
             RegistryKey key = Registry.CurrentUser.CreateSubKey("Software\\JeopardyGame");
             key.SetValue("SelectedLanguage", selectedLanguage);
             key.Close();
-            UpdateInterfaceResources(selectedLanguage);
+            UpdateInterfaceResources();
 
             LanguageButton.Content = selectedButton.Content;
 
             LanguageOptions.Visibility = Visibility.Collapsed;
         }
 
-        private void UpdateInterfaceResources(string selectedLanguage)
+        private void UpdateInterfaceResources()
         {
-            switch (selectedLanguage)
-            {
-                case "es-MX":
-                    if (bttEnterGame != null)
-                        bttEnterGame.Content = Properties.Resources.bttEnterGame;
+            if (bttEnterGame != null)
+               bttEnterGame.Content = Properties.Resources.bttEnterGame;
 
-                    if (bttFriends != null)
-                        bttFriends.Content = Properties.Resources.bttFriends;
+            if (bttFriends != null)
+                bttFriends.Content = Properties.Resources.bttFriends;
 
-                    if (bttNewGame != null)
-                        bttNewGame.Content = Properties.Resources.bttNewGame;
+            if (bttNewGame != null)
+                bttNewGame.Content = Properties.Resources.bttNewGame;
 
-                    if (lblProfileInformation != null)
-                        lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
-                    break;
-
-                case "en-EU":
-                default:
-                    if(bttEnterGame != null)
-                         bttEnterGame.Content = Properties.Resources.bttEnterGame;
-
-                    if (bttFriends != null)
-                        bttFriends.Content = Properties.Resources.bttFriends;
-
-                    if (bttNewGame != null)
-                        bttNewGame.Content = Properties.Resources.bttNewGame;
-
-                    if (lblProfileInformation != null)
-                        lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
-                    break;
-            }
+            if (lblProfileInformation != null)
+                lblProfileInformation.Content = Properties.Resources.lblProfileInformation;
         }
 
         private void ReturnPage()

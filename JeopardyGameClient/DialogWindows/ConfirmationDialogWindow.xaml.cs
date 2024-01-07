@@ -10,8 +10,8 @@ namespace JeopardyGame.DialogWindows
     /// </summary>
     public partial class ConfirmationDialogWindow : Window
     {
-        private bool closeWindow;
-        public bool CloseWindow { get => closeWindow; set => closeWindow = value; }
+        public bool CloseWindow { get; set; }
+
 
         public ConfirmationDialogWindow(String title, String message, Window currentWindow)
         {

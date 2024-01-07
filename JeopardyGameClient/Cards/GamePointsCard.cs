@@ -9,8 +9,8 @@ namespace JeopardyGame.Helpers
     public class GamePointsCard : Border
     {
         private Label lblPoints;
-        private QuestionCardInformation questionCardInformation;
-        private GameBoard board;
+        private readonly QuestionCardInformation questionCardInformation;
+        private readonly GameBoard board;
        
         public GamePointsCard(QuestionCardInformation questionCard,  GameBoard currentBoard) 
         {

@@ -108,7 +108,7 @@ namespace JeopardyGame.Pages
 
         private void ClickCloseListFriends(object sender, MouseButtonEventArgs e)
         {
-            lobbyPage.CloseFriendList();
+            lobbyPage.CloseSubFrameOfChatAndFriends();
         }
 
         private void GetFriend()
@@ -370,7 +370,7 @@ namespace JeopardyGame.Pages
             {
                 throw new CommunicationException();
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {
                 throw new SocketException();
             }

@@ -9,8 +9,8 @@ namespace JeopardyGame.Cards
 {
     public  class GameTeamCard : Border
     {
-        private PlayerInGameDataContract playerOfCardNumberOne;
-        private PlayerInGameDataContract playerOfCardNumberTwo;
+        private readonly PlayerInGameDataContract playerOfCardNumberOne;
+        private readonly PlayerInGameDataContract playerOfCardNumberTwo;
         private TextBlock userNamePlayer1;
         private TextBlock userNamePlayer2;
         private TextBlock points;
