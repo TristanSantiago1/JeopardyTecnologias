@@ -38,10 +38,10 @@ namespace JeopardyGame.Pages
         {
             Views.EnterWithGameCode codeWindow = new Views.EnterWithGameCode();
             codeWindow.Owner = Window.GetWindow(this);
-            codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-            codeWindow.Show();
+            codeWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;            
             enterGameWithCode codePage = new enterGameWithCode(Window.GetWindow(this), true);
             codeWindow.contentFrame.NavigationService.Navigate(codePage);
+            codeWindow.ShowDialog();
         }
 
         public  void ClosePrincipalWindow()

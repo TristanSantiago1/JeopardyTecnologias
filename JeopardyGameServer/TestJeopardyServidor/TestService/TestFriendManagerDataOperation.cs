@@ -386,7 +386,7 @@ namespace TestJeopardyServidor.TestService
                 StateDescription = "Guest"
             };
             var playerSucces = UserManagerDataOperation.SavePlayerInDataBase(userTest, state, playerTest);            
-            var succes = FriendsManagerDataOperation.BannerUser(playerSucces.ObjectSaved.IdPlayer);           
+            var succes = FriendsManagerDataOperation.BannerUser(userTest.IdUser);           
             Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 

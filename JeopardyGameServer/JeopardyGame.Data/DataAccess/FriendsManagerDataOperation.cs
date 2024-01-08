@@ -309,10 +309,10 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
-        public static GenericClassServer<int> BannerUser(int idPlayer)
+        public static GenericClassServer<int> BannerUser(int idUser)
         {
             GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
-            if (idPlayer == NULL_INT_VALUE)
+            if (idUser == NULL_INT_VALUE)
             {
                 return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
             }
@@ -320,7 +320,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var player = contextBD.Players.FirstOrDefault(p => p.User_IdUser == idPlayer);
+                    var player = contextBD.Players.FirstOrDefault(p => p.User_IdUser == idUser);
 
                     if (player != null)
                     {
