@@ -99,11 +99,15 @@ namespace JeopardyGame.Pages
                         Password = userSingleton.Password,
                         UserName = userSingleton.Name,
                     };
-                    if(!GetFriends(userConsulted) && !GetFriendRequests(userConsulted) && !GetNotFriends(userConsulted))
+                    if(!GetFriends(userConsulted) || !GetFriendRequests(userConsulted) || !GetNotFriends(userConsulted))
                     {
                         DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow, DialogWindowManager.ERROR);
                         GotoMenu();
-                    }                   
+                    }
+                    else
+                    {
+                        SetCards();
+                    }
                 }               
             }
             catch (EndpointNotFoundException ex)

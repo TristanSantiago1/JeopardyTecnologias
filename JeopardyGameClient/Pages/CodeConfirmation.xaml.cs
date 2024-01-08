@@ -39,9 +39,11 @@ namespace JeopardyGame.Pages
 
         public CodeConfirmation(UserPojo user)
         {
+
+            InitializeComponent();
             this.userToSave = user;
             password = user.Password;
-            InitializeComponent();            
+            txbCodeCreateAcc.MaxLength = 6;
             Loaded += LoadedPrepareWindow;
         }    
 
