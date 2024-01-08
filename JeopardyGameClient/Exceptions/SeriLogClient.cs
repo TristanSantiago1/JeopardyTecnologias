@@ -34,6 +34,11 @@ namespace JeopardyGame.Exceptions
 
         public static void ConfigureLogger(String relativePath)
         {
+            string directoryPath = Path.GetDirectoryName(relativePath);
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
             Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File(relativePath, rollingInterval: RollingInterval.Day).CreateLogger();
         }
 

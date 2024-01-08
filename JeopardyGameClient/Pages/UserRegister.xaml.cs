@@ -6,6 +6,7 @@ using JeopardyGame.Views;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -92,11 +93,26 @@ namespace JeopardyGame.Pages
         {
             TextBox currentTextBox = sender as TextBox;
             RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary(); 
-            if ((regularExpressionsLibrary.ValidationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex)) && (!regex.IsMatch(currentTextBox.Text + e.Text)))
-            {                                   
-                e.Handled = true;                
+            try
+            {
+                if ((regularExpressionsLibrary.ValidationTextBoxRegexes.TryGetValue(currentTextBox.Name, out string regex))
+               && !Regex.IsMatch((currentTextBox.Text + e.Text), regex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                e.Handled = true;
+            }
+            catch (ArgumentNullException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                e.Handled = true;
             }
         }
+
         private void EntryTextBoxPaste(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (e.Key == Key.V))
@@ -223,67 +239,79 @@ namespace JeopardyGame.Pages
         private int CheckPassword()
         {
             int answer = ALLOWED_VALUES;
-            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression;
-            String passwordChecked = psbPasswordCreateAccount.Password.ToString().Trim();
-            if (passwordChecked.Length < MINIMUN_PASSWORD_LENGTH || passwordChecked.Length > MAXIMUM_PASSWORD_LENGTH)
+            try
             {
-                HighLightBrokenRule(ListBoxRules[0]);
+                RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+                string regexExpression;
+                String passwordChecked = psbPasswordCreateAccount.Password.ToString().Trim();
+                if (passwordChecked.Length < MINIMUN_PASSWORD_LENGTH || passwordChecked.Length > MAXIMUM_PASSWORD_LENGTH)
+                {
+                    HighLightBrokenRule(ListBoxRules[0]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[0]);
+                }
+                regexExpression = regexInstance.GetAt_LEAST_TWO_NUMBER();
+                if (!Regex.IsMatch(passwordChecked, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    HighLightBrokenRule(ListBoxRules[1]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[1]);
+                }
+                if (!GetSpecificResource.HasAtLeastTwoSeparateUppercaseLetters(passwordChecked))
+                {
+                    HighLightBrokenRule(ListBoxRules[2]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[2]);
+                }
+                regexExpression = regexInstance.GetAt_LEAST_ONE_SPECIAL_CHARACTER();
+                if (!Regex.IsMatch(passwordChecked, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    HighLightBrokenRule(ListBoxRules[3]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[3]);
+                }
+                regexExpression = regexInstance.GetAt_LEAST_ONE_PUTUATION_MARK();
+                if (!Regex.IsMatch(passwordChecked, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    HighLightBrokenRule(ListBoxRules[4]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[4]);
+                }
+                int arrobaIndex = (txbEmailCreateAccount.Text.IndexOf('@') != -1) ? txbEmailCreateAccount.Text.IndexOf('@') : 0;
+                if (txbEmailCreateAccount.Text.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
+                {
+                    HighLightBrokenRule(ListBoxRules[5]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[5]);
+                }
+            }        
+            catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
                 answer = DISALLOWED_VALUES;
             }
-            else
+            catch (ArgumentNullException ex)
             {
-                ClearBrokenRule(ListBoxRules[0]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_TWO_NUMBER());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[1]);
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
                 answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[1]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_TWO_CAPITAL_LETTER());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[2]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[2]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_ONE_SPECIAL_CHARACTER());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[3]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[3]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_ONE_PUTUATION_MARK());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[4]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[4]);
-            }
-            int arrobaIndex = (txbEmailCreateAccount.Text.IndexOf('@') != -1) ? txbEmailCreateAccount.Text.IndexOf('@') : 0;
-            if (txbEmailCreateAccount.Text.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[5]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[5]);
             }
             return answer;
         }

@@ -7,7 +7,6 @@ namespace JeopardyGame.ReGexs
     public class RegularExpressionsLibrary
     {
         private static readonly String _AT_LEAST_TWO_NUMBERS = @"(?:.*\d.*\D.*\d)|(?:.*\D.*\d.*\D.*\d)";
-        private static readonly String _AT_LEAST_TWO_CAPITAL_LETTER = @"^(?=(?:[^A-Z]*[A-Z]){2})[^A-Z]*(?:[A-Z](?![A-Z])[^A-Z]*)+$";
         private static readonly String _AT_LEAST_ONE_SPECIAL_CHARACTER = @"[!¡¿?=&%$#\-_]";
         private static readonly String _AT_LEAST_ONE_PUNTUATION_MARK = @"[.:;,]";
         private static readonly string _NAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ ]{1,30}$";
@@ -16,21 +15,16 @@ namespace JeopardyGame.ReGexs
         private static readonly string _EMAIL_ALLOW_CHAR = "^[a-zA-Z0-9@,._=]{1,90}$";
 
 
-        public Dictionary<string, Regex> ValidationTextBoxRegexes { get; set; } = new Dictionary<string, Regex>
+        public Dictionary<string, string> ValidationTextBoxRegexes { get; set; } = new Dictionary<string, string>
         {
-            { "txbNameCreateAcc", new Regex(_NAME_RULES_CHAR) },
-            { "txbUserNameCreateAcc", new Regex(_USERNAME_RULES_CHAR) },
-            { "txbEmailCreateAcc", new Regex(_EMAIL_ALLOW_CHAR) }
+            { "txbNameCreateAccount", _NAME_RULES_CHAR },
+            { "txbUserNameCreateAccount", _USERNAME_RULES_CHAR },
+            { "txbEmailCreateAccount", _EMAIL_ALLOW_CHAR }            
         };
 
         public String GetAt_LEAST_TWO_NUMBER()
         {
             return _AT_LEAST_TWO_NUMBERS;
-        }
-
-        public String GetAt_LEAST_TWO_CAPITAL_LETTER()
-        {
-            return _AT_LEAST_TWO_CAPITAL_LETTER;
         }
 
         public String GetAt_LEAST_ONE_SPECIAL_CHARACTER()

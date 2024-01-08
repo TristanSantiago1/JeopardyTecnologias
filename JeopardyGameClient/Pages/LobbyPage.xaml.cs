@@ -17,6 +17,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using JeopardyGame.ReGexs;
 using System.Text.RegularExpressions;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace JeopardyGame.Pages
 {
@@ -129,8 +130,8 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                generateAleatory = new Random();
-                int aleatoryNumber = generateAleatory.Next(10000, 99999);
+                ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
+                int aleatoryNumber = generateAleatory.Value.Next(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
                 if(newLobby.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)

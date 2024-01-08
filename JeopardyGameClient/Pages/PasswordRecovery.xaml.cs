@@ -45,7 +45,7 @@ namespace JeopardyGame.Pages
         {
             InitializeComponent();
             PrepareWindow();
-            txbUserName.MaxLength = 15;
+            txbUserNameCreateAccount.MaxLength = 15;
             txbCode.MaxLength = 6;
             psbPassword.MaxLength = 30;
         }
@@ -63,19 +63,34 @@ namespace JeopardyGame.Pages
         private void InitializeListeners()
         {
             psbPassword.PreviewKeyDown += EntryTextBoxPaste;
-            txbUserName.PreviewTextInput += EntryTextBoxCharValidation;
-            txbUserName.PreviewKeyDown += EntryTextBoxPaste;
+            txbUserNameCreateAccount.PreviewTextInput += EntryTextBoxCharValidation;
+            txbUserNameCreateAccount.PreviewKeyDown += EntryTextBoxPaste;
         }        
 
         private void EntryTextBoxCharValidation(object sender, TextCompositionEventArgs e)
         {
             TextBox currentTextBox = sender as TextBox;
             RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary();
-            if ((regularExpressionsLibrary.ValidationTextBoxRegexes.TryGetValue(currentTextBox.Name, out Regex regex)) && (!regex.IsMatch(currentTextBox.Text + e.Text)))
+            try
             {
+                if ((regularExpressionsLibrary.ValidationTextBoxRegexes.TryGetValue(currentTextBox.Name, out string regex))
+               && !Regex.IsMatch((currentTextBox.Text + e.Text), regex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                e.Handled = true;
+            }
+            catch (ArgumentNullException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
                 e.Handled = true;
             }
         }
+
         private void EntryTextBoxPaste(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (e.Key == Key.V))
@@ -136,12 +151,12 @@ namespace JeopardyGame.Pages
 
         private void ClickConfirmUserName(object sender, RoutedEventArgs e)
         {
-            if(CheckEmptyFields(lblUserNamWarning, txbUserName) == ALLOWED_VALUES)
+            if(CheckEmptyFields(lblUserNamWarning, txbUserNameCreateAccount) == ALLOWED_VALUES)
             {
                 try
                 {
                     RecoverPasswordClient recoverPasswordProxy = new RecoverPasswordClient();
-                    int succes = recoverPasswordProxy.CreateCodeToRecoverPassWord(txbUserName.Text, Properties.Resources.EmailSubjectCode, Properties.Resources.RecoverPasswordMessage);
+                    int succes = recoverPasswordProxy.CreateCodeToRecoverPassWord(txbUserNameCreateAccount.Text, Properties.Resources.EmailSubjectCode, Properties.Resources.RecoverPasswordMessage);
                     if(succes == ExceptionDictionary.SUCCESFULL_EVENT || ExceptionDictionary.USERNAME_ALREADY_EXIST == succes)
                     {
                         ConfirmCodeAlreadyExist(succes);
@@ -181,10 +196,10 @@ namespace JeopardyGame.Pages
 
         private void ConfirmCodeAlreadyExist(int succes)
         {
-            currentUserName = txbUserName.Text.Trim();
+            currentUserName = txbUserNameCreateAccount.Text.Trim();
             bttConfirmCode.IsEnabled = true;
             bttConfirmUserName.IsEnabled = false;
-            txbUserName.IsEnabled = false;
+            txbUserNameCreateAccount.IsEnabled = false;
             bttSaveUser.IsEnabled = false;
             StartTimer();
             if (succes == ExceptionDictionary.USERNAME_ALREADY_EXIST)
@@ -209,7 +224,7 @@ namespace JeopardyGame.Pages
                     {
                         bttConfirmCode.IsEnabled = false;
                         bttConfirmUserName.IsEnabled = false;
-                        txbUserName.IsEnabled = false;
+                        txbUserNameCreateAccount.IsEnabled = false;
                         txbCode.IsEnabled = false;
                         bttSaveUser.IsEnabled = true;
                         dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblRigthCodePassword, Window.GetWindow(this));
@@ -321,68 +336,77 @@ namespace JeopardyGame.Pages
         private int CheckPassword(string email)
         {
             int answer = ALLOWED_VALUES;
-            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression;
-            String passwordChecked = psbPassword.Password.ToString().Trim();
-            if (passwordChecked.Length < MINIMUN_PASSWORD_LENGTH || passwordChecked.Length > MAXIMUM_PASSWORD_LENGTH)
+            try
             {
-                HighLightBrokenRule(ListBoxRules[0]);
+                RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+                string regexExpression;
+                String passwordChecked = psbPassword.Password.ToString().Trim();
+                if (passwordChecked.Length < MINIMUN_PASSWORD_LENGTH || passwordChecked.Length > MAXIMUM_PASSWORD_LENGTH)
+                {
+                    HighLightBrokenRule(ListBoxRules[0]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[0]);
+                }
+                regexExpression = regexInstance.GetAt_LEAST_TWO_NUMBER();
+                if (!Regex.IsMatch(passwordChecked, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    HighLightBrokenRule(ListBoxRules[1]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[1]);
+                }
+                if (!GetSpecificResource.HasAtLeastTwoSeparateUppercaseLetters(passwordChecked))
+                {
+                    HighLightBrokenRule(ListBoxRules[2]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[2]);
+                }
+                regexExpression = regexInstance.GetAt_LEAST_ONE_SPECIAL_CHARACTER();
+                if (!Regex.IsMatch(passwordChecked, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    HighLightBrokenRule(ListBoxRules[3]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[3]);
+                }
+                regexExpression = regexInstance.GetAt_LEAST_ONE_PUTUATION_MARK();
+                if (!Regex.IsMatch(passwordChecked, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    HighLightBrokenRule(ListBoxRules[4]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[4]);
+                }
+                int arrobaIndex = (email.IndexOf('@') != -1) ? email.IndexOf('@') : 0;
+                if (email.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
+                {
+                    HighLightBrokenRule(ListBoxRules[5]);
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    ClearBrokenRule(ListBoxRules[5]);
+                }
+               
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
                 answer = DISALLOWED_VALUES;
             }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[0]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_TWO_NUMBER());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[1]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[1]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_TWO_CAPITAL_LETTER());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[2]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[2]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_ONE_SPECIAL_CHARACTER());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[3]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[3]);
-            }
-            regexExpression = new Regex(regexInstance.GetAt_LEAST_ONE_PUTUATION_MARK());
-            if (!regexExpression.IsMatch(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[4]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[4]);
-            }
-            int arrobaIndex = (email.IndexOf('@') != -1) ? email.IndexOf('@') : 0;
-            if (email.Trim().Substring(0, arrobaIndex).Equals(passwordChecked))
-            {
-                HighLightBrokenRule(ListBoxRules[5]);
-                answer = DISALLOWED_VALUES;
-            }
-            else
-            {
-                ClearBrokenRule(ListBoxRules[5]);
-            }
+            
             return answer;
         }
 
@@ -462,7 +486,7 @@ namespace JeopardyGame.Pages
         private void SetDefaultBotons()
         {
             bttConfirmUserName.IsEnabled = true;
-            txbUserName.IsEnabled = true;
+            txbUserNameCreateAccount.IsEnabled = true;
         }
 
 

@@ -9,6 +9,7 @@ using JeopardyGame.ServidorServiciosJeopardy;
 using Microsoft.Win32;
 using System.Windows.Controls;
 using System.Globalization;
+using System.Threading;
 
 namespace JeopardyGame.Helpers
 {
@@ -44,8 +45,8 @@ namespace JeopardyGame.Helpers
 
         public static int GetGuestId()
         {
-            Random generateAleatory = new Random();
-            return generateAleatory.Next(999999, 9999999);
+            ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
+            return generateAleatory.Value.Next(999999, 9999999);
         }
 
         public static string GetEnglishOrSpanishDescription(string englisDescription, string spanishDescription)
@@ -69,6 +70,34 @@ namespace JeopardyGame.Helpers
             }
         }
 
+
+        public static bool HasAtLeastTwoSeparateUppercaseLetters(string password)
+        {
+            int uppercaseCount = 0;
+            bool isPreviousUppercase = false;
+
+            foreach (char c in password)
+            {
+                if (char.IsUpper(c))
+                {
+                    uppercaseCount++;
+
+                    if (isPreviousUppercase)
+                    {
+                        return false;
+                    }
+
+                    isPreviousUppercase = true;
+                }
+                else
+                {
+                    isPreviousUppercase = false;
+                }
+            }
+
+            return uppercaseCount >= 2;
+        }
+
     }
 
 
@@ -86,5 +115,7 @@ namespace JeopardyGame.Helpers
         }
 
     }
-
+   
 }
+
+

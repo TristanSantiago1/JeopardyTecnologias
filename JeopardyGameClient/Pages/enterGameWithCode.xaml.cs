@@ -34,7 +34,6 @@ namespace JeopardyGame.Pages
         private UserPojo userForGuest;
         int idUser = -1;
         private readonly int ROOMCODE_IS_FULL = -1;
-        private readonly int ROOMCODE_DOES_NOT_EXIST = 0;
         private readonly int SUCCESFUL = 1;
 
         public enterGameWithCode(Window previousWindow, bool isGuest)

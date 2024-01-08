@@ -40,7 +40,7 @@ namespace JeopardyGame.Pages
 
         public EditUserProfile()
         {
-            InitializeComponent();            
+            InitializeComponent();
             Loaded += LoadedPreparedWindow;
         }
 
@@ -50,10 +50,10 @@ namespace JeopardyGame.Pages
             ImagenInitialization();
             ReadResource();
             DisplayUserInfo();
-           
+
         }
 
-        public  void DisplayUserInfo()
+        public void DisplayUserInfo()
         {
             txbEditUserName.IsReadOnly = true;
             UserSingleton userSingleton = UserSingleton.GetMainUser();
@@ -140,7 +140,8 @@ namespace JeopardyGame.Pages
 
         private void ImagenInitialization()
         {
-            try { 
+            try
+            {
                 int idPlayer = UserSingleton.GetMainUser().IdPlayer;
                 ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
 
@@ -163,7 +164,7 @@ namespace JeopardyGame.Pages
                         );
 
                         imageProfile.Source = bmpImage;
-                    }                    
+                    }
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -292,7 +293,7 @@ namespace JeopardyGame.Pages
                 int idUser = UserSingleton.GetMainUser().IdUser;
                 if (string.IsNullOrEmpty(nameEdited))
                 {
-                    LblWrongName.Content = Properties.Resources.lblWrongName; 
+                    LblWrongName.Content = Properties.Resources.lblWrongName;
                     LblWrongName.Visibility = Visibility.Visible;
                     return;
                 }
@@ -327,7 +328,7 @@ namespace JeopardyGame.Pages
             }
             catch (CommunicationException ex)
             {
-                HandleException(ex,Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblWithoutConection);
+                HandleException(ex, Properties.Resources.lblWrongUpdateName + " : " + Properties.Resources.lblWithoutConection);
             }
             catch (SocketException ex)
             {
@@ -336,24 +337,34 @@ namespace JeopardyGame.Pages
         }
         private int CheckEmailAddressFormat()
         {
-            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-            int answer;
-            String email = txbEditEmail.Text.Trim();
-            if (!regexExpression.IsMatch(email))
+            try
             {
-                lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
-                lblEmailWarning.Visibility = Visibility.Visible;
-                answer = DISALLOWED_VALUES;
+                RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+                Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+                int answer;
+                String email = txbEditEmail.Text.Trim();
+                if (!Regex.IsMatch(email, regexExpression.ToString(), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
+                    lblEmailWarning.Visibility = Visibility.Visible;
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    lblEmailWarning.Content = string.Empty;
+                    lblEmailWarning.Visibility = Visibility.Collapsed;
+                    answer = ALLOWED_VALUES;
+                }
+                return answer;
             }
-            else
+            catch (RegexMatchTimeoutException ex)
             {
-                lblEmailWarning.Content = string.Empty;
-                lblEmailWarning.Visibility = Visibility.Collapsed;
-                answer = ALLOWED_VALUES;
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                return DISALLOWED_VALUES;
             }
-            return answer;
+
         }
+
         private int CheckEmailExistence(string email)
         {
             try
@@ -362,8 +373,8 @@ namespace JeopardyGame.Pages
                 GenericClassOfint userIsNew = dataCheckerProxy.EmailAlreadyExist(email);
                 dataCheckerProxy.Close();
                 if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT || userIsNew.ObjectSaved == ALLOWED_VALUES)
-                {                    
-                        return ALLOWED_VALUES;                   
+                {
+                    return ALLOWED_VALUES;
                 }
                 else
                 {
@@ -427,14 +438,22 @@ namespace JeopardyGame.Pages
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
             dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
-            CloseWindow();  
+            CloseWindow();
         }
         private bool IsValidEmail(string email)
         {
-            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-            return regexExpression.IsMatch(email);
-        }
+            try
+            {
+                RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+                Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+                return Regex.IsMatch(email, regexExpression.ToString(), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                return false;
+            }
 
+        }
     }
 }

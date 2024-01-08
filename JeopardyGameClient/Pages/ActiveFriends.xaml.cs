@@ -327,9 +327,17 @@ namespace JeopardyGame.Pages
         }
         private bool IsValidEmail(string email)
         {
-            RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-            return regexExpression.IsMatch(email);
+            try
+            {
+                RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
+                Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+                return Regex.IsMatch(email, regexExpression.ToString(), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                return false;
+            }
         }
         private int CheckEmailExistence(string email)
         {
