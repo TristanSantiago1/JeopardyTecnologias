@@ -33,7 +33,6 @@ namespace JeopardyGame.Pages
     {
         private LobbyPage lobbyPage;
         public const int NULL_INT_VALUE = 0;
-        private Window dialogMessage;
         private const int DISALLOWED_VALUES = 0;
         private const int ALLOWED_VALUES = 1;
         
@@ -133,7 +132,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow, dialogWindow.ERROR);
                 }
                 friendManagerProxy.Close();
                 consultInformationProxy.Close();
@@ -164,25 +163,32 @@ namespace JeopardyGame.Pages
         {   
             stcFriendList.Children.Clear();
             stcFriendList.Orientation = Orientation.Vertical;
-            int roomCode = GameCodeContainer.RoomCode;
             Dictionary<int, FriendAvailabilityInformation> friendList = FriendList.GetActiveFriendsList();
             if (friendList != null)
             {               
-                foreach (var item in friendList)
-                {                    
-                    FriendCard friendCard = new FriendCard(item.Value.Name, item.Value.IdStatusOfAvailability, Properties.Resources.bttInvite);
-                    friendCard.InviteButtonClicked += (sender, e) =>
-                    {
-                        string friendEmail = item.Value.EmailAddress;
-                        string subject = Properties.Resources.txbTitleEmailInvitation;
-                        string body = Properties.Resources.tbxBodyInvitation + " "+ $"{roomCode}";
-                        SendEmailForInvitationToGame(friendEmail, subject, body);
-                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
-                    };
+                foreach (var friendItem in friendList.Select(item => item.Value))
+                {
+                    FriendCard friendCard = CreateFriendCard(friendItem);
                     stcFriendList.Children.Add(friendCard);
                 }
             }            
         }
+
+        private FriendCard CreateFriendCard(FriendAvailabilityInformation friend)
+        {
+            int roomCode = GameCodeContainer.RoomCode;
+            FriendCard friendCard = new FriendCard(friend.Name, friend.IdStatusOfAvailability, Properties.Resources.bttInvite);
+            friendCard.InviteButtonClicked += (sender, e) =>
+            {
+                string friendEmail = friend.EmailAddress;
+                string subject = Properties.Resources.txbTitleEmailInvitation;
+                string body = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
+                SendEmailForInvitationToGame(friendEmail, subject, body);
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, dialogWindow.INFORMATION);
+            };
+            return friendCard;
+        }
+
 
         public void ResponseOfPlayerAvailability(int status, int idFriend)
         {
@@ -216,13 +222,13 @@ namespace JeopardyGame.Pages
                 GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(user, subject, body);
                 if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, dialogWindow.INFORMATION);
                 }
                 else
                 {
                     if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, dialogWindow.ERROR);
 
                     }
                 }
@@ -253,7 +259,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
         private void ClickSendEmailForInvitation(object sender, MouseButtonEventArgs e)
@@ -294,13 +300,13 @@ namespace JeopardyGame.Pages
 
                 if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, dialogWindow.INFORMATION);
                 }
                 else
                 {
                     if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, dialogWindow.ERROR);
                     }
                 }
             }
@@ -330,8 +336,8 @@ namespace JeopardyGame.Pages
             try
             {
                 RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-                Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-                return Regex.IsMatch(email, regexExpression.ToString(), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+                string regexExpression = regexInstance.GetEMAIL_RULES_CHAR();
+                return Regex.IsMatch(email, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
             catch (RegexMatchTimeoutException ex)
             {

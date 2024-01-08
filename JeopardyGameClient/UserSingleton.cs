@@ -112,96 +112,56 @@ namespace JeopardyGame
         }
 
         private static void BeginHeartBeat()
-        {
-           
-            try
-            {
-                var heartbeatClient = new HeartBeatClient();
-                heartbeatTimer = new System.Threading.Timer(state => {
-                    try
-                    {
-                        heartbeatClient.Heartbeat();
-                    }
-                    catch (SecurityNegotiationException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                    }
-
-                    catch (AddressAccessDeniedException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                    }
-                    catch (ProtocolException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                    }
-                    catch (SocketException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                    }
-                    catch (EndpointNotFoundException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                    }
-                    catch (CommunicationObjectFaultedException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                        if (ex.InnerException is SocketException socketException)
-                        {
-                            ExceptionHandlerForLogs.LogException(socketException, ExceptionDictionary.FATAL_EXCEPTION);
-                        }
-                    }
-                    }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));
-            }
-            catch (SecurityNegotiationException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (AddressAccessDeniedException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (ProtocolException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (SocketException ex) 
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);                
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);                
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (TimeoutException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
-            catch (CommunicationException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                if(ex.InnerException is SocketException socketException)
+        {           
+            var heartbeatClient = new HeartBeatClient();
+            heartbeatTimer = new System.Threading.Timer(state => {
+                try
                 {
-                    ExceptionHandlerForLogs.LogException(socketException, ExceptionDictionary.FATAL_EXCEPTION);
+                    heartbeatClient.Heartbeat();
                 }
-            }
+                catch (SecurityNegotiationException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                }
+
+                catch (AddressAccessDeniedException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                }
+                catch (ProtocolException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                }
+                catch (SocketException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+
+                }
+                catch (CommunicationObjectFaultedException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (TimeoutException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                }
+                catch (CommunicationException ex)
+                {
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    if (ex.InnerException is SocketException socketException)
+                    {
+                        ExceptionHandlerForLogs.LogException(socketException, ExceptionDictionary.FATAL_EXCEPTION);
+                    }
+                }
+                }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));            
         }
 
         private static void StopHeartBeat()

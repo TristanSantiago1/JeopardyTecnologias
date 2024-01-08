@@ -24,8 +24,6 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class MainMenu : Page
     {
-        private Window dialogMessage;
-
         public MainMenu()
         {      
             InitializeComponent();
@@ -65,7 +63,7 @@ namespace JeopardyGame.Pages
 
         private void ClickSingOut(object sender, MouseButtonEventArgs e)
         {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow).CloseWindow)
+            if (dialogWindow.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.tbxSignOut, Application.Current.MainWindow))
             {
                 ReturnPage();
             }          
@@ -179,7 +177,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
             
         }
 

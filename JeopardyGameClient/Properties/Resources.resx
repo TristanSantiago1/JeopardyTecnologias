@@ -714,4 +714,7 @@
   <data name="txbGameFinish" xml:space="preserve">
     <value>Game over!</value>
   </data>
+  <data name="lblConfirmLeaveRecoveryPassword" xml:space="preserve">
+    <value>.</value>
+  </data>
 </root>

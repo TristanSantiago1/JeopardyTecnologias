@@ -34,7 +34,6 @@ namespace JeopardyGame.Pages
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
         private UserSingleton userSingleton;
-        private Window dialogMessage;
 
         public LogInUser()
         {
@@ -63,16 +62,16 @@ namespace JeopardyGame.Pages
                         }
                         else if (result.ObjectSaved == WRONG_CREDENTIALS)
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow);
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblinvalidCredentials, Application.Current.MainWindow, dialogWindow.ERROR);
                         }
                         else
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblComunicationException, Application.Current.MainWindow);
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblComunicationException, Application.Current.MainWindow, dialogWindow.ERROR);
                         }
                     }
                     else 
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);                        
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow, dialogWindow.ERROR);                        
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -113,7 +112,7 @@ namespace JeopardyGame.Pages
                 }
                 else if (isAlreadyConnected != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblLogInExist, Application.Current.MainWindow, dialogWindow.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -179,7 +178,7 @@ namespace JeopardyGame.Pages
 
                         if (currentPlayer.ObjectSaved.NoReports >= 3)
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow);
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserBanner, Application.Current.MainWindow, dialogWindow.ERROR);
                             UserSingleton.CleanSingleton();
                         }
                         else if (SubscribeToLivingChannel(currentUser.ObjectSaved) == ExceptionDictionary.SUCCESFULL_EVENT)
@@ -189,18 +188,18 @@ namespace JeopardyGame.Pages
                         }
                         else
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, dialogWindow.ERROR);
                             UserSingleton.CleanSingleton();
                         }
                     }
                     else
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow, dialogWindow.ERROR);
                     }
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow, dialogWindow.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -319,7 +318,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
         private void LanguageButtonClick(object sender, RoutedEventArgs e)

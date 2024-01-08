@@ -99,6 +99,7 @@
       <DependentUpon>ConfirmationDialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cards\ChatMessageCard.cs" />
+    <Compile Include="DialogWindows\DialogWindowsManager.cs" />
     <Compile Include="Exceptions\ExceptionDictionary.cs" />
     <Compile Include="Exceptions\ExceptionHandlerForLogs.cs" />
     <Compile Include="Exceptions\SeriLogClient.cs" />

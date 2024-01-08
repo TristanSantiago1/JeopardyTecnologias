@@ -34,7 +34,6 @@ namespace JeopardyGame.Pages
         private  UserSingleton userSingleton;
         private  List<MessageChat> messagesInChats = new List<MessageChat>();
         private  LobbyPage lobbyPage;
-        private Window dialogMessage;
 
         public LiveChat()
         {            
@@ -230,7 +229,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
     }

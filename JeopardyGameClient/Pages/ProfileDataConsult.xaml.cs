@@ -24,7 +24,6 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class ProfileDataConsult : Page
     {
-        private Window dialogMessage;
         private Dictionary<string, int> imageIdMappings;
         public ProfileDataConsult()
         {
@@ -76,7 +75,7 @@ namespace JeopardyGame.Pages
                 ConsultUserInformationClient consultInformationProxy = new ConsultUserInformationClient();
                 var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
                 consultInformationProxy.Close();
-                if (playerInfo != null && playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved is PlayerPojo)
+                if (playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved != null)
                 {
                     int imageId = playerInfo.ObjectSaved.IdActualAvatar;
                     string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
@@ -120,7 +119,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace JeopardyGame.DialogWindows
             InitializeComponent();
             txbErrorTitle.Text = windowTitle;
             txbErrorMessage.Text = message;
-            ShowErrorMessage(currentWindow);
+           // ShowErrorMessage(currentWindow);
         }
 
         private void ClickAcceptButton(object sender, RoutedEventArgs e)
@@ -23,12 +23,15 @@ namespace JeopardyGame.DialogWindows
 
         private void ShowErrorMessage(Window currentWindow)
         {
-            double left = currentWindow.Left + (currentWindow.Width - this.Width) / 2;
-            double top = currentWindow.Top + (currentWindow.Height - this.Height) / 2;
-            this.Left = left;
-            this.Top = top;
-            this.VerticalAlignment = VerticalAlignment.Center;
-            this.ShowDialog();
+            if (currentWindow != null)
+            {
+                double left = currentWindow.Left + (currentWindow.Width - this.Width) / 2;
+                double top = currentWindow.Top + (currentWindow.Height - this.Height) / 2;
+                this.Left = left;
+                this.Top = top;
+                this.VerticalAlignment = VerticalAlignment.Center;
+                this.ShowDialog();
+            }
         }
 
     }

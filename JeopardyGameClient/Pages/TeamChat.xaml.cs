@@ -29,7 +29,6 @@ namespace JeopardyGame.Pages
         private static UserSingleton userSingleton = UserSingleton.GetMainUser();
         private int idTeamMate;
         private GameBoard gameBoard;
-        private Window dialogMessage;
 
         public TeamChat(GameBoard game, int idTeam)
         {
@@ -187,7 +186,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
     }

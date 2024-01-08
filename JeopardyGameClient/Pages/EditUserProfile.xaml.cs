@@ -32,7 +32,6 @@ namespace JeopardyGame.Pages
     /// </summary>
     public partial class EditUserProfile : Page
     {
-        private Window dialogMessage;
         String imageResource = "";
         private Dictionary<string, int> imageIdMappings;
         private const int DISALLOWED_VALUES = 0;
@@ -74,14 +73,14 @@ namespace JeopardyGame.Pages
                 if (resultPhoto != null)
                 {
                     UserSingleton.GetMainUser().UpdateAvatarData(imageId);
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateAvatar, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateAvatar, Application.Current.MainWindow, dialogWindow.INFORMATION);
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
                     NavigationService.RemoveBackEntry();
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateAvatar, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateAvatar, Application.Current.MainWindow, dialogWindow.ERROR);
                     RefreshWindow();
                 }
                 useManagerProxy.Close();
@@ -148,7 +147,7 @@ namespace JeopardyGame.Pages
                 var playerInfo = consultInformationProxy.ConsultPlayerById(idPlayer);
                 consultInformationProxy.Close();
 
-                if (playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved is PlayerPojo)
+                if (playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved != null)
                 {
                     int imageId = playerInfo.ObjectSaved.IdActualAvatar;
                     string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
@@ -250,7 +249,7 @@ namespace JeopardyGame.Pages
                     if (result != null)
                     {
                         UserSingleton.GetMainUser().UpdateEmailData(email);
-                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateEmail, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateEmail, Application.Current.MainWindow, dialogWindow.INFORMATION);
                         MainMenu mainMenuPage = new MainMenu();
                         this.NavigationService.Navigate(mainMenuPage);
                         NavigationService.RemoveBackEntry();
@@ -258,7 +257,7 @@ namespace JeopardyGame.Pages
                     else
                     {
                         RefreshWindow();
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateEmail, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateEmail, Application.Current.MainWindow, dialogWindow.ERROR);
                     }
                     useManagerProxy.Close();
                 }
@@ -303,14 +302,14 @@ namespace JeopardyGame.Pages
                 if (result != null)
                 {
                     UserSingleton.GetMainUser().UpdateNameData(nameEdited);
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateName, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateName, Application.Current.MainWindow, dialogWindow.INFORMATION);
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
                     NavigationService.RemoveBackEntry();
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateName, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateName, Application.Current.MainWindow, dialogWindow.ERROR);
                 }
                 useManagerProxy.Close();
             }
@@ -340,10 +339,10 @@ namespace JeopardyGame.Pages
             try
             {
                 RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-                Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+                string regexExpression = regexInstance.GetEMAIL_RULES_CHAR();
                 int answer;
                 String email = txbEditEmail.Text.Trim();
-                if (!Regex.IsMatch(email, regexExpression.ToString(), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                if (!Regex.IsMatch(email, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
                 {
                     lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
                     lblEmailWarning.Visibility = Visibility.Visible;
@@ -380,15 +379,15 @@ namespace JeopardyGame.Pages
                 {
                     if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow, dialogWindow.ERROR);
                     }
                     else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow, dialogWindow.ERROR);
                     }
                     else
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow, dialogWindow.ERROR);
                         CloseWindow();
                     }
                     return DISALLOWED_VALUES;
@@ -437,7 +436,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
             CloseWindow();
         }
         private bool IsValidEmail(string email)
@@ -445,8 +444,8 @@ namespace JeopardyGame.Pages
             try
             {
                 RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-                Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
-                return Regex.IsMatch(email, regexExpression.ToString(), RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+                string regexExpression = regexInstance.GetEMAIL_RULES_CHAR();
+                return Regex.IsMatch(email, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
             }
             catch (RegexMatchTimeoutException ex)
             {

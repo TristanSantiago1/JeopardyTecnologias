@@ -39,7 +39,6 @@ namespace JeopardyGame.Pages
         private const int SEND_REQUEST = 1;
         private const int ACCEPT_REQUEST = 2;
         private int typeUserConsult = MY_FRIENDS;
-        private Window dialogMessage;
         private UserSingleton userSingleton;
 
         public FriendManager()
@@ -100,44 +99,12 @@ namespace JeopardyGame.Pages
                         Password = userSingleton.Password,
                         UserName = userSingleton.Name,
                     };
-                    ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
-                    var friendsConsulted = friendManagerProxy.GetUserFriends(userConsulted);
-                    if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if(!GetFriends(userConsulted) && !GetFriendRequests(userConsulted) && !GetNotFriends(userConsulted))
                     {
-                        var friendRequestsConsulted = friendManagerProxy.GetUserFriendRequests(userConsulted);
-                        if (friendRequestsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                        {
-                            var otherPeopleConsulted = friendManagerProxy.GetUsersNotFriends(userConsulted);
-                            if (otherPeopleConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                            {
-                                friends = friendsConsulted.ObjectSaved.ToList();
-                                friendRequests = friendRequestsConsulted.ObjectSaved.ToList();
-                                otherPeople = otherPeopleConsulted.ObjectSaved.ToList();
-                            }
-                            else
-                            {
-                                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
-                                GotoMenu();
-                            }
-                        }
-                        else
-                        {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
-                            GotoMenu();
-                        }
-                    }
-                    else
-                    {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow);
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow, dialogWindow.ERROR);
                         GotoMenu();
-                    }
-                    friendManagerProxy.Close();
-                }
-                else
-                {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWithoutConection, Application.Current.MainWindow);
-                    GotoMenu();
-                }
+                    }                   
+                }               
             }
             catch (EndpointNotFoundException ex)
             {
@@ -165,6 +132,112 @@ namespace JeopardyGame.Pages
                 GotoMenu();
             }
         }
+
+        private bool GetFriends(UserPojo userConsulted)
+        {
+            try
+            {
+                ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
+                var friendsConsulted = friendManagerProxy.GetUserFriends(userConsulted);
+                if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    friends = friendsConsulted.ObjectSaved.ToList();
+                    return true;
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                throw new EndpointNotFoundException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                throw new CommunicationObjectFaultedException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (TimeoutException ex)
+            {
+                throw new TimeoutException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (CommunicationException ex)
+            {
+                throw new CommunicationException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (SocketException)
+            {
+                throw new SocketException();
+            }
+            return false;
+        }
+
+        private bool GetFriendRequests(UserPojo userConsulted)
+        {
+            try
+            {
+                ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
+                var friendRequestsConsulted = friendManagerProxy.GetUserFriendRequests(userConsulted);
+                if (friendRequestsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    friendRequests = friendRequestsConsulted.ObjectSaved.ToList();
+                    return true;
+                }            
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                throw new EndpointNotFoundException(Properties.Resources.lblFailToRecoverFriends, ex);
+    }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                throw new CommunicationObjectFaultedException(Properties.Resources.lblFailToRecoverFriends, ex);
+}
+            catch (TimeoutException ex)
+            {
+                throw new TimeoutException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (CommunicationException ex)
+            {
+                throw new CommunicationException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (SocketException)
+            {
+                throw new SocketException();
+            }
+            return false;
+        }
+
+        private bool GetNotFriends(UserPojo userConsulted)
+        {
+            try { 
+                ConsultFriendsClient friendManagerProxy = new ConsultFriendsClient();
+                var otherPeopleConsulted = friendManagerProxy.GetUsersNotFriends(userConsulted);
+                if (otherPeopleConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                {
+                    otherPeople = otherPeopleConsulted.ObjectSaved.ToList();
+                    return true;
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                throw new EndpointNotFoundException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                throw new CommunicationObjectFaultedException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (TimeoutException ex)
+            {
+                throw new TimeoutException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (CommunicationException ex)
+            {
+                throw new CommunicationException(Properties.Resources.lblFailToRecoverFriends, ex);
+            }
+            catch (SocketException)
+            {
+                throw new SocketException();
+            }
+            return false;
+        }
+
+
 
         private void SetCards()
         {
@@ -258,11 +331,11 @@ namespace JeopardyGame.Pages
                 var result = friendActionsProxy.BanUser(idPlayer, userSingleton.IdUser);
                 if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {                    
-                    dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblSuccesReportedUser, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblSuccesReportedUser, Application.Current.MainWindow, dialogWindow.INFORMATION);
                 }                                                                                                 
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToReportAUser, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToReportAUser, Application.Current.MainWindow, dialogWindow.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -293,7 +366,6 @@ namespace JeopardyGame.Pages
             {
                 FriendManagerActionsClient friendActionsCallBackProxy = new FriendManagerActionsClient(new InstanceContext(this));
                 friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser);
-
                 FriendManagerActionOperationsClient friendActionsProxy = new();
                 friendActionsProxy.EliminateUserFromFriends(userSingleton.IdPlayer, idUserFriendToEliminate);
                 String userName = String.Empty;
@@ -476,7 +548,7 @@ namespace JeopardyGame.Pages
 
         public void ResponseReported(int numReports)
         {
-            dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow, dialogWindow.INFORMATION);
         }
 
         public void ResponseRequestAction(int idUser, int requestStatus, string userName)
@@ -518,22 +590,22 @@ namespace JeopardyGame.Pages
             }            
         }
 
-        public void ResponseEliminationFromFriends(int IdUser)
+        public void ResponseEliminationFromFriends(int idUser)
         {
             String userName = String.Empty;
             foreach (var item in friends)
             {
-                if (item.IdUser == IdUser)
+                if (item.IdUser == idUser)
                 {
                     friends.Remove(item);
                     userName = item.UserName;
                     break;
                 }
             }
-            if (!otherPeople.Exists(pla => pla.IdUser == IdUser))
+            if (!otherPeople.Exists(pla => pla.IdUser == idUser))
             {
                 FriendBasicInformation newFriend = new FriendBasicInformation();
-                newFriend.IdUser = IdUser;
+                newFriend.IdUser = idUser;
                 newFriend.UserName = userName;
                 newFriend.IdStatusAvailability = NOT_STATUS;
                 otherPeople.Add(newFriend);
@@ -606,7 +678,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
         private void ClickBackToMenu(object sender, MouseButtonEventArgs e)

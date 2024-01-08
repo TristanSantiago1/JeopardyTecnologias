@@ -29,7 +29,6 @@ namespace JeopardyGame.Pages
         private const int ALLOWED_VALUES = 1;
         private const int MINIMUN_PASSWORD_LENGTH = 10;
         private const int MAXIMUM_PASSWORD_LENGTH = 30;
-        private Window dialogMessage;
         
 
         public UserRegister()
@@ -218,20 +217,33 @@ namespace JeopardyGame.Pages
         private int CheckEmailAddressFormat()
         {
             RegularExpressionsLibrary regexInstance = new RegularExpressionsLibrary();
-            Regex regexExpression = new Regex(regexInstance.GetEMAIL_RULES_CHAR());
+            string regexExpression = regexInstance.GetEMAIL_RULES_CHAR();
             int answer;
             String email = txbEmailCreateAccount.Text.Trim();
-            if (!regexExpression.IsMatch(email))
+            try
             {
-                lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
-                lblEmailWarning.Visibility = Visibility.Visible;
-                answer = DISALLOWED_VALUES;
+                if (!Regex.IsMatch(email, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    lblEmailWarning.Content = Properties.Resources.lblInvalidEmail;
+                    lblEmailWarning.Visibility = Visibility.Visible;
+                    answer = DISALLOWED_VALUES;
+                }
+                else
+                {
+                    lblEmailWarning.Content = string.Empty;
+                    lblEmailWarning.Visibility = Visibility.Collapsed;
+                    answer = CheckPassword();
+                }
             }
-            else
+            catch (RegexMatchTimeoutException ex)
             {
-                lblEmailWarning.Content = string.Empty;
-                lblEmailWarning.Visibility = Visibility.Collapsed;
-                answer = CheckPassword();
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                answer = DISALLOWED_VALUES; 
+            }
+            catch (ArgumentNullException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                answer = DISALLOWED_VALUES; 
             }
             return answer;
         }
@@ -337,7 +349,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow, dialogWindow.ERROR);
                     return DISALLOWED_VALUES;
                 }
             }
@@ -369,15 +381,15 @@ namespace JeopardyGame.Pages
         {
             if (unsucces == ExceptionDictionary.EMAIL_ALREADY_EXIST)
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow);
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow, dialogWindow.ERROR);
             }
             else if (unsucces == ExceptionDictionary.USERNAME_ALREADY_EXIST)
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow);
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow, dialogWindow.ERROR);
             }
             else
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow);
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow, dialogWindow.ERROR);
             }
         }
 
@@ -421,8 +433,8 @@ namespace JeopardyGame.Pages
         }
 
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
-        {
-            if(new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbConfirmationCancelSaveUser, Application.Current.MainWindow).CloseWindow)
+        { 
+            if (dialogWindow.ShowWindowConfirmation(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow))
             {
                 GoToLogInWindow();
             }
@@ -445,7 +457,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
     }

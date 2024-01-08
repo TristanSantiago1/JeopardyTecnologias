@@ -713,4 +713,7 @@ Mexico</value>
   <data name="txbGameFinish" xml:space="preserve">
     <value>El juego ha terminado</value>
   </data>
+  <data name="lblConfirmLeaveRecoveryPassword" xml:space="preserve">
+    <value>¿Estas seguro que deseas cancelar la recuperación de la contraseña?</value>
+  </data>
 </root>

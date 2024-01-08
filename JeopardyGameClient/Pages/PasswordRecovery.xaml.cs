@@ -38,7 +38,6 @@ namespace JeopardyGame.Pages
         private DispatcherTimer timer;
         private int leftTime;
         private string currentUserName;
-        private Window dialogMessage;
 
 
         public PasswordRecovery()
@@ -163,11 +162,11 @@ namespace JeopardyGame.Pages
                     }
                     else if(succes == ExceptionDictionary.NULL_PARAEMETER)
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this));
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this), dialogWindow.ERROR);
                     }                    
                     else
                     {
-                        dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.GenericEmailIssue, Window.GetWindow(this));
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.GenericEmailIssue, Window.GetWindow(this), dialogWindow.ERROR);
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -204,11 +203,11 @@ namespace JeopardyGame.Pages
             StartTimer();
             if (succes == ExceptionDictionary.USERNAME_ALREADY_EXIST)
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblAlreadyExistACodeToChangePassword, Window.GetWindow(this));
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblAlreadyExistACodeToChangePassword, Window.GetWindow(this), dialogWindow.ERROR);
             }
             else
             {
-                dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblEmailCodePassWordSendSuccesfully, Window.GetWindow(this));
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblEmailCodePassWordSendSuccesfully, Window.GetWindow(this), dialogWindow.ERROR);
             }
         }
 
@@ -227,7 +226,7 @@ namespace JeopardyGame.Pages
                         txbUserNameCreateAccount.IsEnabled = false;
                         txbCode.IsEnabled = false;
                         bttSaveUser.IsEnabled = true;
-                        dialogMessage = new InformationMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblRigthCodePassword, Window.GetWindow(this));
+                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblRigthCodePassword, Window.GetWindow(this), dialogWindow.ERROR);
 
                     }
                     else
@@ -263,19 +262,19 @@ namespace JeopardyGame.Pages
         {
             if (succes == ExceptionDictionary.NULL_PARAEMETER)
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this));
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this), dialogWindow.ERROR);
             }
             else if (succes == ExceptionDictionary.ARGUMENT_NULL)
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblThereIsnoCodeFoThisUser, Window.GetWindow(this));
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblThereIsnoCodeFoThisUser, Window.GetWindow(this), dialogWindow.ERROR);
             }
             else if (succes == ExceptionDictionary.INVALID_OPERATION)
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongCodeEntered, Window.GetWindow(this));
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongCodeEntered, Window.GetWindow(this), dialogWindow.ERROR);
             }
             else
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToVerifyTheCode, Window.GetWindow(this));
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToVerifyTheCode, Window.GetWindow(this), dialogWindow.ERROR);
             }
         }
 
@@ -292,12 +291,12 @@ namespace JeopardyGame.Pages
                         var succes = userManagerClient.UpdatePasswordUser(currentUserName,EncryptionClass.EncryptPassword(psbPassword.Password.ToString().Trim()));
                         if (succes.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblPassWordUpdatedCorrectly, Window.GetWindow(this));
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblPassWordUpdatedCorrectly, Window.GetWindow(this), dialogWindow.INFORMATION);
                             GoToPrincipalWindow();
                         }                        
                         else
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToUpdatePassword + " " + Properties.Resources.lblFailToConenctBD, Window.GetWindow(this));
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToUpdatePassword + " " + Properties.Resources.lblFailToConenctBD, Window.GetWindow(this), dialogWindow.ERROR);
                         }
                     }
                     else
@@ -307,7 +306,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToUpdatePassword + " " + Properties.Resources.lblFailToConenctBD, Window.GetWindow(this));
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToUpdatePassword + " " + Properties.Resources.lblFailToConenctBD, Window.GetWindow(this), dialogWindow.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -492,7 +491,7 @@ namespace JeopardyGame.Pages
 
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
-            if (new ConfirmationDialogWindow(Properties.Resources.txbWarningTitle, Properties.Resources.txbConfirmationCancelSaveUser, Application.Current.MainWindow).CloseWindow)
+            if (dialogWindow.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.lblConfirmLeaveRecoveryPassword, Application.Current.MainWindow))
             {
                 GoToPrincipalWindow();
             }
@@ -513,7 +512,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
        

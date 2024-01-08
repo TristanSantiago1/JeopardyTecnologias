@@ -29,7 +29,6 @@ namespace JeopardyGame.Pages
     public partial class enterGameWithCode : Page, ICheckUserLivingCallback
     {
         private Window windowBehind;
-        private Window dialogMessage;
         UserSingleton userSingleton = UserSingleton.GetMainUser();
         private UserPojo userForGuest;
         int idUser = -1;
@@ -60,18 +59,18 @@ namespace JeopardyGame.Pages
                     {
                         if(isRoomActive.ObjectSaved == SUCCESFUL)
                         {
-                            if (AssurePlayer(enteredCode))
+                            if (AssurePlayer())
                             {
                                 GotoLobbyPage(enteredCode);
                             }
                         }
                         else if(isRoomActive.ObjectSaved == ROOMCODE_IS_FULL)
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyIsFull, Application.Current.MainWindow);
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyIsFull, Application.Current.MainWindow, dialogWindow.INFORMATION);
                         }
                         else 
                         {
-                            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyNotExist, Application.Current.MainWindow);
+                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyNotExist, Application.Current.MainWindow, dialogWindow.INFORMATION);
                         }
                     }
                 }
@@ -103,11 +102,11 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow);
+                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow, dialogWindow.ERROR);
             }         
         }
 
-        private bool AssurePlayer(int enteredCode)
+        private bool AssurePlayer()
         {
             bool success = true;
             if (idUser == -1)
@@ -142,7 +141,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToCreateGuestUser, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToCreateGuestUser, Application.Current.MainWindow, dialogWindow.ERROR);
                     Window.GetWindow(this).Close();
                 }
             }
@@ -187,7 +186,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow);
+                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, dialogWindow.ERROR);
                     Window.GetWindow(this).Close();
                     return false;
                 }
@@ -239,7 +238,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogMessage = new ErrorMessageDialogWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow);
+            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
         }
 
 
