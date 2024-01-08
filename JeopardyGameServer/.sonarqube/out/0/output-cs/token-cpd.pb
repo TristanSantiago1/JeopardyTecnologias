@@ -16336,7 +16336,7 @@ _SQL_ERROR>>' 1
 _ENTITY_VALIDATIONJJ/ A
 ;JJA B
 }KK 
-}NN ŒD
+}NN “A
 ÅC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\ExceptionHandler.cs
 	namespace 	
 JeopardyGame
@@ -16666,136 +16666,117 @@ logMessage8 B
 returnQQ 
 resultExceptionQQ &
 ;QQ& '
-}RR 
-ifSS 
-(SS 
-	exceptionSS 
-isSS 
-nullSS !
-)SS! "
-{TT 
-resultExceptionUU 
-.UU  
-	CodeEventUU  )
-=UU* +
-ExceptionDictionaryUU, ?
-.UU? @$
-UNKOWN_EXCEPTION_OCURREDUU@ X
-;UUX Y
-returnVV 
-resultExceptionVV &
-;VV& '
-}WW 
-returnXX 
-resultExceptionXX "
-;XX" #
-}YY 	
-}[[ 
-public^^ 
+}RR 
+returnSS 
+resultExceptionSS "
+;SS" #
+}TT 	
+}VV 
+publicYY 
 
-static^^ 
-class^^ !
-NullParametersHandler^^ -
-{__ 
-public`` 
-static`` 
-GenericClassServer`` (
-<``( )
-T``) *
->``* +(
-HandleNullParametersDataBase``, H
-<``H I
-T``I J
->``J K
-(``K L
-GenericClassServer``L ^
-<``^ _
-T``_ `
->``` a
-resultWithNull``b p
-)``p q
-{aa 	
-resultWithNullbb 
-.bb 
-ObjectSavedbb &
-=bb' (
-defaultbb) 0
-;bb0 1
-resultWithNullcc 
-.cc 
-	CodeEventcc $
-=cc% &
-ExceptionDictionarycc' :
-.cc: ;
-NULL_PARAEMETERcc; J
-;ccJ K
-returndd 
-resultWithNulldd !
-;dd! "
-}ee 	
-publicgg 
-staticgg 
-GenericClassgg "
-<gg" #
-Tgg# $
->gg$ %'
-HandleNullParametersServicegg& A
-<ggA B
-TggB C
->ggC D
-(ggD E
-GenericClassggE Q
-<ggQ R
-TggR S
->ggS T
-resultWithNullggU c
-)ggc d
-{hh 	
-resultWithNullii 
-.ii 
-ObjectSavedii &
-=ii' (
-defaultii) 0
-;ii0 1
-resultWithNulljj 
-.jj 
-	CodeEventjj $
-=jj% &
-ExceptionDictionaryjj' :
-.jj: ;
-NULL_PARAEMETERjj; J
-;jjJ K
-returnkk 
-resultWithNullkk !
-;kk! "
-}ll 	
-internalnn 
-staticnn 
-GenericClassnn $
-<nn$ %
-Tnn% &
->nn& '(
-HandleNullParametersDataBasenn( D
-<nnD E
-TnnE F
->nnF G
-(nnG H
-GenericClassnnH T
-<nnT U
-TnnU V
->nnV W
-resultOfOperationnnX i
-)nni j
-{oo 	
-throwpp 
-newpp #
-NotImplementedExceptionpp -
-(pp- .
-)pp. /
-;pp/ 0
-}qq 	
-}rr 
-}uu ©8
+staticYY 
+classYY !
+NullParametersHandlerYY -
+{ZZ 
+public[[ 
+static[[ 
+GenericClassServer[[ (
+<[[( )
+T[[) *
+>[[* +(
+HandleNullParametersDataBase[[, H
+<[[H I
+T[[I J
+>[[J K
+([[K L
+GenericClassServer[[L ^
+<[[^ _
+T[[_ `
+>[[` a
+resultWithNull[[b p
+)[[p q
+{\\ 	
+resultWithNull]] 
+.]] 
+ObjectSaved]] &
+=]]' (
+default]]) 0
+;]]0 1
+resultWithNull^^ 
+.^^ 
+	CodeEvent^^ $
+=^^% &
+ExceptionDictionary^^' :
+.^^: ;
+NULL_PARAEMETER^^; J
+;^^J K
+return__ 
+resultWithNull__ !
+;__! "
+}`` 	
+publicbb 
+staticbb 
+GenericClassbb "
+<bb" #
+Tbb# $
+>bb$ %'
+HandleNullParametersServicebb& A
+<bbA B
+TbbB C
+>bbC D
+(bbD E
+GenericClassbbE Q
+<bbQ R
+TbbR S
+>bbS T
+resultWithNullbbU c
+)bbc d
+{cc 	
+resultWithNulldd 
+.dd 
+ObjectSaveddd &
+=dd' (
+defaultdd) 0
+;dd0 1
+resultWithNullee 
+.ee 
+	CodeEventee $
+=ee% &
+ExceptionDictionaryee' :
+.ee: ;
+NULL_PARAEMETERee; J
+;eeJ K
+returnff 
+resultWithNullff !
+;ff! "
+}gg 	
+internalii 
+staticii 
+GenericClassii $
+<ii$ %
+Tii% &
+>ii& '(
+HandleNullParametersDataBaseii( D
+<iiD E
+TiiE F
+>iiF G
+(iiG H
+GenericClassiiH T
+<iiT U
+TiiU V
+>iiV W
+resultOfOperationiiX i
+)iii j
+{jj 	
+throwkk 
+newkk #
+NotImplementedExceptionkk -
+(kk- .
+)kk. /
+;kk/ 0
+}ll 	
+}mm 
+}pp ©8
 ~C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Exceptions\SeriLogConfig.cs
 	namespace 	
 JeopardyGame
