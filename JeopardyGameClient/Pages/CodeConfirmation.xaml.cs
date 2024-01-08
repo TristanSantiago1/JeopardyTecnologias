@@ -63,7 +63,7 @@ namespace JeopardyGame.Pages
                 var success = checkUserLivingClient.SubscribeToICheckUserLiving(userToSave);
                 if (success != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     ClickButtonCancelSaving(bttCancellAction, new RoutedEventArgs());
                 }
             }
@@ -132,11 +132,11 @@ namespace JeopardyGame.Pages
                                   userToSave, Properties.Resources.EmailSubjectCode, Properties.Resources.EmailCodeDescrip);
                 if (sentEmailSucc.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
                 }
                 if (sentEmailSucc.ObjectSaved == NULL_INT_VALUE)
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -175,7 +175,7 @@ namespace JeopardyGame.Pages
                     {
                         SetSingleton();
                         NotifyUserABoutNewPlayer();
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow, dialogWindow.INFORMATION);                        
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.txbInfoMessgSuccRegUser, Application.Current.MainWindow, DialogWindowManager.INFORMATION);                        
                         MainMenu mainMenu = new MainMenu();
                         this.NavigationService.Navigate(mainMenu);
                         NavigationService.RemoveBackEntry();
@@ -183,7 +183,7 @@ namespace JeopardyGame.Pages
                     else
                     {
                         userToSave.Password = this.password;
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow, dialogWindow.ERROR);                        
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.txbErrorMessageRegisterUser, Application.Current.MainWindow, DialogWindowManager.ERROR);                        
                     }
                 }
                 else
@@ -227,7 +227,7 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -367,12 +367,12 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailConsultingTheBD, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailConsultingTheBD, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     }
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailConsultingTheBD, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailConsultingTheBD, Application.Current.MainWindow, DialogWindowManager.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -410,7 +410,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
         }
         private void UpdateLabelStyle()
         {

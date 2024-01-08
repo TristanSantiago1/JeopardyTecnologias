@@ -66,11 +66,11 @@ namespace JeopardyGame.Pages
                         }
                         else if(isRoomActive.ObjectSaved == ROOMCODE_IS_FULL)
                         {
-                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyIsFull, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyIsFull, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                         }
                         else 
                         {
-                            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyNotExist, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.LobbyNotExist, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                         }
                     }
                 }
@@ -102,7 +102,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow, dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblnvalidCode, Application.Current.MainWindow, DialogWindowManager.ERROR);
             }         
         }
 
@@ -141,7 +141,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToCreateGuestUser, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToCreateGuestUser, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     Window.GetWindow(this).Close();
                 }
             }
@@ -186,7 +186,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailRegistryToCallBack, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     Window.GetWindow(this).Close();
                     return false;
                 }
@@ -238,7 +238,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
         }
 
 

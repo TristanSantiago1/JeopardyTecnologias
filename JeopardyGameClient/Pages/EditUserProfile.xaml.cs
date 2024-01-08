@@ -73,14 +73,14 @@ namespace JeopardyGame.Pages
                 if (resultPhoto != null)
                 {
                     UserSingleton.GetMainUser().UpdateAvatarData(imageId);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateAvatar, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateAvatar, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
                     NavigationService.RemoveBackEntry();
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateAvatar, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateAvatar, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     RefreshWindow();
                 }
                 useManagerProxy.Close();
@@ -249,7 +249,7 @@ namespace JeopardyGame.Pages
                     if (result != null)
                     {
                         UserSingleton.GetMainUser().UpdateEmailData(email);
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateEmail, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateEmail, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                         MainMenu mainMenuPage = new MainMenu();
                         this.NavigationService.Navigate(mainMenuPage);
                         NavigationService.RemoveBackEntry();
@@ -257,7 +257,7 @@ namespace JeopardyGame.Pages
                     else
                     {
                         RefreshWindow();
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateEmail, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateEmail, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     }
                     useManagerProxy.Close();
                 }
@@ -302,14 +302,14 @@ namespace JeopardyGame.Pages
                 if (result != null)
                 {
                     UserSingleton.GetMainUser().UpdateNameData(nameEdited);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateName, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblUpdateName, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                     MainMenu mainMenuPage = new MainMenu();
                     this.NavigationService.Navigate(mainMenuPage);
                     NavigationService.RemoveBackEntry();
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateName, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongUpdateName, Application.Current.MainWindow, DialogWindowManager.ERROR);
                 }
                 useManagerProxy.Close();
             }
@@ -379,15 +379,15 @@ namespace JeopardyGame.Pages
                 {
                     if (userIsNew.ObjectSaved == ExceptionDictionary.EMAIL_ALREADY_EXIST)
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     }
                     else if (userIsNew.ObjectSaved == ExceptionDictionary.USERNAME_ALREADY_EXIST)
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     }
                     else
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongEmailRepited, Application.Current.MainWindow, DialogWindowManager.ERROR);
                         CloseWindow();
                     }
                     return DISALLOWED_VALUES;
@@ -436,7 +436,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
             CloseWindow();
         }
         private bool IsValidEmail(string email)

@@ -119,18 +119,7 @@ namespace JeopardyGame
                 {
                     heartbeatClient.Heartbeat();
                 }
-                catch (SecurityNegotiationException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                }
-
                 catch (AddressAccessDeniedException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                }
-                catch (ProtocolException ex)
                 {
                     ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
 
@@ -155,11 +144,7 @@ namespace JeopardyGame
                 }
                 catch (CommunicationException ex)
                 {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                    if (ex.InnerException is SocketException socketException)
-                    {
-                        ExceptionHandlerForLogs.LogException(socketException, ExceptionDictionary.FATAL_EXCEPTION);
-                    }
+                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);                    
                 }
                 }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));            
         }

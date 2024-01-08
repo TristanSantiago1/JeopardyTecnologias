@@ -12,132 +12,6 @@
       },
       "results": [
         {
-          "ruleId": "S101",
-          "level": "warning",
-          "message": "Rename class 'UserPOJO' to match pascal case naming rules, consider using 'UserPojo'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 75,
-                  "startColumn": 18,
-                  "endLine": 75,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S101",
-          "level": "warning",
-          "message": "Rename class 'CategoryPOJO' to match pascal case naming rules, consider using 'CategoryPojo'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 151,
-                  "startColumn": 18,
-                  "endLine": 151,
-                  "endColumn": 30
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S101",
-          "level": "warning",
-          "message": "Rename class 'PlayerPOJO' to match pascal case naming rules, consider using 'PlayerPojo'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 83,
-                  "startColumn": 18,
-                  "endLine": 83,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S101",
-          "level": "warning",
-          "message": "Rename class 'AnswerPOJO' to match pascal case naming rules, consider using 'AnswerPojo'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 143,
-                  "startColumn": 18,
-                  "endLine": 143,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S101",
-          "level": "warning",
-          "message": "Rename class 'QuestionPOJO' to match pascal case naming rules, consider using 'QuestionPojo'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/GenericClassAndObjecSaved.cs",
-                "region": {
-                  "startLine": 133,
-                  "startColumn": 18,
-                  "endLine": 133,
-                  "endColumn": 30
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S108",
-          "level": "warning",
-          "message": "Either remove or fill this block of code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionHandler.cs",
-                "region": {
-                  "startLine": 30,
-                  "startColumn": 13,
-                  "endLine": 32,
-                  "endColumn": 14
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S4792",
           "level": "warning",
           "message": "Make sure that this logger's configuration is safe.",
@@ -156,31 +30,6 @@
           ],
           "properties": {
             "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2219",
-          "level": "warning",
-          "message": "Use a 'null' check instead.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionHandler.cs",
-                "region": {
-                  "startLine": 78,
-                  "startColumn": 17,
-                  "endLine": 78,
-                  "endColumn": 39
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "ShouldRemoveGetType": "False",
-              "UseIsOperator": "False"
-            }
           }
         },
         {
@@ -205,6 +54,40 @@
           }
         },
         {
+          "ruleId": "S2583",
+          "level": "warning",
+          "message": "Change this condition so that it does not always evaluate to 'True'. Some code paths are unreachable.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionHandler.cs",
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 17,
+                  "endLine": 83,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/Exceptions/ExceptionHandler.cs",
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 20,
+                  "endLine": 88,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "S2245",
           "level": "warning",
           "message": "Make sure that using this pseudorandom number generator is safe here.",
@@ -217,27 +100,6 @@
                   "startColumn": 41,
                   "endLine": 203,
                   "endColumn": 53
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1854",
-          "level": "warning",
-          "message": "Remove this useless assignment to local variable 'friendshipToChange'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/FriendsManagerDataOperation.cs",
-                "region": {
-                  "startLine": 197,
-                  "startColumn": 25,
-                  "endLine": 197,
-                  "endColumn": 58
                 }
               }
             }
@@ -287,98 +149,9 @@
           "properties": {
             "warningLevel": 1
           }
-        },
-        {
-          "ruleId": "S2589",
-          "level": "warning",
-          "message": "Change this condition so that it does not always evaluate to 'True'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameServer/JeopardyGame.Data/DataAccess/UserManagerDataOperation.cs",
-                "region": {
-                  "startLine": 628,
-                  "startColumn": 25,
-                  "endLine": 628,
-                  "endColumn": 47
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
         }
       ],
       "rules": {
-        "S101": {
-          "id": "S101",
-          "shortDescription": "Types should be named in PascalCase",
-          "fullDescription": "Shared naming conventions allow teams to collaborate efficiently.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-101",
-          "properties": {
-            "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S108": {
-          "id": "S108",
-          "shortDescription": "Nested blocks of code should not be left empty",
-          "fullDescription": "An empty code block is confusing. It will require some effort from maintainers to determine if it is intentional or indicates the implementation is incomplete.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-108",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S1854": {
-          "id": "S1854",
-          "shortDescription": "Unused assignments should be removed",
-          "fullDescription": "Dead stores refer to assignments made to local variables that are subsequently never used or immediately overwritten. Such assignments are unnecessary and don’t contribute to the functionality or clarity of the code. They may even negatively impact performance. Removing them enhances code cleanliness and readability. Even if the unnecessary operations do not do any harm in terms of the program’s correctness, they are - at best - a waste of computing resources.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1854",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S2219": {
-          "id": "S2219",
-          "shortDescription": "Runtime type checking should be simplified",
-          "fullDescription": "To check the type of an object there are several options:",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2219",
-          "properties": {
-            "category": "Minor Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S2245": {
           "id": "S2245",
           "shortDescription": "Using pseudorandom number generators (PRNGs) is security-sensitive",
@@ -395,14 +168,14 @@
             ]
           }
         },
-        "S2589": {
-          "id": "S2589",
-          "shortDescription": "Boolean expressions should not be gratuitous",
-          "fullDescription": "Gratuitous boolean expressions are conditions that do not change the evaluation of a program. This issue can indicate logical errors and affect the correctness of an application, as well as its maintainability.",
+        "S2583": {
+          "id": "S2583",
+          "shortDescription": "Conditionally executed code should be reachable",
+          "fullDescription": "Conditional expressions which are always true or false can lead to unreachable code.",
           "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2589",
+          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-2583",
           "properties": {
-            "category": "Major Code Smell",
+            "category": "Major Bug",
             "isEnabledByDefault": true,
             "tags": [
               "C#",

@@ -220,18 +220,18 @@ namespace JeopardyGame.Pages
             currentRound = ROUND_ONE;
         }
 
-        private async void PrepareRoundTwo()
+        private async Task PrepareRoundTwo()
         {
             wrpBoardOfCards.Children.Clear();
             await BeginHostPresentationSecondRoundAsync();
             SetInformationInCards(categoriesOfGameRound2, questionsRoundTwo);
         }
 
-        private void PrepareLastRound()
+        private async Task PrepareLastRound()
         {
             wrpBoardOfCards.Children.Clear();
             wrpBoardOfCards.Visibility = Visibility.Collapsed; 
-            BeginHostPresentationLastRound(); 
+            await BeginHostPresentationLastRound(); 
         }
 
         private void SetInformationInCards(List<CategoryPojo> categoriesOfGame, List<QuestionCardInformation> questionsOfRound)
@@ -304,7 +304,7 @@ namespace JeopardyGame.Pages
             await Task.Delay(5000);
         }
 
-        private async void BeginHostPresentationLastRound()
+        private async Task BeginHostPresentationLastRound()
         {
             await ShowPresentationThreeAsync();
             grdBet.Visibility = Visibility.Visible;
@@ -323,7 +323,7 @@ namespace JeopardyGame.Pages
                     nameOfBorder = team2Name;
                 }
                 GameTeamCard currentPointsOfPlayer = (GameTeamCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals(nameOfBorder));
-                if (currentPointsOfPlayer.GetPoints() < 0)
+                if (currentPointsOfPlayer!= null && currentPointsOfPlayer.GetPoints() < 0)
                 {
                     txbPointsToBet.Text = "0";
                     txbPointsToBet.IsEnabled = false;
@@ -847,18 +847,18 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public void ResponseBeginRound(int isYourTurn, int roundToStart, PlayerInGameDataContract[] playerInGam)
+        public async void ResponseBeginRound(int isYourTurn, int roundToStart, PlayerInGameDataContract[] playerInGam)
         {
             playersInGame = playersInGame.ToList();
             switch (roundToStart)
             {
                 case 2:
                     currentRound = roundToStart;
-                    PrepareRoundTwo();
+                    await PrepareRoundTwo();
                     break;
                 case 3:
                     currentRound = roundToStart;
-                    PrepareLastRound();
+                    await PrepareLastRound();
                     break;
             }
         }
@@ -878,16 +878,16 @@ namespace JeopardyGame.Pages
             {
                 if (poinstWereSaved == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbGameFinish, Properties.Resources.GameFinished, Window.GetWindow(this), dialogWindow.INFORMATION);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbGameFinish, Properties.Resources.GameFinished, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToSavePoinstAfterGame, Window.GetWindow(this), DialogWindowManager.ERROR);
                 }
             }
             else
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblGuestEndOfGame, Window.GetWindow(this), dialogWindow.INFORMATION);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblGuestEndOfGame, Window.GetWindow(this), DialogWindowManager.INFORMATION);
             }
         }
 
@@ -1104,7 +1104,7 @@ namespace JeopardyGame.Pages
             {
                 CloseWindow();
             }
-            else if(dialogWindow.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.LeaveGameConfirmation, Window.GetWindow(this)))
+            else if(DialogWindowManager.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.LeaveGameConfirmation, Window.GetWindow(this)))
             {
                 NotifyLeavingGame();
                 CloseWindow();
@@ -1170,11 +1170,11 @@ namespace JeopardyGame.Pages
                 {
                     if (itsTeamGame)
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseOfTeamLeft, Window.GetWindow(this), dialogWindow.INFORMATION);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseOfTeamLeft, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                     }
                     else
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseJustOnePlayer, Window.GetWindow(this), dialogWindow.INFORMATION);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseJustOnePlayer, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                     }
                     CloseWindow();
                     return;
@@ -1262,7 +1262,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
             NotifyLeavingGame();
             ReturnPage();
         }

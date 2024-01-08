@@ -101,7 +101,7 @@ namespace JeopardyGame.Pages
                     };
                     if(!GetFriends(userConsulted) && !GetFriendRequests(userConsulted) && !GetNotFriends(userConsulted))
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRecoverFriends, Application.Current.MainWindow, DialogWindowManager.ERROR);
                         GotoMenu();
                     }                   
                 }               
@@ -331,11 +331,11 @@ namespace JeopardyGame.Pages
                 var result = friendActionsProxy.BanUser(idPlayer, userSingleton.IdUser);
                 if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {                    
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblSuccesReportedUser, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblSuccesReportedUser, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                 }                                                                                                 
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToReportAUser, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToReportAUser, Application.Current.MainWindow, DialogWindowManager.ERROR);
                 }
             }
             catch (EndpointNotFoundException ex)
@@ -548,7 +548,7 @@ namespace JeopardyGame.Pages
 
         public void ResponseReported(int numReports)
         {
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow, dialogWindow.INFORMATION);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.MessageReported + numReports.ToString(), Application.Current.MainWindow, DialogWindowManager.INFORMATION);
         }
 
         public void ResponseRequestAction(int idUser, int requestStatus, string userName)
@@ -678,7 +678,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
         }
 
         private void ClickBackToMenu(object sender, MouseButtonEventArgs e)

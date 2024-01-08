@@ -349,7 +349,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MessageSQLException, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     return DISALLOWED_VALUES;
                 }
             }
@@ -381,15 +381,15 @@ namespace JeopardyGame.Pages
         {
             if (unsucces == ExceptionDictionary.EMAIL_ALREADY_EXIST)
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow, dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow, DialogWindowManager.ERROR);
             }
             else if (unsucces == ExceptionDictionary.USERNAME_ALREADY_EXIST)
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow, dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedUserName, Application.Current.MainWindow, DialogWindowManager.ERROR);
             }
             else
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow, dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToRegisterUser, Application.Current.MainWindow, DialogWindowManager.ERROR);
             }
         }
 
@@ -434,7 +434,7 @@ namespace JeopardyGame.Pages
 
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         { 
-            if (dialogWindow.ShowWindowConfirmation(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow))
+            if (DialogWindowManager.ShowWindowConfirmation(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow))
             {
                 GoToLogInWindow();
             }
@@ -457,7 +457,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
         }
 
     }

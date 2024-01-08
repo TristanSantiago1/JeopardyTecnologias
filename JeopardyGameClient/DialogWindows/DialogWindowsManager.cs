@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace JeopardyGame.DialogWindows
 {
-    public static class dialogWindow
+    public static class DialogWindowManager
     {
         private  const int _ERROR = 1;
         private const int _INFORMATION = 2;

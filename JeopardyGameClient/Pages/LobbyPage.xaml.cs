@@ -295,13 +295,13 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblEliminateFromLobby, Window.GetWindow(this), dialogWindow.INFORMATION);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblEliminateFromLobby, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                         CloseWindow();
                     }
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.KickedFromLobby, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.KickedFromLobby, Window.GetWindow(this), DialogWindowManager.ERROR);
                     CloseWindow();
                 }
             }
@@ -403,31 +403,31 @@ namespace JeopardyGame.Pages
                     else
                     {
                         chbTeamUp.IsChecked = false;
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.MustBe4Players, Window.GetWindow(this), dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.MustBe4Players, Window.GetWindow(this), DialogWindowManager.ERROR);
                     }
                 }
                 catch (EndpointNotFoundException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), DialogWindowManager.ERROR);
                     chbTeamUp.IsChecked = false;
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), DialogWindowManager.ERROR);
                     chbTeamUp.IsChecked = false;
                 }
                 catch (TimeoutException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), DialogWindowManager.ERROR);
                     chbTeamUp.IsChecked = false;
                 }
                 catch (CommunicationException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), DialogWindowManager.ERROR);
                     chbTeamUp.IsChecked = false;
                 }
             }
@@ -450,28 +450,28 @@ namespace JeopardyGame.Pages
                 catch (EndpointNotFoundException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), DialogWindowManager.ERROR);
                     DoOrUndoTeams(true);
                     SetPlayerInLabels();
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), DialogWindowManager.ERROR);
                     DoOrUndoTeams(true);
                     SetPlayerInLabels();
                 }
                 catch (TimeoutException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), DialogWindowManager.ERROR);
                     DoOrUndoTeams(true);
                     SetPlayerInLabels();
                 }
                 catch (CommunicationException ex)
                 {
                     Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), DialogWindowManager.ERROR);
                     DoOrUndoTeams(true);
                     SetPlayerInLabels();
                 }
@@ -546,25 +546,25 @@ namespace JeopardyGame.Pages
             catch (EndpointNotFoundException ex)
             {
                 Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), DialogWindowManager.ERROR);
                 ChangeSideOfPlayer(userChanged.UserName);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), DialogWindowManager.ERROR);
                 ChangeSideOfPlayer(userChanged.UserName);
             }
             catch (TimeoutException ex)
             {
                 Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), DialogWindowManager.ERROR);
                 ChangeSideOfPlayer(userChanged.UserName);
             }
             catch (CommunicationException ex)
             {
                 Exceptions.ExceptionHandlerForLogs.LogException(ex, Exceptions.ExceptionDictionary.ERROR);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToManageTeams + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), DialogWindowManager.ERROR);
                 ChangeSideOfPlayer(userChanged.UserName);
             }
         }
@@ -609,7 +609,7 @@ namespace JeopardyGame.Pages
 
         private void CLicButtonCancelGame(object sender, RoutedEventArgs e)
         {
-            if (dialogWindow.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.txbCancel, Window.GetWindow(this)))
+            if (DialogWindowManager.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.txbCancel, Window.GetWindow(this)))
             {
                 try
                 {
@@ -661,7 +661,7 @@ namespace JeopardyGame.Pages
 
         public void DissolvingLobby()
         {
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this), dialogWindow.INFORMATION);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.GameCancelled, Window.GetWindow(this), DialogWindowManager.INFORMATION);
             CloseWindow();
         }
 
@@ -729,22 +729,22 @@ namespace JeopardyGame.Pages
             catch (EndpointNotFoundException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblEndPointNotFound, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblComunicationException, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
             catch (TimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblTimeException, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
             catch (CommunicationException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblFailToNotifyYourFriends + " : " + Properties.Resources.lblWithoutConection, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
         }
 
@@ -767,7 +767,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblNotGame, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblNotGame, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
         }
 
@@ -782,7 +782,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources._2PlayerByTeam, Window.GetWindow(this), dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources._2PlayerByTeam, Window.GetWindow(this), DialogWindowManager.ERROR);
                 }
             }
             else if (currentPlayerInLobby.Count > 1)
@@ -791,7 +791,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MoreThan1Player, Window.GetWindow(this), dialogWindow.ERROR);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.MoreThan1Player, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
         }
 
@@ -834,7 +834,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
             ReturnToLogin();
         }
 

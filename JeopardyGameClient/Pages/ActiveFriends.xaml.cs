@@ -132,7 +132,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow, dialogWindow.ERROR);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbWarningTitle, Properties.Resources.lblWithoutFriends, Application.Current.MainWindow, DialogWindowManager.ERROR);
                 }
                 friendManagerProxy.Close();
                 consultInformationProxy.Close();
@@ -184,7 +184,7 @@ namespace JeopardyGame.Pages
                 string subject = Properties.Resources.txbTitleEmailInvitation;
                 string body = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
                 SendEmailForInvitationToGame(friendEmail, subject, body);
-                dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
             };
             return friendCard;
         }
@@ -222,13 +222,13 @@ namespace JeopardyGame.Pages
                 GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailInvitingToGame(user, subject, body);
                 if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                 }
                 else
                 {
                     if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
 
                     }
                 }
@@ -259,7 +259,7 @@ namespace JeopardyGame.Pages
         private void HandleException(Exception ex, string errorMessage)
         {
             ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, dialogWindow.ERROR);
+            DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, errorMessage, Application.Current.MainWindow, DialogWindowManager.ERROR);
         }
 
         private void ClickSendEmailForInvitation(object sender, MouseButtonEventArgs e)
@@ -300,13 +300,13 @@ namespace JeopardyGame.Pages
 
                 if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, dialogWindow.INFORMATION);
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
                 }
                 else
                 {
                     if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
                     {
-                        dialogWindow.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, dialogWindow.ERROR);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
                     }
                 }
             }

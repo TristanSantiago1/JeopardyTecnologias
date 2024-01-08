@@ -80,11 +80,6 @@ namespace JeopardyGame.Data.Exceptions
                 resultException.CodeEvent = ExceptionDictionary.UNKOWN_EXCEPTION_OCURRED;
                 return resultException;
             }
-            if (exception is null)
-            {
-                resultException.CodeEvent = ExceptionDictionary.UNKOWN_EXCEPTION_OCURRED;
-                return resultException;
-            }
             return resultException;
         }
 

@@ -630,16 +630,17 @@ namespace JeopardyGame.Service.ServiceImplementation
             GameLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
             ChatsDictionary.RemoveRegistryOfActiveChatFromDictionary(roomCode);
             ChatsDictionary.RemoveRegistryOfChannelCallBakcChatFromDictionary(roomCode);
-            var gameToFinish = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
+            var gameToFinish = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);           
             if (gameToFinish != null)
             {
-                foreach (var item in gameToFinish)
+                gameToFinish.Select(item => item.IdUser).ToList().ForEach(userId =>
                 {
-                    ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(item.IdUser);
-                    TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(item.IdUser);                    
-                }
+                    ActiveUsersDictionary.RemoveRegistryOfActiveUserFromDictionary(userId);
+                    TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(userId);
+                });
                 ActiveGamesDictionary.RemoveRegistryOfGameFromDictionary(roomCode);
             }
+
         }
 
         public static List<PlayerInGameDataContract> GetPlayerInGameDataContractList(List<PlayerPlayingInGame> playersPlaying)

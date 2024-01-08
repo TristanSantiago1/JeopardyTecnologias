@@ -5,6 +5,7 @@ using JeopardyGame.Service.InterfacesServices;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.ServiceModel;
 
@@ -32,13 +33,13 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void NotifyFriendCallBack(List<FriendBasicInformation> friendsNewUser, int idUser, int status)
         {
-            if(friendsNewUser.Count != NULL_VALUE || idUser != NULL_VALUE || status != NULL_VALUE) 
+            if (friendsNewUser.Count != NULL_VALUE || idUser != NULL_VALUE || status != NULL_VALUE)
             {
-                foreach (var friend in friendsNewUser)
+                friendsNewUser.Select(friend => friend.IdUser).ToList().ForEach(friendId =>
                 {
                     try
                     {
-                        var channelSaved = ActiveUsersDictionary.GetChannelCallBackActiveUser(friend.IdUser);
+                        var channelSaved = ActiveUsersDictionary.GetChannelCallBackActiveUser(friendId);
                         if (channelSaved != null)
                         {
                             channelSaved.GetCallbackChannel<INotifyUserAvailabilityCallBack>().ResponseOfPlayerAvailability(status, idUser);
@@ -46,25 +47,25 @@ namespace JeopardyGame.Service.ServiceImplementation
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(friend.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(friendId, ChannelAdministrator.AVAILABILITY_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (TimeoutException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(friend.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(friendId, ChannelAdministrator.AVAILABILITY_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(friend.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(friendId, ChannelAdministrator.AVAILABILITY_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
                     catch (InvalidOperationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(friend.IdUser, ChannelAdministrator.AVAILABILITY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(friendId, ChannelAdministrator.AVAILABILITY_EXCEPTION);
                         ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                     }
-                }
+                });
             }
         } 
 

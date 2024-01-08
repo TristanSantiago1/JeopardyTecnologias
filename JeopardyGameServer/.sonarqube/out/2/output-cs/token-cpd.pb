@@ -1,4 +1,4 @@
-Æ>
+¯>
 }C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Host\Connetion\OpenConnetion.cs
 	namespace 	
 JeopardyGame
@@ -10,9 +10,10 @@
 Connection &
 { 
 public 
-
-class 
-OpenConnection 
+
+static 
+class 
+OpenConnection &
 { 
 static 
 void 
@@ -23,7 +24,7 @@ Connection &
 ]  !
 args" &
 )& '
-{ 
+{ 	
 try 
 { 
 GetConectionString "
@@ -166,14 +167,12 @@ ServerFail''= G
 LogException,,! -
 (,,- .
 ex,,. 0
-.,,0 1
-InnerException,,1 ?
-,,,? @
-ExceptionDictionary,,A T
-.,,T U
-ERROR,,U Z
-),,Z [
-;,,[ \
+,,,0 1
+ExceptionDictionary,,2 E
+.,,E F
+ERROR,,F K
+),,K L
+;,,L M
 Console-- 
 .-- 
 	WriteLine-- !

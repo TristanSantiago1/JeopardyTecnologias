@@ -18,8 +18,7 @@ namespace JeopardyGame.DialogWindows
             InitializeComponent();
             txbErrorTitle.Text = title;
             txbErrorMessage.Text = message; 
-            CloseWindow = false;
-            // ShowConfirmationMessage(currentWindow);           
+            CloseWindow = false; 
         }
 
 
@@ -33,18 +32,6 @@ namespace JeopardyGame.DialogWindows
         {
             CloseWindow = false;
             this.Close();   
-        }
-        private void ShowConfirmationMessage(Window currentWindow)
-        {
-            if (currentWindow != null)
-            {
-                double left = currentWindow.Left + (currentWindow.Width - this.Width) / 2;
-                double top = currentWindow.Top + (currentWindow.Height - this.Height) / 2;
-                this.Left = left;
-                this.Top = top;
-                this.VerticalAlignment = VerticalAlignment.Center;
-                this.ShowDialog();
-            }
         }
     }
 }
