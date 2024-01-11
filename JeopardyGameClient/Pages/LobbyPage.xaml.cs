@@ -35,6 +35,7 @@ namespace JeopardyGame.Pages
         private bool isAdminOfLobby;
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton;
+        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public LobbyPage()
         {
@@ -128,7 +129,6 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
                 int aleatoryNumber = generateAleatory.Value.Next(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);

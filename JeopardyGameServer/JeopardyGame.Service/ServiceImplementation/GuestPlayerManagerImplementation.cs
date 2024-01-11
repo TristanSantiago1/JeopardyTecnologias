@@ -10,6 +10,7 @@ using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
@@ -22,6 +23,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int GUEST_STATE = 3;
         private static readonly Object objectLock = new object();
+        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public GenericClass<UserPojo> CreateUserForGuest()
         {            
@@ -98,8 +100,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private static string GetGuestUserName()
         {
-            Random generateAleatory = new Random();
-            int aleatoryNumber = generateAleatory.Next(1, 27);
+            int aleatoryNumber = generateAleatory.Value.Next(1, 27);
             return aleatoryNumber switch
             {
                 1 => Properties.Resources.Wachiturro,

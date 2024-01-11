@@ -6,6 +6,7 @@ using JeopardyGame.Service.InterpretersEntityPojo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using static JeopardyGame.Service.DataDictionaries.ActiveGamesDictionary;
 
 namespace JeopardyGame.Service.ServiceImplementation
@@ -18,6 +19,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ROUND_THREE = 3;
         private const int ID_LAST_QUESTION = 19;
         private const int LIMIT_OF_CARDS_FOR_ONE_ROUND = 9;
+        private static readonly Random generateAleatory = new Random();
 
         public GenericClass<List<QuestionCardInformation>> GetQuestionForBoard(int roomCode)
         {
@@ -55,8 +57,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             var idHosts = GameDataOperation.GetHostIds();
             if (idHosts.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
             {
-                Random random = new Random();
-                int idHost = idHosts.ObjectSaved.OrderBy(h => random.Next()).First();
+                int idHost = idHosts.ObjectSaved.OrderBy(h => generateAleatory.Value.Next()).First();
                 return idHost;
             }
             return idHosts.CodeEvent;

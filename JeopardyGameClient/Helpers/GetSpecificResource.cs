@@ -15,6 +15,8 @@ namespace JeopardyGame.Helpers
 {
     public static class GetSpecificResource
     {
+
+        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
         public static string GetHosImage(int idHost)
         {
             return idHost switch
@@ -45,7 +47,6 @@ namespace JeopardyGame.Helpers
 
         public static int GetGuestId()
         {
-            ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
             return generateAleatory.Value.Next(999999, 9999999);
         }
 

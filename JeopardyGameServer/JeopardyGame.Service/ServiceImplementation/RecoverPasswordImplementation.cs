@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.ServiceImplementation
@@ -13,6 +14,7 @@ namespace JeopardyGame.Service.ServiceImplementation
     public partial class RecoverPasswordImplementation : IRecoverPassword
     {
         private static readonly Object objectLock = new object();
+        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public int CreateCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
         {
@@ -130,10 +132,9 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private string GenerateCodeForPassword()
         {
-            Random randomNumber = new Random();
-            int fourDigitsAleatoryNumber = randomNumber.Next(1000, 9999);
-            char firstRandomCharacter = (char)randomNumber.Next('A', 'Z' + 1);
-            char secondRandomCharacter = (char)randomNumber.Next('A', 'Z' + 1);
+            int fourDigitsAleatoryNumber = generateAleatory.Value.Next(1000, 9999);
+            char firstRandomCharacter = (char)generateAleatory.Value.Next('A', 'Z' + 1);
+            char secondRandomCharacter = (char)generateAleatory.Value.Next('A', 'Z' + 1);
             return $"{firstRandomCharacter}{secondRandomCharacter}{fourDigitsAleatoryNumber:D4}";
         }
 

@@ -897,7 +897,7 @@ Backgroundmm 
  	
 }
 ““ 
-}”” ‹
+}”” å
 C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\DialogWindows\ConfirmationDialogWindow.xaml.cs
 	namespace 	
 JeopardyGame
@@ -956,135 +956,53 @@ Backgroundmm 
 = 
 false 
 ;  
-} 	
-private 
-void 
-ClickAccept  
-(  !
-object! '
-sender( .
-,. /
-RoutedEventArgs0 ?
-e@ A
-)A B
-{ 	
-CloseWindow 
-= 
-true 
-; 
-this 
-. 
-Close 
-( 
-) 
-; 
-} 	
-private   
-void   
-ClickCancel    
-(    !
-object  ! '
-sender  ( .
-,  . /
-RoutedEventArgs  0 ?
-e  @ A
-)  A B
-{!! 	
-CloseWindow"" 
-="" 
-false"" 
-;""  
-this## 
-.## 
-Close## 
-(## 
-)## 
-;## 
-}$$ 	
-private%% 
-void%% #
-ShowConfirmationMessage%% ,
-(%%, -
-Window%%- 3
-currentWindow%%4 A
-)%%A B
-{&& 	
-if'' 
-('' 
-currentWindow'' 
-!=''  
-null''! %
-)''% &
-{(( 
-double)) 
-left)) 
-=)) 
-currentWindow)) +
-.))+ ,
-Left)), 0
-+))1 2
-())3 4
-currentWindow))4 A
-.))A B
-Width))B G
--))H I
-this))J N
-.))N O
-Width))O T
-)))T U
-/))V W
-$num))X Y
-;))Y Z
-double** 
-top** 
-=** 
-currentWindow** *
-.*** +
-Top**+ .
-+**/ 0
-(**1 2
-currentWindow**2 ?
-.**? @
-Height**@ F
--**G H
-this**I M
-.**M N
-Height**N T
-)**T U
-/**V W
-$num**X Y
-;**Y Z
-this++ 
-.++ 
-Left++ 
-=++ 
-left++  
-;++  !
-this,, 
-.,, 
-Top,, 
-=,, 
-top,, 
-;,, 
-this-- 
-.-- 
-VerticalAlignment-- &
-=--' (
-VerticalAlignment--) :
-.--: ;
-Center--; A
-;--A B
-this.. 
-... 
-
-ShowDialog.. 
-(..  
-)..  !
-;..! "
-}// 
-}00 	
-}11 
-}22 ª:
+} 	
+private 
+void 
+ClickAccept  
+(  !
+object! '
+sender( .
+,. /
+RoutedEventArgs0 ?
+e@ A
+)A B
+{ 	
+CloseWindow 
+= 
+true 
+; 
+this 
+. 
+Close 
+( 
+) 
+; 
+} 	
+private 
+void 
+ClickCancel  
+(  !
+object! '
+sender( .
+,. /
+RoutedEventArgs0 ?
+e@ A
+)A B
+{   	
+CloseWindow!! 
+=!! 
+false!! 
+;!!  
+this"" 
+."" 
+Close"" 
+("" 
+)"" 
+;"" 
+}## 	
+}$$ 
+}%% ª:
 iC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Cards\ChatMessageCard.cs
 	namespace		 	
 JeopardyGame		
@@ -1509,7 +1427,7 @@ txbMessageKK 
 ;KKF G
 }LL 	
 }NN 
-}PP ü%
+}PP ƒ&
 vC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\DialogWindows\DialogWindowsManager.cs
 	namespace		 	
 JeopardyGame		
@@ -1522,8 +1440,8 @@ vC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 public 
 
 static 
-class 
-dialogWindow $
+class 
+DialogWindowManager +
 { 
 private 
 const 
@@ -6946,7 +6864,7 @@ FindParentkk "
 ;rr 
 }ss 	
 }uu 
-}ww „Ÿ
+}ww ğŸ
 lC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\ActiveFriends.xaml.cs
 	namespace 	
 JeopardyGame
@@ -7474,51 +7392,51 @@ FriendList
 else
 …… 
 {
-†† 
-dialogWindow
-‡‡  
+†† !
+DialogWindowManager
+‡‡ '
 .
-‡‡  !#
+‡‡' (#
 ShowInfoOrErrorWindow
-‡‡! 6
+‡‡( =
 (
-‡‡6 7
+‡‡= >
 
 Properties
-‡‡7 A
+‡‡> H
 .
-‡‡A B
+‡‡H I
 	Resources
-‡‡B K
+‡‡I R
 .
-‡‡K L
+‡‡R S
 txbWarningTitle
-‡‡L [
+‡‡S b
 ,
-‡‡[ \
+‡‡b c
 
 Properties
-‡‡] g
+‡‡d n
 .
-‡‡g h
+‡‡n o
 	Resources
-‡‡h q
+‡‡o x
 .
-‡‡q r 
-lblWithoutFriends‡‡r ƒ
-,‡‡ƒ „
-Application‡‡… 
-.‡‡ ‘
-Current‡‡‘ ˜
-.‡‡˜ ™
+‡‡x y 
+lblWithoutFriends‡‡y Š
+,‡‡Š ‹
+Application‡‡Œ —
+.‡‡— ˜
+Current‡‡˜ Ÿ
+.‡‡Ÿ  
 
-MainWindow‡‡™ £
-,‡‡£ ¤
-dialogWindow‡‡¥ ±
-.‡‡± ²
-ERROR‡‡² ·
-)‡‡· ¸
-;‡‡¸ ¹
+MainWindow‡‡  ª
+,‡‡ª «#
+DialogWindowManager‡‡¬ ¿
+.‡‡¿ À
+ERROR‡‡À Å
+)‡‡Å Æ
+;‡‡Æ Ç
 }
 ˆˆ  
 friendManagerProxy
@@ -8089,53 +8007,51 @@ Properties
 )
 ººG H
 ;
-ººH I
-dialogWindow
-»» 
+ººH I!
+DialogWindowManager
+»» #
 .
-»» #
+»»# $#
 ShowInfoOrErrorWindow
-»» 2
+»»$ 9
 (
-»»2 3
+»»9 :
 
 Properties
-»»3 =
+»»: D
 .
-»»= >
+»»D E
 	Resources
-»»> G
+»»E N
 .
-»»G H
+»»N O
 tbxEmailSend
-»»H T
+»»O [
 ,
-»»T U
+»»[ \
 
 Properties
-»»V `
+»»] g
 .
-»»` a
+»»g h
 	Resources
-»»a j
+»»h q
 .
-»»j k
-txbInfoEmailSend
-»»k {
-,
-»»{ |
-Application»»} ˆ
-.»»ˆ ‰
-Current»»‰ 
-.»» ‘
+»»q r
+txbInfoEmailSend»»r ‚
+,»»‚ ƒ
+Application»»„ 
+.»» 
+Current»» —
+.»»— ˜
 
-MainWindow»»‘ ›
-,»»› œ
-dialogWindow»» ©
-.»»© ª
-INFORMATION»»ª µ
-)»»µ ¶
-;»»¶ ·
+MainWindow»»˜ ¢
+,»»¢ £#
+DialogWindowManager»»¤ ·
+.»»· ¸
+INFORMATION»»¸ Ã
+)»»Ã Ä
+;»»Ä Å
 }
 ¼¼ 
 ;
@@ -8473,52 +8389,51 @@ Dispatcher
 )
 ßßU V
 {
-àà 
-dialogWindow
-áá  
+àà !
+DialogWindowManager
+áá '
 .
-áá  !#
+áá' (#
 ShowInfoOrErrorWindow
-áá! 6
+áá( =
 (
-áá6 7
+áá= >
 
 Properties
-áá7 A
+áá> H
 .
-ááA B
+ááH I
 	Resources
-ááB K
+ááI R
 .
-ááK L
+ááR S
 tbxEmailSend
-ááL X
+ááS _
 ,
-ááX Y
+áá_ `
 
 Properties
-ááZ d
+ááa k
 .
-áád e
+áák l
 	Resources
-ááe n
+áál u
 .
-áán o
-txbInfoEmailSend
-ááo 
-,áá €
-Applicationáá Œ
-.ááŒ 
-Currentáá ”
-.áá” •
+ááu v
+txbInfoEmailSendááv †
+,áá† ‡
+Applicationááˆ “
+.áá“ ”
+Currentáá” ›
+.áá› œ
 
-MainWindowáá• Ÿ
-,ááŸ  
-dialogWindowáá¡ ­
-.áá­ ®
-INFORMATIONáá® ¹
-)áá¹ º
-;ááº »
+MainWindowááœ ¦
+,áá¦ §#
+DialogWindowManageráá¨ »
+.áá» ¼
+INFORMATIONáá¼ Ç
+)ááÇ È
+;ááÈ É
 }
 ââ 
 else
@@ -8542,51 +8457,51 @@ MainWindowáá• Ÿ
 )
 ååE F
 {
-ææ 
-dialogWindow
-çç $
+ææ !
+DialogWindowManager
+çç +
 .
-çç$ %#
+çç+ ,#
 ShowInfoOrErrorWindow
-çç% :
+çç, A
 (
-çç: ;
+ççA B
 
 Properties
-çç; E
+ççB L
 .
-ççE F
+ççL M
 	Resources
-ççF O
+ççM V
 .
-ççO P
+ççV W
 txbErrorTitle
-ççP ]
+ççW d
 ,
-çç] ^
+ççd e
 
 Properties
-çç_ i
+ççf p
 .
-ççi j
+ççp q
 	Resources
-ççj s
+ççq z
 .
-ççs t
-SentEmailIssueççt ‚
-,çç‚ ƒ
-Applicationçç„ 
-.çç 
-Currentçç —
-.çç— ˜
+ççz {
+SentEmailIssueçç{ ‰
+,çç‰ Š
+Applicationçç‹ –
+.çç– —
+Currentçç— 
+.çç Ÿ
 
-MainWindowçç˜ ¢
-,çç¢ £
-dialogWindowçç¤ °
-.çç° ±
-ERRORçç± ¶
-)çç¶ ·
-;çç· ¸
+MainWindowççŸ ©
+,çç© ª#
+DialogWindowManagerçç« ¾
+.çç¾ ¿
+ERRORçç¿ Ä
+)ççÄ Å
+;ççÅ Æ
 }
 éé 
 }
@@ -8823,49 +8738,48 @@ Properties
 )
 ……X Y
 ;
-……Y Z
-dialogWindow
-†† 
+……Y Z!
+DialogWindowManager
+†† 
 .
-†† #
+††  #
 ShowInfoOrErrorWindow
-†† .
+††  5
 (
-††. /
+††5 6
 
 Properties
-††/ 9
+††6 @
 .
-††9 :
+††@ A
 	Resources
-††: C
+††A J
 .
-††C D
+††J K
 txbErrorTitle
-††D Q
+††K X
 ,
-††Q R
+††X Y
 errorMessage
-††S _
+††Z f
 ,
-††_ `
+††f g
 Application
-††a l
+††h s
 .
-††l m
+††s t
 Current
-††m t
+††t {
 .
-††t u
+††{ |
 
-MainWindow
-††u 
-,†† €
-dialogWindow†† 
-.†† 
-ERROR†† “
-)††“ ”
-;††” •
+MainWindow††| †
+,††† ‡#
+DialogWindowManager††ˆ ›
+.††› œ
+ERROR††œ ¡
+)††¡ ¢
+;††¢ £
 }
 ‡‡ 	
 private
@@ -9268,52 +9182,51 @@ Visibility
 )
 ­­U V
 {
-®® 
-dialogWindow
-¯¯  
+®® !
+DialogWindowManager
+¯¯ '
 .
-¯¯  !#
+¯¯' (#
 ShowInfoOrErrorWindow
-¯¯! 6
+¯¯( =
 (
-¯¯6 7
+¯¯= >
 
 Properties
-¯¯7 A
+¯¯> H
 .
-¯¯A B
+¯¯H I
 	Resources
-¯¯B K
+¯¯I R
 .
-¯¯K L
+¯¯R S
 tbxEmailSend
-¯¯L X
+¯¯S _
 ,
-¯¯X Y
+¯¯_ `
 
 Properties
-¯¯Z d
+¯¯a k
 .
-¯¯d e
+¯¯k l
 	Resources
-¯¯e n
+¯¯l u
 .
-¯¯n o
-txbInfoEmailSend
-¯¯o 
-,¯¯ €
-Application¯¯ Œ
-.¯¯Œ 
-Current¯¯ ”
-.¯¯” •
+¯¯u v
+txbInfoEmailSend¯¯v †
+,¯¯† ‡
+Application¯¯ˆ “
+.¯¯“ ”
+Current¯¯” ›
+.¯¯› œ
 
-MainWindow¯¯• Ÿ
-,¯¯Ÿ  
-dialogWindow¯¯¡ ­
-.¯¯­ ®
-INFORMATION¯¯® ¹
-)¯¯¹ º
-;¯¯º »
+MainWindow¯¯œ ¦
+,¯¯¦ §#
+DialogWindowManager¯¯¨ »
+.¯¯» ¼
+INFORMATION¯¯¼ Ç
+)¯¯Ç È
+;¯¯È É
 }
 °° 
 else
@@ -9337,51 +9250,51 @@ MainWindow¯¯• Ÿ
 )
 ³³E F
 {
-´´ 
-dialogWindow
-µµ $
+´´ !
+DialogWindowManager
+µµ +
 .
-µµ$ %#
+µµ+ ,#
 ShowInfoOrErrorWindow
-µµ% :
+µµ, A
 (
-µµ: ;
+µµA B
 
 Properties
-µµ; E
+µµB L
 .
-µµE F
+µµL M
 	Resources
-µµF O
+µµM V
 .
-µµO P
+µµV W
 txbErrorTitle
-µµP ]
+µµW d
 ,
-µµ] ^
+µµd e
 
 Properties
-µµ_ i
+µµf p
 .
-µµi j
+µµp q
 	Resources
-µµj s
+µµq z
 .
-µµs t
-SentEmailIssueµµt ‚
-,µµ‚ ƒ
-Applicationµµ„ 
-.µµ 
-Currentµµ —
-.µµ— ˜
+µµz {
+SentEmailIssueµµ{ ‰
+,µµ‰ Š
+Applicationµµ‹ –
+.µµ– —
+Currentµµ— 
+.µµ Ÿ
 
-MainWindowµµ˜ ¢
-,µµ¢ £
-dialogWindowµµ¤ °
-.µµ° ±
-ERRORµµ± ¶
-)µµ¶ ·
-;µµ· ¸
+MainWindowµµŸ ©
+,µµ© ª#
+DialogWindowManagerµµ« ¾
+.µµ¾ ¿
+ERRORµµ¿ Ä
+)µµÄ Å
+;µµÅ Æ
 }
 ¶¶ 
 }
@@ -9998,7 +9911,7 @@ IgnoreCase
 ‡‡ 	
 }
 ‰‰ 
-}‹‹ üÎ
+}‹‹ †Ñ
 oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\CodeConfirmation.xaml.cs
 	namespace 	
 JeopardyGame
@@ -10062,3478 +9975,3483 @@ userToSave%% #
 UserPojo((  (
 user(() -
 )((- .
-{)) 	
-this** 
-.** 
+{)) 	
+InitializeComponent++ 
+(++  
+)++  !
+;++! "
+this,, 
+.,, 
 
-userToSave** 
-=** 
-user** "
-;**" #
-password++ 
-=++ 
-user++ 
-.++ 
-Password++ $
-;++$ %
-InitializeComponent,, 
-(,,  
-),,  !
-;,,! "
-Loaded-- 
-+=-- 
-LoadedPrepareWindow-- )
-;--) *
-}.. 	
-private00 
-void00 
-LoadedPrepareWindow00 (
-(00( )
-object00) /
-sender000 6
-,006 7
-RoutedEventArgs008 G
-e00H I
-)00I J
-{11 	%
-RegistryWithTheDictionary22 %
-(22% &
-)22& '
-;22' (
-	SentEmail33 
-(33 
-)33 
-;33 
+userToSave,, 
+=,, 
+user,, "
+;,," #
+password-- 
+=-- 
+user-- 
+.-- 
+Password-- $
+;--$ %
+txbCodeCreateAcc.. 
+... 
+	MaxLength.. &
+=..' (
+$num..) *
+;..* +
+Loaded// 
++=// 
+LoadedPrepareWindow// )
+;//) *
+}00 	
+private22 
+void22 
+LoadedPrepareWindow22 (
+(22( )
+object22) /
+sender220 6
+,226 7
+RoutedEventArgs228 G
+e22H I
+)22I J
+{33 	%
+RegistryWithTheDictionary44 %
+(44% &
+)44& '
+;44' (
+	SentEmail55 
+(55 
+)55 
+;55 
 
-StartTimer44 
-(44 
-)44 
-;44 
-}55 	
-private77 
-void77 %
-RegistryWithTheDictionary77 .
-(77. /
-)77/ 0
-{88 	
-try99 
-{:: '
-UserCreateAccountCodeClient;; +
-userCreateAccount;;, =
-=;;> ?
-new;;@ C
-(;;C D
-);;D E
-;;;E F
-userCreateAccount<< !
-.<<! "+
-AddUserToConfirmationDictionary<<" A
-(<<A B
+StartTimer66 
+(66 
+)66 
+;66 
+}77 	
+private99 
+void99 %
+RegistryWithTheDictionary99 .
+(99. /
+)99/ 0
+{:: 	
+try;; 
+{<< '
+UserCreateAccountCodeClient== +
+userCreateAccount==, =
+===> ?
+new==@ C
+(==C D
+)==D E
+;==E F
+userCreateAccount>> !
+.>>! "+
+AddUserToConfirmationDictionary>>" A
+(>>A B
 
-userToSave<<B L
-)<<L M
-;<<M N
-InstanceContext== 
-instanceContext==  /
-===0 1
-new==2 5
-InstanceContext==6 E
-(==E F
-this==F J
-)==J K
-;==K L!
-CheckUserLivingClient>> %!
-checkUserLivingClient>>& ;
-=>>< =
-new>>> A
-(>>A B
-instanceContext>>B Q
-)>>Q R
-;>>R S
-var?? 
-success?? 
-=?? !
-checkUserLivingClient?? 3
-.??3 4'
-SubscribeToICheckUserLiving??4 O
-(??O P
+userToSave>>B L
+)>>L M
+;>>M N
+InstanceContext?? 
+instanceContext??  /
+=??0 1
+new??2 5
+InstanceContext??6 E
+(??E F
+this??F J
+)??J K
+;??K L!
+CheckUserLivingClient@@ %!
+checkUserLivingClient@@& ;
+=@@< =
+new@@> A
+(@@A B
+instanceContext@@B Q
+)@@Q R
+;@@R S
+varAA 
+successAA 
+=AA !
+checkUserLivingClientAA 3
+.AA3 4'
+SubscribeToICheckUserLivingAA4 O
+(AAO P
 
-userToSave??P Z
-)??Z [
-;??[ \
-if@@ 
-(@@ 
-success@@ 
-!=@@ 
-ExceptionDictionary@@ 2
-.@@2 3
-SUCCESFULL_EVENT@@3 C
-)@@C D
-{AA 
-dialogWindowBB  
-.BB  !!
-ShowInfoOrErrorWindowBB! 6
-(BB6 7
+userToSaveAAP Z
+)AAZ [
+;AA[ \
+ifBB 
+(BB 
+successBB 
+!=BB 
+ExceptionDictionaryBB 2
+.BB2 3
+SUCCESFULL_EVENTBB3 C
+)BBC D
+{CC 
+DialogWindowManagerDD '
+.DD' (!
+ShowInfoOrErrorWindowDD( =
+(DD= >
 
-PropertiesBB7 A
-.BBA B
-	ResourcesBBB K
-.BBK L
-txbErrorTitleBBL Y
-,BBY Z
+PropertiesDD> H
+.DDH I
+	ResourcesDDI R
+.DDR S
+txbErrorTitleDDS `
+,DD` a
 
-PropertiesBB[ e
-.BBe f
-	ResourcesBBf o
-.BBo p&
-lblFailRegistryToCallBack	BBp ‰
+PropertiesDDb l
+.DDl m
+	ResourcesDDm v
+.DDv w&
+lblFailRegistryToCallBack	DDw 
 ,
-BB‰ Š
+DD ‘
 Application
-BB‹ –
+DD’ 
 .
-BB– —
+DD 
 Current
-BB— 
+DD ¥
 .
-BB Ÿ
+DD¥ ¦
 
 MainWindow
-BBŸ ©
+DD¦ °
 ,
-BB© ª
-dialogWindow
-BB« ·
+DD° ±!
+DialogWindowManager
+DD² Å
 .
-BB· ¸
+DDÅ Æ
 ERROR
-BB¸ ½
+DDÆ Ë
 )
-BB½ ¾
+DDË Ì
 ;
-BB¾ ¿#
-ClickButtonCancelSavingCC +
-(CC+ ,
-bttCancellActionCC, <
-,CC< =
-newCC> A
-RoutedEventArgsCCB Q
-(CCQ R
-)CCR S
-)CCS T
-;CCT U
-}DD 
-}EE 
-catchFF 
-(FF %
-EndpointNotFoundExceptionFF ,
-exFF- /
-)FF/ 0
-{GG 
-HandleExceptionHH 
-(HH  
-exHH  "
-,HH" #
+DDÌ Í#
+ClickButtonCancelSavingEE +
+(EE+ ,
+bttCancellActionEE, <
+,EE< =
+newEE> A
+RoutedEventArgsEEB Q
+(EEQ R
+)EER S
+)EES T
+;EET U
+}FF 
+}GG 
+catchHH 
+(HH %
+EndpointNotFoundExceptionHH ,
+exHH- /
+)HH/ 0
+{II 
+HandleExceptionJJ 
+(JJ  
+exJJ  "
+,JJ" #
 
-PropertiesHH$ .
-.HH. /
-	ResourcesHH/ 8
-.HH8 9
-lblEndPointNotFoundHH9 L
-)HHL M
-;HHM N#
-ClickButtonCancelSavingII '
-(II' (
-bttCancellActionII( 8
-,II8 9
-newII: =
-RoutedEventArgsII> M
-(IIM N
-)IIN O
-)IIO P
-;IIP Q
-}JJ 
-catchKK 
-(KK /
-#CommunicationObjectFaultedExceptionKK 6
-exKK7 9
-)KK9 :
-{LL 
-HandleExceptionMM 
-(MM  
-exMM  "
-,MM" #
+PropertiesJJ$ .
+.JJ. /
+	ResourcesJJ/ 8
+.JJ8 9
+lblEndPointNotFoundJJ9 L
+)JJL M
+;JJM N#
+ClickButtonCancelSavingKK '
+(KK' (
+bttCancellActionKK( 8
+,KK8 9
+newKK: =
+RoutedEventArgsKK> M
+(KKM N
+)KKN O
+)KKO P
+;KKP Q
+}LL 
+catchMM 
+(MM /
+#CommunicationObjectFaultedExceptionMM 6
+exMM7 9
+)MM9 :
+{NN 
+HandleExceptionOO 
+(OO  
+exOO  "
+,OO" #
 
-PropertiesMM$ .
-.MM. /
-	ResourcesMM/ 8
-.MM8 9$
-lblComunicationExceptionMM9 Q
-)MMQ R
-;MMR S#
-ClickButtonCancelSavingNN '
-(NN' (
-bttCancellActionNN( 8
-,NN8 9
-newNN: =
-RoutedEventArgsNN> M
-(NNM N
-)NNN O
-)NNO P
-;NNP Q
-}OO 
-catchPP 
-(PP 
-TimeoutExceptionPP #
-exPP$ &
-)PP& '
-{QQ 
-HandleExceptionRR 
-(RR  
-exRR  "
-,RR" #
+PropertiesOO$ .
+.OO. /
+	ResourcesOO/ 8
+.OO8 9$
+lblComunicationExceptionOO9 Q
+)OOQ R
+;OOR S#
+ClickButtonCancelSavingPP '
+(PP' (
+bttCancellActionPP( 8
+,PP8 9
+newPP: =
+RoutedEventArgsPP> M
+(PPM N
+)PPN O
+)PPO P
+;PPP Q
+}QQ 
+catchRR 
+(RR 
+TimeoutExceptionRR #
+exRR$ &
+)RR& '
+{SS 
+HandleExceptionTT 
+(TT  
+exTT  "
+,TT" #
 
-PropertiesRR$ .
-.RR. /
-	ResourcesRR/ 8
-.RR8 9
-lblTimeExceptionRR9 I
-)RRI J
-;RRJ K#
-ClickButtonCancelSavingSS '
-(SS' (
-bttCancellActionSS( 8
-,SS8 9
-newSS: =
-RoutedEventArgsSS> M
-(SSM N
-)SSN O
-)SSO P
-;SSP Q
-}TT 
-catchUU 
-(UU "
-CommunicationExceptionUU )
-exUU* ,
-)UU, -
-{VV 
-HandleExceptionWW 
-(WW  
-exWW  "
-,WW" #
+PropertiesTT$ .
+.TT. /
+	ResourcesTT/ 8
+.TT8 9
+lblTimeExceptionTT9 I
+)TTI J
+;TTJ K#
+ClickButtonCancelSavingUU '
+(UU' (
+bttCancellActionUU( 8
+,UU8 9
+newUU: =
+RoutedEventArgsUU> M
+(UUM N
+)UUN O
+)UUO P
+;UUP Q
+}VV 
+catchWW 
+(WW "
+CommunicationExceptionWW )
+exWW* ,
+)WW, -
+{XX 
+HandleExceptionYY 
+(YY  
+exYY  "
+,YY" #
 
-PropertiesWW$ .
-.WW. /
-	ResourcesWW/ 8
-.WW8 9
-lblWithoutConectionWW9 L
-)WWL M
-;WWM N#
-ClickButtonCancelSavingXX '
-(XX' (
-bttCancellActionXX( 8
-,XX8 9
-newXX: =
-RoutedEventArgsXX> M
-(XXM N
-)XXN O
-)XXO P
-;XXP Q
-}YY 
-catchZZ 
-(ZZ 
-SocketExceptionZZ "
-exZZ# %
-)ZZ% &
-{[[ 
-HandleException\\ 
-(\\  
-ex\\  "
-,\\" #
+PropertiesYY$ .
+.YY. /
+	ResourcesYY/ 8
+.YY8 9
+lblWithoutConectionYY9 L
+)YYL M
+;YYM N#
+ClickButtonCancelSavingZZ '
+(ZZ' (
+bttCancellActionZZ( 8
+,ZZ8 9
+newZZ: =
+RoutedEventArgsZZ> M
+(ZZM N
+)ZZN O
+)ZZO P
+;ZZP Q
+}[[ 
+catch\\ 
+(\\ 
+SocketException\\ "
+ex\\# %
+)\\% &
+{]] 
+HandleException^^ 
+(^^  
+ex^^  "
+,^^" #
 
-Properties\\$ .
-.\\. /
-	Resources\\/ 8
-.\\8 9#
-lblFailtToEnterTheLobby\\9 P
-)\\P Q
-;\\Q R#
-ClickButtonCancelSaving]] '
-(]]' (
-bttCancellAction]]( 8
-,]]8 9
-new]]: =
-RoutedEventArgs]]> M
-(]]M N
-)]]N O
-)]]O P
-;]]P Q
-}^^ 
-}__ 	
-privateaa 
-voidaa 
+Properties^^$ .
+.^^. /
+	Resources^^/ 8
+.^^8 9#
+lblFailtToEnterTheLobby^^9 P
+)^^P Q
+;^^Q R#
+ClickButtonCancelSaving__ '
+(__' (
+bttCancellAction__( 8
+,__8 9
+new__: =
+RoutedEventArgs__> M
+(__M N
+)__N O
+)__O P
+;__P Q
+}`` 
+}aa 	
+privatecc 
+voidcc 
 
-StartTimeraa 
-(aa  
-)aa  !
-{bb 	
-leftTimecc 
-=cc 
-$numcc 
-;cc 
-timerdd 
-=dd 
-newdd 
-DispatcherTimerdd '
-(dd' (
-)dd( )
-;dd) *
-timeree 
-.ee 
-Intervalee 
-=ee 
-TimeSpanee %
-.ee% &
-FromSecondsee& 1
-(ee1 2
-$numee2 3
-)ee3 4
-;ee4 5
+StartTimercc 
+(cc  
+)cc  !
+{dd 	
+leftTimeee 
+=ee 
+$numee 
+;ee 
 timerff 
-.ff 
-Tickff 
-+=ff 
-TickTimerResendCodeff -
-;ff- .
-bttResendCodegg 
-.gg 
-	IsEnabledgg #
-=gg$ %
-falsegg& +
-;gg+ ,
+=ff 
+newff 
+DispatcherTimerff '
+(ff' (
+)ff( )
+;ff) *
+timergg 
+.gg 
+Intervalgg 
+=gg 
+TimeSpangg %
+.gg% &
+FromSecondsgg& 1
+(gg1 2
+$numgg2 3
+)gg3 4
+;gg4 5
 timerhh 
-.hh 
-Starthh 
-(hh 
-)hh 
-;hh 
-}ii 	
-privatekk 
-voidkk 
-TickTimerResendCodekk (
-(kk( )
-objectkk) /
-senderkk0 6
-,kk6 7
-	EventArgskk8 A
-ekkB C
-)kkC D
-{ll 	
-ifmm 
-(mm 
-leftTimemm 
->mm 
-NULL_INT_VALUEmm )
-)mm) *
-{nn 
-leftTimeoo 
---oo 
-;oo 
-lblResentCodepp 
-.pp 
-Contentpp %
-=pp& '
+.hh 
+Tickhh 
++=hh 
+TickTimerResendCodehh -
+;hh- .
+bttResendCodeii 
+.ii 
+	IsEnabledii #
+=ii$ %
+falseii& +
+;ii+ ,
+timerjj 
+.jj 
+Startjj 
+(jj 
+)jj 
+;jj 
+}kk 	
+privatemm 
+voidmm 
+TickTimerResendCodemm (
+(mm( )
+objectmm) /
+sendermm0 6
+,mm6 7
+	EventArgsmm8 A
+emmB C
+)mmC D
+{nn 	
+ifoo 
+(oo 
+leftTimeoo 
+>oo 
+NULL_INT_VALUEoo )
+)oo) *
+{pp 
+leftTimeqq 
+--qq 
+;qq 
+lblResentCoderr 
+.rr 
+Contentrr %
+=rr& '
 
-Propertiespp( 2
-.pp2 3
-	Resourcespp3 <
-.pp< =
-lblResentCodepp= J
-+ppK L
-$strppM P
-+ppQ R
-leftTimeppS [
-;pp[ \
-lblResentCodeqq 
-.qq 
+Propertiesrr( 2
+.rr2 3
+	Resourcesrr3 <
+.rr< =
+lblResentCoderr= J
++rrK L
+$strrrM P
++rrQ R
+leftTimerrS [
+;rr[ \
+lblResentCodess 
+.ss 
 
-Foregroundqq (
-=qq) *
-newqq+ .
-SolidColorBrushqq/ >
-(qq> ?
-Colorsqq? E
-.qqE F
-	IndianRedqqF O
-)qqO P
-;qqP Q
-}rr 
-elsess 
-{tt 
-lblResentCodeuu 
-.uu 
-Contentuu %
-=uu& '
+Foregroundss (
+=ss) *
+newss+ .
+SolidColorBrushss/ >
+(ss> ?
+Colorsss? E
+.ssE F
+	IndianRedssF O
+)ssO P
+;ssP Q
+}tt 
+elseuu 
+{vv 
+lblResentCodeww 
+.ww 
+Contentww %
+=ww& '
 
-Propertiesuu( 2
-.uu2 3
-	Resourcesuu3 <
-.uu< =
-lblResentCodeuu= J
-+uuK L
-$struuM P
-+uuQ R
-leftTimeuuS [
-;uu[ \
-lblResentCodevv 
-.vv 
+Propertiesww( 2
+.ww2 3
+	Resourcesww3 <
+.ww< =
+lblResentCodeww= J
++wwK L
+$strwwM P
++wwQ R
+leftTimewwS [
+;ww[ \
+lblResentCodexx 
+.xx 
 
-Foregroundvv (
-=vv) *
-newvv+ .
-SolidColorBrushvv/ >
-(vv> ?
-Colorsvv? E
-.vvE F
-ForestGreenvvF Q
-)vvQ R
-;vvR S
-bttResendCodeww 
-.ww 
-	IsEnabledww '
-=ww( )
-trueww* .
-;ww. /
-timerxx 
-.xx 
-Stopxx 
-(xx 
-)xx 
-;xx 
-isTimerExpiredyy 
-=yy  
-trueyy! %
-;yy% &
-UpdateLabelStylezz  
-(zz  !
-)zz! "
-;zz" #
-}{{ 
-}|| 	
-private~~ 
-void~~ 
-	SentEmail~~ 
-(~~ 
-)~~  
-{ 	
-try
-€€ 
-{
- &
-EmailSenderManagerClient
-‚‚ (
-emailSender
-‚‚) 4
-=
-‚‚5 6
-new
-‚‚7 :&
-EmailSenderManagerClient
-‚‚; S
+Foregroundxx (
+=xx) *
+newxx+ .
+SolidColorBrushxx/ >
+(xx> ?
+Colorsxx? E
+.xxE F
+ForestGreenxxF Q
+)xxQ R
+;xxR S
+bttResendCodeyy 
+.yy 
+	IsEnabledyy '
+=yy( )
+trueyy* .
+;yy. /
+timerzz 
+.zz 
+Stopzz 
+(zz 
+)zz 
+;zz 
+isTimerExpired{{ 
+={{  
+true{{! %
+;{{% &
+UpdateLabelStyle||  
+(||  !
+)||! "
+;||" #
+}}} 
+}~~ 	
+private
+€€ 
+void
+€€ 
+	SentEmail
+€€ 
 (
-‚‚S T
+€€ 
 )
-‚‚T U
-;
-‚‚U V
-GenericClassOfint
-ƒƒ !
-sentEmailSucc
-ƒƒ" /
-=
-ƒƒ0 1
+€€  
+{
+ 	
+try
+‚‚ 
+{
+ƒƒ &
+EmailSenderManagerClient
+„„ (
 emailSender
-ƒƒ2 =
+„„) 4
+=
+„„5 6
+new
+„„7 :&
+EmailSenderManagerClient
+„„; S
+(
+„„S T
+)
+„„T U
+;
+„„U V
+GenericClassOfint
+…… !
+sentEmailSucc
+……" /
+=
+……0 1
+emailSender
+……2 =
 .
-ƒƒ= >2
+……= >2
 $SentEmailConfirmationToCreateAccount
-ƒƒ> b
+……> b
 (
-ƒƒb c
+……b c
 
 userToSave
-„„" ,
+††" ,
 ,
-„„, -
+††, -
 
 Properties
-„„. 8
+††. 8
 .
-„„8 9
+††8 9
 	Resources
-„„9 B
+††9 B
 .
-„„B C
+††B C
 EmailSubjectCode
-„„C S
+††C S
 ,
-„„S T
+††S T
 
 Properties
-„„U _
+††U _
 .
-„„_ `
+††_ `
 	Resources
-„„` i
+††` i
 .
-„„i j
+††i j
 EmailCodeDescrip
-„„j z
+††j z
 )
-„„z {
+††z {
 ;
-„„{ |
+††{ |
 if
-…… 
+‡‡ 
 (
-…… 
+‡‡ 
 sentEmailSucc
-…… !
+‡‡ !
 .
-……! "
+‡‡! "
 	CodeEvent
-……" +
+‡‡" +
 !=
-……, .!
+‡‡, .!
 ExceptionDictionary
-……/ B
+‡‡/ B
 .
-……B C
+‡‡B C
 SUCCESFULL_EVENT
-……C S
+‡‡C S
 )
-……S T
+‡‡S T
 {
-†† 
-dialogWindow
-‡‡  
+ˆˆ !
+DialogWindowManager
+‰‰ '
 .
-‡‡  !#
+‰‰' (#
 ShowInfoOrErrorWindow
-‡‡! 6
+‰‰( =
 (
-‡‡6 7
+‰‰= >
 
 Properties
-‡‡7 A
+‰‰> H
 .
-‡‡A B
+‰‰H I
 	Resources
-‡‡B K
+‰‰I R
 .
-‡‡K L
+‰‰R S
 txbErrorTitle
-‡‡L Y
+‰‰S `
 ,
-‡‡Y Z
+‰‰` a
 
 Properties
-‡‡[ e
+‰‰b l
 .
-‡‡e f
+‰‰l m
 	Resources
-‡‡f o
+‰‰m v
 .
-‡‡o p
-SentEmailIssue
-‡‡p ~
-,
-‡‡~ 
-Application‡‡€ ‹
-.‡‡‹ Œ
-Current‡‡Œ “
-.‡‡“ ”
+‰‰v w
+SentEmailIssue‰‰w …
+,‰‰… †
+Application‰‰‡ ’
+.‰‰’ “
+Current‰‰“ š
+.‰‰š ›
 
-MainWindow‡‡” 
-,‡‡ Ÿ
-dialogWindow‡‡  ¬
-.‡‡¬ ­
-ERROR‡‡­ ²
-)‡‡² ³
-;‡‡³ ´
+MainWindow‰‰› ¥
+,‰‰¥ ¦#
+DialogWindowManager‰‰§ º
+.‰‰º »
+ERROR‰‰» À
+)‰‰À Á
+;‰‰Á Â
 }
-ˆˆ 
+ŠŠ 
 if
-‰‰ 
+‹‹ 
 (
-‰‰ 
+‹‹ 
 sentEmailSucc
-‰‰ !
+‹‹ !
 .
-‰‰! "
+‹‹! "
 ObjectSaved
-‰‰" -
+‹‹" -
 ==
-‰‰. 0
+‹‹. 0
 NULL_INT_VALUE
-‰‰1 ?
+‹‹1 ?
 )
-‰‰? @
+‹‹? @
 {
-ŠŠ 
-dialogWindow
-‹‹  
+ŒŒ !
+DialogWindowManager
+ '
 .
-‹‹  !#
+' (#
 ShowInfoOrErrorWindow
-‹‹! 6
+( =
 (
-‹‹6 7
+= >
 
 Properties
-‹‹7 A
+> H
 .
-‹‹A B
+H I
 	Resources
-‹‹B K
+I R
 .
-‹‹K L
+R S
 txbErrorTitle
-‹‹L Y
+S `
 ,
-‹‹Y Z
+` a
 
 Properties
-‹‹[ e
+b l
 .
-‹‹e f
+l m
 	Resources
-‹‹f o
+m v
 .
-‹‹o p
-SentEmailIssue
-‹‹p ~
-,
-‹‹~ 
-Application‹‹€ ‹
-.‹‹‹ Œ
-Current‹‹Œ “
-.‹‹“ ”
+v w
+SentEmailIssuew …
+,… †
+Application‡ ’
+.’ “
+Current“ š
+.š ›
 
-MainWindow‹‹” 
-,‹‹ Ÿ
-dialogWindow‹‹  ¬
-.‹‹¬ ­
-ERROR‹‹­ ²
-)‹‹² ³
-;‹‹³ ´
+MainWindow› ¥
+,¥ ¦#
+DialogWindowManager§ º
+.º »
+ERROR» À
+)À Á
+;Á Â
 }
-ŒŒ 
+ 
 }
- 
+ 
 catch
- 
+ 
 (
- '
+ '
 EndpointNotFoundException
- ,
+ ,
 ex
-- /
+- /
 )
-/ 0
+/ 0
 {
- 
+‘‘ 
 HandleException
- 
+’’ 
 (
-  
+’’  
 ex
-  "
+’’  "
 ,
-" #
+’’" #
 
 Properties
-$ .
+’’$ .
 .
-. /
+’’. /
 	Resources
-/ 8
+’’/ 8
 .
-8 9!
+’’8 9!
 lblEndPointNotFound
-9 L
+’’9 L
 )
-L M
+’’L M
 ;
-M N
+’’M N
 }
-‘‘ 
+““ 
 catch
-’’ 
+”” 
 (
-’’ 1
+”” 1
 #CommunicationObjectFaultedException
-’’ 6
+”” 6
 ex
-’’7 9
+””7 9
 )
-’’9 :
+””9 :
 {
-““ 
+•• 
 HandleException
-”” 
+–– 
 (
-””  
+––  
 ex
-””  "
+––  "
 ,
-””" #
+––" #
 
 Properties
-””$ .
+––$ .
 .
-””. /
+––. /
 	Resources
-””/ 8
+––/ 8
 .
-””8 9&
+––8 9&
 lblComunicationException
-””9 Q
+––9 Q
 )
-””Q R
+––Q R
 ;
-””R S
+––R S
 }
-•• 
+—— 
 catch
-–– 
+˜˜ 
 (
-–– 
+˜˜ 
 TimeoutException
-–– #
+˜˜ #
 ex
-––$ &
+˜˜$ &
 )
-––& '
+˜˜& '
 {
-—— 
+™™ 
 HandleException
-˜˜ 
+šš 
 (
-˜˜  
+šš  
 ex
-˜˜  "
+šš  "
 ,
-˜˜" #
+šš" #
 
 Properties
-˜˜$ .
+šš$ .
 .
-˜˜. /
+šš. /
 	Resources
-˜˜/ 8
+šš/ 8
 .
-˜˜8 9
+šš8 9
 lblTimeException
-˜˜9 I
+šš9 I
 )
-˜˜I J
+ššI J
 ;
-˜˜J K
+ššJ K
 }
-™™ 
+›› 
 catch
-šš 
+œœ 
 (
-šš $
+œœ $
 CommunicationException
-šš )
+œœ )
 ex
-šš* ,
+œœ* ,
 )
-šš, -
+œœ, -
 {
-›› 
+ 
 HandleException
-œœ 
+ 
 (
-œœ  
+  
 ex
-œœ  "
+  "
 ,
-œœ" #
+" #
 
 Properties
-œœ$ .
+$ .
 .
-œœ. /
+. /
 	Resources
-œœ/ 8
+/ 8
 .
-œœ8 9!
+8 9!
 lblWithoutConection
-œœ9 L
+9 L
 )
-œœL M
+L M
 ;
-œœM N
+M N
 }
- 
+ŸŸ 
 catch
- 
+   
 (
- 
+   
 SocketException
- "
+   "
 ex
-# %
+  # %
 )
-% &
+  % &
 {
-ŸŸ 
+¡¡ 
 HandleException
-   
+¢¢ 
 (
-    
+¢¢  
 ex
-    "
+¢¢  "
 ,
-  " #
+¢¢" #
 
 Properties
-  $ .
+¢¢$ .
 .
-  . /
+¢¢. /
 	Resources
-  / 8
+¢¢/ 8
 .
-  8 9%
+¢¢8 9%
 lblFailtToEnterTheLobby
-  9 P
+¢¢9 P
 )
-  P Q
+¢¢P Q
 ;
-  Q R
+¢¢Q R
 }
-¡¡ 
+££ 
 }
-¢¢ 	
+¤¤ 	
 private
-¤¤ 
+¦¦ 
 void
-¤¤ !
+¦¦ !
 ClickButtonSaveUser
-¤¤ (
+¦¦ (
 (
-¤¤( )
+¦¦( )
 object
-¤¤) /
+¦¦) /
 sender
-¤¤0 6
+¦¦0 6
 ,
-¤¤6 7
+¦¦6 7
 RoutedEventArgs
-¤¤8 G
+¦¦8 G
 e
-¤¤H I
+¦¦H I
 )
-¤¤I J
+¦¦I J
 {
-¥¥ 	
+§§ 	
 try
-¦¦ 
+¨¨ 
 {
-§§ )
+©© )
 UserCreateAccountCodeClient
-¨¨ +
+ªª +
 userCreateAccount
-¨¨, =
+ªª, =
 =
-¨¨> ?
+ªª> ?
 new
-¨¨@ C
+ªª@ C
 (
-¨¨C D
+ªªC D
 )
-¨¨D E
+ªªD E
 ;
-¨¨E F
+ªªE F
 if
-©© 
+«« 
 (
-©© 
+«« 
 userCreateAccount
-©© %
+«« %
 .
-©©% &
+««% &
 CheckCodeEntered
-©©& 6
+««& 6
 (
-©©6 7
+««6 7
 
 userToSave
-©©7 A
+««7 A
 ,
-©©A B
+««A B
 txbCodeCreateAcc
-©©C S
+««C S
 .
-©©S T
+««S T
 Text
-©©T X
+««T X
 .
-©©X Y
+««X Y
 ToString
-©©Y a
+««Y a
 (
-©©a b
+««a b
 )
-©©b c
+««b c
 .
-©©c d
+««c d
 Trim
-©©d h
+««d h
 (
-©©h i
+««h i
 )
-©©i j
+««i j
 )
-©©j k
+««j k
 ==
-©©l n"
-ExceptionDictionary©©o ‚
-.©©‚ ƒ 
-SUCCESFULL_EVENT©©ƒ “
-)©©“ ”
+««l n"
+ExceptionDictionary««o ‚
+.««‚ ƒ 
+SUCCESFULL_EVENT««ƒ “
+)««“ ”
 {
-ªª "
+¬¬ "
 PrepareUserToBeSaved
-«« (
+­­ (
 (
-««( )
+­­( )
 )
-««) *
+­­) *
 ;
-««* +
+­­* +
 UserManagerClient
-¬¬ %
+®® %
 userManagerProxy
-¬¬& 6
+®®& 6
 =
-¬¬7 8
+®®7 8
 new
-¬¬9 <
+®®9 <
 UserManagerClient
-¬¬= N
+®®= N
 (
-¬¬N O
+®®N O
 )
-¬¬O P
+®®O P
 ;
-¬¬P Q
+®®P Q
 GenericClassOfint
-­­ %
+¯¯ %
 	userSaved
-­­& /
+¯¯& /
 =
-­­0 1
+¯¯0 1
 userManagerProxy
-­­2 B
+¯¯2 B
 .
-­­B C
+¯¯B C
 SaveUser
-­­C K
+¯¯C K
 (
-­­K L
+¯¯K L
 
 userToSave
-­­L V
+¯¯L V
 ,
-­­V W
+¯¯V W
 txbCodeCreateAcc
-­­X h
+¯¯X h
 .
-­­h i
+¯¯h i
 Text
-­­i m
+¯¯i m
 .
-­­m n
+¯¯m n
 ToString
-­­n v
+¯¯n v
 (
-­­v w
+¯¯v w
 )
-­­w x
+¯¯w x
 .
-­­x y
+¯¯x y
 Trim
-­­y }
+¯¯y }
 (
-­­} ~
+¯¯} ~
 )
-­­~ 
-)­­ €
-;­­€ 
+¯¯~ 
+)¯¯ €
+;¯¯€ 
 if
-®® 
+°° 
 (
-®® 
+°° 
 	userSaved
-®® !
+°° !
 .
-®®! "
+°°! "
 	CodeEvent
-®®" +
+°°" +
 ==
-®®, .!
+°°, .!
 ExceptionDictionary
-®®/ B
+°°/ B
 .
-®®B C
+°°B C
 SUCCESFULL_EVENT
-®®C S
+°°C S
 )
-®®S T
+°°S T
 {
-¯¯ 
+±± 
 SetSingleton
-°° $
-(
-°°$ %
-)
-°°% &
-;
-°°& '&
-NotifyUserABoutNewPlayer
-±± 0
-(
-±±0 1
-)
-±±1 2
-;
-±±2 3
-dialogWindow
 ²² $
+(
+²²$ %
+)
+²²% &
+;
+²²& '&
+NotifyUserABoutNewPlayer
+³³ 0
+(
+³³0 1
+)
+³³1 2
+;
+³³2 3!
+DialogWindowManager
+´´ +
 .
-²²$ %#
+´´+ ,#
 ShowInfoOrErrorWindow
-²²% :
+´´, A
 (
-²²: ;
+´´A B
 
 Properties
-²²; E
+´´B L
 .
-²²E F
+´´L M
 	Resources
-²²F O
+´´M V
 .
-²²O P!
+´´V W!
 txbInformationTitle
-²²P c
+´´W j
 ,
-²²c d
+´´j k
 
 Properties
-²²e o
+´´l v
 .
-²²o p
-	Resources
-²²p y
-.
-²²y z&
-txbInfoMessgSuccRegUser²²z ‘
-,²²‘ ’
-Application²²“ 
-.²² Ÿ
-Current²²Ÿ ¦
-.²²¦ §
+´´v w
+	Resources´´w €
+.´´€ '
+txbInfoMessgSuccRegUser´´ ˜
+,´´˜ ™
+Application´´š ¥
+.´´¥ ¦
+Current´´¦ ­
+.´´­ ®
 
-MainWindow²²§ ±
-,²²± ²
-dialogWindow²²³ ¿
-.²²¿ À
-INFORMATION²²À Ë
-)²²Ë Ì
-;²²Ì Í
+MainWindow´´® ¸
+,´´¸ ¹#
+DialogWindowManager´´º Í
+.´´Í Î
+INFORMATION´´Î Ù
+)´´Ù Ú
+;´´Ú Û
 MainMenu
-³³  
+µµ  
 mainMenu
-³³! )
+µµ! )
 =
-³³* +
+µµ* +
 new
-³³, /
+µµ, /
 MainMenu
-³³0 8
+µµ0 8
 (
-³³8 9
+µµ8 9
 )
-³³9 :
-;
-³³: ;
-this
-´´ 
-.
-´´ 
-NavigationService
-´´ .
-.
-´´. /
-Navigate
-´´/ 7
-(
-´´7 8
-mainMenu
-´´8 @
-)
-´´@ A
-;
-´´A B
-NavigationService
-µµ )
-.
-µµ) *
-RemoveBackEntry
-µµ* 9
-(
 µµ9 :
-)
-µµ: ;
 ;
-µµ; <
+µµ: ;
+this
+¶¶ 
+.
+¶¶ 
+NavigationService
+¶¶ .
+.
+¶¶. /
+Navigate
+¶¶/ 7
+(
+¶¶7 8
+mainMenu
+¶¶8 @
+)
+¶¶@ A
+;
+¶¶A B
+NavigationService
+·· )
+.
+··) *
+RemoveBackEntry
+··* 9
+(
+··9 :
+)
+··: ;
+;
+··; <
 }
-¶¶ 
+¸¸ 
 else
-·· 
+¹¹ 
 {
-¸¸ 
+ºº 
 
 userToSave
-¹¹ "
+»» "
 .
-¹¹" #
+»»" #
 Password
-¹¹# +
+»»# +
 =
-¹¹, -
+»», -
 this
-¹¹. 2
+»». 2
 .
-¹¹2 3
+»»2 3
 password
-¹¹3 ;
+»»3 ;
 ;
-¹¹; <
-dialogWindow
-ºº $
+»»; <!
+DialogWindowManager
+¼¼ +
 .
-ºº$ %#
+¼¼+ ,#
 ShowInfoOrErrorWindow
-ºº% :
+¼¼, A
 (
-ºº: ;
+¼¼A B
 
 Properties
-ºº; E
+¼¼B L
 .
-ººE F
+¼¼L M
 	Resources
-ººF O
+¼¼M V
 .
-ººO P
+¼¼V W
 txbErrorTitle
-ººP ]
+¼¼W d
 ,
-ºº] ^
+¼¼d e
 
 Properties
-ºº_ i
+¼¼f p
 .
-ººi j
+¼¼p q
 	Resources
-ººj s
+¼¼q z
 .
-ººs t*
-txbErrorMessageRegisterUserººt 
-,ºº 
-Applicationºº‘ œ
-.ººœ 
-Currentºº ¤
-.ºº¤ ¥
+¼¼z {*
+txbErrorMessageRegisterUser¼¼{ –
+,¼¼– —
+Application¼¼˜ £
+.¼¼£ ¤
+Current¼¼¤ «
+.¼¼« ¬
 
-MainWindowºº¥ ¯
-,ºº¯ °
-dialogWindowºº± ½
-.ºº½ ¾
-ERRORºº¾ Ã
-)ººÃ Ä
-;ººÄ Å
+MainWindow¼¼¬ ¶
+,¼¼¶ ·#
+DialogWindowManager¼¼¸ Ë
+.¼¼Ë Ì
+ERROR¼¼Ì Ñ
+)¼¼Ñ Ò
+;¼¼Ò Ó
 }
-»» 
+½½ 
 }
-¼¼ 
+¾¾ 
 else
-½½ 
+¿¿ 
 {
-¾¾ 
+ÀÀ 
 txbWrongCode
-¿¿  
+ÁÁ  
 .
-¿¿  !
+ÁÁ  !
 
 Visibility
-¿¿! +
+ÁÁ! +
 =
-¿¿, -
+ÁÁ, -
 
 Visibility
-¿¿. 8
+ÁÁ. 8
 .
-¿¿8 9
+ÁÁ8 9
 Visible
-¿¿9 @
+ÁÁ9 @
 ;
-¿¿@ A
+ÁÁ@ A
 }
-ÀÀ 
+ÂÂ 
 }
-ÁÁ 
+ÃÃ 
 catch
-ÂÂ 
+ÄÄ 
 (
-ÂÂ '
+ÄÄ '
 EndpointNotFoundException
-ÂÂ ,
+ÄÄ ,
 ex
-ÂÂ- /
+ÄÄ- /
 )
-ÂÂ/ 0
+ÄÄ/ 0
 {
-ÃÃ 
+ÅÅ 
 HandleException
-ÄÄ 
+ÆÆ 
 (
-ÄÄ  
+ÆÆ  
 ex
-ÄÄ  "
+ÆÆ  "
 ,
-ÄÄ" #
+ÆÆ" #
 
 Properties
-ÄÄ$ .
+ÆÆ$ .
 .
-ÄÄ. /
+ÆÆ. /
 	Resources
-ÄÄ/ 8
+ÆÆ/ 8
 .
-ÄÄ8 9!
+ÆÆ8 9!
 lblEndPointNotFound
-ÄÄ9 L
+ÆÆ9 L
 )
-ÄÄL M
+ÆÆL M
 ;
-ÄÄM N
+ÆÆM N
 }
-ÅÅ 
+ÇÇ 
 catch
-ÆÆ 
+ÈÈ 
 (
-ÆÆ 1
+ÈÈ 1
 #CommunicationObjectFaultedException
-ÆÆ 6
+ÈÈ 6
 ex
-ÆÆ7 9
+ÈÈ7 9
 )
-ÆÆ9 :
+ÈÈ9 :
 {
-ÇÇ 
+ÉÉ 
 HandleException
-ÈÈ 
+ÊÊ 
 (
-ÈÈ  
+ÊÊ  
 ex
-ÈÈ  "
+ÊÊ  "
 ,
-ÈÈ" #
+ÊÊ" #
 
 Properties
-ÈÈ$ .
+ÊÊ$ .
 .
-ÈÈ. /
+ÊÊ. /
 	Resources
-ÈÈ/ 8
+ÊÊ/ 8
 .
-ÈÈ8 9&
+ÊÊ8 9&
 lblComunicationException
-ÈÈ9 Q
+ÊÊ9 Q
 )
-ÈÈQ R
+ÊÊQ R
 ;
-ÈÈR S
+ÊÊR S
 }
-ÉÉ 
+ËË 
 catch
-ÊÊ 
+ÌÌ 
 (
-ÊÊ 
+ÌÌ 
 TimeoutException
-ÊÊ #
+ÌÌ #
 ex
-ÊÊ$ &
+ÌÌ$ &
 )
-ÊÊ& '
+ÌÌ& '
 {
-ËË 
+ÍÍ 
 HandleException
-ÌÌ 
+ÎÎ 
 (
-ÌÌ  
+ÎÎ  
 ex
-ÌÌ  "
+ÎÎ  "
 ,
-ÌÌ" #
+ÎÎ" #
 
 Properties
-ÌÌ$ .
+ÎÎ$ .
 .
-ÌÌ. /
+ÎÎ. /
 	Resources
-ÌÌ/ 8
+ÎÎ/ 8
 .
-ÌÌ8 9
+ÎÎ8 9
 lblTimeException
-ÌÌ9 I
+ÎÎ9 I
 )
-ÌÌI J
+ÎÎI J
 ;
-ÌÌJ K
+ÎÎJ K
 }
-ÍÍ 
+ÏÏ 
 catch
-ÎÎ 
+ĞĞ 
 (
-ÎÎ $
+ĞĞ $
 CommunicationException
-ÎÎ )
+ĞĞ )
 ex
-ÎÎ* ,
+ĞĞ* ,
 )
-ÎÎ, -
+ĞĞ, -
 {
-ÏÏ 
+ÑÑ 
 HandleException
-ĞĞ 
+ÒÒ 
 (
-ĞĞ  
+ÒÒ  
 ex
-ĞĞ  "
+ÒÒ  "
 ,
-ĞĞ" #
+ÒÒ" #
 
 Properties
-ĞĞ$ .
+ÒÒ$ .
 .
-ĞĞ. /
+ÒÒ. /
 	Resources
-ĞĞ/ 8
+ÒÒ/ 8
 .
-ĞĞ8 9!
+ÒÒ8 9!
 lblWithoutConection
-ĞĞ9 L
+ÒÒ9 L
 )
-ĞĞL M
+ÒÒL M
 ;
-ĞĞM N
+ÒÒM N
 }
-ÑÑ 
+ÓÓ 
 catch
-ÒÒ 
+ÔÔ 
 (
-ÒÒ 
+ÔÔ 
 SocketException
-ÒÒ "
+ÔÔ "
 ex
-ÒÒ# %
+ÔÔ# %
 )
-ÒÒ% &
+ÔÔ% &
 {
-ÓÓ 
+ÕÕ 
 HandleException
-ÔÔ 
+ÖÖ 
 (
-ÔÔ  
+ÖÖ  
 ex
-ÔÔ  "
+ÖÖ  "
 ,
-ÔÔ" #
+ÖÖ" #
 
 Properties
-ÔÔ$ .
+ÖÖ$ .
 .
-ÔÔ. /
+ÖÖ. /
 	Resources
-ÔÔ/ 8
+ÖÖ/ 8
 .
-ÔÔ8 9%
+ÖÖ8 9%
 lblFailtToEnterTheLobby
-ÔÔ9 P
+ÖÖ9 P
 )
-ÔÔP Q
+ÖÖP Q
 ;
-ÔÔQ R
+ÖÖQ R
 }
-ÕÕ 
+×× 
 }
-ÖÖ 	
+ØØ 	
 private
-ØØ 
+ÚÚ 
 void
-ØØ 
+ÚÚ 
 ClickResendCode
-ØØ $
+ÚÚ $
 (
-ØØ$ %
+ÚÚ$ %
 object
-ØØ% +
+ÚÚ% +
 sender
-ØØ, 2
+ÚÚ, 2
 ,
-ØØ2 3
+ÚÚ2 3
 RoutedEventArgs
-ØØ4 C
+ÚÚ4 C
 e
-ØØD E
+ÚÚD E
 )
-ØØE F
+ÚÚE F
 {
-ÙÙ 	
+ÛÛ 	
 if
-ÚÚ 
+ÜÜ 
 (
-ÚÚ 
+ÜÜ 
 leftTime
-ÚÚ 
+ÜÜ 
 ==
-ÚÚ 
+ÜÜ 
 NULL_INT_VALUE
-ÚÚ *
+ÜÜ *
 )
-ÚÚ* +
+ÜÜ* +
 {
-ÛÛ 
+İİ 
 try
-ÜÜ 
+ŞŞ 
 {
-İİ )
+ßß )
 UserCreateAccountCodeClient
-ŞŞ /
+àà /
 userCreateAccount
-ŞŞ0 A
+àà0 A
 =
-ŞŞB C
+ààB C
 new
-ŞŞD G
+ààD G
 (
-ŞŞG H
+ààG H
 )
-ŞŞH I
+ààH I
 ;
-ŞŞI J
+ààI J
 if
-ßß 
+áá 
 (
-ßß 
+áá 
 userCreateAccount
-ßß )
+áá )
 .
-ßß) *
+áá) *
 
 ResendCode
-ßß* 4
+áá* 4
 (
-ßß4 5
+áá4 5
 
 userToSave
-ßß5 ?
+áá5 ?
 )
-ßß? @
+áá? @
 ==
-ßßA C!
+ááA C!
 ExceptionDictionary
-ßßD W
+ááD W
 .
-ßßW X
+ááW X
 SUCCESFULL_EVENT
-ßßX h
+ááX h
 )
-ßßh i
+ááh i
 {
-àà 
+ââ 
 	SentEmail
-áá !
+ãã !
 (
-áá! "
+ãã! "
 )
-áá" #
+ãã" #
 ;
-áá# $
+ãã# $
 
 StartTimer
-ââ "
+ää "
 (
-ââ" #
+ää" #
 )
-ââ# $
+ää# $
 ;
-ââ$ %
+ää$ %
 }
-ãã 
+åå 
 else
-ää 
+ææ 
 {
-åå 
-dialogWindow
-ææ $
+çç !
+DialogWindowManager
+èè +
 .
-ææ$ %#
+èè+ ,#
 ShowInfoOrErrorWindow
-ææ% :
+èè, A
 (
-ææ: ;
+èèA B
 
 Properties
-ææ; E
+èèB L
 .
-ææE F
+èèL M
 	Resources
-ææF O
+èèM V
 .
-ææO P
+èèV W
 txbErrorTitle
-ææP ]
+èèW d
 ,
-ææ] ^
+èèd e
 
 Properties
-ææ_ i
+èèf p
 .
-ææi j
+èèp q
 	Resources
-ææj s
+èèq z
 .
-ææs t(
-lblFailRegistryToCallBackææt 
-,ææ 
-Applicationææ š
-.ææš ›
-Currentææ› ¢
-.ææ¢ £
+èèz {(
+lblFailRegistryToCallBackèè{ ”
+,èè” •
+Applicationèè– ¡
+.èè¡ ¢
+Currentèè¢ ©
+.èè© ª
 
-MainWindowææ£ ­
-,ææ­ ®
-dialogWindowææ¯ »
-.ææ» ¼
-ERRORææ¼ Á
-)ææÁ Â
-;ææÂ Ã
+MainWindowèèª ´
+,èè´ µ#
+DialogWindowManagerèè¶ É
+.èèÉ Ê
+ERRORèèÊ Ï
+)èèÏ Ğ
+;èèĞ Ñ
 }
-çç 
+éé 
 }
-èè 
+êê 
 catch
-éé 
+ëë 
 (
-éé '
+ëë '
 EndpointNotFoundException
-éé 0
+ëë 0
 ex
-éé1 3
+ëë1 3
 )
-éé3 4
+ëë3 4
 {
-êê 
+ìì 
 HandleException
-ëë #
+íí #
 (
-ëë# $
+íí# $
 ex
-ëë$ &
+íí$ &
 ,
-ëë& '
+íí& '
 
 Properties
-ëë( 2
+íí( 2
 .
-ëë2 3
+íí2 3
 	Resources
-ëë3 <
+íí3 <
 .
-ëë< =!
+íí< =!
 lblEndPointNotFound
-ëë= P
+íí= P
 )
-ëëP Q
+ííP Q
 ;
-ëëQ R%
+ííQ R%
 ClickButtonCancelSaving
-ìì +
+îî +
 (
-ìì+ ,
+îî+ ,
 bttCancellAction
-ìì, <
+îî, <
 ,
-ìì< =
+îî< =
 new
-ìì> A
+îî> A
 RoutedEventArgs
-ììB Q
+îîB Q
 (
-ììQ R
+îîQ R
 )
-ììR S
+îîR S
 )
-ììS T
+îîS T
 ;
-ììT U
+îîT U
 }
-íí 
+ïï 
 catch
-îî 
+ğğ 
 (
-îî 1
+ğğ 1
 #CommunicationObjectFaultedException
-îî :
+ğğ :
 ex
-îî; =
+ğğ; =
 )
-îî= >
+ğğ= >
 {
-ïï 
+ññ 
 HandleException
-ğğ #
+òò #
 (
-ğğ# $
+òò# $
 ex
-ğğ$ &
+òò$ &
 ,
-ğğ& '
+òò& '
 
 Properties
-ğğ( 2
+òò( 2
 .
-ğğ2 3
+òò2 3
 	Resources
-ğğ3 <
+òò3 <
 .
-ğğ< =&
+òò< =&
 lblComunicationException
-ğğ= U
+òò= U
 )
-ğğU V
+òòU V
 ;
-ğğV W%
+òòV W%
 ClickButtonCancelSaving
-ññ +
+óó +
 (
-ññ+ ,
+óó+ ,
 bttCancellAction
-ññ, <
+óó, <
 ,
-ññ< =
+óó< =
 new
-ññ> A
+óó> A
 RoutedEventArgs
-ññB Q
+óóB Q
 (
-ññQ R
+óóQ R
 )
-ññR S
+óóR S
 )
-ññS T
+óóS T
 ;
-ññT U
+óóT U
 }
-òò 
+ôô 
 catch
-óó 
+õõ 
 (
-óó 
+õõ 
 TimeoutException
-óó '
+õõ '
 ex
-óó( *
+õõ( *
 )
-óó* +
+õõ* +
 {
-ôô 
+öö 
 HandleException
-õõ #
+÷÷ #
 (
-õõ# $
+÷÷# $
 ex
-õõ$ &
+÷÷$ &
 ,
-õõ& '
+÷÷& '
 
 Properties
-õõ( 2
+÷÷( 2
 .
-õõ2 3
+÷÷2 3
 	Resources
-õõ3 <
+÷÷3 <
 .
-õõ< =
+÷÷< =
 lblTimeException
-õõ= M
+÷÷= M
 )
-õõM N
+÷÷M N
 ;
-õõN O%
+÷÷N O%
 ClickButtonCancelSaving
-öö +
+øø +
 (
-öö+ ,
+øø+ ,
 bttCancellAction
-öö, <
+øø, <
 ,
-öö< =
+øø< =
 new
-öö> A
+øø> A
 RoutedEventArgs
-ööB Q
+øøB Q
 (
-ööQ R
+øøQ R
 )
-ööR S
+øøR S
 )
-ööS T
+øøS T
 ;
-ööT U
+øøT U
 }
-÷÷ 
+ùù 
 catch
-øø 
+úú 
 (
-øø $
+úú $
 CommunicationException
-øø -
+úú -
 ex
-øø. 0
+úú. 0
 )
-øø0 1
+úú0 1
 {
-ùù 
+ûû 
 HandleException
-úú #
+üü #
 (
-úú# $
+üü# $
 ex
-úú$ &
+üü$ &
 ,
-úú& '
+üü& '
 
 Properties
-úú( 2
+üü( 2
 .
-úú2 3
+üü2 3
 	Resources
-úú3 <
+üü3 <
 .
-úú< =!
+üü< =!
 lblWithoutConection
-úú= P
+üü= P
 )
-úúP Q
+üüP Q
 ;
-úúQ R%
+üüQ R%
 ClickButtonCancelSaving
-ûû +
+ıı +
 (
-ûû+ ,
+ıı+ ,
 bttCancellAction
-ûû, <
+ıı, <
 ,
-ûû< =
+ıı< =
 new
-ûû> A
+ıı> A
 RoutedEventArgs
-ûûB Q
+ııB Q
 (
-ûûQ R
+ııQ R
 )
-ûûR S
+ııR S
 )
-ûûS T
+ııS T
 ;
-ûûT U
+ııT U
 }
-üü 
+şş 
 catch
-ıı 
+ÿÿ 
 (
-ıı 
+ÿÿ 
 SocketException
-ıı &
+ÿÿ &
 ex
-ıı' )
+ÿÿ' )
 )
-ıı) *
+ÿÿ) *
 {
-şş 
+€€ 
 HandleException
-ÿÿ #
+ #
 (
-ÿÿ# $
+# $
 ex
-ÿÿ$ &
+$ &
 ,
-ÿÿ& '
+& '
 
 Properties
-ÿÿ( 2
+( 2
 .
-ÿÿ2 3
+2 3
 	Resources
-ÿÿ3 <
+3 <
 .
-ÿÿ< =%
+< =%
 lblFailtToEnterTheLobby
-ÿÿ= T
+= T
 )
-ÿÿT U
+T U
 ;
-ÿÿU V%
+U V%
 ClickButtonCancelSaving
-€€ +
+‚‚ +
 (
-€€+ ,
+‚‚+ ,
 bttCancellAction
-€€, <
+‚‚, <
 ,
-€€< =
+‚‚< =
 new
-€€> A
+‚‚> A
 RoutedEventArgs
-€€B Q
+‚‚B Q
 (
-€€Q R
+‚‚Q R
 )
-€€R S
+‚‚R S
 )
-€€S T
+‚‚S T
 ;
-€€T U
+‚‚T U
 }
- 
+ƒƒ 
 }
-‚‚ 
+„„ 
 }
-ƒƒ 	
+…… 	
 private
-…… 
+‡‡ 
 void
-…… "
+‡‡ "
 PrepareUserToBeSaved
-…… )
+‡‡ )
 (
-……) *
+‡‡) *
 )
-……* +
+‡‡* +
 {
-†† 	
+ˆˆ 	
 String
-‡‡ 
+‰‰ 
 encryptedPassword
-‡‡ $
+‰‰ $
 =
-‡‡% &
+‰‰% &
 EncryptionClass
-‡‡' 6
+‰‰' 6
 .
-‡‡6 7
+‰‰6 7
 EncryptPassword
-‡‡7 F
+‰‰7 F
 (
-‡‡F G
+‰‰F G
 
 userToSave
-‡‡G Q
+‰‰G Q
 .
-‡‡Q R
+‰‰Q R
 Password
-‡‡R Z
+‰‰R Z
 .
-‡‡Z [
+‰‰Z [
 ToString
-‡‡[ c
+‰‰[ c
 (
-‡‡c d
+‰‰c d
 )
-‡‡d e
+‰‰d e
 .
-‡‡e f
+‰‰e f
 Trim
-‡‡f j
+‰‰f j
 (
-‡‡j k
+‰‰j k
 )
-‡‡k l
+‰‰k l
 )
-‡‡l m
+‰‰l m
 ;
-‡‡m n
+‰‰m n
 
 userToSave
-ˆˆ 
+ŠŠ 
 .
-ˆˆ 
+ŠŠ 
 Password
-ˆˆ 
+ŠŠ 
 =
-ˆˆ  !
+ŠŠ  !
 encryptedPassword
-ˆˆ" 3
+ŠŠ" 3
 ;
-ˆˆ3 4
+ŠŠ3 4
 
 userToSave
-‰‰ 
+‹‹ 
 .
-‰‰ 
+‹‹ 
 IdUser
-‰‰ 
+‹‹ 
 =
-‰‰ 
+‹‹ 
 NULL_INT_VALUE
-‰‰  .
+‹‹  .
 ;
-‰‰. /
+‹‹. /
 }
-ŠŠ 	
+ŒŒ 	
 private
-ŒŒ 
+ 
 void
-ŒŒ &
+ &
 NotifyUserABoutNewPlayer
-ŒŒ -
+ -
 (
-ŒŒ- .
+- .
 )
-ŒŒ. /
+. /
 {
- 	
+ 	
 try
- 
+ 
 {
- 1
+‘‘ 1
 #FriendManagerActionOperationsClient
- 3*
+’’ 3*
 managerActionOperationsProxy
-4 P
+’’4 P
 =
-Q R
+’’Q R
 new
-S V
+’’S V
 (
-V W
+’’V W
 )
-W X
+’’W X
 ;
-X Y*
+’’X Y*
 managerActionOperationsProxy
-‘‘ ,
+““ ,
 .
-‘‘, -&
+““, -&
 NotifyUserAboutNewPlayer
-‘‘- E
+““- E
 (
-‘‘E F
+““E F
 userSingleton
-‘‘F S
+““F S
 .
-‘‘S T
+““S T
 IdUser
-‘‘T Z
+““T Z
 ,
-‘‘Z [
+““Z [
 userSingleton
-‘‘\ i
+““\ i
 .
-‘‘i j
+““i j
 UserName
-‘‘j r
+““j r
 )
-‘‘r s
+““r s
 ;
-‘‘s t
+““s t
 }
-’’ 
+”” 
 catch
-““ 
+•• 
 (
-““ '
+•• '
 EndpointNotFoundException
-““ ,
+•• ,
 ex
-““- /
+••- /
 )
-““/ 0
+••/ 0
 {
-”” %
+–– %
 ExceptionHandlerForLogs
-•• '
+—— '
 .
-••' (
+——' (
 LogException
-••( 4
+——( 4
 (
-••4 5
+——4 5
 ex
-••5 7
+——5 7
 ,
-••7 8!
+——7 8!
 ExceptionDictionary
-••9 L
+——9 L
 .
-••L M
+——L M
 FATAL_EXCEPTION
-••M \
+——M \
 )
-••\ ]
+——\ ]
 ;
-••] ^
+——] ^
 }
-–– 
+˜˜ 
 catch
-—— 
+™™ 
 (
-—— 1
+™™ 1
 #CommunicationObjectFaultedException
-—— 6
+™™ 6
 ex
-——7 9
+™™7 9
 )
-——9 :
+™™9 :
 {
-˜˜ %
+šš %
 ExceptionHandlerForLogs
-™™ '
+›› '
 .
-™™' (
+››' (
 LogException
-™™( 4
+››( 4
 (
-™™4 5
+››4 5
 ex
-™™5 7
+››5 7
 ,
-™™7 8!
+››7 8!
 ExceptionDictionary
-™™9 L
+››9 L
 .
-™™L M
+››L M
 FATAL_EXCEPTION
-™™M \
+››M \
 )
-™™\ ]
+››\ ]
 ;
-™™] ^
+››] ^
 }
-šš 
+œœ 
 catch
-›› 
+ 
 (
-›› 
+ 
 TimeoutException
-›› #
+ #
 ex
-››$ &
+$ &
 )
-››& '
+& '
 {
-œœ %
+ %
 ExceptionHandlerForLogs
- '
+ŸŸ '
 .
-' (
+ŸŸ' (
 LogException
-( 4
+ŸŸ( 4
 (
-4 5
+ŸŸ4 5
 ex
-5 7
+ŸŸ5 7
 ,
-7 8!
+ŸŸ7 8!
 ExceptionDictionary
-9 L
+ŸŸ9 L
 .
-L M
+ŸŸL M
 FATAL_EXCEPTION
-M \
+ŸŸM \
 )
-\ ]
+ŸŸ\ ]
 ;
-] ^
+ŸŸ] ^
 }
- 
+   
 catch
-ŸŸ 
+¡¡ 
 (
-ŸŸ $
+¡¡ $
 CommunicationException
-ŸŸ )
+¡¡ )
 ex
-ŸŸ* ,
+¡¡* ,
 )
-ŸŸ, -
+¡¡, -
 {
-   %
+¢¢ %
 ExceptionHandlerForLogs
-¡¡ '
+££ '
 .
-¡¡' (
+££' (
 LogException
-¡¡( 4
+££( 4
 (
-¡¡4 5
+££4 5
 ex
-¡¡5 7
+££5 7
 ,
-¡¡7 8!
+££7 8!
 ExceptionDictionary
-¡¡9 L
+££9 L
 .
-¡¡L M
+££L M
 FATAL_EXCEPTION
-¡¡M \
+££M \
 )
-¡¡\ ]
+££\ ]
 ;
-¡¡] ^
+££] ^
 }
-¢¢ 
+¤¤ 
 catch
-££ 
+¥¥ 
 (
-££ 
+¥¥ 
 SocketException
-££ "
+¥¥ "
 ex
-££# %
+¥¥# %
 )
-££% &
+¥¥% &
 {
-¤¤ %
+¦¦ %
 ExceptionHandlerForLogs
-¥¥ '
+§§ '
 .
-¥¥' (
+§§' (
 LogException
-¥¥( 4
+§§( 4
 (
-¥¥4 5
+§§4 5
 ex
-¥¥5 7
+§§5 7
 ,
-¥¥7 8!
+§§7 8!
 ExceptionDictionary
-¥¥9 L
+§§9 L
 .
-¥¥L M
+§§L M
 FATAL_EXCEPTION
-¥¥M \
+§§M \
 )
-¥¥\ ]
+§§\ ]
 ;
-¥¥] ^
+§§] ^
 }
-¦¦ 
+¨¨ 
 }
-§§ 	
+©© 	
 private
-«« 
+­­ 
 void
-«« %
+­­ %
 ClickButtonCancelSaving
-«« ,
+­­ ,
 (
-««, -
+­­, -
 object
-««- 3
+­­- 3
 sender
-««4 :
+­­4 :
 ,
-««: ;
+­­: ;
 RoutedEventArgs
-««< K
+­­< K
 e
-««L M
+­­L M
 )
-««M N
+­­M N
 {
-¬¬ 	
+®® 	
 try
-­­ 
+¯¯ 
 {
-®® 
+°° 
 if
-¯¯ 
+±± 
 (
-¯¯ 
+±± 
 timer
-¯¯ 
+±± 
 !=
-¯¯ 
+±± 
 null
-¯¯ !
+±± !
 )
-¯¯! "
+±±! "
 {
-°° 
+²² 
 timer
-±± 
+³³ 
 .
-±± 
+³³ 
 Stop
-±± 
+³³ 
 (
-±± 
+³³ 
 )
-±±  
+³³  
 ;
-±±  !
+³³  !
 }
-²² )
+´´ )
 UserCreateAccountCodeClient
-³³ +
+µµ +
 userCreateAccount
-³³, =
+µµ, =
 =
-³³> ?
+µµ> ?
 new
-³³@ C
+µµ@ C
 (
-³³C D
+µµC D
 )
-³³D E
+µµD E
 ;
-³³E F
+µµE F
 userCreateAccount
-´´ !
+¶¶ !
 .
-´´! "%
+¶¶! "%
 TakeUserOutOfDictionary
-´´" 9
+¶¶" 9
 (
-´´9 :
+¶¶9 :
 
 userToSave
-´´: D
+¶¶: D
 )
-´´D E
+¶¶D E
 ;
-´´E F.
+¶¶E F.
  CheckUserLivingUnsubscribeClient
-µµ 0#
+·· 0#
 checkUserLivingClient
-µµ1 F
+··1 F
 =
-µµG H
+··G H
 new
-µµI L
+··I L
 (
-µµL M
+··L M
 )
-µµM N
+··M N
 ;
-µµN O#
+··N O#
 checkUserLivingClient
-¶¶ %
+¸¸ %
 .
-¶¶% &-
+¸¸% &-
 UnsubscribeFromICheckUserLiving
-¶¶& E
+¸¸& E
 (
-¶¶E F
+¸¸E F
 
 userToSave
-¶¶F P
+¸¸F P
 )
-¶¶P Q
+¸¸P Q
 ;
-¶¶Q R
+¸¸Q R
 }
-·· 
+¹¹ 
 catch
-¸¸ 
+ºº 
 (
-¸¸ '
+ºº '
 EndpointNotFoundException
-¸¸ ,
+ºº ,
 ex
-¸¸- /
+ºº- /
 )
-¸¸/ 0
+ºº/ 0
 {
-¹¹ %
+»» %
 ExceptionHandlerForLogs
-ºº '
+¼¼ '
 .
-ºº' (
+¼¼' (
 LogException
-ºº( 4
+¼¼( 4
 (
-ºº4 5
+¼¼4 5
 ex
-ºº5 7
+¼¼5 7
 ,
-ºº7 8!
+¼¼7 8!
 ExceptionDictionary
-ºº9 L
+¼¼9 L
 .
-ººL M
+¼¼L M
 FATAL_EXCEPTION
-ººM \
+¼¼M \
 )
-ºº\ ]
+¼¼\ ]
 ;
-ºº] ^
+¼¼] ^
 }
-»» 
+½½ 
 catch
-¼¼ 
+¾¾ 
 (
-¼¼ 1
+¾¾ 1
 #CommunicationObjectFaultedException
-¼¼ 6
+¾¾ 6
 ex
-¼¼7 9
+¾¾7 9
 )
-¼¼9 :
+¾¾9 :
 {
-½½ %
+¿¿ %
 ExceptionHandlerForLogs
-¾¾ '
+ÀÀ '
 .
-¾¾' (
+ÀÀ' (
 LogException
-¾¾( 4
+ÀÀ( 4
 (
-¾¾4 5
+ÀÀ4 5
 ex
-¾¾5 7
+ÀÀ5 7
 ,
-¾¾7 8!
+ÀÀ7 8!
 ExceptionDictionary
-¾¾9 L
+ÀÀ9 L
 .
-¾¾L M
+ÀÀL M
 FATAL_EXCEPTION
-¾¾M \
+ÀÀM \
 )
-¾¾\ ]
+ÀÀ\ ]
 ;
-¾¾] ^
+ÀÀ] ^
 }
-¿¿ 
+ÁÁ 
 catch
-ÀÀ 
+ÂÂ 
 (
-ÀÀ 
+ÂÂ 
 TimeoutException
-ÀÀ #
+ÂÂ #
 ex
-ÀÀ$ &
+ÂÂ$ &
 )
-ÀÀ& '
+ÂÂ& '
 {
-ÁÁ %
+ÃÃ %
 ExceptionHandlerForLogs
-ÂÂ '
+ÄÄ '
 .
-ÂÂ' (
+ÄÄ' (
 LogException
-ÂÂ( 4
+ÄÄ( 4
 (
-ÂÂ4 5
+ÄÄ4 5
 ex
-ÂÂ5 7
+ÄÄ5 7
 ,
-ÂÂ7 8!
+ÄÄ7 8!
 ExceptionDictionary
-ÂÂ9 L
+ÄÄ9 L
 .
-ÂÂL M
+ÄÄL M
 FATAL_EXCEPTION
-ÂÂM \
+ÄÄM \
 )
-ÂÂ\ ]
+ÄÄ\ ]
 ;
-ÂÂ] ^
+ÄÄ] ^
 }
-ÃÃ 
+ÅÅ 
 catch
-ÄÄ 
+ÆÆ 
 (
-ÄÄ $
+ÆÆ $
 CommunicationException
-ÄÄ )
+ÆÆ )
 ex
-ÄÄ* ,
+ÆÆ* ,
 )
-ÄÄ, -
+ÆÆ, -
 {
-ÅÅ %
+ÇÇ %
 ExceptionHandlerForLogs
-ÆÆ '
+ÈÈ '
 .
-ÆÆ' (
+ÈÈ' (
 LogException
-ÆÆ( 4
+ÈÈ( 4
 (
-ÆÆ4 5
+ÈÈ4 5
 ex
-ÆÆ5 7
+ÈÈ5 7
 ,
-ÆÆ7 8!
+ÈÈ7 8!
 ExceptionDictionary
-ÆÆ9 L
+ÈÈ9 L
 .
-ÆÆL M
+ÈÈL M
 FATAL_EXCEPTION
-ÆÆM \
+ÈÈM \
 )
-ÆÆ\ ]
+ÈÈ\ ]
 ;
-ÆÆ] ^
+ÈÈ] ^
 }
-ÇÇ 
+ÉÉ 
 catch
-ÈÈ 
+ÊÊ 
 (
-ÈÈ 
+ÊÊ 
 SocketException
-ÈÈ "
+ÊÊ "
 ex
-ÈÈ# %
+ÊÊ# %
 )
-ÈÈ% &
+ÊÊ% &
 {
-ÉÉ %
+ËË %
 ExceptionHandlerForLogs
-ÊÊ '
+ÌÌ '
 .
-ÊÊ' (
+ÌÌ' (
 LogException
-ÊÊ( 4
+ÌÌ( 4
 (
-ÊÊ4 5
+ÌÌ4 5
 ex
-ÊÊ5 7
+ÌÌ5 7
 ,
-ÊÊ7 8!
+ÌÌ7 8!
 ExceptionDictionary
-ÊÊ9 L
+ÌÌ9 L
 .
-ÊÊL M
+ÌÌL M
 FATAL_EXCEPTION
-ÊÊM \
+ÌÌM \
 )
-ÊÊ\ ]
+ÌÌ\ ]
 ;
-ÊÊ] ^
+ÌÌ] ^
 }
-ËË 
+ÍÍ 
 UserSingleton
-ÌÌ 
+ÎÎ 
 .
-ÌÌ 
+ÎÎ 
 CleanSingleton
-ÌÌ (
+ÎÎ (
 (
-ÌÌ( )
+ÎÎ( )
 )
-ÌÌ) *
+ÎÎ) *
 ;
-ÌÌ* +
+ÎÎ* +
 UserRegister
-ÍÍ 
+ÏÏ 
 userToRegister
-ÍÍ '
+ÏÏ '
 =
-ÍÍ( )
+ÏÏ( )
 new
-ÍÍ* -
+ÏÏ* -
 UserRegister
-ÍÍ. :
+ÏÏ. :
 (
-ÍÍ: ;
+ÏÏ: ;
 )
-ÍÍ; <
+ÏÏ; <
 ;
-ÍÍ< =
+ÏÏ< =
 this
-ÎÎ 
+ĞĞ 
 .
-ÎÎ 
+ĞĞ 
 NavigationService
-ÎÎ "
+ĞĞ "
 .
-ÎÎ" #
+ĞĞ" #
 Navigate
-ÎÎ# +
+ĞĞ# +
 (
-ÎÎ+ ,
+ĞĞ+ ,
 userToRegister
-ÎÎ, :
+ĞĞ, :
 )
-ÎÎ: ;
+ĞĞ: ;
 ;
-ÎÎ; <
+ĞĞ; <
 userToRegister
-ÏÏ 
+ÑÑ 
 .
-ÏÏ 
+ÑÑ 
 
 LoadFields
-ÏÏ %
+ÑÑ %
 (
-ÏÏ% &
+ÑÑ% &
 
 userToSave
-ÏÏ& 0
+ÑÑ& 0
 )
-ÏÏ0 1
+ÑÑ0 1
 ;
-ÏÏ1 2
+ÑÑ1 2
 NavigationService
-ĞĞ 
+ÒÒ 
 .
-ĞĞ 
+ÒÒ 
 RemoveBackEntry
-ĞĞ -
+ÒÒ -
 (
-ĞĞ- .
+ÒÒ- .
 )
-ĞĞ. /
+ÒÒ. /
 ;
-ĞĞ/ 0
+ÒÒ/ 0
 }
-ÑÑ 	
+ÓÓ 	
 private
-ÔÔ 
+ÖÖ 
 void
-ÔÔ $
+ÖÖ $
 EntryCodeCharValidator
-ÔÔ +
+ÖÖ +
 (
-ÔÔ+ ,
+ÖÖ+ ,
 object
-ÔÔ, 2
+ÖÖ, 2
 sender
-ÔÔ3 9
+ÖÖ3 9
 ,
-ÔÔ9 :"
+ÖÖ9 :"
 TextChangedEventArgs
-ÔÔ; O
+ÖÖ; O
 e
-ÔÔP Q
+ÖÖP Q
 )
-ÔÔQ R
+ÖÖQ R
 {
-ÕÕ 	
+×× 	
 if
-ÖÖ 
+ØØ 
 (
-ÖÖ 
+ØØ 
 txbCodeCreateAcc
-ÖÖ  
+ØØ  
 .
-ÖÖ  !
+ØØ  !
 Text
-ÖÖ! %
+ØØ! %
 .
-ÖÖ% &
+ØØ% &
 Trim
-ÖÖ& *
+ØØ& *
 (
-ÖÖ* +
+ØØ* +
 )
-ÖÖ+ ,
+ØØ+ ,
 .
-ÖÖ, -
+ØØ, -
 Length
-ÖÖ- 3
+ØØ- 3
 ==
-ÖÖ4 6
+ØØ4 6
 $num
-ÖÖ7 8
+ØØ7 8
 )
-ÖÖ8 9
+ØØ8 9
 {
-×× 
+ÙÙ 
 bttSaveUser
-ØØ 
+ÚÚ 
 .
-ØØ 
+ÚÚ 
 	IsEnabled
-ØØ %
+ÚÚ %
 =
-ØØ& '
+ÚÚ& '
 true
-ØØ( ,
+ÚÚ( ,
 ;
-ØØ, -
+ÚÚ, -
 }
-ÙÙ 
+ÛÛ 
 else
-ÚÚ 
+ÜÜ 
 {
-ÛÛ 
+İİ 
 bttSaveUser
-ÜÜ 
+ŞŞ 
 .
-ÜÜ 
+ŞŞ 
 	IsEnabled
-ÜÜ %
+ŞŞ %
 =
-ÜÜ% &
+ŞŞ% &
 false
-ÜÜ& +
+ŞŞ& +
 ;
-ÜÜ+ ,
+ŞŞ+ ,
 }
-İİ 
+ßß 
 }
-ŞŞ 	
+àà 	
 private
-àà 
+ââ 
 void
-àà 
+ââ 
 SetSingleton
-àà !
+ââ !
 (
-àà! "
+ââ! "
 )
-àà" #
+ââ" #
 {
-áá 	
+ãã 	
 try
-ââ 
+ää 
 {
-ãã *
+åå *
 ConsultUserInformationClient
-ää ,&
+ææ ,&
 consultInformationClient
-ää- E
+ææ- E
 =
-ääF G
+ææF G
 new
-ääH K*
+ææH K*
 ConsultUserInformationClient
-ääL h
+ææL h
 (
-ääh i
+ææh i
 )
-ääi j
+ææi j
 ;
-ääj k
+ææj k
 var
-åå 
+çç 
 	userSaved
-åå 
+çç 
 =
-åå &
+çç &
 consultInformationClient
-åå  8
+çç  8
 .
-åå8 9#
+çç8 9#
 ConsultUserByUserName
-åå9 N
+çç9 N
 (
-ååN O
+ççN O
 
 userToSave
-ååO Y
+ççO Y
 .
-ååY Z
+ççY Z
 UserName
-ååZ b
+ççZ b
 )
-ååb c
+ççb c
 ;
-ååc d
+ççc d
 if
-ææ 
+èè 
 (
-ææ 
+èè 
 	userSaved
-ææ 
+èè 
 .
-ææ 
+èè 
 	CodeEvent
-ææ '
+èè '
 ==
-ææ( *!
+èè( *!
 ExceptionDictionary
-ææ+ >
+èè+ >
 .
-ææ> ?
+èè> ?
 SUCCESFULL_EVENT
-ææ? O
+èè? O
 )
-ææO P
+èèO P
 {
-çç 
+éé 
 var
-èè 
+êê 
 playerSaved
-èè #
+êê #
 =
-èè$ %&
+êê$ %&
 consultInformationClient
-èè& >
+êê& >
 .
-èè> ?#
+êê> ?#
 ConsultPlayerByIdUser
-èè? T
+êê? T
 (
-èèT U
+êêT U
 	userSaved
-èèU ^
+êêU ^
 .
-èè^ _
+êê^ _
 ObjectSaved
-èè_ j
+êê_ j
 .
-èèj k
+êêj k
 IdUser
-èèk q
+êêk q
 )
-èèq r
+êêq r
 ;
-èèr s
+êêr s
 if
-éé 
+ëë 
 (
-éé 
+ëë 
 playerSaved
-éé #
+ëë #
 .
-éé# $
+ëë# $
 	CodeEvent
-éé$ -
+ëë$ -
 ==
-éé. 0!
+ëë. 0!
 ExceptionDictionary
-éé1 D
+ëë1 D
 .
-ééD E
+ëëD E
 SUCCESFULL_EVENT
-ééE U
+ëëE U
 )
-ééU V
+ëëU V
 {
-êê 
+ìì 
 UserSingleton
-ëë %
+íí %
 .
-ëë% &
+íí% &
 CleanSingleton
-ëë& 4
+íí& 4
 (
-ëë4 5
+íí4 5
 )
-ëë5 6
+íí5 6
 ;
-ëë6 7
+íí6 7
 userSingleton
-ìì %
+îî %
 =
-ìì& '
+îî& '
 UserSingleton
-ìì( 5
+îî( 5
 .
-ìì5 6
+îî5 6
 GetMainUser
-ìì6 A
+îî6 A
 (
-ììA B
+îîA B
 	userSaved
-ììB K
+îîB K
 .
-ììK L
+îîK L
 ObjectSaved
-ììL W
+îîL W
 ,
-ììW X
+îîW X
 playerSaved
-ììY d
+îîY d
 .
-ììd e
+îîd e
 ObjectSaved
-ììe p
+îîe p
 )
-ììp q
+îîp q
 ;
-ììq r-
+îîq r-
 AvailabilityUserManagmentClient
-íí 7'
+ïï 7'
 availabilityUserManagment
-íí8 Q
+ïï8 Q
 =
-ííR S
+ïïR S
 new
-ííT W-
+ïïT W-
 AvailabilityUserManagmentClient
-ííX w
+ïïX w
 (
-ííw x
+ïïw x
 )
-ííx y
+ïïx y
 ;
-ííy z'
+ïïy z'
 availabilityUserManagment
-îî 1
+ğğ 1
 .
-îî1 2
+ğğ1 2
 PlayerIsAvailable
-îî2 C
+ğğ2 C
 (
-îîC D
+ğğC D
 userSingleton
-îîD Q
+ğğD Q
 .
-îîQ R
+ğğQ R
 IdUser
-îîR X
+ğğR X
 )
-îîX Y
+ğğX Y
 ;
-îîY Z
+ğğY Z
 }
-ïï 
+ññ 
 else
-ğğ 
+òò 
 {
-ññ 
-dialogWindow
-òò $
+óó !
+DialogWindowManager
+ôô +
 .
-òò$ %#
+ôô+ ,#
 ShowInfoOrErrorWindow
-òò% :
+ôô, A
 (
-òò: ;
+ôôA B
 
 Properties
-òò; E
+ôôB L
 .
-òòE F
+ôôL M
 	Resources
-òòF O
+ôôM V
 .
-òòO P
+ôôV W
 txbErrorTitle
-òòP ]
+ôôW d
 ,
-òò] ^
+ôôd e
 
 Properties
-òò_ i
+ôôf p
 .
-òòi j
+ôôp q
 	Resources
-òòj s
+ôôq z
 .
-òòs t%
-lblFailConsultingTheBDòòt Š
-,òòŠ ‹
-ApplicationòòŒ —
-.òò— ˜
-Currentòò˜ Ÿ
-.òòŸ  
+ôôz {%
+lblFailConsultingTheBDôô{ ‘
+,ôô‘ ’
+Applicationôô“ 
+.ôô Ÿ
+CurrentôôŸ ¦
+.ôô¦ §
 
-MainWindowòò  ª
-,òòª «
-dialogWindowòò¬ ¸
-.òò¸ ¹
-ERRORòò¹ ¾
-)òò¾ ¿
-;òò¿ À
+MainWindowôô§ ±
+,ôô± ²#
+DialogWindowManagerôô³ Æ
+.ôôÆ Ç
+ERRORôôÇ Ì
+)ôôÌ Í
+;ôôÍ Î
 }
-óó 
+õõ 
 }
-ôô 
+öö 
 else
-õõ 
+÷÷ 
 {
-öö 
-dialogWindow
-÷÷  
+øø !
+DialogWindowManager
+ùù '
 .
-÷÷  !#
+ùù' (#
 ShowInfoOrErrorWindow
-÷÷! 6
+ùù( =
 (
-÷÷6 7
+ùù= >
 
 Properties
-÷÷7 A
+ùù> H
 .
-÷÷A B
+ùùH I
 	Resources
-÷÷B K
+ùùI R
 .
-÷÷K L
+ùùR S
 txbErrorTitle
-÷÷L Y
+ùùS `
 ,
-÷÷Y Z
+ùù` a
 
 Properties
-÷÷[ e
+ùùb l
 .
-÷÷e f
+ùùl m
 	Resources
-÷÷f o
+ùùm v
 .
-÷÷o p%
-lblFailConsultingTheBD÷÷p †
-,÷÷† ‡
-Application÷÷ˆ “
-.÷÷“ ”
-Current÷÷” ›
-.÷÷› œ
+ùùv w%
+lblFailConsultingTheBDùùw 
+,ùù 
+Applicationùù š
+.ùùš ›
+Currentùù› ¢
+.ùù¢ £
 
-MainWindow÷÷œ ¦
-,÷÷¦ §
-dialogWindow÷÷¨ ´
-.÷÷´ µ
-ERROR÷÷µ º
-)÷÷º »
-;÷÷» ¼
+MainWindowùù£ ­
+,ùù­ ®#
+DialogWindowManagerùù¯ Â
+.ùùÂ Ã
+ERRORùùÃ È
+)ùùÈ É
+;ùùÉ Ê
 }
-øø 
+úú 
 }
-ùù 
+ûû 
 catch
-úú 
+üü 
 (
-úú '
+üü '
 EndpointNotFoundException
-úú ,
+üü ,
 ex
-úú- /
+üü- /
 )
-úú/ 0
+üü/ 0
 {
-ûû 
+ıı 
 HandleException
-üü 
+şş 
 (
-üü  
+şş  
 ex
-üü  "
+şş  "
 ,
-üü" #
+şş" #
 
 Properties
-üü$ .
+şş$ .
 .
-üü. /
+şş. /
 	Resources
-üü/ 8
+şş/ 8
 .
-üü8 9/
+şş8 9/
 !lblUserRegisteredButFailToconnect
-üü9 Z
+şş9 Z
 )
-üüZ [
+şşZ [
 ;
-üü[ \%
+şş[ \%
 ClickButtonCancelSaving
-ıı '
+ÿÿ '
 (
-ıı' (
+ÿÿ' (
 bttCancellAction
-ıı( 8
+ÿÿ( 8
 ,
-ıı8 9
+ÿÿ8 9
 new
-ıı: =
+ÿÿ: =
 RoutedEventArgs
-ıı> M
+ÿÿ> M
 (
-ııM N
+ÿÿM N
 )
-ııN O
+ÿÿN O
 )
-ııO P
+ÿÿO P
 ;
-ııP Q
+ÿÿP Q
 }
-şş 
+€€ 
 catch
-ÿÿ 
+ 
 (
-ÿÿ 1
+ 1
 #CommunicationObjectFaultedException
-ÿÿ 6
+ 6
 ex
-ÿÿ7 9
+7 9
 )
-ÿÿ9 :
+9 :
 {
-€€ 
+‚‚ 
 HandleException
- 
+ƒƒ 
 (
-  
+ƒƒ  
 ex
-  "
+ƒƒ  "
 ,
-" #
+ƒƒ" #
 
 Properties
-$ .
+ƒƒ$ .
 .
-. /
+ƒƒ. /
 	Resources
-/ 8
+ƒƒ/ 8
 .
-8 9/
+ƒƒ8 9/
 !lblUserRegisteredButFailToconnect
-9 Z
+ƒƒ9 Z
 )
-Z [
+ƒƒZ [
 ;
-[ \%
+ƒƒ[ \%
 ClickButtonCancelSaving
-‚‚ '
+„„ '
 (
-‚‚' (
+„„' (
 bttCancellAction
-‚‚( 8
+„„( 8
 ,
-‚‚8 9
+„„8 9
 new
-‚‚: =
+„„: =
 RoutedEventArgs
-‚‚> M
+„„> M
 (
-‚‚M N
+„„M N
 )
-‚‚N O
+„„N O
 )
-‚‚O P
+„„O P
 ;
-‚‚P Q
+„„P Q
 }
-ƒƒ 
+…… 
 catch
-„„ 
+†† 
 (
-„„ 
+†† 
 TimeoutException
-„„ #
+†† #
 ex
-„„$ &
+††$ &
 )
-„„& '
+††& '
 {
-…… 
+‡‡ 
 HandleException
-†† 
+ˆˆ 
 (
-††  
+ˆˆ  
 ex
-††  "
+ˆˆ  "
 ,
-††" #
+ˆˆ" #
 
 Properties
-††$ .
+ˆˆ$ .
 .
-††. /
+ˆˆ. /
 	Resources
-††/ 8
+ˆˆ/ 8
 .
-††8 9/
+ˆˆ8 9/
 !lblUserRegisteredButFailToconnect
-††9 Z
+ˆˆ9 Z
 )
-††Z [
+ˆˆZ [
 ;
-††[ \%
+ˆˆ[ \%
 ClickButtonCancelSaving
-‡‡ '
+‰‰ '
 (
-‡‡' (
+‰‰' (
 bttCancellAction
-‡‡( 8
+‰‰( 8
 ,
-‡‡8 9
+‰‰8 9
 new
-‡‡: =
+‰‰: =
 RoutedEventArgs
-‡‡> M
+‰‰> M
 (
-‡‡M N
+‰‰M N
 )
-‡‡N O
+‰‰N O
 )
-‡‡O P
+‰‰O P
 ;
-‡‡P Q
+‰‰P Q
 }
-ˆˆ 
+ŠŠ 
 catch
-‰‰ 
+‹‹ 
 (
-‰‰ $
+‹‹ $
 CommunicationException
-‰‰ )
+‹‹ )
 ex
-‰‰* ,
+‹‹* ,
 )
-‰‰, -
+‹‹, -
 {
-ŠŠ 
+ŒŒ 
 HandleException
-‹‹ 
+ 
 (
-‹‹  
+  
 ex
-‹‹  "
+  "
 ,
-‹‹" #
+" #
 
 Properties
-‹‹$ .
+$ .
 .
-‹‹. /
+. /
 	Resources
-‹‹/ 8
+/ 8
 .
-‹‹8 9/
+8 9/
 !lblUserRegisteredButFailToconnect
-‹‹9 Z
+9 Z
 )
-‹‹Z [
+Z [
 ;
-‹‹[ \%
+[ \%
 ClickButtonCancelSaving
-ŒŒ '
+ '
 (
-ŒŒ' (
+' (
 bttCancellAction
-ŒŒ( 8
+( 8
 ,
-ŒŒ8 9
+8 9
 new
-ŒŒ: =
+: =
 RoutedEventArgs
-ŒŒ> M
+> M
 (
-ŒŒM N
+M N
 )
-ŒŒN O
+N O
 )
-ŒŒO P
+O P
 ;
-ŒŒP Q
+P Q
 }
- 
+ 
 catch
- 
+ 
 (
- 
+ 
 SocketException
- "
+ "
 ex
-# %
+# %
 )
-% &
+% &
 {
- 
+‘‘ 
 HandleException
- 
+’’ 
 (
-  
+’’  
 ex
-  "
+’’  "
 ,
-" #
+’’" #
 
 Properties
-$ .
+’’$ .
 .
-. /
+’’. /
 	Resources
-/ 8
+’’/ 8
 .
-8 9/
+’’8 9/
 !lblUserRegisteredButFailToconnect
-9 Z
+’’9 Z
 )
-Z [
+’’Z [
 ;
-[ \%
+’’[ \%
 ClickButtonCancelSaving
-‘‘ '
+““ '
 (
-‘‘' (
+““' (
 bttCancellAction
-‘‘( 8
+““( 8
 ,
-‘‘8 9
+““8 9
 new
-‘‘: =
+““: =
 RoutedEventArgs
-‘‘> M
+““> M
 (
-‘‘M N
+““M N
 )
-‘‘N O
+““N O
 )
-‘‘O P
+““O P
 ;
-‘‘P Q
+““P Q
 }
-’’ 
+”” 
 }
-““ 	
+•• 	
 public
-•• 
+—— 
 bool
-•• 
+—— 
 IsClientActive
-•• "
+—— "
 (
-••" #
+——" #
 )
-••# $
+——# $
 {
-–– 	
+˜˜ 	
 return
-—— 
+™™ 
 (
-—— 
+™™ 
 (
-—— &
+™™ &
 ICheckUserLivingCallback
-—— -
+™™ -
 )
-——- .
+™™- .
 userSingleton
-——. ;
+™™. ;
 )
-——; <
+™™; <
 .
-——< =
+™™< =
 IsClientActive
-——= K
+™™= K
 (
-——K L
+™™K L
 )
-——L M
+™™L M
 ;
-——M N
+™™M N
 }
-˜˜ 	
+šš 	
 private
-šš 
+œœ 
 void
-šš 
+œœ 
 HandleException
-šš $
+œœ $
 (
-šš$ %
+œœ$ %
 	Exception
-šš% .
+œœ% .
 ex
-šš/ 1
+œœ/ 1
 ,
-šš1 2
+œœ1 2
 string
-šš3 9
+œœ3 9
 errorMessage
-šš: F
+œœ: F
 )
-ššF G
+œœF G
 {
-›› 	%
+ 	%
 ExceptionHandlerForLogs
-œœ #
+ #
 .
-œœ# $
+# $
 LogException
-œœ$ 0
+$ 0
 (
-œœ0 1
+0 1
 ex
-œœ1 3
+1 3
 ,
-œœ3 4!
+3 4!
 ExceptionDictionary
-œœ5 H
+5 H
 .
-œœH I
+H I
 FATAL_EXCEPTION
-œœI X
+I X
 )
-œœX Y
+X Y
 ;
-œœY Z
-dialogWindow
- 
+Y Z!
+DialogWindowManager
+ŸŸ 
 .
- #
+ŸŸ  #
 ShowInfoOrErrorWindow
- .
+ŸŸ  5
 (
-. /
+ŸŸ5 6
 
 Properties
-/ 9
+ŸŸ6 @
 .
-9 :
+ŸŸ@ A
 	Resources
-: C
+ŸŸA J
 .
-C D
+ŸŸJ K
 txbErrorTitle
-D Q
+ŸŸK X
 ,
-Q R
+ŸŸX Y
 errorMessage
-S _
+ŸŸZ f
 ,
-_ `
+ŸŸf g
 Application
-a l
+ŸŸh s
 .
-l m
+ŸŸs t
 Current
-m t
+ŸŸt {
 .
-t u
+ŸŸ{ |
 
-MainWindow
-u 
-, €
-dialogWindow 
-. 
-ERROR “
-)“ ”
-;” •
+MainWindowŸŸ| †
+,ŸŸ† ‡#
+DialogWindowManagerŸŸˆ ›
+.ŸŸ› œ
+ERRORŸŸœ ¡
+)ŸŸ¡ ¢
+;ŸŸ¢ £
 }
- 	
+   	
 private
-ŸŸ 
+¡¡ 
 void
-ŸŸ 
+¡¡ 
 UpdateLabelStyle
-ŸŸ %
+¡¡ %
 (
-ŸŸ% &
+¡¡% &
 )
-ŸŸ& '
+¡¡& '
 {
-   	
+¢¢ 	
 if
-¡¡ 
+££ 
 (
-¡¡ 
+££ 
 isTimerExpired
-¡¡ 
+££ 
 )
-¡¡ 
+££ 
 {
-¢¢ 
+¤¤ 
 lblResentCode
-££ 
+¥¥ 
 .
-££ 
+¥¥ 
 
 FontWeight
-££ (
+¥¥ (
 =
-££) *
+¥¥) *
 FontWeights
-££+ 6
+¥¥+ 6
 .
-££6 7
+¥¥6 7
 Bold
-££7 ;
+¥¥7 ;
 ;
-££; <
+¥¥; <
 lblResentCode
-¤¤ 
+¦¦ 
 .
-¤¤ 
+¦¦ 
 
 Foreground
-¤¤ (
+¦¦ (
 =
-¤¤) *
+¦¦) *
 Brushes
-¤¤+ 2
+¦¦+ 2
 .
-¤¤2 3
+¦¦2 3
 Red
-¤¤3 6
+¦¦3 6
 ;
-¤¤6 7
+¦¦6 7
 }
-¥¥ 
+§§ 
 else
-¦¦ 
+¨¨ 
 {
-§§ 
+©© 
 lblResentCode
-¨¨ 
+ªª 
 .
-¨¨ 
+ªª 
 
 FontWeight
-¨¨ (
+ªª (
 =
-¨¨) *
+ªª) *
 FontWeights
-¨¨+ 6
+ªª+ 6
 .
-¨¨6 7
+ªª6 7
 Normal
-¨¨7 =
+ªª7 =
 ;
-¨¨= >
+ªª= >
 lblResentCode
-©© 
+«« 
 .
-©© 
+«« 
 
 Foreground
-©© (
+«« (
 =
-©©) *
+««) *
 Brushes
-©©+ 2
+««+ 2
 .
-©©2 3
+««2 3
 DeepSkyBlue
-©©3 >
+««3 >
 ;
-©©> ?
+««> ?
 }
-ªª 
+¬¬ 
 }
-«« 	
+­­ 	
 }
-­­ 
-}®® Õğ
+¯¯ 
+}°° çñ
 nC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\EditUserProfile.xaml.cs
 	namespace 	
 JeopardyGame
@@ -13739,49 +13657,49 @@ IsReadOnly99 &
 (KK@ A
 imageIdKKA H
 )KKH I
-;KKI J
-dialogWindowLL  
-.LL  !!
-ShowInfoOrErrorWindowLL! 6
-(LL6 7
+;KKI J
+DialogWindowManagerLL '
+.LL' (!
+ShowInfoOrErrorWindowLL( =
+(LL= >
 
-PropertiesLL7 A
-.LLA B
-	ResourcesLLB K
-.LLK L
-txbInformationTitleLLL _
-,LL_ `
+PropertiesLL> H
+.LLH I
+	ResourcesLLI R
+.LLR S
+txbInformationTitleLLS f
+,LLf g
 
-PropertiesLLa k
-.LLk l
-	ResourcesLLl u
-.LLu v
-lblUpdateAvatar	LLv …
+PropertiesLLh r
+.LLr s
+	ResourcesLLs |
+.LL| }
+lblUpdateAvatar	LL} Œ
 ,
-LL… †
+LLŒ 
 Application
-LL‡ ’
+LL ™
 .
-LL’ “
+LL™ š
 Current
-LL“ š
+LLš ¡
 .
-LLš ›
+LL¡ ¢
 
 MainWindow
-LL› ¥
+LL¢ ¬
 ,
-LL¥ ¦
-dialogWindow
-LL§ ³
+LL¬ ­!
+DialogWindowManager
+LL® Á
 .
-LL³ ´
+LLÁ Â
 INFORMATION
-LL´ ¿
+LLÂ Í
 )
-LL¿ À
+LLÍ Î
 ;
-LLÀ Á
+LLÎ Ï
 MainMenuMM 
 mainMenuPageMM )
 =MM* +
@@ -13807,49 +13725,49 @@ MainWindow
 ;OO7 8
 }PP 
 elseQQ 
-{RR 
-dialogWindowSS  
-.SS  !!
-ShowInfoOrErrorWindowSS! 6
-(SS6 7
+{RR 
+DialogWindowManagerSS '
+.SS' (!
+ShowInfoOrErrorWindowSS( =
+(SS= >
 
-PropertiesSS7 A
-.SSA B
-	ResourcesSSB K
-.SSK L
-txbErrorTitleSSL Y
-,SSY Z
+PropertiesSS> H
+.SSH I
+	ResourcesSSI R
+.SSR S
+txbErrorTitleSSS `
+,SS` a
 
-PropertiesSS[ e
-.SSe f
-	ResourcesSSf o
-.SSo p!
-lblWrongUpdateAvatar	SSp „
+PropertiesSSb l
+.SSl m
+	ResourcesSSm v
+.SSv w!
+lblWrongUpdateAvatar	SSw ‹
 ,
-SS„ …
+SS‹ Œ
 Application
-SS† ‘
+SS ˜
 .
-SS‘ ’
+SS˜ ™
 Current
-SS’ ™
+SS™  
 .
-SS™ š
+SS  ¡
 
 MainWindow
-SSš ¤
+SS¡ «
 ,
-SS¤ ¥
-dialogWindow
-SS¦ ²
+SS« ¬!
+DialogWindowManager
+SS­ À
 .
-SS² ³
+SSÀ Á
 ERROR
-SS³ ¸
+SSÁ Æ
 )
-SS¸ ¹
+SSÆ Ç
 ;
-SS¹ º
+SSÇ È
 RefreshWindowTT !
 (TT! "
 )TT" #
@@ -15371,51 +15289,49 @@ Visibility
 )
 ûûI J
 ;
-ûûJ K
-dialogWindow
-üü $
+ûûJ K!
+DialogWindowManager
+üü +
 .
-üü$ %#
+üü+ ,#
 ShowInfoOrErrorWindow
-üü% :
+üü, A
 (
-üü: ;
+üüA B
 
 Properties
-üü; E
+üüB L
 .
-üüE F
+üüL M
 	Resources
-üüF O
+üüM V
 .
-üüO P!
+üüV W!
 txbInformationTitle
-üüP c
+üüW j
 ,
-üüc d
+üüj k
 
 Properties
-üüe o
+üül v
 .
-üüo p
-	Resources
-üüp y
-.
-üüy z
-lblUpdateEmailüüz ˆ
-,üüˆ ‰
-ApplicationüüŠ •
-.üü• –
-Currentüü– 
-.üü 
+üüv w
+	Resourcesüüw €
+.üü€ 
+lblUpdateEmailüü 
+,üü 
+Applicationüü‘ œ
+.üüœ 
+Currentüü ¤
+.üü¤ ¥
 
-MainWindowüü ¨
-,üü¨ ©
-dialogWindowüüª ¶
-.üü¶ ·
-INFORMATIONüü· Â
-)üüÂ Ã
-;üüÃ Ä
+MainWindowüü¥ ¯
+,üü¯ °#
+DialogWindowManagerüü± Ä
+.üüÄ Å
+INFORMATIONüüÅ Ğ
+)üüĞ Ñ
+;üüÑ Ò
 MainMenu
 ıı  
 mainMenuPage
@@ -15475,51 +15391,51 @@ MainWindowüü ¨
 )
 ƒƒ& '
 ;
-ƒƒ' (
-dialogWindow
-„„ $
+ƒƒ' (!
+DialogWindowManager
+„„ +
 .
-„„$ %#
+„„+ ,#
 ShowInfoOrErrorWindow
-„„% :
+„„, A
 (
-„„: ;
+„„A B
 
 Properties
-„„; E
+„„B L
 .
-„„E F
+„„L M
 	Resources
-„„F O
+„„M V
 .
-„„O P
+„„V W
 txbErrorTitle
-„„P ]
+„„W d
 ,
-„„] ^
+„„d e
 
 Properties
-„„_ i
+„„f p
 .
-„„i j
+„„p q
 	Resources
-„„j s
+„„q z
 .
-„„s t"
-lblWrongUpdateEmail„„t ‡
-,„„‡ ˆ
-Application„„‰ ”
-.„„” •
-Current„„• œ
-.„„œ 
+„„z {"
+lblWrongUpdateEmail„„{ 
+,„„ 
+Application„„ ›
+.„„› œ
+Current„„œ £
+.„„£ ¤
 
-MainWindow„„ §
-,„„§ ¨
-dialogWindow„„© µ
-.„„µ ¶
-ERROR„„¶ »
-)„„» ¼
-;„„¼ ½
+MainWindow„„¤ ®
+,„„® ¯#
+DialogWindowManager„„° Ã
+.„„Ã Ä
+ERROR„„Ä É
+)„„É Ê
+;„„Ê Ë
 }
 …… 
 useManagerProxy
@@ -16024,51 +15940,51 @@ nameEdited
 )
 °°I J
 ;
-°°J K
-dialogWindow
-±±  
+°°J K!
+DialogWindowManager
+±± '
 .
-±±  !#
+±±' (#
 ShowInfoOrErrorWindow
-±±! 6
+±±( =
 (
-±±6 7
+±±= >
 
 Properties
-±±7 A
+±±> H
 .
-±±A B
+±±H I
 	Resources
-±±B K
+±±I R
 .
-±±K L!
+±±R S!
 txbInformationTitle
-±±L _
+±±S f
 ,
-±±_ `
+±±f g
 
 Properties
-±±a k
+±±h r
 .
-±±k l
+±±r s
 	Resources
-±±l u
+±±s |
 .
-±±u v
-lblUpdateName±±v ƒ
-,±±ƒ „
-Application±±… 
-.±± ‘
-Current±±‘ ˜
-.±±˜ ™
+±±| }
+lblUpdateName±±} Š
+,±±Š ‹
+Application±±Œ —
+.±±— ˜
+Current±±˜ Ÿ
+.±±Ÿ  
 
-MainWindow±±™ £
-,±±£ ¤
-dialogWindow±±¥ ±
-.±±± ²
-INFORMATION±±² ½
-)±±½ ¾
-;±±¾ ¿
+MainWindow±±  ª
+,±±ª «#
+DialogWindowManager±±¬ ¿
+.±±¿ À
+INFORMATION±±À Ë
+)±±Ë Ì
+;±±Ì Í
 MainMenu
 ²² 
 mainMenuPage
@@ -16120,51 +16036,51 @@ MainWindow±±™ £
 else
 ¶¶ 
 {
-·· 
-dialogWindow
-¸¸  
+·· !
+DialogWindowManager
+¸¸ '
 .
-¸¸  !#
+¸¸' (#
 ShowInfoOrErrorWindow
-¸¸! 6
+¸¸( =
 (
-¸¸6 7
+¸¸= >
 
 Properties
-¸¸7 A
+¸¸> H
 .
-¸¸A B
+¸¸H I
 	Resources
-¸¸B K
+¸¸I R
 .
-¸¸K L
+¸¸R S
 txbErrorTitle
-¸¸L Y
+¸¸S `
 ,
-¸¸Y Z
+¸¸` a
 
 Properties
-¸¸[ e
+¸¸b l
 .
-¸¸e f
+¸¸l m
 	Resources
-¸¸f o
+¸¸m v
 .
-¸¸o p!
-lblWrongUpdateName¸¸p ‚
-,¸¸‚ ƒ
-Application¸¸„ 
-.¸¸ 
-Current¸¸ —
-.¸¸— ˜
+¸¸v w!
+lblWrongUpdateName¸¸w ‰
+,¸¸‰ Š
+Application¸¸‹ –
+.¸¸– —
+Current¸¸— 
+.¸¸ Ÿ
 
-MainWindow¸¸˜ ¢
-,¸¸¢ £
-dialogWindow¸¸¤ °
-.¸¸° ±
-ERROR¸¸± ¶
-)¸¸¶ ·
-;¸¸· ¸
+MainWindow¸¸Ÿ ©
+,¸¸© ª#
+DialogWindowManager¸¸« ¾
+.¸¸¾ ¿
+ERROR¸¸¿ Ä
+)¸¸Ä Å
+;¸¸Å Æ
 }
 ¹¹ 
 useManagerProxy
@@ -16862,51 +16778,51 @@ Visibility
 )
 üüX Y
 {
-ıı 
-dialogWindow
-şş $
+ıı !
+DialogWindowManager
+şş +
 .
-şş$ %#
+şş+ ,#
 ShowInfoOrErrorWindow
-şş% :
+şş, A
 (
-şş: ;
+şşA B
 
 Properties
-şş; E
+şşB L
 .
-şşE F
+şşL M
 	Resources
-şşF O
+şşM V
 .
-şşO P
+şşV W
 txbErrorTitle
-şşP ]
+şşW d
 ,
-şş] ^
+şşd e
 
 Properties
-şş_ i
+şşf p
 .
-şşi j
+şşp q
 	Resources
-şşj s
+şşq z
 .
-şşs t
-lblRepeatedEmailşşt „
-,şş„ …
-Applicationşş† ‘
-.şş‘ ’
-Currentşş’ ™
-.şş™ š
+şşz {
+lblRepeatedEmailşş{ ‹
+,şş‹ Œ
+Applicationşş ˜
+.şş˜ ™
+Currentşş™  
+.şş  ¡
 
-MainWindowşşš ¤
-,şş¤ ¥
-dialogWindowşş¦ ²
-.şş² ³
-ERRORşş³ ¸
-)şş¸ ¹
-;şş¹ º
+MainWindowşş¡ «
+,şş« ¬#
+DialogWindowManagerşş­ À
+.şşÀ Á
+ERRORşşÁ Æ
+)şşÆ Ç
+;şşÇ È
 }
 ÿÿ 
 else
@@ -16932,101 +16848,101 @@ MainWindowşşš ¤
 )
 €€` a
 {
- 
-dialogWindow
-‚‚ $
+ !
+DialogWindowManager
+‚‚ +
 .
-‚‚$ %#
+‚‚+ ,#
 ShowInfoOrErrorWindow
-‚‚% :
+‚‚, A
 (
-‚‚: ;
+‚‚A B
 
 Properties
-‚‚; E
+‚‚B L
 .
-‚‚E F
+‚‚L M
 	Resources
-‚‚F O
+‚‚M V
 .
-‚‚O P
+‚‚V W
 txbErrorTitle
-‚‚P ]
+‚‚W d
 ,
-‚‚] ^
+‚‚d e
 
 Properties
-‚‚_ i
+‚‚f p
 .
-‚‚i j
+‚‚p q
 	Resources
-‚‚j s
+‚‚q z
 .
-‚‚s t"
-lblRepeatedUserName‚‚t ‡
-,‚‚‡ ˆ
-Application‚‚‰ ”
-.‚‚” •
-Current‚‚• œ
-.‚‚œ 
+‚‚z {"
+lblRepeatedUserName‚‚{ 
+,‚‚ 
+Application‚‚ ›
+.‚‚› œ
+Current‚‚œ £
+.‚‚£ ¤
 
-MainWindow‚‚ §
-,‚‚§ ¨
-dialogWindow‚‚© µ
-.‚‚µ ¶
-ERROR‚‚¶ »
-)‚‚» ¼
-;‚‚¼ ½
+MainWindow‚‚¤ ®
+,‚‚® ¯#
+DialogWindowManager‚‚° Ã
+.‚‚Ã Ä
+ERROR‚‚Ä É
+)‚‚É Ê
+;‚‚Ê Ë
 }
 ƒƒ 
 else
 „„ 
 {
-…… 
-dialogWindow
-†† $
+…… !
+DialogWindowManager
+†† +
 .
-††$ %#
+††+ ,#
 ShowInfoOrErrorWindow
-††% :
+††, A
 (
-††: ;
+††A B
 
 Properties
-††; E
+††B L
 .
-††E F
+††L M
 	Resources
-††F O
+††M V
 .
-††O P
+††V W
 txbErrorTitle
-††P ]
+††W d
 ,
-††] ^
+††d e
 
 Properties
-††_ i
+††f p
 .
-††i j
+††p q
 	Resources
-††j s
+††q z
 .
-††s t#
-lblWrongEmailRepited††t ˆ
-,††ˆ ‰
-Application††Š •
-.††• –
-Current††– 
-.†† 
+††z {#
+lblWrongEmailRepited††{ 
+,†† 
+Application††‘ œ
+.††œ 
+Current†† ¤
+.††¤ ¥
 
-MainWindow†† ¨
-,††¨ ©
-dialogWindow††ª ¶
-.††¶ ·
-ERROR††· ¼
-)††¼ ½
-;††½ ¾
+MainWindow††¥ ¯
+,††¯ °#
+DialogWindowManager††± Ä
+.††Ä Å
+ERROR††Å Ê
+)††Ê Ë
+;††Ë Ì
 CloseWindow
 ‡‡ #
 (
@@ -17364,49 +17280,48 @@ MainWindow†† ¨
 )
 ¶¶X Y
 ;
-¶¶Y Z
-dialogWindow
-·· 
+¶¶Y Z!
+DialogWindowManager
+·· 
 .
-·· #
+··  #
 ShowInfoOrErrorWindow
-·· .
+··  5
 (
-··. /
+··5 6
 
 Properties
-··/ 9
+··6 @
 .
-··9 :
+··@ A
 	Resources
-··: C
+··A J
 .
-··C D
+··J K
 txbErrorTitle
-··D Q
+··K X
 ,
-··Q R
+··X Y
 errorMessage
-··S _
+··Z f
 ,
-··_ `
+··f g
 Application
-··a l
+··h s
 .
-··l m
+··s t
 Current
-··m t
+··t {
 .
-··t u
+··{ |
 
-MainWindow
-··u 
-,·· €
-dialogWindow·· 
-.·· 
-ERROR·· “
-)··“ ”
-;··” •
+MainWindow··| †
+,··† ‡#
+DialogWindowManager··ˆ ›
+.··› œ
+ERROR··œ ¡
+)··¡ ¢
+;··¢ £
 CloseWindow
 ¸¸ 
 (
@@ -17562,7 +17477,7 @@ IgnoreCase
 ÈÈ 	
 }
 ÉÉ 
-}ÊÊ „½
+}ÊÊ Ş½
 pC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\enterGameWithCode.xaml.cs
 	namespace 	
 JeopardyGame
@@ -17763,94 +17678,94 @@ pC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ==CC9 ;
 ROOMCODE_IS_FULLCC< L
 )CCL M
-{DD 
-dialogWindowEE (
-.EE( )!
-ShowInfoOrErrorWindowEE) >
-(EE> ?
+{DD 
+DialogWindowManagerEE /
+.EE/ 0!
+ShowInfoOrErrorWindowEE0 E
+(EEE F
 
-PropertiesEE? I
-.EEI J
-	ResourcesEEJ S
-.EES T
-txbErrorTitleEET a
-,EEa b
+PropertiesEEF P
+.EEP Q
+	ResourcesEEQ Z
+.EEZ [
+txbErrorTitleEE[ h
+,EEh i
 
-PropertiesEEc m
-.EEm n
-	ResourcesEEn w
-.EEw x
-LobbyIsFull	EEx ƒ
+PropertiesEEj t
+.EEt u
+	ResourcesEEu ~
+.EE~ 
+LobbyIsFull	EE Š
 ,
-EEƒ „
+EEŠ ‹
 Application
-EE… 
+EEŒ —
 .
-EE ‘
+EE— ˜
 Current
-EE‘ ˜
+EE˜ Ÿ
 .
-EE˜ ™
+EEŸ  
 
 MainWindow
-EE™ £
+EE  ª
 ,
-EE£ ¤
-dialogWindow
-EE¥ ±
+EEª «!
+DialogWindowManager
+EE¬ ¿
 .
-EE± ²
+EE¿ À
 INFORMATION
-EE² ½
+EEÀ Ë
 )
-EE½ ¾
+EEË Ì
 ;
-EE¾ ¿
+EEÌ Í
 }FF 
 elseGG 
-{HH 
-dialogWindowII (
-.II( )!
-ShowInfoOrErrorWindowII) >
-(II> ?
+{HH 
+DialogWindowManagerII /
+.II/ 0!
+ShowInfoOrErrorWindowII0 E
+(IIE F
 
-PropertiesII? I
-.III J
-	ResourcesIIJ S
-.IIS T
-txbErrorTitleIIT a
-,IIa b
+PropertiesIIF P
+.IIP Q
+	ResourcesIIQ Z
+.IIZ [
+txbErrorTitleII[ h
+,IIh i
 
-PropertiesIIc m
-.IIm n
-	ResourcesIIn w
-.IIw x
-LobbyNotExist	IIx …
+PropertiesIIj t
+.IIt u
+	ResourcesIIu ~
+.II~ 
+LobbyNotExist	II Œ
 ,
-II… †
+IIŒ 
 Application
-II‡ ’
+II ™
 .
-II’ “
+II™ š
 Current
-II“ š
+IIš ¡
 .
-IIš ›
+II¡ ¢
 
 MainWindow
-II› ¥
+II¢ ¬
 ,
-II¥ ¦
-dialogWindow
-II§ ³
+II¬ ­!
+DialogWindowManager
+II® Á
 .
-II³ ´
+IIÁ Â
 INFORMATION
-II´ ¿
+IIÂ Í
 )
-II¿ À
+IIÍ Î
 ;
-IIÀ Á
+IIÎ Ï
 }JJ 
 }KK 
 }LL 
@@ -18006,47 +17921,49 @@ Propertiescc( 2
 }ee 
 }ff 
 elsegg 
-{hh 
-dialogWindowii 
-.ii !
-ShowInfoOrErrorWindowii 2
-(ii2 3
+{hh 
+DialogWindowManagerii #
+.ii# $!
+ShowInfoOrErrorWindowii$ 9
+(ii9 :
 
-Propertiesii3 =
-.ii= >
-	Resourcesii> G
-.iiG H
-txbErrorTitleiiH U
-,iiU V
+Propertiesii: D
+.iiD E
+	ResourcesiiE N
+.iiN O
+txbErrorTitleiiO \
+,ii\ ]
 
-PropertiesiiW a
-.iia b
-	Resourcesiib k
-.iik l
-lblnvalidCodeiil y
-,iiy z
-Application	ii{ †
+Propertiesii^ h
+.iih i
+	Resourcesiii r
+.iir s
+lblnvalidCode	iis €
+,
+ii€ 
+Application
+ii‚ 
 .
-ii† ‡
+ii 
 Current
-ii‡ 
+ii •
 .
-ii 
+ii• –
 
 MainWindow
-ii ™
+ii–  
 ,
-ii™ š
-dialogWindow
-ii› §
+ii  ¡!
+DialogWindowManager
+ii¢ µ
 .
-ii§ ¨
+iiµ ¶
 ERROR
-ii¨ ­
+ii¶ »
 )
-ii­ ®
+ii» ¼
 ;
-ii® ¯
+ii¼ ½
 }jj 
 }kk 	
 privatemm 
@@ -18289,51 +18206,51 @@ MainWindow
 else
  
 {
- 
-dialogWindow
-  
+ !
+DialogWindowManager
+ '
 .
-  !#
+' (#
 ShowInfoOrErrorWindow
-! 6
+( =
 (
-6 7
+= >
 
 Properties
-7 A
+> H
 .
-A B
+H I
 	Resources
-B K
+I R
 .
-K L
+R S
 txbErrorTitle
-L Y
+S `
 ,
-Y Z
+` a
 
 Properties
-[ e
+b l
 .
-e f
+l m
 	Resources
-f o
+m v
 .
-o p'
-lblFailToCreateGuestUserp ˆ
-,ˆ ‰
-ApplicationŠ •
-.• –
-Current– 
-. 
+v w'
+lblFailToCreateGuestUserw 
+, 
+Application‘ œ
+.œ 
+Current ¤
+.¤ ¥
 
-MainWindow ¨
-,¨ ©
-dialogWindowª ¶
-.¶ ·
-ERROR· ¼
-)¼ ½
-;½ ¾
+MainWindow¥ ¯
+,¯ °#
+DialogWindowManager± Ä
+.Ä Å
+ERRORÅ Ê
+)Ê Ë
+;Ë Ì
 Window
 ‘‘ 
 .
@@ -18816,51 +18733,51 @@ Properties
 else
 »» 
 {
-¼¼ 
-dialogWindow
-½½  
+¼¼ !
+DialogWindowManager
+½½ '
 .
-½½  !#
+½½' (#
 ShowInfoOrErrorWindow
-½½! 6
+½½( =
 (
-½½6 7
+½½= >
 
 Properties
-½½7 A
+½½> H
 .
-½½A B
+½½H I
 	Resources
-½½B K
+½½I R
 .
-½½K L
+½½R S
 txbErrorTitle
-½½L Y
+½½S `
 ,
-½½Y Z
+½½` a
 
 Properties
-½½[ e
+½½b l
 .
-½½e f
+½½l m
 	Resources
-½½f o
+½½m v
 .
-½½o p(
-lblFailRegistryToCallBack½½p ‰
-,½½‰ Š
-Application½½‹ –
-.½½– —
-Current½½— 
-.½½ Ÿ
+½½v w(
+lblFailRegistryToCallBack½½w 
+,½½ ‘
+Application½½’ 
+.½½ 
+Current½½ ¥
+.½½¥ ¦
 
-MainWindow½½Ÿ ©
-,½½© ª
-dialogWindow½½« ·
-.½½· ¸
-ERROR½½¸ ½
-)½½½ ¾
-;½½¾ ¿
+MainWindow½½¦ °
+,½½° ±#
+DialogWindowManager½½² Å
+.½½Å Æ
+ERROR½½Æ Ë
+)½½Ë Ì
+;½½Ì Í
 Window
 ¾¾ 
 .
@@ -19411,54 +19328,53 @@ ClickClose
 )
 ğğX Y
 ;
-ğğY Z
-dialogWindow
-ññ 
+ğğY Z!
+DialogWindowManager
+ññ 
 .
-ññ #
+ññ  #
 ShowInfoOrErrorWindow
-ññ .
+ññ  5
 (
-ññ. /
+ññ5 6
 
 Properties
-ññ/ 9
+ññ6 @
 .
-ññ9 :
+ññ@ A
 	Resources
-ññ: C
+ññA J
 .
-ññC D
+ññJ K
 txbErrorTitle
-ññD Q
+ññK X
 ,
-ññQ R
+ññX Y
 errorMessage
-ññS _
+ññZ f
 ,
-ññ_ `
+ññf g
 Application
-ñña l
+ññh s
 .
-ññl m
+ññs t
 Current
-ññm t
+ññt {
 .
-ññt u
+ññ{ |
 
-MainWindow
-ññu 
-,ññ €
-dialogWindowññ 
-.ññ 
-ERRORññ “
-)ññ“ ”
-;ññ” •
+MainWindowññ| †
+,ññ† ‡#
+DialogWindowManagerññˆ ›
+.ññ› œ
+ERRORññœ ¡
+)ññ¡ ¢
+;ññ¢ £
 }
 òò 	
 }
 õõ 
-}öö ôÔ
+}öö İÖ
 lC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\FriendManager.xaml.cs
 	namespace 	
 JeopardyGame
@@ -19837,2293 +19753,2270 @@ GetFriendsff "
 (ff" #
 userConsultedff# 0
 )ff0 1
-&&ff2 4
+||ff2 4
 !ff5 6
 GetFriendRequestsff6 G
 (ffG H
 userConsultedffH U
 )ffU V
-&&ffW Y
+||ffW Y
 !ffZ [
 GetNotFriendsff[ h
 (ffh i
 userConsultedffi v
 )ffv w
 )ffw x
-{gg 
-dialogWindowhh $
-.hh$ %!
-ShowInfoOrErrorWindowhh% :
-(hh: ;
+{gg 
+DialogWindowManagerhh +
+.hh+ ,!
+ShowInfoOrErrorWindowhh, A
+(hhA B
 
-Propertieshh; E
-.hhE F
-	ResourceshhF O
-.hhO P
-txbErrorTitlehhP ]
-,hh] ^
+PropertieshhB L
+.hhL M
+	ResourceshhM V
+.hhV W
+txbErrorTitlehhW d
+,hhd e
 
-Propertieshh_ i
-.hhi j
-	Resourceshhj s
-.hhs t$
-lblFailToRecoverFriends	hht ‹
+Propertieshhf p
+.hhp q
+	Resourceshhq z
+.hhz {$
+lblFailToRecoverFriends	hh{ ’
 ,
-hh‹ Œ
+hh’ “
 Application
-hh ˜
+hh” Ÿ
 .
-hh˜ ™
+hhŸ  
 Current
-hh™  
+hh  §
 .
-hh  ¡
+hh§ ¨
 
 MainWindow
-hh¡ «
+hh¨ ²
 ,
-hh« ¬
-dialogWindow
-hh­ ¹
+hh² ³!
+DialogWindowManager
+hh´ Ç
 .
-hh¹ º
+hhÇ È
 ERROR
-hhº ¿
+hhÈ Í
 )
-hh¿ À
+hhÍ Î
 ;
-hhÀ Á
+hhÎ Ï
 GotoMenuii  
 (ii  !
 )ii! "
 ;ii" #
-}jj 
-}kk 
-}ll 
-catchmm 
-(mm %
-EndpointNotFoundExceptionmm ,
-exmm- /
-)mm/ 0
-{nn 
-HandleExceptionoo 
-(oo  
-exoo  "
-,oo" #
+}jj 
+elsekk 
+{ll 
+SetCardsmm  
+(mm  !
+)mm! "
+;mm" #
+}nn 
+}oo 
+}pp 
+catchqq 
+(qq %
+EndpointNotFoundExceptionqq ,
+exqq- /
+)qq/ 0
+{rr 
+HandleExceptionss 
+(ss  
+exss  "
+,ss" #
 
-Propertiesoo$ .
-.oo. /
-	Resourcesoo/ 8
-.oo8 9
-lblEndPointNotFoundoo9 L
-)ooL M
-;ooM N
-GotoMenupp 
-(pp 
-)pp 
-;pp 
-}qq 
-catchrr 
-(rr /
-#CommunicationObjectFaultedExceptionrr 6
-exrr7 9
-)rr9 :
-{ss 
-HandleExceptiontt 
-(tt  
-extt  "
-,tt" #
+Propertiesss$ .
+.ss. /
+	Resourcesss/ 8
+.ss8 9
+lblEndPointNotFoundss9 L
+)ssL M
+;ssM N
+GotoMenutt 
+(tt 
+)tt 
+;tt 
+}uu 
+catchvv 
+(vv /
+#CommunicationObjectFaultedExceptionvv 6
+exvv7 9
+)vv9 :
+{ww 
+HandleExceptionxx 
+(xx  
+exxx  "
+,xx" #
 
-Propertiestt$ .
-.tt. /
-	Resourcestt/ 8
-.tt8 9$
-lblComunicationExceptiontt9 Q
-)ttQ R
-;ttR S
-GotoMenuuu 
-(uu 
-)uu 
-;uu 
-}vv 
-catchww 
-(ww 
-TimeoutExceptionww #
-exww$ &
-)ww& '
-{xx 
-HandleExceptionyy 
-(yy  
-exyy  "
-,yy" #
+Propertiesxx$ .
+.xx. /
+	Resourcesxx/ 8
+.xx8 9$
+lblComunicationExceptionxx9 Q
+)xxQ R
+;xxR S
+GotoMenuyy 
+(yy 
+)yy 
+;yy 
+}zz 
+catch{{ 
+({{ 
+TimeoutException{{ #
+ex{{$ &
+){{& '
+{|| 
+HandleException}} 
+(}}  
+ex}}  "
+,}}" #
 
-Propertiesyy$ .
-.yy. /
-	Resourcesyy/ 8
-.yy8 9
-lblTimeExceptionyy9 I
-)yyI J
-;yyJ K
-GotoMenuzz 
-(zz 
-)zz 
-;zz 
-}{{ 
-catch|| 
-(|| "
-CommunicationException|| )
-ex||* ,
-)||, -
-{}} 
-HandleException~~ 
-(~~  
-ex~~  "
-,~~" #
-
-Properties~~$ .
-.~~. /
-	Resources~~/ 8
-.~~8 9$
-lblComunicationException~~9 Q
-)~~Q R
-;~~R S
-GotoMenu 
-( 
-) 
-; 
-}
-€€ 
+Properties}}$ .
+.}}. /
+	Resources}}/ 8
+.}}8 9
+lblTimeException}}9 I
+)}}I J
+;}}J K
+GotoMenu~~ 
+(~~ 
+)~~ 
+;~~ 
+} 
 catch
- 
+€€ 
 (
- 
-SocketException
- "
+€€ $
+CommunicationException
+€€ )
 ex
-# %
+€€* ,
 )
-% &
+€€, -
 {
-‚‚ 
+ 
 HandleException
-ƒƒ 
+‚‚ 
 (
-ƒƒ  
+‚‚  
 ex
-ƒƒ  "
+‚‚  "
 ,
-ƒƒ" #
+‚‚" #
 
 Properties
-ƒƒ$ .
+‚‚$ .
 .
-ƒƒ. /
+‚‚. /
 	Resources
-ƒƒ/ 8
+‚‚/ 8
 .
-ƒƒ8 9&
+‚‚8 9&
 lblComunicationException
-ƒƒ9 Q
+‚‚9 Q
 )
-ƒƒQ R
+‚‚Q R
 ;
-ƒƒR S
+‚‚R S
 GotoMenu
-„„ 
+ƒƒ 
 (
-„„ 
+ƒƒ 
 )
-„„ 
+ƒƒ 
 ;
-„„ 
+ƒƒ 
 }
-…… 
+„„ 
+catch
+…… 
+(
+…… 
+SocketException
+…… "
+ex
+……# %
+)
+……% &
+{
+†† 
+HandleException
+‡‡ 
+(
+‡‡  
+ex
+‡‡  "
+,
+‡‡" #
+
+Properties
+‡‡$ .
+.
+‡‡. /
+	Resources
+‡‡/ 8
+.
+‡‡8 9&
+lblComunicationException
+‡‡9 Q
+)
+‡‡Q R
+;
+‡‡R S
+GotoMenu
+ˆˆ 
+(
+ˆˆ 
+)
+ˆˆ 
+;
+ˆˆ 
 }
-†† 	
+‰‰ 
+}
+ŠŠ 	
 private
-ˆˆ 
+ŒŒ 
 bool
-ˆˆ 
+ŒŒ 
 
 GetFriends
-ˆˆ 
+ŒŒ 
 (
-ˆˆ  
+ŒŒ  
 UserPojo
-ˆˆ  (
+ŒŒ  (
 userConsulted
-ˆˆ) 6
+ŒŒ) 6
 )
-ˆˆ6 7
+ŒŒ6 7
 {
-‰‰ 	
+ 	
 try
-ŠŠ 
+ 
 {
-‹‹ "
+ "
 ConsultFriendsClient
-ŒŒ $ 
+ $ 
 friendManagerProxy
-ŒŒ% 7
+% 7
 =
-ŒŒ8 9
+8 9
 new
-ŒŒ: ="
+: ="
 ConsultFriendsClient
-ŒŒ> R
+> R
 (
-ŒŒR S
+R S
 )
-ŒŒS T
+S T
 ;
-ŒŒT U
+T U
 var
- 
+‘‘ 
 friendsConsulted
- $
+‘‘ $
 =
-% & 
+‘‘% & 
 friendManagerProxy
-' 9
+‘‘' 9
 .
-9 :
+‘‘9 :
 GetUserFriends
-: H
+‘‘: H
 (
-H I
+‘‘H I
 userConsulted
-I V
+‘‘I V
 )
-V W
+‘‘V W
 ;
-W X
+‘‘W X
 if
- 
+’’ 
 (
- 
+’’ 
 friendsConsulted
- $
+’’ $
 .
-$ %
+’’$ %
 	CodeEvent
-% .
+’’% .
 ==
-/ 1!
+’’/ 1!
 ExceptionDictionary
-2 E
+’’2 E
 .
-E F
+’’E F
 SUCCESFULL_EVENT
-F V
+’’F V
 )
-V W
+’’V W
 {
- 
+““ 
 friends
- 
+”” 
 =
- 
+”” 
 friendsConsulted
- .
+”” .
 .
-. /
+””. /
 ObjectSaved
-/ :
+””/ :
 .
-: ;
+””: ;
 ToList
-; A
+””; A
 (
-A B
+””A B
 )
-B C
+””B C
 ;
-C D
+””C D
 return
-‘‘ 
+•• 
 true
-‘‘ 
+•• 
 ;
-‘‘  
+••  
 }
-’’ 
-}
-““ 
-catch
-”” 
-(
-”” '
-EndpointNotFoundException
-”” ,
-ex
-””- /
-)
-””/ 0
-{
-•• 
-throw
-–– 
-new
-–– '
-EndpointNotFoundException
-–– 3
-(
-––3 4
-
-Properties
-––4 >
-.
-––> ?
-	Resources
-––? H
-.
-––H I%
-lblFailToRecoverFriends
-––I `
-,
-––` a
-ex
-––b d
-)
-––d e
-;
-––e f
+–– 
 }
 —— 
 catch
 ˜˜ 
 (
-˜˜ 1
-#CommunicationObjectFaultedException
-˜˜ 6
+˜˜ '
+EndpointNotFoundException
+˜˜ ,
 ex
-˜˜7 9
+˜˜- /
 )
-˜˜9 :
+˜˜/ 0
 {
 ™™ 
 throw
 šš 
 new
-šš 1
-#CommunicationObjectFaultedException
-šš =
+šš '
+EndpointNotFoundException
+šš 3
 (
-šš= >
+šš3 4
 
 Properties
-šš> H
+šš4 >
 .
-ššH I
+šš> ?
 	Resources
-ššI R
+šš? H
 .
-ššR S%
+ššH I%
 lblFailToRecoverFriends
-ššS j
+ššI `
 ,
-ššj k
+šš` a
 ex
-ššl n
+ššb d
 )
-ššn o
+ššd e
 ;
-ššo p
+šše f
 }
 ›› 
 catch
 œœ 
 (
-œœ 
-TimeoutException
-œœ #
+œœ 1
+#CommunicationObjectFaultedException
+œœ 6
 ex
-œœ$ &
+œœ7 9
 )
-œœ& '
+œœ9 :
 {
  
 throw
  
 new
- 
-TimeoutException
- *
+ 1
+#CommunicationObjectFaultedException
+ =
 (
-* +
+= >
 
 Properties
-+ 5
+> H
 .
-5 6
+H I
 	Resources
-6 ?
+I R
 .
-? @%
+R S%
 lblFailToRecoverFriends
-@ W
+S j
 ,
-W X
+j k
 ex
-Y [
+l n
 )
-[ \
+n o
 ;
-\ ]
+o p
 }
 ŸŸ 
 catch
    
 (
-   $
-CommunicationException
-   )
+   
+TimeoutException
+   #
 ex
-  * ,
+  $ &
 )
-  , -
+  & '
 {
 ¡¡ 
 throw
 ¢¢ 
 new
-¢¢ $
-CommunicationException
-¢¢ 0
+¢¢ 
+TimeoutException
+¢¢ *
 (
-¢¢0 1
+¢¢* +
 
 Properties
-¢¢1 ;
+¢¢+ 5
 .
-¢¢; <
+¢¢5 6
 	Resources
-¢¢< E
+¢¢6 ?
 .
-¢¢E F%
+¢¢? @%
 lblFailToRecoverFriends
-¢¢F ]
+¢¢@ W
 ,
-¢¢] ^
+¢¢W X
 ex
-¢¢_ a
+¢¢Y [
 )
-¢¢a b
+¢¢[ \
 ;
-¢¢b c
+¢¢\ ]
 }
 ££ 
 catch
 ¤¤ 
 (
-¤¤ 
-SocketException
-¤¤ "
+¤¤ $
+CommunicationException
+¤¤ )
+ex
+¤¤* ,
 )
-¤¤" #
+¤¤, -
 {
 ¥¥ 
 throw
 ¦¦ 
 new
-¦¦ 
-SocketException
-¦¦ )
+¦¦ $
+CommunicationException
+¦¦ 0
 (
-¦¦) *
-)
-¦¦* +
-;
-¦¦+ ,
-}
-§§ 
-return
-¨¨ 
-false
-¨¨ 
-;
-¨¨ 
-}
-©© 	
-private
-«« 
-bool
-«« 
-GetFriendRequests
-«« &
-(
-««& '
-UserPojo
-««' /
-userConsulted
-««0 =
-)
-««= >
-{
-¬¬ 	
-try
-­­ 
-{
-®® "
-ConsultFriendsClient
-¯¯ $ 
-friendManagerProxy
-¯¯% 7
-=
-¯¯8 9
-new
-¯¯: ="
-ConsultFriendsClient
-¯¯> R
-(
-¯¯R S
-)
-¯¯S T
-;
-¯¯T U
-var
-°° %
-friendRequestsConsulted
-°° +
-=
-°°, - 
-friendManagerProxy
-°°. @
-.
-°°@ A#
-GetUserFriendRequests
-°°A V
-(
-°°V W
-userConsulted
-°°W d
-)
-°°d e
-;
-°°e f
-if
-±± 
-(
-±± %
-friendRequestsConsulted
-±± +
-.
-±±+ ,
-	CodeEvent
-±±, 5
-==
-±±6 8!
-ExceptionDictionary
-±±9 L
-.
-±±L M
-SUCCESFULL_EVENT
-±±M ]
-)
-±±] ^
-{
-²² 
-friendRequests
-³³ "
-=
-³³# $%
-friendRequestsConsulted
-³³% <
-.
-³³< =
-ObjectSaved
-³³= H
-.
-³³H I
-ToList
-³³I O
-(
-³³O P
-)
-³³P Q
-;
-³³Q R
-return
-´´ 
-true
-´´ 
-;
-´´  
-}
-µµ 
-}
-¶¶ 
-catch
-·· 
-(
-·· '
-EndpointNotFoundException
-·· ,
-ex
-··- /
-)
-··/ 0
-{
-¸¸ 
-throw
-¹¹ 
-new
-¹¹ '
-EndpointNotFoundException
-¹¹ 3
-(
-¹¹3 4
+¦¦0 1
 
 Properties
-¹¹4 >
+¦¦1 ;
 .
-¹¹> ?
+¦¦; <
 	Resources
-¹¹? H
+¦¦< E
 .
-¹¹H I%
+¦¦E F%
 lblFailToRecoverFriends
-¹¹I `
+¦¦F ]
 ,
-¹¹` a
+¦¦] ^
 ex
-¹¹b d
+¦¦_ a
 )
-¹¹d e
+¦¦a b
 ;
-¹¹e f
+¦¦b c
 }
-ºº 
+§§ 
+catch
+¨¨ 
+(
+¨¨ 
+SocketException
+¨¨ "
+)
+¨¨" #
+{
+©© 
+throw
+ªª 
+new
+ªª 
+SocketException
+ªª )
+(
+ªª) *
+)
+ªª* +
+;
+ªª+ ,
+}
+«« 
+return
+¬¬ 
+false
+¬¬ 
+;
+¬¬ 
+}
+­­ 	
+private
+¯¯ 
+bool
+¯¯ 
+GetFriendRequests
+¯¯ &
+(
+¯¯& '
+UserPojo
+¯¯' /
+userConsulted
+¯¯0 =
+)
+¯¯= >
+{
+°° 	
+try
+±± 
+{
+²² "
+ConsultFriendsClient
+³³ $ 
+friendManagerProxy
+³³% 7
+=
+³³8 9
+new
+³³: ="
+ConsultFriendsClient
+³³> R
+(
+³³R S
+)
+³³S T
+;
+³³T U
+var
+´´ %
+friendRequestsConsulted
+´´ +
+=
+´´, - 
+friendManagerProxy
+´´. @
+.
+´´@ A#
+GetUserFriendRequests
+´´A V
+(
+´´V W
+userConsulted
+´´W d
+)
+´´d e
+;
+´´e f
+if
+µµ 
+(
+µµ %
+friendRequestsConsulted
+µµ +
+.
+µµ+ ,
+	CodeEvent
+µµ, 5
+==
+µµ6 8!
+ExceptionDictionary
+µµ9 L
+.
+µµL M
+SUCCESFULL_EVENT
+µµM ]
+)
+µµ] ^
+{
+¶¶ 
+friendRequests
+·· "
+=
+··# $%
+friendRequestsConsulted
+··% <
+.
+··< =
+ObjectSaved
+··= H
+.
+··H I
+ToList
+··I O
+(
+··O P
+)
+··P Q
+;
+··Q R
+return
+¸¸ 
+true
+¸¸ 
+;
+¸¸  
+}
+¹¹ 
+}
+ºº 
 catch
 »» 
 (
-»» 1
-#CommunicationObjectFaultedException
-»» 6
+»» '
+EndpointNotFoundException
+»» ,
 ex
-»»7 9
+»»- /
 )
-»»9 :
+»»/ 0
 {
 ¼¼ 
 throw
 ½½ 
 new
-½½ 1
-#CommunicationObjectFaultedException
-½½ =
+½½ '
+EndpointNotFoundException
+½½ 3
 (
-½½= >
+½½3 4
 
 Properties
-½½> H
+½½4 >
 .
-½½H I
+½½> ?
 	Resources
-½½I R
+½½? H
 .
-½½R S%
+½½H I%
 lblFailToRecoverFriends
-½½S j
+½½I `
 ,
-½½j k
+½½` a
 ex
-½½l n
+½½b d
 )
-½½n o
+½½d e
 ;
-½½o p
-}¾¾ 
+½½e f
+}
+¾¾ 
 catch
 ¿¿ 
 (
-¿¿ 
-TimeoutException
-¿¿ #
+¿¿ 1
+#CommunicationObjectFaultedException
+¿¿ 6
 ex
-¿¿$ &
+¿¿7 9
 )
-¿¿& '
+¿¿9 :
 {
 ÀÀ 
 throw
 ÁÁ 
 new
-ÁÁ 
-TimeoutException
-ÁÁ *
+ÁÁ 1
+#CommunicationObjectFaultedException
+ÁÁ =
 (
-ÁÁ* +
+ÁÁ= >
 
 Properties
-ÁÁ+ 5
+ÁÁ> H
 .
-ÁÁ5 6
+ÁÁH I
 	Resources
-ÁÁ6 ?
+ÁÁI R
 .
-ÁÁ? @%
+ÁÁR S%
 lblFailToRecoverFriends
-ÁÁ@ W
+ÁÁS j
 ,
-ÁÁW X
+ÁÁj k
 ex
-ÁÁY [
+ÁÁl n
 )
-ÁÁ[ \
+ÁÁn o
 ;
-ÁÁ\ ]
-}
-ÂÂ 
+ÁÁo p
+}ÂÂ 
 catch
 ÃÃ 
 (
-ÃÃ $
-CommunicationException
-ÃÃ )
+ÃÃ 
+TimeoutException
+ÃÃ #
 ex
-ÃÃ* ,
+ÃÃ$ &
 )
-ÃÃ, -
+ÃÃ& '
 {
 ÄÄ 
 throw
 ÅÅ 
 new
-ÅÅ $
-CommunicationException
-ÅÅ 0
+ÅÅ 
+TimeoutException
+ÅÅ *
 (
-ÅÅ0 1
+ÅÅ* +
 
 Properties
-ÅÅ1 ;
+ÅÅ+ 5
 .
-ÅÅ; <
+ÅÅ5 6
 	Resources
-ÅÅ< E
+ÅÅ6 ?
 .
-ÅÅE F%
+ÅÅ? @%
 lblFailToRecoverFriends
-ÅÅF ]
+ÅÅ@ W
 ,
-ÅÅ] ^
+ÅÅW X
 ex
-ÅÅ_ a
+ÅÅY [
 )
-ÅÅa b
+ÅÅ[ \
 ;
-ÅÅb c
+ÅÅ\ ]
 }
 ÆÆ 
 catch
 ÇÇ 
 (
-ÇÇ 
-SocketException
-ÇÇ "
+ÇÇ $
+CommunicationException
+ÇÇ )
+ex
+ÇÇ* ,
 )
-ÇÇ" #
+ÇÇ, -
 {
 ÈÈ 
 throw
 ÉÉ 
 new
-ÉÉ 
-SocketException
-ÉÉ )
+ÉÉ $
+CommunicationException
+ÉÉ 0
 (
-ÉÉ) *
-)
-ÉÉ* +
-;
-ÉÉ+ ,
-}
-ÊÊ 
-return
-ËË 
-false
-ËË 
-;
-ËË 
-}
-ÌÌ 	
-private
-ÎÎ 
-bool
-ÎÎ 
-GetNotFriends
-ÎÎ "
-(
-ÎÎ" #
-UserPojo
-ÎÎ# +
-userConsulted
-ÎÎ, 9
-)
-ÎÎ9 :
-{
-ÏÏ 	
-try
-ĞĞ 
-{
-ĞĞ "
-ConsultFriendsClient
-ÑÑ $ 
-friendManagerProxy
-ÑÑ% 7
-=
-ÑÑ8 9
-new
-ÑÑ: ="
-ConsultFriendsClient
-ÑÑ> R
-(
-ÑÑR S
-)
-ÑÑS T
-;
-ÑÑT U
-var
-ÒÒ "
-otherPeopleConsulted
-ÒÒ (
-=
-ÒÒ) * 
-friendManagerProxy
-ÒÒ+ =
-.
-ÒÒ= > 
-GetUsersNotFriends
-ÒÒ> P
-(
-ÒÒP Q
-userConsulted
-ÒÒQ ^
-)
-ÒÒ^ _
-;
-ÒÒ_ `
-if
-ÓÓ 
-(
-ÓÓ "
-otherPeopleConsulted
-ÓÓ (
-.
-ÓÓ( )
-	CodeEvent
-ÓÓ) 2
-==
-ÓÓ3 5!
-ExceptionDictionary
-ÓÓ6 I
-.
-ÓÓI J
-SUCCESFULL_EVENT
-ÓÓJ Z
-)
-ÓÓZ [
-{
-ÔÔ 
-otherPeople
-ÕÕ 
-=
-ÕÕ  !"
-otherPeopleConsulted
-ÕÕ" 6
-.
-ÕÕ6 7
-ObjectSaved
-ÕÕ7 B
-.
-ÕÕB C
-ToList
-ÕÕC I
-(
-ÕÕI J
-)
-ÕÕJ K
-;
-ÕÕK L
-return
-ÖÖ 
-true
-ÖÖ 
-;
-ÖÖ  
-}
-×× 
-}
-ØØ 
-catch
-ÙÙ 
-(
-ÙÙ '
-EndpointNotFoundException
-ÙÙ ,
-ex
-ÙÙ- /
-)
-ÙÙ/ 0
-{
-ÚÚ 
-throw
-ÛÛ 
-new
-ÛÛ '
-EndpointNotFoundException
-ÛÛ 3
-(
-ÛÛ3 4
+ÉÉ0 1
 
 Properties
-ÛÛ4 >
+ÉÉ1 ;
 .
-ÛÛ> ?
+ÉÉ; <
 	Resources
-ÛÛ? H
+ÉÉ< E
 .
-ÛÛH I%
+ÉÉE F%
 lblFailToRecoverFriends
-ÛÛI `
+ÉÉF ]
 ,
-ÛÛ` a
+ÉÉ] ^
 ex
-ÛÛb d
+ÉÉ_ a
 )
-ÛÛd e
+ÉÉa b
 ;
-ÛÛe f
+ÉÉb c
+}
+ÊÊ 
+catch
+ËË 
+(
+ËË 
+SocketException
+ËË "
+)
+ËË" #
+{
+ÌÌ 
+throw
+ÍÍ 
+new
+ÍÍ 
+SocketException
+ÍÍ )
+(
+ÍÍ) *
+)
+ÍÍ* +
+;
+ÍÍ+ ,
+}
+ÎÎ 
+return
+ÏÏ 
+false
+ÏÏ 
+;
+ÏÏ 
+}
+ĞĞ 	
+private
+ÒÒ 
+bool
+ÒÒ 
+GetNotFriends
+ÒÒ "
+(
+ÒÒ" #
+UserPojo
+ÒÒ# +
+userConsulted
+ÒÒ, 9
+)
+ÒÒ9 :
+{
+ÓÓ 	
+try
+ÔÔ 
+{
+ÔÔ "
+ConsultFriendsClient
+ÕÕ $ 
+friendManagerProxy
+ÕÕ% 7
+=
+ÕÕ8 9
+new
+ÕÕ: ="
+ConsultFriendsClient
+ÕÕ> R
+(
+ÕÕR S
+)
+ÕÕS T
+;
+ÕÕT U
+var
+ÖÖ "
+otherPeopleConsulted
+ÖÖ (
+=
+ÖÖ) * 
+friendManagerProxy
+ÖÖ+ =
+.
+ÖÖ= > 
+GetUsersNotFriends
+ÖÖ> P
+(
+ÖÖP Q
+userConsulted
+ÖÖQ ^
+)
+ÖÖ^ _
+;
+ÖÖ_ `
+if
+×× 
+(
+×× "
+otherPeopleConsulted
+×× (
+.
+××( )
+	CodeEvent
+××) 2
+==
+××3 5!
+ExceptionDictionary
+××6 I
+.
+××I J
+SUCCESFULL_EVENT
+××J Z
+)
+××Z [
+{
+ØØ 
+otherPeople
+ÙÙ 
+=
+ÙÙ  !"
+otherPeopleConsulted
+ÙÙ" 6
+.
+ÙÙ6 7
+ObjectSaved
+ÙÙ7 B
+.
+ÙÙB C
+ToList
+ÙÙC I
+(
+ÙÙI J
+)
+ÙÙJ K
+;
+ÙÙK L
+return
+ÚÚ 
+true
+ÚÚ 
+;
+ÚÚ  
+}
+ÛÛ 
 }
 ÜÜ 
 catch
 İİ 
 (
-İİ 1
-#CommunicationObjectFaultedException
-İİ 6
+İİ '
+EndpointNotFoundException
+İİ ,
 ex
-İİ7 9
+İİ- /
 )
-İİ9 :
+İİ/ 0
 {
 ŞŞ 
 throw
 ßß 
 new
-ßß 1
-#CommunicationObjectFaultedException
-ßß =
+ßß '
+EndpointNotFoundException
+ßß 3
 (
-ßß= >
+ßß3 4
 
 Properties
-ßß> H
+ßß4 >
 .
-ßßH I
+ßß> ?
 	Resources
-ßßI R
+ßß? H
 .
-ßßR S%
+ßßH I%
 lblFailToRecoverFriends
-ßßS j
+ßßI `
 ,
-ßßj k
+ßß` a
 ex
-ßßl n
+ßßb d
 )
-ßßn o
+ßßd e
 ;
-ßßo p
+ßße f
 }
 àà 
 catch
 áá 
 (
-áá 
-TimeoutException
-áá #
+áá 1
+#CommunicationObjectFaultedException
+áá 6
 ex
-áá$ &
+áá7 9
 )
-áá& '
+áá9 :
 {
 ââ 
 throw
 ãã 
 new
-ãã 
-TimeoutException
-ãã *
+ãã 1
+#CommunicationObjectFaultedException
+ãã =
 (
-ãã* +
+ãã= >
 
 Properties
-ãã+ 5
+ãã> H
 .
-ãã5 6
+ããH I
 	Resources
-ãã6 ?
+ããI R
 .
-ãã? @%
+ããR S%
 lblFailToRecoverFriends
-ãã@ W
+ããS j
 ,
-ããW X
+ããj k
 ex
-ããY [
+ããl n
 )
-ãã[ \
+ããn o
 ;
-ãã\ ]
+ãão p
 }
 ää 
 catch
 åå 
 (
-åå $
-CommunicationException
-åå )
+åå 
+TimeoutException
+åå #
 ex
-åå* ,
+åå$ &
 )
-åå, -
+åå& '
 {
 ææ 
 throw
 çç 
 new
-çç $
-CommunicationException
-çç 0
+çç 
+TimeoutException
+çç *
 (
-çç0 1
+çç* +
 
 Properties
-çç1 ;
+çç+ 5
 .
-çç; <
+çç5 6
 	Resources
-çç< E
+çç6 ?
 .
-ççE F%
+çç? @%
 lblFailToRecoverFriends
-ççF ]
+çç@ W
 ,
-çç] ^
+ççW X
 ex
-çç_ a
+ççY [
 )
-çça b
+çç[ \
 ;
-ççb c
+çç\ ]
 }
 èè 
 catch
 éé 
 (
-éé 
-SocketException
-éé "
+éé $
+CommunicationException
+éé )
+ex
+éé* ,
 )
-éé" #
+éé, -
 {
 êê 
 throw
 ëë 
 new
-ëë 
+ëë $
+CommunicationException
+ëë 0
+(
+ëë0 1
+
+Properties
+ëë1 ;
+.
+ëë; <
+	Resources
+ëë< E
+.
+ëëE F%
+lblFailToRecoverFriends
+ëëF ]
+,
+ëë] ^
+ex
+ëë_ a
+)
+ëëa b
+;
+ëëb c
+}
+ìì 
+catch
+íí 
+(
+íí 
 SocketException
-ëë )
-(
-ëë) *
+íí "
 )
-ëë* +
+íí" #
+{
+îî 
+throw
+ïï 
+new
+ïï 
+SocketException
+ïï )
+(
+ïï) *
+)
+ïï* +
 ;
-ëë+ ,
+ïï+ ,
 }
-ìì 
+ğğ 
 return
-íí 
+ññ 
 false
-íí 
+ññ 
 ;
-íí 
+ññ 
 }
-îî 	
+òò 	
 private
-òò 
+öö 
 void
-òò 
+öö 
 SetCards
-òò 
+öö 
 (
-òò 
+öö 
 )
-òò 
+öö 
 {
-óó 	#
+÷÷ 	#
 stpFrinedsManagerList
-ôô !
+øø !
 .
-ôô! "
+øø! "
 Children
-ôô" *
+øø" *
 .
-ôô* +
+øø* +
 Clear
-ôô+ 0
+øø+ 0
 (
-ôô0 1
+øø0 1
 )
-ôô1 2
+øø1 2
 ;
-ôô2 3
+øø2 3
 List
-õõ 
+ùù 
 <
-õõ $
+ùù $
 FriendBasicInformation
-õõ '
+ùù '
 >
-õõ' (
+ùù' (
 listOfUsers
-õõ) 4
+ùù) 4
 ;
-õõ4 5
+ùù4 5
 switch
-öö 
+úú 
 (
-öö 
+úú 
 typeUserConsult
-öö #
+úú #
 )
-öö# $
+úú# $
 {
-÷÷ 
+ûû 
 case
-øø 
+üü 
 
 MY_FRIENDS
-øø 
+üü 
 :
-øø  
+üü  
 listOfUsers
-ùù 
+ıı 
 =
-ùù  !
+ıı  !
 new
-ùù" %
+ıı" %
 List
-ùù& *
+ıı& *
 <
-ùù* +$
+ıı* +$
 FriendBasicInformation
-ùù+ A
+ıı+ A
 >
-ùùA B
+ııA B
 (
-ùùB C
+ııB C
 friends
-ùùC J
+ııC J
 )
-ùùJ K
+ııJ K
 ;
-ùùK L
+ııK L
 break
-úú 
+şş 
 ;
-úú 
+şş 
 case
-ûû 
+ÿÿ 
 FRIENDS_REQUEST
-ûû $
+ÿÿ $
 :
-ûû$ %
+ÿÿ$ %
 listOfUsers
-üü 
+€€ 
 =
-üü  !
+€€  !
 new
-üü" %
+€€" %
 List
-üü& *
+€€& *
 <
-üü* +$
+€€* +$
 FriendBasicInformation
-üü+ A
+€€+ A
 >
-üüA B
+€€A B
 (
-üüB C
+€€B C
 friendRequests
-üüC Q
+€€C Q
 )
-üüQ R
+€€Q R
 ;
-üüR S
+€€R S
 break
-ıı 
+ 
 ;
-ıı 
+ 
 case
-şş 
+‚‚ 
 OTHER_PEOPLE
-şş !
+‚‚ !
 :
-şş! "
+‚‚! "
 listOfUsers
-ÿÿ 
+ƒƒ 
 =
-ÿÿ  !
+ƒƒ  !
 new
-ÿÿ" %
+ƒƒ" %
 List
-ÿÿ& *
+ƒƒ& *
 <
-ÿÿ* +$
+ƒƒ* +$
 FriendBasicInformation
-ÿÿ+ A
+ƒƒ+ A
 >
-ÿÿA B
+ƒƒA B
 (
-ÿÿB C
+ƒƒB C
 otherPeople
-ÿÿC N
+ƒƒC N
 )
-ÿÿN O
+ƒƒN O
 ;
-ÿÿO P
+ƒƒO P
 break
-€€ 
+„„ 
 ;
-€€ 
+„„ 
 default
- 
+…… 
 :
- 
+…… 
 listOfUsers
-‚‚ 
+†† 
 =
-‚‚  !
+††  !
 new
-‚‚" %
+††" %
 List
-‚‚& *
+††& *
 <
-‚‚* +$
+††* +$
 FriendBasicInformation
-‚‚+ A
+††+ A
 >
-‚‚A B
+††A B
 (
-‚‚B C
+††B C
 )
-‚‚C D
+††C D
 ;
-‚‚D E
+††D E
 break
-ƒƒ 
+‡‡ 
 ;
-ƒƒ 
+‡‡ 
 }
-„„ 
+ˆˆ 
 foreach
-…… 
+‰‰ 
 (
-…… 
+‰‰ 
 var
-…… 
+‰‰ 
 item
-…… 
+‰‰ 
 in
-……  
+‰‰  
 listOfUsers
-……! ,
+‰‰! ,
 )
-……, -
+‰‰, -
 {
-†† 
+ŠŠ 
 Border
-‡‡ 
+‹‹ 
 brdCard
-‡‡ 
+‹‹ 
 =
-‡‡  
+‹‹  
 new
-‡‡! $
+‹‹! $
 Border
-‡‡% +
+‹‹% +
 (
-‡‡+ ,
+‹‹+ ,
 )
-‡‡, -
+‹‹, -
 ;
-‡‡- .(
+‹‹- .(
 FriendCardManagementWindow
-ˆˆ *"
+ŒŒ *"
 friendCardManagement
-ˆˆ+ ?
+ŒŒ+ ?
 =
-ˆˆ@ A
+ŒŒ@ A
 new
-ˆˆB E(
+ŒŒB E(
 FriendCardManagementWindow
-ˆˆF `
+ŒŒF `
 (
-ˆˆ` a
+ŒŒ` a
 item
-ˆˆa e
+ŒŒa e
 .
-ˆˆe f
+ŒŒe f
 IdUser
-ˆˆf l
+ŒŒf l
 ,
-ˆˆl m
+ŒŒl m
 item
-ˆˆn r
+ŒŒn r
 .
-ˆˆr s
+ŒŒr s
 UserName
-ˆˆs {
+ŒŒs {
 ,
-ˆˆ{ |
-typeUserConsultˆˆ} Œ
-,ˆˆŒ 
-textLeftButtonˆˆ œ
-,ˆˆœ 
-textRightButtonˆˆ ­
-,ˆˆ­ ®
-thisˆˆ¯ ³
-)ˆˆ³ ´
-;ˆˆ´ µ
+ŒŒ{ |
+typeUserConsultŒŒ} Œ
+,ŒŒŒ 
+textLeftButtonŒŒ œ
+,ŒŒœ 
+textRightButtonŒŒ ­
+,ŒŒ­ ®
+thisŒŒ¯ ³
+)ŒŒ³ ´
+;ŒŒ´ µ
 brdCard
-‰‰ 
+ 
 .
-‰‰ 
+ 
 Child
-‰‰ 
+ 
 =
-‰‰ "
+ "
 friendCardManagement
-‰‰  4
+  4
 ;
-‰‰4 5#
+4 5#
 stpFrinedsManagerList
-ŠŠ %
+ %
 .
-ŠŠ% &
+% &
 Children
-ŠŠ& .
+& .
 .
-ŠŠ. /
+. /
 Add
-ŠŠ/ 2
+/ 2
 (
-ŠŠ2 3 
+2 3 
 SetBorderCardStyle
-ŠŠ3 E
+3 E
 (
-ŠŠE F
+E F
 brdCard
-ŠŠF M
+F M
 )
-ŠŠM N
+M N
 )
-ŠŠN O
+N O
 ;
-ŠŠO P
+O P
 }
-‹‹ 
+ 
 }
-ŒŒ 	
-private
- 
-Border
-  
-SetBorderCardStyle
- )
-(
-) *
-Border
-* 0
-brdCard
-1 8
-)
-8 9
-{
  	
+private
+““ 
+Border
+““  
+SetBorderCardStyle
+““ )
+(
+““) *
+Border
+““* 0
 brdCard
-‘‘ 
-.
-‘‘ 
-
-Background
-‘‘ 
-=
-‘‘  
-new
-‘‘! $
-SolidColorBrush
-‘‘% 4
-(
-‘‘4 5
-(
-‘‘5 6
-Color
-‘‘6 ;
+““1 8
 )
-‘‘; <
-ColorConverter
-‘‘< J
-.
-‘‘J K
-ConvertFromString
-‘‘K \
-(
-‘‘\ ]
-$str
-‘‘] f
-)
-‘‘f g
-)
-‘‘g h
-;
-‘‘h i
-brdCard
-’’ 
-.
-’’ 
-
-Background
-’’ 
-.
-’’ 
-Opacity
-’’ &
-=
-’’' (
-$num
-’’) -
-;
-’’- .
-brdCard
-““ 
-.
-““ 
-CornerRadius
-““  
-=
-““! "
-new
-““# &
-CornerRadius
-““' 3
-(
-““3 4
-$num
-““4 6
-)
-““6 7
-;
-““7 8
-brdCard
-”” 
-.
-”” 
-Margin
-”” 
-=
-”” 
-new
-””  
-	Thickness
-””! *
-(
-””* +
-$num
-””+ -
-,
-””- .
-$num
-””/ 1
-,
-””1 2
-$num
-””3 4
-,
-””4 5
-$num
-””6 8
-)
-””8 9
-;
-””9 :
+““8 9
+{
+”” 	
 brdCard
 •• 
 .
-•• 
-Width
-•• 
+•• 
+
+Background
+•• 
 =
-•• 
-$num
-••  
+••  
+new
+••! $
+SolidColorBrush
+••% 4
+(
+••4 5
+(
+••5 6
+Color
+••6 ;
+)
+••; <
+ColorConverter
+••< J
+.
+••J K
+ConvertFromString
+••K \
+(
+••\ ]
+$str
+••] f
+)
+••f g
+)
+••g h
 ;
-••  !
+••h i
 brdCard
 –– 
 .
-–– 
-MaxWidth
-–– 
+–– 
+
+Background
+–– 
+.
+–– 
+Opacity
+–– &
 =
-–– 
+––' (
 $num
-–– #
+––) -
 ;
-––# $
+––- .
 brdCard
 —— 
 .
-—— 
-Height
-—— 
+—— 
+CornerRadius
+——  
 =
-—— 
+——! "
+new
+——# &
+CornerRadius
+——' 3
+(
+——3 4
 $num
-—— 
+——4 6
+)
+——6 7
 ;
-——  
+——7 8
 brdCard
 ˜˜ 
 .
-˜˜ !
-HorizontalAlignment
-˜˜ '
+˜˜ 
+Margin
+˜˜ 
 =
-˜˜( )!
-HorizontalAlignment
-˜˜* =
-.
-˜˜= >
-Left
-˜˜> B
-;
-˜˜B C
-return
-™™ 
-brdCard
-™™ 
-;
-™™ 
-}
-šš 	
-private
-œœ 
-void
-œœ #
-ClickConsultMyFriends
-œœ *
+˜˜ 
+new
+˜˜  
+	Thickness
+˜˜! *
 (
-œœ* +
-object
-œœ+ 1
-sender
-œœ2 8
+˜˜* +
+$num
+˜˜+ -
 ,
-œœ8 9"
-MouseButtonEventArgs
-œœ: N
-e
-œœO P
+˜˜- .
+$num
+˜˜/ 1
+,
+˜˜1 2
+$num
+˜˜3 4
+,
+˜˜4 5
+$num
+˜˜6 8
 )
-œœP Q
-{
- 	
-typeUserConsult
- 
+˜˜8 9
+;
+˜˜9 :
+brdCard
+™™ 
+.
+™™ 
+Width
+™™ 
 =
- 
+™™ 
+$num
+™™  
+;
+™™  !
+brdCard
+šš 
+.
+šš 
+MaxWidth
+šš 
+=
+šš 
+$num
+šš #
+;
+šš# $
+brdCard
+›› 
+.
+›› 
+Height
+›› 
+=
+›› 
+$num
+›› 
+;
+››  
+brdCard
+œœ 
+.
+œœ !
+HorizontalAlignment
+œœ '
+=
+œœ( )!
+HorizontalAlignment
+œœ* =
+.
+œœ= >
+Left
+œœ> B
+;
+œœB C
+return
+ 
+brdCard
+ 
+;
+ 
+}
+ 	
+private
+   
+void
+   #
+ClickConsultMyFriends
+   *
+(
+  * +
+object
+  + 1
+sender
+  2 8
+,
+  8 9"
+MouseButtonEventArgs
+  : N
+e
+  O P
+)
+  P Q
+{
+¡¡ 	
+typeUserConsult
+¢¢ 
+=
+¢¢ 
 
 MY_FRIENDS
- (
+¢¢ (
 ;
-( )
+¢¢( )
 textLeftButton
-ŸŸ 
+££ 
 =
-ŸŸ 
+££ 
 
 Properties
-ŸŸ '
+££ '
 .
-ŸŸ' (
+££' (
 	Resources
-ŸŸ( 1
+££( 1
 .
-ŸŸ1 2
+££1 2
 	bttReport
-ŸŸ2 ;
+££2 ;
 ;
-ŸŸ; <
+££; <
 textRightButton
-   
+¤¤ 
 =
-   
+¤¤ 
 
 Properties
-   (
+¤¤ (
 .
-  ( )
+¤¤( )
 	Resources
-  ) 2
+¤¤) 2
 .
-  2 3
+¤¤2 3
 bttEliminate
-  3 ?
+¤¤3 ?
 ;
-  ? @
+¤¤? @
 SelectLabel
-¡¡ 
+¥¥ 
 (
-¡¡ 
+¥¥ 
 lblMyFriends
-¡¡ $
+¥¥ $
 )
-¡¡$ %
+¥¥$ %
 ;
-¡¡% &
+¥¥% &
 SetCards
-¢¢ 
+¦¦ 
 (
-¢¢ 
+¦¦ 
 )
-¢¢ 
+¦¦ 
 ;
-¢¢ 
+¦¦ 
 }
-££ 	
+§§ 	
 private
-¥¥ 
+©© 
 void
-¥¥ +
+©© +
 ClickConsultFriendSolicitudes
-¥¥ 2
+©© 2
 (
-¥¥2 3
+©©2 3
 object
-¥¥3 9
+©©3 9
 sender
-¥¥: @
+©©: @
 ,
-¥¥@ A"
+©©@ A"
 MouseButtonEventArgs
-¥¥B V
+©©B V
 e
-¥¥W X
+©©W X
 )
-¥¥X Y
+©©X Y
 {
-¦¦ 	
+ªª 	
 typeUserConsult
-§§ 
+«« 
 =
-§§ 
+«« 
 FRIENDS_REQUEST
-§§ -
+«« -
 ;
-§§- .
+««- .
 textLeftButton
-¨¨ 
+¬¬ 
 =
-¨¨ 
+¬¬ 
 
 Properties
-¨¨ '
+¬¬ '
 .
-¨¨' (
+¬¬' (
 	Resources
-¨¨( 1
+¬¬( 1
 .
-¨¨1 2$
+¬¬1 2$
 bttAcceptFriendRequest
-¨¨2 H
+¬¬2 H
 ;
-¨¨H I
+¬¬H I
 textRightButton
-©© 
+­­ 
 =
-©© 
+­­ 
 
 Properties
-©© (
+­­ (
 .
-©©( )
+­­( )
 	Resources
-©©) 2
+­­) 2
 .
-©©2 3%
+­­2 3%
 bttDeclineFriendRequest
-©©3 J
+­­3 J
 ;
-©©J K
+­­J K
 SelectLabel
-ªª 
+®® 
 (
-ªª 
+®® 
 lblRequests
-ªª #
+®® #
 )
-ªª# $
+®®# $
 ;
-ªª$ %
+®®$ %
 SetCards
-«« 
+¯¯ 
 (
-«« 
+¯¯ 
 )
-«« 
+¯¯ 
 ;
-«« 
+¯¯ 
 }
-¬¬ 	
+°° 	
 private
-®® 
+²² 
 void
-®® $
+²² $
 ClickConsultMorePeople
-®® +
+²² +
 (
-®®+ ,
+²²+ ,
 object
-®®, 2
+²², 2
 sender
-®®3 9
+²²3 9
 ,
-®®9 :"
+²²9 :"
 MouseButtonEventArgs
-®®; O
+²²; O
 e
-®®P Q
+²²P Q
 )
-®®Q R
+²²Q R
 {
-¯¯ 	
+³³ 	
 typeUserConsult
-°° 
+´´ 
 =
-°° 
+´´ 
 OTHER_PEOPLE
-°° *
+´´ *
 ;
-°°* +
+´´* +
 textLeftButton
-±± 
+µµ 
 =
-±± 
+µµ 
 
 Properties
-±± '
+µµ '
 .
-±±' (
+µµ' (
 	Resources
-±±( 1
+µµ( 1
 .
-±±1 2
+µµ1 2
 bttAddFriend
-±±2 >
+µµ2 >
 ;
-±±> ?
+µµ> ?
 textRightButton
-²² 
+¶¶ 
 =
-²² 
+¶¶ 
 
 Properties
-²² (
+¶¶ (
 .
-²²( )
+¶¶( )
 	Resources
-²²) 2
+¶¶) 2
 .
-²²2 3
+¶¶2 3
 	bttReport
-²²3 <
+¶¶3 <
 ;
-²²< =
+¶¶< =
 SelectLabel
-³³ 
+·· 
 (
-³³ 
+·· 
 lblMorePeople
-³³ %
+·· %
 )
-³³% &
+··% &
 ;
-³³& '
+··& '
 SetCards
-´´ 
+¸¸ 
 (
-´´ 
+¸¸ 
 )
-´´ 
+¸¸ 
 ;
-´´ 
+¸¸ 
 }
-µµ 	
+¹¹ 	
 private
-·· 
+»» 
 void
-·· 
+»» 
 SelectLabel
-··  
+»»  
 (
-··  !
+»»  !
 Label
-··! &
+»»! &
 selectedLabel
-··' 4
+»»' 4
 )
-··4 5
+»»4 5
 {
-¸¸ 	
+¼¼ 	
 lblMyFriends
-¹¹ 
+½½ 
 .
-¹¹ 
+½½ 
 FontSize
-¹¹ !
+½½ !
 =
-¹¹" #
+½½" #
 $num
-¹¹$ &
+½½$ &
 ;
-¹¹& '
+½½& '
 lblMyFriends
-ºº 
+¾¾ 
 .
-ºº 
+¾¾ 
 
 Foreground
-ºº #
+¾¾ #
 =
-ºº$ %
+¾¾$ %
 new
-ºº& )
+¾¾& )
 SolidColorBrush
-ºº* 9
+¾¾* 9
 (
-ºº9 :
+¾¾9 :
 Colors
-ºº: @
+¾¾: @
 .
-ºº@ A
+¾¾@ A
 White
-ººA F
+¾¾A F
 )
-ººF G
+¾¾F G
 ;
-ººG H
+¾¾G H
 lblRequests
-»» 
+¿¿ 
 .
-»» 
+¿¿ 
 FontSize
-»»  
+¿¿  
 =
-»»! "
+¿¿! "
 $num
-»»# %
+¿¿# %
 ;
-»»% &
+¿¿% &
 lblRequests
-¼¼ 
+ÀÀ 
 .
-¼¼ 
+ÀÀ 
 
 Foreground
-¼¼ "
+ÀÀ "
 =
-¼¼# $
+ÀÀ# $
 new
-¼¼% (
+ÀÀ% (
 SolidColorBrush
-¼¼) 8
+ÀÀ) 8
 (
-¼¼8 9
+ÀÀ8 9
 Colors
-¼¼9 ?
+ÀÀ9 ?
 .
-¼¼? @
+ÀÀ? @
 White
-¼¼@ E
+ÀÀ@ E
 )
-¼¼E F
+ÀÀE F
 ;
-¼¼F G
+ÀÀF G
 lblMorePeople
-½½ 
+ÁÁ 
 .
-½½ 
+ÁÁ 
 FontSize
-½½ "
+ÁÁ "
 =
-½½# $
+ÁÁ# $
 $num
-½½% '
+ÁÁ% '
 ;
-½½' (
+ÁÁ' (
 lblMorePeople
-¾¾ 
+ÂÂ 
 .
-¾¾ 
+ÂÂ 
 
 Foreground
-¾¾ $
+ÂÂ $
 =
-¾¾% &
+ÂÂ% &
 new
-¾¾' *
+ÂÂ' *
 SolidColorBrush
-¾¾+ :
+ÂÂ+ :
 (
-¾¾: ;
+ÂÂ: ;
 Colors
-¾¾; A
+ÂÂ; A
 .
-¾¾A B
+ÂÂA B
 White
-¾¾B G
+ÂÂB G
 )
-¾¾G H
+ÂÂG H
 ;
-¾¾H I
+ÂÂH I
 selectedLabel
-¿¿ 
+ÃÃ 
 .
-¿¿ 
+ÃÃ 
 FontSize
-¿¿ "
+ÃÃ "
 =
-¿¿# $
+ÃÃ# $
 $num
-¿¿% '
+ÃÃ% '
 ;
-¿¿' (
+ÃÃ' (
 selectedLabel
-ÀÀ 
+ÄÄ 
 .
-ÀÀ 
+ÄÄ 
 
 Foreground
-ÀÀ $
+ÄÄ $
 =
-ÀÀ% &
+ÄÄ% &
 new
-ÀÀ' *
+ÄÄ' *
 SolidColorBrush
-ÀÀ+ :
+ÄÄ+ :
 (
-ÀÀ: ;
+ÄÄ: ;
 Colors
-ÀÀ; A
+ÄÄ; A
 .
-ÀÀA B
+ÄÄA B
 	LightGray
-ÀÀB K
+ÄÄB K
 )
-ÀÀK L
+ÄÄK L
 ;
-ÀÀL M
+ÄÄL M
 }
-ÁÁ 	
+ÅÅ 	
 public
-ÃÃ 
+ÇÇ 
 void
-ÃÃ 
+ÇÇ 
 
 ReportUser
-ÃÃ 
+ÇÇ 
 (
-ÃÃ 
+ÇÇ 
 int
-ÃÃ "
+ÇÇ "
 idPlayer
-ÃÃ# +
+ÇÇ# +
 )
-ÃÃ+ ,
+ÇÇ+ ,
 {
-ÄÄ 	
+ÈÈ 	
 try
-ÅÅ 
+ÉÉ 
 {
-ÆÆ (
+ÊÊ (
 FriendManagerActionsClient
-ÇÇ *(
+ËË *(
 friendActionsCallBackProxy
-ÇÇ+ E
+ËË+ E
 =
-ÇÇF G
+ËËF G
 new
-ÇÇH K(
+ËËH K(
 FriendManagerActionsClient
-ÇÇL f
+ËËL f
 (
-ÇÇf g
+ËËf g
 new
-ÇÇg j
+ËËg j
 InstanceContext
-ÇÇk z
+ËËk z
 (
-ÇÇz {
+ËËz {
 this
-ÇÇ{ 
-)ÇÇ €
-)ÇÇ€ 
-;ÇÇ ‚(
+ËË{ 
+)ËË €
+)ËË€ 
+;ËË ‚(
 friendActionsCallBackProxy
-ÈÈ *
+ÌÌ *
 .
-ÈÈ* +,
+ÌÌ* +,
 RenewFriendManagerUserCallBack
-ÈÈ+ I
+ÌÌ+ I
 (
-ÈÈI J
+ÌÌI J
 userSingleton
-ÈÈJ W
+ÌÌJ W
 .
-ÈÈW X
+ÌÌW X
 IdUser
-ÈÈX ^
+ÌÌX ^
 )
-ÈÈ^ _
+ÌÌ^ _
 ;
-ÈÈ_ `1
+ÌÌ_ `1
 #FriendManagerActionOperationsClient
-ÊÊ 3 
+ÎÎ 3 
 friendActionsProxy
-ÊÊ4 F
+ÎÎ4 F
 =
-ÊÊG H
+ÎÎG H
 new
-ÊÊI L
+ÎÎI L
 (
-ÊÊL M
+ÎÎL M
 )
-ÊÊM N
+ÎÎM N
 ;
-ÊÊN O
+ÎÎN O
 var
-ËË 
+ÏÏ 
 result
-ËË 
+ÏÏ 
 =
-ËË  
+ÏÏ  
 friendActionsProxy
-ËË /
+ÏÏ /
 .
-ËË/ 0
+ÏÏ/ 0
 BanUser
-ËË0 7
+ÏÏ0 7
 (
-ËË7 8
+ÏÏ7 8
 idPlayer
-ËË8 @
+ÏÏ8 @
 ,
-ËË@ A
+ÏÏ@ A
 userSingleton
-ËËB O
+ÏÏB O
 .
-ËËO P
+ÏÏO P
 IdUser
-ËËP V
+ÏÏP V
 )
-ËËV W
+ÏÏV W
 ;
-ËËW X
+ÏÏW X
 if
-ÌÌ 
+ĞĞ 
 (
-ÌÌ 
+ĞĞ 
 result
-ÌÌ 
+ĞĞ 
 .
-ÌÌ 
+ĞĞ 
 	CodeEvent
-ÌÌ $
+ĞĞ $
 ==
-ÌÌ% '!
+ĞĞ% '!
 ExceptionDictionary
-ÌÌ( ;
+ĞĞ( ;
 .
-ÌÌ; <
+ĞĞ; <
 SUCCESFULL_EVENT
-ÌÌ< L
+ĞĞ< L
 )
-ÌÌL M
+ĞĞL M
 {
-ÍÍ 
-dialogWindow
-ÎÎ  
+ÑÑ !
+DialogWindowManager
+ÒÒ '
 .
-ÎÎ  !#
+ÒÒ' (#
 ShowInfoOrErrorWindow
-ÎÎ! 6
+ÒÒ( =
 (
-ÎÎ6 7
+ÒÒ= >
 
 Properties
-ÎÎ7 A
+ÒÒ> H
 .
-ÎÎA B
+ÒÒH I
 	Resources
-ÎÎB K
+ÒÒI R
 .
-ÎÎK L!
+ÒÒR S!
 txbInformationTitle
-ÎÎL _
+ÒÒS f
 ,
-ÎÎ_ `
+ÒÒf g
 
 Properties
-ÎÎa k
+ÒÒh r
 .
-ÎÎk l
+ÒÒr s
 	Resources
-ÎÎl u
+ÒÒs |
 .
-ÎÎu v$
-lblSuccesReportedUserÎÎv ‹
-,ÎÎ‹ Œ
-ApplicationÎÎ ˜
-.ÎÎ˜ ™
-CurrentÎÎ™  
-.ÎÎ  ¡
+ÒÒ| }$
+lblSuccesReportedUserÒÒ} ’
+,ÒÒ’ “
+ApplicationÒÒ” Ÿ
+.ÒÒŸ  
+CurrentÒÒ  §
+.ÒÒ§ ¨
 
-MainWindowÎÎ¡ «
-,ÎÎ« ¬
-dialogWindowÎÎ­ ¹
-.ÎÎ¹ º
-INFORMATIONÎÎº Å
-)ÎÎÅ Æ
-;ÎÎÆ Ç
+MainWindowÒÒ¨ ²
+,ÒÒ² ³#
+DialogWindowManagerÒÒ´ Ç
+.ÒÒÇ È
+INFORMATIONÒÒÈ Ó
+)ÒÒÓ Ô
+;ÒÒÔ Õ
 }
-ÏÏ 
+ÓÓ 
 else
-ĞĞ 
+ÔÔ 
 {
-ÑÑ 
-dialogWindow
-ÒÒ  
+ÕÕ !
+DialogWindowManager
+ÖÖ '
 .
-ÒÒ  !#
+ÖÖ' (#
 ShowInfoOrErrorWindow
-ÒÒ! 6
+ÖÖ( =
 (
-ÒÒ6 7
+ÖÖ= >
 
 Properties
-ÒÒ7 A
+ÖÖ> H
 .
-ÒÒA B
+ÖÖH I
 	Resources
-ÒÒB K
+ÖÖI R
 .
-ÒÒK L
+ÖÖR S
 txbErrorTitle
-ÒÒL Y
+ÖÖS `
 ,
-ÒÒY Z
+ÖÖ` a
 
 Properties
-ÒÒ[ e
+ÖÖb l
 .
-ÒÒe f
+ÖÖl m
 	Resources
-ÒÒf o
+ÖÖm v
 .
-ÒÒo p#
-lblFailToReportAUserÒÒp „
-,ÒÒ„ …
-ApplicationÒÒ† ‘
-.ÒÒ‘ ’
-CurrentÒÒ’ ™
-.ÒÒ™ š
+ÖÖv w#
+lblFailToReportAUserÖÖw ‹
+,ÖÖ‹ Œ
+ApplicationÖÖ ˜
+.ÖÖ˜ ™
+CurrentÖÖ™  
+.ÖÖ  ¡
 
-MainWindowÒÒš ¤
-,ÒÒ¤ ¥
-dialogWindowÒÒ¦ ²
-.ÒÒ² ³
-ERRORÒÒ³ ¸
-)ÒÒ¸ ¹
-;ÒÒ¹ º
+MainWindowÖÖ¡ «
+,ÖÖ« ¬#
+DialogWindowManagerÖÖ­ À
+.ÖÖÀ Á
+ERRORÖÖÁ Æ
+)ÖÖÆ Ç
+;ÖÖÇ È
 }
-ÓÓ 
-}
-ÔÔ 
-catch
-ÕÕ 
-(
-ÕÕ '
-EndpointNotFoundException
-ÕÕ ,
-ex
-ÕÕ- /
-)
-ÕÕ/ 0
-{
-ÖÖ 
-HandleException
-×× 
-(
-××  
-ex
-××  "
-,
-××" #
-
-Properties
-××$ .
-.
-××. /
-	Resources
-××/ 8
-.
-××8 9"
-lblFailToReportAUser
-××9 M
-+
-××N O
-$str
-××P U
-+
-××V W
-
-Properties
-××X b
-.
-××b c
-	Resources
-××c l
-.
-××l m"
-lblEndPointNotFound××m €
-)××€ 
-;×× ‚
+×× 
 }
 ØØ 
 catch
 ÙÙ 
 (
-ÙÙ 1
-#CommunicationObjectFaultedException
-ÙÙ 6
+ÙÙ '
+EndpointNotFoundException
+ÙÙ ,
 ex
-ÙÙ7 9
+ÙÙ- /
 )
-ÙÙ9 :
+ÙÙ/ 0
 {
 ÚÚ 
 HandleException
@@ -22159,22 +22052,22 @@ Properties
 	Resources
 ÛÛc l
 .
-ÛÛl m'
-lblComunicationExceptionÛÛm …
-)ÛÛ… †
-;ÛÛ† ‡
+ÛÛl m"
+lblEndPointNotFoundÛÛm €
+)ÛÛ€ 
+;ÛÛ ‚
 }
 ÜÜ 
 catch
 İİ 
 (
-İİ 
-TimeoutException
-İİ #
+İİ 1
+#CommunicationObjectFaultedException
+İİ 6
 ex
-İİ$ &
+İİ7 9
 )
-İİ& '
+İİ9 :
 {
 ŞŞ 
 HandleException
@@ -22210,25 +22103,22 @@ Properties
 	Resources
 ßßc l
 .
-ßßl m
-lblTimeException
-ßßm }
-)
-ßß} ~
-;
-ßß~ 
+ßßl m'
+lblComunicationExceptionßßm …
+)ßß… †
+;ßß† ‡
 }
 àà 
 catch
 áá 
 (
-áá $
-CommunicationException
-áá )
+áá 
+TimeoutException
+áá #
 ex
-áá* ,
+áá$ &
 )
-áá, -
+áá& '
 {
 ââ 
 HandleException
@@ -22264,22 +22154,25 @@ Properties
 	Resources
 ããc l
 .
-ããl m'
-lblComunicationExceptionããm …
-)ãã… †
-;ãã† ‡
+ããl m
+lblTimeException
+ããm }
+)
+ãã} ~
+;
+ãã~ 
 }
 ää 
 catch
 åå 
 (
-åå 
-SocketException
-åå "
+åå $
+CommunicationException
+åå )
 ex
-åå# %
+åå* ,
 )
-åå% &
+åå, -
 {
 ææ 
 HandleException
@@ -22315,373 +22208,373 @@ Properties
 	Resources
 ççc l
 .
-ççl m"
-lblEndPointNotFoundççm €
-)çç€ 
-;çç ‚
+ççl m'
+lblComunicationExceptionççm …
+)çç… †
+;çç† ‡
 }
-èè 
-}
-éé 	
-public
-ëë 
-void
-ëë 
-EliminateFriend
-ëë #
+èè 
+catch
+éé 
 (
-ëë# $
-int
-ëë$ '%
-idUserFriendToEliminate
-ëë( ?
+éé 
+SocketException
+éé "
+ex
+éé# %
 )
-ëë? @
+éé% &
 {
-ìì 	
-try
-íí 
-{
-îî (
-FriendManagerActionsClient
-ïï *(
-friendActionsCallBackProxy
-ïï+ E
-=
-ïïF G
-new
-ïïH K(
-FriendManagerActionsClient
-ïïL f
+êê 
+HandleException
+ëë 
 (
-ïïf g
-new
-ïïg j
-InstanceContext
-ïïk z
-(
-ïïz {
-this
-ïï{ 
-)ïï €
-)ïï€ 
-;ïï ‚(
-friendActionsCallBackProxy
-ğğ *
-.
-ğğ* +,
-RenewFriendManagerUserCallBack
-ğğ+ I
-(
-ğğI J
-userSingleton
-ğğJ W
-.
-ğğW X
-IdUser
-ğğX ^
-)
-ğğ^ _
-;
-ğğ_ `1
-#FriendManagerActionOperationsClient
-ññ 3 
-friendActionsProxy
-ññ4 F
-=
-ññG H
-new
-ññI L
-(
-ññL M
-)
-ññM N
-;
-ññN O 
-friendActionsProxy
-òò "
-.
-òò" #&
-EliminateUserFromFriends
-òò# ;
-(
-òò; <
-userSingleton
-òò< I
-.
-òòI J
-IdPlayer
-òòJ R
+ëë  
+ex
+ëë  "
 ,
-òòR S%
-idUserFriendToEliminate
-òòT k
-)
-òòk l
-;
-òòl m
-String
-óó 
-userName
-óó 
-=
-óó  !
-String
-óó" (
+ëë" #
+
+Properties
+ëë$ .
 .
-óó( )
-Empty
-óó) .
-;
-óó. /
-foreach
-ôô 
-(
-ôô 
-var
-ôô 
-item
-ôô !
-in
-ôô" $
-friends
-ôô% ,
-)
-ôô, -
-{
-õõ 
-if
-öö 
-(
-öö 
-item
-öö 
+ëë. /
+	Resources
+ëë/ 8
 .
-öö 
-IdUser
-öö #
-==
-öö$ &%
-idUserFriendToEliminate
-öö' >
-)
-öö> ?
-{
-÷÷ 
-friends
-øø 
+ëë8 9"
+lblFailToReportAUser
+ëë9 M
++
+ëëN O
+$str
+ëëP U
++
+ëëV W
+
+Properties
+ëëX b
 .
-øø  
-Remove
-øø  &
-(
-øø& '
-item
-øø' +
-)
-øø+ ,
-;
-øø, -
-userName
-ùù  
-=
-ùù! "
-item
-ùù# '
+ëëb c
+	Resources
+ëëc l
 .
-ùù' (
-UserName
-ùù( 0
-;
-ùù0 1
-break
-úú 
-;
-úú 
+ëël m"
+lblEndPointNotFoundëëm €
+)ëë€ 
+;ëë ‚
 }
-ûû 
+ìì 
 }
-üü 
-if
-ıı 
+íí 	
+public
+ïï 
+void
+ïï 
+EliminateFriend
+ïï #
 (
-ıı 
-!
-ıı 
-otherPeople
-ıı  
-.
-ıı  !
-Exists
-ıı! '
-(
-ıı' (
-pla
-ıı( +
-=>
-ıı, .
-pla
-ıı/ 2
-.
-ıı2 3
-UserName
-ıı3 ;
-.
-ıı; <
-Equals
-ıı< B
-(
-ııB C
-userName
-ııC K
+ïï# $
+int
+ïï$ '%
+idUserFriendToEliminate
+ïï( ?
 )
-ııK L
-)
-ııL M
-)
-ııM N
+ïï? @
 {
-şş $
-FriendBasicInformation
-ÿÿ *
-	newFriend
-ÿÿ+ 4
+ğğ 	
+try
+ññ 
+{
+òò (
+FriendManagerActionsClient
+óó *(
+friendActionsCallBackProxy
+óó+ E
 =
-ÿÿ5 6
+óóF G
 new
-ÿÿ7 :$
-FriendBasicInformation
-ÿÿ; Q
+óóH K(
+FriendManagerActionsClient
+óóL f
 (
-ÿÿQ R
-)
-ÿÿR S
-;
-ÿÿS T
-	newFriend
-€€ 
+óóf g
+new
+óóg j
+InstanceContext
+óók z
+(
+óóz {
+this
+óó{ 
+)óó €
+)óó€ 
+;óó ‚(
+friendActionsCallBackProxy
+ôô *
 .
-€€ 
+ôô* +,
+RenewFriendManagerUserCallBack
+ôô+ I
+(
+ôôI J
+userSingleton
+ôôJ W
+.
+ôôW X
 IdUser
-€€ $
+ôôX ^
+)
+ôô^ _
+;
+ôô_ `1
+#FriendManagerActionOperationsClient
+õõ 3 
+friendActionsProxy
+õõ4 F
 =
-€€% &%
+õõG H
+new
+õõI L
+(
+õõL M
+)
+õõM N
+;
+õõN O 
+friendActionsProxy
+öö "
+.
+öö" #&
+EliminateUserFromFriends
+öö# ;
+(
+öö; <
+userSingleton
+öö< I
+.
+ööI J
+IdPlayer
+ööJ R
+,
+ööR S%
 idUserFriendToEliminate
-€€' >
+ööT k
+)
+öök l
 ;
-€€> ?
-	newFriend
- 
-.
- 
-UserName
- &
-=
-' (
+ööl m
+String
+÷÷ 
 userName
-) 1
-;
-1 2
-	newFriend
-‚‚ 
-.
-‚‚ "
-IdStatusAvailability
-‚‚ 2
+÷÷ 
 =
-‚‚3 4
+÷÷  !
+String
+÷÷" (
+.
+÷÷( )
+Empty
+÷÷) .
+;
+÷÷. /
+foreach
+øø 
+(
+øø 
+var
+øø 
+item
+øø !
+in
+øø" $
+friends
+øø% ,
+)
+øø, -
+{
+ùù 
+if
+úú 
+(
+úú 
+item
+úú 
+.
+úú 
+IdUser
+úú #
+==
+úú$ &%
+idUserFriendToEliminate
+úú' >
+)
+úú> ?
+{
+ûû 
+friends
+üü 
+.
+üü  
+Remove
+üü  &
+(
+üü& '
+item
+üü' +
+)
+üü+ ,
+;
+üü, -
+userName
+ıı  
+=
+ıı! "
+item
+ıı# '
+.
+ıı' (
+UserName
+ıı( 0
+;
+ıı0 1
+break
+şş 
+;
+şş 
+}
+ÿÿ 
+}
+€€ 
+if
+ 
+(
+ 
+!
+ 
+otherPeople
+  
+.
+  !
+Exists
+! '
+(
+' (
+pla
+( +
+=>
+, .
+pla
+/ 2
+.
+2 3
+UserName
+3 ;
+.
+; <
+Equals
+< B
+(
+B C
+userName
+C K
+)
+K L
+)
+L M
+)
+M N
+{
+‚‚ $
+FriendBasicInformation
+ƒƒ *
+	newFriend
+ƒƒ+ 4
+=
+ƒƒ5 6
+new
+ƒƒ7 :$
+FriendBasicInformation
+ƒƒ; Q
+(
+ƒƒQ R
+)
+ƒƒR S
+;
+ƒƒS T
+	newFriend
+„„ 
+.
+„„ 
+IdUser
+„„ $
+=
+„„% &%
+idUserFriendToEliminate
+„„' >
+;
+„„> ?
+	newFriend
+…… 
+.
+…… 
+UserName
+…… &
+=
+……' (
+userName
+……) 1
+;
+……1 2
+	newFriend
+†† 
+.
+†† "
+IdStatusAvailability
+†† 2
+=
+††3 4
 
 NOT_STATUS
-‚‚5 ?
+††5 ?
 ;
-‚‚? @
+††? @
 otherPeople
-ƒƒ 
+‡‡ 
 .
-ƒƒ  
+‡‡  
 Add
-ƒƒ  #
+‡‡  #
 (
-ƒƒ# $
+‡‡# $
 	newFriend
-ƒƒ$ -
+‡‡$ -
 )
-ƒƒ- .
+‡‡- .
 ;
-ƒƒ. /
+‡‡. /
 }
-„„ 
+ˆˆ 
 SetCards
-…… 
+‰‰ 
 (
-…… 
+‰‰ 
 )
-…… 
+‰‰ 
 ;
-…… 
-}
-†† 
-catch
-‡‡ 
-(
-‡‡ '
-EndpointNotFoundException
-‡‡ ,
-ex
-‡‡- /
-)
-‡‡/ 0
-{
-ˆˆ 
-HandleException
-‰‰ 
-(
-‰‰  
-ex
-‰‰  "
-,
-‰‰" #
-
-Properties
-‰‰$ .
-.
-‰‰. /
-	Resources
-‰‰/ 8
-.
-‰‰8 9&
-lblFailToEliminateFriend
-‰‰9 Q
-+
-‰‰R S
-$str
-‰‰T Y
-+
-‰‰Z [
-
-Properties
-‰‰\ f
-.
-‰‰f g
-	Resources
-‰‰g p
-.
-‰‰p q"
-lblEndPointNotFound‰‰q „
-)‰‰„ …
-;‰‰… †
+‰‰ 
 }
 ŠŠ 
 catch
 ‹‹ 
 (
-‹‹ 1
-#CommunicationObjectFaultedException
-‹‹ 6
+‹‹ '
+EndpointNotFoundException
+‹‹ ,
 ex
-‹‹7 9
+‹‹- /
 )
-‹‹9 :
+‹‹/ 0
 {
 ŒŒ 
 HandleException
@@ -22717,22 +22610,22 @@ Properties
 	Resources
 g p
 .
-p q'
-lblComunicationExceptionq ‰
-)‰ Š
-;Š ‹
+p q"
+lblEndPointNotFoundq „
+)„ …
+;… †
 }
  
 catch
  
 (
- 
-TimeoutException
- #
+ 1
+#CommunicationObjectFaultedException
+ 6
 ex
-$ &
+7 9
 )
-& '
+9 :
 {
  
 HandleException
@@ -22768,22 +22661,22 @@ Properties
 	Resources
 ‘‘g p
 .
-‘‘p q
-lblTimeException‘‘q 
-)‘‘ ‚
-;‘‘‚ ƒ
+‘‘p q'
+lblComunicationException‘‘q ‰
+)‘‘‰ Š
+;‘‘Š ‹
 }
 ’’ 
 catch
 ““ 
 (
-““ $
-CommunicationException
-““ )
+““ 
+TimeoutException
+““ #
 ex
-““* ,
+““$ &
 )
-““, -
+““& '
 {
 ”” 
 HandleException
@@ -22819,22 +22712,22 @@ Properties
 	Resources
 ••g p
 .
-••p q'
-lblComunicationException••q ‰
-)••‰ Š
-;••Š ‹
+••p q
+lblTimeException••q 
+)•• ‚
+;••‚ ƒ
 }
 –– 
 catch
 —— 
 (
-—— 
-SocketException
-—— "
+—— $
+CommunicationException
+—— )
 ex
-——# %
+——* ,
 )
-——% &
+——, -
 {
 ˜˜ 
 HandleException
@@ -22853,265 +22746,265 @@ Properties
 	Resources
 ™™/ 8
 .
-™™8 9"
-lblFailToReportAUser
-™™9 M
+™™8 9&
+lblFailToEliminateFriend
+™™9 Q
 +
-™™N O
+™™R S
 $str
-™™P U
+™™T Y
 +
-™™V W
+™™Z [
 
 Properties
-™™X b
+™™\ f
 .
-™™b c
+™™f g
 	Resources
-™™c l
+™™g p
 .
-™™l m"
-lblEndPointNotFound™™m €
-)™™€ 
-;™™ ‚
+™™p q'
+lblComunicationException™™q ‰
+)™™‰ Š
+;™™Š ‹
 }
-šš 
-}
-›› 	
-public
- 
-void
- 
-SentFriendRequest
- %
-(
-% &
-int
-& )
-idUserRequested
-* 9
-)
-9 :
-{
- 	
-try
-ŸŸ 
-{
-   (
-FriendManagerActionsClient
-¡¡ *(
-friendActionsCallBackProxy
-¡¡+ E
-=
-¡¡F G
-new
-¡¡H K(
-FriendManagerActionsClient
-¡¡L f
-(
-¡¡f g
-new
-¡¡g j
-InstanceContext
-¡¡k z
-(
-¡¡z {
-this
-¡¡{ 
-)¡¡ €
-)¡¡€ 
-;¡¡ ‚(
-friendActionsCallBackProxy
-¢¢ *
-.
-¢¢* +,
-RenewFriendManagerUserCallBack
-¢¢+ I
-(
-¢¢I J
-userSingleton
-¢¢J W
-.
-¢¢W X
-IdUser
-¢¢X ^
-)
-¢¢^ _
-;
-¢¢_ `1
-#FriendManagerActionOperationsClient
-¤¤ 3 
-friendActionsProxy
-¤¤4 F
-=
-¤¤G H
-new
-¤¤I L
-(
-¤¤L M
-)
-¤¤M N
-;
-¤¤N O 
-friendActionsProxy
-¥¥ "
-.
-¥¥" #
-SendFriendRequest
-¥¥# 4
-(
-¥¥4 5
-userSingleton
-¥¥5 B
-.
-¥¥B C
-IdPlayer
-¥¥C K
-,
-¥¥K L
-idUserRequested
-¥¥M \
-)
-¥¥\ ]
-;
-¥¥] ^$
-FriendBasicInformation
-¦¦ &
-item
-¦¦' +
-=
-¦¦, -
-otherPeople
-¦¦. 9
-.
-¦¦9 :
-Find
-¦¦: >
-(
-¦¦> ?
-pla
-¦¦? B
-=>
-¦¦C E
-pla
-¦¦F I
-.
-¦¦I J
-IdUser
-¦¦J P
-==
-¦¦Q S
-idUserRequested
-¦¦T c
-)
-¦¦c d
-;
-¦¦d e
-if
-§§ 
-(
-§§ 
-item
-§§ 
-.
-§§ 
-IdUser
-§§ 
-==
-§§  "
-idUserRequested
-§§# 2
-)
-§§2 3
-{
-¨¨ 
-otherPeople
-©© 
-.
-©©  
-Remove
-©©  &
-(
-©©& '
-item
-©©' +
-)
-©©+ ,
-;
-©©, -
-}
-ªª 
-SetCards
-«« 
-(
-«« 
-)
-«« 
-;
-«« 
-}
-¬¬ 
+šš 
 catch
-­­ 
+›› 
 (
-­­ '
-EndpointNotFoundException
-­­ ,
+›› 
+SocketException
+›› "
 ex
-­­- /
+››# %
 )
-­­/ 0
+››% &
 {
-®® 
+œœ 
 HandleException
-¯¯ 
+ 
 (
-¯¯  
+  
 ex
-¯¯  "
+  "
 ,
-¯¯" #
+" #
 
 Properties
-¯¯$ .
+$ .
 .
-¯¯. /
+. /
 	Resources
-¯¯/ 8
+/ 8
 .
-¯¯8 9+
-lblFailToSentTheFriendRequest
-¯¯9 V
+8 9"
+lblFailToReportAUser
+9 M
 +
-¯¯W X
+N O
 $str
-¯¯Y ^
+P U
 +
-¯¯_ `
+V W
 
 Properties
-¯¯a k
+X b
 .
-¯¯k l
+b c
 	Resources
-¯¯l u
+c l
 .
-¯¯u v"
-lblEndPointNotFound¯¯v ‰
-)¯¯‰ Š
-;¯¯Š ‹
+l m"
+lblEndPointNotFoundm €
+)€ 
+; ‚
+}
+ 
+}
+ŸŸ 	
+public
+¡¡ 
+void
+¡¡ 
+SentFriendRequest
+¡¡ %
+(
+¡¡% &
+int
+¡¡& )
+idUserRequested
+¡¡* 9
+)
+¡¡9 :
+{
+¢¢ 	
+try
+££ 
+{
+¤¤ (
+FriendManagerActionsClient
+¥¥ *(
+friendActionsCallBackProxy
+¥¥+ E
+=
+¥¥F G
+new
+¥¥H K(
+FriendManagerActionsClient
+¥¥L f
+(
+¥¥f g
+new
+¥¥g j
+InstanceContext
+¥¥k z
+(
+¥¥z {
+this
+¥¥{ 
+)¥¥ €
+)¥¥€ 
+;¥¥ ‚(
+friendActionsCallBackProxy
+¦¦ *
+.
+¦¦* +,
+RenewFriendManagerUserCallBack
+¦¦+ I
+(
+¦¦I J
+userSingleton
+¦¦J W
+.
+¦¦W X
+IdUser
+¦¦X ^
+)
+¦¦^ _
+;
+¦¦_ `1
+#FriendManagerActionOperationsClient
+¨¨ 3 
+friendActionsProxy
+¨¨4 F
+=
+¨¨G H
+new
+¨¨I L
+(
+¨¨L M
+)
+¨¨M N
+;
+¨¨N O 
+friendActionsProxy
+©© "
+.
+©©" #
+SendFriendRequest
+©©# 4
+(
+©©4 5
+userSingleton
+©©5 B
+.
+©©B C
+IdPlayer
+©©C K
+,
+©©K L
+idUserRequested
+©©M \
+)
+©©\ ]
+;
+©©] ^$
+FriendBasicInformation
+ªª &
+item
+ªª' +
+=
+ªª, -
+otherPeople
+ªª. 9
+.
+ªª9 :
+Find
+ªª: >
+(
+ªª> ?
+pla
+ªª? B
+=>
+ªªC E
+pla
+ªªF I
+.
+ªªI J
+IdUser
+ªªJ P
+==
+ªªQ S
+idUserRequested
+ªªT c
+)
+ªªc d
+;
+ªªd e
+if
+«« 
+(
+«« 
+item
+«« 
+.
+«« 
+IdUser
+«« 
+==
+««  "
+idUserRequested
+««# 2
+)
+««2 3
+{
+¬¬ 
+otherPeople
+­­ 
+.
+­­  
+Remove
+­­  &
+(
+­­& '
+item
+­­' +
+)
+­­+ ,
+;
+­­, -
+}
+®® 
+SetCards
+¯¯ 
+(
+¯¯ 
+)
+¯¯ 
+;
+¯¯ 
 }
 °° 
 catch
 ±± 
 (
-±± 1
-#CommunicationObjectFaultedException
-±± 6
+±± '
+EndpointNotFoundException
+±± ,
 ex
-±±7 9
+±±- /
 )
-±±9 :
+±±/ 0
 {
 ²² 
 HandleException
@@ -23147,22 +23040,22 @@ Properties
 	Resources
 ³³l u
 .
-³³u v'
-lblComunicationException³³v 
-)³³ 
-;³³ 
+³³u v"
+lblEndPointNotFound³³v ‰
+)³³‰ Š
+;³³Š ‹
 }
 ´´ 
 catch
 µµ 
 (
-µµ 
-TimeoutException
-µµ #
+µµ 1
+#CommunicationObjectFaultedException
+µµ 6
 ex
-µµ$ &
+µµ7 9
 )
-µµ& '
+µµ9 :
 {
 ¶¶ 
 HandleException
@@ -23198,22 +23091,22 @@ Properties
 	Resources
 ··l u
 .
-··u v
-lblTimeException··v †
-)··† ‡
-;··‡ ˆ
+··u v'
+lblComunicationException··v 
+)·· 
+;·· 
 }
 ¸¸ 
 catch
 ¹¹ 
 (
-¹¹ $
-CommunicationException
-¹¹ )
+¹¹ 
+TimeoutException
+¹¹ #
 ex
-¹¹* ,
+¹¹$ &
 )
-¹¹, -
+¹¹& '
 {
 ºº 
 HandleException
@@ -23249,22 +23142,22 @@ Properties
 	Resources
 »»l u
 .
-»»u v'
-lblComunicationException»»v 
-)»» 
-;»» 
+»»u v
+lblTimeException»»v †
+)»»† ‡
+;»»‡ ˆ
 }
 ¼¼ 
 catch
 ½½ 
 (
-½½ 
-SocketException
-½½ "
+½½ $
+CommunicationException
+½½ )
 ex
-½½# %
+½½* ,
 )
-½½% &
+½½, -
 {
 ¾¾ 
 HandleException
@@ -23283,364 +23176,364 @@ Properties
 	Resources
 ¿¿/ 8
 .
-¿¿8 9"
-lblFailToReportAUser
-¿¿9 M
+¿¿8 9+
+lblFailToSentTheFriendRequest
+¿¿9 V
 +
-¿¿N O
+¿¿W X
 $str
-¿¿P U
+¿¿Y ^
 +
-¿¿V W
+¿¿_ `
 
 Properties
-¿¿X b
+¿¿a k
 .
-¿¿b c
+¿¿k l
 	Resources
-¿¿c l
+¿¿l u
 .
-¿¿l m"
-lblEndPointNotFound¿¿m €
-)¿¿€ 
-;¿¿ ‚
+¿¿u v'
+lblComunicationException¿¿v 
+)¿¿ 
+;¿¿ 
 }
-ÀÀ 
+ÀÀ 
+catch
+ÁÁ 
+(
+ÁÁ 
+SocketException
+ÁÁ "
+ex
+ÁÁ# %
+)
+ÁÁ% &
+{
+ÂÂ 
+HandleException
+ÃÃ 
+(
+ÃÃ  
+ex
+ÃÃ  "
+,
+ÃÃ" #
+
+Properties
+ÃÃ$ .
+.
+ÃÃ. /
+	Resources
+ÃÃ/ 8
+.
+ÃÃ8 9"
+lblFailToReportAUser
+ÃÃ9 M
++
+ÃÃN O
+$str
+ÃÃP U
++
+ÃÃV W
+
+Properties
+ÃÃX b
+.
+ÃÃb c
+	Resources
+ÃÃc l
+.
+ÃÃl m"
+lblEndPointNotFoundÃÃm €
+)ÃÃ€ 
+;ÃÃ ‚
 }
-ÁÁ 	
+ÄÄ 
+}
+ÅÅ 	
 public
-ÃÃ 
+ÇÇ 
 void
-ÃÃ !
+ÇÇ !
 AcceptFriendRequest
-ÃÃ '
+ÇÇ '
 (
-ÃÃ' (
+ÇÇ' (
 int
-ÃÃ( +
+ÇÇ( +
 idUserRequesting
-ÃÃ, <
+ÇÇ, <
 ,
-ÃÃ< =
+ÇÇ< =
 String
-ÃÃ> D
+ÇÇ> D
 userName
-ÃÃE M
+ÇÇE M
 )
-ÃÃM N
+ÇÇM N
 {
-ÄÄ 	
+ÈÈ 	
 try
-ÅÅ 
+ÉÉ 
 {
-ÆÆ (
+ÊÊ (
 FriendManagerActionsClient
-ÇÇ *(
+ËË *(
 friendActionsCallBackProxy
-ÇÇ+ E
+ËË+ E
 =
-ÇÇF G
+ËËF G
 new
-ÇÇH K(
+ËËH K(
 FriendManagerActionsClient
-ÇÇL f
+ËËL f
 (
-ÇÇf g
+ËËf g
 new
-ÇÇg j
+ËËg j
 InstanceContext
-ÇÇk z
+ËËk z
 (
-ÇÇz {
+ËËz {
 this
-ÇÇ{ 
-)ÇÇ €
-)ÇÇ€ 
-;ÇÇ ‚(
+ËË{ 
+)ËË €
+)ËË€ 
+;ËË ‚(
 friendActionsCallBackProxy
-ÈÈ *
+ÌÌ *
 .
-ÈÈ* +,
+ÌÌ* +,
 RenewFriendManagerUserCallBack
-ÈÈ+ I
+ÌÌ+ I
 (
-ÈÈI J
+ÌÌI J
 userSingleton
-ÈÈJ W
+ÌÌJ W
 .
-ÈÈW X
+ÌÌW X
 IdUser
-ÈÈX ^
+ÌÌX ^
 )
-ÈÈ^ _
+ÌÌ^ _
 ;
-ÈÈ_ `1
+ÌÌ_ `1
 #FriendManagerActionOperationsClient
-ÊÊ 3 
+ÎÎ 3 
 friendActionsProxy
-ÊÊ4 F
+ÎÎ4 F
 =
-ÊÊG H
+ÎÎG H
 new
-ÊÊI L
+ÎÎI L
 (
-ÊÊL M
+ÎÎL M
 )
-ÊÊM N
+ÎÎM N
 ;
-ÊÊN O 
+ÎÎN O 
 friendActionsProxy
-ËË "
+ÏÏ "
 .
-ËË" #!
+ÏÏ" #!
 AcceptFriendRequest
-ËË# 6
+ÏÏ# 6
 (
-ËË6 7
+ÏÏ6 7
 userSingleton
-ËË7 D
+ÏÏ7 D
 .
-ËËD E
+ÏÏD E
 IdPlayer
-ËËE M
+ÏÏE M
 ,
-ËËM N
+ÏÏM N
 idUserRequesting
-ËËO _
+ÏÏO _
 )
-ËË_ `
+ÏÏ_ `
 ;
-ËË` a
+ÏÏ` a
 foreach
-ÌÌ 
+ĞĞ 
 (
-ÌÌ 
+ĞĞ 
 var
-ÌÌ 
+ĞĞ 
 item
-ÌÌ !
+ĞĞ !
 in
-ÌÌ" $
+ĞĞ" $
 friendRequests
-ÌÌ% 3
+ĞĞ% 3
 )
-ÌÌ3 4
+ĞĞ3 4
 {
-ÍÍ 
+ÑÑ 
 if
-ÎÎ 
+ÒÒ 
 (
-ÎÎ 
+ÒÒ 
 item
-ÎÎ 
+ÒÒ 
 .
-ÎÎ 
+ÒÒ 
 IdUser
-ÎÎ #
+ÒÒ #
 ==
-ÎÎ$ &
+ÒÒ$ &
 idUserRequesting
-ÎÎ' 7
+ÒÒ' 7
 )
-ÎÎ7 8
+ÒÒ7 8
 {
-ÏÏ 
+ÓÓ 
 friendRequests
-ĞĞ &
+ÔÔ &
 .
-ĞĞ& '
+ÔÔ& '
 Remove
-ĞĞ' -
+ÔÔ' -
 (
-ĞĞ- .
+ÔÔ- .
 item
-ĞĞ. 2
+ÔÔ. 2
 )
-ĞĞ2 3
+ÔÔ2 3
 ;
-ĞĞ3 4
+ÔÔ3 4
 break
-ÑÑ 
+ÕÕ 
 ;
-ÑÑ 
+ÕÕ 
 }
-ÒÒ 
+ÖÖ 
 }
-ÓÓ 
+×× 
 if
-ÔÔ 
+ØØ 
 (
-ÔÔ 
+ØØ 
 !
-ÔÔ 
+ØØ 
 friends
-ÔÔ 
+ØØ 
 .
-ÔÔ 
+ØØ 
 Exists
-ÔÔ #
+ØØ #
 (
-ÔÔ# $
+ØØ# $
 pla
-ÔÔ$ '
+ØØ$ '
 =>
-ÔÔ( *
+ØØ( *
 pla
-ÔÔ+ .
+ØØ+ .
 .
-ÔÔ. /
+ØØ. /
 IdUser
-ÔÔ/ 5
+ØØ/ 5
 ==
-ÔÔ6 8
+ØØ6 8
 idUserRequesting
-ÔÔ9 I
+ØØ9 I
 )
-ÔÔI J
+ØØI J
 )
-ÔÔJ K
+ØØJ K
 {
-ÕÕ $
+ÙÙ $
 FriendBasicInformation
-ÖÖ *
+ÚÚ *
 	newFriend
-ÖÖ+ 4
+ÚÚ+ 4
 =
-ÖÖ5 6
+ÚÚ5 6
 new
-ÖÖ7 :$
+ÚÚ7 :$
 FriendBasicInformation
-ÖÖ; Q
+ÚÚ; Q
 (
-ÖÖQ R
+ÚÚQ R
 )
-ÖÖR S
+ÚÚR S
 ;
-ÖÖS T
+ÚÚS T
 	newFriend
-×× 
+ÛÛ 
 .
-×× 
+ÛÛ 
 IdUser
-×× $
+ÛÛ $
 =
-××% &
+ÛÛ% &
 idUserRequesting
-××' 7
+ÛÛ' 7
 ;
-××7 8
+ÛÛ7 8
 	newFriend
-ØØ 
+ÜÜ 
 .
-ØØ 
+ÜÜ 
 UserName
-ØØ &
+ÜÜ &
 =
-ØØ' (
+ÜÜ' (
 userName
-ØØ) 1
+ÜÜ) 1
 ;
-ØØ1 2
+ÜÜ1 2
 	newFriend
-ÙÙ 
+İİ 
 .
-ÙÙ "
+İİ "
 IdStatusAvailability
-ÙÙ 2
+İİ 2
 =
-ÙÙ3 4
+İİ3 4
 
 NOT_STATUS
-ÙÙ5 ?
+İİ5 ?
 ;
-ÙÙ? @
+İİ? @
 friends
-ÚÚ 
+ŞŞ 
 .
-ÚÚ 
+ŞŞ 
 Add
-ÚÚ 
+ŞŞ 
 (
-ÚÚ  
+ŞŞ  
 	newFriend
-ÚÚ  )
+ŞŞ  )
 )
-ÚÚ) *
+ŞŞ) *
 ;
-ÚÚ* +
+ŞŞ* +
 }
-ÛÛ 
+ßß 
 SetCards
-ÜÜ 
+àà 
 (
-ÜÜ 
+àà 
 )
-ÜÜ 
+àà 
 ;
-ÜÜ 
-}
-İİ 
-catch
-ŞŞ 
-(
-ŞŞ '
-EndpointNotFoundException
-ŞŞ ,
-ex
-ŞŞ- /
-)
-ŞŞ/ 0
-{
-ßß 
-HandleException
-àà 
-(
-àà  
-ex
-àà  "
-,
-àà" #
-
-Properties
-àà$ .
-.
-àà. /
-	Resources
-àà/ 8
-.
-àà8 9&
-lblFailToAccepInvitation
-àà9 Q
-+
-ààR S
-$str
-ààT Y
-+
-ààZ [
-
-Properties
-àà\ f
-.
-ààf g
-	Resources
-ààg p
-.
-ààp q"
-lblEndPointNotFoundààq „
-)àà„ …
-;àà… †
+àà 
 }
 áá 
 catch
 ââ 
 (
-ââ 1
-#CommunicationObjectFaultedException
-ââ 6
+ââ '
+EndpointNotFoundException
+ââ ,
 ex
-ââ7 9
+ââ- /
 )
-ââ9 :
+ââ/ 0
 {
 ãã 
 HandleException
@@ -23676,22 +23569,22 @@ Properties
 	Resources
 ääg p
 .
-ääp q'
-lblComunicationExceptionääq ‰
-)ää‰ Š
-;ääŠ ‹
+ääp q"
+lblEndPointNotFoundääq „
+)ää„ …
+;ää… †
 }
 åå 
 catch
 ææ 
 (
-ææ 
-TimeoutException
-ææ #
+ææ 1
+#CommunicationObjectFaultedException
+ææ 6
 ex
-ææ$ &
+ææ7 9
 )
-ææ& '
+ææ9 :
 {
 çç 
 HandleException
@@ -23727,22 +23620,22 @@ Properties
 	Resources
 èèg p
 .
-èèp q
-lblTimeExceptionèèq 
-)èè ‚
-;èè‚ ƒ
+èèp q'
+lblComunicationExceptionèèq ‰
+)èè‰ Š
+;èèŠ ‹
 }
 éé 
 catch
 êê 
 (
-êê $
-CommunicationException
-êê )
+êê 
+TimeoutException
+êê #
 ex
-êê* ,
+êê$ &
 )
-êê, -
+êê& '
 {
 ëë 
 HandleException
@@ -23778,22 +23671,22 @@ Properties
 	Resources
 ììg p
 .
-ììp q'
-lblComunicationExceptionììq ‰
-)ìì‰ Š
-;ììŠ ‹
+ììp q
+lblTimeExceptionììq 
+)ìì ‚
+;ìì‚ ƒ
 }
 íí 
 catch
 îî 
 (
-îî 
-SocketException
-îî "
+îî $
+CommunicationException
+îî )
 ex
-îî# %
+îî* ,
 )
-îî% &
+îî, -
 {
 ïï 
 HandleException
@@ -23812,364 +23705,364 @@ Properties
 	Resources
 ğğ/ 8
 .
-ğğ8 9"
-lblFailToReportAUser
-ğğ9 M
+ğğ8 9&
+lblFailToAccepInvitation
+ğğ9 Q
 +
-ğğN O
+ğğR S
 $str
-ğğP U
+ğğT Y
 +
-ğğV W
+ğğZ [
 
 Properties
-ğğX b
+ğğ\ f
 .
-ğğb c
+ğğf g
 	Resources
-ğğc l
+ğğg p
 .
-ğğl m"
-lblEndPointNotFoundğğm €
-)ğğ€ 
-;ğğ ‚
+ğğp q'
+lblComunicationExceptionğğq ‰
+)ğğ‰ Š
+;ğğŠ ‹
 }
-ññ 
+ññ 
+catch
+òò 
+(
+òò 
+SocketException
+òò "
+ex
+òò# %
+)
+òò% &
+{
+óó 
+HandleException
+ôô 
+(
+ôô  
+ex
+ôô  "
+,
+ôô" #
+
+Properties
+ôô$ .
+.
+ôô. /
+	Resources
+ôô/ 8
+.
+ôô8 9"
+lblFailToReportAUser
+ôô9 M
++
+ôôN O
+$str
+ôôP U
++
+ôôV W
+
+Properties
+ôôX b
+.
+ôôb c
+	Resources
+ôôc l
+.
+ôôl m"
+lblEndPointNotFoundôôm €
+)ôô€ 
+;ôô ‚
 }
-òò 	
+õõ 
+}
+öö 	
 public
-ôô 
+øø 
 void
-ôô "
+øø "
 DeclineFriendRequest
-ôô (
+øø (
 (
-ôô( )
+øø( )
 int
-ôô) ,
+øø) ,
 idUserRequesting
-ôô- =
+øø- =
 ,
-ôô= >
+øø= >
 String
-ôô? E
+øø? E
 userName
-ôôF N
+øøF N
 )
-ôôN O
+øøN O
 {
-õõ 	
+ùù 	
 try
-öö 
+úú 
 {
-÷÷ (
+ûû (
 FriendManagerActionsClient
-øø *(
+üü *(
 friendActionsCallBackProxy
-øø+ E
+üü+ E
 =
-øøF G
+üüF G
 new
-øøH K(
+üüH K(
 FriendManagerActionsClient
-øøL f
+üüL f
 (
-øøf g
+üüf g
 new
-øøg j
+üüg j
 InstanceContext
-øøk z
+üük z
 (
-øøz {
+üüz {
 this
-øø{ 
-)øø €
-)øø€ 
-;øø ‚(
+üü{ 
+)üü €
+)üü€ 
+;üü ‚(
 friendActionsCallBackProxy
-ùù *
+ıı *
 .
-ùù* +,
+ıı* +,
 RenewFriendManagerUserCallBack
-ùù+ I
+ıı+ I
 (
-ùùI J
+ııI J
 userSingleton
-ùùJ W
+ııJ W
 .
-ùùW X
+ııW X
 IdUser
-ùùX ^
+ııX ^
 )
-ùù^ _
+ıı^ _
 ;
-ùù_ `1
+ıı_ `1
 #FriendManagerActionOperationsClient
-ûû 3 
+ÿÿ 3 
 friendActionsProxy
-ûû4 F
+ÿÿ4 F
 =
-ûûG H
+ÿÿG H
 new
-ûûI L
+ÿÿI L
 (
-ûûL M
+ÿÿL M
 )
-ûûM N
+ÿÿM N
 ;
-ûûN O 
+ÿÿN O 
 friendActionsProxy
-üü "
+€€ "
 .
-üü" #"
+€€" #"
 DeclineFriendRequest
-üü# 7
+€€# 7
 (
-üü7 8
+€€7 8
 userSingleton
-üü8 E
+€€8 E
 .
-üüE F
+€€E F
 IdPlayer
-üüF N
+€€F N
 ,
-üüN O
+€€N O
 idUserRequesting
-üüP `
+€€P `
 )
-üü` a
+€€` a
 ;
-üüa b
+€€a b
 foreach
-ıı 
+ 
 (
-ıı 
+ 
 var
-ıı 
+ 
 item
-ıı !
+ !
 in
-ıı" $
+" $
 friendRequests
-ıı% 3
+% 3
 )
-ıı3 4
+3 4
 {
-şş 
+‚‚ 
 if
-ÿÿ 
+ƒƒ 
 (
-ÿÿ 
+ƒƒ 
 item
-ÿÿ 
+ƒƒ 
 .
-ÿÿ 
+ƒƒ 
 IdUser
-ÿÿ #
+ƒƒ #
 ==
-ÿÿ$ &
+ƒƒ$ &
 idUserRequesting
-ÿÿ' 7
+ƒƒ' 7
 )
-ÿÿ7 8
+ƒƒ7 8
 {
-€€ 
+„„ 
 friendRequests
- &
+…… &
 .
-& '
+……& '
 Remove
-' -
+……' -
 (
-- .
+……- .
 item
-. 2
+……. 2
 )
-2 3
+……2 3
 ;
-3 4
+……3 4
 break
-‚‚ 
+†† 
 ;
-‚‚ 
+†† 
 }
-ƒƒ 
+‡‡ 
 }
-„„ 
+ˆˆ 
 if
-…… 
+‰‰ 
 (
-…… 
+‰‰ 
 !
-…… 
+‰‰ 
 otherPeople
-……  
+‰‰  
 .
-……  !
+‰‰  !
 Exists
-……! '
+‰‰! '
 (
-……' (
+‰‰' (
 pla
-……( +
+‰‰( +
 =>
-……, .
+‰‰, .
 pla
-……/ 2
+‰‰/ 2
 .
-……2 3
+‰‰2 3
 IdUser
-……3 9
+‰‰3 9
 ==
-……: <
+‰‰: <
 idUserRequesting
-……= M
+‰‰= M
 )
-……M N
+‰‰M N
 )
-……N O
+‰‰N O
 {
-†† $
+ŠŠ $
 FriendBasicInformation
-‡‡ *
+‹‹ *
 	newFriend
-‡‡+ 4
+‹‹+ 4
 =
-‡‡5 6
+‹‹5 6
 new
-‡‡7 :$
+‹‹7 :$
 FriendBasicInformation
-‡‡; Q
+‹‹; Q
 (
-‡‡Q R
+‹‹Q R
 )
-‡‡R S
+‹‹R S
 ;
-‡‡S T
+‹‹S T
 	newFriend
-ˆˆ 
+ŒŒ 
 .
-ˆˆ 
+ŒŒ 
 IdUser
-ˆˆ $
+ŒŒ $
 =
-ˆˆ% &
+ŒŒ% &
 idUserRequesting
-ˆˆ' 7
+ŒŒ' 7
 ;
-ˆˆ7 8
+ŒŒ7 8
 	newFriend
-‰‰ 
+ 
 .
-‰‰ 
+ 
 UserName
-‰‰ &
+ &
 =
-‰‰' (
+' (
 userName
-‰‰) 1
+) 1
 ;
-‰‰1 2
+1 2
 	newFriend
-ŠŠ 
+ 
 .
-ŠŠ "
+ "
 IdStatusAvailability
-ŠŠ 2
+ 2
 =
-ŠŠ3 4
+3 4
 
 NOT_STATUS
-ŠŠ5 ?
+5 ?
 ;
-ŠŠ? @
+? @
 otherPeople
-‹‹ 
+ 
 .
-‹‹  
+  
 Add
-‹‹  #
+  #
 (
-‹‹# $
+# $
 	newFriend
-‹‹$ -
+$ -
 )
-‹‹- .
+- .
 ;
-‹‹. /
+. /
 }
-ŒŒ 
+ 
 SetCards
- 
+‘‘ 
 (
- 
+‘‘ 
 )
- 
+‘‘ 
 ;
- 
-}
- 
-catch
- 
-(
- '
-EndpointNotFoundException
- ,
-ex
-- /
-)
-/ 0
-{
- 
-HandleException
-‘‘ 
-(
-‘‘  
-ex
-‘‘  "
-,
-‘‘" #
-
-Properties
-‘‘$ .
-.
-‘‘. /
-	Resources
-‘‘/ 8
-.
-‘‘8 9%
-lblFailToDeclineRequest
-‘‘9 P
-+
-‘‘Q R
-$str
-‘‘S X
-+
-‘‘Y Z
-
-Properties
-‘‘[ e
-.
-‘‘e f
-	Resources
-‘‘f o
-.
-‘‘o p"
-lblEndPointNotFound‘‘p ƒ
-)‘‘ƒ „
-;‘‘„ …
+‘‘ 
 }
 ’’ 
 catch
 ““ 
 (
-““ 1
-#CommunicationObjectFaultedException
-““ 6
+““ '
+EndpointNotFoundException
+““ ,
 ex
-““7 9
+““- /
 )
-““9 :
+““/ 0
 {
 ”” 
 HandleException
@@ -24205,22 +24098,22 @@ Properties
 	Resources
 ••f o
 .
-••o p'
-lblComunicationException••p ˆ
-)••ˆ ‰
-;••‰ Š
+••o p"
+lblEndPointNotFound••p ƒ
+)••ƒ „
+;••„ …
 }
 –– 
 catch
 —— 
 (
-—— 
-TimeoutException
-—— #
+—— 1
+#CommunicationObjectFaultedException
+—— 6
 ex
-——$ &
+——7 9
 )
-——& '
+——9 :
 {
 ˜˜ 
 HandleException
@@ -24256,22 +24149,22 @@ Properties
 	Resources
 ™™f o
 .
-™™o p
-lblTimeException™™p €
-)™™€ 
-;™™ ‚
+™™o p'
+lblComunicationException™™p ˆ
+)™™ˆ ‰
+;™™‰ Š
 }
 šš 
 catch
 ›› 
 (
-›› $
-CommunicationException
-›› )
+›› 
+TimeoutException
+›› #
 ex
-››* ,
+››$ &
 )
-››, -
+››& '
 {
 œœ 
 HandleException
@@ -24307,22 +24200,22 @@ Properties
 	Resources
 f o
 .
-o p'
-lblComunicationExceptionp ˆ
-)ˆ ‰
-;‰ Š
+o p
+lblTimeExceptionp €
+)€ 
+; ‚
 }
  
 catch
 ŸŸ 
 (
-ŸŸ 
-SocketException
-ŸŸ "
+ŸŸ $
+CommunicationException
+ŸŸ )
 ex
-ŸŸ# %
+ŸŸ* ,
 )
-ŸŸ% &
+ŸŸ, -
 {
    
 HandleException
@@ -24341,1482 +24234,1494 @@ Properties
 	Resources
 ¡¡/ 8
 .
-¡¡8 9"
-lblFailToReportAUser
-¡¡9 M
+¡¡8 9%
+lblFailToDeclineRequest
+¡¡9 P
 +
-¡¡N O
+¡¡Q R
 $str
-¡¡P U
+¡¡S X
 +
-¡¡V W
+¡¡Y Z
 
 Properties
-¡¡X b
+¡¡[ e
 .
-¡¡b c
+¡¡e f
 	Resources
-¡¡c l
+¡¡f o
 .
-¡¡l m"
-lblEndPointNotFound¡¡m €
-)¡¡€ 
-;¡¡ ‚
+¡¡o p'
+lblComunicationException¡¡p ˆ
+)¡¡ˆ ‰
+;¡¡‰ Š
 }
-¢¢ 
-}
-££ 	
-public
-¥¥ 
-void
-¥¥ 
-ResponseReported
-¥¥ $
+¢¢ 
+catch
+££ 
 (
-¥¥$ %
+££ 
+SocketException
+££ "
+ex
+££# %
+)
+££% &
+{
+¤¤ 
+HandleException
+¥¥ 
+(
+¥¥  
+ex
+¥¥  "
+,
+¥¥" #
+
+Properties
+¥¥$ .
+.
+¥¥. /
+	Resources
+¥¥/ 8
+.
+¥¥8 9"
+lblFailToReportAUser
+¥¥9 M
++
+¥¥N O
+$str
+¥¥P U
++
+¥¥V W
+
+Properties
+¥¥X b
+.
+¥¥b c
+	Resources
+¥¥c l
+.
+¥¥l m"
+lblEndPointNotFound¥¥m €
+)¥¥€ 
+;¥¥ ‚
+}
+¦¦ 
+}
+§§ 	
+public
+©© 
+void
+©© 
+ResponseReported
+©© $
+(
+©©$ %
 int
-¥¥% (
+©©% (
 
 numReports
-¥¥) 3
+©©) 3
 )
-¥¥3 4
+©©3 4
 {
-¦¦ 	
-dialogWindow
-§§ 
+ªª 	!
+DialogWindowManager
+«« 
 .
-§§ #
+««  #
 ShowInfoOrErrorWindow
-§§ .
+««  5
 (
-§§. /
+««5 6
 
 Properties
-§§/ 9
+««6 @
 .
-§§9 :
+««@ A
 	Resources
-§§: C
+««A J
 .
-§§C D
+««J K
 txbWarningTitle
-§§D S
+««K Z
 ,
-§§S T
+««Z [
 
 Properties
-§§U _
+««\ f
 .
-§§_ `
+««f g
 	Resources
-§§` i
+««g p
 .
-§§i j
-MessageReported
-§§j y
-+
-§§z {
+««p q
+MessageReported««q €
++«« ‚
 
-numReports§§| †
-.§§† ‡
-ToString§§‡ 
-(§§ 
-)§§ ‘
-,§§‘ ’
-Application§§“ 
-.§§ Ÿ
-Current§§Ÿ ¦
-.§§¦ §
+numReports««ƒ 
+.«« 
+ToString«« –
+(««– —
+)««— ˜
+,««˜ ™
+Application««š ¥
+.««¥ ¦
+Current««¦ ­
+.««­ ®
 
-MainWindow§§§ ±
-,§§± ²
-dialogWindow§§³ ¿
-.§§¿ À
-INFORMATION§§À Ë
-)§§Ë Ì
-;§§Ì Í
+MainWindow««® ¸
+,««¸ ¹#
+DialogWindowManager««º Í
+.««Í Î
+INFORMATION««Î Ù
+)««Ù Ú
+;««Ú Û
 }
-¨¨ 	
+¬¬ 	
 public
-ªª 
+®® 
 void
-ªª #
+®® #
 ResponseRequestAction
-ªª )
+®® )
 (
-ªª) *
+®®) *
 int
-ªª* -
+®®* -
 idUser
-ªª. 4
+®®. 4
 ,
-ªª4 5
+®®4 5
 int
-ªª6 9
+®®6 9
 requestStatus
-ªª: G
+®®: G
 ,
-ªªG H
+®®G H
 string
-ªªI O
+®®I O
 userName
-ªªP X
+®®P X
 )
-ªªX Y
+®®X Y
 {
-«« 	
+¯¯ 	
 switch
-¬¬ 
+°° 
 (
-¬¬ 
+°° 
 requestStatus
-¬¬ !
+°° !
 )
-¬¬! "
+°°! "
 {
-­­ 
+±± 
 case
-®® 
+²² 
 DECLINED_REQUEST
-®® %
+²² %
 :
-®®% &
+²²% &
 ManageResponse
-¯¯ "
+³³ "
 (
-¯¯" #
+³³" #
 friendRequests
-¯¯# 1
+³³# 1
 ,
-¯¯1 2
+³³1 2
 otherPeople
-¯¯3 >
+³³3 >
 ,
-¯¯> ?
+³³> ?
 idUser
-¯¯? E
+³³? E
 ,
-¯¯E F
+³³E F
 userName
-¯¯F N
+³³F N
 )
-¯¯N O
+³³N O
 ;
-¯¯O P&
+³³O P&
 lblDeclineRequestMessage
-°° ,
+´´ ,
 .
-°°, -
+´´, -
 Content
-°°- 4
+´´- 4
 =
-°°5 6
+´´5 6
 userName
-°°7 ?
+´´7 ?
 +
-°°@ A
+´´@ A
 $str
-°°B E
+´´B E
 +
-°°F G
+´´F G
 
 Properties
-°°H R
+´´H R
 .
-°°R S
+´´R S
 	Resources
-°°S \
+´´S \
 .
-°°\ ]%
+´´\ ]%
 MessageFriRequeDeclined
-°°] t
+´´] t
 ;
-°°t u
+´´t u
 
 StartTimer
-±± 
+µµ 
 (
-±± 
+µµ 
 )
-±±  
+µµ  
 ;
-±±  !
+µµ  !
 break
-²² 
+¶¶ 
 ;
-²² 
+¶¶ 
 case
-³³ 
+·· 
 SEND_REQUEST
-³³ !
+·· !
 :
-³³! "
+··! "
 ManageResponse
-´´ "
+¸¸ "
 (
-´´" #
+¸¸" #
 otherPeople
-´´# .
+¸¸# .
 ,
-´´. /
+¸¸. /
 friendRequests
-´´0 >
+¸¸0 >
 ,
-´´> ?
+¸¸> ?
 idUser
-´´@ F
+¸¸@ F
 ,
-´´F G
+¸¸F G
 userName
-´´H P
+¸¸H P
 )
-´´P Q
+¸¸P Q
 ;
-´´Q R
+¸¸Q R
 break
-µµ 
+¹¹ 
 ;
-µµ 
+¹¹ 
 case
-¶¶ 
+ºº 
 ACCEPT_REQUEST
-¶¶ #
+ºº #
 :
-¶¶# $
+ºº# $
 ManageResponse
-·· "
+»» "
 (
-··" #
+»»" #
 friendRequests
-··# 1
+»»# 1
 ,
-··1 2
+»»1 2
 friends
-··3 :
+»»3 :
 ,
-··: ;
+»»: ;
 idUser
-··< B
+»»< B
 ,
-··B C
+»»B C
 userName
-··D L
+»»D L
 )
-··L M
+»»L M
 ;
-··M N
+»»M N
 break
-¸¸ 
+¼¼ 
 ;
-¸¸ 
+¼¼ 
 }
-¹¹ 
+½½ 
 SetCards
-ºº 
+¾¾ 
 (
-ºº 
+¾¾ 
 )
-ºº 
+¾¾ 
 ;
-ºº 
+¾¾ 
 }
-»» 	
+¿¿ 	
 private
-½½ 
+ÁÁ 
 void
-½½ 
+ÁÁ 
 ManageResponse
-½½ #
+ÁÁ #
 (
-½½# $
+ÁÁ# $
 List
-½½$ (
+ÁÁ$ (
 <
-½½( )$
+ÁÁ( )$
 FriendBasicInformation
-½½) ?
+ÁÁ) ?
 >
-½½? @
+ÁÁ? @
 deleteFromList
-½½A O
+ÁÁA O
 ,
-½½O P
+ÁÁO P
 List
-½½Q U
+ÁÁQ U
 <
-½½U V$
+ÁÁU V$
 FriendBasicInformation
-½½V l
+ÁÁV l
 >
-½½l m
+ÁÁl m
 	addToList
-½½n w
+ÁÁn w
 ,
-½½w x
+ÁÁw x
 int
-½½y |
-idUserOperation½½} Œ
-,½½Œ 
-string½½ ”
-userName½½• 
-)½½ 
+ÁÁy |
+idUserOperationÁÁ} Œ
+,ÁÁŒ 
+stringÁÁ ”
+userNameÁÁ• 
+)ÁÁ 
 {
-¾¾ 	
+ÂÂ 	
 foreach
-¿¿ 
+ÃÃ 
 (
-¿¿ 
+ÃÃ 
 var
-¿¿ 
+ÃÃ 
 item
-¿¿ 
+ÃÃ 
 in
-¿¿  
+ÃÃ  
 deleteFromList
-¿¿! /
+ÃÃ! /
 )
-¿¿/ 0
+ÃÃ/ 0
 {
-ÀÀ 
+ÄÄ 
 if
-ÁÁ 
+ÅÅ 
 (
-ÁÁ 
+ÅÅ 
 item
-ÁÁ 
+ÅÅ 
 .
-ÁÁ 
+ÅÅ 
 IdUser
-ÁÁ 
+ÅÅ 
 ==
-ÁÁ  "
+ÅÅ  "
 idUserOperation
-ÁÁ# 2
+ÅÅ# 2
 )
-ÁÁ2 3
+ÅÅ2 3
 {
-ÂÂ 
+ÆÆ 
 deleteFromList
-ÃÃ "
+ÇÇ "
 .
-ÃÃ" #
+ÇÇ" #
 Remove
-ÃÃ# )
+ÇÇ# )
 (
-ÃÃ) *
+ÇÇ) *
 item
-ÃÃ* .
+ÇÇ* .
 )
-ÃÃ. /
+ÇÇ. /
 ;
-ÃÃ/ 0
+ÇÇ/ 0
 break
-ÄÄ 
+ÈÈ 
 ;
-ÄÄ 
+ÈÈ 
 }
-ÅÅ 
+ÉÉ 
 }
-ÆÆ 
+ÊÊ 
 if
-ÇÇ 
+ËË 
 (
-ÇÇ 
+ËË 
 !
-ÇÇ 
+ËË 
 	addToList
-ÇÇ 
-.
-ÇÇ 
-Exists
-ÇÇ  
-(
-ÇÇ  !
-pla
-ÇÇ! $
-=>
-ÇÇ% '
-pla
-ÇÇ( +
-.
-ÇÇ+ ,
-IdUser
-ÇÇ, 2
-==
-ÇÇ3 5
-idUserOperation
-ÇÇ6 E
-)
-ÇÇE F
-)
-ÇÇF G
-{
-ÈÈ $
-FriendBasicInformation
-ÉÉ &
-	newFriend
-ÉÉ' 0
-=
-ÉÉ1 2
-new
-ÉÉ3 6$
-FriendBasicInformation
-ÉÉ7 M
-(
-ÉÉM N
-)
-ÉÉN O
-;
-ÉÉO P
-	newFriend
-ÊÊ 
-.
-ÊÊ 
-IdUser
-ÊÊ  
-=
-ÊÊ! "
-idUserOperation
-ÊÊ# 2
-;
-ÊÊ2 3
-	newFriend
 ËË 
 .
-ËË 
-UserName
-ËË "
-=
-ËË# $
-userName
-ËË% -
-;
-ËË- .
-	newFriend
-ÌÌ 
-.
-ÌÌ "
-IdStatusAvailability
-ÌÌ .
-=
-ÌÌ/ 0
-
-NOT_STATUS
-ÌÌ1 ;
-;
-ÌÌ; <
-	addToList
-ÍÍ 
-.
-ÍÍ 
-Add
-ÍÍ 
-(
-ÍÍ 
-	newFriend
-ÍÍ '
-)
-ÍÍ' (
-;
-ÍÍ( )
-}
-ÎÎ 
-}
-ÏÏ 	
-public
-ÑÑ 
-void
-ÑÑ ,
-ResponseEliminationFromFriends
-ÑÑ 2
-(
-ÑÑ2 3
-int
-ÑÑ3 6
-idUser
-ÑÑ7 =
-)
-ÑÑ= >
-{
-ÒÒ 	
-String
-ÓÓ 
-userName
-ÓÓ 
-=
-ÓÓ 
-String
-ÓÓ $
-.
-ÓÓ$ %
-Empty
-ÓÓ% *
-;
-ÓÓ* +
-foreach
-ÔÔ 
-(
-ÔÔ 
-var
-ÔÔ 
-item
-ÔÔ 
-in
-ÔÔ  
-friends
-ÔÔ! (
-)
-ÔÔ( )
-{
-ÕÕ 
-if
-ÖÖ 
-(
-ÖÖ 
-item
-ÖÖ 
-.
-ÖÖ 
-IdUser
-ÖÖ 
-==
-ÖÖ  "
-idUser
-ÖÖ# )
-)
-ÖÖ) *
-{
-×× 
-friends
-ØØ 
-.
-ØØ 
-Remove
-ØØ "
-(
-ØØ" #
-item
-ØØ# '
-)
-ØØ' (
-;
-ØØ( )
-userName
-ÙÙ 
-=
-ÙÙ 
-item
-ÙÙ #
-.
-ÙÙ# $
-UserName
-ÙÙ$ ,
-;
-ÙÙ, -
-break
-ÚÚ 
-;
-ÚÚ 
-}
-ÛÛ 
-}
-ÜÜ 
-if
-İİ 
-(
-İİ 
-!
-İİ 
-otherPeople
-İİ 
-.
-İİ 
+ËË 
 Exists
-İİ #
+ËË  
 (
-İİ# $
+ËË  !
 pla
-İİ$ '
+ËË! $
 =>
-İİ( *
+ËË% '
 pla
-İİ+ .
+ËË( +
 .
-İİ. /
+ËË+ ,
 IdUser
-İİ/ 5
+ËË, 2
 ==
-İİ6 8
-idUser
-İİ9 ?
+ËË3 5
+idUserOperation
+ËË6 E
 )
-İİ? @
+ËËE F
 )
-İİ@ A
+ËËF G
 {
-ŞŞ $
+ÌÌ $
 FriendBasicInformation
-ßß &
+ÍÍ &
 	newFriend
-ßß' 0
+ÍÍ' 0
 =
-ßß1 2
+ÍÍ1 2
 new
-ßß3 6$
+ÍÍ3 6$
 FriendBasicInformation
-ßß7 M
+ÍÍ7 M
 (
-ßßM N
+ÍÍM N
 )
-ßßN O
+ÍÍN O
 ;
-ßßO P
+ÍÍO P
 	newFriend
-àà 
+ÎÎ 
 .
-àà 
+ÎÎ 
 IdUser
-àà  
+ÎÎ  
 =
-àà! "
-idUser
-àà# )
+ÎÎ! "
+idUserOperation
+ÎÎ# 2
 ;
-àà) *
+ÎÎ2 3
 	newFriend
-áá 
+ÏÏ 
 .
-áá 
+ÏÏ 
 UserName
-áá "
+ÏÏ "
 =
-áá# $
+ÏÏ# $
 userName
-áá% -
+ÏÏ% -
 ;
-áá- .
+ÏÏ- .
 	newFriend
-ââ 
+ĞĞ 
 .
-ââ "
+ĞĞ "
 IdStatusAvailability
-ââ .
+ĞĞ .
 =
-ââ/ 0
+ĞĞ/ 0
 
 NOT_STATUS
-ââ1 ;
+ĞĞ1 ;
 ;
-ââ; <
-otherPeople
-ãã 
+ĞĞ; <
+	addToList
+ÑÑ 
 .
-ãã 
+ÑÑ 
 Add
-ãã 
+ÑÑ 
 (
-ãã  
+ÑÑ 
 	newFriend
-ãã  )
+ÑÑ '
 )
-ãã) *
+ÑÑ' (
 ;
-ãã* +
+ÑÑ( )
 }
-ää 
-SetCards
-åå 
-(
-åå 
-)
-åå 
-;
-åå 
+ÒÒ 
 }
-ææ 	
-private
-èè 
+ÓÓ 	
+public
+ÕÕ 
 void
-èè %
-ClickSearchPlayerButton
-èè ,
+ÕÕ ,
+ResponseEliminationFromFriends
+ÕÕ 2
 (
-èè, -
-object
-èè- 3
-sender
-èè4 :
-,
-èè: ;
-RoutedEventArgs
-èè< K
-e
-èèL M
+ÕÕ2 3
+int
+ÕÕ3 6
+idUser
+ÕÕ7 =
 )
-èèM N
+ÕÕ= >
 {
-éé 	
+ÖÖ 	
 String
-êê 
-userNameToSearch
-êê #
+×× 
+userName
+×× 
 =
-êê$ %
-txbUserToSearch
-êê& 5
+×× 
+String
+×× $
 .
-êê5 6
-Text
-êê6 :
+××$ %
+Empty
+××% *
 ;
-êê: ;
+××* +
+foreach
+ØØ 
+(
+ØØ 
+var
+ØØ 
+item
+ØØ 
+in
+ØØ  
+friends
+ØØ! (
+)
+ØØ( )
+{
+ÙÙ 
 if
-ëë 
+ÚÚ 
 (
-ëë 
-!
-ëë 
-userNameToSearch
-ëë !
+ÚÚ 
+item
+ÚÚ 
 .
-ëë! "
-Equals
-ëë" (
+ÚÚ 
+IdUser
+ÚÚ 
+==
+ÚÚ  "
+idUser
+ÚÚ# )
+)
+ÚÚ) *
+{
+ÛÛ 
+friends
+ÜÜ 
+.
+ÜÜ 
+Remove
+ÜÜ "
 (
-ëë( )
+ÜÜ" #
+item
+ÜÜ# '
+)
+ÜÜ' (
+;
+ÜÜ( )
+userName
+İİ 
+=
+İİ 
+item
+İİ #
+.
+İİ# $
+UserName
+İİ$ ,
+;
+İİ, -
+break
+ŞŞ 
+;
+ŞŞ 
+}
+ßß 
+}
+àà 
+if
+áá 
+(
+áá 
+!
+áá 
+otherPeople
+áá 
+.
+áá 
+Exists
+áá #
+(
+áá# $
+pla
+áá$ '
+=>
+áá( *
+pla
+áá+ .
+.
+áá. /
+IdUser
+áá/ 5
+==
+áá6 8
+idUser
+áá9 ?
+)
+áá? @
+)
+áá@ A
+{
+ââ $
+FriendBasicInformation
+ãã &
+	newFriend
+ãã' 0
+=
+ãã1 2
+new
+ãã3 6$
+FriendBasicInformation
+ãã7 M
+(
+ããM N
+)
+ããN O
+;
+ããO P
+	newFriend
+ää 
+.
+ää 
+IdUser
+ää  
+=
+ää! "
+idUser
+ää# )
+;
+ää) *
+	newFriend
+åå 
+.
+åå 
+UserName
+åå "
+=
+åå# $
+userName
+åå% -
+;
+åå- .
+	newFriend
+ææ 
+.
+ææ "
+IdStatusAvailability
+ææ .
+=
+ææ/ 0
+
+NOT_STATUS
+ææ1 ;
+;
+ææ; <
+otherPeople
+çç 
+.
+çç 
+Add
+çç 
+(
+çç  
+	newFriend
+çç  )
+)
+çç) *
+;
+çç* +
+}
+èè 
+SetCards
+éé 
+(
+éé 
+)
+éé 
+;
+éé 
+}
+êê 	
+private
+ìì 
+void
+ìì %
+ClickSearchPlayerButton
+ìì ,
+(
+ìì, -
+object
+ìì- 3
+sender
+ìì4 :
+,
+ìì: ;
+RoutedEventArgs
+ìì< K
+e
+ììL M
+)
+ììM N
+{
+íí 	
+String
+îî 
+userNameToSearch
+îî #
+=
+îî$ %
+txbUserToSearch
+îî& 5
+.
+îî5 6
+Text
+îî6 :
+;
+îî: ;
+if
+ïï 
+(
+ïï 
+!
+ïï 
+userNameToSearch
+ïï !
+.
+ïï! "
+Equals
+ïï" (
+(
+ïï( )
 
 Properties
-ëë) 3
+ïï) 3
 .
-ëë3 4
+ïï3 4
 	Resources
-ëë4 =
+ïï4 =
 .
-ëë= >
+ïï= >
 	bttSearch
-ëë> G
+ïï> G
 )
-ëëG H
+ïïG H
 )
-ëëH I
+ïïH I
 {
-ìì #
+ğğ #
 stpFrinedsManagerList
-íí %
+ññ %
 .
-íí% &
+ññ% &
 Children
-íí& .
+ññ& .
 .
-íí. /
+ññ. /
 Clear
-íí/ 4
+ññ/ 4
 (
-íí4 5
+ññ4 5
 )
-íí5 6
+ññ5 6
 ;
-íí6 7
+ññ6 7
 List
-îî 
+òò 
 <
-îî $
+òò $
 FriendBasicInformation
-îî +
+òò +
 >
-îî+ ,
+òò+ ,
 listOfUsers
-îî- 8
+òò- 8
 ;
-îî8 9
+òò8 9
 switch
-ïï 
+óó 
 (
-ïï 
+óó 
 typeUserConsult
-ïï '
+óó '
 )
-ïï' (
+óó' (
 {
-ğğ 
+ôô 
 case
-ññ 
+õõ 
 
 MY_FRIENDS
-ññ #
+õõ #
 :
-ññ# $
+õõ# $
 listOfUsers
-òò #
+öö #
 =
-òò$ %
+öö$ %
 new
-òò& )
+öö& )
 List
-òò* .
+öö* .
 <
-òò. /$
+öö. /$
 FriendBasicInformation
-òò/ E
+öö/ E
 >
-òòE F
+ööE F
 (
-òòF G
+ööF G
 friends
-òòG N
+ööG N
 )
-òòN O
+ööN O
 ;
-òòO P
+ööO P
 break
-óó 
+÷÷ 
 ;
-óó 
+÷÷ 
 case
-ôô 
+øø 
 FRIENDS_REQUEST
-ôô (
+øø (
 :
-ôô( )
+øø( )
 listOfUsers
-õõ #
+ùù #
 =
-õõ$ %
+ùù$ %
 new
-õõ& )
+ùù& )
 List
-õõ* .
+ùù* .
 <
-õõ. /$
+ùù. /$
 FriendBasicInformation
-õõ/ E
+ùù/ E
 >
-õõE F
+ùùE F
 (
-õõF G
+ùùF G
 friendRequests
-õõG U
+ùùG U
 )
-õõU V
+ùùU V
 ;
-õõV W
+ùùV W
 break
-öö 
+úú 
 ;
-öö 
+úú 
 case
-÷÷ 
+ûû 
 OTHER_PEOPLE
-÷÷ %
+ûû %
 :
-÷÷% &
+ûû% &
 listOfUsers
-øø #
+üü #
 =
-øø$ %
+üü$ %
 new
-øø& )
+üü& )
 List
-øø* .
+üü* .
 <
-øø. /$
+üü. /$
 FriendBasicInformation
-øø/ E
+üü/ E
 >
-øøE F
+üüE F
 (
-øøF G
+üüF G
 otherPeople
-øøG R
+üüG R
 )
-øøR S
+üüR S
 ;
-øøS T
+üüS T
 break
-ùù 
+ıı 
 ;
-ùù 
+ıı 
 default
-úú 
+şş 
 :
-úú 
+şş 
 listOfUsers
-ûû #
+ÿÿ #
 =
-ûû$ %
+ÿÿ$ %
 new
-ûû& )
+ÿÿ& )
 List
-ûû* .
+ÿÿ* .
 <
-ûû. /$
+ÿÿ. /$
 FriendBasicInformation
-ûû/ E
+ÿÿ/ E
 >
-ûûE F
+ÿÿE F
 (
-ûûF G
+ÿÿF G
 )
-ûûG H
+ÿÿG H
 ;
-ûûH I
+ÿÿH I
 break
-üü 
+€€ 
 ;
-üü 
+€€ 
 }
-ıı 
+ 
 foreach
-şş 
+‚‚ 
 (
-şş $
+‚‚ $
 FriendBasicInformation
-şş /
+‚‚ /
 item
-şş0 4
+‚‚0 4
 in
-şş5 7
+‚‚5 7
 listOfUsers
-şş8 C
+‚‚8 C
 )
-şşC D
+‚‚C D
 {
-ÿÿ 
+ƒƒ 
 if
-€€ 
+„„ 
 (
-€€ 
+„„ 
 item
-€€ 
+„„ 
 .
-€€ 
+„„ 
 UserName
-€€ %
+„„ %
 ==
-€€& (
+„„& (
 userNameToSearch
-€€) 9
+„„) 9
 )
-€€9 :
+„„9 :
 {
- 
+…… 
 Border
-‚‚ 
+†† 
 brdCard
-‚‚ &
+†† &
 =
-‚‚' (
+††' (
 new
-‚‚) ,
+††) ,
 Border
-‚‚- 3
+††- 3
 (
-‚‚3 4
+††3 4
 )
-‚‚4 5
+††4 5
 ;
-‚‚5 6(
+††5 6(
 FriendCardManagementWindow
-ƒƒ 2"
+‡‡ 2"
 friendCardManagement
-ƒƒ3 G
+‡‡3 G
 =
-ƒƒH I
+‡‡H I
 new
-ƒƒJ M(
+‡‡J M(
 FriendCardManagementWindow
-ƒƒN h
+‡‡N h
 (
-ƒƒh i
+‡‡h i
 item
-ƒƒi m
+‡‡i m
 .
-ƒƒm n
+‡‡m n
 IdUser
-ƒƒn t
+‡‡n t
 ,
-ƒƒt u
+‡‡t u
 item
-ƒƒv z
+‡‡v z
 .
-ƒƒz {
-UserNameƒƒ{ ƒ
-,ƒƒƒ „
-typeUserConsultƒƒ… ”
-,ƒƒ” •
-textLeftButtonƒƒ– ¤
-,ƒƒ¤ ¥
-textRightButtonƒƒ¦ µ
-,ƒƒµ ¶
-thisƒƒ· »
-)ƒƒ» ¼
-;ƒƒ¼ ½
+‡‡z {
+UserName‡‡{ ƒ
+,‡‡ƒ „
+typeUserConsult‡‡… ”
+,‡‡” •
+textLeftButton‡‡– ¤
+,‡‡¤ ¥
+textRightButton‡‡¦ µ
+,‡‡µ ¶
+this‡‡· »
+)‡‡» ¼
+;‡‡¼ ½
 brdCard
-„„ 
+ˆˆ 
 .
-„„  
+ˆˆ  
 Child
-„„  %
+ˆˆ  %
 =
-„„& '"
+ˆˆ& '"
 friendCardManagement
-„„( <
+ˆˆ( <
 ;
-„„< =#
+ˆˆ< =#
 stpFrinedsManagerList
-…… -
+‰‰ -
 .
-……- .
+‰‰- .
 Children
-……. 6
+‰‰. 6
 .
-……6 7
+‰‰6 7
 Add
-……7 :
+‰‰7 :
 (
-……: ; 
+‰‰: ; 
 SetBorderCardStyle
-……; M
+‰‰; M
 (
-……M N
+‰‰M N
 brdCard
-……N U
+‰‰N U
 )
-……U V
+‰‰U V
 )
-……V W
+‰‰V W
 ;
-……W X
+‰‰W X
 }
-†† 
+ŠŠ 
 }
-‡‡ 
+‹‹ 
 }
-ˆˆ 
+ŒŒ 
 }
-‰‰ 	
+ 	
 private
-‹‹ 
+ 
 void
-‹‹ 
+ 
 
 StartTimer
-‹‹ 
+ 
 (
-‹‹  
+  
 )
-‹‹  !
+  !
 {
-ŒŒ 	
+ 	
 leftTime
- 
+‘‘ 
 =
- 
+‘‘ 
 $num
- 
-;
- 
-timer
- 
-=
- 
-new
- 
-DispatcherTimer
- '
-(
-' (
-)
-( )
-;
-) *
-timer
- 
-.
- 
-Interval
- 
-=
- 
-TimeSpan
- %
-.
-% &
-FromSeconds
-& 1
-(
-1 2
-$num
-2 3
-)
-3 4
-;
-4 5
-timer
- 
-.
- 
-Tick
- 
-+=
- 
-
-Timer_Tick
- $
-;
-$ %
-timer
-‘‘ 
-.
-‘‘ 
-Start
-‘‘ 
-(
 ‘‘ 
-)
-‘‘ 
 ;
-‘‘ 
-}
-’’ 	
-private
-”” 
-void
-”” 
+‘‘ 
+timer
+’’ 
+=
+’’ 
+new
+’’ 
+DispatcherTimer
+’’ '
+(
+’’' (
+)
+’’( )
+;
+’’) *
+timer
+““ 
+.
+““ 
+Interval
+““ 
+=
+““ 
+TimeSpan
+““ %
+.
+““% &
+FromSeconds
+““& 1
+(
+““1 2
+$num
+““2 3
+)
+““3 4
+;
+““4 5
+timer
+”” 
+.
+”” 
+Tick
+”” 
++=
+”” 
 
 Timer_Tick
-”” 
-(
-””  
-object
-””  &
-sender
-””' -
-,
-””- .
-	EventArgs
-””/ 8
-e
-””9 :
-)
-””: ;
-{
-•• 	
-if
-–– 
-(
-–– 
-leftTime
-–– 
->
-–– 
-$num
-–– 
-)
-–– 
-{
-—— 
-leftTime
-˜˜ 
---
-˜˜ 
+”” $
 ;
-˜˜ 
-}
-™™ 
-else
-šš 
-{
-›› &
-lblDeclineRequestMessage
-œœ (
-.
-œœ( )
-Content
-œœ) 0
-=
-œœ1 2
-string
-œœ3 9
-.
-œœ9 :
-Empty
-œœ: ?
-;
-œœ? @
+””$ %
 timer
- 
+•• 
 .
- 
-Stop
- 
+•• 
+Start
+•• 
 (
- 
+•• 
 )
- 
+•• 
 ;
- 
+•• 
 }
- 
-}
-ŸŸ 	
+–– 	
 private
-¡¡ 
+˜˜ 
 void
-¡¡ 
-OverSearchBar
-¡¡ "
+˜˜ 
+
+Timer_Tick
+˜˜ 
 (
-¡¡" #
+˜˜  
 object
-¡¡# )
+˜˜  &
 sender
-¡¡* 0
+˜˜' -
 ,
-¡¡0 1
-MouseEventArgs
-¡¡2 @
+˜˜- .
+	EventArgs
+˜˜/ 8
 e
-¡¡A B
+˜˜9 :
 )
-¡¡B C
+˜˜: ;
 {
-¢¢ 	
-txbUserToSearch
-££ 
-.
-££ 
-Text
-££  
-=
-££! "
-string
-££# )
-.
-££) *
-Empty
-££* /
+™™ 	
+if
+šš 
+(
+šš 
+leftTime
+šš 
+>
+šš 
+$num
+šš 
+)
+šš 
+{
+›› 
+leftTime
+œœ 
+--
+œœ 
 ;
-££/ 0
+œœ 
 }
-¤¤ 	
-private
-¦¦ 
-void
-¦¦ 
-HandleException
-¦¦ $
-(
-¦¦$ %
-	Exception
-¦¦% .
-ex
-¦¦/ 1
-,
-¦¦1 2
-string
-¦¦3 9
-errorMessage
-¦¦: F
-)
-¦¦F G
+ 
+else
+ 
 {
-§§ 	%
-ExceptionHandlerForLogs
-¨¨ #
+ŸŸ &
+lblDeclineRequestMessage
+   (
 .
-¨¨# $
-LogException
-¨¨$ 0
-(
-¨¨0 1
-ex
-¨¨1 3
-,
-¨¨3 4!
-ExceptionDictionary
-¨¨5 H
+  ( )
+Content
+  ) 0
+=
+  1 2
+string
+  3 9
 .
-¨¨H I
-FATAL_EXCEPTION
-¨¨I X
-)
-¨¨X Y
+  9 :
+Empty
+  : ?
 ;
-¨¨Y Z
-dialogWindow
-©© 
+  ? @
+timer
+¡¡ 
 .
-©© #
-ShowInfoOrErrorWindow
-©© .
+¡¡ 
+Stop
+¡¡ 
 (
-©©. /
+¡¡ 
+)
+¡¡ 
+;
+¡¡ 
+}
+¢¢ 
+}
+££ 	
+private
+¥¥ 
+void
+¥¥ 
+OverSearchBar
+¥¥ "
+(
+¥¥" #
+object
+¥¥# )
+sender
+¥¥* 0
+,
+¥¥0 1
+MouseEventArgs
+¥¥2 @
+e
+¥¥A B
+)
+¥¥B C
+{
+¦¦ 	
+txbUserToSearch
+§§ 
+.
+§§ 
+Text
+§§  
+=
+§§! "
+string
+§§# )
+.
+§§) *
+Empty
+§§* /
+;
+§§/ 0
+}
+¨¨ 	
+private
+ªª 
+void
+ªª 
+HandleException
+ªª $
+(
+ªª$ %
+	Exception
+ªª% .
+ex
+ªª/ 1
+,
+ªª1 2
+string
+ªª3 9
+errorMessage
+ªª: F
+)
+ªªF G
+{
+«« 	%
+ExceptionHandlerForLogs
+¬¬ #
+.
+¬¬# $
+LogException
+¬¬$ 0
+(
+¬¬0 1
+ex
+¬¬1 3
+,
+¬¬3 4!
+ExceptionDictionary
+¬¬5 H
+.
+¬¬H I
+FATAL_EXCEPTION
+¬¬I X
+)
+¬¬X Y
+;
+¬¬Y Z!
+DialogWindowManager
+­­ 
+.
+­­  #
+ShowInfoOrErrorWindow
+­­  5
+(
+­­5 6
 
 Properties
-©©/ 9
+­­6 @
 .
-©©9 :
+­­@ A
 	Resources
-©©: C
+­­A J
 .
-©©C D
+­­J K
 txbErrorTitle
-©©D Q
+­­K X
 ,
-©©Q R
+­­X Y
 errorMessage
-©©S _
+­­Z f
 ,
-©©_ `
+­­f g
 Application
-©©a l
+­­h s
 .
-©©l m
+­­s t
 Current
-©©m t
+­­t {
 .
-©©t u
+­­{ |
 
-MainWindow
-©©u 
-,©© €
-dialogWindow©© 
-.©© 
-ERROR©© “
-)©©“ ”
-;©©” •
+MainWindow­­| †
+,­­† ‡#
+DialogWindowManager­­ˆ ›
+.­­› œ
+ERROR­­œ ¡
+)­­¡ ¢
+;­­¢ £
 }
-ªª 	
+®® 	
 private
-¬¬ 
+°° 
 void
-¬¬ 
+°° 
 ClickBackToMenu
-¬¬ $
+°° $
 (
-¬¬$ %
+°°$ %
 object
-¬¬% +
+°°% +
 sender
-¬¬, 2
+°°, 2
 ,
-¬¬2 3"
+°°2 3"
 MouseButtonEventArgs
-¬¬4 H
+°°4 H
 e
-¬¬I J
+°°I J
 )
-¬¬J K
+°°J K
 {
-­­ 	
+±± 	
 GotoMenu
-®® 
+²² 
 (
-®® 
+²² 
 )
-®® 
+²² 
 ;
-®® 
+²² 
 }
-¯¯ 	
+³³ 	
 private
-±± 
+µµ 
 void
-±± 
+µµ 
 GotoMenu
-±± 
+µµ 
 (
-±± 
+µµ 
 )
-±± 
+µµ 
 {
-²² 	
+¶¶ 	
 try
-³³ 
+·· 
 {
-´´ 1
+¸¸ 1
 #FriendManagerActionOperationsClient
-µµ 3 
+¹¹ 3 
 friendActionsProxy
-µµ4 F
+¹¹4 F
 =
-µµG H
+¹¹G H
 new
-µµI L
+¹¹I L
 (
-µµL M
+¹¹L M
 )
-µµM N
+¹¹M N
 ;
-µµN O 
+¹¹N O 
 friendActionsProxy
-¶¶ "
+ºº "
 .
-¶¶" #)
+ºº" #)
 UnregisterFriendManagerUser
-¶¶# >
+ºº# >
 (
-¶¶> ?
+ºº> ?
 userSingleton
-¶¶? L
+ºº? L
 .
-¶¶L M
+ººL M
 IdUser
-¶¶M S
+ººM S
 )
-¶¶S T
+ººS T
 ;
-¶¶T U
-}
-·· 
-catch
-¸¸ 
-(
-¸¸ '
-EndpointNotFoundException
-¸¸ ,
-ex
-¸¸- /
-)
-¸¸/ 0
-{
-¹¹ %
-ExceptionHandlerForLogs
-ºº '
-.
-ºº' (
-LogException
-ºº( 4
-(
-ºº4 5
-ex
-ºº5 7
-,
-ºº7 8!
-ExceptionDictionary
-ºº9 L
-.
-ººL M
-FATAL_EXCEPTION
-ººM \
-)
-ºº\ ]
-;
-ºº] ^
+ººT U
 }
 »» 
 catch
 ¼¼ 
 (
-¼¼ 1
-#CommunicationObjectFaultedException
-¼¼ 6
+¼¼ '
+EndpointNotFoundException
+¼¼ ,
 ex
-¼¼7 9
+¼¼- /
 )
-¼¼9 :
+¼¼/ 0
 {
 ½½ %
 ExceptionHandlerForLogs
@@ -25846,13 +25751,13 @@ MainWindow
 catch
 ÀÀ 
 (
-ÀÀ 
-TimeoutException
-ÀÀ #
+ÀÀ 1
+#CommunicationObjectFaultedException
+ÀÀ 6
 ex
-ÀÀ$ &
+ÀÀ7 9
 )
-ÀÀ& '
+ÀÀ9 :
 {
 ÁÁ %
 ExceptionHandlerForLogs
@@ -25882,13 +25787,13 @@ MainWindow
 catch
 ÄÄ 
 (
-ÄÄ $
-CommunicationException
-ÄÄ )
+ÄÄ 
+TimeoutException
+ÄÄ #
 ex
-ÄÄ* ,
+ÄÄ$ &
 )
-ÄÄ, -
+ÄÄ& '
 {
 ÅÅ %
 ExceptionHandlerForLogs
@@ -25918,13 +25823,13 @@ MainWindow
 catch
 ÈÈ 
 (
-ÈÈ 
-SocketException
-ÈÈ "
+ÈÈ $
+CommunicationException
+ÈÈ )
 ex
-ÈÈ# %
+ÈÈ* ,
 )
-ÈÈ% &
+ÈÈ, -
 {
 ÉÉ %
 ExceptionHandlerForLogs
@@ -25950,201 +25855,237 @@ MainWindow
 ;
 ÊÊ] ^
 }
-ËË 
-MainMenu
-ÌÌ 
-mainMenu
-ÌÌ 
-=
-ÌÌ 
-new
-ÌÌ  #
-MainMenu
-ÌÌ$ ,
+ËË 
+catch
+ÌÌ 
 (
-ÌÌ, -
+ÌÌ 
+SocketException
+ÌÌ "
+ex
+ÌÌ# %
 )
-ÌÌ- .
+ÌÌ% &
+{
+ÍÍ %
+ExceptionHandlerForLogs
+ÎÎ '
+.
+ÎÎ' (
+LogException
+ÎÎ( 4
+(
+ÎÎ4 5
+ex
+ÎÎ5 7
+,
+ÎÎ7 8!
+ExceptionDictionary
+ÎÎ9 L
+.
+ÎÎL M
+FATAL_EXCEPTION
+ÎÎM \
+)
+ÎÎ\ ]
 ;
-ÌÌ. /
+ÎÎ] ^
+}
+ÏÏ 
+MainMenu
+ĞĞ 
+mainMenu
+ĞĞ 
+=
+ĞĞ 
+new
+ĞĞ  #
+MainMenu
+ĞĞ$ ,
+(
+ĞĞ, -
+)
+ĞĞ- .
+;
+ĞĞ. /
 this
-ÍÍ 
+ÑÑ 
 .
-ÍÍ 
+ÑÑ 
 NavigationService
-ÍÍ "
+ÑÑ "
 .
-ÍÍ" #
+ÑÑ" #
 Navigate
-ÍÍ# +
+ÑÑ# +
 (
-ÍÍ+ ,
+ÑÑ+ ,
 mainMenu
-ÍÍ, 4
+ÑÑ, 4
 )
-ÍÍ4 5
+ÑÑ4 5
 ;
-ÍÍ5 6
+ÑÑ5 6
 NavigationService
-ÎÎ 
+ÒÒ 
 .
-ÎÎ 
+ÒÒ 
 RemoveBackEntry
-ÎÎ -
+ÒÒ -
 (
-ÎÎ- .
+ÒÒ- .
 )
-ÎÎ. /
+ÒÒ. /
 ;
-ÎÎ/ 0
+ÒÒ/ 0
 }
-ÏÏ 	
+ÓÓ 	
 public
-ÑÑ 
+ÕÕ 
 void
-ÑÑ &
+ÕÕ &
 ResponseNewPlayerJusJoin
-ÑÑ ,
+ÕÕ ,
 (
-ÑÑ, -
+ÕÕ, -
 int
-ÑÑ- 0
+ÕÕ- 0
 idUser
-ÑÑ1 7
+ÕÕ1 7
 ,
-ÑÑ7 8
+ÕÕ7 8
 string
-ÑÑ9 ?
+ÕÕ9 ?
 userName
-ÑÑ@ H
+ÕÕ@ H
 )
-ÑÑH I
+ÕÕH I
 {
-ÒÒ 	
+ÖÖ 	
 if
-ÓÓ 
+×× 
 (
-ÓÓ 
+×× 
 idUser
-ÓÓ 
+×× 
 !=
-ÓÓ 
+×× 
 $num
-ÓÓ 
+×× 
 &&
-ÓÓ 
+×× 
 !
-ÓÓ 
+×× 
 string
-ÓÓ %
+×× %
 .
-ÓÓ% &
+××% &
 IsNullOrEmpty
-ÓÓ& 3
+××& 3
 (
-ÓÓ3 4
+××3 4
 userName
-ÓÓ4 <
+××4 <
 )
-ÓÓ< =
+××< =
 &&
-ÓÓ> @
+××> @
 !
-ÓÓA B
+××A B
 otherPeople
-ÓÓB M
+××B M
 .
-ÓÓM N
+××M N
 Exists
-ÓÓN T
+××N T
 (
-ÓÓT U
+××T U
 pl
-ÓÓU W
+××U W
 =>
-ÓÓX Z
+××X Z
 pl
-ÓÓ[ ]
+××[ ]
 .
-ÓÓ] ^
+××] ^
 IdUser
-ÓÓ^ d
+××^ d
 ==
-ÓÓe g
+××e g
 idUser
-ÓÓh n
+××h n
 )
-ÓÓn o
+××n o
 )
-ÓÓo p
+××o p
 {
-ÔÔ 
+ØØ 
 otherPeople
-ÕÕ 
+ÙÙ 
 .
-ÕÕ 
+ÙÙ 
 Add
-ÕÕ 
+ÙÙ 
 (
-ÕÕ  
+ÙÙ  
 new
-ÕÕ  #$
+ÙÙ  #$
 FriendBasicInformation
-ÕÕ$ :
+ÙÙ$ :
 (
-ÕÕ; <
+ÙÙ; <
 )
-ÕÕ< =
+ÙÙ< =
 {
-ÕÕ= >
+ÙÙ= >
 IdUser
-ÕÕ> D
+ÙÙ> D
 =
-ÕÕE F
+ÙÙE F
 idUser
-ÕÕG M
+ÙÙG M
 ,
-ÕÕM N
+ÙÙM N
 EmailAddress
-ÕÕO [
+ÙÙO [
 =
-ÕÕ\ ]
+ÙÙ\ ]
 string
-ÕÕ^ d
+ÙÙ^ d
 .
-ÕÕd e
+ÙÙd e
 Empty
-ÕÕe j
+ÙÙe j
 ,
-ÕÕj k
+ÙÙj k
 UserName
-ÕÕl t
+ÙÙl t
 =
-ÕÕu v
+ÙÙu v
 userName
-ÕÕw 
-,ÕÕ €$
-IdStatusAvailabilityÕÕ •
-=ÕÕ– —
-$numÕÕ˜ ™
-}ÕÕš ›
-)ÕÕ› œ
-;ÕÕœ 
+ÙÙw 
+,ÙÙ €$
+IdStatusAvailabilityÙÙ •
+=ÙÙ– —
+$numÙÙ˜ ™
+}ÙÙš ›
+)ÙÙ› œ
+;ÙÙœ 
 SetCards
-ÖÖ 
+ÚÚ 
 (
-ÖÖ 
+ÚÚ 
 )
-ÖÖ 
+ÚÚ 
 ;
-ÖÖ 
+ÚÚ 
 }
-×× 
+ÛÛ 
 }
-ØØ 	
+ÜÜ 	
 }
-ÚÚ 
-}ÛÛ ìà	
+ŞŞ 
+}ßß Ÿã	
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\GameBoard.xaml.cs
 	namespace 	
 JeopardyGame
@@ -27869,7 +27810,7 @@ playerCard
 ßß 
 async
 ßß 
-void
+Task
 ßß 
 PrepareRoundTwo
 ßß *
@@ -27922,15 +27863,17 @@ playerCard
 }
 ää 	
 private
-ææ 
-void
-ææ 
+ææ 
+async
+ææ 
+Task
+ææ 
 PrepareLastRound
-ææ %
+ææ +
 (
-ææ% &
+ææ+ ,
 )
-ææ& '
+ææ, -
 {
 çç 	
 wrpBoardOfCards
@@ -27966,15 +27909,17 @@ Visibility
 	Collapsed
 éé4 =
 ;
-éé= >,
+éé= >
+await
+êê ,
 BeginHostPresentationLastRound
-êê *
+êê 0
 (
-êê* +
+êê0 1
 )
-êê+ ,
+êê1 2
 ;
-êê, -
+êê2 3
 }
 ëë 	
 private
@@ -29117,7 +29062,7 @@ Properties
 ³³ 
 async
 ³³ 
-void
+Task
 ³³ ,
 BeginHostPresentationLastRound
 ³³ 9
@@ -29376,21 +29321,29 @@ stpPlayers
 (
 ÆÆ #
 currentPointsOfPlayer
-ÆÆ )
+ÆÆ )
+!=
+ÆÆ) +
+null
+ÆÆ, 0
+&&
+ÆÆ1 3#
+currentPointsOfPlayer
+ÆÆ4 I
 .
-ÆÆ) *
+ÆÆI J
 	GetPoints
-ÆÆ* 3
+ÆÆJ S
 (
-ÆÆ3 4
+ÆÆS T
 )
-ÆÆ4 5
+ÆÆT U
 <
-ÆÆ6 7
+ÆÆV W
 $num
-ÆÆ8 9
+ÆÆX Y
 )
-ÆÆ9 :
+ÆÆY Z
 {
 ÇÇ 
 txbPointsToBet
@@ -35627,36 +35580,38 @@ playerCard
 }
 ĞĞ 	
 public
-ÒÒ 
+ÒÒ 
+async
+ÒÒ 
 void
-ÒÒ  
+ÒÒ  
 ResponseBeginRound
-ÒÒ &
+ÒÒ ,
 (
-ÒÒ& '
+ÒÒ, -
 int
-ÒÒ' *
+ÒÒ- 0
 
 isYourTurn
-ÒÒ+ 5
+ÒÒ1 ;
 ,
-ÒÒ5 6
+ÒÒ; <
 int
-ÒÒ7 :
+ÒÒ= @
 roundToStart
-ÒÒ; G
+ÒÒA M
 ,
-ÒÒG H&
+ÒÒM N&
 PlayerInGameDataContract
-ÒÒI a
+ÒÒO g
 [
-ÒÒa b
+ÒÒg h
 ]
-ÒÒb c
+ÒÒh i
 playerInGam
-ÒÒd o
+ÒÒj u
 )
-ÒÒo p
+ÒÒu v
 {
 ÓÓ 	
 playersInGame
@@ -35698,15 +35653,17 @@ isYourTurn
 roundToStart
 ØØ# /
 ;
-ØØ/ 0
+ØØ/ 0
+await
+ÙÙ 
 PrepareRoundTwo
-ÙÙ #
+ÙÙ )
 (
-ÙÙ# $
+ÙÙ) *
 )
-ÙÙ$ %
+ÙÙ* +
 ;
-ÙÙ% &
+ÙÙ+ ,
 break
 ÚÚ 
 ;
@@ -35724,15 +35681,17 @@ isYourTurn
 roundToStart
 ÜÜ# /
 ;
-ÜÜ/ 0
+ÜÜ/ 0
+await
+İİ 
 PrepareLastRound
-İİ $
+İİ *
 (
-İİ$ %
+İİ* +
 )
-İİ% &
+İİ+ ,
 ;
-İİ& '
+İİ, -
 break
 ŞŞ 
 ;
@@ -35983,103 +35942,101 @@ stpPlayers
 )
 ïïK L
 {
-ğğ 
-dialogWindow
-ññ  
+ğğ !
+DialogWindowManager
+ññ '
 .
-ññ  !#
+ññ' (#
 ShowInfoOrErrorWindow
-ññ! 6
+ññ( =
 (
-ññ6 7
+ññ= >
 
 Properties
-ññ7 A
+ññ> H
 .
-ññA B
+ññH I
 	Resources
-ññB K
+ññI R
 .
-ññK L
+ññR S
 txbGameFinish
-ññL Y
+ññS `
 ,
-ññY Z
+ññ` a
 
 Properties
-ññ[ e
+ññb l
 .
-ññe f
+ññl m
 	Resources
-ññf o
+ññm v
 .
-ñño p
-GameFinished
-ññp |
-,
-ññ| }
-Windowññ~ „
-.ññ„ …
-	GetWindowññ… 
-(ññ 
-thisññ “
-)ññ“ ”
-,ññ” •
-dialogWindowññ– ¢
-.ññ¢ £
-INFORMATIONññ£ ®
-)ññ® ¯
-;ññ¯ °
+ññv w
+GameFinishedññw ƒ
+,ññƒ „
+Windowññ… ‹
+.ññ‹ Œ
+	GetWindowññŒ •
+(ññ• –
+thisññ– š
+)ññš ›
+,ññ› œ#
+DialogWindowManagerññ °
+.ññ° ±
+INFORMATIONññ± ¼
+)ññ¼ ½
+;ññ½ ¾
 }
 òò 
 else
 óó 
 {
-ôô 
-dialogWindow
-õõ  
+ôô !
+DialogWindowManager
+õõ '
 .
-õõ  !#
+õõ' (#
 ShowInfoOrErrorWindow
-õõ! 6
+õõ( =
 (
-õõ6 7
+õõ= >
 
 Properties
-õõ7 A
+õõ> H
 .
-õõA B
+õõH I
 	Resources
-õõB K
+õõI R
 .
-õõK L
+õõR S
 txbErrorTitle
-õõL Y
+õõS `
 ,
-õõY Z
+õõ` a
 
 Properties
-õõ[ e
+õõb l
 .
-õõe f
+õõl m
 	Resources
-õõf o
+õõm v
 .
-õõo p+
-lblFailToSavePoinstAfterGameõõp Œ
-,õõŒ 
-Windowõõ ”
-.õõ” •
-	GetWindowõõ• 
-(õõ Ÿ
-thisõõŸ £
-)õõ£ ¤
-,õõ¤ ¥
-dialogWindowõõ¦ ²
-.õõ² ³
-ERRORõõ³ ¸
-)õõ¸ ¹
-;õõ¹ º
+õõv w+
+lblFailToSavePoinstAfterGameõõw “
+,õõ“ ”
+Windowõõ• ›
+.õõ› œ
+	GetWindowõõœ ¥
+(õõ¥ ¦
+thisõõ¦ ª
+)õõª «
+,õõ« ¬#
+DialogWindowManagerõõ­ À
+.õõÀ Á
+ERRORõõÁ Æ
+)õõÆ Ç
+;õõÇ È
 }
 öö 
 }
@@ -36087,53 +36044,51 @@ Properties
 else
 øø 
 {
-ùù 
-dialogWindow
-úú 
+ùù !
+DialogWindowManager
+úú #
 .
-úú #
+úú# $#
 ShowInfoOrErrorWindow
-úú 2
+úú$ 9
 (
-úú2 3
+úú9 :
 
 Properties
-úú3 =
+úú: D
 .
-úú= >
+úúD E
 	Resources
-úú> G
+úúE N
 .
-úúG H
+úúN O
 txbErrorTitle
-úúH U
+úúO \
 ,
-úúU V
+úú\ ]
 
 Properties
-úúW a
+úú^ h
 .
-úúa b
+úúh i
 	Resources
-úúb k
+úúi r
 .
-úúk l
-lblGuestEndOfGame
-úúl }
-,
-úú} ~
-Windowúú …
-.úú… †
-	GetWindowúú† 
-(úú 
-thisúú ”
-)úú” •
-,úú• –
-dialogWindowúú— £
-.úú£ ¤
-INFORMATIONúú¤ ¯
-)úú¯ °
-;úú° ±
+úúr s 
+lblGuestEndOfGameúús „
+,úú„ …
+Windowúú† Œ
+.úúŒ 
+	GetWindowúú –
+(úú– —
+thisúú— ›
+)úú› œ
+,úúœ #
+DialogWindowManagerúú ±
+.úú± ²
+INFORMATIONúú² ½
+)úú½ ¾
+;úú¾ ¿
 }
 ûû 
 }
@@ -38684,47 +38639,47 @@ Properties
 if
 ÓÓ 
 (
-ÓÓ 
-dialogWindow
-ÓÓ  
+ÓÓ !
+DialogWindowManager
+ÓÓ '
 .
-ÓÓ  !$
+ÓÓ' ($
 ShowWindowConfirmation
-ÓÓ! 7
+ÓÓ( >
 (
-ÓÓ7 8
+ÓÓ> ?
 
 Properties
-ÓÓ8 B
+ÓÓ? I
 .
-ÓÓB C
+ÓÓI J
 	Resources
-ÓÓC L
+ÓÓJ S
 .
-ÓÓL M
+ÓÓS T
 txbWarningTitle
-ÓÓM \
+ÓÓT c
 ,
-ÓÓ\ ]
+ÓÓc d
 
 Properties
-ÓÓ^ h
+ÓÓe o
 .
-ÓÓh i
+ÓÓo p
 	Resources
-ÓÓi r
+ÓÓp y
 .
-ÓÓr s$
-LeaveGameConfirmationÓÓs ˆ
-,ÓÓˆ ‰
-WindowÓÓŠ 
-.ÓÓ ‘
-	GetWindowÓÓ‘ š
-(ÓÓš ›
-thisÓÓ› Ÿ
-)ÓÓŸ  
-)ÓÓ  ¡
-)ÓÓ¡ ¢
+ÓÓy z$
+LeaveGameConfirmationÓÓz 
+,ÓÓ 
+WindowÓÓ‘ —
+.ÓÓ— ˜
+	GetWindowÓÓ˜ ¡
+(ÓÓ¡ ¢
+thisÓÓ¢ ¦
+)ÓÓ¦ §
+)ÓÓ§ ¨
+)ÓÓ¨ ©
 {
 ÔÔ 
 NotifyLeavingGame
@@ -39217,101 +39172,97 @@ isYourTurn
 )
 “	“	# $
 {
-”	”	 
-dialogWindow
-•	•	 $
+”	”	 !
+DialogWindowManager
+•	•	 +
 .
-•	•	$ %#
+•	•	+ ,#
 ShowInfoOrErrorWindow
-•	•	% :
+•	•	, A
 (
-•	•	: ;
+•	•	A B
 
 Properties
-•	•	; E
+•	•	B L
 .
-•	•	E F
+•	•	L M
 	Resources
-•	•	F O
+•	•	M V
 .
-•	•	O P#
+•	•	V W#
 txbInformationMessage
-•	•	P e
+•	•	W l
 ,
-•	•	e f
+•	•	l m
 
 Properties
-•	•	g q
+•	•	n x
 .
-•	•	q r
-	Resources
-•	•	r {
-.
-•	•	{ |-
-lblFinishGameBecauseOfTeamLeft•	•	| š
-,•	•	š ›
-Window•	•	œ ¢
-.•	•	¢ £
-	GetWindow•	•	£ ¬
-(•	•	¬ ­
-this•	•	­ ±
-)•	•	± ²
-,•	•	² ³
-dialogWindow•	•	´ À
-.•	•	À Á
-INFORMATION•	•	Á Ì
-)•	•	Ì Í
-;•	•	Í Î
+•	•	x y
+	Resources•	•	y ‚
+.•	•	‚ ƒ.
+lblFinishGameBecauseOfTeamLeft•	•	ƒ ¡
+,•	•	¡ ¢
+Window•	•	£ ©
+.•	•	© ª
+	GetWindow•	•	ª ³
+(•	•	³ ´
+this•	•	´ ¸
+)•	•	¸ ¹
+,•	•	¹ º#
+DialogWindowManager•	•	» Î
+.•	•	Î Ï
+INFORMATION•	•	Ï Ú
+)•	•	Ú Û
+;•	•	Û Ü
 }
 –	–	 
 else
 —	—	 
 {
-˜	˜	 
-dialogWindow
-™	™	 $
+˜	˜	 !
+DialogWindowManager
+™	™	 +
 .
-™	™	$ %#
+™	™	+ ,#
 ShowInfoOrErrorWindow
-™	™	% :
+™	™	, A
 (
-™	™	: ;
+™	™	A B
 
 Properties
-™	™	; E
+™	™	B L
 .
-™	™	E F
+™	™	L M
 	Resources
-™	™	F O
+™	™	M V
 .
-™	™	O P#
+™	™	V W#
 txbInformationMessage
-™	™	P e
+™	™	W l
 ,
-™	™	e f
+™	™	l m
 
 Properties
-™	™	g q
+™	™	n x
 .
-™	™	q r
-	Resources
-™	™	r {
-.
-™	™	{ |0
-!lblFinishGameBecauseJustOnePlayer™	™	| 
-,™	™	 
-Window™	™	Ÿ ¥
-.™	™	¥ ¦
-	GetWindow™	™	¦ ¯
-(™	™	¯ °
-this™	™	° ´
-)™	™	´ µ
-,™	™	µ ¶
-dialogWindow™	™	· Ã
-.™	™	Ã Ä
-INFORMATION™	™	Ä Ï
-)™	™	Ï Ğ
-;™	™	Ğ Ñ
+™	™	x y
+	Resources™	™	y ‚
+.™	™	‚ ƒ1
+!lblFinishGameBecauseJustOnePlayer™	™	ƒ ¤
+,™	™	¤ ¥
+Window™	™	¦ ¬
+.™	™	¬ ­
+	GetWindow™	™	­ ¶
+(™	™	¶ ·
+this™	™	· »
+)™	™	» ¼
+,™	™	¼ ½#
+DialogWindowManager™	™	¾ Ñ
+.™	™	Ñ Ò
+INFORMATION™	™	Ò İ
+)™	™	İ Ş
+;™	™	Ş ß
 }
 š	š	 
 CloseWindow
@@ -40029,49 +39980,48 @@ Visibility
 )
 ğ	ğ	X Y
 ;
-ğ	ğ	Y Z
-dialogWindow
-ñ	ñ	 
+ğ	ğ	Y Z!
+DialogWindowManager
+ñ	ñ	 
 .
-ñ	ñ	 #
+ñ	ñ	  #
 ShowInfoOrErrorWindow
-ñ	ñ	 .
+ñ	ñ	  5
 (
-ñ	ñ	. /
+ñ	ñ	5 6
 
 Properties
-ñ	ñ	/ 9
+ñ	ñ	6 @
 .
-ñ	ñ	9 :
+ñ	ñ	@ A
 	Resources
-ñ	ñ	: C
+ñ	ñ	A J
 .
-ñ	ñ	C D
+ñ	ñ	J K
 txbErrorTitle
-ñ	ñ	D Q
+ñ	ñ	K X
 ,
-ñ	ñ	Q R
+ñ	ñ	X Y
 errorMessage
-ñ	ñ	S _
+ñ	ñ	Z f
 ,
-ñ	ñ	_ `
+ñ	ñ	f g
 Application
-ñ	ñ	a l
+ñ	ñ	h s
 .
-ñ	ñ	l m
+ñ	ñ	s t
 Current
-ñ	ñ	m t
+ñ	ñ	t {
 .
-ñ	ñ	t u
+ñ	ñ	{ |
 
-MainWindow
-ñ	ñ	u 
-,ñ	ñ	 €
-dialogWindowñ	ñ	 
-.ñ	ñ	 
-ERRORñ	ñ	 “
-)ñ	ñ	“ ”
-;ñ	ñ	” •
+MainWindowñ	ñ	| †
+,ñ	ñ	† ‡#
+DialogWindowManagerñ	ñ	ˆ ›
+.ñ	ñ	› œ
+ERRORñ	ñ	œ ¡
+)ñ	ñ	¡ ¢
+;ñ	ñ	¢ £
 NotifyLeavingGame
 ò	ò	 
 (
@@ -40168,7 +40118,7 @@ ReturnPage
 ÿ	ÿ	 
 }€
 €
- óĞ
+ ƒÑ
 gC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\LiveChat.xaml.cs
 	namespace 	
 JeopardyGame
@@ -42123,54 +42073,53 @@ Propertiesáá“ 
 )
 ççX Y
 ;
-ççY Z
-dialogWindow
-èè 
+ççY Z!
+DialogWindowManager
+èè 
 .
-èè #
+èè  #
 ShowInfoOrErrorWindow
-èè .
+èè  5
 (
-èè. /
+èè5 6
 
 Properties
-èè/ 9
+èè6 @
 .
-èè9 :
+èè@ A
 	Resources
-èè: C
+èèA J
 .
-èèC D
+èèJ K
 txbErrorTitle
-èèD Q
+èèK X
 ,
-èèQ R
+èèX Y
 errorMessage
-èèS _
+èèZ f
 ,
-èè_ `
+èèf g
 Application
-èèa l
+èèh s
 .
-èèl m
+èès t
 Current
-èèm t
+èèt {
 .
-èèt u
+èè{ |
 
-MainWindow
-èèu 
-,èè €
-dialogWindowèè 
-.èè 
-ERRORèè “
-)èè“ ”
-;èè” •
+MainWindowèè| †
+,èè† ‡#
+DialogWindowManagerèèˆ ›
+.èè› œ
+ERRORèèœ ¡
+)èè¡ ¢
+;èè¢ £
 }
 éé 	
 }
 ëë 
-}ìì ×Ø
+}ìì ŞÜ
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\LobbyPage.xaml.cs
 	namespace 	
 JeopardyGame
@@ -44181,51 +44130,51 @@ Visibility
 else
 ¨¨ 
 {
-©© 
-dialogWindow
-ªª $
+©© !
+DialogWindowManager
+ªª +
 .
-ªª$ %#
+ªª+ ,#
 ShowInfoOrErrorWindow
-ªª% :
+ªª, A
 (
-ªª: ;
+ªªA B
 
 Properties
-ªª; E
+ªªB L
 .
-ªªE F
+ªªL M
 	Resources
-ªªF O
+ªªM V
 .
-ªªO P
+ªªV W
 txbWarningTitle
-ªªP _
+ªªW f
 ,
-ªª_ `
+ªªf g
 
 Properties
-ªªa k
+ªªh r
 .
-ªªk l
+ªªr s
 	Resources
-ªªl u
+ªªs |
 .
-ªªu v$
-lblEliminateFromLobbyªªv ‹
-,ªª‹ Œ
-Windowªª “
-.ªª“ ”
-	GetWindowªª” 
-(ªª 
-thisªª ¢
-)ªª¢ £
-,ªª£ ¤
-dialogWindowªª¥ ±
-.ªª± ²
-INFORMATIONªª² ½
-)ªª½ ¾
-;ªª¾ ¿
+ªª| }$
+lblEliminateFromLobbyªª} ’
+,ªª’ “
+Windowªª” š
+.ªªš ›
+	GetWindowªª› ¤
+(ªª¤ ¥
+thisªª¥ ©
+)ªª© ª
+,ªªª «#
+DialogWindowManagerªª¬ ¿
+.ªª¿ À
+INFORMATIONªªÀ Ë
+)ªªË Ì
+;ªªÌ Í
 CloseWindow
 «« #
 (
@@ -44241,51 +44190,51 @@ Properties
 else
 ®® 
 {
-¯¯ 
-dialogWindow
-°°  
+¯¯ !
+DialogWindowManager
+°° '
 .
-°°  !#
+°°' (#
 ShowInfoOrErrorWindow
-°°! 6
+°°( =
 (
-°°6 7
+°°= >
 
 Properties
-°°7 A
+°°> H
 .
-°°A B
+°°H I
 	Resources
-°°B K
+°°I R
 .
-°°K L
+°°R S
 txbWarningTitle
-°°L [
+°°S b
 ,
-°°[ \
+°°b c
 
 Properties
-°°] g
+°°d n
 .
-°°g h
+°°n o
 	Resources
-°°h q
+°°o x
 .
-°°q r
-KickedFromLobby°°r 
-,°° ‚
-Window°°ƒ ‰
-.°°‰ Š
-	GetWindow°°Š “
-(°°“ ”
-this°°” ˜
-)°°˜ ™
-,°°™ š
-dialogWindow°°› §
-.°°§ ¨
-ERROR°°¨ ­
-)°°­ ®
-;°°® ¯
+°°x y
+KickedFromLobby°°y ˆ
+,°°ˆ ‰
+Window°°Š 
+.°° ‘
+	GetWindow°°‘ š
+(°°š ›
+this°°› Ÿ
+)°°Ÿ  
+,°°  ¡#
+DialogWindowManager°°¢ µ
+.°°µ ¶
+ERROR°°¶ »
+)°°» ¼
+;°°¼ ½
 CloseWindow
 ±± 
 (
@@ -44889,5272 +44838,5273 @@ Properties
 NULL_INT_VALUE
 ññ# 1
 ;
-ññ1 2
-foreach
-òò 
-(
-òò 
+ññ1 2
 var
-òò 
-item
-òò 
-in
-òò  
-from
-òò! %
-item
-òò& *
-in
-òò+ -"
+òò  
+playerToEliminated
+òò "
+=
+òò# $"
 currentPlayerInLobby
-òò. B
-where
-òòC H
-item
-òòI M
+òò& :
 .
-òòM N
+òò: ;
+Find
+òò; ?
+(
+òò? @
+item
+òò@ D
+=>
+òòE G
+item
+òòH L
+.
+òòL M
 UserName
-òòN V
+òòM U
 .
-òòV W
+òòU V
 Equals
-òòW ]
+òòV \
 (
-òò] ^
+òò\ ]
 userName
-òò^ f
+òò] e
 )
-òòf g
-select
-òòh n
-item
-òòo s
+òòe f
 )
-òòs t
-{
-óó "
-currentPlayerInLobby
-ôô $
+òòf g
+;
+òòg h
+if
+óó 
+(
+óó  
+playerToEliminated
+óó "
 .
-ôô$ %
-Remove
-ôô% +
-(
-ôô+ ,
-item
-ôô, 0
+óó" #
+IdPlayer
+óó# +
+!=
+óó, .
+$num
+óó/ 0
 )
-ôô0 1
-;
-ôô1 2
-playerInLobby
-õõ 
-=
-õõ 
-item
-õõ  $
-;
-õõ$ %
-}
-öö 
-return
-÷÷ 
-playerInLobby
-÷÷  
-;
-÷÷  !
-}
-øø 	
-private
-úú 
-String
-úú )
-GetUserNameFromLabelByImage
-úú 2
-(
-úú2 3
-object
-úú3 9
-sender
-úú: @
-)
-úú@ A
+óó0 1
 {
-ûû 	
-Image
-üü 
-	imgChosen
-üü 
-=
-üü 
+ôô "
+currentPlayerInLobby
+õõ $
+.
+õõ$ %
+Remove
+õõ% +
 (
-üü 
-Image
-üü $
+õõ+ , 
+playerToEliminated
+õõ, >
 )
-üü$ %
-sender
-üü% +
+õõ> ?
 ;
-üü+ ,
+õõ? @
+playerInLobby
+öö 
+=
+öö  
+playerToEliminated
+öö  2
+;
+öö2 3
+}
+÷÷ 
+return
+øø 
+playerInLobby
+øø  
+;
+øø  !
+}
+ùù 	
+private
+ûû 
+String
+ûû )
+GetUserNameFromLabelByImage
+ûû 2
+(
+ûû2 3
+object
+ûû3 9
+sender
+ûû: @
+)
+ûû@ A
+{
+üü 	
+Image
+ıı 
+	imgChosen
+ıı 
+=
+ıı 
+(
+ıı 
+Image
+ıı $
+)
+ıı$ %
+sender
+ıı% +
+;
+ıı+ ,
 
 StackPanel
-ıı 
+şş 
 	stcChosen
-ıı  
+şş  
 =
-ıı! "2
+şş! "2
 $GetParentOfGraphicInterfaceComponent
-ıı# G
+şş# G
 .
-ııG H
+şşG H
 
 FindParent
-ııH R
+şşH R
 <
-ııR S
+şşR S
 
 StackPanel
-ııS ]
+şşS ]
 >
-ıı] ^
+şş] ^
 (
-ıı^ _
+şş^ _
 	imgChosen
-ıı_ h
+şş_ h
 )
-ııh i
+şşh i
 ;
-ııi j
+şşi j
 Label
-şş 
+ÿÿ 
 label
-şş 
+ÿÿ 
 =
-şş 
+ÿÿ 
 	stcChosen
-şş #
+ÿÿ #
 .
-şş# $
+ÿÿ# $
 Children
-şş$ ,
+ÿÿ$ ,
 .
-şş, -
+ÿÿ, -
 OfType
-şş- 3
+ÿÿ- 3
 <
-şş3 4
+ÿÿ3 4
 Label
-şş4 9
+ÿÿ4 9
 >
-şş9 :
+ÿÿ9 :
 (
-şş: ;
+ÿÿ: ;
 )
-şş; <
+ÿÿ; <
 .
-şş< =
+ÿÿ< =
 FirstOrDefault
-şş= K
+ÿÿ= K
 (
-şşK L
+ÿÿK L
 )
-şşL M
+ÿÿL M
 ;
-şşM N
+ÿÿM N
 return
-ÿÿ 
+€€ 
 label
-ÿÿ 
+€€ 
 ?
-ÿÿ 
+€€ 
 .
-ÿÿ 
+€€ 
 Content
-ÿÿ !
+€€ !
 ?
-ÿÿ! "
+€€! "
 .
-ÿÿ" #
+€€" #
 ToString
-ÿÿ# +
+€€# +
 (
-ÿÿ+ ,
+€€+ ,
 )
-ÿÿ, -
+€€, -
 ;
-ÿÿ- .
+€€- .
 }
-€€ 	
+ 	
 private
-ƒƒ 
+„„ 
 void
-ƒƒ 
+„„ 
 ClickTeamUp
-ƒƒ  
+„„  
 (
-ƒƒ  !
+„„  !
 object
-ƒƒ! '
+„„! '
 sender
-ƒƒ( .
+„„( .
 ,
-ƒƒ. /
+„„. /
 RoutedEventArgs
-ƒƒ0 ?
+„„0 ?
 e
-ƒƒ@ A
+„„@ A
 )
-ƒƒA B
+„„A B
 {
-„„ 	
+…… 	
 if
-…… 
+†† 
 (
-…… 
+†† 
 isAdminOfLobby
-…… 
+†† 
 )
-…… 
+†† 
 {
-†† 
+‡‡ 
 try
-‡‡ 
+ˆˆ 
 {
-ˆˆ  
+‰‰  
 LobbyActionsClient
-‰‰ &'
+ŠŠ &'
 lobbyActionsCallBackProxy
-‰‰' @
+ŠŠ' @
 =
-‰‰A B
+ŠŠA B
 new
-‰‰C F 
+ŠŠC F 
 LobbyActionsClient
-‰‰G Y
+ŠŠG Y
 (
-‰‰Y Z
+ŠŠY Z
 new
-‰‰Z ]
+ŠŠZ ]
 InstanceContext
-‰‰^ m
+ŠŠ^ m
 (
-‰‰m n
+ŠŠm n
 this
-‰‰n r
+ŠŠn r
 )
-‰‰r s
+ŠŠr s
 )
-‰‰s t
+ŠŠs t
 ;
-‰‰t u'
+ŠŠt u'
 lobbyActionsCallBackProxy
-ŠŠ -
+‹‹ -
 .
-ŠŠ- . 
+‹‹- . 
 RenewLobbyCallBack
-ŠŠ. @
+‹‹. @
 (
-ŠŠ@ A
+‹‹@ A
 roomCode
-ŠŠA I
+‹‹A I
 ,
-ŠŠI J
+‹‹I J
 userSingleton
-ŠŠK X
+‹‹K X
 .
-ŠŠX Y
+‹‹X Y
 IdUser
-ŠŠY _
+‹‹Y _
 )
-ŠŠ_ `
+‹‹_ `
 ;
-ŠŠ` a
+‹‹` a
 if
-ŒŒ 
+ 
 (
-ŒŒ "
+ "
 currentPlayerInLobby
-ŒŒ ,
+ ,
 .
-ŒŒ, -
+, -
 Count
-ŒŒ- 2
+- 2
 ==
-ŒŒ3 5
+3 5
 $num
-ŒŒ6 7
+6 7
 )
-ŒŒ7 8
+7 8
 {
- 
+ 
 DoOrUndoTeams
- %
+ %
 (
-% &
+% &
 true
-& *
-)
-* +
-;
-+ ,
-SetPlayerInLabels
- )
-(
-) *
+& *
 )
 * +
 ;
-+ ,)
++ ,
+SetPlayerInLabels
+ )
+(
+) *
+)
+* +
+;
++ ,)
 LobbyActionsOperationClient
- 3
+‘‘ 3
 lobbyActionsProxy
-4 E
+‘‘4 E
 =
-F G
+‘‘F G
 new
-H K
+‘‘H K
 (
-K L
+‘‘K L
 )
-L M
+‘‘L M
 ;
-M N
+‘‘M N
 lobbyActionsProxy
-‘‘ )
+’’ )
 .
-‘‘) *
+’’) *
 	MakeTeams
-‘‘* 3
+’’* 3
 (
-‘‘3 4
+’’3 4
 roomCode
-‘‘4 <
+’’4 <
 ,
-‘‘< =
+’’< =
 userSingleton
-‘‘> K
+’’> K
 .
-‘‘K L
+’’K L
 IdUser
-‘‘L R
+’’L R
 ,
-‘‘R S
+’’R S
 true
-‘‘T X
+’’T X
 )
-‘‘X Y
+’’X Y
 ;
-‘‘Y Z
+’’Y Z
 }
-’’ 
+““ 
 else
-““ 
+”” 
 {
-”” 
+•• 
 	chbTeamUp
-•• !
+–– !
 .
-••! "
+––! "
 	IsChecked
-••" +
+––" +
 =
-••, -
+––, -
 false
-••. 3
+––. 3
 ;
-••3 4
-dialogWindow
-–– $
+––3 4!
+DialogWindowManager
+—— +
 .
-––$ %#
+——+ ,#
 ShowInfoOrErrorWindow
-––% :
+——, A
 (
-––: ;
+——A B
 
 Properties
-––; E
+——B L
 .
-––E F
+——L M
 	Resources
-––F O
+——M V
 .
-––O P!
+——V W!
 txbInformationTitle
-––P c
+——W j
 ,
-––c d
+——j k
 
 Properties
-––e o
+——l v
 .
-––o p
-	Resources
-––p y
-.
-––y z
-MustBe4Players––z ˆ
-,––ˆ ‰
-Window––Š 
-.–– ‘
-	GetWindow––‘ š
-(––š ›
-this––› Ÿ
-)––Ÿ  
-,––  ¡
-dialogWindow––¢ ®
-.––® ¯
-ERROR––¯ ´
-)––´ µ
-;––µ ¶
+——v w
+	Resources——w €
+.——€ 
+MustBe4Players—— 
+,—— 
+Window——‘ —
+.——— ˜
+	GetWindow——˜ ¡
+(——¡ ¢
+this——¢ ¦
+)——¦ §
+,——§ ¨#
+DialogWindowManager——© ¼
+.——¼ ½
+ERROR——½ Â
+)——Â Ã
+;——Ã Ä
 }
-—— 
+˜˜ 
 }
-˜˜ 
+™™ 
 catch
-™™ 
+šš 
 (
-™™ '
+šš '
 EndpointNotFoundException
-™™ 0
+šš 0
 ex
-™™1 3
+šš1 3
 )
-™™3 4
+šš3 4
 {
-šš 
+›› 
 
 Exceptions
-›› 
+œœ 
 .
-›› %
+œœ %
 ExceptionHandlerForLogs
-›› 6
+œœ 6
 .
-››6 7
+œœ6 7
 LogException
-››7 C
+œœ7 C
 (
-››C D
+œœC D
 ex
-››D F
+œœD F
 ,
-››F G
+œœF G
 
 Exceptions
-››H R
+œœH R
 .
-››R S!
+œœR S!
 ExceptionDictionary
-››S f
+œœS f
 .
-››f g
+œœf g
 ERROR
-››g l
+œœg l
 )
-››l m
+œœl m
 ;
-››m n
-dialogWindow
-œœ  
+œœm n!
+DialogWindowManager
+ '
 .
-œœ  !#
+' (#
 ShowInfoOrErrorWindow
-œœ! 6
+( =
 (
-œœ6 7
+= >
 
 Properties
-œœ7 A
+> H
 .
-œœA B
+H I
 	Resources
-œœB K
+I R
 .
-œœK L
+R S
 txbErrorTitle
-œœL Y
+S `
 ,
-œœY Z
+` a
 
 Properties
-œœ[ e
+b l
 .
-œœe f
+l m
 	Resources
-œœf o
+m v
 .
-œœo p#
-lblFailToManageTeamsœœp „
-+œœ… †
-$strœœ‡ Œ
-+œœ 
+v w#
+lblFailToManageTeamsw ‹
++Œ 
+$str “
++” •
 
-Propertiesœœ ™
-.œœ™ š
-	Resourcesœœš £
-.œœ£ ¤#
-lblEndPointNotFoundœœ¤ ·
-,œœ· ¸
-Windowœœ¹ ¿
-.œœ¿ À
-	GetWindowœœÀ É
-(œœÉ Ê
-thisœœÊ Î
-)œœÎ Ï
-,œœÏ Ğ
-dialogWindowœœÑ İ
-.œœİ Ş
-ERRORœœŞ ã
-)œœã ä
-;œœä å
+Properties–  
+.  ¡
+	Resources¡ ª
+.ª «#
+lblEndPointNotFound« ¾
+,¾ ¿
+WindowÀ Æ
+.Æ Ç
+	GetWindowÇ Ğ
+(Ğ Ñ
+thisÑ Õ
+)Õ Ö
+,Ö ×#
+DialogWindowManagerØ ë
+.ë ì
+ERRORì ñ
+)ñ ò
+;ò ó
 	chbTeamUp
- 
+ 
 .
- 
+ 
 	IsChecked
- '
+ '
 =
-( )
+( )
 false
-* /
+* /
 ;
-/ 0
+/ 0
 }
- 
+ŸŸ 
 catch
-ŸŸ 
+   
 (
-ŸŸ 1
+   1
 #CommunicationObjectFaultedException
-ŸŸ :
+   :
 ex
-ŸŸ; =
+  ; =
 )
-ŸŸ= >
+  = >
 {
-   
+¡¡ 
 
 Exceptions
-¡¡ 
+¢¢ 
 .
-¡¡ %
+¢¢ %
 ExceptionHandlerForLogs
-¡¡ 6
+¢¢ 6
 .
-¡¡6 7
+¢¢6 7
 LogException
-¡¡7 C
+¢¢7 C
 (
-¡¡C D
+¢¢C D
 ex
-¡¡D F
+¢¢D F
 ,
-¡¡F G
+¢¢F G
 
 Exceptions
-¡¡H R
+¢¢H R
 .
-¡¡R S!
+¢¢R S!
 ExceptionDictionary
-¡¡S f
+¢¢S f
 .
-¡¡f g
+¢¢f g
 ERROR
-¡¡g l
+¢¢g l
 )
-¡¡l m
+¢¢l m
 ;
-¡¡m n
-dialogWindow
-¢¢  
+¢¢m n!
+DialogWindowManager
+££ '
 .
-¢¢  !#
+££' (#
 ShowInfoOrErrorWindow
-¢¢! 6
+££( =
 (
-¢¢6 7
+££= >
 
 Properties
-¢¢7 A
+££> H
 .
-¢¢A B
+££H I
 	Resources
-¢¢B K
+££I R
 .
-¢¢K L
+££R S
 txbErrorTitle
-¢¢L Y
+££S `
 ,
-¢¢Y Z
+££` a
 
 Properties
-¢¢[ e
+££b l
 .
-¢¢e f
+££l m
 	Resources
-¢¢f o
+££m v
 .
-¢¢o p#
-lblFailToManageTeams¢¢p „
-+¢¢… †
-$str¢¢‡ Œ
-+¢¢ 
+££v w#
+lblFailToManageTeams££w ‹
++££Œ 
+$str££ “
++££” •
 
-Properties¢¢ ™
-.¢¢™ š
-	Resources¢¢š £
-.¢¢£ ¤(
-lblComunicationException¢¢¤ ¼
-,¢¢¼ ½
-Window¢¢¾ Ä
-.¢¢Ä Å
-	GetWindow¢¢Å Î
-(¢¢Î Ï
-this¢¢Ï Ó
-)¢¢Ó Ô
-,¢¢Ô Õ
-dialogWindow¢¢Ö â
-.¢¢â ã
-ERROR¢¢ã è
-)¢¢è é
-;¢¢é ê
+Properties££–  
+.££  ¡
+	Resources££¡ ª
+.££ª «(
+lblComunicationException££« Ã
+,££Ã Ä
+Window££Å Ë
+.££Ë Ì
+	GetWindow££Ì Õ
+(££Õ Ö
+this££Ö Ú
+)££Ú Û
+,££Û Ü#
+DialogWindowManager££İ ğ
+.££ğ ñ
+ERROR££ñ ö
+)££ö ÷
+;££÷ ø
 	chbTeamUp
-££ 
+¤¤ 
 .
-££ 
+¤¤ 
 	IsChecked
-££ '
+¤¤ '
 =
-££( )
+¤¤( )
 false
-££* /
+¤¤* /
 ;
-££/ 0
+¤¤/ 0
 }
-¤¤ 
+¥¥ 
 catch
-¥¥ 
+¦¦ 
 (
-¥¥ 
+¦¦ 
 TimeoutException
-¥¥ '
+¦¦ '
 ex
-¥¥( *
+¦¦( *
 )
-¥¥* +
+¦¦* +
 {
-¦¦ 
+§§ 
 
 Exceptions
-§§ 
+¨¨ 
 .
-§§ %
+¨¨ %
 ExceptionHandlerForLogs
-§§ 6
+¨¨ 6
 .
-§§6 7
+¨¨6 7
 LogException
-§§7 C
+¨¨7 C
 (
-§§C D
+¨¨C D
 ex
-§§D F
+¨¨D F
 ,
-§§F G
+¨¨F G
 
 Exceptions
-§§H R
+¨¨H R
 .
-§§R S!
+¨¨R S!
 ExceptionDictionary
-§§S f
+¨¨S f
 .
-§§f g
+¨¨f g
 ERROR
-§§g l
+¨¨g l
 )
-§§l m
+¨¨l m
 ;
-§§m n
-dialogWindow
-¨¨  
+¨¨m n!
+DialogWindowManager
+©© '
 .
-¨¨  !#
+©©' (#
 ShowInfoOrErrorWindow
-¨¨! 6
+©©( =
 (
-¨¨6 7
+©©= >
 
 Properties
-¨¨7 A
+©©> H
 .
-¨¨A B
+©©H I
 	Resources
-¨¨B K
+©©I R
 .
-¨¨K L
+©©R S
 txbErrorTitle
-¨¨L Y
+©©S `
 ,
-¨¨Y Z
+©©` a
 
 Properties
-¨¨[ e
+©©b l
 .
-¨¨e f
+©©l m
 	Resources
-¨¨f o
+©©m v
 .
-¨¨o p#
-lblFailToManageTeams¨¨p „
-+¨¨… †
-$str¨¨‡ Œ
-+¨¨ 
+©©v w#
+lblFailToManageTeams©©w ‹
++©©Œ 
+$str©© “
++©©” •
 
-Properties¨¨ ™
-.¨¨™ š
-	Resources¨¨š £
-.¨¨£ ¤ 
-lblTimeException¨¨¤ ´
-,¨¨´ µ
-Window¨¨¶ ¼
-.¨¨¼ ½
-	GetWindow¨¨½ Æ
-(¨¨Æ Ç
-this¨¨Ç Ë
-)¨¨Ë Ì
-,¨¨Ì Í
-dialogWindow¨¨Î Ú
-.¨¨Ú Û
-ERROR¨¨Û à
-)¨¨à á
-;¨¨á â
+Properties©©–  
+.©©  ¡
+	Resources©©¡ ª
+.©©ª « 
+lblTimeException©©« »
+,©©» ¼
+Window©©½ Ã
+.©©Ã Ä
+	GetWindow©©Ä Í
+(©©Í Î
+this©©Î Ò
+)©©Ò Ó
+,©©Ó Ô#
+DialogWindowManager©©Õ è
+.©©è é
+ERROR©©é î
+)©©î ï
+;©©ï ğ
 	chbTeamUp
-©© 
+ªª 
 .
-©© 
+ªª 
 	IsChecked
-©© '
+ªª '
 =
-©©( )
+ªª( )
 false
-©©* /
+ªª* /
 ;
-©©/ 0
+ªª/ 0
 }
-ªª 
+«« 
 catch
-«« 
+¬¬ 
 (
-«« $
+¬¬ $
 CommunicationException
-«« -
+¬¬ -
 ex
-««. 0
+¬¬. 0
 )
-««0 1
+¬¬0 1
 {
-¬¬ 
+­­ 
 
 Exceptions
-­­ 
+®® 
 .
-­­ %
+®® %
 ExceptionHandlerForLogs
-­­ 6
+®® 6
 .
-­­6 7
+®®6 7
 LogException
-­­7 C
+®®7 C
 (
-­­C D
+®®C D
 ex
-­­D F
+®®D F
 ,
-­­F G
+®®F G
 
 Exceptions
-­­H R
+®®H R
 .
-­­R S!
+®®R S!
 ExceptionDictionary
-­­S f
+®®S f
 .
-­­f g
+®®f g
 ERROR
-­­g l
+®®g l
 )
-­­l m
+®®l m
 ;
-­­m n
-dialogWindow
-®®  
+®®m n!
+DialogWindowManager
+¯¯ '
 .
-®®  !#
+¯¯' (#
 ShowInfoOrErrorWindow
-®®! 6
+¯¯( =
 (
-®®6 7
+¯¯= >
 
 Properties
-®®7 A
+¯¯> H
 .
-®®A B
+¯¯H I
 	Resources
-®®B K
+¯¯I R
 .
-®®K L
+¯¯R S
 txbErrorTitle
-®®L Y
+¯¯S `
 ,
-®®Y Z
+¯¯` a
 
 Properties
-®®[ e
+¯¯b l
 .
-®®e f
+¯¯l m
 	Resources
-®®f o
+¯¯m v
 .
-®®o p#
-lblFailToManageTeams®®p „
-+®®… †
-$str®®‡ Œ
-+®® 
+¯¯v w#
+lblFailToManageTeams¯¯w ‹
++¯¯Œ 
+$str¯¯ “
++¯¯” •
 
-Properties®® ™
-.®®™ š
-	Resources®®š £
-.®®£ ¤#
-lblWithoutConection®®¤ ·
-,®®· ¸
-Window®®¹ ¿
-.®®¿ À
-	GetWindow®®À É
-(®®É Ê
-this®®Ê Î
-)®®Î Ï
-,®®Ï Ğ
-dialogWindow®®Ñ İ
-.®®İ Ş
-ERROR®®Ş ã
-)®®ã ä
-;®®ä å
+Properties¯¯–  
+.¯¯  ¡
+	Resources¯¯¡ ª
+.¯¯ª «#
+lblWithoutConection¯¯« ¾
+,¯¯¾ ¿
+Window¯¯À Æ
+.¯¯Æ Ç
+	GetWindow¯¯Ç Ğ
+(¯¯Ğ Ñ
+this¯¯Ñ Õ
+)¯¯Õ Ö
+,¯¯Ö ×#
+DialogWindowManager¯¯Ø ë
+.¯¯ë ì
+ERROR¯¯ì ñ
+)¯¯ñ ò
+;¯¯ò ó
 	chbTeamUp
-¯¯ 
+°° 
 .
-¯¯ 
+°° 
 	IsChecked
-¯¯ '
+°° '
 =
-¯¯( )
+°°( )
 false
-¯¯* /
+°°* /
 ;
-¯¯/ 0
+°°/ 0
 }
-°° 
+±± 
 }
-±± 
+²² 
 }
-²² 	
+³³ 	
 private
-´´ 
+µµ 
 void
-´´ 
+µµ 
 ClickNoTeamUp
-´´ "
+µµ "
 (
-´´" #
+µµ" #
 object
-´´# )
+µµ# )
 sender
-´´* 0
+µµ* 0
 ,
-´´0 1
+µµ0 1
 RoutedEventArgs
-´´2 A
+µµ2 A
 e
-´´B C
+µµB C
 )
-´´C D
+µµC D
 {
-µµ 	
+¶¶ 	
 if
-¶¶ 
+·· 
 (
-¶¶ 
+·· 
 isAdminOfLobby
-¶¶ 
+·· 
 )
-¶¶ 
+·· 
 {
-·· 
+¸¸ 
 try
-¸¸ 
+¹¹ 
 {
-¹¹  
+ºº  
 LobbyActionsClient
-ºº &'
+»» &'
 lobbyActionsCallBackProxy
-ºº' @
+»»' @
 =
-ººA B
+»»A B
 new
-ººC F 
+»»C F 
 LobbyActionsClient
-ººG Y
+»»G Y
 (
-ººY Z
+»»Y Z
 new
-ººZ ]
+»»Z ]
 InstanceContext
-ºº^ m
+»»^ m
 (
-ººm n
+»»m n
 this
-ººn r
+»»n r
 )
-ººr s
+»»r s
 )
-ººs t
+»»s t
 ;
-ººt u'
+»»t u'
 lobbyActionsCallBackProxy
-»» -
+¼¼ -
 .
-»»- . 
+¼¼- . 
 RenewLobbyCallBack
-»». @
+¼¼. @
 (
-»»@ A
+¼¼@ A
 roomCode
-»»A I
+¼¼A I
 ,
-»»I J
+¼¼I J
 userSingleton
-»»K X
+¼¼K X
 .
-»»X Y
+¼¼X Y
 IdUser
-»»Y _
+¼¼Y _
 )
-»»_ `
+¼¼_ `
 ;
-»»` a
+¼¼` a
 DoOrUndoTeams
-½½ !
+¾¾ !
 (
-½½! "
+¾¾! "
 false
-½½" '
+¾¾" '
 )
-½½' (
+¾¾' (
 ;
-½½( )
+¾¾( )
 SetPlayerInLabels
-¾¾ %
+¿¿ %
 (
-¾¾% &
+¿¿% &
 )
-¾¾& '
+¿¿& '
 ;
-¾¾' ()
+¿¿' ()
 LobbyActionsOperationClient
-¿¿ /
+ÀÀ /
 lobbyActionsProxy
-¿¿0 A
+ÀÀ0 A
 =
-¿¿B C
+ÀÀB C
 new
-¿¿D G
+ÀÀD G
 (
-¿¿G H
+ÀÀG H
 )
-¿¿H I
+ÀÀH I
 ;
-¿¿I J
+ÀÀI J
 lobbyActionsProxy
-ÀÀ %
+ÁÁ %
 .
-ÀÀ% &
+ÁÁ% &
 	MakeTeams
-ÀÀ& /
+ÁÁ& /
 (
-ÀÀ/ 0
+ÁÁ/ 0
 roomCode
-ÀÀ0 8
+ÁÁ0 8
 ,
-ÀÀ8 9
+ÁÁ8 9
 userSingleton
-ÀÀ: G
+ÁÁ: G
 .
-ÀÀG H
+ÁÁG H
 IdUser
-ÀÀH N
+ÁÁH N
 ,
-ÀÀN O
+ÁÁN O
 false
-ÀÀP U
+ÁÁP U
 )
-ÀÀU V
+ÁÁU V
 ;
-ÀÀV W
+ÁÁV W
 }
-ÁÁ 
+ÂÂ 
 catch
-ÂÂ 
+ÃÃ 
 (
-ÂÂ '
+ÃÃ '
 EndpointNotFoundException
-ÂÂ 0
+ÃÃ 0
 ex
-ÂÂ1 3
+ÃÃ1 3
 )
-ÂÂ3 4
+ÃÃ3 4
 {
-ÃÃ 
+ÄÄ 
 
 Exceptions
-ÄÄ 
+ÅÅ 
 .
-ÄÄ %
+ÅÅ %
 ExceptionHandlerForLogs
-ÄÄ 6
+ÅÅ 6
 .
-ÄÄ6 7
+ÅÅ6 7
 LogException
-ÄÄ7 C
+ÅÅ7 C
 (
-ÄÄC D
+ÅÅC D
 ex
-ÄÄD F
+ÅÅD F
 ,
-ÄÄF G
+ÅÅF G
 
 Exceptions
-ÄÄH R
+ÅÅH R
 .
-ÄÄR S!
+ÅÅR S!
 ExceptionDictionary
-ÄÄS f
+ÅÅS f
 .
-ÄÄf g
+ÅÅf g
 ERROR
-ÄÄg l
+ÅÅg l
 )
-ÄÄl m
+ÅÅl m
 ;
-ÄÄm n
-dialogWindow
-ÅÅ  
+ÅÅm n!
+DialogWindowManager
+ÆÆ '
 .
-ÅÅ  !#
+ÆÆ' (#
 ShowInfoOrErrorWindow
-ÅÅ! 6
+ÆÆ( =
 (
-ÅÅ6 7
+ÆÆ= >
 
 Properties
-ÅÅ7 A
+ÆÆ> H
 .
-ÅÅA B
+ÆÆH I
 	Resources
-ÅÅB K
+ÆÆI R
 .
-ÅÅK L
+ÆÆR S
 txbErrorTitle
-ÅÅL Y
+ÆÆS `
 ,
-ÅÅY Z
+ÆÆ` a
 
 Properties
-ÅÅ[ e
+ÆÆb l
 .
-ÅÅe f
+ÆÆl m
 	Resources
-ÅÅf o
+ÆÆm v
 .
-ÅÅo p#
-lblFailToManageTeamsÅÅp „
-+ÅÅ… †
-$strÅÅ‡ Œ
-+ÅÅ 
+ÆÆv w#
+lblFailToManageTeamsÆÆw ‹
++ÆÆŒ 
+$strÆÆ “
++ÆÆ” •
 
-PropertiesÅÅ ™
-.ÅÅ™ š
-	ResourcesÅÅš £
-.ÅÅ£ ¤#
-lblEndPointNotFoundÅÅ¤ ·
-,ÅÅ· ¸
-WindowÅÅ¹ ¿
-.ÅÅ¿ À
-	GetWindowÅÅÀ É
-(ÅÅÉ Ê
-thisÅÅÊ Î
-)ÅÅÎ Ï
-,ÅÅÏ Ğ
-dialogWindowÅÅÑ İ
-.ÅÅİ Ş
-ERRORÅÅŞ ã
-)ÅÅã ä
-;ÅÅä å
+PropertiesÆÆ–  
+.ÆÆ  ¡
+	ResourcesÆÆ¡ ª
+.ÆÆª «#
+lblEndPointNotFoundÆÆ« ¾
+,ÆÆ¾ ¿
+WindowÆÆÀ Æ
+.ÆÆÆ Ç
+	GetWindowÆÆÇ Ğ
+(ÆÆĞ Ñ
+thisÆÆÑ Õ
+)ÆÆÕ Ö
+,ÆÆÖ ×#
+DialogWindowManagerÆÆØ ë
+.ÆÆë ì
+ERRORÆÆì ñ
+)ÆÆñ ò
+;ÆÆò ó
 DoOrUndoTeams
-ÆÆ !
+ÇÇ !
 (
-ÆÆ! "
+ÇÇ! "
 true
-ÆÆ" &
-)
-ÆÆ& '
-;
-ÆÆ' (
-SetPlayerInLabels
-ÇÇ %
-(
-ÇÇ% &
+ÇÇ" &
 )
 ÇÇ& '
 ;
-ÇÇ' (
-}
-ÈÈ 
-catch
-ÉÉ 
-(
-ÉÉ 1
-#CommunicationObjectFaultedException
-ÉÉ :
-ex
-ÉÉ; =
-)
-ÉÉ= >
-{
-ÊÊ 
-
-Exceptions
-ËË 
-.
-ËË %
-ExceptionHandlerForLogs
-ËË 6
-.
-ËË6 7
-LogException
-ËË7 C
-(
-ËËC D
-ex
-ËËD F
-,
-ËËF G
-
-Exceptions
-ËËH R
-.
-ËËR S!
-ExceptionDictionary
-ËËS f
-.
-ËËf g
-ERROR
-ËËg l
-)
-ËËl m
-;
-ËËm n
-dialogWindow
-ÌÌ  
-.
-ÌÌ  !#
-ShowInfoOrErrorWindow
-ÌÌ! 6
-(
-ÌÌ6 7
-
-Properties
-ÌÌ7 A
-.
-ÌÌA B
-	Resources
-ÌÌB K
-.
-ÌÌK L
-txbErrorTitle
-ÌÌL Y
-,
-ÌÌY Z
-
-Properties
-ÌÌ[ e
-.
-ÌÌe f
-	Resources
-ÌÌf o
-.
-ÌÌo p#
-lblFailToManageTeamsÌÌp „
-+ÌÌ… †
-$strÌÌ‡ Œ
-+ÌÌ 
-
-PropertiesÌÌ ™
-.ÌÌ™ š
-	ResourcesÌÌš £
-.ÌÌ£ ¤(
-lblComunicationExceptionÌÌ¤ ¼
-,ÌÌ¼ ½
-WindowÌÌ¾ Ä
-.ÌÌÄ Å
-	GetWindowÌÌÅ Î
-(ÌÌÎ Ï
-thisÌÌÏ Ó
-)ÌÌÓ Ô
-,ÌÌÔ Õ
-dialogWindowÌÌÖ â
-.ÌÌâ ã
-ERRORÌÌã è
-)ÌÌè é
-;ÌÌé ê
-DoOrUndoTeams
-ÍÍ !
-(
-ÍÍ! "
-true
-ÍÍ" &
-)
-ÍÍ& '
-;
-ÍÍ' (
+ÇÇ' (
 SetPlayerInLabels
-ÎÎ %
+ÈÈ %
 (
-ÎÎ% &
+ÈÈ% &
+)
+ÈÈ& '
+;
+ÈÈ' (
+}
+ÉÉ 
+catch
+ÊÊ 
+(
+ÊÊ 1
+#CommunicationObjectFaultedException
+ÊÊ :
+ex
+ÊÊ; =
+)
+ÊÊ= >
+{
+ËË 
+
+Exceptions
+ÌÌ 
+.
+ÌÌ %
+ExceptionHandlerForLogs
+ÌÌ 6
+.
+ÌÌ6 7
+LogException
+ÌÌ7 C
+(
+ÌÌC D
+ex
+ÌÌD F
+,
+ÌÌF G
+
+Exceptions
+ÌÌH R
+.
+ÌÌR S!
+ExceptionDictionary
+ÌÌS f
+.
+ÌÌf g
+ERROR
+ÌÌg l
+)
+ÌÌl m
+;
+ÌÌm n!
+DialogWindowManager
+ÍÍ '
+.
+ÍÍ' (#
+ShowInfoOrErrorWindow
+ÍÍ( =
+(
+ÍÍ= >
+
+Properties
+ÍÍ> H
+.
+ÍÍH I
+	Resources
+ÍÍI R
+.
+ÍÍR S
+txbErrorTitle
+ÍÍS `
+,
+ÍÍ` a
+
+Properties
+ÍÍb l
+.
+ÍÍl m
+	Resources
+ÍÍm v
+.
+ÍÍv w#
+lblFailToManageTeamsÍÍw ‹
++ÍÍŒ 
+$strÍÍ “
++ÍÍ” •
+
+PropertiesÍÍ–  
+.ÍÍ  ¡
+	ResourcesÍÍ¡ ª
+.ÍÍª «(
+lblComunicationExceptionÍÍ« Ã
+,ÍÍÃ Ä
+WindowÍÍÅ Ë
+.ÍÍË Ì
+	GetWindowÍÍÌ Õ
+(ÍÍÕ Ö
+thisÍÍÖ Ú
+)ÍÍÚ Û
+,ÍÍÛ Ü#
+DialogWindowManagerÍÍİ ğ
+.ÍÍğ ñ
+ERRORÍÍñ ö
+)ÍÍö ÷
+;ÍÍ÷ ø
+DoOrUndoTeams
+ÎÎ !
+(
+ÎÎ! "
+true
+ÎÎ" &
 )
 ÎÎ& '
 ;
-ÎÎ' (
-}
-ÏÏ 
-catch
-ĞĞ 
-(
-ĞĞ 
-TimeoutException
-ĞĞ '
-ex
-ĞĞ( *
-)
-ĞĞ* +
-{
-ÑÑ 
-
-Exceptions
-ÒÒ 
-.
-ÒÒ %
-ExceptionHandlerForLogs
-ÒÒ 6
-.
-ÒÒ6 7
-LogException
-ÒÒ7 C
-(
-ÒÒC D
-ex
-ÒÒD F
-,
-ÒÒF G
-
-Exceptions
-ÒÒH R
-.
-ÒÒR S!
-ExceptionDictionary
-ÒÒS f
-.
-ÒÒf g
-ERROR
-ÒÒg l
-)
-ÒÒl m
-;
-ÒÒm n
-dialogWindow
-ÓÓ  
-.
-ÓÓ  !#
-ShowInfoOrErrorWindow
-ÓÓ! 6
-(
-ÓÓ6 7
-
-Properties
-ÓÓ7 A
-.
-ÓÓA B
-	Resources
-ÓÓB K
-.
-ÓÓK L
-txbErrorTitle
-ÓÓL Y
-,
-ÓÓY Z
-
-Properties
-ÓÓ[ e
-.
-ÓÓe f
-	Resources
-ÓÓf o
-.
-ÓÓo p#
-lblFailToManageTeamsÓÓp „
-+ÓÓ… †
-$strÓÓ‡ Œ
-+ÓÓ 
-
-PropertiesÓÓ ™
-.ÓÓ™ š
-	ResourcesÓÓš £
-.ÓÓ£ ¤ 
-lblTimeExceptionÓÓ¤ ´
-,ÓÓ´ µ
-WindowÓÓ¶ ¼
-.ÓÓ¼ ½
-	GetWindowÓÓ½ Æ
-(ÓÓÆ Ç
-thisÓÓÇ Ë
-)ÓÓË Ì
-,ÓÓÌ Í
-dialogWindowÓÓÎ Ú
-.ÓÓÚ Û
-ERRORÓÓÛ à
-)ÓÓà á
-;ÓÓá â
-DoOrUndoTeams
-ÔÔ !
-(
-ÔÔ! "
-true
-ÔÔ" &
-)
-ÔÔ& '
-;
-ÔÔ' (
+ÎÎ' (
 SetPlayerInLabels
-ÕÕ %
+ÏÏ %
 (
-ÕÕ% &
+ÏÏ% &
+)
+ÏÏ& '
+;
+ÏÏ' (
+}
+ĞĞ 
+catch
+ÑÑ 
+(
+ÑÑ 
+TimeoutException
+ÑÑ '
+ex
+ÑÑ( *
+)
+ÑÑ* +
+{
+ÒÒ 
+
+Exceptions
+ÓÓ 
+.
+ÓÓ %
+ExceptionHandlerForLogs
+ÓÓ 6
+.
+ÓÓ6 7
+LogException
+ÓÓ7 C
+(
+ÓÓC D
+ex
+ÓÓD F
+,
+ÓÓF G
+
+Exceptions
+ÓÓH R
+.
+ÓÓR S!
+ExceptionDictionary
+ÓÓS f
+.
+ÓÓf g
+ERROR
+ÓÓg l
+)
+ÓÓl m
+;
+ÓÓm n!
+DialogWindowManager
+ÔÔ '
+.
+ÔÔ' (#
+ShowInfoOrErrorWindow
+ÔÔ( =
+(
+ÔÔ= >
+
+Properties
+ÔÔ> H
+.
+ÔÔH I
+	Resources
+ÔÔI R
+.
+ÔÔR S
+txbErrorTitle
+ÔÔS `
+,
+ÔÔ` a
+
+Properties
+ÔÔb l
+.
+ÔÔl m
+	Resources
+ÔÔm v
+.
+ÔÔv w#
+lblFailToManageTeamsÔÔw ‹
++ÔÔŒ 
+$strÔÔ “
++ÔÔ” •
+
+PropertiesÔÔ–  
+.ÔÔ  ¡
+	ResourcesÔÔ¡ ª
+.ÔÔª « 
+lblTimeExceptionÔÔ« »
+,ÔÔ» ¼
+WindowÔÔ½ Ã
+.ÔÔÃ Ä
+	GetWindowÔÔÄ Í
+(ÔÔÍ Î
+thisÔÔÎ Ò
+)ÔÔÒ Ó
+,ÔÔÓ Ô#
+DialogWindowManagerÔÔÕ è
+.ÔÔè é
+ERRORÔÔé î
+)ÔÔî ï
+;ÔÔï ğ
+DoOrUndoTeams
+ÕÕ !
+(
+ÕÕ! "
+true
+ÕÕ" &
 )
 ÕÕ& '
 ;
-ÕÕ' (
-}
-ÖÖ 
-catch
-×× 
-(
-×× $
-CommunicationException
-×× -
-ex
-××. 0
-)
-××0 1
-{
-ØØ 
-
-Exceptions
-ÙÙ 
-.
-ÙÙ %
-ExceptionHandlerForLogs
-ÙÙ 6
-.
-ÙÙ6 7
-LogException
-ÙÙ7 C
-(
-ÙÙC D
-ex
-ÙÙD F
-,
-ÙÙF G
-
-Exceptions
-ÙÙH R
-.
-ÙÙR S!
-ExceptionDictionary
-ÙÙS f
-.
-ÙÙf g
-ERROR
-ÙÙg l
-)
-ÙÙl m
-;
-ÙÙm n
-dialogWindow
-ÚÚ  
-.
-ÚÚ  !#
-ShowInfoOrErrorWindow
-ÚÚ! 6
-(
-ÚÚ6 7
-
-Properties
-ÚÚ7 A
-.
-ÚÚA B
-	Resources
-ÚÚB K
-.
-ÚÚK L
-txbErrorTitle
-ÚÚL Y
-,
-ÚÚY Z
-
-Properties
-ÚÚ[ e
-.
-ÚÚe f
-	Resources
-ÚÚf o
-.
-ÚÚo p#
-lblFailToManageTeamsÚÚp „
-+ÚÚ… †
-$strÚÚ‡ Œ
-+ÚÚ 
-
-PropertiesÚÚ ™
-.ÚÚ™ š
-	ResourcesÚÚš £
-.ÚÚ£ ¤#
-lblWithoutConectionÚÚ¤ ·
-,ÚÚ· ¸
-WindowÚÚ¹ ¿
-.ÚÚ¿ À
-	GetWindowÚÚÀ É
-(ÚÚÉ Ê
-thisÚÚÊ Î
-)ÚÚÎ Ï
-,ÚÚÏ Ğ
-dialogWindowÚÚÑ İ
-.ÚÚİ Ş
-ERRORÚÚŞ ã
-)ÚÚã ä
-;ÚÚä å
-DoOrUndoTeams
-ÛÛ !
-(
-ÛÛ! "
-true
-ÛÛ" &
-)
-ÛÛ& '
-;
-ÛÛ' (
+ÕÕ' (
 SetPlayerInLabels
-ÜÜ %
+ÖÖ %
 (
-ÜÜ% &
+ÖÖ% &
+)
+ÖÖ& '
+;
+ÖÖ' (
+}
+×× 
+catch
+ØØ 
+(
+ØØ $
+CommunicationException
+ØØ -
+ex
+ØØ. 0
+)
+ØØ0 1
+{
+ÙÙ 
+
+Exceptions
+ÚÚ 
+.
+ÚÚ %
+ExceptionHandlerForLogs
+ÚÚ 6
+.
+ÚÚ6 7
+LogException
+ÚÚ7 C
+(
+ÚÚC D
+ex
+ÚÚD F
+,
+ÚÚF G
+
+Exceptions
+ÚÚH R
+.
+ÚÚR S!
+ExceptionDictionary
+ÚÚS f
+.
+ÚÚf g
+ERROR
+ÚÚg l
+)
+ÚÚl m
+;
+ÚÚm n!
+DialogWindowManager
+ÛÛ '
+.
+ÛÛ' (#
+ShowInfoOrErrorWindow
+ÛÛ( =
+(
+ÛÛ= >
+
+Properties
+ÛÛ> H
+.
+ÛÛH I
+	Resources
+ÛÛI R
+.
+ÛÛR S
+txbErrorTitle
+ÛÛS `
+,
+ÛÛ` a
+
+Properties
+ÛÛb l
+.
+ÛÛl m
+	Resources
+ÛÛm v
+.
+ÛÛv w#
+lblFailToManageTeamsÛÛw ‹
++ÛÛŒ 
+$strÛÛ “
++ÛÛ” •
+
+PropertiesÛÛ–  
+.ÛÛ  ¡
+	ResourcesÛÛ¡ ª
+.ÛÛª «#
+lblWithoutConectionÛÛ« ¾
+,ÛÛ¾ ¿
+WindowÛÛÀ Æ
+.ÛÛÆ Ç
+	GetWindowÛÛÇ Ğ
+(ÛÛĞ Ñ
+thisÛÛÑ Õ
+)ÛÛÕ Ö
+,ÛÛÖ ×#
+DialogWindowManagerÛÛØ ë
+.ÛÛë ì
+ERRORÛÛì ñ
+)ÛÛñ ò
+;ÛÛò ó
+DoOrUndoTeams
+ÜÜ !
+(
+ÜÜ! "
+true
+ÜÜ" &
 )
 ÜÜ& '
 ;
-ÜÜ' (
+ÜÜ' (
+SetPlayerInLabels
+İİ %
+(
+İİ% &
+)
+İİ& '
+;
+İİ' (
 }
-İİ 
+ŞŞ 
 }
-ŞŞ 
+ßß 
 }
-ßß 	
+àà 	
 public
-áá 
+ââ 
 void
-áá 
+ââ 
 MakeTeamsResponse
-áá %
+ââ %
 (
-áá% &
+ââ% &
 bool
-áá& *
+ââ& *
 teamUp
-áá+ 1
+ââ+ 1
 )
-áá1 2
+ââ1 2
 {
-ââ 	
+ãã 	
 DoOrUndoTeams
-ãã 
+ää 
 (
-ãã 
+ää 
 teamUp
-ãã  
+ää  
 )
-ãã  !
+ää  !
 ;
-ãã! "
+ää! "
 SetPlayerInLabels
-ää 
+åå 
 (
-ää 
+åå 
 )
-ää 
+åå 
 ;
-ää  
+åå  
 }
-åå 	
+ææ 	
 private
-çç 
+èè 
 void
-çç 
+èè 
 DoOrUndoTeams
-çç "
+èè "
 (
-çç" #
+èè" #
 bool
-çç# '
+èè# '
 teamUp
-çç( .
+èè( .
 )
-çç. /
+èè. /
 {
-èè 	
+éé 	
 if
-éé 
+êê 
 (
-éé 
+êê 
 teamUp
-éé 
+êê 
 )
-éé 
+êê 
 {
-êê "
+ëë "
 currentPlayerInLobby
-ëë $
+ìì $
 =
-ëë% &"
+ìì% &"
 currentPlayerInLobby
-ëë' ;
+ìì' ;
 .
-ëë; <
+ìì; <
 Select
-ëë< B
+ìì< B
 (
-ëëB C
+ììB C
 pla
-ëëC F
+ììC F
 =>
-ëëG I
+ììG I
 {
-ìì 
+íí 
 if
-íí 
+îî 
 (
-íí 
+îî 
 pla
-íí 
+îî 
 .
-íí #
+îî #
 NumberOfPlayerInLobby
-íí 1
+îî 1
 <=
-íí2 4
+îî2 4
 TEMA_RIGHT_SIDE
-íí5 D
+îî5 D
 )
-ííD E
+îîD E
 {
-îî 
+ïï 
 pla
-ïï 
+ğğ 
 .
-ïï 
+ğğ 
 
 SideOfTeam
-ïï &
+ğğ &
 =
-ïï' (
+ğğ' (
 TEAM_LEFT_SIDE
-ïï) 7
+ğğ) 7
 ;
-ïï7 8
+ğğ7 8
 }
-ğğ 
+ññ 
 else
-ññ 
+òò 
 {
-òò 
+óó 
 pla
-óó 
+ôô 
 .
-óó 
+ôô 
 
 SideOfTeam
-óó &
+ôô &
 =
-óó' (
+ôô' (
 TEMA_RIGHT_SIDE
-óó) 8
+ôô) 8
 ;
-óó8 9
+ôô8 9
 }
-ôô 
+õõ 
 return
-õõ 
+öö 
 pla
-õõ 
+öö 
 ;
-õõ 
+öö 
 }
-öö 
+÷÷ 
 )
-öö 
+÷÷ 
 .
-öö 
+÷÷ 
 ToList
-öö 
+÷÷ 
 (
-öö 
+÷÷ 
 )
-öö 
+÷÷ 
 ;
-öö 
+÷÷ 
 }
-÷÷ 
+øø 
 else
-øø 
+ùù 
 {
-ùù "
+úú "
 currentPlayerInLobby
-úú $
+ûû $
 =
-úú% &"
+ûû% &"
 currentPlayerInLobby
-úú' ;
+ûû' ;
 .
-úú; <
+ûû; <
 Select
-úú< B
+ûû< B
 (
-úúB C
+ûûB C
 pla
-úúC F
+ûûC F
 =>
-úúG I
+ûûG I
 {
-ûû 
+üü 
 pla
-üü 
+ıı 
 .
-üü 
+ıı 
 
 SideOfTeam
-üü "
+ıı "
 =
-üü# $
+ıı# $
 TEAM_LEFT_SIDE
-üü% 3
+ıı% 3
 ;
-üü3 4
+ıı3 4
 return
-ıı 
+şş 
 pla
-ıı 
+şş 
 ;
-ıı 
+şş 
 }
-şş 
+ÿÿ 
 )
-şş 
+ÿÿ 
 .
-şş 
+ÿÿ 
 ToList
-şş 
+ÿÿ 
 (
-şş 
+ÿÿ 
 )
-şş 
+ÿÿ 
 ;
-şş 
+ÿÿ 
 }
-ÿÿ 
+€€ 
 if
-€€ 
+ 
 (
-€€ 
+ 
 !
-€€ 
+ 
 isAdminOfLobby
-€€ 
+ 
 )
-€€  
+  
 {
- 
+‚‚ 
 	chbTeamUp
-‚‚ 
+ƒƒ 
 .
-‚‚ 
+ƒƒ 
 	IsChecked
-‚‚ #
+ƒƒ #
 =
-‚‚$ %
+ƒƒ$ %
 teamUp
-‚‚& ,
+ƒƒ& ,
 ;
-‚‚, -
+ƒƒ, -
 }
-ƒƒ 
+„„ 
 }
-„„ 	
+…… 	
 private
-‡‡ 
+ˆˆ 
 void
-‡‡ !
+ˆˆ !
 ClickChangeTeamSide
-‡‡ (
+ˆˆ (
 (
-‡‡( )
+ˆˆ( )
 object
-‡‡) /
+ˆˆ) /
 sender
-‡‡0 6
+ˆˆ0 6
 ,
-‡‡6 7"
+ˆˆ6 7"
 MouseButtonEventArgs
-‡‡8 L
+ˆˆ8 L
 e
-‡‡M N
+ˆˆM N
 )
-‡‡N O
+ˆˆN O
 {
-ˆˆ 	
+‰‰ 	
 if
-‰‰ 
+ŠŠ 
 (
-‰‰ 
+ŠŠ 
 isAdminOfLobby
-‰‰ 
+ŠŠ 
 &&
-‰‰ !"
+ŠŠ !"
 currentPlayerInLobby
-‰‰" 6
+ŠŠ" 6
 .
-‰‰6 7
+ŠŠ6 7
 Count
-‰‰7 <
+ŠŠ7 <
 ==
-‰‰= ?
+ŠŠ= ?
 $num
-‰‰@ A
+ŠŠ@ A
 &&
-‰‰B D
+ŠŠB D
 (
-‰‰E F
+ŠŠE F
 bool
-‰‰F J
+ŠŠF J
 )
-‰‰J K
+ŠŠJ K
 	chbTeamUp
-‰‰K T
+ŠŠK T
 .
-‰‰T U
+ŠŠT U
 	IsChecked
-‰‰U ^
+ŠŠU ^
 )
-‰‰^ _
+ŠŠ^ _
 {
-ŠŠ 
+‹‹ 
 string
-‹‹ 
+ŒŒ 
 userName
-‹‹ 
+ŒŒ 
 =
-‹‹  !*
+ŒŒ  !*
 GetUserNameFromLabelByBorder
-‹‹" >
+ŒŒ" >
 (
-‹‹> ?
+ŒŒ> ?
 sender
-‹‹? E
+ŒŒ? E
 )
-‹‹E F
+ŒŒE F
 ;
-‹‹F G
+ŒŒF G
 if
-ŒŒ 
+ 
 (
-ŒŒ 
+ 
 userName
-ŒŒ 
+ 
 !=
-ŒŒ 
+ 
 null
-ŒŒ  $
+  $
 )
-ŒŒ$ %
+$ %
 {
- 
+ 
 PlayerInLobby
- !
+ !
 userChanged
-" -
+" -
 =
-. / 
+. / 
 ChangeSideOfPlayer
-0 B
+0 B
 (
-B C
+B C
 userName
-C K
+C K
 )
-K L
+K L
 ;
-L M
+L M
 if
- 
+ 
 (
- 
+ 
 userChanged
- #
+ #
 .
-# $
+# $
 IdUser
-$ *
+$ *
 !=
-+ -
++ -
 NULL_INT_VALUE
-. <
+. <
 )
-< =
+< =
 {
- 
+‘‘ 
 ChangePlayerTeam
-‘‘ (
+’’ (
 (
-‘‘( )
+’’( )
 userChanged
-‘‘) 4
+’’) 4
 )
-‘‘4 5
+’’4 5
 ;
-‘‘5 6
+’’5 6
 SetPlayerInLabels
-’’ )
+““ )
 (
-’’) *
+““) *
 )
-’’* +
+““* +
 ;
-’’+ ,
+““+ ,
 }
-““ 
+”” 
 }
-”” 
+•• 
 }
-•• 
+–– 
 }
-–– 	
+—— 	
 private
-˜˜ 
+™™ 
 void
-˜˜ 
+™™ 
 ChangePlayerTeam
-˜˜ %
+™™ %
 (
-˜˜% &
+™™% &
 PlayerInLobby
-˜˜& 3
+™™& 3
 userChanged
-˜˜4 ?
+™™4 ?
 )
-˜˜? @
+™™? @
 {
-™™ 	
+šš 	
 try
-šš 
+›› 
 {
-››  
+œœ  
 LobbyActionsClient
-œœ "'
+ "'
 lobbyActionsCallBackProxy
-œœ# <
+# <
 =
-œœ= >
+= >
 new
-œœ? B 
+? B 
 LobbyActionsClient
-œœC U
+C U
 (
-œœU V
+U V
 new
-œœV Y
+V Y
 InstanceContext
-œœZ i
+Z i
 (
-œœi j
+i j
 this
-œœj n
+j n
 )
-œœn o
+n o
 )
-œœo p
+o p
 ;
-œœp q'
+p q'
 lobbyActionsCallBackProxy
- )
+ )
 .
-) * 
+) * 
 RenewLobbyCallBack
-* <
+* <
 (
-< =
+< =
 roomCode
-= E
+= E
 ,
-E F
+E F
 userSingleton
-G T
+G T
 .
-T U
+T U
 IdUser
-U [
+U [
 )
-[ \
+[ \
 ;
-\ ])
+\ ])
 LobbyActionsOperationClient
-ŸŸ +
+   +
 lobbyActionsProxy
-ŸŸ, =
+  , =
 =
-ŸŸ> ?
+  > ?
 new
-ŸŸ@ C
+  @ C
 (
-ŸŸC D
+  C D
 )
-ŸŸD E
+  D E
 ;
-ŸŸE F
+  E F
 lobbyActionsProxy
-   !
+¡¡ !
 .
-  ! "
+¡¡! "
 ChangePlayerSide
-  " 2
+¡¡" 2
 (
-  2 3
+¡¡2 3
 roomCode
-  3 ;
+¡¡3 ;
 ,
-  ; <
+¡¡; <
 userChanged
-  = H
+¡¡= H
 .
-  H I
+¡¡H I
 IdUser
-  I O
+¡¡I O
 ,
-  O P
+¡¡O P
 userChanged
-  Q \
+¡¡Q \
 .
-  \ ]
+¡¡\ ]
 
 SideOfTeam
-  ] g
+¡¡] g
 )
-  g h
+¡¡g h
 ;
-  h i
+¡¡h i
 }
-¡¡ 
+¢¢ 
 catch
-¢¢ 
+££ 
 (
-¢¢ '
+££ '
 EndpointNotFoundException
-¢¢ ,
+££ ,
 ex
-¢¢- /
+££- /
 )
-¢¢/ 0
+££/ 0
 {
-££ 
+¤¤ 
 
 Exceptions
-¤¤ 
+¥¥ 
 .
-¤¤ %
+¥¥ %
 ExceptionHandlerForLogs
-¤¤ 2
+¥¥ 2
 .
-¤¤2 3
+¥¥2 3
 LogException
-¤¤3 ?
+¥¥3 ?
 (
-¤¤? @
+¥¥? @
 ex
-¤¤@ B
+¥¥@ B
 ,
-¤¤B C
+¥¥B C
 
 Exceptions
-¤¤D N
+¥¥D N
 .
-¤¤N O!
+¥¥N O!
 ExceptionDictionary
-¤¤O b
+¥¥O b
 .
-¤¤b c
+¥¥b c
 ERROR
-¤¤c h
+¥¥c h
 )
-¤¤h i
+¥¥h i
 ;
-¤¤i j
-dialogWindow
-¥¥ 
+¥¥i j!
+DialogWindowManager
+¦¦ #
 .
-¥¥ #
+¦¦# $#
 ShowInfoOrErrorWindow
-¥¥ 2
+¦¦$ 9
 (
-¥¥2 3
+¦¦9 :
 
 Properties
-¥¥3 =
+¦¦: D
 .
-¥¥= >
+¦¦D E
 	Resources
-¥¥> G
+¦¦E N
 .
-¥¥G H
+¦¦N O
 txbErrorTitle
-¥¥H U
+¦¦O \
 ,
-¥¥U V
+¦¦\ ]
 
 Properties
-¥¥W a
+¦¦^ h
 .
-¥¥a b
+¦¦h i
 	Resources
-¥¥b k
+¦¦i r
 .
-¥¥k l#
-lblFailToManageTeams¥¥l €
-+¥¥ ‚
-$str¥¥ƒ ˆ
-+¥¥‰ Š
+¦¦r s#
+lblFailToManageTeams¦¦s ‡
++¦¦ˆ ‰
+$str¦¦Š 
++¦¦ ‘
 
-Properties¥¥‹ •
-.¥¥• –
-	Resources¥¥– Ÿ
-.¥¥Ÿ  #
-lblEndPointNotFound¥¥  ³
-,¥¥³ ´
-Window¥¥µ »
-.¥¥» ¼
-	GetWindow¥¥¼ Å
-(¥¥Å Æ
-this¥¥Æ Ê
-)¥¥Ê Ë
-,¥¥Ë Ì
-dialogWindow¥¥Í Ù
-.¥¥Ù Ú
-ERROR¥¥Ú ß
-)¥¥ß à
-;¥¥à á 
+Properties¦¦’ œ
+.¦¦œ 
+	Resources¦¦ ¦
+.¦¦¦ §#
+lblEndPointNotFound¦¦§ º
+,¦¦º »
+Window¦¦¼ Â
+.¦¦Â Ã
+	GetWindow¦¦Ã Ì
+(¦¦Ì Í
+this¦¦Í Ñ
+)¦¦Ñ Ò
+,¦¦Ò Ó#
+DialogWindowManager¦¦Ô ç
+.¦¦ç è
+ERROR¦¦è í
+)¦¦í î
+;¦¦î ï 
 ChangeSideOfPlayer
-¦¦ "
+§§ "
 (
-¦¦" #
+§§" #
 userChanged
-¦¦# .
+§§# .
 .
-¦¦. /
+§§. /
 UserName
-¦¦/ 7
+§§/ 7
 )
-¦¦7 8
+§§7 8
 ;
-¦¦8 9
+§§8 9
 }
-§§ 
+¨¨ 
 catch
-¨¨ 
+©© 
 (
-¨¨ 1
+©© 1
 #CommunicationObjectFaultedException
-¨¨ 6
+©© 6
 ex
-¨¨7 9
+©©7 9
 )
-¨¨9 :
+©©9 :
 {
-©© 
+ªª 
 
 Exceptions
-ªª 
+«« 
 .
-ªª %
+«« %
 ExceptionHandlerForLogs
-ªª 2
+«« 2
 .
-ªª2 3
+««2 3
 LogException
-ªª3 ?
+««3 ?
 (
-ªª? @
+««? @
 ex
-ªª@ B
+««@ B
 ,
-ªªB C
+««B C
 
 Exceptions
-ªªD N
+««D N
 .
-ªªN O!
+««N O!
 ExceptionDictionary
-ªªO b
+««O b
 .
-ªªb c
+««b c
 ERROR
-ªªc h
+««c h
 )
-ªªh i
+««h i
 ;
-ªªi j
-dialogWindow
-«« 
+««i j!
+DialogWindowManager
+¬¬ #
 .
-«« #
+¬¬# $#
 ShowInfoOrErrorWindow
-«« 2
+¬¬$ 9
 (
-««2 3
+¬¬9 :
 
 Properties
-««3 =
+¬¬: D
 .
-««= >
+¬¬D E
 	Resources
-««> G
+¬¬E N
 .
-««G H
+¬¬N O
 txbErrorTitle
-««H U
+¬¬O \
 ,
-««U V
+¬¬\ ]
 
 Properties
-««W a
+¬¬^ h
 .
-««a b
+¬¬h i
 	Resources
-««b k
+¬¬i r
 .
-««k l#
-lblFailToManageTeams««l €
-+«« ‚
-$str««ƒ ˆ
-+««‰ Š
+¬¬r s#
+lblFailToManageTeams¬¬s ‡
++¬¬ˆ ‰
+$str¬¬Š 
++¬¬ ‘
 
-Properties««‹ •
-.««• –
-	Resources««– Ÿ
-.««Ÿ  (
-lblComunicationException««  ¸
-,««¸ ¹
-Window««º À
-.««À Á
-	GetWindow««Á Ê
-(««Ê Ë
-this««Ë Ï
-)««Ï Ğ
-,««Ğ Ñ
-dialogWindow««Ò Ş
-.««Ş ß
-ERROR««ß ä
-)««ä å
-;««å æ 
+Properties¬¬’ œ
+.¬¬œ 
+	Resources¬¬ ¦
+.¬¬¦ §(
+lblComunicationException¬¬§ ¿
+,¬¬¿ À
+Window¬¬Á Ç
+.¬¬Ç È
+	GetWindow¬¬È Ñ
+(¬¬Ñ Ò
+this¬¬Ò Ö
+)¬¬Ö ×
+,¬¬× Ø#
+DialogWindowManager¬¬Ù ì
+.¬¬ì í
+ERROR¬¬í ò
+)¬¬ò ó
+;¬¬ó ô 
 ChangeSideOfPlayer
-¬¬ "
+­­ "
 (
-¬¬" #
+­­" #
 userChanged
-¬¬# .
+­­# .
 .
-¬¬. /
+­­. /
 UserName
-¬¬/ 7
+­­/ 7
 )
-¬¬7 8
+­­7 8
 ;
-¬¬8 9
+­­8 9
 }
-­­ 
+®® 
 catch
-®® 
+¯¯ 
 (
-®® 
+¯¯ 
 TimeoutException
-®® #
+¯¯ #
 ex
-®®$ &
+¯¯$ &
 )
-®®& '
+¯¯& '
 {
-¯¯ 
+°° 
 
 Exceptions
-°° 
+±± 
 .
-°° %
+±± %
 ExceptionHandlerForLogs
-°° 2
+±± 2
 .
-°°2 3
+±±2 3
 LogException
-°°3 ?
+±±3 ?
 (
-°°? @
+±±? @
 ex
-°°@ B
+±±@ B
 ,
-°°B C
+±±B C
 
 Exceptions
-°°D N
+±±D N
 .
-°°N O!
+±±N O!
 ExceptionDictionary
-°°O b
+±±O b
 .
-°°b c
+±±b c
 ERROR
-°°c h
+±±c h
 )
-°°h i
+±±h i
 ;
-°°i j
-dialogWindow
-±± 
+±±i j!
+DialogWindowManager
+²² #
 .
-±± #
+²²# $#
 ShowInfoOrErrorWindow
-±± 2
+²²$ 9
 (
-±±2 3
+²²9 :
 
 Properties
-±±3 =
+²²: D
 .
-±±= >
+²²D E
 	Resources
-±±> G
+²²E N
 .
-±±G H
+²²N O
 txbErrorTitle
-±±H U
+²²O \
 ,
-±±U V
+²²\ ]
 
 Properties
-±±W a
+²²^ h
 .
-±±a b
+²²h i
 	Resources
-±±b k
+²²i r
 .
-±±k l#
-lblFailToManageTeams±±l €
-+±± ‚
-$str±±ƒ ˆ
-+±±‰ Š
+²²r s#
+lblFailToManageTeams²²s ‡
++²²ˆ ‰
+$str²²Š 
++²² ‘
 
-Properties±±‹ •
-.±±• –
-	Resources±±– Ÿ
-.±±Ÿ   
-lblTimeException±±  °
-,±±° ±
-Window±±² ¸
-.±±¸ ¹
-	GetWindow±±¹ Â
-(±±Â Ã
-this±±Ã Ç
-)±±Ç È
-,±±È É
-dialogWindow±±Ê Ö
-.±±Ö ×
-ERROR±±× Ü
-)±±Ü İ
-;±±İ Ş 
+Properties²²’ œ
+.²²œ 
+	Resources²² ¦
+.²²¦ § 
+lblTimeException²²§ ·
+,²²· ¸
+Window²²¹ ¿
+.²²¿ À
+	GetWindow²²À É
+(²²É Ê
+this²²Ê Î
+)²²Î Ï
+,²²Ï Ğ#
+DialogWindowManager²²Ñ ä
+.²²ä å
+ERROR²²å ê
+)²²ê ë
+;²²ë ì 
 ChangeSideOfPlayer
-²² "
+³³ "
 (
-²²" #
+³³" #
 userChanged
-²²# .
+³³# .
 .
-²². /
+³³. /
 UserName
-²²/ 7
+³³/ 7
 )
-²²7 8
+³³7 8
 ;
-²²8 9
+³³8 9
 }
-³³ 
+´´ 
 catch
-´´ 
+µµ 
 (
-´´ $
+µµ $
 CommunicationException
-´´ )
+µµ )
 ex
-´´* ,
+µµ* ,
 )
-´´, -
+µµ, -
 {
-µµ 
+¶¶ 
 
 Exceptions
-¶¶ 
+·· 
 .
-¶¶ %
+·· %
 ExceptionHandlerForLogs
-¶¶ 2
+·· 2
 .
-¶¶2 3
+··2 3
 LogException
-¶¶3 ?
+··3 ?
 (
-¶¶? @
+··? @
 ex
-¶¶@ B
+··@ B
 ,
-¶¶B C
+··B C
 
 Exceptions
-¶¶D N
+··D N
 .
-¶¶N O!
+··N O!
 ExceptionDictionary
-¶¶O b
+··O b
 .
-¶¶b c
+··b c
 ERROR
-¶¶c h
+··c h
 )
-¶¶h i
+··h i
 ;
-¶¶i j
-dialogWindow
-·· 
+··i j!
+DialogWindowManager
+¸¸ #
 .
-·· #
+¸¸# $#
 ShowInfoOrErrorWindow
-·· 2
+¸¸$ 9
 (
-··2 3
+¸¸9 :
 
 Properties
-··3 =
+¸¸: D
 .
-··= >
+¸¸D E
 	Resources
-··> G
+¸¸E N
 .
-··G H
+¸¸N O
 txbErrorTitle
-··H U
+¸¸O \
 ,
-··U V
+¸¸\ ]
 
 Properties
-··W a
+¸¸^ h
 .
-··a b
+¸¸h i
 	Resources
-··b k
+¸¸i r
 .
-··k l#
-lblFailToManageTeams··l €
-+·· ‚
-$str··ƒ ˆ
-+··‰ Š
+¸¸r s#
+lblFailToManageTeams¸¸s ‡
++¸¸ˆ ‰
+$str¸¸Š 
++¸¸ ‘
 
-Properties··‹ •
-.··• –
-	Resources··– Ÿ
-.··Ÿ  #
-lblWithoutConection··  ³
-,··³ ´
-Window··µ »
-.··» ¼
-	GetWindow··¼ Å
-(··Å Æ
-this··Æ Ê
-)··Ê Ë
-,··Ë Ì
-dialogWindow··Í Ù
-.··Ù Ú
-ERROR··Ú ß
-)··ß à
-;··à á 
+Properties¸¸’ œ
+.¸¸œ 
+	Resources¸¸ ¦
+.¸¸¦ §#
+lblWithoutConection¸¸§ º
+,¸¸º »
+Window¸¸¼ Â
+.¸¸Â Ã
+	GetWindow¸¸Ã Ì
+(¸¸Ì Í
+this¸¸Í Ñ
+)¸¸Ñ Ò
+,¸¸Ò Ó#
+DialogWindowManager¸¸Ô ç
+.¸¸ç è
+ERROR¸¸è í
+)¸¸í î
+;¸¸î ï 
 ChangeSideOfPlayer
-¸¸ "
+¹¹ "
 (
-¸¸" #
+¹¹" #
 userChanged
-¸¸# .
+¹¹# .
 .
-¸¸. /
+¹¹. /
 UserName
-¸¸/ 7
+¹¹/ 7
 )
-¸¸7 8
+¹¹7 8
 ;
-¸¸8 9
+¹¹8 9
 }
-¹¹ 
+ºº 
 }
-ºº 	
+»» 	
 private
-¼¼ 
+½½ 
 PlayerInLobby
-¼¼  
+½½  
 ChangeSideOfPlayer
-¼¼ 0
+½½ 0
 (
-¼¼0 1
+½½0 1
 String
-¼¼1 7
+½½1 7
 userName
-¼¼8 @
+½½8 @
 )
-¼¼@ A
+½½@ A
 {
-½½ 	"
+¾¾ 	"
 currentPlayerInLobby
-¾¾  
+¿¿  
 =
-¾¾! ""
+¿¿! ""
 currentPlayerInLobby
-¾¾# 7
+¿¿# 7
 .
-¾¾7 8
+¿¿7 8
 Select
-¾¾8 >
+¿¿8 >
 (
-¾¾> ?
+¿¿> ?
 pla
-¾¾? B
+¿¿? B
 =>
-¾¾C E
+¿¿C E
 {
-¿¿ 
+ÀÀ 
 if
-ÀÀ 
+ÁÁ 
 (
-ÀÀ 
+ÁÁ 
 pla
-ÀÀ 
+ÁÁ 
 .
-ÀÀ 
+ÁÁ 
 UserName
-ÀÀ  
+ÁÁ  
 .
-ÀÀ  !
+ÁÁ  !
 Equals
-ÀÀ! '
+ÁÁ! '
 (
-ÀÀ' (
+ÁÁ' (
 userName
-ÀÀ( 0
+ÁÁ( 0
 )
-ÀÀ0 1
+ÁÁ0 1
 )
-ÀÀ1 2
+ÁÁ1 2
 {
-ÁÁ 
+ÂÂ 
 if
-ÂÂ 
+ÃÃ 
 (
-ÂÂ 
+ÃÃ 
 pla
-ÂÂ 
+ÃÃ 
 .
-ÂÂ 
+ÃÃ 
 
 SideOfTeam
-ÂÂ &
+ÃÃ &
 ==
-ÂÂ' )
+ÃÃ' )
 TEAM_LEFT_SIDE
-ÂÂ* 8
+ÃÃ* 8
 )
-ÂÂ8 9
+ÃÃ8 9
 {
-ÃÃ 
+ÄÄ 
 pla
-ÄÄ 
+ÅÅ 
 .
-ÄÄ 
+ÅÅ 
 
 SideOfTeam
-ÄÄ &
+ÅÅ &
 =
-ÄÄ' (
+ÅÅ' (
 TEMA_RIGHT_SIDE
-ÄÄ) 8
+ÅÅ) 8
 ;
-ÄÄ8 9
+ÅÅ8 9
 }
-ÅÅ 
+ÆÆ 
 else
-ÆÆ 
+ÇÇ 
 {
-ÇÇ 
+ÈÈ 
 pla
-ÈÈ 
+ÉÉ 
 .
-ÈÈ 
+ÉÉ 
 
 SideOfTeam
-ÈÈ &
+ÉÉ &
 =
-ÈÈ' (
+ÉÉ' (
 TEAM_LEFT_SIDE
-ÈÈ) 7
+ÉÉ) 7
 ;
-ÈÈ7 8
+ÉÉ7 8
 }
-ÉÉ 
+ÊÊ 
 }
-ÊÊ 
+ËË 
 return
-ËË 
+ÌÌ 
 pla
-ËË 
+ÌÌ 
 ;
-ËË 
+ÌÌ 
 }
-ÌÌ 
+ÍÍ 
 )
-ÌÌ 
+ÍÍ 
 .
-ÌÌ 
+ÍÍ 
 ToList
-ÌÌ 
+ÍÍ 
 (
-ÌÌ 
+ÍÍ 
 )
-ÌÌ 
+ÍÍ 
 ;
-ÌÌ 
+ÍÍ 
 PlayerInLobby
-ÍÍ 
+ÎÎ 
 player
-ÍÍ  
+ÎÎ  
 =
-ÍÍ! ""
+ÎÎ! ""
 currentPlayerInLobby
-ÍÍ# 7
+ÎÎ# 7
 .
-ÍÍ7 8
+ÎÎ7 8
 Find
-ÍÍ8 <
+ÎÎ8 <
 (
-ÍÍ< =
+ÎÎ< =
 x
-ÍÍ= >
+ÎÎ= >
 =>
-ÍÍ? A
+ÎÎ? A
 x
-ÍÍB C
+ÎÎB C
 .
-ÍÍC D
+ÎÎC D
 UserName
-ÍÍD L
+ÎÎD L
 .
-ÍÍL M
+ÎÎL M
 Equals
-ÍÍM S
+ÎÎM S
 (
-ÍÍS T
+ÎÎS T
 userName
-ÍÍT \
+ÎÎT \
 )
-ÍÍ\ ]
+ÎÎ\ ]
 )
-ÍÍ] ^
+ÎÎ] ^
 ;
-ÍÍ^ _
+ÎÎ^ _
 return
-ÎÎ 
+ÏÏ 
 player
-ÎÎ 
+ÏÏ 
 ;
-ÎÎ 
+ÏÏ 
 }
-ÏÏ 	
+ĞĞ 	
 private
-ÑÑ 
+ÒÒ 
 String
-ÑÑ *
+ÒÒ *
 GetUserNameFromLabelByBorder
-ÑÑ 3
+ÒÒ 3
 (
-ÑÑ3 4
+ÒÒ3 4
 object
-ÑÑ4 :
+ÒÒ4 :
 sender
-ÑÑ; A
+ÒÒ; A
 )
-ÑÑA B
+ÒÒA B
 {
-ÒÒ 	
+ÓÓ 	
 Border
-ÓÓ 
+ÔÔ 
 	brdChosen
-ÓÓ 
+ÔÔ 
 =
-ÓÓ 
+ÔÔ 
 (
-ÓÓ  
+ÔÔ  
 Border
-ÓÓ  &
+ÔÔ  &
 )
-ÓÓ& '
+ÔÔ& '
 sender
-ÓÓ' -
+ÔÔ' -
 ;
-ÓÓ- .
+ÔÔ- .
 
 StackPanel
-ÔÔ 
+ÕÕ 
 	stcChosen
-ÔÔ  
+ÕÕ  
 =
-ÔÔ! "
+ÕÕ! "
 (
-ÔÔ# $
+ÕÕ# $
 
 StackPanel
-ÔÔ$ .
+ÕÕ$ .
 )
-ÔÔ. /
+ÕÕ. /
 	brdChosen
-ÔÔ/ 8
+ÕÕ/ 8
 .
-ÔÔ8 9
+ÕÕ8 9
 Child
-ÔÔ9 >
+ÕÕ9 >
 ;
-ÔÔ> ?
+ÕÕ> ?
 Label
-ÕÕ 
+ÖÖ 
 label
-ÕÕ 
+ÖÖ 
 =
-ÕÕ 
+ÖÖ 
 	stcChosen
-ÕÕ #
+ÖÖ #
 .
-ÕÕ# $
+ÖÖ# $
 Children
-ÕÕ$ ,
+ÖÖ$ ,
 .
-ÕÕ, -
+ÖÖ, -
 OfType
-ÕÕ- 3
+ÖÖ- 3
 <
-ÕÕ3 4
+ÖÖ3 4
 Label
-ÕÕ4 9
+ÖÖ4 9
 >
-ÕÕ9 :
+ÖÖ9 :
 (
-ÕÕ: ;
+ÖÖ: ;
 )
-ÕÕ; <
+ÖÖ; <
 .
-ÕÕ< =
+ÖÖ< =
 FirstOrDefault
-ÕÕ= K
+ÖÖ= K
 (
-ÕÕK L
+ÖÖK L
 )
-ÕÕL M
+ÖÖL M
 ;
-ÕÕM N
+ÖÖM N
 return
-ÖÖ 
+×× 
 label
-ÖÖ 
+×× 
 ?
-ÖÖ 
+×× 
 .
-ÖÖ 
+×× 
 Content
-ÖÖ !
+×× !
 ?
-ÖÖ! "
+××! "
 .
-ÖÖ" #
+××" #
 ToString
-ÖÖ# +
+××# +
 (
-ÖÖ+ ,
+××+ ,
 )
-ÖÖ, -
+××, -
 ;
-ÖÖ- .
+××- .
 }
-×× 	
+ØØ 	
 public
-ÙÙ 
+ÚÚ 
 void
-ÙÙ 
+ÚÚ 
 UpdateTeamSide
-ÙÙ "
+ÚÚ "
 (
-ÙÙ" #8
+ÚÚ" #8
 *GenericClassOfArrayOfPlayerInLobbyxY0a3WX4
-ÙÙ# M
+ÚÚ# M
 playersInTheLobby
-ÙÙN _
+ÚÚN _
 )
-ÙÙ_ `
+ÚÚ_ `
 {
-ÚÚ 	
+ÛÛ 	
 if
-ÛÛ 
+ÜÜ 
 (
-ÛÛ 
+ÜÜ 
 playersInTheLobby
-ÛÛ !
+ÜÜ !
 .
-ÛÛ! "
+ÜÜ! "
 	CodeEvent
-ÛÛ" +
+ÜÜ" +
 ==
-ÛÛ, .!
+ÜÜ, .!
 ExceptionDictionary
-ÛÛ/ B
+ÜÜ/ B
 .
-ÛÛB C
+ÜÜB C
 SUCCESFULL_EVENT
-ÛÛC S
+ÜÜC S
 )
-ÛÛS T
+ÜÜS T
 {
-ÜÜ "
+İİ "
 currentPlayerInLobby
-İİ $
+ŞŞ $
 =
-İİ% &
+ŞŞ% &
 playersInTheLobby
-İİ' 8
+ŞŞ' 8
 .
-İİ8 9
+ŞŞ8 9
 ObjectSaved
-İİ9 D
+ŞŞ9 D
 .
-İİD E
+ŞŞD E
 ToList
-İİE K
+ŞŞE K
 (
-İİK L
+ŞŞK L
 )
-İİL M
+ŞŞL M
 ;
-İİM N
+ŞŞM N
 SetPlayerInLabels
-ŞŞ !
+ßß !
 (
-ŞŞ! "
+ßß! "
 )
-ŞŞ" #
+ßß" #
 ;
-ŞŞ# $
+ßß# $
 }
-ßß 
+àà 
 }
-àà 	
+áá 	
 private
-ââ 
+ãã 
 void
-ââ "
+ãã "
 CLicButtonCancelGame
-ââ )
+ãã )
 (
-ââ) *
+ãã) *
 object
-ââ* 0
+ãã* 0
 sender
-ââ1 7
+ãã1 7
 ,
-ââ7 8
+ãã7 8
 RoutedEventArgs
-ââ9 H
+ãã9 H
 e
-ââI J
+ããI J
 )
-ââJ K
+ããJ K
 {
-ãã 	
+ää 	
 if
-ää 
+åå 
 (
-ää 
-dialogWindow
-ää 
+åå !
+DialogWindowManager
+åå #
 .
-ää $
+åå# $$
 ShowWindowConfirmation
-ää 3
+åå$ :
 (
-ää3 4
+åå: ;
 
 Properties
-ää4 >
+åå; E
 .
-ää> ?
+ååE F
 	Resources
-ää? H
+ååF O
 .
-ääH I
+ååO P
 txbWarningTitle
-ääI X
+ååP _
 ,
-ääX Y
+åå_ `
 
 Properties
-ääZ d
+ååa k
 .
-ääd e
+ååk l
 	Resources
-ääe n
+åål u
 .
-ään o
+ååu v
 	txbCancel
-ääo x
-,
-ääx y
-Windowääz €
-.ää€ 
-	GetWindowää Š
-(ääŠ ‹
-thisää‹ 
-)ää 
-)ää ‘
-)ää‘ ’
+ååv 
+,åå €
+Windowåå ‡
+.åå‡ ˆ
+	GetWindowååˆ ‘
+(åå‘ ’
+thisåå’ –
+)åå– —
+)åå— ˜
+)åå˜ ™
 {
-åå 
+ææ 
 try
-ææ 
+çç 
 {
-çç )
+èè )
 LobbyActionsOperationClient
-èè /
+éé /
 lobbyActionsProxy
-èè0 A
+éé0 A
 =
-èèB C
+ééB C
 new
-èèD G
+ééD G
 (
-èèG H
+ééG H
 )
-èèH I
+ééH I
 ;
-èèI J
+ééI J
 if
-éé 
+êê 
 (
-éé 
+êê 
 isAdminOfLobby
-éé &
+êê &
 )
-éé& '
+êê& '
 {
-êê 
+ëë 
 lobbyActionsProxy
-ëë )
+ìì )
 .
-ëë) *
+ìì) *
 DissolveLobby
-ëë* 7
+ìì* 7
 (
-ëë7 8
+ìì7 8
 roomCode
-ëë8 @
+ìì8 @
 ,
-ëë@ A
+ìì@ A
 userSingleton
-ëëB O
+ììB O
 .
-ëëO P
+ììO P
 IdUser
-ëëP V
+ììP V
 )
-ëëV W
+ììV W
 ;
-ëëW X
+ììW X
 }
-ìì 
+íí 
 else
-íí 
+îî 
 {
-îî 
+ïï 
 lobbyActionsProxy
-ïï )
+ğğ )
 .
-ïï) *
+ğğ) *
 
 LeaveLobby
-ïï* 4
+ğğ* 4
 (
-ïï4 5
+ğğ4 5
 roomCode
-ïï5 =
+ğğ5 =
 ,
-ïï= >
+ğğ= >
 userSingleton
-ïï? L
+ğğ? L
 .
-ïïL M
+ğğL M
 IdUser
-ïïM S
+ğğM S
 )
-ïïS T
+ğğS T
 ;
-ïïT U
+ğğT U
 }
-ğğ 
+ññ 
 }
-ññ 
+òò 
 catch
-òò 
+óó 
 (
-òò '
+óó '
 EndpointNotFoundException
-òò 0
+óó 0
 ex
-òò1 3
+óó1 3
 )
-òò3 4
+óó3 4
 {
-óó 
+ôô 
 
 Exceptions
-ôô 
+õõ 
 .
-ôô %
+õõ %
 ExceptionHandlerForLogs
-ôô 6
+õõ 6
 .
-ôô6 7
+õõ6 7
 LogException
-ôô7 C
+õõ7 C
 (
-ôôC D
+õõC D
 ex
-ôôD F
+õõD F
 ,
-ôôF G
+õõF G
 
 Exceptions
-ôôH R
+õõH R
 .
-ôôR S!
+õõR S!
 ExceptionDictionary
-ôôS f
+õõS f
 .
-ôôf g
+õõf g
 ERROR
-ôôg l
+õõg l
 )
-ôôl m
+õõl m
 ;
-ôôm n
+õõm n
 }
-õõ 
+öö 
 catch
-öö 
+÷÷ 
 (
-öö 1
+÷÷ 1
 #CommunicationObjectFaultedException
-öö :
+÷÷ :
 ex
-öö; =
+÷÷; =
 )
-öö= >
+÷÷= >
 {
-÷÷ 
+øø 
 
 Exceptions
-øø 
+ùù 
 .
-øø %
+ùù %
 ExceptionHandlerForLogs
-øø 6
+ùù 6
 .
-øø6 7
+ùù6 7
 LogException
-øø7 C
+ùù7 C
 (
-øøC D
+ùùC D
 ex
-øøD F
+ùùD F
 ,
-øøF G
+ùùF G
 
 Exceptions
-øøH R
+ùùH R
 .
-øøR S!
+ùùR S!
 ExceptionDictionary
-øøS f
+ùùS f
 .
-øøf g
+ùùf g
 ERROR
-øøg l
+ùùg l
 )
-øøl m
+ùùl m
 ;
-øøm n
+ùùm n
 }
-ùù 
+úú 
 catch
-úú 
+ûû 
 (
-úú 
+ûû 
 TimeoutException
-úú '
+ûû '
 ex
-úú( *
+ûû( *
 )
-úú* +
+ûû* +
 {
-ûû 
+üü 
 
 Exceptions
-üü 
+ıı 
 .
-üü %
+ıı %
 ExceptionHandlerForLogs
-üü 6
+ıı 6
 .
-üü6 7
+ıı6 7
 LogException
-üü7 C
+ıı7 C
 (
-üüC D
+ııC D
 ex
-üüD F
+ııD F
 ,
-üüF G
+ııF G
 
 Exceptions
-üüH R
+ııH R
 .
-üüR S!
+ııR S!
 ExceptionDictionary
-üüS f
+ııS f
 .
-üüf g
+ııf g
 ERROR
-üüg l
+ııg l
 )
-üül m
+ııl m
 ;
-üüm n
+ıım n
 }
-ıı 
+şş 
 catch
-şş 
+ÿÿ 
 (
-şş $
+ÿÿ $
 CommunicationException
-şş -
+ÿÿ -
 ex
-şş. 0
+ÿÿ. 0
 )
-şş0 1
+ÿÿ0 1
 {
-ÿÿ 
+€€ 
 
 Exceptions
-€€ 
+ 
 .
-€€ %
+ %
 ExceptionHandlerForLogs
-€€ 6
+ 6
 .
-€€6 7
+6 7
 LogException
-€€7 C
+7 C
 (
-€€C D
+C D
 ex
-€€D F
+D F
 ,
-€€F G
+F G
 
 Exceptions
-€€H R
+H R
 .
-€€R S!
+R S!
 ExceptionDictionary
-€€S f
+S f
 .
-€€f g
+f g
 ERROR
-€€g l
+g l
 )
-€€l m
+l m
 ;
-€€m n
+m n
 }
- 
+‚‚ 
 CloseWindow
-‚‚ 
+ƒƒ 
 (
-‚‚ 
+ƒƒ 
 )
-‚‚ 
+ƒƒ 
 ;
-‚‚ 
+ƒƒ 
 }
-ƒƒ 
+„„ 
 }
-„„ 	
+…… 	
 private
-…… 
+†† 
 void
-…… 
+†† 
 CloseWindow
-……  
+††  
 (
-……  !
+††  !
 )
-……! "
+††! "
 {
-†† 	
+‡‡ 	
 if
-‡‡ 
+ˆˆ 
 (
-‡‡ 
+ˆˆ 
 userSingleton
-‡‡ 
+ˆˆ 
 .
-‡‡ 
+ˆˆ 
 IdState
-‡‡ %
+ˆˆ %
 !=
-‡‡& (
+ˆˆ& (
 $num
-‡‡) *
+ˆˆ) *
 )
-‡‡* +
+ˆˆ* +
 {
-ˆˆ 
+‰‰ 
 MainMenu
-‰‰ 
+ŠŠ 
 mainMenu
-‰‰ !
+ŠŠ !
 =
-‰‰" #
+ŠŠ" #
 new
-‰‰$ '
+ŠŠ$ '
 MainMenu
-‰‰( 0
+ŠŠ( 0
 (
-‰‰0 1
+ŠŠ0 1
 )
-‰‰1 2
+ŠŠ1 2
 ;
-‰‰2 3
+ŠŠ2 3
 this
-ŠŠ 
+‹‹ 
 .
-ŠŠ 
+‹‹ 
 NavigationService
-ŠŠ &
+‹‹ &
 .
-ŠŠ& '
+‹‹& '
 Navigate
-ŠŠ' /
+‹‹' /
 (
-ŠŠ/ 0
+‹‹/ 0
 mainMenu
-ŠŠ0 8
+‹‹0 8
 )
-ŠŠ8 9
+‹‹8 9
 ;
-ŠŠ9 :
+‹‹9 :
 NavigationService
-‹‹ !
+ŒŒ !
 .
-‹‹! "
+ŒŒ! "
 RemoveBackEntry
-‹‹" 1
+ŒŒ" 1
 (
-‹‹1 2
+ŒŒ1 2
 )
-‹‹2 3
+ŒŒ2 3
 ;
-‹‹3 4
+ŒŒ3 4
 }
-ŒŒ 
+ 
 else
- 
+ 
 {
- 
+ 
 DeleteSingleton
- 
+ 
 (
-  
+  
 )
-  !
+  !
 ;
-! "
+! "
 PrincipalPage
- 
+‘‘ 
 principalPage
- +
+‘‘ +
 =
-, -
+‘‘, -
 new
-. 1
+‘‘. 1
 PrincipalPage
-2 ?
+‘‘2 ?
 (
-? @
+‘‘? @
 )
-@ A
+‘‘@ A
 ;
-A B
+‘‘A B
 this
-‘‘ 
+’’ 
 .
-‘‘ 
+’’ 
 NavigationService
-‘‘ &
+’’ &
 .
-‘‘& '
+’’& '
 Navigate
-‘‘' /
+’’' /
 (
-‘‘/ 0
+’’/ 0
 principalPage
-‘‘0 =
+’’0 =
 )
-‘‘= >
+’’= >
 ;
-‘‘> ?
+’’> ?
 NavigationService
-’’ !
+““ !
 .
-’’! "
+““! "
 RemoveBackEntry
-’’" 1
+““" 1
 (
-’’1 2
+““1 2
 )
-’’2 3
+““2 3
 ;
-’’3 4
+““3 4
 }
-““ 
+”” 
 }
-”” 	
+•• 	
 public
-–– 
+—— 
 void
-–– 
+—— 
 DissolvingLobby
-–– #
+—— #
 (
-––# $
+——# $
 )
-––$ %
+——$ %
 {
-—— 	
-dialogWindow
-˜˜ 
+˜˜ 	!
+DialogWindowManager
+™™ 
 .
-˜˜ #
+™™  #
 ShowInfoOrErrorWindow
-˜˜ .
+™™  5
 (
-˜˜. /
+™™5 6
 
 Properties
-˜˜/ 9
+™™6 @
 .
-˜˜9 :
+™™@ A
 	Resources
-˜˜: C
+™™A J
 .
-˜˜C D
+™™J K
 txbWarningTitle
-˜˜D S
+™™K Z
 ,
-˜˜S T
+™™Z [
 
 Properties
-˜˜U _
+™™\ f
 .
-˜˜_ `
+™™f g
 	Resources
-˜˜` i
+™™g p
 .
-˜˜i j
+™™p q
 GameCancelled
-˜˜j w
+™™q ~
 ,
-˜˜w x
-Window
-˜˜y 
-.˜˜ €
-	GetWindow˜˜€ ‰
-(˜˜‰ Š
-this˜˜Š 
-)˜˜ 
-,˜˜ 
-dialogWindow˜˜‘ 
-.˜˜ 
-INFORMATION˜˜ ©
-)˜˜© ª
-;˜˜ª «
+™™~ 
+Window™™€ †
+.™™† ‡
+	GetWindow™™‡ 
+(™™ ‘
+this™™‘ •
+)™™• –
+,™™– —#
+DialogWindowManager™™˜ «
+.™™« ¬
+INFORMATION™™¬ ·
+)™™· ¸
+;™™¸ ¹
 CloseWindow
-™™ 
+šš 
 (
-™™ 
+šš 
 )
-™™ 
+šš 
 ;
-™™ 
+šš 
 }
-šš 	
+›› 	
 private
-œœ 
+ 
 void
-œœ 
+ 
 DeleteSingleton
-œœ $
+ $
 (
-œœ$ %
+$ %
 )
-œœ% &
+% &
 {
- 	
+ 	
 try
- 
+ŸŸ 
 {
-ŸŸ &
+   &
 GuestPlayerManagerClient
-   (%
+¡¡ (%
 guestPlayerManagerProxy
-  ) @
+¡¡) @
 =
-  A B
+¡¡A B
 new
-  C F
+¡¡C F
 (
-  F G
+¡¡F G
 )
-  G H
+¡¡G H
 ;
-  H I%
+¡¡H I%
 guestPlayerManagerProxy
-¡¡ '
+¢¢ '
 .
-¡¡' (
+¢¢' (
 DeleteGuest
-¡¡( 3
+¢¢( 3
 (
-¡¡3 4
+¢¢3 4
 userSingleton
-¡¡4 A
+¢¢4 A
 .
-¡¡A B
+¢¢A B
 IdUser
-¡¡B H
+¢¢B H
 )
-¡¡H I
+¢¢H I
 ;
-¡¡I J
+¢¢I J
 }
-¢¢ 
+££ 
 catch
-££ 
+¤¤ 
 (
-££ '
+¤¤ '
 EndpointNotFoundException
-££ ,
+¤¤ ,
 ex
-££- /
+¤¤- /
 )
-££/ 0
+¤¤/ 0
 {
-¤¤ %
+¥¥ %
 ExceptionHandlerForLogs
-¥¥ '
+¦¦ '
 .
-¥¥' (
+¦¦' (
 LogException
-¥¥( 4
+¦¦( 4
 (
-¥¥4 5
+¦¦4 5
 ex
-¥¥5 7
+¦¦5 7
 ,
-¥¥7 8!
+¦¦7 8!
 ExceptionDictionary
-¥¥9 L
+¦¦9 L
 .
-¥¥L M
+¦¦L M
 FATAL_EXCEPTION
-¥¥M \
+¦¦M \
 )
-¥¥\ ]
+¦¦\ ]
 ;
-¥¥] ^
+¦¦] ^
 }
-¦¦ 
+§§ 
 catch
-§§ 
+¨¨ 
 (
-§§ 1
+¨¨ 1
 #CommunicationObjectFaultedException
-§§ 6
+¨¨ 6
 ex
-§§7 9
+¨¨7 9
 )
-§§9 :
+¨¨9 :
 {
-¨¨ %
+©© %
 ExceptionHandlerForLogs
-©© '
+ªª '
 .
-©©' (
+ªª' (
 LogException
-©©( 4
+ªª( 4
 (
-©©4 5
+ªª4 5
 ex
-©©5 7
+ªª5 7
 ,
-©©7 8!
+ªª7 8!
 ExceptionDictionary
-©©9 L
+ªª9 L
 .
-©©L M
+ªªL M
 FATAL_EXCEPTION
-©©M \
+ªªM \
 )
-©©\ ]
+ªª\ ]
 ;
-©©] ^
+ªª] ^
 }
-ªª 
+«« 
 catch
-«« 
+¬¬ 
 (
-«« 
+¬¬ 
 TimeoutException
-«« #
+¬¬ #
 ex
-««$ &
+¬¬$ &
 )
-««& '
+¬¬& '
 {
-¬¬ %
+­­ %
 ExceptionHandlerForLogs
-­­ '
+®® '
 .
-­­' (
+®®' (
 LogException
-­­( 4
+®®( 4
 (
-­­4 5
+®®4 5
 ex
-­­5 7
+®®5 7
 ,
-­­7 8!
+®®7 8!
 ExceptionDictionary
-­­9 L
+®®9 L
 .
-­­L M
+®®L M
 FATAL_EXCEPTION
-­­M \
+®®M \
 )
-­­\ ]
+®®\ ]
 ;
-­­] ^
+®®] ^
 }
-®® 
+¯¯ 
 catch
-¯¯ 
+°° 
 (
-¯¯ $
+°° $
 CommunicationException
-¯¯ )
+°° )
 ex
-¯¯* ,
+°°* ,
 )
-¯¯, -
+°°, -
 {
-°° 
+±± 
 HandleException
-±± 
+²² 
 (
-±±  
+²²  
 ex
-±±  "
+²²  "
 ,
-±±" #
+²²" #
 
 Properties
-±±$ .
+²²$ .
 .
-±±. /
+²². /
 	Resources
-±±/ 8
+²²/ 8
 .
-±±8 9!
+²²8 9!
 lblWithoutConection
-±±9 L
+²²9 L
 )
-±±L M
+²²L M
 ;
-±±M N
+²²M N
 }
-²² 
+³³ 
 UserSingleton
-³³ 
+´´ 
 .
-³³ 
+´´ 
 CleanSingleton
-³³ (
+´´ (
 (
-³³( )
+´´( )
 )
-³³) *
+´´) *
 ;
-³³* +
+´´* +
 }
-´´ 	
+µµ 	
 private
-¶¶ 
+·· 
 void
-¶¶ 
+·· 
 ClickOpenChat
-¶¶ "
+·· "
 (
-¶¶" #
+··" #
 object
-¶¶# )
+··# )
 sender
-¶¶* 0
+··* 0
 ,
-¶¶0 1"
+··0 1"
 MouseButtonEventArgs
-¶¶2 F
+··2 F
 e
-¶¶G H
+··G H
 )
-¶¶H I
+··H I
 {
-·· 	
+¸¸ 	
 if
-¸¸ 
+¹¹ 
 (
-¸¸ 
+¹¹ 
 liveChatInstance
-¸¸  
+¹¹  
 ==
-¸¸! #
+¹¹! #
 null
-¸¸$ (
+¹¹$ (
 )
-¸¸( )
+¹¹( )
 {
-¹¹ 
-liveChatInstance
-ºº  
-=
-ºº! "
-new
-ºº# &
-LiveChat
-ºº' /
-(
-ºº/ 0
-)
-ºº0 1
-;
-ºº1 2
+ºº 
 liveChatInstance
 »»  
-.
-»»  !
-	StartPage
-»»! *
-(
-»»* +
-isAdminOfLobby
-»»+ 9
-,
-»»9 :
-roomCode
-»»; C
-,
-»»C D
-this
-»»E I
-)
-»»I J
-;
-»»J K
-}
-¼¼ 
-liveChatInstance
-½½ 
-.
-½½ #
-RenewLiveChatCallBack
-½½ 2
-(
-½½2 3
-)
-½½3 4
-;
-½½4 5%
-frmActiveFriendsAndChat
-¾¾ #
-.
-¾¾# $
-Content
-¾¾$ +
 =
-¾¾, -
-liveChatInstance
-¾¾. >
-;
-¾¾> ?
-grdActiveUser
-¿¿ 
-.
-¿¿ 
-
-Visibility
-¿¿ $
-=
-¿¿% &
-
-Visibility
-¿¿' 1
-.
-¿¿1 2
-Visible
-¿¿2 9
-;
-¿¿9 :
-}
-ÀÀ 	
-public
-ÂÂ 
-void
-ÂÂ 
-ReceiveMessage
-ÂÂ "
-(
-ÂÂ" #/
-!GenericClassOfMessageChatxY0a3WX4
-ÂÂ# D
-message
-ÂÂE L
-)
-ÂÂL M
-{
-ÃÃ 	
-(
-ÄÄ 
-(
-ÄÄ 
-ILiveChatCallback
-ÄÄ 
-)
-ÄÄ  
-liveChatInstance
-ÄÄ  0
-)
-ÄÄ0 1
-.
-ÄÄ1 2
-ReceiveMessage
-ÄÄ2 @
-(
-ÄÄ@ A
-message
-ÄÄA H
-)
-ÄÄH I
-;
-ÄÄI J
-}
-ÅÅ 	
-private
-ÆÆ 
-void
-ÆÆ 
-ClickListFriends
-ÆÆ %
-(
-ÆÆ% &
-object
-ÆÆ& ,
-sender
-ÆÆ- 3
-,
-ÆÆ3 4"
-MouseButtonEventArgs
-ÆÆ5 I
-e
-ÆÆJ K
-)
-ÆÆK L
-{
-ÇÇ 	
-if
-ÈÈ 
-(
-ÈÈ !
-activeUsersInstance
-ÈÈ #
-==
-ÈÈ$ &
-null
-ÈÈ' +
-)
-ÈÈ+ ,
-{
-ÉÉ !
-activeUsersInstance
-ÊÊ #
-=
-ÊÊ$ %
+»»! "
 new
-ÊÊ& )
-ActiveFriends
-ÊÊ* 7
+»»# &
+LiveChat
+»»' /
 (
-ÊÊ7 8
-userSingleton
-ÊÊ8 E
-.
-ÊÊE F
-IdUser
-ÊÊF L
+»»/ 0
 )
-ÊÊL M
+»»0 1
 ;
-ÊÊM N!
+»»1 2
+liveChatInstance
+¼¼  
+.
+¼¼  !
+	StartPage
+¼¼! *
+(
+¼¼* +
+isAdminOfLobby
+¼¼+ 9
+,
+¼¼9 :
+roomCode
+¼¼; C
+,
+¼¼C D
+this
+¼¼E I
+)
+¼¼I J
+;
+¼¼J K
+}
+½½ 
+liveChatInstance
+¾¾ 
+.
+¾¾ #
+RenewLiveChatCallBack
+¾¾ 2
+(
+¾¾2 3
+)
+¾¾3 4
+;
+¾¾4 5%
+frmActiveFriendsAndChat
+¿¿ #
+.
+¿¿# $
+Content
+¿¿$ +
+=
+¿¿, -
+liveChatInstance
+¿¿. >
+;
+¿¿> ?
+grdActiveUser
+ÀÀ 
+.
+ÀÀ 
+
+Visibility
+ÀÀ $
+=
+ÀÀ% &
+
+Visibility
+ÀÀ' 1
+.
+ÀÀ1 2
+Visible
+ÀÀ2 9
+;
+ÀÀ9 :
+}
+ÁÁ 	
+public
+ÃÃ 
+void
+ÃÃ 
+ReceiveMessage
+ÃÃ "
+(
+ÃÃ" #/
+!GenericClassOfMessageChatxY0a3WX4
+ÃÃ# D
+message
+ÃÃE L
+)
+ÃÃL M
+{
+ÄÄ 	
+(
+ÅÅ 
+(
+ÅÅ 
+ILiveChatCallback
+ÅÅ 
+)
+ÅÅ  
+liveChatInstance
+ÅÅ  0
+)
+ÅÅ0 1
+.
+ÅÅ1 2
+ReceiveMessage
+ÅÅ2 @
+(
+ÅÅ@ A
+message
+ÅÅA H
+)
+ÅÅH I
+;
+ÅÅI J
+}
+ÆÆ 	
+private
+ÇÇ 
+void
+ÇÇ 
+ClickListFriends
+ÇÇ %
+(
+ÇÇ% &
+object
+ÇÇ& ,
+sender
+ÇÇ- 3
+,
+ÇÇ3 4"
+MouseButtonEventArgs
+ÇÇ5 I
+e
+ÇÇJ K
+)
+ÇÇK L
+{
+ÈÈ 	
+if
+ÉÉ 
+(
+ÉÉ !
+activeUsersInstance
+ÉÉ #
+==
+ÉÉ$ &
+null
+ÉÉ' +
+)
+ÉÉ+ ,
+{
+ÊÊ !
 activeUsersInstance
 ËË #
-.
-ËË# $
-	StartPage
-ËË$ -
-(
-ËË- .
-this
-ËË. 2
-)
-ËË2 3
-;
-ËË3 4
-}
-ÌÌ !
-activeUsersInstance
-ÍÍ 
-.
-ÍÍ  (
-RenewFriendCallBackChannel
-ÍÍ  :
-(
-ÍÍ: ;
-userSingleton
-ÍÍ; H
-.
-ÍÍH I
-IdUser
-ÍÍI O
-)
-ÍÍO P
-;
-ÍÍP Q%
-frmActiveFriendsAndChat
-ÎÎ #
-.
-ÎÎ# $
-Content
-ÎÎ$ +
 =
-ÎÎ, -!
-activeUsersInstance
-ÎÎ. A
-;
-ÎÎA B
-grdActiveUser
-ÏÏ 
-.
-ÏÏ 
-
-Visibility
-ÏÏ $
-=
-ÏÏ% &
-
-Visibility
-ÏÏ' 1
-.
-ÏÏ1 2
-Visible
-ÏÏ2 9
-;
-ÏÏ9 :
-}
-ĞĞ 	
-private
-ÒÒ 
-void
-ÒÒ %
-NotifyFriendsIamPlaying
-ÒÒ ,
-(
-ÒÒ, -
-)
-ÒÒ- .
-{
-ÓÓ 	
-try
-ÔÔ 
-{
-ÕÕ -
-AvailabilityUserManagmentClient
-ÖÖ /#
-availabilityUserProxy
-ÖÖ0 E
-=
-ÖÖF G
+ËË$ %
 new
-ÖÖH K
+ËË& )
+ActiveFriends
+ËË* 7
 (
-ÖÖK L
-)
-ÖÖL M
-;
-ÖÖM N#
-availabilityUserProxy
-×× %
-.
-××% &
-PlayerIsPlaying
-××& 5
-(
-××5 6
+ËË7 8
 userSingleton
-××6 C
+ËË8 E
 .
-××C D
+ËËE F
 IdUser
-××D J
+ËËF L
 )
-××J K
+ËËL M
 ;
-××K L
-}
-ØØ 
-catch
-ÙÙ 
-(
-ÙÙ '
-EndpointNotFoundException
-ÙÙ ,
-ex
-ÙÙ- /
-)
-ÙÙ/ 0
-{
-ÚÚ %
-ExceptionHandlerForLogs
-ÛÛ '
-.
-ÛÛ' (
-LogException
-ÛÛ( 4
-(
-ÛÛ4 5
-ex
-ÛÛ5 7
-,
-ÛÛ7 8!
-ExceptionDictionary
-ÛÛ9 L
-.
-ÛÛL M
-FATAL_EXCEPTION
-ÛÛM \
-)
-ÛÛ\ ]
-;
-ÛÛ] ^
-dialogWindow
-ÜÜ 
-.
-ÜÜ #
-ShowInfoOrErrorWindow
-ÜÜ 2
-(
-ÜÜ2 3
-
-Properties
-ÜÜ3 =
-.
-ÜÜ= >
-	Resources
-ÜÜ> G
-.
-ÜÜG H
-txbErrorTitle
-ÜÜH U
-,
-ÜÜU V
-
-Properties
-ÜÜW a
-.
-ÜÜa b
-	Resources
-ÜÜb k
-.
-ÜÜk l)
-lblFailToNotifyYourFriendsÜÜl †
-+ÜÜ‡ ˆ
-$strÜÜ‰ 
-+ÜÜ 
-
-PropertiesÜÜ‘ ›
-.ÜÜ› œ
-	ResourcesÜÜœ ¥
-.ÜÜ¥ ¦#
-lblEndPointNotFoundÜÜ¦ ¹
-,ÜÜ¹ º
-WindowÜÜ» Á
-.ÜÜÁ Â
-	GetWindowÜÜÂ Ë
-(ÜÜË Ì
-thisÜÜÌ Ğ
-)ÜÜĞ Ñ
-,ÜÜÑ Ò
-dialogWindowÜÜÓ ß
-.ÜÜß à
-ERRORÜÜà å
-)ÜÜå æ
-;ÜÜæ ç
-}
-İİ 
-catch
-ŞŞ 
-(
-ŞŞ 1
-#CommunicationObjectFaultedException
-ŞŞ 6
-ex
-ŞŞ7 9
-)
-ŞŞ9 :
-{
-ßß %
-ExceptionHandlerForLogs
-àà '
-.
-àà' (
-LogException
-àà( 4
-(
-àà4 5
-ex
-àà5 7
-,
-àà7 8!
-ExceptionDictionary
-àà9 L
-.
-ààL M
-FATAL_EXCEPTION
-ààM \
-)
-àà\ ]
-;
-àà] ^
-dialogWindow
-áá 
-.
-áá #
-ShowInfoOrErrorWindow
-áá 2
-(
-áá2 3
-
-Properties
-áá3 =
-.
-áá= >
-	Resources
-áá> G
-.
-ááG H
-txbErrorTitle
-ááH U
-,
-ááU V
-
-Properties
-ááW a
-.
-ááa b
-	Resources
-ááb k
-.
-áák l)
-lblFailToNotifyYourFriendsáál †
-+áá‡ ˆ
-$stráá‰ 
-+áá 
-
-Propertiesáá‘ ›
-.áá› œ
-	Resourcesááœ ¥
-.áá¥ ¦(
-lblComunicationExceptionáá¦ ¾
-,áá¾ ¿
-WindowááÀ Æ
-.ááÆ Ç
-	GetWindowááÇ Ğ
-(ááĞ Ñ
-thisááÑ Õ
-)ááÕ Ö
-,ááÖ ×
-dialogWindowááØ ä
-.ááä å
-ERRORááå ê
-)ááê ë
-;ááë ì
-}
-ââ 
-catch
-ãã 
-(
-ãã 
-TimeoutException
-ãã #
-ex
-ãã$ &
-)
-ãã& '
-{
-ää %
-ExceptionHandlerForLogs
-åå '
-.
-åå' (
-LogException
-åå( 4
-(
-åå4 5
-ex
-åå5 7
-,
-åå7 8!
-ExceptionDictionary
-åå9 L
-.
-ååL M
-FATAL_EXCEPTION
-ååM \
-)
-åå\ ]
-;
-åå] ^
-dialogWindow
-ææ 
-.
-ææ #
-ShowInfoOrErrorWindow
-ææ 2
-(
-ææ2 3
-
-Properties
-ææ3 =
-.
-ææ= >
-	Resources
-ææ> G
-.
-ææG H
-txbErrorTitle
-ææH U
-,
-ææU V
-
-Properties
-ææW a
-.
-ææa b
-	Resources
-ææb k
-.
-ææk l)
-lblFailToNotifyYourFriendsææl †
-+ææ‡ ˆ
-$strææ‰ 
-+ææ 
-
-Propertiesææ‘ ›
-.ææ› œ
-	Resourcesææœ ¥
-.ææ¥ ¦ 
-lblTimeExceptionææ¦ ¶
-,ææ¶ ·
-Windowææ¸ ¾
-.ææ¾ ¿
-	GetWindowææ¿ È
-(ææÈ É
-thisææÉ Í
-)ææÍ Î
-,ææÎ Ï
-dialogWindowææĞ Ü
-.ææÜ İ
-ERRORææİ â
-)ææâ ã
-;ææã ä
-}
-çç 
-catch
-èè 
-(
-èè $
-CommunicationException
-èè )
-ex
-èè* ,
-)
-èè, -
-{
-éé %
-ExceptionHandlerForLogs
-êê '
-.
-êê' (
-LogException
-êê( 4
-(
-êê4 5
-ex
-êê5 7
-,
-êê7 8!
-ExceptionDictionary
-êê9 L
-.
-êêL M
-FATAL_EXCEPTION
-êêM \
-)
-êê\ ]
-;
-êê] ^
-dialogWindow
-ëë 
-.
-ëë #
-ShowInfoOrErrorWindow
-ëë 2
-(
-ëë2 3
-
-Properties
-ëë3 =
-.
-ëë= >
-	Resources
-ëë> G
-.
-ëëG H
-txbErrorTitle
-ëëH U
-,
-ëëU V
-
-Properties
-ëëW a
-.
-ëëa b
-	Resources
-ëëb k
-.
-ëëk l)
-lblFailToNotifyYourFriendsëël †
-+ëë‡ ˆ
-$strëë‰ 
-+ëë 
-
-Propertiesëë‘ ›
-.ëë› œ
-	Resourcesëëœ ¥
-.ëë¥ ¦#
-lblWithoutConectionëë¦ ¹
-,ëë¹ º
-Windowëë» Á
-.ëëÁ Â
-	GetWindowëëÂ Ë
-(ëëË Ì
-thisëëÌ Ğ
-)ëëĞ Ñ
-,ëëÑ Ò
-dialogWindowëëÓ ß
-.ëëß à
-ERRORëëà å
-)ëëå æ
-;ëëæ ç
-}
-ìì 
-}
-íí 	
-public
-ïï 
-void
-ïï +
-CloseSubFrameOfChatAndFriends
-ïï 1
-(
-ïï1 2
-)
-ïï2 3
-{
-ğğ 	%
-frmActiveFriendsAndChat
-ññ #
-.
-ññ# $
-Content
-ññ$ +
-=
-ññ, -
-null
-ññ. 2
-;
-ññ2 3
-grdActiveUser
-òò 
-.
-òò 
-
-Visibility
-òò $
-=
-òò% &
-
-Visibility
-òò' 1
-.
-òò1 2
-Hidden
-òò2 8
-;
-òò8 9
-}
-óó 	
-public
-ôô 
-void
-ôô *
-ResponseOfPlayerAvailability
-ôô 0
-(
-ôô0 1
-int
-ôô1 4
-status
-ôô5 ;
-,
-ôô; <
-int
-ôô= @
-idFriend
-ôôA I
-)
-ôôI J
-{
-õõ 	
-(
-öö 
-(
-öö -
-INotifyUserAvailabilityCallback
-öö -
-)
-öö- .!
+ËËM N!
 activeUsersInstance
-öö. A
-)
-ööA B
+ÌÌ #
 .
-ööB C*
-ResponseOfPlayerAvailability
-ööC _
+ÌÌ# $
+	StartPage
+ÌÌ$ -
 (
-öö_ `
-status
-öö` f
-,
-ööf g
-idFriend
-ööh p
+ÌÌ- .
+this
+ÌÌ. 2
 )
-ööp q
+ÌÌ2 3
 ;
-ööq r
+ÌÌ3 4
 }
-÷÷ 	
-public
-úú 
-void
-úú %
-NotifyQuestionsAreReady
-úú +
-(
-úú+ ,
-int
-úú, /
-	codeEvent
-úú0 9
-)
-úú9 :
-{
-ûû 	
-if
-üü 
-(
-üü 
-	codeEvent
-üü 
-==
-üü !
-ExceptionDictionary
-üü 0
+ÍÍ !
+activeUsersInstance
+ÎÎ 
 .
-üü0 1
-SUCCESFULL_EVENT
-üü1 A
-)
-üüA B
-{
-ıı 
-bttStartGame
-şş 
+ÎÎ  (
+RenewFriendCallBackChannel
+ÎÎ  :
+(
+ÎÎ: ;
+userSingleton
+ÎÎ; H
 .
-şş 
-	IsEnabled
-şş &
+ÎÎH I
+IdUser
+ÎÎI O
+)
+ÎÎO P
+;
+ÎÎP Q%
+frmActiveFriendsAndChat
+ÏÏ #
+.
+ÏÏ# $
+Content
+ÏÏ$ +
 =
-şş' (
-true
-şş) -
+ÏÏ, -!
+activeUsersInstance
+ÏÏ. A
 ;
-şş- .
+ÏÏA B
+grdActiveUser
+ĞĞ 
+.
+ĞĞ 
+
+Visibility
+ĞĞ $
+=
+ĞĞ% &
+
+Visibility
+ĞĞ' 1
+.
+ĞĞ1 2
+Visible
+ĞĞ2 9
+;
+ĞĞ9 :
 }
-ÿÿ 
-else
-€€ 
-{
- 
-dialogWindow
-‚‚ 
-.
-‚‚ #
-ShowInfoOrErrorWindow
-‚‚ 2
+ÑÑ 	
+private
+ÓÓ 
+void
+ÓÓ %
+NotifyFriendsIamPlaying
+ÓÓ ,
 (
-‚‚2 3
-
-Properties
-‚‚3 =
+ÓÓ, -
+)
+ÓÓ- .
+{
+ÔÔ 	
+try
+ÕÕ 
+{
+ÖÖ -
+AvailabilityUserManagmentClient
+×× /#
+availabilityUserProxy
+××0 E
+=
+××F G
+new
+××H K
+(
+××K L
+)
+××L M
+;
+××M N#
+availabilityUserProxy
+ØØ %
 .
-‚‚= >
-	Resources
-‚‚> G
+ØØ% &
+PlayerIsPlaying
+ØØ& 5
+(
+ØØ5 6
+userSingleton
+ØØ6 C
 .
-‚‚G H
-txbErrorTitle
-‚‚H U
+ØØC D
+IdUser
+ØØD J
+)
+ØØJ K
+;
+ØØK L
+}
+ÙÙ 
+catch
+ÚÚ 
+(
+ÚÚ '
+EndpointNotFoundException
+ÚÚ ,
+ex
+ÚÚ- /
+)
+ÚÚ/ 0
+{
+ÛÛ %
+ExceptionHandlerForLogs
+ÜÜ '
+.
+ÜÜ' (
+LogException
+ÜÜ( 4
+(
+ÜÜ4 5
+ex
+ÜÜ5 7
 ,
-‚‚U V
+ÜÜ7 8!
+ExceptionDictionary
+ÜÜ9 L
+.
+ÜÜL M
+FATAL_EXCEPTION
+ÜÜM \
+)
+ÜÜ\ ]
+;
+ÜÜ] ^!
+DialogWindowManager
+İİ #
+.
+İİ# $#
+ShowInfoOrErrorWindow
+İİ$ 9
+(
+İİ9 :
 
 Properties
-‚‚W a
+İİ: D
 .
-‚‚a b
+İİD E
 	Resources
-‚‚b k
+İİE N
 .
-‚‚k l
+İİN O
+txbErrorTitle
+İİO \
+,
+İİ\ ]
+
+Properties
+İİ^ h
+.
+İİh i
+	Resources
+İİi r
+.
+İİr s)
+lblFailToNotifyYourFriendsİİs 
++İİ 
+$strİİ •
++İİ– —
+
+Propertiesİİ˜ ¢
+.İİ¢ £
+	Resourcesİİ£ ¬
+.İİ¬ ­#
+lblEndPointNotFoundİİ­ À
+,İİÀ Á
+WindowİİÂ È
+.İİÈ É
+	GetWindowİİÉ Ò
+(İİÒ Ó
+thisİİÓ ×
+)İİ× Ø
+,İİØ Ù#
+DialogWindowManagerİİÚ í
+.İİí î
+ERRORİİî ó
+)İİó ô
+;İİô õ
+}
+ŞŞ 
+catch
+ßß 
+(
+ßß 1
+#CommunicationObjectFaultedException
+ßß 6
+ex
+ßß7 9
+)
+ßß9 :
+{
+àà %
+ExceptionHandlerForLogs
+áá '
+.
+áá' (
+LogException
+áá( 4
+(
+áá4 5
+ex
+áá5 7
+,
+áá7 8!
+ExceptionDictionary
+áá9 L
+.
+ááL M
+FATAL_EXCEPTION
+ááM \
+)
+áá\ ]
+;
+áá] ^!
+DialogWindowManager
+ââ #
+.
+ââ# $#
+ShowInfoOrErrorWindow
+ââ$ 9
+(
+ââ9 :
+
+Properties
+ââ: D
+.
+ââD E
+	Resources
+ââE N
+.
+ââN O
+txbErrorTitle
+ââO \
+,
+ââ\ ]
+
+Properties
+ââ^ h
+.
+ââh i
+	Resources
+ââi r
+.
+ââr s)
+lblFailToNotifyYourFriendsââs 
++ââ 
+$strââ •
++ââ– —
+
+Propertiesââ˜ ¢
+.ââ¢ £
+	Resourcesââ£ ¬
+.ââ¬ ­(
+lblComunicationExceptionââ­ Å
+,ââÅ Æ
+WindowââÇ Í
+.ââÍ Î
+	GetWindowââÎ ×
+(ââ× Ø
+thisââØ Ü
+)ââÜ İ
+,ââİ Ş#
+DialogWindowManagerââß ò
+.ââò ó
+ERRORââó ø
+)ââø ù
+;ââù ú
+}
+ãã 
+catch
+ää 
+(
+ää 
+TimeoutException
+ää #
+ex
+ää$ &
+)
+ää& '
+{
+åå %
+ExceptionHandlerForLogs
+ææ '
+.
+ææ' (
+LogException
+ææ( 4
+(
+ææ4 5
+ex
+ææ5 7
+,
+ææ7 8!
+ExceptionDictionary
+ææ9 L
+.
+ææL M
+FATAL_EXCEPTION
+ææM \
+)
+ææ\ ]
+;
+ææ] ^!
+DialogWindowManager
+çç #
+.
+çç# $#
+ShowInfoOrErrorWindow
+çç$ 9
+(
+çç9 :
+
+Properties
+çç: D
+.
+ççD E
+	Resources
+ççE N
+.
+ççN O
+txbErrorTitle
+ççO \
+,
+çç\ ]
+
+Properties
+çç^ h
+.
+ççh i
+	Resources
+ççi r
+.
+ççr s)
+lblFailToNotifyYourFriendsççs 
++çç 
+$strçç •
++çç– —
+
+Propertiesçç˜ ¢
+.çç¢ £
+	Resourcesçç£ ¬
+.çç¬ ­ 
+lblTimeExceptionçç­ ½
+,çç½ ¾
+Windowçç¿ Å
+.ççÅ Æ
+	GetWindowççÆ Ï
+(ççÏ Ğ
+thisççĞ Ô
+)ççÔ Õ
+,ççÕ Ö#
+DialogWindowManagerçç× ê
+.ççê ë
+ERRORççë ğ
+)ççğ ñ
+;ççñ ò
+}
+èè 
+catch
+éé 
+(
+éé $
+CommunicationException
+éé )
+ex
+éé* ,
+)
+éé, -
+{
+êê %
+ExceptionHandlerForLogs
+ëë '
+.
+ëë' (
+LogException
+ëë( 4
+(
+ëë4 5
+ex
+ëë5 7
+,
+ëë7 8!
+ExceptionDictionary
+ëë9 L
+.
+ëëL M
+FATAL_EXCEPTION
+ëëM \
+)
+ëë\ ]
+;
+ëë] ^!
+DialogWindowManager
+ìì #
+.
+ìì# $#
+ShowInfoOrErrorWindow
+ìì$ 9
+(
+ìì9 :
+
+Properties
+ìì: D
+.
+ììD E
+	Resources
+ììE N
+.
+ììN O
+txbErrorTitle
+ììO \
+,
+ìì\ ]
+
+Properties
+ìì^ h
+.
+ììh i
+	Resources
+ììi r
+.
+ììr s)
+lblFailToNotifyYourFriendsììs 
++ìì 
+$strìì •
++ìì– —
+
+Propertiesìì˜ ¢
+.ìì¢ £
+	Resourcesìì£ ¬
+.ìì¬ ­#
+lblWithoutConectionìì­ À
+,ììÀ Á
+WindowììÂ È
+.ììÈ É
+	GetWindowììÉ Ò
+(ììÒ Ó
+thisììÓ ×
+)ìì× Ø
+,ììØ Ù#
+DialogWindowManagerììÚ í
+.ììí î
+ERRORììî ó
+)ììó ô
+;ììô õ
+}
+íí 
+}
+îî 	
+public
+ğğ 
+void
+ğğ +
+CloseSubFrameOfChatAndFriends
+ğğ 1
+(
+ğğ1 2
+)
+ğğ2 3
+{
+ññ 	%
+frmActiveFriendsAndChat
+òò #
+.
+òò# $
+Content
+òò$ +
+=
+òò, -
+null
+òò. 2
+;
+òò2 3
+grdActiveUser
+óó 
+.
+óó 
+
+Visibility
+óó $
+=
+óó% &
+
+Visibility
+óó' 1
+.
+óó1 2
+Hidden
+óó2 8
+;
+óó8 9
+}
+ôô 	
+public
+õõ 
+void
+õõ *
+ResponseOfPlayerAvailability
+õõ 0
+(
+õõ0 1
+int
+õõ1 4
+status
+õõ5 ;
+,
+õõ; <
+int
+õõ= @
+idFriend
+õõA I
+)
+õõI J
+{
+öö 	
+(
+÷÷ 
+(
+÷÷ -
+INotifyUserAvailabilityCallback
+÷÷ -
+)
+÷÷- .!
+activeUsersInstance
+÷÷. A
+)
+÷÷A B
+.
+÷÷B C*
+ResponseOfPlayerAvailability
+÷÷C _
+(
+÷÷_ `
+status
+÷÷` f
+,
+÷÷f g
+idFriend
+÷÷h p
+)
+÷÷p q
+;
+÷÷q r
+}
+øø 	
+public
+ûû 
+void
+ûû %
+NotifyQuestionsAreReady
+ûû +
+(
+ûû+ ,
+int
+ûû, /
+	codeEvent
+ûû0 9
+)
+ûû9 :
+{
+üü 	
+if
+ıı 
+(
+ıı 
+	codeEvent
+ıı 
+==
+ıı !
+ExceptionDictionary
+ıı 0
+.
+ıı0 1
+SUCCESFULL_EVENT
+ıı1 A
+)
+ııA B
+{
+şş 
+bttStartGame
+ÿÿ 
+.
+ÿÿ 
+	IsEnabled
+ÿÿ &
+=
+ÿÿ' (
+true
+ÿÿ) -
+;
+ÿÿ- .
+}
+€€ 
+else
+ 
+{
+‚‚ !
+DialogWindowManager
+ƒƒ #
+.
+ƒƒ# $#
+ShowInfoOrErrorWindow
+ƒƒ$ 9
+(
+ƒƒ9 :
+
+Properties
+ƒƒ: D
+.
+ƒƒD E
+	Resources
+ƒƒE N
+.
+ƒƒN O
+txbErrorTitle
+ƒƒO \
+,
+ƒƒ\ ]
+
+Properties
+ƒƒ^ h
+.
+ƒƒh i
+	Resources
+ƒƒi r
+.
+ƒƒr s
 
 lblNotGame
-‚‚l v
+ƒƒs }
 ,
-‚‚v w
-Window
-‚‚x ~
-.
-‚‚~ 
-	GetWindow‚‚ ˆ
-(‚‚ˆ ‰
-this‚‚‰ 
-)‚‚ 
-,‚‚ 
-dialogWindow‚‚ œ
-.‚‚œ 
-ERROR‚‚ ¢
-)‚‚¢ £
-;‚‚£ ¤
+ƒƒ} ~
+Windowƒƒ …
+.ƒƒ… †
+	GetWindowƒƒ† 
+(ƒƒ 
+thisƒƒ ”
+)ƒƒ” •
+,ƒƒ• –#
+DialogWindowManagerƒƒ— ª
+.ƒƒª «
+ERRORƒƒ« °
+)ƒƒ° ±
+;ƒƒ± ²
 }
-ƒƒ 
+„„ 
 }
-„„ 	
+…… 	
 private
-‡‡ 
+ˆˆ 
 void
-‡‡ 
+ˆˆ 
 ClickStartGame
-‡‡ #
+ˆˆ #
 (
-‡‡# $
+ˆˆ# $
 object
-‡‡$ *
+ˆˆ$ *
 sender
-‡‡+ 1
+ˆˆ+ 1
 ,
-‡‡1 2
+ˆˆ1 2
 RoutedEventArgs
-‡‡3 B
+ˆˆ3 B
 e
-‡‡C D
+ˆˆC D
 )
-‡‡D E
+ˆˆD E
 {
-ˆˆ 	
+‰‰ 	
 if
-‰‰ 
+ŠŠ 
 (
-‰‰ 
+ŠŠ 
 (
-‰‰ 
+ŠŠ 
 bool
-‰‰ 
+ŠŠ 
 )
-‰‰ 
+ŠŠ 
 	chbTeamUp
-‰‰ 
+ŠŠ 
 .
-‰‰  
+ŠŠ  
 	IsChecked
-‰‰  )
+ŠŠ  )
 )
-‰‰) *
+ŠŠ) *
 {
-ŠŠ 
+‹‹ 
 if
-‹‹ 
+ŒŒ 
 (
-‹‹ "
+ŒŒ "
 currentPlayerInLobby
-‹‹ (
+ŒŒ (
 .
-‹‹( )
+ŒŒ( )
 Where
-‹‹) .
+ŒŒ) .
 (
-‹‹. /
+ŒŒ. /
 pl
-‹‹/ 1
+ŒŒ/ 1
 =>
-‹‹2 4
+ŒŒ2 4
 pl
-‹‹5 7
+ŒŒ5 7
 .
-‹‹7 8
+ŒŒ7 8
 
 SideOfTeam
-‹‹8 B
+ŒŒ8 B
 ==
-‹‹C E
+ŒŒC E
 TEAM_LEFT_SIDE
-‹‹F T
+ŒŒF T
 )
-‹‹T U
+ŒŒT U
 .
-‹‹U V
+ŒŒU V
 ToList
-‹‹V \
+ŒŒV \
 (
-‹‹\ ]
+ŒŒ\ ]
 )
-‹‹] ^
+ŒŒ] ^
 .
-‹‹^ _
+ŒŒ^ _
 Count
-‹‹_ d
+ŒŒ_ d
 ==
-‹‹e g"
+ŒŒe g"
 currentPlayerInLobby
-‹‹h |
+ŒŒh |
 .
-‹‹| }
-Where‹‹} ‚
-(‹‹‚ ƒ
-pl‹‹ƒ …
-=>‹‹† ˆ
-pl‹‹‰ ‹
-.‹‹‹ Œ
+ŒŒ| }
+WhereŒŒ} ‚
+(ŒŒ‚ ƒ
+plŒŒƒ …
+=>ŒŒ† ˆ
+plŒŒ‰ ‹
+.ŒŒ‹ Œ
 
-SideOfTeam‹‹Œ –
-==‹‹— ™
-TEMA_RIGHT_SIDE‹‹š ©
-)‹‹© ª
-.‹‹ª «
-ToList‹‹« ±
-(‹‹± ²
-)‹‹² ³
-.‹‹³ ´
-Count‹‹´ ¹
-)‹‹¹ º
+SideOfTeamŒŒŒ –
+==ŒŒ— ™
+TEMA_RIGHT_SIDEŒŒš ©
+)ŒŒ© ª
+.ŒŒª «
+ToListŒŒ« ±
+(ŒŒ± ²
+)ŒŒ² ³
+.ŒŒ³ ´
+CountŒŒ´ ¹
+)ŒŒ¹ º
 {
-ŒŒ #
+ #
 CallMethodToStartGame
- )
+ )
 (
-) *
+) *
 )
-* +
+* +
 ;
-+ ,
++ ,
 }
- 
+ 
 else
- 
+ 
 {
- 
-dialogWindow
-‘‘  
+‘‘ !
+DialogWindowManager
+’’ '
 .
-‘‘  !#
+’’' (#
 ShowInfoOrErrorWindow
-‘‘! 6
+’’( =
 (
-‘‘6 7
+’’= >
 
 Properties
-‘‘7 A
+’’> H
 .
-‘‘A B
+’’H I
 	Resources
-‘‘B K
+’’I R
 .
-‘‘K L
+’’R S
 txbErrorTitle
-‘‘L Y
+’’S `
 ,
-‘‘Y Z
+’’` a
 
 Properties
-‘‘[ e
+’’b l
 .
-‘‘e f
+’’l m
 	Resources
-‘‘f o
+’’m v
 .
-‘‘o p
-_2PlayerByTeam
-‘‘p ~
-,
-‘‘~ 
-Window‘‘€ †
-.‘‘† ‡
-	GetWindow‘‘‡ 
-(‘‘ ‘
-this‘‘‘ •
-)‘‘• –
-,‘‘– —
-dialogWindow‘‘˜ ¤
-.‘‘¤ ¥
-ERROR‘‘¥ ª
-)‘‘ª «
-;‘‘« ¬
+’’v w
+_2PlayerByTeam’’w …
+,’’… †
+Window’’‡ 
+.’’ 
+	GetWindow’’ —
+(’’— ˜
+this’’˜ œ
+)’’œ 
+,’’ #
+DialogWindowManager’’Ÿ ²
+.’’² ³
+ERROR’’³ ¸
+)’’¸ ¹
+;’’¹ º
 }
-’’ 
+““ 
 }
-““ 
+”” 
 else
-”” 
+•• 
 if
-”” 
+•• 
 (
-”” "
+•• "
 currentPlayerInLobby
-”” )
+•• )
 .
-””) *
+••) *
 Count
-””* /
+••* /
 >
-””0 1
+••0 1
 $num
-””2 3
+••2 3
 )
-””3 4
+••3 4
 {
-•• #
+–– #
 CallMethodToStartGame
-–– %
+—— %
 (
-––% &
+——% &
 )
-––& '
+——& '
 ;
-––' (
+——' (
 }
-—— 
+˜˜ 
 else
-˜˜ 
+™™ 
 {
-™™ 
-dialogWindow
-šš 
+šš !
+DialogWindowManager
+›› #
 .
-šš #
+››# $#
 ShowInfoOrErrorWindow
-šš 2
+››$ 9
 (
-šš2 3
+››9 :
 
 Properties
-šš3 =
+››: D
 .
-šš= >
+››D E
 	Resources
-šš> G
+››E N
 .
-ššG H
+››N O
 txbErrorTitle
-ššH U
+››O \
 ,
-ššU V
+››\ ]
 
 Properties
-ššW a
+››^ h
 .
-šša b
+››h i
 	Resources
-ššb k
+››i r
 .
-ššk l
-MoreThan1Player
-ššl {
-,
-šš{ |
-Windowšš} ƒ
-.ššƒ „
-	GetWindowšš„ 
-(šš 
-thisšš ’
-)šš’ “
-,šš“ ”
-dialogWindowšš• ¡
-.šš¡ ¢
-ERRORšš¢ §
-)šš§ ¨
-;šš¨ ©
+››r s
+MoreThan1Player››s ‚
+,››‚ ƒ
+Window››„ Š
+.››Š ‹
+	GetWindow››‹ ”
+(››” •
+this››• ™
+)››™ š
+,››š ›#
+DialogWindowManager››œ ¯
+.››¯ °
+ERROR››° µ
+)››µ ¶
+;››¶ ·
 }
-›› 
+œœ 
 }
-œœ 	
+ 	
 private
- 
+ŸŸ 
 void
- #
+ŸŸ #
 CallMethodToStartGame
- *
+ŸŸ *
 (
-* +
+ŸŸ* +
 )
-+ ,
+ŸŸ+ ,
 {
-ŸŸ 	
+   	
 try
-   
+¡¡ 
 {
-¡¡ )
+¢¢ )
 LobbyActionsOperationClient
-¢¢ +
+££ +
 lobbyActionsProxy
-¢¢, =
+££, =
 =
-¢¢> ?
+££> ?
 new
-¢¢@ C
+££@ C
 (
-¢¢C D
+££C D
 )
-¢¢D E
+££D E
 ;
-¢¢E F
+££E F
 lobbyActionsProxy
-££ !
+¤¤ !
 .
-££! "
+¤¤! "
 	StartGame
-££" +
+¤¤" +
 (
-££+ ,
+¤¤+ ,
 roomCode
-££, 4
+¤¤, 4
 )
-££4 5
+¤¤4 5
 ;
-££5 6
+¤¤5 6
 }
-¤¤ 
+¥¥ 
 catch
-¥¥ 
+¦¦ 
 (
-¥¥ '
+¦¦ '
 EndpointNotFoundException
-¥¥ ,
+¦¦ ,
 ex
-¥¥- /
+¦¦- /
 )
-¥¥/ 0
+¦¦/ 0
 {
-¦¦ 
+§§ 
 HandleException
-§§ 
+¨¨ 
 (
-§§  
+¨¨  
 ex
-§§  "
+¨¨  "
 ,
-§§" #
+¨¨" #
 
 Properties
-§§$ .
+¨¨$ .
 .
-§§. /
+¨¨. /
 	Resources
-§§/ 8
+¨¨/ 8
 .
-§§8 9 
+¨¨8 9 
 lblFailToStartGame
-§§9 K
+¨¨9 K
 +
-§§L M
+¨¨L M
 $str
-§§N S
+¨¨N S
 +
-§§T U
+¨¨T U
 
 Properties
-§§V `
+¨¨V `
 .
-§§` a
+¨¨` a
 	Resources
-§§a j
+¨¨a j
 .
-§§j k!
+¨¨j k!
 lblEndPointNotFound
-§§k ~
+¨¨k ~
 )
-§§~ 
-;§§ €
+¨¨~ 
+;¨¨ €
 }
-¨¨ 
+©© 
 catch
-©© 
+ªª 
 (
-©© 1
+ªª 1
 #CommunicationObjectFaultedException
-©© 6
+ªª 6
 ex
-©©7 9
+ªª7 9
 )
-©©9 :
+ªª9 :
 {
-ªª 
+«« 
 HandleException
-«« 
+¬¬ 
 (
-««  
+¬¬  
 ex
-««  "
+¬¬  "
 ,
-««" #
+¬¬" #
 
 Properties
-««$ .
+¬¬$ .
 .
-««. /
+¬¬. /
 	Resources
-««/ 8
+¬¬/ 8
 .
-««8 9 
+¬¬8 9 
 lblFailToStartGame
-««9 K
+¬¬9 K
 +
-««L M
+¬¬L M
 $str
-««N S
+¬¬N S
 +
-««T U
+¬¬T U
 
 Properties
-««V `
+¬¬V `
 .
-««` a
+¬¬` a
 	Resources
-««a j
+¬¬a j
 .
-««j k'
-lblComunicationException««k ƒ
-)««ƒ „
-;««„ …
+¬¬j k'
+lblComunicationException¬¬k ƒ
+)¬¬ƒ „
+;¬¬„ …
 }
-¬¬ 
+­­ 
 catch
-­­ 
+®® 
 (
-­­ 
+®® 
 TimeoutException
-­­ #
+®® #
 ex
-­­$ &
+®®$ &
 )
-­­& '
+®®& '
 {
-®® 
+¯¯ 
 HandleException
-¯¯ 
+°° 
 (
-¯¯  
+°°  
 ex
-¯¯  "
+°°  "
 ,
-¯¯" #
+°°" #
 
 Properties
-¯¯$ .
+°°$ .
 .
-¯¯. /
+°°. /
 	Resources
-¯¯/ 8
+°°/ 8
 .
-¯¯8 9 
+°°8 9 
 lblFailToStartGame
-¯¯9 K
+°°9 K
 +
-¯¯L M
+°°L M
 $str
-¯¯N S
+°°N S
 +
-¯¯T U
+°°T U
 
 Properties
-¯¯V `
+°°V `
 .
-¯¯` a
+°°` a
 	Resources
-¯¯a j
+°°a j
 .
-¯¯j k
+°°j k
 lblTimeException
-¯¯k {
+°°k {
 )
-¯¯{ |
+°°{ |
 ;
-¯¯| }
+°°| }
 }
-°° 
+±± 
 catch
-±± 
+²² 
 (
-±± $
+²² $
 CommunicationException
-±± )
+²² )
 ex
-±±* ,
+²²* ,
 )
-±±, -
+²², -
 {
-²² 
+³³ 
 HandleException
-³³ 
+´´ 
 (
-³³  
+´´  
 ex
-³³  "
+´´  "
 ,
-³³" #
+´´" #
 
 Properties
-³³$ .
+´´$ .
 .
-³³. /
+´´. /
 	Resources
-³³/ 8
+´´/ 8
 .
-³³8 9 
+´´8 9 
 lblFailToStartGame
-³³9 K
+´´9 K
 +
-³³L M
+´´L M
 $str
-³³N S
+´´N S
 +
-³³T U
+´´T U
 
 Properties
-³³V `
+´´V `
 .
-³³` a
+´´` a
 	Resources
-³³a j
+´´a j
 .
-³³j k!
+´´j k!
 lblWithoutConection
-³³k ~
+´´k ~
 )
-³³~ 
-;³³ €
+´´~ 
+;´´ €
 }
-´´ 
+µµ 
 }
-µµ 	
+¶¶ 	
 public
-·· 
+¸¸ 
 void
-·· !
+¸¸ !
 NotifyGameWillStart
-·· '
+¸¸ '
 (
-··' (%
+¸¸' (%
 QuestionCardInformation
-··( ?
+¸¸( ?
 [
-··? @
+¸¸? @
 ]
-··@ A
+¸¸@ A
 questionsForGame
-··B R
+¸¸B R
 )
-··R S
+¸¸R S
 {
-¸¸ 	
+¹¹ 	
 	GameBoard
-¹¹ 
+ºº 
 game
-¹¹ 
+ºº 
 =
-¹¹ 
+ºº 
 new
-¹¹  
+ºº  
 	GameBoard
-¹¹! *
+ºº! *
 (
-¹¹* +
+ºº* +
 questionsForGame
-¹¹+ ;
+ºº+ ;
 .
-¹¹; <
+ºº; <
 ToList
-¹¹< B
+ºº< B
 (
-¹¹B C
+ººB C
 )
-¹¹C D
+ººC D
 ,
-¹¹D E
+ººD E
 roomCode
-¹¹F N
+ººF N
 )
-¹¹N O
+ººN O
 ;
-¹¹O P
+ººO P
 this
-ºº 
+»» 
 .
-ºº 
+»» 
 NavigationService
-ºº "
+»» "
 .
-ºº" #
+»»" #
 Navigate
-ºº# +
+»»# +
 (
-ºº+ ,
+»»+ ,
 game
-ºº, 0
+»», 0
 )
-ºº0 1
+»»0 1
 ;
-ºº1 2
+»»1 2
 NavigationService
-»» 
+¼¼ 
 .
-»» 
+¼¼ 
 RemoveBackEntry
-»» -
+¼¼ -
 (
-»»- .
+¼¼- .
 )
-»». /
+¼¼. /
 ;
-»»/ 0
+¼¼/ 0
 }
-¼¼ 	
+½½ 	
 public
-¾¾ 
+¿¿ 
 static
-¾¾ 
+¿¿ 
 class
-¾¾ 
+¿¿ 
 GameCodeContainer
-¾¾ -
+¿¿ -
 {
-¿¿ 	
+ÀÀ 	
 public
-ÀÀ 
+ÁÁ 
 static
-ÀÀ 
+ÁÁ 
 int
-ÀÀ 
+ÁÁ 
 RoomCode
-ÀÀ &
+ÁÁ &
 {
-ÀÀ' (
+ÁÁ' (
 get
-ÀÀ) ,
+ÁÁ) ,
 ;
-ÀÀ, -
+ÁÁ, -
 set
-ÀÀ. 1
+ÁÁ. 1
 ;
-ÀÀ1 2
+ÁÁ1 2
 }
-ÀÀ3 4
+ÁÁ3 4
 }
-ÁÁ 	
+ÂÂ 	
 private
-ÂÂ 
+ÃÃ 
 void
-ÂÂ 
+ÃÃ 
 HandleException
-ÂÂ $
+ÃÃ $
 (
-ÂÂ$ %
+ÃÃ$ %
 	Exception
-ÂÂ% .
+ÃÃ% .
 ex
-ÂÂ/ 1
+ÃÃ/ 1
 ,
-ÂÂ1 2
+ÃÃ1 2
 string
-ÂÂ3 9
+ÃÃ3 9
 errorMessage
-ÂÂ: F
+ÃÃ: F
 )
-ÂÂF G
+ÃÃF G
 {
-ÃÃ 	%
+ÄÄ 	%
 ExceptionHandlerForLogs
-ÄÄ #
+ÅÅ #
 .
-ÄÄ# $
+ÅÅ# $
 LogException
-ÄÄ$ 0
+ÅÅ$ 0
 (
-ÄÄ0 1
+ÅÅ0 1
 ex
-ÄÄ1 3
+ÅÅ1 3
 ,
-ÄÄ3 4!
+ÅÅ3 4!
 ExceptionDictionary
-ÄÄ5 H
+ÅÅ5 H
 .
-ÄÄH I
+ÅÅH I
 FATAL_EXCEPTION
-ÄÄI X
+ÅÅI X
 )
-ÄÄX Y
+ÅÅX Y
 ;
-ÄÄY Z
-dialogWindow
-ÅÅ 
+ÅÅY Z!
+DialogWindowManager
+ÆÆ 
 .
-ÅÅ #
+ÆÆ  #
 ShowInfoOrErrorWindow
-ÅÅ .
+ÆÆ  5
 (
-ÅÅ. /
+ÆÆ5 6
 
 Properties
-ÅÅ/ 9
+ÆÆ6 @
 .
-ÅÅ9 :
+ÆÆ@ A
 	Resources
-ÅÅ: C
+ÆÆA J
 .
-ÅÅC D
+ÆÆJ K
 txbErrorTitle
-ÅÅD Q
+ÆÆK X
 ,
-ÅÅQ R
+ÆÆX Y
 errorMessage
-ÅÅS _
+ÆÆZ f
 ,
-ÅÅ_ `
+ÆÆf g
 Application
-ÅÅa l
+ÆÆh s
 .
-ÅÅl m
+ÆÆs t
 Current
-ÅÅm t
+ÆÆt {
 .
-ÅÅt u
+ÆÆ{ |
 
-MainWindow
-ÅÅu 
-,ÅÅ €
-dialogWindowÅÅ 
-.ÅÅ 
-ERRORÅÅ “
-)ÅÅ“ ”
-;ÅÅ” •
+MainWindowÆÆ| †
+,ÆÆ† ‡#
+DialogWindowManagerÆÆˆ ›
+.ÆÆ› œ
+ERRORÆÆœ ¡
+)ÆÆ¡ ¢
+;ÆÆ¢ £
 ReturnToLogin
-ÆÆ 
+ÇÇ 
 (
-ÆÆ 
+ÇÇ 
 )
-ÆÆ 
+ÇÇ 
 ;
-ÆÆ 
+ÇÇ 
 }
-ÇÇ 	
+ÈÈ 	
 private
-ÉÉ 
+ÊÊ 
 void
-ÉÉ 
+ÊÊ 
 ReturnToLogin
-ÉÉ "
+ÊÊ "
 (
-ÉÉ" #
+ÊÊ" #
 )
-ÉÉ# $
+ÊÊ# $
 {
-ÊÊ 	
+ËË 	
 UserSingleton
-ËË 
+ÌÌ 
 .
-ËË 
+ÌÌ 
 CleanSingleton
-ËË (
+ÌÌ (
 (
-ËË( )
+ÌÌ( )
 )
-ËË) *
+ÌÌ) *
 ;
-ËË* +
+ÌÌ* +
 	LogInUser
-ÌÌ 
+ÍÍ 
 logInUserPage
-ÌÌ #
+ÍÍ #
 =
-ÌÌ$ %
+ÍÍ$ %
 new
-ÌÌ& )
+ÍÍ& )
 	LogInUser
-ÌÌ* 3
+ÍÍ* 3
 (
-ÌÌ3 4
+ÍÍ3 4
 )
-ÌÌ4 5
+ÍÍ4 5
 ;
-ÌÌ5 6
+ÍÍ5 6
 this
-ÍÍ 
+ÎÎ 
 .
-ÍÍ 
+ÎÎ 
 NavigationService
-ÍÍ "
+ÎÎ "
 .
-ÍÍ" #
+ÎÎ" #
 Navigate
-ÍÍ# +
+ÎÎ# +
 (
-ÍÍ+ ,
+ÎÎ+ ,
 logInUserPage
-ÍÍ, 9
+ÎÎ, 9
 )
-ÍÍ9 :
+ÎÎ9 :
 ;
-ÍÍ: ;
+ÎÎ: ;
 NavigationService
-ÎÎ 
+ÏÏ 
 .
-ÎÎ 
+ÏÏ 
 RemoveBackEntry
-ÎÎ -
+ÏÏ -
 (
-ÎÎ- .
+ÏÏ- .
 )
-ÎÎ. /
+ÏÏ. /
 ;
-ÎÎ/ 0
+ÏÏ/ 0
 }
-ĞĞ 	
+ÑÑ 	
 }
-ÒÒ 
-}ÓÓ †
+ÓÓ 
+}ÔÔ Š‘
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\LogInUser.xaml.cs
 	namespace 	
 JeopardyGame
@@ -50337,140 +50287,140 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ==??4 6
 WRONG_CREDENTIALS??7 H
 )??H I
-{@@ 
-dialogWindowAA (
-.AA( )!
-ShowInfoOrErrorWindowAA) >
-(AA> ?
+{@@ 
+DialogWindowManagerAA /
+.AA/ 0!
+ShowInfoOrErrorWindowAA0 E
+(AAE F
 
-PropertiesAA? I
-.AAI J
-	ResourcesAAJ S
-.AAS T
-txbErrorTitleAAT a
-,AAa b
+PropertiesAAF P
+.AAP Q
+	ResourcesAAQ Z
+.AAZ [
+txbErrorTitleAA[ h
+,AAh i
 
-PropertiesAAc m
-.AAm n
-	ResourcesAAn w
-.AAw x"
-lblinvalidCredentials	AAx 
+PropertiesAAj t
+.AAt u
+	ResourcesAAu ~
+.AA~ "
+lblinvalidCredentials	AA ”
 ,
-AA 
+AA” •
 Application
-AA š
+AA– ¡
 .
-AAš ›
+AA¡ ¢
 Current
-AA› ¢
+AA¢ ©
 .
-AA¢ £
+AA© ª
 
 MainWindow
-AA£ ­
+AAª ´
 ,
-AA­ ®
-dialogWindow
-AA¯ »
+AA´ µ!
+DialogWindowManager
+AA¶ É
 .
-AA» ¼
+AAÉ Ê
 ERROR
-AA¼ Á
+AAÊ Ï
 )
-AAÁ Â
+AAÏ Ğ
 ;
-AAÂ Ã
+AAĞ Ñ
 }BB 
 elseCC 
-{DD 
-dialogWindowEE (
-.EE( )!
-ShowInfoOrErrorWindowEE) >
-(EE> ?
+{DD 
+DialogWindowManagerEE /
+.EE/ 0!
+ShowInfoOrErrorWindowEE0 E
+(EEE F
 
-PropertiesEE? I
-.EEI J
-	ResourcesEEJ S
-.EES T
-txbErrorTitleEET a
-,EEa b
+PropertiesEEF P
+.EEP Q
+	ResourcesEEQ Z
+.EEZ [
+txbErrorTitleEE[ h
+,EEh i
 
-PropertiesEEc m
-.EEm n
-	ResourcesEEn w
-.EEw x%
-lblComunicationException	EEx 
+PropertiesEEj t
+.EEt u
+	ResourcesEEu ~
+.EE~ %
+lblComunicationException	EE —
 ,
-EE ‘
+EE— ˜
 Application
-EE’ 
+EE™ ¤
 .
-EE 
+EE¤ ¥
 Current
-EE ¥
+EE¥ ¬
 .
-EE¥ ¦
+EE¬ ­
 
 MainWindow
-EE¦ °
+EE­ ·
 ,
-EE° ±
-dialogWindow
-EE² ¾
+EE· ¸!
+DialogWindowManager
+EE¹ Ì
 .
-EE¾ ¿
+EEÌ Í
 ERROR
-EE¿ Ä
+EEÍ Ò
 )
-EEÄ Å
+EEÒ Ó
 ;
-EEÅ Æ
+EEÓ Ô
 }FF 
 }GG 
 elseHH 
-{II 
-dialogWindowJJ $
-.JJ$ %!
-ShowInfoOrErrorWindowJJ% :
-(JJ: ;
+{II 
+DialogWindowManagerJJ +
+.JJ+ ,!
+ShowInfoOrErrorWindowJJ, A
+(JJA B
 
-PropertiesJJ; E
-.JJE F
-	ResourcesJJF O
-.JJO P
-txbErrorTitleJJP ]
-,JJ] ^
+PropertiesJJB L
+.JJL M
+	ResourcesJJM V
+.JJV W
+txbErrorTitleJJW d
+,JJd e
 
-PropertiesJJ_ i
-.JJi j
-	ResourcesJJj s
-.JJs t 
-MessageSQLException	JJt ‡
+PropertiesJJf p
+.JJp q
+	ResourcesJJq z
+.JJz { 
+MessageSQLException	JJ{ 
 ,
-JJ‡ ˆ
+JJ 
 Application
-JJ‰ ”
+JJ ›
 .
-JJ” •
+JJ› œ
 Current
-JJ• œ
+JJœ £
 .
-JJœ 
+JJ£ ¤
 
 MainWindow
-JJ §
+JJ¤ ®
 ,
-JJ§ ¨
-dialogWindow
-JJ© µ
+JJ® ¯!
+DialogWindowManager
+JJ° Ã
 .
-JJµ ¶
+JJÃ Ä
 ERROR
-JJ¶ »
+JJÄ É
 )
-JJ» ¼
+JJÉ Ê
 ;
-JJ¼ ½
+JJÊ Ë
 }KK 
 }LL 
 catchMM 
@@ -50656,47 +50606,49 @@ $ValidateThereIsOnlyOneAActiveAccountkk@ d
 .qqB C
 SUCCESFULL_EVENTqqC S
 )qqS T
-{rr 
-dialogWindowss  
-.ss  !!
-ShowInfoOrErrorWindowss! 6
-(ss6 7
+{rr 
+DialogWindowManagerss '
+.ss' (!
+ShowInfoOrErrorWindowss( =
+(ss= >
 
-Propertiesss7 A
-.ssA B
-	ResourcesssB K
-.ssK L
-txbErrorTitlessL Y
-,ssY Z
+Propertiesss> H
+.ssH I
+	ResourcesssI R
+.ssR S
+txbErrorTitlessS `
+,ss` a
 
-Propertiesss[ e
-.sse f
-	Resourcesssf o
-.sso p
-lblLogInExistssp }
-,ss} ~
-Application	ss Š
+Propertiesssb l
+.ssl m
+	Resourcesssm v
+.ssv w
+lblLogInExist	ssw „
+,
+ss„ …
+Application
+ss† ‘
 .
-ssŠ ‹
+ss‘ ’
 Current
-ss‹ ’
+ss’ ™
 .
-ss’ “
+ss™ š
 
 MainWindow
-ss“ 
+ssš ¤
 ,
-ss 
-dialogWindow
-ssŸ «
+ss¤ ¥!
+DialogWindowManager
+ss¦ ¹
 .
-ss« ¬
+ss¹ º
 ERROR
-ss¬ ±
+ssº ¿
 )
-ss± ²
+ss¿ À
 ;
-ss² ³
+ssÀ Á
 }tt 
 }uu 
 catchvv 
@@ -51217,51 +51169,51 @@ Visibility
 )
 ³³D E
 {
-´´ 
-dialogWindow
-µµ (
+´´ !
+DialogWindowManager
+µµ /
 .
-µµ( )#
+µµ/ 0#
 ShowInfoOrErrorWindow
-µµ) >
+µµ0 E
 (
-µµ> ?
+µµE F
 
 Properties
-µµ? I
+µµF P
 .
-µµI J
+µµP Q
 	Resources
-µµJ S
+µµQ Z
 .
-µµS T
+µµZ [
 txbErrorTitle
-µµT a
+µµ[ h
 ,
-µµa b
+µµh i
 
 Properties
-µµc m
+µµj t
 .
-µµm n
+µµt u
 	Resources
-µµn w
+µµu ~
 .
-µµw x
-lblUserBannerµµx …
-,µµ… †
-Applicationµµ‡ ’
-.µµ’ “
-Currentµµ“ š
-.µµš ›
+µµ~ 
+lblUserBannerµµ Œ
+,µµŒ 
+Applicationµµ ™
+.µµ™ š
+Currentµµš ¡
+.µµ¡ ¢
 
-MainWindowµµ› ¥
-,µµ¥ ¦
-dialogWindowµµ§ ³
-.µµ³ ´
-ERRORµµ´ ¹
-)µµ¹ º
-;µµº »
+MainWindowµµ¢ ¬
+,µµ¬ ­#
+DialogWindowManagerµµ® Á
+.µµÁ Â
+ERRORµµÂ Ç
+)µµÇ È
+;µµÈ É
 UserSingleton
 ¶¶ )
 .
@@ -51341,51 +51293,51 @@ MainWindowµµ› ¥
 else
 ½½ 
 {
-¾¾ 
-dialogWindow
-¿¿ (
+¾¾ !
+DialogWindowManager
+¿¿ /
 .
-¿¿( )#
+¿¿/ 0#
 ShowInfoOrErrorWindow
-¿¿) >
+¿¿0 E
 (
-¿¿> ?
+¿¿E F
 
 Properties
-¿¿? I
+¿¿F P
 .
-¿¿I J
+¿¿P Q
 	Resources
-¿¿J S
+¿¿Q Z
 .
-¿¿S T
+¿¿Z [
 txbErrorTitle
-¿¿T a
+¿¿[ h
 ,
-¿¿a b
+¿¿h i
 
 Properties
-¿¿c m
+¿¿j t
 .
-¿¿m n
+¿¿t u
 	Resources
-¿¿n w
+¿¿u ~
 .
-¿¿w x(
-lblFailRegistryToCallBack¿¿x ‘
-,¿¿‘ ’
-Application¿¿“ 
-.¿¿ Ÿ
-Current¿¿Ÿ ¦
-.¿¿¦ §
+¿¿~ (
+lblFailRegistryToCallBack¿¿ ˜
+,¿¿˜ ™
+Application¿¿š ¥
+.¿¿¥ ¦
+Current¿¿¦ ­
+.¿¿­ ®
 
-MainWindow¿¿§ ±
-,¿¿± ²
-dialogWindow¿¿³ ¿
-.¿¿¿ À
-ERROR¿¿À Å
-)¿¿Å Æ
-;¿¿Æ Ç
+MainWindow¿¿® ¸
+,¿¿¸ ¹#
+DialogWindowManager¿¿º Í
+.¿¿Í Î
+ERROR¿¿Î Ó
+)¿¿Ó Ô
+;¿¿Ô Õ
 UserSingleton
 ÀÀ )
 .
@@ -51405,51 +51357,51 @@ MainWindow¿¿§ ±
 else
 ÃÃ 
 {
-ÄÄ 
-dialogWindow
-ÅÅ $
+ÄÄ !
+DialogWindowManager
+ÅÅ +
 .
-ÅÅ$ %#
+ÅÅ+ ,#
 ShowInfoOrErrorWindow
-ÅÅ% :
+ÅÅ, A
 (
-ÅÅ: ;
+ÅÅA B
 
 Properties
-ÅÅ; E
+ÅÅB L
 .
-ÅÅE F
+ÅÅL M
 	Resources
-ÅÅF O
+ÅÅM V
 .
-ÅÅO P
+ÅÅV W
 txbErrorTitle
-ÅÅP ]
+ÅÅW d
 ,
-ÅÅ] ^
+ÅÅd e
 
 Properties
-ÅÅ_ i
+ÅÅf p
 .
-ÅÅi j
+ÅÅp q
 	Resources
-ÅÅj s
+ÅÅq z
 .
-ÅÅs t"
-MessageSQLExceptionÅÅt ‡
-,ÅÅ‡ ˆ
-ApplicationÅÅ‰ ”
-.ÅÅ” •
-CurrentÅÅ• œ
-.ÅÅœ 
+ÅÅz {"
+MessageSQLExceptionÅÅ{ 
+,ÅÅ 
+ApplicationÅÅ ›
+.ÅÅ› œ
+CurrentÅÅœ £
+.ÅÅ£ ¤
 
-MainWindowÅÅ §
-,ÅÅ§ ¨
-dialogWindowÅÅ© µ
-.ÅÅµ ¶
-ERRORÅÅ¶ »
-)ÅÅ» ¼
-;ÅÅ¼ ½
+MainWindowÅÅ¤ ®
+,ÅÅ® ¯#
+DialogWindowManagerÅÅ° Ã
+.ÅÅÃ Ä
+ERRORÅÅÄ É
+)ÅÅÉ Ê
+;ÅÅÊ Ë
 }
 ÆÆ 
 }
@@ -51457,51 +51409,51 @@ MainWindowÅÅ §
 else
 ÈÈ 
 {
-ÉÉ 
-dialogWindow
-ÊÊ  
+ÉÉ !
+DialogWindowManager
+ÊÊ '
 .
-ÊÊ  !#
+ÊÊ' (#
 ShowInfoOrErrorWindow
-ÊÊ! 6
+ÊÊ( =
 (
-ÊÊ6 7
+ÊÊ= >
 
 Properties
-ÊÊ7 A
+ÊÊ> H
 .
-ÊÊA B
+ÊÊH I
 	Resources
-ÊÊB K
+ÊÊI R
 .
-ÊÊK L
+ÊÊR S
 txbErrorTitle
-ÊÊL Y
+ÊÊS `
 ,
-ÊÊY Z
+ÊÊ` a
 
 Properties
-ÊÊ[ e
+ÊÊb l
 .
-ÊÊe f
+ÊÊl m
 	Resources
-ÊÊf o
+ÊÊm v
 .
-ÊÊo p"
-MessageSQLExceptionÊÊp ƒ
-,ÊÊƒ „
-ApplicationÊÊ… 
-.ÊÊ ‘
-CurrentÊÊ‘ ˜
-.ÊÊ˜ ™
+ÊÊv w"
+MessageSQLExceptionÊÊw Š
+,ÊÊŠ ‹
+ApplicationÊÊŒ —
+.ÊÊ— ˜
+CurrentÊÊ˜ Ÿ
+.ÊÊŸ  
 
-MainWindowÊÊ™ £
-,ÊÊ£ ¤
-dialogWindowÊÊ¥ ±
-.ÊÊ± ²
-ERRORÊÊ² ·
-)ÊÊ· ¸
-;ÊÊ¸ ¹
+MainWindowÊÊ  ª
+,ÊÊª «#
+DialogWindowManagerÊÊ¬ ¿
+.ÊÊ¿ À
+ERRORÊÊÀ Å
+)ÊÊÅ Æ
+;ÊÊÆ Ç
 }
 ËË 
 }
@@ -52582,49 +52534,48 @@ Visibility
 )
 ÀÀX Y
 ;
-ÀÀY Z
-dialogWindow
-ÁÁ 
+ÀÀY Z!
+DialogWindowManager
+ÁÁ 
 .
-ÁÁ #
+ÁÁ  #
 ShowInfoOrErrorWindow
-ÁÁ .
+ÁÁ  5
 (
-ÁÁ. /
+ÁÁ5 6
 
 Properties
-ÁÁ/ 9
+ÁÁ6 @
 .
-ÁÁ9 :
+ÁÁ@ A
 	Resources
-ÁÁ: C
+ÁÁA J
 .
-ÁÁC D
+ÁÁJ K
 txbErrorTitle
-ÁÁD Q
+ÁÁK X
 ,
-ÁÁQ R
+ÁÁX Y
 errorMessage
-ÁÁS _
+ÁÁZ f
 ,
-ÁÁ_ `
+ÁÁf g
 Application
-ÁÁa l
+ÁÁh s
 .
-ÁÁl m
+ÁÁs t
 Current
-ÁÁm t
+ÁÁt {
 .
-ÁÁt u
+ÁÁ{ |
 
-MainWindow
-ÁÁu 
-,ÁÁ €
-dialogWindowÁÁ 
-.ÁÁ 
-ERRORÁÁ “
-)ÁÁ“ ”
-;ÁÁ” •
+MainWindowÁÁ| †
+,ÁÁ† ‡#
+DialogWindowManagerÁÁˆ ›
+.ÁÁ› œ
+ERRORÁÁœ ¡
+)ÁÁ¡ ¢
+;ÁÁ¢ £
 }
 ÂÂ 	
 private
@@ -52999,7 +52950,7 @@ Properties
 ää 	
 }
 ææ 
-}çç »±
+}çç Ö±
 gC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\MainMenu.xaml.cs
 	namespace 	
 JeopardyGame
@@ -53172,40 +53123,42 @@ gC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 )@@G H
 {AA 	
 ifBB 
-(BB 
-dialogWindowBB 
-.BB "
-ShowWindowConfirmationBB 3
-(BB3 4
+(BB 
+DialogWindowManagerBB #
+.BB# $"
+ShowWindowConfirmationBB$ :
+(BB: ;
 
-PropertiesBB4 >
-.BB> ?
-	ResourcesBB? H
-.BBH I
-txbWarningTitleBBI X
-,BBX Y
+PropertiesBB; E
+.BBE F
+	ResourcesBBF O
+.BBO P
+txbWarningTitleBBP _
+,BB_ `
 
-PropertiesBBZ d
-.BBd e
-	ResourcesBBe n
-.BBn o
+PropertiesBBa k
+.BBk l
+	ResourcesBBl u
+.BBu v
 
-tbxSignOutBBo y
-,BBy z
-Application	BB{ †
+tbxSignOut	BBv €
+,
+BB€ 
+Application
+BB‚ 
 .
-BB† ‡
+BB 
 Current
-BB‡ 
+BB •
 .
-BB 
+BB• –
 
 MainWindow
-BB ™
+BB–  
 )
-BB™ š
+BB  ¡
 )
-BBš ›
+BB¡ ¢
 {CC 
 
 ReturnPageDD 
@@ -54024,49 +53977,48 @@ Properties
 )
 ³³X Y
 ;
-³³Y Z
-dialogWindow
-´´ 
+³³Y Z!
+DialogWindowManager
+´´ 
 .
-´´ #
+´´  #
 ShowInfoOrErrorWindow
-´´ .
+´´  5
 (
-´´. /
+´´5 6
 
 Properties
-´´/ 9
+´´6 @
 .
-´´9 :
+´´@ A
 	Resources
-´´: C
+´´A J
 .
-´´C D
+´´J K
 txbErrorTitle
-´´D Q
+´´K X
 ,
-´´Q R
+´´X Y
 errorMessage
-´´S _
+´´Z f
 ,
-´´_ `
+´´f g
 Application
-´´a l
+´´h s
 .
-´´l m
+´´s t
 Current
-´´m t
+´´t {
 .
-´´t u
+´´{ |
 
-MainWindow
-´´u 
-,´´ €
-dialogWindow´´ 
-.´´ 
-ERROR´´ “
-)´´“ ”
-;´´” •
+MainWindow´´| †
+,´´† ‡#
+DialogWindowManager´´ˆ ›
+.´´› œ
+ERROR´´œ ¡
+)´´¡ ¢
+;´´¢ £
 }
 ¶¶ 	
 private
@@ -54748,7 +54700,8 @@ ReturnPage
 €€ 	
 }
 ƒƒ 
-}„„ Ç
+}„„ ¨
+
 C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\DialogWindows\ErrorMessageDialogWindow.xaml.cs
 	namespace 	
 JeopardyGame
@@ -54795,109 +54748,28 @@ ReturnPage
 =! "
 message# *
 ;* +
-} 	
-private 
-void 
-ClickAcceptButton &
-(& '
-object' -
-sender. 4
-,4 5
-RoutedEventArgs6 E
-eF G
-)G H
-{ 	
-this 
-. 
-Close 
-( 
-) 
-; 
-} 	
-private 
-void 
-ShowErrorMessage %
-(% &
-Window& ,
-currentWindow- :
-): ;
-{ 	
-if 
-( 
-currentWindow 
-!=  
-null! %
-)% &
-{ 
-double 
-left 
-= 
-currentWindow +
-.+ ,
-Left, 0
-+1 2
-(3 4
-currentWindow4 A
-.A B
-WidthB G
--H I
-thisJ N
-.N O
-WidthO T
-)T U
-/V W
-$numX Y
-;Y Z
-double 
-top 
-= 
-currentWindow *
-.* +
-Top+ .
-+/ 0
-(1 2
-currentWindow2 ?
-.? @
-Height@ F
--G H
-thisI M
-.M N
-HeightN T
-)T U
-/V W
-$numX Y
-;Y Z
-this 
-. 
-Left 
-= 
-left  
-;  !
-this 
-. 
-Top 
-= 
-top 
-; 
-this   
-.   
-VerticalAlignment   &
-=  ' (
-VerticalAlignment  ) :
-.  : ;
-Center  ; A
-;  A B
-this!! 
-.!! 
+} 	
+private 
+void 
+ClickAcceptButton &
+(& '
+object' -
+sender. 4
+,4 5
+RoutedEventArgs6 E
+eF G
+)G H
+{ 	
+this 
+. 
+Close 
+( 
+) 
+; 
+} 	
+} 
+} »
 
-ShowDialog!! 
-(!!  
-)!!  !
-;!!! "
-}"" 
-}## 	
-}%% 
-}&& à
 …C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\DialogWindows\InformationMessageDialogWindow.xaml.cs
 	namespace 	
 JeopardyGame
@@ -54944,109 +54816,27 @@ ShowDialog!! 
 =! "
 message# *
 ;* +
-} 	
-private 
-void 
-ClickAcceptButton &
-(& '
-object' -
-sender. 4
-,4 5
-RoutedEventArgs6 E
-eF G
-)G H
-{ 	
-this 
-. 
-Close 
-( 
-) 
-; 
-} 	
-private 
-void "
-ShowInformationMessage +
-(+ ,
-Window, 2
-currentWindow3 @
-)@ A
-{ 	
-if 
-( 
-currentWindow 
-!=  
-null! %
-)% &
-{ 
-double 
-left 
-= 
-currentWindow +
-.+ ,
-Left, 0
-+1 2
-(3 4
-currentWindow4 A
-.A B
-WidthB G
--H I
-thisJ N
-.N O
-WidthO T
-)T U
-/V W
-$numX Y
-;Y Z
-double 
-top 
-= 
-currentWindow *
-.* +
-Top+ .
-+/ 0
-(1 2
-currentWindow2 ?
-.? @
-Height@ F
--G H
-thisI M
-.M N
-HeightN T
-)T U
-/V W
-$numX Y
-;Y Z
-this 
-. 
-Left 
-= 
-left  
-;  !
-this 
-. 
-Top 
-= 
-top 
-; 
-this   
-.   
-VerticalAlignment   &
-=  ' (
-VerticalAlignment  ) :
-.  : ;
-Center  ; A
-;  A B
-this!! 
-.!! 
-
-ShowDialog!! 
-(!!  
-)!!  !
-;!!! "
-}"" 
-}## 	
-}%% 
-}&& °¹
+} 	
+private 
+void 
+ClickAcceptButton &
+(& '
+object' -
+sender. 4
+,4 5
+RoutedEventArgs6 E
+eF G
+)G H
+{ 	
+this 
+. 
+Close 
+( 
+) 
+; 
+} 	
+} 
+} ùº
 oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\PasswordRecovery.xaml.cs
 	namespace 	
 JeopardyGame
@@ -55970,101 +55760,101 @@ Properties˜ ¢
 )
 ££I J
 {
-¤¤ 
-dialogWindow
-¥¥ $
+¤¤ !
+DialogWindowManager
+¥¥ +
 .
-¥¥$ %#
+¥¥+ ,#
 ShowInfoOrErrorWindow
-¥¥% :
+¥¥, A
 (
-¥¥: ;
+¥¥A B
 
 Properties
-¥¥; E
+¥¥B L
 .
-¥¥E F
+¥¥L M
 	Resources
-¥¥F O
+¥¥M V
 .
-¥¥O P
+¥¥V W
 txbErrorTitle
-¥¥P ]
+¥¥W d
 ,
-¥¥] ^
+¥¥d e
 
 Properties
-¥¥_ i
+¥¥f p
 .
-¥¥i j
+¥¥p q
 	Resources
-¥¥j s
+¥¥q z
 .
-¥¥s t&
-lblUserNameDoesNotExist¥¥t ‹
-,¥¥‹ Œ
-Window¥¥ “
-.¥¥“ ”
-	GetWindow¥¥” 
-(¥¥ 
-this¥¥ ¢
-)¥¥¢ £
-,¥¥£ ¤
-dialogWindow¥¥¥ ±
-.¥¥± ²
-ERROR¥¥² ·
-)¥¥· ¸
-;¥¥¸ ¹
+¥¥z {&
+lblUserNameDoesNotExist¥¥{ ’
+,¥¥’ “
+Window¥¥” š
+.¥¥š ›
+	GetWindow¥¥› ¤
+(¥¥¤ ¥
+this¥¥¥ ©
+)¥¥© ª
+,¥¥ª «#
+DialogWindowManager¥¥¬ ¿
+.¥¥¿ À
+ERROR¥¥À Å
+)¥¥Å Æ
+;¥¥Æ Ç
 }
 ¦¦ 
 else
 §§ 
 {
-¨¨ 
-dialogWindow
-©© $
+¨¨ !
+DialogWindowManager
+©© +
 .
-©©$ %#
+©©+ ,#
 ShowInfoOrErrorWindow
-©©% :
+©©, A
 (
-©©: ;
+©©A B
 
 Properties
-©©; E
+©©B L
 .
-©©E F
+©©L M
 	Resources
-©©F O
+©©M V
 .
-©©O P
+©©V W
 txbErrorTitle
-©©P ]
+©©W d
 ,
-©©] ^
+©©d e
 
 Properties
-©©_ i
+©©f p
 .
-©©i j
+©©p q
 	Resources
-©©j s
+©©q z
 .
-©©s t 
-GenericEmailIssue©©t …
-,©©… †
-Window©©‡ 
-.©© 
-	GetWindow©© —
-(©©— ˜
-this©©˜ œ
-)©©œ 
-,©© 
-dialogWindow©©Ÿ «
-.©©« ¬
-ERROR©©¬ ±
-)©©± ²
-;©©² ³
+©©z { 
+GenericEmailIssue©©{ Œ
+,©©Œ 
+Window©© ”
+.©©” •
+	GetWindow©©• 
+(©© Ÿ
+this©©Ÿ £
+)©©£ ¤
+,©©¤ ¥#
+DialogWindowManager©©¦ ¹
+.©©¹ º
+ERROR©©º ¿
+)©©¿ À
+;©©À Á
 }
 ªª 
 }
@@ -56444,101 +56234,101 @@ StartTimer
 )
 ÌÌD E
 {
-ÍÍ 
-dialogWindow
-ÎÎ 
+ÍÍ !
+DialogWindowManager
+ÎÎ #
 .
-ÎÎ #
+ÎÎ# $#
 ShowInfoOrErrorWindow
-ÎÎ 2
+ÎÎ$ 9
 (
-ÎÎ2 3
+ÎÎ9 :
 
 Properties
-ÎÎ3 =
+ÎÎ: D
 .
-ÎÎ= >
+ÎÎD E
 	Resources
-ÎÎ> G
+ÎÎE N
 .
-ÎÎG H
+ÎÎN O
 txbErrorTitle
-ÎÎH U
+ÎÎO \
 ,
-ÎÎU V
+ÎÎ\ ]
 
 Properties
-ÎÎW a
+ÎÎ^ h
 .
-ÎÎa b
+ÎÎh i
 	Resources
-ÎÎb k
+ÎÎi r
 .
-ÎÎk l3
-$lblAlreadyExistACodeToChangePasswordÎÎl 
-,ÎÎ ‘
-WindowÎÎ’ ˜
-.ÎÎ˜ ™
-	GetWindowÎÎ™ ¢
-(ÎÎ¢ £
-thisÎÎ£ §
-)ÎÎ§ ¨
-,ÎÎ¨ ©
-dialogWindowÎÎª ¶
-.ÎÎ¶ ·
-ERRORÎÎ· ¼
-)ÎÎ¼ ½
-;ÎÎ½ ¾
+ÎÎr s3
+$lblAlreadyExistACodeToChangePasswordÎÎs —
+,ÎÎ— ˜
+WindowÎÎ™ Ÿ
+.ÎÎŸ  
+	GetWindowÎÎ  ©
+(ÎÎ© ª
+thisÎÎª ®
+)ÎÎ® ¯
+,ÎÎ¯ °#
+DialogWindowManagerÎÎ± Ä
+.ÎÎÄ Å
+ERRORÎÎÅ Ê
+)ÎÎÊ Ë
+;ÎÎË Ì
 }
 ÏÏ 
 else
 ĞĞ 
 {
-ÑÑ 
-dialogWindow
-ÒÒ 
+ÑÑ !
+DialogWindowManager
+ÒÒ #
 .
-ÒÒ #
+ÒÒ# $#
 ShowInfoOrErrorWindow
-ÒÒ 2
+ÒÒ$ 9
 (
-ÒÒ2 3
+ÒÒ9 :
 
 Properties
-ÒÒ3 =
+ÒÒ: D
 .
-ÒÒ= >
+ÒÒD E
 	Resources
-ÒÒ> G
+ÒÒE N
 .
-ÒÒG H!
+ÒÒN O!
 txbInformationTitle
-ÒÒH [
+ÒÒO b
 ,
-ÒÒ[ \
+ÒÒb c
 
 Properties
-ÒÒ] g
+ÒÒd n
 .
-ÒÒg h
+ÒÒn o
 	Resources
-ÒÒh q
+ÒÒo x
 .
-ÒÒq r2
-#lblEmailCodePassWordSendSuccesfullyÒÒr •
-,ÒÒ• –
-WindowÒÒ— 
-.ÒÒ 
-	GetWindowÒÒ §
-(ÒÒ§ ¨
-thisÒÒ¨ ¬
-)ÒÒ¬ ­
-,ÒÒ­ ®
-dialogWindowÒÒ¯ »
-.ÒÒ» ¼
-ERRORÒÒ¼ Á
-)ÒÒÁ Â
-;ÒÒÂ Ã
+ÒÒx y2
+#lblEmailCodePassWordSendSuccesfullyÒÒy œ
+,ÒÒœ 
+WindowÒÒ ¤
+.ÒÒ¤ ¥
+	GetWindowÒÒ¥ ®
+(ÒÒ® ¯
+thisÒÒ¯ ³
+)ÒÒ³ ´
+,ÒÒ´ µ#
+DialogWindowManagerÒÒ¶ É
+.ÒÒÉ Ê
+ERRORÒÒÊ Ï
+)ÒÒÏ Ğ
+;ÒÒĞ Ñ
 }
 ÓÓ 
 }
@@ -56722,51 +56512,49 @@ Properties
 true
 ää0 4
 ;
-ää4 5
-dialogWindow
-åå $
+ää4 5!
+DialogWindowManager
+åå +
 .
-åå$ %#
+åå+ ,#
 ShowInfoOrErrorWindow
-åå% :
+åå, A
 (
-åå: ;
+ååA B
 
 Properties
-åå; E
+ååB L
 .
-ååE F
+ååL M
 	Resources
-ååF O
+ååM V
 .
-ååO P!
+ååV W!
 txbInformationTitle
-ååP c
+ååW j
 ,
-ååc d
+ååj k
 
 Properties
-ååe o
+åål v
 .
-ååo p
-	Resources
-ååp y
-.
-ååy z#
-lblRigthCodePasswordååz 
-,åå 
-Windowåå –
-.åå– —
-	GetWindowåå—  
-(åå  ¡
-thisåå¡ ¥
-)åå¥ ¦
-,åå¦ §
-dialogWindowåå¨ ´
-.åå´ µ
-ERRORååµ º
-)ååº »
-;åå» ¼
+ååv w
+	Resourcesååw €
+.åå€ $
+lblRigthCodePasswordåå •
+,åå• –
+Windowåå— 
+.åå 
+	GetWindowåå §
+(åå§ ¨
+thisåå¨ ¬
+)åå¬ ­
+,åå­ ®#
+DialogWindowManageråå¯ Â
+.ååÂ Ã
+ERRORååÃ È
+)ååÈ É
+;ååÉ Ê
 }
 çç 
 else
@@ -57080,51 +56868,51 @@ Properties
 )
 ‡‡= >
 {
-ˆˆ 
-dialogWindow
-‰‰ 
+ˆˆ !
+DialogWindowManager
+‰‰ #
 .
-‰‰ #
+‰‰# $#
 ShowInfoOrErrorWindow
-‰‰ 2
+‰‰$ 9
 (
-‰‰2 3
+‰‰9 :
 
 Properties
-‰‰3 =
+‰‰: D
 .
-‰‰= >
+‰‰D E
 	Resources
-‰‰> G
+‰‰E N
 .
-‰‰G H
+‰‰N O
 txbErrorTitle
-‰‰H U
+‰‰O \
 ,
-‰‰U V
+‰‰\ ]
 
 Properties
-‰‰W a
+‰‰^ h
 .
-‰‰a b
+‰‰h i
 	Resources
-‰‰b k
+‰‰i r
 .
-‰‰k l&
-lblUserNameDoesNotExist‰‰l ƒ
-,‰‰ƒ „
-Window‰‰… ‹
-.‰‰‹ Œ
-	GetWindow‰‰Œ •
-(‰‰• –
-this‰‰– š
-)‰‰š ›
-,‰‰› œ
-dialogWindow‰‰ ©
-.‰‰© ª
-ERROR‰‰ª ¯
-)‰‰¯ °
-;‰‰° ±
+‰‰r s&
+lblUserNameDoesNotExist‰‰s Š
+,‰‰Š ‹
+Window‰‰Œ ’
+.‰‰’ “
+	GetWindow‰‰“ œ
+(‰‰œ 
+this‰‰ ¡
+)‰‰¡ ¢
+,‰‰¢ £#
+DialogWindowManager‰‰¤ ·
+.‰‰· ¸
+ERROR‰‰¸ ½
+)‰‰½ ¾
+;‰‰¾ ¿
 }
 ŠŠ 
 else
@@ -57146,51 +56934,51 @@ Properties
 )
 ‹‹@ A
 {
-ŒŒ 
-dialogWindow
- 
+ŒŒ !
+DialogWindowManager
+ #
 .
- #
+# $#
 ShowInfoOrErrorWindow
- 2
+$ 9
 (
-2 3
+9 :
 
 Properties
-3 =
+: D
 .
-= >
+D E
 	Resources
-> G
+E N
 .
-G H
+N O
 txbErrorTitle
-H U
+O \
 ,
-U V
+\ ]
 
 Properties
-W a
+^ h
 .
-a b
+h i
 	Resources
-b k
+i r
 .
-k l)
-lblThereIsnoCodeFoThisUserl †
-,† ‡
-Windowˆ 
-. 
-	GetWindow ˜
-(˜ ™
-this™ 
-) 
-, Ÿ
-dialogWindow  ¬
-.¬ ­
-ERROR­ ²
-)² ³
-;³ ´
+r s)
+lblThereIsnoCodeFoThisUsers 
+, 
+Window •
+.• –
+	GetWindow– Ÿ
+(Ÿ  
+this  ¤
+)¤ ¥
+,¥ ¦#
+DialogWindowManager§ º
+.º »
+ERROR» À
+)À Á
+;Á Â
 }
  
 else
@@ -57212,102 +57000,101 @@ Properties
 )
 D E
 {
- 
-dialogWindow
-‘‘ 
+ !
+DialogWindowManager
+‘‘ #
 .
-‘‘ #
+‘‘# $#
 ShowInfoOrErrorWindow
-‘‘ 2
+‘‘$ 9
 (
-‘‘2 3
+‘‘9 :
 
 Properties
-‘‘3 =
+‘‘: D
 .
-‘‘= >
+‘‘D E
 	Resources
-‘‘> G
+‘‘E N
 .
-‘‘G H
+‘‘N O
 txbErrorTitle
-‘‘H U
+‘‘O \
 ,
-‘‘U V
+‘‘\ ]
 
 Properties
-‘‘W a
+‘‘^ h
 .
-‘‘a b
+‘‘h i
 	Resources
-‘‘b k
+‘‘i r
 .
-‘‘k l!
-lblWrongCodeEntered
-‘‘l 
-,‘‘ €
-Window‘‘ ‡
-.‘‘‡ ˆ
-	GetWindow‘‘ˆ ‘
-(‘‘‘ ’
-this‘‘’ –
-)‘‘– —
-,‘‘— ˜
-dialogWindow‘‘™ ¥
-.‘‘¥ ¦
-ERROR‘‘¦ «
-)‘‘« ¬
-;‘‘¬ ­
+‘‘r s"
+lblWrongCodeEntered‘‘s †
+,‘‘† ‡
+Window‘‘ˆ 
+.‘‘ 
+	GetWindow‘‘ ˜
+(‘‘˜ ™
+this‘‘™ 
+)‘‘ 
+,‘‘ Ÿ#
+DialogWindowManager‘‘  ³
+.‘‘³ ´
+ERROR‘‘´ ¹
+)‘‘¹ º
+;‘‘º »
 }
 ’’ 
 else
 ““ 
 {
-”” 
-dialogWindow
-•• 
+”” !
+DialogWindowManager
+•• #
 .
-•• #
+••# $#
 ShowInfoOrErrorWindow
-•• 2
+••$ 9
 (
-••2 3
+••9 :
 
 Properties
-••3 =
+••: D
 .
-••= >
+••D E
 	Resources
-••> G
+••E N
 .
-••G H
+••N O
 txbErrorTitle
-••H U
+••O \
 ,
-••U V
+••\ ]
 
 Properties
-••W a
+••^ h
 .
-••a b
+••h i
 	Resources
-••b k
+••i r
 .
-••k l%
-lblFailToVerifyTheCode••l ‚
-,••‚ ƒ
-Window••„ Š
-.••Š ‹
-	GetWindow••‹ ”
-(••” •
-this••• ™
-)••™ š
-,••š ›
-dialogWindow••œ ¨
-.••¨ ©
-ERROR••© ®
-)••® ¯
-;••¯ °
+••r s%
+lblFailToVerifyTheCode••s ‰
+,••‰ Š
+Window••‹ ‘
+.••‘ ’
+	GetWindow••’ ›
+(••› œ
+this••œ  
+)••  ¡
+,••¡ ¢#
+DialogWindowManager••£ ¶
+.••¶ ·
+ERROR••· ¼
+)••¼ ½
+;••½ ¾
 }
 –– 
 }
@@ -57501,51 +57288,49 @@ Properties
 )
 ¤¤T U
 {
-¥¥ 
-dialogWindow
-¦¦ (
+¥¥ !
+DialogWindowManager
+¦¦ /
 .
-¦¦( )#
+¦¦/ 0#
 ShowInfoOrErrorWindow
-¦¦) >
+¦¦0 E
 (
-¦¦> ?
+¦¦E F
 
 Properties
-¦¦? I
+¦¦F P
 .
-¦¦I J
+¦¦P Q
 	Resources
-¦¦J S
+¦¦Q Z
 .
-¦¦S T!
+¦¦Z [!
 txbInformationTitle
-¦¦T g
+¦¦[ n
 ,
-¦¦g h
+¦¦n o
 
 Properties
-¦¦i s
+¦¦p z
 .
-¦¦s t
-	Resources
-¦¦t }
-.
-¦¦} ~*
-lblPassWordUpdatedCorrectly¦¦~ ™
-,¦¦™ š
-Window¦¦› ¡
-.¦¦¡ ¢
-	GetWindow¦¦¢ «
-(¦¦« ¬
-this¦¦¬ °
-)¦¦° ±
-,¦¦± ²
-dialogWindow¦¦³ ¿
-.¦¦¿ À
-INFORMATION¦¦À Ë
-)¦¦Ë Ì
-;¦¦Ì Í!
+¦¦z {
+	Resources¦¦{ „
+.¦¦„ …+
+lblPassWordUpdatedCorrectly¦¦…  
+,¦¦  ¡
+Window¦¦¢ ¨
+.¦¦¨ ©
+	GetWindow¦¦© ²
+(¦¦² ³
+this¦¦³ ·
+)¦¦· ¸
+,¦¦¸ ¹#
+DialogWindowManager¦¦º Í
+.¦¦Í Î
+INFORMATION¦¦Î Ù
+)¦¦Ù Ú
+;¦¦Ú Û!
 GoToPrincipalWindow
 §§ /
 (
@@ -57559,60 +57344,60 @@ Properties
 else
 ©© 
 {
-ªª 
-dialogWindow
-«« (
+ªª !
+DialogWindowManager
+«« /
 .
-««( )#
+««/ 0#
 ShowInfoOrErrorWindow
-««) >
+««0 E
 (
-««> ?
+««E F
 
 Properties
-««? I
+««F P
 .
-««I J
+««P Q
 	Resources
-««J S
+««Q Z
 .
-««S T
+««Z [
 txbErrorTitle
-««T a
+««[ h
 ,
-««a b
+««h i
 
 Properties
-««c m
+««j t
 .
-««m n
+««t u
 	Resources
-««n w
+««u ~
 .
-««w x&
-lblFailToUpdatePassword««x 
-+«« ‘
-$str««’ •
-+««– —
+««~ &
+lblFailToUpdatePassword«« –
++««— ˜
+$str««™ œ
++«« 
 
-Properties««˜ ¢
-.««¢ £
-	Resources««£ ¬
-.««¬ ­"
-lblFailToConenctBD««­ ¿
-,««¿ À
-Window««Á Ç
-.««Ç È
-	GetWindow««È Ñ
-(««Ñ Ò
-this««Ò Ö
-)««Ö ×
-,««× Ø
-dialogWindow««Ù å
-.««å æ
-ERROR««æ ë
-)««ë ì
-;««ì í
+Properties««Ÿ ©
+.««© ª
+	Resources««ª ³
+.««³ ´"
+lblFailToConenctBD««´ Æ
+,««Æ Ç
+Window««È Î
+.««Î Ï
+	GetWindow««Ï Ø
+(««Ø Ù
+this««Ù İ
+)««İ Ş
+,««Ş ß#
+DialogWindowManager««à ó
+.««ó ô
+ERROR««ô ù
+)««ù ú
+;««ú û
 }
 ¬¬ 
 }
@@ -57636,60 +57421,60 @@ Properties««˜ ¢
 else
 ³³ 
 {
-´´ 
-dialogWindow
-µµ  
+´´ !
+DialogWindowManager
+µµ '
 .
-µµ  !#
+µµ' (#
 ShowInfoOrErrorWindow
-µµ! 6
+µµ( =
 (
-µµ6 7
+µµ= >
 
 Properties
-µµ7 A
+µµ> H
 .
-µµA B
+µµH I
 	Resources
-µµB K
+µµI R
 .
-µµK L
+µµR S
 txbErrorTitle
-µµL Y
+µµS `
 ,
-µµY Z
+µµ` a
 
 Properties
-µµ[ e
+µµb l
 .
-µµe f
+µµl m
 	Resources
-µµf o
+µµm v
 .
-µµo p&
-lblFailToUpdatePasswordµµp ‡
-+µµˆ ‰
-$strµµŠ 
-+µµ 
+µµv w&
+lblFailToUpdatePasswordµµw 
++µµ 
+$strµµ‘ ”
++µµ• –
 
-Propertiesµµ š
-.µµš ›
-	Resourcesµµ› ¤
-.µµ¤ ¥"
-lblFailToConenctBDµµ¥ ·
-,µµ· ¸
-Windowµµ¹ ¿
-.µµ¿ À
-	GetWindowµµÀ É
-(µµÉ Ê
-thisµµÊ Î
-)µµÎ Ï
-,µµÏ Ğ
-dialogWindowµµÑ İ
-.µµİ Ş
-ERRORµµŞ ã
-)µµã ä
-;µµä å
+Propertiesµµ— ¡
+.µµ¡ ¢
+	Resourcesµµ¢ «
+.µµ« ¬"
+lblFailToConenctBDµµ¬ ¾
+,µµ¾ ¿
+WindowµµÀ Æ
+.µµÆ Ç
+	GetWindowµµÇ Ğ
+(µµĞ Ñ
+thisµµÑ Õ
+)µµÕ Ö
+,µµÖ ×#
+DialogWindowManagerµµØ ë
+.µµë ì
+ERRORµµì ñ
+)µµñ ò
+;µµò ó
 }
 ¶¶ 
 }
@@ -59475,47 +59260,47 @@ Properties
 if
 îî 
 (
-îî 
-dialogWindow
-îî 
+îî !
+DialogWindowManager
+îî #
 .
-îî $
+îî# $$
 ShowWindowConfirmation
-îî 3
+îî$ :
 (
-îî3 4
+îî: ;
 
 Properties
-îî4 >
+îî; E
 .
-îî> ?
+îîE F
 	Resources
-îî? H
+îîF O
 .
-îîH I
+îîO P
 txbWarningTitle
-îîI X
+îîP _
 ,
-îîX Y
+îî_ `
 
 Properties
-îîZ d
+îîa k
 .
-îîd e
+îîk l
 	Resources
-îîe n
+îîl u
 .
-îîn o.
-lblConfirmLeaveRecoveryPasswordîîo 
-,îî 
-Applicationîî ›
-.îî› œ
-Currentîîœ £
-.îî£ ¤
+îîu v.
+lblConfirmLeaveRecoveryPasswordîîv •
+,îî• –
+Applicationîî— ¢
+.îî¢ £
+Currentîî£ ª
+.îîª «
 
-MainWindowîî¤ ®
-)îî® ¯
-)îî¯ °
+MainWindowîî« µ
+)îîµ ¶
+)îî¶ ·
 {
 ïï !
 GoToPrincipalWindow
@@ -59659,49 +59444,48 @@ MainWindowîî¤ ®
 )
 ‚‚X Y
 ;
-‚‚Y Z
-dialogWindow
-ƒƒ 
+‚‚Y Z!
+DialogWindowManager
+ƒƒ 
 .
-ƒƒ #
+ƒƒ  #
 ShowInfoOrErrorWindow
-ƒƒ .
+ƒƒ  5
 (
-ƒƒ. /
+ƒƒ5 6
 
 Properties
-ƒƒ/ 9
+ƒƒ6 @
 .
-ƒƒ9 :
+ƒƒ@ A
 	Resources
-ƒƒ: C
+ƒƒA J
 .
-ƒƒC D
+ƒƒJ K
 txbErrorTitle
-ƒƒD Q
+ƒƒK X
 ,
-ƒƒQ R
+ƒƒX Y
 errorMessage
-ƒƒS _
+ƒƒZ f
 ,
-ƒƒ_ `
+ƒƒf g
 Application
-ƒƒa l
+ƒƒh s
 .
-ƒƒl m
+ƒƒs t
 Current
-ƒƒm t
+ƒƒt {
 .
-ƒƒt u
+ƒƒ{ |
 
-MainWindow
-ƒƒu 
-,ƒƒ €
-dialogWindowƒƒ 
-.ƒƒ 
-ERRORƒƒ “
-)ƒƒ“ ”
-;ƒƒ” •
+MainWindowƒƒ| †
+,ƒƒ† ‡#
+DialogWindowManagerƒƒˆ ›
+.ƒƒ› œ
+ERRORƒƒœ ¡
+)ƒƒ¡ ¢
+;ƒƒ¢ £
 }
 „„ 	
 }
@@ -60079,7 +59863,7 @@ VisibilityXX) 3
 ;XX= >
 }YY 	
 }ZZ 
-}[[ ¤¨
+}[[ ´¨
 gC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\TeamChat.xaml.cs
 	namespace 	
 JeopardyGame
@@ -61563,49 +61347,48 @@ Properties
 )
 ¼¼X Y
 ;
-¼¼Y Z
-dialogWindow
-½½ 
+¼¼Y Z!
+DialogWindowManager
+½½ 
 .
-½½ #
+½½  #
 ShowInfoOrErrorWindow
-½½ .
+½½  5
 (
-½½. /
+½½5 6
 
 Properties
-½½/ 9
+½½6 @
 .
-½½9 :
+½½@ A
 	Resources
-½½: C
+½½A J
 .
-½½C D
+½½J K
 txbErrorTitle
-½½D Q
+½½K X
 ,
-½½Q R
+½½X Y
 errorMessage
-½½S _
+½½Z f
 ,
-½½_ `
+½½f g
 Application
-½½a l
+½½h s
 .
-½½l m
+½½s t
 Current
-½½m t
+½½t {
 .
-½½t u
+½½{ |
 
-MainWindow
-½½u 
-,½½ €
-dialogWindow½½ 
-.½½ 
-ERROR½½ “
-)½½“ ”
-;½½” •
+MainWindow½½| †
+,½½† ‡#
+DialogWindowManager½½ˆ ›
+.½½› œ
+ERROR½½œ ¡
+)½½¡ ¢
+;½½¢ £
 }
 ¾¾ 	
 }
@@ -61801,7 +61584,7 @@ DictionaryW a
 ;44$ %
 }55 	
 }77 
-}99 îi
+}99 Ö_
 aC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\UserSingleton.cs
 	namespace 	
 JeopardyGame
@@ -62254,7 +62037,7 @@ PlayerPojoOOH R
 }yy 
 catchzz 
 (zz (
-SecurityNegotiationExceptionzz 3
+AddressAccessDeniedExceptionzz 3
 exzz4 6
 )zz6 7
 {{{ #
@@ -62269,440 +62052,319 @@ PlayerPojoOOH R
 FATAL_EXCEPTION||Q `
 )||` a
 ;||a b
-}~~ 
-catch
-€€ 
-(
-€€ *
-AddressAccessDeniedException
-€€ 3
-ex
-€€4 6
-)
-€€6 7
+}~~ 
+catch 
+( 
+SocketException &
+ex' )
+)) *
 {
- %
+€€ %
 ExceptionHandlerForLogs
-‚‚ +
+ +
 .
-‚‚+ ,
++ ,
 LogException
-‚‚, 8
+, 8
 (
-‚‚8 9
+8 9
 ex
-‚‚9 ;
+9 ;
 ,
-‚‚; <!
+; <!
 ExceptionDictionary
-‚‚= P
+= P
 .
-‚‚P Q
+P Q
 FATAL_EXCEPTION
-‚‚Q `
+Q `
 )
-‚‚` a
+` a
 ;
-‚‚a b
+a b
 }
-„„ 
+ƒƒ 
 catch
-…… 
+„„ 
 (
-…… 
-ProtocolException
-…… (
-ex
-……) +
-)
-……+ ,
-{
-†† %
-ExceptionHandlerForLogs
-‡‡ +
-.
-‡‡+ ,
-LogException
-‡‡, 8
-(
-‡‡8 9
-ex
-‡‡9 ;
-,
-‡‡; <!
-ExceptionDictionary
-‡‡= P
-.
-‡‡P Q
-FATAL_EXCEPTION
-‡‡Q `
-)
-‡‡` a
-;
-‡‡a b
-}
-‰‰ 
-catch
-ŠŠ 
-(
-ŠŠ 
-SocketException
-ŠŠ &
-ex
-ŠŠ' )
-)
-ŠŠ) *
-{
-‹‹ %
-ExceptionHandlerForLogs
-ŒŒ +
-.
-ŒŒ+ ,
-LogException
-ŒŒ, 8
-(
-ŒŒ8 9
-ex
-ŒŒ9 ;
-,
-ŒŒ; <!
-ExceptionDictionary
-ŒŒ= P
-.
-ŒŒP Q
-FATAL_EXCEPTION
-ŒŒQ `
-)
-ŒŒ` a
-;
-ŒŒa b
-}
- 
-catch
- 
-(
- '
+„„ '
 EndpointNotFoundException
- 0
+„„ 0
 ex
-1 3
+„„1 3
 )
-3 4
+„„3 4
 {
- %
+…… %
 ExceptionHandlerForLogs
-‘‘ +
+†† +
 .
-‘‘+ ,
+††+ ,
 LogException
-‘‘, 8
+††, 8
 (
-‘‘8 9
+††8 9
 ex
-‘‘9 ;
+††9 ;
 ,
-‘‘; <!
+††; <!
 ExceptionDictionary
-‘‘= P
+††= P
 .
-‘‘P Q
+††P Q
 FATAL_EXCEPTION
-‘‘Q `
+††Q `
 )
-‘‘` a
+††` a
 ;
-‘‘a b
+††a b
 }
-““ 
+ˆˆ 
 catch
-”” 
+‰‰ 
 (
-”” 1
+‰‰ 1
 #CommunicationObjectFaultedException
-”” :
+‰‰ :
 ex
-””; =
+‰‰; =
 )
-””= >
+‰‰= >
 {
-•• %
+ŠŠ %
 ExceptionHandlerForLogs
-–– +
+‹‹ +
 .
-––+ ,
+‹‹+ ,
 LogException
-––, 8
+‹‹, 8
 (
-––8 9
+‹‹8 9
 ex
-––9 ;
+‹‹9 ;
 ,
-––; <!
+‹‹; <!
 ExceptionDictionary
-––= P
+‹‹= P
 .
-––P Q
+‹‹P Q
 FATAL_EXCEPTION
-––Q `
+‹‹Q `
 )
-––` a
+‹‹` a
 ;
-––a b
+‹‹a b
 }
-—— 
+ŒŒ 
 catch
-˜˜ 
+ 
 (
-˜˜ 
+ 
 TimeoutException
-˜˜ '
+ '
 ex
-˜˜( *
+( *
+)
+* +
+{
+ %
+ExceptionHandlerForLogs
+ +
+.
++ ,
+LogException
+, 8
+(
+8 9
+ex
+9 ;
+,
+; <!
+ExceptionDictionary
+= P
+.
+P Q
+FATAL_EXCEPTION
+Q `
+)
+` a
+;
+a b
+}
+ 
+catch
+‘‘ 
+(
+‘‘ $
+CommunicationException
+‘‘ -
+ex
+‘‘. 0
+)
+‘‘0 1
+{
+’’ %
+ExceptionHandlerForLogs
+““ +
+.
+““+ ,
+LogException
+““, 8
+(
+““8 9
+ex
+““9 ;
+,
+““; <!
+ExceptionDictionary
+““= P
+.
+““P Q
+FATAL_EXCEPTION
+““Q `
+)
+““` a
+;
+““a b
+}
+”” 
+}
+•• 
+,
+•• 
+null
+•• 
+,
+•• 
+TimeSpan
+•• !
+.
+••! "
+Zero
+••" &
+,
+••& '
+TimeSpan
+••( 0
+.
+••0 1
+FromSeconds
+••1 <
+(
+••< =
+$num
+••= ?
+)
+••? @
+)
+••@ A
+;
+••A B
+}
+–– 	
+private
+˜˜ 
+static
+˜˜ 
+void
+˜˜ 
+StopHeartBeat
+˜˜ )
+(
+˜˜) *
 )
 ˜˜* +
 {
-™™ %
-ExceptionHandlerForLogs
-šš +
-.
-šš+ ,
-LogException
-šš, 8
-(
-šš8 9
-ex
-šš9 ;
-,
-šš; <!
-ExceptionDictionary
-šš= P
-.
-ššP Q
-FATAL_EXCEPTION
-ššQ `
-)
-šš` a
-;
-šša b
-}
-›› 
-catch
-œœ 
-(
-œœ $
-CommunicationException
-œœ -
-ex
-œœ. 0
-)
-œœ0 1
-{
- %
-ExceptionHandlerForLogs
- +
-.
-+ ,
-LogException
-, 8
-(
-8 9
-ex
-9 ;
-,
-; <!
-ExceptionDictionary
-= P
-.
-P Q
-FATAL_EXCEPTION
-Q `
-)
-` a
-;
-a b
-if
-ŸŸ 
-(
-ŸŸ 
-ex
-ŸŸ 
-.
-ŸŸ 
-InnerException
-ŸŸ )
-is
-ŸŸ* ,
-SocketException
-ŸŸ- <
-socketException
-ŸŸ= L
-)
-ŸŸL M
-{
-   %
-ExceptionHandlerForLogs
-¡¡ /
-.
-¡¡/ 0
-LogException
-¡¡0 <
-(
-¡¡< =
-socketException
-¡¡= L
-,
-¡¡L M!
-ExceptionDictionary
-¡¡N a
-.
-¡¡a b
-FATAL_EXCEPTION
-¡¡b q
-)
-¡¡q r
-;
-¡¡r s
-}
-¢¢ 
-}
-££ 
-}
-¤¤ 
-,
-¤¤ 
-null
-¤¤ 
-,
-¤¤ 
-TimeSpan
-¤¤ !
-.
-¤¤! "
-Zero
-¤¤" &
-,
-¤¤& '
-TimeSpan
-¤¤( 0
-.
-¤¤0 1
-FromSeconds
-¤¤1 <
-(
-¤¤< =
-$num
-¤¤= ?
-)
-¤¤? @
-)
-¤¤@ A
-;
-¤¤A B
-}
-¥¥ 	
-private
-§§ 
-static
-§§ 
-void
-§§ 
-StopHeartBeat
-§§ )
-(
-§§) *
-)
-§§* +
-{
-¨¨ 	
+™™ 	
 try
-©© 
+šš 
 {
-ªª 
+›› 
 heartbeatTimer
-«« 
+œœ 
 ?
-«« 
+œœ 
 .
-««  
+œœ  
 Change
-««  &
+œœ  &
 (
-««& '
+œœ& '
 Timeout
-««' .
+œœ' .
 .
-««. /
+œœ. /
 Infinite
-««/ 7
+œœ/ 7
 ,
-««7 8
+œœ7 8
 Timeout
-««9 @
+œœ9 @
 .
-««@ A
+œœ@ A
 Infinite
-««A I
+œœA I
 )
-««I J
+œœI J
 ;
-««J K
+œœJ K
 heartbeatTimer
-¬¬ 
+ 
 ?
-¬¬ 
+ 
 .
-¬¬  
+  
 Dispose
-¬¬  '
+  '
 (
-¬¬' (
+' (
 )
-¬¬( )
+( )
 ;
-¬¬) *
+) *
 }
-­­ 
+ 
 catch
-­­ 
+ 
 (
-­­ %
+ %
 ObjectDisposedException
-­­ *
+ *
 ex
-­­+ -
++ -
 )
-­­- .
+- .
 {
-®® %
+ŸŸ %
 ExceptionHandlerForLogs
-¯¯ '
+   '
 .
-¯¯' (
+  ' (
 LogException
-¯¯( 4
+  ( 4
 (
-¯¯4 5
+  4 5
 ex
-¯¯5 7
+  5 7
 ,
-¯¯7 8!
+  7 8!
 ExceptionDictionary
-¯¯9 L
+  9 L
 .
-¯¯L M
+  L M
 FATAL_EXCEPTION
-¯¯M \
+  M \
 )
-¯¯\ ]
+  \ ]
 ;
-¯¯] ^
+  ] ^
 }
-°° 
+¡¡ 
 }
-±± 	
+¢¢ 	
 }
-µµ 
-}¶¶ §
+¦¦ 
+}§§ §
 kC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Views\BannerWindow.xaml.cs
 	namespace 	
 JeopardyGame
@@ -63178,7 +62840,7 @@ jC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ;! "
 } 	
 } 
-} ¼M
+} ÌM
 qC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\ProfileDataConsult.xaml.cs
 	namespace 	
 JeopardyGame
@@ -63686,40 +63348,41 @@ Propertiestt$ .
 .yyH I
 FATAL_EXCEPTIONyyI X
 )yyX Y
-;yyY Z
-dialogWindowzz 
-.zz !
-ShowInfoOrErrorWindowzz .
-(zz. /
+;yyY Z
+DialogWindowManagerzz 
+.zz  !
+ShowInfoOrErrorWindowzz  5
+(zz5 6
 
-Propertieszz/ 9
-.zz9 :
-	Resourceszz: C
-.zzC D
-txbErrorTitlezzD Q
-,zzQ R
-errorMessagezzS _
-,zz_ `
-Applicationzza l
-.zzl m
-Currentzzm t
-.zzt u
+Propertieszz6 @
+.zz@ A
+	ResourceszzA J
+.zzJ K
+txbErrorTitlezzK X
+,zzX Y
+errorMessagezzZ f
+,zzf g
+Applicationzzh s
+.zzs t
+Currentzzt {
+.zz{ |
 
-MainWindowzzu 
-,	zz €
-dialogWindow
-zz 
+MainWindow	zz| †
+,
+zz† ‡!
+DialogWindowManager
+zzˆ ›
 .
-zz 
+zz› œ
 ERROR
-zz “
+zzœ ¡
 )
-zz“ ”
+zz¡ ¢
 ;
-zz” •
+zz¢ £
 }{{ 	
 }|| 
-}}} òê
+}}} Ëë
 kC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\UserRegister.xaml.cs
 	namespace 	
 JeopardyGame
@@ -66541,51 +66204,51 @@ IgnoreCase
 else
 ŞŞ 
 {
-ßß 
-dialogWindow
-àà  
+ßß !
+DialogWindowManager
+àà '
 .
-àà  !#
+àà' (#
 ShowInfoOrErrorWindow
-àà! 6
+àà( =
 (
-àà6 7
+àà= >
 
 Properties
-àà7 A
+àà> H
 .
-ààA B
+ààH I
 	Resources
-ààB K
+ààI R
 .
-ààK L
+ààR S
 txbErrorTitle
-ààL Y
+ààS `
 ,
-ààY Z
+àà` a
 
 Properties
-àà[ e
+ààb l
 .
-ààe f
+ààl m
 	Resources
-ààf o
+ààm v
 .
-àào p"
-MessageSQLExceptionààp ƒ
-,ààƒ „
-Applicationàà… 
-.àà ‘
-Currentàà‘ ˜
-.àà˜ ™
+ààv w"
+MessageSQLExceptionààw Š
+,ààŠ ‹
+ApplicationààŒ —
+.àà— ˜
+Currentàà˜ Ÿ
+.ààŸ  
 
-MainWindowàà™ £
-,àà£ ¤
-dialogWindowàà¥ ±
-.àà± ²
-ERRORàà² ·
-)àà· ¸
-;àà¸ ¹
+MainWindowàà  ª
+,ààª «#
+DialogWindowManageràà¬ ¿
+.àà¿ À
+ERRORààÀ Å
+)ààÅ Æ
+;ààÆ Ç
 return
 áá 
 DISALLOWED_VALUES
@@ -66822,53 +66485,51 @@ Properties
 )
 şşC D
 {
-ÿÿ 
-dialogWindow
-€€ 
+ÿÿ !
+DialogWindowManager
+€€ #
 .
-€€ #
+€€# $#
 ShowInfoOrErrorWindow
-€€ 2
+€€$ 9
 (
-€€2 3
+€€9 :
 
 Properties
-€€3 =
+€€: D
 .
-€€= >
+€€D E
 	Resources
-€€> G
+€€E N
 .
-€€G H
+€€N O
 txbErrorTitle
-€€H U
+€€O \
 ,
-€€U V
+€€\ ]
 
 Properties
-€€W a
+€€^ h
 .
-€€a b
+€€h i
 	Resources
-€€b k
+€€i r
 .
-€€k l
-lblRepeatedEmail
-€€l |
-,
-€€| }
-Application€€~ ‰
-.€€‰ Š
-Current€€Š ‘
-.€€‘ ’
+€€r s
+lblRepeatedEmail€€s ƒ
+,€€ƒ „
+Application€€… 
+.€€ ‘
+Current€€‘ ˜
+.€€˜ ™
 
-MainWindow€€’ œ
-,€€œ 
-dialogWindow€€ ª
-.€€ª «
-ERROR€€« °
-)€€° ±
-;€€± ²
+MainWindow€€™ £
+,€€£ ¤#
+DialogWindowManager€€¥ ¸
+.€€¸ ¹
+ERROR€€¹ ¾
+)€€¾ ¿
+;€€¿ À
 }
  
 else
@@ -66890,102 +66551,101 @@ MainWindow€€’ œ
 )
 ‚‚K L
 {
-ƒƒ 
-dialogWindow
-„„ 
+ƒƒ !
+DialogWindowManager
+„„ #
 .
-„„ #
+„„# $#
 ShowInfoOrErrorWindow
-„„ 2
+„„$ 9
 (
-„„2 3
+„„9 :
 
 Properties
-„„3 =
+„„: D
 .
-„„= >
+„„D E
 	Resources
-„„> G
+„„E N
 .
-„„G H
+„„N O
 txbErrorTitle
-„„H U
+„„O \
 ,
-„„U V
+„„\ ]
 
 Properties
-„„W a
+„„^ h
 .
-„„a b
+„„h i
 	Resources
-„„b k
+„„i r
 .
-„„k l!
-lblRepeatedUserName
-„„l 
-,„„ €
-Application„„ Œ
-.„„Œ 
-Current„„ ”
-.„„” •
+„„r s"
+lblRepeatedUserName„„s †
+,„„† ‡
+Application„„ˆ “
+.„„“ ”
+Current„„” ›
+.„„› œ
 
-MainWindow„„• Ÿ
-,„„Ÿ  
-dialogWindow„„¡ ­
-.„„­ ®
-ERROR„„® ³
-)„„³ ´
-;„„´ µ
+MainWindow„„œ ¦
+,„„¦ §#
+DialogWindowManager„„¨ »
+.„„» ¼
+ERROR„„¼ Á
+)„„Á Â
+;„„Â Ã
 }
 …… 
 else
 †† 
 {
-‡‡ 
-dialogWindow
-ˆˆ 
+‡‡ !
+DialogWindowManager
+ˆˆ #
 .
-ˆˆ #
+ˆˆ# $#
 ShowInfoOrErrorWindow
-ˆˆ 2
+ˆˆ$ 9
 (
-ˆˆ2 3
+ˆˆ9 :
 
 Properties
-ˆˆ3 =
+ˆˆ: D
 .
-ˆˆ= >
+ˆˆD E
 	Resources
-ˆˆ> G
+ˆˆE N
 .
-ˆˆG H
+ˆˆN O
 txbErrorTitle
-ˆˆH U
+ˆˆO \
 ,
-ˆˆU V
+ˆˆ\ ]
 
 Properties
-ˆˆW a
+ˆˆ^ h
 .
-ˆˆa b
+ˆˆh i
 	Resources
-ˆˆb k
+ˆˆi r
 .
-ˆˆk l$
-lblFailToRegisterUserˆˆl 
-,ˆˆ ‚
-Applicationˆˆƒ 
-.ˆˆ 
-Currentˆˆ –
-.ˆˆ– —
+ˆˆr s$
+lblFailToRegisterUserˆˆs ˆ
+,ˆˆˆ ‰
+ApplicationˆˆŠ •
+.ˆˆ• –
+Currentˆˆ– 
+.ˆˆ 
 
-MainWindowˆˆ— ¡
-,ˆˆ¡ ¢
-dialogWindowˆˆ£ ¯
-.ˆˆ¯ °
-ERRORˆˆ° µ
-)ˆˆµ ¶
-;ˆˆ¶ ·
+MainWindowˆˆ ¨
+,ˆˆ¨ ©#
+DialogWindowManagerˆˆª ½
+.ˆˆ½ ¾
+ERRORˆˆ¾ Ã
+)ˆˆÃ Ä
+;ˆˆÄ Å
 }
 ‰‰ 
 }
@@ -67399,49 +67059,47 @@ Visibility
 if
 µµ 
 (
-µµ 
-dialogWindow
-µµ 
+µµ !
+DialogWindowManager
+µµ #
 .
-µµ $
+µµ# $$
 ShowWindowConfirmation
-µµ 3
+µµ$ :
 (
-µµ3 4
+µµ: ;
 
 Properties
-µµ4 >
+µµ; E
 .
-µµ> ?
+µµE F
 	Resources
-µµ? H
+µµF O
 .
-µµH I
+µµO P
 txbErrorTitle
-µµI V
+µµP ]
 ,
-µµV W
+µµ] ^
 
 Properties
-µµX b
+µµ_ i
 .
-µµb c
+µµi j
 	Resources
-µµc l
+µµj s
 .
-µµl m
-lblRepeatedEmail
-µµm }
-,
-µµ} ~
-Applicationµµ Š
-.µµŠ ‹
-Currentµµ‹ ’
-.µµ’ “
+µµs t
+lblRepeatedEmailµµt „
+,µµ„ …
+Applicationµµ† ‘
+.µµ‘ ’
+Currentµµ’ ™
+.µµ™ š
 
-MainWindowµµ“ 
-)µµ 
-)µµ Ÿ
+MainWindowµµš ¤
+)µµ¤ ¥
+)µµ¥ ¦
 {
 ¶¶ 
 GoToLogInWindow
@@ -67627,49 +67285,48 @@ userToSave
 )
 ËËX Y
 ;
-ËËY Z
-dialogWindow
-ÌÌ 
+ËËY Z!
+DialogWindowManager
+ÌÌ 
 .
-ÌÌ #
+ÌÌ  #
 ShowInfoOrErrorWindow
-ÌÌ .
+ÌÌ  5
 (
-ÌÌ. /
+ÌÌ5 6
 
 Properties
-ÌÌ/ 9
+ÌÌ6 @
 .
-ÌÌ9 :
+ÌÌ@ A
 	Resources
-ÌÌ: C
+ÌÌA J
 .
-ÌÌC D
+ÌÌJ K
 txbErrorTitle
-ÌÌD Q
+ÌÌK X
 ,
-ÌÌQ R
+ÌÌX Y
 errorMessage
-ÌÌS _
+ÌÌZ f
 ,
-ÌÌ_ `
+ÌÌf g
 Application
-ÌÌa l
+ÌÌh s
 .
-ÌÌl m
+ÌÌs t
 Current
-ÌÌm t
+ÌÌt {
 .
-ÌÌt u
+ÌÌ{ |
 
-MainWindow
-ÌÌu 
-,ÌÌ €
-dialogWindowÌÌ 
-.ÌÌ 
-ERRORÌÌ “
-)ÌÌ“ ”
-;ÌÌ” •
+MainWindowÌÌ| †
+,ÌÌ† ‡#
+DialogWindowManagerÌÌˆ ›
+.ÌÌ› œ
+ERRORÌÌœ ¡
+)ÌÌ¡ ¢
+;ÌÌ¢ £
 }
 ÍÍ 	
 }
