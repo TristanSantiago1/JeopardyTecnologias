@@ -1,4 +1,217 @@
-ύΏ
+Υ
+wC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\AleatoryGenerator.cs
+	namespace 	
+JeopardyGame
+ 
+. 
+Data 
+. 
+Helpers #
+{ 
+public		 
+
+class		 
+AleatoryGenerator		 #
+{
+
+ 
+private 
+static 
+readonly 
+Random  &
+generateAleatory' 7
+=8 9
+new: =
+Random> D
+(D E
+)E F
+;F G
+[ 	
+ThreadStatic	 
+] 
+private 
+static %
+Random& ,!
+generateAleatoryLocal- B
+;B C
+public 
+static 
+int &
+GetAleatoryNumberWithRange 4
+(4 5
+int5 8
+begin9 >
+,> ?
+int@ C
+endD G
+)G H
+{ 	
+if 
+( !
+generateAleatoryLocal %
+==& (
+null) -
+)- .
+{ 
+int 
+seed 
+; 
+lock 
+( 
+generateAleatory &
+)& '
+{ 
+seed 
+= 
+generateAleatory +
+.+ ,
+Next, 0
+(0 1
+begin1 6
+,6 7
+end8 ;
+); <
+;< =
+} !
+generateAleatoryLocal %
+=& '
+new( +
+Random, 2
+(2 3
+seed3 7
+)7 8
+;8 9
+} 
+return !
+generateAleatoryLocal (
+.( )
+Next) -
+(- .
+begin. 3
+,3 4
+end5 8
+)8 9
+;9 :
+} 	
+public 
+static 
+int 
+GetAleatoryNumber +
+(+ ,
+), -
+{ 	
+if 
+( !
+generateAleatoryLocal %
+==& (
+null) -
+)- .
+{ 
+int   
+seed   
+;   
+lock!! 
+(!! 
+generateAleatory!! &
+)!!& '
+{"" 
+seed## 
+=## 
+generateAleatory## +
+.##+ ,
+Next##, 0
+(##0 1
+)##1 2
+;##2 3
+}$$ !
+generateAleatoryLocal%% %
+=%%& '
+new%%( +
+Random%%, 2
+(%%2 3
+seed%%3 7
+)%%7 8
+;%%8 9
+}&& 
+return'' !
+generateAleatoryLocal'' (
+.''( )
+Next'') -
+(''- .
+)''. /
+;''/ 0
+}(( 	
+public++ 
+static++ 
+char++ !
+GetAleatoryCharacters++ 0
+(++0 1
+char++1 5
+begin++6 ;
+,++; <
+char++= A
+end++B E
+,++E F
+int++G J
+amount++K Q
+)++Q R
+{,, 	
+if-- 
+(-- !
+generateAleatoryLocal-- %
+==--& (
+null--) -
+)--- .
+{.. 
+int// 
+seed// 
+;// 
+lock00 
+(00 
+generateAleatory00 &
+)00& '
+{11 
+seed22 
+=22 
+generateAleatory22 +
+.22+ ,
+Next22, 0
+(220 1
+begin221 6
+,226 7
+end228 ;
++22< =
+amount22> D
+)22D E
+;22E F
+}33 !
+generateAleatoryLocal44 %
+=44& '
+new44( +
+Random44, 2
+(442 3
+seed443 7
+)447 8
+;448 9
+}55 
+return66 
+(66 
+char66 
+)66 !
+generateAleatoryLocal66 .
+.66. /
+Next66/ 3
+(663 4
+begin664 9
+,669 :
+end66; >
++66? @
+amount66A G
+)66G H
+;66H I
+}77 	
+}88 
+}99 ύΏ
 C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\FriendsManagerDataOperation.cs
 	namespace 	
 JeopardyGame
@@ -3163,1576 +3376,1547 @@ BannerUser
 ττ 	
 }
 υυ 
-}φφ οή
+}φφ υΫ
 ‚C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\GameDataOperation.cs
-	namespace 	
-JeopardyGame
+	namespace 	
+JeopardyGame
  
-. 
-Data 
-. 
+. 
+Data 
+. 
 
-DataAccess &
-{ 
-public 
+DataAccess &
+{ 
+public 
 
-static 
-class 
-GameDataOperation )
-{ 
-private 
-const 
-bool  
-SUCCESFULL_OPERATION /
-=0 1
-true2 6
-;6 7
-private 
-const 
-bool !
-UNSUCCESFUL_OPERATION 0
-=1 2
-false3 8
-;8 9
+static 
+class 
+GameDataOperation )
+{ 
 private 
-const 
-int 
-SPECIAL_CATEGORY *
-=+ ,
-$num- .
-;. /
+const 
+bool  
+SUCCESFULL_OPERATION /
+=0 1
+true2 6
+;6 7
 private 
-const 
-int  
-NUMBER_OF_CATEGORIES .
-=/ 0
-$num1 2
-;2 3
+const 
+bool !
+UNSUCCESFUL_OPERATION 0
+=1 2
+false3 8
+;8 9
 private 
 const 
-int #
-NUMBER_OF_TOTAL_ANSWERS 1
-=2 3
-$num4 6
-;6 7
+int 
+SPECIAL_CATEGORY *
+=+ ,
+$num- .
+;. /
 private 
 const 
-int (
-NUMBER_OF_QUESTIONS_IN_TOTAL 6
-=7 8
-$num9 ;
-;; <
+int  
+NUMBER_OF_CATEGORIES .
+=/ 0
+$num1 2
+;2 3
 private 
 const 
 int #
-VALUE_OF_EASY_QUESTIONS 1
+NUMBER_OF_TOTAL_ANSWERS 1
 =2 3
-$num4 7
-;7 8
+$num4 6
+;6 7
 private 
 const 
-int %
-VALUE_OF_MEDIUM_QUESTIONS 3
-=4 5
-$num6 9
-;9 :
+int (
+NUMBER_OF_QUESTIONS_IN_TOTAL 6
+=7 8
+$num9 ;
+;; <
 private 
 const 
 int #
-VALUE_OF_HARD_QUESTIONS 1
+VALUE_OF_EASY_QUESTIONS 1
 =2 3
 $num4 7
-;7 8
-public 
-static 
-GenericClassServer (
-<( )
-bool) -
->- .!
-SaveNewGameInDataBase/ D
-(D E
-GameE I
+;7 8
+private 
+const 
+int %
+VALUE_OF_MEDIUM_QUESTIONS 3
+=4 5
+$num6 9
+;9 :
+private 
+const 
+int #
+VALUE_OF_HARD_QUESTIONS 1
+=2 3
+$num4 7
+;7 8
+public 
+static 
+GenericClassServer (
+<( )
+bool) -
+>- .!
+SaveNewGameInDataBase/ D
+(D E
+GameE I
 
-gameToSaveJ T
-)T U
-{ 	
-GenericClassServer 
-< 
-bool #
-># $
-resultOfOperation% 6
-=7 8
-new9 <
-GenericClassServer= O
-<O P
-boolP T
->T U
-(U V
-)V W
-;W X
-if 
-( 
+gameToSaveJ T
+)T U
+{ 	
+GenericClassServer 
+< 
+bool #
+># $
+resultOfOperation% 6
+=7 8
+new9 <
+GenericClassServer= O
+<O P
+boolP T
+>T U
+(U V
+)V W
+;W X
+if   
+(   
 
-gameToSave 
-== 
-null "
-)" #
-{ 
-return   !
-NullParametersHandler   ,
-.  , -(
-HandleNullParametersDataBase  - I
-(  I J
-resultOfOperation  J [
-)  [ \
-;  \ ]
-}!! 
-try"" 
-{## 
-using$$ 
-($$ 
-var$$ 
-	contextBD$$ $
-=$$% &
-new$$' *
-JeopardyDBContainer$$+ >
-($$> ?
-)$$? @
-)$$@ A
-{%% 
-	contextBD'' 
-.'' 
-Games'' #
-.''# $
-Add''$ '
-(''' (
+gameToSave   
+==   
+null   "
+)  " #
+{!! 
+return"" !
+NullParametersHandler"" ,
+."", -(
+HandleNullParametersDataBase""- I
+(""I J
+resultOfOperation""J [
+)""[ \
+;""\ ]
+}## 
+try$$ 
+{%% 
+using&& 
+(&& 
+var&& 
+	contextBD&& $
+=&&% &
+new&&' *
+JeopardyDBContainer&&+ >
+(&&> ?
+)&&? @
+)&&@ A
+{'' 
+	contextBD)) 
+.)) 
+Games)) #
+.))# $
+Add))$ '
+())' (
 
-gameToSave''( 2
-)''2 3
-;''3 4
-int(( 
-resultOfEvent(( %
-=((& '
-	contextBD((( 1
-.((1 2
-SaveChanges((2 =
-(((= >
-)((> ?
-;((? @
-if)) 
-()) 
-resultOfEvent)) %
->))& '
-$num))( )
-)))) *
-{** 
-resultOfOperation++ )
-.++) *
-ObjectSaved++* 5
-=++6 7 
-SUCCESFULL_OPERATION++8 L
-;++L M
-resultOfOperation,, )
-.,,) *
-	CodeEvent,,* 3
-=,,4 5
-ExceptionDictionary,,6 I
-.,,I J
-SUCCESFULL_EVENT,,J Z
-;,,Z [
-}-- 
-else.. 
-{// 
-resultOfOperation00 )
-.00) *
-ObjectSaved00* 5
-=006 7!
-UNSUCCESFUL_OPERATION008 M
-;00M N
-resultOfOperation11 )
-.11) *
-	CodeEvent11* 3
-=114 5
-ExceptionDictionary116 I
-.11I J
-UNSUCCESFULL_EVENT11J \
-;11\ ]
-}22 
-return33 
-resultOfOperation33 ,
-;33, -
-}44 
-}55 
-catch66 
-(66 
-UpdateException66 "
-ex66# %
-)66% &
-{77 
-resultOfOperation88 !
-=88" #
-ExceptionHandler88$ 4
-.884 5)
-HandleExceptionDataAccesLevel885 R
-(88R S
-resultOfOperation88S d
-,88d e
-ex88f h
-)88h i
-;88i j
-ExceptionHandler99  
-.99  !
-LogException99! -
-(99- .
-ex99. 0
-.990 1
-GetBaseException991 A
-(99A B
-)99B C
-,99C D
-ExceptionDictionary99E X
-.99X Y
-FATAL_EXCEPTION99Y h
-)99h i
-;99i j
-}:: 
-catch;; 
-(;; 
-DbUpdateException;; $
-ex;;% '
-);;' (
-{<< 
-resultOfOperation== !
-===" #
-ExceptionHandler==$ 4
-.==4 5)
-HandleExceptionDataAccesLevel==5 R
-(==R S
-resultOfOperation==S d
-,==d e
-ex==f h
-)==h i
-;==i j
-ExceptionHandler>>  
-.>>  !
-LogException>>! -
-(>>- .
-ex>>. 0
-.>>0 1
-GetBaseException>>1 A
-(>>A B
-)>>B C
-,>>C D
-ExceptionDictionary>>E X
-.>>X Y
-FATAL_EXCEPTION>>Y h
-)>>h i
-;>>i j
-}?? 
-catch@@ 
-(@@ !
-ArgumentNullException@@ (
-ex@@) +
-)@@+ ,
-{AA 
-resultOfOperationBB !
-=BB" #
-ExceptionHandlerBB$ 4
-.BB4 5)
-HandleExceptionDataAccesLevelBB5 R
-(BBR S
-resultOfOperationBBS d
-,BBd e
-exBBf h
-)BBh i
-;BBi j
-ExceptionHandlerCC  
-.CC  !
-LogExceptionCC! -
-(CC- .
-exCC. 0
-,CC0 1
-ExceptionDictionaryCC2 E
-.CCE F
-FATAL_EXCEPTIONCCF U
-)CCU V
-;CCV W
-}DD 
-catchEE 
-(EE 
-EntityExceptionEE "
-exEE# %
-)EE% &
-{FF 
-resultOfOperationGG !
-=GG" #
-ExceptionHandlerGG$ 4
-.GG4 5)
-HandleExceptionDataAccesLevelGG5 R
-(GGR S
-resultOfOperationGGS d
-,GGd e
-exGGf h
-)GGh i
-;GGi j
-ExceptionHandlerHH  
-.HH  !
-LogExceptionHH! -
-(HH- .
-exHH. 0
-,HH0 1
-ExceptionDictionaryHH2 E
-.HHE F
-FATAL_EXCEPTIONHHF U
-)HHU V
-;HHV W
-}II 
-catchJJ 
-(JJ 
-SqlExceptionJJ 
-exJJ  "
-)JJ" #
-{KK 
-resultOfOperationLL !
-=LL" #
-ExceptionHandlerLL$ 4
-.LL4 5)
-HandleExceptionDataAccesLevelLL5 R
-(LLR S
-resultOfOperationLLS d
-,LLd e
-exLLf h
-)LLh i
-;LLi j
-ExceptionHandlerMM  
-.MM  !
-LogExceptionMM! -
-(MM- .
-exMM. 0
-,MM0 1
-ExceptionDictionaryMM2 E
-.MME F
-FATAL_EXCEPTIONMMF U
-)MMU V
-;MMV W
-}NN 
-catchOO 
-(OO '
-DbEntityValidationExceptionOO .
-exOO/ 1
-)OO1 2
-{PP 
-resultOfOperationQQ !
-=QQ" #
-ExceptionHandlerQQ$ 4
-.QQ4 5)
-HandleExceptionDataAccesLevelQQ5 R
-(QQR S
-resultOfOperationQQS d
-,QQd e
-exQQf h
-)QQh i
-;QQi j
-ExceptionHandlerRR  
-.RR  !
-LogExceptionRR! -
-(RR- .
-exRR. 0
-,RR0 1
-ExceptionDictionaryRR2 E
-.RRE F
-FATAL_EXCEPTIONRRF U
-)RRU V
-;RRV W
-}SS 
-returnTT 
-resultOfOperationTT $
-;TT$ %
-}UU 	
-publicWW 
-staticWW 
-GenericClassServerWW (
-<WW( )
-GameWW) -
->WW- .
-GetGameByRoomCodeWW/ @
-(WW@ A
-intWWA D
-roomCodeWWE M
-)WWM N
-{XX 	
-GenericClassServerYY 
-<YY 
-GameYY #
->YY# $
-resultOfOperationYY% 6
-=YY7 8
-newYY9 <
-GenericClassServerYY= O
-<YYO P
-GameYYP T
->YYT U
-(YYU V
-)YYV W
-;YYW X
-ifZZ 
-(ZZ 
-roomCodeZZ 
-==ZZ 
-$numZZ 
-)ZZ 
-{[[ 
-return\\ !
-NullParametersHandler\\ ,
-.\\, -(
-HandleNullParametersDataBase\\- I
-(\\I J
-resultOfOperation\\J [
-)\\[ \
-;\\\ ]
-}]] 
-try^^ 
-{__ 
-using`` 
-(`` 
-var`` 
-	contextBD`` $
-=``% &
-new``' *
-JeopardyDBContainer``+ >
-(``> ?
-)``? @
-)``@ A
-{aa 
-	contextBDbb 
-.bb 
-Configurationbb +
-.bb+ ,
-LazyLoadingEnabledbb, >
-=bb? @
-falsebbA F
-;bbF G
-varcc 
-gameConsultedcc %
-=cc& '
-	contextBDcc( 1
-.cc1 2
-Gamescc2 7
-.cc7 8
-Includecc8 ?
-(cc? @
+gameToSave))( 2
+)))2 3
+;))3 4
+int** 
+resultOfEvent** %
+=**& '
+	contextBD**( 1
+.**1 2
+SaveChanges**2 =
+(**= >
+)**> ?
+;**? @
+if++ 
+(++ 
+resultOfEvent++ %
+>++& '
+$num++( )
+)++) *
+{,, 
+resultOfOperation-- )
+.--) *
+ObjectSaved--* 5
+=--6 7 
+SUCCESFULL_OPERATION--8 L
+;--L M
+resultOfOperation.. )
+...) *
+	CodeEvent..* 3
+=..4 5
+ExceptionDictionary..6 I
+...I J
+SUCCESFULL_EVENT..J Z
+;..Z [
+}// 
+else00 
+{11 
+resultOfOperation22 )
+.22) *
+ObjectSaved22* 5
+=226 7!
+UNSUCCESFUL_OPERATION228 M
+;22M N
+resultOfOperation33 )
+.33) *
+	CodeEvent33* 3
+=334 5
+ExceptionDictionary336 I
+.33I J
+UNSUCCESFULL_EVENT33J \
+;33\ ]
+}44 
+return55 
+resultOfOperation55 ,
+;55, -
+}66 
+}77 
+catch88 
+(88 
+UpdateException88 "
+ex88# %
+)88% &
+{99 
+resultOfOperation:: !
+=::" #
+ExceptionHandler::$ 4
+.::4 5)
+HandleExceptionDataAccesLevel::5 R
+(::R S
+resultOfOperation::S d
+,::d e
+ex::f h
+)::h i
+;::i j
+ExceptionHandler;;  
+.;;  !
+LogException;;! -
+(;;- .
+ex;;. 0
+.;;0 1
+GetBaseException;;1 A
+(;;A B
+);;B C
+,;;C D
+ExceptionDictionary;;E X
+.;;X Y
+FATAL_EXCEPTION;;Y h
+);;h i
+;;;i j
+}<< 
+catch== 
+(== 
+DbUpdateException== $
+ex==% '
+)==' (
+{>> 
+resultOfOperation?? !
+=??" #
+ExceptionHandler??$ 4
+.??4 5)
+HandleExceptionDataAccesLevel??5 R
+(??R S
+resultOfOperation??S d
+,??d e
+ex??f h
+)??h i
+;??i j
+ExceptionHandler@@  
+.@@  !
+LogException@@! -
+(@@- .
+ex@@. 0
+.@@0 1
+GetBaseException@@1 A
+(@@A B
+)@@B C
+,@@C D
+ExceptionDictionary@@E X
+.@@X Y
+FATAL_EXCEPTION@@Y h
+)@@h i
+;@@i j
+}AA 
+catchBB 
+(BB !
+ArgumentNullExceptionBB (
+exBB) +
+)BB+ ,
+{CC 
+resultOfOperationDD !
+=DD" #
+ExceptionHandlerDD$ 4
+.DD4 5)
+HandleExceptionDataAccesLevelDD5 R
+(DDR S
+resultOfOperationDDS d
+,DDd e
+exDDf h
+)DDh i
+;DDi j
+ExceptionHandlerEE  
+.EE  !
+LogExceptionEE! -
+(EE- .
+exEE. 0
+,EE0 1
+ExceptionDictionaryEE2 E
+.EEE F
+FATAL_EXCEPTIONEEF U
+)EEU V
+;EEV W
+}FF 
+catchGG 
+(GG 
+EntityExceptionGG "
+exGG# %
+)GG% &
+{HH 
+resultOfOperationII !
+=II" #
+ExceptionHandlerII$ 4
+.II4 5)
+HandleExceptionDataAccesLevelII5 R
+(IIR S
+resultOfOperationIIS d
+,IId e
+exIIf h
+)IIh i
+;IIi j
+ExceptionHandlerJJ  
+.JJ  !
+LogExceptionJJ! -
+(JJ- .
+exJJ. 0
+,JJ0 1
+ExceptionDictionaryJJ2 E
+.JJE F
+FATAL_EXCEPTIONJJF U
+)JJU V
+;JJV W
+}KK 
+catchLL 
+(LL 
+SqlExceptionLL 
+exLL  "
+)LL" #
+{MM 
+resultOfOperationNN !
+=NN" #
+ExceptionHandlerNN$ 4
+.NN4 5)
+HandleExceptionDataAccesLevelNN5 R
+(NNR S
+resultOfOperationNNS d
+,NNd e
+exNNf h
+)NNh i
+;NNi j
+ExceptionHandlerOO  
+.OO  !
+LogExceptionOO! -
+(OO- .
+exOO. 0
+,OO0 1
+ExceptionDictionaryOO2 E
+.OOE F
+FATAL_EXCEPTIONOOF U
+)OOU V
+;OOV W
+}PP 
+catchQQ 
+(QQ '
+DbEntityValidationExceptionQQ .
+exQQ/ 1
+)QQ1 2
+{RR 
+resultOfOperationSS !
+=SS" #
+ExceptionHandlerSS$ 4
+.SS4 5)
+HandleExceptionDataAccesLevelSS5 R
+(SSR S
+resultOfOperationSSS d
+,SSd e
+exSSf h
+)SSh i
+;SSi j
+ExceptionHandlerTT  
+.TT  !
+LogExceptionTT! -
+(TT- .
+exTT. 0
+,TT0 1
+ExceptionDictionaryTT2 E
+.TTE F
+FATAL_EXCEPTIONTTF U
+)TTU V
+;TTV W
+}UU 
+returnVV 
+resultOfOperationVV $
+;VV$ %
+}WW 	
+publicYY 
+staticYY 
+GenericClassServerYY (
+<YY( )
+GameYY) -
+>YY- .
+GetGameByRoomCodeYY/ @
+(YY@ A
+intYYA D
+roomCodeYYE M
+)YYM N
+{ZZ 	
+GenericClassServer[[ 
+<[[ 
+Game[[ #
+>[[# $
+resultOfOperation[[% 6
+=[[7 8
+new[[9 <
+GenericClassServer[[= O
+<[[O P
+Game[[P T
+>[[T U
+([[U V
+)[[V W
+;[[W X
+if\\ 
+(\\ 
+roomCode\\ 
+==\\ 
+$num\\ 
+)\\ 
+{]] 
+return^^ !
+NullParametersHandler^^ ,
+.^^, -(
+HandleNullParametersDataBase^^- I
+(^^I J
+resultOfOperation^^J [
+)^^[ \
+;^^\ ]
+}__ 
+try`` 
+{aa 
+usingbb 
+(bb 
+varbb 
+	contextBDbb $
+=bb% &
+newbb' *
+JeopardyDBContainerbb+ >
+(bb> ?
+)bb? @
+)bb@ A
+{cc 
+	contextBDdd 
+.dd 
+Configurationdd +
+.dd+ ,
+LazyLoadingEnableddd, >
+=dd? @
+falseddA F
+;ddF G
+varee 
+gameConsultedee %
+=ee& '
+	contextBDee( 1
+.ee1 2
+Gamesee2 7
+.ee7 8
+Includeee8 ?
+(ee? @
 
-Propertiescc@ J
-.ccJ K
-BdTableNamesccK W
-.ccW X
-	TableHostccX a
-)cca b
-.ccb c
-FirstOrDefaultccc q
-(ccq r
-gameccr v
-=>ccw y
-gameccz ~
-.cc~ 
-RoomCode	cc ‡
+Propertiesee@ J
+.eeJ K
+BdTableNameseeK W
+.eeW X
+	TableHosteeX a
+)eea b
+.eeb c
+FirstOrDefaulteec q
+(eeq r
+gameeer v
+=>eew y
+gameeez ~
+.ee~ 
+RoomCode	ee ‡
 ==
-cc 
+ee 
 roomCode
-cc‹ “
+ee‹ “
 )
-cc“ ”
+ee“ ”
 ;
-cc” •
-ifdd 
-(dd 
-gameConsulteddd %
-!=dd& (
-nulldd) -
-)dd- .
-{ee 
-resultOfOperationff )
-.ff) *
-ObjectSavedff* 5
-=ff6 7
-gameConsultedff8 E
-;ffE F
-resultOfOperationgg )
-.gg) *
-	CodeEventgg* 3
-=gg4 5
-ExceptionDictionarygg6 I
-.ggI J
-SUCCESFULL_EVENTggJ Z
-;ggZ [
-}hh 
-elseii 
-{jj 
-resultOfOperationkk )
-.kk) *
-ObjectSavedkk* 5
-=kk6 7
-gameConsultedkk8 E
-;kkE F
-resultOfOperationll )
-.ll) *
-	CodeEventll* 3
-=ll4 5
-ExceptionDictionaryll6 I
-.llI J
-UNSUCCESFULL_EVENTllJ \
-;ll\ ]
-}mm 
-}nn 
-}oo 
-catchpp 
-(pp 
-UpdateExceptionpp "
-expp# %
-)pp% &
-{qq 
-resultOfOperationrr !
-=rr" #
-ExceptionHandlerrr$ 4
-.rr4 5)
-HandleExceptionDataAccesLevelrr5 R
-(rrR S
-resultOfOperationrrS d
-,rrd e
-exrrf h
-)rrh i
-;rri j
-ExceptionHandlerss  
-.ss  !
-LogExceptionss! -
-(ss- .
-exss. 0
-,ss0 1
-ExceptionDictionaryss2 E
-.ssE F
-FATAL_EXCEPTIONssF U
-)ssU V
-;ssV W
-}tt 
-catchuu 
-(uu !
-ArgumentNullExceptionuu (
-exuu) +
-)uu+ ,
-{vv 
-resultOfOperationww !
-=ww" #
-ExceptionHandlerww$ 4
-.ww4 5)
-HandleExceptionDataAccesLevelww5 R
-(wwR S
-resultOfOperationwwS d
-,wwd e
-exwwf h
-)wwh i
-;wwi j
-ExceptionHandlerxx  
-.xx  !
-LogExceptionxx! -
-(xx- .
-exxx. 0
-,xx0 1
-ExceptionDictionaryxx2 E
-.xxE F
-FATAL_EXCEPTIONxxF U
-)xxU V
-;xxV W
-}yy 
-catchzz 
-(zz 
-EntityExceptionzz "
-exzz# %
-)zz% &
-{{{ 
-resultOfOperation|| !
-=||" #
-ExceptionHandler||$ 4
-.||4 5)
-HandleExceptionDataAccesLevel||5 R
-(||R S
-resultOfOperation||S d
-,||d e
-ex||f h
-)||h i
-;||i j
-ExceptionHandler}}  
-.}}  !
-LogException}}! -
-(}}- .
-ex}}. 0
-,}}0 1
-ExceptionDictionary}}2 E
-.}}E F
-FATAL_EXCEPTION}}F U
-)}}U V
-;}}V W
-}~~ 
-catch 
-( 
-SqlException 
-ex  "
-)" #
-{
-€€ 
-resultOfOperation
- !
-=
-" #
-ExceptionHandler
-$ 4
-.
-4 5+
-HandleExceptionDataAccesLevel
-5 R
-(
-R S
-resultOfOperation
-S d
-,
-d e
-ex
-f h
-)
-h i
-;
-i j
-ExceptionHandler
-‚‚  
-.
-‚‚  !
-LogException
-‚‚! -
-(
-‚‚- .
-ex
-‚‚. 0
-,
-‚‚0 1!
-ExceptionDictionary
-‚‚2 E
-.
-‚‚E F
-FATAL_EXCEPTION
-‚‚F U
-)
-‚‚U V
-;
-‚‚V W
+ee” •
+ifff 
+(ff 
+gameConsultedff %
+!=ff& (
+nullff) -
+)ff- .
+{gg 
+resultOfOperationhh )
+.hh) *
+ObjectSavedhh* 5
+=hh6 7
+gameConsultedhh8 E
+;hhE F
+resultOfOperationii )
+.ii) *
+	CodeEventii* 3
+=ii4 5
+ExceptionDictionaryii6 I
+.iiI J
+SUCCESFULL_EVENTiiJ Z
+;iiZ [
+}jj 
+elsekk 
+{ll 
+resultOfOperationmm )
+.mm) *
+ObjectSavedmm* 5
+=mm6 7
+gameConsultedmm8 E
+;mmE F
+resultOfOperationnn )
+.nn) *
+	CodeEventnn* 3
+=nn4 5
+ExceptionDictionarynn6 I
+.nnI J
+UNSUCCESFULL_EVENTnnJ \
+;nn\ ]
+}oo 
+}pp 
+}qq 
+catchrr 
+(rr 
+UpdateExceptionrr "
+exrr# %
+)rr% &
+{ss 
+resultOfOperationtt !
+=tt" #
+ExceptionHandlertt$ 4
+.tt4 5)
+HandleExceptionDataAccesLeveltt5 R
+(ttR S
+resultOfOperationttS d
+,ttd e
+exttf h
+)tth i
+;tti j
+ExceptionHandleruu  
+.uu  !
+LogExceptionuu! -
+(uu- .
+exuu. 0
+,uu0 1
+ExceptionDictionaryuu2 E
+.uuE F
+FATAL_EXCEPTIONuuF U
+)uuU V
+;uuV W
+}vv 
+catchww 
+(ww !
+ArgumentNullExceptionww (
+exww) +
+)ww+ ,
+{xx 
+resultOfOperationyy !
+=yy" #
+ExceptionHandleryy$ 4
+.yy4 5)
+HandleExceptionDataAccesLevelyy5 R
+(yyR S
+resultOfOperationyyS d
+,yyd e
+exyyf h
+)yyh i
+;yyi j
+ExceptionHandlerzz  
+.zz  !
+LogExceptionzz! -
+(zz- .
+exzz. 0
+,zz0 1
+ExceptionDictionaryzz2 E
+.zzE F
+FATAL_EXCEPTIONzzF U
+)zzU V
+;zzV W
+}{{ 
+catch|| 
+(|| 
+EntityException|| "
+ex||# %
+)||% &
+{}} 
+resultOfOperation~~ !
+=~~" #
+ExceptionHandler~~$ 4
+.~~4 5)
+HandleExceptionDataAccesLevel~~5 R
+(~~R S
+resultOfOperation~~S d
+,~~d e
+ex~~f h
+)~~h i
+;~~i j
+ExceptionHandler  
+.  !
+LogException! -
+(- .
+ex. 0
+,0 1
+ExceptionDictionary2 E
+.E F
+FATAL_EXCEPTIONF U
+)U V
+;V W
 }
-ƒƒ 
+€€ 
 catch
-„„ 
+ 
 (
-„„ )
-DbEntityValidationException
-„„ .
+ 
+SqlException
+ 
 ex
-„„/ 1
+  "
 )
-„„1 2
+" #
 {
-…… 
+‚‚ 
 resultOfOperation
-†† !
+ƒƒ !
 =
-††" #
+ƒƒ" #
 ExceptionHandler
-††$ 4
+ƒƒ$ 4
 .
-††4 5+
+ƒƒ4 5+
 HandleExceptionDataAccesLevel
-††5 R
+ƒƒ5 R
 (
-††R S
+ƒƒR S
 resultOfOperation
-††S d
+ƒƒS d
 ,
-††d e
+ƒƒd e
 ex
-††f h
+ƒƒf h
 )
-††h i
+ƒƒh i
 ;
-††i j
+ƒƒi j
 ExceptionHandler
-‡‡  
+„„  
 .
-‡‡  !
+„„  !
 LogException
-‡‡! -
+„„! -
 (
-‡‡- .
+„„- .
 ex
-‡‡. 0
+„„. 0
 ,
-‡‡0 1!
+„„0 1!
 ExceptionDictionary
-‡‡2 E
+„„2 E
 .
-‡‡E F
+„„E F
 FATAL_EXCEPTION
-‡‡F U
+„„F U
 )
-‡‡U V
+„„U V
 ;
-‡‡V W
+„„V W
 }
- 
+…… 
+catch
+†† 
+(
+†† )
+DbEntityValidationException
+†† .
+ex
+††/ 1
+)
+††1 2
+{
+‡‡ 
+resultOfOperation
+ !
+=
+" #
+ExceptionHandler
+$ 4
+.
+4 5+
+HandleExceptionDataAccesLevel
+5 R
+(
+R S
+resultOfOperation
+S d
+,
+d e
+ex
+f h
+)
+h i
+;
+i j
+ExceptionHandler
+‰‰  
+.
+‰‰  !
+LogException
+‰‰! -
+(
+‰‰- .
+ex
+‰‰. 0
+,
+‰‰0 1!
+ExceptionDictionary
+‰‰2 E
+.
+‰‰E F
+FATAL_EXCEPTION
+‰‰F U
+)
+‰‰U V
+;
+‰‰V W
+}
+ 
 return
-‰‰ 
+‹‹ 
 resultOfOperation
-‰‰ $
+‹‹ $
 ;
-‰‰$ %
+‹‹$ %
 }
- 	
+ 	
 public
- 
+ 
 static
-  
+  
 GenericClassServer
- (
+ (
 <
-( )
+( )
 List
-) -
+) -
 <
-- .
+- .
 Category
-. 6
+. 6
 >
-6 7
+6 7
 >
-7 8
+7 8
 Get10Categories
-9 H
+9 H
 (
-H I
+H I
 )
-I J
+I J
 {
- 	 
+ 	 
 GenericClassServer
- 
+ 
 <
- 
+ 
 List
- #
+ #
 <
-# $
+# $
 Category
-$ ,
+$ ,
 >
-, -
+, -
 >
-- .
+- .
 resultOfOperation
-/ @
+/ @
 =
-A B
+A B
 new
-C F 
+C F 
 GenericClassServer
-G Y
+G Y
 <
-Y Z
+Y Z
 List
-Z ^
+Z ^
 <
-^ _
+^ _
 Category
-_ g
+_ g
 >
-g h
+g h
 >
-h i
+h i
 (
-i j
+i j
 )
-j k
+j k
 ;
-k l
+k l
 try
- 
+‘‘ 
 {
- 
+’’ 
 using
-‘‘ 
+““ 
 (
-‘‘ 
+““ 
 var
-‘‘ 
+““ 
 	contextBD
-‘‘ $
+““ $
 =
-‘‘% &
+““% &
 new
-‘‘' *!
+““' *!
 JeopardyDBContainer
-‘‘+ >
+““+ >
 (
-‘‘> ?
+““> ?
 )
-‘‘? @
+““? @
 )
-‘‘@ A
+““@ A
 {
-’’ 
+”” 
 var
-““ 
+•• 
 
 categories
-““ "
+•• "
 =
-““# $
+••# $
 	contextBD
-““% .
+••% .
 .
-““. /
+••. /
 
 Categories
-““/ 9
+••/ 9
 .
-““9 :
+••9 :
 Where
-““: ?
+••: ?
 (
-““? @
+••? @
 category
-““@ H
+••@ H
 =>
-““I K
+••I K
 category
-““L T
+••L T
 .
-““T U
+••T U
 
 IdCategory
-““U _
+••U _
 !=
-““` b
+••` b
 SPECIAL_CATEGORY
-““c s
+••c s
 )
-““s t
+••s t
 .
-““t u
+••t u
 ToList
-““u {
+••u {
 (
-““{ |
-)
-““| }
-;
-““} ~
-Random
-”” 
-random
-”” !
-=
-””" #
-new
-””$ '
-Random
-””( .
-(
-””. /
-)
-””/ 0
-;
-””0 1
-List
-•• 
-<
-•• 
-Category
-•• !
->
-••! "
-categoriesList
-••# 1
-=
-••2 3
-
-categories
-••4 >
-.
-••> ?
-OrderBy
-••? F
-(
-••F G
-category
-••G O
-=>
-••P R
-random
-••S Y
-.
-••Y Z
-Next
-••Z ^
-(
-••^ _
-)
-••_ `
-)
-••` a
-.
-••a b
-Take
-••b f
-(
-••f g"
-NUMBER_OF_CATEGORIES
-••g {
-)
 ••{ |
-.
-••| }
-ToList••} ƒ
-(••ƒ „
-)••„ …
-;••… †
-if
-–– 
-(
-–– 
-categoriesList
-–– &
-.
-––& '
-Count
-––' ,
-==
-––- /"
-NUMBER_OF_CATEGORIES
-––0 D
 )
-––D E
-{
-—— 
-resultOfOperation
- )
-.
-) *
-	CodeEvent
-* 3
-=
-4 5!
-ExceptionDictionary
-6 I
-.
-I J
-SUCCESFULL_EVENT
-J Z
+••| }
 ;
-Z [
-}
-™™ 
-else
- 
-{
-›› 
-resultOfOperation
- )
-.
-) *
-	CodeEvent
-* 3
-=
-4 5!
-ExceptionDictionary
-6 I
-.
-I J 
-UNSUCCESFULL_EVENT
-J \
-;
-\ ]
-}
- 
-resultOfOperation
- %
-.
-% &
-ObjectSaved
-& 1
-=
-2 3
-categoriesList
-4 B
-;
-B C
-return
- 
-resultOfOperation
- ,
-;
-, -
-}
-   
-}
-΅΅ 
-catch
-ΆΆ 
-(
-ΆΆ #
-ArgumentNullException
-ΆΆ (
-ex
-ΆΆ) +
-)
-ΆΆ+ ,
-{
-££ 
-resultOfOperation
-¤¤ !
-=
-¤¤" #
-ExceptionHandler
-¤¤$ 4
-.
-¤¤4 5+
-HandleExceptionDataAccesLevel
-¤¤5 R
-(
-¤¤R S
-resultOfOperation
-¤¤S d
-,
-¤¤d e
-ex
-¤¤f h
-)
-¤¤h i
-;
-¤¤i j
-ExceptionHandler
-¥¥  
-.
-¥¥  !
-LogException
-¥¥! -
-(
-¥¥- .
-ex
-¥¥. 0
-,
-¥¥0 1!
-ExceptionDictionary
-¥¥2 E
-.
-¥¥E F
-FATAL_EXCEPTION
-¥¥F U
-)
-¥¥U V
-;
-¥¥V W
-}
-¦¦ 
-catch
-§§ 
-(
-§§ 
-EntityException
-§§ "
-ex
-§§# %
-)
-§§% &
-{
-¨¨ 
-resultOfOperation
-©© !
-=
-©©" #
-ExceptionHandler
-©©$ 4
-.
-©©4 5+
-HandleExceptionDataAccesLevel
-©©5 R
-(
-©©R S
-resultOfOperation
-©©S d
-,
-©©d e
-ex
-©©f h
-)
-©©h i
-;
-©©i j
-ExceptionHandler
-ªª  
-.
-ªª  !
-LogException
-ªª! -
-(
-ªª- .
-ex
-ªª. 0
-,
-ªª0 1!
-ExceptionDictionary
-ªª2 E
-.
-ªªE F
-FATAL_EXCEPTION
-ªªF U
-)
-ªªU V
-;
-ªªV W
-}
-«« 
-catch
-¬¬ 
-(
-¬¬ 
-SqlException
-¬¬ 
-ex
-¬¬  "
-)
-¬¬" #
-{
-­­ 
-resultOfOperation
-®® !
-=
-®®" #
-ExceptionHandler
-®®$ 4
-.
-®®4 5+
-HandleExceptionDataAccesLevel
-®®5 R
-(
-®®R S
-resultOfOperation
-®®S d
-,
-®®d e
-ex
-®®f h
-)
-®®h i
-;
-®®i j
-ExceptionHandler
-――  
-.
-――  !
-LogException
-――! -
-(
-――- .
-ex
-――. 0
-,
-――0 1!
-ExceptionDictionary
-――2 E
-.
-――E F
-FATAL_EXCEPTION
-――F U
-)
-――U V
-;
-――V W
-}
-°° 
-catch
-±± 
-(
-±± )
-DbEntityValidationException
-±± .
-ex
-±±/ 1
-)
-±±1 2
-{
-²² 
-resultOfOperation
-³³ !
-=
-³³" #
-ExceptionHandler
-³³$ 4
-.
-³³4 5+
-HandleExceptionDataAccesLevel
-³³5 R
-(
-³³R S
-resultOfOperation
-³³S d
-,
-³³d e
-ex
-³³f h
-)
-³³h i
-;
-³³i j
-ExceptionHandler
-΄΄  
-.
-΄΄  !
-LogException
-΄΄! -
-(
-΄΄- .
-ex
-΄΄. 0
-,
-΄΄0 1!
-ExceptionDictionary
-΄΄2 E
-.
-΄΄E F
-FATAL_EXCEPTION
-΄΄F U
-)
-΄΄U V
-;
-΄΄V W
-}
-µµ 
-return
-¶¶ 
-resultOfOperation
-¶¶ $
-;
-¶¶$ %
-}
-·· 	
-public
-ΉΉ 
-static
-ΉΉ  
-GenericClassServer
-ΉΉ (
-<
-ΉΉ( )
+••} ~
 List
-ΉΉ) -
+–– 
 <
-ΉΉ- .
-Question
-ΉΉ. 6
->
-ΉΉ6 7
->
-ΉΉ7 8$
-GetQuestionsByCategory
-ΉΉ9 O
-(
-ΉΉO P
-List
-ΉΉP T
-<
-ΉΉT U
+–– 
 Category
-ΉΉU ]
+–– !
 >
-ΉΉ] ^
-
-categories
-ΉΉ_ i
-)
-ΉΉi j
-{
-ΊΊ 	 
-GenericClassServer
-ΌΌ 
-<
-ΌΌ 
-List
-ΌΌ #
-<
-ΌΌ# $
-Question
-ΌΌ$ ,
->
-ΌΌ, -
->
-ΌΌ- .
-resultOfOperation
-ΌΌ/ @
+––! "
+categoriesList
+––# 1
 =
-ΌΌA B
-new
-ΌΌC F 
-GenericClassServer
-ΌΌG Y
-<
-ΌΌY Z
-List
-ΌΌZ ^
-<
-ΌΌ^ _
-Question
-ΌΌ_ g
->
-ΌΌg h
->
-ΌΌh i
-(
-ΌΌi j
-)
-ΌΌj k
-;
-ΌΌk l
-if
-½½ 
-(
-½½ 
+––2 3
 
 categories
-½½ 
-==
-½½ 
-null
-½½ "
-)
-½½" #
-{
-ΎΎ 
-return
-ΏΏ #
-NullParametersHandler
-ΏΏ ,
+––4 >
 .
-ΏΏ, -*
-HandleNullParametersDataBase
-ΏΏ- I
+––> ?
+OrderBy
+––? F
 (
-ΏΏI J
-resultOfOperation
-ΏΏJ [
-)
-ΏΏ[ \
-;
-ΏΏ\ ]
-}
-ΐΐ 
-try
-ΑΑ 
-{
-ΒΒ 
-using
-ΓΓ 
-(
-ΓΓ 
-var
-ΓΓ 
-	contextBD
-ΓΓ $
-=
-ΓΓ% &
-new
-ΓΓ' *!
-JeopardyDBContainer
-ΓΓ+ >
-(
-ΓΓ> ?
-)
-ΓΓ? @
-)
-ΓΓ@ A
-{
-ΔΔ 
-List
-ΕΕ 
-<
-ΕΕ 
-Question
-ΕΕ !
->
-ΕΕ! "
-	questions
-ΕΕ# ,
-=
-ΕΕ- .
-new
-ΕΕ/ 2
-List
-ΕΕ3 7
-<
-ΕΕ7 8
-Question
-ΕΕ8 @
->
-ΕΕ@ A
-(
-ΕΕA B
-)
-ΕΕB C
-;
-ΕΕC D
-foreach
-ΖΖ 
-(
-ΖΖ 
-var
-ΖΖ  
+––F G
 category
-ΖΖ! )
-in
-ΖΖ* ,
+––G O
+=>
+––P R
+AleatoryGenerator
+––S d
+.
+––d e
+GetAleatoryNumber
+––e v
+(
+––v w
+)
+––w x
+)
+––x y
+.
+––y z
+Take
+––z ~
+(
+––~ #
+NUMBER_OF_CATEGORIES–– “
+)––“ ”
+.––” •
+ToList––• ›
+(––› 
+)–– 
+;–– 
+if
+—— 
+(
+—— 
+categoriesList
+—— &
+.
+——& '
+Count
+——' ,
+==
+——- /"
+NUMBER_OF_CATEGORIES
+——0 D
+)
+——D E
+{
+ 
+resultOfOperation
+™™ )
+.
+™™) *
+	CodeEvent
+™™* 3
+=
+™™4 5!
+ExceptionDictionary
+™™6 I
+.
+™™I J
+SUCCESFULL_EVENT
+™™J Z
+;
+™™Z [
+}
+ 
+else
+›› 
+{
+ 
+resultOfOperation
+ )
+.
+) *
+	CodeEvent
+* 3
+=
+4 5!
+ExceptionDictionary
+6 I
+.
+I J 
+UNSUCCESFULL_EVENT
+J \
+;
+\ ]
+}
+ 
+resultOfOperation
+ %
+.
+% &
+ObjectSaved
+& 1
+=
+2 3
+categoriesList
+4 B
+;
+B C
+return
+   
+resultOfOperation
+   ,
+;
+  , -
+}
+΅΅ 
+}
+ΆΆ 
+catch
+££ 
+(
+££ #
+ArgumentNullException
+££ (
+ex
+££) +
+)
+££+ ,
+{
+¤¤ 
+resultOfOperation
+¥¥ !
+=
+¥¥" #
+ExceptionHandler
+¥¥$ 4
+.
+¥¥4 5+
+HandleExceptionDataAccesLevel
+¥¥5 R
+(
+¥¥R S
+resultOfOperation
+¥¥S d
+,
+¥¥d e
+ex
+¥¥f h
+)
+¥¥h i
+;
+¥¥i j
+ExceptionHandler
+¦¦  
+.
+¦¦  !
+LogException
+¦¦! -
+(
+¦¦- .
+ex
+¦¦. 0
+,
+¦¦0 1!
+ExceptionDictionary
+¦¦2 E
+.
+¦¦E F
+FATAL_EXCEPTION
+¦¦F U
+)
+¦¦U V
+;
+¦¦V W
+}
+§§ 
+catch
+¨¨ 
+(
+¨¨ 
+EntityException
+¨¨ "
+ex
+¨¨# %
+)
+¨¨% &
+{
+©© 
+resultOfOperation
+ªª !
+=
+ªª" #
+ExceptionHandler
+ªª$ 4
+.
+ªª4 5+
+HandleExceptionDataAccesLevel
+ªª5 R
+(
+ªªR S
+resultOfOperation
+ªªS d
+,
+ªªd e
+ex
+ªªf h
+)
+ªªh i
+;
+ªªi j
+ExceptionHandler
+««  
+.
+««  !
+LogException
+««! -
+(
+««- .
+ex
+««. 0
+,
+««0 1!
+ExceptionDictionary
+««2 E
+.
+««E F
+FATAL_EXCEPTION
+««F U
+)
+««U V
+;
+««V W
+}
+¬¬ 
+catch
+­­ 
+(
+­­ 
+SqlException
+­­ 
+ex
+­­  "
+)
+­­" #
+{
+®® 
+resultOfOperation
+―― !
+=
+――" #
+ExceptionHandler
+――$ 4
+.
+――4 5+
+HandleExceptionDataAccesLevel
+――5 R
+(
+――R S
+resultOfOperation
+――S d
+,
+――d e
+ex
+――f h
+)
+――h i
+;
+――i j
+ExceptionHandler
+°°  
+.
+°°  !
+LogException
+°°! -
+(
+°°- .
+ex
+°°. 0
+,
+°°0 1!
+ExceptionDictionary
+°°2 E
+.
+°°E F
+FATAL_EXCEPTION
+°°F U
+)
+°°U V
+;
+°°V W
+}
+±± 
+catch
+²² 
+(
+²² )
+DbEntityValidationException
+²² .
+ex
+²²/ 1
+)
+²²1 2
+{
+³³ 
+resultOfOperation
+΄΄ !
+=
+΄΄" #
+ExceptionHandler
+΄΄$ 4
+.
+΄΄4 5+
+HandleExceptionDataAccesLevel
+΄΄5 R
+(
+΄΄R S
+resultOfOperation
+΄΄S d
+,
+΄΄d e
+ex
+΄΄f h
+)
+΄΄h i
+;
+΄΄i j
+ExceptionHandler
+µµ  
+.
+µµ  !
+LogException
+µµ! -
+(
+µµ- .
+ex
+µµ. 0
+,
+µµ0 1!
+ExceptionDictionary
+µµ2 E
+.
+µµE F
+FATAL_EXCEPTION
+µµF U
+)
+µµU V
+;
+µµV W
+}
+¶¶ 
+return
+·· 
+resultOfOperation
+·· $
+;
+··$ %
+}
+ΈΈ 	
+public
+ΊΊ 
+static
+ΊΊ  
+GenericClassServer
+ΊΊ (
+<
+ΊΊ( )
+List
+ΊΊ) -
+<
+ΊΊ- .
+Question
+ΊΊ. 6
+>
+ΊΊ6 7
+>
+ΊΊ7 8$
+GetQuestionsByCategory
+ΊΊ9 O
+(
+ΊΊO P
+List
+ΊΊP T
+<
+ΊΊT U
+Category
+ΊΊU ]
+>
+ΊΊ] ^
 
 categories
-ΖΖ- 7
+ΊΊ_ i
 )
-ΖΖ7 8
+ΊΊi j
 {
-ΗΗ 
-	contextBD
-ΘΘ !
-.
-ΘΘ! "
-Configuration
-ΘΘ" /
-.
-ΘΘ/ 0 
-LazyLoadingEnabled
-ΘΘ0 B
-=
-ΘΘC D
-false
-ΘΘE J
-;
-ΘΘJ K
-List
-ΙΙ 
+»» 	 
+GenericClassServer
+½½ 
 <
-ΙΙ 
+½½ 
+List
+½½ #
+<
+½½# $
 Question
-ΙΙ %
+½½$ ,
 >
-ΙΙ% &!
-questionPerCategory
-ΙΙ' :
+½½, -
+>
+½½- .
+resultOfOperation
+½½/ @
 =
-ΙΙ; <
-	contextBD
-ΙΙ= F
-.
-ΙΙF G
-	Questions
-ΙΙG P
-.
-ΙΙP Q
-Include
-ΙΙQ X
+½½A B
+new
+½½C F 
+GenericClassServer
+½½G Y
+<
+½½Y Z
+List
+½½Z ^
+<
+½½^ _
+Question
+½½_ g
+>
+½½g h
+>
+½½h i
 (
-ΙΙX Y
+½½i j
+)
+½½j k
+;
+½½k l
+if
+ΎΎ 
+(
+ΎΎ 
+
+categories
+ΎΎ 
+==
+ΎΎ 
+null
+ΎΎ "
+)
+ΎΎ" #
+{
+ΏΏ 
+return
+ΐΐ #
+NullParametersHandler
+ΐΐ ,
+.
+ΐΐ, -*
+HandleNullParametersDataBase
+ΐΐ- I
+(
+ΐΐI J
+resultOfOperation
+ΐΐJ [
+)
+ΐΐ[ \
+;
+ΐΐ\ ]
+}
+ΑΑ 
+try
+ΒΒ 
+{
+ΓΓ 
+using
+ΔΔ 
+(
+ΔΔ 
+var
+ΔΔ 
+	contextBD
+ΔΔ $
+=
+ΔΔ% &
+new
+ΔΔ' *!
+JeopardyDBContainer
+ΔΔ+ >
+(
+ΔΔ> ?
+)
+ΔΔ? @
+)
+ΔΔ@ A
+{
+ΕΕ 
+List
+ΖΖ 
+<
+ΖΖ 
+Question
+ΖΖ !
+>
+ΖΖ! "
+	questions
+ΖΖ# ,
+=
+ΖΖ- .
+new
+ΖΖ/ 2
+List
+ΖΖ3 7
+<
+ΖΖ7 8
+Question
+ΖΖ8 @
+>
+ΖΖ@ A
+(
+ΖΖA B
+)
+ΖΖB C
+;
+ΖΖC D
+foreach
+ΗΗ 
+(
+ΗΗ 
+var
+ΗΗ  
+category
+ΗΗ! )
+in
+ΗΗ* ,
+
+categories
+ΗΗ- 7
+)
+ΗΗ7 8
+{
+ΘΘ 
+	contextBD
+ΙΙ !
+.
+ΙΙ! "
+Configuration
+ΙΙ" /
+.
+ΙΙ/ 0 
+LazyLoadingEnabled
+ΙΙ0 B
+=
+ΙΙC D
+false
+ΙΙE J
+;
+ΙΙJ K
+List
+ΚΚ 
+<
+ΚΚ 
+Question
+ΚΚ %
+>
+ΚΚ% &!
+questionPerCategory
+ΚΚ' :
+=
+ΚΚ; <
+	contextBD
+ΚΚ= F
+.
+ΚΚF G
+	Questions
+ΚΚG P
+.
+ΚΚP Q
+Include
+ΚΚQ X
+(
+ΚΚX Y
 
 Properties
-ΙΙY c
+ΚΚY c
 .
-ΙΙc d
+ΚΚc d
 BdTableNames
-ΙΙd p
+ΚΚd p
 .
-ΙΙp q
+ΚΚp q
 TableAnswer
-ΙΙq |
+ΚΚq |
 )
-ΙΙ| }
+ΚΚ| }
 .
-ΙΙ} ~
-IncludeΙΙ~ …
-(ΙΙ… †
+ΚΚ} ~
+IncludeΚΚ~ …
+(ΚΚ… †
 
-PropertiesΙΙ† 
-.ΙΙ ‘
-BdTableNamesΙΙ‘ 
-.ΙΙ 
-TableCategoryΙΙ «
-)ΙΙ« ¬
-.ΙΙ¬ ­
-WhereΙΙ­ ²
-(ΙΙ² ³
-questionΙΙ³ »
-=>ΙΙΌ Ύ
-questionΙΙΏ Η
-.ΙΙΗ Θ"
-CategoryIdCategoryΙΙΘ Ϊ
-==ΙΙΫ έ
-categoryΙΙή ζ
-.ΙΙζ η
+PropertiesΚΚ† 
+.ΚΚ ‘
+BdTableNamesΚΚ‘ 
+.ΚΚ 
+TableCategoryΚΚ «
+)ΚΚ« ¬
+.ΚΚ¬ ­
+WhereΚΚ­ ²
+(ΚΚ² ³
+questionΚΚ³ »
+=>ΚΚΌ Ύ
+questionΚΚΏ Η
+.ΚΚΗ Θ"
+CategoryIdCategoryΚΚΘ Ϊ
+==ΚΚΫ έ
+categoryΚΚή ζ
+.ΚΚζ η
 
-IdCategoryΙΙη ρ
-)ΙΙρ ς
-.ΙΙς σ
-ToListΙΙσ ω
-(ΙΙω ϊ
-)ΙΙϊ ϋ
-;ΙΙϋ ό
+IdCategoryΚΚη ρ
+)ΚΚρ ς
+.ΚΚς σ
+ToListΚΚσ ω
+(ΚΚω ϊ
+)ΚΚϊ ϋ
+;ΚΚϋ ό
 var
-ΚΚ 
+ΛΛ 
 questionByPoints
-ΚΚ ,
+ΛΛ ,
 =
-ΚΚ- .!
+ΛΛ- .!
 questionPerCategory
-ΚΚ/ B
+ΛΛ/ B
 .
-ΚΚB C
+ΛΛB C
 Where
-ΚΚC H
+ΛΛC H
 (
-ΚΚH I
+ΛΛH I
 questionPoints
-ΚΚI W
+ΛΛI W
 =>
-ΚΚX Z
+ΛΛX Z
 questionPoints
-ΚΚ[ i
+ΛΛ[ i
 .
-ΚΚi j
+ΛΛi j
 
 ValueWorth
-ΚΚj t
+ΛΛj t
 ==
-ΚΚu w&
-VALUE_OF_EASY_QUESTIONSΚΚx 
-)ΚΚ 
-.ΚΚ ‘
-ToListΚΚ‘ —
-(ΚΚ— 
-)ΚΚ ™
-;ΚΚ™ 
-Random
-ΛΛ 
-random
-ΛΛ %
-=
-ΛΛ& '
-new
-ΛΛ( +
-Random
-ΛΛ, 2
-(
-ΛΛ2 3
-)
-ΛΛ3 4
-;
-ΛΛ4 5
+ΛΛu w&
+VALUE_OF_EASY_QUESTIONSΛΛx 
+)ΛΛ 
+.ΛΛ ‘
+ToListΛΛ‘ —
+(ΛΛ— 
+)ΛΛ ™
+;ΛΛ™ 
 	questions
 ΜΜ !
 .
@@ -4752,31 +4936,27 @@ ValueWorth
 questionSelected
 ΜΜ? O
 =>
-ΜΜP R
-random
-ΜΜS Y
+ΜΜP R
+AleatoryGenerator
+ΜΜS d
 .
-ΜΜY Z
-Next
-ΜΜZ ^
+ΜΜd e
+GetAleatoryNumber
+ΜΜe v
 (
-ΜΜ^ _
+ΜΜv w
 )
-ΜΜ_ `
+ΜΜw x
 )
-ΜΜ` a
+ΜΜx y
 .
-ΜΜa b
+ΜΜy z
 First
-ΜΜb g
-(
-ΜΜg h
-)
-ΜΜh i
-)
-ΜΜi j
-;
-ΜΜj k
+ΜΜz 
+(ΜΜ €
+)ΜΜ€ 
+)ΜΜ ‚
+;ΜΜ‚ ƒ
 questionByPoints
 ΝΝ (
 =
@@ -4828,31 +5008,27 @@ ValueWorth
 questionSelected
 ΞΞ? O
 =>
-ΞΞP R
-random
-ΞΞS Y
+ΞΞP R
+AleatoryGenerator
+ΞΞS d
 .
-ΞΞY Z
-Next
-ΞΞZ ^
+ΞΞd e
+GetAleatoryNumber
+ΞΞe v
 (
-ΞΞ^ _
+ΞΞv w
 )
-ΞΞ_ `
+ΞΞw x
 )
-ΞΞ` a
+ΞΞx y
 .
-ΞΞa b
+ΞΞy z
 First
-ΞΞb g
-(
-ΞΞg h
-)
-ΞΞh i
-)
-ΞΞi j
-;
-ΞΞj k
+ΞΞz 
+(ΞΞ €
+)ΞΞ€ 
+)ΞΞ ‚
+;ΞΞ‚ ƒ
 questionByPoints
 ΟΟ (
 =
@@ -4904,31 +5080,27 @@ ValueWorth
 questionSelected
 ΠΠ? O
 =>
-ΠΠP R
-random
-ΠΠS Y
+ΠΠP R
+AleatoryGenerator
+ΠΠS d
 .
-ΠΠY Z
-Next
-ΠΠZ ^
+ΠΠd e
+GetAleatoryNumber
+ΠΠe v
 (
-ΠΠ^ _
+ΠΠv w
 )
-ΠΠ_ `
+ΠΠw x
 )
-ΠΠ` a
+ΠΠx y
 .
-ΠΠa b
+ΠΠy z
 First
-ΠΠb g
-(
-ΠΠg h
-)
-ΠΠh i
-)
-ΠΠi j
-;
-ΠΠj k
+ΠΠz 
+(ΠΠ €
+)ΠΠ€ 
+)ΠΠ ‚
+;ΠΠ‚ ƒ
 }
 ΡΡ 
 if
@@ -5471,2745 +5643,2699 @@ IdCategory
 )
 ††{ |
 ;
-††| }
-Random
-‡‡ 
-random
-‡‡ !
-=
-‡‡" #
-new
-‡‡$ '
-Random
-‡‡( .
-(
-‡‡. /
-)
-‡‡/ 0
-;
-‡‡0 1
+††| }
 Category
- 
+‡‡ 
 specialCategory
- ,
+‡‡ ,
 =
-- .
+‡‡- .
 
 categories
-/ 9
+‡‡/ 9
 .
-9 :
+‡‡9 :
 OrderBy
-: A
+‡‡: A
 (
-A B
+‡‡A B
 questionSelected
-B R
+‡‡B R
 =>
-S U
-random
-V \
+‡‡S U
+AleatoryGenerator
+‡‡V g
 .
-\ ]
-Next
-] a
+‡‡g h
+GetAleatoryNumber
+‡‡h y
 (
-a b
+‡‡y z
 )
-b c
+‡‡z {
 )
-c d
+‡‡{ |
 .
-d e
-FirstOrDefault
-e s
-(
-s t
-)
-t u
-;
-u v
+‡‡| }
+FirstOrDefault‡‡} ‹
+(‡‡‹ 
+)‡‡ 
+;‡‡ 
 List
-‰‰ 
+ 
 <
-‰‰ 
+ 
 Question
-‰‰ !
+ !
 >
-‰‰! "!
+! "!
 questionPerCategory
-‰‰# 6
+# 6
 =
-‰‰7 8
+7 8
 	contextBD
-‰‰9 B
+9 B
 .
-‰‰B C
+B C
 	Questions
-‰‰C L
+C L
 .
-‰‰L M
+L M
 Include
-‰‰M T
+M T
 (
-‰‰T U
+T U
 
 Properties
-‰‰U _
+U _
 .
-‰‰_ `
+_ `
 BdTableNames
-‰‰` l
+` l
 .
-‰‰l m
+l m
 TableAnswer
-‰‰m x
+m x
 )
-‰‰x y
+x y
 .
-‰‰y z
-Include‰‰z 
-(‰‰ ‚
+y z
+Includez 
+( ‚
 
-Properties‰‰‚ 
-.‰‰ 
-BdTableNames‰‰ ™
-.‰‰™ 
-TableCategory‰‰ §
-)‰‰§ ¨
-.‰‰¨ ©
-Where‰‰© ®
-(‰‰® ―
-question‰‰― ·
-=>‰‰Έ Ί
-question‰‰» Γ
-.‰‰Γ Δ"
-CategoryIdCategory‰‰Δ Φ
-==‰‰Χ Ω
-specialCategory‰‰Ϊ ι
-.‰‰ι κ
+Properties‚ 
+. 
+BdTableNames ™
+.™ 
+TableCategory §
+)§ ¨
+.¨ ©
+Where© ®
+(® ―
+question― ·
+=>Έ Ί
+question» Γ
+.Γ Δ"
+CategoryIdCategoryΔ Φ
+==Χ Ω
+specialCategoryΪ ι
+.ι κ
 
-IdCategory‰‰κ τ
-)‰‰τ υ
-.‰‰υ φ
-ToList‰‰φ ό
-(‰‰ό ύ
-)‰‰ύ ώ
-;‰‰ώ ÿ
+IdCategoryκ τ
+)τ υ
+.υ φ
+ToListφ ό
+(ό ύ
+)ύ ώ
+;ώ ÿ
 var
- 
+‰‰ 
 lastQuestion
- $
+‰‰ $
 =
-% &!
+‰‰% &!
 questionPerCategory
-' :
+‰‰' :
 .
-: ;
+‰‰: ;
 OrderBy
-; B
+‰‰; B
 (
-B C
+‰‰B C
 question
-C K
+‰‰C K
 =>
-L N
-random
-O U
+‰‰L N
+AleatoryGenerator
+‰‰O `
 .
-U V
-Next
-V Z
+‰‰` a
+GetAleatoryNumber
+‰‰a r
 (
-Z [
+‰‰r s
 )
-[ \
+‰‰s t
 )
-\ ]
+‰‰t u
 .
-] ^
+‰‰u v
 First
-^ c
+‰‰v {
 (
-c d
+‰‰{ |
 )
-d e
+‰‰| }
 ;
-e f
+‰‰} ~
 if
-‹‹ 
+ 
 (
-‹‹ 
+ 
 lastQuestion
-‹‹ $
+ $
 !=
-‹‹% '
+% '
 null
-‹‹( ,
+( ,
 )
-‹‹, -
+, -
 {
- 
+‹‹ 
 resultOfOperation
- )
+ )
 .
-) *
+) *
 	CodeEvent
-* 3
+* 3
 =
-4 5!
+4 5!
 ExceptionDictionary
-6 I
+6 I
 .
-I J
+I J
 SUCCESFULL_EVENT
-J Z
+J Z
 ;
-Z [
+Z [
 }
- 
+ 
 else
- 
+ 
 {
- 
+ 
 resultOfOperation
-‘‘ )
+ )
 .
-‘‘) *
+) *
 	CodeEvent
-‘‘* 3
+* 3
 =
-‘‘4 5!
+4 5!
 ExceptionDictionary
-‘‘6 I
+6 I
 .
-‘‘I J 
+I J 
 UNSUCCESFULL_EVENT
-‘‘J \
+J \
 ;
-‘‘\ ]
+\ ]
 }
-’’ 
+‘‘ 
 resultOfOperation
-““ %
+’’ %
 .
-““% &
+’’% &
 ObjectSaved
-““& 1
+’’& 1
 =
-““2 3
+’’2 3
 lastQuestion
-““4 @
+’’4 @
 ;
-““@ A
+’’@ A
 return
-”” 
+““ 
 resultOfOperation
-”” ,
+““ ,
 ;
-””, -
+““, -
 }
-•• 
+”” 
 }
-–– 
+•• 
 catch
-—— 
+–– 
 (
-—— #
+–– #
 ArgumentNullException
-—— (
+–– (
 ex
-——) +
+––) +
 )
-——+ ,
+––+ ,
 {
- 
+—— 
 resultOfOperation
-™™ !
+ !
 =
-™™" #
+" #
 ExceptionHandler
-™™$ 4
+$ 4
 .
-™™4 5+
+4 5+
 HandleExceptionDataAccesLevel
-™™5 R
+5 R
 (
-™™R S
+R S
 resultOfOperation
-™™S d
+S d
 ,
-™™d e
+d e
 ex
-™™f h
+f h
 )
-™™h i
+h i
 ;
-™™i j
+i j
 ExceptionHandler
-  
+™™  
 .
-  !
+™™  !
 LogException
-! -
+™™! -
 (
-- .
+™™- .
 ex
-. 0
+™™. 0
 ,
-0 1!
+™™0 1!
 ExceptionDictionary
-2 E
+™™2 E
 .
-E F
+™™E F
 FATAL_EXCEPTION
-F U
+™™F U
 )
-U V
+™™U V
 ;
-V W
+™™V W
 }
-›› 
+ 
 catch
- 
+›› 
 (
- 
+›› 
 EntityException
- "
+›› "
 ex
-# %
+››# %
 )
-% &
+››% &
 {
- 
+ 
 resultOfOperation
- !
+ !
 =
-" #
+" #
 ExceptionHandler
-$ 4
+$ 4
 .
-4 5+
+4 5+
 HandleExceptionDataAccesLevel
-5 R
+5 R
 (
-R S
+R S
 resultOfOperation
-S d
+S d
 ,
-d e
+d e
 ex
-f h
+f h
 )
-h i
+h i
 ;
-i j
+i j
 ExceptionHandler
-  
+  
 .
-  !
+  !
 LogException
-! -
+! -
 (
-- .
+- .
 ex
-. 0
+. 0
 ,
-0 1!
+0 1!
 ExceptionDictionary
-2 E
+2 E
 .
-E F
+E F
 FATAL_EXCEPTION
-F U
+F U
 )
-U V
+U V
 ;
-V W
+V W
 }
-   
+ 
 catch
-΅΅ 
+   
 (
-΅΅ 
+   
 SqlException
-΅΅ 
+   
 ex
-΅΅  "
+    "
 )
-΅΅" #
+  " #
 {
-ΆΆ 
+΅΅ 
 resultOfOperation
-££ !
+ΆΆ !
 =
-££" #
+ΆΆ" #
 ExceptionHandler
-££$ 4
+ΆΆ$ 4
 .
-££4 5+
+ΆΆ4 5+
 HandleExceptionDataAccesLevel
-££5 R
+ΆΆ5 R
 (
-££R S
+ΆΆR S
 resultOfOperation
-££S d
+ΆΆS d
 ,
-££d e
+ΆΆd e
 ex
-££f h
+ΆΆf h
 )
-££h i
+ΆΆh i
 ;
-££i j
+ΆΆi j
 ExceptionHandler
-¤¤  
+££  
 .
-¤¤  !
+££  !
 LogException
-¤¤! -
+££! -
 (
-¤¤- .
+££- .
 ex
-¤¤. 0
+££. 0
 ,
-¤¤0 1!
+££0 1!
 ExceptionDictionary
-¤¤2 E
+££2 E
 .
-¤¤E F
+££E F
 FATAL_EXCEPTION
-¤¤F U
+££F U
 )
-¤¤U V
+££U V
 ;
-¤¤V W
+££V W
 }
-¥¥ 
+¤¤ 
 catch
-¦¦ 
+¥¥ 
 (
-¦¦ )
+¥¥ )
 DbEntityValidationException
-¦¦ .
+¥¥ .
 ex
-¦¦/ 1
+¥¥/ 1
 )
-¦¦1 2
+¥¥1 2
 {
-§§ 
+¦¦ 
 resultOfOperation
-¨¨ !
+§§ !
 =
-¨¨" #
+§§" #
 ExceptionHandler
-¨¨$ 4
+§§$ 4
 .
-¨¨4 5+
+§§4 5+
 HandleExceptionDataAccesLevel
-¨¨5 R
+§§5 R
 (
-¨¨R S
+§§R S
 resultOfOperation
-¨¨S d
+§§S d
 ,
-¨¨d e
+§§d e
 ex
-¨¨f h
+§§f h
 )
-¨¨h i
+§§h i
 ;
-¨¨i j
+§§i j
 ExceptionHandler
-©©  
+¨¨  
 .
-©©  !
+¨¨  !
 LogException
-©©! -
+¨¨! -
 (
-©©- .
+¨¨- .
 ex
-©©. 0
+¨¨. 0
 ,
-©©0 1!
+¨¨0 1!
 ExceptionDictionary
-©©2 E
+¨¨2 E
 .
-©©E F
+¨¨E F
 FATAL_EXCEPTION
-©©F U
+¨¨F U
 )
-©©U V
+¨¨U V
 ;
-©©V W
+¨¨V W
 }
-ªª 
+©© 
 return
-«« 
+ªª 
 resultOfOperation
-«« $
+ªª $
 ;
-««$ %
+ªª$ %
 }
-¬¬ 	
+«« 	
 public
-®® 
+­­ 
 static
-®®  
+­­  
 GenericClassServer
-®® (
+­­ (
 <
-®®( )
+­­( )
 List
-®®) -
+­­) -
 <
-®®- .
+­­- .
 Awnser
-®®. 4
+­­. 4
 >
-®®4 5
+­­4 5
 >
-®®5 6#
+­­5 6#
 GetAwnsersOfQuestions
-®®7 L
+­­7 L
 (
-®®L M
+­­L M
 List
-®®M Q
+­­M Q
 <
-®®Q R
+­­Q R
 Question
-®®R Z
+­­R Z
 >
-®®Z [
+­­Z [
 	questions
-®®\ e
+­­\ e
 )
-®®e f
+­­e f
 {
-―― 	 
+®® 	 
 GenericClassServer
-±± 
+°° 
 <
-±± 
+°° 
 List
-±± #
+°° #
 <
-±±# $
+°°# $
 Awnser
-±±$ *
+°°$ *
 >
-±±* +
+°°* +
 >
-±±+ ,
+°°+ ,
 resultOfOperation
-±±- >
+°°- >
 =
-±±? @
+°°? @
 new
-±±A D 
+°°A D 
 GenericClassServer
-±±E W
+°°E W
 <
-±±W X
+°°W X
 List
-±±X \
+°°X \
 <
-±±\ ]
+°°\ ]
 Awnser
-±±] c
+°°] c
 >
-±±c d
+°°c d
 >
-±±d e
+°°d e
 (
-±±e f
+°°e f
 )
-±±f g
+°°f g
 ;
-±±g h
+°°g h
 if
-²² 
+±± 
 (
-²² 
+±± 
 	questions
-²² 
+±± 
 ==
-²² 
+±± 
 null
-²² !
+±± !
 )
-²²! "
+±±! "
 {
-³³ 
+²² 
 return
-΄΄ #
+³³ #
 NullParametersHandler
-΄΄ ,
+³³ ,
 .
-΄΄, -*
+³³, -*
 HandleNullParametersDataBase
-΄΄- I
+³³- I
 (
-΄΄I J
+³³I J
 resultOfOperation
-΄΄J [
+³³J [
 )
-΄΄[ \
+³³[ \
 ;
-΄΄\ ]
+³³\ ]
 }
-µµ 
+΄΄ 
 try
-¶¶ 
+µµ 
 {
-·· 
+¶¶ 
 using
-ΈΈ 
+·· 
 (
-ΈΈ 
+·· 
 var
-ΈΈ 
+·· 
 	contextBD
-ΈΈ $
+·· $
 =
-ΈΈ% &
+··% &
 new
-ΈΈ' *!
+··' *!
 JeopardyDBContainer
-ΈΈ+ >
+··+ >
 (
-ΈΈ> ?
+··> ?
 )
-ΈΈ? @
+··? @
 )
-ΈΈ@ A
+··@ A
 {
-ΉΉ 
+ΈΈ 
 List
-ΊΊ 
+ΉΉ 
 <
-ΊΊ 
+ΉΉ 
 Awnser
-ΊΊ 
+ΉΉ 
 >
-ΊΊ  
+ΉΉ  
 answersToReturn
-ΊΊ! 0
+ΉΉ! 0
 =
-ΊΊ1 2
+ΉΉ1 2
 new
-ΊΊ3 6
+ΉΉ3 6
 List
-ΊΊ7 ;
+ΉΉ7 ;
 <
-ΊΊ; <
+ΉΉ; <
 Awnser
-ΊΊ< B
+ΉΉ< B
 >
-ΊΊB C
+ΉΉB C
 (
-ΊΊC D
+ΉΉC D
 )
-ΊΊD E
+ΉΉD E
 ;
-ΊΊE F
+ΉΉE F
 foreach
-»» 
+ΊΊ 
 (
-»» 
+ΊΊ 
 var
-»»  
+ΊΊ  
 question
-»»! )
+ΊΊ! )
 in
-»»* ,
+ΊΊ* ,
 	questions
-»»- 6
+ΊΊ- 6
 )
-»»6 7
+ΊΊ6 7
 {
-ΌΌ 
+»» 
 	contextBD
-½½ !
+ΌΌ !
 .
-½½! "
+ΌΌ! "
 Configuration
-½½" /
+ΌΌ" /
 .
-½½/ 0 
+ΌΌ/ 0 
 LazyLoadingEnabled
-½½0 B
+ΌΌ0 B
 =
-½½C D
+ΌΌC D
 false
-½½E J
+ΌΌE J
 ;
-½½J K
+ΌΌJ K
 List
-ΎΎ 
+½½ 
 <
-ΎΎ 
+½½ 
 Awnser
-ΎΎ #
+½½ #
 >
-ΎΎ# $
+½½# $
 rightAnswer
-ΎΎ% 0
+½½% 0
 =
-ΎΎ1 2
+½½1 2
 	contextBD
-ΎΎ3 <
+½½3 <
 .
-ΎΎ< =
+½½< =
 Awnsers
-ΎΎ= D
+½½= D
 .
-ΎΎD E
+½½D E
 Include
-ΎΎE L
+½½E L
 (
-ΎΎL M
+½½L M
 
 Properties
-ΎΎM W
+½½M W
 .
-ΎΎW X
+½½W X
 BdTableNames
-ΎΎX d
+½½X d
 .
-ΎΎd e
+½½d e
 TableCategory
-ΎΎe r
+½½e r
 )
-ΎΎr s
+½½r s
 .
-ΎΎs t
+½½s t
 Where
-ΎΎt y
+½½t y
 (
-ΎΎy z
-answerΎΎz €
-=>ΎΎ ƒ
-answerΎΎ„ 
-.ΎΎ ‹
-IdAwnserΎΎ‹ “
-==ΎΎ” –
-questionΎΎ— 
-.ΎΎ  
-AwnserΎΎ  ¦
-.ΎΎ¦ §
-IdAwnserΎΎ§ ―
-)ΎΎ― °
-.ΎΎ° ±
-ToListΎΎ± ·
-(ΎΎ· Έ
-)ΎΎΈ Ή
-;ΎΎΉ Ί
+½½y z
+answer½½z €
+=>½½ ƒ
+answer½½„ 
+.½½ ‹
+IdAwnser½½‹ “
+==½½” –
+question½½— 
+.½½  
+Awnser½½  ¦
+.½½¦ §
+IdAwnser½½§ ―
+)½½― °
+.½½° ±
+ToList½½± ·
+(½½· Έ
+)½½Έ Ή
+;½½Ή Ί
 var
-ΏΏ %
+ΎΎ %
 wrongAnswersPerQuestion
-ΏΏ 3
+ΎΎ 3
 =
-ΏΏ4 5
+ΎΎ4 5
 	contextBD
-ΏΏ6 ?
+ΎΎ6 ?
 .
-ΏΏ? @
+ΎΎ? @
 Awnsers
-ΏΏ@ G
+ΎΎ@ G
 .
-ΏΏG H
+ΎΎG H
 Include
-ΏΏH O
+ΎΎH O
 (
-ΏΏO P
+ΎΎO P
 
 Properties
-ΏΏP Z
+ΎΎP Z
 .
-ΏΏZ [
+ΎΎZ [
 BdTableNames
-ΏΏ[ g
+ΎΎ[ g
 .
-ΏΏg h
+ΎΎg h
 TableCategory
-ΏΏh u
+ΎΎh u
 )
-ΏΏu v
+ΎΎu v
 .
-ΏΏv w
+ΎΎv w
 Where
-ΏΏw |
+ΎΎw |
 (
-ΏΏ| }
-answerΏΏ} ƒ
-=>ΏΏ„ †
-answerΏΏ‡ 
-.ΏΏ 
-CategoryΏΏ –
-.ΏΏ– —
+ΎΎ| }
+answerΎΎ} ƒ
+=>ΎΎ„ †
+answerΎΎ‡ 
+.ΎΎ 
+CategoryΎΎ –
+.ΎΎ– —
 
-IdCategoryΏΏ— ΅
-==ΏΏΆ ¤
-questionΏΏ¥ ­
-.ΏΏ­ ®
-CategoryΏΏ® ¶
-.ΏΏ¶ ·
+IdCategoryΎΎ— ΅
+==ΎΎΆ ¤
+questionΎΎ¥ ­
+.ΎΎ­ ®
+CategoryΎΎ® ¶
+.ΎΎ¶ ·
 
-IdCategoryΏΏ· Α
-&&ΏΏΒ Δ
-answerΏΏΕ Λ
-.ΏΏΛ Μ
-IdAwnserΏΏΜ Τ
-!=ΏΏΥ Χ
-questionΏΏΨ ΰ
-.ΏΏΰ α
-AwnserΏΏα η
-.ΏΏη θ
-IdAwnserΏΏθ π
-)ΏΏπ ρ
-.ΏΏρ ς
-ToListΏΏς ψ
-(ΏΏψ ω
-)ΏΏω ϊ
-;ΏΏϊ ϋ
+IdCategoryΎΎ· Α
+&&ΎΎΒ Δ
+answerΎΎΕ Λ
+.ΎΎΛ Μ
+IdAwnserΎΎΜ Τ
+!=ΎΎΥ Χ
+questionΎΎΨ ΰ
+.ΎΎΰ α
+AwnserΎΎα η
+.ΎΎη θ
+IdAwnserΎΎθ π
+)ΎΎπ ρ
+.ΎΎρ ς
+ToListΎΎς ψ
+(ΎΎψ ω
+)ΎΎω ϊ
+;ΎΎϊ ϋ
+answersToReturn
+ΏΏ '
+.
+ΏΏ' (
+Add
+ΏΏ( +
+(
+ΏΏ+ ,
+rightAnswer
+ΏΏ, 7
+.
+ΏΏ7 8
+FirstOrDefault
+ΏΏ8 F
+(
+ΏΏF G
+)
+ΏΏG H
+)
+ΏΏH I
+;
+ΏΏI J
 answersToReturn
 ΐΐ '
 .
-ΐΐ' (
-Add
-ΐΐ( +
+ΐΐ' (
+AddRange
+ΐΐ( 0
 (
-ΐΐ+ ,
-rightAnswer
-ΐΐ, 7
+ΐΐ0 1%
+wrongAnswersPerQuestion
+ΐΐ1 H
 .
-ΐΐ7 8
-FirstOrDefault
-ΐΐ8 F
+ΐΐH I
+OrderBy
+ΐΐI P
 (
-ΐΐF G
-)
-ΐΐG H
-)
-ΐΐH I
-;
-ΐΐI J
-Random
-ΑΑ 
-random
-ΑΑ %
-=
-ΑΑ& '
-new
-ΑΑ( +
-Random
-ΑΑ, 2
+ΐΐP Q
+answerSelected
+ΐΐQ _
+=>
+ΐΐ` b
+AleatoryGenerator
+ΐΐc t
+.
+ΐΐt u 
+GetAleatoryNumberΐΐu †
+(ΐΐ† ‡
+)ΐΐ‡ 
+)ΐΐ ‰
+.ΐΐ‰ 
+Takeΐΐ 
+(ΐΐ 
+$numΐΐ 
+)ΐΐ ‘
+.ΐΐ‘ ’
+ToListΐΐ’ 
+(ΐΐ ™
+)ΐΐ™ 
+)ΐΐ ›
+;ΐΐ› 
+}
+ΑΑ 
+if
+ΒΒ 
 (
-ΑΑ2 3
-)
-ΑΑ3 4
-;
-ΑΑ4 5
+ΒΒ 
 answersToReturn
 ΒΒ '
 .
-ΒΒ' (
-AddRange
-ΒΒ( 0
-(
-ΒΒ0 1%
-wrongAnswersPerQuestion
-ΒΒ1 H
-.
-ΒΒH I
-OrderBy
-ΒΒI P
-(
-ΒΒP Q
-answerSelected
-ΒΒQ _
-=>
-ΒΒ` b
-random
-ΒΒc i
-.
-ΒΒi j
-Next
-ΒΒj n
-(
-ΒΒn o
-)
-ΒΒo p
-)
-ΒΒp q
-.
-ΒΒq r
-Take
-ΒΒr v
-(
-ΒΒv w
-$num
-ΒΒw x
-)
-ΒΒx y
-.
-ΒΒy z
-ToListΒΒz €
-(ΒΒ€ 
-)ΒΒ ‚
-)ΒΒ‚ ƒ
-;ΒΒƒ „
-}
-ΓΓ 
-if
-ΔΔ 
-(
-ΔΔ 
-answersToReturn
-ΔΔ '
-.
-ΔΔ' (
+ΒΒ' (
 Count
-ΔΔ( -
+ΒΒ( -
 ==
-ΔΔ. 0%
+ΒΒ. 0%
 NUMBER_OF_TOTAL_ANSWERS
-ΔΔ1 H
+ΒΒ1 H
 )
-ΔΔH I
+ΒΒH I
 {
-ΕΕ 
+ΓΓ 
 resultOfOperation
-ΖΖ )
+ΔΔ )
 .
-ΖΖ) *
+ΔΔ) *
 	CodeEvent
-ΖΖ* 3
+ΔΔ* 3
 =
-ΖΖ4 5!
+ΔΔ4 5!
 ExceptionDictionary
-ΖΖ6 I
+ΔΔ6 I
 .
-ΖΖI J
+ΔΔI J
 SUCCESFULL_EVENT
-ΖΖJ Z
+ΔΔJ Z
 ;
-ΖΖZ [
+ΔΔZ [
 }
-ΗΗ 
+ΕΕ 
 else
-ΘΘ 
+ΖΖ 
 {
+ΗΗ 
+resultOfOperation
+ΘΘ )
+.
+ΘΘ) *
+	CodeEvent
+ΘΘ* 3
+=
+ΘΘ4 5!
+ExceptionDictionary
+ΘΘ6 I
+.
+ΘΘI J 
+UNSUCCESFULL_EVENT
+ΘΘJ \
+;
+ΘΘ\ ]
+}
 ΙΙ 
 resultOfOperation
-ΚΚ )
+ΚΚ %
 .
-ΚΚ) *
-	CodeEvent
-ΚΚ* 3
-=
-ΚΚ4 5!
-ExceptionDictionary
-ΚΚ6 I
-.
-ΚΚI J 
-UNSUCCESFULL_EVENT
-ΚΚJ \
-;
-ΚΚ\ ]
-}
-ΛΛ 
-resultOfOperation
-ΜΜ %
-.
-ΜΜ% &
+ΚΚ% &
 ObjectSaved
-ΜΜ& 1
+ΚΚ& 1
 =
-ΜΜ2 3
+ΚΚ2 3
 answersToReturn
-ΜΜ4 C
+ΚΚ4 C
 ;
-ΜΜC D
+ΚΚC D
 return
-ΝΝ 
+ΛΛ 
 resultOfOperation
-ΝΝ ,
+ΛΛ ,
 ;
-ΝΝ, -
+ΛΛ, -
 }
-ΞΞ 
+ΜΜ 
 }
-ΟΟ 
+ΝΝ 
 catch
-ΠΠ 
+ΞΞ 
 (
-ΠΠ #
+ΞΞ #
 ArgumentNullException
-ΠΠ (
+ΞΞ (
 ex
-ΠΠ) +
+ΞΞ) +
 )
-ΠΠ+ ,
+ΞΞ+ ,
 {
-ΡΡ 
+ΟΟ 
 resultOfOperation
-ÒÒ !
+ΠΠ !
 =
-ÒÒ" #
+ΠΠ" #
 ExceptionHandler
-ÒÒ$ 4
+ΠΠ$ 4
 .
-ÒÒ4 5+
+ΠΠ4 5+
 HandleExceptionDataAccesLevel
-ÒÒ5 R
+ΠΠ5 R
 (
-ÒÒR S
+ΠΠR S
 resultOfOperation
-ÒÒS d
+ΠΠS d
 ,
-ÒÒd e
+ΠΠd e
 ex
-ÒÒf h
+ΠΠf h
 )
-ÒÒh i
+ΠΠh i
 ;
-ÒÒi j
+ΠΠi j
 ExceptionHandler
-ΣΣ  
+ΡΡ  
 .
-ΣΣ  !
+ΡΡ  !
 LogException
-ΣΣ! -
+ΡΡ! -
 (
-ΣΣ- .
+ΡΡ- .
 ex
-ΣΣ. 0
+ΡΡ. 0
 ,
-ΣΣ0 1!
+ΡΡ0 1!
 ExceptionDictionary
-ΣΣ2 E
+ΡΡ2 E
 .
-ΣΣE F
+ΡΡE F
 FATAL_EXCEPTION
-ΣΣF U
+ΡΡF U
 )
-ΣΣU V
+ΡΡU V
 ;
-ΣΣV W
+ΡΡV W
 }
-ΤΤ 
+ÒÒ 
 catch
-ΥΥ 
+ΣΣ 
 (
-ΥΥ 
+ΣΣ 
 EntityException
-ΥΥ "
+ΣΣ "
 ex
-ΥΥ# %
+ΣΣ# %
 )
-ΥΥ% &
+ΣΣ% &
 {
-ΦΦ 
+ΤΤ 
 resultOfOperation
-ΧΧ !
+ΥΥ !
 =
-ΧΧ" #
+ΥΥ" #
 ExceptionHandler
-ΧΧ$ 4
+ΥΥ$ 4
 .
-ΧΧ4 5+
+ΥΥ4 5+
 HandleExceptionDataAccesLevel
-ΧΧ5 R
+ΥΥ5 R
 (
-ΧΧR S
+ΥΥR S
 resultOfOperation
-ΧΧS d
+ΥΥS d
 ,
-ΧΧd e
+ΥΥd e
 ex
-ΧΧf h
+ΥΥf h
 )
-ΧΧh i
+ΥΥh i
 ;
-ΧΧi j
+ΥΥi j
 ExceptionHandler
-ΨΨ  
+ΦΦ  
 .
-ΨΨ  !
+ΦΦ  !
 LogException
-ΨΨ! -
+ΦΦ! -
 (
-ΨΨ- .
+ΦΦ- .
 ex
-ΨΨ. 0
+ΦΦ. 0
 ,
-ΨΨ0 1!
+ΦΦ0 1!
 ExceptionDictionary
-ΨΨ2 E
+ΦΦ2 E
 .
-ΨΨE F
+ΦΦE F
 FATAL_EXCEPTION
-ΨΨF U
+ΦΦF U
 )
-ΨΨU V
+ΦΦU V
 ;
-ΨΨV W
+ΦΦV W
 }
-ΩΩ 
+ΧΧ 
 catch
-ΪΪ 
+ΨΨ 
 (
-ΪΪ 
+ΨΨ 
 SqlException
-ΪΪ 
+ΨΨ 
 ex
-ΪΪ  "
+ΨΨ  "
 )
-ΪΪ" #
+ΨΨ" #
 {
-ΫΫ 
+ΩΩ 
 resultOfOperation
-άά !
+ΪΪ !
 =
-άά" #
+ΪΪ" #
 ExceptionHandler
-άά$ 4
+ΪΪ$ 4
 .
-άά4 5+
+ΪΪ4 5+
 HandleExceptionDataAccesLevel
-άά5 R
+ΪΪ5 R
 (
-άάR S
+ΪΪR S
 resultOfOperation
-άάS d
+ΪΪS d
 ,
-άάd e
+ΪΪd e
 ex
-άάf h
+ΪΪf h
 )
-άάh i
+ΪΪh i
 ;
-άάi j
+ΪΪi j
 ExceptionHandler
-έέ  
+ΫΫ  
 .
-έέ  !
+ΫΫ  !
 LogException
-έέ! -
+ΫΫ! -
 (
-έέ- .
+ΫΫ- .
 ex
-έέ. 0
+ΫΫ. 0
 ,
-έέ0 1!
+ΫΫ0 1!
 ExceptionDictionary
-έέ2 E
+ΫΫ2 E
 .
-έέE F
+ΫΫE F
 FATAL_EXCEPTION
-έέF U
+ΫΫF U
 )
-έέU V
+ΫΫU V
 ;
-έέV W
+ΫΫV W
 }
-ήή 
+άά 
 catch
-ίί 
+έέ 
 (
-ίί )
+έέ )
 DbEntityValidationException
-ίί .
+έέ .
 ex
-ίί/ 1
+έέ/ 1
 )
-ίί1 2
+έέ1 2
 {
-ΰΰ 
+ήή 
 resultOfOperation
-αα !
+ίί !
 =
-αα" #
+ίί" #
 ExceptionHandler
-αα$ 4
+ίί$ 4
 .
-αα4 5+
+ίί4 5+
 HandleExceptionDataAccesLevel
-αα5 R
+ίί5 R
 (
-ααR S
+ίίR S
 resultOfOperation
-ααS d
+ίίS d
 ,
-ααd e
+ίίd e
 ex
-ααf h
+ίίf h
 )
-ααh i
+ίίh i
 ;
-ααi j
+ίίi j
 ExceptionHandler
-ββ  
+ΰΰ  
 .
-ββ  !
+ΰΰ  !
 LogException
-ββ! -
+ΰΰ! -
 (
-ββ- .
+ΰΰ- .
 ex
-ββ. 0
+ΰΰ. 0
 ,
-ββ0 1!
+ΰΰ0 1!
 ExceptionDictionary
-ββ2 E
+ΰΰ2 E
 .
-ββE F
+ΰΰE F
 FATAL_EXCEPTION
-ββF U
+ΰΰF U
 )
-ββU V
+ΰΰU V
 ;
-ββV W
+ΰΰV W
 }
-γγ 
+αα 
 return
-δδ 
+ββ 
 resultOfOperation
-δδ $
+ββ $
 ;
-δδ$ %
+ββ$ %
 }
-εε 	
+γγ 	
 public
-ηη 
+εε 
 static
-ηη 
+εε 
 int
-ηη &
+εε &
 SaveGamePlayerInDataBase
-ηη 2
+εε 2
 (
-ηη2 3
+εε2 3
 
 GamePlayer
-ηη3 =
+εε3 =
 gamePlayers
-ηη> I
+εε> I
 )
-ηηI J
+εεI J
 {
-θθ 	
+ζζ 	
 int
-ιι 
+ηη 
 resultOfOperation
-ιι !
+ηη !
 =
-ιι" #!
+ηη" #!
 ExceptionDictionary
-ιι$ 7
+ηη$ 7
 .
-ιι7 8 
+ηη7 8 
 UNSUCCESFULL_EVENT
-ιι8 J
+ηη8 J
 ;
-ιιJ K
+ηηJ K
 if
-κκ 
+θθ 
 (
-κκ 
+θθ 
 gamePlayers
-κκ 
+θθ 
 ==
-κκ 
+θθ 
 null
-κκ #
+θθ #
 )
-κκ# $
+θθ# $
 {
-λλ 
+ιι 
 return
-μμ !
+κκ !
 ExceptionDictionary
-μμ *
+κκ *
 .
-μμ* +
+κκ* +
 NULL_PARAEMETER
-μμ+ :
+κκ+ :
 ;
-μμ: ;
+κκ: ;
 }
-νν 
+λλ 
 try
-ξξ 
+μμ 
 {
-οο 
+νν 
 using
-ππ 
+ξξ 
 (
-ππ 
+ξξ 
 var
-ππ 
+ξξ 
 	contextBD
-ππ $
+ξξ $
 =
-ππ% &
+ξξ% &
 new
-ππ' *!
+ξξ' *!
 JeopardyDBContainer
-ππ+ >
+ξξ+ >
 (
-ππ> ?
+ξξ> ?
 )
-ππ? @
+ξξ? @
 )
-ππ@ A
+ξξ@ A
 {
-ρρ 
+οο 
 	contextBD
-ςς 
+ππ 
 .
-ςς 
+ππ 
 Games
-ςς #
+ππ #
 .
-ςς# $
+ππ# $
 Attach
-ςς$ *
+ππ$ *
 (
-ςς* +
+ππ* +
 gamePlayers
-ςς+ 6
+ππ+ 6
 .
-ςς6 7
+ππ6 7
 Game
-ςς7 ;
+ππ7 ;
 )
-ςς; <
+ππ; <
 ;
-ςς< =
+ππ< =
 	contextBD
-σσ 
+ρρ 
 .
-σσ 
+ρρ 
 GamePlayers
-σσ )
+ρρ )
 .
-σσ) *
+ρρ) *
 Add
-σσ* -
+ρρ* -
 (
-σσ- .
+ρρ- .
 gamePlayers
-σσ. 9
+ρρ. 9
 )
-σσ9 :
+ρρ9 :
 ;
-σσ: ;
+ρρ: ;
 int
-ττ 
+ςς 
 resultOfEvent
-ττ %
+ςς %
 =
-ττ& '
+ςς& '
 	contextBD
-ττ( 1
+ςς( 1
 .
-ττ1 2
+ςς1 2
 SaveChanges
-ττ2 =
+ςς2 =
 (
-ττ= >
+ςς= >
 )
-ττ> ?
+ςς> ?
 ;
-ττ? @
+ςς? @
 if
-υυ 
+σσ 
 (
-υυ 
+σσ 
 resultOfEvent
-υυ %
+σσ %
 >
-υυ& '
+σσ& '
 $num
-υυ( )
+σσ( )
 )
-υυ) *
+σσ) *
 {
-φφ 
+ττ 
 resultOfOperation
-χχ )
+υυ )
 =
-χχ* +!
+υυ* +!
 UpdatePlayersPoints
-χχ, ?
+υυ, ?
 (
-χχ? @
+υυ? @
 gamePlayers
-χχ@ K
+υυ@ K
 )
-χχK L
+υυK L
 ;
-χχL M
+υυL M
 }
-ψψ 
+φφ 
 else
-ωω 
+χχ 
 {
-ϊϊ 
+ψψ 
 resultOfOperation
-ϋϋ )
+ωω )
 =
-ϋϋ* +!
+ωω* +!
 ExceptionDictionary
-ϋϋ, ?
+ωω, ?
 .
-ϋϋ? @ 
+ωω? @ 
 UNSUCCESFULL_EVENT
-ϋϋ@ R
+ωω@ R
 ;
-ϋϋR S
+ωωR S
 }
-όό 
+ϊϊ 
 }
-ύύ 
+ϋϋ 
 }
-ώώ 
+όό 
 catch
-ÿÿ 
+ύύ 
 (
-ÿÿ 
+ύύ 
 UpdateException
-ÿÿ "
+ύύ "
 ex
-ÿÿ# %
+ύύ# %
 )
-ÿÿ% &
+ύύ% &
 {
-€€ 
+ώώ 
 resultOfOperation
- !
+ÿÿ !
 =
-" #!
+ÿÿ" #!
 ExceptionDictionary
-$ 7
+ÿÿ$ 7
 .
-7 8 
+ÿÿ7 8 
 SAVE_CHANGES_ERROR
-8 J
+ÿÿ8 J
 ;
-J K
+ÿÿJ K
 ExceptionHandler
-‚‚  
+€€  
 .
-‚‚  !
+€€  !
 LogException
-‚‚! -
+€€! -
 (
-‚‚- .
+€€- .
 ex
-‚‚. 0
+€€. 0
 ,
-‚‚0 1!
+€€0 1!
 ExceptionDictionary
-‚‚2 E
+€€2 E
 .
-‚‚E F
+€€E F
 FATAL_EXCEPTION
-‚‚F U
+€€F U
 )
-‚‚U V
+€€U V
 ;
-‚‚V W
+€€V W
 }
-ƒƒ 
+ 
 catch
-„„ 
+‚‚ 
 (
-„„ 
+‚‚ 
 DbUpdateException
-„„ $
+‚‚ $
 ex
-„„% '
+‚‚% '
 )
-„„' (
+‚‚' (
 {
-…… 
+ƒƒ 
 resultOfOperation
-†† !
+„„ !
 =
-††" #!
+„„" #!
 ExceptionDictionary
-††# 6
+„„# 6
 .
-††6 7 
+„„6 7 
 SAVE_CHANGES_ERROR
-††7 I
+„„7 I
 ;
-††I J
+„„I J
 ExceptionHandler
-‡‡  
+……  
 .
-‡‡  !
+……  !
 LogException
-‡‡! -
+……! -
 (
-‡‡- .
+……- .
 ex
-‡‡. 0
+……. 0
 .
-‡‡0 1
+……0 1
 GetBaseException
-‡‡1 A
+……1 A
 (
-‡‡A B
+……A B
 )
-‡‡B C
+……B C
 ,
-‡‡C D!
+……C D!
 ExceptionDictionary
-‡‡E X
+……E X
 .
-‡‡X Y
+……X Y
 FATAL_EXCEPTION
-‡‡Y h
+……Y h
 )
-‡‡h i
+……h i
 ;
-‡‡i j
+……i j
 }
- 
+†† 
 catch
-‰‰ 
+‡‡ 
 (
-‰‰ #
+‡‡ #
 ArgumentNullException
-‰‰ (
+‡‡ (
 ex
-‰‰) +
+‡‡) +
 )
-‰‰+ ,
+‡‡+ ,
 {
- 
+ 
 resultOfOperation
-‹‹ !
+‰‰ !
 =
-‹‹" #!
+‰‰" #!
 ExceptionDictionary
-‹‹$ 7
+‰‰$ 7
 .
-‹‹7 8
+‰‰7 8
 ARGUMENT_NULL
-‹‹8 E
+‰‰8 E
 ;
-‹‹E F
+‰‰E F
 ExceptionHandler
-  
+  
 .
-  !
+  !
 LogException
-! -
+! -
 (
-- .
+- .
 ex
-. 0
+. 0
 ,
-0 1!
+0 1!
 ExceptionDictionary
-2 E
+2 E
 .
-E F
+E F
 FATAL_EXCEPTION
-F U
+F U
 )
-U V
+U V
 ;
-V W
+V W
 }
- 
+‹‹ 
 catch
- 
+ 
 (
- 
+ 
 EntityException
- "
+ "
 ex
-# %
+# %
 )
-% &
+% &
 {
- 
+ 
 resultOfOperation
- !
+ !
 =
-" #!
+" #!
 ExceptionDictionary
-$ 7
+$ 7
 .
-7 8
+7 8
 ENTITY_ERROR
-8 D
+8 D
 ;
-D E
+D E
 ExceptionHandler
-‘‘  
+  
 .
-‘‘  !
+  !
 LogException
-‘‘! -
+! -
 (
-‘‘- .
+- .
 ex
-‘‘. 0
+. 0
 ,
-‘‘0 1!
+0 1!
 ExceptionDictionary
-‘‘2 E
+2 E
 .
-‘‘E F
+E F
 FATAL_EXCEPTION
-‘‘F U
+F U
 )
-‘‘U V
+U V
 ;
-‘‘V W
+V W
 }
-’’ 
+ 
 catch
-““ 
+‘‘ 
 (
-““ 
+‘‘ 
 SqlException
-““ 
+‘‘ 
 ex
-““  "
+‘‘  "
 )
-““" #
+‘‘" #
 {
-”” 
+’’ 
 resultOfOperation
-•• !
+““ !
 =
-••" #!
+““" #!
 ExceptionDictionary
-••$ 7
+““$ 7
 .
-••7 8
+““7 8
 	SQL_ERROR
-••8 A
+““8 A
 ;
-••A B
+““A B
 ExceptionHandler
-––  
+””  
 .
-––  !
+””  !
 LogException
-––! -
+””! -
 (
-––- .
+””- .
 ex
-––. 0
+””. 0
 ,
-––0 1!
+””0 1!
 ExceptionDictionary
-––2 E
+””2 E
 .
-––E F
+””E F
 FATAL_EXCEPTION
-––F U
+””F U
 )
-––U V
+””U V
 ;
-––V W
+””V W
 }
-—— 
+•• 
 catch
- 
+–– 
 (
- )
+–– )
 DbEntityValidationException
- .
+–– .
 ex
-/ 1
+––/ 1
 )
-1 2
+––1 2
 {
-™™ 
+—— 
 resultOfOperation
- !
+ !
 =
-" #!
+" #!
 ExceptionDictionary
-$ 7
+$ 7
 .
-7 8 
+7 8 
 SAVE_CHANGES_ERROR
-8 J
+8 J
 ;
-J K
+J K
 ExceptionHandler
-››  
+™™  
 .
-››  !
+™™  !
 LogException
-››! -
+™™! -
 (
-››- .
+™™- .
 ex
-››. 0
+™™. 0
 ,
-››0 1!
+™™0 1!
 ExceptionDictionary
-››2 E
+™™2 E
 .
-››E F
+™™E F
 FATAL_EXCEPTION
-››F U
+™™F U
 )
-››U V
+™™U V
 ;
-››V W
+™™V W
 }
- 
+ 
 return
- 
+›› 
 resultOfOperation
- $
+›› $
 ;
-$ %
+››$ %
 }
- 	
+ 	
 public
-   
+ 
 static
-   
+ 
 int
-   !
+ !
 UpdatePlayersPoints
-   -
+ -
 (
-  - .
+- .
 
 GamePlayer
-  . 8
+. 8
 gamePlayers
-  9 D
+9 D
 )
-  D E
+D E
 {
-΅΅ 	
+ 	
 int
-ΆΆ 
+   
 resultOfOperation
-ΆΆ !
+   !
 =
-ΆΆ" #!
+  " #!
 ExceptionDictionary
-ΆΆ$ 7
+  $ 7
 .
-ΆΆ7 8 
+  7 8 
 UNSUCCESFULL_EVENT
-ΆΆ8 J
+  8 J
 ;
-ΆΆJ K
+  J K
 if
-££ 
+΅΅ 
 (
-££ 
+΅΅ 
 gamePlayers
-££ 
+΅΅ 
 ==
-££ 
+΅΅ 
 null
-££ #
+΅΅ #
 )
-££# $
+΅΅# $
 {
-¤¤ 
+ΆΆ 
 return
-¥¥ !
+££ !
 ExceptionDictionary
-¥¥ *
+££ *
 .
-¥¥* +
+££* +
 NULL_PARAEMETER
-¥¥+ :
+££+ :
 ;
-¥¥: ;
+££: ;
 }
-¦¦ 
+¤¤ 
 try
-§§ 
+¥¥ 
 {
-¨¨ 
+¦¦ 
 using
-©© 
+§§ 
 (
-©© 
+§§ 
 var
-©© 
+§§ 
 	contextBD
-©© $
+§§ $
 =
-©©% &
+§§% &
 new
-©©' *!
+§§' *!
 JeopardyDBContainer
-©©+ >
+§§+ >
 (
-©©> ?
+§§> ?
 )
-©©? @
+§§? @
 )
-©©@ A
+§§@ A
 {
-ªª 
+¨¨ 
 var
-«« 
+©© 
 playerToUpdate
-«« &
+©© &
 =
-««' (
+©©' (
 	contextBD
-««) 2
+©©) 2
 .
-««2 3
+©©2 3
 Players
-««3 :
+©©3 :
 .
-««: ;
+©©: ;
 FirstOrDefault
-««; I
+©©; I
 (
-««I J
+©©I J
 pl
-««J L
+©©J L
 =>
-««M O
+©©M O
 pl
-««P R
+©©P R
 .
-««R S
+©©R S
 IdPlayer
-««S [
+©©S [
 ==
-««\ ^
+©©\ ^
 gamePlayers
-««_ j
+©©_ j
 .
-««j k
+©©j k
 Player_IdPlayer
-««k z
+©©k z
 )
-««z {
+©©z {
 ;
-««{ |
+©©{ |
 if
-¬¬ 
+ªª 
 (
-¬¬ 
+ªª 
 playerToUpdate
-¬¬ %
+ªª %
 !=
-¬¬& (
+ªª& (
 null
-¬¬) -
+ªª) -
 )
-¬¬- .
+ªª- .
 {
-­­ 
+«« 
 if
-®® 
+¬¬ 
 (
-®® 
+¬¬ 
 gamePlayers
-®® '
+¬¬ '
 .
-®®' (
+¬¬' (
 PointsInGame
-®®( 4
+¬¬( 4
 >
-®®5 6
+¬¬5 6
 $num
-®®7 8
+¬¬7 8
 )
-®®8 9
+¬¬8 9
 {
-―― 
+­­ 
 playerToUpdate
-°° *
+®® *
 .
-°°* +
+®®* +
 GeneralPoints
-°°+ 8
+®®+ 8
 +=
-°°9 ;
+®®9 ;
 gamePlayers
-°°< G
+®®< G
 .
-°°G H
+®®G H
 PointsInGame
-°°H T
+®®H T
 ;
-°°T U
+®®T U
 int
-±± 
+―― 
 resultOfEvent
-±±  -
+――  -
 =
-±±. /
+――. /
 	contextBD
-±±0 9
+――0 9
 .
-±±9 :
+――9 :
 SaveChanges
-±±: E
+――: E
 (
-±±E F
+――E F
 )
-±±F G
+――F G
 ;
-±±G H
+――G H
 if
-²² 
+°° 
 (
-²²  
+°°  
 resultOfEvent
-²²  -
+°°  -
 >
-²². /
+°°. /
 $num
-²²0 1
+°°0 1
 )
-²²1 2
+°°1 2
 {
-³³ 
+±± 
 resultOfOperation
-΄΄  1
+²²  1
 =
-΄΄2 3!
+²²2 3!
 ExceptionDictionary
-΄΄4 G
+²²4 G
 .
-΄΄G H
+²²G H
 SUCCESFULL_EVENT
-΄΄H X
+²²H X
 ;
-΄΄X Y
+²²X Y
 }
-µµ 
+³³ 
 else
-¶¶  
+΄΄  
 {
-·· 
+µµ 
 resultOfOperation
-ΈΈ  1
+¶¶  1
 =
-ΈΈ2 3!
+¶¶2 3!
 ExceptionDictionary
-ΈΈ4 G
+¶¶4 G
 .
-ΈΈG H 
+¶¶G H 
 UNSUCCESFULL_EVENT
-ΈΈH Z
+¶¶H Z
 ;
-ΈΈZ [
+¶¶Z [
 }
-ΉΉ 
+·· 
 }
-ΊΊ 
+ΈΈ 
 else
-»» 
+ΉΉ 
 {
-ΌΌ 
+ΊΊ 
 resultOfOperation
-½½ -
+»» -
 =
-½½. /!
+»». /!
 ExceptionDictionary
-½½0 C
+»»0 C
 .
-½½C D
+»»C D
 SUCCESFULL_EVENT
-½½D T
+»»D T
 ;
-½½T U
+»»T U
 }
-ΎΎ 
+ΌΌ 
 }
-ΏΏ 
+½½ 
 }
-ΐΐ 
+ΎΎ 
 }
-ΑΑ 
+ΏΏ 
 catch
-ΒΒ 
+ΐΐ 
 (
-ΒΒ 
+ΐΐ 
 UpdateException
-ΒΒ "
+ΐΐ "
 ex
-ΒΒ# %
+ΐΐ# %
 )
-ΒΒ% &
+ΐΐ% &
 {
-ΓΓ 
+ΑΑ 
 resultOfOperation
-ΔΔ !
+ΒΒ !
 =
-ΔΔ" #!
+ΒΒ" #!
 ExceptionDictionary
-ΔΔ$ 7
+ΒΒ$ 7
 .
-ΔΔ7 8 
+ΒΒ7 8 
 SAVE_CHANGES_ERROR
-ΔΔ8 J
+ΒΒ8 J
 ;
-ΔΔJ K
+ΒΒJ K
 ExceptionHandler
-ΕΕ  
+ΓΓ  
 .
-ΕΕ  !
+ΓΓ  !
 LogException
-ΕΕ! -
+ΓΓ! -
 (
-ΕΕ- .
+ΓΓ- .
 ex
-ΕΕ. 0
+ΓΓ. 0
 ,
-ΕΕ0 1!
+ΓΓ0 1!
 ExceptionDictionary
-ΕΕ2 E
+ΓΓ2 E
 .
-ΕΕE F
+ΓΓE F
 FATAL_EXCEPTION
-ΕΕF U
+ΓΓF U
 )
-ΕΕU V
+ΓΓU V
 ;
-ΕΕV W
+ΓΓV W
 }
-ΖΖ 
+ΔΔ 
 catch
-ΗΗ 
+ΕΕ 
 (
-ΗΗ 
+ΕΕ 
 DbUpdateException
-ΗΗ $
+ΕΕ $
 ex
-ΗΗ% '
+ΕΕ% '
 )
-ΗΗ' (
+ΕΕ' (
 {
-ΘΘ 
+ΖΖ 
 resultOfOperation
-ΙΙ !
+ΗΗ !
 =
-ΙΙ" #!
+ΗΗ" #!
 ExceptionDictionary
-ΙΙ$ 7
+ΗΗ$ 7
 .
-ΙΙ7 8 
+ΗΗ7 8 
 SAVE_CHANGES_ERROR
-ΙΙ8 J
+ΗΗ8 J
 ;
-ΙΙJ K
+ΗΗJ K
 ExceptionHandler
-ΚΚ  
+ΘΘ  
 .
-ΚΚ  !
+ΘΘ  !
 LogException
-ΚΚ! -
+ΘΘ! -
 (
-ΚΚ- .
+ΘΘ- .
 ex
-ΚΚ. 0
+ΘΘ. 0
 .
-ΚΚ0 1
+ΘΘ0 1
 GetBaseException
-ΚΚ1 A
+ΘΘ1 A
 (
-ΚΚA B
+ΘΘA B
 )
-ΚΚB C
+ΘΘB C
 ,
-ΚΚC D!
+ΘΘC D!
 ExceptionDictionary
-ΚΚE X
+ΘΘE X
 .
-ΚΚX Y
+ΘΘX Y
 FATAL_EXCEPTION
-ΚΚY h
+ΘΘY h
 )
-ΚΚh i
+ΘΘh i
 ;
-ΚΚi j
+ΘΘi j
 }
-ΛΛ 
+ΙΙ 
 catch
-ΜΜ 
+ΚΚ 
 (
-ΜΜ #
+ΚΚ #
 ArgumentNullException
-ΜΜ (
+ΚΚ (
 ex
-ΜΜ) +
+ΚΚ) +
 )
-ΜΜ+ ,
+ΚΚ+ ,
 {
-ΝΝ 
+ΛΛ 
 resultOfOperation
-ΞΞ !
+ΜΜ !
 =
-ΞΞ" #!
+ΜΜ" #!
 ExceptionDictionary
-ΞΞ$ 7
+ΜΜ$ 7
 .
-ΞΞ7 8
+ΜΜ7 8
 ARGUMENT_NULL
-ΞΞ8 E
+ΜΜ8 E
 ;
-ΞΞE F
+ΜΜE F
 ExceptionHandler
-ΟΟ  
+ΝΝ  
 .
-ΟΟ  !
+ΝΝ  !
 LogException
-ΟΟ! -
+ΝΝ! -
 (
-ΟΟ- .
+ΝΝ- .
 ex
-ΟΟ. 0
+ΝΝ. 0
 ,
-ΟΟ0 1!
+ΝΝ0 1!
 ExceptionDictionary
-ΟΟ2 E
+ΝΝ2 E
 .
-ΟΟE F
+ΝΝE F
 FATAL_EXCEPTION
-ΟΟF U
+ΝΝF U
 )
-ΟΟU V
+ΝΝU V
 ;
-ΟΟV W
+ΝΝV W
 }
-ΠΠ 
+ΞΞ 
 catch
-ΡΡ 
+ΟΟ 
 (
-ΡΡ 
+ΟΟ 
 EntityException
-ΡΡ "
+ΟΟ "
 ex
-ΡΡ# %
+ΟΟ# %
 )
-ΡΡ% &
+ΟΟ% &
 {
-ÒÒ 
+ΠΠ 
 resultOfOperation
-ΣΣ !
+ΡΡ !
 =
-ΣΣ" #!
+ΡΡ" #!
 ExceptionDictionary
-ΣΣ$ 7
+ΡΡ$ 7
 .
-ΣΣ7 8
+ΡΡ7 8
 ENTITY_ERROR
-ΣΣ8 D
+ΡΡ8 D
 ;
-ΣΣD E
+ΡΡD E
 ExceptionHandler
-ΤΤ  
+ÒÒ  
 .
-ΤΤ  !
+ÒÒ  !
 LogException
-ΤΤ! -
+ÒÒ! -
 (
-ΤΤ- .
+ÒÒ- .
 ex
-ΤΤ. 0
+ÒÒ. 0
 ,
-ΤΤ0 1!
+ÒÒ0 1!
 ExceptionDictionary
-ΤΤ2 E
+ÒÒ2 E
 .
-ΤΤE F
+ÒÒE F
 FATAL_EXCEPTION
-ΤΤF U
+ÒÒF U
 )
-ΤΤU V
+ÒÒU V
 ;
-ΤΤV W
+ÒÒV W
 }
-ΥΥ 
+ΣΣ 
 catch
-ΦΦ 
+ΤΤ 
 (
-ΦΦ 
+ΤΤ 
 SqlException
-ΦΦ 
+ΤΤ 
 ex
-ΦΦ  "
+ΤΤ  "
 )
-ΦΦ" #
+ΤΤ" #
 {
-ΧΧ 
+ΥΥ 
 resultOfOperation
-ΨΨ !
+ΦΦ !
 =
-ΨΨ" #!
+ΦΦ" #!
 ExceptionDictionary
-ΨΨ$ 7
+ΦΦ$ 7
 .
-ΨΨ7 8
+ΦΦ7 8
 	SQL_ERROR
-ΨΨ8 A
+ΦΦ8 A
 ;
-ΨΨA B
+ΦΦA B
 ExceptionHandler
-ΩΩ  
+ΧΧ  
 .
-ΩΩ  !
+ΧΧ  !
 LogException
-ΩΩ! -
+ΧΧ! -
 (
-ΩΩ- .
+ΧΧ- .
 ex
-ΩΩ. 0
+ΧΧ. 0
 ,
-ΩΩ0 1!
+ΧΧ0 1!
 ExceptionDictionary
-ΩΩ2 E
+ΧΧ2 E
 .
-ΩΩE F
+ΧΧE F
 FATAL_EXCEPTION
-ΩΩF U
+ΧΧF U
 )
-ΩΩU V
+ΧΧU V
 ;
-ΩΩV W
+ΧΧV W
 }
-ΪΪ 
+ΨΨ 
 catch
-ΫΫ 
+ΩΩ 
 (
-ΫΫ )
+ΩΩ )
 DbEntityValidationException
-ΫΫ .
+ΩΩ .
 ex
-ΫΫ/ 1
+ΩΩ/ 1
 )
-ΫΫ1 2
+ΩΩ1 2
 {
-άά 
+ΪΪ 
 resultOfOperation
-έέ !
+ΫΫ !
 =
-έέ" #!
+ΫΫ" #!
 ExceptionDictionary
-έέ$ 7
+ΫΫ$ 7
 .
-έέ7 8 
+ΫΫ7 8 
 SAVE_CHANGES_ERROR
-έέ8 J
+ΫΫ8 J
 ;
-έέJ K
+ΫΫJ K
 ExceptionHandler
-ήή  
+άά  
 .
-ήή  !
+άά  !
 LogException
-ήή! -
+άά! -
 (
-ήή- .
+άά- .
 ex
-ήή. 0
+άά. 0
 ,
-ήή0 1!
+άά0 1!
 ExceptionDictionary
-ήή2 E
+άά2 E
 .
-ήήE F
+άάE F
 FATAL_EXCEPTION
-ήήF U
+άάF U
 )
-ήήU V
+άάU V
 ;
-ήήV W
+άάV W
 }
-ίί 
+έέ 
 return
-ΰΰ 
+ήή 
 resultOfOperation
-ΰΰ $
+ήή $
 ;
-ΰΰ$ %
+ήή$ %
 }
-αα 	
+ίί 	
 public
-γγ 
+αα 
 static
-γγ  
+αα  
 GenericClassServer
-γγ (
+αα (
 <
-γγ( )
+αα( )
 List
-γγ) -
+αα) -
 <
-γγ- .
+αα- .
 int
-γγ. 1
+αα. 1
 >
-γγ1 2
+αα1 2
 >
-γγ2 3
+αα2 3
 
 GetHostIds
-γγ4 >
+αα4 >
 (
-γγ> ?
+αα> ?
 )
-γγ? @
+αα? @
 {
-δδ 	 
+ββ 	 
 GenericClassServer
-εε 
+γγ 
 <
-εε 
+γγ 
 List
-εε #
+γγ #
 <
-εε# $
+γγ# $
 int
-εε$ '
+γγ$ '
 >
-εε' (
+γγ' (
 >
-εε( )
+γγ( )
 resultOfOperation
-εε* ;
+γγ* ;
 =
-εε< =
+γγ< =
 new
-εε> A 
+γγ> A 
 GenericClassServer
-εεB T
+γγB T
 <
-εεT U
+γγT U
 List
-εεU Y
+γγU Y
 <
-εεY Z
+γγY Z
 int
-εεZ ]
+γγZ ]
 >
-εε] ^
+γγ] ^
 >
-εε^ _
+γγ^ _
 (
-εε_ `
+γγ_ `
 )
-εε` a
+γγ` a
 ;
-εεa b
+γγa b
 try
-ζζ 
+δδ 
 {
-ηη 
+εε 
 using
-θθ 
+ζζ 
 (
-θθ 
+ζζ 
 var
-θθ 
+ζζ 
 	contextBD
-θθ $
+ζζ $
 =
-θθ% &
+ζζ% &
 new
-θθ' *!
+ζζ' *!
 JeopardyDBContainer
-θθ+ >
+ζζ+ >
 (
-θθ> ?
+ζζ> ?
 )
-θθ? @
+ζζ? @
 )
-θθ@ A
+ζζ@ A
 {
-ιι 
+ηη 
 resultOfOperation
-κκ %
+θθ %
 .
-κκ% &
+θθ% &
 ObjectSaved
-κκ& 1
+θθ& 1
 =
-κκ2 3
+θθ2 3
 	contextBD
-κκ4 =
+θθ4 =
 .
-κκ= >
+θθ= >
 Hosts
-κκ> C
+θθ> C
 .
-κκC D
+θθC D
 Where
-κκD I
+θθD I
 (
-κκI J
+θθI J
 host
-κκJ N
+θθJ N
 =>
-κκO Q
+θθO Q
 host
-κκR V
+θθR V
 .
-κκV W
+θθV W
 IdHost
-κκW ]
+θθW ]
 !=
-κκ^ `
+θθ^ `
 $num
-κκa b
+θθa b
 )
-κκb c
+θθb c
 .
-κκc d
+θθc d
 Select
-κκd j
+θθd j
 (
-κκj k
+θθj k
 host
-κκk o
+θθk o
 =>
-κκp r
+θθp r
 host
-κκs w
+θθs w
 .
-κκw x
+θθw x
 IdHost
-κκx ~
+θθx ~
 )
-κκ~ 
-.κκ €
-ToListκκ€ †
-(κκ† ‡
-)κκ‡ 
-;κκ ‰
+θθ~ 
+.θθ €
+ToListθθ€ †
+(θθ† ‡
+)θθ‡ 
+;θθ ‰
 if
-λλ 
+ιι 
 (
-λλ 
+ιι 
+resultOfOperation
+ιι )
+.
+ιι) *
+ObjectSaved
+ιι* 5
+.
+ιι5 6
+Count
+ιι6 ;
+!=
+ιι< >
+$num
+ιι? @
+)
+ιι@ A
+{
+κκ 
 resultOfOperation
 λλ )
 .
-λλ) *
-ObjectSaved
-λλ* 5
-.
-λλ5 6
-Count
-λλ6 ;
-!=
-λλ< >
-$num
-λλ? @
-)
-λλ@ A
-{
-μμ 
-resultOfOperation
-νν )
-.
-νν) *
+λλ) *
 	CodeEvent
-νν* 3
+λλ* 3
 =
-νν4 5!
+λλ4 5!
 ExceptionDictionary
-νν6 I
+λλ6 I
 .
-ννI J
+λλI J
 SUCCESFULL_EVENT
-ννJ Z
+λλJ Z
 ;
-ννZ [
+λλZ [
 }
-ξξ 
+μμ 
 else
-οο 
+νν 
 {
-ππ 
+ξξ 
 resultOfOperation
-ρρ )
+οο )
 .
-ρρ) *
+οο) *
 	CodeEvent
-ρρ* 3
+οο* 3
 =
-ρρ4 5!
+οο4 5!
 ExceptionDictionary
-ρρ6 I
+οο6 I
 .
-ρρI J 
+οοI J 
 UNSUCCESFULL_EVENT
-ρρJ \
+οοJ \
 ;
-ρρ\ ]
+οο\ ]
 }
-ςς 
+ππ 
 }
-σσ 
+ρρ 
 }
-ττ 
+ςς 
 catch
-υυ 
+σσ 
 (
-υυ #
+σσ #
 ArgumentNullException
-υυ (
+σσ (
 ex
-υυ) +
+σσ) +
 )
-υυ+ ,
+σσ+ ,
 {
-φφ 
+ττ 
 resultOfOperation
-χχ !
+υυ !
 =
-χχ" #
+υυ" #
 ExceptionHandler
-χχ$ 4
+υυ$ 4
 .
-χχ4 5+
+υυ4 5+
 HandleExceptionDataAccesLevel
-χχ5 R
+υυ5 R
 (
-χχR S
+υυR S
 resultOfOperation
-χχS d
+υυS d
 ,
-χχd e
+υυd e
 ex
-χχf h
+υυf h
 )
-χχh i
+υυh i
 ;
-χχi j
+υυi j
 ExceptionHandler
-ψψ  
+φφ  
 .
-ψψ  !
+φφ  !
 LogException
-ψψ! -
+φφ! -
 (
-ψψ- .
+φφ- .
 ex
-ψψ. 0
+φφ. 0
 ,
-ψψ0 1!
+φφ0 1!
 ExceptionDictionary
-ψψ2 E
+φφ2 E
 .
-ψψE F
+φφE F
 FATAL_EXCEPTION
-ψψF U
+φφF U
 )
-ψψU V
+φφU V
 ;
-ψψV W
+φφV W
 }
-ωω 
+χχ 
 catch
-ϊϊ 
+ψψ 
 (
-ϊϊ 
+ψψ 
 EntityException
-ϊϊ "
+ψψ "
 ex
-ϊϊ# %
+ψψ# %
 )
-ϊϊ% &
+ψψ% &
 {
-ϋϋ 
+ωω 
 resultOfOperation
-όό !
+ϊϊ !
 =
-όό" #
+ϊϊ" #
 ExceptionHandler
-όό$ 4
+ϊϊ$ 4
 .
-όό4 5+
+ϊϊ4 5+
 HandleExceptionDataAccesLevel
-όό5 R
+ϊϊ5 R
 (
-όόR S
+ϊϊR S
 resultOfOperation
-όόS d
+ϊϊS d
 ,
-όόd e
+ϊϊd e
 ex
-όόf h
+ϊϊf h
 )
-όόh i
+ϊϊh i
 ;
-όόi j
+ϊϊi j
 ExceptionHandler
-ύύ  
+ϋϋ  
 .
-ύύ  !
+ϋϋ  !
 LogException
-ύύ! -
+ϋϋ! -
 (
-ύύ- .
+ϋϋ- .
 ex
-ύύ. 0
+ϋϋ. 0
 ,
-ύύ0 1!
+ϋϋ0 1!
 ExceptionDictionary
-ύύ2 E
+ϋϋ2 E
 .
-ύύE F
+ϋϋE F
 FATAL_EXCEPTION
-ύύF U
+ϋϋF U
 )
-ύύU V
+ϋϋU V
 ;
-ύύV W
+ϋϋV W
 }
-ώώ 
+όό 
 catch
-ÿÿ 
+ύύ 
 (
-ÿÿ 
+ύύ 
 SqlException
-ÿÿ 
+ύύ 
 ex
-ÿÿ  "
+ύύ  "
 )
-ÿÿ" #
+ύύ" #
 {
-€€ 
+ώώ 
 resultOfOperation
- !
+ÿÿ !
 =
-" #
+ÿÿ" #
 ExceptionHandler
-$ 4
+ÿÿ$ 4
 .
-4 5+
+ÿÿ4 5+
 HandleExceptionDataAccesLevel
-5 R
+ÿÿ5 R
 (
-R S
+ÿÿR S
 resultOfOperation
-S d
+ÿÿS d
 ,
-d e
+ÿÿd e
 ex
-f h
+ÿÿf h
 )
-h i
+ÿÿh i
 ;
-i j
+ÿÿi j
 ExceptionHandler
-‚‚  
+€€  
 .
-‚‚  !
+€€  !
 LogException
-‚‚! -
+€€! -
 (
-‚‚- .
+€€- .
 ex
-‚‚. 0
+€€. 0
 ,
-‚‚0 1!
+€€0 1!
 ExceptionDictionary
-‚‚2 E
+€€2 E
 .
-‚‚E F
+€€E F
 FATAL_EXCEPTION
-‚‚F U
+€€F U
 )
-‚‚U V
+€€U V
 ;
-‚‚V W
+€€V W
 }
-ƒƒ 
+ 
 catch
-„„ 
+‚‚ 
 (
-„„ )
+‚‚ )
 DbEntityValidationException
-„„ .
+‚‚ .
 ex
-„„/ 1
+‚‚/ 1
 )
-„„1 2
+‚‚1 2
 {
-…… 
+ƒƒ 
 resultOfOperation
-†† !
+„„ !
 =
-††" #
+„„" #
 ExceptionHandler
-††$ 4
+„„$ 4
 .
-††4 5+
+„„4 5+
 HandleExceptionDataAccesLevel
-††5 R
+„„5 R
 (
-††R S
+„„R S
 resultOfOperation
-††S d
+„„S d
 ,
-††d e
+„„d e
 ex
-††f h
+„„f h
 )
-††h i
+„„h i
 ;
-††i j
+„„i j
 ExceptionHandler
-‡‡  
+……  
 .
-‡‡  !
+……  !
 LogException
-‡‡! -
+……! -
 (
-‡‡- .
+……- .
 ex
-‡‡. 0
+……. 0
 ,
-‡‡0 1!
+……0 1!
 ExceptionDictionary
-‡‡2 E
+……2 E
 .
-‡‡E F
+……E F
 FATAL_EXCEPTION
-‡‡F U
+……F U
 )
-‡‡U V
+……U V
 ;
-‡‡V W
+……V W
 }
- 
+†† 
 return
-‰‰ 
+‡‡ 
 resultOfOperation
-‰‰ $
+‡‡ $
 ;
-‰‰$ %
+‡‡$ %
 }
- 	
+ 	
 }
- 
-} Τ_
+‹‹ 
+} Τ_
 €C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\DataAccess\LoginOperations.cs
 	namespace 	
 JeopardyGame
@@ -17184,7 +17310,7 @@ PropertiesQQ  *
 ;SS, -
 }TT 	
 }WW 
-}ZZ ‰
+}ZZ ‡
 C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\GenericClassAndObjecSaved.cs
 	namespace 	
 JeopardyGame
@@ -17347,103 +17473,133 @@ DataMember	 
 ;# $
 set% (
 ;( )
-}* +
-public!! 
-GenericClass!! 
-(!! 
-)!! 
-{"" 	
-}$$ 	
-}%% 
-public'' 
+}* +
+}!! 
+public## 
 
-class'' 
-GenericClassServer'' #
-<''# $
-T''$ %
->''% &
-{(( 
-public)) 
-T)) 
-ObjectSaved)) 
-{)) 
-get)) "
-;))" #
-set))$ '
-;))' (
-}))) *
-public++ 
-int++ 
-	CodeEvent++ 
-{++ 
-get++ "
-;++" #
-set++$ '
-;++' (
-}++) *
-public-- 
-GenericClassServer-- !
-(--! "
-)--" #
-{.. 	
-}00 	
-}11 
-public33 
+class## 
+GenericClassServer## #
+<### $
+T##$ %
+>##% &
+{$$ 
+public%% 
+T%% 
+ObjectSaved%% 
+{%% 
+get%% "
+;%%" #
+set%%$ '
+;%%' (
+}%%) *
+public'' 
+int'' 
+	CodeEvent'' 
+{'' 
+get'' "
+;''" #
+set''$ '
+;''' (
+}'') *
+}** 
+public,, 
 
-struct33 "
-FriendBasicInformation33 (
-{44 
-public55 
-int55 
-IdUser55 
-{55 
-get55 
-;55  
-set55! $
-;55$ %
-}55& '
-public66 
-string66 
-UserName66 
-{66  
-get66! $
-;66$ %
-set66& )
-;66) *
-}66+ ,
+struct,, "
+FriendBasicInformation,, (
+{-- 
+public.. 
+int.. 
+IdUser.. 
+{.. 
+get.. 
+;..  
+set..! $
+;..$ %
+}..& '
+public// 
+string// 
+UserName// 
+{//  
+get//! $
+;//$ %
+set//& )
+;//) *
+}//+ ,
+public00 
+string00 
+EmailAddress00 "
+{00# $
+get00% (
+;00( )
+set00* -
+;00- .
+}00/ 0
+public11 
+int11  
+IdStatusAvailability11 '
+{11( )
+get11* -
+;11- .
+set11/ 2
+;112 3
+}114 5
+}22 
+public44 
+
+struct44 
+MessageChat44 
+{55 
+public66 
+int66 
+IdUser66 
+{66 
+get66 
+;66  
+set66! $
+;66$ %
+}66) *
 public77 
-string77 
-EmailAddress77 "
-{77# $
-get77% (
-;77( )
-set77* -
-;77- .
-}77/ 0
-public88 
-int88  
-IdStatusAvailability88 '
-{88( )
-get88* -
-;88- .
-set88/ 2
-;882 3
-}884 5
+string77 
+UserName77 
+{77  
+get77! $
+;77$ %
+set77& )
+;77) *
+}77+ ,
+public88 
+string88 
+MessageToSend88 #
+{88$ %
+get88& )
+;88) *
+set88+ .
+;88. /
+}880 1
 }99 
-public;; 
+public:: 
 
-struct;; 
-MessageChat;; 
-{<< 
+struct:: 
+PlayerInLobby:: 
+{;; 
+public<< 
+int<< 
+IdUser<< 
+{<< 
+get<< 
+;<<  
+set<<! $
+;<<$ %
+}<<& '
 public== 
-int== 
-IdUser== 
-{== 
-get== 
-;==  
-set==! $
-;==$ %
-}==) *
+int== 
+IdPlayer== 
+{== 
+get== !
+;==! "
+set==# &
+;==& '
+}==( )
 public>> 
 string>> 
 UserName>> 
@@ -17453,1085 +17609,1017 @@ DataMember	 
 set>>& )
 ;>>) *
 }>>+ ,
-public?? 
-string?? 
-MessageToSend?? #
-{??$ %
-get??& )
-;??) *
-set??+ .
-;??. /
-}??0 1
-}@@ 
-publicAA 
-
-structAA 
-PlayerInLobbyAA 
-{BB 
-publicCC 
-intCC 
-IdUserCC 
-{CC 
-getCC 
-;CC  
-setCC! $
-;CC$ %
-}CC& '
-publicDD 
-intDD 
-IdPlayerDD 
-{DD 
-getDD !
-;DD! "
-setDD# &
-;DD& '
-}DD( )
-publicEE 
-stringEE 
-UserNameEE 
-{EE  
-getEE! $
-;EE$ %
-setEE& )
-;EE) *
-}EE+ ,
+public?? 
+int?? !
+NumberOfPlayerInLobby?? (
+{??) *
+get??+ .
+;??. /
+set??0 3
+;??3 4
+}??5 6
+public@@ 
+int@@ 
+
+SideOfTeam@@ 
+{@@ 
+get@@  #
+;@@# $
+set@@% (
+;@@( )
+}@@* +
+}AA 
+publicDD 
+
+classDD 
+UserPojoDD 
+{EE 
 publicFF 
-intFF !
-NumberOfPlayerInLobbyFF (
-{FF) *
-getFF+ .
-;FF. /
-setFF0 3
-;FF3 4
-}FF5 6
-publicGG 
-intGG 
+intFF 
+IdUserFF 
+{FF 
+getFF 
+;FF  
+setFF! $
+;FF$ %
+}FF& '
+publicGG 
+StringGG 
+UserNameGG 
+{GG  
+getGG! $
+;GG$ %
+setGG& )
+;GG) *
+}GG+ ,
+publicHH 
+StringHH 
+NameHH 
+{HH 
+getHH  
+;HH  !
+setHH" %
+;HH% &
+}HH' (
+publicII 
+StringII 
+EmailAddressII "
+{II# $
+getII% (
+;II( )
+setII* -
+;II- .
+}II/ 0
+publicJJ 
+StringJJ 
+PasswordJJ 
+{JJ  
+getJJ! $
+;JJ$ %
+setJJ& )
+;JJ) *
+}JJ+ ,
+}KK 
+publicLL 
+
+classLL 
 
-SideOfTeamGG 
-{GG 
-getGG  #
-;GG# $
-setGG% (
-;GG( )
-}GG* +
-}HH 
-publicKK 
+PlayerPojoLL 
+{MM 
+publicNN 
+intNN 
+IdPlayerNN 
+{NN 
+getNN !
+;NN! "
+setNN# &
+;NN& '
+}NN( )
+publicOO 
+intOO 
+GeneralPointsOO  
+{OO! "
+getOO# &
+;OO& '
+setOO( +
+;OO+ ,
+}OO- .
+publicPP 
+intPP 
+	NoReportsPP 
+{PP 
+getPP "
+;PP" #
+setPP$ '
+;PP' (
+}PP) *
+publicQQ 
+intQQ 
+IdUserQQ 
+{QQ 
+getQQ 
+;QQ  
+setQQ! $
+;QQ$ %
+}QQ& '
+publicRR 
+intRR 
+IdStateRR 
+{RR 
+getRR  
+;RR  !
+setRR" %
+;RR% &
+}RR' (
+publicSS 
+intSS 
+IdActualAvatarSS !
+{SS" #
+getSS$ '
+;SS' (
+setSS) ,
+;SS, -
+}SS. /
+}TT 
+publicVV 
 
-classKK 
-UserPojoKK 
-{LL 
-publicMM 
-intMM 
-IdUserMM 
-{MM 
-getMM 
-;MM  
-setMM! $
-;MM$ %
-}MM& '
-publicNN 
-StringNN 
-UserNameNN 
-{NN  
-getNN! $
-;NN$ %
-setNN& )
-;NN) *
-}NN+ ,
-publicOO 
-StringOO 
-NameOO 
-{OO 
-getOO  
-;OO  !
-setOO" %
-;OO% &
-}OO' (
-publicPP 
-StringPP 
-EmailAddressPP "
-{PP# $
-getPP% (
-;PP( )
-setPP* -
-;PP- .
-}PP/ 0
-publicQQ 
-StringQQ 
-PasswordQQ 
-{QQ  
-getQQ! $
-;QQ$ %
-setQQ& )
-;QQ) *
-}QQ+ ,
-}RR 
-publicSS 
+classVV 
+UserValidateVV 
+{WW 
+publicXX 
+StringXX 
+UserNameXX 
+{XX  
+getXX! $
+;XX$ %
+setXX& )
+;XX) *
+}XX+ ,
+publicYY 
+StringYY 
+PasswordYY 
+{YY  
+getYY! $
+;YY$ %
+setYY& )
+;YY) *
+}YY+ ,
+}ZZ 
+public\\ 
 
-classSS 
+class\\ 
 
-PlayerPojoSS 
-{TT 
-publicUU 
-intUU 
-IdPlayerUU 
-{UU 
-getUU !
-;UU! "
-setUU# &
-;UU& '
-}UU( )
-publicVV 
-intVV 
-GeneralPointsVV  
-{VV! "
-getVV# &
-;VV& '
-setVV( +
-;VV+ ,
-}VV- .
-publicWW 
-intWW 
-	NoReportsWW 
-{WW 
-getWW "
-;WW" #
-setWW$ '
-;WW' (
-}WW) *
-publicXX 
-intXX 
-IdUserXX 
-{XX 
-getXX 
-;XX  
-setXX! $
-;XX$ %
-}XX& '
-publicYY 
-intYY 
-IdStateYY 
-{YY 
-getYY  
-;YY  !
-setYY" %
-;YY% &
-}YY' (
-publicZZ 
-intZZ 
-IdActualAvatarZZ !
-{ZZ" #
-getZZ$ '
-;ZZ' (
-setZZ) ,
-;ZZ, -
-}ZZ. /
-}[[ 
-public]] 
-
-class]] 
-UserValidate]] 
-{^^ 
+AvatarPojo\\ 
+{]] 
+public^^ 
+int^^ 
+Id^^ 
+{^^ 
+get^^ 
+;^^ 
+set^^  
+;^^  !
+}^^" #
 public__ 
-String__ 
-UserName__ 
-{__  
-get__! $
-;__$ %
-set__& )
-;__) *
-}__+ ,
-public`` 
-String`` 
-Password`` 
-{``  
-get``! $
-;``$ %
-set``& )
-;``) *
-}``+ ,
+string__ 
+
+AvatarName__  
+{__! "
+get__# &
+;__& '
+set__( +
+;__+ ,
+}__- .
+public`` 
+byte`` 
+[`` 
+]`` 
+	ImageData`` 
+{``  !
+get``" %
+;``% &
+set``' *
+;``* +
+}``, -
 }aa 
 publiccc 
 
-classcc 
-
-AvatarPojocc 
+classcc 
+AvatarChoicecc 
 {dd 
 publicee 
-intee 
-Idee 
-{ee 
-getee 
-;ee 
-setee  
-;ee  !
-}ee" #
-publicff 
-stringff 
-
-AvatarNameff  
-{ff! "
-getff# &
-;ff& '
-setff( +
-;ff+ ,
-}ff- .
-publicgg 
-bytegg 
-[gg 
-]gg 
-	ImageDatagg 
-{gg  !
-getgg" %
-;gg% &
-setgg' *
-;gg* +
-}gg, -
-}hh 
+intee 
+IdAvataree 
+{ee 
+getee !
+;ee! "
+setee# &
+;ee& '
+}ee( )
+publicff 
+intff 
+idPlayerff 
+{ff 
+getff !
+;ff! "
+setff# &
+;ff& '
+}ff( )
+}gg 
+[ii 
+DataContractii 
+]ii 
 publicjj 
 
-classjj 
-AvatarChoicejj 
-{kk 
-publicll 
-intll 
-IdAvatarll 
-{ll 
-getll !
-;ll! "
-setll# &
-;ll& '
-}ll( )
+classjj #
+QuestionCardInformationjj (
+{kk 
+[ll 	
+
+DataMemberll	 
+]ll 
 publicmm 
-intmm 
-idPlayermm 
-{mm 
-getmm !
-;mm! "
-setmm# &
-;mm& '
-}mm( )
-}nn 
-[pp 
-DataContractpp 
-]pp 
-publicqq 
+intmm 
+IdQuestionCardmm !
+{mm" #
+getmm$ '
+;mm' (
+setmm) ,
+;mm, -
+}mm. /
+[nn 	
+
+DataMembernn	 
+]nn 
+publicoo 
+CategoryPojooo 
+CategoryOfQuestionoo .
+{oo/ 0
+getoo1 4
+;oo4 5
+setoo6 9
+;oo9 :
+}oo; <
+[pp 	
+
+DataMemberpp	 
+]pp 
+publicqq 
+QuestionPojoqq #
+SpecificQuestionDetailsqq 3
+{qq3 4
+getqq5 8
+;qq8 9
+setqq: =
+;qq= >
+}qq? @
+[rr 	
+
+DataMemberrr	 
+]rr 
+publicss 
+
+AnswerPojoss 
+RightAnswerss %
+{ss& '
+getss( +
+;ss+ ,
+setss- 0
+;ss0 1
+}ss2 3
+[tt 	
+
+DataMembertt	 
+]tt 
+publicuu 
+
+AnswerPojouu 
+WrongOptionOneuu (
+{uu) *
+getuu+ .
+;uu. /
+setuu0 3
+;uu3 4
+}uu5 6
+[vv 	
+
+DataMembervv	 
+]vv 
+publicww 
+
+AnswerPojoww 
+WrongOptionTwoww (
+{ww) *
+getww+ .
+;ww. /
+setww0 3
+;ww3 4
+}ww5 6
+[xx 	
+
+DataMemberxx	 
+]xx 
+publicyy 
+
+AnswerPojoyy 
+WrongOptionThreeyy *
+{yy+ ,
+getyy- 0
+;yy0 1
+setyy2 5
+;yy5 6
+}yy7 8
+[zz 	
+
+DataMemberzz	 
+]zz 
+public{{ 
+int{{ 
+NumberOfRound{{  
+{{{! "
+get{{# &
+;{{& '
+set{{( +
+;{{+ ,
+}{{- .
+}|| 
+public~~ 
 
-classqq #
-QuestionCardInformationqq (
-{rr 
-[ss 	
-
-DataMemberss	 
-]ss 
-publictt 
-inttt 
-IdQuestionCardtt !
-{tt" #
-gettt$ '
-;tt' (
-settt) ,
-;tt, -
-}tt. /
-[uu 	
-
-DataMemberuu	 
-]uu 
-publicvv 
-CategoryPojovv 
-CategoryOfQuestionvv .
-{vv/ 0
-getvv1 4
-;vv4 5
-setvv6 9
-;vv9 :
-}vv; <
-[ww 	
-
-DataMemberww	 
-]ww 
-publicxx 
-QuestionPojoxx #
-SpecificQuestionDetailsxx 3
-{xx3 4
-getxx5 8
-;xx8 9
-setxx: =
-;xx= >
-}xx? @
-[yy 	
-
-DataMemberyy	 
-]yy 
-publiczz 
-
-AnswerPojozz 
-RightAnswerzz %
-{zz& '
-getzz( +
-;zz+ ,
-setzz- 0
-;zz0 1
-}zz2 3
-[{{ 	
-
-DataMember{{	 
-]{{ 
-public|| 
-
-AnswerPojo|| 
-WrongOptionOne|| (
-{||) *
-get||+ .
-;||. /
-set||0 3
-;||3 4
-}||5 6
-[}} 	
-
-DataMember}}	 
-]}} 
-public~~ 
-
-AnswerPojo~~ 
-WrongOptionTwo~~ (
-{~~) *
-get~~+ .
-;~~. /
-set~~0 3
-;~~3 4
-}~~5 6
-[ 	
-
-DataMember	 
-] 
+class~~ 
+QuestionPojo~~ 
+{ 
 public
-€€ 
-
-AnswerPojo
-€€ 
-WrongOptionThree
-€€ *
-{
-€€+ ,
-get
-€€- 0
-;
-€€0 1
-set
-€€2 5
-;
-€€5 6
-}
-€€7 8
-[
- 	
-
-DataMember
-	 
-]
- 
-public
-‚‚ 
+€€ 
 int
-‚‚ 
-NumberOfRound
-‚‚  
-{
-‚‚! "
-get
-‚‚# &
-;
-‚‚& '
-set
-‚‚( +
-;
-‚‚+ ,
-}
-‚‚- .
-}
-ƒƒ 
-public
-…… 
-
-class
-…… 
-QuestionPojo
-…… 
-{
-†† 
-public
-‡‡ 
-int
-‡‡ 
+€€ 
 
 IdQuestion
-‡‡ 
+€€ 
 {
-‡‡ 
+€€ 
 get
-‡‡  #
+€€  #
 ;
-‡‡# $
+€€# $
 set
-‡‡% (
+€€% (
 ;
-‡‡( )
+€€( )
 }
-‡‡* +
+€€* +
 public
- 
+ 
 string
- (
+ (
 SpanishQuestionDescription
- 0
+ 0
 {
-1 2
+1 2
 get
-3 6
+3 6
 ;
-6 7
+6 7
 set
-8 ;
+8 ;
 ;
-; <
+; <
 }
-= >
+= >
 public
-‰‰ 
+‚‚ 
 string
-‰‰ (
+‚‚ (
 EnglishQuestionDescription
-‰‰ 0
+‚‚ 0
 {
-‰‰1 2
+‚‚1 2
 get
-‰‰3 6
+‚‚3 6
 ;
-‰‰6 7
+‚‚6 7
 set
-‰‰8 ;
+‚‚8 ;
 ;
-‰‰; <
+‚‚; <
 }
-‰‰= >
+‚‚= >
+public
+ƒƒ 
+int
+ƒƒ 
+IdCategoryBelong
+ƒƒ #
+{
+ƒƒ$ %
+get
+ƒƒ& )
+;
+ƒƒ) *
+set
+ƒƒ+ .
+;
+ƒƒ. /
+}
+ƒƒ0 1
+public
+„„ 
+int
+„„  
+IdAnswerOfQuestion
+„„ %
+{
+„„& '
+get
+„„( +
+;
+„„+ ,
+set
+„„- 0
+;
+„„0 1
+}
+„„2 3
+public
+…… 
+int
+…… 
+
+ValueWorth
+…… 
+{
+…… 
+get
+……  #
+;
+……# $
+set
+……% (
+;
+……( )
+}
+……* +
+}
+†† 
+public
+ 
+
+class
+ 
+
+AnswerPojo
+ 
+{
+‰‰ 
 public
  
 int
- 
-IdCategoryBelong
- #
+ 
+IdAnswer
+ 
 {
-$ %
+ 
 get
-& )
+ !
 ;
-) *
+! "
 set
-+ .
+# &
 ;
-. /
+& '
 }
-0 1
+( )
 public
-‹‹ 
-int
-‹‹  
-IdAnswerOfQuestion
-‹‹ %
+‹‹ 
+string
+‹‹ &
+SpanishAnswerDescription
+‹‹ .
 {
-‹‹& '
+‹‹/ 0
 get
-‹‹( +
+‹‹1 4
 ;
-‹‹+ ,
+‹‹4 5
 set
-‹‹- 0
+‹‹6 9
 ;
-‹‹0 1
+‹‹9 :
 }
-‹‹2 3
+‹‹; <
 public
- 
+ 
+string
+ &
+EnglishAnswerDescription
+ .
+{
+/ 0
+get
+1 4
+;
+4 5
+set
+6 9
+;
+9 :
+}
+; <
+public
+ 
 int
- 
+ 
 
-ValueWorth
- 
+IdCategory
+ 
 {
- 
+ 
 get
-  #
+  #
 ;
-# $
+# $
 set
-% (
+% (
 ;
-( )
+( )
 }
-* +
+* +
 }
- 
+ 
 public
- 
+ 
 
 class
- 
-
-AnswerPojo
- 
+ 
+CategoryPojo
+ 
 {
- 
+‘‘ 
 public
-‘‘ 
+’’ 
 int
-‘‘ 
-IdAnswer
-‘‘ 
+’’ 
+
+IdCategory
+’’ 
 {
-‘‘ 
+’’ 
 get
-‘‘ !
+’’  #
 ;
-‘‘! "
+’’# $
 set
-‘‘# &
+’’% (
 ;
-‘‘& '
+’’( )
 }
-‘‘( )
-public
-’’ 
-string
-’’ &
-SpanishAnswerDescription
-’’ .
-{
-’’/ 0
-get
-’’1 4
-;
-’’4 5
-set
-’’6 9
-;
-’’9 :
-}
-’’; <
+’’* +
 public
 ““ 
 string
-““ &
-EnglishAnswerDescription
-““ .
-{
-““/ 0
-get
-““1 4
-;
-““4 5
-set
-““6 9
-;
-““9 :
-}
-““; <
-public
-”” 
-int
-”” 
-
-IdCategory
-”” 
-{
-”” 
-get
-””  #
-;
-””# $
-set
-””% (
-;
-””( )
-}
-””* +
-}
-•• 
-public
-—— 
-
-class
-—— 
-CategoryPojo
-—— 
-{
- 
-public
-™™ 
-int
-™™ 
-
-IdCategory
-™™ 
-{
-™™ 
-get
-™™  #
-;
-™™# $
-set
-™™% (
-;
-™™( )
-}
-™™* +
-public
- 
-string
- (
+““ (
 SpanishCategoryDescription
- 0
+““ 0
 {
-1 2
+““1 2
 get
-3 6
+““3 6
 ;
-6 7
+““6 7
 set
-8 ;
+““8 ;
 ;
-; <
+““; <
 }
-= >
+““= >
 public
-›› 
+”” 
 string
-›› (
+”” (
 EnglishCategoryDescription
-›› 0
+”” 0
 {
-››1 2
+””1 2
 get
-››3 6
+””3 6
 ;
-››6 7
+””6 7
 set
-››8 ;
+””8 ;
 ;
-››; <
+””; <
 }
-››= >
+””= >
 }
- 
+•• 
 [
- 
+—— 
 DataContract
- 
+—— 
 ]
- 
+—— 
 public
- 
+ 
 
 class
- &
+ &
 PlayerInGameDataContract
- )
+ )
 {
-   
+™™ 
 [
-΅΅ 	
+ 	
 
 DataMember
-΅΅	 
+	 
 ]
-΅΅ 
+ 
 public
-ΆΆ 
+›› 
 int
-ΆΆ 
+›› 
 IdUser
-ΆΆ 
+›› 
 {
-ΆΆ 
+›› 
 get
-ΆΆ 
+›› 
 ;
-ΆΆ  
+››  
 set
-ΆΆ! $
+››! $
 ;
-ΆΆ$ %
+››$ %
 }
-ΆΆ& '
+››& '
 [
-££ 	
+ 	
 
 DataMember
-££	 
+	 
 ]
-££ 
+ 
 public
-¤¤ 
+ 
 int
-¤¤ 
+ 
 IdPlayer
-¤¤ 
+ 
 {
-¤¤ 
+ 
 get
-¤¤ !
+ !
 ;
-¤¤! "
+! "
 set
-¤¤# &
+# &
 ;
-¤¤& '
+& '
 }
-¤¤( )
+( )
 [
-¥¥ 	
+ 	
 
 DataMember
-¥¥	 
+	 
 ]
-¥¥ 
+ 
 public
-¦¦ 
+ 
 int
-¦¦ 
+ 
 FinalPosition
-¦¦  
+  
 {
-¦¦! "
+! "
 get
-¦¦# &
+# &
 ;
-¦¦& '
+& '
 set
-¦¦( +
+( +
 ;
-¦¦+ ,
++ ,
 }
-¦¦- .
+- .
 [
-§§ 	
+   	
 
 DataMember
-§§	 
+  	 
 ]
-§§ 
+   
 public
-¨¨ 
+΅΅ 
 String
-¨¨ 
+΅΅ 
 UserName
-¨¨ 
+΅΅ 
 {
-¨¨  
+΅΅  
 get
-¨¨! $
+΅΅! $
 ;
-¨¨$ %
+΅΅$ %
 set
-¨¨& )
+΅΅& )
 ;
-¨¨) *
+΅΅) *
 }
-¨¨+ ,
+΅΅+ ,
 [
-©© 	
+ΆΆ 	
 
 DataMember
-©©	 
+ΆΆ	 
 ]
-©© 
+ΆΆ 
 public
-ªª 
+££ 
 int
-ªª 
+££ 
 SideTeam
-ªª 
+££ 
 {
-ªª 
+££ 
 get
-ªª !
+££ !
 ;
-ªª! "
+££! "
 set
-ªª# &
+££# &
 ;
-ªª& '
+££& '
 }
-ªª( )
+££( )
 [
-«« 	
+¤¤ 	
 
 DataMember
-««	 
+¤¤	 
 ]
-«« 
+¤¤ 
 public
-¬¬ 
+¥¥ 
 int
-¬¬ 
+¥¥ 
 TurnOfPlayer
-¬¬ 
+¥¥ 
 {
-¬¬  !
+¥¥  !
 get
-¬¬" %
+¥¥" %
 ;
-¬¬% &
+¥¥% &
 set
-¬¬' *
+¥¥' *
 ;
-¬¬* +
+¥¥* +
 }
-¬¬, -
+¥¥, -
 [
-­­ 	
+¦¦ 	
 
 DataMember
-­­	 
+¦¦	 
 ]
-­­ 
+¦¦ 
 public
-®® 
+§§ 
 int
-®® 
+§§ 
 IdAvatar
-®® 
+§§ 
 {
-®® 
+§§ 
 get
-®® !
+§§ !
 ;
-®®! "
+§§! "
 set
-®®# &
+§§# &
 ;
-®®& '
+§§& '
 }
-®®( )
+§§( )
 [
-―― 	
+¨¨ 	
 
 DataMember
-――	 
+¨¨	 
 ]
-―― 
+¨¨ 
 public
-°° 
+©© 
 int
-°° "
+©© "
 CurrentPointsOfRound
-°° '
+©© '
 {
-°°( )
+©©( )
 get
-°°* -
+©©* -
 ;
-°°- .
+©©- .
 set
-°°/ 2
+©©/ 2
 ;
-°°2 3
+©©2 3
 }
-°°4 5
+©©4 5
 }
-±± 
+ªª 
 [
-΄΄ 
+­­ 
 DataContract
-΄΄ 
+­­ 
 ]
-΄΄ 
+­­ 
 public
-µµ 
+®® 
 
 class
-µµ +
+®® +
 CurrentQuestionToShowContract
-µµ .
+®® .
 {
-¶¶ 
+―― 
 [
-·· 	
+°° 	
 
 DataMember
-··	 
+°°	 
 ]
-·· 
+°° 
 public
-ΈΈ 
+±± 
 int
-ΈΈ 
+±± 
 
 IdQuestion
-ΈΈ 
+±± 
 {
-ΈΈ 
+±± 
 get
-ΈΈ  #
+±±  #
 ;
-ΈΈ# $
+±±# $
 set
-ΈΈ% (
+±±% (
 ;
-ΈΈ( )
+±±( )
 }
-ΈΈ* +
+±±* +
 [
-ΉΉ 	
+²² 	
 
 DataMember
-ΉΉ	 
+²²	 
 ]
-ΉΉ 
+²² 
 public
-ΊΊ 
+³³ 
 int
-ΊΊ 
+³³ 
 IdFirstAnswer
-ΊΊ  
+³³  
 {
-ΊΊ! "
+³³! "
 get
-ΊΊ# &
+³³# &
 ;
-ΊΊ& '
+³³& '
 set
-ΊΊ( +
+³³( +
 ;
-ΊΊ+ ,
+³³+ ,
 }
-ΊΊ- .
+³³- .
 [
-»» 	
+΄΄ 	
 
 DataMember
-»»	 
+΄΄	 
 ]
-»» 
+΄΄ 
 public
-ΌΌ 
+µµ 
 int
-ΌΌ 
+µµ 
 IdSecondAnswer
-ΌΌ !
+µµ !
 {
-ΌΌ" #
+µµ" #
 get
-ΌΌ$ '
+µµ$ '
 ;
-ΌΌ' (
+µµ' (
 set
-ΌΌ) ,
+µµ) ,
 ;
-ΌΌ, -
+µµ, -
 }
-ΌΌ. /
+µµ. /
 [
-½½ 	
+¶¶ 	
 
 DataMember
-½½	 
+¶¶	 
 ]
-½½ 
+¶¶ 
 public
-ΎΎ 
+·· 
 int
-ΎΎ 
+·· 
 IdThirdAnswer
-ΎΎ  
+··  
 {
-ΎΎ! "
+··! "
 get
-ΎΎ# &
+··# &
 ;
-ΎΎ& '
+··& '
 set
-ΎΎ( +
+··( +
 ;
-ΎΎ+ ,
+··+ ,
 }
-ΎΎ- .
+··- .
 [
-ΏΏ 	
+ΈΈ 	
 
 DataMember
-ΏΏ	 
+ΈΈ	 
 ]
-ΏΏ 
+ΈΈ 
 public
-ΐΐ 
+ΉΉ 
 int
-ΐΐ 
+ΉΉ 
 IdFourthAnswer
-ΐΐ !
+ΉΉ !
 {
-ΐΐ" #
+ΉΉ" #
 get
-ΐΐ$ '
+ΉΉ$ '
 ;
-ΐΐ' (
+ΉΉ' (
 set
-ΐΐ) ,
+ΉΉ) ,
 ;
-ΐΐ, -
+ΉΉ, -
 }
-ΐΐ. /
+ΉΉ. /
 }
-ΑΑ 
+ΊΊ 
 public
-ΔΔ 
+½½ 
 
 class
-ΔΔ 
+½½ 
 
 PlayerInfo
-ΔΔ 
+½½ 
 {
-ΕΕ 
+ΎΎ 
 public
-ΖΖ 
+ΏΏ 
 string
-ΖΖ 
+ΏΏ 
 Name
-ΖΖ 
+ΏΏ 
 {
-ΖΖ 
+ΏΏ 
 get
-ΖΖ  
+ΏΏ  
 ;
-ΖΖ  !
+ΏΏ  !
 set
-ΖΖ" %
+ΏΏ" %
 ;
-ΖΖ% &
+ΏΏ% &
 }
-ΖΖ' (
+ΏΏ' (
 public
-ΘΘ 
+ΑΑ 
 long
-ΘΘ 
+ΑΑ 
 Points
-ΘΘ 
+ΑΑ 
 {
-ΘΘ 
+ΑΑ 
 get
-ΘΘ  
+ΑΑ  
 ;
-ΘΘ  !
+ΑΑ  !
 set
-ΘΘ" %
+ΑΑ" %
 ;
-ΘΘ% &
+ΑΑ% &
 }
-ΘΘ' (
+ΑΑ' (
 }
-ΙΙ 
-}ΜΜ ¨
+ΒΒ 
+}ΕΕ ¨
 }C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\Properties\AssemblyInfo.cs
 [ 
 assembly 	

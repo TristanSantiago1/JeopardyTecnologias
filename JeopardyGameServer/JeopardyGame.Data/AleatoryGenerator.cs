@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Data.Helpers
 {
-    public  class AleatoryGenerator
+    public static class AleatoryGenerator
     {
         private static readonly Random generateAleatory = new Random();
         [ThreadStatic] private static Random generateAleatoryLocal;

@@ -1,6 +1,7 @@
 ﻿using JeopardyGame.Data;
 using JeopardyGame.Data.DataAccess;
 using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Data.Helpers;
 using JeopardyGame.Service.ChannelsAdministrator;
 using JeopardyGame.Service.InterfacesSevices;
 using JeopardyGame.Service.InterpretersEntityPojo;
@@ -23,7 +24,6 @@ namespace JeopardyGame.Service.ServiceImplementation
         private readonly int DEFAULT_INT_VALUE = 0;
         private readonly int GUEST_STATE = 3;
         private static readonly Object objectLock = new object();
-        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public GenericClass<UserPojo> CreateUserForGuest()
         {            
@@ -100,7 +100,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private static string GetGuestUserName()
         {
-            int aleatoryNumber = generateAleatory.Value.Next(1, 27);
+            int aleatoryNumber = AleatoryGenerator.GetAleatoryNumberWithRange(1, 27);
             return aleatoryNumber switch
             {
                 1 => Properties.Resources.Wachiturro,

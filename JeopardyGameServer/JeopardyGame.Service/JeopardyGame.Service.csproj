@@ -75,7 +75,6 @@
     <Compile Include="InterfacesSevices\IFriendlyManagerActions.cs" />
     <Compile Include="InterfacesSevices\IGameActions.cs" />
     <Compile Include="InterfacesSevices\IGuestPlayerManager.cs" />
-    <Compile Include="InterfacesSevices\IHeartBeat.cs" />
     <Compile Include="InterfacesSevices\ILobbyActions.cs" />
     <Compile Include="InterfacesSevices\INotifyUserAvailability.cs" />
     <Compile Include="InterfacesSevices\IRecoverPassword.cs" />

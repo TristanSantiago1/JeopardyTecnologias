@@ -5559,196 +5559,196 @@ $SentEmailConfirmationToCreateAccount >
 )B C
 ;C D
 } 
-[ 
-ServiceContract 
-] 
-public 
+[ 
+ServiceContract 
+] 
+public 
 
-	interface *
-IFriendManagerActionOperations 3
-{ 
-[ 	
-OperationContract	 
-( 
-IsOneWay #
-=$ %
-true& *
-)* +
-]+ ,
-void '
-UnregisterFriendManagerUser (
-(( )
-int) ,
-idUserFriendManager- @
-)@ A
-;A B
-[ 	
-OperationContract	 
-] 
-GenericClass 
-< 
-int 
-> 
-BanUser !
-(! "
-int" %
-idPlayerBanned& 4
-,4 5
-int6 9
-idUserBanning: G
-)G H
-;H I
-[ 	
-OperationContract	 
-( 
-IsOneWay #
-=$ %
-true& *
-)* +
-]+ ,
-void $
-EliminateUserFromFriends %
-(% &
-int& )
-idPlayerDeleting* :
-,: ;
-int< ?
-idUserToEliminate@ Q
-)Q R
-;R S
-[!! 	
-OperationContract!!	 
-(!! 
-IsOneWay!! #
-=!!$ %
-true!!& *
-)!!* +
-]!!+ ,
-void"" 
-SendFriendRequest"" 
-("" 
-int"" "
-idPLayerRequesting""# 5
-,""5 6
-int""7 :
-idUserRequested""; J
-)""J K
-;""K L
-[$$ 	
-OperationContract$$	 
-($$ 
-IsOneWay$$ #
-=$$$ %
-true$$& *
-)$$* +
-]$$+ ,
-void%% 
-AcceptFriendRequest%%  
-(%%  !
-int%%! $
-idPlayerAccepting%%% 6
-,%%6 7
-int%%8 ;
-idUserRequesting%%< L
-)%%L M
-;%%M N
-['' 	
-OperationContract''	 
-('' 
-IsOneWay'' #
-=''$ %
-true''& *
-)''* +
-]''+ ,
-void((  
-DeclineFriendRequest(( !
-(((! "
-int((" %
-idPlayerDeclining((& 7
-,((7 8
-int((9 <
-idUserRequesting((= M
-)((M N
-;((N O
-[** 	
-OperationContract**	 
-(** 
-IsOneWay** #
-=**$ %
-true**& *
-)*** +
-]**+ ,
-void++ $
-NotifyUserAboutNewPlayer++ %
-(++% &
-int++& )
-idNewPlayer++* 5
-,++5 6
-string++7 =
-userName++> F
-)++F G
-;++G H
-}-- 
-[// 
-ServiceContract// 
-]// 
-public00 
+	interface *
+IFriendManagerActionOperations 3
+{ 
+[ 	
+OperationContract	 
+( 
+IsOneWay #
+=$ %
+true& *
+)* +
+]+ ,
+void '
+UnregisterFriendManagerUser (
+(( )
+int) ,
+idUserFriendManager- @
+)@ A
+;A B
+[ 	
+OperationContract	 
+] 
+GenericClass 
+< 
+int 
+> 
+BanUser !
+(! "
+int" %
+idPlayerBanned& 4
+,4 5
+int6 9
+idUserBanning: G
+)G H
+;H I
+[ 	
+OperationContract	 
+( 
+IsOneWay #
+=$ %
+true& *
+)* +
+]+ ,
+void   $
+EliminateUserFromFriends   %
+(  % &
+int  & )
+idPlayerDeleting  * :
+,  : ;
+int  < ?
+idUserToEliminate  @ Q
+)  Q R
+;  R S
+["" 	
+OperationContract""	 
+("" 
+IsOneWay"" #
+=""$ %
+true""& *
+)""* +
+]""+ ,
+void## 
+SendFriendRequest## 
+(## 
+int## "
+idPLayerRequesting### 5
+,##5 6
+int##7 :
+idUserRequested##; J
+)##J K
+;##K L
+[%% 	
+OperationContract%%	 
+(%% 
+IsOneWay%% #
+=%%$ %
+true%%& *
+)%%* +
+]%%+ ,
+void&& 
+AcceptFriendRequest&&  
+(&&  !
+int&&! $
+idPlayerAccepting&&% 6
+,&&6 7
+int&&8 ;
+idUserRequesting&&< L
+)&&L M
+;&&M N
+[(( 	
+OperationContract((	 
+((( 
+IsOneWay(( #
+=(($ %
+true((& *
+)((* +
+]((+ ,
+void))  
+DeclineFriendRequest)) !
+())! "
+int))" %
+idPlayerDeclining))& 7
+,))7 8
+int))9 <
+idUserRequesting))= M
+)))M N
+;))N O
+[++ 	
+OperationContract++	 
+(++ 
+IsOneWay++ #
+=++$ %
+true++& *
+)++* +
+]+++ ,
+void,, $
+NotifyUserAboutNewPlayer,, %
+(,,% &
+int,,& )
+idNewPlayer,,* 5
+,,,5 6
+string,,7 =
+userName,,> F
+),,F G
+;,,G H
+}.. 
+[00 
+ServiceContract00 
+]00 
+public11 
 
-	interface00 )
-IFriendManagerActionsCallBack00 2
-{11 
-[22 	
-OperationContract22	 
-]22 
-void33 
-ResponseReported33 
-(33 
-int33 !
+	interface11 )
+IFriendManagerActionsCallBack11 2
+{22 
+[33 	
+OperationContract33	 
+]33 
+void44 
+ResponseReported44 
+(44 
+int44 !
 
-numReports33" ,
-)33, -
-;33- .
-[55 	
-OperationContract55	 
-]55 
-void66 *
-ResponseEliminationFromFriends66 +
-(66+ ,
-int66, /
-idUser660 6
-)666 7
-;667 8
-[88 	
-OperationContract88	 
-]88 
-void99 !
-ResponseRequestAction99 "
-(99" #
-int99# &
-idUser99' -
-,99- .
-int99/ 2
-requestStatus993 @
-,99@ A
-String99B H
-userName99I Q
-)99Q R
-;99R S
-[;; 	
-OperationContract;;	 
-];; 
-void<< $
-ResponseNewPlayerJusJoin<< %
-(<<% &
-int<<& )
-idUser<<* 0
-,<<0 1
-string<<2 8
-userName<<9 A
-)<<A B
-;<<B C
-}== 
-}?? è9
+numReports44" ,
+)44, -
+;44- .
+[66 	
+OperationContract66	 
+]66 
+void77 *
+ResponseEliminationFromFriends77 +
+(77+ ,
+int77, /
+idUser770 6
+)776 7
+;777 8
+[99 	
+OperationContract99	 
+]99 
+void:: !
+ResponseRequestAction:: "
+(::" #
+int::# &
+idUser::' -
+,::- .
+int::/ 2
+requestStatus::3 @
+,::@ A
+String::B H
+userName::I Q
+)::Q R
+;::R S
+[<< 	
+OperationContract<<	 
+]<< 
+void== $
+ResponseNewPlayerJusJoin== %
+(==% &
+int==& )
+idUser==* 0
+,==0 1
+string==2 8
+userName==9 A
+)==A B
+;==B C
+}>> 
+}@@ è9
 áC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\InterfacesSevices\IGameActions.cs
 	namespace
 
@@ -26694,517 +26694,525 @@ objectLock
 ôô 	
 }
 õõ 
-}úú ‡á
+}úú ∞ä
 üC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\GuestPlayerManagerImplementation.cs
-	namespace 	
-JeopardyGame
+	namespace 	
+JeopardyGame
  
-. 
-Service 
-. !
-ServiceImplementation 4
-{ 
-internal 
-class ,
- GuestPlayerManagerImplementation 3
-:4 5
-IGuestPlayerManager6 I
-{ 
-private 
-readonly 
-string 
-GUEST_EMAIL  +
-=, -
-
-Properties. 8
-.8 9
-	Resources9 B
-.B C
-	GuestMailC L
-;L M
+. 
+Service 
+. !
+ServiceImplementation 4
+{ 
+internal 
+class ,
+ GuestPlayerManagerImplementation 3
+:4 5
+IGuestPlayerManager6 I
+{ 
 private 
 readonly 
-string 
-GUEST_PASSWORD  .
-=/ 0
+string 
+GUEST_EMAIL  +
+=, -
 
-Properties1 ;
-.; <
-	Resources< E
-.E F
-GuestPasswordF S
-;S T
+Properties. 8
+.8 9
+	Resources9 B
+.B C
+	GuestMailC L
+;L M
 private 
 readonly 
-string 
+string 
+GUEST_PASSWORD  .
+=/ 0
 
-GUEST_NAME  *
-=+ ,
-
-Properties- 7
-.7 8
-	Resources8 A
-.A B
-	GuestNameB K
-;K L
+Properties1 ;
+.; <
+	Resources< E
+.E F
+GuestPasswordF S
+;S T
 private 
-readonly 
-int 
-DEFAULT_INT_VALUE .
-=/ 0
-$num1 2
-;2 3
+readonly 
+string 
+
+GUEST_NAME  *
+=+ ,
+
+Properties- 7
+.7 8
+	Resources8 A
+.A B
+	GuestNameB K
+;K L
 private 
 readonly 
-int 
-GUEST_STATE (
-=) *
-$num+ ,
-;, -
-private 
-static 
-readonly 
-Object  &
+int 
+DEFAULT_INT_VALUE .
+=/ 0
+$num1 2
+;2 3
+private 
+readonly 
+int 
+GUEST_STATE (
+=) *
+$num+ ,
+;, -
+private 
+static 
+readonly 
+Object  &
 
-objectLock' 1
-=2 3
-new4 7
-object8 >
-(> ?
-)? @
-;@ A
-public 
-GenericClass 
-< 
-UserPojo $
->$ %
-CreateUserForGuest& 8
-(8 9
-)9 :
-{ 	
-GenericClass 
-< 
-UserPojo !
->! "
-resultToReturn# 1
-=2 3
-new4 7
-GenericClass8 D
-<D E
-UserPojoE M
->M N
-(N O
-)O P
-;P Q
-lock 
-( 
+objectLock' 1
+=2 3
+new4 7
+object8 >
+(> ?
+)? @
+;@ A
+private 
+static 
+readonly 
+ThreadLocal  +
+<+ ,
+Random, 2
+>2 3
+generateAleatory4 D
+=E F
+newG J
+ThreadLocalK V
+<V W
+RandomW ]
+>] ^
+(^ _
+(_ `
+)` a
+=>b d
+newe h
+Randomi o
+(o p
+)p q
+)q r
+;r s
+public 
+GenericClass 
+< 
+UserPojo $
+>$ %
+CreateUserForGuest& 8
+(8 9
+)9 :
+{ 	
+GenericClass 
+< 
+UserPojo !
+>! "
+resultToReturn# 1
+=2 3
+new4 7
+GenericClass8 D
+<D E
+UserPojoE M
+>M N
+(N O
+)O P
+;P Q
+lock 
+( 
 
-objectLock 
-) 
-{ 
-try 
-{   
-User!! 
-	guestUser!! "
-=!!# $
-new!!% (
-User!!) -
-(!!- .
-)!!. /
-{"" 
-IdUser## 
-=##  
-DEFAULT_INT_VALUE##! 2
-,##2 3
-EmailAddress$$ $
-=$$% &
-GUEST_EMAIL$$' 2
-,$$2 3
-Name%% 
-=%% 
+objectLock 
+) 
+{   
+try!! 
+{"" 
+User## 
+	guestUser## "
+=### $
+new##% (
+User##) -
+(##- .
+)##. /
+{$$ 
+IdUser%% 
+=%%  
+DEFAULT_INT_VALUE%%! 2
+,%%2 3
+EmailAddress&& $
+=&&% &
+GUEST_EMAIL&&' 2
+,&&2 3
+Name'' 
+='' 
 
-GUEST_NAME%% )
-,%%) *
-UserName&&  
-=&&! "
-GetGuestUserName&&# 3
-(&&3 4
-)&&4 5
-,&&5 6
-Password''  
-=''! "
-GUEST_PASSWORD''# 1
-}(( 
-;(( 
-GenericClassServer)) &
-<))& '
-User))' +
->))+ ,
-	userSaved))- 6
-=))7 8$
-UserManagerDataOperation))9 Q
-.))Q R
-SaveUserInDataBase))R d
-())d e
-	guestUser))e n
-)))n o
-;))o p
-if** 
-(** 
-	userSaved** !
-.**! "
-	CodeEvent**" +
-==**, .
-ExceptionDictionary**/ B
-.**B C
-SUCCESFULL_EVENT**C S
-)**S T
-{++ 
+GUEST_NAME'' )
+,'') *
+UserName((  
+=((! "
+GetGuestUserName((# 3
+(((3 4
+)((4 5
+,((5 6
+Password))  
+=))! "
+GUEST_PASSWORD))# 1
+}** 
+;** 
+GenericClassServer++ &
+<++& '
+User++' +
+>+++ ,
+	userSaved++- 6
+=++7 8$
+UserManagerDataOperation++9 Q
+.++Q R
+SaveUserInDataBase++R d
+(++d e
+	guestUser++e n
+)++n o
+;++o p
+if,, 
+(,, 
+	userSaved,, !
+.,,! "
+	CodeEvent,," +
+==,,, .
+ExceptionDictionary,,/ B
+.,,B C
+SUCCESFULL_EVENT,,C S
+),,S T
+{-- 
 
-PlayerPojo,, "
-playerToSave,,# /
-=,,0 1
-new,,2 5
+PlayerPojo.. "
+playerToSave..# /
+=..0 1
+new..2 5
 
-PlayerPojo,,6 @
-(,,@ A
-),,A B
-;,,B C
-playerToSave-- $
-.--$ %
-IdPlayer--% -
-=--. /
-DEFAULT_INT_VALUE--0 A
-;--A B
-playerToSave.. $
-...$ %
-GeneralPoints..% 2
-=..3 4
-DEFAULT_INT_VALUE..5 F
-;..F G
+PlayerPojo..6 @
+(..@ A
+)..A B
+;..B C
 playerToSave// $
-.//$ %
-	NoReports//% .
-=/// 0
-DEFAULT_INT_VALUE//1 B
-;//B C
+.//$ %
+IdPlayer//% -
+=//. /
+DEFAULT_INT_VALUE//0 A
+;//A B
 playerToSave00 $
-.00$ %
-IdActualAvatar00% 3
-=004 5
-DEFAULT_INT_VALUE006 G
-;00G H
+.00$ %
+GeneralPoints00% 2
+=003 4
+DEFAULT_INT_VALUE005 F
+;00F G
 playerToSave11 $
-.11$ %
-IdUser11% +
-=11, -
-	userSaved11. 7
-.117 8
-ObjectSaved118 C
-.11C D
-IdUser11D J
-;11J K
+.11$ %
+	NoReports11% .
+=11/ 0
+DEFAULT_INT_VALUE111 B
+;11B C
 playerToSave22 $
-.22$ %
-IdState22% ,
-=22- .
-GUEST_STATE22/ :
-;22: ;%
-UserManagerImplementation33 1
-userManager332 =
-=33> ?
-new33@ C
-(33C D
-)33D E
-;33E F
-int44 %
-isPlayerSavedSuccessfully44 5
-=446 7
-userManager448 C
-.44C D
+.22$ %
+IdActualAvatar22% 3
+=224 5
+DEFAULT_INT_VALUE226 G
+;22G H
+playerToSave33 $
+.33$ %
+IdUser33% +
+=33, -
+	userSaved33. 7
+.337 8
+ObjectSaved338 C
+.33C D
+IdUser33D J
+;33J K
+playerToSave44 $
+.44$ %
+IdState44% ,
+=44- .
+GUEST_STATE44/ :
+;44: ;%
+UserManagerImplementation55 1
+userManager552 =
+=55> ?
+new55@ C
+(55C D
+)55D E
+;55E F
+int66 %
+isPlayerSavedSuccessfully66 5
+=666 7
+userManager668 C
+.66C D
 
-SavePlayer44D N
-(44N O
-playerToSave44O [
-)44[ \
-;44\ ]
-if55 
-(55 %
-isPlayerSavedSuccessfully55 5
-==556 8
-ExceptionDictionary559 L
-.55L M
-SUCCESFULL_EVENT55M ]
-)55] ^
-{66 
-resultToReturn77 *
-.77* +
-ObjectSaved77+ 6
-=777 8
-UserInterpreter779 H
-.77H I$
-FromUserEntityToUserPojo77I a
-(77a b
-	userSaved77b k
-.77k l
-ObjectSaved77l w
-)77w x
-;77x y
-resultToReturn88 *
-.88* +
-	CodeEvent88+ 4
-=885 6
-ExceptionDictionary887 J
-.88J K
-SUCCESFULL_EVENT88K [
-;88[ \
-}99 
-else:: 
-{;; $
-UserManagerDataOperation<< 4
-.<<4 5
-DeleteUserById<<5 C
-(<<C D
-	userSaved<<D M
-.<<M N
-ObjectSaved<<N Y
-.<<Y Z
-IdUser<<Z `
-)<<` a
-;<<a b
-resultToReturn== *
-.==* +
-	CodeEvent==+ 4
-===5 6%
-isPlayerSavedSuccessfully==7 P
-;==P Q
-}>> 
-}?? 
-else@@ 
-{AA 
-resultToReturnBB &
-.BB& '
-	CodeEventBB' 0
-=BB1 2
-	userSavedBB3 <
-.BB< =
-	CodeEventBB= F
-;BBF G
-}CC 
-}DD 
-catchEE 
-(EE /
-#CommunicationObjectFaultedExceptionEE :
-exEE; =
-)EE= >
-{FF 
-resultToReturnGG "
-.GG" #
-	CodeEventGG# ,
-=GG- .
-ExceptionDictionaryGG/ B
-.GGB C
-UNSUCCESFULL_EVENTGGC U
-;GGU V
-ExceptionHandlerHH $
-.HH$ %
-LogExceptionHH% 1
-(HH1 2
-exHH2 4
-,HH4 5
-ExceptionDictionaryHH6 I
-.HHI J
-FATAL_EXCEPTIONHHJ Y
-)HHY Z
-;HHZ [
-}II 
-catchJJ 
-(JJ 
-TimeoutExceptionJJ '
-exJJ( *
-)JJ* +
-{KK 
-resultToReturnLL "
-.LL" #
-	CodeEventLL# ,
-=LL- .
-ExceptionDictionaryLL/ B
-.LLB C
-UNSUCCESFULL_EVENTLLC U
-;LLU V
-ExceptionHandlerMM $
-.MM$ %
-LogExceptionMM% 1
-(MM1 2
-exMM2 4
-,MM4 5
-ExceptionDictionaryMM6 I
-.MMI J
-FATAL_EXCEPTIONMMJ Y
-)MMY Z
-;MMZ [
-}NN 
-catchOO 
-(OO "
-CommunicationExceptionOO -
-exOO. 0
-)OO0 1
-{PP 
-resultToReturnQQ "
-.QQ" #
-	CodeEventQQ# ,
-=QQ- .
-ExceptionDictionaryQQ/ B
-.QQB C
-UNSUCCESFULL_EVENTQQC U
-;QQU V
-ExceptionHandlerRR $
-.RR$ %
-LogExceptionRR% 1
-(RR1 2
-exRR2 4
-,RR4 5
-ExceptionDictionaryRR6 I
-.RRI J
-FATAL_EXCEPTIONRRJ Y
-)RRY Z
-;RRZ [
-}SS 
-catchTT 
-(TT %
-InvalidOperationExceptionTT 0
-exTT1 3
-)TT3 4
-{UU 
-resultToReturnVV "
-.VV" #
-	CodeEventVV# ,
-=VV- .
-ExceptionDictionaryVV/ B
-.VVB C
-UNSUCCESFULL_EVENTVVC U
-;VVU V
-ExceptionHandlerWW $
-.WW$ %
-LogExceptionWW% 1
-(WW1 2
-exWW2 4
-,WW4 5
-ExceptionDictionaryWW6 I
-.WWI J
-FATAL_EXCEPTIONWWJ Y
-)WWY Z
-;WWZ [
-}XX 
-}YY 
-returnZZ 
-resultToReturnZZ !
-;ZZ! "
-}[[ 	
-public^^ 
-void^^ 
-DeleteGuest^^ 
-(^^  
-int^^  #
-idUser^^$ *
-)^^* +
-{__ 	$
-UserManagerDataOperation`` $
-.``$ %
-DeleteUserById``% 3
-(``3 4
-idUser``4 :
-)``: ;
-;``; <
-}aa 	
-privatecc 
-staticcc 
-stringcc 
-GetGuestUserNamecc .
-(cc. /
-)cc/ 0
-{dd 	
-Randomee 
-generateAleatoryee #
-=ee$ %
-newee& )
-Randomee* 0
-(ee0 1
-)ee1 2
-;ee2 3
-intff 
-aleatoryNumberff 
-=ff  
-generateAleatoryff! 1
-.ff1 2
-Nextff2 6
-(ff6 7
-$numff7 8
-,ff8 9
-$numff: <
-)ff< =
-;ff= >
-returngg 
-aleatoryNumbergg !
-switchgg" (
-{hh 
-$numii 
-=>ii 
-
-Propertiesii 
-.ii  
-	Resourcesii  )
-.ii) *
-
-Wachiturroii* 4
-,ii4 5
+SavePlayer66D N
+(66N O
+playerToSave66O [
+)66[ \
+;66\ ]
+if77 
+(77 %
+isPlayerSavedSuccessfully77 5
+==776 8
+ExceptionDictionary779 L
+.77L M
+SUCCESFULL_EVENT77M ]
+)77] ^
+{88 
+resultToReturn99 *
+.99* +
+ObjectSaved99+ 6
+=997 8
+UserInterpreter999 H
+.99H I$
+FromUserEntityToUserPojo99I a
+(99a b
+	userSaved99b k
+.99k l
+ObjectSaved99l w
+)99w x
+;99x y
+resultToReturn:: *
+.::* +
+	CodeEvent::+ 4
+=::5 6
+ExceptionDictionary::7 J
+.::J K
+SUCCESFULL_EVENT::K [
+;::[ \
+};; 
+else<< 
+{== $
+UserManagerDataOperation>> 4
+.>>4 5
+DeleteUserById>>5 C
+(>>C D
+	userSaved>>D M
+.>>M N
+ObjectSaved>>N Y
+.>>Y Z
+IdUser>>Z `
+)>>` a
+;>>a b
+resultToReturn?? *
+.??* +
+	CodeEvent??+ 4
+=??5 6%
+isPlayerSavedSuccessfully??7 P
+;??P Q
+}@@ 
+}AA 
+elseBB 
+{CC 
+resultToReturnDD &
+.DD& '
+	CodeEventDD' 0
+=DD1 2
+	userSavedDD3 <
+.DD< =
+	CodeEventDD= F
+;DDF G
+}EE 
+}FF 
+catchGG 
+(GG /
+#CommunicationObjectFaultedExceptionGG :
+exGG; =
+)GG= >
+{HH 
+resultToReturnII "
+.II" #
+	CodeEventII# ,
+=II- .
+ExceptionDictionaryII/ B
+.IIB C
+UNSUCCESFULL_EVENTIIC U
+;IIU V
+ExceptionHandlerJJ $
+.JJ$ %
+LogExceptionJJ% 1
+(JJ1 2
+exJJ2 4
+,JJ4 5
+ExceptionDictionaryJJ6 I
+.JJI J
+FATAL_EXCEPTIONJJJ Y
+)JJY Z
+;JJZ [
+}KK 
+catchLL 
+(LL 
+TimeoutExceptionLL '
+exLL( *
+)LL* +
+{MM 
+resultToReturnNN "
+.NN" #
+	CodeEventNN# ,
+=NN- .
+ExceptionDictionaryNN/ B
+.NNB C
+UNSUCCESFULL_EVENTNNC U
+;NNU V
+ExceptionHandlerOO $
+.OO$ %
+LogExceptionOO% 1
+(OO1 2
+exOO2 4
+,OO4 5
+ExceptionDictionaryOO6 I
+.OOI J
+FATAL_EXCEPTIONOOJ Y
+)OOY Z
+;OOZ [
+}PP 
+catchQQ 
+(QQ "
+CommunicationExceptionQQ -
+exQQ. 0
+)QQ0 1
+{RR 
+resultToReturnSS "
+.SS" #
+	CodeEventSS# ,
+=SS- .
+ExceptionDictionarySS/ B
+.SSB C
+UNSUCCESFULL_EVENTSSC U
+;SSU V
+ExceptionHandlerTT $
+.TT$ %
+LogExceptionTT% 1
+(TT1 2
+exTT2 4
+,TT4 5
+ExceptionDictionaryTT6 I
+.TTI J
+FATAL_EXCEPTIONTTJ Y
+)TTY Z
+;TTZ [
+}UU 
+catchVV 
+(VV %
+InvalidOperationExceptionVV 0
+exVV1 3
+)VV3 4
+{WW 
+resultToReturnXX "
+.XX" #
+	CodeEventXX# ,
+=XX- .
+ExceptionDictionaryXX/ B
+.XXB C
+UNSUCCESFULL_EVENTXXC U
+;XXU V
+ExceptionHandlerYY $
+.YY$ %
+LogExceptionYY% 1
+(YY1 2
+exYY2 4
+,YY4 5
+ExceptionDictionaryYY6 I
+.YYI J
+FATAL_EXCEPTIONYYJ Y
+)YYY Z
+;YYZ [
+}ZZ 
+}[[ 
+return\\ 
+resultToReturn\\ !
+;\\! "
+}]] 	
+public`` 
+void`` 
+DeleteGuest`` 
+(``  
+int``  #
+idUser``$ *
+)``* +
+{aa 	$
+UserManagerDataOperationbb $
+.bb$ %
+DeleteUserByIdbb% 3
+(bb3 4
+idUserbb4 :
+)bb: ;
+;bb; <
+}cc 	
+privateee 
+staticee 
+stringee 
+GetGuestUserNameee .
+(ee. /
+)ee/ 0
+{ff 	
+intgg 
+aleatoryNumbergg 
+=gg  
+generateAleatorygg! 1
+.gg1 2
+Valuegg2 7
+.gg7 8
+Nextgg8 <
+(gg< =
+$numgg= >
+,gg> ?
+$numgg@ B
+)ggB C
+;ggC D
+returnhh 
+aleatoryNumberhh !
+switchhh" (
+{ii 
 $numjj 
 =>jj 
 
 Propertiesjj 
 .jj  
 	Resourcesjj  )
-.jj) *
-Papikrajj* 1
-,jj1 2
+.jj) *
+
+Wachiturrojj* 4
+,jj4 5
 $numkk 
 =>kk 
 
 Propertieskk 
 .kk  
 	Resourceskk  )
-.kk) *
-
-TigerWoodskk* 4
-,kk4 5
+.kk) *
+Papikrakk* 1
+,kk1 2
 $numll 
 =>ll 
 
 Propertiesll 
 .ll  
 	Resourcesll  )
-.ll) *
-_1ll* ,
-,ll, -
+.ll) *
+
+TigerWoodsll* 4
+,ll4 5
 $nummm 
 =>mm 
 
 Propertiesmm 
 .mm  
 	Resourcesmm  )
-.mm) *
-JustNoobmm* 2
-,mm2 3
+.mm) *
+_1mm* ,
+,mm, -
 $numnn 
 =>nn 
 
 Propertiesnn 
 .nn  
 	Resourcesnn  )
-.nn) *
-
-JustMasternn* 4
-,nn4 5
+.nn) *
+JustNoobnn* 2
+,nn2 3
 $numoo 
 =>oo 
 
@@ -27213,7 +27221,7 @@ Propertiesoo 
 	Resourcesoo  )
 .oo) *
 
-NoobMasteroo* 4
+JustMasteroo* 4
 ,oo4 5
 $numpp 
 =>pp 
@@ -27221,92 +27229,93 @@ NoobMasteroo* 4
 Propertiespp 
 .pp  
 	Resourcespp  )
-.pp) *
-Justpp* .
-,pp. /
+.pp) *
+
+NoobMasterpp* 4
+,pp4 5
 $numqq 
 =>qq 
 
 Propertiesqq 
 .qq  
 	Resourcesqq  )
-.qq) *
-ShadowRunnerqq* 6
-,qq6 7
-$numrr 
-=>rr 
+.qq) *
+Justqq* .
+,qq. /
+$numrr 
+=>rr 
 
-Propertiesrr  
-.rr  !
-	Resourcesrr! *
-.rr* +
-PhoenixKnightrr+ 8
-,rr8 9
+Propertiesrr 
+.rr  
+	Resourcesrr  )
+.rr) *
+ShadowRunnerrr* 6
+,rr6 7
 $numss 
 =>ss 
 
 Propertiesss  
 .ss  !
 	Resourcesss! *
-.ss* +
-
-InfernoWarss+ 5
-,ss5 6
+.ss* +
+PhoenixKnightss+ 8
+,ss8 9
 $numtt 
 =>tt 
 
 Propertiestt  
 .tt  !
 	Resourcestt! *
-.tt* +
-QuantumGamertt+ 7
-,tt7 8
+.tt* +
+
+InfernoWartt+ 5
+,tt5 6
 $numuu 
 =>uu 
 
 Propertiesuu  
 .uu  !
 	Resourcesuu! *
-.uu* +
-Quantumuu+ 2
-,uu2 3
+.uu* +
+QuantumGameruu+ 7
+,uu7 8
 $numvv 
 =>vv 
 
 Propertiesvv  
 .vv  !
 	Resourcesvv! *
-.vv* +
-MysticSeekervv+ 7
-,vv7 8
+.vv* +
+Quantumvv+ 2
+,vv2 3
 $numww 
 =>ww 
 
 Propertiesww  
 .ww  !
 	Resourcesww! *
-.ww* +
-
-CyberNinjaww+ 5
-,ww5 6
+.ww* +
+MysticSeekerww+ 7
+,ww7 8
 $numxx 
 =>xx 
 
 Propertiesxx  
 .xx  !
 	Resourcesxx! *
-.xx* +
-GalaxyExxx+ 3
-,xx3 4
+.xx* +
+
+CyberNinjaxx+ 5
+,xx5 6
 $numyy 
 =>yy 
 
 Propertiesyy  
 .yy  !
 	Resourcesyy! *
-.yy* +
-	Elementalyy+ 4
-,yy4 5
+.yy* +
+GalaxyExyy+ 3
+,yy3 4
 $numzz 
 =>zz 
 
@@ -27314,7 +27323,7 @@ Propertieszz  
 .zz  !
 	Resourceszz! *
 .zz* +
-	Starlightzz+ 4
+	Elementalzz+ 4
 ,zz4 5
 $num{{ 
 =>{{ 
@@ -27323,7 +27332,7 @@ Properties{{  
 .{{  !
 	Resources{{! *
 .{{* +
-	Celestial{{+ 4
+	Starlight{{+ 4
 ,{{4 5
 $num|| 
 =>|| 
@@ -27331,18 +27340,18 @@ Properties{{  
 Properties||  
 .||  !
 	Resources||! *
-.||* +
-MidnightVoy||+ 6
-,||6 7
+.||* +
+	Celestial||+ 4
+,||4 5
 $num}} 
 =>}} 
 
 Properties}}  
 .}}  !
 	Resources}}! *
-.}}* +
-SolarSorcerer}}+ 8
-,}}8 9
+.}}* +
+MidnightVoy}}+ 6
+,}}6 7
 $num~~ 
 =>~~ 
 
@@ -27350,7 +27359,7 @@ Properties~~  
 .~~  !
 	Resources~~! *
 .~~* +
-LunarAssassin~~+ 8
+SolarSorcerer~~+ 8
 ,~~8 9
 $num 
 => 
@@ -27358,10 +27367,9 @@ Properties~~  
 Properties  
 .  !
 	Resources! *
-.* +
-
-NovaVortex+ 5
-,5 6
+.* +
+LunarAssassin+ 8
+,8 9
 $num
 ÄÄ 
 =>
@@ -27374,11 +27382,12 @@ Properties
 	Resources
 ÄÄ! *
 .
-ÄÄ* +
-Blizzard
-ÄÄ+ 3
+ÄÄ* +
+
+NovaVortex
+ÄÄ+ 5
 ,
-ÄÄ3 4
+ÄÄ5 6
 $num
 ÅÅ 
 =>
@@ -27391,11 +27400,11 @@ Properties
 	Resources
 ÅÅ! *
 .
-ÅÅ* +
-NoBody
-ÅÅ+ 1
+ÅÅ* +
+Blizzard
+ÅÅ+ 3
 ,
-ÅÅ1 2
+ÅÅ3 4
 $num
 ÇÇ 
 =>
@@ -27408,11 +27417,11 @@ Properties
 	Resources
 ÇÇ! *
 .
-ÇÇ* +
-ThunderSpec
-ÇÇ+ 6
+ÇÇ* +
+NoBody
+ÇÇ+ 1
 ,
-ÇÇ6 7
+ÇÇ1 2
 $num
 ÉÉ 
 =>
@@ -27425,91 +27434,94 @@ Properties
 	Resources
 ÉÉ! *
 .
-ÉÉ* +
-EternalRogue
-ÉÉ+ 7
+ÉÉ* +
+ThunderSpec
+ÉÉ+ 6
 ,
-ÉÉ7 8
-_
-ÑÑ 
+ÉÉ6 7
+$num
+ÑÑ 
 =>
-ÑÑ 
+ÑÑ 
 
 Properties
-ÑÑ 
+ÑÑ  
 .
-ÑÑ  
+ÑÑ  !
 	Resources
-ÑÑ  )
+ÑÑ! *
 .
-ÑÑ) *
+ÑÑ* +
+EternalRogue
+ÑÑ+ 7
+,
+ÑÑ7 8
+_
+ÖÖ 
+=>
+ÖÖ 
+
+Properties
+ÖÖ 
+.
+ÖÖ  
+	Resources
+ÖÖ  )
+.
+ÖÖ) *
 
 Wachiturro
-ÑÑ* 4
+ÖÖ* 4
 ,
-ÑÑ4 5
+ÖÖ4 5
 }
-ÖÖ 
+ÜÜ 
 ;
-ÖÖ 
+ÜÜ 
 }
-ÜÜ 	
+áá 	
 public
-àà 
+ââ 
 static
-àà 
+ââ 
 bool
-àà #
+ââ #
 IsUserNameInBlackList
-àà 0
+ââ 0
 (
-àà0 1
+ââ0 1
 string
-àà1 7
+ââ1 7
 userName
-àà8 @
+ââ8 @
 )
-àà@ A
+ââ@ A
 {
-ââ 	
+ää 	
 List
-ää 
+ãã 
 <
-ää 
+ãã 
 string
-ää 
+ãã 
 >
-ää "
+ãã "
 listOfGuestUserNames
-ää -
+ãã -
 =
-ää. /
+ãã. /
 new
-ää0 3
+ãã0 3
 List
-ää4 8
+ãã4 8
 <
-ää8 9
+ãã8 9
 string
-ää9 ?
+ãã9 ?
 >
-ää? @
+ãã? @
 {
-ãã 
-
-Properties
-åå 
-.
-åå 
-	Resources
-åå $
-.
-åå$ %
-
-Wachiturro
-åå% /
-,
-åå/ 0
+åå 
 
 Properties
 çç 
@@ -27518,11 +27530,12 @@ Properties
 	Resources
 çç $
 .
-çç$ %
-Papikra
-çç% ,
+çç$ %
+
+Wachiturro
+çç% /
 ,
-çç, -
+çç/ 0
 
 Properties
 éé 
@@ -27531,12 +27544,11 @@ Properties
 	Resources
 éé $
 .
-éé$ %
-
-TigerWoods
-éé% /
+éé$ %
+Papikra
+éé% ,
 ,
-éé/ 0
+éé, -
 
 Properties
 èè 
@@ -27545,11 +27557,12 @@ Properties
 	Resources
 èè $
 .
-èè$ %
-_1
-èè% '
+èè$ %
+
+TigerWoods
+èè% /
 ,
-èè' (
+èè/ 0
 
 Properties
 êê 
@@ -27558,11 +27571,11 @@ Properties
 	Resources
 êê $
 .
-êê$ %
-JustNoob
-êê% -
+êê$ %
+_1
+êê% '
 ,
-êê- .
+êê' (
 
 Properties
 ëë 
@@ -27571,12 +27584,11 @@ Properties
 	Resources
 ëë $
 .
-ëë$ %
-
-JustMaster
-ëë% /
+ëë$ %
+JustNoob
+ëë% -
 ,
-ëë/ 0
+ëë- .
 
 Properties
 íí 
@@ -27587,7 +27599,7 @@ Properties
 .
 íí$ %
 
-NoobMaster
+JustMaster
 íí% /
 ,
 íí/ 0
@@ -27599,11 +27611,12 @@ Properties
 	Resources
 ìì $
 .
-ìì$ %
-Just
-ìì% )
+ìì$ %
+
+NoobMaster
+ìì% /
 ,
-ìì) *
+ìì/ 0
 
 Properties
 îî 
@@ -27612,11 +27625,11 @@ Properties
 	Resources
 îî $
 .
-îî$ %
-ShadowRunner
-îî% 1
+îî$ %
+Just
+îî% )
 ,
-îî1 2
+îî) *
 
 Properties
 ïï 
@@ -27625,11 +27638,11 @@ Properties
 	Resources
 ïï $
 .
-ïï$ %
-PhoenixKnight
-ïï% 2
+ïï$ %
+ShadowRunner
+ïï% 1
 ,
-ïï2 3
+ïï1 2
 
 Properties
 ññ 
@@ -27638,12 +27651,11 @@ Properties
 	Resources
 ññ $
 .
-ññ$ %
-
-InfernoWar
-ññ% /
+ññ$ %
+PhoenixKnight
+ññ% 2
 ,
-ññ/ 0
+ññ2 3
 
 Properties
 óó 
@@ -27652,11 +27664,12 @@ Properties
 	Resources
 óó $
 .
-óó$ %
-QuantumGamer
-óó% 1
+óó$ %
+
+InfernoWar
+óó% /
 ,
-óó1 2
+óó/ 0
 
 Properties
 òò 
@@ -27665,11 +27678,11 @@ Properties
 	Resources
 òò $
 .
-òò$ %
-Quantum
-òò% ,
+òò$ %
+QuantumGamer
+òò% 1
 ,
-òò, -
+òò1 2
 
 Properties
 ôô 
@@ -27678,11 +27691,11 @@ Properties
 	Resources
 ôô $
 .
-ôô$ %
-MysticSeeker
-ôô% 1
+ôô$ %
+Quantum
+ôô% ,
 ,
-ôô1 2
+ôô, -
 
 Properties
 öö 
@@ -27691,12 +27704,11 @@ Properties
 	Resources
 öö $
 .
-öö$ %
-
-CyberNinja
-öö% /
+öö$ %
+MysticSeeker
+öö% 1
 ,
-öö/ 0
+öö1 2
 
 Properties
 õõ 
@@ -27705,11 +27717,12 @@ Properties
 	Resources
 õõ $
 .
-õõ$ %
-GalaxyEx
-õõ% -
+õõ$ %
+
+CyberNinja
+õõ% /
 ,
-õõ- .
+õõ/ 0
 
 Properties
 úú 
@@ -27718,11 +27731,11 @@ Properties
 	Resources
 úú $
 .
-úú$ %
-	Elemental
-úú% .
+úú$ %
+GalaxyEx
+úú% -
 ,
-úú. /
+úú- .
 
 Properties
 ùù 
@@ -27732,7 +27745,7 @@ Properties
 ùù $
 .
 ùù$ %
-	Starlight
+	Elemental
 ùù% .
 ,
 ùù. /
@@ -27745,7 +27758,7 @@ Properties
 ûû $
 .
 ûû$ %
-	Celestial
+	Starlight
 ûû% .
 ,
 ûû. /
@@ -27757,11 +27770,11 @@ Properties
 	Resources
 üü $
 .
-üü$ %
-MidnightVoy
-üü% 0
+üü$ %
+	Celestial
+üü% .
 ,
-üü0 1
+üü. /
 
 Properties
 †† 
@@ -27770,11 +27783,11 @@ Properties
 	Resources
 †† $
 .
-††$ %
-SolarSorcerer
-††% 2
+††$ %
+MidnightVoy
+††% 0
 ,
-††2 3
+††0 1
 
 Properties
 °° 
@@ -27784,7 +27797,7 @@ Properties
 °° $
 .
 °°$ %
-LunarAssassin
+SolarSorcerer
 °°% 2
 ,
 °°2 3
@@ -27796,12 +27809,11 @@ Properties
 	Resources
 ¢¢ $
 .
-¢¢$ %
-
-NovaVortex
-¢¢% /
+¢¢$ %
+LunarAssassin
+¢¢% 2
 ,
-¢¢/ 0
+¢¢2 3
 
 Properties
 ££ 
@@ -27810,11 +27822,12 @@ Properties
 	Resources
 ££ $
 .
-££$ %
-Blizzard
-££% -
+££$ %
+
+NovaVortex
+££% /
 ,
-££- .
+££/ 0
 
 Properties
 §§ 
@@ -27823,11 +27836,11 @@ Properties
 	Resources
 §§ $
 .
-§§$ %
-NoBody
-§§% +
+§§$ %
+Blizzard
+§§% -
 ,
-§§+ ,
+§§- .
 
 Properties
 •• 
@@ -27836,11 +27849,11 @@ Properties
 	Resources
 •• $
 .
-••$ %
-ThunderSpec
-••% 0
+••$ %
+NoBody
+••% +
 ,
-••0 1
+••+ ,
 
 Properties
 ¶¶ 
@@ -27849,34 +27862,47 @@ Properties
 	Resources
 ¶¶ $
 .
-¶¶$ %
-EternalRogue
-¶¶% 1
-}
-ßß 
-;
-ßß 
-return
-®® "
-listOfGuestUserNames
-®® '
+¶¶$ %
+ThunderSpec
+¶¶% 0
+,
+¶¶0 1
+
+Properties
+ßß 
 .
-®®' (
-Contains
-®®( 0
-(
-®®0 1
-userName
-®®1 9
-)
-®®9 :
+ßß 
+	Resources
+ßß $
+.
+ßß$ %
+EternalRogue
+ßß% 1
+}
+®® 
 ;
-®®: ;
+®® 
+return
+©© "
+listOfGuestUserNames
+©© '
+.
+©©' (
+Contains
+©©( 0
+(
+©©0 1
+userName
+©©1 9
+)
+©©9 :
+;
+©©: ;
 }
-™™ 	
+´´ 	
 }
-´´ 
-}¨¨ ú
+¨¨ 
+}≠≠ ú
 ñC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\HeartBeatImplementation.cs
 	namespace 	
 JeopardyGame
@@ -31151,7 +31177,7 @@ NotifyUser
 ÕÕ 	
 }
 ŒŒ 
-}–– ¬È
+}–– õË
 ôC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LobbyActionsImplementation.cs
 	namespace 	
 JeopardyGame
@@ -38765,417 +38791,401 @@ lockObject
 }
 úú 
 }
-ùù 
-else
-ûû 
-{
-üü $
-SelectQuestionsForGame
-†† &
-(
-††& '
-roomCode
-††' /
-)
-††/ 0
-;
-††0 1
+ùù 
 }
-°° 
-}
-¢¢ 	
+ûû 	
 public
-§§ 
+†† 
 void
-§§ 
+†† 
 	StartGame
-§§ 
+†† 
 (
-§§ 
+†† 
 int
-§§ !
+†† !
 roomCode
-§§" *
+††" *
 )
-§§* +
+††* +
 {
-•• 	
+°° 	
 var
-¶¶ 
+¢¢ 
 lobby
-¶¶ 
+¢¢ 
 =
-¶¶ #
+¢¢ #
 GameLobbiesDictionary
-¶¶ -
+¢¢ -
 .
-¶¶- .$
+¢¢- .$
 GetSpecificActiveLobby
-¶¶. D
+¢¢. D
 (
-¶¶D E
+¢¢D E
 roomCode
-¶¶E M
+¢¢E M
 )
-¶¶M N
+¢¢M N
 ;
-¶¶N O
+¢¢N O
 var
-ßß 
+££ 
 	questions
-ßß 
+££ 
 =
-ßß )
+££ )
 QuestionsForLobbyDictionary
-ßß 7
+££ 7
 .
-ßß7 8/
+££7 8/
 !GetSpecificSetOfQuestionsForLobby
-ßß8 Y
+££8 Y
 (
-ßßY Z
+££Y Z
 roomCode
-ßßZ b
+££Z b
 )
-ßßb c
+££b c
 ;
-ßßc d
+££c d
 if
-®® 
+§§ 
 (
-®® 
+§§ 
 lobby
-®® 
+§§ 
 !=
-®® 
+§§ 
 null
-®® 
+§§ 
 &&
-®®  
+§§  
 	questions
-®®! *
+§§! *
 !=
-®®+ -
+§§+ -
 null
-®®. 2
+§§. 2
 )
-®®2 3
+§§2 3
 {
-©© 
+•• 
 foreach
-™™ 
+¶¶ 
 (
-™™ 
+¶¶ 
 var
-™™ 
+¶¶ 
 item
-™™ !
+¶¶ !
 in
-™™" $
+¶¶" $
 lobby
-™™% *
+¶¶% *
 .
-™™* +!
+¶¶* +!
 listOfPlayerInLobby
-™™+ >
+¶¶+ >
 )
-™™> ?
+¶¶> ?
 {
-´´ 
+ßß 
 try
-¨¨ 
+®® 
 {
-≠≠ 
+©© 
 item
-ÆÆ 
+™™ 
 .
-ÆÆ /
+™™ /
 !lobbyCommunicationChannelCallback
-ÆÆ >
+™™ >
 .
-ÆÆ> ? 
+™™> ? 
 GetCallbackChannel
-ÆÆ? Q
+™™? Q
 <
-ÆÆQ R#
+™™Q R#
 ILobbyActionsCallback
-ÆÆR g
+™™R g
 >
-ÆÆg h
+™™g h
 (
-ÆÆh i
+™™h i
 )
-ÆÆi j
+™™i j
 .
-ÆÆj k!
+™™j k!
 NotifyGameWillStart
-ÆÆk ~
+™™k ~
 (
-ÆÆ~ 
-	questionsÆÆ à
-.ÆÆà â
-ObjectSavedÆÆâ î
-)ÆÆî ï
-;ÆÆï ñ
+™™~ 
+	questions™™ à
+.™™à â
+ObjectSaved™™â î
+)™™î ï
+;™™ï ñ
 }
-ØØ 
+´´ 
 catch
-∞∞ 
+¨¨ 
 (
-∞∞ 1
+¨¨ 1
 #CommunicationObjectFaultedException
-∞∞ >
+¨¨ >
 ex
-∞∞? A
+¨¨? A
 )
-∞∞A B
+¨¨A B
 {
-±± "
+≠≠ "
 ChannelAdministrator
-≤≤ ,
+ÆÆ ,
 .
-≤≤, -&
+ÆÆ, -&
 HandleCommunicationIssue
-≤≤- E
+ÆÆ- E
 (
-≤≤E F
+ÆÆE F
 item
-≤≤F J
+ÆÆF J
 .
-≤≤J K
+ÆÆJ K
 idUser
-≤≤K Q
+ÆÆK Q
 ,
-≤≤Q R"
+ÆÆQ R"
 ChannelAdministrator
-≤≤S g
+ÆÆS g
 .
-≤≤g h
+ÆÆg h
 LOBBY_EXCEPTION
-≤≤h w
+ÆÆh w
 )
-≤≤w x
+ÆÆw x
 ;
-≤≤x y
+ÆÆx y
 ExceptionHandler
-≥≥ (
+ØØ (
 .
-≥≥( )
+ØØ( )
 LogException
-≥≥) 5
+ØØ) 5
 (
-≥≥5 6
+ØØ5 6
 ex
-≥≥6 8
+ØØ6 8
 ,
-≥≥8 9!
+ØØ8 9!
 ExceptionDictionary
-≥≥: M
+ØØ: M
 .
-≥≥M N
+ØØM N
 FATAL_EXCEPTION
-≥≥N ]
+ØØN ]
 )
-≥≥] ^
+ØØ] ^
 ;
-≥≥^ _
+ØØ^ _
 }
-¥¥ 
+∞∞ 
 catch
-µµ 
+±± 
 (
-µµ 
+±± 
 TimeoutException
-µµ +
+±± +
 ex
-µµ, .
+±±, .
 )
-µµ. /
+±±. /
 {
-∂∂ "
+≤≤ "
 ChannelAdministrator
-∑∑ ,
+≥≥ ,
 .
-∑∑, -&
+≥≥, -&
 HandleCommunicationIssue
-∑∑- E
+≥≥- E
 (
-∑∑E F
+≥≥E F
 item
-∑∑F J
+≥≥F J
 .
-∑∑J K
+≥≥J K
 idUser
-∑∑K Q
+≥≥K Q
 ,
-∑∑Q R"
+≥≥Q R"
 ChannelAdministrator
-∑∑S g
+≥≥S g
 .
-∑∑g h
+≥≥g h
 LOBBY_EXCEPTION
-∑∑h w
+≥≥h w
 )
-∑∑w x
+≥≥w x
 ;
-∑∑x y
+≥≥x y
 ExceptionHandler
-∏∏ (
+¥¥ (
 .
-∏∏( )
+¥¥( )
 LogException
-∏∏) 5
+¥¥) 5
 (
-∏∏5 6
+¥¥5 6
 ex
-∏∏6 8
+¥¥6 8
 ,
-∏∏8 9!
+¥¥8 9!
 ExceptionDictionary
-∏∏: M
+¥¥: M
 .
-∏∏M N
+¥¥M N
 FATAL_EXCEPTION
-∏∏N ]
+¥¥N ]
 )
-∏∏] ^
+¥¥] ^
 ;
-∏∏^ _
+¥¥^ _
 }
-ππ 
+µµ 
 catch
-∫∫ 
+∂∂ 
 (
-∫∫ $
+∂∂ $
 CommunicationException
-∫∫ 1
+∂∂ 1
 ex
-∫∫2 4
+∂∂2 4
 )
-∫∫4 5
+∂∂4 5
 {
-ªª "
+∑∑ "
 ChannelAdministrator
-ºº ,
+∏∏ ,
 .
-ºº, -&
+∏∏, -&
 HandleCommunicationIssue
-ºº- E
+∏∏- E
 (
-ººE F
+∏∏E F
 item
-ººF J
+∏∏F J
 .
-ººJ K
+∏∏J K
 idUser
-ººK Q
+∏∏K Q
 ,
-ººQ R"
+∏∏Q R"
 ChannelAdministrator
-ººS g
+∏∏S g
 .
-ººg h
+∏∏g h
 LOBBY_EXCEPTION
-ººh w
+∏∏h w
 )
-ººw x
+∏∏w x
 ;
-ººx y
+∏∏x y
 ExceptionHandler
-ΩΩ (
+ππ (
 .
-ΩΩ( )
+ππ( )
 LogException
-ΩΩ) 5
+ππ) 5
 (
-ΩΩ5 6
+ππ5 6
 ex
-ΩΩ6 8
+ππ6 8
 ,
-ΩΩ8 9!
+ππ8 9!
 ExceptionDictionary
-ΩΩ: M
+ππ: M
 .
-ΩΩM N
+ππM N
 FATAL_EXCEPTION
-ΩΩN ]
+ππN ]
 )
-ΩΩ] ^
+ππ] ^
 ;
-ΩΩ^ _
+ππ^ _
 }
-ææ 
+∫∫ 
 catch
-øø 
+ªª 
 (
-øø '
+ªª '
 InvalidOperationException
-øø 4
+ªª 4
 ex
-øø5 7
+ªª5 7
 )
-øø7 8
+ªª7 8
 {
-¿¿ "
+ºº "
 ChannelAdministrator
-¡¡ ,
+ΩΩ ,
 .
-¡¡, -&
+ΩΩ, -&
 HandleCommunicationIssue
-¡¡- E
+ΩΩ- E
 (
-¡¡E F
+ΩΩE F
 item
-¡¡F J
+ΩΩF J
 .
-¡¡J K
+ΩΩJ K
 idUser
-¡¡K Q
+ΩΩK Q
 ,
-¡¡Q R"
+ΩΩQ R"
 ChannelAdministrator
-¡¡S g
+ΩΩS g
 .
-¡¡g h
+ΩΩg h
 LOBBY_EXCEPTION
-¡¡h w
+ΩΩh w
 )
-¡¡w x
+ΩΩw x
 ;
-¡¡x y
+ΩΩx y
 ExceptionHandler
-¬¬ (
+ææ (
 .
-¬¬( )
+ææ( )
 LogException
-¬¬) 5
+ææ) 5
 (
-¬¬5 6
+ææ5 6
 ex
-¬¬6 8
+ææ6 8
 ,
-¬¬8 9!
+ææ8 9!
 ExceptionDictionary
-¬¬: M
+ææ: M
 .
-¬¬M N
+ææM N
 FATAL_EXCEPTION
-¬¬N ]
+ææN ]
 )
-¬¬] ^
+ææ] ^
 ;
-¬¬^ _
+ææ^ _
 }
-√√ 
+øø 
 }
-ƒƒ 
+¿¿ 
 }
-∆∆ 
+¬¬ 
 }
-«« 	
+√√ 	
 }
-…… 
-}   €8
+≈≈ 
+}∆∆ €8
 ñC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\LobbyCodeAuthentication.cs
 	namespace 	
 JeopardyGame
@@ -41945,1121 +41955,1057 @@ $NotifyUserAvailabilityImplementation
 ˘˘ 	
 }
 ¸¸ 
-}˛˛ ≈Ø
+}˛˛ ËÆ
 èC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\Helpers\QuestionsManagerImplementation.cs
-	namespace 	
-JeopardyGame
+	namespace 	
+JeopardyGame
  
-. 
-Service 
-. !
-ServiceImplementation 4
-{ 
-public 
+. 
+Service 
+. !
+ServiceImplementation 4
+{ 
+public 
 
-partial 
-class *
-QuestionsManagerImplementation 7
-{ 
-private 
-const 
-int 
-SPECIAL_CATEGORY *
-=+ ,
-$num- .
-;. /
-private 
-const 
-int 
-	ROUND_ONE #
-=$ %
-$num& '
-;' (
-private 
-const 
-int 
-	ROUND_TWO #
-=$ %
-$num& '
-;' (
+partial 
+class *
+QuestionsManagerImplementation 7
+{ 
 private 
 const 
-int 
-ROUND_THREE %
-=& '
-$num( )
-;) *
+int 
+SPECIAL_CATEGORY *
+=+ ,
+$num- .
+;. /
 private 
 const 
-int 
-ID_LAST_QUESTION *
-=+ ,
-$num- /
-;/ 0
+int 
+	ROUND_ONE #
+=$ %
+$num& '
+;' (
 private 
 const 
-int (
-LIMIT_OF_CARDS_FOR_ONE_ROUND 6
-=7 8
-$num9 :
-;: ;
-public 
-GenericClass 
-< 
-List  
-<  !#
-QuestionCardInformation! 8
->8 9
->9 :
-GetQuestionForBoard; N
-(N O
-intO R
-roomCodeS [
-)[ \
-{ 	
-GenericClass 
-< 
-List 
-< #
-QuestionCardInformation 5
->5 6
->6 7
-resultToReturn8 F
-=G H
-newI L
-GenericClassM Y
-<Y Z
-ListZ ^
-<^ _#
-QuestionCardInformation_ v
->v w
->w x
-(x y
-)y z
-;z {
-if 
-( 
-! 
-RoomCodeExist 
-( 
-roomCode '
-)' (
-)( )
-{ 
-return !
-NullParametersHandler ,
-., -'
-HandleNullParametersService- H
-(H I
-resultToReturnI W
-)W X
-;X Y
-} 
-int 
-isGameCreated 
-= 
+int 
+	ROUND_TWO #
+=$ %
+$num& '
+;' (
+private 
+const 
+int 
+ROUND_THREE %
+=& '
+$num( )
+;) *
+private 
+const 
+int 
+ID_LAST_QUESTION *
+=+ ,
+$num- /
+;/ 0
+private 
+const 
+int (
+LIMIT_OF_CARDS_FOR_ONE_ROUND 6
+=7 8
+$num9 :
+;: ;
+public 
+GenericClass 
+< 
+List  
+<  !#
+QuestionCardInformation! 8
+>8 9
+>9 :
+GetQuestionForBoard; N
+(N O
+intO R
+roomCodeS [
+)[ \
+{ 	
+GenericClass 
+< 
+List 
+< #
+QuestionCardInformation 5
+>5 6
+>6 7
+resultToReturn8 F
+=G H
+newI L
+GenericClassM Y
+<Y Z
+ListZ ^
+<^ _#
+QuestionCardInformation_ v
+>v w
+>w x
+(x y
+)y z
+;z {
+if 
+( 
+! 
+RoomCodeExist 
+( 
+roomCode '
+)' (
+)( )
+{ 
+return !
+NullParametersHandler ,
+., -'
+HandleNullParametersService- H
+(H I
+resultToReturnI W
+)W X
+;X Y
+} 
+int   
+isGameCreated   
+=   
 
-CreateGame  *
-(* +
-roomCode+ 3
-)3 4
-;4 5
-if 
-( 
-isGameCreated 
-==  
-ExceptionDictionary! 4
-.4 5
-SUCCESFULL_EVENT5 E
-)E F
-{ 
-var   $
-questionCardsInformation   ,
-=  - ."
-GetQuestionInformation  / E
-(  E F
-)  F G
-;  G H
-resultToReturn!! 
-.!! 
-ObjectSaved!! *
-=!!+ ,$
-questionCardsInformation!!- E
-.!!E F
-ObjectSaved!!F Q
-;!!Q R
-resultToReturn"" 
-."" 
-	CodeEvent"" (
-="") *$
-questionCardsInformation""+ C
-.""C D
-	CodeEvent""D M
-;""M N
-}## 
-else$$ 
-{%% 
-resultToReturn&& 
-.&& 
-	CodeEvent&& (
-=&&) *
-isGameCreated&&+ 8
-;&&8 9
-}'' 
-return(( 
-resultToReturn(( !
-;((! "
-})) 	
-private++ 
-int++ 
+CreateGame    *
+(  * +
+roomCode  + 3
+)  3 4
+;  4 5
+if!! 
+(!! 
+isGameCreated!! 
+==!!  
+ExceptionDictionary!!! 4
+.!!4 5
+SUCCESFULL_EVENT!!5 E
+)!!E F
+{"" 
+var## $
+questionCardsInformation## ,
+=##- ."
+GetQuestionInformation##/ E
+(##E F
+)##F G
+;##G H
+resultToReturn$$ 
+.$$ 
+ObjectSaved$$ *
+=$$+ ,$
+questionCardsInformation$$- E
+.$$E F
+ObjectSaved$$F Q
+;$$Q R
+resultToReturn%% 
+.%% 
+	CodeEvent%% (
+=%%) *$
+questionCardsInformation%%+ C
+.%%C D
+	CodeEvent%%D M
+;%%M N
+}&& 
+else'' 
+{(( 
+resultToReturn)) 
+.)) 
+	CodeEvent)) (
+=))) *
+isGameCreated))+ 8
+;))8 9
+}** 
+return++ 
+resultToReturn++ !
+;++! "
+},, 	
+private.. 
+int.. 
 
-CreateGame++ 
-(++ 
-int++ "
-roomCode++# +
-)+++ ,
-{,, 	
-Game-- 
-newGame-- 
-=-- 
-new-- 
-(-- 
-)--  
-{.. 
-RoomCode// 
-=// 
-roomCode// #
-,//# $
-Host_IdHost00 
-=00 
-	ChoseHost00 '
-(00' (
-)00( )
-}11 
-;11 
-return22 
-GameDataOperation22 $
-.22$ %!
-SaveNewGameInDataBase22% :
-(22: ;
-newGame22; B
-)22B C
-.22C D
-	CodeEvent22D M
-;22M N
-}33 	
-private55 
-int55 
-	ChoseHost55 
-(55 
-)55 
-{66 	
-var77 
-idHosts77 
-=77 
-GameDataOperation77 +
-.77+ ,
+CreateGame.. 
+(.. 
+int.. "
+roomCode..# +
+)..+ ,
+{// 	
+Game00 
+newGame00 
+=00 
+new00 
+(00 
+)00  
+{11 
+RoomCode22 
+=22 
+roomCode22 #
+,22# $
+Host_IdHost33 
+=33 
+	ChoseHost33 '
+(33' (
+)33( )
+}44 
+;44 
+return55 
+GameDataOperation55 $
+.55$ %!
+SaveNewGameInDataBase55% :
+(55: ;
+newGame55; B
+)55B C
+.55C D
+	CodeEvent55D M
+;55M N
+}66 	
+private88 
+int88 
+	ChoseHost88 
+(88 
+)88 
+{99 	
+var:: 
+idHosts:: 
+=:: 
+GameDataOperation:: +
+.::+ ,
 
-GetHostIds77, 6
-(776 7
-)777 8
-;778 9
-if88 
-(88 
-idHosts88 
-.88 
-	CodeEvent88 !
-==88" $
-ExceptionDictionary88% 8
-.888 9
-SUCCESFULL_EVENT889 I
-)88I J
-{99 
-Random:: 
-random:: 
-=:: 
-new::  #
-Random::$ *
-(::* +
-)::+ ,
-;::, -
-int;; 
-idHost;; 
-=;; 
-idHosts;; $
-.;;$ %
-ObjectSaved;;% 0
-.;;0 1
-OrderBy;;1 8
-(;;8 9
-h;;9 :
-=>;;; =
-random;;> D
-.;;D E
-Next;;E I
-(;;I J
-);;J K
-);;K L
-.;;L M
-First;;M R
-(;;R S
-);;S T
-;;;T U
-return<< 
-idHost<< 
-;<< 
-}== 
-return>> 
-idHosts>> 
-.>> 
-	CodeEvent>> $
-;>>$ %
-}?? 	
-privateAA 
-boolAA 
-RoomCodeExistAA "
-(AA" #
-intAA# &
-roomCodeAA' /
-)AA/ 0
-{BB 	
-varCC 
-lobbyCC 
-=CC !
-GameLobbiesDictionaryCC -
-.CC- ."
-GetSpecificActiveLobbyCC. D
-(CCD E
-roomCodeCCE M
-)CCM N
-;CCN O
-returnDD 
-(DD 
-lobbyDD 
-!=DD 
-nullDD !
-)DD! "
-;DD" #
-}EE 	
-privateGG 
-GenericClassServerGG "
-<GG" #
-ListGG# '
-<GG' (#
-QuestionCardInformationGG( ?
->GG? @
->GG@ A"
-GetQuestionInformationGGB X
-(GGX Y
-)GGY Z
-{HH 	
-GenericClassServerII 
-<II 
-ListII #
-<II# $#
-QuestionCardInformationII$ ;
->II; <
->II< =
-listOfQuestionsII> M
-=IIN O
-newIIP S
-GenericClassServerIIT f
-<IIf g
-ListIIg k
-<IIk l$
-QuestionCardInformation	IIl É
+GetHostIds::, 6
+(::6 7
+)::7 8
+;::8 9
+if;; 
+(;; 
+idHosts;; 
+.;; 
+	CodeEvent;; !
+==;;" $
+ExceptionDictionary;;% 8
+.;;8 9
+SUCCESFULL_EVENT;;9 I
+);;I J
+{<< 
+int== 
+idHost== 
+=== 
+idHosts== $
+.==$ %
+ObjectSaved==% 0
+.==0 1
+OrderBy==1 8
+(==8 9
+h==9 :
+=>==; =
+AleatoryGenerator==> O
+.==O P
+GetAleatoryNumber==P a
+(==a b
+)==b c
+)==c d
+.==d e
+First==e j
+(==j k
+)==k l
+;==l m
+return>> 
+idHost>> 
+;>> 
+}?? 
+return@@ 
+idHosts@@ 
+.@@ 
+	CodeEvent@@ $
+;@@$ %
+}AA 	
+privateCC 
+boolCC 
+RoomCodeExistCC "
+(CC" #
+intCC# &
+roomCodeCC' /
+)CC/ 0
+{DD 	
+varEE 
+lobbyEE 
+=EE !
+GameLobbiesDictionaryEE -
+.EE- ."
+GetSpecificActiveLobbyEE. D
+(EED E
+roomCodeEEE M
+)EEM N
+;EEN O
+returnFF 
+(FF 
+lobbyFF 
+!=FF 
+nullFF !
+)FF! "
+;FF" #
+}GG 	
+privateII 
+GenericClassServerII "
+<II" #
+ListII# '
+<II' (#
+QuestionCardInformationII( ?
+>II? @
+>II@ A"
+GetQuestionInformationIIB X
+(IIX Y
+)IIY Z
+{JJ 	
+GenericClassServerKK 
+<KK 
+ListKK #
+<KK# $#
+QuestionCardInformationKK$ ;
+>KK; <
+>KK< =
+listOfQuestionsKK> M
+=KKN O
+newKKP S
+GenericClassServerKKT f
+<KKf g
+ListKKg k
+<KKk l$
+QuestionCardInformation	KKl É
 >
-IIÉ Ñ
+KKÉ Ñ
 >
-IIÑ Ö
+KKÑ Ö
 (
-IIÖ Ü
+KKÖ Ü
 )
-IIÜ á
+KKÜ á
 ;
-IIá à
-GenericClassServerJJ 
-<JJ 
-ListJJ #
-<JJ# $
-CategoryJJ$ ,
->JJ, -
->JJ- .
-categoriesConsultedJJ/ B
-=JJC D
-GameDataOperationJJE V
-.JJV W
-Get10CategoriesJJW f
-(JJf g
-)JJg h
-;JJh i
-ifKK 
-(KK 
-categoriesConsultedKK #
-.KK# $
-	CodeEventKK$ -
-==KK. 0
-ExceptionDictionaryKK1 D
-.KKD E
-SUCCESFULL_EVENTKKE U
-)KKU V
-{LL 
-varMM 
-questionPoolMM  
-=MM! "
-GameDataOperationMM# 4
-.MM4 5"
-GetQuestionsByCategoryMM5 K
-(MMK L
-categoriesConsultedMML _
-.MM_ `
-ObjectSavedMM` k
-)MMk l
-;MMl m
-ifNN 
-(NN 
-questionPoolNN  
-.NN  !
-	CodeEventNN! *
-==NN+ -
-ExceptionDictionaryNN. A
-.NNA B
-SUCCESFULL_EVENTNNB R
-)NNR S
-{OO 
-varPP 
+KKá à
+GenericClassServerLL 
+<LL 
+ListLL #
+<LL# $
+CategoryLL$ ,
+>LL, -
+>LL- .
+categoriesConsultedLL/ B
+=LLC D
+GameDataOperationLLE V
+.LLV W
+Get10CategoriesLLW f
+(LLf g
+)LLg h
+;LLh i
+ifMM 
+(MM 
+categoriesConsultedMM #
+.MM# $
+	CodeEventMM$ -
+==MM. 0
+ExceptionDictionaryMM1 D
+.MMD E
+SUCCESFULL_EVENTMME U
+)MMU V
+{NN 
+varOO 
+questionPoolOO  
+=OO! "
+GameDataOperationOO# 4
+.OO4 5"
+GetQuestionsByCategoryOO5 K
+(OOK L
+categoriesConsultedOOL _
+.OO_ `
+ObjectSavedOO` k
+)OOk l
+;OOl m
+ifPP 
+(PP 
+questionPoolPP  
+.PP  !
+	CodeEventPP! *
+==PP+ -
+ExceptionDictionaryPP. A
+.PPA B
+SUCCESFULL_EVENTPPB R
+)PPR S
+{QQ 
+varRR 
 
-answerPoolPP "
-=PP# $
-GameDataOperationPP% 6
-.PP6 7!
-GetAwnsersOfQuestionsPP7 L
-(PPL M
-questionPoolPPM Y
-.PPY Z
-ObjectSavedPPZ e
-)PPe f
-;PPf g
-ifQQ 
-(QQ 
+answerPoolRR "
+=RR# $
+GameDataOperationRR% 6
+.RR6 7!
+GetAwnsersOfQuestionsRR7 L
+(RRL M
+questionPoolRRM Y
+.RRY Z
+ObjectSavedRRZ e
+)RRe f
+;RRf g
+ifSS 
+(SS 
 
-answerPoolQQ "
-.QQ" #
-	CodeEventQQ# ,
-==QQ- /
-ExceptionDictionaryQQ0 C
-.QQC D
-SUCCESFULL_EVENTQQD T
-)QQT U
-{RR 
-listOfQuestionsSS '
-.SS' (
-ObjectSavedSS( 3
-=SS4 5!
-OrderQuestionsInCardsSS6 K
-(SSK L
-questionPoolSSL X
-.SSX Y
-ObjectSavedSSY d
-)SSd e
-;SSe f
-listOfQuestionsTT '
-.TT' (
-ObjectSavedTT( 3
-=TT4 5
-OrderAnswersInCardsTT6 I
-(TTI J
-
-answerPoolTTJ T
-.TTT U
-ObjectSavedTTU `
-,TT` a
-listOfQuestionsTTb q
-.TTq r
-ObjectSavedTTr }
-)TT} ~
-;TT~ 
+answerPoolSS "
+.SS" #
+	CodeEventSS# ,
+==SS- /
+ExceptionDictionarySS0 C
+.SSC D
+SUCCESFULL_EVENTSSD T
+)SST U
+{TT 
 listOfQuestionsUU '
-.UU' (
-	CodeEventUU( 1
-=UU2 3
-ExceptionDictionaryUU4 G
-.UUG H
-SUCCESFULL_EVENTUUH X
-;UUX Y
-}VV 
-elseWW 
-{XX 
-listOfQuestionsYY '
-.YY' (
-	CodeEventYY( 1
-=YY2 3
+.UU' (
+ObjectSavedUU( 3
+=UU4 5!
+OrderQuestionsInCardsUU6 K
+(UUK L
+questionPoolUUL X
+.UUX Y
+ObjectSavedUUY d
+)UUd e
+;UUe f
+listOfQuestionsVV '
+.VV' (
+ObjectSavedVV( 3
+=VV4 5
+OrderAnswersInCardsVV6 I
+(VVI J
 
-answerPoolYY4 >
-.YY> ?
-	CodeEventYY? H
-;YYH I
-}ZZ 
-}[[ 
-else\\ 
-{]] 
-listOfQuestions^^ #
-.^^# $
-	CodeEvent^^$ -
-=^^. /
-questionPool^^/ ;
-.^^; <
-	CodeEvent^^< E
-;^^E F
-}__ 
-}`` 
-elseaa 
-{bb 
-listOfQuestionscc 
-.cc  
-	CodeEventcc  )
-=cc* +
-categoriesConsultedcc, ?
-.cc? @
-	CodeEventcc@ I
-;ccI J
-}dd 
-returnee 
-listOfQuestionsee "
-;ee" #
-}ff 	
-privatehh 
-Listhh 
-<hh #
-QuestionCardInformationhh ,
->hh, -!
-OrderQuestionsInCardshh. C
-(hhC D
-ListhhD H
-<hhH I
-QuestionhhI Q
->hhQ R
-questionPoolhhS _
-)hh_ `
-{ii 	
-Listjj 
-<jj #
-QuestionCardInformationjj (
->jj( )#
-questionCardInformationjj* A
-=jjB C
-newjjD G
-ListjjH L
-<jjL M#
-QuestionCardInformationjjM d
->jjd e
-(jje f
-)jjf g
-;jjg h
-intkk 
-iteratorkk 
-=kk 
-$numkk 
-;kk 
-foreachll 
-(ll 
-varll 
-questionll !
-inll" $
-questionPoolll% 1
-)ll1 2
-{mm 
-ifnn 
-(nn 
-questionnn 
-.nn 
-CategoryIdCategorynn /
-!=nn0 2
-SPECIAL_CATEGORYnn3 C
-)nnC D
-{oo #
-QuestionCardInformationpp +
-questionCardpp, 8
-=pp9 :
-newpp; >#
-QuestionCardInformationpp? V
-(ppV W
-)ppW X
-{qq 
-IdQuestionCardrr &
-=rr' (
-iteratorrr) 1
-,rr1 2
-NumberOfRoundss %
-=ss& '
-SetNumberOfRoundss( 8
-(ss8 9
-iteratorss9 A
-)ssA B
-,ssB C
-CategoryOfQuestiontt *
-=tt+ , 
-QuestionsInterpretertt- A
-.ttA B&
-FromCategoryToCategoryPOJOttB \
-(tt\ ]
-questiontt] e
-.tte f
-Categoryttf n
-)ttn o
-,tto p#
-SpecificQuestionDetailsuu /
-=uu0 1
-newuu2 5
-(uu5 6
-)uu6 7
-{vv 
+answerPoolVVJ T
+.VVT U
+ObjectSavedVVU `
+,VV` a
+listOfQuestionsVVb q
+.VVq r
+ObjectSavedVVr }
+)VV} ~
+;VV~ 
+listOfQuestionsWW '
+.WW' (
+	CodeEventWW( 1
+=WW2 3
+ExceptionDictionaryWW4 G
+.WWG H
+SUCCESFULL_EVENTWWH X
+;WWX Y
+}XX 
+elseYY 
+{ZZ 
+listOfQuestions[[ '
+.[[' (
+	CodeEvent[[( 1
+=[[2 3
 
-IdQuestionww &
-=ww' (
-questionww) 1
-.ww1 2
+answerPool[[4 >
+.[[> ?
+	CodeEvent[[? H
+;[[H I
+}\\ 
+}]] 
+else^^ 
+{__ 
+listOfQuestions`` #
+.``# $
+	CodeEvent``$ -
+=``. /
+questionPool``/ ;
+.``; <
+	CodeEvent``< E
+;``E F
+}aa 
+}bb 
+elsecc 
+{dd 
+listOfQuestionsee 
+.ee  
+	CodeEventee  )
+=ee* +
+categoriesConsultedee, ?
+.ee? @
+	CodeEventee@ I
+;eeI J
+}ff 
+returngg 
+listOfQuestionsgg "
+;gg" #
+}hh 	
+privatejj 
+Listjj 
+<jj #
+QuestionCardInformationjj ,
+>jj, -!
+OrderQuestionsInCardsjj. C
+(jjC D
+ListjjD H
+<jjH I
+QuestionjjI Q
+>jjQ R
+questionPooljjS _
+)jj_ `
+{kk 	
+Listll 
+<ll #
+QuestionCardInformationll (
+>ll( )#
+questionCardInformationll* A
+=llB C
+newllD G
+ListllH L
+<llL M#
+QuestionCardInformationllM d
+>lld e
+(lle f
+)llf g
+;llg h
+intmm 
+iteratormm 
+=mm 
+$nummm 
+;mm 
+foreachnn 
+(nn 
+varnn 
+questionnn !
+innn" $
+questionPoolnn% 1
+)nn1 2
+{oo 
+ifpp 
+(pp 
+questionpp 
+.pp 
+CategoryIdCategorypp /
+!=pp0 2
+SPECIAL_CATEGORYpp3 C
+)ppC D
+{qq #
+QuestionCardInformationrr +
+questionCardrr, 8
+=rr9 :
+newrr; >#
+QuestionCardInformationrr? V
+(rrV W
+)rrW X
+{ss 
+IdQuestionCardtt &
+=tt' (
+iteratortt) 1
+,tt1 2
+NumberOfRounduu %
+=uu& '
+SetNumberOfRounduu( 8
+(uu8 9
+iteratoruu9 A
+)uuA B
+,uuB C
+CategoryOfQuestionvv *
+=vv+ , 
+QuestionsInterpretervv- A
+.vvA B&
+FromCategoryToCategoryPOJOvvB \
+(vv\ ]
+questionvv] e
+.vve f
+Categoryvvf n
+)vvn o
+,vvo p#
+SpecificQuestionDetailsww /
+=ww0 1
+newww2 5
+(ww5 6
+)ww6 7
+{xx 
 
-IdQuestionww2 <
-,ww< =&
-SpanishQuestionDescriptionxx 6
-=xx7 8
-questionxx9 A
-.xxA B&
-SpanishQuestionDescriptionxxB \
-,xx\ ]&
-EnglishQuestionDescriptionyy 6
-=yy7 8
-questionyy9 A
-.yyA B&
-EnglishQuestionDescriptionyyB \
-,yy\ ]
-IdAnswerOfQuestionzz .
-=zz/ 0
-questionzz1 9
-.zz9 :
-Awnserzz: @
-.zz@ A
-IdAwnserzzA I
-,zzI J
-IdCategoryBelong{{ ,
-={{- .
-question{{/ 7
-.{{7 8
-CategoryIdCategory{{8 J
-,{{J K
+IdQuestionyy &
+=yy' (
+questionyy) 1
+.yy1 2
 
-ValueWorth|| &
-=||' (
-(||) *
-int||* -
-)||- .
-question||. 6
-.||6 7
+IdQuestionyy2 <
+,yy< =&
+SpanishQuestionDescriptionzz 6
+=zz7 8
+questionzz9 A
+.zzA B&
+SpanishQuestionDescriptionzzB \
+,zz\ ]&
+EnglishQuestionDescription{{ 6
+={{7 8
+question{{9 A
+.{{A B&
+EnglishQuestionDescription{{B \
+,{{\ ]
+IdAnswerOfQuestion|| .
+=||/ 0
+question||1 9
+.||9 :
+Awnser||: @
+.||@ A
+IdAwnser||A I
+,||I J
+IdCategoryBelong}} ,
+=}}- .
+question}}/ 7
+.}}7 8
+CategoryIdCategory}}8 J
+,}}J K
 
-ValueWorth||7 A
-}}} 
-}~~ 
-;~~ 
-if 
-( 
-questionCard #
-.# $
-NumberOfRound$ 1
-==2 4
-	ROUND_TWO5 >
-)> ?
-{
-ÄÄ 
+ValueWorth~~ &
+=~~' (
+(~~) *
+int~~* -
+)~~- .
+question~~. 6
+.~~6 7
+
+ValueWorth~~7 A
+} 
+}
+ÄÄ 
+;
+ÄÄ 
+if
+ÅÅ 
+(
+ÅÅ 
 questionCard
-ÅÅ $
+ÅÅ #
 .
-ÅÅ$ %%
-SpecificQuestionDetails
-ÅÅ% <
-.
-ÅÅ< =
-
-ValueWorth
-ÅÅ= G
-=
-ÅÅH I
-$num
-ÅÅJ K
-*
-ÅÅL M
-(
-ÅÅN O
-(
-ÅÅO P
-int
-ÅÅP S
-)
-ÅÅS T
-(
-ÅÅT U
-question
-ÅÅU ]
-.
-ÅÅ] ^
-
-ValueWorth
-ÅÅ^ h
-)
-ÅÅh i
-)
-ÅÅi j
-;
-ÅÅj k
-}
-ÇÇ %
-questionCardInformation
-ÉÉ +
-.
-ÉÉ+ ,
-Add
-ÉÉ, /
-(
-ÉÉ/ 0
-questionCard
-ÉÉ0 <
-)
-ÉÉ< =
-;
-ÉÉ= >
-iterator
-ÑÑ 
-++
-ÑÑ 
-;
-ÑÑ 
-}
-ÖÖ 
-}
-ÜÜ 
-Question
-áá 
-specialQuestion
-áá $
-=
-áá% &
-questionPool
-áá' 3
-.
-áá3 4
-First
-áá4 9
-(
-áá9 :
-question
-áá: B
-=>
-ááC E
-question
-ááF N
-.
-ááN O 
-CategoryIdCategory
-ááO a
-==
-ááb d
-SPECIAL_CATEGORY
-ááe u
-)
-ááu v
-;
-ááv w%
-QuestionCardInformation
-àà #!
-specialQuestionCard
-àà$ 7
-=
-àà8 9
-new
-àà: =%
-QuestionCardInformation
-àà> U
-(
-ààU V
-)
-ààV W
-{
-ââ 
-IdQuestionCard
-ää 
-=
-ää  
-ID_LAST_QUESTION
-ää! 1
-,
-ää1 2
+ÅÅ# $
 NumberOfRound
-ãã 
-=
-ãã 
-ROUND_THREE
-ãã  +
-,
-ãã+ , 
-CategoryOfQuestion
-åå "
-=
-åå# $"
-QuestionsInterpreter
-åå% 9
-.
-åå9 :(
-FromCategoryToCategoryPOJO
-åå: T
-(
-ååT U
-specialQuestion
-ååU d
-.
-ååd e
-Category
-ååe m
+ÅÅ$ 1
+==
+ÅÅ2 4
+	ROUND_TWO
+ÅÅ5 >
 )
-ååm n
-,
-åån o%
-SpecificQuestionDetails
-çç '
-=
-çç( )
-new
-çç* -
-(
-çç- .
-)
-çç. /
+ÅÅ> ?
 {
-éé 
-
-IdQuestion
-èè 
-=
-èè  
-specialQuestion
-èè! 0
+ÇÇ 
+questionCard
+ÉÉ $
 .
-èè0 1
-
-IdQuestion
-èè1 ;
-,
-èè; <(
-SpanishQuestionDescription
-êê .
-=
-êê/ 0
-specialQuestion
-êê1 @
+ÉÉ$ %%
+SpecificQuestionDetails
+ÉÉ% <
 .
-êê@ A(
-SpanishQuestionDescription
-êêA [
-,
-êê[ \(
-EnglishQuestionDescription
-ëë .
-=
-ëë/ 0
-specialQuestion
-ëë1 @
-.
-ëë@ A(
-EnglishQuestionDescription
-ëëA [
-,
-ëë[ \ 
-IdAnswerOfQuestion
-íí &
-=
-íí' (
-specialQuestion
-íí) 8
-.
-íí8 9
-Awnser
-íí9 ?
-.
-íí? @
-IdAwnser
-íí@ H
-,
-ííH I
-IdCategoryBelong
-ìì $
-=
-ìì% &
-specialQuestion
-ìì' 6
-.
-ìì6 7 
-CategoryIdCategory
-ìì7 I
-,
-ììI J
+ÉÉ< =
 
 ValueWorth
-îî 
+ÉÉ= G
 =
-îî  
-(
-îî! "
-int
-îî" %
-)
-îî% &
-specialQuestion
-îî& 5
-.
-îî5 6
-
-ValueWorth
-îî6 @
-}
-ïï 
-}
-ññ 
-;
-ññ %
-questionCardInformation
-óó #
-.
-óó# $
-Add
-óó$ '
-(
-óó' (!
-specialQuestionCard
-óó( ;
-)
-óó; <
-;
-óó< =
-return
-òò %
-questionCardInformation
-òò *
-;
-òò* +
-}
-ôô 	
-private
-õõ 
-List
-õõ 
-<
-õõ %
-QuestionCardInformation
-õõ ,
->
-õõ, -!
-OrderAnswersInCards
-õõ. A
-(
-õõA B
-List
-õõB F
-<
-õõF G
-Awnser
-õõG M
->
-õõM N
-
-answerPool
-õõO Y
-,
-õõY Z
-List
-õõ[ _
-<
-õõ_ `%
-QuestionCardInformation
-õõ` w
->
-õõw x&
-questionCardInformationõõy ê
-)õõê ë
-{
-úú 	
-foreach
-ùù 
-(
-ùù 
-var
-ùù 
-questionCard
-ùù %
-in
-ùù& (%
-questionCardInformation
-ùù) @
-)
-ùù@ A
-{
-ûû 
-var
-üü 
-answersOfQuestion
-üü %
-=
-üü& '
-
-answerPool
-üü( 2
-.
-üü2 3
-Where
-üü3 8
-(
-üü8 9
-answer
-üü9 ?
-=>
-üü@ B
-answer
-üüC I
-.
-üüI J 
-CategoryIdCategory
-üüJ \
-==
-üü^ `
-questionCard
-üüa m
-.
-üüm n&
-SpecificQuestionDetailsüün Ö
-.üüÖ Ü 
-IdCategoryBelongüüÜ ñ
-)üüñ ó
-.üüó ò
-ToListüüò û
-(üüû ü
-)üüü †
-;üü† °
-questionCard
-†† 
-.
-†† 
-RightAnswer
-†† (
-=
-††) *"
-QuestionsInterpreter
-††+ ?
-.
-††? @$
-FromAnswerToAnswerPOJO
-††@ V
-(
-††V W
-answersOfQuestion
-††W h
-.
-††h i
-Find
-††i m
-(
-††m n
-answer
-°° 
-=>
-°° 
-answer
-°° $
-.
-°°$ %
-IdAwnser
-°°% -
-==
-°°. 0
-questionCard
-°°1 =
-.
-°°= >%
-SpecificQuestionDetails
-°°> U
-.
-°°U V 
-IdAnswerOfQuestion
-°°V h
-)
-°°h i
-)
-°°i j
-;
-°°j k
-answersOfQuestion
-¢¢ !
-.
-¢¢! "
-Remove
-¢¢" (
-(
-¢¢( )
-answersOfQuestion
-¢¢) :
-.
-¢¢: ;
-Find
-¢¢; ?
-(
-¢¢? @
-answer
-¢¢@ F
-=>
-¢¢G I
-answer
-¢¢J P
-.
-¢¢P Q
-IdAwnser
-¢¢Q Y
-==
-¢¢Z \
-questionCard
-¢¢] i
-.
-¢¢i j&
-SpecificQuestionDetails¢¢j Å
-.¢¢Å Ç"
-IdAnswerOfQuestion¢¢Ç î
-)¢¢î ï
-)¢¢ï ñ
-;¢¢ñ ó
-questionCard
-££ 
-.
-££ 
-WrongOptionOne
-££ +
-=
-££, -"
-QuestionsInterpreter
-££. B
-.
-££B C$
-FromAnswerToAnswerPOJO
-££C Y
-(
-££Y Z
-answersOfQuestion
-££Z k
-[
-££k l
+ÉÉH I
 $num
-££l m
-]
-££m n
+ÉÉJ K
+*
+ÉÉL M
+(
+ÉÉN O
+(
+ÉÉO P
+int
+ÉÉP S
 )
-££n o
+ÉÉS T
+(
+ÉÉT U
+question
+ÉÉU ]
+.
+ÉÉ] ^
+
+ValueWorth
+ÉÉ^ h
+)
+ÉÉh i
+)
+ÉÉi j
 ;
-££o p
+ÉÉj k
+}
+ÑÑ %
+questionCardInformation
+ÖÖ +
+.
+ÖÖ+ ,
+Add
+ÖÖ, /
+(
+ÖÖ/ 0
+questionCard
+ÖÖ0 <
+)
+ÖÖ< =
+;
+ÖÖ= >
+iterator
+ÜÜ 
+++
+ÜÜ 
+;
+ÜÜ 
+}
+áá 
+}
+àà 
+Question
+ââ 
+specialQuestion
+ââ $
+=
+ââ% &
+questionPool
+ââ' 3
+.
+ââ3 4
+First
+ââ4 9
+(
+ââ9 :
+question
+ââ: B
+=>
+ââC E
+question
+ââF N
+.
+ââN O 
+CategoryIdCategory
+ââO a
+==
+ââb d
+SPECIAL_CATEGORY
+ââe u
+)
+ââu v
+;
+ââv w%
+QuestionCardInformation
+ää #!
+specialQuestionCard
+ää$ 7
+=
+ää8 9
+new
+ää: =%
+QuestionCardInformation
+ää> U
+(
+ääU V
+)
+ääV W
+{
+ãã 
+IdQuestionCard
+åå 
+=
+åå  
+ID_LAST_QUESTION
+åå! 1
+,
+åå1 2
+NumberOfRound
+çç 
+=
+çç 
+ROUND_THREE
+çç  +
+,
+çç+ , 
+CategoryOfQuestion
+éé "
+=
+éé# $"
+QuestionsInterpreter
+éé% 9
+.
+éé9 :(
+FromCategoryToCategoryPOJO
+éé: T
+(
+ééT U
+specialQuestion
+ééU d
+.
+ééd e
+Category
+éée m
+)
+éém n
+,
+één o%
+SpecificQuestionDetails
+èè '
+=
+èè( )
+new
+èè* -
+(
+èè- .
+)
+èè. /
+{
+êê 
+
+IdQuestion
+ëë 
+=
+ëë  
+specialQuestion
+ëë! 0
+.
+ëë0 1
+
+IdQuestion
+ëë1 ;
+,
+ëë; <(
+SpanishQuestionDescription
+íí .
+=
+íí/ 0
+specialQuestion
+íí1 @
+.
+íí@ A(
+SpanishQuestionDescription
+ííA [
+,
+íí[ \(
+EnglishQuestionDescription
+ìì .
+=
+ìì/ 0
+specialQuestion
+ìì1 @
+.
+ìì@ A(
+EnglishQuestionDescription
+ììA [
+,
+ìì[ \ 
+IdAnswerOfQuestion
+îî &
+=
+îî' (
+specialQuestion
+îî) 8
+.
+îî8 9
+Awnser
+îî9 ?
+.
+îî? @
+IdAwnser
+îî@ H
+,
+îîH I
+IdCategoryBelong
+ïï $
+=
+ïï% &
+specialQuestion
+ïï' 6
+.
+ïï6 7 
+CategoryIdCategory
+ïï7 I
+,
+ïïI J
+
+ValueWorth
+ññ 
+=
+ññ  
+(
+ññ! "
+int
+ññ" %
+)
+ññ% &
+specialQuestion
+ññ& 5
+.
+ññ5 6
+
+ValueWorth
+ññ6 @
+}
+óó 
+}
+òò 
+;
+òò %
+questionCardInformation
+ôô #
+.
+ôô# $
+Add
+ôô$ '
+(
+ôô' (!
+specialQuestionCard
+ôô( ;
+)
+ôô; <
+;
+ôô< =
+return
+öö %
+questionCardInformation
+öö *
+;
+öö* +
+}
+õõ 	
+private
+ùù 
+List
+ùù 
+<
+ùù %
+QuestionCardInformation
+ùù ,
+>
+ùù, -!
+OrderAnswersInCards
+ùù. A
+(
+ùùA B
+List
+ùùB F
+<
+ùùF G
+Awnser
+ùùG M
+>
+ùùM N
+
+answerPool
+ùùO Y
+,
+ùùY Z
+List
+ùù[ _
+<
+ùù_ `%
+QuestionCardInformation
+ùù` w
+>
+ùùw x&
+questionCardInformationùùy ê
+)ùùê ë
+{
+ûû 	
+foreach
+üü 
+(
+üü 
+var
+üü 
+questionCard
+üü %
+in
+üü& (%
+questionCardInformation
+üü) @
+)
+üü@ A
+{
+†† 
+var
+°° 
+answersOfQuestion
+°° %
+=
+°°& '
+
+answerPool
+°°( 2
+.
+°°2 3
+Where
+°°3 8
+(
+°°8 9
+answer
+°°9 ?
+=>
+°°@ B
+answer
+°°C I
+.
+°°I J 
+CategoryIdCategory
+°°J \
+==
+°°^ `
+questionCard
+°°a m
+.
+°°m n&
+SpecificQuestionDetails°°n Ö
+.°°Ö Ü 
+IdCategoryBelong°°Ü ñ
+)°°ñ ó
+.°°ó ò
+ToList°°ò û
+(°°û ü
+)°°ü †
+;°°† °
+questionCard
+¢¢ 
+.
+¢¢ 
+RightAnswer
+¢¢ (
+=
+¢¢) *"
+QuestionsInterpreter
+¢¢+ ?
+.
+¢¢? @$
+FromAnswerToAnswerPOJO
+¢¢@ V
+(
+¢¢V W
+answersOfQuestion
+¢¢W h
+.
+¢¢h i
+Find
+¢¢i m
+(
+¢¢m n
+answer
+££ 
+=>
+££ 
+answer
+££ $
+.
+££$ %
+IdAwnser
+££% -
+==
+££. 0
+questionCard
+££1 =
+.
+££= >%
+SpecificQuestionDetails
+££> U
+.
+££U V 
+IdAnswerOfQuestion
+££V h
+)
+££h i
+)
+££i j
+;
+££j k
 answersOfQuestion
 §§ !
 .
@@ -43070,21 +43016,39 @@ answerPool
 §§( )
 answersOfQuestion
 §§) :
-[
+.
 §§: ;
-$num
-§§; <
-]
-§§< =
-)
-§§= >
-;
-§§> ?
+Find
+§§; ?
+(
+§§? @
+answer
+§§@ F
+=>
+§§G I
+answer
+§§J P
+.
+§§P Q
+IdAwnser
+§§Q Y
+==
+§§Z \
+questionCard
+§§] i
+.
+§§i j&
+SpecificQuestionDetails§§j Å
+.§§Å Ç"
+IdAnswerOfQuestion§§Ç î
+)§§î ï
+)§§ï ñ
+;§§ñ ó
 questionCard
 •• 
 .
 •• 
-WrongOptionTwo
+WrongOptionOne
 •• +
 =
 ••, -"
@@ -43131,1050 +43095,1122 @@ answerPool
 questionCard
 ßß 
 .
-ßß 
-WrongOptionThree
-ßß -
+ßß 
+WrongOptionTwo
+ßß +
 =
-ßß. /"
+ßß, -"
 QuestionsInterpreter
-ßß0 D
+ßß. B
 .
-ßßD E$
+ßßB C$
 FromAnswerToAnswerPOJO
-ßßE [
+ßßC Y
 (
-ßß[ \
+ßßY Z
 answersOfQuestion
-ßß\ m
+ßßZ k
 [
-ßßm n
+ßßk l
 $num
-ßßn o
+ßßl m
 ]
-ßßo p
+ßßm n
 )
-ßßp q
+ßßn o
 ;
-ßßq r
+ßßo p
+answersOfQuestion
+®® !
+.
+®®! "
+Remove
+®®" (
+(
+®®( )
+answersOfQuestion
+®®) :
+[
+®®: ;
+$num
+®®; <
+]
+®®< =
+)
+®®= >
+;
+®®> ?
+questionCard
+©© 
+.
+©© 
+WrongOptionThree
+©© -
+=
+©©. /"
+QuestionsInterpreter
+©©0 D
+.
+©©D E$
+FromAnswerToAnswerPOJO
+©©E [
+(
+©©[ \
+answersOfQuestion
+©©\ m
+[
+©©m n
+$num
+©©n o
+]
+©©o p
+)
+©©p q
+;
+©©q r
 }
-®® 
+™™ 
 return
-©© %
+´´ %
 questionCardInformation
-©© *
+´´ *
 ;
-©©* +
+´´* +
 }
-™™ 	
+¨¨ 	
 private
-¨¨ 
+ÆÆ 
 int
-¨¨ 
+ÆÆ 
 SetNumberOfRound
-¨¨ $
+ÆÆ $
 (
-¨¨$ %
+ÆÆ$ %
 int
-¨¨% (
+ÆÆ% (
 iterator
-¨¨) 1
+ÆÆ) 1
 )
-¨¨1 2
+ÆÆ1 2
 {
-≠≠ 	
+ØØ 	
 if
-ÆÆ 
+∞∞ 
 (
-ÆÆ 
+∞∞ 
 iterator
-ÆÆ 
+∞∞ 
 <=
-ÆÆ *
+∞∞ *
 LIMIT_OF_CARDS_FOR_ONE_ROUND
-ÆÆ 8
+∞∞ 8
 )
-ÆÆ8 9
+∞∞8 9
 {
-ØØ 
+±± 
 return
-∞∞ 
+≤≤ 
 	ROUND_ONE
-∞∞  
+≤≤  
 ;
-∞∞  !
+≤≤  !
 }
-±± 
+≥≥ 
 else
-≤≤ 
+¥¥ 
 {
-≥≥ 
+µµ 
 return
-¥¥ 
+∂∂ 
 	ROUND_TWO
-¥¥  
+∂∂  
 ;
-¥¥  !
+∂∂  !
 }
-µµ 
+∑∑ 
 }
-∂∂ 	
+∏∏ 	
 public
-∏∏ 
+∫∫ 
 int
-∏∏ !
+∫∫ !
 RegistryGamePlayers
-∏∏ &
+∫∫ &
 (
-∏∏& '
+∫∫& '
 int
-∏∏' *
+∫∫' *
 roomCode
-∏∏+ 3
+∫∫+ 3
 ,
-∏∏3 4
+∫∫3 4
 List
-∏∏5 9
+∫∫5 9
 <
-∏∏9 :!
+∫∫9 :!
 PlayerPlayingInGame
-∏∏: M
+∫∫: M
 >
-∏∏M N
+∫∫M N
 playerInGames
-∏∏O \
+∫∫O \
 )
-∏∏\ ]
+∫∫\ ]
 {
-ππ 	
+ªª 	
 int
-∫∫ 
+ºº 
 result
-∫∫ 
+ºº 
 =
-∫∫ !
+ºº !
 ExceptionDictionary
-∫∫ ,
+ºº ,
 .
-∫∫, -
+ºº, -
 SUCCESFULL_EVENT
-∫∫- =
+ºº- =
 ;
-∫∫= >
+ºº= >
 var
-ªª 
+ΩΩ 
 gameConsulted
-ªª 
+ΩΩ 
 =
-ªª 
+ΩΩ 
 GameDataOperation
-ªª  1
+ΩΩ  1
 .
-ªª1 2
+ΩΩ1 2
 GetGameByRoomCode
-ªª2 C
+ΩΩ2 C
 (
-ªªC D
+ΩΩC D
 roomCode
-ªªD L
+ΩΩD L
 )
-ªªL M
+ΩΩL M
 ;
-ªªM N
+ΩΩM N
 if
-ºº 
+ææ 
 (
-ºº 
+ææ 
 gameConsulted
-ºº 
+ææ 
 .
-ºº 
+ææ 
 	CodeEvent
-ºº '
+ææ '
 ==
-ºº( *!
+ææ( *!
 ExceptionDictionary
-ºº+ >
+ææ+ >
 .
-ºº> ?
+ææ> ?
 SUCCESFULL_EVENT
-ºº? O
+ææ? O
 )
-ººO P
+ææO P
 {
-ΩΩ 
+øø 
 foreach
-ææ 
+¿¿ 
 (
-ææ 
+¿¿ 
 var
-ææ 
+¿¿ 
 player
-ææ #
+¿¿ #
 in
-ææ$ &
+¿¿$ &
 playerInGames
-ææ' 4
+¿¿' 4
 )
-ææ4 5
+¿¿4 5
 {
-øø 
+¡¡ 
 if
-¿¿ 
+¬¬ 
 (
-¿¿ 
+¬¬ 
 !
-¿¿ .
+¬¬ .
  GuestPlayerManagerImplementation
-¿¿ 9
+¬¬ 9
 .
-¿¿9 :#
+¬¬9 :#
 IsUserNameInBlackList
-¿¿: O
+¬¬: O
 (
-¿¿O P
+¬¬O P
 player
-¿¿P V
+¬¬P V
 .
-¿¿V W
+¬¬V W
 UserName
-¿¿W _
+¬¬W _
 )
-¿¿_ `
+¬¬_ `
 )
-¿¿` a
+¬¬` a
 {
-¡¡ 
+√√ 
 
 GamePlayer
-¬¬ "
+ƒƒ "
 
 gamePlayer
-¬¬# -
+ƒƒ# -
 =
-¬¬. /
+ƒƒ. /
 new
-¬¬0 3
+ƒƒ0 3
 (
-¬¬3 4
+ƒƒ3 4
 )
-¬¬4 5
+ƒƒ4 5
 {
-√√ 
+≈≈ 
 PointsInGame
-ƒƒ (
+∆∆ (
 =
-ƒƒ) *
+∆∆) *
 player
-ƒƒ+ 1
+∆∆+ 1
 .
-ƒƒ1 2
+∆∆1 2
 FinalPoints
-ƒƒ2 =
+∆∆2 =
 ,
-ƒƒ= >
+∆∆= >
 PlaceInGame
-≈≈ '
+«« '
 =
-≈≈( )
+««( )
 (
-≈≈* +
+««* +
 short
-≈≈+ 0
+««+ 0
 )
-≈≈0 1
+««0 1
 player
-≈≈1 7
+««1 7
 .
-≈≈7 8"
+««7 8"
 NumberOfPlayerInGame
-≈≈8 L
+««8 L
 ,
-≈≈L M
+««L M
 Player_IdPlayer
-∆∆ +
+»» +
 =
-∆∆, -
+»», -
 player
-∆∆. 4
+»». 4
 .
-∆∆4 5
+»»4 5
 IdPlayer
-∆∆5 =
+»»5 =
 ,
-∆∆= >
+»»= >
 Game_RoomCode
-«« )
+…… )
 =
-««* +
+……* +
 roomCode
-««, 4
+……, 4
 ,
-««4 5
+……4 5
 Game
-»»  
+    
 =
-»»! "
+  ! "
 gameConsulted
-»»# 0
+  # 0
 .
-»»0 1
+  0 1
 ObjectSaved
-»»1 <
+  1 <
 ,
-»»< =
+  < =
 }
-…… 
+ÀÀ 
 ;
-…… 
+ÀÀ 
 int
-   
+ÃÃ 
 isSaved
-   #
+ÃÃ #
 =
-  $ %
+ÃÃ$ %
 GameDataOperation
-  & 7
+ÃÃ& 7
 .
-  7 8&
+ÃÃ7 8&
 SaveGamePlayerInDataBase
-  8 P
+ÃÃ8 P
 (
-  P Q
+ÃÃP Q
 
 gamePlayer
-  Q [
+ÃÃQ [
 )
-  [ \
+ÃÃ[ \
 ;
-  \ ]
+ÃÃ\ ]
 if
-ÀÀ 
+ÕÕ 
 (
-ÀÀ 
+ÕÕ 
 isSaved
-ÀÀ #
+ÕÕ #
 !=
-ÀÀ$ &!
+ÕÕ$ &!
 ExceptionDictionary
-ÀÀ' :
+ÕÕ' :
 .
-ÀÀ: ;
+ÕÕ: ;
 SUCCESFULL_EVENT
-ÀÀ; K
+ÕÕ; K
 )
-ÀÀK L
+ÕÕK L
 {
-ÃÃ 
+ŒŒ 
 result
-ÕÕ "
+œœ "
 =
-ÕÕ# $
+œœ# $
 isSaved
-ÕÕ% ,
+œœ% ,
 ;
-ÕÕ, -
+œœ, -
 }
-ŒŒ 
+–– 
 }
-œœ 
+—— 
 }
-–– 
+““ 
 }
-—— 
+”” 
 else
-““ 
+‘‘ 
 {
-”” 
-result
-‘‘ 
-=
-‘‘ 
-gameConsulted
-‘‘ &
-.
-‘‘& '
-	CodeEvent
-‘‘' 0
-;
-‘‘0 1
-}
 ’’ 
-return
-÷÷ 
 result
-÷÷ 
-;
-÷÷ 
-}
-◊◊ 	
-}
-ŸŸ 
-}⁄⁄ ˇZ
-úC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\RecoverPasswordImplementation.cs
-	namespace 	
-JeopardyGame
- 
-. 
-Service 
-. !
-ServiceImplementation 4
-{ 
-public 
-
-partial 
-class )
-RecoverPasswordImplementation 6
-:7 8
-IRecoverPassword9 I
-{ 
-private 
-static 
-readonly 
-Object  &
-
-objectLock' 1
-=2 3
-new4 7
-object8 >
-(> ?
-)? @
-;@ A
-public 
-int '
-CreateCodeToRecoverPassWord .
-(. /
-string/ 5
-userName6 >
-,> ?
-string@ F
-
-emailTitleG Q
-,Q R
-stringS Y
-	emailBodyZ c
-)c d
-{ 	
-int 
-resultToReturn 
-=  
-ExceptionDictionary! 4
-.4 5
-UNSUCCESFULL_EVENT5 G
-;G H
-lock 
-( 
-
-objectLock 
-) 
-{ 
-try 
-{ 
-if 
-( 
-! 
-string 
-.  
-IsNullOrEmpty  -
-(- .
-userName. 6
-)6 7
-)7 8
-{ ,
- ConsultInformationImplementation 8
-consultInformation9 K
-=L M
-newN Q,
- ConsultInformationImplementationR r
-(r s
-)s t
-;t u
-var 
-userConsulted )
-=* +
-consultInformation, >
-.> ?!
-ConsultUserByUserName? T
-(T U
-userNameU ]
-)] ^
-;^ _
-if 
-( 
-userConsulted )
-.) *
-	CodeEvent* 3
-==4 6
-ExceptionDictionary7 J
-.J K
-SUCCESFULL_EVENTK [
-)[ \
-{ 
-if 
-(  
-!  !(
-PasswordChangeCodeDictionary! =
-.= >&
-DoesPassWordCodeContaisKey> X
-(X Y
-userNameY a
-)a b
-)b c
-{ ,
- EmailSenderManagerImplementation    @
-emailSenderManager  A S
-=  T U
-new  V Y
-(  Y Z
-)  Z [
-;  [ \
-string!!  &
-code!!' +
-=!!, -#
-GenerateCodeForPassword!!. E
-(!!E F
-)!!F G
-;!!G H
-var""  #
-succes""$ *
-=""+ ,
-emailSenderManager""- ?
-.""? @&
-SentEmailToRecoverPassword""@ Z
-(""Z [
-userConsulted""[ h
-.""h i
-ObjectSaved""i t
-,""t u
-
-emailTitle	""v Ä
-,
-""Ä Å
-code
-""Ç Ü
-+
-""á à
-$str
-""â å
-+
-""ç é
-	emailBody
-""è ò
-)
-""ò ô
-;
-""ô ö
-if##  "
-(### $
-succes##$ *
-.##* +
-	CodeEvent##+ 4
-==##5 7
-ExceptionDictionary##8 K
-.##K L
-SUCCESFULL_EVENT##L \
-)##\ ]
-{$$  !(
-PasswordChangeCodeDictionary%%$ @
-.%%@ A
-AddTimerRegistry%%A Q
-(%%Q R
-userName%%R Z
-,%%Z [
-code%%\ `
-)%%` a
-;%%a b
-resultToReturn&&$ 2
-=&&3 4
-ExceptionDictionary&&5 H
-.&&H I
-SUCCESFULL_EVENT&&I Y
-;&&Y Z
-Console''$ +
-.''+ ,
-	WriteLine'', 5
-(''5 6
-code''6 :
-)'': ;
-;''; <
-}((  !
-else))  $
-{**  !
-resultToReturn++$ 2
-=++3 4
-succes++5 ;
-.++; <
-	CodeEvent++< E
-;++E F
-},,  !
-}-- 
-else..  
-{// 
-resultToReturn00  .
-=00/ 0
-ExceptionDictionary001 D
-.00D E"
-USERNAME_ALREADY_EXIST00E [
-;00[ \
-}11 
-}22 
-else33 
-{44 
-resultToReturn55 *
-=55+ ,
-ExceptionDictionary55- @
-.55@ A
-NULL_PARAEMETER55A P
-;55P Q
-}66 
-}77 
-}88 
-catch99 
-(99 /
-#CommunicationObjectFaultedException99 :
-ex99; =
-)99= >
-{:: 
-ExceptionHandler;; $
-.;;$ %
-LogException;;% 1
-(;;1 2
-ex;;2 4
-,;;4 5
-ExceptionDictionary;;6 I
-.;;I J
-FATAL_EXCEPTION;;J Y
-);;Y Z
-;;;Z [
-}<< 
-catch== 
-(== 
-TimeoutException== '
-ex==( *
-)==* +
-{>> 
-ExceptionHandler?? $
-.??$ %
-LogException??% 1
-(??1 2
-ex??2 4
-,??4 5
-ExceptionDictionary??6 I
-.??I J
-FATAL_EXCEPTION??J Y
-)??Y Z
-;??Z [
-}@@ 
-catchAA 
-(AA "
-CommunicationExceptionAA -
-exAA. 0
-)AA0 1
-{BB 
-ExceptionHandlerCC $
-.CC$ %
-LogExceptionCC% 1
-(CC1 2
-exCC2 4
-,CC4 5
-ExceptionDictionaryCC6 I
-.CCI J
-FATAL_EXCEPTIONCCJ Y
-)CCY Z
-;CCZ [
-}DD 
-catchEE 
-(EE %
-InvalidOperationExceptionEE 0
-exEE1 3
-)EE3 4
-{FF 
-ExceptionHandlerGG $
-.GG$ %
-LogExceptionGG% 1
-(GG1 2
-exGG2 4
-,GG4 5
-ExceptionDictionaryGG6 I
-.GGI J
-FATAL_EXCEPTIONGGJ Y
-)GGY Z
-;GGZ [
-}HH 
-}II 
-returnJJ 
-resultToReturnJJ !
-;JJ! "
-}KK 	
-publicMM 
-intMM '
-VerifyCodeToRecoverPasswordMM .
-(MM. /
-stringMM/ 5
-userNameMM6 >
-,MM> ?
-stringMM@ F
-codeMMG K
-)MMK L
-{NN 	
-intOO 
-resultToReturnOO 
-=OO  
-ExceptionDictionaryOO! 4
-.OO4 5
-UNSUCCESFULL_EVENTOO5 G
-;OOG H
-tryPP 
-{QQ 
-ifRR 
-(RR 
-!RR 
-stringRR 
-.RR 
-IsNullOrEmptyRR )
-(RR) *
-userNameRR* 2
-)RR2 3
-&&RR4 6
-!RR7 8
-stringRR8 >
-.RR> ?
-IsNullOrEmptyRR? L
-(RRL M
-codeRRM Q
-)RRQ R
-)RRR S
-{SS ,
- ConsultInformationImplementationTT 4
-consultInformationTT5 G
-=TTH I
-newTTJ M,
- ConsultInformationImplementationTTN n
-(TTn o
-)TTo p
-;TTp q
-varUU 
-userConsultedUU %
-=UU& '
-consultInformationUU( :
-.UU: ;!
-ConsultUserByUserNameUU; P
-(UUP Q
-userNameUUQ Y
-)UUY Z
-;UUZ [
-ifVV 
-(VV 
-userConsultedVV %
-.VV% &
-	CodeEventVV& /
-==VV0 2
-ExceptionDictionaryVV3 F
-.VVF G
-SUCCESFULL_EVENTVVG W
-)VVW X
-{WW 
-ifXX 
-(XX (
-PasswordChangeCodeDictionaryXX 8
-.XX8 9&
-DoesPassWordCodeContaisKeyXX9 S
-(XXS T
-userNameXXT \
-)XX\ ]
-)XX] ^
-{YY 
-ifZZ 
-(ZZ  (
-PasswordChangeCodeDictionaryZZ  <
-.ZZ< =
-GetSpecificCodeZZ= L
-(ZZL M
-userNameZZM U
-)ZZU V
-.ZZV W
-EqualsZZW ]
-(ZZ] ^
-codeZZ^ b
-)ZZb c
-)ZZc d
-{[[ 
-resultToReturn\\  .
-=\\/ 0
-ExceptionDictionary\\1 D
-.\\D E
-SUCCESFULL_EVENT\\E U
-;\\U V(
-PasswordChangeCodeDictionary]]  <
-.]]< =
-RemoveTimerRegistry]]= P
-(]]P Q
-userName]]Q Y
-)]]Y Z
-;]]Z [
-}^^ 
-else__  
-{`` 
-resultToReturnaa  .
-=aa/ 0
-ExceptionDictionaryaa1 D
-.aaD E
-INVALID_OPERATIONaaE V
-;aaV W
-}bb 
-}cc 
-elsedd 
-{ee 
-resultToReturnff *
-=ff+ ,
-ExceptionDictionaryff- @
-.ff@ A
-ARGUMENT_NULLffA N
-;ffN O
-}gg 
-}hh 
-elseii 
-{jj 
-resultToReturnkk &
-=kk' (
-ExceptionDictionarykk) <
-.kk< =
-NULL_PARAEMETERkk= L
-;kkL M
-}ll 
-}mm 
-}nn 
-catchoo 
-(oo /
-#CommunicationObjectFaultedExceptionoo 6
-exoo7 9
-)oo9 :
-{pp 
-ExceptionHandlerqq  
-.qq  !
-LogExceptionqq! -
-(qq- .
-exqq. 0
-,qq0 1
-ExceptionDictionaryqq2 E
-.qqE F
-FATAL_EXCEPTIONqqF U
-)qqU V
-;qqV W
-}rr 
-catchss 
-(ss 
-TimeoutExceptionss #
-exss$ &
-)ss& '
-{tt 
-ExceptionHandleruu  
-.uu  !
-LogExceptionuu! -
-(uu- .
-exuu. 0
-,uu0 1
-ExceptionDictionaryuu2 E
-.uuE F
-FATAL_EXCEPTIONuuF U
-)uuU V
-;uuV W
-}vv 
-catchww 
-(ww "
-CommunicationExceptionww )
-exww* ,
-)ww, -
-{xx 
-ExceptionHandleryy  
-.yy  !
-LogExceptionyy! -
-(yy- .
-exyy. 0
-,yy0 1
-ExceptionDictionaryyy2 E
-.yyE F
-FATAL_EXCEPTIONyyF U
-)yyU V
-;yyV W
-}zz 
-catch{{ 
-({{ %
-InvalidOperationException{{ ,
-ex{{- /
-){{/ 0
-{|| 
-ExceptionHandler}}  
-.}}  !
-LogException}}! -
-(}}- .
-ex}}. 0
-,}}0 1
-ExceptionDictionary}}2 E
-.}}E F
-FATAL_EXCEPTION}}F U
-)}}U V
-;}}V W
-}~~ 
-return 
-resultToReturn !
-;! "
-}
-ÄÄ 	
-private
-ÉÉ 
-string
-ÉÉ %
-GenerateCodeForPassword
-ÉÉ .
-(
-ÉÉ. /
-)
-ÉÉ/ 0
-{
-ÑÑ 	
-Random
-ÖÖ 
-randomNumber
-ÖÖ 
+÷÷ 
 =
-ÖÖ  !
-new
-ÖÖ" %
-Random
-ÖÖ& ,
-(
-ÖÖ, -
-)
-ÖÖ- .
-;
-ÖÖ. /
-int
-ÜÜ &
-fourDigitsAleatoryNumber
-ÜÜ (
-=
-ÜÜ) *
-randomNumber
-ÜÜ+ 7
+÷÷ 
+gameConsulted
+÷÷ &
 .
-ÜÜ7 8
-Next
-ÜÜ8 <
-(
-ÜÜ< =
-$num
-ÜÜ= A
-,
-ÜÜA B
-$num
-ÜÜC G
-)
-ÜÜG H
+÷÷& '
+	CodeEvent
+÷÷' 0
 ;
-ÜÜH I
-char
-áá "
-firstRandomCharacter
-áá %
-=
-áá& '
-(
-áá( )
-char
-áá) -
-)
-áá- .
-randomNumber
-áá. :
-.
-áá: ;
-Next
-áá; ?
-(
-áá? @
-$char
-áá@ C
-,
-ááC D
-$char
-ááE H
-+
-ááI J
-$num
-ááK L
-)
-ááL M
-;
-ááM N
-char
-àà #
-secondRandomCharacter
-àà &
-=
-àà' (
-(
-àà) *
-char
-àà* .
-)
-àà. /
-randomNumber
-àà/ ;
-.
-àà; <
-Next
-àà< @
-(
-àà@ A
-$char
-ààA D
-,
-ààD E
-$char
-ààF I
-+
-ààJ K
-$num
-ààL M
-)
-ààM N
-;
-ààN O
+÷÷0 1
+}
+◊◊ 
 return
-ââ 
-$"
-ââ 
-{
-ââ "
-firstRandomCharacter
-ââ *
-}
-ââ* +
-{
-ââ+ ,#
-secondRandomCharacter
-ââ, A
-}
-ââA B
-{
-ââB C&
-fourDigitsAleatoryNumber
-ââC [
-:
-ââ[ \
-$str
-ââ\ ^
-}
-ââ^ _
-"
-ââ_ `
+ÿÿ 
+result
+ÿÿ 
 ;
-ââ` a
+ÿÿ 
 }
-ää 	
+ŸŸ 	
 }
-åå 
-}èè ∆•
+€€ 
+}‹‹ ó^
+úC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\RecoverPasswordImplementation.cs
+	namespace 	
+JeopardyGame
+ 
+. 
+Service 
+. !
+ServiceImplementation 4
+{ 
+public 
+
+partial 
+class )
+RecoverPasswordImplementation 6
+:7 8
+IRecoverPassword9 I
+{ 
+private 
+static 
+readonly 
+Object  &
+
+objectLock' 1
+=2 3
+new4 7
+object8 >
+(> ?
+)? @
+;@ A
+private 
+static 
+readonly 
+ThreadLocal  +
+<+ ,
+Random, 2
+>2 3
+generateAleatory4 D
+=E F
+newG J
+ThreadLocalK V
+<V W
+RandomW ]
+>] ^
+(^ _
+(_ `
+)` a
+=>b d
+newe h
+Randomi o
+(o p
+)p q
+)q r
+;r s
+public 
+int '
+CreateCodeToRecoverPassWord .
+(. /
+string/ 5
+userName6 >
+,> ?
+string@ F
+
+emailTitleG Q
+,Q R
+stringS Y
+	emailBodyZ c
+)c d
+{ 	
+int 
+resultToReturn 
+=  
+ExceptionDictionary! 4
+.4 5
+UNSUCCESFULL_EVENT5 G
+;G H
+lock 
+( 
+
+objectLock 
+) 
+{ 
+try 
+{ 
+if 
+( 
+! 
+string 
+.  
+IsNullOrEmpty  -
+(- .
+userName. 6
+)6 7
+)7 8
+{ ,
+ ConsultInformationImplementation 8
+consultInformation9 K
+=L M
+newN Q,
+ ConsultInformationImplementationR r
+(r s
+)s t
+;t u
+var 
+userConsulted )
+=* +
+consultInformation, >
+.> ?!
+ConsultUserByUserName? T
+(T U
+userNameU ]
+)] ^
+;^ _
+if 
+( 
+userConsulted )
+.) *
+	CodeEvent* 3
+==4 6
+ExceptionDictionary7 J
+.J K
+SUCCESFULL_EVENTK [
+)[ \
+{ 
+if   
+(    
+!    !(
+PasswordChangeCodeDictionary  ! =
+.  = >&
+DoesPassWordCodeContaisKey  > X
+(  X Y
+userName  Y a
+)  a b
+)  b c
+{!! ,
+ EmailSenderManagerImplementation""  @
+emailSenderManager""A S
+=""T U
+new""V Y
+(""Y Z
+)""Z [
+;""[ \
+string##  &
+code##' +
+=##, -#
+GenerateCodeForPassword##. E
+(##E F
+)##F G
+;##G H
+var$$  #
+succes$$$ *
+=$$+ ,
+emailSenderManager$$- ?
+.$$? @&
+SentEmailToRecoverPassword$$@ Z
+($$Z [
+userConsulted$$[ h
+.$$h i
+ObjectSaved$$i t
+,$$t u
+
+emailTitle	$$v Ä
+,
+$$Ä Å
+code
+$$Ç Ü
++
+$$á à
+$str
+$$â å
++
+$$ç é
+	emailBody
+$$è ò
+)
+$$ò ô
+;
+$$ô ö
+if%%  "
+(%%# $
+succes%%$ *
+.%%* +
+	CodeEvent%%+ 4
+==%%5 7
+ExceptionDictionary%%8 K
+.%%K L
+SUCCESFULL_EVENT%%L \
+)%%\ ]
+{&&  !(
+PasswordChangeCodeDictionary''$ @
+.''@ A
+AddTimerRegistry''A Q
+(''Q R
+userName''R Z
+,''Z [
+code''\ `
+)''` a
+;''a b
+resultToReturn(($ 2
+=((3 4
+ExceptionDictionary((5 H
+.((H I
+SUCCESFULL_EVENT((I Y
+;((Y Z
+Console))$ +
+.))+ ,
+	WriteLine)), 5
+())5 6
+code))6 :
+))): ;
+;)); <
+}**  !
+else++  $
+{,,  !
+resultToReturn--$ 2
+=--3 4
+succes--5 ;
+.--; <
+	CodeEvent--< E
+;--E F
+}..  !
+}// 
+else00  
+{11 
+resultToReturn22  .
+=22/ 0
+ExceptionDictionary221 D
+.22D E"
+USERNAME_ALREADY_EXIST22E [
+;22[ \
+}33 
+}44 
+else55 
+{66 
+resultToReturn77 *
+=77+ ,
+ExceptionDictionary77- @
+.77@ A
+NULL_PARAEMETER77A P
+;77P Q
+}88 
+}99 
+}:: 
+catch;; 
+(;; /
+#CommunicationObjectFaultedException;; :
+ex;;; =
+);;= >
+{<< 
+ExceptionHandler== $
+.==$ %
+LogException==% 1
+(==1 2
+ex==2 4
+,==4 5
+ExceptionDictionary==6 I
+.==I J
+FATAL_EXCEPTION==J Y
+)==Y Z
+;==Z [
+}>> 
+catch?? 
+(?? 
+TimeoutException?? '
+ex??( *
+)??* +
+{@@ 
+ExceptionHandlerAA $
+.AA$ %
+LogExceptionAA% 1
+(AA1 2
+exAA2 4
+,AA4 5
+ExceptionDictionaryAA6 I
+.AAI J
+FATAL_EXCEPTIONAAJ Y
+)AAY Z
+;AAZ [
+}BB 
+catchCC 
+(CC "
+CommunicationExceptionCC -
+exCC. 0
+)CC0 1
+{DD 
+ExceptionHandlerEE $
+.EE$ %
+LogExceptionEE% 1
+(EE1 2
+exEE2 4
+,EE4 5
+ExceptionDictionaryEE6 I
+.EEI J
+FATAL_EXCEPTIONEEJ Y
+)EEY Z
+;EEZ [
+}FF 
+catchGG 
+(GG %
+InvalidOperationExceptionGG 0
+exGG1 3
+)GG3 4
+{HH 
+ExceptionHandlerII $
+.II$ %
+LogExceptionII% 1
+(II1 2
+exII2 4
+,II4 5
+ExceptionDictionaryII6 I
+.III J
+FATAL_EXCEPTIONIIJ Y
+)IIY Z
+;IIZ [
+}JJ 
+}KK 
+returnLL 
+resultToReturnLL !
+;LL! "
+}MM 	
+publicOO 
+intOO '
+VerifyCodeToRecoverPasswordOO .
+(OO. /
+stringOO/ 5
+userNameOO6 >
+,OO> ?
+stringOO@ F
+codeOOG K
+)OOK L
+{PP 	
+intQQ 
+resultToReturnQQ 
+=QQ  
+ExceptionDictionaryQQ! 4
+.QQ4 5
+UNSUCCESFULL_EVENTQQ5 G
+;QQG H
+tryRR 
+{SS 
+ifTT 
+(TT 
+!TT 
+stringTT 
+.TT 
+IsNullOrEmptyTT )
+(TT) *
+userNameTT* 2
+)TT2 3
+&&TT4 6
+!TT7 8
+stringTT8 >
+.TT> ?
+IsNullOrEmptyTT? L
+(TTL M
+codeTTM Q
+)TTQ R
+)TTR S
+{UU ,
+ ConsultInformationImplementationVV 4
+consultInformationVV5 G
+=VVH I
+newVVJ M,
+ ConsultInformationImplementationVVN n
+(VVn o
+)VVo p
+;VVp q
+varWW 
+userConsultedWW %
+=WW& '
+consultInformationWW( :
+.WW: ;!
+ConsultUserByUserNameWW; P
+(WWP Q
+userNameWWQ Y
+)WWY Z
+;WWZ [
+ifXX 
+(XX 
+userConsultedXX %
+.XX% &
+	CodeEventXX& /
+==XX0 2
+ExceptionDictionaryXX3 F
+.XXF G
+SUCCESFULL_EVENTXXG W
+)XXW X
+{YY 
+ifZZ 
+(ZZ (
+PasswordChangeCodeDictionaryZZ 8
+.ZZ8 9&
+DoesPassWordCodeContaisKeyZZ9 S
+(ZZS T
+userNameZZT \
+)ZZ\ ]
+)ZZ] ^
+{[[ 
+if\\ 
+(\\  (
+PasswordChangeCodeDictionary\\  <
+.\\< =
+GetSpecificCode\\= L
+(\\L M
+userName\\M U
+)\\U V
+.\\V W
+Equals\\W ]
+(\\] ^
+code\\^ b
+)\\b c
+)\\c d
+{]] 
+resultToReturn^^  .
+=^^/ 0
+ExceptionDictionary^^1 D
+.^^D E
+SUCCESFULL_EVENT^^E U
+;^^U V(
+PasswordChangeCodeDictionary__  <
+.__< =
+RemoveTimerRegistry__= P
+(__P Q
+userName__Q Y
+)__Y Z
+;__Z [
+}`` 
+elseaa  
+{bb 
+resultToReturncc  .
+=cc/ 0
+ExceptionDictionarycc1 D
+.ccD E
+INVALID_OPERATIONccE V
+;ccV W
+}dd 
+}ee 
+elseff 
+{gg 
+resultToReturnhh *
+=hh+ ,
+ExceptionDictionaryhh- @
+.hh@ A
+ARGUMENT_NULLhhA N
+;hhN O
+}ii 
+}jj 
+elsekk 
+{ll 
+resultToReturnmm &
+=mm' (
+ExceptionDictionarymm) <
+.mm< =
+NULL_PARAEMETERmm= L
+;mmL M
+}nn 
+}oo 
+}pp 
+catchqq 
+(qq /
+#CommunicationObjectFaultedExceptionqq 6
+exqq7 9
+)qq9 :
+{rr 
+ExceptionHandlerss  
+.ss  !
+LogExceptionss! -
+(ss- .
+exss. 0
+,ss0 1
+ExceptionDictionaryss2 E
+.ssE F
+FATAL_EXCEPTIONssF U
+)ssU V
+;ssV W
+}tt 
+catchuu 
+(uu 
+TimeoutExceptionuu #
+exuu$ &
+)uu& '
+{vv 
+ExceptionHandlerww  
+.ww  !
+LogExceptionww! -
+(ww- .
+exww. 0
+,ww0 1
+ExceptionDictionaryww2 E
+.wwE F
+FATAL_EXCEPTIONwwF U
+)wwU V
+;wwV W
+}xx 
+catchyy 
+(yy "
+CommunicationExceptionyy )
+exyy* ,
+)yy, -
+{zz 
+ExceptionHandler{{  
+.{{  !
+LogException{{! -
+({{- .
+ex{{. 0
+,{{0 1
+ExceptionDictionary{{2 E
+.{{E F
+FATAL_EXCEPTION{{F U
+){{U V
+;{{V W
+}|| 
+catch}} 
+(}} %
+InvalidOperationException}} ,
+ex}}- /
+)}}/ 0
+{~~ 
+ExceptionHandler  
+.  !
+LogException! -
+(- .
+ex. 0
+,0 1
+ExceptionDictionary2 E
+.E F
+FATAL_EXCEPTIONF U
+)U V
+;V W
+}
+ÄÄ 
+return
+ÅÅ 
+resultToReturn
+ÅÅ !
+;
+ÅÅ! "
+}
+ÇÇ 	
+private
+ÖÖ 
+string
+ÖÖ %
+GenerateCodeForPassword
+ÖÖ .
+(
+ÖÖ. /
+)
+ÖÖ/ 0
+{
+ÜÜ 	
+int
+áá &
+fourDigitsAleatoryNumber
+áá (
+=
+áá) *
+generateAleatory
+áá+ ;
+.
+áá; <
+Value
+áá< A
+.
+ááA B
+Next
+ááB F
+(
+ááF G
+$num
+ááG K
+,
+ááK L
+$num
+ááM Q
+)
+ááQ R
+;
+ááR S
+char
+àà "
+firstRandomCharacter
+àà %
+=
+àà& '
+(
+àà( )
+char
+àà) -
+)
+àà- .
+generateAleatory
+àà. >
+.
+àà> ?
+Value
+àà? D
+.
+ààD E
+Next
+ààE I
+(
+ààI J
+$char
+ààJ M
+,
+ààM N
+$char
+ààO R
++
+ààS T
+$num
+ààU V
+)
+ààV W
+;
+ààW X
+char
+ââ #
+secondRandomCharacter
+ââ &
+=
+ââ' (
+(
+ââ) *
+char
+ââ* .
+)
+ââ. /
+generateAleatory
+ââ/ ?
+.
+ââ? @
+Value
+ââ@ E
+.
+ââE F
+Next
+ââF J
+(
+ââJ K
+$char
+ââK N
+,
+ââN O
+$char
+ââP S
++
+ââT U
+$num
+ââV W
+)
+ââW X
+;
+ââX Y
+return
+ää 
+$"
+ää 
+{
+ää "
+firstRandomCharacter
+ää *
+}
+ää* +
+{
+ää+ ,#
+secondRandomCharacter
+ää, A
+}
+ääA B
+{
+ääB C&
+fourDigitsAleatoryNumber
+ääC [
+:
+ää[ \
+$str
+ää\ ^
+}
+ää^ _
+"
+ää_ `
+;
+ää` a
+}
+ãã 	
+}
+çç 
+}êê ∆•
 ñC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\ServicesReferenceAuthor.cs
 	namespace 	
 JeopardyGame
@@ -48493,1146 +48529,1135 @@ IHeartBeat
 ÎÎ 	
 }
 ÏÏ 
-}ÌÌ ÛÖ
+}ÌÌ —Ñ
 ¢C:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\UserCreateAccountCodeImplementation.cs
-	namespace 	
-JeopardyGame
+	namespace 	
+JeopardyGame
  
-. 
-Service 
-. !
-ServiceImplementation 4
-{ 
-internal 
-class /
-#UserCreateAccountCodeImplementation 6
-:7 8"
-IUserCreateAccountCode9 O
-{ 
-private 
-const 
-int 
-ALLOWED_VALUES (
-=) *
-$num+ ,
-;, -
-private 
-static 
-readonly 
-Object  &
+. 
+Service 
+. !
+ServiceImplementation 4
+{ 
+internal 
+class /
+#UserCreateAccountCodeImplementation 6
+:7 8"
+IUserCreateAccountCode9 O
+{ 
+private 
+const 
+int 
+ALLOWED_VALUES (
+=) *
+$num+ ,
+;, -
+private 
+static 
+readonly 
+Object  &
 
-lockObject( 2
-=3 4
-new5 8
-Object9 ?
-(? @
-)@ A
-;A B
-public 
-GenericClass 
-< 
-int 
->  +
-AddUserToConfirmationDictionary! @
-(@ A
-UserPojoA I
-newUserJ Q
-)Q R
-{ 	
-lock 
-( 
+lockObject( 2
+=3 4
+new5 8
+Object9 ?
+(? @
+)@ A
+;A B
+public 
+GenericClass 
+< 
+int 
+>  +
+AddUserToConfirmationDictionary! @
+(@ A
+UserPojoA I
+newUserJ Q
+)Q R
+{ 	
+lock 
+( 
 
-lockObject 
-) 
-{ 
-GenericClass 
-< 
-int  
->  !
-successCriteria" 1
-=2 3
-new4 7
-(7 8
-)8 9
-{ 
-	CodeEvent   
-=   
-ExceptionDictionary    3
-.  3 4
-SUCCESFULL_EVENT  4 D
-,  D E
-ObjectSaved!! 
-=!!  !
-ALLOWED_VALUES!!" 0
-}"" 
-;"" 
-try## 
-{$$ 
-AddUserToDictionary%% '
-(%%' (
-newUser%%( /
-)%%/ 0
-;%%0 1
-}&& 
-catch'' 
-('' /
-#CommunicationObjectFaultedException'' :
-ex''; =
-)''= >
-{(( 
-successCriteria)) #
-.))# $
-	CodeEvent))$ -
-=)). /
-ExceptionDictionary))0 C
-.))C D
-UNSUCCESFULL_EVENT))D V
-;))V W
-ExceptionHandler** $
-.**$ %
-LogException**% 1
-(**1 2
-ex**2 4
-,**4 5
-ExceptionDictionary**6 I
-.**I J
-FATAL_EXCEPTION**J Y
-)**Y Z
-;**Z [
-}++ 
-catch,, 
-(,, 
-TimeoutException,, '
-ex,,( *
-),,* +
-{-- 
-successCriteria.. #
-...# $
-	CodeEvent..$ -
-=... /
-ExceptionDictionary..0 C
-...C D
-UNSUCCESFULL_EVENT..D V
-;..V W
-ExceptionHandler// $
-.//$ %
-LogException//% 1
-(//1 2
-ex//2 4
-,//4 5
-ExceptionDictionary//6 I
-.//I J
-FATAL_EXCEPTION//J Y
-)//Y Z
-;//Z [
-}00 
-catch11 
-(11 "
-CommunicationException11 -
-ex11. 0
-)110 1
-{22 
-successCriteria33 #
-.33# $
-	CodeEvent33$ -
-=33. /
-ExceptionDictionary330 C
-.33C D
-UNSUCCESFULL_EVENT33D V
-;33V W
-ExceptionHandler44 $
-.44$ %
-LogException44% 1
-(441 2
-ex442 4
-,444 5
-ExceptionDictionary446 I
-.44I J
-FATAL_EXCEPTION44J Y
-)44Y Z
-;44Z [
-}55 
-catch66 
-(66 %
-InvalidOperationException66 0
-ex661 3
-)663 4
-{77 
-successCriteria88 #
-.88# $
-	CodeEvent88$ -
-=88. /
-ExceptionDictionary880 C
-.88C D
-UNSUCCESFULL_EVENT88D V
-;88V W
-ExceptionHandler99 $
-.99$ %
-LogException99% 1
-(991 2
-ex992 4
-,994 5
-ExceptionDictionary996 I
-.99I J
-FATAL_EXCEPTION99J Y
-)99Y Z
-;99Z [
-}:: 
-return;; 
-successCriteria;; &
-;;;& '
-}<< 
-}== 	
-private@@ 
-void@@ 
-AddUserToDictionary@@ (
-(@@( )
-UserPojo@@) 1
-newUser@@2 9
-)@@9 :
-{AA 	
-RandomBB 
-randomNumberBB 
-=BB  !
-newBB" %
-RandomBB& ,
-(BB, -
-)BB- .
-;BB. /
-intCC $
-fourDigitsAleatoryNumberCC (
-=CC) *
-randomNumberCC, 8
-.CC8 9
-NextCC9 =
-(CC= >
-$numCC> B
-,CCB C
-$numCCD H
-)CCH I
-;CCI J
-charDD  
-firstRandomCharacterDD %
-=DD& '
-(DD( )
-charDD) -
-)DD- .
-randomNumberDD. :
-.DD: ;
-NextDD; ?
-(DD? @
-$charDD@ C
-,DDC D
-$charDDE H
-+DDI J
-$numDDK L
-)DDL M
-;DDM N
-charEE !
-secondRandomCharacterEE &
-=EE' (
-(EE) *
-charEE* .
-)EE. /
-randomNumberEE/ ;
-.EE; <
-NextEE< @
-(EE@ A
-$charEEA D
-,EED E
-$charEEF I
-+EEJ K
-$numEEL M
-)EEM N
-;EEN O
-stringFF 
-codeFF 
-=FF 
-$"FF 
-{FF  
-firstRandomCharacterFF 1
-}FF1 2
-{FF2 3!
-secondRandomCharacterFF3 H
-}FFH I
-{FFI J$
-fourDigitsAleatoryNumberFFJ b
-:FFb c
-$strFFc e
-}FFe f
-"FFf g
-;FFg h
-varGG 
-codeAlreadyExistGG  
-=GG! "'
-EmailConfirmationDictionaryGG# >
-.GG> ?$
-GetSpecificUserToConfirmGG? W
-(GGW X
-codeGGX \
-)GG\ ]
-;GG] ^
-ConsoleHH 
-.HH 
-	WriteLineHH 
-(HH 
-codeHH "
-)HH" #
-;HH# $
-ifII 
-(II 
-codeAlreadyExistII 
-==II  "
-nullII# '
-)II' (
-{JJ '
-EmailConfirmationDictionaryKK +
-.KK+ ,$
-RegisterNewUserToConfirmKK, D
-(KKD E
-codeKKE I
-,KKI J
-newUserKKK R
-)KKR S
-;KKS T
-}LL 
-elseMM 
-{NN 
-AddUserToDictionaryOO #
-(OO# $
-newUserOO$ +
-)OO+ ,
-;OO, -
-}PP 
-}QQ 	
-publicSS 
-intSS 
-CheckCodeEnteredSS #
-(SS# $
-UserPojoSS$ ,
-newUserSS- 4
-,SS4 5
-stringSS6 <
-codeEnteredSS= H
-)SSH I
-{TT 	
-intUU 
-successCriteriaUU 
-;UU  
-tryVV 
-{WW 
-ifXX 
-(XX 
-newUserXX 
-==XX 
-nullXX #
-)XX# $
-{YY 
-returnZZ 
-ExceptionDictionaryZZ .
-.ZZ. /
-NULL_PARAEMETERZZ/ >
-;ZZ> ?
-}[[ 
-var\\ 
-userToVerifyList\\ $
-=\\% &'
-EmailConfirmationDictionary\\' B
-.\\B C$
-GetSpecificUserToConfirm\\C [
-(\\[ \
-codeEntered\\\ g
-)\\g h
-;\\h i
-if]] 
-(]] 
-userToVerifyList]] $
-!=]]% '
-null]]( ,
-&&]]- /
-userToVerifyList]]0 @
-.]]@ A
-UserName]]A I
-.]]I J
-Equals]]J P
-(]]P Q
-newUser]]Q X
-.]]X Y
-UserName]]Y a
-)]]a b
-)]]b c
-{^^ 
-successCriteria__ #
-=__$ %
-ExceptionDictionary__& 9
-.__9 :
-SUCCESFULL_EVENT__: J
-;__J K
-}`` 
-elseaa 
-{bb 
-successCriteriacc #
-=cc$ %
-ExceptionDictionarycc& 9
-.cc9 :
-UNSUCCESFULL_EVENTcc: L
-;ccL M
-}dd 
-}ee 
-catchff 
-(ff /
-#CommunicationObjectFaultedExceptionff 6
-exff7 9
-)ff9 :
-{gg 
-successCriteriahh 
-=hh  !
-ExceptionDictionaryhh" 5
-.hh5 6
-UNSUCCESFULL_EVENThh6 H
-;hhH I
-ExceptionHandlerii  
-.ii  !
-LogExceptionii! -
-(ii- .
-exii. 0
-,ii0 1
-ExceptionDictionaryii2 E
-.iiE F
-FATAL_EXCEPTIONiiF U
-)iiU V
-;iiV W
-}jj 
-catchkk 
-(kk 
-TimeoutExceptionkk #
-exkk$ &
-)kk& '
-{ll 
-successCriteriamm 
-=mm  !
-ExceptionDictionarymm" 5
-.mm5 6
-UNSUCCESFULL_EVENTmm6 H
-;mmH I
-ExceptionHandlernn  
-.nn  !
-LogExceptionnn! -
-(nn- .
-exnn. 0
-,nn0 1
-ExceptionDictionarynn2 E
-.nnE F
-FATAL_EXCEPTIONnnF U
-)nnU V
-;nnV W
-}oo 
-catchpp 
-(pp "
-CommunicationExceptionpp )
-expp* ,
-)pp, -
-{qq 
-successCriteriarr 
-=rr  !
-ExceptionDictionaryrr" 5
-.rr5 6
-UNSUCCESFULL_EVENTrr6 H
-;rrH I
-ExceptionHandlerss  
-.ss  !
-LogExceptionss! -
-(ss- .
-exss. 0
-,ss0 1
-ExceptionDictionaryss2 E
-.ssE F
-FATAL_EXCEPTIONssF U
-)ssU V
-;ssV W
-}tt 
-catchuu 
-(uu %
-InvalidOperationExceptionuu ,
-exuu- /
-)uu/ 0
-{vv 
-successCriteriaww 
-=ww  !
-ExceptionDictionaryww" 5
-.ww5 6
-UNSUCCESFULL_EVENTww6 H
-;wwH I
-ExceptionHandlerxx  
-.xx  !
-LogExceptionxx! -
-(xx- .
-exxx. 0
-,xx0 1
-ExceptionDictionaryxx2 E
-.xxE F
-FATAL_EXCEPTIONxxF U
-)xxU V
-;xxV W
-}yy 
-returnzz 
-successCriteriazz "
-;zz" #
-}{{ 	
-public}} 
-int}} 
+lockObject 
+) 
+{ 
+GenericClass   
+<   
+int    
+>    !
+successCriteria  " 1
+=  2 3
+new  4 7
+(  7 8
+)  8 9
+{!! 
+	CodeEvent"" 
+="" 
+ExceptionDictionary""  3
+.""3 4
+SUCCESFULL_EVENT""4 D
+,""D E
+ObjectSaved## 
+=##  !
+ALLOWED_VALUES##" 0
+}$$ 
+;$$ 
+try%% 
+{&& 
+AddUserToDictionary'' '
+(''' (
+newUser''( /
+)''/ 0
+;''0 1
+}(( 
+catch)) 
+()) /
+#CommunicationObjectFaultedException)) :
+ex)); =
+)))= >
+{** 
+successCriteria++ #
+.++# $
+	CodeEvent++$ -
+=++. /
+ExceptionDictionary++0 C
+.++C D
+UNSUCCESFULL_EVENT++D V
+;++V W
+ExceptionHandler,, $
+.,,$ %
+LogException,,% 1
+(,,1 2
+ex,,2 4
+,,,4 5
+ExceptionDictionary,,6 I
+.,,I J
+FATAL_EXCEPTION,,J Y
+),,Y Z
+;,,Z [
+}-- 
+catch.. 
+(.. 
+TimeoutException.. '
+ex..( *
+)..* +
+{// 
+successCriteria00 #
+.00# $
+	CodeEvent00$ -
+=00. /
+ExceptionDictionary000 C
+.00C D
+UNSUCCESFULL_EVENT00D V
+;00V W
+ExceptionHandler11 $
+.11$ %
+LogException11% 1
+(111 2
+ex112 4
+,114 5
+ExceptionDictionary116 I
+.11I J
+FATAL_EXCEPTION11J Y
+)11Y Z
+;11Z [
+}22 
+catch33 
+(33 "
+CommunicationException33 -
+ex33. 0
+)330 1
+{44 
+successCriteria55 #
+.55# $
+	CodeEvent55$ -
+=55. /
+ExceptionDictionary550 C
+.55C D
+UNSUCCESFULL_EVENT55D V
+;55V W
+ExceptionHandler66 $
+.66$ %
+LogException66% 1
+(661 2
+ex662 4
+,664 5
+ExceptionDictionary666 I
+.66I J
+FATAL_EXCEPTION66J Y
+)66Y Z
+;66Z [
+}77 
+catch88 
+(88 %
+InvalidOperationException88 0
+ex881 3
+)883 4
+{99 
+successCriteria:: #
+.::# $
+	CodeEvent::$ -
+=::. /
+ExceptionDictionary::0 C
+.::C D
+UNSUCCESFULL_EVENT::D V
+;::V W
+ExceptionHandler;; $
+.;;$ %
+LogException;;% 1
+(;;1 2
+ex;;2 4
+,;;4 5
+ExceptionDictionary;;6 I
+.;;I J
+FATAL_EXCEPTION;;J Y
+);;Y Z
+;;;Z [
+}<< 
+return== 
+successCriteria== &
+;==& '
+}>> 
+}?? 	
+privateBB 
+voidBB 
+AddUserToDictionaryBB (
+(BB( )
+UserPojoBB) 1
+newUserBB2 9
+)BB9 :
+{CC 	
+intDD $
+fourDigitsAleatoryNumberDD (
+=DD) *
+AleatoryGeneratorDD, =
+.DD= >&
+GetAleatoryNumberWithRangeDD> X
+(DDX Y
+$numDDY ]
+,DD] ^
+$numDD_ c
+)DDc d
+;DDd e
+charEE  
+firstRandomCharacterEE %
+=EE& '
+AleatoryGeneratorEE( 9
+.EE9 :!
+GetAleatoryCharactersEE: O
+(EEO P
+$charEEP S
+,EES T
+$charEEU X
+,EEX Y
+$numEEZ [
+)EE[ \
+;EE\ ]
+charFF !
+secondRandomCharacterFF &
+=FF' (
+AleatoryGeneratorFF) :
+.FF: ;!
+GetAleatoryCharactersFF; P
+(FFP Q
+$charFFQ T
+,FFT U
+$charFFV Y
+,FFY Z
+$numFF[ \
+)FF\ ]
+;FF] ^
+stringGG 
+codeGG 
+=GG 
+$"GG 
+{GG  
+firstRandomCharacterGG 1
+}GG1 2
+{GG2 3!
+secondRandomCharacterGG3 H
+}GGH I
+{GGI J$
+fourDigitsAleatoryNumberGGJ b
+:GGb c
+$strGGc e
+}GGe f
+"GGf g
+;GGg h
+varHH 
+codeAlreadyExistHH  
+=HH! "'
+EmailConfirmationDictionaryHH# >
+.HH> ?$
+GetSpecificUserToConfirmHH? W
+(HHW X
+codeHHX \
+)HH\ ]
+;HH] ^
+ConsoleII 
+.II 
+	WriteLineII 
+(II 
+codeII "
+)II" #
+;II# $
+ifJJ 
+(JJ 
+codeAlreadyExistJJ 
+==JJ  "
+nullJJ# '
+)JJ' (
+{KK '
+EmailConfirmationDictionaryLL +
+.LL+ ,$
+RegisterNewUserToConfirmLL, D
+(LLD E
+codeLLE I
+,LLI J
+newUserLLK R
+)LLR S
+;LLS T
+}MM 
+elseNN 
+{OO 
+AddUserToDictionaryPP #
+(PP# $
+newUserPP$ +
+)PP+ ,
+;PP, -
+}QQ 
+}RR 	
+publicTT 
+intTT 
+CheckCodeEnteredTT #
+(TT# $
+UserPojoTT$ ,
+newUserTT- 4
+,TT4 5
+stringTT6 <
+codeEnteredTT= H
+)TTH I
+{UU 	
+intVV 
+successCriteriaVV 
+;VV  
+tryWW 
+{XX 
+ifYY 
+(YY 
+newUserYY 
+==YY 
+nullYY #
+)YY# $
+{ZZ 
+return[[ 
+ExceptionDictionary[[ .
+.[[. /
+NULL_PARAEMETER[[/ >
+;[[> ?
+}\\ 
+var]] 
+userToVerifyList]] $
+=]]% &'
+EmailConfirmationDictionary]]' B
+.]]B C$
+GetSpecificUserToConfirm]]C [
+(]][ \
+codeEntered]]\ g
+)]]g h
+;]]h i
+if^^ 
+(^^ 
+userToVerifyList^^ $
+!=^^% '
+null^^( ,
+&&^^- /
+userToVerifyList^^0 @
+.^^@ A
+UserName^^A I
+.^^I J
+Equals^^J P
+(^^P Q
+newUser^^Q X
+.^^X Y
+UserName^^Y a
+)^^a b
+)^^b c
+{__ 
+successCriteria`` #
+=``$ %
+ExceptionDictionary``& 9
+.``9 :
+SUCCESFULL_EVENT``: J
+;``J K
+}aa 
+elsebb 
+{cc 
+successCriteriadd #
+=dd$ %
+ExceptionDictionarydd& 9
+.dd9 :
+UNSUCCESFULL_EVENTdd: L
+;ddL M
+}ee 
+}ff 
+catchgg 
+(gg /
+#CommunicationObjectFaultedExceptiongg 6
+exgg7 9
+)gg9 :
+{hh 
+successCriteriaii 
+=ii  !
+ExceptionDictionaryii" 5
+.ii5 6
+UNSUCCESFULL_EVENTii6 H
+;iiH I
+ExceptionHandlerjj  
+.jj  !
+LogExceptionjj! -
+(jj- .
+exjj. 0
+,jj0 1
+ExceptionDictionaryjj2 E
+.jjE F
+FATAL_EXCEPTIONjjF U
+)jjU V
+;jjV W
+}kk 
+catchll 
+(ll 
+TimeoutExceptionll #
+exll$ &
+)ll& '
+{mm 
+successCriteriann 
+=nn  !
+ExceptionDictionarynn" 5
+.nn5 6
+UNSUCCESFULL_EVENTnn6 H
+;nnH I
+ExceptionHandleroo  
+.oo  !
+LogExceptionoo! -
+(oo- .
+exoo. 0
+,oo0 1
+ExceptionDictionaryoo2 E
+.ooE F
+FATAL_EXCEPTIONooF U
+)ooU V
+;ooV W
+}pp 
+catchqq 
+(qq "
+CommunicationExceptionqq )
+exqq* ,
+)qq, -
+{rr 
+successCriteriass 
+=ss  !
+ExceptionDictionaryss" 5
+.ss5 6
+UNSUCCESFULL_EVENTss6 H
+;ssH I
+ExceptionHandlertt  
+.tt  !
+LogExceptiontt! -
+(tt- .
+extt. 0
+,tt0 1
+ExceptionDictionarytt2 E
+.ttE F
+FATAL_EXCEPTIONttF U
+)ttU V
+;ttV W
+}uu 
+catchvv 
+(vv %
+InvalidOperationExceptionvv ,
+exvv- /
+)vv/ 0
+{ww 
+successCriteriaxx 
+=xx  !
+ExceptionDictionaryxx" 5
+.xx5 6
+UNSUCCESFULL_EVENTxx6 H
+;xxH I
+ExceptionHandleryy  
+.yy  !
+LogExceptionyy! -
+(yy- .
+exyy. 0
+,yy0 1
+ExceptionDictionaryyy2 E
+.yyE F
+FATAL_EXCEPTIONyyF U
+)yyU V
+;yyV W
+}zz 
+return{{ 
+successCriteria{{ "
+;{{" #
+}|| 	
+public~~ 
+int~~ 
 
-ResendCode}} 
-(}} 
-UserPojo}} &
-user}}' +
-)}}+ ,
-{~~ 	
-int 
-successCriteria 
-;  
+ResendCode~~ 
+(~~ 
+UserPojo~~ &
+user~~' +
+)~~+ ,
+{ 	
+int
+ÄÄ 
+successCriteria
+ÄÄ 
+;
+ÄÄ  
 try
-ÄÄ 
+ÅÅ 
 {
-ÅÅ 
+ÇÇ 
 if
-ÇÇ 
+ÉÉ 
 (
-ÇÇ 
+ÉÉ 
 user
-ÇÇ 
+ÉÉ 
 ==
-ÇÇ 
+ÉÉ 
 null
-ÇÇ  
+ÉÉ  
 )
-ÇÇ  !
+ÉÉ  !
 {
-ÉÉ 
+ÑÑ 
 return
-ÑÑ !
+ÖÖ !
 ExceptionDictionary
-ÑÑ .
+ÖÖ .
 .
-ÑÑ. /
+ÖÖ. /
 NULL_PARAEMETER
-ÑÑ/ >
+ÖÖ/ >
 ;
-ÑÑ> ?
+ÖÖ> ?
 }
-ÖÖ 
+ÜÜ 
 string
-ÜÜ 
+áá 
 code
-ÜÜ 
+áá 
 =
-ÜÜ )
+áá )
 EmailConfirmationDictionary
-ÜÜ 9
+áá 9
 .
-ÜÜ9 :!
+áá9 :!
 GetUserToVerifyList
-ÜÜ: M
+áá: M
 (
-ÜÜM N
+ááM N
 )
-ÜÜN O
+ááN O
 .
-ÜÜO P
+ááO P
 FirstOrDefault
-ÜÜP ^
+ááP ^
 (
-ÜÜ^ _
+áá^ _
 entry
-ÜÜ_ d
+áá_ d
 =>
-ÜÜe g
+ááe g
 entry
-ÜÜh m
+ááh m
 .
-ÜÜm n
+áám n
 Value
-ÜÜn s
+áán s
 .
-ÜÜs t
+áás t
 UserName
-ÜÜt |
+áát |
 .
-ÜÜ| }
-EqualsÜÜ} É
-(ÜÜÉ Ñ
-userÜÜÑ à
-.ÜÜà â
-UserNameÜÜâ ë
-)ÜÜë í
-)ÜÜí ì
-.ÜÜì î
-KeyÜÜî ó
-;ÜÜó ò
+áá| }
+Equalsáá} É
+(ááÉ Ñ
+userááÑ à
+.ááà â
+UserNameááâ ë
+)ááë í
+)ááí ì
+.ááì î
+Keyááî ó
+;ááó ò
 if
-áá 
+àà 
 (
-áá 
+àà 
 !
-áá 
+àà 
 string
-áá 
+àà 
 .
-áá 
+àà 
 IsNullOrEmpty
-áá )
+àà )
 (
-áá) *
+àà) *
 code
-áá* .
+àà* .
 )
-áá. /
+àà. /
 )
-áá/ 0
+àà/ 0
 {
-àà )
+ââ )
 EmailConfirmationDictionary
-ââ /
+ää /
 .
-ââ/ 00
+ää/ 00
 "RemoveRegistryOfUserFromDictionary
-ââ0 R
+ää0 R
 (
-ââR S
+ääR S
 code
-ââS W
+ääS W
 )
-ââW X
+ääW X
 ;
-ââX Y!
+ääX Y!
 AddUserToDictionary
-ää '
+ãã '
 (
-ää' (
+ãã' (
 user
-ää( ,
+ãã( ,
 )
-ää, -
+ãã, -
 ;
-ää- .
+ãã- .
 successCriteria
-ãã #
+åå #
 =
-ãã$ %!
+åå$ %!
 ExceptionDictionary
-ãã& 9
+åå& 9
 .
-ãã9 :
+åå9 :
 SUCCESFULL_EVENT
-ãã: J
+åå: J
 ;
-ããJ K
+ååJ K
 }
-åå 
+çç 
 else
-çç 
+éé 
 {
-éé 
+èè 
 successCriteria
-èè #
+êê #
 =
-èè$ %!
+êê$ %!
 ExceptionDictionary
-èè& 9
+êê& 9
 .
-èè9 : 
+êê9 : 
 UNSUCCESFULL_EVENT
-èè: L
+êê: L
 ;
-èèL M
+êêL M
 }
-êê 
+ëë 
 }
-ëë 
+íí 
 catch
-íí 
+ìì 
 (
-íí 1
+ìì 1
 #CommunicationObjectFaultedException
-íí 6
+ìì 6
 ex
-íí7 9
+ìì7 9
 )
-íí9 :
+ìì9 :
 {
-ìì 
+îî 
 successCriteria
-îî 
+ïï 
 =
-îî  !!
+ïï  !!
 ExceptionDictionary
-îî" 5
+ïï" 5
 .
-îî5 6 
+ïï5 6 
 UNSUCCESFULL_EVENT
-îî6 H
+ïï6 H
 ;
-îîH I
+ïïH I
 ExceptionHandler
-ïï  
+ññ  
 .
-ïï  !
+ññ  !
 LogException
-ïï! -
+ññ! -
 (
-ïï- .
+ññ- .
 ex
-ïï. 0
+ññ. 0
 ,
-ïï0 1!
+ññ0 1!
 ExceptionDictionary
-ïï2 E
+ññ2 E
 .
-ïïE F
+ññE F
 FATAL_EXCEPTION
-ïïF U
+ññF U
 )
-ïïU V
+ññU V
 ;
-ïïV W
+ññV W
 }
-ññ 
+óó 
 catch
-óó 
+òò 
 (
-óó 
+òò 
 TimeoutException
-óó #
+òò #
 ex
-óó$ &
+òò$ &
 )
-óó& '
+òò& '
 {
-òò 
+ôô 
 successCriteria
-ôô 
+öö 
 =
-ôô  !!
+öö  !!
 ExceptionDictionary
-ôô" 5
+öö" 5
 .
-ôô5 6 
+öö5 6 
 UNSUCCESFULL_EVENT
-ôô6 H
+öö6 H
 ;
-ôôH I
+ööH I
 ExceptionHandler
-öö  
+õõ  
 .
-öö  !
+õõ  !
 LogException
-öö! -
+õõ! -
 (
-öö- .
+õõ- .
 ex
-öö. 0
+õõ. 0
 ,
-öö0 1!
+õõ0 1!
 ExceptionDictionary
-öö2 E
+õõ2 E
 .
-ööE F
+õõE F
 FATAL_EXCEPTION
-ööF U
+õõF U
 )
-ööU V
+õõU V
 ;
-ööV W
+õõV W
 }
-õõ 
+úú 
 catch
-úú 
+ùù 
 (
-úú $
+ùù $
 CommunicationException
-úú )
+ùù )
 ex
-úú* ,
+ùù* ,
 )
-úú, -
+ùù, -
 {
-ùù 
+ûû 
 successCriteria
-ûû 
+üü 
 =
-ûû  !!
+üü  !!
 ExceptionDictionary
-ûû" 5
+üü" 5
 .
-ûû5 6 
+üü5 6 
 UNSUCCESFULL_EVENT
-ûû6 H
+üü6 H
 ;
-ûûH I
+üüH I
 ExceptionHandler
-üü  
+††  
 .
-üü  !
+††  !
 LogException
-üü! -
+††! -
 (
-üü- .
+††- .
 ex
-üü. 0
+††. 0
 ,
-üü0 1!
+††0 1!
 ExceptionDictionary
-üü2 E
+††2 E
 .
-üüE F
+††E F
 FATAL_EXCEPTION
-üüF U
+††F U
 )
-üüU V
+††U V
 ;
-üüV W
+††V W
 }
-†† 
+°° 
 catch
-°° 
+¢¢ 
 (
-°° '
+¢¢ '
 InvalidOperationException
-°° ,
+¢¢ ,
 ex
-°°- /
+¢¢- /
 )
-°°/ 0
+¢¢/ 0
 {
-¢¢ 
+££ 
 successCriteria
-££ 
+§§ 
 =
-££  !!
+§§  !!
 ExceptionDictionary
-££" 5
+§§" 5
 .
-££5 6 
+§§5 6 
 UNSUCCESFULL_EVENT
-££6 H
+§§6 H
 ;
-££H I
+§§H I
 ExceptionHandler
-§§  
+••  
 .
-§§  !
+••  !
 LogException
-§§! -
+••! -
 (
-§§- .
+••- .
 ex
-§§. 0
+••. 0
 ,
-§§0 1!
+••0 1!
 ExceptionDictionary
-§§2 E
+••2 E
 .
-§§E F
+••E F
 FATAL_EXCEPTION
-§§F U
+••F U
 )
-§§U V
+••U V
 ;
-§§V W
+••V W
 }
-•• 
+¶¶ 
 return
-¶¶ 
+ßß 
 successCriteria
-¶¶ "
+ßß "
 ;
-¶¶" #
+ßß" #
 }
-ßß 	
+®® 	
 public
-©© 
+™™ 
 void
-©© %
+™™ %
 TakeUserOutOfDictionary
-©© +
+™™ +
 (
-©©+ ,
+™™+ ,
 UserPojo
-©©, 4
+™™, 4
 user
-©©5 9
+™™5 9
 )
-©©9 :
+™™9 :
 {
-™™ 	
+´´ 	
 lock
-´´ 
+¨¨ 
 (
-´´ 
+¨¨ 
 
 lockObject
-´´ 
+¨¨ 
 )
-´´ 
+¨¨ 
 {
-¨¨ 
+≠≠ 
 try
-≠≠ 
+ÆÆ 
 {
-ÆÆ 
+ØØ 
 if
-ØØ 
+∞∞ 
 (
-ØØ 
+∞∞ 
 user
-ØØ 
+∞∞ 
 !=
-ØØ 
+∞∞ 
 null
-ØØ  $
+∞∞  $
 )
-ØØ$ %
+∞∞$ %
 {
-∞∞ 
+±± 
 string
-±± 
+≤≤ 
 code
-±± #
+≤≤ #
 =
-±±$ %)
+≤≤$ %)
 EmailConfirmationDictionary
-±±& A
+≤≤& A
 .
-±±A B!
+≤≤A B!
 GetUserToVerifyList
-±±B U
+≤≤B U
 (
-±±U V
+≤≤U V
 )
-±±V W
+≤≤V W
 .
-±±W X
+≤≤W X
 FirstOrDefault
-±±X f
+≤≤X f
 (
-±±f g
+≤≤f g
 entry
-±±g l
+≤≤g l
 =>
-±±m o
+≤≤m o
 entry
-±±p u
+≤≤p u
 .
-±±u v
+≤≤u v
 Value
-±±v {
+≤≤v {
 .
-±±{ |
-UserName±±| Ñ
-.±±Ñ Ö
-Equals±±Ö ã
-(±±ã å
-user±±å ê
-.±±ê ë
-UserName±±ë ô
-)±±ô ö
-)±±ö õ
-.±±õ ú
-Key±±ú ü
-;±±ü †
+≤≤{ |
+UserName≤≤| Ñ
+.≤≤Ñ Ö
+Equals≤≤Ö ã
+(≤≤ã å
+user≤≤å ê
+.≤≤ê ë
+UserName≤≤ë ô
+)≤≤ô ö
+)≤≤ö õ
+.≤≤õ ú
+Key≤≤ú ü
+;≤≤ü †
 if
-≤≤ 
+≥≥ 
 (
-≤≤ 
+≥≥ 
 !
-≤≤ 
+≥≥ 
 string
-≤≤ #
+≥≥ #
 .
-≤≤# $
+≥≥# $
 IsNullOrEmpty
-≤≤$ 1
+≥≥$ 1
 (
-≤≤1 2
+≥≥1 2
 code
-≤≤2 6
+≥≥2 6
 )
-≤≤6 7
+≥≥6 7
 )
-≤≤7 8
+≥≥7 8
 {
-≥≥ )
+¥¥ )
 EmailConfirmationDictionary
-¥¥ 7
+µµ 7
 .
-¥¥7 80
+µµ7 80
 "RemoveRegistryOfUserFromDictionary
-¥¥8 Z
+µµ8 Z
 (
-¥¥Z [
+µµZ [
 code
-¥¥[ _
+µµ[ _
 )
-¥¥_ `
+µµ_ `
 ;
-¥¥` a
+µµ` a
 }
-µµ 
+∂∂ 
 }
-∂∂ 
+∑∑ 
 }
-∑∑ 
+∏∏ 
 catch
-∏∏ 
+ππ 
 (
-∏∏ 1
+ππ 1
 #CommunicationObjectFaultedException
-∏∏ :
+ππ :
 ex
-∏∏; =
+ππ; =
 )
-∏∏= >
+ππ= >
 {
-ππ 
+∫∫ 
 ExceptionHandler
-∫∫ $
+ªª $
 .
-∫∫$ %
+ªª$ %
 LogException
-∫∫% 1
+ªª% 1
 (
-∫∫1 2
+ªª1 2
 ex
-∫∫2 4
+ªª2 4
 ,
-∫∫4 5!
+ªª4 5!
 ExceptionDictionary
-∫∫6 I
+ªª6 I
 .
-∫∫I J
+ªªI J
 FATAL_EXCEPTION
-∫∫J Y
+ªªJ Y
 )
-∫∫Y Z
+ªªY Z
 ;
-∫∫Z [
+ªªZ [
 }
-ªª 
+ºº 
 catch
-ºº 
+ΩΩ 
 (
-ºº 
+ΩΩ 
 TimeoutException
-ºº '
+ΩΩ '
 ex
-ºº( *
+ΩΩ( *
 )
-ºº* +
+ΩΩ* +
 {
-ΩΩ 
+ææ 
 ExceptionHandler
-ææ $
+øø $
 .
-ææ$ %
+øø$ %
 LogException
-ææ% 1
+øø% 1
 (
-ææ1 2
+øø1 2
 ex
-ææ2 4
+øø2 4
 ,
-ææ4 5!
+øø4 5!
 ExceptionDictionary
-ææ6 I
+øø6 I
 .
-ææI J
+øøI J
 FATAL_EXCEPTION
-ææJ Y
+øøJ Y
 )
-ææY Z
+øøY Z
 ;
-ææZ [
+øøZ [
 }
-øø 
+¿¿ 
 catch
-¿¿ 
+¡¡ 
 (
-¿¿ $
+¡¡ $
 CommunicationException
-¿¿ -
+¡¡ -
 ex
-¿¿. 0
+¡¡. 0
 )
-¿¿0 1
+¡¡0 1
 {
-¡¡ 
+¬¬ 
 ExceptionHandler
-¬¬ $
+√√ $
 .
-¬¬$ %
+√√$ %
 LogException
-¬¬% 1
+√√% 1
 (
-¬¬1 2
+√√1 2
 ex
-¬¬2 4
+√√2 4
 ,
-¬¬4 5!
+√√4 5!
 ExceptionDictionary
-¬¬6 I
+√√6 I
 .
-¬¬I J
+√√I J
 FATAL_EXCEPTION
-¬¬J Y
+√√J Y
 )
-¬¬Y Z
+√√Y Z
 ;
-¬¬Z [
+√√Z [
 }
-√√ 
+ƒƒ 
 catch
-ƒƒ 
+≈≈ 
 (
-ƒƒ '
+≈≈ '
 InvalidOperationException
-ƒƒ 0
+≈≈ 0
 ex
-ƒƒ1 3
+≈≈1 3
 )
-ƒƒ3 4
+≈≈3 4
 {
-≈≈ 
+∆∆ 
 ExceptionHandler
-∆∆ $
+«« $
 .
-∆∆$ %
+««$ %
 LogException
-∆∆% 1
+««% 1
 (
-∆∆1 2
+««1 2
 ex
-∆∆2 4
+««2 4
 ,
-∆∆4 5!
+««4 5!
 ExceptionDictionary
-∆∆6 I
+««6 I
 .
-∆∆I J
+««I J
 FATAL_EXCEPTION
-∆∆J Y
+««J Y
 )
-∆∆Y Z
+««Y Z
 ;
-∆∆Z [
+««Z [
 }
-«« 
+»» 
 }
-»» 
+…… 
 }
-…… 	
+   	
 }
-ÀÀ 
-}ÃÃ ¿Ù
+ÃÃ 
+}ÕÕ ¿Ù
 òC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Service\ServiceImplementation\UserManagerImplementation.cs
 	namespace 	
 JeopardyGame

@@ -31,7 +31,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
-    public partial  class ServicesReferenceAuthor: IUserManager
+    public partial class ServicesReferenceAuthor : IUserManager
     {
         UserManagerImplementation UserManager = new UserManagerImplementation();
 
@@ -42,7 +42,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public GenericClass<int> UpdateEmailUser(int idUser, string email)
         {
-            return ((IUserManager)UserManager).UpdateEmailUser(idUser, email);  
+            return ((IUserManager)UserManager).UpdateEmailUser(idUser, email);
         }
 
         public GenericClass<int> UpdatePasswordUser(string userName, string password)
@@ -138,7 +138,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
-    public partial class ServicesReferenceAuthor: IConsultFriends
+    public partial class ServicesReferenceAuthor : IConsultFriends
     {
         ConsultFriendsImplementation friendsManagerImplementation = new ConsultFriendsImplementation();
 
@@ -156,7 +156,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         }
     }
 
-    public partial class ServicesReferenceAuthor: IConsultUserInformation
+    public partial class ServicesReferenceAuthor : IConsultUserInformation
     {
         ConsultInformationImplementation consultInfoImplementation = new ConsultInformationImplementation();
         public GenericClass<PlayerPojo> ConsultPlayerById(int idPlayer)
@@ -479,15 +479,6 @@ namespace JeopardyGame.Service.ServiceImplementation
         public void SendMessage(int idUser, int roomCode, string userName, string messageToSend)
         {
             ((ILiveChatOperations)liveChatOperationsImplementation).SendMessage(idUser, roomCode, userName, messageToSend);
-        }
-    }
-
-    public partial class ServicesReferenceAuthor : IHeartBeat
-    {
-        HeartBeatImplementation heartBeatImplementation = new();
-        public void Heartbeat()
-        {
-            ((IHeartBeat)heartBeatImplementation).Heartbeat();
         }
     }
 }

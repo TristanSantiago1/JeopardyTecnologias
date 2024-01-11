@@ -12,27 +12,6 @@
       },
       "results": [
         {
-          "ruleId": "S125",
-          "level": "warning",
-          "message": "Remove this commented out code.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Helpers/GetSpecificResource.cs",
-                "region": {
-                  "startLine": 19,
-                  "startColumn": 8,
-                  "endLine": 19,
-                  "endColumn": 118
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "S2245",
           "level": "warning",
           "message": "Make sure that using this pseudorandom number generator is safe here.",
@@ -41,31 +20,10 @@
               "resultFile": {
                 "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Helpers/GetSpecificResource.cs",
                 "region": {
-                  "startLine": 20,
+                  "startLine": 19,
                   "startColumn": 59,
-                  "endLine": 20,
+                  "endLine": 19,
                   "endColumn": 71
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S1144",
-          "level": "warning",
-          "message": "Remove the unused private field 'generateAleatory'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 9,
-                  "endLine": 38,
-                  "endColumn": 116
                 }
               }
             }
@@ -109,48 +67,6 @@
             "customProperties": {
               "0": "Non-adjacent overload"
             }
-          }
-        },
-        {
-          "ruleId": "S2245",
-          "level": "warning",
-          "message": "Make sure that using this pseudorandom number generator is safe here.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 38,
-                  "startColumn": 102,
-                  "endLine": 38,
-                  "endColumn": 114
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "S2245",
-          "level": "warning",
-          "message": "Make sure that using this pseudorandom number generator is safe here.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Helpers/GetSpecificResource.cs",
-                "region": {
-                  "startLine": 82,
-                  "startColumn": 37,
-                  "endLine": 82,
-                  "endColumn": 53
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
           }
         },
         {
@@ -744,115 +660,6 @@
         {
           "ruleId": "S3776",
           "level": "warning",
-          "message": "Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 326,
-                  "startColumn": 22,
-                  "endLine": 326,
-                  "endColumn": 51
-                }
-              }
-            }
-          ],
-          "relatedLocations": [
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 328,
-                  "startColumn": 13,
-                  "endLine": 328,
-                  "endColumn": 15
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 331,
-                  "startColumn": 17,
-                  "endLine": 331,
-                  "endColumn": 19
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 334,
-                  "startColumn": 21,
-                  "endLine": 334,
-                  "endColumn": 23
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 344,
-                  "startColumn": 25,
-                  "endLine": 344,
-                  "endColumn": 30
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 348,
-                  "startColumn": 25,
-                  "endLine": 348,
-                  "endColumn": 30
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 352,
-                  "startColumn": 25,
-                  "endLine": 352,
-                  "endColumn": 30
-                }
-              }
-            },
-            {
-              "physicalLocation": {
-                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
-                "region": {
-                  "startLine": 356,
-                  "startColumn": 25,
-                  "endLine": 356,
-                  "endColumn": 30
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1,
-            "customProperties": {
-              "0": "+1",
-              "1": "+2 (incl 1 for nesting)",
-              "2": "+3 (incl 2 for nesting)",
-              "3": "+4 (incl 3 for nesting)",
-              "4": "+4 (incl 3 for nesting)",
-              "5": "+4 (incl 3 for nesting)",
-              "6": "+4 (incl 3 for nesting)"
-            }
-          }
-        },
-        {
-          "ruleId": "S3776",
-          "level": "warning",
           "message": "Refactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.",
           "locations": [
             {
@@ -994,43 +801,139 @@
               "9": "+2 (incl 1 for nesting)"
             }
           }
+        },
+        {
+          "ruleId": "S3776",
+          "level": "warning",
+          "message": "Refactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 326,
+                  "startColumn": 22,
+                  "endLine": 326,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 328,
+                  "startColumn": 13,
+                  "endLine": 328,
+                  "endColumn": 15
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 331,
+                  "startColumn": 17,
+                  "endLine": 331,
+                  "endColumn": 19
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 334,
+                  "startColumn": 21,
+                  "endLine": 334,
+                  "endColumn": 23
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 344,
+                  "startColumn": 25,
+                  "endLine": 344,
+                  "endColumn": 30
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 348,
+                  "startColumn": 25,
+                  "endLine": 348,
+                  "endColumn": 30
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 352,
+                  "startColumn": 25,
+                  "endLine": 352,
+                  "endColumn": 30
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Pages/LobbyPage.xaml.cs",
+                "region": {
+                  "startLine": 356,
+                  "startColumn": 25,
+                  "endLine": 356,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1,
+            "customProperties": {
+              "0": "+1",
+              "1": "+2 (incl 1 for nesting)",
+              "2": "+3 (incl 2 for nesting)",
+              "3": "+4 (incl 3 for nesting)",
+              "4": "+4 (incl 3 for nesting)",
+              "5": "+4 (incl 3 for nesting)",
+              "6": "+4 (incl 3 for nesting)"
+            }
+          }
+        },
+        {
+          "ruleId": "S2245",
+          "level": "warning",
+          "message": "Make sure that using this pseudorandom number generator is safe here.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///C:/Users/wachi/OneDrive/Documentos/GitHub/JeopardyTecnologias/JeopardyGameClient/Helpers/GetSpecificResource.cs",
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 37,
+                  "endLine": 81,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
         }
       ],
       "rules": {
-        "S1144": {
-          "id": "S1144",
-          "shortDescription": "Unused private types or members should be removed",
-          "fullDescription": "This rule raises an issue when a private/internal type or member is never referenced in the code.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
-        "S125": {
-          "id": "S125",
-          "shortDescription": "Sections of code should not be commented out",
-          "fullDescription": "Commented-out code distracts the focus from the actual executed code. It creates a noise that increases maintenance code. And because it is never executed, it quickly becomes out of date and invalid.",
-          "defaultLevel": "warning",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-125",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay"
-            ]
-          }
-        },
         "S2245": {
           "id": "S2245",
           "shortDescription": "Using pseudorandom number generators (PRNGs) is security-sensitive",

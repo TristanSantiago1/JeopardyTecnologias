@@ -1,4 +1,5 @@
 ﻿using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Data.Helpers;
 using JeopardyGame.Service.DataDictionaries;
 using JeopardyGame.Service.InterfacesSevices;
 using System;
@@ -14,7 +15,6 @@ namespace JeopardyGame.Service.ServiceImplementation
     public partial class RecoverPasswordImplementation : IRecoverPassword
     {
         private static readonly Object objectLock = new object();
-        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public int CreateCodeToRecoverPassWord(string userName, string emailTitle, string emailBody)
         {
@@ -132,9 +132,9 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private string GenerateCodeForPassword()
         {
-            int fourDigitsAleatoryNumber = generateAleatory.Value.Next(1000, 9999);
-            char firstRandomCharacter = (char)generateAleatory.Value.Next('A', 'Z' + 1);
-            char secondRandomCharacter = (char)generateAleatory.Value.Next('A', 'Z' + 1);
+            int fourDigitsAleatoryNumber = AleatoryGenerator.GetAleatoryNumberWithRange(1000, 9999);
+            char firstRandomCharacter = AleatoryGenerator.GetAleatoryCharacters('A', 'Z', 1);
+            char secondRandomCharacter = AleatoryGenerator.GetAleatoryCharacters('A', 'Z', 1);
             return $"{firstRandomCharacter}{secondRandomCharacter}{fourDigitsAleatoryNumber:D4}";
         }
 
