@@ -367,10 +367,11 @@ namespace JeopardyGame.Pages
         {
             PlayerInLobby playerInLobby = new PlayerInLobby();
             playerInLobby.IdUser = NULL_INT_VALUE;
-            foreach (var item in from item in currentPlayerInLobby where item.UserName.Equals(userName) select item)
+            var playerToEliminated =  currentPlayerInLobby.Find(item => item.UserName.Equals(userName));
+            if (playerToEliminated.IdPlayer != 0)
             {
-                currentPlayerInLobby.Remove(item);
-                playerInLobby = item;
+                currentPlayerInLobby.Remove(playerToEliminated);
+                playerInLobby = playerToEliminated;
             }
             return playerInLobby;
         }

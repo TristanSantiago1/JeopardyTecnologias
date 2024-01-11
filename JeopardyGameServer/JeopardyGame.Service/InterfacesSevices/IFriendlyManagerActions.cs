@@ -18,6 +18,7 @@ namespace JeopardyGame.Service.InterfacesServices
         int RenewFriendManagerUserCallBack(int idUserFriendManager);
     }
 
+
     [ServiceContract]
     public interface IFriendManagerActionOperations
     {

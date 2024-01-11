@@ -30,10 +30,6 @@ namespace JeopardyGame.Data
         public int CodeEvent { get; set; }
         public bool IsSuccess { get; set; }
 
-        public GenericClass()
-        {
-            
-        }
     }
 
     public class GenericClassServer<T>
@@ -42,10 +38,7 @@ namespace JeopardyGame.Data
                
         public int CodeEvent { get; set; }
 
-        public GenericClassServer()
-        {
 
-        }
     }
    
     public struct FriendBasicInformation

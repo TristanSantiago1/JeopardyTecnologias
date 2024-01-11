@@ -795,10 +795,6 @@ namespace JeopardyGame.Service.ServiceImplementation
                     ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
                 }
             }
-            else
-            {
-                SelectQuestionsForGame(roomCode);
-            }
         }
 
         public void StartGame(int roomCode)
