@@ -129,7 +129,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                int aleatoryNumber = generateAleatory.Value.Next(10000, 99999);
+                int aleatoryNumber = GetSpecificResource.GetAleatoryNumber(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
                 if(newLobby.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)

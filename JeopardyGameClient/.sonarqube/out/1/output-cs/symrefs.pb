@@ -447,33 +447,33 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ,,' AÂ
 oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Helpers\GetSpecificResource.cs
 
- +
+ +
+4 D22 #
 
- (
-- 3 
+ (
+- 3 
 
- +
-0 8 
+ +
+0 8!! 
 
-.. $
-00  011 #
+00 $
 
-44 ;(
-44C T88 (:: !AA ((
-44] o66 "<< )EE )
->> ?? 
+55 ;(
+55C T99 (;; !BB ((
+55] o77 "== )FF )
+?? @@ 
 
-JJ @
-JJH POO '
-LL SS "bb !(
-MM $UU +ZZ '^^ '
+KK @
+KKH PPP '
+MM TT "cc !(
+NN $VV +[[ '__ '
 
-ii <
+jj <
 
-kk "2
-kk# $kk kkD Enn1 2rr 
-kk7 <mmA F<
-mm #nn nn' -pp pp4 :rr Á
+ll "2
+ll# $ll llD Eoo1 2ss 
+ll7 <nnA F<
+nn #oo oo' -qq qq4 :ss Á
 lC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\ActiveFriends.xaml.cs
 
    '
@@ -2889,18 +2889,18 @@ gC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ÁÁ1 3
 
 ÂÂ: F
-ËËZ f‰)
+ËËZ fÊ)
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\LobbyPage.xaml.cs
 
  "p
- 1xx #zz #{{ #
+ 1yy #{{ #|| #
 …… #
 ÀÀ #
 ÃÃ #
 ŒŒ 
 œœ. A
 ˜˜. Ap
- )ss  uu  vv  
+ )tt  vv  ww  
 ππ  
 ªª  
 ºº  
@@ -2922,7 +2922,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ÓÓ5 D
 ÙÙ) 8
 ≈≈) 8ååö ©ñ
-"" 22: B88 VV* 2vv; C
+"" 33: B99 WW* 2ww; C
 ÖÖ 
 ÜÜ@ H
 ãã- 5
@@ -2942,7 +2942,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ºº; C
 §§, 4
 ∫∫F NÜ
-## #** 99 LL "vv+ 9
+## #++ :: MM "ww+ 9
 »» 
 ÜÜ 
 ∑∑ 
@@ -2971,7 +2971,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 åå (
 ååh |
 ïï )ˆ
-%% +EE zz8 E
+%% +FF {{8 E
 ÜÜJ W
 ££Y f
 ßßM Z
@@ -2989,29 +2989,30 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ¢¢4 A
 ÀÀ8 E
 ŒŒ; H
-ÿÿ6 C
-.. -++ .
+ÿÿ6 C
+&&4 D
+ÑÑ% 5
+// -,, .
 
-..5 ;
+//5 ;
 
-..M N
-11( 922 
-55 %88 $
->> .:: /
+//M N
+22( 933 
+66 %99 $
+?? .;; /
 
->>6 <
+??6 <
 
->>N O
-CC "00 @@ 
-HH  'JJN U
-JJ# 4NN# 4RR /
-qq *UU %
- #NN "
-7 H
+??N O
+DD "11 AA 
+II  'KKN U
+KK# 4OO# 4SS /
+rr *VV %
+
+ÄÄ #OO "
+
+ÄÄ7 H
 ÜÜ 0
-
-ÉÉ$ 4
-ÑÑ% 5
 
 ÑÑ "
 ÖÖ )
@@ -3019,7 +3020,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ÜÜ 
 áá 
 
-üü RR 
+üü SS 
 
 üü2 C
 ££/ @
@@ -3030,7 +3031,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ¶¶0 J
 ßß .
 
-ΩΩ TT 
+ΩΩ UU 
 
 ¡¡, =
 ¬¬% 6$
@@ -3039,7 +3040,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 √√ "
 ≈≈+ 9é
 
-€€ &WW !
+€€ &XX !
 ¢¢ )
 êê )
 øø %
@@ -3321,7 +3322,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 
 ««J K
 
-”” ,XX '
+”” ,YY '
 
 ◊◊0 E
 ÿÿ %
@@ -3372,7 +3373,7 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ¡¡ &
 ãã" *⁄
 
-√√ $\\ `` dd hh ll 
+√√ $]] aa ee ii mm 
 ∂∂ 
 ∫∫ 
 ææ 

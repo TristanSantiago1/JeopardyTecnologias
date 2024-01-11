@@ -6405,7 +6405,7 @@ IdQuestionA K
 ;..* +
 }// 	
 }00 
-}11 •@
+}11 ‰@
 oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Helpers\GetSpecificResource.cs
 	namespace 	
 JeopardyGame
@@ -6418,50 +6418,44 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 static 
 class 
 GetSpecificResource +
-{ 
-public 
-static 
-string 
-GetHosImage (
-(( )
-int) ,
-idHost- 3
-)3 4
-{ 	
-return 
-idHost 
-switch  
-{ 
-$num 
-=> 
-App 
-. 
-Current  
-.  !
-	Resources! *
-[* +
-$str+ 6
-]6 7
-.7 8
-ToString8 @
-(@ A
-)A B
-,B C
-$num 
-=> 
-App 
-. 
-Current  
-.  !
-	Resources! *
-[* +
-$str+ 4
-]4 5
-.5 6
-ToString6 >
-(> ?
-)? @
-,@ A
+{ 
+private 
+static 
+readonly 
+ThreadLocal  +
+<+ ,
+Random, 2
+>2 3
+generateAleatory4 D
+=E F
+newG J
+ThreadLocalK V
+<V W
+RandomW ]
+>] ^
+(^ _
+(_ `
+)` a
+=>b d
+newe h
+Randomi o
+(o p
+)p q
+)q r
+;r s
+public 
+static 
+string 
+GetHosImage (
+(( )
+int) ,
+idHost- 3
+)3 4
+{ 	
+return 
+idHost 
+switch  
+{ 
 $num 
 => 
 App 
@@ -6470,14 +6464,14 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .  !
 	Resources! *
 [* +
-$str+ 5
-]5 6
-.6 7
-ToString7 ?
-(? @
-)@ A
-,A B
-_ 
+$str+ 6
+]6 7
+.7 8
+ToString8 @
+(@ A
+)A B
+,B C
+$num 
 => 
 App 
 . 
@@ -6485,59 +6479,59 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .  !
 	Resources! *
 [* +
-$str+ 5
-]5 6
-.6 7
-ToString7 ?
-(? @
-)@ A
-,A B
-} 
-; 
-} 	
-public 
-static 
-string 
-GetAvatarImage +
-(+ ,
-int, /
-idAvatar0 8
-)8 9
-{ 	
-return 
-idAvatar 
-switch "
-{   
-$num!! 
-=>!! 
-App!! 
-.!! 
-Current!!  
-.!!  !
-	Resources!!! *
-[!!* +
-$str!!+ ;
-]!!; <
-.!!< =
-ToString!!= E
-(!!E F
-)!!F G
-,!!G H
-$num"" 
-=>"" 
-App"" 
-."" 
-Current""  
-.""  !
-	Resources""! *
-[""* +
-$str""+ 6
-]""6 7
-.""7 8
-ToString""8 @
-(""@ A
-)""A B
-,""B C
+$str+ 4
+]4 5
+.5 6
+ToString6 >
+(> ?
+)? @
+,@ A
+$num 
+=> 
+App 
+. 
+Current  
+.  !
+	Resources! *
+[* +
+$str+ 5
+]5 6
+.6 7
+ToString7 ?
+(? @
+)@ A
+,A B
+_ 
+=> 
+App 
+. 
+Current  
+.  !
+	Resources! *
+[* +
+$str+ 5
+]5 6
+.6 7
+ToString7 ?
+(? @
+)@ A
+,A B
+} 
+; 
+} 	
+public 
+static 
+string 
+GetAvatarImage +
+(+ ,
+int, /
+idAvatar0 8
+)8 9
+{   	
+return!! 
+idAvatar!! 
+switch!! "
+{"" 
 $num## 
 =>## 
 App## 
@@ -6546,13 +6540,13 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .##  !
 	Resources##! *
 [##* +
-$str##+ 9
-]##9 :
-.##: ;
-ToString##; C
-(##C D
-)##D E
-,##E F
+$str##+ ;
+]##; <
+.##< =
+ToString##= E
+(##E F
+)##F G
+,##G H
 $num$$ 
 =>$$ 
 App$$ 
@@ -6561,13 +6555,13 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .$$  !
 	Resources$$! *
 [$$* +
-$str$$+ 8
-]$$8 9
-.$$9 :
-ToString$$: B
-($$B C
-)$$C D
-,$$D E
+$str$$+ 6
+]$$6 7
+.$$7 8
+ToString$$8 @
+($$@ A
+)$$A B
+,$$B C
 $num%% 
 =>%% 
 App%% 
@@ -6576,13 +6570,13 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .%%  !
 	Resources%%! *
 [%%* +
-$str%%+ :
-]%%: ;
-.%%; <
-ToString%%< D
-(%%D E
-)%%E F
-,%%F G
+$str%%+ 9
+]%%9 :
+.%%: ;
+ToString%%; C
+(%%C D
+)%%D E
+,%%E F
 $num&& 
 =>&& 
 App&& 
@@ -6591,13 +6585,13 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .&&  !
 	Resources&&! *
 [&&* +
-$str&&+ 9
-]&&9 :
-.&&: ;
-ToString&&; C
-(&&C D
-)&&D E
-,&&E F
+$str&&+ 8
+]&&8 9
+.&&9 :
+ToString&&: B
+(&&B C
+)&&C D
+,&&D E
 $num'' 
 =>'' 
 App'' 
@@ -6606,14 +6600,14 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .''  !
 	Resources''! *
 [''* +
-$str''+ <
-]''< =
-.''= >
-ToString''> F
-(''F G
-)''G H
-,''H I
-_(( 
+$str''+ :
+]'': ;
+.''; <
+ToString''< D
+(''D E
+)''E F
+,''F G
+$num(( 
 =>(( 
 App(( 
 .(( 
@@ -6621,250 +6615,259 @@ oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 .((  !
 	Resources((! *
 [((* +
-$str((+ 6
-]((6 7
-.((7 8
-ToString((8 @
-(((@ A
-)((A B
-,((B C
-})) 
-;)) 
-}** 	
-public.. 
-static.. 
-int.. 
+$str((+ 9
+]((9 :
+.((: ;
+ToString((; C
+(((C D
+)((D E
+,((E F
+$num)) 
+=>)) 
+App)) 
+.)) 
+Current))  
+.))  !
+	Resources))! *
+[))* +
+$str))+ <
+]))< =
+.))= >
+ToString))> F
+())F G
+)))G H
+,))H I
+_** 
+=>** 
+App** 
+.** 
+Current**  
+.**  !
+	Resources**! *
+[*** +
+$str**+ 6
+]**6 7
+.**7 8
+ToString**8 @
+(**@ A
+)**A B
+,**B C
+}++ 
+;++ 
+},, 	
+public00 
+static00 
+int00 
 
-GetGuestId.. $
-(..$ %
-)..% &
-{// 	
-ThreadLocal00 
-<00 
-Random00 
->00 
-generateAleatory00  0
-=001 2
-new003 6
-ThreadLocal007 B
-<00B C
-Random00C I
->00I J
-(00J K
-(00K L
-)00L M
-=>00N P
-new00Q T
-Random00U [
-(00[ \
-)00\ ]
-)00] ^
-;00^ _
-return11 
-generateAleatory11 #
-.11# $
-Value11$ )
-.11) *
-Next11* .
-(11. /
-$num11/ 5
-,115 6
-$num117 >
-)11> ?
-;11? @
-}22 	
-public44 
-static44 
-string44 *
-GetEnglishOrSpanishDescription44 ;
-(44; <
-string44< B
-englisDescription44C T
-,44T U
-string44V \
-spanishDescription44] o
-)44o p
-{55 	
-if66 
-(66 
-spanishDescription66 "
-is66# %
-null66& *
-)66* +
-{77 
-return88 
-englisDescription88 (
-;88( )
-}99 
-if:: 
-(:: 
-englisDescription:: !
-is::" $
-null::% )
-)::) *
-{;; 
-return<< 
-spanishDescription<< )
-;<<) *
-}== 
-bool>> 
-	isEnglish>> 
-=>> 
-App>>  
-.>>  !
-	IsEnglish>>! *
-;>>* +
-if?? 
-(?? 
-	isEnglish?? 
-)?? 
-{@@ 
-returnAA 
-englisDescriptionAA (
-;AA( )
-}BB 
-elseCC 
-{DD 
-returnEE 
-spanishDescriptionEE )
-;EE) *
-}FF 
-}GG 	
-publicJJ 
-staticJJ 
-boolJJ 1
-%HasAtLeastTwoSeparateUppercaseLettersJJ @
-(JJ@ A
-stringJJA G
-passwordJJH P
-)JJP Q
-{KK 	
-intLL 
-uppercaseCountLL 
-=LL  
-$numLL! "
-;LL" #
-boolMM 
-isPreviousUppercaseMM $
-=MM% &
-falseMM' ,
-;MM, -
-foreachOO 
-(OO 
-charOO 
-cOO 
-inOO 
-passwordOO '
-)OO' (
-{PP 
-ifQQ 
-(QQ 
-charQQ 
-.QQ 
-IsUpperQQ  
-(QQ  !
-cQQ! "
-)QQ" #
-)QQ# $
-{RR 
-uppercaseCountSS "
-++SS" $
-;SS$ %
-ifUU 
-(UU 
-isPreviousUppercaseUU +
-)UU+ ,
-{VV 
-returnWW 
-falseWW $
-;WW$ %
-}XX 
-isPreviousUppercaseZZ '
-=ZZ( )
-trueZZ* .
-;ZZ. /
-}[[ 
-else\\ 
-{]] 
-isPreviousUppercase^^ '
-=^^( )
-false^^* /
-;^^/ 0
-}__ 
-}`` 
-returnbb 
-uppercaseCountbb !
->=bb" $
-$numbb% &
-;bb& '
-}cc 	
-}ee 
-publicii 
+GetGuestId00 $
+(00$ %
+)00% &
+{11 	
+return22 
+generateAleatory22 #
+.22# $
+Value22$ )
+.22) *
+Next22* .
+(22. /
+$num22/ 5
+,225 6
+$num227 >
+)22> ?
+;22? @
+}33 	
+public55 
+static55 
+string55 *
+GetEnglishOrSpanishDescription55 ;
+(55; <
+string55< B
+englisDescription55C T
+,55T U
+string55V \
+spanishDescription55] o
+)55o p
+{66 	
+if77 
+(77 
+spanishDescription77 "
+is77# %
+null77& *
+)77* +
+{88 
+return99 
+englisDescription99 (
+;99( )
+}:: 
+if;; 
+(;; 
+englisDescription;; !
+is;;" $
+null;;% )
+);;) *
+{<< 
+return== 
+spanishDescription== )
+;==) *
+}>> 
+bool?? 
+	isEnglish?? 
+=?? 
+App??  
+.??  !
+	IsEnglish??! *
+;??* +
+if@@ 
+(@@ 
+	isEnglish@@ 
+)@@ 
+{AA 
+returnBB 
+englisDescriptionBB (
+;BB( )
+}CC 
+elseDD 
+{EE 
+returnFF 
+spanishDescriptionFF )
+;FF) *
+}GG 
+}HH 	
+publicKK 
+staticKK 
+boolKK 1
+%HasAtLeastTwoSeparateUppercaseLettersKK @
+(KK@ A
+stringKKA G
+passwordKKH P
+)KKP Q
+{LL 	
+intMM 
+uppercaseCountMM 
+=MM  
+$numMM! "
+;MM" #
+boolNN 
+isPreviousUppercaseNN $
+=NN% &
+falseNN' ,
+;NN, -
+foreachPP 
+(PP 
+charPP 
+cPP 
+inPP 
+passwordPP '
+)PP' (
+{QQ 
+ifRR 
+(RR 
+charRR 
+.RR 
+IsUpperRR  
+(RR  !
+cRR! "
+)RR" #
+)RR# $
+{SS 
+uppercaseCountTT "
+++TT" $
+;TT$ %
+ifVV 
+(VV 
+isPreviousUppercaseVV +
+)VV+ ,
+{WW 
+returnXX 
+falseXX $
+;XX$ %
+}YY 
+isPreviousUppercase[[ '
+=[[( )
+true[[* .
+;[[. /
+}\\ 
+else]] 
+{^^ 
+isPreviousUppercase__ '
+=__( )
+false__* /
+;__/ 0
+}`` 
+}aa 
+returncc 
+uppercaseCountcc !
+>=cc" $
+$numcc% &
+;cc& '
+}dd 	
+}ff 
+publicjj 
 
-staticii 
-classii 0
-$GetParentOfGraphicInterfaceComponentii <
-{jj 
-publickk 
-statickk 
-Tkk 
+staticjj 
+classjj 0
+$GetParentOfGraphicInterfaceComponentjj <
+{kk 
+publicll 
+staticll 
+Tll 
 
-FindParentkk "
-<kk" #
-Tkk# $
->kk$ %
-(kk% &
-DependencyObjectkk& 6
-childkk7 <
-)kk< =
-wherekk> C
-TkkD E
-:kkF G
-DependencyObjectkkH X
-{ll 	
-DependencyObjectmm 
-parentmm #
-=mm$ %
-VisualTreeHelpermm& 6
-.mm6 7
-	GetParentmm7 @
-(mm@ A
-childmmA F
-)mmF G
-;mmG H
-whilenn 
-(nn 
-parentnn 
-!=nn 
-nullnn !
-&&nn" $
-!nn% &
-(nn& '
-parentnn' -
-isnn. 0
-Tnn1 2
-)nn2 3
-)nn3 4
-{oo 
-parentpp 
-=pp 
-VisualTreeHelperpp )
-.pp) *
-	GetParentpp* 3
-(pp3 4
-parentpp4 :
-)pp: ;
-;pp; <
-}qq 
-returnrr 
-(rr 
-Trr 
-)rr 
-parentrr 
-;rr 
-}ss 	
-}uu 
-}ww ü
+FindParentll "
+<ll" #
+Tll# $
+>ll$ %
+(ll% &
+DependencyObjectll& 6
+childll7 <
+)ll< =
+wherell> C
+TllD E
+:llF G
+DependencyObjectllH X
+{mm 	
+DependencyObjectnn 
+parentnn #
+=nn$ %
+VisualTreeHelpernn& 6
+.nn6 7
+	GetParentnn7 @
+(nn@ A
+childnnA F
+)nnF G
+;nnG H
+whileoo 
+(oo 
+parentoo 
+!=oo 
+nulloo !
+&&oo" $
+!oo% &
+(oo& '
+parentoo' -
+isoo. 0
+Too1 2
+)oo2 3
+)oo3 4
+{pp 
+parentqq 
+=qq 
+VisualTreeHelperqq )
+.qq) *
+	GetParentqq* 3
+(qq3 4
+parentqq4 :
+)qq: ;
+;qq; <
+}rr 
+returnss 
+(ss 
+Tss 
+)ss 
+parentss 
+;ss 
+}tt 	
+}vv 
+}xx ü
 lC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\ActiveFriends.xaml.cs
 	namespace 	
 JeopardyGame
@@ -42119,7 +42122,7 @@ MainWindowËË| Ü
 ÈÈ 	
 }
 ÎÎ 
-}ÏÏ ﬁ‹
+}ÏÏ Å›
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\LobbyPage.xaml.cs
 	namespace 	
 JeopardyGame
@@ -42200,438 +42203,427 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 private%% 
 UserSingleton%% 
 userSingleton%% +
-;%%+ ,
-public'' 
-	LobbyPage'' 
-('' 
-)'' 
-{(( 	
-InitializeComponent)) 
-())  
-)))  !
-;))! "
-isAdminOfLobby** 
-=** 
-true** !
-;**! "
-Loaded++ 
-+=++ $
-LoadedPrepareWindowAdmin++ .
-;++. /
-},, 	
-private.. 
-void.. $
-LoadedPrepareWindowAdmin.. -
-(..- .
-object... 4
-sender..5 ;
-,..; <
-RoutedEventArgs..= L
-e..M N
-)..N O
-{// 	
-PrepareWindow00 
-(00 
-)00 
-;00 '
-LobbyActionsOperationClient11 '
-lobbyActionsProxy11( 9
-=11: ;
-new11< ?
-(11? @
-)11@ A
-;11A B
-lobbyActionsProxy22 
-.22 '
-SelectQuestionsForGameAsync22 9
-(229 :
-roomCode22: B
-)22B C
-;22C D
-}33 	
-public55 
-	LobbyPage55 
-(55 
-int55 
-roomCode55 %
-)55% &
-{66 	
-InitializeComponent77 
-(77  
-)77  !
-;77! "
-this88 
-.88 
-roomCode88 
-=88 
-roomCode88 $
-;88$ %
-isAdminOfLobby99 
-=99 
-false99 "
-;99" #
-Loaded:: 
-+=:: %
-LoadedPrepareWindowPlayer:: /
-;::/ 0
-};; 	
-private>> 
-void>> %
-LoadedPrepareWindowPlayer>> .
-(>>. /
-object>>/ 5
-sender>>6 <
-,>>< =
-RoutedEventArgs>>> M
-e>>N O
-)>>O P
-{?? 	
-PrepareWindow@@ 
-(@@ 
-)@@ 
-;@@ 
-}AA 	
-privateCC 
-voidCC 
-PrepareWindowCC "
-(CC" #
-)CC# $
-{DD 	
-userSingletonEE 
-=EE 
-UserSingletonEE )
-.EE) *
-GetMainUserEE* 5
-(EE5 6
-)EE6 7
-;EE7 8
-tryFF 
-{GG 
-InstanceContextHH 
-contextHH  '
-=HH( )
-newHH* -
-InstanceContextHH. =
-(HH= >
-thisHH> B
-)HHB C
-;HHC D
-LobbyActionsClientJJ "
-lobbyActionsProxyJJ# 4
-=JJ5 6
-newJJ7 :
-LobbyActionsClientJJ; M
-(JJM N
-contextJJN U
-)JJU V
-;JJV W
-ifLL 
-(LL 
-isAdminOfLobbyLL "
-)LL" #
-{MM 
-CreateNewlobbyNN "
-(NN" #
-lobbyActionsProxyNN# 4
-)NN4 5
-;NN5 6
-}OO 
-elsePP 
-{QQ 
-	JoinLobbyRR 
-(RR 
-lobbyActionsProxyRR /
-)RR/ 0
-;RR0 1
-}SS 
+;%%+ ,
+private&& 
+static&& 
+readonly&& 
+ThreadLocal&&  +
+<&&+ ,
+Random&&, 2
+>&&2 3
+generateAleatory&&4 D
+=&&E F
+new&&G J
+ThreadLocal&&K V
+<&&V W
+Random&&W ]
+>&&] ^
+(&&^ _
+(&&_ `
+)&&` a
+=>&&b d
+new&&e h
+Random&&i o
+(&&o p
+)&&p q
+)&&q r
+;&&r s
+public(( 
+	LobbyPage(( 
+((( 
+)(( 
+{)) 	
+InitializeComponent** 
+(**  
+)**  !
+;**! "
+isAdminOfLobby++ 
+=++ 
+true++ !
+;++! "
+Loaded,, 
++=,, $
+LoadedPrepareWindowAdmin,, .
+;,,. /
+}-- 	
+private// 
+void// $
+LoadedPrepareWindowAdmin// -
+(//- .
+object//. 4
+sender//5 ;
+,//; <
+RoutedEventArgs//= L
+e//M N
+)//N O
+{00 	
+PrepareWindow11 
+(11 
+)11 
+;11 '
+LobbyActionsOperationClient22 '
+lobbyActionsProxy22( 9
+=22: ;
+new22< ?
+(22? @
+)22@ A
+;22A B
+lobbyActionsProxy33 
+.33 '
+SelectQuestionsForGameAsync33 9
+(339 :
+roomCode33: B
+)33B C
+;33C D
+}44 	
+public66 
+	LobbyPage66 
+(66 
+int66 
+roomCode66 %
+)66% &
+{77 	
+InitializeComponent88 
+(88  
+)88  !
+;88! "
+this99 
+.99 
+roomCode99 
+=99 
+roomCode99 $
+;99$ %
+isAdminOfLobby:: 
+=:: 
+false:: "
+;::" #
+Loaded;; 
++=;; %
+LoadedPrepareWindowPlayer;; /
+;;;/ 0
+}<< 	
+private?? 
+void?? %
+LoadedPrepareWindowPlayer?? .
+(??. /
+object??/ 5
+sender??6 <
+,??< =
+RoutedEventArgs??> M
+e??N O
+)??O P
+{@@ 	
+PrepareWindowAA 
+(AA 
+)AA 
+;AA 
+}BB 	
+privateDD 
+voidDD 
+PrepareWindowDD "
+(DD" #
+)DD# $
+{EE 	
+userSingletonFF 
+=FF 
+UserSingletonFF )
+.FF) *
+GetMainUserFF* 5
+(FF5 6
+)FF6 7
+;FF7 8
+tryGG 
+{HH 
+InstanceContextII 
+contextII  '
+=II( )
+newII* -
+InstanceContextII. =
+(II= >
+thisII> B
+)IIB C
+;IIC D
+LobbyActionsClientKK "
+lobbyActionsProxyKK# 4
+=KK5 6
+newKK7 :
+LobbyActionsClientKK; M
+(KKM N
+contextKKN U
+)KKU V
+;KKV W
+ifMM 
+(MM 
+isAdminOfLobbyMM "
+)MM" #
+{NN 
+CreateNewlobbyOO "
+(OO" #
+lobbyActionsProxyOO# 4
+)OO4 5
+;OO5 6
+}PP 
+elseQQ 
+{RR 
+	JoinLobbySS 
+(SS 
+lobbyActionsProxySS /
+)SS/ 0
+;SS0 1
+}TT 
 
-GetPlayersTT 
-(TT 
-)TT 
-;TT !
-PrepareChatAndFriendsUU %
-(UU% &
-)UU& '
-;UU' (
-lblAleatoryCodeVV 
-.VV  
-ContentVV  '
-=VV( )
-roomCodeVV* 2
-;VV2 3
-SetPlayerInLabelsWW !
-(WW! "
-)WW" #
-;WW# $#
-NotifyFriendsIamPlayingXX '
-(XX' (
-)XX( )
-;XX) *
-}YY 
-catchZZ 
-(ZZ 
-SocketExceptionZZ "
-exZZ# %
-)ZZ% &
-{[[ 
-HandleException\\ 
-(\\  
-ex\\  "
-,\\" #
+GetPlayersUU 
+(UU 
+)UU 
+;UU !
+PrepareChatAndFriendsVV %
+(VV% &
+)VV& '
+;VV' (
+lblAleatoryCodeWW 
+.WW  
+ContentWW  '
+=WW( )
+roomCodeWW* 2
+;WW2 3
+SetPlayerInLabelsXX !
+(XX! "
+)XX" #
+;XX# $#
+NotifyFriendsIamPlayingYY '
+(YY' (
+)YY( )
+;YY) *
+}ZZ 
+catch[[ 
+([[ 
+SocketException[[ "
+ex[[# %
+)[[% &
+{\\ 
+HandleException]] 
+(]]  
+ex]]  "
+,]]" #
 
-Properties\\$ .
-.\\. /
-	Resources\\/ 8
-.\\8 9#
-lblFailtToEnterTheLobby\\9 P
-+\\Q R
-$str\\S X
-+\\Y Z
+Properties]]$ .
+.]]. /
+	Resources]]/ 8
+.]]8 9#
+lblFailtToEnterTheLobby]]9 P
++]]Q R
+$str]]S X
++]]Y Z
 
-Properties\\[ e
-.\\e f
-	Resources\\f o
-.\\o p 
-lblEndPointNotFound	\\p É
+Properties]][ e
+.]]e f
+	Resources]]f o
+.]]o p 
+lblEndPointNotFound	]]p É
 )
-\\É Ñ
+]]É Ñ
 ;
-\\Ñ Ö
-}]] 
-catch^^ 
-(^^ %
-EndpointNotFoundException^^ ,
-ex^^- /
-)^^/ 0
-{__ 
-HandleException`` 
-(``  
-ex``  "
-,``" #
+]]Ñ Ö
+}^^ 
+catch__ 
+(__ %
+EndpointNotFoundException__ ,
+ex__- /
+)__/ 0
+{`` 
+HandleExceptionaa 
+(aa  
+exaa  "
+,aa" #
 
-Properties``$ .
-.``. /
-	Resources``/ 8
-.``8 9#
-lblFailtToEnterTheLobby``9 P
-+``Q R
-$str``S X
-+``Y Z
+Propertiesaa$ .
+.aa. /
+	Resourcesaa/ 8
+.aa8 9#
+lblFailtToEnterTheLobbyaa9 P
++aaQ R
+$straaS X
++aaY Z
 
-Properties``[ e
-.``e f
-	Resources``f o
-.``o p 
-lblEndPointNotFound	``p É
+Propertiesaa[ e
+.aae f
+	Resourcesaaf o
+.aao p 
+lblEndPointNotFound	aap É
 )
-``É Ñ
+aaÉ Ñ
 ;
-``Ñ Ö
-}aa 
-catchbb 
-(bb /
-#CommunicationObjectFaultedExceptionbb 6
-exbb7 9
-)bb9 :
-{cc 
-HandleExceptiondd 
-(dd  
-exdd  "
-,dd" #
+aaÑ Ö
+}bb 
+catchcc 
+(cc /
+#CommunicationObjectFaultedExceptioncc 6
+excc7 9
+)cc9 :
+{dd 
+HandleExceptionee 
+(ee  
+exee  "
+,ee" #
 
-Propertiesdd$ .
-.dd. /
-	Resourcesdd/ 8
-.dd8 9#
-lblFailtToEnterTheLobbydd9 P
-+ddQ R
-$strddS X
-+ddY Z
+Propertiesee$ .
+.ee. /
+	Resourcesee/ 8
+.ee8 9#
+lblFailtToEnterTheLobbyee9 P
++eeQ R
+$streeS X
++eeY Z
 
-Propertiesdd[ e
-.dde f
-	Resourcesddf o
-.ddo p%
-lblComunicationException	ddp à
+Propertiesee[ e
+.eee f
+	Resourceseef o
+.eeo p%
+lblComunicationException	eep à
 )
-ddà â
+eeà â
 ;
-ddâ ä
-}ee 
-catchff 
-(ff 
-TimeoutExceptionff #
-exff$ &
-)ff& '
-{gg 
-HandleExceptionhh 
-(hh  
-exhh  "
-,hh" #
+eeâ ä
+}ff 
+catchgg 
+(gg 
+TimeoutExceptiongg #
+exgg$ &
+)gg& '
+{hh 
+HandleExceptionii 
+(ii  
+exii  "
+,ii" #
 
-Propertieshh$ .
-.hh. /
-	Resourceshh/ 8
-.hh8 9#
-lblFailtToEnterTheLobbyhh9 P
-+hhQ R
-$strhhS X
-+hhY Z
+Propertiesii$ .
+.ii. /
+	Resourcesii/ 8
+.ii8 9#
+lblFailtToEnterTheLobbyii9 P
++iiQ R
+$striiS X
++iiY Z
 
-Propertieshh[ e
-.hhe f
-	Resourceshhf o
-.hho p
-lblTimeException	hhp Ä
+Propertiesii[ e
+.iie f
+	Resourcesiif o
+.iio p
+lblTimeException	iip Ä
 )
-hhÄ Å
+iiÄ Å
 ;
-hhÅ Ç
-}ii 
-catchjj 
-(jj "
-CommunicationExceptionjj )
-exjj* ,
-)jj, -
-{kk 
-HandleExceptionll 
-(ll  
-exll  "
-,ll" #
+iiÅ Ç
+}jj 
+catchkk 
+(kk "
+CommunicationExceptionkk )
+exkk* ,
+)kk, -
+{ll 
+HandleExceptionmm 
+(mm  
+exmm  "
+,mm" #
 
-Propertiesll$ .
-.ll. /
-	Resourcesll/ 8
-.ll8 9#
-lblFailtToEnterTheLobbyll9 P
-+llQ R
-$strllS X
-+llY Z
+Propertiesmm$ .
+.mm. /
+	Resourcesmm/ 8
+.mm8 9#
+lblFailtToEnterTheLobbymm9 P
++mmQ R
+$strmmS X
++mmY Z
 
-Propertiesll[ e
-.lle f
-	Resourcesllf o
-.llo p 
-lblWithoutConection	llp É
+Propertiesmm[ e
+.mme f
+	Resourcesmmf o
+.mmo p 
+lblWithoutConection	mmp É
 )
-llÉ Ñ
+mmÉ Ñ
 ;
-llÑ Ö
-}mm 
-}oo 	
-privateqq 
-voidqq !
-PrepareChatAndFriendsqq *
-(qq* +
-)qq+ ,
-{rr 	
-ifss 
-(ss 
-liveChatInstancess  
-==ss! #
-nullss$ (
-)ss( )
-{tt 
-liveChatInstanceuu  
-=uu! "
-newuu# &
-LiveChatuu' /
-(uu/ 0
-)uu0 1
-;uu1 2
+mmÑ Ö
+}nn 
+}pp 	
+privaterr 
+voidrr !
+PrepareChatAndFriendsrr *
+(rr* +
+)rr+ ,
+{ss 	
+iftt 
+(tt 
+liveChatInstancett  
+==tt! #
+nulltt$ (
+)tt( )
+{uu 
 liveChatInstancevv  
-.vv  !
-	StartPagevv! *
-(vv* +
-isAdminOfLobbyvv+ 9
-,vv9 :
-roomCodevv; C
-,vvC D
-thisvvE I
-)vvI J
-;vvJ K
-}ww 
-ifxx 
-(xx 
-activeUsersInstancexx #
-==xx$ &
-nullxx' +
-)xx+ ,
-{yy 
-activeUsersInstancezz #
-=zz$ %
-newzz& )
-ActiveFriendszz* 7
-(zz7 8
-userSingletonzz8 E
-.zzE F
-IdUserzzF L
-)zzL M
-;zzM N
+=vv! "
+newvv# &
+LiveChatvv' /
+(vv/ 0
+)vv0 1
+;vv1 2
+liveChatInstanceww  
+.ww  !
+	StartPageww! *
+(ww* +
+isAdminOfLobbyww+ 9
+,ww9 :
+roomCodeww; C
+,wwC D
+thiswwE I
+)wwI J
+;wwJ K
+}xx 
+ifyy 
+(yy 
+activeUsersInstanceyy #
+==yy$ &
+nullyy' +
+)yy+ ,
+{zz 
 activeUsersInstance{{ #
-.{{# $
-	StartPage{{$ -
-({{- .
-this{{. 2
-){{2 3
-;{{3 4
-}|| 
-}}} 	
-private 
-void 
-CreateNewlobby #
-(# $
-LobbyActionsClient$ 6
-lobbyActionsProxy7 H
-)H I
+={{$ %
+new{{& )
+ActiveFriends{{* 7
+({{7 8
+userSingleton{{8 E
+.{{E F
+IdUser{{F L
+){{L M
+;{{M N
+activeUsersInstance|| #
+.||# $
+	StartPage||$ -
+(||- .
+this||. 2
+)||2 3
+;||3 4
+}}} 
+}~~ 	
+private
+ÄÄ 
+void
+ÄÄ 
+CreateNewlobby
+ÄÄ #
+(
+ÄÄ# $ 
+LobbyActionsClient
+ÄÄ$ 6
+lobbyActionsProxy
+ÄÄ7 H
+)
+ÄÄH I
 {
-ÄÄ 	
+ÅÅ 	
 try
-ÅÅ 
+ÇÇ 
 {
-ÇÇ 
-ThreadLocal
-ÉÉ 
-<
-ÉÉ 
-Random
-ÉÉ "
->
-ÉÉ" #
-generateAleatory
-ÉÉ$ 4
-=
-ÉÉ5 6
-new
-ÉÉ7 :
-ThreadLocal
-ÉÉ; F
-<
-ÉÉF G
-Random
-ÉÉG M
->
-ÉÉM N
-(
-ÉÉN O
-(
-ÉÉO P
-)
-ÉÉP Q
-=>
-ÉÉR T
-new
-ÉÉU X
-Random
-ÉÉY _
-(
-ÉÉ_ `
-)
-ÉÉ` a
-)
-ÉÉa b
-;
-ÉÉb c
+ÉÉ 
 int
 ÑÑ 
 aleatoryNumber

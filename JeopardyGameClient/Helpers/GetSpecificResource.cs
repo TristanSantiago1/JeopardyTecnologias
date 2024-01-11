@@ -16,7 +16,10 @@ namespace JeopardyGame.Helpers
     public static class GetSpecificResource
     {
 
-        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
+       // private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
+        private static readonly Random generateAleatory = new Random();
+        [ThreadStatic] private static Random generateAleatoryLocal;
+
         public static string GetHosImage(int idHost)
         {
             return idHost switch
@@ -43,13 +46,6 @@ namespace JeopardyGame.Helpers
             };
         }
 
-    
-
-        public static int GetGuestId()
-        {
-            return generateAleatory.Value.Next(999999, 9999999);
-        }
-
         public static string GetEnglishOrSpanishDescription(string englisDescription, string spanishDescription)
         {
             if (spanishDescription is null)
@@ -70,6 +66,25 @@ namespace JeopardyGame.Helpers
                 return spanishDescription;
             }
         }
+
+        
+            
+
+        public static int GetAleatoryNumber(int begin, int end)
+        {
+            if (generateAleatoryLocal == null)
+            {
+                int seed;
+                lock (generateAleatory)
+                {
+                    seed = generateAleatory.Next(begin, end);
+                }
+            generateAleatoryLocal = new Random(seed);
+            }
+
+            return generateAleatoryLocal.Next();
+        }
+        
 
 
         public static bool HasAtLeastTwoSeparateUppercaseLetters(string password)
