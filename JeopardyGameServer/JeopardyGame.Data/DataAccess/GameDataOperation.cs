@@ -1,4 +1,5 @@
-﻿using JeopardyGame.Data.Exceptions;
+﻿using JeopardyGame.Data.Helpers;
+using JeopardyGame.Data.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
@@ -24,7 +25,6 @@ namespace JeopardyGame.Data.DataAccess
         private const int VALUE_OF_EASY_QUESTIONS = 100;
         private const int VALUE_OF_MEDIUM_QUESTIONS = 300;
         private const int VALUE_OF_HARD_QUESTIONS = 500;
-        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public static GenericClassServer<bool> SaveNewGameInDataBase(Game gameToSave)
         {
@@ -147,7 +147,7 @@ namespace JeopardyGame.Data.DataAccess
                 using (var contextBD = new JeopardyDBContainer())
                 {
                     var categories = contextBD.Categories.Where(category => category.IdCategory != SPECIAL_CATEGORY).ToList();
-                    List<Category> categoriesList = categories.OrderBy(category => generateAleatory.Value.Next()).Take(NUMBER_OF_CATEGORIES).ToList();
+                    List<Category> categoriesList = categories.OrderBy(category => AleatoryGenerator.GetAleatoryNumber()).Take(NUMBER_OF_CATEGORIES).ToList();
                     if (categoriesList.Count == NUMBER_OF_CATEGORIES)
                     {                        
                         resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -201,11 +201,11 @@ namespace JeopardyGame.Data.DataAccess
                         contextBD.Configuration.LazyLoadingEnabled = false;
                         List<Question> questionPerCategory = contextBD.Questions.Include(Properties.BdTableNames.TableAnswer).Include(Properties.BdTableNames.TableCategory).Where(question => question.CategoryIdCategory == category.IdCategory).ToList();
                         var questionByPoints = questionPerCategory.Where(questionPoints => questionPoints.ValueWorth == VALUE_OF_EASY_QUESTIONS).ToList();
-                        questions.Add(questionByPoints.OrderBy(questionSelected => generateAleatory.Value.Next()).First());
+                        questions.Add(questionByPoints.OrderBy(questionSelected => AleatoryGenerator.GetAleatoryNumber()).First());
                         questionByPoints = questionPerCategory.Where(questionPoints => questionPoints.ValueWorth == VALUE_OF_MEDIUM_QUESTIONS).ToList();
-                        questions.Add(questionByPoints.OrderBy(questionSelected => generateAleatory.Value.Next()).First());
+                        questions.Add(questionByPoints.OrderBy(questionSelected => AleatoryGenerator.GetAleatoryNumber()).First());
                         questionByPoints = questionPerCategory.Where(questionPoints => questionPoints.ValueWorth == VALUE_OF_HARD_QUESTIONS).ToList();
-                        questions.Add(questionByPoints.OrderBy(questionSelected => generateAleatory.Value.Next()).First());
+                        questions.Add(questionByPoints.OrderBy(questionSelected => AleatoryGenerator.GetAleatoryNumber()).First());
                     }
                     if (questions.Count == NUMBER_OF_QUESTIONS_IN_TOTAL)
                     {
@@ -260,9 +260,9 @@ namespace JeopardyGame.Data.DataAccess
                 {
                     contextBD.Configuration.LazyLoadingEnabled = false;
                     var categories= contextBD.Categories.Where(category => category.IdCategory == SPECIAL_CATEGORY).ToList();
-                    Category specialCategory = categories.OrderBy(questionSelected => generateAleatory.Value.Next()).FirstOrDefault();
+                    Category specialCategory = categories.OrderBy(questionSelected => AleatoryGenerator.GetAleatoryNumber()).FirstOrDefault();
                     List<Question> questionPerCategory = contextBD.Questions.Include(Properties.BdTableNames.TableAnswer).Include(Properties.BdTableNames.TableCategory).Where(question => question.CategoryIdCategory == specialCategory.IdCategory).ToList();
-                    var lastQuestion = questionPerCategory.OrderBy(question => generateAleatory.Value.Next()).First();
+                    var lastQuestion = questionPerCategory.OrderBy(question => AleatoryGenerator.GetAleatoryNumber()).First();
                     if (lastQuestion != null)
                     {
                         resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
@@ -317,7 +317,7 @@ namespace JeopardyGame.Data.DataAccess
                         List<Awnser> rightAnswer = contextBD.Awnsers.Include(Properties.BdTableNames.TableCategory).Where(answer => answer.IdAwnser == question.Awnser.IdAwnser).ToList();
                         var wrongAnswersPerQuestion = contextBD.Awnsers.Include(Properties.BdTableNames.TableCategory).Where(answer => answer.Category.IdCategory == question.Category.IdCategory && answer.IdAwnser != question.Awnser.IdAwnser).ToList();
                         answersToReturn.Add(rightAnswer.FirstOrDefault());
-                        answersToReturn.AddRange(wrongAnswersPerQuestion.OrderBy(answerSelected => generateAleatory.Value.Next()).Take(3).ToList());
+                        answersToReturn.AddRange(wrongAnswersPerQuestion.OrderBy(answerSelected => AleatoryGenerator.GetAleatoryNumber()).Take(3).ToList());
                     }
                     if (answersToReturn.Count == NUMBER_OF_TOTAL_ANSWERS)
                     {

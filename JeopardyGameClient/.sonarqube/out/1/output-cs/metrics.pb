@@ -25,9 +25,9 @@ jC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Cards\GamePlayerCard.cs8 8rv	
  !"#$%&()*+,-./0123456789:;<=?@ABCDEFHIJKLMOPQRSTUVWXZ[\]^_`abcdeghijkmnoprstuwxyz|}~‚x‚8!"#$%*+,-.124578:;ABCDEJKLQRSTUVW\]^_`abcdijoty~°
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Cards\GamePointsCard.cs 8r+	
- !"#$%'()*,-./01‚"#$).‰
-oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Helpers\GetSpecificResource.cs 8re	
- !"#$%&'()*+,012356789:;<=>?@ABCDEFGHKLMNPQRSTVWXY[\]^_`acdfjklmnopqrstvxx‚$!#$%&'()*279;=?@BFPRTVX[_cnoqsÂ
+ !"#$%'()*,-./01‚"#$).¡
+oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Helpers\GetSpecificResource.cs 8jru	
+ "#$%&'()*+,-./123456789:;<=>?@ABCDIJKLMNOPQRSUVZ[\]_`abcefghjklmnoprsuyz{|}~€‚ƒ…‡x‚)$&'()*+,-3579;<>BKNPRU_acegjnr}~€‚Â
 lC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\ActiveFriends.xaml.cs† 8jrì	
  !"#$%'()*+,-./0123456789:;<=>?@ABCDEGHIJKLNOPQRSTUVWXYZ[\]^_`abcdefghijlmnoqrstuvwxyz{|}~€‚ƒ„…†‡ˆ‰Š‹Œ‘’“”•–—˜™š›œŸ ¢£¤¥¦§¨©ª«¬­®¯±²³´µ¶·¸¹º»¼½¾ÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçéêìíîïğñòóôõö÷øùúûüışÿ€ƒ„…†‡‰Š‹Œ‘’“”•–—˜™š›œŸ ¡¢£¤¦¨©«­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏĞÑÒÓÔÕÖ×ØÙÚÛÜİŞßàáâãäåæçèéêëìíîïğñòóôõö÷øùúûüışÿ€‚ƒ„…†‡‰‹x:‚Ñ+./37;?CIJKTX\`dhntvxy{~€‚‡‰Š’–š¤¥¦§©«¬³´µ·¸¹º»½ÃÄÆÈÊÎÕØÙŞßáåçïó÷ûÿ…†‹Œ‘“”•—™š› ¡¢¤«­¯³µ»¿ÃÇËÓÔØÙáâãåçëğõùı…ª
 oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\CodeConfirmation.xaml.csš 8jr¼	

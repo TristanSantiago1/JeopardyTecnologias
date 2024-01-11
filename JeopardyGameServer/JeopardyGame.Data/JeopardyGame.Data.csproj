@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AleatoryGenerator.cs" />
     <Compile Include="Avatar.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>

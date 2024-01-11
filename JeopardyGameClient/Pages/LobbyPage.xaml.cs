@@ -18,6 +18,7 @@ using JeopardyGame.ReGexs;
 using System.Text.RegularExpressions;
 using System.Net.Sockets;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace JeopardyGame.Pages
 {
@@ -35,7 +36,6 @@ namespace JeopardyGame.Pages
         private bool isAdminOfLobby;
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton;
-        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
         public LobbyPage()
         {
@@ -129,7 +129,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                int aleatoryNumber = GetSpecificResource.GetAleatoryNumber(10000, 99999);
+                int aleatoryNumber =  GetSpecificResource.GetAleatoryNumber(10000, 99999);
                 roomCode = aleatoryNumber;
                 var newLobby = lobbyActionsProxy.CreateNewLobby(roomCode, userSingleton.IdUser);
                 if(newLobby.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT)

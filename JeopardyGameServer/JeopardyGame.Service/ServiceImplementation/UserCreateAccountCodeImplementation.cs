@@ -14,6 +14,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using JeopardyGame.Service.Helpers;
 using System.Xml.Linq;
 using System.Threading;
+using JeopardyGame.Data.Helpers;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
@@ -21,7 +22,6 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         private const int ALLOWED_VALUES = 1;
         private static readonly Object  lockObject = new Object();
-        private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
 
 
 
@@ -65,9 +65,9 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void AddUserToDictionary(UserPojo newUser)
         {
-            int fourDigitsAleatoryNumber =  generateAleatory.Value.Next(1000, 9999);
-            char firstRandomCharacter = (char)generateAleatory.Value.Next('A', 'Z' + 1);
-            char secondRandomCharacter = (char)generateAleatory.Value.Next('A', 'Z' + 1);     
+            int fourDigitsAleatoryNumber =  AleatoryGenerator.GetAleatoryNumberWithRange(1000, 9999);
+            char firstRandomCharacter = AleatoryGenerator.GetAleatoryCharacters('A', 'Z', 1);
+            char secondRandomCharacter = AleatoryGenerator.GetAleatoryCharacters('A', 'Z', 1);
             string code = $"{firstRandomCharacter}{secondRandomCharacter}{fourDigitsAleatoryNumber:D4}";
             var codeAlreadyExist = EmailConfirmationDictionary.GetSpecificUserToConfirm(code);
             Console.WriteLine(code);

@@ -10,13 +10,12 @@ using Microsoft.Win32;
 using System.Windows.Controls;
 using System.Globalization;
 using System.Threading;
+using System.Security.Cryptography;
 
 namespace JeopardyGame.Helpers
 {
     public static class GetSpecificResource
     {
-
-       // private static readonly ThreadLocal<Random> generateAleatory = new ThreadLocal<Random>(() => new Random());
         private static readonly Random generateAleatory = new Random();
         [ThreadStatic] private static Random generateAleatoryLocal;
 
@@ -81,8 +80,7 @@ namespace JeopardyGame.Helpers
                 }
             generateAleatoryLocal = new Random(seed);
             }
-
-            return generateAleatoryLocal.Next();
+            return generateAleatoryLocal.Next(begin, end);
         }
         
 

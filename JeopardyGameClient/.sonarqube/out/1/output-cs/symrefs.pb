@@ -444,36 +444,44 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 
 ''U Y
 
-,,' Aå
+,,' Aí
 oC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Helpers\GetSpecificResource.cs
 
- +
-4 D22 #
+ +
+' 7NN &PP +(
+- BKK %RR !UU (
 
- (
-- 3 
+ (
+- 3 
 
- +
-0 8!! 
+"" +
+""0 8$$ 
 
-00 $
+11 ;(
+11C T55 (77 !>> ((
+11] o33 "99 )BB )
+;; << 
 
-55 ;(
-55C T99 (;; !BB ((
-55] o77 "== )FF )
-?? @@ 
+II +
+II0 5PP1 6
+II; >PP8 ;
+MM PP RR/ 3
 
-KK @
-KKH PPP '
-MM TT "cc !(
-NN $VV +[[ '__ '
+ZZ @
+ZZH P__ '
+\\ cc "rr !(
+]] $ee +jj 'nn '
 
-jj <
+yy <
 
-ll "2
-ll# $ll llD Eoo1 2ss 
-ll7 <nnA F<
-nn #oo oo' -qq qq4 :ss ç
+{{ "4
+{{# ${{ {{D E~~1 2
+‚‚ 
+{{7 <}}A FB
+}} #~~ ~~' -
+€€ 
+€€4 :
+‚‚ ç
 lC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\ActiveFriends.xaml.cs
 
    '
@@ -2889,7 +2897,7 @@ gC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 çç1 3
 
 åå: F
-èèZ fæ)
+èèZ fÚ)
 hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClient\Pages\LobbyPage.xaml.cs
 
  "p
@@ -2989,9 +2997,9 @@ hC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameClien
 ¢¢4 A
 ËË8 E
 ÎÎ; H
-ØØ6 C
-&&4 D
-„„% 5
+ØØ6 C
+
+&&4 D
 // -,, .
 
 //5 ;
