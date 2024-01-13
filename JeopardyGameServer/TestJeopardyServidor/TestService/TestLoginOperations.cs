@@ -48,7 +48,7 @@ namespace TestJeopardyServidor.TestService
             string passwordEntered = "PasswordTest";
             UserManagerDataOperation.SavePlayerInDataBase(userTest, state, playerTest);
             var succes = LoginOperations.VerifyPassword(idUser.ObjectSaved.Password, passwordEntered);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -80,14 +80,14 @@ namespace TestJeopardyServidor.TestService
             string passwordEntered = "badPasssword";
             UserManagerDataOperation.SavePlayerInDataBase(userTest, state, playerTest);
             var succes = LoginOperations.VerifyPassword(idUser.ObjectSaved.Password, passwordEntered);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestVerifyPassWordNull()
         {
             var succes = LoginOperations.VerifyPassword(string.Empty, string.Empty);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace TestJeopardyServidor.TestService
         {
             string emailEntered = "elailThatDoesntExist@gmail.com";
             var succes = LoginOperations.ValidateIfEmailExist(emailEntered);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -127,14 +127,14 @@ namespace TestJeopardyServidor.TestService
             string emailEntered = "userTest@gmail.com";
             UserManagerDataOperation.SavePlayerInDataBase(userTest, state, playerTest);
             var succes = LoginOperations.ValidateIfEmailExist(emailEntered);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestValidateEmailExistNull()
         {
             var succes = LoginOperations.ValidateIfEmailExist(string.Empty);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
 
         [Fact]
@@ -142,7 +142,7 @@ namespace TestJeopardyServidor.TestService
         {
             string userName = "wachiturro";
             var succes = LoginOperations.ValidateIfUserNameExist(userName);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -173,14 +173,14 @@ namespace TestJeopardyServidor.TestService
             };
             string userName = "userNameTest";
             var succes = LoginOperations.ValidateIfUserNameExist(userName);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestValidateUserNameExistanceNull()
         {
             var succes = LoginOperations.ValidateIfUserNameExist(string.Empty);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
     }
 }

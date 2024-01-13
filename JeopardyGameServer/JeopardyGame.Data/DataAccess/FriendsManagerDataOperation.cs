@@ -33,29 +33,29 @@ namespace JeopardyGame.Data.DataAccess
                     var friendsOfUser = contextBD.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
                     resultOfOperation.ObjectSaved = friendsOfUser;
                     
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                                                     
                 }
             }
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation; 
         }
@@ -73,7 +73,7 @@ namespace JeopardyGame.Data.DataAccess
                 {
                     var friendsOfUser = ConsultFriendsOfPlayer(player);
                     List<int> idsFriends = new List<int>();
-                    if(friendsOfUser.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if(friendsOfUser.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                     {
                         foreach (var friend in friendsOfUser.ObjectSaved)
                         {
@@ -90,7 +90,7 @@ namespace JeopardyGame.Data.DataAccess
                         var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer) && playerDataBase.State_idState != 3).Take(20).ToList();
                         resultOfOperation.ObjectSaved = playersNotFriends;
                                                    
-                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         
                     }
                     else
@@ -103,22 +103,22 @@ namespace JeopardyGame.Data.DataAccess
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }
@@ -142,43 +142,43 @@ namespace JeopardyGame.Data.DataAccess
                         resultOfOperation.ObjectSaved = resultEvent;
                         if (resultEvent != NULL_INT_VALUE)
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
                     else
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     }
                 }
             }
             catch (DbUpdateException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }
@@ -203,43 +203,43 @@ namespace JeopardyGame.Data.DataAccess
                         resultOfOperation.ObjectSaved = resultEvent;
                         if (resultEvent != NULL_INT_VALUE)
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
                     else
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     }
                 }
             }
             catch (DbUpdateException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }
@@ -268,43 +268,43 @@ namespace JeopardyGame.Data.DataAccess
                         resultOfOperation.ObjectSaved = resultEvent;
                         if (resultEvent != NULL_INT_VALUE)
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
                     else
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     }                                                      
                 }
             }
             catch (DbUpdateException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }
@@ -330,43 +330,43 @@ namespace JeopardyGame.Data.DataAccess
                         resultOfOperation.ObjectSaved = resultEvent; 
                         if (resultEvent > 0)
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
-                            resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
                     else
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     }
                 }
             }
             catch (DbUpdateException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }

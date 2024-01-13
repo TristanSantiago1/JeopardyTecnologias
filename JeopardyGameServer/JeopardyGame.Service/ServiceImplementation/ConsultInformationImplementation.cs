@@ -31,30 +31,30 @@ namespace JeopardyGame.Service.ServiceImplementation
             catch (CommunicationObjectFaultedException ex)
             {
                 int idUser = ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser;
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
                 int idUser = ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser;
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION); 
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
                 int idUser = ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser;
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
                 int idUser = ConsultUserByIdPlayer(idPlayer).ObjectSaved.IdUser;
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -74,27 +74,27 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -114,27 +114,27 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -156,27 +156,27 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -197,27 +197,27 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(resultToReturn.ObjectSaved.IdUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }
@@ -233,27 +233,27 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUserConsulting, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUserConsulting, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUserConsulting, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                 ChannelAdministrator.HandleCommunicationIssue(idUserConsulting, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultToReturn;
         }

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Service.InterfacesServices
 {
-    [ServiceContract(CallbackContract = typeof(IFriendManagerActionsCallBack))]
-    public interface IFriendManagerActions
+    [ServiceContract(CallbackContract = typeof(IFriendManagerCallBack))]
+    public interface IFriendManagerService
     {
         [OperationContract]
         GenericClass<int> RegisterFriendManagerUser(int idUserFriendManager);
@@ -20,13 +20,13 @@ namespace JeopardyGame.Service.InterfacesServices
 
 
     [ServiceContract]
-    public interface IFriendManagerActionOperations
+    public interface IFriendManagerOperations
     {
         [OperationContract(IsOneWay = true)]
-        void UnregisterFriendManagerUser(int idUserFriendManager);     
+        void UnregisterFromFriendManager(int idUserFriendManager);     
 
         [OperationContract]
-        GenericClass<int> BanUser(int idPlayerBanned, int idUserBanning);
+        GenericClass<int> ReportFriend(int idPlayerBanned, int idUserBanning);
 
         [OperationContract(IsOneWay = true)]
         void EliminateUserFromFriends(int idPlayerDeleting, int idUserToEliminate);
@@ -40,13 +40,10 @@ namespace JeopardyGame.Service.InterfacesServices
         [OperationContract(IsOneWay = true)]
         void DeclineFriendRequest(int idPlayerDeclining, int idUserRequesting);
 
-        [OperationContract(IsOneWay = true)]
-        void NotifyUserAboutNewPlayer(int idNewPlayer, string userName);
-
     }
 
     [ServiceContract]
-    public interface IFriendManagerActionsCallBack
+    public interface IFriendManagerCallBack
     {
         [OperationContract]
         void ResponseReported(int numReports);

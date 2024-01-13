@@ -25,9 +25,9 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 namespace JeopardyGame.Pages
 {
     /// <summary>
-    /// Lógica de interacción para LiveChat.xaml
+    /// Logic of the Living Chat LiveChat.xaml
     /// </summary>
-    public partial class LiveChat : Page, ILiveChatCallback
+    public partial class LiveChat : Page, ILiveChatServiceCallback
     {
         private  bool isAdmin;
         private  int roomCode;
@@ -35,6 +35,7 @@ namespace JeopardyGame.Pages
         private  List<MessageChat> messagesInChats = new List<MessageChat>();
         private  LobbyPage lobbyPage;
 
+     
         public LiveChat()
         {            
             InitializeComponent();                     
@@ -52,7 +53,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                LiveChatClient liveChatCallBackProxy = new LiveChatClient(new InstanceContext(this));
+                LiveChatServiceClient liveChatCallBackProxy = new LiveChatServiceClient(new InstanceContext(this));
                 liveChatCallBackProxy.RenewLiveChatCallBack(roomCode, userSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
@@ -80,7 +81,7 @@ namespace JeopardyGame.Pages
         private void PrepareWindow()
         {
             InstanceContext context = new InstanceContext(this);
-            LiveChatClient liveChatProxy = new LiveChatClient(context);
+            LiveChatServiceClient liveChatProxy = new (context);
             try
             {
                 userSingleton = UserSingleton.GetMainUser();

@@ -37,47 +37,47 @@ namespace JeopardyGame.Data.Exceptions
             resultException.ObjectSaved = default;
             if (exception is InvalidOperationException)
             {
-                resultException.CodeEvent = ExceptionDictionary.INVALID_OPERATION;
+                resultException.CodeEvent = CodesDictionary.INVALID_OPERATION;
                 return resultException;
             }
             if (exception is ArgumentNullException)
             {
-                resultException.CodeEvent = ExceptionDictionary.SAVE_CHANGES_ERROR;
+                resultException.CodeEvent = CodesDictionary.SAVE_CHANGES_ERROR;
                 return resultException;
             }
             if (exception is DbUpdateException)
             {
-                resultException.CodeEvent = ExceptionDictionary.SAVE_CHANGES_ERROR;
+                resultException.CodeEvent = CodesDictionary.SAVE_CHANGES_ERROR;
                 return resultException;
             }
             if (exception is EntityException)
             {
-                resultException.CodeEvent = ExceptionDictionary.ENTITY_ERROR;
+                resultException.CodeEvent = CodesDictionary.ENTITY_ERROR;
                 return resultException;
             }
             if (exception is SqlException)
             {
-                resultException.CodeEvent = ExceptionDictionary.SQL_ERROR;
+                resultException.CodeEvent = CodesDictionary.SQL_ERROR;
                 return resultException;
             }           
             if (exception is FormatException)
             {
-                resultException.CodeEvent = ExceptionDictionary.FORMMAT_EXCEPTION;
+                resultException.CodeEvent = CodesDictionary.FORMMAT_EXCEPTION;
                 return resultException;
             }
             if(exception is RankException)
             {
-                resultException.CodeEvent = ExceptionDictionary.RANK_EXCEPTION;
+                resultException.CodeEvent = CodesDictionary.RANK_EXCEPTION;
                 return resultException;
             }
             if(exception is DbEntityValidationException)
             {
-                resultException.CodeEvent = ExceptionDictionary.ENTITY_VALIDATION;
+                resultException.CodeEvent = CodesDictionary.ENTITY_VALIDATION;
                 return resultException;
             }
             if (exception != null)
             {
-                resultException.CodeEvent = ExceptionDictionary.UNKOWN_EXCEPTION_OCURRED;
+                resultException.CodeEvent = CodesDictionary.UNKOWN_EXCEPTION_OCURRED;
                 return resultException;
             }
             return resultException;
@@ -91,14 +91,14 @@ namespace JeopardyGame.Data.Exceptions
         public static GenericClassServer<T> HandleNullParametersDataBase<T>(GenericClassServer<T> resultWithNull)
         {
             resultWithNull.ObjectSaved = default;
-            resultWithNull.CodeEvent = ExceptionDictionary.NULL_PARAEMETER;
+            resultWithNull.CodeEvent = CodesDictionary.NULL_PARAEMETER;
             return resultWithNull;
         }
 
         public static GenericClass<T> HandleNullParametersService<T>(GenericClass<T> resultWithNull)
         {
             resultWithNull.ObjectSaved = default;
-            resultWithNull.CodeEvent = ExceptionDictionary.NULL_PARAEMETER;
+            resultWithNull.CodeEvent = CodesDictionary.NULL_PARAEMETER;
             return resultWithNull;
         }
 

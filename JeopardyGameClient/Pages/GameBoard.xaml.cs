@@ -24,7 +24,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para GameBoard.xaml
     /// </summary>
-    public partial class GameBoard : Page, IGameActionsCallback, IChatForTeamsCallback
+    public partial class GameBoard : Page, IGameServiceCallback, IChatForTeamsServiceCallback
     {
         private const int ROUND_ONE = 1;
         private const int ROUND_TWO = 2;
@@ -70,7 +70,7 @@ namespace JeopardyGame.Pages
             try
             {
                 InstanceContext context = new InstanceContext(this);
-                GameActionsClient gameActionsClientProxy = new GameActionsClient(context);
+                GameServiceClient gameActionsClientProxy = new (context);
                 gameActionsClientProxy.SubscribeToGameCallBack(roomCode, userSingleton.IdUser, userSingleton.IdCurrentAvatar);
             }
             catch (EndpointNotFoundException ex)
@@ -400,9 +400,9 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
+                GameServiceClient gameActionsCallBackClientProxy = new (new InstanceContext(this));
                 gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-                GameActionsOperationsClient gameActionsClientProxy = new();
+                GameOperationsClient gameActionsClientProxy = new();
                 gameActionsClientProxy.ConfirmBet(roomCode, userSingleton.IdUser);
                 txbPointsToBet.IsEnabled = false;
                 bttConfirmBet.IsEnabled = false;
@@ -468,10 +468,7 @@ namespace JeopardyGame.Pages
                 };
                 try
                 {
-                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-
-                    GameActionsOperationsClient gameActionsClientProxy = new();
+                    GameOperationsClient gameActionsClientProxy = new();
                     gameActionsClientProxy.ChooseQuestionOfBoard(roomCode, userSingleton.IdUser, question.NumberOfRound, currentQuestionToShow);
                 }
                 catch (EndpointNotFoundException ex)
@@ -529,8 +526,6 @@ namespace JeopardyGame.Pages
                 var answerCardChoose = (Button)sender;
                 try
                 {
-                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
                     if (currentRound != ROUND_THREE)
                     {
                         ConfirmAnswer(answerCardChoose);
@@ -565,7 +560,7 @@ namespace JeopardyGame.Pages
 
         private void ConfirmAnswer(Button answerCardChoose)
         {           
-            GameActionsOperationsClient gameActionsClientProxy = new();
+            GameOperationsClient gameActionsClientProxy = new();
             var answerSelected = answersOfQuestionBeingAsked.Find(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content));
             if(answerSelected != null)
             {
@@ -608,7 +603,7 @@ namespace JeopardyGame.Pages
             {
                 isCorrect = false;
             }
-            GameActionsOperationsClient gameActionsClientProxy = new();
+            GameOperationsClient gameActionsClientProxy = new();
             answerCardChoose.BorderBrush = new SolidColorBrush(Colors.Blue);
             bttFirstAnswer.IsEnabled = false;
             bttSecondAnswer.IsEnabled = false;
@@ -745,9 +740,7 @@ namespace JeopardyGame.Pages
             {
                 try
                 {
-                    GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                    gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-                    GameActionsOperationsClient gameActionsClientProxy = new();
+                    GameOperationsClient gameActionsClientProxy = new();
                     gameActionsClientProxy.FinishRound(roomCode, playersInGame.ToArray(), currentRound);
                 }
                 catch (EndpointNotFoundException ex)
@@ -1029,9 +1022,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-                GameActionsOperationsClient gameActionsClientProxy = new();
+                GameOperationsClient gameActionsClientProxy = new();
                 var answerSelected = answersOfQuestionBeingAsked.Find(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content));
                 if (answerSelected != null)
                 {
@@ -1064,9 +1055,7 @@ namespace JeopardyGame.Pages
         {           
             try
             {
-                GameActionsClient gameActionsCallBackClientProxy = new GameActionsClient(new InstanceContext(this));
-                gameActionsCallBackClientProxy.RenewGameCallBack(roomCode, userSingleton.IdUser);
-                GameActionsOperationsClient gameActionsClientProxy = new();
+                GameOperationsClient gameActionsClientProxy = new();
                 bool isCorrect = false;
                 answerButton.BorderBrush = new SolidColorBrush(Colors.Blue);
                 bttFirstAnswer.IsEnabled = false;
@@ -1137,7 +1126,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                GameActionsOperationsClient gameActionsClientProxy = new();
+                GameOperationsClient gameActionsClientProxy = new();
                 gameActionsClientProxy.UnSubscribeFromGameCallBack(roomCode, userSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
@@ -1256,7 +1245,7 @@ namespace JeopardyGame.Pages
 
         public void ReceiveMessageTeamChat(GenericClassOfMessageChatxY0a3WX4 message)
         {
-            ((IChatForTeamsCallback)teamChat).ReceiveMessageTeamChat(message);
+            ((IChatForTeamsServiceCallback)teamChat).ReceiveMessageTeamChat(message);
         }
 
         private void HandleException(Exception ex, string errorMessage)

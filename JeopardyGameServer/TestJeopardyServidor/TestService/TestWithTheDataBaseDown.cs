@@ -43,7 +43,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest",
             };
             var userSucces = UserManagerDataOperation.SaveUserInDataBase(userTest);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, userSucces.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, userSucces.CodeEvent);
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace TestJeopardyServidor.TestService
                 StateDescription = "Guest"
             };
             var playerSucces = UserManagerDataOperation.SavePlayerInDataBase(userTest, state, playerTest);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, playerSucces.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, playerSucces.CodeEvent);
         }
 
         [Fact]
@@ -87,7 +87,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest",
             };
             var succes = UserManagerDataOperation.GetUserById(userTest.IdUser);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
 
@@ -103,7 +103,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest",
             };
             var succes = UserManagerDataOperation.GetUserByUserName(userTest.UserName);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -127,7 +127,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = userTest.IdUser,
             };
             var reportedSucces = UserManagerDataOperation.UpdatePlayerReported(playerTest.IdPlayer);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, reportedSucces.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, reportedSucces.CodeEvent);
         }
 
         [Fact]
@@ -142,7 +142,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest"
             };
             var player = UserManagerDataOperation.GetPlayerByIdUser(userTest.IdUser);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, player.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, player.CodeEvent);
         }
 
         [Fact]
@@ -166,7 +166,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = userTest.IdUser,
             };
             var player = UserManagerDataOperation.GetPlayerByIdPlayer(playerTest.IdPlayer);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, player.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, player.CodeEvent);
         }
 
 
@@ -174,7 +174,7 @@ namespace TestJeopardyServidor.TestService
         public void TestGetStateByIdStateDbDown()
         {
             var stateSucces = UserManagerDataOperation.GetStateById(1);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, stateSucces.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, stateSucces.CodeEvent);
         }
 
         [Fact]
@@ -189,7 +189,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest"
             };
             var succes = UserManagerDataOperation.DeleteUserById(userTest.IdUser);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -213,7 +213,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = userTest.IdUser,
             };
             var succes = UserManagerDataOperation.UpdatePhotoPlayer(playerTest.IdPlayer, 1);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -228,21 +228,21 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest"
             };
             var succes = UserManagerDataOperation.UpdateUserInformation(userTest.IdUser, " ");
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetBestPlayersPointsDbDown()
         {
             var succes = UserManagerDataOperation.GetBestPlayersPoints();
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestDleteAllGuestDbDown()
         {
             var succes = UserManagerDataOperation.DeleteAllGuestUsers();
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
 
@@ -258,7 +258,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userNameTest"
             };
             var succes = UserManagerDataOperation.UpdateEmailUser(userTest.IdUser, "newEmail@gmail.com");
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -273,7 +273,7 @@ namespace TestJeopardyServidor.TestService
                 UserName = "userTestPass"
             };
             var succes = UserManagerDataOperation.UpdatePasswordUser("userTestPass", "NewPassword");
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -297,7 +297,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = userTest.IdUser,
             };
             var succes = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerTest);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -313,7 +313,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = 22,
             };
             var succes = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerTest);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -338,7 +338,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = 23,
             };
             var succes = FriendsManagerDataOperation.DeleteFriendsRegister(playerTest.IdPlayer, playerTest2.IdPlayer);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
 
@@ -364,7 +364,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = 23,
             };
             var succes = FriendsManagerDataOperation.AcceptFriendRequest(playerTest.IdPlayer, playerTest2.IdPlayer);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -389,7 +389,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = 23,
             };
             var succes = FriendsManagerDataOperation.SendFriendRequest(playerTest.IdPlayer, playerTest2.IdPlayer);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -405,7 +405,7 @@ namespace TestJeopardyServidor.TestService
                 User_IdUser = 22,
             };
             var succes = FriendsManagerDataOperation.BannerUser(playerTest.IdPlayer);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -421,7 +421,7 @@ namespace TestJeopardyServidor.TestService
             };
             string passwordEntered = "Password";
             var succes = LoginOperations.VerifyPassword(userTest.Password, passwordEntered);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -429,7 +429,7 @@ namespace TestJeopardyServidor.TestService
         {
             string emailEntered = "elailThatDoesntExist@gmail.com";
             var succes = LoginOperations.ValidateIfEmailExist(emailEntered);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -437,7 +437,7 @@ namespace TestJeopardyServidor.TestService
         {
             string userName = "wachiturro";
             var succes = LoginOperations.ValidateIfUserNameExist(userName);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
 
@@ -450,7 +450,7 @@ namespace TestJeopardyServidor.TestService
                 Host_IdHost = 2
             };
             var succes = GameDataOperation.SaveNewGameInDataBase(game);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -462,7 +462,7 @@ namespace TestJeopardyServidor.TestService
                 Host_IdHost = 2
             };
             var succes = GameDataOperation.GetGameByRoomCode(game.RoomCode);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
 
@@ -470,7 +470,7 @@ namespace TestJeopardyServidor.TestService
         public void TestGet10CategoriesDbDown()
         {
             var succes = GameDataOperation.Get10Categories();
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -478,14 +478,14 @@ namespace TestJeopardyServidor.TestService
         {
             List<Category> categories = new List<Category>(){new Category() { IdCategory = 1, EnglishCategoryDescription="Biology", SpanishCategoryDescription = "Biologia"} };
             var succes = GameDataOperation.GetQuestionsByCategory(categories);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetFinalQuestionDbDown()
         {
             var succes = GameDataOperation.GetFinalQuestions();
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -493,7 +493,7 @@ namespace TestJeopardyServidor.TestService
         {
             List<Question> questions = new List<Question>() {new Question() { CategoryIdCategory= 1, EnglishQuestionDescription= "Whats", SpanishQuestionDescription = "que", IdQuestion = 1, RigthAwnser = "1", ValueWorth=300} };
             var succes = GameDataOperation.GetAwnsersOfQuestions(questions);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -535,7 +535,7 @@ namespace TestJeopardyServidor.TestService
                 Game = game
             };
             var succes = GameDataOperation.SaveGamePlayerInDataBase(player);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes);
         }
 
         [Fact]
@@ -566,14 +566,14 @@ namespace TestJeopardyServidor.TestService
                 PointsInGame = 69,
             };
             var succes = GameDataOperation.UpdatePlayersPoints(player);
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes);
         }
 
         [Fact]
         public void TestGetHostDbDown()
         {
             var succes = GameDataOperation.GetHostIds();
-            Assert.Equal(ExceptionDictionary.ENTITY_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
     }

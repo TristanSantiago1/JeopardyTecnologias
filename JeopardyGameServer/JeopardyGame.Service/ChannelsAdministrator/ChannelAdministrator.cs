@@ -35,7 +35,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
 
         public static int VerifyUserIsStillActive(string userCausingException)
         {
-            var channel = LivingClients.GetClient(userCausingException);
+            var channel = LivingClientsDictionary.GetClient(userCausingException);
             if (channel != null)
             {
                 try
@@ -43,27 +43,27 @@ namespace JeopardyGame.Service.ChannelsAdministrator
                     bool isActive = channel.GetCallbackChannel<ICheckUserLivingCallBack>().IsClientActive();
                     if (isActive)
                     {
-                        return ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        return CodesDictionary.UNSUCCESFULL_EVENT;
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch(InvalidOperationException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
-            return ExceptionDictionary.SUCCESFULL_EVENT;
+            return CodesDictionary.SUCCESFULL_EVENT;
         }
 
         public static void HandleCommunicationIssue(int idUserCausingException, int serviceType)
@@ -98,10 +98,10 @@ namespace JeopardyGame.Service.ChannelsAdministrator
 
         private static void HandleFriendManagerCommunicationException(int idUserCausingException)
         {
-            FriendManagerActionsOperationImplementation friendManagerActions = new ();
-            friendManagerActions.UnregisterFriendManagerUser(idUserCausingException);
+            FriendManagerOperationImplementation friendManagerActions = new ();
+            friendManagerActions.UnregisterFromFriendManager(idUserCausingException);
             int isUserDisconnected = VerifyUserIsStillActive(GetUserNameClient(idUserCausingException));
-            if (isUserDisconnected == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (isUserDisconnected == CodesDictionary.SUCCESFULL_EVENT)
             {
                 KickUserFromDictionaries(idUserCausingException);
             }              
@@ -111,10 +111,10 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         {
             try
             { 
-                var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
+                var lobbyList = ActiveLobbiesDictionary.GetActiveLobbiesList();
                 int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Exists(pl => pl.idUser == idUserCausingException)).Key;
-                LobbyActionsOperationImplementation lobbyActions = new();
-                var lobbyFailed = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                LobbyOperationImplementation lobbyActions = new();
+                var lobbyFailed = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                 if (lobbyFailed != null)
                 {
                     if (lobbyFailed.idAdmin == idUserCausingException)
@@ -127,32 +127,32 @@ namespace JeopardyGame.Service.ChannelsAdministrator
                     }
                 }
                 int isUserDisconnected = VerifyUserIsStillActive(GetUserNameClient(idUserCausingException));
-                if (isUserDisconnected == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (isUserDisconnected == CodesDictionary.SUCCESFULL_EVENT)
                 {
                     KickUserFromDictionaries(idUserCausingException);
                 }
             }
             catch(KeyNotFoundException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
             }           
         }
 
         private static void HandleGameCommunicationException(int idUserCausingException)
         {
-            var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
+            var lobbyList = ActiveLobbiesDictionary.GetActiveLobbiesList();
             int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Exists(pl => pl.idUser == idUserCausingException)).Key;
-            GameActionsOperationsImplementation gameActions = new ();
+            GameOperationsImplementation gameActions = new ();
             gameActions.UnSubscribeFromGameCallBack(roomCode, idUserCausingException);
             HandleLobbyCommunicationException(idUserCausingException);
         }
 
         private static void HandleAvailabilityCommunicationException(int idUserCausingException)
         {
-            NotifyUserIsNotAvailableImplementation notifyUser = new();
-            notifyUser.PlayerIsNotAvailable(idUserCausingException);
+            NotifyAvailabilityOperationsImplementation notifyUser = new();
+            notifyUser.UserIsNotAvailable(idUserCausingException);
             int isUserDisconnected = VerifyUserIsStillActive(GetUserNameClient(idUserCausingException));
-            if (isUserDisconnected == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (isUserDisconnected == CodesDictionary.SUCCESFULL_EVENT)
             {
                 KickUserFromDictionaries(idUserCausingException);
             }
@@ -160,9 +160,9 @@ namespace JeopardyGame.Service.ChannelsAdministrator
 
         private static void HandleTeamChatCommunicationException(int idUserCausingException)
         {
-            TeamChats.RemoveRegistryOfTeamChatUserFromDictionary(idUserCausingException);
+            TeamChatsDictionary.RemoveRegistryOfTeamChatUserFromDictionary(idUserCausingException);
             int isUserDisconnected = VerifyUserIsStillActive(GetUserNameClient(idUserCausingException));
-            if (isUserDisconnected == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (isUserDisconnected == CodesDictionary.SUCCESFULL_EVENT)
             {
                 KickUserFromDictionaries(idUserCausingException);
             }
@@ -171,7 +171,7 @@ namespace JeopardyGame.Service.ChannelsAdministrator
         private static void HandleGeneriCommunicationException(int idUserCausingException)
         {
             int isUserDisconnected = VerifyUserIsStillActive(GetUserNameClient(idUserCausingException));
-            if (isUserDisconnected == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (isUserDisconnected == CodesDictionary.SUCCESFULL_EVENT)
             {
                 KickUserFromDictionaries(idUserCausingException);
             }
@@ -180,19 +180,19 @@ namespace JeopardyGame.Service.ChannelsAdministrator
 
         public static void KickUserFromDictionaries(int idUserCausingException)
         {  
-            NotifyUserIsNotAvailableImplementation notifyUser = new();
-            GameActionsOperationsImplementation gameActions = new ();
-            FriendManagerActionsOperationImplementation friendsManager = new();
-            LobbyActionsOperationImplementation lobbyActions = new();
+            NotifyAvailabilityOperationsImplementation notifyUser = new();
+            GameOperationsImplementation gameActions = new ();
+            FriendManagerOperationImplementation friendsManager = new();
+            LobbyOperationImplementation lobbyActions = new();
 
-            LivingClients.RemoveClientFromDictionary(GetUserNameClient(idUserCausingException));
-            notifyUser.PlayerIsNotAvailable(idUserCausingException);
-            var lobbyList = GameLobbiesDictionary.GetActiveLobbiesList();
-            friendsManager.UnregisterFriendManagerUser(idUserCausingException);
+            LivingClientsDictionary.RemoveClientFromDictionary(GetUserNameClient(idUserCausingException));
+            notifyUser.UserIsNotAvailable(idUserCausingException);
+            var lobbyList = ActiveLobbiesDictionary.GetActiveLobbiesList();
+            friendsManager.UnregisterFromFriendManager(idUserCausingException);
             int roomCode = lobbyList.FirstOrDefault(entry => entry.Value.listOfPlayerInLobby.Exists(pl => pl.idUser == idUserCausingException)).Key;             
             if(roomCode != 0)
             {                
-                var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                 if (lobby != null)
                 {
                     if (lobby.idAdmin == idUserCausingException)

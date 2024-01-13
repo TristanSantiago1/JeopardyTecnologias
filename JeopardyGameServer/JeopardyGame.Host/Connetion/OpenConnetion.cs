@@ -29,43 +29,43 @@ namespace JeopardyGame.Host.Connection
             }
             catch (SecurityNegotiationException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }
             catch (InvalidOperationException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }
             catch (AddressAlreadyInUseException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }
             catch (ProtocolException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }
             catch (CommunicationException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }
             catch (SystemException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.ERROR);
+                ExceptionHandler.LogException(ex, CodesDictionary.ERROR);
                 Console.WriteLine(Properties.StringResources.ServerFail);
                 Console.ReadLine();
             }           

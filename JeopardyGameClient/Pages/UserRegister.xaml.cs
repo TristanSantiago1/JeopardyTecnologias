@@ -333,7 +333,7 @@ namespace JeopardyGame.Pages
             try
             {
                 ValidateUserExistanceClient dataCheckerProxy = new ();
-                GenericClassOfint userIsNew = dataCheckerProxy.UserAlreadyExist(userToVerify);
+                GenericClassOfint userIsNew = dataCheckerProxy.UserNameAlreadyExist(userToVerify);
                 dataCheckerProxy.Close();
                 if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT)
                 {
@@ -434,7 +434,7 @@ namespace JeopardyGame.Pages
 
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         { 
-            if (DialogWindowManager.ShowWindowConfirmation(Properties.Resources.txbErrorTitle, Properties.Resources.lblRepeatedEmail, Application.Current.MainWindow))
+            if (DialogWindowManager.ShowWindowConfirmation(Properties.Resources.txbWarningTitle, Properties.Resources.txbConfirmationCancelSaveUser, Application.Current.MainWindow))
             {
                 GoToLogInWindow();
             }

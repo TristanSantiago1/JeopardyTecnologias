@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AleatoryGenerator.cs" />
+    <Compile Include="Helpers\AleatoryGenerator.cs" />
     <Compile Include="Avatar.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
@@ -112,7 +112,7 @@
     <Compile Include="GamePlayer.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="GenericClassAndObjecSaved.cs" />
+    <Compile Include="Helpers\GenericClassAndObjecSaved.cs" />
     <Compile Include="Host.cs">
       <DependentUpon>JeopardyDB.tt</DependentUpon>
     </Compile>

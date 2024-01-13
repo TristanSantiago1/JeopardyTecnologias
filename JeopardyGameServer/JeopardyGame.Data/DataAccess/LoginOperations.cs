@@ -26,12 +26,12 @@ namespace JeopardyGame.Data.DataAccess
             if (passwordEntered.Equals(hashedPassword))
             {
                 resultOfOperation.ObjectSaved = true;
-                resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
             }
             else
             {
                 resultOfOperation.ObjectSaved = false;
-                resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
             }       
             return resultOfOperation;
         }
@@ -51,11 +51,11 @@ namespace JeopardyGame.Data.DataAccess
                     if (!exist)
                     {
                         resultOfOperation.ObjectSaved = VALUE_NOT_EXIST;
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                     }
                     else
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         resultOfOperation.ObjectSaved = VALUE_EXIST;
                     }
                 }
@@ -63,22 +63,22 @@ namespace JeopardyGame.Data.DataAccess
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }
@@ -98,11 +98,11 @@ namespace JeopardyGame.Data.DataAccess
                     if (!exist)
                     {
                         resultOfOperation.ObjectSaved = VALUE_NOT_EXIST;
-                        resultOfOperation.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                     }
                     else
                     {
-                        resultOfOperation.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         resultOfOperation.ObjectSaved = VALUE_EXIST;
                     }
                 }
@@ -110,22 +110,22 @@ namespace JeopardyGame.Data.DataAccess
             catch (ArgumentNullException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (EntityException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SqlException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (DbEntityValidationException ex)
             {
                 resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return resultOfOperation;
         }

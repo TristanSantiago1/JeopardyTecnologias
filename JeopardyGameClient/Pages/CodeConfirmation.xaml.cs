@@ -27,7 +27,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para CodeConfirmation.xaml
     /// </summary>
-    public partial class CodeConfirmation : Page, ICheckUserLivingCallback
+    public partial class CodeConfirmation : Page, ICheckUserLivingServiceCallback
     {
         private UserSingleton userSingleton = UserSingleton.GetMainUser();
         public const int NULL_INT_VALUE = 0;
@@ -61,7 +61,7 @@ namespace JeopardyGame.Pages
                 UserCreateAccountCodeClient userCreateAccount = new();
                 userCreateAccount.AddUserToConfirmationDictionary(userToSave);
                 InstanceContext instanceContext = new InstanceContext(this);
-                CheckUserLivingClient checkUserLivingClient = new(instanceContext);
+                CheckUserLivingServiceClient checkUserLivingClient = new(instanceContext);
                 var success = checkUserLivingClient.SubscribeToICheckUserLiving(userToSave);
                 if (success != ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -271,7 +271,7 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                FriendManagerActionOperationsClient managerActionOperationsProxy = new();
+                NotifyAvailabilityOperationsClient managerActionOperationsProxy = new();
                 managerActionOperationsProxy.NotifyUserAboutNewPlayer(userSingleton.IdUser, userSingleton.UserName);
             }
             catch (EndpointNotFoundException ex)
@@ -364,8 +364,8 @@ namespace JeopardyGame.Pages
                     {
                         UserSingleton.CleanSingleton();
                         userSingleton = UserSingleton.GetMainUser(userSaved.ObjectSaved, playerSaved.ObjectSaved);
-                        AvailabilityUserManagmentClient availabilityUserManagment = new AvailabilityUserManagmentClient();
-                        availabilityUserManagment.PlayerIsAvailable(userSingleton.IdUser);
+                        NotifyAvailabilityOperationsClient availabilityUserManagment = new();
+                        availabilityUserManagment.UserIsPlaying(userSingleton.IdUser);
                     }
                     else
                     {
@@ -406,7 +406,7 @@ namespace JeopardyGame.Pages
 
         public bool IsClientActive()
         {
-            return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
+            return ((ICheckUserLivingServiceCallback)userSingleton).IsClientActive();
         }
 
         private void HandleException(Exception ex, string errorMessage)

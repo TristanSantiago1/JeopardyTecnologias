@@ -9,12 +9,12 @@ namespace JeopardyGame.Service
 {
     public static class FriendManagerDictionary
     {
-        private static Dictionary<int, OperationContext> friendManagerUsersDictionary = new Dictionary<int, OperationContext>();
+        private static Dictionary<int, OperationContext> friendManagerDictionary = new Dictionary<int, OperationContext>();
         public static void RegisterNewFriendUserInDictionary(int idUser, OperationContext channel)
         {
-            if (idUser != 0 && channel != null && !friendManagerUsersDictionary.ContainsKey(idUser))
+            if (idUser != 0 && channel != null && !friendManagerDictionary.ContainsKey(idUser))
             {
-                friendManagerUsersDictionary.Add(idUser, channel);
+                friendManagerDictionary.Add(idUser, channel);
             }
         }
 
@@ -22,7 +22,7 @@ namespace JeopardyGame.Service
         {
             if (idUser != 0)
             {
-                foreach (var item in friendManagerUsersDictionary)
+                foreach (var item in friendManagerDictionary)
                 {
                     if (item.Key == idUser)
                     {
@@ -35,17 +35,17 @@ namespace JeopardyGame.Service
 
         public static void RemoveRegistryOfFriendFromDictionary(int idUser)
         {
-            if (idUser != 0 && friendManagerUsersDictionary.ContainsKey(idUser))
+            if (idUser != 0 && friendManagerDictionary.ContainsKey(idUser))
             {
-                friendManagerUsersDictionary.Remove(idUser);
+                friendManagerDictionary.Remove(idUser);
             }
         }
 
         public static void RenewFriendManagerCallBack(int idUser, OperationContext channel)
         {
-            if (idUser != 0 && channel != null && friendManagerUsersDictionary.ContainsKey(idUser))
+            if (idUser != 0 && channel != null && friendManagerDictionary.ContainsKey(idUser))
             {
-                friendManagerUsersDictionary[idUser] = channel;
+                friendManagerDictionary[idUser] = channel;
             }
             else
             {
@@ -55,7 +55,7 @@ namespace JeopardyGame.Service
 
         public static Dictionary<int, OperationContext> GetActiveFriendsList()
         {
-            return friendManagerUsersDictionary;
+            return friendManagerDictionary;
         }
     }
 }

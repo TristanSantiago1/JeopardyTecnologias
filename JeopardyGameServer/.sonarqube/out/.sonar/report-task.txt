@@ -1,6 +1,6 @@
-projectKey=Servidor-analisis-final
+projectKey=Server-analisis-final
 serverUrl=http://localhost:9000
 serverVersion=10.3.0.82913
-dashboardUrl=http://localhost:9000/dashboard?id=Servidor-analisis-final
-ceTaskId=AYz24sW0El0oCVI3KXdB
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYz24sW0El0oCVI3KXdB
+dashboardUrl=http://localhost:9000/dashboard?id=Server-analisis-final
+ceTaskId=AYz26NKhEl0oCVI3KXd7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYz26NKhEl0oCVI3KXd7

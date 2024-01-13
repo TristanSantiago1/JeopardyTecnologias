@@ -17,13 +17,13 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ALLOWED_VALUES = 1;
         private static readonly Object lockObject = new Object();
 
-        public GenericClass<int> UserAlreadyExist(UserPojo newUser)
+        public GenericClass<int> UserNameAlreadyExist(UserPojo newUser)
         {
             lock (lockObject)
             {
                 GenericClass<int> successCriteria = new()
                 {
-                    CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT,
+                    CodeEvent = CodesDictionary.SUCCESFULL_EVENT,
                     ObjectSaved = ALLOWED_VALUES
                 };
                 try
@@ -34,49 +34,49 @@ namespace JeopardyGame.Service.ServiceImplementation
                         return NullParametersHandler.HandleNullParametersService(successCriteria);
                     }
                     successCriteria = EmailAlreadyExist(newUser.EmailAddress);
-                    if (successCriteria.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
+                    if (successCriteria.CodeEvent != CodesDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
                     {
-                        successCriteria.ObjectSaved = ExceptionDictionary.EMAIL_ALREADY_EXIST;
+                        successCriteria.ObjectSaved = CodesDictionary.EMAIL_ALREADY_EXIST;
                         return successCriteria;
                     }
                     successCriteria = UserNameAlreadyExist(newUser.UserName);
-                    if (successCriteria.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
+                    if (successCriteria.CodeEvent != CodesDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
                     {
-                        successCriteria.ObjectSaved = ExceptionDictionary.USERNAME_ALREADY_EXIST;
+                        successCriteria.ObjectSaved = CodesDictionary.USERNAME_ALREADY_EXIST;
                         return successCriteria;
                     }
                     bool isSavedUserName = GuestPlayerManagerImplementation.IsUserNameInBlackList(newUser.UserName);
                     if (isSavedUserName)
                     {
-                        successCriteria.ObjectSaved = ExceptionDictionary.USERNAME_ALREADY_EXIST;
-                        successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        successCriteria.ObjectSaved = CodesDictionary.USERNAME_ALREADY_EXIST;
+                        successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         return successCriteria;
                     }
                     successCriteria = CheckDictionary(newUser);
-                    if (successCriteria.CodeEvent != ExceptionDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
+                    if (successCriteria.CodeEvent != CodesDictionary.SUCCESFULL_EVENT || successCriteria.ObjectSaved != ALLOWED_VALUES)
                     {
                         return successCriteria;
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 return successCriteria;
             }
@@ -84,7 +84,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void VerifyUsersInDictionary()
         {
-            var callBackChannels = LivingClients.GetLivingClientsList().ToList();
+            var callBackChannels = LivingClientsDictionary.GetLivingClientsList().ToList();
             foreach (var item in callBackChannels)
             {
                 try
@@ -93,32 +93,32 @@ namespace JeopardyGame.Service.ServiceImplementation
                     if (!isActive)
                     {
                         EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
-                        LivingClients.CheckCallBacks();
+                        LivingClientsDictionary.CheckCallBacks();
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
-                    LivingClients.CheckCallBacks();
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    LivingClientsDictionary.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
-                    LivingClients.CheckCallBacks();
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    LivingClientsDictionary.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
-                    LivingClients.CheckCallBacks();
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    LivingClientsDictionary.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
-                    LivingClients.CheckCallBacks();
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    LivingClientsDictionary.CheckCallBacks();
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
         }
@@ -158,7 +158,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         {
             GenericClass<int> resultToReturn = new()
             {
-                CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT,
+                CodeEvent = CodesDictionary.SUCCESFULL_EVENT,
                 ObjectSaved = ALLOWED_VALUES
             };
             if (userToVerify == null)
@@ -168,14 +168,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             var userToVerifyList = EmailConfirmationDictionary.GetUserToVerifyList();
             if (userToVerifyList.Any(user => user.Value.EmailAddress.Equals(userToVerify.EmailAddress)))
             {
-                resultToReturn.ObjectSaved = ExceptionDictionary.EMAIL_ALREADY_EXIST;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                resultToReturn.ObjectSaved = CodesDictionary.EMAIL_ALREADY_EXIST;
+                resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                 return resultToReturn;
             }
             if (userToVerifyList.Any(user => user.Value.UserName.Equals(userToVerify.UserName)))
             {
-                resultToReturn.ObjectSaved = ExceptionDictionary.USERNAME_ALREADY_EXIST;
-                resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                resultToReturn.ObjectSaved = CodesDictionary.USERNAME_ALREADY_EXIST;
+                resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                 return resultToReturn;
             }
             return resultToReturn;

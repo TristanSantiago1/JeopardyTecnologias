@@ -17,11 +17,10 @@ using System.Windows;
 namespace JeopardyGame
 {
 
-    public class UserSingleton : ICheckUserLivingCallback
+    public class UserSingleton : ICheckUserLivingServiceCallback
     {
         private static UserSingleton instanceOfUserSingleton;
         private static bool isActive = false;
-        private static System.Threading.Timer heartbeatTimer;
         public int IdUser { get; set; }
         public String Name { get; set; }
         public String UserName { get; set; }
@@ -71,7 +70,6 @@ namespace JeopardyGame
             if (instanceOfUserSingleton == null)
             {
                 instanceOfUserSingleton = new UserSingleton();
-                BeginHeartBeat();
             }
             return instanceOfUserSingleton;
         }
@@ -82,7 +80,6 @@ namespace JeopardyGame
             if (instanceOfUserSingleton == null)
             {
                 instanceOfUserSingleton = new UserSingleton(userSingleton, playerSingleton);
-                BeginHeartBeat();
             }
             return instanceOfUserSingleton;
         }
@@ -91,7 +88,6 @@ namespace JeopardyGame
         {
             instanceOfUserSingleton = null;
             isActive = false;
-            StopHeartBeat();
         }
         public void UpdateNameData(string newName)
         {
@@ -109,56 +105,6 @@ namespace JeopardyGame
         public bool IsClientActive()
         {
             return isActive;
-        }
-
-        private static void BeginHeartBeat()
-        {           
-            var heartbeatClient = new HeartBeatClient();
-            heartbeatTimer = new System.Threading.Timer(state => {
-                try
-                {
-                    heartbeatClient.Heartbeat();
-                }
-                catch (AddressAccessDeniedException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                }
-                catch (SocketException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                }
-                catch (EndpointNotFoundException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-
-                }
-                catch (CommunicationObjectFaultedException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (TimeoutException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-                }
-                catch (CommunicationException ex)
-                {
-                    ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);                    
-                }
-                }, null, TimeSpan.Zero, TimeSpan.FromSeconds(50));            
-        }
-
-        private static void StopHeartBeat()
-        {
-            try
-            {
-                heartbeatTimer?.Change(Timeout.Infinite, Timeout.Infinite);
-                heartbeatTimer?.Dispose();
-            }catch(ObjectDisposedException ex)
-            {
-                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
-            }
         }
 
 

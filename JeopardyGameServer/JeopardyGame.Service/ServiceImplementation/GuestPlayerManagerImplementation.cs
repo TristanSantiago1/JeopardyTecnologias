@@ -41,7 +41,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         Password = GUEST_PASSWORD
                     };
                     GenericClassServer<User> userSaved = UserManagerDataOperation.SaveUserInDataBase(guestUser);
-                    if (userSaved.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if (userSaved.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                     {
                         PlayerPojo playerToSave = new PlayerPojo();
                         playerToSave.IdPlayer = DEFAULT_INT_VALUE;
@@ -52,10 +52,10 @@ namespace JeopardyGame.Service.ServiceImplementation
                         playerToSave.IdState = GUEST_STATE;
                         UserManagerImplementation userManager = new();
                         int isPlayerSavedSuccessfully = userManager.SavePlayer(playerToSave);
-                        if (isPlayerSavedSuccessfully == ExceptionDictionary.SUCCESFULL_EVENT)
+                        if (isPlayerSavedSuccessfully == CodesDictionary.SUCCESFULL_EVENT)
                         {
                             resultToReturn.ObjectSaved = UserInterpreter.FromUserEntityToUserPojo(userSaved.ObjectSaved);
-                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
@@ -70,23 +70,23 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
             return resultToReturn;

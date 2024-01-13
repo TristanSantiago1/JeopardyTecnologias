@@ -335,10 +335,10 @@ EU</value>
     <value>La contraseña debe tener al menos 2 numeros no consecutivos.</value>
   </data>
   <data name="lblPassPuntSigRuleDesc" xml:space="preserve">
-    <value>*La contraseña debe tener al menos 1 signo de puntuación: (. , ; :)</value>
+    <value>*La contraseña debe tener al menos 1 signo de puntuación (. , ; :).</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>*La contraseña debe tener al menos un caracter especial.</value>
+    <value>*La contraseña debe tener al menos uno de estos caracteres especial (!¡¿?=&amp;%$#@\-_).</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
     <value>Contraseña :</value>

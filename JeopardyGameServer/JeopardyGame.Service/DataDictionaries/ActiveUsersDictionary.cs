@@ -10,19 +10,19 @@ namespace JeopardyGame.Service
 {
     public static class ActiveUsersDictionary
     {
-        private static Dictionary<int, OperationContext> activeUsers = new Dictionary<int, OperationContext>();
+        private static Dictionary<int, OperationContext> activeUsersDictionary = new Dictionary<int, OperationContext>();
         public static void RegisterNewActiveUserInDictionary(int idUser, OperationContext channel)
         {            
-            if (idUser != 0 && channel != null && !activeUsers.ContainsKey(idUser))
+            if (idUser != 0 && channel != null && !activeUsersDictionary.ContainsKey(idUser))
             {
-                activeUsers.Add(idUser, channel);
+                activeUsersDictionary.Add(idUser, channel);
             }
         }
         public static OperationContext GetChannelCallBackActiveUser(int idUser)
         {
             if (idUser != 0)
             {
-                foreach (var item in activeUsers)
+                foreach (var item in activeUsersDictionary)
                 {
                     if (item.Key == idUser)
                     {
@@ -35,17 +35,17 @@ namespace JeopardyGame.Service
 
         public static void RemoveRegistryOfActiveUserFromDictionary(int idUser)
         {
-            if (idUser != 0 && activeUsers.ContainsKey(idUser))
+            if (idUser != 0 && activeUsersDictionary.ContainsKey(idUser))
             {
-                activeUsers.Remove(idUser);                
+                activeUsersDictionary.Remove(idUser);                
             }
         }
 
         public static void RenewAvailabityCallBack(int idUser, OperationContext channel)
         {
-            if (idUser != 0 && activeUsers.ContainsKey(idUser))
+            if (idUser != 0 && activeUsersDictionary.ContainsKey(idUser))
             {
-                activeUsers[idUser] = channel;
+                activeUsersDictionary[idUser] = channel;
             }
             else
             {
@@ -56,7 +56,7 @@ namespace JeopardyGame.Service
 
         public static Dictionary<int, OperationContext> GetActiveUsersList() 
         { 
-            return activeUsers; 
+            return activeUsersDictionary; 
         }
     }
 }

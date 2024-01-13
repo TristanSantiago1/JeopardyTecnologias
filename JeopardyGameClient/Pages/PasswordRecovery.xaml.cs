@@ -227,7 +227,6 @@ namespace JeopardyGame.Pages
                         txbCode.IsEnabled = false;
                         bttSaveUser.IsEnabled = true;
                         DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblRigthCodePassword, Window.GetWindow(this), DialogWindowManager.ERROR);
-
                     }
                     else
                     {

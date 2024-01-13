@@ -29,7 +29,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para LogInUser.xaml
     /// </summary>
-    public partial class LogInUser : System.Windows.Controls.Page, ICheckUserLivingCallback
+    public partial class LogInUser : System.Windows.Controls.Page, ICheckUserLivingServiceCallback
     {
         private const int RIGTH_CREDENTIALS = 1;
         private const int WRONG_CREDENTIALS = 0;
@@ -234,7 +234,7 @@ namespace JeopardyGame.Pages
             try
             {
                 InstanceContext context = new(this);
-                CheckUserLivingClient checkUserLivingClient = new(context);
+                CheckUserLivingServiceClient checkUserLivingClient = new(context);
                 return checkUserLivingClient.SubscribeToICheckUserLiving(user);
             }
             catch (EndpointNotFoundException ex)
@@ -312,7 +312,7 @@ namespace JeopardyGame.Pages
 
         public bool IsClientActive()
         {
-            return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
+            return ((ICheckUserLivingServiceCallback)userSingleton).IsClientActive();
         }
      
         private void HandleException(Exception ex, string errorMessage)

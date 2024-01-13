@@ -29,7 +29,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para ActiveFriends.xaml
     /// </summary>
-    public  partial class ActiveFriends : Page, INotifyUserAvailabilityCallback
+    public  partial class ActiveFriends : Page, INotifyAvailabilityServiceCallback
     {
         private LobbyPage lobbyPage;
         public const int NULL_INT_VALUE = 0;
@@ -42,7 +42,7 @@ namespace JeopardyGame.Pages
             {
                 InitializeComponent();
                 InstanceContext context = new InstanceContext(this);
-                NotifyUserAvailabilityClient userAvailabilityProxy = new(context);
+                NotifyAvailabilityServiceClient userAvailabilityProxy = new(context);
                 userAvailabilityProxy.SubscribeToAvailabityCallBackChannel(idUser);
                 txbSendEmail.MaxLength = 50;
             }
@@ -80,7 +80,7 @@ namespace JeopardyGame.Pages
             try
             {
                 InstanceContext context = new InstanceContext(this);
-                NotifyUserAvailabilityClient userAvailabilityProxy = new(context);
+                NotifyAvailabilityServiceClient userAvailabilityProxy = new(context);
                 userAvailabilityProxy.RenewNotifyAvailabityCallBack(idUser);
             }
             catch (EndpointNotFoundException ex)

@@ -57,27 +57,27 @@ namespace JeopardyGame.Data.Exceptions
             }
             catch (SecurityException ex)
             {
-                ExceptionHandler.LogException(ex,ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex,CodesDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (UnauthorizedAccessException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (ManagementException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (NullReferenceException ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(Properties.Paths.logFileName);
             }
             catch (Exception ex)
             {
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 ConfigureLogger(Properties.Paths.logFileName);
             }
             return Guid.NewGuid().ToString();

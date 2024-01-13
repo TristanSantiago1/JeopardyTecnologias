@@ -335,10 +335,10 @@ USA</value>
     <value>*Password must have at least 2 not-consecutive numbers.</value>
   </data>
   <data name="lblPassPuntSigRuleDesc" xml:space="preserve">
-    <value>*Password must have at leats 1 puntuation character: (. , ; ;)</value>
+    <value>*Password must have at leats 1 of this puntuation character (. , ; ;)</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>*Password must have at least 1 special character.</value>
+    <value>*Password must have at least 1 of this special character (!¡¿?=&amp;%$#@\-_)</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
     <value>Password :</value>

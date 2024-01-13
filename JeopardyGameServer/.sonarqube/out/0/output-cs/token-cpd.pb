@@ -1,4 +1,4 @@
-Õ
+é
 wC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\AleatoryGenerator.cs
 	namespace 	
 JeopardyGame
@@ -9,9 +9,10 @@ wC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServe
 Helpers #
 { 
 public		 
-
-class		 
-AleatoryGenerator		 #
+
+static		 
+class		 
+AleatoryGenerator		 )
 {
 
  

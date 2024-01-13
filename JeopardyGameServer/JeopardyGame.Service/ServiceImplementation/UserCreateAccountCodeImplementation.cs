@@ -31,7 +31,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 GenericClass<int> successCriteria = new()
                 {
-                    CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT,
+                    CodeEvent = CodesDictionary.SUCCESFULL_EVENT,
                     ObjectSaved = ALLOWED_VALUES
                 };
                 try
@@ -40,23 +40,23 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    successCriteria.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    successCriteria.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 return successCriteria;
             }
@@ -88,37 +88,37 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 if (newUser == null)
                 {
-                    return ExceptionDictionary.NULL_PARAEMETER;
+                    return CodesDictionary.NULL_PARAEMETER;
                 }
                 var userToVerifyList = EmailConfirmationDictionary.GetSpecificUserToConfirm(codeEntered);
                 if (userToVerifyList != null && userToVerifyList.UserName.Equals(newUser.UserName))
                 {
-                    successCriteria = ExceptionDictionary.SUCCESFULL_EVENT;
+                    successCriteria = CodesDictionary.SUCCESFULL_EVENT;
                 }
                 else
                 {
-                    successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
                 }
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return successCriteria;
         }
@@ -130,39 +130,39 @@ namespace JeopardyGame.Service.ServiceImplementation
             {
                 if (user == null)
                 {
-                    return ExceptionDictionary.NULL_PARAEMETER;
+                    return CodesDictionary.NULL_PARAEMETER;
                 }
                 string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
                 if (!string.IsNullOrEmpty(code))
                 {                    
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(code);
                     AddUserToDictionary(user);
-                    successCriteria = ExceptionDictionary.SUCCESFULL_EVENT;
+                    successCriteria = CodesDictionary.SUCCESFULL_EVENT;
                 }
                 else
                 {
-                    successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
                 }
             }
             catch (CommunicationObjectFaultedException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (TimeoutException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (CommunicationException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (InvalidOperationException ex)
             {
-                successCriteria = ExceptionDictionary.UNSUCCESFULL_EVENT;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                successCriteria = CodesDictionary.UNSUCCESFULL_EVENT;
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             return successCriteria;
         }
@@ -184,19 +184,19 @@ namespace JeopardyGame.Service.ServiceImplementation
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
         }

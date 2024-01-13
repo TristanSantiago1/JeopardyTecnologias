@@ -10,12 +10,12 @@ namespace JeopardyGame.Service.DataDictionaries
 {
     public static class ActiveGamesDictionary
     {
-        private static Dictionary<int, List<PlayerPlayingInGame>> gamesBeenPlayingDictionary = new Dictionary<int, List<PlayerPlayingInGame>>();
+        private static Dictionary<int, List<PlayerPlayingInGame>> activeGamesDictionary = new Dictionary<int, List<PlayerPlayingInGame>>();
         public static void RegisterNewGameIndDictionary(int roomCode, List<PlayerPlayingInGame> newActiveGame)
         {
-            if (roomCode != 0 && newActiveGame != null && !gamesBeenPlayingDictionary.ContainsKey(roomCode)) 
+            if (roomCode != 0 && newActiveGame != null && !activeGamesDictionary.ContainsKey(roomCode)) 
             {                
-                gamesBeenPlayingDictionary.Add(roomCode, newActiveGame);               
+                activeGamesDictionary.Add(roomCode, newActiveGame);               
             }
         }
 
@@ -23,7 +23,7 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             if (roomCode != 0)
             {
-                foreach (var item in gamesBeenPlayingDictionary)
+                foreach (var item in activeGamesDictionary)
                 {
                     if (item.Key == roomCode)
                     {
@@ -36,17 +36,17 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static void RemoveRegistryOfGameFromDictionary(int roomCode)
         {
-            if (roomCode != 0 && gamesBeenPlayingDictionary.ContainsKey(roomCode)) 
+            if (roomCode != 0 && activeGamesDictionary.ContainsKey(roomCode)) 
             {
-                gamesBeenPlayingDictionary.Remove(roomCode);                
+                activeGamesDictionary.Remove(roomCode);                
             }
         }
 
         public static void RenewGameCallBack(int roomCode, int idUser, OperationContext channel)
         {
-            if (roomCode != 0 && idUser != 0 && channel != null && gamesBeenPlayingDictionary.ContainsKey(roomCode))
+            if (roomCode != 0 && idUser != 0 && channel != null && activeGamesDictionary.ContainsKey(roomCode))
             {
-                var listOfPlayer = gamesBeenPlayingDictionary[roomCode];
+                var listOfPlayer = activeGamesDictionary[roomCode];
                 if(listOfPlayer.Exists(pl => pl.IdUser == idUser))
                 {
                     var player = listOfPlayer.Find(pl => pl.IdUser == idUser);
@@ -60,14 +60,14 @@ namespace JeopardyGame.Service.DataDictionaries
 
         public static Dictionary<int, List<PlayerPlayingInGame>> GetActiveGamesList()
         {
-            return gamesBeenPlayingDictionary;
+            return activeGamesDictionary;
         }  
 
         public static void RearrangeTurnsForTeams(int roomCode)
         {
             if (roomCode != 0)
             {
-                foreach (var item in gamesBeenPlayingDictionary)
+                foreach (var item in activeGamesDictionary)
                 {
                     if (item.Key == roomCode)
                     {

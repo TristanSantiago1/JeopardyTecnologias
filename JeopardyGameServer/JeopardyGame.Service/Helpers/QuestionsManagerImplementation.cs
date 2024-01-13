@@ -13,7 +13,7 @@ using static JeopardyGame.Service.DataDictionaries.ActiveGamesDictionary;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    public partial class QuestionsManagerImplementation
+    public static class QuestionsManagerImplementation
     {
         private const int SPECIAL_CATEGORY = 1;
         private const int ROUND_ONE = 1;
@@ -22,7 +22,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private const int ID_LAST_QUESTION = 19;
         private const int LIMIT_OF_CARDS_FOR_ONE_ROUND = 9;
 
-        public GenericClass<List<QuestionCardInformation>> GetQuestionForBoard(int roomCode)
+        public static  GenericClass<List<QuestionCardInformation>> GetQuestionForBoard(int roomCode)
         {
             GenericClass<List<QuestionCardInformation>> resultToReturn = new GenericClass<List<QuestionCardInformation>>();
             if (!RoomCodeExist(roomCode))
@@ -30,7 +30,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 return NullParametersHandler.HandleNullParametersService(resultToReturn);
             }
             int isGameCreated = CreateGame(roomCode);
-            if (isGameCreated == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (isGameCreated == CodesDictionary.SUCCESFULL_EVENT)
             {
                 var questionCardsInformation = GetQuestionInformation();               
                 resultToReturn.ObjectSaved = questionCardsInformation.ObjectSaved;
@@ -43,7 +43,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return resultToReturn;
         }
 
-        private int CreateGame(int roomCode)
+        private static int CreateGame(int roomCode)
         {
             Game newGame = new()
             {
@@ -53,10 +53,10 @@ namespace JeopardyGame.Service.ServiceImplementation
             return GameDataOperation.SaveNewGameInDataBase(newGame).CodeEvent;
         }
 
-        private int ChoseHost()
+        private static int ChoseHost()
         {
             var idHosts = GameDataOperation.GetHostIds();
-            if (idHosts.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (idHosts.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
             {
                 int idHost = idHosts.ObjectSaved.OrderBy(h => AleatoryGenerator.GetAleatoryNumber()).First();
                 return idHost;
@@ -64,27 +64,27 @@ namespace JeopardyGame.Service.ServiceImplementation
             return idHosts.CodeEvent;
         }
 
-        private bool RoomCodeExist(int roomCode)
+        private static bool RoomCodeExist(int roomCode)
         {
-            var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);            
+            var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);            
             return (lobby != null); 
         }
 
-        private GenericClassServer<List<QuestionCardInformation>> GetQuestionInformation()
+        private static GenericClassServer<List<QuestionCardInformation>> GetQuestionInformation()
         {           
             GenericClassServer<List<QuestionCardInformation>> listOfQuestions = new GenericClassServer<List<QuestionCardInformation>>();
             GenericClassServer<List<Category>> categoriesConsulted = GameDataOperation.Get10Categories();
-            if (categoriesConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (categoriesConsulted.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
             {
                 var questionPool = GameDataOperation.GetQuestionsByCategory(categoriesConsulted.ObjectSaved);
-                if (questionPool.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                if (questionPool.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                 {
                     var answerPool = GameDataOperation.GetAwnsersOfQuestions(questionPool.ObjectSaved);
-                    if (answerPool.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                    if (answerPool.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                     {
                         listOfQuestions.ObjectSaved = OrderQuestionsInCards(questionPool.ObjectSaved);
                         listOfQuestions.ObjectSaved = OrderAnswersInCards(answerPool.ObjectSaved, listOfQuestions.ObjectSaved);
-                        listOfQuestions.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                        listOfQuestions.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                     }
                     else
                     {
@@ -103,7 +103,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return listOfQuestions;
         }
 
-        private List<QuestionCardInformation> OrderQuestionsInCards(List<Question> questionPool)
+        private static List<QuestionCardInformation> OrderQuestionsInCards(List<Question> questionPool)
         {
             List<QuestionCardInformation> questionCardInformation = new List<QuestionCardInformation>();
             int iterator = 1;
@@ -154,7 +154,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return questionCardInformation;
         }
 
-        private List<QuestionCardInformation> OrderAnswersInCards(List<Awnser> answerPool, List<QuestionCardInformation> questionCardInformation)
+        private static List<QuestionCardInformation> OrderAnswersInCards(List<Awnser> answerPool, List<QuestionCardInformation> questionCardInformation)
         {
             foreach (var questionCard in questionCardInformation)
             {
@@ -171,7 +171,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return questionCardInformation;
         }
 
-        private int SetNumberOfRound(int iterator)
+        private static int SetNumberOfRound(int iterator)
         {
             if (iterator <= LIMIT_OF_CARDS_FOR_ONE_ROUND)
             {
@@ -183,11 +183,11 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        public int RegistryGamePlayers(int roomCode, List<PlayerPlayingInGame> playerInGames)
+        public static int RegistryGamePlayers(int roomCode, List<PlayerPlayingInGame> playerInGames)
         {            
-            int result = ExceptionDictionary.SUCCESFULL_EVENT;
+            int result = CodesDictionary.SUCCESFULL_EVENT;
             var gameConsulted = GameDataOperation.GetGameByRoomCode(roomCode);
-            if (gameConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+            if (gameConsulted.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
             {
                 foreach (var player in playerInGames)
                 {
@@ -202,7 +202,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             Game = gameConsulted.ObjectSaved,
                         };
                         int isSaved = GameDataOperation.SaveGamePlayerInDataBase(gamePlayer);
-                        if (isSaved != ExceptionDictionary.SUCCESFULL_EVENT)
+                        if (isSaved != CodesDictionary.SUCCESFULL_EVENT)
                         {
                             result = isSaved;
                         }

@@ -28,7 +28,7 @@ namespace TestJeopardyServidor.TestService
                 Host_IdHost = 2
             };
             var succes = GameDataOperation.SaveNewGameInDataBase(game);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace TestJeopardyServidor.TestService
                 Host_IdHost = 1
             };
             var succes = GameDataOperation.SaveNewGameInDataBase(game);
-            Assert.Equal(ExceptionDictionary.SAVE_CHANGES_ERROR, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SAVE_CHANGES_ERROR, succes.CodeEvent);
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace TestJeopardyServidor.TestService
         {
             Game game = null;
             var succes = GameDataOperation.SaveNewGameInDataBase(game);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
 
         [Fact]
@@ -61,21 +61,21 @@ namespace TestJeopardyServidor.TestService
             };
             GameDataOperation.SaveNewGameInDataBase(game);
             var succes = GameDataOperation.GetGameByRoomCode(game.RoomCode);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetGameUnsucces()
         {
             var succes = GameDataOperation.GetGameByRoomCode(1);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetGameNull()
         {
             var succes = GameDataOperation.GetGameByRoomCode(0);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
 
 
@@ -83,7 +83,7 @@ namespace TestJeopardyServidor.TestService
         public void TestGet10CategoriesSucces()
         {
             var succes = GameDataOperation.Get10Categories();
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace TestJeopardyServidor.TestService
         {
             var categories = GameDataOperation.Get10Categories();
             var succes = GameDataOperation.GetQuestionsByCategory(categories.ObjectSaved);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -101,21 +101,21 @@ namespace TestJeopardyServidor.TestService
             var category = categories.ObjectSaved.First();
             categories.ObjectSaved.Remove(category);
             var succes = GameDataOperation.GetQuestionsByCategory(categories.ObjectSaved);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetQuestionsNull()
         {
             var succes = GameDataOperation.GetQuestionsByCategory(null);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetFinalQuestionSucces()
         {
             var succes = GameDataOperation.GetFinalQuestions();
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -124,7 +124,7 @@ namespace TestJeopardyServidor.TestService
             var categories = GameDataOperation.Get10Categories();
             var questions = GameDataOperation.GetQuestionsByCategory(categories.ObjectSaved);
             var succes = GameDataOperation.GetAwnsersOfQuestions(questions.ObjectSaved);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
@@ -135,14 +135,14 @@ namespace TestJeopardyServidor.TestService
             var question = questions.ObjectSaved.First();
             questions.ObjectSaved.Remove(question);     
             var succes = GameDataOperation.GetAwnsersOfQuestions(questions.ObjectSaved);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetAnswersNull()
         {
             var succes = GameDataOperation.GetAwnsersOfQuestions(null);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes.CodeEvent);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
         }
 
         [Fact]
@@ -188,7 +188,7 @@ namespace TestJeopardyServidor.TestService
                 Game = gameConsult.ObjectSaved
             };
             var succes = GameDataOperation.SaveGamePlayerInDataBase(player);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes);
         }
 
         [Fact]
@@ -208,14 +208,14 @@ namespace TestJeopardyServidor.TestService
                 PointsInGame = 0,
             };
             var succes = GameDataOperation.SaveGamePlayerInDataBase(player);
-            Assert.Equal(ExceptionDictionary.ARGUMENT_NULL, succes);
+            Assert.Equal(CodesDictionary.ARGUMENT_NULL, succes);
         }
 
         [Fact]
         public void TestSaveGamePlayerNull()
         {
             var succes = GameDataOperation.SaveGamePlayerInDataBase(null);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes);
         }
 
         [Fact]
@@ -253,7 +253,7 @@ namespace TestJeopardyServidor.TestService
                 PointsInGame = 69,
             };
             var succes = GameDataOperation.UpdatePlayersPoints(player);
-            Assert.Equal(ExceptionDictionary.SUCCESFULL_EVENT, succes);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes);
         }
 
         [Fact]
@@ -267,14 +267,14 @@ namespace TestJeopardyServidor.TestService
                 PointsInGame = 0,
             };
             var succes = GameDataOperation.UpdatePlayersPoints(player);
-            Assert.Equal(ExceptionDictionary.UNSUCCESFULL_EVENT, succes);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes);
         }
 
         [Fact]
         public void TestUpdatePlayerPointsNull()
         {
             var succes = GameDataOperation.UpdatePlayersPoints(null);
-            Assert.Equal(ExceptionDictionary.NULL_PARAEMETER, succes);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes);
         }
 
         [Fact]

@@ -1,7 +1,7 @@
 ×
 wC:\Users\wachi\OneDrive\Documentos\GitHub\JeopardyTecnologias\JeopardyGameServer\JeopardyGame.Data\AleatoryGenerator.cs
 
-		 #F
+		 )F
 ' 7 & +!! &## +00 &22 +d
 - B % % ( %%% %'' (-- %44 %66 .
 

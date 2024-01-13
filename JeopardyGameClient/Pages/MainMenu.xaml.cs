@@ -36,8 +36,8 @@ namespace JeopardyGame.Pages
             try
             {
                 UserSingleton userSingleton = UserSingleton.GetMainUser();
-                AvailabilityUserManagmentClient availabilityUserProxy = new();
-                availabilityUserProxy.PlayerIsAvailable(userSingleton.IdUser);
+                NotifyAvailabilityOperationsClient availabilityUserProxy = new();
+                availabilityUserProxy.UserIsAvailable(userSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
             {
@@ -73,10 +73,10 @@ namespace JeopardyGame.Pages
         {
             FriendList.CleanDictionary();
             UserSingleton currentUserSingleton = UserSingleton.GetMainUser();
-            AvailabilityUserManagmentClient userAvailabilityProxy = new();
             try
             {
-                userAvailabilityProxy.PlayerIsNotAvailable(currentUserSingleton.IdUser);
+                NotifyAvailabilityOperationsClient userAvailabilityProxy = new();
+                userAvailabilityProxy.UserIsNotAvailable(currentUserSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
             {

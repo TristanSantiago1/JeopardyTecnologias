@@ -26,7 +26,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para enterGameWithCode.xaml
     /// </summary>
-    public partial class enterGameWithCode : Page, ICheckUserLivingCallback
+    public partial class enterGameWithCode : Page, ICheckUserLivingServiceCallback
     {
         private Window windowBehind;
         UserSingleton userSingleton = UserSingleton.GetMainUser();
@@ -178,7 +178,7 @@ namespace JeopardyGame.Pages
             try
             {
                 InstanceContext context = new(this);
-                CheckUserLivingClient checkUserLivingClient = new(context);
+                CheckUserLivingServiceClient checkUserLivingClient = new(context);
                 int success = checkUserLivingClient.SubscribeToICheckUserLiving(userForGuest);
                 if(success == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
@@ -232,7 +232,7 @@ namespace JeopardyGame.Pages
 
         public bool IsClientActive()
         {
-            return ((ICheckUserLivingCallback)userSingleton).IsClientActive();
+            return ((ICheckUserLivingServiceCallback)userSingleton).IsClientActive();
         }
 
         private void HandleException(Exception ex, string errorMessage)

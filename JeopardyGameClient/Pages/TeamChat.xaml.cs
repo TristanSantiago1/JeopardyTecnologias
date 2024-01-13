@@ -24,7 +24,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para TeamChat.xaml
     /// </summary>
-    public partial class TeamChat : Page, IChatForTeamsCallback
+    public partial class TeamChat : Page, IChatForTeamsServiceCallback
     {
         private static UserSingleton userSingleton = UserSingleton.GetMainUser();
         private int idTeamMate;
@@ -36,7 +36,7 @@ namespace JeopardyGame.Pages
             this.gameBoard = game;
             this.idTeamMate = idTeam;
             InstanceContext context = new InstanceContext(this);
-            ChatForTeamsClient chatForTeamProxy = new ChatForTeamsClient(context);
+            ChatForTeamsServiceClient chatForTeamProxy = new (context);
             RegisterForCallBack(chatForTeamProxy);
         }   
 
@@ -45,7 +45,7 @@ namespace JeopardyGame.Pages
             try
             {
                 InstanceContext context = new InstanceContext(this);
-                ChatForTeamsClient chatForTeamProxy = new ChatForTeamsClient(context);
+                ChatForTeamsServiceClient chatForTeamProxy = new ChatForTeamsServiceClient(context);
                 chatForTeamProxy.RenewTeamChatCallBack(userSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
@@ -70,7 +70,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void RegisterForCallBack(ChatForTeamsClient chatForTeamProxy)
+        private void RegisterForCallBack(ChatForTeamsServiceClient chatForTeamProxy)
         {
             try
             {

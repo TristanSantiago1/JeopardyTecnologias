@@ -22,7 +22,7 @@ namespace JeopardyGame.Pages
     /// <summary>
     /// Lógica de interacción para friendManager.xaml
     /// </summary>
-    public partial class FriendManager : Page, IFriendManagerActionsCallback
+    public partial class FriendManager : Page, IFriendManagerServiceCallback
     {
         private List<FriendBasicInformation> friends;
         private List<FriendBasicInformation> friendRequests;
@@ -53,7 +53,7 @@ namespace JeopardyGame.Pages
             try
             {
                 InstanceContext context = new InstanceContext(this);
-                FriendManagerActionsClient friendActionsProxy = new FriendManagerActionsClient(context);
+                FriendManagerServiceClient friendActionsProxy = new (context);
                 friendActionsProxy.RegisterFriendManagerUser(userSingleton.IdUser);
                 GetAllTables();
             }
@@ -328,11 +328,11 @@ namespace JeopardyGame.Pages
         {      
             try
             {
-                FriendManagerActionsClient friendActionsCallBackProxy = new FriendManagerActionsClient(new InstanceContext(this));
+                FriendManagerServiceClient friendActionsCallBackProxy = new (new InstanceContext(this));
                 friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser);
 
-                FriendManagerActionOperationsClient friendActionsProxy = new();
-                var result = friendActionsProxy.BanUser(idPlayer, userSingleton.IdUser);
+                FriendManagerOperationsClient friendActionsProxy = new();
+                var result = friendActionsProxy.ReportFriend(idPlayer, userSingleton.IdUser);
                 if (result.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {                    
                     DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblSuccesReportedUser, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
@@ -368,9 +368,9 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                FriendManagerActionsClient friendActionsCallBackProxy = new FriendManagerActionsClient(new InstanceContext(this));
+                FriendManagerServiceClient friendActionsCallBackProxy = new(new InstanceContext(this));
                 friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser);
-                FriendManagerActionOperationsClient friendActionsProxy = new();
+                FriendManagerOperationsClient friendActionsProxy = new();
                 friendActionsProxy.EliminateUserFromFriends(userSingleton.IdPlayer, idUserFriendToEliminate);
                 String userName = String.Empty;
                 foreach (var item in friends)
@@ -418,10 +418,10 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                FriendManagerActionsClient friendActionsCallBackProxy = new FriendManagerActionsClient(new InstanceContext(this));
-                friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser); 
+                FriendManagerServiceClient friendActionsCallBackProxy = new (new InstanceContext(this));
+                friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser);
 
-                FriendManagerActionOperationsClient friendActionsProxy = new();
+                FriendManagerOperationsClient friendActionsProxy = new();
                 friendActionsProxy.SendFriendRequest(userSingleton.IdPlayer, idUserRequested);
                 FriendBasicInformation item = otherPeople.Find(pla => pla.IdUser == idUserRequested);
                 if (item.IdUser == idUserRequested)
@@ -456,10 +456,10 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                FriendManagerActionsClient friendActionsCallBackProxy = new FriendManagerActionsClient(new InstanceContext(this));
+                FriendManagerServiceClient friendActionsCallBackProxy = new (new InstanceContext(this));
                 friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser);
 
-                FriendManagerActionOperationsClient friendActionsProxy = new();
+                FriendManagerOperationsClient friendActionsProxy = new();
                 friendActionsProxy.AcceptFriendRequest(userSingleton.IdPlayer, idUserRequesting);
                 foreach (var item in friendRequests)
                 {
@@ -505,10 +505,10 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                FriendManagerActionsClient friendActionsCallBackProxy = new FriendManagerActionsClient(new InstanceContext(this));
+                FriendManagerServiceClient friendActionsCallBackProxy = new (new InstanceContext(this));
                 friendActionsCallBackProxy.RenewFriendManagerUserCallBack(userSingleton.IdUser);
 
-                FriendManagerActionOperationsClient friendActionsProxy = new();
+                FriendManagerOperationsClient friendActionsProxy = new();
                 friendActionsProxy.DeclineFriendRequest(userSingleton.IdPlayer, idUserRequesting);
                 foreach (var item in friendRequests)
                 {
@@ -694,8 +694,8 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                FriendManagerActionOperationsClient friendActionsProxy = new();
-                friendActionsProxy.UnregisterFriendManagerUser(userSingleton.IdUser);
+                FriendManagerOperationsClient friendActionsProxy = new();
+                friendActionsProxy.UnregisterFromFriendManager(userSingleton.IdUser);
             }
             catch (EndpointNotFoundException ex)
             {

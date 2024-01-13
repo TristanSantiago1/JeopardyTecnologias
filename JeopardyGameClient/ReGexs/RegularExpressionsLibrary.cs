@@ -7,7 +7,7 @@ namespace JeopardyGame.ReGexs
     public class RegularExpressionsLibrary
     {
         private static readonly String _AT_LEAST_TWO_NUMBERS = @"(?:.*\d.*\D.*\d)|(?:.*\D.*\d.*\D.*\d)";
-        private static readonly String _AT_LEAST_ONE_SPECIAL_CHARACTER = @"[!¡¿?=&%$#\-_]";
+        private static readonly String _AT_LEAST_ONE_SPECIAL_CHARACTER = @"[!¡¿?=&%$#@_]";
         private static readonly String _AT_LEAST_ONE_PUNTUATION_MARK = @"[.:;,]";
         private static readonly string _NAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ ]{1,30}$";
         private static readonly string _USERNAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ]{1,15}$";

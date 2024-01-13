@@ -33,49 +33,49 @@ namespace JeopardyGame.Service.ServiceImplementation
                     {
                         return NullParametersHandler.HandleNullParametersService(resultToReturn);
                     }
-                    var lobby = GameLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                    var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                     if (lobby != null)
                     {
                         if (lobby.listOfPlayerInLobby.Count < MAX_PLAYERS)
                         {
                             resultToReturn.ObjectSaved = SUCCESFUL;
-                            resultToReturn.CodeEvent = ExceptionDictionary.SUCCESFULL_EVENT;
+                            resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                         }
                         else
                         {
                             resultToReturn.ObjectSaved = ROOMCODE_IS_FULL;
-                            resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                            resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                         }
                     }
                     else
                     {
                         resultToReturn.ObjectSaved = ROOMCODE_DOES_NOT_EXIST;
-                        resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                        resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    resultToReturn.CodeEvent = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     ChannelAdministrator.HandleCommunicationIssue(idUser, ChannelAdministrator.GENERIC_COMMUNICATION_EXCEPTION);
-                    ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
             return resultToReturn;

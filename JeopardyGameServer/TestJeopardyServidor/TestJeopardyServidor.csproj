@@ -113,7 +113,11 @@
     <Compile Include="TestService\TestFixturesForDbUp.cs" />
     <Compile Include="TestService\TestFriendManagerDataOperation.cs" />
     <Compile Include="TestService\TestGameDataOperation.cs" />
+    <Compile Include="TestService\TestGetUserPlayersFixture.cs" />
+    <Compile Include="TestService\TestSaveUserOperationsFixture.cs" />
     <Compile Include="TestService\TestLoginOperations.cs" />
+    <Compile Include="TestService\TestSavePlayerOperations.cs" />
+    <Compile Include="TestService\TestUpdateUserPlayerFixture.cs" />
     <Compile Include="TestService\TestUserManagerDataOperation.cs" />
     <Compile Include="TestService\TestWithTheDataBaseDown.cs" />
   </ItemGroup>

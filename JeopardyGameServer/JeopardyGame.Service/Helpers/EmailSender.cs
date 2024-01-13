@@ -18,7 +18,7 @@ namespace JeopardyGame.Service.Helpers
             int resultToReturn;
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(bodyMessage))
             {
-                return ExceptionDictionary.NULL_PARAEMETER;
+                return CodesDictionary.NULL_PARAEMETER;
             }
             var smtpClient = new SmtpClient(Properties.Resources.smptGmail, 587)
             {
@@ -27,18 +27,17 @@ namespace JeopardyGame.Service.Helpers
                 Credentials = new NetworkCredential(Properties.Resources.JeopardyEmail, Properties.Resources.JeopardyPassword)
 
             };
-
             try
             {
                 Task success = smtpClient.SendMailAsync(new MailMessage(from: Properties.Resources.JeopardyEmail, to: email, subject, bodyMessage));
                 if (success != null)
                 {
-                    resultToReturn = ExceptionDictionary.SUCCESFULL_EVENT;
+                    resultToReturn = CodesDictionary.SUCCESFULL_EVENT;
                    
                 }
                 else
                 {
-                    resultToReturn = ExceptionDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn = CodesDictionary.UNSUCCESFULL_EVENT;
                     
                 }
             }
@@ -47,31 +46,31 @@ namespace JeopardyGame.Service.Helpers
 
                 GenericClassServer<int> result = new GenericClassServer<int>();
                 resultToReturn = ExceptionHandler.HandleExceptionDataAccesLevel(result, ex).CodeEvent;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentOutOfRangeException ex)
             {
                 GenericClassServer<int> result = new GenericClassServer<int>();
                 resultToReturn = ExceptionHandler.HandleExceptionDataAccesLevel(result, ex).CodeEvent;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (FormatException ex)
             {
                 GenericClassServer<int> result = new GenericClassServer<int>();
                 resultToReturn = ExceptionHandler.HandleExceptionDataAccesLevel(result, ex).CodeEvent;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (ArgumentException ex)
             {
                 GenericClassServer<int> result = new GenericClassServer<int>();
                 resultToReturn = ExceptionHandler.HandleExceptionDataAccesLevel(result, ex).CodeEvent;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }
             catch (SmtpException ex)
             {
                 GenericClassServer<int> result = new GenericClassServer<int>();
                 resultToReturn = ExceptionHandler.HandleExceptionDataAccesLevel(result, ex).CodeEvent;
-                ExceptionHandler.LogException(ex, ExceptionDictionary.FATAL_EXCEPTION);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
             }           
             return resultToReturn;
         }

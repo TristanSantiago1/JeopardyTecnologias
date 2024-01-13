@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JeopardyGame.Data.Exceptions
 {
-    public static class ExceptionDictionary
+    public static class CodesDictionary
     {
         private static readonly String _FATAL_EXCEPTION = "Fatal";
         private static readonly String _ERROR = "Error";

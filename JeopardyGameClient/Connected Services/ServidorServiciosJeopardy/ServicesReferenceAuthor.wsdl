@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ServicesReferenceAuthor" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="NetTcpBinding_ICheckUserLiving_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_ICheckUserLivingService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ICheckUserLivingUnsubscribe_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatForTeamsService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -16,7 +32,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IFriendManagerActionOperations_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendManagerService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -24,7 +40,71 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_ICheckUserLivingUnsubscribe_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_IFriendManagerOperations_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_INotifyAvailabilityService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_INotifyAvailabilityOperations_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyOperation_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILiveChatService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ILiveChatOperations_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameOperations_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -64,14 +144,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IChatForTeams_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IConsultFriends_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -88,30 +160,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_INotifyUserAvailability_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IAvailabilityUserManagment_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IFriendManagerActions_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IValidateUserExistance_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -120,47 +168,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyActions_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyActionsOperation_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_ILiveChat_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_ILiveChatOperations_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IGameActions_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IGameActionsOperations_policy">
+  <wsp:Policy wsu:Id="NetTcpBinding_ILobbyTeamsManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
@@ -192,38 +200,48 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="NetTcpBinding_IHeartBeat_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
+      <xsd:import schemaLocation="http://192.168.8.1:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.8.1:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.8.1:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/JeopardyGame.Data" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ICheckUserLiving_SubscribeToICheckUserLiving_InputMessage">
+  <wsdl:message name="ICheckUserLivingService_SubscribeToICheckUserLiving_InputMessage">
     <wsdl:part name="parameters" element="tns:SubscribeToICheckUserLiving" />
   </wsdl:message>
-  <wsdl:message name="ICheckUserLiving_SubscribeToICheckUserLiving_OutputMessage">
+  <wsdl:message name="ICheckUserLivingService_SubscribeToICheckUserLiving_OutputMessage">
     <wsdl:part name="parameters" element="tns:SubscribeToICheckUserLivingResponse" />
   </wsdl:message>
-  <wsdl:message name="ICheckUserLiving_RenewLivingCallBack_InputMessage">
+  <wsdl:message name="ICheckUserLivingService_RenewLivingCallBack_InputMessage">
     <wsdl:part name="parameters" element="tns:RenewLivingCallBack" />
   </wsdl:message>
-  <wsdl:message name="ICheckUserLiving_RenewLivingCallBack_OutputMessage">
+  <wsdl:message name="ICheckUserLivingService_RenewLivingCallBack_OutputMessage">
     <wsdl:part name="parameters" element="tns:RenewLivingCallBackResponse" />
   </wsdl:message>
-  <wsdl:message name="ICheckUserLiving_IsClientActive_OutputCallbackMessage">
+  <wsdl:message name="ICheckUserLivingService_IsClientActive_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:IsClientActive" />
   </wsdl:message>
-  <wsdl:message name="ICheckUserLiving_IsClientActive_InputCallbackMessage">
+  <wsdl:message name="ICheckUserLivingService_IsClientActive_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:IsClientActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICheckUserLivingUnsubscribe_UnsubscribeFromICheckUserLiving_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnsubscribeFromICheckUserLiving" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeamsService_RegisterForTeamChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterForTeamChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeamsService_RenewTeamChatCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenewTeamChatCallBack" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeamsService_RenewTeamChatCallBack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenewTeamChatCallBackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeamsService_ReceiveMessageTeamChat_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatForTeamsService_ReceiveMessageTeamChat_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChatResponse" />
   </wsdl:message>
   <wsdl:message name="IChatForTeamsOperations_SendMessageTeam_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessageTeam" />
@@ -231,32 +249,242 @@
   <wsdl:message name="IChatForTeamsOperations_UnregisterFromTeamChat_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterFromTeamChat" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_UnregisterFriendManagerUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:UnregisterFriendManagerUser" />
+  <wsdl:message name="IFriendManagerService_RegisterFriendManagerUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterFriendManagerUser" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_BanUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:BanUser" />
+  <wsdl:message name="IFriendManagerService_RegisterFriendManagerUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterFriendManagerUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_BanUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:BanUserResponse" />
+  <wsdl:message name="IFriendManagerService_RenewFriendManagerUserCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenewFriendManagerUserCallBack" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_EliminateUserFromFriends_InputMessage">
+  <wsdl:message name="IFriendManagerService_RenewFriendManagerUserCallBack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenewFriendManagerUserCallBackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseReported_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseReported" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseReported_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseReportedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseEliminationFromFriends_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseEliminationFromFriends" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseEliminationFromFriends_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseEliminationFromFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseRequestAction_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseRequestAction" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseRequestAction_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseRequestActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseNewPlayerJusJoin_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseNewPlayerJusJoin" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerService_ResponseNewPlayerJusJoin_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseNewPlayerJusJoinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerOperations_UnregisterFromFriendManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterFromFriendManager" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerOperations_ReportFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportFriend" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerOperations_ReportFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendManagerOperations_EliminateUserFromFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:EliminateUserFromFriends" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_SendFriendRequest_InputMessage">
+  <wsdl:message name="IFriendManagerOperations_SendFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:SendFriendRequest" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_AcceptFriendRequest_InputMessage">
+  <wsdl:message name="IFriendManagerOperations_AcceptFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_DeclineFriendRequest_InputMessage">
+  <wsdl:message name="IFriendManagerOperations_DeclineFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:DeclineFriendRequest" />
   </wsdl:message>
-  <wsdl:message name="IFriendManagerActionOperations_NotifyUserAboutNewPlayer_InputMessage">
+  <wsdl:message name="INotifyAvailabilityService_SubscribeToAvailabityCallBackChannel_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToAvailabityCallBackChannel" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityService_RenewNotifyAvailabityCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenewNotifyAvailabityCallBack" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityService_ResponseOfPlayerAvailability_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailability" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityService_ResponseOfPlayerAvailability_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityOperations_UserIsAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsAvailable" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityOperations_UserIsPlaying_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsPlaying" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityOperations_UserIsNotAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserIsNotAvailable" />
+  </wsdl:message>
+  <wsdl:message name="INotifyAvailabilityOperations_NotifyUserAboutNewPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:NotifyUserAboutNewPlayer" />
   </wsdl:message>
-  <wsdl:message name="ICheckUserLivingUnsubscribe_UnsubscribeFromICheckUserLiving_InputMessage">
-    <wsdl:part name="parameters" element="tns:UnsubscribeFromICheckUserLiving" />
+  <wsdl:message name="ILobbyService_CreateNewLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_CreateNewLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_JoinIntoLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinIntoLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_JoinIntoLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinIntoLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_RenewLobbyCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenewLobbyCallBack" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_RenewLobbyCallBack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenewLobbyCallBackResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_UpdateJoinedPlayerResponse_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJoinedPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_MakeTeamsResponse_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MakeTeamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_MakeTeamsResponse_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:MakeTeamsResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_UpdateTeamSide_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTeamSide" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_UpdateTeamSide_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTeamSideResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_DissolvingLobby_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DissolvingLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_NotifyQuestionsAreReady_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReady" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_NotifyQuestionsAreReady_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReadyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_NotifyGameWillStart_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyGameWillStart" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyService_NotifyGameWillStart_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyGameWillStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_GetAllCurrentPlayerInLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCurrentPlayerInLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_GetAllCurrentPlayerInLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCurrentPlayerInLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_DissolveLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:DissolveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_NotifyPlayerInLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPlayerInLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_LeaveLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:LeaveLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_EliminatePlayerFromLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminatePlayerFromLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_SelectQuestionsForGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:SelectQuestionsForGame" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyOperation_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_CreateChatForLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateChatForLobby" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_CreateChatForLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateChatForLobbyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_GetAllMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMessages" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_GetAllMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_RenewLiveChatCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenewLiveChatCallBack" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_RenewLiveChatCallBack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenewLiveChatCallBackResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_ReceiveMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatService_ReceiveMessage_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatOperations_SendMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="ILiveChatOperations_DeleteChat_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteChat" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_SubscribeToGameCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubscribeToGameCallBack" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_RenewGameCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:RenewGameCallBack" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_RenewGameCallBack_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RenewGameCallBackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationEverybodyIsPlaying" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ReceiveNotificationSomeOneLeft_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationSomeOneLeft" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ReceiveNotificationAboutTurn_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurn" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ReceiveNotificationAboutTurn_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ResponseSomeOneSelectAQuestion_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseSomeOneSelectAQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseSomeOneChooseAnAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ResponseBeginRound_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseBeginRound" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ResponseShowWinner_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseShowWinner" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ResponseShowLastQuestion_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ResponseShowLastQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IGameOperations_UnSubscribeFromGameCallBack_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnSubscribeFromGameCallBack" />
+  </wsdl:message>
+  <wsdl:message name="IGameOperations_ChooseQuestionOfBoard_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChooseQuestionOfBoard" />
+  </wsdl:message>
+  <wsdl:message name="IGameOperations_ChooseAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChooseAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IGameOperations_FinishRound_InputMessage">
+    <wsdl:part name="parameters" element="tns:FinishRound" />
+  </wsdl:message>
+  <wsdl:message name="IGameOperations_ConfirmBet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmBet" />
+  </wsdl:message>
+  <wsdl:message name="IGameOperations_ConfirmLastQuestionAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmLastQuestionAnswer" />
   </wsdl:message>
   <wsdl:message name="IUserManager_SaveUser_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveUser" />
@@ -342,21 +570,6 @@
   <wsdl:message name="IUserCreateAccountCode_TakeUserOutOfDictionary_OutputMessage">
     <wsdl:part name="parameters" element="tns:TakeUserOutOfDictionaryResponse" />
   </wsdl:message>
-  <wsdl:message name="IChatForTeams_RegisterForTeamChat_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterForTeamChat" />
-  </wsdl:message>
-  <wsdl:message name="IChatForTeams_RenewTeamChatCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:RenewTeamChatCallBack" />
-  </wsdl:message>
-  <wsdl:message name="IChatForTeams_RenewTeamChatCallBack_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RenewTeamChatCallBackResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChatForTeams_ReceiveMessageTeamChat_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChat" />
-  </wsdl:message>
-  <wsdl:message name="IChatForTeams_ReceiveMessageTeamChat_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveMessageTeamChatResponse" />
-  </wsdl:message>
   <wsdl:message name="IConsultFriends_GetUserFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserFriends" />
   </wsdl:message>
@@ -411,68 +624,11 @@
   <wsdl:message name="IConsultUserInformation_GetPlayersInformation_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayersInformationResponse" />
   </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_SubscribeToAvailabityCallBackChannel_InputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribeToAvailabityCallBackChannel" />
+  <wsdl:message name="IValidateUserExistance_UserNameAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserNameAlreadyExist" />
   </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_RenewNotifyAvailabityCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:RenewNotifyAvailabityCallBack" />
-  </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_ResponseOfPlayerAvailability_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailability" />
-  </wsdl:message>
-  <wsdl:message name="INotifyUserAvailability_ResponseOfPlayerAvailability_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseOfPlayerAvailabilityResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAvailabilityUserManagment_PlayerIsAvailable_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlayerIsAvailable" />
-  </wsdl:message>
-  <wsdl:message name="IAvailabilityUserManagment_PlayerIsPlaying_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlayerIsPlaying" />
-  </wsdl:message>
-  <wsdl:message name="IAvailabilityUserManagment_PlayerIsNotAvailable_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlayerIsNotAvailable" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_RegisterFriendManagerUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterFriendManagerUser" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_RegisterFriendManagerUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterFriendManagerUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_RenewFriendManagerUserCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:RenewFriendManagerUserCallBack" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_RenewFriendManagerUserCallBack_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RenewFriendManagerUserCallBackResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseReported_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseReported" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseReported_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseReportedResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseEliminationFromFriends_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseEliminationFromFriends" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseEliminationFromFriends_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseEliminationFromFriendsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseRequestAction_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseRequestAction" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseRequestAction_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseRequestActionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseNewPlayerJusJoin_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseNewPlayerJusJoin" />
-  </wsdl:message>
-  <wsdl:message name="IFriendManagerActions_ResponseNewPlayerJusJoin_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseNewPlayerJusJoinResponse" />
-  </wsdl:message>
-  <wsdl:message name="IValidateUserExistance_UserAlreadyExist_InputMessage">
-    <wsdl:part name="parameters" element="tns:UserAlreadyExist" />
-  </wsdl:message>
-  <wsdl:message name="IValidateUserExistance_UserAlreadyExist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UserAlreadyExistResponse" />
+  <wsdl:message name="IValidateUserExistance_UserNameAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserNameAlreadyExistResponse" />
   </wsdl:message>
   <wsdl:message name="IValidateUserExistance_EmailAlreadyExist_InputMessage">
     <wsdl:part name="parameters" element="tns:EmailAlreadyExist" />
@@ -480,167 +636,11 @@
   <wsdl:message name="IValidateUserExistance_EmailAlreadyExist_OutputMessage">
     <wsdl:part name="parameters" element="tns:EmailAlreadyExistResponse" />
   </wsdl:message>
-  <wsdl:message name="ILobbyActions_CreateNewLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateNewLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_CreateNewLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateNewLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_JoinIntoLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinIntoLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_JoinIntoLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinIntoLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_RenewLobbyCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:RenewLobbyCallBack" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_RenewLobbyCallBack_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RenewLobbyCallBackResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_UpdateJoinedPlayerResponse_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:UpdateJoinedPlayerResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_MakeTeamsResponse_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:MakeTeamsResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_MakeTeamsResponse_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:MakeTeamsResponseResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_UpdateTeamSide_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:UpdateTeamSide" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_UpdateTeamSide_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:UpdateTeamSideResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_DissolvingLobby_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:DissolvingLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_NotifyQuestionsAreReady_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReady" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_NotifyQuestionsAreReady_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NotifyQuestionsAreReadyResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_NotifyGameWillStart_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NotifyGameWillStart" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActions_NotifyGameWillStart_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NotifyGameWillStartResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_GetAllCurrentPlayerInLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCurrentPlayerInLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_GetAllCurrentPlayerInLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCurrentPlayerInLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_DissolveLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:DissolveLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_NotifyPlayerInLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:NotifyPlayerInLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_LeaveLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:LeaveLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_ChangePlayerSide_InputMessage">
+  <wsdl:message name="ILobbyTeamsManager_ChangePlayerSide_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangePlayerSide" />
   </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_EliminatePlayerFromMatch_InputMessage">
-    <wsdl:part name="parameters" element="tns:EliminatePlayerFromMatch" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_MakeTeams_InputMessage">
+  <wsdl:message name="ILobbyTeamsManager_MakeTeams_InputMessage">
     <wsdl:part name="parameters" element="tns:MakeTeams" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_SelectQuestionsForGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:SelectQuestionsForGame" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyActionsOperation_StartGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:StartGame" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_CreateChatForLobby_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateChatForLobby" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_CreateChatForLobby_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateChatForLobbyResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_GetAllMessages_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllMessages" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_GetAllMessages_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllMessagesResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_RenewLiveChatCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:RenewLiveChatCallBack" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_RenewLiveChatCallBack_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RenewLiveChatCallBackResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_ReceiveMessage_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveMessage" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChat_ReceiveMessage_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveMessageResponse" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChatOperations_SendMessage_InputMessage">
-    <wsdl:part name="parameters" element="tns:SendMessage" />
-  </wsdl:message>
-  <wsdl:message name="ILiveChatOperations_DeleteChat_InputMessage">
-    <wsdl:part name="parameters" element="tns:DeleteChat" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_SubscribeToGameCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribeToGameCallBack" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_RenewGameCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:RenewGameCallBack" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_RenewGameCallBack_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RenewGameCallBackResponse" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveNotificationEverybodyIsPlaying" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ReceiveNotificationSomeOneLeft_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveNotificationSomeOneLeft" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ReceiveNotificationAboutTurn_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurn" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ReceiveNotificationAboutTurn_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ReceiveNotificationAboutTurnResponse" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseSomeOneSelectAQuestion_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseSomeOneSelectAQuestion" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseSomeOneChooseAnAnswer" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseBeginRound_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseBeginRound" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseShowWinner_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseShowWinner" />
-  </wsdl:message>
-  <wsdl:message name="IGameActions_ResponseShowLastQuestion_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ResponseShowLastQuestion" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_UnSubscribeFromGameCallBack_InputMessage">
-    <wsdl:part name="parameters" element="tns:UnSubscribeFromGameCallBack" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_ChooseQuestionOfBoard_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChooseQuestionOfBoard" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_ChooseAnswer_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChooseAnswer" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_FinishRound_InputMessage">
-    <wsdl:part name="parameters" element="tns:FinishRound" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_ConfirmBet_InputMessage">
-    <wsdl:part name="parameters" element="tns:ConfirmBet" />
-  </wsdl:message>
-  <wsdl:message name="IGameActionsOperations_ConfirmLastQuestionAnswer_InputMessage">
-    <wsdl:part name="parameters" element="tns:ConfirmLastQuestionAnswer" />
   </wsdl:message>
   <wsdl:message name="ILobbyCodeAuthentication_VerifyRoomCodeExist_InputMessage">
     <wsdl:part name="parameters" element="tns:VerifyRoomCodeExist" />
@@ -669,21 +669,36 @@
   <wsdl:message name="IRecoverPassword_VerifyCodeToRecoverPassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:VerifyCodeToRecoverPasswordResponse" />
   </wsdl:message>
-  <wsdl:message name="IHeartBeat_Heartbeat_InputMessage">
-    <wsdl:part name="parameters" element="tns:Heartbeat" />
-  </wsdl:message>
-  <wsdl:portType name="ICheckUserLiving">
+  <wsdl:portType name="ICheckUserLivingService">
     <wsdl:operation name="SubscribeToICheckUserLiving">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving" message="tns:ICheckUserLiving_SubscribeToICheckUserLiving_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLivingResponse" message="tns:ICheckUserLiving_SubscribeToICheckUserLiving_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLivingService/SubscribeToICheckUserLiving" message="tns:ICheckUserLivingService_SubscribeToICheckUserLiving_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLivingService/SubscribeToICheckUserLivingResponse" message="tns:ICheckUserLivingService_SubscribeToICheckUserLiving_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RenewLivingCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLiving/RenewLivingCallBack" message="tns:ICheckUserLiving_RenewLivingCallBack_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLiving/RenewLivingCallBackResponse" message="tns:ICheckUserLiving_RenewLivingCallBack_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLivingService/RenewLivingCallBack" message="tns:ICheckUserLivingService_RenewLivingCallBack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLivingService/RenewLivingCallBackResponse" message="tns:ICheckUserLivingService_RenewLivingCallBack_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsClientActive">
-      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLiving/IsClientActive" message="tns:ICheckUserLiving_IsClientActive_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLiving/IsClientActiveResponse" message="tns:ICheckUserLiving_IsClientActive_InputCallbackMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICheckUserLivingService/IsClientActive" message="tns:ICheckUserLivingService_IsClientActive_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLivingService/IsClientActiveResponse" message="tns:ICheckUserLivingService_IsClientActive_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICheckUserLivingUnsubscribe">
+    <wsdl:operation name="UnsubscribeFromICheckUserLiving">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving" message="tns:ICheckUserLivingUnsubscribe_UnsubscribeFromICheckUserLiving_InputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatForTeamsService">
+    <wsdl:operation name="RegisterForTeamChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeamsService/RegisterForTeamChat" message="tns:IChatForTeamsService_RegisterForTeamChat_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewTeamChatCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeamsService/RenewTeamChatCallBack" message="tns:IChatForTeamsService_RenewTeamChatCallBack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeamsService/RenewTeamChatCallBackResponse" message="tns:IChatForTeamsService_RenewTeamChatCallBack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessageTeamChat">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeamsService/ReceiveMessageTeamChat" message="tns:IChatForTeamsService_ReceiveMessageTeamChat_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeamsService/ReceiveMessageTeamChatResponse" message="tns:IChatForTeamsService_ReceiveMessageTeamChat_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatForTeamsOperations">
@@ -694,33 +709,217 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeamsOperations/UnregisterFromTeamChat" message="tns:IChatForTeamsOperations_UnregisterFromTeamChat_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="IFriendManagerActionOperations">
-    <wsdl:operation name="UnregisterFriendManagerUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/UnregisterFriendManagerUser" message="tns:IFriendManagerActionOperations_UnregisterFriendManagerUser_InputMessage" />
+  <wsdl:portType name="IFriendManagerService">
+    <wsdl:operation name="RegisterFriendManagerUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerService/RegisterFriendManagerUser" message="tns:IFriendManagerService_RegisterFriendManagerUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerService/RegisterFriendManagerUserResponse" message="tns:IFriendManagerService_RegisterFriendManagerUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="BanUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/BanUser" message="tns:IFriendManagerActionOperations_BanUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/BanUserResponse" message="tns:IFriendManagerActionOperations_BanUser_OutputMessage" />
+    <wsdl:operation name="RenewFriendManagerUserCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerService/RenewFriendManagerUserCallBack" message="tns:IFriendManagerService_RenewFriendManagerUserCallBack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerService/RenewFriendManagerUserCallBackResponse" message="tns:IFriendManagerService_RenewFriendManagerUserCallBack_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="EliminateUserFromFriends">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/EliminateUserFromFriends" message="tns:IFriendManagerActionOperations_EliminateUserFromFriends_InputMessage" />
+    <wsdl:operation name="ResponseReported">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseReported" message="tns:IFriendManagerService_ResponseReported_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseReportedResponse" message="tns:IFriendManagerService_ResponseReported_InputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SendFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/SendFriendRequest" message="tns:IFriendManagerActionOperations_SendFriendRequest_InputMessage" />
+    <wsdl:operation name="ResponseEliminationFromFriends">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseEliminationFromFriends" message="tns:IFriendManagerService_ResponseEliminationFromFriends_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseEliminationFromFriendsResponse" message="tns:IFriendManagerService_ResponseEliminationFromFriends_InputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AcceptFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/AcceptFriendRequest" message="tns:IFriendManagerActionOperations_AcceptFriendRequest_InputMessage" />
+    <wsdl:operation name="ResponseRequestAction">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseRequestAction" message="tns:IFriendManagerService_ResponseRequestAction_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseRequestActionResponse" message="tns:IFriendManagerService_ResponseRequestAction_InputCallbackMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DeclineFriendRequest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/DeclineFriendRequest" message="tns:IFriendManagerActionOperations_DeclineFriendRequest_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="NotifyUserAboutNewPlayer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActionOperations/NotifyUserAboutNewPlayer" message="tns:IFriendManagerActionOperations_NotifyUserAboutNewPlayer_InputMessage" />
+    <wsdl:operation name="ResponseNewPlayerJusJoin">
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseNewPlayerJusJoin" message="tns:IFriendManagerService_ResponseNewPlayerJusJoin_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerService/ResponseNewPlayerJusJoinResponse" message="tns:IFriendManagerService_ResponseNewPlayerJusJoin_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="ICheckUserLivingUnsubscribe">
-    <wsdl:operation name="UnsubscribeFromICheckUserLiving">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving" message="tns:ICheckUserLivingUnsubscribe_UnsubscribeFromICheckUserLiving_InputMessage" />
+  <wsdl:portType name="IFriendManagerOperations">
+    <wsdl:operation name="UnregisterFromFriendManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerOperations/UnregisterFromFriendManager" message="tns:IFriendManagerOperations_UnregisterFromFriendManager_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerOperations/ReportFriend" message="tns:IFriendManagerOperations_ReportFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerOperations/ReportFriendResponse" message="tns:IFriendManagerOperations_ReportFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminateUserFromFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerOperations/EliminateUserFromFriends" message="tns:IFriendManagerOperations_EliminateUserFromFriends_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerOperations/SendFriendRequest" message="tns:IFriendManagerOperations_SendFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerOperations/AcceptFriendRequest" message="tns:IFriendManagerOperations_AcceptFriendRequest_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclineFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerOperations/DeclineFriendRequest" message="tns:IFriendManagerOperations_DeclineFriendRequest_InputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INotifyAvailabilityService">
+    <wsdl:operation name="SubscribeToAvailabityCallBackChannel">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityService/SubscribeToAvailabityCallBackChannel" message="tns:INotifyAvailabilityService_SubscribeToAvailabityCallBackChannel_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewNotifyAvailabityCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityService/RenewNotifyAvailabityCallBack" message="tns:INotifyAvailabilityService_RenewNotifyAvailabityCallBack_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseOfPlayerAvailability">
+      <wsdl:output wsaw:Action="http://tempuri.org/INotifyAvailabilityService/ResponseOfPlayerAvailability" message="tns:INotifyAvailabilityService_ResponseOfPlayerAvailability_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityService/ResponseOfPlayerAvailabilityResponse" message="tns:INotifyAvailabilityService_ResponseOfPlayerAvailability_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="INotifyAvailabilityOperations">
+    <wsdl:operation name="UserIsAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityOperations/UserIsAvailable" message="tns:INotifyAvailabilityOperations_UserIsAvailable_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsPlaying">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityOperations/UserIsPlaying" message="tns:INotifyAvailabilityOperations_UserIsPlaying_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserIsNotAvailable">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityOperations/UserIsNotAvailable" message="tns:INotifyAvailabilityOperations_UserIsNotAvailable_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyUserAboutNewPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/INotifyAvailabilityOperations/NotifyUserAboutNewPlayer" message="tns:INotifyAvailabilityOperations_NotifyUserAboutNewPlayer_InputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyService">
+    <wsdl:operation name="CreateNewLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/CreateNewLobby" message="tns:ILobbyService_CreateNewLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/CreateNewLobbyResponse" message="tns:ILobbyService_CreateNewLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinIntoLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/JoinIntoLobby" message="tns:ILobbyService_JoinIntoLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/JoinIntoLobbyResponse" message="tns:ILobbyService_JoinIntoLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewLobbyCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/RenewLobbyCallBack" message="tns:ILobbyService_RenewLobbyCallBack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/RenewLobbyCallBackResponse" message="tns:ILobbyService_RenewLobbyCallBack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJoinedPlayerResponse">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/UpdateJoinedPlayerResponse" message="tns:ILobbyService_UpdateJoinedPlayerResponse_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeTeamsResponse">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/MakeTeamsResponse" message="tns:ILobbyService_MakeTeamsResponse_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/MakeTeamsResponseResponse" message="tns:ILobbyService_MakeTeamsResponse_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeamSide">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/UpdateTeamSide" message="tns:ILobbyService_UpdateTeamSide_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/UpdateTeamSideResponse" message="tns:ILobbyService_UpdateTeamSide_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DissolvingLobby">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/DissolvingLobby" message="tns:ILobbyService_DissolvingLobby_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyQuestionsAreReady">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/NotifyQuestionsAreReady" message="tns:ILobbyService_NotifyQuestionsAreReady_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/NotifyQuestionsAreReadyResponse" message="tns:ILobbyService_NotifyQuestionsAreReady_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyGameWillStart">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyService/NotifyGameWillStart" message="tns:ILobbyService_NotifyGameWillStart_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyService/NotifyGameWillStartResponse" message="tns:ILobbyService_NotifyGameWillStart_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILobbyOperation">
+    <wsdl:operation name="GetAllCurrentPlayerInLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/GetAllCurrentPlayerInLobby" message="tns:ILobbyOperation_GetAllCurrentPlayerInLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyOperation/GetAllCurrentPlayerInLobbyResponse" message="tns:ILobbyOperation_GetAllCurrentPlayerInLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DissolveLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/DissolveLobby" message="tns:ILobbyOperation_DissolveLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPlayerInLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/NotifyPlayerInLobby" message="tns:ILobbyOperation_NotifyPlayerInLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LeaveLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/LeaveLobby" message="tns:ILobbyOperation_LeaveLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminatePlayerFromLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/EliminatePlayerFromLobby" message="tns:ILobbyOperation_EliminatePlayerFromLobby_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SelectQuestionsForGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/SelectQuestionsForGame" message="tns:ILobbyOperation_SelectQuestionsForGame_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyOperation/StartGame" message="tns:ILobbyOperation_StartGame_InputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILiveChatService">
+    <wsdl:operation name="CreateChatForLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatService/CreateChatForLobby" message="tns:ILiveChatService_CreateChatForLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChatService/CreateChatForLobbyResponse" message="tns:ILiveChatService_CreateChatForLobby_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessages">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatService/GetAllMessages" message="tns:ILiveChatService_GetAllMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChatService/GetAllMessagesResponse" message="tns:ILiveChatService_GetAllMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewLiveChatCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatService/RenewLiveChatCallBack" message="tns:ILiveChatService_RenewLiveChatCallBack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChatService/RenewLiveChatCallBackResponse" message="tns:ILiveChatService_RenewLiveChatCallBack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChatService/ReceiveMessage" message="tns:ILiveChatService_ReceiveMessage_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatService/ReceiveMessageResponse" message="tns:ILiveChatService_ReceiveMessage_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ILiveChatOperations">
+    <wsdl:operation name="SendMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatOperations/SendMessage" message="tns:ILiveChatOperations_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChat">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatOperations/DeleteChat" message="tns:ILiveChatOperations_DeleteChat_InputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameService">
+    <wsdl:operation name="SubscribeToGameCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/SubscribeToGameCallBack" message="tns:IGameService_SubscribeToGameCallBack_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewGameCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/RenewGameCallBack" message="tns:IGameService_RenewGameCallBack_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/RenewGameCallBackResponse" message="tns:IGameService_RenewGameCallBack_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ReceiveNotificationEverybodyIsPlaying" message="tns:IGameService_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationSomeOneLeft">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ReceiveNotificationSomeOneLeft" message="tns:IGameService_ReceiveNotificationSomeOneLeft_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationAboutTurn">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ReceiveNotificationAboutTurn" message="tns:IGameService_ReceiveNotificationAboutTurn_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/ReceiveNotificationAboutTurnResponse" message="tns:IGameService_ReceiveNotificationAboutTurn_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneSelectAQuestion">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseSomeOneSelectAQuestion" message="tns:IGameService_ResponseSomeOneSelectAQuestion_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseSomeOneChooseAnAnswer" message="tns:IGameService_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBeginRound">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseBeginRound" message="tns:IGameService_ResponseBeginRound_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowWinner">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseShowWinner" message="tns:IGameService_ResponseShowWinner_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowLastQuestion">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ResponseShowLastQuestion" message="tns:IGameService_ResponseShowLastQuestion_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameOperations">
+    <wsdl:operation name="UnSubscribeFromGameCallBack">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameOperations/UnSubscribeFromGameCallBack" message="tns:IGameOperations_UnSubscribeFromGameCallBack_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChooseQuestionOfBoard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameOperations/ChooseQuestionOfBoard" message="tns:IGameOperations_ChooseQuestionOfBoard_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChooseAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameOperations/ChooseAnswer" message="tns:IGameOperations_ChooseAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FinishRound">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameOperations/FinishRound" message="tns:IGameOperations_FinishRound_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmBet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameOperations/ConfirmBet" message="tns:IGameOperations_ConfirmBet_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmLastQuestionAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameOperations/ConfirmLastQuestionAnswer" message="tns:IGameOperations_ConfirmLastQuestionAnswer_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserManager">
@@ -787,19 +986,6 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IUserCreateAccountCode/TakeUserOutOfDictionaryResponse" message="tns:IUserCreateAccountCode_TakeUserOutOfDictionary_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="IChatForTeams">
-    <wsdl:operation name="RegisterForTeamChat">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/RegisterForTeamChat" message="tns:IChatForTeams_RegisterForTeamChat_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RenewTeamChatCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/RenewTeamChatCallBack" message="tns:IChatForTeams_RenewTeamChatCallBack_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/RenewTeamChatCallBackResponse" message="tns:IChatForTeams_RenewTeamChatCallBack_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveMessageTeamChat">
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChat" message="tns:IChatForTeams_ReceiveMessageTeamChat_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChatResponse" message="tns:IChatForTeams_ReceiveMessageTeamChat_InputCallbackMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
   <wsdl:portType name="IConsultFriends">
     <wsdl:operation name="GetUserFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IConsultFriends/GetUserFriends" message="tns:IConsultFriends_GetUserFriends_InputMessage" />
@@ -840,209 +1026,22 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IConsultUserInformation/GetPlayersInformationResponse" message="tns:IConsultUserInformation_GetPlayersInformation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="INotifyUserAvailability">
-    <wsdl:operation name="SubscribeToAvailabityCallBackChannel">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel" message="tns:INotifyUserAvailability_SubscribeToAvailabityCallBackChannel_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RenewNotifyAvailabityCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/RenewNotifyAvailabityCallBack" message="tns:INotifyUserAvailability_RenewNotifyAvailabityCallBack_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseOfPlayerAvailability">
-      <wsdl:output wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability" message="tns:INotifyUserAvailability_ResponseOfPlayerAvailability_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailabilityResponse" message="tns:INotifyUserAvailability_ResponseOfPlayerAvailability_InputCallbackMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="IAvailabilityUserManagment">
-    <wsdl:operation name="PlayerIsAvailable">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsAvailable" message="tns:IAvailabilityUserManagment_PlayerIsAvailable_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PlayerIsPlaying">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsPlaying" message="tns:IAvailabilityUserManagment_PlayerIsPlaying_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PlayerIsNotAvailable">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAvailabilityUserManagment/PlayerIsNotAvailable" message="tns:IAvailabilityUserManagment_PlayerIsNotAvailable_InputMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="IFriendManagerActions">
-    <wsdl:operation name="RegisterFriendManagerUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/RegisterFriendManagerUser" message="tns:IFriendManagerActions_RegisterFriendManagerUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/RegisterFriendManagerUserResponse" message="tns:IFriendManagerActions_RegisterFriendManagerUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RenewFriendManagerUserCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBack" message="tns:IFriendManagerActions_RenewFriendManagerUserCallBack_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBackResponse" message="tns:IFriendManagerActions_RenewFriendManagerUserCallBack_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseReported">
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseReported" message="tns:IFriendManagerActions_ResponseReported_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseReportedResponse" message="tns:IFriendManagerActions_ResponseReported_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseEliminationFromFriends">
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseEliminationFromFriends" message="tns:IFriendManagerActions_ResponseEliminationFromFriends_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseEliminationFromFriendsResponse" message="tns:IFriendManagerActions_ResponseEliminationFromFriends_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseRequestAction">
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseRequestAction" message="tns:IFriendManagerActions_ResponseRequestAction_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseRequestActionResponse" message="tns:IFriendManagerActions_ResponseRequestAction_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseNewPlayerJusJoin">
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseNewPlayerJusJoin" message="tns:IFriendManagerActions_ResponseNewPlayerJusJoin_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendManagerActions/ResponseNewPlayerJusJoinResponse" message="tns:IFriendManagerActions_ResponseNewPlayerJusJoin_InputCallbackMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
   <wsdl:portType name="IValidateUserExistance">
-    <wsdl:operation name="UserAlreadyExist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExist" message="tns:IValidateUserExistance_UserAlreadyExist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IValidateUserExistance/UserAlreadyExistResponse" message="tns:IValidateUserExistance_UserAlreadyExist_OutputMessage" />
+    <wsdl:operation name="UserNameAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IValidateUserExistance/UserNameAlreadyExist" message="tns:IValidateUserExistance_UserNameAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IValidateUserExistance/UserNameAlreadyExistResponse" message="tns:IValidateUserExistance_UserNameAlreadyExist_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="EmailAlreadyExist">
       <wsdl:input wsaw:Action="http://tempuri.org/IValidateUserExistance/EmailAlreadyExist" message="tns:IValidateUserExistance_EmailAlreadyExist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IValidateUserExistance/EmailAlreadyExistResponse" message="tns:IValidateUserExistance_EmailAlreadyExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="ILobbyActions">
-    <wsdl:operation name="CreateNewLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/CreateNewLobby" message="tns:ILobbyActions_CreateNewLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/CreateNewLobbyResponse" message="tns:ILobbyActions_CreateNewLobby_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="JoinIntoLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/JoinIntoLobby" message="tns:ILobbyActions_JoinIntoLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/JoinIntoLobbyResponse" message="tns:ILobbyActions_JoinIntoLobby_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RenewLobbyCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/RenewLobbyCallBack" message="tns:ILobbyActions_RenewLobbyCallBack_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/RenewLobbyCallBackResponse" message="tns:ILobbyActions_RenewLobbyCallBack_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateJoinedPlayerResponse">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse" message="tns:ILobbyActions_UpdateJoinedPlayerResponse_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="MakeTeamsResponse">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/MakeTeamsResponse" message="tns:ILobbyActions_MakeTeamsResponse_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/MakeTeamsResponseResponse" message="tns:ILobbyActions_MakeTeamsResponse_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdateTeamSide">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/UpdateTeamSide" message="tns:ILobbyActions_UpdateTeamSide_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/UpdateTeamSideResponse" message="tns:ILobbyActions_UpdateTeamSide_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DissolvingLobby">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/DissolvingLobby" message="tns:ILobbyActions_DissolvingLobby_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="NotifyQuestionsAreReady">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady" message="tns:ILobbyActions_NotifyQuestionsAreReady_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReadyResponse" message="tns:ILobbyActions_NotifyQuestionsAreReady_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="NotifyGameWillStart">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActions/NotifyGameWillStart" message="tns:ILobbyActions_NotifyGameWillStart_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActions/NotifyGameWillStartResponse" message="tns:ILobbyActions_NotifyGameWillStart_InputCallbackMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="ILobbyActionsOperation">
-    <wsdl:operation name="GetAllCurrentPlayerInLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobby" message="tns:ILobbyActionsOperation_GetAllCurrentPlayerInLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobbyResponse" message="tns:ILobbyActionsOperation_GetAllCurrentPlayerInLobby_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DissolveLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/DissolveLobby" message="tns:ILobbyActionsOperation_DissolveLobby_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="NotifyPlayerInLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/NotifyPlayerInLobby" message="tns:ILobbyActionsOperation_NotifyPlayerInLobby_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LeaveLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/LeaveLobby" message="tns:ILobbyActionsOperation_LeaveLobby_InputMessage" />
-    </wsdl:operation>
+  <wsdl:portType name="ILobbyTeamsManager">
     <wsdl:operation name="ChangePlayerSide">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/ChangePlayerSide" message="tns:ILobbyActionsOperation_ChangePlayerSide_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EliminatePlayerFromMatch">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/EliminatePlayerFromMatch" message="tns:ILobbyActionsOperation_EliminatePlayerFromMatch_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyTeamsManager/ChangePlayerSide" message="tns:ILobbyTeamsManager_ChangePlayerSide_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="MakeTeams">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/MakeTeams" message="tns:ILobbyActionsOperation_MakeTeams_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="SelectQuestionsForGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/SelectQuestionsForGame" message="tns:ILobbyActionsOperation_SelectQuestionsForGame_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="StartGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyActionsOperation/StartGame" message="tns:ILobbyActionsOperation_StartGame_InputMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="ILiveChat">
-    <wsdl:operation name="CreateChatForLobby">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChat/CreateChatForLobby" message="tns:ILiveChat_CreateChatForLobby_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChat/CreateChatForLobbyResponse" message="tns:ILiveChat_CreateChatForLobby_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllMessages">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChat/GetAllMessages" message="tns:ILiveChat_GetAllMessages_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChat/GetAllMessagesResponse" message="tns:ILiveChat_GetAllMessages_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RenewLiveChatCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChat/RenewLiveChatCallBack" message="tns:ILiveChat_RenewLiveChatCallBack_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChat/RenewLiveChatCallBackResponse" message="tns:ILiveChat_RenewLiveChatCallBack_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveMessage">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILiveChat/ReceiveMessage" message="tns:ILiveChat_ReceiveMessage_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChat/ReceiveMessageResponse" message="tns:ILiveChat_ReceiveMessage_InputCallbackMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="ILiveChatOperations">
-    <wsdl:operation name="SendMessage">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatOperations/SendMessage" message="tns:ILiveChatOperations_SendMessage_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="DeleteChat">
-      <wsdl:input wsaw:Action="http://tempuri.org/ILiveChatOperations/DeleteChat" message="tns:ILiveChatOperations_DeleteChat_InputMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="IGameActions">
-    <wsdl:operation name="SubscribeToGameCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/SubscribeToGameCallBack" message="tns:IGameActions_SubscribeToGameCallBack_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RenewGameCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/RenewGameCallBack" message="tns:IGameActions_RenewGameCallBack_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/RenewGameCallBackResponse" message="tns:IGameActions_RenewGameCallBack_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying" message="tns:IGameActions_ReceiveNotificationEverybodyIsPlaying_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveNotificationSomeOneLeft">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationSomeOneLeft" message="tns:IGameActions_ReceiveNotificationSomeOneLeft_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveNotificationAboutTurn">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn" message="tns:IGameActions_ReceiveNotificationAboutTurn_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurnResponse" message="tns:IGameActions_ReceiveNotificationAboutTurn_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseSomeOneSelectAQuestion">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion" message="tns:IGameActions_ResponseSomeOneSelectAQuestion_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer" message="tns:IGameActions_ResponseSomeOneChooseAnAnswer_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseBeginRound">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseBeginRound" message="tns:IGameActions_ResponseBeginRound_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseShowWinner">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowWinner" message="tns:IGameActions_ResponseShowWinner_OutputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ResponseShowLastQuestion">
-      <wsdl:output wsaw:Action="http://tempuri.org/IGameActions/ResponseShowLastQuestion" message="tns:IGameActions_ResponseShowLastQuestion_OutputCallbackMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:portType name="IGameActionsOperations">
-    <wsdl:operation name="UnSubscribeFromGameCallBack">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/UnSubscribeFromGameCallBack" message="tns:IGameActionsOperations_UnSubscribeFromGameCallBack_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ChooseQuestionOfBoard">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/ChooseQuestionOfBoard" message="tns:IGameActionsOperations_ChooseQuestionOfBoard_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ChooseAnswer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/ChooseAnswer" message="tns:IGameActionsOperations_ChooseAnswer_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="FinishRound">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/FinishRound" message="tns:IGameActionsOperations_FinishRound_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ConfirmBet">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/ConfirmBet" message="tns:IGameActionsOperations_ConfirmBet_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ConfirmLastQuestionAnswer">
-      <wsdl:input wsaw:Action="http://tempuri.org/IGameActionsOperations/ConfirmLastQuestionAnswer" message="tns:IGameActionsOperations_ConfirmLastQuestionAnswer_InputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyTeamsManager/MakeTeams" message="tns:ILobbyTeamsManager_MakeTeams_InputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyCodeAuthentication">
@@ -1070,16 +1069,11 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IRecoverPassword/VerifyCodeToRecoverPasswordResponse" message="tns:IRecoverPassword_VerifyCodeToRecoverPassword_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="IHeartBeat">
-    <wsdl:operation name="Heartbeat">
-      <wsdl:input wsaw:Action="http://tempuri.org/IHeartBeat/Heartbeat" message="tns:IHeartBeat_Heartbeat_InputMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="NetTcpBinding_ICheckUserLiving" type="tns:ICheckUserLiving">
-    <wsp:PolicyReference URI="#NetTcpBinding_ICheckUserLiving_policy" />
+  <wsdl:binding name="NetTcpBinding_ICheckUserLivingService" type="tns:ICheckUserLivingService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICheckUserLivingService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="SubscribeToICheckUserLiving">
-      <soap12:operation soapAction="http://tempuri.org/ICheckUserLiving/SubscribeToICheckUserLiving" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLivingService/SubscribeToICheckUserLiving" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1088,7 +1082,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RenewLivingCallBack">
-      <soap12:operation soapAction="http://tempuri.org/ICheckUserLiving/RenewLivingCallBack" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLivingService/RenewLivingCallBack" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1097,7 +1091,45 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsClientActive">
-      <soap12:operation soapAction="http://tempuri.org/ICheckUserLiving/IsClientActive" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLivingService/IsClientActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICheckUserLivingUnsubscribe" type="tns:ICheckUserLivingUnsubscribe">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICheckUserLivingUnsubscribe_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UnsubscribeFromICheckUserLiving">
+      <soap12:operation soapAction="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatForTeamsService" type="tns:IChatForTeamsService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatForTeamsService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegisterForTeamChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeamsService/RegisterForTeamChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RenewTeamChatCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeamsService/RenewTeamChatCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessageTeamChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatForTeamsService/ReceiveMessageTeamChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1122,17 +1154,75 @@
       </wsdl:input>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IFriendManagerActionOperations" type="tns:IFriendManagerActionOperations">
-    <wsp:PolicyReference URI="#NetTcpBinding_IFriendManagerActionOperations_policy" />
+  <wsdl:binding name="NetTcpBinding_IFriendManagerService" type="tns:IFriendManagerService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendManagerService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="UnregisterFriendManagerUser">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/UnregisterFriendManagerUser" style="document" />
+    <wsdl:operation name="RegisterFriendManagerUser">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerService/RegisterFriendManagerUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenewFriendManagerUserCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerService/RenewFriendManagerUserCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseReported">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerService/ResponseReported" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseEliminationFromFriends">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerService/ResponseEliminationFromFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseRequestAction">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerService/ResponseRequestAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseNewPlayerJusJoin">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerService/ResponseNewPlayerJusJoin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IFriendManagerOperations" type="tns:IFriendManagerOperations">
+    <wsp:PolicyReference URI="#NetTcpBinding_IFriendManagerOperations_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UnregisterFromFriendManager">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerOperations/UnregisterFromFriendManager" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="BanUser">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/BanUser" style="document" />
+    <wsdl:operation name="ReportFriend">
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerOperations/ReportFriend" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1141,41 +1231,372 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="EliminateUserFromFriends">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/EliminateUserFromFriends" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerOperations/EliminateUserFromFriends" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="SendFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/SendFriendRequest" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerOperations/SendFriendRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/AcceptFriendRequest" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerOperations/AcceptFriendRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="DeclineFriendRequest">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/DeclineFriendRequest" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="NotifyUserAboutNewPlayer">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActionOperations/NotifyUserAboutNewPlayer" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IFriendManagerOperations/DeclineFriendRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_ICheckUserLivingUnsubscribe" type="tns:ICheckUserLivingUnsubscribe">
-    <wsp:PolicyReference URI="#NetTcpBinding_ICheckUserLivingUnsubscribe_policy" />
+  <wsdl:binding name="NetTcpBinding_INotifyAvailabilityService" type="tns:INotifyAvailabilityService">
+    <wsp:PolicyReference URI="#NetTcpBinding_INotifyAvailabilityService_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="UnsubscribeFromICheckUserLiving">
-      <soap12:operation soapAction="http://tempuri.org/ICheckUserLivingUnsubscribe/UnsubscribeFromICheckUserLiving" style="document" />
+    <wsdl:operation name="SubscribeToAvailabityCallBackChannel">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityService/SubscribeToAvailabityCallBackChannel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RenewNotifyAvailabityCallBack">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityService/RenewNotifyAvailabityCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseOfPlayerAvailability">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityService/ResponseOfPlayerAvailability" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_INotifyAvailabilityOperations" type="tns:INotifyAvailabilityOperations">
+    <wsp:PolicyReference URI="#NetTcpBinding_INotifyAvailabilityOperations_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UserIsAvailable">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityOperations/UserIsAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsPlaying">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityOperations/UserIsPlaying" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UserIsNotAvailable">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityOperations/UserIsNotAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyUserAboutNewPlayer">
+      <soap12:operation soapAction="http://tempuri.org/INotifyAvailabilityOperations/NotifyUserAboutNewPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyService" type="tns:ILobbyService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateNewLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/CreateNewLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinIntoLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/JoinIntoLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenewLobbyCallBack">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/RenewLobbyCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJoinedPlayerResponse">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/UpdateJoinedPlayerResponse" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTeamsResponse">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/MakeTeamsResponse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTeamSide">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/UpdateTeamSide" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DissolvingLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/DissolvingLobby" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyQuestionsAreReady">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/NotifyQuestionsAreReady" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyGameWillStart">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyService/NotifyGameWillStart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILobbyOperation" type="tns:ILobbyOperation">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyOperation_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetAllCurrentPlayerInLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/GetAllCurrentPlayerInLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DissolveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/DissolveLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPlayerInLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/NotifyPlayerInLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="LeaveLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/LeaveLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="EliminatePlayerFromLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/EliminatePlayerFromLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SelectQuestionsForGame">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/SelectQuestionsForGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyOperation/StartGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILiveChatService" type="tns:ILiveChatService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILiveChatService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateChatForLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILiveChatService/CreateChatForLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMessages">
+      <soap12:operation soapAction="http://tempuri.org/ILiveChatService/GetAllMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenewLiveChatCallBack">
+      <soap12:operation soapAction="http://tempuri.org/ILiveChatService/RenewLiveChatCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILiveChatService/ReceiveMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILiveChatOperations" type="tns:ILiveChatOperations">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILiveChatOperations_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/ILiveChatOperations/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChat">
+      <soap12:operation soapAction="http://tempuri.org/ILiveChatOperations/DeleteChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameService" type="tns:IGameService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SubscribeToGameCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/SubscribeToGameCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RenewGameCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/RenewGameCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ReceiveNotificationEverybodyIsPlaying" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationSomeOneLeft">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ReceiveNotificationSomeOneLeft" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiveNotificationAboutTurn">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ReceiveNotificationAboutTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneSelectAQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseSomeOneSelectAQuestion" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseSomeOneChooseAnAnswer" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseBeginRound">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseBeginRound" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowWinner">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseShowWinner" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResponseShowLastQuestion">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ResponseShowLastQuestion" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameOperations" type="tns:IGameOperations">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameOperations_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UnSubscribeFromGameCallBack">
+      <soap12:operation soapAction="http://tempuri.org/IGameOperations/UnSubscribeFromGameCallBack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChooseQuestionOfBoard">
+      <soap12:operation soapAction="http://tempuri.org/IGameOperations/ChooseQuestionOfBoard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ChooseAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IGameOperations/ChooseAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="FinishRound">
+      <soap12:operation soapAction="http://tempuri.org/IGameOperations/FinishRound" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmBet">
+      <soap12:operation soapAction="http://tempuri.org/IGameOperations/ConfirmBet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmLastQuestionAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IGameOperations/ConfirmLastQuestionAnswer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1323,34 +1744,6 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IChatForTeams" type="tns:IChatForTeams">
-    <wsp:PolicyReference URI="#NetTcpBinding_IChatForTeams_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="RegisterForTeamChat">
-      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/RegisterForTeamChat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="RenewTeamChatCallBack">
-      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/RenewTeamChatCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveMessageTeamChat">
-      <soap12:operation soapAction="http://tempuri.org/IChatForTeams/ReceiveMessageTeamChat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IConsultFriends" type="tns:IConsultFriends">
     <wsp:PolicyReference URI="#NetTcpBinding_IConsultFriends_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -1440,116 +1833,11 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_INotifyUserAvailability" type="tns:INotifyUserAvailability">
-    <wsp:PolicyReference URI="#NetTcpBinding_INotifyUserAvailability_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="SubscribeToAvailabityCallBackChannel">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/SubscribeToAvailabityCallBackChannel" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="RenewNotifyAvailabityCallBack">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/RenewNotifyAvailabityCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseOfPlayerAvailability">
-      <soap12:operation soapAction="http://tempuri.org/INotifyUserAvailability/ResponseOfPlayerAvailability" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IAvailabilityUserManagment" type="tns:IAvailabilityUserManagment">
-    <wsp:PolicyReference URI="#NetTcpBinding_IAvailabilityUserManagment_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="PlayerIsAvailable">
-      <soap12:operation soapAction="http://tempuri.org/IAvailabilityUserManagment/PlayerIsAvailable" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="PlayerIsPlaying">
-      <soap12:operation soapAction="http://tempuri.org/IAvailabilityUserManagment/PlayerIsPlaying" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="PlayerIsNotAvailable">
-      <soap12:operation soapAction="http://tempuri.org/IAvailabilityUserManagment/PlayerIsNotAvailable" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IFriendManagerActions" type="tns:IFriendManagerActions">
-    <wsp:PolicyReference URI="#NetTcpBinding_IFriendManagerActions_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="RegisterFriendManagerUser">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/RegisterFriendManagerUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RenewFriendManagerUserCallBack">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/RenewFriendManagerUserCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseReported">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/ResponseReported" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseEliminationFromFriends">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/ResponseEliminationFromFriends" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseRequestAction">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/ResponseRequestAction" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseNewPlayerJusJoin">
-      <soap12:operation soapAction="http://tempuri.org/IFriendManagerActions/ResponseNewPlayerJusJoin" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IValidateUserExistance" type="tns:IValidateUserExistance">
     <wsp:PolicyReference URI="#NetTcpBinding_IValidateUserExistance_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="UserAlreadyExist">
-      <soap12:operation soapAction="http://tempuri.org/IValidateUserExistance/UserAlreadyExist" style="document" />
+    <wsdl:operation name="UserNameAlreadyExist">
+      <soap12:operation soapAction="http://tempuri.org/IValidateUserExistance/UserNameAlreadyExist" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1567,307 +1855,17 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_ILobbyActions" type="tns:ILobbyActions">
-    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyActions_policy" />
+  <wsdl:binding name="NetTcpBinding_ILobbyTeamsManager" type="tns:ILobbyTeamsManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyTeamsManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="CreateNewLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/CreateNewLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="JoinIntoLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/JoinIntoLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RenewLobbyCallBack">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/RenewLobbyCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateJoinedPlayerResponse">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/UpdateJoinedPlayerResponse" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="MakeTeamsResponse">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/MakeTeamsResponse" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateTeamSide">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/UpdateTeamSide" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DissolvingLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/DissolvingLobby" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="NotifyQuestionsAreReady">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/NotifyQuestionsAreReady" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="NotifyGameWillStart">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActions/NotifyGameWillStart" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_ILobbyActionsOperation" type="tns:ILobbyActionsOperation">
-    <wsp:PolicyReference URI="#NetTcpBinding_ILobbyActionsOperation_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetAllCurrentPlayerInLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/GetAllCurrentPlayerInLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="DissolveLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/DissolveLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="NotifyPlayerInLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/NotifyPlayerInLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="LeaveLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/LeaveLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="ChangePlayerSide">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/ChangePlayerSide" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="EliminatePlayerFromMatch">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/EliminatePlayerFromMatch" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ILobbyTeamsManager/ChangePlayerSide" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="MakeTeams">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/MakeTeams" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="SelectQuestionsForGame">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/SelectQuestionsForGame" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="StartGame">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyActionsOperation/StartGame" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_ILiveChat" type="tns:ILiveChat">
-    <wsp:PolicyReference URI="#NetTcpBinding_ILiveChat_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="CreateChatForLobby">
-      <soap12:operation soapAction="http://tempuri.org/ILiveChat/CreateChatForLobby" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllMessages">
-      <soap12:operation soapAction="http://tempuri.org/ILiveChat/GetAllMessages" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RenewLiveChatCallBack">
-      <soap12:operation soapAction="http://tempuri.org/ILiveChat/RenewLiveChatCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveMessage">
-      <soap12:operation soapAction="http://tempuri.org/ILiveChat/ReceiveMessage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_ILiveChatOperations" type="tns:ILiveChatOperations">
-    <wsp:PolicyReference URI="#NetTcpBinding_ILiveChatOperations_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="SendMessage">
-      <soap12:operation soapAction="http://tempuri.org/ILiveChatOperations/SendMessage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="DeleteChat">
-      <soap12:operation soapAction="http://tempuri.org/ILiveChatOperations/DeleteChat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IGameActions" type="tns:IGameActions">
-    <wsp:PolicyReference URI="#NetTcpBinding_IGameActions_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="SubscribeToGameCallBack">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/SubscribeToGameCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="RenewGameCallBack">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/RenewGameCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveNotificationEverybodyIsPlaying">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationEverybodyIsPlaying" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveNotificationSomeOneLeft">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationSomeOneLeft" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ReceiveNotificationAboutTurn">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ReceiveNotificationAboutTurn" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseSomeOneSelectAQuestion">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseSomeOneSelectAQuestion" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseSomeOneChooseAnAnswer">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseSomeOneChooseAnAnswer" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseBeginRound">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseBeginRound" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseShowWinner">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseShowWinner" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ResponseShowLastQuestion">
-      <soap12:operation soapAction="http://tempuri.org/IGameActions/ResponseShowLastQuestion" style="document" />
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IGameActionsOperations" type="tns:IGameActionsOperations">
-    <wsp:PolicyReference URI="#NetTcpBinding_IGameActionsOperations_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="UnSubscribeFromGameCallBack">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/UnSubscribeFromGameCallBack" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ChooseQuestionOfBoard">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/ChooseQuestionOfBoard" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ChooseAnswer">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/ChooseAnswer" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="FinishRound">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/FinishRound" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ConfirmBet">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/ConfirmBet" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ConfirmLastQuestionAnswer">
-      <soap12:operation soapAction="http://tempuri.org/IGameActionsOperations/ConfirmLastQuestionAnswer" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/ILobbyTeamsManager/MakeTeams" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -1927,165 +1925,155 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IHeartBeat" type="tns:IHeartBeat">
-    <wsp:PolicyReference URI="#NetTcpBinding_IHeartBeat_policy" />
-    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="Heartbeat">
-      <soap12:operation soapAction="http://tempuri.org/IHeartBeat/Heartbeat" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-  </wsdl:binding>
   <wsdl:service name="ServicesReferenceAuthor">
-    <wsdl:port name="NetTcpBinding_ICheckUserLiving" binding="tns:NetTcpBinding_ICheckUserLiving">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_ICheckUserLivingService" binding="tns:NetTcpBinding_ICheckUserLivingService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IChatForTeamsOperations" binding="tns:NetTcpBinding_IChatForTeamsOperations">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IFriendManagerActionOperations" binding="tns:NetTcpBinding_IFriendManagerActionOperations">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ICheckUserLivingUnsubscribe" binding="tns:NetTcpBinding_ICheckUserLivingUnsubscribe">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_IChatForTeamsService" binding="tns:NetTcpBinding_IChatForTeamsService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_ILogInVerification" binding="tns:NetTcpBinding_ILogInVerification">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_IChatForTeamsOperations" binding="tns:NetTcpBinding_IChatForTeamsOperations">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IEmailSenderManager" binding="tns:NetTcpBinding_IEmailSenderManager">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_IFriendManagerService" binding="tns:NetTcpBinding_IFriendManagerService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IUserCreateAccountCode" binding="tns:NetTcpBinding_IUserCreateAccountCode">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_IFriendManagerOperations" binding="tns:NetTcpBinding_IFriendManagerOperations">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IChatForTeams" binding="tns:NetTcpBinding_IChatForTeams">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_INotifyAvailabilityService" binding="tns:NetTcpBinding_INotifyAvailabilityService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IConsultFriends" binding="tns:NetTcpBinding_IConsultFriends">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_INotifyAvailabilityOperations" binding="tns:NetTcpBinding_INotifyAvailabilityOperations">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IConsultUserInformation" binding="tns:NetTcpBinding_IConsultUserInformation">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_ILobbyService" binding="tns:NetTcpBinding_ILobbyService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_INotifyUserAvailability" binding="tns:NetTcpBinding_INotifyUserAvailability">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_ILobbyOperation" binding="tns:NetTcpBinding_ILobbyOperation">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IAvailabilityUserManagment" binding="tns:NetTcpBinding_IAvailabilityUserManagment">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_ILiveChatService" binding="tns:NetTcpBinding_ILiveChatService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IFriendManagerActions" binding="tns:NetTcpBinding_IFriendManagerActions">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IValidateUserExistance" binding="tns:NetTcpBinding_IValidateUserExistance">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_ILobbyActions" binding="tns:NetTcpBinding_ILobbyActions">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_ILobbyActionsOperation" binding="tns:NetTcpBinding_ILobbyActionsOperation">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_ILiveChat" binding="tns:NetTcpBinding_ILiveChat">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILiveChatOperations" binding="tns:NetTcpBinding_ILiveChatOperations">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IGameActions" binding="tns:NetTcpBinding_IGameActions">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_IGameService" binding="tns:NetTcpBinding_IGameService">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IGameActionsOperations" binding="tns:NetTcpBinding_IGameActionsOperations">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+    <wsdl:port name="NetTcpBinding_IGameOperations" binding="tns:NetTcpBinding_IGameOperations">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILogInVerification" binding="tns:NetTcpBinding_ILogInVerification">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IEmailSenderManager" binding="tns:NetTcpBinding_IEmailSenderManager">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IUserCreateAccountCode" binding="tns:NetTcpBinding_IUserCreateAccountCode">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IConsultFriends" binding="tns:NetTcpBinding_IConsultFriends">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IConsultUserInformation" binding="tns:NetTcpBinding_IConsultUserInformation">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IValidateUserExistance" binding="tns:NetTcpBinding_IValidateUserExistance">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILobbyTeamsManager" binding="tns:NetTcpBinding_ILobbyTeamsManager">
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ILobbyCodeAuthentication" binding="tns:NetTcpBinding_ILobbyCodeAuthentication">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IGuestPlayerManager" binding="tns:NetTcpBinding_IGuestPlayerManager">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IRecoverPassword" binding="tns:NetTcpBinding_IRecoverPassword">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
+      <soap12:address location="net.tcp://192.168.8.1:8081/JeopardyGame.Service" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-    <wsdl:port name="NetTcpBinding_IHeartBeat" binding="tns:NetTcpBinding_IHeartBeat">
-      <soap12:address location="net.tcp://localhost:8081/JeopardyGame.Service" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/JeopardyGame.Service</wsa10:Address>
+        <wsa10:Address>net.tcp://192.168.8.1:8081/JeopardyGame.Service</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
