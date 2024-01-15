@@ -32,7 +32,7 @@ namespace JeopardyGame.Pages
         private const int NULL_INT_VALUE = 0;
         private const int TEAM_LEFT_SIDE = 1;
         private const int TEMA_RIGHT_SIDE = 2;
-        private int roomCode;
+        public int roomCode;
         private bool isAdminOfLobby;
         private List<PlayerInLobby> currentPlayerInLobby = new List<PlayerInLobby>();
         private UserSingleton userSingleton;
