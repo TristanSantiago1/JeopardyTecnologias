@@ -49,7 +49,7 @@ namespace JeopardyGame.Service.InterfacesSevices
     public interface IGameCallBack
     {
         [OperationContract(IsOneWay = true)]
-        void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, List<PlayerInGameDataContract> playerInGame);
+        void ReceiveNotificationEverybodyIsPlaying(int idHost, int isYourTurn, List<PlayerInGameDataContract> playerInGame);
         
         [OperationContract(IsOneWay = true)]
         void ReceiveNotificationSomeOneLeft(int isYourTurn, List<PlayerInGameDataContract> playerInGame);

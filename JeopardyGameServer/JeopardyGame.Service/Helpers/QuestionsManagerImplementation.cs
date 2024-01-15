@@ -53,7 +53,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             return GameDataOperation.SaveNewGameInDataBase(newGame).CodeEvent;
         }
 
-        private static int ChoseHost()
+        public static int ChoseHost()
         {
             var idHosts = GameDataOperation.GetHostIds();
             if (idHosts.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
@@ -73,7 +73,7 @@ namespace JeopardyGame.Service.ServiceImplementation
         private static GenericClassServer<List<QuestionCardInformation>> GetQuestionInformation()
         {           
             GenericClassServer<List<QuestionCardInformation>> listOfQuestions = new GenericClassServer<List<QuestionCardInformation>>();
-            GenericClassServer<List<Category>> categoriesConsulted = GameDataOperation.Get10Categories();
+            GenericClassServer<List<Category>> categoriesConsulted = GameDataOperation.Get6Categories();
             if (categoriesConsulted.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
             {
                 var questionPool = GameDataOperation.GetQuestionsByCategory(categoriesConsulted.ObjectSaved);

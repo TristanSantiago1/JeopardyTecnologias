@@ -19,9 +19,6 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para UserRegister.xaml
-    /// </summary>
     public partial class UserRegister : Page
     {
         private List<Label> ListBoxRules = new List<Label>();

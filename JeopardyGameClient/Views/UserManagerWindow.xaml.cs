@@ -2,9 +2,6 @@
 
 namespace JeopardyGame.Views
 {
-    /// <summary>
-    /// Lógica de interacción para UserManagerWindow.xaml
-    /// </summary>
     public partial class UserManagerWindow : Window
     {
         public UserManagerWindow()

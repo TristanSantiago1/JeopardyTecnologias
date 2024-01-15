@@ -100,7 +100,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         if (lobbyOfGame.listOfPlayerInLobby.Count == playersPlayinStatus.Count)
                         {
                             ActiveLobbiesDictionary.RemoveRegistryOfLobbyFromDictionary(roomCode);
-                            NotifyEveryBodyIsReady(playersPlayinStatus);
+                            NotifyEveryBodyIsReady(playersPlayinStatus, QuestionsManagerImplementation.ChoseHost());
                         }
                     }
                 }
@@ -127,14 +127,14 @@ namespace JeopardyGame.Service.ServiceImplementation
             }            
         }
 
-        private void NotifyEveryBodyIsReady(List<PlayerPlayingInGame> playersPlaying)
+        private void NotifyEveryBodyIsReady(List<PlayerPlayingInGame> playersPlaying, int idHost)
         {
             List<PlayerInGameDataContract> playersInGame = GameOperationsImplementation.GetPlayerInGameDataContractList(playersPlaying);
             foreach (var player in playersPlaying)
             {
                 try
                 { 
-                    player.gameCallbackChannel.GetCallbackChannel<IGameCallBack>().ReceiveNotificationEverybodyIsPlaying(true, player.TurnOfPlayer, playersInGame);
+                    player.gameCallbackChannel.GetCallbackChannel<IGameCallBack>().ReceiveNotificationEverybodyIsPlaying(idHost, player.TurnOfPlayer, playersInGame);
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
@@ -593,7 +593,15 @@ namespace JeopardyGame.Service.ServiceImplementation
                         PlayerPlayingInGame specificPlayer = playersPlaying.Find(pla => pla.IdUser == playerAnswering.IdUser);
                         if (specificPlayer != null)
                         {
-                            UpdatePlayerLastQuestionStatus(specificPlayer, isCorrect, playerAnswering, points);
+                            if (playersPlaying.Count == 4 && playersPlaying.Exists(pl => pl.SideTeam == 2))
+                            {
+                                PlayerPlayingInGame teamPlayer = playersPlaying.Find(pla => pla.IdUser != playerAnswering.IdUser && pla.SideTeam == playerAnswering.SideTeam);
+                                UpdatePlayerLastQuestionStatusForTeams( playerAnswering, points, isCorrect, specificPlayer, teamPlayer);
+                            }
+                            else
+                            {
+                                UpdatePlayerLastQuestionStatus(specificPlayer, isCorrect, playerAnswering, points);
+                            }
                             CheckIfPlayerAreActives(playersPlaying);
                             CheckAndProcessEndOfRound(playersPlaying, roomCode);
                         }
@@ -614,6 +622,22 @@ namespace JeopardyGame.Service.ServiceImplementation
                 specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
             }
             
+        }
+
+        private void UpdatePlayerLastQuestionStatusForTeams(PlayerInGameDataContract playerAnswering, int points, bool isCorrect, PlayerPlayingInGame specificPlayer, PlayerPlayingInGame playerTeamMate)
+        {
+            specificPlayer.DidAnswerLastQuestion = true;
+            if (isCorrect)
+            {
+                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+                playerTeamMate.FinalPoints = playerAnswering.CurrentPointsOfRound += points;
+
+            }
+            else
+            {
+                specificPlayer.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+                playerTeamMate.FinalPoints = playerAnswering.CurrentPointsOfRound -= points;
+            }
         }
 
         private void CheckAndProcessEndOfRound(List<PlayerPlayingInGame> playersPlaying, int roomCode)

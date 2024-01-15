@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace JeopardyGame.Views
 {
-    /// <summary>
-    /// Lógica de interacción para BannerWindow.xaml
-    /// </summary>
     public partial class BannerWindow : Window
     {
         public BannerWindow()

@@ -519,7 +519,7 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
-        public static GenericClassServer<int> UpdateUserInformation(int idUser, string editedName)
+        public static GenericClassServer<int> UpdateUserName(int idUser, string editedName)
         {
             GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
             if (string.IsNullOrEmpty(editedName) || idUser == NULL_INT_VALUE)

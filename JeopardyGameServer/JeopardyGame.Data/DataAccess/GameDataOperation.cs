@@ -139,7 +139,7 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
-        public static GenericClassServer<List<Category>> Get10Categories()
+        public static GenericClassServer<List<Category>> Get6Categories()
         {
             GenericClassServer<List<Category>> resultOfOperation = new GenericClassServer<List<Category>>();          
             try

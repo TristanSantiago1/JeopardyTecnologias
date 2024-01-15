@@ -23,9 +23,6 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para enterGameWithCode.xaml
-    /// </summary>
     public partial class enterGameWithCode : Page, ICheckUserLivingServiceCallback
     {
         private Window windowBehind;

@@ -19,9 +19,6 @@ using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para MainMenu.xaml
-    /// </summary>
     public partial class MainMenu : Page
     {
         public MainMenu()

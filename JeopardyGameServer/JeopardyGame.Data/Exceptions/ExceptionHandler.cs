@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
+using System.Threading;
 
 namespace JeopardyGame.Data.Exceptions
 {
@@ -22,13 +23,21 @@ namespace JeopardyGame.Data.Exceptions
             }
             string logMessage = $"[{DateTime.Now}] Type: {Category}\n Exception: {exception.Data + "\n"+ exception.Message} \nStackTrace: {exception.StackTrace}\n";
             SeriLogConfig logConfig = new SeriLogConfig();
-            try
+            const int MAX_TRIES = 3;
+            int retryCount = 0;
+            bool success = false;
+            while (!success && retryCount < MAX_TRIES)
             {
-                File.AppendAllText(logConfig.getPath(), logMessage);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine(ex.Message);
+                try
+                {
+                    File.AppendAllText(logConfig.getPath(), logMessage);
+                    success = true;
+                }
+                catch (IOException)
+                {
+                    Thread.Sleep(1000);
+                    retryCount++;
+                }
             }
         }
 

@@ -26,6 +26,14 @@ namespace TestJeopardyServidor.TestService
     public class TestWithTheDataBaseDown 
     {
         private readonly TestFixtureFoDbDown _databaseFixture;
+        private readonly int ID_USER1_BD = 22;
+        private readonly int ID_PLAYER1_BD = 25;
+        private readonly int ID_PLAYER2_BD = 26;
+        private readonly int ID_STATE = 1;
+        private readonly int ID_AVATAR = 1;
+        private readonly string EXISTING_USERNAME = "tris";
+        private readonly string EXISTING_EMAIL = "tris@gmial.com";
+
         public TestWithTheDataBaseDown(TestFixtureFoDbDown databaseFixture)
         {
             _databaseFixture = databaseFixture;
@@ -35,58 +43,21 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestSaveUserBbDown()
         {
-            User userTest = new User()
-            {                
-                EmailAddress = "user@gmail.com",
-                Name = "",
-                Password = "userTestPassword",
-                UserName = "userNameTest",
-            };
-            var userSucces = UserManagerDataOperation.SaveUserInDataBase(userTest);
+            var userSucces = UserManagerDataOperation.SaveUserInDataBase(_databaseFixture.userTest1);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, userSucces.CodeEvent);
         }
 
         [Fact]
         public void TestSavePlayerDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer = 0,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser,
-            };
-            State state = new State()
-            {
-                IdState = 3,
-                StateDescription = "Guest"
-            };
-            var playerSucces = UserManagerDataOperation.SavePlayerInDataBase(userTest, state, playerTest);
+            var playerSucces = UserManagerDataOperation.SavePlayerInDataBase(_databaseFixture.userTest1, _databaseFixture.stateTest, _databaseFixture.playerTest);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, playerSucces.CodeEvent);
         }
 
         [Fact]
         public void TestGetUserByIdDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "user@gmail.com",
-                Name = "",
-                Password = "userTestPassword",
-                UserName = "userNameTest",
-            };
-            var succes = UserManagerDataOperation.GetUserById(userTest.IdUser);
+            var succes = UserManagerDataOperation.GetUserById(ID_USER1_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
@@ -94,78 +65,28 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestGetUserByUserNameDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "user@gmail.com",
-                Name = "",
-                Password = "userTestPassword",
-                UserName = "userNameTest",
-            };
-            var succes = UserManagerDataOperation.GetUserByUserName(userTest.UserName);
+            var succes = UserManagerDataOperation.GetUserByUserName(EXISTING_USERNAME);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestUpdatedPlayerReportedDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser,
-            };
-            var reportedSucces = UserManagerDataOperation.UpdatePlayerReported(playerTest.IdPlayer);
+            var reportedSucces = UserManagerDataOperation.UpdatePlayerReported(ID_PLAYER1_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, reportedSucces.CodeEvent);
         }
 
         [Fact]
         public void TestGetPlayerByIdUserDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            var player = UserManagerDataOperation.GetPlayerByIdUser(userTest.IdUser);
+            var player = UserManagerDataOperation.GetPlayerByIdUser(ID_USER1_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, player.CodeEvent);
         }
 
         [Fact]
         public void TestGetPlayerByIdPlayerDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser,
-            };
-            var player = UserManagerDataOperation.GetPlayerByIdPlayer(playerTest.IdPlayer);
+            var player = UserManagerDataOperation.GetPlayerByIdPlayer(ID_PLAYER1_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, player.CodeEvent);
         }
 
@@ -173,61 +94,28 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestGetStateByIdStateDbDown()
         {
-            var stateSucces = UserManagerDataOperation.GetStateById(1);
+            var stateSucces = UserManagerDataOperation.GetStateById(ID_STATE);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, stateSucces.CodeEvent);
         }
 
         [Fact]
-        public void TestDeleteUserByIdSucces()
+        public void TestDeleteUserByIdDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            var succes = UserManagerDataOperation.DeleteUserById(userTest.IdUser);
+            var succes = UserManagerDataOperation.DeleteUserById(ID_USER1_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestUpdatePhotoPlayerDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser,
-            };
-            var succes = UserManagerDataOperation.UpdatePhotoPlayer(playerTest.IdPlayer, 1);
+            var succes = UserManagerDataOperation.UpdatePhotoPlayer(ID_PLAYER1_BD, ID_AVATAR);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestUpdateUserInformationDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            var succes = UserManagerDataOperation.UpdateUserInformation(userTest.IdUser, " ");
+            var succes = UserManagerDataOperation.UpdateUserName(ID_USER1_BD, "newName");
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
@@ -239,7 +127,7 @@ namespace TestJeopardyServidor.TestService
         }
 
         [Fact]
-        public void TestDleteAllGuestDbDown()
+        public void TestDeleteAllGuestDbDown()
         {
             var succes = UserManagerDataOperation.DeleteAllGuestUsers();
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
@@ -249,95 +137,35 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestUpdateEmailUserIdDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            var succes = UserManagerDataOperation.UpdateEmailUser(userTest.IdUser, "newEmail@gmail.com");
+            var succes = UserManagerDataOperation.UpdateEmailUser(ID_USER1_BD, "newEmail@gmail.com");
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestUpdatePasswordUserIdDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userTestPass"
-            };
-            var succes = UserManagerDataOperation.UpdatePasswordUser("userTestPass", "NewPassword");
+            var succes = UserManagerDataOperation.UpdatePasswordUser(EXISTING_USERNAME, "NewPassword");
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestConsultFriendDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 0,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer =22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser,
-            };
-            var succes = FriendsManagerDataOperation.ConsultFriendsOfPlayer(playerTest);
+            var succes = FriendsManagerDataOperation.ConsultFriendsOfPlayer(_databaseFixture.playerTest);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
-        public void TestGet20NotFriendsDbDown()
+        public void TestGetNotFriendsDbDown()
         {
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 22,
-            };
-            var succes = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerTest);
+            var succes = FriendsManagerDataOperation.GetNotFriendsPlayer(_databaseFixture.playerTest);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestDeleteFriendsRegisterDbDown()
         {
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 22,
-            };
-            Player playerTest2 = new Player()
-            {
-                IdPlayer = 23,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 23,
-            };
-            var succes = FriendsManagerDataOperation.DeleteFriendsRegister(playerTest.IdPlayer, playerTest2.IdPlayer);
+            var succes = FriendsManagerDataOperation.DeleteFriendsRegister(ID_PLAYER1_BD, ID_PLAYER2_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
@@ -345,98 +173,36 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestAcceptFriendDbDown()
         {
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 22,
-            };
-            Player playerTest2 = new Player()
-            {
-                IdPlayer = 23,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 23,
-            };
-            var succes = FriendsManagerDataOperation.AcceptFriendRequest(playerTest.IdPlayer, playerTest2.IdPlayer);
+            var succes = FriendsManagerDataOperation.AcceptFriendRequest(ID_PLAYER1_BD, ID_PLAYER2_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestSendFriendRequestDbDown()
         {
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 22,
-            };
-            Player playerTest2 = new Player()
-            {
-                IdPlayer = 23,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 23,
-            };
-            var succes = FriendsManagerDataOperation.SendFriendRequest(playerTest.IdPlayer, playerTest2.IdPlayer);
+            var succes = FriendsManagerDataOperation.SendFriendRequest(ID_PLAYER1_BD, ID_PLAYER2_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestBanPlayerDbDown()
         {
-            Player playerTest = new Player()
-            {
-                IdPlayer = 22,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = 22,
-            };
-            var succes = FriendsManagerDataOperation.BannerUser(playerTest.IdPlayer);
+            var succes = FriendsManagerDataOperation.BannerUser(ID_PLAYER1_BD);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
-
-        [Fact]
-        public void TestVerifyPassWordDbDown()
-        {
-            User userTest = new User()
-            {
-                IdUser = 22,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            string passwordEntered = "Password";
-            var succes = LoginOperations.VerifyPassword(userTest.Password, passwordEntered);
-            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, succes.CodeEvent);
-        }
+                
 
         [Fact]
         public void TestValidateEmailExistanceDbDown()
         {
-            string emailEntered = "elailThatDoesntExist@gmail.com";
-            var succes = LoginOperations.ValidateIfEmailExist(emailEntered);
+            var succes = LoginOperations.ValidateIfEmailExist(EXISTING_EMAIL);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestValidateUserNameExistanceDbDown()
         {
-            string userName = "wachiturro";
-            var succes = LoginOperations.ValidateIfUserNameExist(userName);
+            var succes = LoginOperations.ValidateIfUserNameExist(EXISTING_USERNAME);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
@@ -444,40 +210,29 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestSaveGameDbDown()
         {
-            Game game = new Game()
-            {
-                RoomCode = 22222,
-                Host_IdHost = 2
-            };
-            var succes = GameDataOperation.SaveNewGameInDataBase(game);
+            var succes = GameDataOperation.SaveNewGameInDataBase(_databaseFixture.gameTest);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetGameDbDown()
         {
-            Game game = new Game()
-            {
-                RoomCode = 222222,
-                Host_IdHost = 2
-            };
-            var succes = GameDataOperation.GetGameByRoomCode(game.RoomCode);
+            var succes = GameDataOperation.GetGameByRoomCode(_databaseFixture.gameTest.RoomCode);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
 
         [Fact]
-        public void TestGet10CategoriesDbDown()
+        public void TestGet6CategoriesDbDown()
         {
-            var succes = GameDataOperation.Get10Categories();
+            var succes = GameDataOperation.Get6Categories();
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestGetQuestionsDbDown()
         {
-            List<Category> categories = new List<Category>(){new Category() { IdCategory = 1, EnglishCategoryDescription="Biology", SpanishCategoryDescription = "Biologia"} };
-            var succes = GameDataOperation.GetQuestionsByCategory(categories);
+             var succes = GameDataOperation.GetQuestionsByCategory(_databaseFixture.categories);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
@@ -491,81 +246,21 @@ namespace TestJeopardyServidor.TestService
         [Fact]
         public void TestGetAnswersDbDown()
         {
-            List<Question> questions = new List<Question>() {new Question() { CategoryIdCategory= 1, EnglishQuestionDescription= "Whats", SpanishQuestionDescription = "que", IdQuestion = 1, RigthAwnser = "1", ValueWorth=300} };
-            var succes = GameDataOperation.GetAwnsersOfQuestions(questions);
+             var succes = GameDataOperation.GetAwnsersOfQuestions(_databaseFixture.questions);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes.CodeEvent);
         }
 
         [Fact]
         public void TestSaveGamePlayerDbDown()
         {
-            User userTest = new User()
-            {
-                IdUser = 1,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer = 1,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser
-            };
-            State state = new State()
-            {
-                IdState = 3,
-                StateDescription = "Guest"
-            };
-            Game game = new Game()
-            {
-                RoomCode = 22222,
-                Host_IdHost = 2
-            };
-            GamePlayer player = new GamePlayer()
-            {
-                Game_RoomCode = game.RoomCode,
-                PlaceInGame = 10,
-                Player_IdPlayer = playerTest.IdPlayer,
-                PointsInGame = 0,
-                Game = game
-            };
-            var succes = GameDataOperation.SaveGamePlayerInDataBase(player);
+            var succes = GameDataOperation.SaveGamePlayerInDataBase(_databaseFixture.gamePlayerTest);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes);
         }
 
         [Fact]
         public void TestUpdatePlayerPointsSucces()
         {
-            User userTest = new User()
-            {
-                IdUser = 0,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            Player playerTest = new Player()
-            {
-                IdPlayer = 0,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = userTest.IdUser,
-            };
-            GamePlayer player = new GamePlayer()
-            {
-                Game_RoomCode = 22222,
-                PlaceInGame = 10,
-                Player_IdPlayer = playerTest.IdPlayer,
-                PointsInGame = 69,
-            };
-            var succes = GameDataOperation.UpdatePlayersPoints(player);
+            var succes = GameDataOperation.UpdatePlayersPoints(_databaseFixture.gamePlayerTest);
             Assert.Equal(CodesDictionary.ENTITY_ERROR, succes);
         }
 

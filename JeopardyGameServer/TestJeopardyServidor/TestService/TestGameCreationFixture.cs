@@ -1,29 +1,37 @@
-﻿using System;
+﻿using JeopardyGame.Data.Exceptions;
+using JeopardyGame.Data;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
-using JeopardyGame.Data;
-using JeopardyGame.Data.Exceptions;
 using Xunit;
-
+using JeopardyGame.Data.DataAccess;
 
 namespace TestJeopardyServidor.TestService
 {
-    public  class TestFixturesForDbUp : IDisposable
+    public class TestGameCreationFixture : IDisposable
     {
-
-        public TestFixturesForDbUp()
+        public readonly Game gameTest;
+        public readonly Game invalidGameTest;
+        public TestGameCreationFixture()
         {
             JeopardyGame.Host.Connection.OpenConnection.GetConectionString();
+            gameTest = new Game()
+            {
+                RoomCode = 00000,
+                Host_IdHost = 2
+            };
+            invalidGameTest = new Game()
+            {
+                RoomCode = 1111111111,
+                Host_IdHost = 1
+            };
 
-            
         }
 
         public void Dispose()
@@ -32,12 +40,7 @@ namespace TestJeopardyServidor.TestService
             {
                 try
                 {
-                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteGamePlayers);
                     contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteGames00000);
-                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteGames22222);
-                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeletePlayers);
-                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteUsers);
-                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.DeleteStates);
                 }
                 catch (UpdateException ex)
                 {
@@ -66,6 +69,37 @@ namespace TestJeopardyServidor.TestService
             }
         }
 
+    }
+    public class TestGame : IClassFixture<TestGameCreationFixture>
+    {
+        private TestGameCreationFixture _fixture;
+        public TestGame(TestGameCreationFixture fixture) 
+        { 
+            _fixture = fixture;
+        }
+
+        [Fact]
+        public void TestSaveGameSucess()
+        {
+            var succes = GameDataOperation.SaveNewGameInDataBase(_fixture.gameTest);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, succes.CodeEvent);
+        }
+
+        [Fact]
+        public void TestTrySaveInvalidGame()
+        {
+            var succes = GameDataOperation.SaveNewGameInDataBase(_fixture.invalidGameTest);
+            Assert.Equal(CodesDictionary.SAVE_CHANGES_ERROR, succes.CodeEvent);
+        }
+
+        [Fact]
+        public void TestTrySaveNullGame()
+        {
+            var succes = GameDataOperation.SaveNewGameInDataBase(null);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, succes.CodeEvent);
+        }
 
     }
+
+    
 }

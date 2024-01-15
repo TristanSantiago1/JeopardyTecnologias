@@ -1,24 +1,28 @@
 ﻿using JeopardyGame.Data.Exceptions;
 using JeopardyGame.Data;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
-using JeopardyGame.Data.DataAccess;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
+using JeopardyGame.Data.DataAccess;
 
 namespace TestJeopardyServidor.TestService
 {
-    public class TestSavePlayerOperationsFixture : IDisposable
+    public class TestDeleteFixture : IDisposable
     {
-
         public readonly User userTest1;
         public readonly Player playerTest;
         public readonly State stateTest;
-        public readonly State invalidStateTest;
+        public int idUser;
+        public int idPlayer;
 
-        public TestSavePlayerOperationsFixture()
+        public TestDeleteFixture()
         {
             JeopardyGame.Host.Connection.OpenConnection.GetConectionString();
             userTest1 = new User()
@@ -29,7 +33,7 @@ namespace TestJeopardyServidor.TestService
                 Password = "PasswordTest",
                 UserName = "userNameTest"
             };
-            var idUser = UserManagerDataOperation.SaveUserInDataBase(userTest1).ObjectSaved.IdUser;
+            idUser = UserManagerDataOperation.SaveUserInDataBase(userTest1).ObjectSaved.IdUser;
             playerTest = new Player()
             {
                 IdPlayer = 0,
@@ -44,7 +48,7 @@ namespace TestJeopardyServidor.TestService
                 IdState = 3,
                 StateDescription = "Guest"
             };
-            invalidStateTest = new State();
+            idPlayer = UserManagerDataOperation.SavePlayerInDataBase(userTest1, stateTest, playerTest).ObjectSaved.IdPlayer;
         }
 
         public void Dispose()
@@ -85,42 +89,51 @@ namespace TestJeopardyServidor.TestService
         }
     }
 
-
-
-    public class TestSavePlayerOperations : IClassFixture<TestSavePlayerOperationsFixture>
+    public class TestDelete : IClassFixture<TestDeleteFixture>
     {
-        private readonly TestSavePlayerOperationsFixture _fixture;
-
-
-        public TestSavePlayerOperations(TestSavePlayerOperationsFixture fixtures)
+        private TestDeleteFixture _fixture;
+        private readonly int ID_DOES_NOT_EXIST = 1;
+        public TestDelete(TestDeleteFixture fixture) 
         {
-            _fixture = fixtures;
-        }
-
-
-        [Fact]
-        public void TestSavePlayerSucces()
-        {
-            var actualResponse = UserManagerDataOperation.SavePlayerInDataBase(_fixture.userTest1, _fixture.stateTest, _fixture.playerTest);
-            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResponse.CodeEvent);
+            _fixture = fixture;
         }
 
         [Fact]
-        public void TestAvoidSavingPlayerWithInvalidParameters()
+        public void TestDeleteUserByIdSucces()
         {
-            var playerSucces = UserManagerDataOperation.SavePlayerInDataBase(_fixture.userTest1, _fixture.invalidStateTest, _fixture.playerTest);
-            Assert.Equal(CodesDictionary.SAVE_CHANGES_ERROR, playerSucces.CodeEvent);
+            var actualResult = UserManagerDataOperation.DeleteUserById(_fixture.idUser);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
         }
 
         [Fact]
-        public void TestAvoidSavingPlayerWithNullValue()
+        public void TestDeleteNotExistanceUser()
         {
-            var playerSucces = UserManagerDataOperation.SavePlayerInDataBase(null,null,null);
-            Assert.Equal(CodesDictionary.NULL_PARAEMETER, playerSucces.CodeEvent);
+            var actualResult = UserManagerDataOperation.DeleteUserById(ID_DOES_NOT_EXIST);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
         }
 
+        [Fact]
+        public void TestDeleteNullUser()
+        {
+            var actualResult = UserManagerDataOperation.DeleteUserById(0);
+            Assert.Equal(CodesDictionary.NULL_PARAEMETER, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestDeleteAllGuestSucces()
+        {
+            var actualResult = UserManagerDataOperation.DeleteAllGuestUsers();
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestDeleteWhenThereNoGuestSucces()
+        {
+            UserManagerDataOperation.DeleteAllGuestUsers();
+            var actualResult = UserManagerDataOperation.DeleteAllGuestUsers();
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
 
     }
+
 }
-
-

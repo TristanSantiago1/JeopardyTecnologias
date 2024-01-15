@@ -338,7 +338,7 @@ USA</value>
     <value>*Password must have at leats 1 of this puntuation character (. , ; ;)</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>*Password must have at least 1 of this special character (!¡¿?=&amp;%$#@\-_)</value>
+    <value>*Password must have at least 1 of this special character (!¡¿?=&amp;%$#@)</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
     <value>Password :</value>

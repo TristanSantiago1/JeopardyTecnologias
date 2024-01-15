@@ -26,9 +26,6 @@ using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para ActiveFriends.xaml
-    /// </summary>
     public  partial class ActiveFriends : Page, INotifyAvailabilityServiceCallback
     {
         private LobbyPage lobbyPage;
@@ -184,7 +181,6 @@ namespace JeopardyGame.Pages
                 string subject = Properties.Resources.txbTitleEmailInvitation;
                 string body = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
                 SendEmailForInvitationToGame(friendEmail, subject, body);
-                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
             };
             return friendCard;
         }
@@ -226,11 +222,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
-                    {
-                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
-
-                    }
+                     DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);                    
                 }
                
             }
@@ -265,7 +257,7 @@ namespace JeopardyGame.Pages
         private void ClickSendEmailForInvitation(object sender, MouseButtonEventArgs e)
         {
             string email = txbSendEmail.Text;
-            int roomCode = GameCodeContainer.RoomCode;
+            int roomCode = lobbyPage.roomCode;
             string subject = Properties.Resources.txbTitleEmailInvitation;
             string bodyWithCode = Properties.Resources.tbxBodyInvitation + " " + $"{roomCode}";
             txbSendEmail.Text = string.Empty;
@@ -289,48 +281,10 @@ namespace JeopardyGame.Pages
                 LblWrongEmail.Visibility = Visibility.Visible;
                 return;
             }
-            LblWrongEmail.Visibility = Visibility.Collapsed;
-
-            EmailSenderManagerClient emailSenderProxy = new EmailSenderManagerClient();
-
-            try
-            {
-
-                GenericClassOfint sentEmailResult = emailSenderProxy.SentEmailForInvitation(email, subject, bodyWithCode);
-
-                if (sentEmailResult.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
-                {
-                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.tbxEmailSend, Properties.Resources.txbInfoEmailSend, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
-                }
-                else
-                {
-                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
-                    {
-                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
-                    }
-                }
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                HandleException(ex, Properties.Resources.lblEndPointNotFound);
-            }
-            catch (CommunicationObjectFaultedException ex)
-            {
-                HandleException(ex, Properties.Resources.lblComunicationException);
-            }
-            catch (TimeoutException ex)
-            {
-                HandleException(ex, Properties.Resources.lblTimeException);
-            }
-            catch (CommunicationException ex)
-            {
-                HandleException(ex, Properties.Resources.lblWithoutConection);
-            }
-            catch (SocketException ex)
-            {
-                HandleException(ex, Properties.Resources.lblFailtToEnterTheLobby);
-            }
+            LblWrongEmail.Visibility = Visibility.Collapsed;            
+            SendEmailForInvitationToGame(email, subject, bodyWithCode);                
         }
+
         private bool IsValidEmail(string email)
         {
             try

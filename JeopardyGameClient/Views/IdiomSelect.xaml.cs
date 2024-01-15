@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace JeopardyGame.Views
 {
-    /// <summary>
-    /// Lógica de interacción para IdiomSelect.xaml
-    /// </summary>
     public partial class IdiomSelect : Window
     {
         public IdiomSelect()

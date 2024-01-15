@@ -83,15 +83,15 @@
             <StackPanel x:Name="stpPlayers" Margin="7,0,4,545" Orientation="Horizontal"/>
 
 
-            <Grid x:Name="grWinnerPanel" Visibility="Hidden" Background="Transparent" Opacity="0.85" Height="408" VerticalAlignment="Top" Margin="11,139,-11,0">
+            <Canvas x:Name="grWinnerPanel" Visibility="Hidden" Background="Transparent" Opacity="0.85" Height="408" VerticalAlignment="Top" Margin="11,139,-11,0">
                 <Border x:Name="brdFirstPlaceSpot" Visibility="Hidden" Height="328" Margin="89,77,904,3" BorderBrush="Black" Width="100" Background="AliceBlue">
                     <Label Content="1" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold" />
                 </Border>
-                <Border x:Name="brdFirstPlace" Visibility="Visible" BorderBrush="Black" BorderThickness="1" Margin="10,15,821,333" Background="black" Height="auto" Width="auto"/>
+                <Border x:Name="brdFirstPlace"  Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Background="black" Height="60" Width="262"  HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="18" Canvas.Left="6"/>
                 <Border x:Name="brdSecondPlaceSpot" Visibility="Hidden" HorizontalAlignment="Left" Height="250" Margin="337,165,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100" Background="AliceBlue">
                     <Label Content="2" HorizontalAlignment="Left" Margin="29,18,0,0" VerticalAlignment="Top" FontSize="60" FontWeight="ExtraBold"/>
                 </Border>
-                <Border x:Name="brdSecondPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="247,105,584,243" Background="black" Height="auto" Width="auto"/>
+                <Border x:Name="brdSecondPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="247,105,584,243" Background="black" Height="60" Width="262"/>
                 <Border x:Name="brdtThirdPlaceSpot" Visibility="Hidden" HorizontalAlignment="Left" Height="165" Margin="623,251,0,0" BorderBrush="Black" VerticalAlignment="Top" Width="100" Background="AliceBlue">
                     <Label Content="3" HorizontalAlignment="Left" Margin="27,15,0,75" FontSize="60" FontWeight="ExtraBold" Width="49"/>
                 </Border>
@@ -100,7 +100,7 @@
                     <Label Content="4" HorizontalAlignment="Left" Margin="20,-9,0,0" Width="64" FontSize="60" FontWeight="ExtraBold" Height="86" />
                 </Border>
                 <Border x:Name="brdForthPlace" Visibility="Hidden" BorderBrush="Black" BorderThickness="1" Margin="824,276,7,72" Background="black" Height="60" Width="262"/>
-            </Grid>
+            </Canvas>
 
             <Grid x:Name ="grdPresentation" Visibility="Hidden" Margin="0,372,0,0" >
                 <Image x:Name="imgHostImage" Margin="49,21,765,13" />
@@ -120,7 +120,7 @@
             </StackPanel>
 
             <Image Source="{StaticResource LeaveGameIcon}" Margin="7,596,1049,10" MouseDown="ClickLeaveGame"/>
-           
+
             <Grid x:Name="grdChat" Margin="597,0,4,0"  Visibility="Hidden">
                 <Frame x:Name="frmChat" />
             </Grid>

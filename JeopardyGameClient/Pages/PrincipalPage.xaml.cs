@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para PrincipalPage.xaml
-    /// </summary>
     public partial class PrincipalPage : Page
     {
         public PrincipalPage()

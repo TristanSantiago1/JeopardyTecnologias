@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace JeopardyGame.Views
 {
-    /// <summary>
-    /// Lógica de interacción para EnterWithGameCode.xaml
-    /// </summary>
     public partial class EnterWithGameCode : Window
     {
         public EnterWithGameCode()

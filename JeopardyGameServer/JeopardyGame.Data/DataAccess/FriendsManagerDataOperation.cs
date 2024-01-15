@@ -21,6 +21,7 @@ namespace JeopardyGame.Data.DataAccess
         public static GenericClassServer<List<Friend>> ConsultFriendsOfPlayer(Player player) 
         {
             GenericClassServer<List<Friend>> resultOfOperation = new GenericClassServer<List<Friend>>();
+            resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
             if (player == null)
             {
                 return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
@@ -29,12 +30,12 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    
-                    var friendsOfUser = contextBD.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
-                    resultOfOperation.ObjectSaved = friendsOfUser;
-                    
+                    if (contextBD.Players.Any(pla => pla.IdPlayer == player.IdPlayer))
+                    {
+                        var friendsOfUser = contextBD.Friends.Where(Friend => Friend.Player_IdPlayer == player.IdPlayer || Friend.PlayerFriend_IdPlayer == player.IdPlayer).ToList();
+                        resultOfOperation.ObjectSaved = friendsOfUser;
                         resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
-                                                    
+                    }                                                                
                 }
             }
             catch (ArgumentNullException ex)
@@ -60,7 +61,7 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation; 
         }
 
-        public static GenericClassServer<List<Player>> Get20NotFriendsPlayer(Player player)
+        public static GenericClassServer<List<Player>> GetNotFriendsPlayer(Player player)
         {
             GenericClassServer<List<Player>> resultOfOperation = new GenericClassServer<List<Player>>();
             if (player == null)
@@ -87,15 +88,13 @@ namespace JeopardyGame.Data.DataAccess
                             }
                         }
                         idsFriends.Add(player.IdPlayer);
-                        var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer) && playerDataBase.State_idState != 3).Take(20).ToList();
-                        resultOfOperation.ObjectSaved = playersNotFriends;
-                                                   
-                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
-                        
+                        var playersNotFriends = contextBD.Players.Where(playerDataBase => !idsFriends.Contains(playerDataBase.IdPlayer) && playerDataBase.State_idState != 3).ToList();
+                        resultOfOperation.ObjectSaved = playersNotFriends;                                                   
+                        resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;                        
                     }
                     else
                     {
-                        resultOfOperation.ObjectSaved = null;
+                        resultOfOperation.ObjectSaved = new List<Player>();
                         resultOfOperation.CodeEvent = friendsOfUser.CodeEvent;
                     }                    
                 }

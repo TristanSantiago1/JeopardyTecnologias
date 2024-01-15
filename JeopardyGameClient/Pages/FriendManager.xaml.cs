@@ -19,9 +19,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para friendManager.xaml
-    /// </summary>
     public partial class FriendManager : Page, IFriendManagerServiceCallback
     {
         private List<FriendBasicInformation> friends;
