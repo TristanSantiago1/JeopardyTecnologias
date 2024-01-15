@@ -716,4 +716,7 @@ Mexico</value>
   <data name="lblConfirmLeaveRecoveryPassword" xml:space="preserve">
     <value>Are you sure you want to cancel the password reocvery?</value>
   </data>
+  <data name="lblNoCoincidenceSearchFriend" xml:space="preserve">
+    <value>Sorry, There is no coincidence with the user name entered, check it out or try it later. </value>
+  </data>
 </root>

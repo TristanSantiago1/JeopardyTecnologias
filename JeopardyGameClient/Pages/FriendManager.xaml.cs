@@ -645,8 +645,12 @@ namespace JeopardyGame.Pages
                         brdCard.Child = friendCardManagement;
                         stpFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
                     }
-                }
-            }    
+                }                
+            }
+            if (stpFrinedsManagerList.Children.Count == 0)
+            {
+                DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblNoCoincidenceSearchFriend, Window.GetWindow(this), DialogWindowManager.INFORMATION);
+            }
         }
 
         private void StartTimer()
