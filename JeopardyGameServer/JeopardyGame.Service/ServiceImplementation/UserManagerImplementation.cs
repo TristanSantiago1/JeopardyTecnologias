@@ -128,7 +128,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                var updateInformation = UserManagerDataOperation.UpdateUserInformation(idUser, editedName);
+                var updateInformation = UserManagerDataOperation.UpdateUserName(idUser, editedName);
                 if (updateInformation.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                 {
                     resultToReturn.ObjectSaved = updateInformation.ObjectSaved;

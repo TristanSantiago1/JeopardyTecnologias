@@ -109,16 +109,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BdActions.resx</DependentUpon>
     </Compile>
+    <Compile Include="TestService\TestConsultFriendsFixture.cs" />
+    <Compile Include="TestService\TestConsultGameInformationFixture.cs" />
+    <Compile Include="TestService\TestDeleteFixture.cs" />
     <Compile Include="TestService\TestFixtureFoDbDown.cs" />
-    <Compile Include="TestService\TestFixturesForDbUp.cs" />
-    <Compile Include="TestService\TestFriendManagerDataOperation.cs" />
-    <Compile Include="TestService\TestGameDataOperation.cs" />
+    <Compile Include="TestService\TestFriendInvitationFixture.cs" />
+    <Compile Include="TestService\TestGameCreationFixture.cs" />
+    <Compile Include="TestService\TestGamePlayersFixture.cs" />
     <Compile Include="TestService\TestGetUserPlayersFixture.cs" />
+    <Compile Include="TestService\TestLoginFixture.cs" />
     <Compile Include="TestService\TestSaveUserOperationsFixture.cs" />
-    <Compile Include="TestService\TestLoginOperations.cs" />
-    <Compile Include="TestService\TestSavePlayerOperations.cs" />
+    <Compile Include="TestService\TestSavePlayerFixture.cs" />
     <Compile Include="TestService\TestUpdateUserPlayerFixture.cs" />
-    <Compile Include="TestService\TestUserManagerDataOperation.cs" />
     <Compile Include="TestService\TestWithTheDataBaseDown.cs" />
   </ItemGroup>
   <ItemGroup>

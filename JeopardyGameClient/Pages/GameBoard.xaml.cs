@@ -21,11 +21,9 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para GameBoard.xaml
-    /// </summary>
     public partial class GameBoard : Page, IGameServiceCallback, IChatForTeamsServiceCallback
     {
+        private int idHost;
         private const int ROUND_ONE = 1;
         private const int ROUND_TWO = 2;
         private const int ROUND_THREE = 3;
@@ -95,11 +93,12 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public async void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, PlayerInGameDataContract[] playerInGame)
+        public async void ReceiveNotificationEverybodyIsPlaying(int idHost, int isYourTurn, PlayerInGameDataContract[] playerInGame)
         {
             try
             {
                 currentTurn = 1;
+                this.idHost = idHost;
                 yourTurn = isYourTurn;
                 playersInGame = playerInGame.ToList();
                 await  PrepareWindowAsync();
@@ -262,7 +261,7 @@ namespace JeopardyGame.Pages
 
         private async Task ShowPresentationOneAsync()
         {
-            string hostPath = GetSpecificResource.GetHosImage(1);
+            string hostPath = GetSpecificResource.GetHosImage(idHost);
             imgHostImage.Source = new BitmapImage(new Uri(hostPath, UriKind.Absolute));
             string hostName = System.IO.Path.GetFileNameWithoutExtension(hostPath);
             txbHostMessage.Text = Properties.Resources.HostRound1Presentation.Replace("*", hostName);
@@ -783,7 +782,8 @@ namespace JeopardyGame.Pages
             else
             {
                 ResaltSinglePlayerBorder(specificPlayer, userTurn);
-            }                       
+            }
+            ChangeColorOfTrunLigth();
         }
 
         private void ResaltSinglePlayerBorder(List<Border> specificPlayer, PlayerInGameDataContract userTurn)
@@ -800,7 +800,6 @@ namespace JeopardyGame.Pages
                     playerCard.MakeBoredNormal();
                 }
             }
-            ChangeColorOfTrunLigth();
         }
 
         private void ResaltTeamPlayersBorder(List<Border> specificPlayer, PlayerInGameDataContract userTurn)
@@ -898,15 +897,15 @@ namespace JeopardyGame.Pages
                 {
                     if (playersTeam1.CurrentPointsOfRound >= playerTeam2.CurrentPointsOfRound)
                     {
-                        borderTeam1.Margin = borderPositions[0].Margin;
-                        borderTeam2.Margin = borderPositions[1].Margin;
+                        borderTeam1.Margin = new Thickness(1, 1, 0, 0);
+                        borderTeam2.Margin = new Thickness(240,100,0,0);
                         pillarRectangles[0].Background = borderTeam1.Background;
                         pillarRectangles[1].Background = borderTeam2.Background;
                     }
                     else
                     {
-                        borderTeam1.Margin = borderPositions[1].Margin;
-                        borderTeam2.Margin = borderPositions[0].Margin;
+                        borderTeam1.Margin = new Thickness(1,1,0,0);
+                        borderTeam2.Margin = new Thickness(240, 100, 0, 0); 
                         pillarRectangles[1].Background = borderTeam1.Background;
                         pillarRectangles[0].Background = borderTeam2.Background;
                     }
@@ -1159,11 +1158,11 @@ namespace JeopardyGame.Pages
                 {
                     if (itsTeamGame)
                     {
-                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseOfTeamLeft, Window.GetWindow(this), DialogWindowManager.INFORMATION);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblFinishGameBecauseOfTeamLeft, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                     }
                     else
                     {
-                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationMessage, Properties.Resources.lblFinishGameBecauseJustOnePlayer, Window.GetWindow(this), DialogWindowManager.INFORMATION);
+                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblFinishGameBecauseJustOnePlayer, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                     }
                     CloseWindow();
                     return;

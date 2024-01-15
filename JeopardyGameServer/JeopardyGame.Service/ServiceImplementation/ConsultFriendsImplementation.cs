@@ -148,7 +148,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 GenericClassServer<Player> playerConsultedByIdUser = UserManagerDataOperation.GetPlayerByIdUser(userConsultedForNotFriends.IdUser);
                 if (playerConsultedByIdUser.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                 {
-                    GenericClassServer<List<Player>> playersNotFriends = FriendsManagerDataOperation.Get20NotFriendsPlayer(playerConsultedByIdUser.ObjectSaved);
+                    GenericClassServer<List<Player>> playersNotFriends = FriendsManagerDataOperation.GetNotFriendsPlayer(playerConsultedByIdUser.ObjectSaved);
                     if (playersNotFriends.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
                     {
                         resultToReturn = GatherFriendsByCondition(null, playersNotFriends.ObjectSaved, playerConsultedByIdUser.ObjectSaved, 3);

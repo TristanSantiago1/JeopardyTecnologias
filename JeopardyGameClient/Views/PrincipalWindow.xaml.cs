@@ -3,9 +3,6 @@ using System.Windows.Controls;
 
 namespace JeopardyGame.Views
 {
-    /// <summary>
-    /// Lógica de interacción para PrincipalWindow.xaml
-    /// </summary>
     public partial class PrincipalWindow : Window
     {
         public PrincipalWindow()

@@ -19,9 +19,6 @@ using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para ProfileDataConsult.xaml
-    /// </summary>
     public partial class ProfileDataConsult : Page
     {
         private Dictionary<string, int> imageIdMappings;

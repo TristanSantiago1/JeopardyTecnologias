@@ -84,7 +84,7 @@ namespace TestJeopardyServidor.TestService
         public void TestGetNotExistancePlayerByIdUser()
         {
             var actualResponse = UserManagerDataOperation.GetPlayerByIdUser(ID_THAT_DOES_NOT_EXIST);
-            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResponse.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResponse.CodeEvent);
         }
 
         [Fact]
@@ -98,7 +98,7 @@ namespace TestJeopardyServidor.TestService
         public void TestGetNotExistancePlayerByIdPlayer()
         {
             var actualResponse = UserManagerDataOperation.GetPlayerByIdUser(ID_THAT_DOES_NOT_EXIST);
-            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResponse.CodeEvent);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResponse.CodeEvent);
         }
 
         [Fact]

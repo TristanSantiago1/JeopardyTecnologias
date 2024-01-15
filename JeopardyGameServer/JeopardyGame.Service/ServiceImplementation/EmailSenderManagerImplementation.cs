@@ -136,12 +136,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                 int emailSend = EmailSender.SentEmail(user.EmailAddress, subject, bodyMessage);
                 if (emailSend == CodesDictionary.SUCCESFULL_EVENT)
                 {
-                    resultToReturn.ObjectSaved = CodesDictionary.SUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
                     resultToReturn.ObjectSaved = emailSend;
                 }
                 else
                 {
-                    resultToReturn.ObjectSaved = CodesDictionary.UNSUCCESFULL_EVENT;
+                    resultToReturn.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
                     resultToReturn.ObjectSaved = emailSend;
                 }
             }

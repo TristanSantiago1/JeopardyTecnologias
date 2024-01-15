@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeleteFrienship5354" xml:space="preserve">
+    <value>Delete from  [dbo].[Friends] where [Player_IdPlayer] = 53 AND [PlayerFriend_IdPlayer] = 54
+GO</value>
+  </data>
   <data name="DeleteGamePlayers" xml:space="preserve">
     <value>DELETE FROM [Jeopardy].[dbo].[GamePlayers] WHERE PlaceInGame = 10;</value>
   </data>
@@ -134,5 +138,20 @@
   </data>
   <data name="DeleteUsers" xml:space="preserve">
     <value>DELETE FROM [Jeopardy].[dbo].[Users] WHERE name = '';</value>
+  </data>
+  <data name="RestorePlayer25" xml:space="preserve">
+    <value>UPDATE [dbo].[Players]
+   SET [GeneralPoints] = 0
+      ,[NoReports] = 0
+      ,[State_idState] = 1
+      ,[IdAvatarActual] = 7
+ WHERE IdPlayer = 25;</value>
+  </data>
+  <data name="RestoreUser22" xml:space="preserve">
+    <value>UPDATE [dbo].[Users]
+   SET [EmailAddress] = 'tristan@gmail.com'
+      ,[Password] = '614bac48e79de791a7222dd0a68efce7ec078e19f8669d0899c9838949a68f96'
+      ,[Name] = 'tris'
+ WHERE IdUser = 22;</value>
   </data>
 </root>

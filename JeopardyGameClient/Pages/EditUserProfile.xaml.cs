@@ -27,9 +27,6 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para EditUserProfile.xaml
-    /// </summary>
     public partial class EditUserProfile : Page
     {
         String imageResource = "";

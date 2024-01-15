@@ -58,6 +58,14 @@ namespace JeopardyGame.Service.DataDictionaries
             }
         }
 
+        public static void ReplaceLobby(int roomCode, Lobby lobby)
+        {
+            if (roomCode != 0  && activeLobbiesDictionary.ContainsKey(roomCode))
+            {
+                activeLobbiesDictionary[roomCode] = lobby;
+            }
+        }
+
         public static Dictionary<int, Lobby> GetActiveLobbiesList()
         {
             return activeLobbiesDictionary;

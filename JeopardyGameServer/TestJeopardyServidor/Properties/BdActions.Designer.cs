@@ -61,6 +61,16 @@ namespace TestJeopardyServidor.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete from  [dbo].[Friends] where [Player_IdPlayer] = 53 AND [PlayerFriend_IdPlayer] = 54
+        ///GO.
+        /// </summary>
+        public static string DeleteFrienship5354 {
+            get {
+                return ResourceManager.GetString("DeleteFrienship5354", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DELETE FROM [Jeopardy].[dbo].[GamePlayers] WHERE PlaceInGame = 10;.
         /// </summary>
         public static string DeleteGamePlayers {
@@ -111,6 +121,33 @@ namespace TestJeopardyServidor.Properties {
         public static string DeleteUsers {
             get {
                 return ResourceManager.GetString("DeleteUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE [dbo].[Players]
+        ///   SET [GeneralPoints] = 0
+        ///      ,[NoReports] = 0
+        ///      ,[State_idState] = 1
+        ///      ,[IdAvatarActual] = 7
+        /// WHERE IdPlayer = 25;.
+        /// </summary>
+        public static string RestorePlayer25 {
+            get {
+                return ResourceManager.GetString("RestorePlayer25", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE [dbo].[Users]
+        ///   SET [EmailAddress] = &apos;tristan@gmail.com&apos;
+        ///      ,[Password] = &apos;614bac48e79de791a7222dd0a68efce7ec078e19f8669d0899c9838949a68f96&apos;
+        ///      ,[Name] = &apos;tris&apos;
+        /// WHERE IdUser = 22;.
+        /// </summary>
+        public static string RestoreUser22 {
+            get {
+                return ResourceManager.GetString("RestoreUser22", resourceCulture);
             }
         }
     }

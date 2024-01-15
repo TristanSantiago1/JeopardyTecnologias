@@ -2908,7 +2908,7 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
     public interface IGameServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ReceiveNotificationEverybodyIsPlaying")]
-        void ReceiveNotificationEverybodyIsPlaying(bool isEveryBodyPlaying, int isYourTurn, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
+        void ReceiveNotificationEverybodyIsPlaying(int idHost, int isYourTurn, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/ReceiveNotificationSomeOneLeft")]
         void ReceiveNotificationSomeOneLeft(int isYourTurn, JeopardyGame.ServidorServiciosJeopardy.PlayerInGameDataContract[] playerInGame);

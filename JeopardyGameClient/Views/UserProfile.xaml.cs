@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace JeopardyGame.Views
 {
-    /// <summary>
-    /// Lógica de interacción para UserProfile.xaml
-    /// </summary>
     public partial class UserProfile : Window
     {
         public UserProfile()

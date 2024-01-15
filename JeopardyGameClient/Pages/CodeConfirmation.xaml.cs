@@ -24,9 +24,6 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para CodeConfirmation.xaml
-    /// </summary>
     public partial class CodeConfirmation : Page, ICheckUserLivingServiceCallback
     {
         private UserSingleton userSingleton = UserSingleton.GetMainUser();

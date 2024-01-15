@@ -12,60 +12,50 @@ using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using Xunit;
 using System.Security.Cryptography.X509Certificates;
+using System.Data.Entity;
 
 namespace TestJeopardyServidor.TestService
 {
     public class TestUpdateUserPlayerFixture : IDisposable
     {
-        public readonly User userTest1;
-        public readonly Player playerTest;
-        public readonly State stateTest;
-        public readonly State invalidStateTest;
-        public readonly int idUserTest;
-        public readonly int idPlayerTest;
+        
 
         public TestUpdateUserPlayerFixture()
         {
             JeopardyGame.Host.Connection.OpenConnection.GetConectionString();
-            userTest1 = new User()
-            {
-                IdUser = 0,
-                EmailAddress = "userTest@gmail.com",
-                Name = "",
-                Password = "PasswordTest",
-                UserName = "userNameTest"
-            };
-            var idUser = UserManagerDataOperation.SaveUserInDataBase(userTest1).ObjectSaved.IdUser;
-            playerTest = new Player()
-            {
-                IdPlayer = 0,
-                GeneralPoints = 0,
-                IdAvatarActual = 0,
-                NoReports = 0,
-                State_idState = 3,
-                User_IdUser = idUser,
-            };
-            stateTest = new State()
-            {
-                IdState = 3,
-                StateDescription = "Guest"
-            };
-            UserManagerDataOperation.SavePlayerInDataBase(userTest1, stateTest, playerTest);
-            invalidStateTest = new State();
+            
         }
 
         public void Dispose()
         {
             using (var contextBD = new JeopardyDBContainer())
-            using (var transaction = contextBD.Database.BeginTransaction())
             {
                 try
                 {
-                   
-                        transaction.Rollback();
-                 
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.RestorePlayer25);
+                    contextBD.Database.ExecuteSqlCommand(Properties.BdActions.RestoreUser22);
                 }
-                catch (Exception ex)
+                catch (UpdateException ex)
+                {
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                }
+                catch (DbUpdateException ex)
+                {
+                    ExceptionHandler.LogException(ex.GetBaseException(), CodesDictionary.FATAL_EXCEPTION);
+                }
+                catch (ArgumentNullException ex)
+                {
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                }
+                catch (EntityException ex)
+                {
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                }
+                catch (SqlException ex)
+                {
+                    ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                }
+                catch (DbEntityValidationException ex)
                 {
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
@@ -78,12 +68,13 @@ namespace TestJeopardyServidor.TestService
         private readonly TestUpdateUserPlayerFixture _fixture;
          private readonly int ID_USER_TO_UPDATE = 22;
         private readonly int ID_PLAYER_TO_UPDATE = 25;
+        private readonly int ID_IMAGE_TO_UPDATE = 1;
         private readonly int ID_THAT_DOES_NOT_EXIST = 1;
-
+        private readonly string NEW_NAME = "newName";
+        private readonly string NEW_EMAIL = "newEmail@gmail.com";
+        private readonly string NEW_PASSWORD = "newpassword";
         private readonly string USERNAME_USER_TO_RECOVER = "tris";
         private readonly string USERNAME_DOES_NOT_EXIST = "ThisDoesntExist";
-        private readonly int ID_STATE = 1;
-        private readonly int NOT_EXISTANCE_ID_STATE = 10;
 
         public TestUpdateUserPlayerOperations(TestUpdateUserPlayerFixture fixtures)
         {
@@ -104,6 +95,76 @@ namespace TestJeopardyServidor.TestService
         public void TestUpdatedNotExistancePlayerReported()
         {
             var actualResult = UserManagerDataOperation.UpdatePlayerReported(ID_THAT_DOES_NOT_EXIST);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdatedPhotoPlayerSucces()
+        {
+            var actualResult = UserManagerDataOperation.UpdatePhotoPlayer(ID_PLAYER_TO_UPDATE, ID_IMAGE_TO_UPDATE);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdatedPhotoNotExistancePlayer()
+        {
+            var actualResult = UserManagerDataOperation.UpdatePhotoPlayer(ID_THAT_DOES_NOT_EXIST, ID_IMAGE_TO_UPDATE);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdatedNameUserSucces()
+        {
+            var actualResult = UserManagerDataOperation.UpdateUserName(ID_USER_TO_UPDATE, NEW_NAME);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdatedNamenNotExistanceUser()
+        {
+            var actualResult = UserManagerDataOperation.UpdateUserName(ID_THAT_DOES_NOT_EXIST, NEW_NAME);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdateEmailUserSucces()
+        {
+            var actualResult = UserManagerDataOperation.UpdateEmailUser(ID_USER_TO_UPDATE, NEW_EMAIL);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdateEmaiNotExistancelUser()
+        {
+            var actualResult = UserManagerDataOperation.UpdateEmailUser(ID_THAT_DOES_NOT_EXIST, NEW_EMAIL);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdatePasswordUserSucces()
+        {
+            var actualResult = UserManagerDataOperation.UpdatePasswordUser(USERNAME_USER_TO_RECOVER, NEW_PASSWORD);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestUpdatePasswordNotExistanceUser()
+        {
+            var actualResult = UserManagerDataOperation.UpdatePasswordUser(USERNAME_DOES_NOT_EXIST, NEW_PASSWORD);
+            Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestBanFriednSuccess()
+        {
+            var actualResult = FriendsManagerDataOperation.BannerUser(ID_USER_TO_UPDATE);
+            Assert.Equal(CodesDictionary.SUCCESFULL_EVENT, actualResult.CodeEvent);
+        }
+
+        [Fact]
+        public void TestBanNotExistanceFriend()
+        {
+            var actualResult = FriendsManagerDataOperation.BannerUser(ID_THAT_DOES_NOT_EXIST);
             Assert.Equal(CodesDictionary.UNSUCCESFULL_EVENT, actualResult.CodeEvent);
         }
 

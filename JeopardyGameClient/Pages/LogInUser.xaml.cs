@@ -26,9 +26,6 @@ using System.Net.Sockets;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para LogInUser.xaml
-    /// </summary>
     public partial class LogInUser : System.Windows.Controls.Page, ICheckUserLivingServiceCallback
     {
         private const int RIGTH_CREDENTIALS = 1;

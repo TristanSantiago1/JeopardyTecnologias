@@ -24,9 +24,6 @@ using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Logic of the Living Chat LiveChat.xaml
-    /// </summary>
     public partial class LiveChat : Page, ILiveChatServiceCallback
     {
         private  bool isAdmin;

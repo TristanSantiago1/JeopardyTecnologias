@@ -22,9 +22,6 @@ using System.Security.Cryptography;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para LobbyPage.xaml
-    /// </summary>
     public partial class LobbyPage : Page, ILobbyServiceCallback, ILiveChatServiceCallback, INotifyAvailabilityServiceCallback
     {
         private ActiveFriends activeUsersInstance = null;

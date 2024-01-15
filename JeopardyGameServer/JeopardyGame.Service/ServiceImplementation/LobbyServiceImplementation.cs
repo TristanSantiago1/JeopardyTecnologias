@@ -621,38 +621,43 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         public void StartGame(int roomCode)
         {
-            var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-            var questions = QuestionsForLobbyDictionary.GetSpecificSetOfQuestionsForLobby(roomCode);
-            if (lobby != null && questions != null)
+            lock(lockObject)
             {
-                foreach (var item in lobby.listOfPlayerInLobby)
+                var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
+                var questions = QuestionsForLobbyDictionary.GetSpecificSetOfQuestionsForLobby(roomCode);
+                if (lobby != null && questions != null)
                 {
-                    try
+                    var players = lobby.listOfPlayerInLobby.ToList();
+                    foreach (var item in players)
                     {
-                        item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().NotifyGameWillStart(questions.ObjectSaved);
+                        try
+                        {
+                            item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().NotifyGameWillStart(questions.ObjectSaved);
+                        }
+                        catch (CommunicationObjectFaultedException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (TimeoutException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (CommunicationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                        }
+                        catch (InvalidOperationException ex)
+                        {
+                            ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                            ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+                        }
                     }
-                    catch (CommunicationObjectFaultedException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
-                    }
-                    catch (InvalidOperationException ex)
-                    {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
-                        ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
-                    }
-                }
+                    ActiveLobbiesDictionary.ReplaceLobby(roomCode, lobby); 
 
+                }
             }
         }
 

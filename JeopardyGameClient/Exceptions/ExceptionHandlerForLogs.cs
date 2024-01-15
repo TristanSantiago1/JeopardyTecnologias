@@ -14,10 +14,10 @@ namespace JeopardyGame.Exceptions
         {
             string logMessage = $"[{DateTime.Now}] Type: {category}\n Exception: {exception.Message} \nStackTrace: {exception.StackTrace}\n";
             SeriLogClient logConfig = new SeriLogClient();
-            const int maxRetries = 3;
+            const int MAX_TRIES = 3;
             int retryCount = 0;
             bool success = false;
-            while (!success && retryCount < maxRetries)
+            while (!success && retryCount < MAX_TRIES)
             {
                 try
                 {

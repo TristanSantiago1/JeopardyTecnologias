@@ -338,7 +338,7 @@ EU</value>
     <value>*La contraseña debe tener al menos 1 signo de puntuación (. , ; :).</value>
   </data>
   <data name="lblPassSpeCharRuleDesc" xml:space="preserve">
-    <value>*La contraseña debe tener al menos uno de estos caracteres especial (!¡¿?=&amp;%$#@\-_).</value>
+    <value>*La contraseña debe tener al menos uno de estos caracteres especial (!¡¿?=&amp;%$#@).</value>
   </data>
   <data name="lblPasswordDescripCreateAcc" xml:space="preserve">
     <value>Contraseña :</value>

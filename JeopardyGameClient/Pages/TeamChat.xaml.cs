@@ -21,9 +21,6 @@ using System.Windows.Shapes;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para TeamChat.xaml
-    /// </summary>
     public partial class TeamChat : Page, IChatForTeamsServiceCallback
     {
         private static UserSingleton userSingleton = UserSingleton.GetMainUser();

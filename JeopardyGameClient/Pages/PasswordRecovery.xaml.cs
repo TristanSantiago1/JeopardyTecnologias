@@ -24,9 +24,6 @@ using System.Windows.Threading;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Interaction logic for PasswordRecovery.xaml
-    /// </summary>
     public partial class PasswordRecovery : Page
     {
 

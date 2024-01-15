@@ -27,9 +27,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace JeopardyGame.Pages
 {
-    /// <summary>
-    /// Lógica de interacción para ActiveFriends.xaml
-    /// </summary>
     public  partial class ActiveFriends : Page, INotifyAvailabilityServiceCallback
     {
         private LobbyPage lobbyPage;
@@ -226,11 +223,7 @@ namespace JeopardyGame.Pages
                 }
                 else
                 {
-                    if (sentEmailResult.ObjectSaved == NULL_INT_VALUE)
-                    {
-                        DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);
-
-                    }
+                     DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.SentEmailIssue, Application.Current.MainWindow, DialogWindowManager.ERROR);                    
                 }
                
             }
@@ -289,10 +282,10 @@ namespace JeopardyGame.Pages
                 LblWrongEmail.Visibility = Visibility.Visible;
                 return;
             }
-            LblWrongEmail.Visibility = Visibility.Collapsed;
-
-            SendEmailForInvitationToGame(email, subject, bodyWithCode);
+            LblWrongEmail.Visibility = Visibility.Collapsed;            
+            SendEmailForInvitationToGame(email, subject, bodyWithCode);                
         }
+
         private bool IsValidEmail(string email)
         {
             try
