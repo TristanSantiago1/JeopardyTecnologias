@@ -988,6 +988,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NO coincidence.
+        /// </summary>
+        public static string lblNoCoincidenceSearchFriend {
+            get {
+                return ResourceManager.GetString("lblNoCoincidenceSearchFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sorry, we were unable to generate a match, please leave the lobby and try again later.
         /// </summary>
         public static string lblNotGame {

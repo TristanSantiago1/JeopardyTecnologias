@@ -717,4 +717,7 @@
   <data name="lblConfirmLeaveRecoveryPassword" xml:space="preserve">
     <value>.</value>
   </data>
+  <data name="lblNoCoincidenceSearchFriend" xml:space="preserve">
+    <value>NO coincidence</value>
+  </data>
 </root>

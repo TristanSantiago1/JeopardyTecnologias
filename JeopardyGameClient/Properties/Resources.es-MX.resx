@@ -716,4 +716,7 @@ Mexico</value>
   <data name="lblConfirmLeaveRecoveryPassword" xml:space="preserve">
     <value>¿Estas seguro que deseas cancelar la recuperación de la contraseña?</value>
   </data>
+  <data name="lblNoCoincidenceSearchFriend" xml:space="preserve">
+    <value>Lo sentimos,  no existen coincidencias con tu criterio de búsqueda, verifica el nombre de usuario ingresado, prueba de neuvo o prueba despues</value>
+  </data>
 </root>
