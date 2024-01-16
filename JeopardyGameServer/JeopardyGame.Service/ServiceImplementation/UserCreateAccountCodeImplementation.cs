@@ -132,7 +132,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return CodesDictionary.NULL_PARAEMETER;
                 }
-                string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
+                string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(userVerify => userVerify.Value.UserName.Equals(user.UserName)).Key;
                 if (!string.IsNullOrEmpty(code))
                 {                    
                     EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(code);
@@ -175,7 +175,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     if (user != null)
                     {
-                        string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
+                        string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(userVerify => userVerify.Value.UserName.Equals(user.UserName)).Key;
                         if (!string.IsNullOrEmpty(code))
                         {
                             EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(code);

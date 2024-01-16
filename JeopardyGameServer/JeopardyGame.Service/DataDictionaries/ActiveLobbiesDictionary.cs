@@ -47,9 +47,9 @@ namespace JeopardyGame.Service.DataDictionaries
             if(roomCode != 0 && idUser != 0 && channel != null && activeLobbiesDictionary.ContainsKey(roomCode))
             {
                 var lobby = activeLobbiesDictionary[roomCode];
-                if (lobby != null && lobby.listOfPlayerInLobby.Exists(pla => pla.idUser == idUser))
+                if (lobby != null && lobby.listOfPlayerInLobby.Exists(player => player.idUser == idUser))
                 {
-                    var lobbyPlayer = lobby.listOfPlayerInLobby.Find(pla => pla.idUser == idUser);
+                    var lobbyPlayer = lobby.listOfPlayerInLobby.Find(player => player.idUser == idUser);
                     if(lobbyPlayer != null)
                     {
                         lobbyPlayer.lobbyCommunicationChannelCallback = channel;

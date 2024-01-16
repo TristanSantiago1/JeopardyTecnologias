@@ -475,7 +475,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var player = contextBD.Players.FirstOrDefault(p => p.IdPlayer == idPlayer);
+                    var player = contextBD.Players.FirstOrDefault(playerPhoto => playerPhoto.IdPlayer == idPlayer);
                     if (player != null)
                     {
                         player.IdAvatarActual = imageId;
@@ -530,7 +530,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var userToUpdate = contextBD.Users.FirstOrDefault(u =>u.IdUser == idUser);
+                    var userToUpdate = contextBD.Users.FirstOrDefault(user =>user.IdUser == idUser);
                     if (userToUpdate != null)
                     {
                         userToUpdate.Name = editedName;
@@ -630,7 +630,7 @@ namespace JeopardyGame.Data.DataAccess
                         List<Player> playerGuests = new List<Player>();
                         foreach (User user in usersConsulted)
                         {
-                            var playerToDelete = contextBD.Players.FirstOrDefault(pla => pla.User_IdUser == user.IdUser);
+                            var playerToDelete = contextBD.Players.FirstOrDefault(player => player.User_IdUser == user.IdUser);
                             if (playerToDelete != null)
                             {
                                 playerGuests.Add(playerToDelete);
@@ -680,7 +680,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var user = contextBD.Users.FirstOrDefault(p => p.IdUser == idUser);
+                    var user = contextBD.Users.FirstOrDefault(userBd => userBd.IdUser == idUser);
                     if (user != null)
                     {
                         user.EmailAddress = email;
@@ -735,7 +735,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var user = contextBD.Users.FirstOrDefault(p => p.UserName.Equals(userName));
+                    var user = contextBD.Users.FirstOrDefault(userBd => userBd.UserName.Equals(userName));
                     if (user != null)
                     {
                         user.Password = password;

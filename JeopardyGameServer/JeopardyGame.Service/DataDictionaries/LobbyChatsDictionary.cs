@@ -23,11 +23,11 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             if (roomCode != 0) 
             {
-                foreach (var item in activeLobbyChatsDictionary)
+                foreach (var activeLobby in activeLobbyChatsDictionary)
                 {
-                    if (item.Key == roomCode)
+                    if (activeLobby.Key == roomCode)
                     {
-                        return item.Value;
+                        return activeLobby.Value;
                     }
                 }
             }
@@ -74,11 +74,11 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             if (roomCode != 0)
             {
-                foreach (var item in lobbyChatsCallBacksDictionary)
+                foreach (var lobbyCallBack in lobbyChatsCallBacksDictionary)
                 {
-                    if (item.Key == roomCode)
+                    if (lobbyCallBack.Key == roomCode)
                     {
-                        return item.Value;
+                        return lobbyCallBack.Value;
                     }
                 }
             }
@@ -97,9 +97,9 @@ namespace JeopardyGame.Service.DataDictionaries
             if (roomCode != 0 && idUser != 0 && channel != null && lobbyChatsCallBacksDictionary.ContainsKey(roomCode))
             {
                 var listChannels = lobbyChatsCallBacksDictionary[roomCode];
-                if(listChannels != null && listChannels.listOfChannelsCallBack.Exists(pl => pl.idUser == idUser))
+                if(listChannels != null && listChannels.listOfChannelsCallBack.Exists(user => user.idUser == idUser))
                 {
-                    var chatOfPlayer = listChannels.listOfChannelsCallBack.Find(pl => pl.idUser == idUser);
+                    var chatOfPlayer = listChannels.listOfChannelsCallBack.Find(user => user.idUser == idUser);
                     if(chatOfPlayer != null)
                     {
                         chatOfPlayer.communicationChannelChat = channel;

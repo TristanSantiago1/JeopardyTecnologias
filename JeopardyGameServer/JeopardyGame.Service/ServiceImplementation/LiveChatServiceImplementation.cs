@@ -143,9 +143,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                 channelForChat.communicationChannelChat = OperationContext.Current;
                 ChannelsCallBackInActiveChats specificActiveInChannelChatStorage = LobbyChatsDictionary.GetChannelCallBackChat(roomCode);
                 bool isNotSaved = true;
-                foreach (var item in specificActiveInChannelChatStorage.listOfChannelsCallBack)
+                foreach (var user in specificActiveInChannelChatStorage.listOfChannelsCallBack)
                 {
-                    if (item.idUser == idUser)
+                    if (user.idUser == idUser)
                     {
                         isNotSaved = false;
                         break;
@@ -298,33 +298,33 @@ namespace JeopardyGame.Service.ServiceImplementation
             if (success)
             {
                 var chatChannel = LobbyChatsDictionary.GetChannelCallBackChat(roomCode);
-                foreach (var item in chatChannel.listOfChannelsCallBack.Where(chat => chat.idUser != idSender))
+                foreach (var chatRegistry in chatChannel.listOfChannelsCallBack.Where(userChat => userChat.idUser != idSender))
                 {
                     try
                     {
                         GenericClass<MessageChat> resultToReturn = new GenericClass<MessageChat>();
                         resultToReturn.ObjectSaved = messageToSend;
                         resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
-                        item.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>().ReceiveMessage(resultToReturn);
+                        chatRegistry.communicationChannelChat.GetCallbackChannel<ILiveChatCallBack>().ReceiveMessage(resultToReturn);
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(chatRegistry.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (TimeoutException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(chatRegistry.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(chatRegistry.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (InvalidOperationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(chatRegistry.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     

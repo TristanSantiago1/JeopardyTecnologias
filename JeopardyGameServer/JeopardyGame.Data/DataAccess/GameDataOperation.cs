@@ -422,7 +422,7 @@ namespace JeopardyGame.Data.DataAccess
             {
                 using (var contextBD = new JeopardyDBContainer())
                 {
-                    var playerToUpdate = contextBD.Players.FirstOrDefault(pl => pl.IdPlayer == gamePlayers.Player_IdPlayer);
+                    var playerToUpdate = contextBD.Players.FirstOrDefault(player => player.IdPlayer == gamePlayers.Player_IdPlayer);
                     if(playerToUpdate != null)
                     {
                         if (gamePlayers.PointsInGame > 0)

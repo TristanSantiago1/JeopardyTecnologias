@@ -261,35 +261,35 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
         }
 
-        private void NotifyPlayersAboutNewPlayer(int idNewPlayer, string userName, Dictionary<int, OperationContext> contexts)
+        private void NotifyPlayersAboutNewPlayer(int idNewPlayer, string userName, Dictionary<int, OperationContext> contextsOfCallBack)
         {
-            foreach (var item in contexts)
+            foreach (var channelContext in contextsOfCallBack)
             {
                 try
                 {
-                    if (item.Value != null)
+                    if (channelContext.Value != null)
                     {
-                        item.Value.GetCallbackChannel<IFriendManagerCallBack>().ResponseNewPlayerJusJoin(idNewPlayer, userName);
+                        channelContext.Value.GetCallbackChannel<IFriendManagerCallBack>().ResponseNewPlayerJusJoin(idNewPlayer, userName);
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(channelContext.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(channelContext.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(channelContext.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(channelContext.Key, ChannelAdministrator.FRIEND_MANAGER_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }

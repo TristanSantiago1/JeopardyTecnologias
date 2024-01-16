@@ -229,9 +229,9 @@ namespace JeopardyGame.Service.ServiceImplementation
                     var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                     if (lobby != null)
                     {
-                        foreach (var item in lobby.listOfPlayerInLobby)
+                        foreach (var player in lobby.listOfPlayerInLobby)
                         {
-                            if (item.idUser == idUser)
+                            if (player.idUser == idUser)
                             {
                                 NotifyPlayerJoiningOrLeavingLobby(roomCode, idUser, lobby);
                                 break;
@@ -273,14 +273,14 @@ namespace JeopardyGame.Service.ServiceImplementation
                     if (lobby != null)
                     {
                         List<PlayerInLobby> playerInLobbies = new List<PlayerInLobby>();
-                        foreach (var item in lobby.listOfPlayerInLobby)
+                        foreach (var player in lobby.listOfPlayerInLobby)
                         {
                             PlayerInLobby playerIn = new();
-                            playerIn.IdUser = item.idUser;
-                            playerIn.IdPlayer = item.idPlayer;
-                            playerIn.UserName = item.userName;
-                            playerIn.NumberOfPlayerInLobby = item.numberOfPlayerInLobby;
-                            playerIn.SideOfTeam = item.sideTeam;
+                            playerIn.IdUser = player.idUser;
+                            playerIn.IdPlayer = player.idPlayer;
+                            playerIn.UserName = player.userName;
+                            playerIn.NumberOfPlayerInLobby = player.numberOfPlayerInLobby;
+                            playerIn.SideOfTeam = player.sideTeam;
                             playerInLobbies.Add(playerIn);
                         }
                         resultToReturn.ObjectSaved = playerInLobbies;
@@ -335,7 +335,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                         var lobby = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
                         if (lobby != null)
                         {
-                            var playerLeaving = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUserLeaving);
+                            var playerLeaving = lobby.listOfPlayerInLobby.Find(player => player.idUser == idUserLeaving);
                             if (playerLeaving != null)
                             {
                                 lobby.listOfPlayerInLobby.Remove(playerLeaving);
@@ -388,30 +388,30 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<List<PlayerInLobby>> playersLobby = GetAllCurrentPlayerInLobby(roomCode, idUser);
             if (playersLobby.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
             {
-                foreach (var item in lobby.listOfPlayerInLobby.Where(pla => pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>() != null && pla.idUser != idUser))
+                foreach (var player in lobby.listOfPlayerInLobby.Where(player => player.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>() != null && player.idUser != idUser))
                 {
                     try
                     {
-                        item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().UpdateJoinedPlayerResponse(playersLobby);                                                                   
+                        player.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().UpdateJoinedPlayerResponse(playersLobby);                                                                   
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (TimeoutException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (InvalidOperationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                 }
@@ -427,7 +427,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     if (lobby != null)
                     {
-                        var Leader = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUser && pl.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
+                        var Leader = lobby.listOfPlayerInLobby.Find(player => player.idUser == idUser && player.numberOfPlayerInLobby == LEADER_POSITION_IN_LOBBY);
                         if (Leader != null)
                         {
                             NotifyClosingLobby(lobby);
@@ -464,34 +464,34 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void NotifyClosingLobby(Lobby lobby)
         {
-            foreach (var item in lobby.listOfPlayerInLobby)
+            foreach (var player in lobby.listOfPlayerInLobby)
             {
                 try
                 {
-                    var channel = item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>();
-                    if (channel != null && item.numberOfPlayerInLobby != LEADER_POSITION_IN_LOBBY)
+                    var channel = player.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>();
+                    if (channel != null && player.numberOfPlayerInLobby != LEADER_POSITION_IN_LOBBY)
                     {
                         channel.DissolvingLobby();
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
@@ -507,7 +507,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     if (lobby != null)
                     {
-                        PlayerOnLobbyList playerEjected = lobby.listOfPlayerInLobby.Find(pl => pl.idUser == idUserToEliminate);
+                        PlayerOnLobbyList playerEjected = lobby.listOfPlayerInLobby.Find(player => player.idUser == idUserToEliminate);
                         if (playerEjected != null)
                         {
                             lobby.listOfPlayerInLobby.Remove(playerEjected);
@@ -542,7 +542,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void RearrangePositions(Lobby lobby, int eliminatedPosition)
         {
-            lobby.listOfPlayerInLobby.Where(item => item.numberOfPlayerInLobby > eliminatedPosition).ToList().ForEach(item => item.numberOfPlayerInLobby--);
+            lobby.listOfPlayerInLobby.Where(player => player.numberOfPlayerInLobby > eliminatedPosition).ToList().ForEach(player => player.numberOfPlayerInLobby--);
         }
 
         private void NotifyPlayerBeingExpelled(PlayerOnLobbyList playerEjected, int roomCode, int idUserToEliminate)

@@ -25,11 +25,11 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             if (!string.IsNullOrEmpty(userName))
             {
-                foreach (var item in livingClientsDictionary)
+                foreach (var client in livingClientsDictionary)
                 {
-                    if (item.Key == userName)
+                    if (client.Key == userName)
                     {
-                        return item.Value;
+                        return client.Value;
                     }
                 }
             }

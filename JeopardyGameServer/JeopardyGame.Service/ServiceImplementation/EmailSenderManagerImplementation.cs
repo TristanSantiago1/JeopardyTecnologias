@@ -29,7 +29,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                 {
                     return NullParametersHandler.HandleNullParametersService(resultToReturn);
                 }
-                string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(entry => entry.Value.UserName.Equals(user.UserName)).Key;
+                string code = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(registryUser => registryUser.Value.UserName.Equals(user.UserName)).Key;
                 int emailSend = CodesDictionary.UNSUCCESFULL_EVENT;
                 if (!string.IsNullOrEmpty(code))
                 {

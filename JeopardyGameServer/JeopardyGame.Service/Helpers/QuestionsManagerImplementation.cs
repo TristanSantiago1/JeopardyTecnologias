@@ -159,8 +159,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             foreach (var questionCard in questionCardInformation)
             {
                 var answersOfQuestion = answerPool.Where(answer => answer.CategoryIdCategory  == questionCard.SpecificQuestionDetails.IdCategoryBelong).ToList();
-                questionCard.RightAnswer = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.Find(
-                    answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
+                questionCard.RightAnswer = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion.Find(answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
                 answersOfQuestion.Remove(answersOfQuestion.Find(answer => answer.IdAwnser == questionCard.SpecificQuestionDetails.IdAnswerOfQuestion));
                 questionCard.WrongOptionOne = QuestionsInterpreter.FromAnswerToAnswerPOJO(answersOfQuestion[0]);
                 answersOfQuestion.Remove(answersOfQuestion[0]);

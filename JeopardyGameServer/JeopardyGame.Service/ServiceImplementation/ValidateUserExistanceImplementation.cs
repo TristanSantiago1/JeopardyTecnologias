@@ -85,38 +85,38 @@ namespace JeopardyGame.Service.ServiceImplementation
         private void VerifyUsersInDictionary()
         {
             var callBackChannels = LivingClientsDictionary.GetLivingClientsList().ToList();
-            foreach (var item in callBackChannels)
+            foreach (var callBack in callBackChannels)
             {
                 try
                 {
-                    bool isActive = item.Value.GetCallbackChannel<ICheckUserLivingCallBack>().IsClientActive();
+                    bool isActive = callBack.Value.GetCallbackChannel<ICheckUserLivingCallBack>().IsClientActive();
                     if (!isActive)
                     {
-                        EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                        EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(callBack.Key));
                         LivingClientsDictionary.CheckCallBacks();
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(callBack.Key));
                     LivingClientsDictionary.CheckCallBacks();
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(callBack.Key));
                     LivingClientsDictionary.CheckCallBacks();
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(callBack.Key));
                     LivingClientsDictionary.CheckCallBacks();
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(item.Key));
+                    EmailConfirmationDictionary.RemoveRegistryOfUserFromDictionary(GetRoomCodeFromDictionary(callBack.Key));
                     LivingClientsDictionary.CheckCallBacks();
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
@@ -125,7 +125,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private string GetRoomCodeFromDictionary(string userName)
         {
-            string roomCode = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(us => us.Value.UserName.Equals(userName)).Key;
+            string roomCode = EmailConfirmationDictionary.GetUserToVerifyList().FirstOrDefault(userVerify => userVerify.Value.UserName.Equals(userName)).Key;
             return roomCode;                      
         }
         public GenericClass<int> EmailAlreadyExist(String email)

@@ -59,7 +59,7 @@ namespace JeopardyGame.Service.ServiceImplementation
             lock (lockObject)
             {
                 var lobbyOfGame = ActiveLobbiesDictionary.GetSpecificActiveLobby(roomCode);
-                var playerOnLobbySubscribing = lobbyOfGame.listOfPlayerInLobby.Find(u => u.idUser == idUserSubscribing);
+                var playerOnLobbySubscribing = lobbyOfGame.listOfPlayerInLobby.Find(user => user.idUser == idUserSubscribing);
                 try { 
                     if (playerOnLobbySubscribing != null)
                     {
@@ -92,7 +92,7 @@ namespace JeopardyGame.Service.ServiceImplementation
                             activeCurrentGame.Add(playerJoiningGame);
                         }                   
                         var activeGameStatus = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
-                        if (activeGameStatus.Count == 4 && activeGameStatus.Exists(pl => pl.SideTeam == 2))
+                        if (activeGameStatus.Count == 4 && activeGameStatus.Exists(player => player.SideTeam == 2))
                         {
                             ActiveGamesDictionary.RearrangeTurnsForTeams(roomCode);
                         }
@@ -590,12 +590,12 @@ namespace JeopardyGame.Service.ServiceImplementation
                     List<PlayerPlayingInGame> playersPlaying = ActiveGamesDictionary.GetSpecificActiveGame(roomCode);
                     if (playersPlaying != null)
                     {
-                        PlayerPlayingInGame specificPlayer = playersPlaying.Find(pla => pla.IdUser == playerAnswering.IdUser);
+                        PlayerPlayingInGame specificPlayer = playersPlaying.Find(player => player.IdUser == playerAnswering.IdUser);
                         if (specificPlayer != null)
                         {
-                            if (playersPlaying.Count == 4 && playersPlaying.Exists(pl => pl.SideTeam == 2))
+                            if (playersPlaying.Count == 4 && playersPlaying.Exists(player => player.SideTeam == 2))
                             {
-                                PlayerPlayingInGame teamPlayer = playersPlaying.Find(pla => pla.IdUser != playerAnswering.IdUser && pla.SideTeam == playerAnswering.SideTeam);
+                                PlayerPlayingInGame teamPlayer = playersPlaying.Find(player => player.IdUser != playerAnswering.IdUser && player.SideTeam == playerAnswering.SideTeam);
                                 UpdatePlayerLastQuestionStatusForTeams( playerAnswering, points, isCorrect, specificPlayer, teamPlayer);
                             }
                             else
@@ -642,7 +642,7 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void CheckAndProcessEndOfRound(List<PlayerPlayingInGame> playersPlaying, int roomCode)
         {
-            if (playersPlaying.Count == playersPlaying.Where(pla => pla.DidAnswerLastQuestion).ToList().Count)
+            if (playersPlaying.Count == playersPlaying.Where(player => player.DidAnswerLastQuestion).ToList().Count)
             {
                 int arePointsSaved = QuestionsManagerImplementation.RegistryGamePlayers(roomCode, playersPlaying);
                 NotifyPlayersWinner(playersPlaying, arePointsSaved);

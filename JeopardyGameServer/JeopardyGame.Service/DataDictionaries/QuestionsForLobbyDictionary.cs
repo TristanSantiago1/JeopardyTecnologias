@@ -24,11 +24,11 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             if (roomCode != 0)
             {
-                foreach (var item in questionsForLobby)
+                foreach (var question in questionsForLobby)
                 {
-                    if (item.Key == roomCode)
+                    if (question.Key == roomCode)
                     {
-                        return item.Value;
+                        return question.Value;
                     }
                 }
             }

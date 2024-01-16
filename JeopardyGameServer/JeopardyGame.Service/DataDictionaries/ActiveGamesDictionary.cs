@@ -47,9 +47,9 @@ namespace JeopardyGame.Service.DataDictionaries
             if (roomCode != 0 && idUser != 0 && channel != null && activeGamesDictionary.ContainsKey(roomCode))
             {
                 var listOfPlayer = activeGamesDictionary[roomCode];
-                if(listOfPlayer.Exists(pl => pl.IdUser == idUser))
+                if(listOfPlayer.Exists(player => player.IdUser == idUser))
                 {
-                    var player = listOfPlayer.Find(pl => pl.IdUser == idUser);
+                    var player = listOfPlayer.Find(playerChecked => playerChecked.IdUser == idUser);
                     if(player != null)
                     {
                         player.gameCallbackChannel = channel;
@@ -71,8 +71,8 @@ namespace JeopardyGame.Service.DataDictionaries
                 {
                     if (item.Key == roomCode)
                     {
-                        var team1 = item.Value.Where(pl => pl.SideTeam == 1).ToList();
-                        var team2 = item.Value.Where(pl => pl.SideTeam == 2).ToList();
+                        var team1 = item.Value.Where(player => player.SideTeam == 1).ToList();
+                        var team2 = item.Value.Where(player => player.SideTeam == 2).ToList();
                         team1[0].TurnOfPlayer = 1;
                         team1[1].TurnOfPlayer = 3;
                         team2[0].TurnOfPlayer = 2;

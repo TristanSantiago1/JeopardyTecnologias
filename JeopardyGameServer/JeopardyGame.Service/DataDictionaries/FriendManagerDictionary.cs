@@ -22,11 +22,11 @@ namespace JeopardyGame.Service
         {
             if (idUser != 0)
             {
-                foreach (var item in friendManagerDictionary)
+                foreach (var friendPlayer in friendManagerDictionary)
                 {
-                    if (item.Key == idUser)
+                    if (friendPlayer.Key == idUser)
                     {
-                        return item.Value;
+                        return friendPlayer.Value;
                     }
                 }
             }

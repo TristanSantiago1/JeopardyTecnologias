@@ -65,15 +65,15 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void AssignTeamSide(Lobby lobby)
         {
-            foreach (var item in lobby.listOfPlayerInLobby)
+            foreach (var player in lobby.listOfPlayerInLobby)
             {
-                if (item.numberOfPlayerInLobby <= 2)
+                if (player.numberOfPlayerInLobby <= 2)
                 {
-                    item.sideTeam = TEAM_LEFT_SIDE;
+                    player.sideTeam = TEAM_LEFT_SIDE;
                 }
                 else
                 {
-                    item.sideTeam = TEAM_RIGTH_SIDE;
+                    player.sideTeam = TEAM_RIGTH_SIDE;
                 }
             }
         }
@@ -88,33 +88,33 @@ namespace JeopardyGame.Service.ServiceImplementation
 
         private void NotifyPlayersAboutTeams(Lobby lobby, int idUserNotifying, bool wannaTeam)
         {
-            foreach (var item in lobby.listOfPlayerInLobby)
+            foreach (var player in lobby.listOfPlayerInLobby)
             {
                 try
                 {
-                    if (item.idUser != idUserNotifying)
+                    if (player.idUser != idUserNotifying)
                     {
-                        item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().MakeTeamsResponse(wannaTeam);
+                        player.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().MakeTeamsResponse(wannaTeam);
                     }
                 }
                 catch (CommunicationObjectFaultedException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (TimeoutException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (CommunicationException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
                 catch (InvalidOperationException ex)
                 {
-                    ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                    ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                     ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                 }
             }
@@ -166,30 +166,30 @@ namespace JeopardyGame.Service.ServiceImplementation
             GenericClass<List<PlayerInLobby>> playersInLobby = lobbyActions.GetAllCurrentPlayerInLobby(roomCode, idUser);
             if (playersInLobby.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
             {
-                foreach (var item in lobby.listOfPlayerInLobby.Where(pla => lobby.idAdmin != pla.idUser && pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>() != null))
+                foreach (var player in lobby.listOfPlayerInLobby.Where(pla => lobby.idAdmin != pla.idUser && pla.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>() != null))
                 {
                     try
                     {
-                        item.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().UpdateTeamSide(playersInLobby);
+                        player.lobbyCommunicationChannelCallback.GetCallbackChannel<ILobbyCallback>().UpdateTeamSide(playersInLobby);
                     }
                     catch (CommunicationObjectFaultedException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (TimeoutException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (CommunicationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                     catch (InvalidOperationException ex)
                     {
-                        ChannelAdministrator.HandleCommunicationIssue(item.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
+                        ChannelAdministrator.HandleCommunicationIssue(player.idUser, ChannelAdministrator.LOBBY_EXCEPTION);
                         ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
                     }
                 }

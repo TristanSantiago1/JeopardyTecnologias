@@ -24,11 +24,11 @@ namespace JeopardyGame.Service.DataDictionaries
         {
             if (idUser != 0)
             {
-                foreach (var item in teamChatDictionary)
+                foreach (var teamChat in teamChatDictionary)
                 {
-                    if (item.Key == idUser)
+                    if (teamChat.Key == idUser)
                     {
-                        return item.Value;
+                        return teamChat.Value;
                     }
                 }
             }
