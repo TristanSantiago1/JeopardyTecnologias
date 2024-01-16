@@ -21,7 +21,7 @@
             <Label x:Name="lblCodeRoom" Content = "{x:Static p:Resources.lblCodeDescrip}" Style="{StaticResource labelStyleSimple}" Margin="0,39,0,0" Height="58" Width="auto" HorizontalAlignment="Center"/>
             <Label x:Name="lblAleatoryCode" Content="Label" Style="{StaticResource labelStyleSimple}" Margin="792,39,0,0"/>
             <Label x:Name="lblModalityGame" Content = "{x:Static p:Resources.lblModalityGame}" Style="{StaticResource labelStyleSimple}" Margin="94,218,0,0"/>
-            <CheckBox Content="{x:Static p:Resources.rdbTeam}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" FontSize="30" x:Name="chbTeamUp" Margin="346,234,655,494" Width="auto" Checked="ClickTeamUp" Unchecked="ClickNoTeamUp">
+            <CheckBox Content="{x:Static p:Resources.rdbTeam}" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" FontSize="30" x:Name="chbTeamUp" Margin="116,286,885,442" Width="auto" Checked="ClickTeamUp" Unchecked="ClickNoTeamUp">
                 <CheckBox.Style>
                     <Style TargetType="CheckBox">
                         <Setter Property="Background" Value="Gray" />

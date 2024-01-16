@@ -293,8 +293,6 @@ namespace JeopardyGame.Pages
             }
         }
 
-
-
         private void ClickButtonCancelSaving(object sender, RoutedEventArgs e)
         {
             try
@@ -334,8 +332,6 @@ namespace JeopardyGame.Pages
             userToRegister.LoadFields(userToSave);
             NavigationService.RemoveBackEntry();
         }
-
- 
         private void EntryCodeCharValidator(object sender, TextChangedEventArgs e)
         {
             if (txbCodeCreateAcc.Text.Trim().Length == 6)

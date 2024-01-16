@@ -85,35 +85,35 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void EntryTextBoxCharValidation(object sender, TextCompositionEventArgs e)
+        private void EntryTextBoxCharValidation(object sender, TextCompositionEventArgs entryText)
         {
             TextBox currentTextBox = sender as TextBox;
             RegularExpressionsLibrary regularExpressionsLibrary = new RegularExpressionsLibrary(); 
             try
             {
                 if ((regularExpressionsLibrary.ValidationTextBoxRegexes.TryGetValue(currentTextBox.Name, out string regex))
-               && !Regex.IsMatch((currentTextBox.Text + e.Text), regex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+               && !Regex.IsMatch((currentTextBox.Text + entryText.Text), regex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
                 {
-                    e.Handled = true;
+                    entryText.Handled = true;
                 }
             }
             catch (RegexMatchTimeoutException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
-                e.Handled = true;
+                entryText.Handled = true;
             }
             catch (ArgumentNullException ex)
             {
                 ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
-                e.Handled = true;
+                entryText.Handled = true;
             }
         }
 
-        private void EntryTextBoxPaste(object sender, KeyEventArgs e)
+        private void EntryTextBoxPaste(object sender, KeyEventArgs entryText)
         {
-            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (e.Key == Key.V))
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (entryText.Key == Key.V))
             {
-                    e.Handled = true;
+                    entryText.Handled = true;
             }
         }
 

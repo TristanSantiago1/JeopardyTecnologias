@@ -87,11 +87,11 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void EntryTextBoxPaste(object sender, KeyEventArgs e)
+        private void EntryTextBoxPaste(object sender, KeyEventArgs keyEntry)
         {
-            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (e.Key == Key.V))
+            if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && (keyEntry.Key == Key.V))
             {
-                e.Handled = true;
+                keyEntry.Handled = true;
             }
         }
 
@@ -190,7 +190,7 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void ConfirmCodeAlreadyExist(int succes)
+        private void ConfirmCodeAlreadyExist(int succesEvent)
         {
             currentUserName = txbUserNameCreateAccount.Text.Trim();
             bttConfirmCode.IsEnabled = true;
@@ -198,7 +198,7 @@ namespace JeopardyGame.Pages
             txbUserNameCreateAccount.IsEnabled = false;
             bttSaveUser.IsEnabled = false;
             StartTimer();
-            if (succes == ExceptionDictionary.USERNAME_ALREADY_EXIST)
+            if (succesEvent == ExceptionDictionary.USERNAME_ALREADY_EXIST)
             {
                 DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblAlreadyExistACodeToChangePassword, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
@@ -215,8 +215,8 @@ namespace JeopardyGame.Pages
                 try
                 {
                     RecoverPasswordClient recoverPasswordProxy = new RecoverPasswordClient();
-                    int succes = recoverPasswordProxy.VerifyCodeToRecoverPassword(currentUserName, txbCode.Text.Trim());
-                    if (succes == ExceptionDictionary.SUCCESFULL_EVENT)
+                    int succesEvent = recoverPasswordProxy.VerifyCodeToRecoverPassword(currentUserName, txbCode.Text.Trim());
+                    if (succesEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                     {
                         bttConfirmCode.IsEnabled = false;
                         bttConfirmUserName.IsEnabled = false;
@@ -227,7 +227,7 @@ namespace JeopardyGame.Pages
                     }
                     else
                     {
-                        ShowSpecificCodeMessage(succes);
+                        ShowSpecificCodeMessage(succesEvent);
                     }
                 }
                 catch (EndpointNotFoundException ex)
@@ -254,17 +254,17 @@ namespace JeopardyGame.Pages
             }
         }
 
-        private void ShowSpecificCodeMessage(int succes)
+        private void ShowSpecificCodeMessage(int succesEvent)
         {
-            if (succes == ExceptionDictionary.NULL_PARAEMETER)
+            if (succesEvent == ExceptionDictionary.NULL_PARAEMETER)
             {
                 DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblUserNameDoesNotExist, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
-            else if (succes == ExceptionDictionary.ARGUMENT_NULL)
+            else if (succesEvent == ExceptionDictionary.ARGUMENT_NULL)
             {
                 DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblThereIsnoCodeFoThisUser, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
-            else if (succes == ExceptionDictionary.INVALID_OPERATION)
+            else if (succesEvent == ExceptionDictionary.INVALID_OPERATION)
             {
                 DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbErrorTitle, Properties.Resources.lblWrongCodeEntered, Window.GetWindow(this), DialogWindowManager.ERROR);
             }
@@ -284,8 +284,8 @@ namespace JeopardyGame.Pages
                     if (ALLOWED_VALUES == CheckPassword(userCosulted.ObjectSaved.EmailAddress))
                     {
                         UserManagerClient userManagerClient = new UserManagerClient();
-                        var succes = userManagerClient.UpdatePasswordUser(currentUserName,EncryptionClass.EncryptPassword(psbPassword.Password.ToString().Trim()));
-                        if (succes.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
+                        var succesEvent = userManagerClient.UpdatePasswordUser(currentUserName,EncryptionClass.EncryptPassword(psbPassword.Password.ToString().Trim()));
+                        if (succesEvent.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                         {
                             DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInformationTitle, Properties.Resources.lblPassWordUpdatedCorrectly, Window.GetWindow(this), DialogWindowManager.INFORMATION);
                             GoToPrincipalWindow();

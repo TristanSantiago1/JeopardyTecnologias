@@ -104,12 +104,12 @@ namespace JeopardyGame.Pages
         {
             try
             {
-                string message = txbMessageToSend.Text;
-                if (!string.IsNullOrEmpty(message))
+                string messageToSend = txbMessageToSend.Text;
+                if (!string.IsNullOrEmpty(messageToSend))
                 {
                     ChatForTeamsOperationsClient chatForTeamProxy = new();
-                    chatForTeamProxy.SendMessageTeam(userSingleton.IdUser, idTeamMate, userSingleton.UserName, message);
-                    ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, message);
+                    chatForTeamProxy.SendMessageTeam(userSingleton.IdUser, idTeamMate, userSingleton.UserName, messageToSend);
+                    ChatMessageCard chatMessageCard = new ChatMessageCard(userSingleton.UserName, messageToSend);
                     chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
                     stpChat.Children.Add(chatMessageCard);
                     txbMessageToSend.Text = string.Empty;
@@ -142,13 +142,13 @@ namespace JeopardyGame.Pages
             }
         }
 
-        public void ReceiveMessageTeamChat(GenericClassOfMessageChatxY0a3WX4 message)
+        public void ReceiveMessageTeamChat(GenericClassOfMessageChatxY0a3WX4 messageRecieve)
         {
             try
             {
-                if (message.CodeEvent == Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
+                if (messageRecieve.CodeEvent == Exceptions.ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    ChatMessageCard chatMessageCard = new ChatMessageCard(message.ObjectSaved.UserName, message.ObjectSaved.MessageToSend);
+                    ChatMessageCard chatMessageCard = new ChatMessageCard(messageRecieve.ObjectSaved.UserName, messageRecieve.ObjectSaved.MessageToSend);
                     chatMessageCard.HorizontalAlignment = HorizontalAlignment.Right;
                     stpChat.Children.Add(chatMessageCard);
                 }

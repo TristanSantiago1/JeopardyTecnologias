@@ -176,8 +176,8 @@ namespace JeopardyGame.Pages
             {
                 InstanceContext context = new(this);
                 CheckUserLivingServiceClient checkUserLivingClient = new(context);
-                int success = checkUserLivingClient.SubscribeToICheckUserLiving(userForGuest);
-                if(success == ExceptionDictionary.SUCCESFULL_EVENT)
+                int successSubscribeLivingChannel = checkUserLivingClient.SubscribeToICheckUserLiving(userForGuest);
+                if(successSubscribeLivingChannel == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
                     return true;
                 }

@@ -75,7 +75,7 @@ namespace JeopardyGame.Pages
                 if (playerInfo.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT && playerInfo.ObjectSaved != null)
                 {
                     int imageId = playerInfo.ObjectSaved.IdActualAvatar;
-                    string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
+                    string imageName = imageIdMappings.FirstOrDefault(imageFound => imageFound.Value == imageId).Key;
                     if (!string.IsNullOrEmpty(imageName))
                     {
                         Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);

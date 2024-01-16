@@ -137,8 +137,8 @@ namespace JeopardyGame.Pages
             }
             if (itsTeamGame)
             {
-                var player = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);
-                var playerTeam = playersInGame.Find(pla => pla.SideTeam == player.SideTeam && pla.IdUser != userSingleton.IdUser);
+                var player = playersInGame.Find(user => user.IdUser == userSingleton.IdUser);
+                var playerTeam = playersInGame.Find(player => player.SideTeam == player.SideTeam && player.IdUser != userSingleton.IdUser);
                 if (playerTeam != null) {
                     teamChat = new TeamChat(this, playerTeam.IdUser);
                 }
@@ -148,7 +148,7 @@ namespace JeopardyGame.Pages
 
         private void VerifyThereAreTeams()
         {
-            if (playersInGame.Exists(pla => pla.SideTeam == 2))
+            if (playersInGame.Exists(player => player.SideTeam == 2))
             {
                 itsTeamGame = true;
                 imgChatIcon.Visibility = Visibility.Visible;
@@ -196,8 +196,8 @@ namespace JeopardyGame.Pages
             stpPlayers.Children.Clear();
             if (itsTeamGame)
             {
-                team1 = playersInGame.Where(pla => pla.SideTeam == 1).ToList();
-                team2 = playersInGame.Where(pla => pla.SideTeam == 2).ToList();
+                team1 = playersInGame.Where(player => player.SideTeam == 1).ToList();
+                team2 = playersInGame.Where(player => player.SideTeam == 2).ToList();
                 stpPlayers.Children.Add(new GameTeamCard(team1[0], team1[1]));
                 stpPlayers.Children.Add(new GameTeamCard(team2[0], team2[1]));
                 team1Name = "_"+team1[0].IdUser.ToString()+ team1[1].IdUser.ToString();
@@ -239,7 +239,7 @@ namespace JeopardyGame.Pages
             {
                 GameCategoryCard categoryCard = new(GetSpecificResource.GetEnglishOrSpanishDescription(category.EnglishCategoryDescription, category.SpanishCategoryDescription));
                 wrpBoardOfCards.Children.Add(categoryCard);
-                var questionsOfCategory = questionsOfRound.Where(quest => quest.SpecificQuestionDetails.IdCategoryBelong == category.IdCategory).ToList();
+                var questionsOfCategory = questionsOfRound.Where(questionForBoard => questionForBoard.SpecificQuestionDetails.IdCategoryBelong == category.IdCategory).ToList();
                 foreach (var questionCard in questionsOfCategory)
                 {
                     GamePointsCard pointsCard = new(questionCard, this);
@@ -312,7 +312,7 @@ namespace JeopardyGame.Pages
             if (itsTeamGame)
             {
                 string nameOfBorder;
-                var playerInGame = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);
+                var playerInGame = playersInGame.Find(playerForIdUser => playerForIdUser.IdUser == userSingleton.IdUser);
                 if (playerInGame != null && playerInGame.SideTeam == 1)
                 {
                     nameOfBorder = team1Name;
@@ -321,7 +321,7 @@ namespace JeopardyGame.Pages
                 {
                     nameOfBorder = team2Name;
                 }
-                GameTeamCard currentPointsOfPlayer = (GameTeamCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals(nameOfBorder));
+                GameTeamCard currentPointsOfPlayer = (GameTeamCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(player => player.Name.Equals(nameOfBorder));
                 if (currentPointsOfPlayer!= null && currentPointsOfPlayer.GetPoints() < 0)
                 {
                     txbPointsToBet.Text = "0";
@@ -330,7 +330,7 @@ namespace JeopardyGame.Pages
             }
             else
             {
-                GamePlayerCard currentPointsOfPlayer = (GamePlayerCard)playersBorders.Find(pl => pl.Name.Equals("_" + userSingleton.IdUser.ToString()));
+                GamePlayerCard currentPointsOfPlayer = (GamePlayerCard)playersBorders.Find(player => player.Name.Equals("_" + userSingleton.IdUser.ToString()));
                 if (currentPointsOfPlayer != null && currentPointsOfPlayer.GetPoints() < 0)
                 {
                     txbPointsToBet.Text = "0";
@@ -370,7 +370,7 @@ namespace JeopardyGame.Pages
         private void ConfirmBetFoSinglePlayer(List<Border> playersBorders)
         {
             string nameOfBorder;
-            var playerInGameSide = playersInGame.Find(pl => pl.IdUser == userSingleton.IdUser);
+            var playerInGameSide = playersInGame.Find(playerForIdUser => playerForIdUser.IdUser == userSingleton.IdUser);
             if (playerInGameSide != null && playerInGameSide.SideTeam == 1)
             {
                 nameOfBorder = team1Name;
@@ -379,7 +379,7 @@ namespace JeopardyGame.Pages
             {
                 nameOfBorder = team2Name;
             }
-            var currentPointsOfPlayer = playersBorders.Find(pla => pla.Name.Equals(nameOfBorder));
+            var currentPointsOfPlayer = playersBorders.Find(player => player.Name.Equals(nameOfBorder));
             if (pointsBet <= ((GameTeamCard)currentPointsOfPlayer).GetPoints() || pointsBet == 0)
             {
                 ConfirmBet();
@@ -496,7 +496,7 @@ namespace JeopardyGame.Pages
         public void ResponseSomeOneSelectAQuestion(CurrentQuestionToShowContract questionToShow, int currentRound, int idUser)
         {
             this.currentRound = currentRound;
-            QuestionCardInformation questionCard = currentQuestions.Find(quest => quest.SpecificQuestionDetails.IdQuestion == questionToShow.IdQuestion);
+            QuestionCardInformation questionCard = currentQuestions.Find(questionInBoard => questionInBoard.SpecificQuestionDetails.IdQuestion == questionToShow.IdQuestion);
             if (questionCard != null)
             {
                 questionBeingAsked = questionCard.SpecificQuestionDetails;
@@ -560,7 +560,7 @@ namespace JeopardyGame.Pages
         private void ConfirmAnswer(Button answerCardChoose)
         {           
             GameOperationsClient gameActionsClientProxy = new();
-            var answerSelected = answersOfQuestionBeingAsked.Find(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerCardChoose.Content));
+            var answerSelected = answersOfQuestionBeingAsked.Find(answer => GetSpecificResource.GetEnglishOrSpanishDescription(answer.EnglishAnswerDescription, answer.SpanishAnswerDescription).Equals(answerCardChoose.Content));
             if(answerSelected != null)
             {
                 try
@@ -611,7 +611,7 @@ namespace JeopardyGame.Pages
             txbAdvicement.Visibility = Visibility.Visible;
             try
             {
-                gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.Find(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
+                gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.Find(playerForIdUser => playerForIdUser.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
             }
             catch (EndpointNotFoundException ex)
             {
@@ -641,7 +641,7 @@ namespace JeopardyGame.Pages
             timer.Stop();
             bool isCorrect;
             string descriptionOfCurrentQuestion = GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription);
-            var answerSelected = answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected);
+            var answerSelected = answersOfQuestionBeingAsked.Find(answer => answer.IdAnswer == idAnswerSelected);
             if (descriptionOfCurrentQuestion.Equals(GetSpecificResource.GetEnglishOrSpanishDescription(answerSelected.EnglishAnswerDescription, answerSelected.SpanishAnswerDescription)))
             {
                 isCorrect = true;
@@ -663,7 +663,7 @@ namespace JeopardyGame.Pages
             grdAnswerChoices.Visibility = Visibility.Hidden;
             cnvResultOfAwnser.Visibility = Visibility.Visible;
             txbQuestionResult.Text = GetSpecificResource.GetEnglishOrSpanishDescription( questionBeingAsked.EnglishQuestionDescription, questionBeingAsked.SpanishQuestionDescription);
-            var answerSelected = answersOfQuestionBeingAsked.Find(ans => ans.IdAnswer == idAnswerSelected);
+            var answerSelected = answersOfQuestionBeingAsked.Find(answer => answer.IdAnswer == idAnswerSelected);
             txbStringAnswerChoose.Text = GetSpecificResource.GetEnglishOrSpanishDescription(answerSelected.EnglishAnswerDescription, answerSelected.SpanishAnswerDescription);
             if (isCorrect)
             {
@@ -693,7 +693,7 @@ namespace JeopardyGame.Pages
                 {
                     nameOfBorder = team2Name;
                 }
-                specificTeam = (GameTeamCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals(nameOfBorder));
+                specificTeam = (GameTeamCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(player => player.Name.Equals(nameOfBorder));
             }
             if (isCorrect)
             {
@@ -701,7 +701,7 @@ namespace JeopardyGame.Pages
                 if (itsTeamGame)
                 {
                     specificTeam.UpdatePoints(points + specificTeam.GetPoints());
-                    playersInGame.Where(pl => pl.SideTeam == playerChoosing.SideTeam).ToList().ForEach(pl => pl.CurrentPointsOfRound = specificTeam.GetPoints());
+                    playersInGame.Where(player => player.SideTeam == playerChoosing.SideTeam).ToList().ForEach(player => player.CurrentPointsOfRound = specificTeam.GetPoints());
                 }
             }
             else
@@ -710,12 +710,12 @@ namespace JeopardyGame.Pages
                 if (itsTeamGame)
                 {
                     specificTeam.UpdatePoints(specificTeam.GetPoints() - points);
-                    playersInGame.Where(pl => pl.SideTeam == playerChoosing.SideTeam).ToList().ForEach(pl => pl.CurrentPointsOfRound = specificTeam.GetPoints());
+                    playersInGame.Where(player => player.SideTeam == playerChoosing.SideTeam).ToList().ForEach(player => player.CurrentPointsOfRound = specificTeam.GetPoints());
                 }
             }
             if (!itsTeamGame)
             {
-                GamePlayerCard specificPlayer = (GamePlayerCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(pla => pla.Name.Equals("_" + playerChoosing.IdUser.ToString()));
+                GamePlayerCard specificPlayer = (GamePlayerCard)stpPlayers.Children.OfType<Border>().FirstOrDefault(player => player.Name.Equals("_" + playerChoosing.IdUser.ToString()));
                 if (specificPlayer != null)
                 {
                     specificPlayer.UpdatePoints(playerChoosing.CurrentPointsOfRound);
@@ -773,7 +773,7 @@ namespace JeopardyGame.Pages
 
         private void ShowIfItsYourTurn()
         {
-            var userTurn = playersInGame.Find(pla => pla.TurnOfPlayer == currentTurn);            
+            var userTurn = playersInGame.Find(player => player.TurnOfPlayer == currentTurn);            
             List<Border> specificPlayer = stpPlayers.Children.OfType<Border>().ToList();
             if (itsTeamGame && userTurn != null)
             {
@@ -860,7 +860,7 @@ namespace JeopardyGame.Pages
             currentRound = 4;
             playersInGame = playerInGame.ToList();
             CreatePlayersScoresBoards();
-            List<PlayerInGameDataContract> playersOredered = playerInGame.OrderByDescending(pl => pl.CurrentPointsOfRound).ToList();
+            List<PlayerInGameDataContract> playersOredered = playerInGame.OrderByDescending(player => player.CurrentPointsOfRound).ToList();
             grdAnswerChoices.Visibility = Visibility.Hidden;
             grTimer.Visibility = Visibility.Hidden;
             grWinnerPanel.Visibility = Visibility.Visible;
@@ -889,10 +889,10 @@ namespace JeopardyGame.Pages
             List<Border> borderPositions = new List<Border>() { brdFirstPlace, brdSecondPlace, brdThirdPlace, brdForthPlace};
             if (itsTeamGame)
             {
-                var borderTeam1 = playerBorder.Find(pla => pla.Name.Equals(team1Name));
-                var borderTeam2 = playerBorder.Find(pla => pla.Name.Equals(team2Name));
-                var playersTeam1 = playerInGame.Find(pl => pl.SideTeam == 1);
-                var playerTeam2 = playerInGame.Find(pl => pl.SideTeam == 2);
+                var borderTeam1 = playerBorder.Find(player => player.Name.Equals(team1Name));
+                var borderTeam2 = playerBorder.Find(player => player.Name.Equals(team2Name));
+                var playersTeam1 = playerInGame.Find(player => player.SideTeam == 1);
+                var playerTeam2 = playerInGame.Find(player => player.SideTeam == 2);
                 if (playersTeam1 != null && playerTeam2 != null && borderTeam1 != null && borderTeam2 != null)
                 {
                     if (playersTeam1.CurrentPointsOfRound >= playerTeam2.CurrentPointsOfRound)
@@ -978,7 +978,7 @@ namespace JeopardyGame.Pages
         private void ChooseWrongAnswer()
         {
             string descriptionAnswerToQuestion = GetSpecificResource.GetEnglishOrSpanishDescription(answerToCurrentQuestion.EnglishAnswerDescription, answerToCurrentQuestion.SpanishAnswerDescription);
-            Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(btt => !btt.Content.Equals(descriptionAnswerToQuestion));
+            Button answerButton = grdAnswerChoices.Children.OfType<Button>().FirstOrDefault(bttChooseAnswer => !bttChooseAnswer.Content.Equals(descriptionAnswerToQuestion));
             if (currentTurn == yourTurn && answerButton != null)
             {               
                 try
@@ -1022,7 +1022,7 @@ namespace JeopardyGame.Pages
             try
             {
                 GameOperationsClient gameActionsClientProxy = new();
-                var answerSelected = answersOfQuestionBeingAsked.Find(anw => GetSpecificResource.GetEnglishOrSpanishDescription(anw.EnglishAnswerDescription, anw.SpanishAnswerDescription).Equals(answerButton.Content));
+                var answerSelected = answersOfQuestionBeingAsked.Find(answer => GetSpecificResource.GetEnglishOrSpanishDescription(answer.EnglishAnswerDescription, answer.SpanishAnswerDescription).Equals(answerButton.Content));
                 if (answerSelected != null)
                 {
                     gameActionsClientProxy.ChooseAnswer(roomCode, userSingleton.IdUser, answerSelected.IdAnswer, questionBeingAsked.ValueWorth, yourTurn);
@@ -1062,7 +1062,7 @@ namespace JeopardyGame.Pages
                 bttThridAnswer.IsEnabled = false;
                 bttFourAnswer.IsEnabled = false;
                 txbAdvicement.Visibility = Visibility.Visible;
-                gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.Find(pla => pla.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
+                gameActionsClientProxy.ConfirmLastQuestionAnswer(roomCode, playersInGame.Find(player => player.IdUser == userSingleton.IdUser), pointsBet, isCorrect);
             }
             catch (EndpointNotFoundException ex)
             {
