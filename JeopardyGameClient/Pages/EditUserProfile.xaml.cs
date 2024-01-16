@@ -109,10 +109,10 @@ namespace JeopardyGame.Pages
             if (lxtImageSelector.SelectedItem != null)
             {
 
-                Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(lxtImageSelector.SelectedItem.ToString());
+                Bitmap bmpForImage = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(lxtImageSelector.SelectedItem.ToString());
 
                 BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                    bmp.GetHbitmap(),
+                    bmpForImage.GetHbitmap(),
                     IntPtr.Zero,
                     Int32Rect.Empty,
                     BitmapSizeOptions.FromEmptyOptions()
@@ -150,10 +150,10 @@ namespace JeopardyGame.Pages
                     string imageName = imageIdMappings.FirstOrDefault(x => x.Value == imageId).Key;
                     if (!string.IsNullOrEmpty(imageName))
                     {
-                        Bitmap bmp = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
+                        Bitmap bmpForImage = (Bitmap)Properties.ResourcesImage.ResourceManager.GetObject(imageName);
 
                         BitmapSource bmpImage = Imaging.CreateBitmapSourceFromHBitmap(
-                            bmp.GetHbitmap(),
+                            bmpForImage.GetHbitmap(),
                             IntPtr.Zero,
                             Int32Rect.Empty,
                             BitmapSizeOptions.FromEmptyOptions()

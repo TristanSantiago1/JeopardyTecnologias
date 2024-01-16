@@ -23,6 +23,7 @@ using JeopardyGame.Exceptions;
 using JeopardyGame.ReGexs;
 using System.Text.RegularExpressions;
 using System.Net.Sockets;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace JeopardyGame.Pages
 {
@@ -173,7 +174,7 @@ namespace JeopardyGame.Pages
 
         private FriendCard CreateFriendCard(FriendAvailabilityInformation friend)
         {
-            int roomCode = GameCodeContainer.RoomCode;
+            int roomCode = lobbyPage.roomCode;
             FriendCard friendCard = new FriendCard(friend.Name, friend.IdStatusOfAvailability, Properties.Resources.bttInvite);
             friendCard.InviteButtonClicked += (sender, e) =>
             {

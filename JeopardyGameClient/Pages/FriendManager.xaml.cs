@@ -21,7 +21,7 @@ namespace JeopardyGame.Pages
 {
     public partial class FriendManager : Page, IFriendManagerServiceCallback
     {
-        private List<FriendBasicInformation> friends;
+        private List<FriendBasicInformation> friendsList;
         private List<FriendBasicInformation> friendRequests;
         private List<FriendBasicInformation> otherPeople;
         private String textLeftButton = Properties.Resources.bttReport;
@@ -142,7 +142,7 @@ namespace JeopardyGame.Pages
                 var friendsConsulted = friendManagerProxy.GetUserFriends(userConsulted);
                 if (friendsConsulted.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT)
                 {
-                    friends = friendsConsulted.ObjectSaved.ToList();
+                    friendsList = friendsConsulted.ObjectSaved.ToList();
                     return true;
                 }
             }
@@ -238,8 +238,6 @@ namespace JeopardyGame.Pages
             return false;
         }
 
-
-
         private void SetCards()
         {
             stpFrinedsManagerList.Children.Clear();
@@ -247,7 +245,7 @@ namespace JeopardyGame.Pages
             switch (typeUserConsult)
             {
                 case MY_FRIENDS:
-                    listOfUsers = new List<FriendBasicInformation>(friends); 
+                    listOfUsers = new List<FriendBasicInformation>(friendsList); 
                     break;
                 case FRIENDS_REQUEST:
                     listOfUsers = new List<FriendBasicInformation>(friendRequests); 
@@ -261,25 +259,25 @@ namespace JeopardyGame.Pages
             }
             foreach (var item in listOfUsers)
             {
-                Border brdCard = new Border();
+                Border brdCardofFriend = new Border();
                 FriendCardManagementWindow friendCardManagement = new FriendCardManagementWindow(item.IdUser, item.UserName, typeUserConsult, textLeftButton, textRightButton, this);
-                brdCard.Child = friendCardManagement;
-                stpFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCard));
+                brdCardofFriend.Child = friendCardManagement;
+                stpFrinedsManagerList.Children.Add(SetBorderCardStyle(brdCardofFriend));
             }
         }
 
 
-        private Border SetBorderCardStyle(Border brdCard)
+        private Border SetBorderCardStyle(Border brdCardStyle)
         {
-            brdCard.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D9D9D9"));
-            brdCard.Background.Opacity = 0.20;
-            brdCard.CornerRadius = new CornerRadius(15);
-            brdCard.Margin = new Thickness(20, 10, 5, 10);
-            brdCard.Width = 1030;
-            brdCard.MaxWidth = 1130;
-            brdCard.Height = 70;
-            brdCard.HorizontalAlignment = HorizontalAlignment.Left;
-            return brdCard;
+            brdCardStyle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D9D9D9"));
+            brdCardStyle.Background.Opacity = 0.20;
+            brdCardStyle.CornerRadius = new CornerRadius(15);
+            brdCardStyle.Margin = new Thickness(20, 10, 5, 10);
+            brdCardStyle.Width = 1030;
+            brdCardStyle.MaxWidth = 1130;
+            brdCardStyle.Height = 70;
+            brdCardStyle.HorizontalAlignment = HorizontalAlignment.Left;
+            return brdCardStyle;
         }
 
         private void ClickConsultMyFriends(object sender, MouseButtonEventArgs e)
@@ -370,16 +368,16 @@ namespace JeopardyGame.Pages
                 FriendManagerOperationsClient friendActionsProxy = new();
                 friendActionsProxy.EliminateUserFromFriends(userSingleton.IdPlayer, idUserFriendToEliminate);
                 String userName = String.Empty;
-                foreach (var item in friends)
+                foreach (var item in friendsList)
                 {
                     if (item.IdUser == idUserFriendToEliminate)
                     {
-                        friends.Remove(item);
+                        friendsList.Remove(item);
                         userName = item.UserName;
                         break;
                     }
                 }
-                if (!otherPeople.Exists(pla => pla.UserName.Equals(userName)))
+                if (!otherPeople.Exists(player => player.UserName.Equals(userName)))
                 {
                     FriendBasicInformation newFriend = new FriendBasicInformation();
                     newFriend.IdUser = idUserFriendToEliminate;
@@ -420,7 +418,7 @@ namespace JeopardyGame.Pages
 
                 FriendManagerOperationsClient friendActionsProxy = new();
                 friendActionsProxy.SendFriendRequest(userSingleton.IdPlayer, idUserRequested);
-                FriendBasicInformation item = otherPeople.Find(pla => pla.IdUser == idUserRequested);
+                FriendBasicInformation item = otherPeople.Find(player => player.IdUser == idUserRequested);
                 if (item.IdUser == idUserRequested)
                 {
                     otherPeople.Remove(item);
@@ -466,13 +464,13 @@ namespace JeopardyGame.Pages
                         break;
                     }
                 }
-                if (!friends.Exists(pla => pla.IdUser == idUserRequesting))
+                if (!friendsList.Exists(player => player.IdUser == idUserRequesting))
                 {
                     FriendBasicInformation newFriend = new FriendBasicInformation();
                     newFriend.IdUser = idUserRequesting;
                     newFriend.UserName = userName;
                     newFriend.IdStatusAvailability = NOT_STATUS;
-                    friends.Add(newFriend);
+                    friendsList.Add(newFriend);
                 }
                 SetCards();
             }
@@ -515,7 +513,7 @@ namespace JeopardyGame.Pages
                         break;
                     }
                 }
-                if (!otherPeople.Exists(pla => pla.IdUser == idUserRequesting))
+                if (!otherPeople.Exists(player => player.IdUser == idUserRequesting))
                 {
                     FriendBasicInformation newFriend = new FriendBasicInformation();
                     newFriend.IdUser = idUserRequesting;
@@ -565,7 +563,7 @@ namespace JeopardyGame.Pages
                     ManageResponse(otherPeople, friendRequests, idUser, userName);
                     break;
                 case ACCEPT_REQUEST:                   
-                    ManageResponse(friendRequests, friends, idUser, userName);
+                    ManageResponse(friendRequests, friendsList, idUser, userName);
                     break;
             }
             SetCards();
@@ -581,7 +579,7 @@ namespace JeopardyGame.Pages
                     break;
                 }
             }
-            if(!addToList.Exists(pla => pla.IdUser == idUserOperation))
+            if(!addToList.Exists(player => player.IdUser == idUserOperation))
             {
                 FriendBasicInformation newFriend = new FriendBasicInformation();
                 newFriend.IdUser = idUserOperation;
@@ -594,16 +592,16 @@ namespace JeopardyGame.Pages
         public void ResponseEliminationFromFriends(int idUser)
         {
             String userName = String.Empty;
-            foreach (var item in friends)
+            foreach (var item in friendsList)
             {
                 if (item.IdUser == idUser)
                 {
-                    friends.Remove(item);
+                    friendsList.Remove(item);
                     userName = item.UserName;
                     break;
                 }
             }
-            if (!otherPeople.Exists(pla => pla.IdUser == idUser))
+            if (!otherPeople.Exists(player => player.IdUser == idUser))
             {
                 FriendBasicInformation newFriend = new FriendBasicInformation();
                 newFriend.IdUser = idUser;
@@ -624,7 +622,7 @@ namespace JeopardyGame.Pages
                 switch (typeUserConsult)
                 {
                     case MY_FRIENDS:
-                        listOfUsers = new List<FriendBasicInformation>(friends);
+                        listOfUsers = new List<FriendBasicInformation>(friendsList);
                         break;
                     case FRIENDS_REQUEST:
                         listOfUsers = new List<FriendBasicInformation>(friendRequests);

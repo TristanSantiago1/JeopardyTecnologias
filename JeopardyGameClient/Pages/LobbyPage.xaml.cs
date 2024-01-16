@@ -486,25 +486,25 @@ namespace JeopardyGame.Pages
         {
             if (teamUp)
             {
-                currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
+                currentPlayerInLobby = currentPlayerInLobby.Select(player =>
                 {
-                    if (pla.NumberOfPlayerInLobby <= TEMA_RIGHT_SIDE)
+                    if (player.NumberOfPlayerInLobby <= TEMA_RIGHT_SIDE)
                     {
-                        pla.SideOfTeam = TEAM_LEFT_SIDE;
+                        player.SideOfTeam = TEAM_LEFT_SIDE;
                     }
                     else
                     {
-                        pla.SideOfTeam = TEMA_RIGHT_SIDE;
+                        player.SideOfTeam = TEMA_RIGHT_SIDE;
                     }
-                    return pla;
+                    return player;
                 }).ToList();
             }
             else
             {
-                currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
+                currentPlayerInLobby = currentPlayerInLobby.Select(player =>
                 {
-                    pla.SideOfTeam = TEAM_LEFT_SIDE;
-                    return pla;
+                    player.SideOfTeam = TEAM_LEFT_SIDE;
+                    return player;
                 }).ToList();
             }
             if (!isAdminOfLobby)
@@ -569,22 +569,22 @@ namespace JeopardyGame.Pages
 
         private PlayerInLobby ChangeSideOfPlayer(String userName)
         {
-            currentPlayerInLobby = currentPlayerInLobby.Select(pla =>
+            currentPlayerInLobby = currentPlayerInLobby.Select(player =>
             {
-                if (pla.UserName.Equals(userName))
+                if (player.UserName.Equals(userName))
                 {
-                    if (pla.SideOfTeam == TEAM_LEFT_SIDE)
+                    if (player.SideOfTeam == TEAM_LEFT_SIDE)
                     {
-                        pla.SideOfTeam = TEMA_RIGHT_SIDE;
+                        player.SideOfTeam = TEMA_RIGHT_SIDE;
                     }
                     else
                     {
-                        pla.SideOfTeam = TEAM_LEFT_SIDE;
+                        player.SideOfTeam = TEAM_LEFT_SIDE;
                     }
                 }
-                return pla;
+                return player;
             }).ToList();
-            PlayerInLobby player = currentPlayerInLobby.Find(x => x.UserName.Equals(userName));
+            PlayerInLobby player = currentPlayerInLobby.Find(playerForUserName => playerForUserName.UserName.Equals(userName));
             return player;
         }
 
@@ -774,7 +774,7 @@ namespace JeopardyGame.Pages
         {
             if ((bool)chbTeamUp.IsChecked)
             {
-                if (currentPlayerInLobby.Where(pl => pl.SideOfTeam == TEAM_LEFT_SIDE).ToList().Count == currentPlayerInLobby.Where(pl => pl.SideOfTeam == TEMA_RIGHT_SIDE).ToList().Count)
+                if (currentPlayerInLobby.Where(player => player.SideOfTeam == TEAM_LEFT_SIDE).ToList().Count == currentPlayerInLobby.Where(player => player.SideOfTeam == TEMA_RIGHT_SIDE).ToList().Count)
                 {
                     CallMethodToStartGame();
                 }
