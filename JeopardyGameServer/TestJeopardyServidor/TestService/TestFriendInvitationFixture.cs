@@ -100,8 +100,6 @@ namespace TestJeopardyServidor.TestService
         private readonly int ID_PLAYER2 = 54;
         private readonly int ID__NOT_EXISTANCE_PLAYER1 = 1;
         private readonly int ID_NOT_EXISTANCE_PLAYER2 = 2;
-        private readonly int ID_FRIEND_REQUEST_STATE = 1;
-        private readonly int ID_FRIEND_STATE = 2;
 
         public TestFriendInvitation(TestFriendInvitationFixture fixture)
         {

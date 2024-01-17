@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.5.1.1\lib\net462\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,6 +54,9 @@
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.ObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.TestPlatform.ObjectModel.17.8.0\lib\net462\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.20.70.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.20.70\lib\net462\Moq.dll</HintPath>
     </Reference>
     <Reference Include="NuGet.Frameworks, Version=6.8.0.131, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\NuGet.Frameworks.6.8.0\lib\net472\NuGet.Frameworks.dll</HintPath>
@@ -83,6 +89,10 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -103,6 +113,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\TestServerJeopardy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\BdActions.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -118,6 +133,7 @@
     <Compile Include="TestService\TestGamePlayersFixture.cs" />
     <Compile Include="TestService\TestGetUserPlayersFixture.cs" />
     <Compile Include="TestService\TestLoginFixture.cs" />
+    <Compile Include="TestService\TestNotifyAvailabilityFixture.cs" />
     <Compile Include="TestService\TestSaveUserOperationsFixture.cs" />
     <Compile Include="TestService\TestSavePlayerFixture.cs" />
     <Compile Include="TestService\TestUpdateUserPlayerFixture.cs" />
@@ -125,7 +141,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\TestServerJeopardy\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TestServerJeopardy\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TestServerJeopardy\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\TestServerJeopardy\ServicesReferenceAuthor.wsdl" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\JeopardyGame.Data.FriendBasicInformation.datasource" />
+    <None Include="Properties\DataSources\JeopardyGame.Data.MessageChat.datasource" />
+    <None Include="Properties\DataSources\JeopardyGame.Data.PlayerInfo.datasource" />
+    <None Include="Properties\DataSources\JeopardyGame.Data.PlayerInLobby.datasource" />
+    <None Include="Properties\DataSources\JeopardyGame.Data.PlayerPojo.datasource" />
+    <None Include="Properties\DataSources\JeopardyGame.Data.UserPojo.datasource" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JeopardyGame.Data\JeopardyGame.Data.csproj">
@@ -136,15 +168,37 @@
       <Project>{2a5fc483-eea4-4c3e-be66-10036a24d3c8}</Project>
       <Name>JeopardyGame.Host</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\JeopardyGame.Service\JeopardyGame.Service.csproj">
+      <Project>{8539607c-763c-4884-8d2f-045a0b61638c}</Project>
+      <Name>JeopardyGame.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\BdActions.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BdActions.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\TestServerJeopardy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TestServerJeopardy\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TestServerJeopardy\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TestServerJeopardy\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TestServerJeopardy\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="hKVVbZ8YlUuE4tDOHNg7IqU1jVlsX4BwTlxJ18qPl64=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="8tWv8bIOY+Q4RjaJ06po11Kkl1fSVXETDSn1VZtnLG8=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_ICheckUserLivingService">
       <properties>
@@ -2953,7 +2953,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_ICheckUserLivingService" contract="ServidorServiciosJeopardy.ICheckUserLivingService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLivingService">
+    <endpoint name="NetTcpBinding_ICheckUserLivingService" contract="TestServerJeopardy.ICheckUserLivingService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLivingService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -2968,7 +2968,7 @@
           <serializedValue>NetTcpBinding_ICheckUserLivingService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ICheckUserLivingService</serializedValue>
+          <serializedValue>TestServerJeopardy.ICheckUserLivingService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3038,7 +3038,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ICheckUserLivingUnsubscribe" contract="ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLivingUnsubscribe">
+    <endpoint name="NetTcpBinding_ICheckUserLivingUnsubscribe" contract="TestServerJeopardy.ICheckUserLivingUnsubscribe" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ICheckUserLivingUnsubscribe">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3053,7 +3053,7 @@
           <serializedValue>NetTcpBinding_ICheckUserLivingUnsubscribe</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ICheckUserLivingUnsubscribe</serializedValue>
+          <serializedValue>TestServerJeopardy.ICheckUserLivingUnsubscribe</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3123,7 +3123,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IChatForTeamsService" contract="ServidorServiciosJeopardy.IChatForTeamsService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeamsService">
+    <endpoint name="NetTcpBinding_IChatForTeamsService" contract="TestServerJeopardy.IChatForTeamsService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeamsService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3138,7 +3138,7 @@
           <serializedValue>NetTcpBinding_IChatForTeamsService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IChatForTeamsService</serializedValue>
+          <serializedValue>TestServerJeopardy.IChatForTeamsService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3208,7 +3208,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IChatForTeamsOperations" contract="ServidorServiciosJeopardy.IChatForTeamsOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeamsOperations">
+    <endpoint name="NetTcpBinding_IChatForTeamsOperations" contract="TestServerJeopardy.IChatForTeamsOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IChatForTeamsOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3223,7 +3223,7 @@
           <serializedValue>NetTcpBinding_IChatForTeamsOperations</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IChatForTeamsOperations</serializedValue>
+          <serializedValue>TestServerJeopardy.IChatForTeamsOperations</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3293,7 +3293,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IFriendManagerService" contract="ServidorServiciosJeopardy.IFriendManagerService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerService">
+    <endpoint name="NetTcpBinding_IFriendManagerService" contract="TestServerJeopardy.IFriendManagerService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3308,7 +3308,7 @@
           <serializedValue>NetTcpBinding_IFriendManagerService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IFriendManagerService</serializedValue>
+          <serializedValue>TestServerJeopardy.IFriendManagerService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3378,7 +3378,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IFriendManagerOperations" contract="ServidorServiciosJeopardy.IFriendManagerOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerOperations">
+    <endpoint name="NetTcpBinding_IFriendManagerOperations" contract="TestServerJeopardy.IFriendManagerOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IFriendManagerOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3393,7 +3393,7 @@
           <serializedValue>NetTcpBinding_IFriendManagerOperations</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IFriendManagerOperations</serializedValue>
+          <serializedValue>TestServerJeopardy.IFriendManagerOperations</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3463,7 +3463,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_INotifyAvailabilityService" contract="ServidorServiciosJeopardy.INotifyAvailabilityService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyAvailabilityService">
+    <endpoint name="NetTcpBinding_INotifyAvailabilityService" contract="TestServerJeopardy.INotifyAvailabilityService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyAvailabilityService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3478,7 +3478,7 @@
           <serializedValue>NetTcpBinding_INotifyAvailabilityService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.INotifyAvailabilityService</serializedValue>
+          <serializedValue>TestServerJeopardy.INotifyAvailabilityService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3548,7 +3548,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_INotifyAvailabilityOperations" contract="ServidorServiciosJeopardy.INotifyAvailabilityOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyAvailabilityOperations">
+    <endpoint name="NetTcpBinding_INotifyAvailabilityOperations" contract="TestServerJeopardy.INotifyAvailabilityOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_INotifyAvailabilityOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3563,7 +3563,7 @@
           <serializedValue>NetTcpBinding_INotifyAvailabilityOperations</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.INotifyAvailabilityOperations</serializedValue>
+          <serializedValue>TestServerJeopardy.INotifyAvailabilityOperations</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3633,7 +3633,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyService" contract="ServidorServiciosJeopardy.ILobbyService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyService">
+    <endpoint name="NetTcpBinding_ILobbyService" contract="TestServerJeopardy.ILobbyService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3648,7 +3648,7 @@
           <serializedValue>NetTcpBinding_ILobbyService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILobbyService</serializedValue>
+          <serializedValue>TestServerJeopardy.ILobbyService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3718,7 +3718,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyOperation" contract="ServidorServiciosJeopardy.ILobbyOperation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyOperation">
+    <endpoint name="NetTcpBinding_ILobbyOperation" contract="TestServerJeopardy.ILobbyOperation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyOperation">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3733,7 +3733,7 @@
           <serializedValue>NetTcpBinding_ILobbyOperation</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILobbyOperation</serializedValue>
+          <serializedValue>TestServerJeopardy.ILobbyOperation</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3803,7 +3803,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILiveChatService" contract="ServidorServiciosJeopardy.ILiveChatService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChatService">
+    <endpoint name="NetTcpBinding_ILiveChatService" contract="TestServerJeopardy.ILiveChatService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChatService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3818,7 +3818,7 @@
           <serializedValue>NetTcpBinding_ILiveChatService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILiveChatService</serializedValue>
+          <serializedValue>TestServerJeopardy.ILiveChatService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3888,7 +3888,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILiveChatOperations" contract="ServidorServiciosJeopardy.ILiveChatOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChatOperations">
+    <endpoint name="NetTcpBinding_ILiveChatOperations" contract="TestServerJeopardy.ILiveChatOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILiveChatOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3903,7 +3903,7 @@
           <serializedValue>NetTcpBinding_ILiveChatOperations</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILiveChatOperations</serializedValue>
+          <serializedValue>TestServerJeopardy.ILiveChatOperations</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -3973,7 +3973,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameService" contract="ServidorServiciosJeopardy.IGameService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameService">
+    <endpoint name="NetTcpBinding_IGameService" contract="TestServerJeopardy.IGameService" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -3988,7 +3988,7 @@
           <serializedValue>NetTcpBinding_IGameService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IGameService</serializedValue>
+          <serializedValue>TestServerJeopardy.IGameService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4058,7 +4058,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameOperations" contract="ServidorServiciosJeopardy.IGameOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameOperations">
+    <endpoint name="NetTcpBinding_IGameOperations" contract="TestServerJeopardy.IGameOperations" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGameOperations">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4073,7 +4073,7 @@
           <serializedValue>NetTcpBinding_IGameOperations</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IGameOperations</serializedValue>
+          <serializedValue>TestServerJeopardy.IGameOperations</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4143,7 +4143,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IUserManager" contract="ServidorServiciosJeopardy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserManager">
+    <endpoint name="NetTcpBinding_IUserManager" contract="TestServerJeopardy.IUserManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4158,7 +4158,7 @@
           <serializedValue>NetTcpBinding_IUserManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IUserManager</serializedValue>
+          <serializedValue>TestServerJeopardy.IUserManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4228,7 +4228,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILogInVerification" contract="ServidorServiciosJeopardy.ILogInVerification" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILogInVerification">
+    <endpoint name="NetTcpBinding_ILogInVerification" contract="TestServerJeopardy.ILogInVerification" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILogInVerification">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4243,7 +4243,7 @@
           <serializedValue>NetTcpBinding_ILogInVerification</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILogInVerification</serializedValue>
+          <serializedValue>TestServerJeopardy.ILogInVerification</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4313,7 +4313,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IEmailSenderManager" contract="ServidorServiciosJeopardy.IEmailSenderManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IEmailSenderManager">
+    <endpoint name="NetTcpBinding_IEmailSenderManager" contract="TestServerJeopardy.IEmailSenderManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IEmailSenderManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4328,7 +4328,7 @@
           <serializedValue>NetTcpBinding_IEmailSenderManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IEmailSenderManager</serializedValue>
+          <serializedValue>TestServerJeopardy.IEmailSenderManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4398,7 +4398,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IUserCreateAccountCode" contract="ServidorServiciosJeopardy.IUserCreateAccountCode" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserCreateAccountCode">
+    <endpoint name="NetTcpBinding_IUserCreateAccountCode" contract="TestServerJeopardy.IUserCreateAccountCode" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IUserCreateAccountCode">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4413,7 +4413,7 @@
           <serializedValue>NetTcpBinding_IUserCreateAccountCode</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IUserCreateAccountCode</serializedValue>
+          <serializedValue>TestServerJeopardy.IUserCreateAccountCode</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4483,7 +4483,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConsultFriends" contract="ServidorServiciosJeopardy.IConsultFriends" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultFriends">
+    <endpoint name="NetTcpBinding_IConsultFriends" contract="TestServerJeopardy.IConsultFriends" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultFriends">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4498,7 +4498,7 @@
           <serializedValue>NetTcpBinding_IConsultFriends</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IConsultFriends</serializedValue>
+          <serializedValue>TestServerJeopardy.IConsultFriends</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4568,7 +4568,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConsultUserInformation" contract="ServidorServiciosJeopardy.IConsultUserInformation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultUserInformation">
+    <endpoint name="NetTcpBinding_IConsultUserInformation" contract="TestServerJeopardy.IConsultUserInformation" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IConsultUserInformation">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4583,7 +4583,7 @@
           <serializedValue>NetTcpBinding_IConsultUserInformation</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IConsultUserInformation</serializedValue>
+          <serializedValue>TestServerJeopardy.IConsultUserInformation</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4653,7 +4653,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IValidateUserExistance" contract="ServidorServiciosJeopardy.IValidateUserExistance" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IValidateUserExistance">
+    <endpoint name="NetTcpBinding_IValidateUserExistance" contract="TestServerJeopardy.IValidateUserExistance" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IValidateUserExistance">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4668,7 +4668,7 @@
           <serializedValue>NetTcpBinding_IValidateUserExistance</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IValidateUserExistance</serializedValue>
+          <serializedValue>TestServerJeopardy.IValidateUserExistance</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4738,7 +4738,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyTeamsManager" contract="ServidorServiciosJeopardy.ILobbyTeamsManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyTeamsManager">
+    <endpoint name="NetTcpBinding_ILobbyTeamsManager" contract="TestServerJeopardy.ILobbyTeamsManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyTeamsManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4753,7 +4753,7 @@
           <serializedValue>NetTcpBinding_ILobbyTeamsManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILobbyTeamsManager</serializedValue>
+          <serializedValue>TestServerJeopardy.ILobbyTeamsManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4823,7 +4823,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_ILobbyCodeAuthentication" contract="ServidorServiciosJeopardy.ILobbyCodeAuthentication" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyCodeAuthentication">
+    <endpoint name="NetTcpBinding_ILobbyCodeAuthentication" contract="TestServerJeopardy.ILobbyCodeAuthentication" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_ILobbyCodeAuthentication">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4838,7 +4838,7 @@
           <serializedValue>NetTcpBinding_ILobbyCodeAuthentication</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.ILobbyCodeAuthentication</serializedValue>
+          <serializedValue>TestServerJeopardy.ILobbyCodeAuthentication</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4908,7 +4908,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGuestPlayerManager" contract="ServidorServiciosJeopardy.IGuestPlayerManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGuestPlayerManager">
+    <endpoint name="NetTcpBinding_IGuestPlayerManager" contract="TestServerJeopardy.IGuestPlayerManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IGuestPlayerManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -4923,7 +4923,7 @@
           <serializedValue>NetTcpBinding_IGuestPlayerManager</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IGuestPlayerManager</serializedValue>
+          <serializedValue>TestServerJeopardy.IGuestPlayerManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -4993,7 +4993,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IRecoverPassword" contract="ServidorServiciosJeopardy.IRecoverPassword" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IRecoverPassword">
+    <endpoint name="NetTcpBinding_IRecoverPassword" contract="TestServerJeopardy.IRecoverPassword" bindingType="netTcpBinding" address="net.tcp://localhost:8081/JeopardyGame.Service" bindingConfiguration="NetTcpBinding_IRecoverPassword">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/JeopardyGame.Service</serializedValue>
@@ -5008,7 +5008,7 @@
           <serializedValue>NetTcpBinding_IRecoverPassword</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServidorServiciosJeopardy.IRecoverPassword</serializedValue>
+          <serializedValue>TestServerJeopardy.IRecoverPassword</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

@@ -7,13 +7,15 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.Remoting.Messaging;
 using System.ServiceModel;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    partial class NotifyAvailabilityServiceImplementation : INotifyAvailabilityService
+    public partial class NotifyAvailabilityServiceImplementation : INotifyAvailabilityService
     {
         private static readonly Object lockObject = new Object();
+        private InstanceContext instanceContext;
         private const int NULL_VALUE = 0;
 
         public void NotifyFriends(int idUser, int status)
