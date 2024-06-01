@@ -35,6 +35,9 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TwitterUserNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -95,6 +98,19 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
                 if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
                     this.PasswordField = value;
                     this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TwitterUserName {
+            get {
+                return this.TwitterUserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TwitterUserNameField, value) != true)) {
+                    this.TwitterUserNameField = value;
+                    this.RaisePropertyChanged("TwitterUserName");
                 }
             }
         }
@@ -3127,6 +3143,12 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UpdatePasswordUser", ReplyAction="http://tempuri.org/IUserManager/UpdatePasswordUserResponse")]
         System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdatePasswordUserAsync(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SaveUpdateTwitterUserName", ReplyAction="http://tempuri.org/IUserManager/SaveUpdateTwitterUserNameResponse")]
+        JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SaveUpdateTwitterUserName(int idUser, string twitterUserName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/SaveUpdateTwitterUserName", ReplyAction="http://tempuri.org/IUserManager/SaveUpdateTwitterUserNameResponse")]
+        System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SaveUpdateTwitterUserNameAsync(int idUser, string twitterUserName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -3194,6 +3216,14 @@ namespace JeopardyGame.ServidorServiciosJeopardy {
         
         public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> UpdatePasswordUserAsync(string userName, string password) {
             return base.Channel.UpdatePasswordUserAsync(userName, password);
+        }
+        
+        public JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint SaveUpdateTwitterUserName(int idUser, string twitterUserName) {
+            return base.Channel.SaveUpdateTwitterUserName(idUser, twitterUserName);
+        }
+        
+        public System.Threading.Tasks.Task<JeopardyGame.ServidorServiciosJeopardy.GenericClassOfint> SaveUpdateTwitterUserNameAsync(int idUser, string twitterUserName) {
+            return base.Channel.SaveUpdateTwitterUserNameAsync(idUser, twitterUserName);
         }
     }
     

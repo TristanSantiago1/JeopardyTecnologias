@@ -292,6 +292,56 @@ namespace JeopardyGame.Service.ServiceImplementation
             }
             return resultToReturn;
         }
+
+        public GenericClass<int> SaveUpdateTwitterUserName(int idUser, string twitterUserName)
+        {
+            GenericClass<int> resultToReturn = new GenericClass<int>()
+            {
+                CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT,
+
+            };
+            try
+            {
+                var twitterExist = UserManagerDataOperation.ValidateIfTwitterAlredadyExist(twitterUserName);
+                if (twitterExist.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
+                {
+                    var updatePhoto = UserManagerDataOperation.SaveUpdateTwitterUserName(idUser, twitterUserName);
+                    if (updatePhoto.CodeEvent == CodesDictionary.SUCCESFULL_EVENT)
+                    {
+                        resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                        resultToReturn.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultToReturn.ObjectSaved = updatePhoto.ObjectSaved;
+                        resultToReturn.CodeEvent = updatePhoto.CodeEvent;
+                    }
+                }
+                else
+                {
+                    resultToReturn.ObjectSaved = twitterExist.ObjectSaved;
+                    resultToReturn.CodeEvent = twitterExist.CodeEvent;
+                }
+               
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                ExceptionHandler.LogException(ex.InnerException, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (TimeoutException ex)
+            {
+                ExceptionHandler.LogException(ex.InnerException, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandler.LogException(ex.InnerException, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (InvalidOperationException ex)
+            {
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            return resultToReturn;
+        }
     }  
 }
 

@@ -719,4 +719,19 @@ Mexico</value>
   <data name="lblNoCoincidenceSearchFriend" xml:space="preserve">
     <value>Lo sentimos,  no existen coincidencias con tu criterio de búsqueda, verifica el nombre de usuario ingresado, prueba de neuvo o prueba despues</value>
   </data>
+  <data name="lblTwitterUserNameAcc" xml:space="preserve">
+    <value>Usuario de twitter</value>
+  </data>
+  <data name="LblWrongTwitterUserName" xml:space="preserve">
+    <value>El usuario de twitter ingresado no es válido. intenta de nuevo</value>
+  </data>
+  <data name="lblTwitterUserUpdate" xml:space="preserve">
+    <value>El nombre de usuario de twitter ha sido actualizado correctamente</value>
+  </data>
+  <data name="lblTwitterUserExist" xml:space="preserve">
+    <value>El nombre de usuario de twitter ya existe</value>
+  </data>
+  <data name="lblCantSaveTwitterUserName" xml:space="preserve">
+    <value>No fue posible actualizar el nombre de usuario de twitter, por favor intenta despues</value>
+  </data>
 </root>

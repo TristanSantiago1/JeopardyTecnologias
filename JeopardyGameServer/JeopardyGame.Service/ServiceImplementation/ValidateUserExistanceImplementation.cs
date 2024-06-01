@@ -12,7 +12,7 @@ using JeopardyGame.Service.InterfacesSevices;
 
 namespace JeopardyGame.Service.ServiceImplementation
 {
-    internal class ValidateUserExistenceImplementation : IValidateUserExistance
+    public class ValidateUserExistenceImplementation : IValidateUserExistance
     {
         private const int ALLOWED_VALUES = 1;
         private static readonly Object lockObject = new Object();

@@ -35,6 +35,11 @@ namespace JeopardyGame.Service.ServiceImplementation
     {
         UserManagerImplementation UserManager = new UserManagerImplementation();
 
+        public GenericClass<int> SaveUpdateTwitterUserName(int idUser, string twitterUserName)
+        {
+            return ((IUserManager)UserManager).SaveUpdateTwitterUserName(idUser, twitterUserName);
+        }
+
         public GenericClass<int> SaveUser(UserPojo userPojoNew, string codeEntered)
         {
             return ((IUserManager)UserManager).SaveUser(userPojoNew, codeEntered);

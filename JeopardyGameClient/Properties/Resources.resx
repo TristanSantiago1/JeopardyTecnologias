@@ -720,4 +720,19 @@
   <data name="lblNoCoincidenceSearchFriend" xml:space="preserve">
     <value>NO coincidence</value>
   </data>
+  <data name="lblTwitterUserNameAcc" xml:space="preserve">
+    <value>Twitter user name</value>
+  </data>
+  <data name="LblWrongTwitterUserName" xml:space="preserve">
+    <value>hgghhg</value>
+  </data>
+  <data name="lblTwitterUserUpdate" xml:space="preserve">
+    <value>actualice</value>
+  </data>
+  <data name="lblTwitterUserExist" xml:space="preserve">
+    <value>twitter name exist</value>
+  </data>
+  <data name="lblCantSaveTwitterUserName" xml:space="preserve">
+    <value>wrong update</value>
+  </data>
 </root>

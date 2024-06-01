@@ -466,6 +466,15 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to wrong update.
+        /// </summary>
+        public static string lblCantSaveTwitterUserName {
+            get {
+                return ResourceManager.GetString("lblCantSaveTwitterUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string lblCodeDescrip {
@@ -1303,6 +1312,33 @@ namespace JeopardyGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to twitter name exist.
+        /// </summary>
+        public static string lblTwitterUserExist {
+            get {
+                return ResourceManager.GetString("lblTwitterUserExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twitter user name.
+        /// </summary>
+        public static string lblTwitterUserNameAcc {
+            get {
+                return ResourceManager.GetString("lblTwitterUserNameAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to actualice.
+        /// </summary>
+        public static string lblTwitterUserUpdate {
+            get {
+                return ResourceManager.GetString("lblTwitterUserUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The avatar has been updated correctly..
         /// </summary>
         public static string lblUpdateAvatar {
@@ -1470,6 +1506,15 @@ namespace JeopardyGame.Properties {
         public static string lblWrongRoomCode {
             get {
                 return ResourceManager.GetString("lblWrongRoomCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to hgghhg.
+        /// </summary>
+        public static string LblWrongTwitterUserName {
+            get {
+                return ResourceManager.GetString("LblWrongTwitterUserName", resourceCulture);
             }
         }
         

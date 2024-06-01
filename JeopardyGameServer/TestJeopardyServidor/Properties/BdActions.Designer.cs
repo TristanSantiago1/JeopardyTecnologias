@@ -140,6 +140,18 @@ namespace TestJeopardyServidor.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to UPDATE [dbo].[Users]
+        ///   SET 
+        ///      [TwitterUserName] = &apos;&apos;
+        /// WHERE IdUser = 22.
+        /// </summary>
+        public static string RestoreTwitter {
+            get {
+                return ResourceManager.GetString("RestoreTwitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE [dbo].[Users]
         ///   SET [EmailAddress] = &apos;tristan@gmail.com&apos;
         ///      ,[Password] = &apos;614bac48e79de791a7222dd0a68efce7ec078e19f8669d0899c9838949a68f96&apos;
         ///      ,[Name] = &apos;tris&apos;

@@ -719,4 +719,19 @@ Mexico</value>
   <data name="lblNoCoincidenceSearchFriend" xml:space="preserve">
     <value>Sorry, There is no coincidence with the user name entered, check it out or try it later. </value>
   </data>
+  <data name="lblTwitterUserNameAcc" xml:space="preserve">
+    <value>Twitter user name</value>
+  </data>
+  <data name="LblWrongTwitterUserName" xml:space="preserve">
+    <value>The twitter user name does not have the correct format, try again</value>
+  </data>
+  <data name="lblTwitterUserUpdate" xml:space="preserve">
+    <value>The twitter user name has been saved correctly</value>
+  </data>
+  <data name="lblTwitterUserExist" xml:space="preserve">
+    <value>The twitter user name entered already exist</value>
+  </data>
+  <data name="lblCantSaveTwitterUserName" xml:space="preserve">
+    <value>There was a problem while saving the twitter user name, try it latter</value>
+  </data>
 </root>

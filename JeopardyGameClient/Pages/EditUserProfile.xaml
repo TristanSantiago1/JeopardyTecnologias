@@ -11,7 +11,7 @@
     <Viewbox Stretch="Fill">
 
         <Grid Height="770">
-            <StackPanel Height="auto" Margin="698,171,169,484" >
+            <StackPanel Height="auto" Margin="716,146,151,509" >
                 <Label x:Name="lblNameDescripCreateAcc" Content = "{x:Static p:Resources.lblNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="642" Height="54">
@@ -19,16 +19,26 @@
                 </Border>
             </StackPanel>
 
+            <StackPanel Height="auto" Margin="706,277,161,378" >
+                <Label x:Name="lblTwitterUserNameAcc" Content = "{x:Static p:Resources.lblTwitterUserNameAcc}" Style="{StaticResource labelStyleSimple}" 
+                    Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                
+                <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="642" Height="54">
+                    <TextBox x:Name="txbTwitterUserName" Style="{StaticResource TextFieldAddUser}" FontSize="25"  Width="572" Margin="8,1,0,0" Height="51" VerticalAlignment="Top" />
+                </Border>
+            </StackPanel>
+            <Image  Source="{StaticResource SaveIcon}" Margin="1286,336,160,389" MouseDown="ClickSaveTwitterUserName"/>
+
             <Grid Grid.Column="0">
                 <Border BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10"  HorizontalAlignment="Left" Height="288" Margin="208,0,0,0" VerticalAlignment="Center" Width="325"  Background ="Transparent">
                     <Image x:Name="imageProfile" Height="271" VerticalAlignment="Top" HorizontalAlignment="Left" Width="307" Stretch="UniformToFill" Margin="8,8,0,0"/>
                 </Border>
                 <Label FontSize="30" Style="{StaticResource labelStyleSimple}" Content="Avatar" Margin="208,193,0,0" Height="43" Width="211"/>
                 <Label x:Name="lblEmailWarning" Style="{StaticResource ResourceKey=InvalidContentWarningStyle}" Content="{x:Static p:Resources.lblEmptyField}" HorizontalAlignment="Left" Margin="710,543,0,0" VerticalAlignment="Top" Width="348" Height="25"/>
-                <Image  Source="{StaticResource SaveIcon}" Margin="1275,229,171,495" MouseDown="ClickSaveNewName"/>
+                <Image  Source="{StaticResource SaveIcon}" Margin="1289,207,157,517" MouseDown="ClickSaveNewName"/>
             </Grid>
 
-            <StackPanel Height="auto" Margin="699,327,168,327" >
+            <StackPanel Height="auto" Margin="699,422,168,232" >
                 <Label x:Name="lblUserNameDescripCreateAcc" Content = "{x:Static p:Resources.lblUserNameDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="645" Height="54">
@@ -36,7 +46,7 @@
                 </Border>
             </StackPanel>
 
-            <StackPanel Height="auto" Margin="698,483,169,165" >
+            <StackPanel Height="auto" Margin="696,557,171,91" >
                 <Label x:Name="lblEmailDescripCreateAcc" Content = "{x:Static p:Resources.lblEmailDescripCreateAcc}" Style="{StaticResource labelStyleSimple}" 
                     Height="Auto" Width="Auto" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Border Background="Transparent" BorderBrush="#26B1FF" BorderThickness="2" CornerRadius="10" Width="642" Height="54">
@@ -62,10 +72,11 @@
                     <ListBox x:Name="lxtImageSelector" d:ItemsSource="{d:SampleData ItemCount=7}" SelectionChanged="SelectImage" Background="{x:Null}" Foreground="#592C75" FontSize="20" Height="65" Width="325" />
                 </StackPanel>
             </Border>
-            <Image  Source="{StaticResource SaveIcon}" Margin="1274,544,172,181" MouseDown="ClickSaveNewEmail"/>
+            <Image  Source="{StaticResource SaveIcon}" Margin="1276,615,170,110" MouseDown="ClickSaveNewEmail"/>
             <Image HorizontalAlignment="Left" Height="63" Margin="29,36,0,0" VerticalAlignment="Top" Width="29" Source="{StaticResource BackArrowIcon}" MouseDown="ClickBackToMaminMenu"/>
-            <Label x:Name ="LblWrongEmail" Style="{StaticResource labelWarning}" Margin="699,598,0,0" Width="630" Height="32"/>
-            <Label x:Name ="LblWrongName" Style="{StaticResource labelWarning}" Margin="699,286,0,0" Width="644" Height="31"/>
+            <Label x:Name ="LblWrongEmail" Style="{StaticResource labelWarning}" Margin="701,667,0,0" Width="630" Height="32"/>
+            <Label x:Name ="LblWrongName" Style="{StaticResource labelWarning}" Margin="721,257,0,0" Width="644" Height="31"/>
+            <Label x:Name ="LblWrongTwitterUserName" Style="{StaticResource labelWarning}" Margin="711,394,0,0" Width="644" Height="31"/>
         </Grid>
     </Viewbox>
 </Page>

@@ -26,6 +26,10 @@ namespace JeopardyGame.Service.InterfacesServices
             [OperationContract]
             GenericClass<int> UpdatePasswordUser(string userName, string password);
 
+
+            [OperationContract]
+            GenericClass<int> SaveUpdateTwitterUserName(int idUser, string twitterUserName);
+
     }
 
  

@@ -31,6 +31,7 @@ namespace JeopardyGame
         public int NoReports { get; set; }
         public int IdCurrentAvatar { get; set; }
         public int IdState { get; set; }
+        public String TwitterUserName { get; set; }
 
         private UserSingleton() { }
         private UserSingleton(UserPojo userSingleton, PlayerPojo playerSingleton) 
@@ -39,6 +40,7 @@ namespace JeopardyGame
             Name = userSingleton.Name;
             UserName = userSingleton.UserName;
             Email = userSingleton.EmailAddress;
+            TwitterUserName = userSingleton.TwitterUserName;
             Password = userSingleton.Password;
             IdPlayer = playerSingleton.IdPlayer;
             GeneralPoints = playerSingleton.GeneralPoints;

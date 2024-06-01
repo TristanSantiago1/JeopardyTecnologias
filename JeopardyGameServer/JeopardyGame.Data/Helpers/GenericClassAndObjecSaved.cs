@@ -72,6 +72,7 @@ namespace JeopardyGame.Data
         public String Name { get; set; }
         public String EmailAddress { get; set; }
         public String Password { get; set; }
+        public String TwitterUserName { get; set; }
     }
     public class PlayerPojo
     {

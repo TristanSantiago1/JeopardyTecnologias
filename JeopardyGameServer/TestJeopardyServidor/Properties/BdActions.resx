@@ -147,6 +147,12 @@ GO</value>
       ,[IdAvatarActual] = 7
  WHERE IdPlayer = 25;</value>
   </data>
+  <data name="RestoreTwitter" xml:space="preserve">
+    <value>UPDATE [dbo].[Users]
+   SET 
+      [TwitterUserName] = ''
+ WHERE IdUser = 22</value>
+  </data>
   <data name="RestoreUser22" xml:space="preserve">
     <value>UPDATE [dbo].[Users]
    SET [EmailAddress] = 'tristan@gmail.com'

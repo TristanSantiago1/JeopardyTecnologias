@@ -779,9 +779,115 @@ namespace JeopardyGame.Data.DataAccess
             return resultOfOperation;
         }
 
+        public static GenericClassServer<int> ValidateIfTwitterAlredadyExist(String twitterUserName)
+        {
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (string.IsNullOrEmpty(twitterUserName))
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    bool exist = contextBD.Users.Any(user => user.TwitterUserName.Equals(twitterUserName));
+                    if (!exist)
+                    {
+                        resultOfOperation.ObjectSaved = 1;
+                        resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                        resultOfOperation.ObjectSaved = 0;
+                    }
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            return resultOfOperation;
+        }
+
+
+        public static GenericClassServer<int> SaveUpdateTwitterUserName(int IdUser, string twitterUserName)
+        {
+            GenericClassServer<int> resultOfOperation = new GenericClassServer<int>();
+            if (string.IsNullOrEmpty(twitterUserName) || IdUser == 0)
+            {
+                return NullParametersHandler.HandleNullParametersDataBase(resultOfOperation);
+            }
+            try
+            {
+                using (var contextBD = new JeopardyDBContainer())
+                {
+                    var user = contextBD.Users.FirstOrDefault(userBd => userBd.IdUser == IdUser);
+                    if (user != null)
+                    {
+                        user.TwitterUserName = twitterUserName;
+                        int resultOfEvent = contextBD.SaveChanges();
+                        if (resultOfEvent != 0)
+                        {
+                            resultOfOperation.CodeEvent = CodesDictionary.SUCCESFULL_EVENT;
+                        }
+                        else
+                        {
+                            resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                        }
+                        resultOfOperation.ObjectSaved = OPERATION_DONE;
+                    }
+                    else
+                    {
+                        resultOfOperation.CodeEvent = CodesDictionary.UNSUCCESFULL_EVENT;
+                    }
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (SqlException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (EntityException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            catch (DbEntityValidationException ex)
+            {
+                resultOfOperation = ExceptionHandler.HandleExceptionDataAccesLevel(resultOfOperation, ex);
+                ExceptionHandler.LogException(ex, CodesDictionary.FATAL_EXCEPTION);
+            }
+            return resultOfOperation;
+        }
+
+
+
+
     }
 
- }
+}
     
 
 

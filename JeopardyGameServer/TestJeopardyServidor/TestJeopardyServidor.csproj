@@ -136,7 +136,9 @@
     <Compile Include="TestService\TestNotifyAvailabilityFixture.cs" />
     <Compile Include="TestService\TestSaveUserOperationsFixture.cs" />
     <Compile Include="TestService\TestSavePlayerFixture.cs" />
+    <Compile Include="TestService\TestTwitterFixure.cs" />
     <Compile Include="TestService\TestUpdateUserPlayerFixture.cs" />
+    <Compile Include="TestService\TestValidateExistingData.cs" />
     <Compile Include="TestService\TestWithTheDataBaseDown.cs" />
   </ItemGroup>
   <ItemGroup>

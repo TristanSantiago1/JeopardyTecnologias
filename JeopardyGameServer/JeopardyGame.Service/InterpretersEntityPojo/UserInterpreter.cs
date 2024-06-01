@@ -23,6 +23,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             userEntity.Password = userPojo.Password;    
             userEntity.Name = userPojo.Name;
             userEntity.EmailAddress = userPojo.EmailAddress;
+            userEntity.TwitterUserName = userPojo.TwitterUserName;
             return userEntity;
         }
 
@@ -38,6 +39,7 @@ namespace JeopardyGame.Service.InterpretersEntityPojo
             userPOJO.EmailAddress = user.EmailAddress;  
             userPOJO.Password = user.Password;
             userPOJO.UserName = user.UserName;
+            userPOJO.TwitterUserName = user.TwitterUserName;
             return userPOJO;
         }
 

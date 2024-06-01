@@ -13,7 +13,7 @@ namespace JeopardyGame.ReGexs
         private static readonly string _USERNAME_RULES_CHAR = "^[a-zA-Z0-9_áéíóúÁÉÍÓÚ]{1,15}$";
         private static readonly string _EMAIL_RULES_CHAR = "^(?=.{1,90}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         private static readonly string _EMAIL_ALLOW_CHAR = "^[a-zA-Z0-9@,._=]{1,90}$";
-
+        private static readonly string _NAMETWITTER_RULES_CHAR = "^[a-zA-Z0-9_]{1,15}$";
 
         public Dictionary<string, string> ValidationTextBoxRegexes { get; set; } = new Dictionary<string, string>
         {
@@ -21,7 +21,10 @@ namespace JeopardyGame.ReGexs
             { "txbUserNameCreateAccount", _USERNAME_RULES_CHAR },
             { "txbEmailCreateAccount", _EMAIL_ALLOW_CHAR }            
         };
-
+        public String GetAT_NAMETWITTER_RULES_CHAR()
+        {
+            return _NAMETWITTER_RULES_CHAR;
+        }
         public String GetAt_LEAST_TWO_NUMBER()
         {
             return _AT_LEAST_TWO_NUMBERS;
@@ -51,6 +54,7 @@ namespace JeopardyGame.ReGexs
         {
             return _EMAIL_RULES_CHAR;
         }
+
 
     }
 

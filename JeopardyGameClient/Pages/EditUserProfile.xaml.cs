@@ -3,6 +3,7 @@ using JeopardyGame.Helpers;
 using JeopardyGame.ReGexs;
 using JeopardyGame.ServidorServiciosJeopardy;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -22,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using ExceptionDictionary = JeopardyGame.Exceptions.ExceptionDictionary;
 using ExceptionHandlerForLogs = JeopardyGame.Exceptions.ExceptionHandlerForLogs;
 
@@ -56,6 +58,7 @@ namespace JeopardyGame.Pages
             txbEditName.Text = userSingleton.Name;
             txbEditUserName.Text = userSingleton.UserName;
             txbEditEmail.Text = userSingleton.Email;
+            txbTwitterUserName.Text = userSingleton.TwitterUserName;
         }
 
         private void CLickButtonSaveAvatarChanges(object sender, RoutedEventArgs e)
@@ -450,6 +453,87 @@ namespace JeopardyGame.Pages
                 return false;
             }
 
+        }
+
+        private void ClickSaveTwitterUserName(object sender, MouseButtonEventArgs e)
+        {
+            string twitterUserName = txbTwitterUserName.Text.Trim();
+            if (IsValidTwitterUser(twitterUserName))
+            {
+                CheckIfTwitterUserNameExist(twitterUserName);   
+            }
+        }
+        
+        private void CheckIfTwitterUserNameExist(string twitterUserName)
+        {
+            UserSingleton userSingleton = UserSingleton.GetMainUser();
+
+            try
+            {
+                UserManagerClient dataCheckerProxy = new();
+                GenericClassOfint userIsNew = dataCheckerProxy.SaveUpdateTwitterUserName(userSingleton.IdUser, twitterUserName);
+                dataCheckerProxy.Close();
+                if (userIsNew.CodeEvent == ExceptionDictionary.SUCCESFULL_EVENT || userIsNew.CodeEvent == ExceptionDictionary.UNSUCCESFULL_EVENT || userIsNew.ObjectSaved == ALLOWED_VALUES)
+                {
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInfoBanner, Properties.Resources.lblTwitterUserUpdate, Application.Current.MainWindow, DialogWindowManager.INFORMATION);
+                }               
+                        
+                else if (userIsNew.ObjectSaved == 0)
+                {
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInfoBanner, Properties.Resources.lblTwitterUserExist, Application.Current.MainWindow, DialogWindowManager.ERROR);
+                } 
+                else
+                {
+                    DialogWindowManager.ShowInfoOrErrorWindow(Properties.Resources.txbInfoBanner, Properties.Resources.lblCantSaveTwitterUserName, Application.Current.MainWindow, DialogWindowManager.ERROR);
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                HandleException(ex, Properties.Resources.lblCantSaveTwitterUserName + "  " + Properties.Resources.lblEndPointNotFound);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                HandleException(ex, Properties.Resources.lblCantSaveTwitterUserName + " " + Properties.Resources.lblComunicationException);
+            }
+            catch (TimeoutException ex)
+            {
+                HandleException(ex, Properties.Resources.lblCantSaveTwitterUserName + " " + Properties.Resources.lblTimeException);
+            }
+            catch (CommunicationException ex)
+            {
+                HandleException(ex, Properties.Resources.lblCantSaveTwitterUserName + "  " + Properties.Resources.lblWithoutConection);
+            }
+            catch (SocketException ex)
+            {
+                HandleException(ex, Properties.Resources.lblCantSaveTwitterUserName + "  " + Properties.Resources.lblWithoutConection);
+            }
+        }
+
+        private bool IsValidTwitterUser(string twitterUserName)
+        {
+            try
+            {
+                RegularExpressionsLibrary regexInstanceForTwitter = new RegularExpressionsLibrary();
+
+                String regexExpression = regexInstanceForTwitter.GetAT_NAMETWITTER_RULES_CHAR();
+                if (!Regex.IsMatch(twitterUserName, regexExpression, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                {
+                    LblWrongTwitterUserName.Content = Properties.Resources.LblWrongTwitterUserName;
+                    LblWrongTwitterUserName.Visibility = Visibility.Visible;
+                    return false;
+                }
+                else
+                {
+
+                    LblWrongTwitterUserName.Visibility = Visibility.Hidden;
+                    return true;
+
+                }
+            }catch (RegexMatchTimeoutException ex)
+            {
+                ExceptionHandlerForLogs.LogException(ex, ExceptionDictionary.ERROR);
+                return false;
+            }
         }
     }
 }
