@@ -18,7 +18,7 @@ namespace JeopardyGame.Host.Connection
         {
             try
             {                   
-                GetConectionString();
+                //GetConectionString();
                 UserManagerDataOperation.DeleteAllGuestUsers();
                 using (ServiceHost host = new ServiceHost(typeof(Service.ServiceImplementation.ServicesReferenceAuthor)))
                 {
@@ -81,10 +81,10 @@ namespace JeopardyGame.Host.Connection
                 conectionStringSection.ConnectionString = conectionString;
                 configuration.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection(Properties.StringResources.ConfigSection);
-            }            
+            }
         }
 
 
-      
+
     }
 }
